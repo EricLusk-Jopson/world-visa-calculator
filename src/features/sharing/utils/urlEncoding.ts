@@ -8,26 +8,28 @@
  * ?v=1&t=<travelerBlock>|<travelerBlock>|…
  *
  * travelerBlock:  NAME~<tripBlock>,<tripBlock>,…
- * tripBlock:      YYMMDD:YYMMDD   (entry:exit)
- *                 YYMMDD          (ongoing — no exit yet)
+ * tripBlock:      YYMMDD:YYMMDD:R   (entry:exit:region)
+ *                 YYMMDD:R          (ongoing — no exit yet)
  *
+ * R is the VisaRegion integer value (0, 1, 2, …).
  * Date encoding uses YYMMDD (6 chars) vs ISO YYYY-MM-DD (10 chars) — 40% shorter.
  *
  * Delimiter summary:
  *   |  traveler separator
  *   ~  name and trips separator
  *   ,  trip separator
- *   :  entry and exit separator within a trip
+ *   :  field separator within a trip
  *
  * Traveler names: alphabetical characters only (a-z A-Z), 1–30 chars.
  *
  * EXAMPLE
  * ───────
- * Emma (two trips) and Liam (one ongoing):
- *   ?v=1&t=Emma~240101:240301,240601:240831|Liam~240901
+ * Emma (Schengen trip) and Liam (ongoing Elsewhere):
+ *   ?v=1&t=Emma~240101:240301:0|Liam~240901:1
  */
 
 import { nanoid } from "nanoid";
+import { VisaRegion } from "@/types";
 import type { Traveler, Trip, ShareableState } from "@/types";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -92,46 +94,71 @@ export const decodeDate = (compact: string): string => {
   return `20${yy}-${mm}-${dd}`;
 };
 
+// ─── Region helpers ───────────────────────────────────────────────────────────
+
+const encodeRegion = (region: VisaRegion): string => String(region);
+
+const decodeRegion = (raw: string): VisaRegion => {
+  const value = parseInt(raw, 10);
+  const validValues = Object.values(VisaRegion) as number[];
+  if (isNaN(value) || !validValues.includes(value)) {
+    throw new Error(`Unknown VisaRegion value: "${raw}"`);
+  }
+  return value as VisaRegion;
+};
+
 // ─── Trip encode / decode ─────────────────────────────────────────────────────
 
 /**
  * Encodes a single Trip.
- *   With exit:  "240101:240201"
- *   Ongoing:    "240101"
+ *   With exit:  "240101:240201:0"
+ *   Ongoing:    "240101:0"
  */
 export const encodeTrip = (trip: Trip): string => {
   const entry = encodeDate(trip.entryDate);
   const exit = trip.exitDate ? encodeDate(trip.exitDate) : null;
-  return exit ? `${entry}${DELIM.field}${exit}` : entry;
+  const region = encodeRegion(trip.region);
+  return exit
+    ? `${entry}${DELIM.field}${exit}${DELIM.field}${region}`
+    : `${entry}${DELIM.field}${region}`;
 };
 
 /**
  * Decodes a compact trip string back to a Trip object.
+ * Expects either 2 fields (entry:region) or 3 fields (entry:exit:region).
  */
 export const decodeTrip = (raw: string): Trip => {
   const parts = raw.trim().split(DELIM.field);
 
-  if (parts.length === 0 || parts.length > 2) {
-    throw new Error(`Malformed trip segment: "${raw}"`);
+  if (parts.length === 2) {
+    return {
+      entryDate: decodeDate(parts[0]),
+      region: decodeRegion(parts[1]),
+    };
   }
 
-  const entryDate = decodeDate(parts[0]);
-  const exitDate = parts[1] ? decodeDate(parts[1]) : undefined;
+  if (parts.length === 3) {
+    const entryDate = decodeDate(parts[0]);
+    const exitDate = decodeDate(parts[1]);
+    const region = decodeRegion(parts[2]);
 
-  if (exitDate && exitDate < entryDate) {
-    throw new Error(
-      `Exit date ${exitDate} is before entry date ${entryDate} in segment "${raw}"`,
-    );
+    if (exitDate < entryDate) {
+      throw new Error(
+        `Exit date ${exitDate} is before entry date ${entryDate} in segment "${raw}"`,
+      );
+    }
+
+    return { entryDate, exitDate, region };
   }
 
-  return { entryDate, exitDate };
+  throw new Error(`Malformed trip segment: "${raw}"`);
 };
 
 // ─── Traveler encode / decode ─────────────────────────────────────────────────
 
 /**
  * Encodes a Traveler into its compact block string.
- * e.g. "Emma~240101:240201,240601"
+ * e.g. "Emma~240101:240201:0,240601:1"
  */
 export const encodeTraveler = (traveler: Traveler): string => {
   const tripSegments = traveler.trips.map(encodeTrip).join(DELIM.trip);
@@ -196,7 +223,7 @@ export const buildShareableUrl = (state: ShareableState): string => {
   return qs ? `${base}?${qs}` : base;
 };
 
-// ─── URL → State ──────────────────────────────────────────────────────────────
+// ─── URL to State ─────────────────────────────────────────────────────────────
 
 export type DecodeResult =
   | { ok: true; state: ShareableState }
