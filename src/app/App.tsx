@@ -1,11 +1,13 @@
-import { useUrlSync } from "@/features/sharing";
-import type { ShareableState } from "@/types";
 import { useState } from "react";
+import { useUrlSync } from "@/features/sharing";
+import { VisaRegion, VISA_REGION_LABELS } from "@/types";
+import type { ShareableState } from "@/types";
 
 export default function App() {
   const [name, setName] = useState("");
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
+  const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [state, setState] = useState<ShareableState>({ travelers: [] });
 
   const { shareableUrl, copyShareableUrl, clearSavedData } = useUrlSync({
@@ -23,7 +25,7 @@ export default function App() {
         {
           id: crypto.randomUUID(),
           name: name.replace(/[^a-zA-Z]/g, "").slice(0, 30),
-          trips: [{ entryDate, exitDate: exitDate || undefined }],
+          trips: [{ entryDate, exitDate: exitDate || undefined, region }],
         },
       ],
     }));
@@ -31,6 +33,7 @@ export default function App() {
     setName("");
     setEntryDate("");
     setExitDate("");
+    setRegion(VisaRegion.Schengen);
   }
 
   function handleReset() {
@@ -86,6 +89,22 @@ export default function App() {
             style={inputStyle}
           />
         </label>
+        <label>
+          Region
+          <select
+            value={region}
+            onChange={(e) => setRegion(Number(e.target.value) as VisaRegion)}
+            style={inputStyle}
+          >
+            {(Object.entries(VISA_REGION_LABELS) as [string, string][]).map(
+              ([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ),
+            )}
+          </select>
+        </label>
         <button type="submit" style={buttonStyle}>
           Add traveler
         </button>
@@ -102,7 +121,8 @@ export default function App() {
                   key={i}
                   style={{ fontSize: 13, color: "#555", marginTop: 4 }}
                 >
-                  {trip.entryDate} → {trip.exitDate ?? "ongoing"}
+                  {VISA_REGION_LABELS[trip.region]} · {trip.entryDate} →{" "}
+                  {trip.exitDate ?? "ongoing"}
                 </div>
               ))}
             </div>
