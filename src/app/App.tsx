@@ -3,11 +3,7 @@ import { useUrlSync } from "@/features/sharing";
 import { VisaRegion, VISA_REGION_LABELS } from "@/types";
 import type { ShareableState, Trip } from "@/types";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
-import {
-  parseDate,
-  formatDate,
-  addDays,
-} from "@/features/calculator/utils/dates";
+import { parseDate, formatDate } from "@/features/calculator/utils/dates";
 
 // ─── Date constraint helpers ───────────────────────────────────────────────────
 
@@ -18,7 +14,7 @@ import {
 function getEntryDateError(entryDate: string, trips: Trip[]): string | null {
   for (const trip of trips) {
     const tExit = trip.exitDate ?? "9999-12-31"; // ongoing trips block indefinitely
-    if (entryDate >= trip.entryDate && entryDate < tExit) {
+    if (entryDate >= trip.entryDate && entryDate <= tExit) {
       return `Overlaps existing trip (${trip.entryDate} → ${trip.exitDate ?? "ongoing"}).`;
     }
   }
@@ -53,7 +49,7 @@ function computeExitConstraint(
     .sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1))[0];
 
   const maxFromOverlap: string | null = nextTrip
-    ? formatDate(addDays(parseDate(nextTrip.entryDate), -1))
+    ? formatDate(parseDate(nextTrip.entryDate))
     : null;
 
   // Ceiling 2: Schengen 90/180 rule (only applies to Schengen trips).
