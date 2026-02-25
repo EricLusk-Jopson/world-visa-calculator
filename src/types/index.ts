@@ -36,6 +36,17 @@ export interface Traveler {
   trips: Trip[];
 }
 
+export interface MaxStayResult {
+  /** The proposed entry date this result was calculated against. */
+  entryDate: string;
+  /** Whether entry is possible on the given date. */
+  canEnter: boolean;
+  /** The last legal exit date. Null when canEnter is false. */
+  maxExitDate: string | null;
+  /** Total days available, entry and exit inclusive. Zero when canEnter is false. */
+  maxDays: number;
+}
+
 // ─── Sharing ─────────────────────────────────────────────────────────────────
 
 export interface ShareableState {
