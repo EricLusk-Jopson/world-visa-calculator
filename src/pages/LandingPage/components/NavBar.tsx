@@ -73,6 +73,7 @@ export function NavBar({
             fontSize: "1.1rem",
             color: tokens.navy,
             "&:hover": { color: tokens.navyMid },
+            "&:visited&:hover": { color: tokens.navyMid },
           }}
         >
           {/* Green pulse dot */}
@@ -110,6 +111,7 @@ export function NavBar({
                 color: tokens.textSoft,
                 transition: "color 0.18s",
                 "&:hover": { color: tokens.navy },
+                "&:visited&:hover": { color: tokens.navy },
               }}
             >
               {label}

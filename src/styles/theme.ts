@@ -193,6 +193,7 @@ const theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
+          "&:visited&:hover": { color: tokens.mist },
           "&:hover": { color: tokens.mist },
         },
       },
