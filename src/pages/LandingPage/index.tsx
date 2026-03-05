@@ -256,7 +256,16 @@ function StepCard({
 
 // ─── Trust stat ───────────────────────────────────────────────────────────────
 
-function TrustStat({ num, label }: { num: string; label: React.ReactNode }) {
+function TrustStat({
+  num,
+  label,
+  light = false,
+}: {
+  num: string;
+  label: React.ReactNode;
+  light?: boolean;
+}) {
+  console.log(light);
   return (
     <Box sx={{ textAlign: "center" }}>
       <Typography
@@ -264,9 +273,9 @@ function TrustStat({ num, label }: { num: string; label: React.ReactNode }) {
           fontFamily: tokens.fontDisplay,
           fontSize: "2.4rem",
           fontWeight: 600,
-          color: tokens.navy,
+          color: light ? tokens.navy : tokens.green,
           lineHeight: 1,
-          mb: "6px",
+          mb: "8px",
         }}
       >
         {num}
@@ -275,7 +284,7 @@ function TrustStat({ num, label }: { num: string; label: React.ReactNode }) {
         sx={{
           fontFamily: tokens.fontBody,
           fontSize: "0.8rem",
-          color: tokens.textSoft,
+          color: light ? tokens.textSoft : tokens.textGhost,
           lineHeight: 1.5,
         }}
       >
@@ -321,7 +330,7 @@ export default function LandingPage() {
         component="section"
         sx={{
           minHeight: "100vh",
-          pt: "64px",
+          pt: "32px",
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
           alignItems: "stretch",
@@ -389,9 +398,7 @@ export default function LandingPage() {
               "& em": { fontStyle: "italic", color: tokens.green },
             }}
           >
-            Know exactly how long
-            <br />
-            you can <em>stay in Europe.</em>
+            Know exactly how long you can <em>stay in Europe.</em>
           </Typography>
 
           {/* Sub */}
@@ -496,10 +503,23 @@ export default function LandingPage() {
       {/* ── TRUST STRIP ── */}
       <Box
         sx={{
-          bgcolor: tokens.white,
-          borderBottom: `1px solid ${tokens.border}`,
+          bgcolor: tokens.navy,
           px: { xs: 3, md: "80px" },
-          py: { xs: "48px", md: "60px" },
+          py: { xs: "60px", md: "100px" },
+          position: "relative",
+          overflow: "hidden",
+          // Subtle radial glow top-right
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: -150,
+            left: -150,
+            width: 500,
+            height: 500,
+            borderRadius: "50%",
+            background: `radial-gradient(circle, ${alpha(tokens.green, 0.08)} 0%, transparent 70%)`,
+            pointerEvents: "none",
+          },
         }}
       >
         <Box
@@ -522,15 +542,6 @@ export default function LandingPage() {
               </>
             }
           />
-          <Box
-            sx={{
-              display: { xs: "none", md: "block" },
-              width: 1,
-              height: 50,
-              bgcolor: tokens.border,
-              mx: "auto",
-            }}
-          />
           <TrustStat
             num="4+"
             label={
@@ -541,15 +552,6 @@ export default function LandingPage() {
               </>
             }
           />
-          <Box
-            sx={{
-              display: { xs: "none", md: "block" },
-              width: 1,
-              height: 50,
-              bgcolor: tokens.border,
-              mx: "auto",
-            }}
-          />
           <TrustStat
             num="26"
             label={
@@ -559,15 +561,6 @@ export default function LandingPage() {
                 using the same rule
               </>
             }
-          />
-          <Box
-            sx={{
-              display: { xs: "none", md: "block" },
-              width: 1,
-              height: 50,
-              bgcolor: tokens.border,
-              mx: "auto",
-            }}
           />
           <TrustStat
             num="0"
