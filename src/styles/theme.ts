@@ -190,6 +190,14 @@ const theme = createTheme({
       },
     },
 
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          "&:hover": { color: tokens.mist },
+        },
+      },
+    },
+
     // ── Input / TextField ──
     MuiOutlinedInput: {
       styleOverrides: {

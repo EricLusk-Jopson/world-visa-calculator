@@ -72,6 +72,7 @@ export function NavBar({
             fontWeight: 600,
             fontSize: "1.1rem",
             color: tokens.navy,
+            "&:hover": { color: tokens.navyMid },
           }}
         >
           {/* Green pulse dot */}
@@ -129,7 +130,7 @@ export function NavBar({
               py: "7px",
               borderRadius: "8px",
               transition: "background 0.18s",
-              "&:hover": { bgcolor: tokens.navyMid },
+              "&:hover": { bgcolor: tokens.navyMid, color: tokens.mist },
             }}
           >
             Open calculator →
