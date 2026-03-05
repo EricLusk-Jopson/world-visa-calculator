@@ -3,7 +3,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import { router } from "./router";
 import theme from "../styles/theme";
 
-export function App() {
+export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
