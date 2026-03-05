@@ -11,6 +11,11 @@ import { tokens } from "@/styles/theme";
 
 // ── 90/180 algorithm ─────────────────────────────────────────────────────────
 
+function parseLocalDate(val: string): Date {
+  const [year, month, day] = val.split("-").map(Number);
+  return new Date(year, month - 1, day); // local midnight, no UTC shift
+}
+
 function daysBetween(a: Date, b: Date): number {
   return Math.round((b.getTime() - a.getTime()) / 86_400_000);
 }
@@ -60,8 +65,8 @@ function computeResult(
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const entry = new Date(entryVal);
-  const exit = exitVal ? new Date(exitVal) : null;
+  const entry = parseLocalDate(entryVal);
+  const exit = exitVal ? parseLocalDate(exitVal) : null;
 
   if (exit && exit < entry) {
     return {
@@ -81,13 +86,13 @@ function computeResult(
     month: "short",
     year: "numeric",
   });
-  const windowNote = `Based on a 180-day window ending ${refLabel}. Days roll off as time passes.`;
+  const windowNote = `Based on a 180-day window ending ${refLabel}.`;
 
   if (remaining >= 30)
     return {
       variant: "safe",
       days: remaining,
-      label: `${displayName}'s remaining days`,
+      label: `${displayName === "You" ? "Your" : displayName + "'s"} remaining days`,
       sublabel: `${used} of 90 days used · safe to travel`,
       windowNote,
     };
@@ -95,7 +100,7 @@ function computeResult(
     return {
       variant: "caution",
       days: remaining,
-      label: `${displayName}'s remaining days`,
+      label: `${displayName === "You" ? "Your" : displayName + "'s"} remaining days`,
       sublabel: `${used} of 90 days used · plan carefully`,
       windowNote,
     };
@@ -103,14 +108,14 @@ function computeResult(
     return {
       variant: "danger",
       days: remaining,
-      label: `${displayName}'s remaining days`,
+      label: `${displayName === "You" ? "Your" : displayName + "'s"} remaining days`,
       sublabel: `${used} of 90 days used · at risk`,
       windowNote,
     };
   return {
     variant: "danger",
     days: 0,
-    label: `${displayName} has exceeded the limit`,
+    label: `${displayName === "You" ? "Your" : displayName + "'s"} remaining days`,
     sublabel: `${used} of 90 days used — must leave now`,
     windowNote,
   };
@@ -152,6 +157,14 @@ export function HeroCalculatorCard({
     "& .MuiOutlinedInput-input": {
       p: "11px 14px",
       "&::placeholder": { color: tokens.textGhost, opacity: 1 },
+      "&::-webkit-calendar-picker-indicator": {
+        cursor: "pointer",
+        opacity: 0.8,
+        filter: "invert(30%) sepia(20%) saturate(500%) hue-rotate(180deg)",
+      },
+      "&::-webkit-calendar-picker-indicator:hover": {
+        opacity: 1,
+      },
     },
     "& .MuiInputLabel-root": {
       fontFamily: tokens.fontBody,
@@ -411,7 +424,7 @@ export function HeroCalculatorCard({
             />
           </svg>
           {hasInput
-            ? "↗ Track multiple travelers & full history"
+            ? "Track multiple travelers & full history"
             : "Track all travelers — free"}
         </Link>
 
