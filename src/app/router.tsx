@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import LandingPage from "@/pages/LandingPage";
-import AppPage from "@/pages/AppPage";
 import SharedPage from "@/pages/SharedPage";
 import NotFoundPage from "@/pages/NotFoundPage";
+import { CalculatorPage } from "@/pages/CalculatorPage";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/app",
-    element: <AppPage />,
+    element: <CalculatorPage />,
   },
   {
     path: "/shared/:token",
