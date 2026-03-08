@@ -7,13 +7,17 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { parseISO, formatISO } from "date-fns";
+
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
-import { OngoingToggle } from "@/components/ui/OngoingToggle";
 import {
   computeTravelerStatus,
   getStatusVariant,
@@ -565,61 +569,56 @@ export function TripModal({
         {/* 4 · Dates */}
         <Box>
           <FormLabel>Dates</FormLabel>
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "8px",
-              mb: "6px",
-            }}
-          >
-            {/* Entry date */}
-            <TextField
-              type="date"
-              value={entryDate}
-              onChange={(e) => {
-                const newEntry = e.target.value;
-                setEntryDate(newEntry);
-
-                // Pre-populate exit as entry + 1 when exit is not yet set.
-                // This lets the user adjust from a sensible default rather than
-                // navigating from today's date in the picker.
-                if (newEntry && !exitDate && !ongoing) {
-                  setExitDate(addDays(newEntry, 1));
-                }
-                if (!newEntry) setExitDate("");
-
-                setError(null);
-              }}
-              inputProps={{ placeholder: "Entry" }}
-              sx={error && !entryDate ? INPUT_ERROR_SX : INPUT_SX}
-            />
-
-            {/* Exit date — min set to entryDate to allow same-day trips */}
-            <TextField
-              type="date"
-              value={exitDate}
-              onChange={(e) => {
-                setExitDate(e.target.value);
-                setError(null);
-              }}
-              disabled={ongoing || !entryDate}
-              inputProps={{ min: entryDate || undefined }}
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <Box
               sx={{
-                ...(ongoing || !entryDate ? { opacity: 0.5 } : {}),
-                ...INPUT_SX,
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "8px",
+                mb: "6px",
               }}
-            />
-          </Box>
-
-          <OngoingToggle
-            checked={ongoing}
-            onChange={(v) => {
-              setOngoing(v);
-              if (v) setExitDate("");
-              setError(null);
-            }}
-          />
+            >
+              <DatePicker
+                label={null}
+                value={entryDate ? parseISO(entryDate) : null}
+                onChange={(date) => {
+                  if (!date) return;
+                  const iso = formatISO(date, { representation: "date" });
+                  setEntryDate(iso);
+                  if (!exitDate && !ongoing) setExitDate(addDays(iso, 1));
+                  setError(null);
+                }}
+                slotProps={{
+                  textField: {
+                    size: "small",
+                    placeholder: "Entry",
+                    sx: error && !entryDate ? INPUT_ERROR_SX : INPUT_SX,
+                  },
+                }}
+              />
+              <DatePicker
+                label={null}
+                value={exitDate ? parseISO(exitDate) : null}
+                disabled={ongoing || !entryDate}
+                minDate={entryDate ? parseISO(entryDate) : undefined}
+                onChange={(date) => {
+                  if (!date) return;
+                  setExitDate(formatISO(date, { representation: "date" }));
+                  setError(null);
+                }}
+                slotProps={{
+                  textField: {
+                    size: "small",
+                    placeholder: "Exit",
+                    sx: {
+                      ...(ongoing || !entryDate ? { opacity: 0.5 } : {}),
+                      ...INPUT_SX,
+                    },
+                  },
+                }}
+              />
+            </Box>
+          </LocalizationProvider>
         </Box>
 
         {/* Entry constraint hint — visible once entry date is known, exit not yet set.
