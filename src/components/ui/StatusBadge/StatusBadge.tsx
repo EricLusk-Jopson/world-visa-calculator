@@ -54,7 +54,7 @@ export function StatusBadge({ variant, label, sx = {} }: StatusBadgeProps) {
         flexShrink: 0,
         display: "inline-block",
         // MUI Chip icon gets extra padding we don't want — override
-        "&.MuiChip-icon": { ml: "2px", mr: 0 },
+        "&.MuiChip-icon": { ml: "8px", mr: 0 },
       }}
     />
   );

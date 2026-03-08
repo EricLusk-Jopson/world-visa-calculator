@@ -94,6 +94,7 @@ export interface TravelerStatus {
   daysUsed: number;
   daysRemaining: number;
   variant: StatusVariant;
+  windowStart: string;
 }
 
 /**
@@ -102,7 +103,7 @@ export interface TravelerStatus {
  */
 export function computeTravelerStatus(
   traveler: Traveler,
-  refDate: Date = getToday()
+  refDate: Date = getToday(),
 ): TravelerStatus {
   const today = new Date(refDate);
   today.setHours(0, 0, 0, 0);
@@ -127,7 +128,12 @@ export function computeTravelerStatus(
   }
 
   const daysRemaining = Math.max(0, 90 - daysUsed);
-  return { daysUsed, daysRemaining, variant: getStatusVariant(daysRemaining) };
+  return {
+    daysUsed,
+    daysRemaining,
+    variant: getStatusVariant(daysRemaining),
+    windowStart: formatDateStr(windowStart),
+  };
 }
 
 /**
@@ -136,10 +142,19 @@ export function computeTravelerStatus(
  */
 export function computeStatusAtTripExit(
   traveler: Traveler,
-  tripId: string
+  tripId: string,
 ): TravelerStatus {
   const trip = traveler.trips.find((t) => t.id === tripId);
-  if (!trip) return { daysUsed: 0, daysRemaining: 90, variant: "safe" };
+  if (!trip) {
+    const fallbackWindowStart = new Date(getToday());
+    fallbackWindowStart.setDate(fallbackWindowStart.getDate() - 179);
+    return {
+      daysUsed: 0,
+      daysRemaining: 90,
+      variant: "safe",
+      windowStart: formatDateStr(fallbackWindowStart),
+    };
+  }
   const refDate = trip.exitDate ? parseLocalDate(trip.exitDate) : getToday();
   return computeTravelerStatus(traveler, refDate);
 }
@@ -154,8 +169,18 @@ export interface MonthMark {
 }
 
 const MONTH_NAMES = [
-  "Jan","Feb","Mar","Apr","May","Jun",
-  "Jul","Aug","Sep","Oct","Nov","Dec",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 export function buildMonthMarks(): MonthMark[] {
