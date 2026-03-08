@@ -55,7 +55,11 @@ function Chip({
  * Distinct from the landing page TripCard — uses a top accent stripe,
  * not a left bar.
  */
-export function TripListCard({ trip, statusAtExit, onEdit }: TripListCardProps) {
+export function TripListCard({
+  trip,
+  statusAtExit,
+  onEdit,
+}: TripListCardProps) {
   const isPlanned = isTripPlanned(trip);
   const isOngoing = isTripOngoing(trip);
   const isSchengen = trip.region === VisaRegion.Schengen;
@@ -64,39 +68,39 @@ export function TripListCard({ trip, statusAtExit, onEdit }: TripListCardProps) 
   const regionLabel = isPlanned
     ? "Planned"
     : isOngoing
-    ? "Ongoing"
-    : isSchengen
-    ? "Schengen"
-    : "Elsewhere";
+      ? "Ongoing"
+      : isSchengen
+        ? "Schengen"
+        : "Elsewhere";
   const regionBg = isPlanned
     ? tokens.amberBg
     : isSchengen
-    ? tokens.greenBg
-    : tokens.mist;
+      ? tokens.greenBg
+      : tokens.mist;
   const regionColor = isPlanned
     ? tokens.amberText
     : isSchengen
-    ? tokens.greenText
-    : tokens.textSoft;
+      ? tokens.greenText
+      : tokens.textSoft;
 
   const stripeColor = isPlanned
     ? tokens.amber
     : isSchengen
-    ? tokens.green
-    : tokens.border;
+      ? tokens.green
+      : tokens.border;
 
   const remainingBg =
     statusAtExit.variant === "safe"
       ? tokens.greenBg
       : statusAtExit.variant === "caution"
-      ? tokens.amberBg
-      : tokens.redBg;
+        ? tokens.amberBg
+        : tokens.redBg;
   const remainingColor =
     statusAtExit.variant === "safe"
       ? tokens.greenText
       : statusAtExit.variant === "caution"
-      ? tokens.amberText
-      : tokens.redText;
+        ? tokens.amberText
+        : tokens.redText;
 
   return (
     <Box
@@ -154,9 +158,20 @@ export function TripListCard({ trip, statusAtExit, onEdit }: TripListCardProps) 
         </Typography>
 
         {/* Badges */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: "4px", flexWrap: "wrap" }}>
-          <Chip color={tokens.textSoft} bg={tokens.mist}>{dur}d</Chip>
-          <Chip color={regionColor} bg={regionBg}>{regionLabel}</Chip>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "4px",
+            flexWrap: "wrap",
+          }}
+        >
+          <Chip color={tokens.textSoft} bg={tokens.mist}>
+            {dur}d
+          </Chip>
+          <Chip color={regionColor} bg={regionBg}>
+            {regionLabel}
+          </Chip>
           {isSchengen && (
             <Chip color={remainingColor} bg={remainingBg}>
               {statusAtExit.daysRemaining}d left

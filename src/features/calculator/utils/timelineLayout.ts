@@ -210,10 +210,12 @@ export function buildMonthMarks(): MonthMark[] {
 
 // ─── Trip display helpers ─────────────────────────────────────────────────────
 
-/** Human-readable short date, e.g. "12 Jan" */
+/** Human-readable short date, e.g. "12 Jan" or "12 Jan 2024" */
 export function fmtShort(dateStr: string): string {
   const d = parseLocalDate(dateStr);
-  return `${d.getDate()} ${MONTH_NAMES[d.getMonth()]}`;
+  const year = d.getFullYear();
+  const suffix = year !== new Date().getFullYear() ? ` ${year}` : "";
+  return `${d.getDate()} ${MONTH_NAMES[d.getMonth()]}${suffix}`;
 }
 
 /** Human-readable date range string */
