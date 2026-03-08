@@ -10,20 +10,25 @@ import ListItemText from "@mui/material/ListItemText";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { parseISO, formatISO } from "date-fns";
-
+import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
+import { OngoingToggle } from "@/components/ui/OngoingToggle";
+import { ImpactPreview } from "@/components/ui";
+import {
+  parseDate,
+  formatDate,
+  addDays,
+} from "@/features/calculator/utils/dates";
 import {
   computeTravelerStatus,
   getStatusVariant,
-  parseLocalDate,
-} from "@/features/calculator/utils/timelineLayout";
-import { ImpactPreview } from "@/components/ui";
+} from "@/pages/CalculatorPage/components/travelers/travelerStatus";
+import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -38,7 +43,7 @@ interface TripModalProps {
   initialTrip?: Trip;
   /**
    * In add mode, travelerIds will contain every traveler the trip should be
-   * written to (the same trip data, independent objects per traveler).
+   * written to (independent objects per traveler).
    * In edit mode, travelerIds is always a single-element array.
    */
   onSave: (travelerIds: string[], trip: Trip) => void;
@@ -63,17 +68,15 @@ function hasOverlap(
   region: VisaRegion,
   excludeId?: string,
 ): string | null {
-  const nEntry = parseLocalDate(entry);
-  const nExit = exit ? parseLocalDate(exit) : new Date("2099-01-01");
+  const nEntry = parseDate(entry);
+  const nExit = exit ? parseDate(exit) : new Date("2099-01-01");
 
   for (const t of trips) {
     if (t.id === excludeId) continue;
     if (t.region !== region) continue;
 
-    const tEntry = parseLocalDate(t.entryDate);
-    const tExit = t.exitDate
-      ? parseLocalDate(t.exitDate)
-      : new Date("2099-01-01");
+    const tEntry = parseDate(t.entryDate);
+    const tExit = t.exitDate ? parseDate(t.exitDate) : new Date("2099-01-01");
 
     // Strict inequality on both boundaries: same-day exit/entry is valid travel.
     if (nEntry < tExit && nExit > tEntry) {
@@ -83,21 +86,14 @@ function hasOverlap(
   return null;
 }
 
-/** Add n days to a YYYY-MM-DD string and return YYYY-MM-DD. */
-function addDays(iso: string, n: number): string {
-  const d = new Date(`${iso}T12:00:00`);
-  d.setDate(d.getDate() + n);
-  return d.toISOString().split("T")[0];
-}
-
-/** Format a YYYY-MM-DD string for display (e.g. "14 Jun 2025"). */
-function fmtDate(iso: string): string {
-  const [y, m, d] = iso.split("-").map(Number);
+/** Format a YYYY-MM-DD string for display, always showing the year. */
+function fmtHintDate(iso: string): string {
+  const d = parseDate(iso);
   return new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",
-  }).format(new Date(y, m - 1, d));
+  }).format(d);
 }
 
 // ─── Form label ───────────────────────────────────────────────────────────────
@@ -144,9 +140,6 @@ const INPUT_SX = {
     color: tokens.text,
     "&::placeholder": { color: tokens.textGhost, opacity: 1 },
   },
-  "& input[type='date']::-webkit-calendar-picker-indicator": {
-    filter: "opacity(0.4)",
-  },
 } as const;
 
 const INPUT_ERROR_SX = {
@@ -188,11 +181,6 @@ export function TripModal({
 }: TripModalProps) {
   // ── Form state ──────────────────────────────────────────────────────────────
 
-  /**
-   * In add mode this is a multi-select — the user can write the same trip to
-   * several travelers at once.  In edit mode the selector is locked to the
-   * single traveler who owns the trip.
-   */
   const [travelerIds, setTravelerIds] = useState<string[]>([initialTravelerId]);
   const [destination, setDestination] = useState("");
   const [entryDate, setEntryDate] = useState("");
@@ -224,47 +212,44 @@ export function TripModal({
 
   // ── Entry constraint hint ───────────────────────────────────────────────────
   //
-  // Shown after a valid entry date is supplied but before an exit date is chosen.
-  // Answers: "How many days do I have available, and what is the latest I can stay?"
+  // Shown after a valid entry date is supplied but before an exit date is
+  // chosen. Uses calculateMaxStay (the iterative rolling-window algorithm) so
+  // old trips that fall off the window during the stay are accounted for.
   //
-  // Implementation note: this derives the ceiling from computeTravelerStatus at
-  // the entry date, which gives a *conservative* estimate — the true maximum may
-  // be longer because old trips roll out of the 180-day window during the stay.
-  // TODO: replace with computeExitConstraint (proper iterative ceiling) once its
-  // signature is available from features/calculator/utils/schengen.ts.
+  // For multi-traveler selections, surfaces the most constrained result.
+
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const entryConstraint = useMemo(() => {
     if (!entryDate || region !== VisaRegion.Schengen) return null;
     // Once exit is known the full ImpactPreview takes over; hide the hint.
     if (exitDate || ongoing) return null;
 
-    // Compute across all selected travelers, surface the most constrained result.
     let minDays = Infinity;
+    let latestExit = "";
 
     for (const tid of travelerIds) {
       const traveler = travelers.find((t) => t.id === tid);
       if (!traveler) continue;
 
-      const tripsWithoutCurrent = traveler.trips.filter(
-        (t) => t.id !== initialTrip?.id,
-      );
-      const tempTraveler = { ...traveler, trips: tripsWithoutCurrent };
-      const status = computeTravelerStatus(
-        tempTraveler,
-        parseLocalDate(entryDate),
+      const historicalTrips = traveler.trips.filter(
+        (t) => t.region === VisaRegion.Schengen && t.id !== initialTrip?.id,
       );
 
-      if (status.daysRemaining < minDays) {
-        minDays = status.daysRemaining;
+      const result = calculateMaxStay(entryDate, historicalTrips);
+
+      // Traveler cannot enter at all — propagate immediately.
+      if (!result.canEnter) {
+        return { daysAvailable: 0, latestExit: entryDate };
+      }
+
+      if (result.maxDays < minDays) {
+        minDays = result.maxDays;
+        latestExit = result.maxExitDate!;
       }
     }
 
     if (!isFinite(minDays) || minDays <= 0) return null;
-
-    return {
-      daysAvailable: minDays,
-      // Latest exit = entry + (days available - 1) because entry day counts.
-      latestExit: addDays(entryDate, minDays - 1),
-    };
+    return { daysAvailable: minDays, latestExit };
   }, [
     entryDate,
     exitDate,
@@ -276,6 +261,7 @@ export function TripModal({
   ]);
 
   // ── Impact preview (exit date known) ────────────────────────────────────────
+
   const impactStatus = useMemo(() => {
     if (!entryDate || region !== VisaRegion.Schengen) return null;
 
@@ -299,8 +285,7 @@ export function TripModal({
         ]);
 
       const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate =
-        !ongoing && exitDate ? parseLocalDate(exitDate) : new Date();
+      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
       const status = computeTravelerStatus(tempTraveler, refDate);
 
       if (!worst || status.daysRemaining < worst.daysRemaining) {
@@ -354,10 +339,7 @@ export function TripModal({
         region,
         initialTrip?.id,
       );
-      if (msg) {
-        const name = traveler.name;
-        conflicts.push(`${name}: ${msg}`);
-      }
+      if (msg) conflicts.push(`${traveler.name}: ${msg}`);
     }
 
     if (conflicts.length > 0) {
@@ -392,184 +374,187 @@ export function TripModal({
   // ── Render ───────────────────────────────────────────────────────────────────
 
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      PaperProps={{
-        sx: {
-          borderRadius: "20px",
-          width: 420,
-          maxWidth: "calc(100vw - 32px)",
-          overflow: "hidden",
-          boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
-        },
-      }}
-    >
-      {/* ── Header ── */}
-      <Box
-        sx={{
-          px: "20px",
-          pt: "18px",
-          pb: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Dialog
+        open={open}
+        onClose={onClose}
+        PaperProps={{
+          sx: {
+            borderRadius: "20px",
+            width: 420,
+            maxWidth: "calc(100vw - 32px)",
+            overflow: "hidden",
+            boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
+          },
         }}
       >
-        <Typography
-          sx={{
-            fontFamily: tokens.fontDisplay,
-            fontSize: "1.1rem",
-            fontStyle: "italic",
-            fontWeight: 400,
-            color: tokens.navy,
-          }}
-        >
-          {isEdit ? "Edit trip" : "Add a trip"}
-        </Typography>
+        {/* ── Header ── */}
         <Box
-          component="button"
-          onClick={onClose}
           sx={{
-            width: 26,
-            height: 26,
-            border: "none",
-            borderRadius: "5px",
-            bgcolor: tokens.mist,
-            color: tokens.textSoft,
-            cursor: "pointer",
-            fontSize: "0.85rem",
+            px: "20px",
+            pt: "18px",
+            pb: 0,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            transition: "all 0.15s",
-            "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
+            justifyContent: "space-between",
           }}
         >
-          ✕
+          <Typography
+            sx={{
+              fontFamily: tokens.fontDisplay,
+              fontSize: "1.1rem",
+              fontStyle: "italic",
+              fontWeight: 400,
+              color: tokens.navy,
+            }}
+          >
+            {isEdit ? "Edit trip" : "Add a trip"}
+          </Typography>
+          <Box
+            component="button"
+            onClick={onClose}
+            sx={{
+              width: 26,
+              height: 26,
+              border: "none",
+              borderRadius: "5px",
+              bgcolor: tokens.mist,
+              color: tokens.textSoft,
+              cursor: "pointer",
+              fontSize: "0.85rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 0.15s",
+              "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
+            }}
+          >
+            ✕
+          </Box>
         </Box>
-      </Box>
 
-      {/* ── Body ── */}
-      <Box
-        sx={{
-          px: "20px",
-          py: "16px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "12px",
-        }}
-        onKeyDown={handleKeyDown}
-      >
-        {/* 1 · Traveler selector
-              Add mode: multi-select with checkboxes.
-              Edit mode: locked to the owning traveler (single, disabled). */}
-        <Box>
-          <FormLabel>{isEdit ? "Traveler" : "Traveler(s)"}</FormLabel>
-          {isEdit ? (
-            <Select
-              value={travelerIds[0] ?? ""}
-              disabled
-              fullWidth
-              size="small"
-              sx={SELECT_BASE_SX}
-            >
-              {travelers.map((t) => (
-                <MenuItem
-                  key={t.id}
-                  value={t.id}
-                  sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
-                >
-                  {t.name}
-                </MenuItem>
-              ))}
-            </Select>
-          ) : (
-            <Select
-              multiple
-              value={travelerIds}
-              onChange={(e) => {
-                const val = e.target.value;
-                setTravelerIds(typeof val === "string" ? val.split(",") : val);
-                setError(null);
-              }}
-              fullWidth
-              size="small"
-              displayEmpty
-              renderValue={(selected) => {
-                if ((selected as string[]).length === 0) {
-                  return (
-                    <Typography
-                      sx={{
+        {/* ── Body ── */}
+        <Box
+          sx={{
+            px: "20px",
+            py: "16px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+          }}
+          onKeyDown={handleKeyDown}
+        >
+          {/* 1 · Traveler selector
+                Add mode: multi-select with checkboxes.
+                Edit mode: locked to the owning traveler (single, disabled). */}
+          <Box>
+            <FormLabel>{isEdit ? "Traveler" : "Traveler(s)"}</FormLabel>
+            {isEdit ? (
+              <Select
+                value={travelerIds[0] ?? ""}
+                disabled
+                fullWidth
+                size="small"
+                sx={SELECT_BASE_SX}
+              >
+                {travelers.map((t) => (
+                  <MenuItem
+                    key={t.id}
+                    value={t.id}
+                    sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
+                  >
+                    {t.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            ) : (
+              <Select
+                multiple
+                value={travelerIds}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setTravelerIds(
+                    typeof val === "string" ? val.split(",") : val,
+                  );
+                  setError(null);
+                }}
+                fullWidth
+                size="small"
+                displayEmpty
+                renderValue={(selected) => {
+                  if ((selected as string[]).length === 0) {
+                    return (
+                      <Typography
+                        sx={{
+                          fontFamily: tokens.fontBody,
+                          fontSize: "0.85rem",
+                          color: tokens.textGhost,
+                        }}
+                      >
+                        Select travelers…
+                      </Typography>
+                    );
+                  }
+                  return (selected as string[])
+                    .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
+                    .join(", ");
+                }}
+                sx={SELECT_BASE_SX}
+              >
+                {travelers.map((t) => (
+                  <MenuItem
+                    key={t.id}
+                    value={t.id}
+                    sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
+                  >
+                    <Checkbox
+                      checked={travelerIds.includes(t.id)}
+                      size="small"
+                      sx={{ p: "2px", mr: "6px", color: tokens.border }}
+                    />
+                    <ListItemText
+                      primary={t.name}
+                      primaryTypographyProps={{
                         fontFamily: tokens.fontBody,
                         fontSize: "0.85rem",
-                        color: tokens.textGhost,
                       }}
-                    >
-                      Select travelers…
-                    </Typography>
-                  );
-                }
-                return (selected as string[])
-                  .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
-                  .join(", ");
+                    />
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          </Box>
+
+          {/* 2 · Region — declared before dates so validation context is clear */}
+          <Box>
+            <FormLabel>Region</FormLabel>
+            <RegionSelector
+              value={region}
+              onChange={(r) => {
+                setRegion(r);
+                setError(null);
               }}
-              sx={SELECT_BASE_SX}
-            >
-              {travelers.map((t) => (
-                <MenuItem
-                  key={t.id}
-                  value={t.id}
-                  sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
-                >
-                  <Checkbox
-                    checked={travelerIds.includes(t.id)}
-                    size="small"
-                    sx={{ p: "2px", mr: "6px", color: tokens.border }}
-                  />
-                  <ListItemText
-                    primary={t.name}
-                    primaryTypographyProps={{
-                      fontFamily: tokens.fontBody,
-                      fontSize: "0.85rem",
-                    }}
-                  />
-                </MenuItem>
-              ))}
-            </Select>
-          )}
-        </Box>
+            />
+          </Box>
 
-        {/* 2 · Region — declared before dates so validation context is clear */}
-        <Box>
-          <FormLabel>Region</FormLabel>
-          <RegionSelector
-            value={region}
-            onChange={(r) => {
-              setRegion(r);
-              setError(null);
-            }}
-          />
-        </Box>
+          {/* 3 · Trip name */}
+          <Box>
+            <FormLabel>Trip name</FormLabel>
+            <TextField
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+              placeholder="e.g. Paris & Barcelona"
+              fullWidth
+              autoFocus={!isEdit}
+              inputProps={{ maxLength: 60 }}
+              sx={INPUT_SX}
+            />
+          </Box>
 
-        {/* 3 · Trip name (formerly "Destination") */}
-        <Box>
-          <FormLabel>Trip name</FormLabel>
-          <TextField
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-            placeholder="e.g. Paris & Barcelona"
-            fullWidth
-            autoFocus={!isEdit}
-            inputProps={{ maxLength: 60 }}
-            sx={INPUT_SX}
-          />
-        </Box>
-
-        {/* 4 · Dates */}
-        <Box>
-          <FormLabel>Dates</FormLabel>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
+          {/* 4 · Dates — MUI DatePicker so onChange fires only on day
+                selection, not on month/year navigation. */}
+          <Box>
+            <FormLabel>Dates</FormLabel>
             <Box
               sx={{
                 display: "grid",
@@ -578,14 +563,18 @@ export function TripModal({
                 mb: "6px",
               }}
             >
+              {/* Entry date */}
               <DatePicker
-                label={null}
                 value={entryDate ? parseISO(entryDate) : null}
                 onChange={(date) => {
                   if (!date) return;
-                  const iso = formatISO(date, { representation: "date" });
+                  const iso = formatDate(date);
                   setEntryDate(iso);
-                  if (!exitDate && !ongoing) setExitDate(addDays(iso, 1));
+                  // Pre-populate exit as entry + 1 when exit is not yet set.
+                  if (!exitDate && !ongoing) {
+                    setExitDate(formatDate(addDays(date, 1)));
+                  }
+                  if (!iso) setExitDate("");
                   setError(null);
                 }}
                 slotProps={{
@@ -596,14 +585,15 @@ export function TripModal({
                   },
                 }}
               />
+
+              {/* Exit date — min is entryDate to allow same-day trips */}
               <DatePicker
-                label={null}
                 value={exitDate ? parseISO(exitDate) : null}
                 disabled={ongoing || !entryDate}
                 minDate={entryDate ? parseISO(entryDate) : undefined}
                 onChange={(date) => {
                   if (!date) return;
-                  setExitDate(formatISO(date, { representation: "date" }));
+                  setExitDate(formatDate(date));
                   setError(null);
                 }}
                 slotProps={{
@@ -618,90 +608,116 @@ export function TripModal({
                 }}
               />
             </Box>
-          </LocalizationProvider>
-        </Box>
 
-        {/* Entry constraint hint — visible once entry date is known, exit not yet set.
-            Tells the user how many days are available and the ceiling date,
-            so they can choose a compliant exit date before touching the picker. */}
-        {entryConstraint && (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              px: "12px",
-              py: "9px",
-              bgcolor: tokens.mist,
-              border: `1px solid ${tokens.border}`,
-              borderRadius: "10px",
-            }}
-          >
-            <Typography
-              sx={{
-                fontFamily: tokens.fontBody,
-                fontSize: "0.75rem",
-                color: tokens.textSoft,
-                fontWeight: 500,
+            <OngoingToggle
+              checked={ongoing}
+              onChange={(v) => {
+                setOngoing(v);
+                if (v) setExitDate("");
+                setError(null);
               }}
-            >
-              {entryConstraint.daysAvailable === 1
-                ? "1 day available"
-                : `${entryConstraint.daysAvailable} days available`}
-              {travelerIds.length > 1 && " (most constrained traveler)"}
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: tokens.fontBody,
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                color: tokens.navy,
-                ml: "8px",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Latest exit: {fmtDate(entryConstraint.latestExit)}
-            </Typography>
-          </Box>
-        )}
-
-        {/* Impact preview — shown for Schengen trips once exit date (or ongoing) is set */}
-        {region === VisaRegion.Schengen &&
-          entryDate &&
-          (exitDate || ongoing) &&
-          impactStatus && (
-            <ImpactPreview
-              daysRemaining={impactStatus.daysRemaining}
-              daysUsed={impactStatus.daysUsed}
-              variant={impactVariant}
             />
+          </Box>
+
+          {/* Entry constraint hint — visible after entry date is set, before
+              exit is chosen. Shows the rolling-window ceiling from
+              calculateMaxStay, accounting for trips that fall off mid-stay.
+              Disappears once exit is chosen and ImpactPreview takes over. */}
+          {entryConstraint && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                px: "12px",
+                py: "9px",
+                bgcolor: tokens.mist,
+                border: `1px solid ${tokens.border}`,
+                borderRadius: "10px",
+              }}
+            >
+              {entryConstraint.daysAvailable === 0 ? (
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.75rem",
+                    color: tokens.red,
+                    fontWeight: 600,
+                  }}
+                >
+                  No days available — entry not possible on this date.
+                </Typography>
+              ) : (
+                <>
+                  <Typography
+                    sx={{
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.75rem",
+                      color: tokens.textSoft,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {entryConstraint.daysAvailable === 1
+                      ? "1 day available"
+                      : `${entryConstraint.daysAvailable} days available`}
+                    {travelerIds.length > 1 && " (most constrained)"}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.75rem",
+                      fontWeight: 700,
+                      color: tokens.navy,
+                      ml: "8px",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    Latest exit: {fmtHintDate(entryConstraint.latestExit)}
+                  </Typography>
+                </>
+              )}
+            </Box>
           )}
 
-        {/* Validation error — supports newline-delimited multi-traveler conflicts */}
-        {error && (
-          <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
-            {error}
-          </ValidationMessage>
-        )}
-      </Box>
+          {/* Impact preview — shown for Schengen trips once exit date (or
+              ongoing) is set. Replaces the entry constraint hint. */}
+          {region === VisaRegion.Schengen &&
+            entryDate &&
+            (exitDate || ongoing) &&
+            impactStatus && (
+              <ImpactPreview
+                daysRemaining={impactStatus.daysRemaining}
+                daysUsed={impactStatus.daysUsed}
+                variant={impactVariant}
+              />
+            )}
 
-      {/* ── Divider ── */}
-      <Box sx={{ height: 1, bgcolor: tokens.border }} />
+          {/* Validation error — newline-delimited for multi-traveler conflicts */}
+          {error && (
+            <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
+              {error}
+            </ValidationMessage>
+          )}
+        </Box>
 
-      {/* ── Footer ── */}
-      <Box sx={{ px: "20px", py: "16px", display: "flex", gap: "7px" }}>
-        {isEdit && onDelete && (
-          <Button variant="danger" onClick={onDelete} sx={{ mr: "auto" }}>
-            Delete
+        {/* ── Divider ── */}
+        <Box sx={{ height: 1, bgcolor: tokens.border }} />
+
+        {/* ── Footer ── */}
+        <Box sx={{ px: "20px", py: "16px", display: "flex", gap: "7px" }}>
+          {isEdit && onDelete && (
+            <Button variant="danger" onClick={onDelete} sx={{ mr: "auto" }}>
+              Delete
+            </Button>
+          )}
+          <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
+            Cancel
           </Button>
-        )}
-        <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
-          Cancel
-        </Button>
-        <Button variant="primary" onClick={handleSave} sx={{ flex: 2 }}>
-          Save Trip
-        </Button>
-      </Box>
-    </Dialog>
+          <Button variant="primary" onClick={handleSave} sx={{ flex: 2 }}>
+            Save Trip
+          </Button>
+        </Box>
+      </Dialog>
+    </LocalizationProvider>
   );
 }
