@@ -25,6 +25,7 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
   // Reset state when modal opens
   useEffect(() => {
     if (open) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setName("");
       setError(null);
     }
@@ -105,7 +106,15 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
       </Box>
 
       {/* Body */}
-      <Box sx={{ px: "20px", py: "16px", display: "flex", flexDirection: "column", gap: "12px" }}>
+      <Box
+        sx={{
+          px: "20px",
+          py: "16px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+        }}
+      >
         <Box sx={{ display: "flex", flexDirection: "column", gap: "5px" }}>
           <Typography
             component="label"
@@ -138,7 +147,10 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
                 fontSize: "0.85rem",
                 bgcolor: tokens.mist,
                 borderRadius: "10px",
-                "& fieldset": { borderColor: error ? tokens.red : tokens.border, borderWidth: 1.5 },
+                "& fieldset": {
+                  borderColor: error ? tokens.red : tokens.border,
+                  borderWidth: 1.5,
+                },
                 "&:hover fieldset": { borderColor: tokens.navy },
                 "&.Mui-focused fieldset": {
                   borderColor: tokens.navy,
@@ -156,7 +168,9 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
           />
         </Box>
 
-        {error && <ValidationMessage variant="error">{error}</ValidationMessage>}
+        {error && (
+          <ValidationMessage variant="error">{error}</ValidationMessage>
+        )}
 
         <Typography
           sx={{

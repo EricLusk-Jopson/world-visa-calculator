@@ -24,43 +24,29 @@ import {
   formatDate,
   addDays,
 } from "@/features/calculator/utils/dates";
+
+import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import {
+  computeImpactBreakdown,
   computeTravelerStatus,
   getStatusVariant,
-} from "@/pages/CalculatorPage/components/travelers/travelerStatus";
-import { calculateMaxStay } from "@/features/calculator/utils/schengen";
+} from "../../travelers/travelerStatus";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface TripModalProps {
   open: boolean;
-  /** "add" = creating a new trip; "edit" = modifying an existing one. */
   mode: "add" | "edit";
   travelers: Traveler[];
-  /** Pre-selected traveler when opening the modal. */
   initialTravelerId: string;
-  /** In edit mode, the trip being modified. */
   initialTrip?: Trip;
-  /**
-   * In add mode, travelerIds will contain every traveler the trip should be
-   * written to (independent objects per traveler).
-   * In edit mode, travelerIds is always a single-element array.
-   */
   onSave: (travelerIds: string[], trip: Trip) => void;
-  /** Only provided in edit mode. */
   onDelete?: () => void;
   onClose: () => void;
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-/**
- * Returns an overlap error string if the proposed [entry, exit] window
- * conflicts with any existing trip in the same region, ignoring excludeId.
- *
- * Same-day adjacency (a trip ending on the same date another begins) is
- * explicitly permitted — only strict interior overlaps are flagged.
- */
 function hasOverlap(
   trips: Trip[],
   entry: string,
@@ -78,7 +64,6 @@ function hasOverlap(
     const tEntry = parseDate(t.entryDate);
     const tExit = t.exitDate ? parseDate(t.exitDate) : new Date("2099-01-01");
 
-    // Strict inequality on both boundaries: same-day exit/entry is valid travel.
     if (nEntry < tExit && nExit > tEntry) {
       return `Overlaps with "${t.destination || t.entryDate}".`;
     }
@@ -86,7 +71,6 @@ function hasOverlap(
   return null;
 }
 
-/** Format a YYYY-MM-DD string for display, always showing the year. */
 function fmtHintDate(iso: string): string {
   const d = parseDate(iso);
   return new Intl.DateTimeFormat("en-GB", {
@@ -189,7 +173,6 @@ export function TripModal({
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
 
-  // Seed from props whenever the dialog opens.
   useEffect(() => {
     if (!open) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -211,17 +194,10 @@ export function TripModal({
   }, [open, mode, initialTrip, initialTravelerId]);
 
   // ── Entry constraint hint ───────────────────────────────────────────────────
-  //
-  // Shown after a valid entry date is supplied but before an exit date is
-  // chosen. Uses calculateMaxStay (the iterative rolling-window algorithm) so
-  // old trips that fall off the window during the stay are accounted for.
-  //
-  // For multi-traveler selections, surfaces the most constrained result.
 
   // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const entryConstraint = useMemo(() => {
     if (!entryDate || region !== VisaRegion.Schengen) return null;
-    // Once exit is known the full ImpactPreview takes over; hide the hint.
     if (exitDate || ongoing) return null;
 
     let minDays = Infinity;
@@ -237,7 +213,6 @@ export function TripModal({
 
       const result = calculateMaxStay(entryDate, historicalTrips);
 
-      // Traveler cannot enter at all — propagate immediately.
       if (!result.canEnter) {
         return { daysAvailable: 0, latestExit: entryDate };
       }
@@ -260,12 +235,11 @@ export function TripModal({
     initialTrip,
   ]);
 
-  // ── Impact preview (exit date known) ────────────────────────────────────────
+  // ── Impact status (summary numbers for ImpactPreview header) ────────────────
 
   const impactStatus = useMemo(() => {
     if (!entryDate || region !== VisaRegion.Schengen) return null;
 
-    // Show against the most constrained selected traveler.
     let worst: ReturnType<typeof computeTravelerStatus> | null = null;
 
     for (const tid of travelerIds) {
@@ -305,6 +279,66 @@ export function TripModal({
     initialTrip,
   ]);
 
+  // ── Impact breakdown (shown when exit date is set, for the most constrained
+  //    selected traveler — same traveler whose status is shown above) ──────────
+
+  const impactBreakdown = useMemo(() => {
+    if (!entryDate || region !== VisaRegion.Schengen) return undefined;
+    if (!exitDate && !ongoing) return undefined;
+
+    // Find the most constrained traveler (fewest daysRemaining) so the
+    // breakdown matches the summary number shown.
+    let worstTraveler: Traveler | null = null;
+    let worstRemaining = Infinity;
+
+    for (const tid of travelerIds) {
+      const traveler = travelers.find((t) => t.id === tid);
+      if (!traveler) continue;
+
+      const tempTrips = traveler.trips
+        .filter((t) => t.id !== initialTrip?.id)
+        .concat([
+          {
+            id: "__preview__",
+            entryDate,
+            exitDate: ongoing ? undefined : exitDate || undefined,
+            region: VisaRegion.Schengen,
+            destination,
+          },
+        ]);
+
+      const tempTraveler = { ...traveler, trips: tempTrips };
+      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
+      const status = computeTravelerStatus(tempTraveler, refDate);
+
+      if (status.daysRemaining < worstRemaining) {
+        worstRemaining = status.daysRemaining;
+        worstTraveler = traveler;
+      }
+    }
+
+    if (!worstTraveler) return undefined;
+
+    const historicalTrips = worstTraveler.trips.filter(
+      (t) => t.region === VisaRegion.Schengen && t.id !== initialTrip?.id,
+    );
+
+    return computeImpactBreakdown(
+      entryDate,
+      ongoing ? undefined : exitDate || undefined,
+      historicalTrips,
+    );
+  }, [
+    travelerIds,
+    travelers,
+    entryDate,
+    exitDate,
+    ongoing,
+    region,
+    destination,
+    initialTrip,
+  ]);
+
   const impactVariant = impactStatus
     ? getStatusVariant(impactStatus.daysRemaining)
     : ("neutral" as const);
@@ -327,7 +361,6 @@ export function TripModal({
 
     const resolvedExit = ongoing ? undefined : exitDate || undefined;
 
-    // Run overlap validation independently for each selected traveler.
     const conflicts: string[] = [];
     for (const tid of travelerIds) {
       const traveler = travelers.find((t) => t.id === tid);
@@ -444,9 +477,7 @@ export function TripModal({
           }}
           onKeyDown={handleKeyDown}
         >
-          {/* 1 · Traveler selector
-                Add mode: multi-select with checkboxes.
-                Edit mode: locked to the owning traveler (single, disabled). */}
+          {/* 1 · Traveler selector */}
           <Box>
             <FormLabel>{isEdit ? "Traveler" : "Traveler(s)"}</FormLabel>
             {isEdit ? (
@@ -525,7 +556,7 @@ export function TripModal({
             )}
           </Box>
 
-          {/* 2 · Region — declared before dates so validation context is clear */}
+          {/* 2 · Region */}
           <Box>
             <FormLabel>Region</FormLabel>
             <RegionSelector
@@ -551,8 +582,7 @@ export function TripModal({
             />
           </Box>
 
-          {/* 4 · Dates — MUI DatePicker so onChange fires only on day
-                selection, not on month/year navigation. */}
+          {/* 4 · Dates */}
           <Box>
             <FormLabel>Dates</FormLabel>
             <Box
@@ -563,14 +593,12 @@ export function TripModal({
                 mb: "6px",
               }}
             >
-              {/* Entry date */}
               <DatePicker
                 value={entryDate ? parseISO(entryDate) : null}
                 onChange={(date) => {
                   if (!date) return;
                   const iso = formatDate(date);
                   setEntryDate(iso);
-                  // Pre-populate exit as entry + 1 when exit is not yet set.
                   if (!exitDate && !ongoing) {
                     setExitDate(formatDate(addDays(date, 1)));
                   }
@@ -585,8 +613,6 @@ export function TripModal({
                   },
                 }}
               />
-
-              {/* Exit date — min is entryDate to allow same-day trips */}
               <DatePicker
                 value={exitDate ? parseISO(exitDate) : null}
                 disabled={ongoing || !entryDate}
@@ -619,10 +645,7 @@ export function TripModal({
             />
           </Box>
 
-          {/* Entry constraint hint — visible after entry date is set, before
-              exit is chosen. Shows the rolling-window ceiling from
-              calculateMaxStay, accounting for trips that fall off mid-stay.
-              Disappears once exit is chosen and ImpactPreview takes over. */}
+          {/* Entry constraint hint */}
           {entryConstraint && (
             <Box
               sx={{
@@ -679,8 +702,7 @@ export function TripModal({
             </Box>
           )}
 
-          {/* Impact preview — shown for Schengen trips once exit date (or
-              ongoing) is set. Replaces the entry constraint hint. */}
+          {/* Impact preview — shown once exit date (or ongoing) is set */}
           {region === VisaRegion.Schengen &&
             entryDate &&
             (exitDate || ongoing) &&
@@ -689,10 +711,11 @@ export function TripModal({
                 daysRemaining={impactStatus.daysRemaining}
                 daysUsed={impactStatus.daysUsed}
                 variant={impactVariant}
+                breakdown={impactBreakdown}
               />
             )}
 
-          {/* Validation error — newline-delimited for multi-traveler conflicts */}
+          {/* Validation errors */}
           {error && (
             <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
               {error}

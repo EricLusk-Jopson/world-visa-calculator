@@ -4,11 +4,11 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import {
   buildMonthMarks,
-  getToday,
   dateToTop,
   TOTAL_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
 import { SIDEBAR_WIDTH } from "../timelineConstants";
+import { today as getToday } from "@/features/calculator/utils/dates";
 
 /**
  * Sticky left sidebar showing month labels and a "Today" pill at the

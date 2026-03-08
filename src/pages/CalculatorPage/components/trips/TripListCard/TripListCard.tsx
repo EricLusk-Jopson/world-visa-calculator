@@ -3,13 +3,13 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import type { Trip } from "@/types";
 import { VisaRegion } from "@/types";
-import type { TravelerStatus } from "@/features/calculator/utils/timelineLayout";
+import { TravelerStatus } from "../../travelers/travelerStatus";
 import {
-  fmtDateRange,
   isTripPlanned,
   isTripOngoing,
   tripDurationDays,
-} from "@/features/calculator/utils/timelineLayout";
+  fmtDateRange,
+} from "../tripHelpers";
 
 interface TripListCardProps {
   trip: Trip;

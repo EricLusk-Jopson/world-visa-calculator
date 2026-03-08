@@ -2,12 +2,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Traveler, Trip } from "@/types";
 import { tokens } from "@/styles/theme";
+
+import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
+import { TripListCard } from "../../trips/TripListCard";
 import {
   computeTravelerStatus,
   computeStatusAtTripExit,
-} from "@/features/calculator/utils/timelineLayout";
-import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
-import { TripListCard } from "../../trips/TripListCard";
+} from "../../travelers/travelerStatus";
 
 interface TravelerCardsColumnProps {
   traveler: Traveler;

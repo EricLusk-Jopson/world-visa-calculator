@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { Traveler } from "@/types";
-import type { TravelerStatus } from "@/features/calculator/utils/timelineLayout";
+import { TravelerStatus } from "../travelerStatus";
 
 interface TravelerColumnHeaderProps {
   traveler: Traveler;

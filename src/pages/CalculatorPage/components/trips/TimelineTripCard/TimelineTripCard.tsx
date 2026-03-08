@@ -4,17 +4,13 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import type { Trip } from "@/types";
 import { VisaRegion } from "@/types";
-import type { TravelerStatus } from "@/features/calculator/utils/timelineLayout";
-import {
-  fmtDateRange,
-  isTripPlanned,
-  isTripOngoing,
-  PX_PER_DAY,
-} from "@/features/calculator/utils/timelineLayout";
+import { PX_PER_DAY } from "@/features/calculator/utils/timelineLayout";
+import { TravelerStatus } from "../../travelers/travelerStatus";
+import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
 
 // Pixel threshold: below this height we suppress some content to avoid crowding
 const COMPACT_THRESHOLD = PX_PER_DAY * 3; // < 3 days → compact
-const MINI_THRESHOLD = PX_PER_DAY * 1.5;  // < 1.5 days → just a bar
+const MINI_THRESHOLD = PX_PER_DAY * 1.5; // < 1.5 days → just a bar
 
 interface TimelineTripCardProps {
   trip: Trip;
@@ -29,7 +25,15 @@ interface TimelineTripCardProps {
   onEdit: () => void;
 }
 
-function TripBadge({ children, color, bg }: { children: React.ReactNode; color: string; bg: string }) {
+function TripBadge({
+  children,
+  color,
+  bg,
+}: {
+  children: React.ReactNode;
+  color: string;
+  bg: string;
+}) {
   return (
     <Box
       component="span"
@@ -78,41 +82,41 @@ export function TimelineTripCard({
   const accentColor = isPlanned
     ? tokens.amber
     : isSchengen
-    ? tokens.green
-    : tokens.border;
+      ? tokens.green
+      : tokens.border;
 
   // Region badge
   const regionLabel = isPlanned
     ? "Planned"
     : isOngoing
-    ? "Ongoing"
-    : isSchengen
-    ? "Schengen"
-    : "Elsewhere";
+      ? "Ongoing"
+      : isSchengen
+        ? "Schengen"
+        : "Elsewhere";
   const regionBg = isPlanned
     ? tokens.amberBg
     : isSchengen
-    ? tokens.greenBg
-    : tokens.mist;
+      ? tokens.greenBg
+      : tokens.mist;
   const regionColor = isPlanned
     ? tokens.amberText
     : isSchengen
-    ? tokens.greenText
-    : tokens.textSoft;
+      ? tokens.greenText
+      : tokens.textSoft;
 
   // Remaining days chip colour
   const remainingBg =
     statusAtExit.variant === "safe"
       ? tokens.greenBg
       : statusAtExit.variant === "caution"
-      ? tokens.amberBg
-      : tokens.redBg;
+        ? tokens.amberBg
+        : tokens.redBg;
   const remainingColor =
     statusAtExit.variant === "safe"
       ? tokens.greenText
       : statusAtExit.variant === "caution"
-      ? tokens.amberText
-      : tokens.redText;
+        ? tokens.amberText
+        : tokens.redText;
 
   return (
     <Box
@@ -155,7 +159,16 @@ export function TimelineTripCard({
       />
 
       {!isMini && (
-        <Box sx={{ pl: "10px", pr: "8px", pt: "7px", pb: "6px", flex: 1, overflow: "hidden" }}>
+        <Box
+          sx={{
+            pl: "10px",
+            pr: "8px",
+            pt: "7px",
+            pb: "6px",
+            flex: 1,
+            overflow: "hidden",
+          }}
+        >
           {/* Destination */}
           <Typography
             sx={{
@@ -194,7 +207,14 @@ export function TimelineTripCard({
 
           {/* Badges — hidden when compact */}
           {!isCompact && (
-            <Box sx={{ display: "flex", alignItems: "center", gap: "4px", flexWrap: "wrap" }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+                flexWrap: "wrap",
+              }}
+            >
               <TripBadge color={tokens.textSoft} bg={tokens.mist}>
                 {durationDays}d
               </TripBadge>
