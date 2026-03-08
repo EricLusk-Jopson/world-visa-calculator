@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Box from "@mui/material/Box";
-import { Traveler, Trip, VisaRegion } from "@/types";
+import { Traveler, Trip } from "@/types";
 import { tokens } from "@/styles/theme";
 import {
   CalculatorNav,
@@ -43,21 +43,6 @@ function makeTraveler(name: string): Traveler {
   return { id: crypto.randomUUID(), name, trips: [] };
 }
 
-function makeTrip(
-  entryDate: string,
-  exitDate: string | undefined,
-  region: VisaRegion,
-  destination?: string,
-): Trip {
-  return {
-    id: crypto.randomUUID(),
-    entryDate,
-    exitDate,
-    region,
-    destination,
-  };
-}
-
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
@@ -69,8 +54,6 @@ function makeTrip(
  *  - travelers[] state (synced to URL + localStorage via useUrlSync)
  *  - view toggle (timeline | cards)
  *  - modal state machine (traveler modal, add-trip modal, edit-trip modal)
- *
- * Renders CalculatorNav + the active view + both modals.
  *
  * Note: wire `useUrlSync(travelers, setTravelers)` here once the hook is
  * available in the project.
@@ -106,17 +89,37 @@ export function CalculatorPage() {
     setModal({ open: true, kind: "trip", mode: "edit", travelerId, trip });
   }, []);
 
-  const handleTripSave = useCallback((travelerId: string, trip: Trip) => {
+  /**
+   * Receives the list of traveler IDs and a canonical trip object from the
+   * modal, then writes to each traveler independently:
+   *
+   * - Edit mode: travelerIds is always length-1; the trip is updated in-place
+   *   (matched by id).
+   * - Add mode: travelerIds may be 1-N; each traveler receives a fresh copy of
+   *   the trip with its own UUID, so no shared mutable reference exists between
+   *   travelers.
+   */
+  const handleTripSave = useCallback((travelerIds: string[], trip: Trip) => {
     setTravelers((prev) =>
       prev.map((t) => {
-        if (t.id !== travelerId) return t;
+        if (!travelerIds.includes(t.id)) return t;
+
         const exists = t.trips.some((x) => x.id === trip.id);
-        return {
-          ...t,
-          trips: exists
-            ? t.trips.map((x) => (x.id === trip.id ? trip : x))
-            : [...t.trips, trip],
-        };
+
+        if (exists) {
+          // Edit path: update the trip in-place (same id).
+          return {
+            ...t,
+            trips: t.trips.map((x) => (x.id === trip.id ? trip : x)),
+          };
+        } else {
+          // Add path: assign a fresh UUID so each traveler owns an independent
+          // object — avoids any accidental shared identity between travelers.
+          return {
+            ...t,
+            trips: [...t.trips, { ...trip, id: crypto.randomUUID() }],
+          };
+        }
       }),
     );
     setModal(CLOSED_MODAL);

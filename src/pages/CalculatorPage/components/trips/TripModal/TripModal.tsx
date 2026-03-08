@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import Checkbox from "@mui/material/Checkbox";
+import ListItemText from "@mui/material/ListItemText";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
@@ -26,11 +28,16 @@ interface TripModalProps {
   /** "add" = creating a new trip; "edit" = modifying an existing one. */
   mode: "add" | "edit";
   travelers: Traveler[];
-  /** Pre-selected traveler when opening an add/edit. */
+  /** Pre-selected traveler when opening the modal. */
   initialTravelerId: string;
   /** In edit mode, the trip being modified. */
   initialTrip?: Trip;
-  onSave: (travelerId: string, trip: Trip) => void;
+  /**
+   * In add mode, travelerIds will contain every traveler the trip should be
+   * written to (the same trip data, independent objects per traveler).
+   * In edit mode, travelerIds is always a single-element array.
+   */
+  onSave: (travelerIds: string[], trip: Trip) => void;
   /** Only provided in edit mode. */
   onDelete?: () => void;
   onClose: () => void;
@@ -38,7 +45,13 @@ interface TripModalProps {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-/** Checks for date overlaps in the same region, excluding the edited trip. */
+/**
+ * Returns an overlap error string if the proposed [entry, exit] window
+ * conflicts with any existing trip in the same region, ignoring excludeId.
+ *
+ * Same-day adjacency (a trip ending on the same date another begins) is
+ * explicitly permitted — only strict interior overlaps are flagged.
+ */
 function hasOverlap(
   trips: Trip[],
   entry: string,
@@ -58,14 +71,32 @@ function hasOverlap(
       ? parseLocalDate(t.exitDate)
       : new Date("2099-01-01");
 
-    if (nEntry <= tExit && nExit >= tEntry) {
+    // Strict inequality on both boundaries: same-day exit/entry is valid travel.
+    if (nEntry < tExit && nExit > tEntry) {
       return `Overlaps with "${t.destination || t.entryDate}".`;
     }
   }
   return null;
 }
 
-// ─── Form field ───────────────────────────────────────────────────────────────
+/** Add n days to a YYYY-MM-DD string and return YYYY-MM-DD. */
+function addDays(iso: string, n: number): string {
+  const d = new Date(`${iso}T12:00:00`);
+  d.setDate(d.getDate() + n);
+  return d.toISOString().split("T")[0];
+}
+
+/** Format a YYYY-MM-DD string for display (e.g. "14 Jun 2025"). */
+function fmtDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(new Date(y, m - 1, d));
+}
+
+// ─── Form label ───────────────────────────────────────────────────────────────
 
 function FormLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -86,6 +117,8 @@ function FormLabel({ children }: { children: React.ReactNode }) {
     </Typography>
   );
 }
+
+// ─── Shared input sx ─────────────────────────────────────────────────────────
 
 const INPUT_SX = {
   "& .MuiOutlinedInput-root": {
@@ -110,7 +143,7 @@ const INPUT_SX = {
   "& input[type='date']::-webkit-calendar-picker-indicator": {
     filter: "opacity(0.4)",
   },
-};
+} as const;
 
 const INPUT_ERROR_SX = {
   "& .MuiOutlinedInput-root": {
@@ -118,7 +151,24 @@ const INPUT_ERROR_SX = {
     bgcolor: tokens.redBg,
     "& fieldset": { borderColor: tokens.red, borderWidth: 1.5 },
   },
-};
+} as const;
+
+const SELECT_BASE_SX = {
+  fontFamily: tokens.fontBody,
+  fontSize: "0.85rem",
+  bgcolor: tokens.mist,
+  borderRadius: "10px",
+  "& .MuiOutlinedInput-notchedOutline": {
+    borderColor: tokens.border,
+    borderWidth: 1.5,
+  },
+  "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: tokens.navy },
+  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: tokens.navy,
+    borderWidth: 1.5,
+  },
+  "& .MuiSelect-select": { py: "9px", px: "11px" },
+} as const;
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -133,7 +183,13 @@ export function TripModal({
   onClose,
 }: TripModalProps) {
   // ── Form state ──────────────────────────────────────────────────────────────
-  const [travelerId, setTravelerId] = useState(initialTravelerId);
+
+  /**
+   * In add mode this is a multi-select — the user can write the same trip to
+   * several travelers at once.  In edit mode the selector is locked to the
+   * single traveler who owns the trip.
+   */
+  const [travelerIds, setTravelerIds] = useState<string[]>([initialTravelerId]);
   const [destination, setDestination] = useState("");
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
@@ -141,11 +197,11 @@ export function TripModal({
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
 
-  // Seed from initialTrip when opening in edit mode
+  // Seed from props whenever the dialog opens.
   useEffect(() => {
     if (!open) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setTravelerId(initialTravelerId);
+    setTravelerIds([initialTravelerId]);
     setError(null);
     if (mode === "edit" && initialTrip) {
       setDestination(initialTrip.destination ?? "");
@@ -162,33 +218,95 @@ export function TripModal({
     }
   }, [open, mode, initialTrip, initialTravelerId]);
 
-  // ── Impact preview ──────────────────────────────────────────────────────────
+  // ── Entry constraint hint ───────────────────────────────────────────────────
+  //
+  // Shown after a valid entry date is supplied but before an exit date is chosen.
+  // Answers: "How many days do I have available, and what is the latest I can stay?"
+  //
+  // Implementation note: this derives the ceiling from computeTravelerStatus at
+  // the entry date, which gives a *conservative* estimate — the true maximum may
+  // be longer because old trips roll out of the 180-day window during the stay.
+  // TODO: replace with computeExitConstraint (proper iterative ceiling) once its
+  // signature is available from features/calculator/utils/schengen.ts.
+  const entryConstraint = useMemo(() => {
+    if (!entryDate || region !== VisaRegion.Schengen) return null;
+    // Once exit is known the full ImpactPreview takes over; hide the hint.
+    if (exitDate || ongoing) return null;
+
+    // Compute across all selected travelers, surface the most constrained result.
+    let minDays = Infinity;
+
+    for (const tid of travelerIds) {
+      const traveler = travelers.find((t) => t.id === tid);
+      if (!traveler) continue;
+
+      const tripsWithoutCurrent = traveler.trips.filter(
+        (t) => t.id !== initialTrip?.id,
+      );
+      const tempTraveler = { ...traveler, trips: tripsWithoutCurrent };
+      const status = computeTravelerStatus(
+        tempTraveler,
+        parseLocalDate(entryDate),
+      );
+
+      if (status.daysRemaining < minDays) {
+        minDays = status.daysRemaining;
+      }
+    }
+
+    if (!isFinite(minDays) || minDays <= 0) return null;
+
+    return {
+      daysAvailable: minDays,
+      // Latest exit = entry + (days available - 1) because entry day counts.
+      latestExit: addDays(entryDate, minDays - 1),
+    };
+  }, [
+    entryDate,
+    exitDate,
+    ongoing,
+    region,
+    travelerIds,
+    travelers,
+    initialTrip,
+  ]);
+
+  // ── Impact preview (exit date known) ────────────────────────────────────────
   const impactStatus = useMemo(() => {
     if (!entryDate || region !== VisaRegion.Schengen) return null;
 
-    const traveler = travelers.find((t) => t.id === travelerId);
-    if (!traveler) return null;
+    // Show against the most constrained selected traveler.
+    let worst: ReturnType<typeof computeTravelerStatus> | null = null;
 
-    // Build a temporary traveler with the preview trip substituted in
-    const tempTrips = traveler.trips
-      .filter((t) => t.id !== initialTrip?.id)
-      .concat([
-        {
-          id: "__preview__",
-          entryDate,
-          exitDate: ongoing ? undefined : exitDate || undefined,
-          region: VisaRegion.Schengen,
-          destination,
-        },
-      ]);
+    for (const tid of travelerIds) {
+      const traveler = travelers.find((t) => t.id === tid);
+      if (!traveler) continue;
 
-    const tempTraveler = { ...traveler, trips: tempTrips };
-    const refDate =
-      !ongoing && exitDate ? parseLocalDate(exitDate) : new Date();
+      const tempTrips = traveler.trips
+        .filter((t) => t.id !== initialTrip?.id)
+        .concat([
+          {
+            id: "__preview__",
+            entryDate,
+            exitDate: ongoing ? undefined : exitDate || undefined,
+            region: VisaRegion.Schengen,
+            destination,
+          },
+        ]);
 
-    return computeTravelerStatus(tempTraveler, refDate);
+      const tempTraveler = { ...traveler, trips: tempTrips };
+      const refDate =
+        !ongoing && exitDate ? parseLocalDate(exitDate) : new Date();
+      const status = computeTravelerStatus(tempTraveler, refDate);
+
+      if (!worst || status.daysRemaining < worst.daysRemaining) {
+        worst = status;
+      }
+    }
+
+    return worst;
   }, [
-    travelerId,
+    travelerIds,
     travelers,
     entryDate,
     exitDate,
@@ -203,7 +321,12 @@ export function TripModal({
     : ("neutral" as const);
 
   // ── Validation & submit ─────────────────────────────────────────────────────
+
   function handleSave() {
+    if (travelerIds.length === 0) {
+      setError("Please select at least one traveler.");
+      return;
+    }
     if (!entryDate) {
       setError("Please enter an entry date.");
       return;
@@ -213,19 +336,28 @@ export function TripModal({
       return;
     }
 
-    const traveler = travelers.find((t) => t.id === travelerId);
-    if (!traveler) return;
-
     const resolvedExit = ongoing ? undefined : exitDate || undefined;
-    const overlapMsg = hasOverlap(
-      traveler.trips,
-      entryDate,
-      resolvedExit ?? null,
-      region,
-      initialTrip?.id,
-    );
-    if (overlapMsg) {
-      setError(overlapMsg);
+
+    // Run overlap validation independently for each selected traveler.
+    const conflicts: string[] = [];
+    for (const tid of travelerIds) {
+      const traveler = travelers.find((t) => t.id === tid);
+      if (!traveler) continue;
+      const msg = hasOverlap(
+        traveler.trips,
+        entryDate,
+        resolvedExit ?? null,
+        region,
+        initialTrip?.id,
+      );
+      if (msg) {
+        const name = traveler.name;
+        conflicts.push(`${name}: ${msg}`);
+      }
+    }
+
+    if (conflicts.length > 0) {
+      setError(conflicts.join("\n"));
       return;
     }
 
@@ -237,7 +369,7 @@ export function TripModal({
       destination: destination.trim() || undefined,
     };
 
-    onSave(travelerId, trip);
+    onSave(travelerIds, trip);
     onClose();
   }
 
@@ -253,6 +385,8 @@ export function TripModal({
 
   const isEdit = mode === "edit";
 
+  // ── Render ───────────────────────────────────────────────────────────────────
+
   return (
     <Dialog
       open={open}
@@ -267,7 +401,7 @@ export function TripModal({
         },
       }}
     >
-      {/* Header */}
+      {/* ── Header ── */}
       <Box
         sx={{
           px: "20px",
@@ -312,7 +446,7 @@ export function TripModal({
         </Box>
       </Box>
 
-      {/* Body */}
+      {/* ── Body ── */}
       <Box
         sx={{
           px: "20px",
@@ -323,51 +457,100 @@ export function TripModal({
         }}
         onKeyDown={handleKeyDown}
       >
-        {/* Traveler selector */}
+        {/* 1 · Traveler selector
+              Add mode: multi-select with checkboxes.
+              Edit mode: locked to the owning traveler (single, disabled). */}
         <Box>
-          <FormLabel>Traveler</FormLabel>
-          <Select
-            value={travelerId}
-            onChange={(e) => {
-              setTravelerId(e.target.value);
-              setError(null);
-            }}
-            fullWidth
-            size="small"
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.85rem",
-              bgcolor: tokens.mist,
-              borderRadius: "10px",
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: tokens.border,
-                borderWidth: 1.5,
-              },
-              "&:hover .MuiOutlinedInput-notchedOutline": {
-                borderColor: tokens.navy,
-              },
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: tokens.navy,
-                borderWidth: 1.5,
-              },
-              "& .MuiSelect-select": { py: "9px", px: "11px" },
-            }}
-          >
-            {travelers.map((t) => (
-              <MenuItem
-                key={t.id}
-                value={t.id}
-                sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
-              >
-                {t.name}
-              </MenuItem>
-            ))}
-          </Select>
+          <FormLabel>{isEdit ? "Traveler" : "Traveler(s)"}</FormLabel>
+          {isEdit ? (
+            <Select
+              value={travelerIds[0] ?? ""}
+              disabled
+              fullWidth
+              size="small"
+              sx={SELECT_BASE_SX}
+            >
+              {travelers.map((t) => (
+                <MenuItem
+                  key={t.id}
+                  value={t.id}
+                  sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
+                >
+                  {t.name}
+                </MenuItem>
+              ))}
+            </Select>
+          ) : (
+            <Select
+              multiple
+              value={travelerIds}
+              onChange={(e) => {
+                const val = e.target.value;
+                setTravelerIds(typeof val === "string" ? val.split(",") : val);
+                setError(null);
+              }}
+              fullWidth
+              size="small"
+              displayEmpty
+              renderValue={(selected) => {
+                if ((selected as string[]).length === 0) {
+                  return (
+                    <Typography
+                      sx={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.85rem",
+                        color: tokens.textGhost,
+                      }}
+                    >
+                      Select travelers…
+                    </Typography>
+                  );
+                }
+                return (selected as string[])
+                  .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
+                  .join(", ");
+              }}
+              sx={SELECT_BASE_SX}
+            >
+              {travelers.map((t) => (
+                <MenuItem
+                  key={t.id}
+                  value={t.id}
+                  sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
+                >
+                  <Checkbox
+                    checked={travelerIds.includes(t.id)}
+                    size="small"
+                    sx={{ p: "2px", mr: "6px", color: tokens.border }}
+                  />
+                  <ListItemText
+                    primary={t.name}
+                    primaryTypographyProps={{
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.85rem",
+                    }}
+                  />
+                </MenuItem>
+              ))}
+            </Select>
+          )}
         </Box>
 
-        {/* Destination */}
+        {/* 2 · Region — declared before dates so validation context is clear */}
         <Box>
-          <FormLabel>Destination</FormLabel>
+          <FormLabel>Region</FormLabel>
+          <RegionSelector
+            value={region}
+            onChange={(r) => {
+              setRegion(r);
+              setError(null);
+            }}
+          />
+        </Box>
+
+        {/* 3 · Trip name (formerly "Destination") */}
+        <Box>
+          <FormLabel>Trip name</FormLabel>
           <TextField
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
@@ -379,7 +562,7 @@ export function TripModal({
           />
         </Box>
 
-        {/* Dates */}
+        {/* 4 · Dates */}
         <Box>
           <FormLabel>Dates</FormLabel>
           <Box
@@ -390,17 +573,29 @@ export function TripModal({
               mb: "6px",
             }}
           >
+            {/* Entry date */}
             <TextField
               type="date"
               value={entryDate}
               onChange={(e) => {
-                setEntryDate(e.target.value);
-                setExitDate(""); // reset exit when entry changes
+                const newEntry = e.target.value;
+                setEntryDate(newEntry);
+
+                // Pre-populate exit as entry + 1 when exit is not yet set.
+                // This lets the user adjust from a sensible default rather than
+                // navigating from today's date in the picker.
+                if (newEntry && !exitDate && !ongoing) {
+                  setExitDate(addDays(newEntry, 1));
+                }
+                if (!newEntry) setExitDate("");
+
                 setError(null);
               }}
               inputProps={{ placeholder: "Entry" }}
               sx={error && !entryDate ? INPUT_ERROR_SX : INPUT_SX}
             />
+
+            {/* Exit date — min set to entryDate to allow same-day trips */}
             <TextField
               type="date"
               value={exitDate}
@@ -416,6 +611,7 @@ export function TripModal({
               }}
             />
           </Box>
+
           <OngoingToggle
             checked={ongoing}
             onChange={(v) => {
@@ -426,37 +622,74 @@ export function TripModal({
           />
         </Box>
 
-        {/* Region */}
-        <Box>
-          <FormLabel>Region</FormLabel>
-          <RegionSelector
-            value={region}
-            onChange={(r) => {
-              setRegion(r);
-              setError(null);
+        {/* Entry constraint hint — visible once entry date is known, exit not yet set.
+            Tells the user how many days are available and the ceiling date,
+            so they can choose a compliant exit date before touching the picker. */}
+        {entryConstraint && (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              px: "12px",
+              py: "9px",
+              bgcolor: tokens.mist,
+              border: `1px solid ${tokens.border}`,
+              borderRadius: "10px",
             }}
-          />
-        </Box>
-
-        {/* Impact preview — only shown for Schengen trips with an entry date */}
-        {region === VisaRegion.Schengen && entryDate && impactStatus && (
-          <ImpactPreview
-            daysRemaining={impactStatus.daysRemaining}
-            daysUsed={impactStatus.daysUsed}
-            variant={impactVariant}
-          />
+          >
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.75rem",
+                color: tokens.textSoft,
+                fontWeight: 500,
+              }}
+            >
+              {entryConstraint.daysAvailable === 1
+                ? "1 day available"
+                : `${entryConstraint.daysAvailable} days available`}
+              {travelerIds.length > 1 && " (most constrained traveler)"}
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                color: tokens.navy,
+                ml: "8px",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Latest exit: {fmtDate(entryConstraint.latestExit)}
+            </Typography>
+          </Box>
         )}
 
-        {/* Validation error */}
+        {/* Impact preview — shown for Schengen trips once exit date (or ongoing) is set */}
+        {region === VisaRegion.Schengen &&
+          entryDate &&
+          (exitDate || ongoing) &&
+          impactStatus && (
+            <ImpactPreview
+              daysRemaining={impactStatus.daysRemaining}
+              daysUsed={impactStatus.daysUsed}
+              variant={impactVariant}
+            />
+          )}
+
+        {/* Validation error — supports newline-delimited multi-traveler conflicts */}
         {error && (
-          <ValidationMessage variant="error">{error}</ValidationMessage>
+          <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
+            {error}
+          </ValidationMessage>
         )}
       </Box>
 
-      {/* Divider */}
+      {/* ── Divider ── */}
       <Box sx={{ height: 1, bgcolor: tokens.border }} />
 
-      {/* Footer */}
+      {/* ── Footer ── */}
       <Box sx={{ px: "20px", py: "16px", display: "flex", gap: "7px" }}>
         {isEdit && onDelete && (
           <Button variant="danger" onClick={onDelete} sx={{ mr: "auto" }}>
