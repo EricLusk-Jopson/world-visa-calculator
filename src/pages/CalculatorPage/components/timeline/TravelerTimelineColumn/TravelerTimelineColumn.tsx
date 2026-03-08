@@ -2,19 +2,22 @@ import Box from "@mui/material/Box";
 import { Traveler, Trip } from "@/types";
 
 import { tokens } from "@/styles/theme";
-import {
-  COLUMN_MIN_WIDTH,
-  computeStatusAtTripExit,
-  computeTravelerStatus,
-  dateToTop,
-  getToday,
-  getTripGeometry,
-  PX_PER_DAY,
-  TIMELINE_DAYS_BEFORE,
-  TOTAL_HEIGHT,
-} from "@/features/calculator/utils/timelineLayout";
+
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { TimelineTripCard } from "../../trips/TimelineTripCard";
+import {
+  dateToTop,
+  COLUMN_MIN_WIDTH,
+  TOTAL_HEIGHT,
+  TIMELINE_DAYS_BEFORE,
+  PX_PER_DAY,
+  getTripGeometry,
+} from "@/features/calculator/utils/timelineLayout";
+import {
+  computeTravelerStatus,
+  computeStatusAtTripExit,
+} from "../../travelers/travelerStatus";
+import { today as getToday } from "@/features/calculator/utils/dates";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
