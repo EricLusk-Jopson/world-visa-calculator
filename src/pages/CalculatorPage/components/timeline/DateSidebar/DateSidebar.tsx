@@ -4,34 +4,41 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import {
   buildMonthMarks,
+  computeTotalHeight,
   dateToTop,
-  TOTAL_HEIGHT,
+  SIDEBAR_WIDTH,
 } from "@/features/calculator/utils/timelineLayout";
-import { SIDEBAR_WIDTH } from "../timelineConstants";
 import { today as getToday } from "@/features/calculator/utils/dates";
+
+interface DateSidebarProps {
+  timelineStart: Date;
+}
 
 /**
  * Sticky left sidebar showing month labels and a "Today" pill at the
  * correct vertical position in the timeline.
+ *
+ * Receives `timelineStart` from TimelineView so its coordinates match
+ * the rest of the layout exactly.
  */
-export function DateSidebar() {
-  const monthMarks = buildMonthMarks();
+export function DateSidebar({ timelineStart }: DateSidebarProps) {
+  const monthMarks = buildMonthMarks(timelineStart);
   const today = getToday();
-  const todayTop = dateToTop(today);
+  const todayTop = dateToTop(today, timelineStart);
+  const totalHeight = computeTotalHeight(timelineStart);
 
   return (
     <Box
       sx={{
         position: "sticky",
         left: 0,
-        zIndex: 3,
+        zIndex: 15, // above cards (z≈0) and column headers (z=10)
         width: SIDEBAR_WIDTH,
         minWidth: SIDEBAR_WIDTH,
-        height: TOTAL_HEIGHT,
+        height: totalHeight,
         flexShrink: 0,
         bgcolor: tokens.offWhite,
         borderRight: `1px solid ${tokens.border}`,
-        // Subtle gradient so it looks like it fades into the content
         background: `linear-gradient(to right, ${tokens.offWhite} 80%, transparent)`,
         pointerEvents: "none",
       }}
@@ -52,7 +59,6 @@ export function DateSidebar() {
             transform: "translateY(-1px)",
           }}
         >
-          {/* Tick line */}
           <Box
             sx={{
               width: "100%",

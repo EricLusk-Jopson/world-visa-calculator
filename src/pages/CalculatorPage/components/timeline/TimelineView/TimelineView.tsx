@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import Box from "@mui/material/Box";
 import { Traveler, Trip } from "@/types";
 
 import { DateSidebar } from "../DateSidebar";
 import { TravelerTimelineColumn } from "../TravelerTimelineColumn";
 import {
-  TIMELINE_DAYS_BEFORE,
-  PX_PER_DAY,
-  TOTAL_HEIGHT,
+  computeTimelineStart,
+  computeTotalHeight,
+  dateToTop,
 } from "@/features/calculator/utils/timelineLayout";
+import { today as getToday } from "@/features/calculator/utils/dates";
 import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 
 interface TimelineViewProps {
@@ -21,7 +22,12 @@ interface TimelineViewProps {
 
 /**
  * Full timeline view. Horizontally scrollable when many travelers are present.
- * On mount, scrolls vertically to center ~today in the viewport.
+ *
+ * The timeline's start date is derived dynamically from the earliest trip entry
+ * across all travelers (with a buffer), so old trips don't fall off the top.
+ *
+ * On mount, scrolls vertically to position today ~38% from the top of the
+ * visible area.
  */
 export function TimelineView({
   travelers,
@@ -32,15 +38,25 @@ export function TimelineView({
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to ~today on mount
+  // Derived once per render — cheap since it's just date comparisons.
+  const timelineStart = useMemo(
+    () => computeTimelineStart(travelers),
+    // Re-derive when the set of trip entry dates changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [travelers],
+  );
+
+  const totalHeight = computeTotalHeight(timelineStart);
+
+  // Scroll to ~today on mount (and whenever timelineStart shifts significantly).
   useEffect(() => {
     if (!scrollRef.current) return;
     const viewportHeight = scrollRef.current.clientHeight;
-    const todayOffset = TIMELINE_DAYS_BEFORE * PX_PER_DAY;
-    // Position today ~38% from the top of the viewport
-    const scrollTop = todayOffset - viewportHeight * 0.38;
+    const todayTop = dateToTop(getToday(), timelineStart);
+    // Position today ~38% from the top of the viewport.
+    const scrollTop = todayTop - viewportHeight * 0.38;
     scrollRef.current.scrollTop = Math.max(0, scrollTop);
-  }, []);
+  }, [timelineStart]);
 
   return (
     <Box
@@ -51,35 +67,32 @@ export function TimelineView({
         display: "flex",
         flexDirection: "column",
         position: "relative",
-        // Horizontal scroll when needed
         overflowX: "auto",
       }}
     >
-      {/* Inner layout row: DateSidebar + columns */}
+      {/* Inner layout row: DateSidebar + traveler columns */}
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
           minWidth: "100%",
-          minHeight: TOTAL_HEIGHT,
+          minHeight: totalHeight,
           alignItems: "flex-start",
         }}
       >
-        {/* Sticky date sidebar */}
-        <DateSidebar />
+        <DateSidebar timelineStart={timelineStart} />
 
-        {/* Traveler columns */}
         {travelers.map((traveler) => (
           <TravelerTimelineColumn
             key={traveler.id}
             traveler={traveler}
+            timelineStart={timelineStart}
             onAddTrip={onAddTrip}
             onEditTrip={onEditTrip}
             onDeleteTraveler={onDeleteTraveler}
           />
         ))}
 
-        {/* Ghost "add traveler" column */}
         <AddTravelerGhost onAddTraveler={onAddTraveler} />
       </Box>
     </Box>

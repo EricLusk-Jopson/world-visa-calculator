@@ -1,53 +1,105 @@
-import type { Trip } from "@/types";
+import type { Trip, Traveler } from "@/types";
 import {
   today,
   parseDate,
   differenceInCalendarDays,
   subDays,
+  addDays,
 } from "@/features/calculator/utils/dates";
 
 // ─── Layout constants ─────────────────────────────────────────────────────────
 
-export const PX_PER_DAY = 38;
-/** Days before today that the timeline starts. */
+export const PX_PER_DAY = 6;
+
+/** Minimum rendered height for any trip card, regardless of duration. */
+export const CARD_MIN_HEIGHT = 32;
+/**
+ * Cards with rendered height below this use "pill" layout
+ * (single line: destination · Xd, full info in tooltip).
+ */
+export const CARD_COMPACT_THRESHOLD = 48;
+/**
+ * Cards at or above this use "full" layout (destination + dates + all badges).
+ * Between CARD_COMPACT_THRESHOLD and this value: "compact"
+ * (destination + duration badge; dates on a second line).
+ */
+export const CARD_FULL_THRESHOLD = 64;
+
+/** Minimum days before today the timeline shows (180-day lookback floor). */
 export const TIMELINE_DAYS_BEFORE = 180;
-/** Days after today that the timeline extends. */
+/** Days after today the timeline extends. */
 export const TIMELINE_DAYS_AFTER = 90;
-export const TOTAL_DAYS = TIMELINE_DAYS_BEFORE + 1 + TIMELINE_DAYS_AFTER; // 272
-export const TOTAL_HEIGHT = TOTAL_DAYS * PX_PER_DAY;
+/** Buffer added before the earliest trip so it doesn't sit flush at the top. */
+const EARLY_TRIP_BUFFER = 14;
+
 export const SIDEBAR_WIDTH = 64;
 export const COLUMN_MIN_WIDTH = 280;
 
-// ─── Timeline geometry ────────────────────────────────────────────────────────
+// ─── Dynamic timeline start ───────────────────────────────────────────────────
 
-/** The date at which the timeline starts (TIMELINE_DAYS_BEFORE days ago). */
-export function getTimelineStart(): Date {
-  return subDays(today(), TIMELINE_DAYS_BEFORE);
+export function computeTimelineStart(travelers: Traveler[]): Date {
+  const defaultStart = subDays(today(), TIMELINE_DAYS_BEFORE);
+  let earliest = defaultStart;
+
+  for (const traveler of travelers) {
+    for (const trip of traveler.trips) {
+      const entry = parseDate(trip.entryDate);
+      if (entry < earliest) earliest = entry;
+    }
+  }
+
+  return subDays(earliest, EARLY_TRIP_BUFFER);
 }
 
-/** Pixel offset from the top of the timeline for a given date. */
-export function dateToTop(date: Date): number {
-  return differenceInCalendarDays(date, getTimelineStart()) * PX_PER_DAY;
+// ─── Derived dimensions ───────────────────────────────────────────────────────
+
+export function computeTotalDays(timelineStart: Date): number {
+  const end = addDays(today(), TIMELINE_DAYS_AFTER);
+  return differenceInCalendarDays(end, timelineStart) + 1;
 }
+
+export function computeTotalHeight(timelineStart: Date): number {
+  return computeTotalDays(timelineStart) * PX_PER_DAY;
+}
+
+// ─── Trip geometry ────────────────────────────────────────────────────────────
+
+export function dateToTop(date: Date, timelineStart: Date): number {
+  return differenceInCalendarDays(date, timelineStart) * PX_PER_DAY;
+}
+
+export type CardLayoutMode = "pill" | "compact" | "full";
 
 export interface TripGeometry {
   top: number;
+  /** Rendered (clamped) height in pixels. */
   height: number;
+  /** Natural (unclamped) height: durationDays × PX_PER_DAY. */
+  naturalHeight: number;
   durationDays: number;
+  layoutMode: CardLayoutMode;
 }
 
-export function getTripGeometry(trip: Trip): TripGeometry {
+export function getTripGeometry(trip: Trip, timelineStart: Date): TripGeometry {
   const entry = parseDate(trip.entryDate);
   const exit = trip.exitDate ? parseDate(trip.exitDate) : today();
 
-  const top = dateToTop(entry);
+  const top = dateToTop(entry, timelineStart);
   const durationDays = differenceInCalendarDays(exit, entry) + 1;
-  const height = Math.max(PX_PER_DAY, durationDays * PX_PER_DAY);
+  const naturalHeight = durationDays * PX_PER_DAY;
+  const height = Math.max(CARD_MIN_HEIGHT, naturalHeight);
 
-  return { top, height, durationDays };
+  const layoutMode: CardLayoutMode =
+    height >= CARD_FULL_THRESHOLD
+      ? "full"
+      : height >= CARD_COMPACT_THRESHOLD
+        ? "compact"
+        : "pill";
+
+  return { top, height, naturalHeight, durationDays, layoutMode };
 }
 
-// ─── Month marks for DateSidebar ──────────────────────────────────────────────
+// ─── Month marks ──────────────────────────────────────────────────────────────
 
 export interface MonthMark {
   label: string;
@@ -71,17 +123,16 @@ const MONTH_NAMES = [
   "Dec",
 ];
 
-export function buildMonthMarks(): MonthMark[] {
-  const start = getTimelineStart();
+export function buildMonthMarks(timelineStart: Date): MonthMark[] {
+  const totalDays = computeTotalDays(timelineStart);
   const marks: MonthMark[] = [];
 
-  // Start at the 1st of the month following the timeline start.
-  const cursor = new Date(start);
+  const cursor = new Date(timelineStart);
   cursor.setDate(1);
   cursor.setMonth(cursor.getMonth() + 1);
 
-  while (differenceInCalendarDays(cursor, start) < TOTAL_DAYS) {
-    const offset = differenceInCalendarDays(cursor, start);
+  while (differenceInCalendarDays(cursor, timelineStart) < totalDays) {
+    const offset = differenceInCalendarDays(cursor, timelineStart);
     if (offset >= 0) {
       marks.push({
         label: `${MONTH_NAMES[cursor.getMonth()]} ${cursor.getFullYear()}`,
