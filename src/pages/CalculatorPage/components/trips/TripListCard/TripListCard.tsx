@@ -106,6 +106,7 @@ export function TripListCard({
     <Box
       onClick={onEdit}
       sx={{
+        minHeight: "88px",
         position: "relative",
         borderRadius: "10px",
         border: `1px solid ${isPlanned ? tokens.amberBorder : tokens.border}`,

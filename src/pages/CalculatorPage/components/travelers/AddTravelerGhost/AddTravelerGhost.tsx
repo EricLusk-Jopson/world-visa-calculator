@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
-import { TOTAL_HEIGHT, COLUMN_MIN_WIDTH } from "@/features/calculator/utils/timelineLayout";
+import { COLUMN_MIN_WIDTH } from "@/features/calculator/utils/timelineLayout";
 
 interface AddTravelerGhostProps {
   onAddTraveler: () => void;
@@ -17,7 +17,6 @@ export function AddTravelerGhost({ onAddTraveler }: AddTravelerGhostProps) {
       sx={{
         minWidth: COLUMN_MIN_WIDTH * 0.7,
         flexShrink: 0,
-        height: TOTAL_HEIGHT,
         borderLeft: `1px dashed ${tokens.border}`,
         display: "flex",
         alignItems: "flex-start",
@@ -50,16 +49,25 @@ export function AddTravelerGhost({ onAddTraveler }: AddTravelerGhostProps) {
       >
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
           <circle
-            cx="10" cy="7" r="3"
-            stroke="currentColor" strokeWidth="1.3" opacity="0.5"
+            cx="10"
+            cy="7"
+            r="3"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            opacity="0.5"
           />
           <path
             d="M4 17c0-3.314 2.686-6 6-6s6 2.686 6 6"
-            stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" opacity="0.5"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            strokeLinecap="round"
+            opacity="0.5"
           />
           <path
             d="M10 1v4M8 3h4"
-            stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            strokeLinecap="round"
           />
         </svg>
         <Typography

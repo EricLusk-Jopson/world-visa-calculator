@@ -164,6 +164,8 @@ export function CalculatorPage() {
         view={view}
         onViewChange={setView}
         onAddTraveler={handleAddTraveler}
+        onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
+        travelerCount={travelers.length}
         onCopyLink={handleCopyLink}
       />
 

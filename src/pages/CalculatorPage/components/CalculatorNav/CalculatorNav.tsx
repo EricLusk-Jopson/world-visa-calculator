@@ -8,6 +8,8 @@ interface CalculatorNavProps {
   view: CalcView;
   onViewChange: (v: CalcView) => void;
   onAddTraveler: () => void;
+  onAddTrip: () => void;
+  travelerCount: number;
   onCopyLink: () => void;
 }
 
@@ -15,6 +17,8 @@ export function CalculatorNav({
   view,
   onViewChange,
   onAddTraveler,
+  onAddTrip,
+  travelerCount,
   onCopyLink,
 }: CalculatorNavProps) {
   return (
@@ -140,6 +144,50 @@ export function CalculatorNav({
             />
           </svg>
           Copy link
+        </Box>
+
+        {/* Add Trip CTA */}
+        {/* Add Trip */}
+        <Box
+          component="button"
+          onClick={onAddTrip}
+          disabled={travelerCount === 0}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
+            px: "14px",
+            py: "6px",
+            bgcolor: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            borderRadius: "7px",
+            fontFamily: tokens.fontBody,
+            fontSize: "0.78rem",
+            fontWeight: 600,
+            color:
+              travelerCount === 0
+                ? "rgba(255,255,255,0.2)"
+                : "rgba(255,255,255,0.7)",
+            cursor: travelerCount === 0 ? "not-allowed" : "pointer",
+            transition: "all 0.15s",
+            "&:hover":
+              travelerCount === 0
+                ? {}
+                : {
+                    bgcolor: "rgba(255,255,255,0.14)",
+                    color: "#fff",
+                  },
+          }}
+        >
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path
+              d="M5.5 1v9M1 5.5h9"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+            />
+          </svg>
+          Add Trip
         </Box>
 
         {/* Add Traveler CTA */}

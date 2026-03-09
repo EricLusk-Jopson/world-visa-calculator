@@ -9,6 +9,7 @@ import {
   computeTravelerStatus,
   computeStatusAtTripExit,
 } from "../../travelers/travelerStatus";
+import { AddTripButton } from "./AddTripButton";
 
 interface TravelerCardsColumnProps {
   traveler: Traveler;
@@ -41,6 +42,8 @@ export function TravelerCardsColumn({
         flexDirection: "column",
         minWidth: 280,
         flex: 1,
+        height: "100%",
+
         borderRight: `1px solid ${tokens.border}`,
         "&:last-of-type": { borderRight: "none" },
       }}
@@ -71,8 +74,27 @@ export function TravelerCardsColumn({
           flexDirection: "column",
           gap: "8px",
           flex: 1,
+          minHeight: 0,
+          overflowY: "auto",
+          "&::-webkit-scrollbar": {
+            width: "5px", // thinner
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "transparent",
+            mx: "3px", // MUI sx won't apply here — use margin in the thumb instead
+            pt: "100px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: tokens.border,
+            borderRadius: "4px",
+            border: "1px solid transparent", // creates a small gap around the thumb
+          },
         }}
       >
+        {/* Top "Add trip" — only when list is long */}
+        {sortedTrips.length >= 5 && (
+          <AddTripButton onClick={() => onAddTrip(traveler.id)} />
+        )}
         {sortedTrips.length === 0 ? (
           <Box
             sx={{
@@ -121,36 +143,10 @@ export function TravelerCardsColumn({
         )}
 
         {/* Add trip button */}
-        <Box
+        <AddTripButton
           onClick={() => onAddTrip(traveler.id)}
-          sx={{
-            border: `1.5px dashed ${tokens.border}`,
-            borderRadius: "8px",
-            height: 40,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "6px",
-            cursor: "pointer",
-            color: tokens.textSoft,
-            fontFamily: tokens.fontBody,
-            fontSize: "0.78rem",
-            fontWeight: 600,
-            bgcolor: tokens.white,
-            mt: sortedTrips.length > 0 ? "4px" : 0,
-            transition: "all 0.15s",
-            "&:hover": {
-              borderColor: tokens.navy,
-              color: tokens.navy,
-              bgcolor: tokens.mist,
-            },
-          }}
-        >
-          <Box component="span" sx={{ fontSize: "1rem", lineHeight: 1 }}>
-            +
-          </Box>
-          Add trip
-        </Box>
+          mt={sortedTrips.length > 0 ? "4px" : 0}
+        />
       </Box>
     </Box>
   );

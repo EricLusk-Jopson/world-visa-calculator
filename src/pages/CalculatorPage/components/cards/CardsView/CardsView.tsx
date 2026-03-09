@@ -28,10 +28,9 @@ export function CardsView({
     <Box
       sx={{
         flex: 1,
-        overflow: "auto",
+        overflow: "hidden",
         display: "flex",
         flexDirection: "row",
-        alignItems: "flex-start",
         minHeight: 0,
       }}
     >
