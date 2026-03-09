@@ -11,18 +11,21 @@ import {
 
 export const PX_PER_DAY = 6;
 
+/**
+ * Fixed height of the sticky column header (name + progress bar + padding).
+ * Applied as minHeight on the header box in TravelerTimelineColumn, and as a
+ * top spacer in DateSidebar so the date ruler is aligned with the card body.
+ *
+ * Breakdown: 24px vertical padding (12px × 2) + ~24px name row + 8px gap
+ * + 16px progress bar row = 72px.
+ */
+export const COLUMN_HEADER_HEIGHT = 72;
+
 /** Minimum rendered height for any trip card, regardless of duration. */
 export const CARD_MIN_HEIGHT = 32;
-/**
- * Cards with rendered height below this use "pill" layout
- * (single line: destination · Xd, full info in tooltip).
- */
+/** Cards below this use "pill" layout. */
 export const CARD_COMPACT_THRESHOLD = 48;
-/**
- * Cards at or above this use "full" layout (destination + dates + all badges).
- * Between CARD_COMPACT_THRESHOLD and this value: "compact"
- * (destination + duration badge; dates on a second line).
- */
+/** Cards at or above this use "full" layout; between → "compact". */
 export const CARD_FULL_THRESHOLD = 64;
 
 /** Minimum days before today the timeline shows (180-day lookback floor). */
@@ -58,12 +61,14 @@ export function computeTotalDays(timelineStart: Date): number {
   return differenceInCalendarDays(end, timelineStart) + 1;
 }
 
+/** Pixel height of the card-body canvas (excludes the column header). */
 export function computeTotalHeight(timelineStart: Date): number {
   return computeTotalDays(timelineStart) * PX_PER_DAY;
 }
 
 // ─── Trip geometry ────────────────────────────────────────────────────────────
 
+/** Pixel offset from the top of the card-body canvas for a given date. */
 export function dateToTop(date: Date, timelineStart: Date): number {
   return differenceInCalendarDays(date, timelineStart) * PX_PER_DAY;
 }
@@ -72,9 +77,7 @@ export type CardLayoutMode = "pill" | "compact" | "full";
 
 export interface TripGeometry {
   top: number;
-  /** Rendered (clamped) height in pixels. */
   height: number;
-  /** Natural (unclamped) height: durationDays × PX_PER_DAY. */
   naturalHeight: number;
   durationDays: number;
   layoutMode: CardLayoutMode;

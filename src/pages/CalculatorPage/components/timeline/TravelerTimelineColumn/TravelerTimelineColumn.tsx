@@ -9,6 +9,7 @@ import {
   computeTotalHeight,
   getTripGeometry,
   COLUMN_MIN_WIDTH,
+  COLUMN_HEADER_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
 import {
   computeTravelerStatus,
@@ -28,22 +29,20 @@ interface TravelerTimelineColumnProps {
  * One vertical column in the timeline view.
  *
  * Two-layer structure:
- *   1. Sticky header  — position:sticky, top:0, zIndex:10. Always above cards.
- *   2. Scrolling body — position:relative, full canvas height. Contains shading,
- *      spine, today line, and absolutely-positioned trip cards.
- *
- * z-index stacking for cards: later entry date = higher base z (so a short trip
- * expanded to CARD_MIN_HEIGHT is covered by later trips that overlap it visually).
- * Hovering bumps the card to zIndex 50 so it always reads above neighbours.
+ *   1. Sticky header  — exactly COLUMN_HEADER_HEIGHT tall, zIndex:10.
+ *      DateSidebar has a matching spacer so the date ruler aligns with the
+ *      card body below this header.
+ *   2. Card body canvas — computeTotalHeight() tall, position:relative.
+ *      All trip cards are absolutely positioned within this layer.
  *
  * z-index ladder:
- *   DateSidebar          15
- *   Column headers       10
- *   Hovered card         50  (managed inside TimelineTripCard)
- *   Cards          3 … 3+n  (later entry = higher)
- *   Add-trip button        3  (below cards so cards clip over it)
- *   Today line             2
- *   Spine / shading      0–1
+ *   DateSidebar     15
+ *   Column headers  10
+ *   Hovered card    50  (managed inside TimelineTripCard)
+ *   Cards         4…4+n (later entry = higher)
+ *   Add button       3
+ *   Today line       2
+ *   Shading        0–1
  */
 export function TravelerTimelineColumn({
   traveler,
@@ -57,14 +56,12 @@ export function TravelerTimelineColumn({
   const totalHeight = computeTotalHeight(timelineStart);
   const status = computeTravelerStatus(traveler);
 
-  // Sort trips by entry date ascending so we can derive a stable z-index rank.
-  // Later trips (higher index) get a higher z so they paint over earlier ones
-  // when min-height expansion causes visual overlap.
+  // Later entry date = higher z so min-height expansion doesn't hide newer trips.
   const sortedTripIds = [...traveler.trips]
     .sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1))
     .map((t) => t.id);
 
-  const BASE_Z = 4; // cards start above today line (z=2) and add button (z=3)
+  const BASE_Z = 4;
 
   return (
     <Box
@@ -83,6 +80,10 @@ export function TravelerTimelineColumn({
           position: "sticky",
           top: 0,
           zIndex: 10,
+          // Exact height kept in sync with DateSidebar's header spacer.
+          minHeight: COLUMN_HEADER_HEIGHT,
+          display: "flex",
+          alignItems: "center",
           bgcolor: tokens.offWhite,
           borderBottom: `1px solid ${tokens.border}`,
           p: "12px",
@@ -95,7 +96,7 @@ export function TravelerTimelineColumn({
         />
       </Box>
 
-      {/* ── Scrolling body ────────────────────────────────────────────────── */}
+      {/* ── Card body canvas ──────────────────────────────────────────────── */}
       <Box
         sx={{
           position: "relative",
@@ -144,7 +145,7 @@ export function TravelerTimelineColumn({
           }}
         />
 
-        {/* Today line — in body so it scrolls with the calendar */}
+        {/* Today line */}
         <Box
           sx={{
             position: "absolute",
@@ -176,7 +177,6 @@ export function TravelerTimelineColumn({
             getTripGeometry(trip, timelineStart);
           const statusAtExit = computeStatusAtTripExit(traveler, trip.id);
           const rank = sortedTripIds.indexOf(trip.id);
-          const baseZIndex = BASE_Z + rank;
 
           return (
             <TimelineTripCard
@@ -188,7 +188,7 @@ export function TravelerTimelineColumn({
               statusAtExit={statusAtExit}
               durationDays={durationDays}
               layoutMode={layoutMode}
-              baseZIndex={baseZIndex}
+              baseZIndex={BASE_Z + rank}
               onEdit={() => onEditTrip(traveler.id, trip)}
             />
           );
