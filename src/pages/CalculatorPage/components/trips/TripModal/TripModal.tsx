@@ -411,13 +411,18 @@ export function TripModal({
       <Dialog
         open={open}
         onClose={onClose}
-        PaperProps={{
-          sx: {
-            borderRadius: "20px",
-            width: 420,
-            maxWidth: "calc(100vw - 32px)",
-            overflow: "hidden",
-            boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: "20px",
+              width: 420,
+              maxWidth: "calc(100vw - 32px)",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+              maxHeight: "85vh",
+              boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
+            },
           },
         }}
       >
@@ -469,11 +474,27 @@ export function TripModal({
         {/* ── Body ── */}
         <Box
           sx={{
-            px: "20px",
+            pl: "20px",
+            pr: "14px",
+            mr: "6px",
             py: "16px",
             display: "flex",
             flexDirection: "column",
             gap: "12px",
+            overflowY: "scroll",
+
+            "&::-webkit-scrollbar": {
+              width: "5px", // thinner
+            },
+            "&::-webkit-scrollbar-track": {
+              background: "transparent",
+              mx: "3px", // MUI sx won't apply here — use margin in the thumb instead
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: tokens.border,
+              borderRadius: "4px",
+              border: "1px solid transparent", // creates a small gap around the thumb
+            },
           }}
           onKeyDown={handleKeyDown}
         >

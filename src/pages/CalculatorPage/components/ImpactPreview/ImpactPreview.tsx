@@ -12,7 +12,7 @@ interface ImpactPreviewProps {
   daysRemaining: number;
   daysUsed: number;
   variant: StatusVariant | "neutral";
-  /** When provided, a "See breakdown" toggle is shown. */
+  /** When provided, the breakdown toggle and detail panel are shown. */
   breakdown?: ImpactBreakdown;
 }
 
@@ -75,7 +75,6 @@ function fmtRange(entryDate: string, exitDate?: string): string {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-/** Section header row with a label on the left and a day count on the right. */
 function SectionRow({
   label,
   days,
@@ -125,7 +124,6 @@ function SectionRow({
   );
 }
 
-/** A single trip line within a section. */
 function TripRow({
   name,
   range,
@@ -190,7 +188,6 @@ function TripRow({
   );
 }
 
-/** Thin horizontal rule used to separate breakdown sections. */
 function Divider() {
   return <Box sx={{ height: "1px", bgcolor: tokens.border, mx: "-12px" }} />;
 }
@@ -212,20 +209,20 @@ export function ImpactPreview({
         borderRadius: "10px",
         border: `1px solid ${colors.border}`,
         bgcolor: colors.bg,
-        overflow: "hidden",
       }}
     >
       {/* ── Summary row (always visible) ── */}
       <Box
         sx={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "space-between",
           px: "12px",
           py: "10px",
         }}
       >
-        <Box>
+        {/* Left: label + sublabel + toggle */}
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
@@ -246,76 +243,59 @@ export function ImpactPreview({
               fontWeight: 500,
               color: colors.text,
               opacity: 0.75,
-              mt: "3px",
             }}
           >
             {daysUsed} of 90 days used
           </Typography>
-        </Box>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <Typography
-            sx={{
-              fontFamily: tokens.fontDisplay,
-              fontSize: "2rem",
-              fontWeight: 600,
-              lineHeight: 1,
-              color: colors.value,
-            }}
-          >
-            {daysRemaining}
-            <Typography
-              component="span"
-              sx={{
-                fontFamily: tokens.fontBody,
-                fontSize: "0.75rem",
-                fontWeight: 600,
-                color: colors.text,
-                ml: "3px",
-              }}
-            >
-              d
-            </Typography>
-          </Typography>
-
-          {/* Expand toggle — only shown when breakdown data is available */}
+          {/* Text toggle — only rendered when breakdown data is available */}
           {breakdown && (
-            <Box
+            <Typography
               component="button"
               onClick={() => setExpanded((v) => !v)}
-              aria-label={expanded ? "Hide breakdown" : "See breakdown"}
               sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 24,
-                height: 24,
-                border: "none",
-                borderRadius: "5px",
-                bgcolor: "rgba(0,0,0,0.06)",
+                all: "unset",
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 600,
                 color: colors.text,
+                opacity: 0.6,
                 cursor: "pointer",
-                flexShrink: 0,
-                transition: "background 0.15s",
-                "&:hover": { bgcolor: "rgba(0,0,0,0.12)" },
+                textDecoration: "underline",
+                textUnderlineOffset: "2px",
+                mt: "2px",
+                "&:hover": { opacity: 1 },
               }}
             >
-              {/* Chevron — rotates when expanded */}
-              <Box
-                sx={{
-                  width: 10,
-                  height: 10,
-                  borderRight: `1.5px solid currentColor`,
-                  borderBottom: `1.5px solid currentColor`,
-                  transform: expanded
-                    ? "rotate(225deg) translateY(2px)"
-                    : "rotate(45deg) translateY(-2px)",
-                  transition: "transform 0.2s",
-                }}
-              />
-            </Box>
+              {expanded ? "Hide breakdown" : "Show breakdown"}
+            </Typography>
           )}
         </Box>
+
+        {/* Right: numeric value */}
+        <Typography
+          sx={{
+            fontFamily: tokens.fontDisplay,
+            fontSize: "2rem",
+            fontWeight: 600,
+            lineHeight: 1,
+            color: colors.value,
+          }}
+        >
+          {daysRemaining}
+          <Typography
+            component="span"
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              color: colors.text,
+              ml: "3px",
+            }}
+          >
+            d
+          </Typography>
+        </Typography>
       </Box>
 
       {/* ── Expandable breakdown ── */}
@@ -332,14 +312,13 @@ export function ImpactPreview({
               gap: "8px",
             }}
           >
-            {/* ── Section A: previous trips in window ── */}
+            {/* Section A: previous trips in window */}
             <SectionRow
               label="Previous trips in window"
               days={breakdown.previousDaysTotal}
               sign="−"
               dimmed={breakdown.previousDaysTotal === 0}
             />
-
             {breakdown.previousTrips.length === 0 ? (
               <Typography
                 sx={{
@@ -366,14 +345,13 @@ export function ImpactPreview({
 
             <Divider />
 
-            {/* ── Section B: trips aging out ── */}
+            {/* Section B: days aging out */}
             <SectionRow
               label="Freed during this trip"
               days={breakdown.agingOutTotal}
               sign="+"
               dimmed={breakdown.agingOutTotal === 0}
             />
-
             {breakdown.agingOutTrips.length === 0 ? (
               <Typography
                 sx={{
@@ -400,7 +378,7 @@ export function ImpactPreview({
 
             <Divider />
 
-            {/* ── Section C: this trip ── */}
+            {/* Section C: this trip */}
             <SectionRow
               label="This trip"
               days={breakdown.currentTripDays}
@@ -409,7 +387,7 @@ export function ImpactPreview({
 
             <Divider />
 
-            {/* ── Result row ── */}
+            {/* Result */}
             <Box
               sx={{
                 display: "flex",
@@ -443,7 +421,7 @@ export function ImpactPreview({
               </Typography>
             </Box>
 
-            {/* ── Formula annotation ── */}
+            {/* Formula annotation */}
             <Typography
               sx={{
                 fontFamily: tokens.fontBody,
