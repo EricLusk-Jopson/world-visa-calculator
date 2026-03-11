@@ -12,20 +12,21 @@ import {
 export const PX_PER_DAY = 6;
 
 /**
- * Fixed height of the sticky column header (name + progress bar + padding).
- * Applied as minHeight on the header box in TravelerTimelineColumn, and as a
- * top spacer in DateSidebar so the date ruler is aligned with the card body.
+ * Approximate height of the sticky header row — used only for the initial
+ * scroll-to-today calculation. The header row itself sizes naturally to match
+ * TravelerColumnHeader's intrinsic height, so this constant never enforces a
+ * fixed height on any DOM element.
  *
- * Breakdown: 24px vertical padding (12px × 2) + ~24px name row + 8px gap
- * + 16px progress bar row = 72px.
+ * Breakdown (matches TravelerColumnHeader padding + rows):
+ *   pt 12 + name row ~22 + gap 8 + label row ~13 + gap 8 + bar 3 + pb 12 = ~78px
  */
-export const COLUMN_HEADER_HEIGHT = 72;
+export const COLUMN_HEADER_HEIGHT = 78;
 
 /** Minimum rendered height for any trip card, regardless of duration. */
 export const CARD_MIN_HEIGHT = 32;
-/** Cards below this use "pill" layout. */
+/** Cards below this render in "pill" layout. */
 export const CARD_COMPACT_THRESHOLD = 48;
-/** Cards at or above this use "full" layout; between → "compact". */
+/** Cards at or above this render in "full" layout; between → "compact". */
 export const CARD_FULL_THRESHOLD = 64;
 
 /** Minimum days before today the timeline shows (180-day lookback floor). */
@@ -61,7 +62,7 @@ export function computeTotalDays(timelineStart: Date): number {
   return differenceInCalendarDays(end, timelineStart) + 1;
 }
 
-/** Pixel height of the card-body canvas (excludes the column header). */
+/** Pixel height of the card-body canvas (excludes the sticky header row). */
 export function computeTotalHeight(timelineStart: Date): number {
   return computeTotalDays(timelineStart) * PX_PER_DAY;
 }
@@ -77,8 +78,11 @@ export type CardLayoutMode = "pill" | "compact" | "full";
 
 export interface TripGeometry {
   top: number;
+  /** Rendered (clamped) height in pixels. */
   height: number;
+  /** Natural (unclamped) height before clamping to CARD_MIN_HEIGHT. */
   naturalHeight: number;
+  /** Actual calendar duration — used for display, not for sizing. */
   durationDays: number;
   layoutMode: CardLayoutMode;
 }
@@ -89,7 +93,12 @@ export function getTripGeometry(trip: Trip, timelineStart: Date): TripGeometry {
 
   const top = dateToTop(entry, timelineStart);
   const durationDays = differenceInCalendarDays(exit, entry) + 1;
-  const naturalHeight = durationDays * PX_PER_DAY;
+
+  // Render cards ending one day early so sequentially-adjacent trips
+  // (e.g. exit Schengen Jan 5, enter Turkey Jan 5) don't visually overlap.
+  // durationDays is unaffected and still displays the correct calendar count.
+  const visualDays = Math.max(1, durationDays - 1);
+  const naturalHeight = visualDays * PX_PER_DAY;
   const height = Math.max(CARD_MIN_HEIGHT, naturalHeight);
 
   const layoutMode: CardLayoutMode =

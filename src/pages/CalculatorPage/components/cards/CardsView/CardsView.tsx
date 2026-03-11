@@ -3,14 +3,12 @@ import { Traveler, Trip } from "@/types";
 import { TravelerCardsColumn } from "../TravelerCardsColumn";
 import { tokens } from "@/styles/theme";
 import { SIDEBAR_WIDTH } from "../../timeline/timelineConstants";
-import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 
 interface CardsViewProps {
   travelers: Traveler[];
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
-  onAddTraveler: () => void;
 }
 
 /**
@@ -22,7 +20,6 @@ export function CardsView({
   onAddTrip,
   onEditTrip,
   onDeleteTraveler,
-  onAddTraveler,
 }: CardsViewProps) {
   return (
     <Box
@@ -58,7 +55,16 @@ export function CardsView({
       ))}
 
       {/* Ghost "add traveler" column */}
-      <AddTravelerGhost onAddTraveler={onAddTraveler} />
+      <Box
+        sx={{
+          width: SIDEBAR_WIDTH,
+          minWidth: SIDEBAR_WIDTH,
+          flexShrink: 0,
+          alignSelf: "stretch",
+          bgcolor: tokens.offWhite,
+          borderRight: `1px solid ${tokens.border}`,
+        }}
+      />
     </Box>
   );
 }
