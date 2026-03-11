@@ -5,4 +5,5 @@ export { CalculatorNav } from "./CalculatorNav";
 export { TravelerColumnHeader } from "./travelers/TravelerColumnHeader";
 export { TravelerModal } from "./travelers/TravelerModal";
 export { TripModal } from "./trips/TripModal";
+export { ShareModal } from "./ShareModal";
 export type { CalcView } from "./CalculatorNav";

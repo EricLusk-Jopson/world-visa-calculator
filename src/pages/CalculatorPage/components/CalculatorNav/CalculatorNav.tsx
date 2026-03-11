@@ -146,12 +146,10 @@ export function CalculatorNav({
           Copy link
         </Box>
 
-        {/* Add Trip CTA */}
-        {/* Add Trip */}
+        {/* Add Traveler — ghost style, secondary action */}
         <Box
           component="button"
-          onClick={onAddTrip}
-          disabled={travelerCount === 0}
+          onClick={onAddTraveler}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -164,52 +162,13 @@ export function CalculatorNav({
             fontFamily: tokens.fontBody,
             fontSize: "0.78rem",
             fontWeight: 600,
-            color:
-              travelerCount === 0
-                ? "rgba(255,255,255,0.2)"
-                : "rgba(255,255,255,0.7)",
-            cursor: travelerCount === 0 ? "not-allowed" : "pointer",
-            transition: "all 0.15s",
-            "&:hover":
-              travelerCount === 0
-                ? {}
-                : {
-                    bgcolor: "rgba(255,255,255,0.14)",
-                    color: "#fff",
-                  },
-          }}
-        >
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-            <path
-              d="M5.5 1v9M1 5.5h9"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-            />
-          </svg>
-          Add Trip
-        </Box>
-
-        {/* Add Traveler CTA */}
-        <Box
-          component="button"
-          onClick={onAddTraveler}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "5px",
-            px: "14px",
-            py: "6px",
-            bgcolor: tokens.green,
-            border: "none",
-            borderRadius: "7px",
-            fontFamily: tokens.fontBody,
-            fontSize: "0.78rem",
-            fontWeight: 600,
-            color: "#fff",
+            color: "rgba(255,255,255,0.7)",
             cursor: "pointer",
-            transition: "background 0.15s",
-            "&:hover": { bgcolor: "#00A05C" },
+            transition: "all 0.15s",
+            "&:hover": {
+              bgcolor: "rgba(255,255,255,0.14)",
+              color: "#fff",
+            },
           }}
         >
           <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
@@ -221,6 +180,41 @@ export function CalculatorNav({
             />
           </svg>
           Add Traveler
+        </Box>
+
+        {/* Add Trip — green primary, most frequent action */}
+        <Box
+          component="button"
+          onClick={onAddTrip}
+          disabled={travelerCount === 0}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
+            px: "14px",
+            py: "6px",
+            bgcolor:
+              travelerCount === 0 ? "rgba(255,255,255,0.06)" : tokens.green,
+            border: "none",
+            borderRadius: "7px",
+            fontFamily: tokens.fontBody,
+            fontSize: "0.78rem",
+            fontWeight: 600,
+            color: travelerCount === 0 ? "rgba(255,255,255,0.2)" : "#fff",
+            cursor: travelerCount === 0 ? "not-allowed" : "pointer",
+            transition: "background 0.15s, color 0.15s",
+            "&:hover": travelerCount === 0 ? {} : { bgcolor: "#00A05C" },
+          }}
+        >
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path
+              d="M5.5 1v9M1 5.5h9"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+            />
+          </svg>
+          Add Trip
         </Box>
       </Box>
     </Box>
