@@ -25,27 +25,6 @@ interface TimelineViewProps {
   onAddTraveler: () => void;
 }
 
-/**
- * Full timeline view.
- *
- * Layout mirrors CardsView structurally — left sidebar, traveler columns,
- * right sidebar — but the left sidebar is the live DateSidebar (sticky-left)
- * and the right sidebar is a plain spacer matching CardsView's right gutter.
- *
- * ┌──────────────────────────────────────────────────────┐
- * │ Sticky header row (position:sticky, top:0, zIndex:10)│
- * │ [left placeholder] [header₁] [header₂]… [right pad] │
- * ├──────────────────────────────────────────────────────┤
- * │ Content row (scrolls vertically + horizontally)      │
- * │ [DateSidebar sticky-left] [col₁] [col₂]… [right pad]│
- * └──────────────────────────────────────────────────────┘
- *
- * Header cells have no fixed height — they size to TravelerColumnHeader's
- * intrinsic content, matching the cards view's natural padding exactly.
- * COLUMN_HEADER_HEIGHT is used only as a scroll-position hint.
- *
- * Empty state: replaced entirely by AddTravelerGhost.
- */
 export function TimelineView({
   travelers,
   onAddTrip,
@@ -55,6 +34,10 @@ export function TimelineView({
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Tracks whether the initial scroll-to-today has fired. After that, trip
+  // saves (which update travelers → timelineStart) must not move the viewport.
+  const hasScrolledRef = useRef(false);
+
   const timelineStart = useMemo(
     () => computeTimelineStart(travelers),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,21 +45,24 @@ export function TimelineView({
   );
 
   useEffect(() => {
+    // Only scroll on the very first render. Subsequent updates (trip add/edit)
+    // leave the viewport wherever the user has scrolled to.
+    if (hasScrolledRef.current) return;
     if (!scrollRef.current) return;
+
     const vh = scrollRef.current.clientHeight;
     const todayTop = dateToTop(getToday(), timelineStart);
-    // COLUMN_HEADER_HEIGHT is approximate — close enough for scroll hinting.
     const scrollTop =
       COLUMN_HEADER_HEIGHT + todayTop - (vh - COLUMN_HEADER_HEIGHT) * 0.38;
     scrollRef.current.scrollTop = Math.max(0, scrollTop);
+
+    hasScrolledRef.current = true;
   }, [timelineStart]);
 
-  // ── Empty state ──────────────────────────────────────────────────────────────
   if (travelers.length === 0) {
     return <AddTravelerGhost onAddTraveler={onAddTraveler} />;
   }
 
-  // ── Shared sidebar column style ──────────────────────────────────────────────
   const sidebarSx = {
     width: SIDEBAR_WIDTH,
     minWidth: SIDEBAR_WIDTH,
@@ -85,7 +71,6 @@ export function TimelineView({
     borderRight: `1px solid ${tokens.border}`,
   } as const;
 
-  // Right-side spacer has no right border (it's the edge of the layout).
   const rightSidebarSx = {
     ...sidebarSx,
     borderRight: "none",
@@ -109,10 +94,8 @@ export function TimelineView({
             width: "100%",
           }}
         >
-          {/* Left placeholder — aligns with DateSidebar */}
           <Box sx={{ ...sidebarSx, alignSelf: "stretch" }} />
 
-          {/* Traveler header cells — natural height, no fixed constraint */}
           {travelers.map((traveler) => {
             const status = computeTravelerStatus(traveler);
             return (
@@ -136,7 +119,6 @@ export function TimelineView({
             );
           })}
 
-          {/* Right placeholder — mirrors CardsView's right gutter */}
           <Box sx={{ ...rightSidebarSx, alignSelf: "stretch" }} />
         </Box>
 
@@ -160,7 +142,6 @@ export function TimelineView({
             />
           ))}
 
-          {/* Right sidebar spacer — blank column matching CardsView layout */}
           <Box
             sx={{
               ...rightSidebarSx,
