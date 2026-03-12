@@ -1,5 +1,6 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import Box from "@mui/material/Box";
+import { keyframes } from "@mui/system";
 import { Traveler, Trip } from "@/types";
 import type { ShareableState } from "@/types";
 import { tokens } from "@/styles/theme";
@@ -15,10 +16,43 @@ import { ShareModal } from "./components/ShareModal";
 import { LoadingScreen } from "./components/LoadingScreen";
 
 // ---------------------------------------------------------------------------
+// Animation constants
+// ---------------------------------------------------------------------------
+
+/** Minimum time the loading screen is visible, in ms. */
+const MIN_LOAD_MS = 650;
+
+/** Duration of the crossfade between loader and content, in ms. */
+const FADE_MS = 300;
+
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to   { opacity: 1; }
+`;
+
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to   { opacity: 0; }
+`;
+
+// ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
 type CalcView = "timeline" | "cards";
+
+/**
+ * loading  — loader visible, content not yet mounted
+ * fading   — loader fading out, content fading in (both in DOM)
+ * ready    — loader unmounted, content fully visible
+ *
+ * Derived — never stored in state — so no setState-in-effect cascade.
+ *
+ *   animationComplete=false, minTimeDone=false, hydrationDone=false → loading
+ *   animationComplete=false, minTimeDone=true,  hydrationDone=true  → fading
+ *   animationComplete=true                                          → ready
+ */
+type LoadPhase = "loading" | "fading" | "ready";
 
 interface ModalState {
   open: boolean;
@@ -58,9 +92,31 @@ export function CalculatorPage() {
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
 
-  // True until useUrlSync has finished its one-time hydration attempt.
-  // Prevents the AddTravelerGhost from flashing before saved data loads.
-  const [isHydrating, setIsHydrating] = useState(true);
+  // ── Load phase (derived) ─────────────────────────────────────────────────
+  //
+  // Three primitive booleans — each set by a single, non-cascading source:
+  //   minTimeDone      ← setTimeout callback (external)
+  //   hydrationDone    ← useUrlSync onHydrated callback (external)
+  //   animationComplete ← onAnimationEnd DOM event (external)
+  //
+  // `phase` is computed from them inline; no syncing effect needed.
+
+  const [minTimeDone, setMinTimeDone] = useState(false);
+  const [hydrationDone, setHydrationDone] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false);
+
+  const phase: LoadPhase = animationComplete
+    ? "ready"
+    : minTimeDone && hydrationDone
+      ? "fading"
+      : "loading";
+
+  // Minimum display timer — driven by an external system (setTimeout), so
+  // calling setState in its callback is the correct pattern.
+  useEffect(() => {
+    const id = setTimeout(() => setMinTimeDone(true), MIN_LOAD_MS);
+    return () => clearTimeout(id);
+  }, []);
 
   // ── URL / localStorage sync ───────────────────────────────────────────────
   const shareableState = useMemo<ShareableState>(
@@ -71,7 +127,7 @@ export function CalculatorPage() {
   const { shareableUrl, copyShareableUrl } = useUrlSync({
     state: shareableState,
     onHydrate: (s) => setTravelers(s.travelers),
-    onHydrated: () => setIsHydrating(false),
+    onHydrated: () => setHydrationDone(true),
   });
 
   // ── Traveler actions ─────────────────────────────────────────────────────
@@ -165,25 +221,70 @@ export function CalculatorPage() {
         onClearAll={handleClearAllTrips}
       />
 
-      {/* Content area: hold on LoadingScreen until hydration settles */}
-      {isHydrating ? (
-        <LoadingScreen />
-      ) : view === "timeline" ? (
-        <TimelineView
-          travelers={travelers}
-          onAddTrip={handleOpenAddTrip}
-          onEditTrip={handleOpenEditTrip}
-          onDeleteTraveler={handleDeleteTraveler}
-          onAddTraveler={handleAddTraveler}
-        />
-      ) : (
-        <CardsView
-          travelers={travelers}
-          onAddTrip={handleOpenAddTrip}
-          onEditTrip={handleOpenEditTrip}
-          onDeleteTraveler={handleDeleteTraveler}
-        />
-      )}
+      {/*
+       * Content area — a relative container so the loading screen can sit
+       * absolutely on top of the view during the crossfade.
+       */}
+      <Box sx={{ flex: 1, position: "relative", overflow: "hidden" }}>
+        {/* ── App content ─────────────────────────────────────────────────
+         * Mounted as soon as we enter "fading" so it's already rendering
+         * while the loader is fading out above it.
+         */}
+        {phase !== "loading" && (
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              flexDirection: "column",
+              animation: `${fadeIn} ${FADE_MS}ms ease-out both`,
+            }}
+          >
+            {view === "timeline" ? (
+              <TimelineView
+                travelers={travelers}
+                onAddTrip={handleOpenAddTrip}
+                onEditTrip={handleOpenEditTrip}
+                onDeleteTraveler={handleDeleteTraveler}
+                onAddTraveler={handleAddTraveler}
+              />
+            ) : (
+              <CardsView
+                travelers={travelers}
+                onAddTrip={handleOpenAddTrip}
+                onEditTrip={handleOpenEditTrip}
+                onDeleteTraveler={handleDeleteTraveler}
+              />
+            )}
+          </Box>
+        )}
+
+        {/* ── Loading screen ───────────────────────────────────────────────
+         * Sits above the content via z-index. When phase reaches "fading"
+         * the fadeOut animation runs; onAnimationEnd flips animationComplete
+         * which derives phase to "ready" and removes this from the DOM.
+         */}
+        {phase !== "ready" && (
+          <Box
+            onAnimationEnd={
+              phase === "fading" ? () => setAnimationComplete(true) : undefined
+            }
+            sx={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 1,
+              display: "flex",
+              flexDirection: "column",
+              animation:
+                phase === "fading"
+                  ? `${fadeOut} ${FADE_MS}ms ease-out forwards`
+                  : "none",
+            }}
+          >
+            <LoadingScreen />
+          </Box>
+        )}
+      </Box>
 
       {/* Traveler modal */}
       <TravelerModal
