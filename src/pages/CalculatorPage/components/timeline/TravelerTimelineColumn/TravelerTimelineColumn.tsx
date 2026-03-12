@@ -1,3 +1,4 @@
+import { useRef, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { Traveler, Trip } from "@/types";
 
@@ -7,7 +8,11 @@ import {
   dateToTop,
   computeTotalHeight,
   getTripGeometry,
+  computeLaneAssignments,
   COLUMN_MIN_WIDTH,
+  CARD_LEFT_BASE,
+  CARD_RIGHT_MARGIN,
+  LANE_GAP,
 } from "@/features/calculator/utils/timelineLayout";
 import { computeStatusAtTripExit } from "../../travelers/travelerStatus";
 import { today as getToday } from "@/features/calculator/utils/dates";
@@ -22,15 +27,10 @@ interface TravelerTimelineColumnProps {
 /**
  * Card-body canvas for one traveler in the timeline.
  *
- * Intentionally has no header — the header lives in TimelineView's unified
- * sticky header row. This component is purely the scrollable card area.
- *
- * z-index ladder within this canvas:
- *   Hovered card    50  (managed inside TimelineTripCard)
- *   Cards         4…4+n (later entry = higher, covers min-height overlap)
- *   Add button       3
- *   Today line       2
- *   Shading        0–1
+ * Uses a ResizeObserver to track the column's actual rendered width so that
+ * lane geometry is always computed against the real pixel width rather than
+ * a fallback constant. This avoids the "all cards are 40% wide" bug that
+ * occurs when offsetWidth is read synchronously during render (before layout).
  */
 export function TravelerTimelineColumn({
   traveler,
@@ -38,19 +38,66 @@ export function TravelerTimelineColumn({
   onAddTrip,
   onEditTrip,
 }: TravelerTimelineColumnProps) {
+  const columnRef = useRef<HTMLDivElement>(null);
+  const [columnWidth, setColumnWidth] = useState(COLUMN_MIN_WIDTH);
+
+  // ResizeObserver keeps columnWidth in sync with the actual rendered width.
+  // Fires once after mount (with the real width) and again on any resize.
+  useEffect(() => {
+    const el = columnRef.current;
+    if (!el) return;
+
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0]?.contentRect.width;
+      if (width && width > 0) setColumnWidth(width);
+    });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const today = getToday();
   const todayTop = dateToTop(today, timelineStart);
   const totalHeight = computeTotalHeight(timelineStart);
 
-  // Later entry date = higher base z so min-height expansion doesn't bury newer trips.
-  const sortedTripIds = [...traveler.trips]
-    .sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1))
-    .map((t) => t.id);
+  const sortedTrips = [...traveler.trips].sort((a, b) =>
+    a.entryDate < b.entryDate ? -1 : 1,
+  );
+
+  const geometries = new Map(
+    sortedTrips.map((trip) => [trip.id, getTripGeometry(trip, timelineStart)]),
+  );
+
+  const laneAssignments = computeLaneAssignments(
+    sortedTrips.map((trip) => {
+      const g = geometries.get(trip.id)!;
+      return { id: trip.id, top: g.top, height: g.height };
+    }),
+    columnWidth,
+  );
+
+  const availableWidth = columnWidth - CARD_LEFT_BASE - CARD_RIGHT_MARGIN;
+
+  function resolveCardGeometry(tripId: string): {
+    cardLeft: number;
+    cardWidth: number;
+  } {
+    const { laneIndex, numLanes } = laneAssignments.get(tripId) ?? {
+      laneIndex: 0,
+      numLanes: 1,
+    };
+    const laneWidth = availableWidth / numLanes;
+    const cardLeft = CARD_LEFT_BASE + laneIndex * laneWidth;
+    const cardWidth =
+      laneIndex < numLanes - 1 ? laneWidth - LANE_GAP : laneWidth;
+    return { cardLeft, cardWidth };
+  }
 
   const BASE_Z = 4;
 
   return (
     <Box
+      ref={columnRef}
       sx={{
         position: "relative",
         zIndex: 1,
@@ -130,11 +177,11 @@ export function TravelerTimelineColumn({
       />
 
       {/* Trip cards */}
-      {traveler.trips.map((trip) => {
+      {sortedTrips.map((trip, rank) => {
         const { top, height, naturalHeight, durationDays, layoutMode } =
-          getTripGeometry(trip, timelineStart);
+          geometries.get(trip.id)!;
         const statusAtExit = computeStatusAtTripExit(traveler, trip.id);
-        const rank = sortedTripIds.indexOf(trip.id);
+        const { cardLeft, cardWidth } = resolveCardGeometry(trip.id);
 
         return (
           <TimelineTripCard
@@ -146,6 +193,8 @@ export function TravelerTimelineColumn({
             statusAtExit={statusAtExit}
             durationDays={durationDays}
             layoutMode={layoutMode}
+            cardLeft={cardLeft}
+            cardWidth={cardWidth}
             baseZIndex={BASE_Z + rank}
             onEdit={() => onEditTrip(traveler.id, trip)}
           />
