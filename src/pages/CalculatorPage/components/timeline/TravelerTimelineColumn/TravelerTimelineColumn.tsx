@@ -27,10 +27,9 @@ interface TravelerTimelineColumnProps {
 /**
  * Card-body canvas for one traveler in the timeline.
  *
- * Uses a ResizeObserver to track the column's actual rendered width so that
- * lane geometry is always computed against the real pixel width rather than
- * a fallback constant. This avoids the "all cards are 40% wide" bug that
- * occurs when offsetWidth is read synchronously during render (before layout).
+ * Resolves lane geometry (cardLeft, cardWidth) and passes raw pixel values to
+ * TimelineTripCard, which is purely presentational. The card derives its own
+ * display decisions (what content to show) from its rendered height.
  */
 export function TravelerTimelineColumn({
   traveler,
@@ -41,17 +40,13 @@ export function TravelerTimelineColumn({
   const columnRef = useRef<HTMLDivElement>(null);
   const [columnWidth, setColumnWidth] = useState(COLUMN_MIN_WIDTH);
 
-  // ResizeObserver keeps columnWidth in sync with the actual rendered width.
-  // Fires once after mount (with the real width) and again on any resize.
   useEffect(() => {
     const el = columnRef.current;
     if (!el) return;
-
     const observer = new ResizeObserver((entries) => {
       const width = entries[0]?.contentRect.width;
       if (width && width > 0) setColumnWidth(width);
     });
-
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -178,8 +173,9 @@ export function TravelerTimelineColumn({
 
       {/* Trip cards */}
       {sortedTrips.map((trip, rank) => {
-        const { top, height, naturalHeight, durationDays, layoutMode } =
-          geometries.get(trip.id)!;
+        const { top, height, naturalHeight, durationDays } = geometries.get(
+          trip.id,
+        )!;
         const statusAtExit = computeStatusAtTripExit(traveler, trip.id);
         const { cardLeft, cardWidth } = resolveCardGeometry(trip.id);
 
@@ -192,7 +188,6 @@ export function TravelerTimelineColumn({
             naturalHeight={naturalHeight}
             statusAtExit={statusAtExit}
             durationDays={durationDays}
-            layoutMode={layoutMode}
             cardLeft={cardLeft}
             cardWidth={cardWidth}
             baseZIndex={BASE_Z + rank}

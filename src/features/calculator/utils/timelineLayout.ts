@@ -9,7 +9,7 @@ import {
 
 // ─── Layout constants ─────────────────────────────────────────────────────────
 
-export const PX_PER_DAY = 4;
+export const PX_PER_DAY = 3;
 
 /**
  * Approximate height of the sticky header row.
@@ -18,24 +18,27 @@ export const PX_PER_DAY = 4;
 export const COLUMN_HEADER_HEIGHT = 78;
 
 /** Minimum rendered height for any trip card, regardless of duration. */
-export const CARD_MIN_HEIGHT = 32;
-/** Cards below this render in "pill" layout. */
-export const CARD_COMPACT_THRESHOLD = 48;
-/** Cards at or above this render in "full" layout; between → "compact". */
-export const CARD_FULL_THRESHOLD = 64;
+export const CARD_MIN_HEIGHT = 28;
+
+// ─── Card display thresholds ──────────────────────────────────────────────────
+//
+// Rather than a "layout mode" enum, the card derives what to show directly
+// from its rendered height against these two thresholds. This gives finer
+// control and makes intermediate sizes (e.g. 36px) well-defined.
+//
+// At CARD_MIN_HEIGHT (24px):
+//   → destination name only, duration suffix, tooltip for everything else.
+//
+// At SHOW_DATE_THRESHOLD (42px):
+//   → adds the date range line. Duration moves from inline suffix to badge row.
+//
+// At SHOW_BADGE_THRESHOLD (58px):
+//   → adds the region and remaining-days badge row.
+
+export const SHOW_DATE_THRESHOLD = 42;
+export const SHOW_BADGE_THRESHOLD = 58;
 
 // ─── Lane layout ──────────────────────────────────────────────────────────────
-//
-// Overlapping cards are split into equal-width lanes within their overlap group.
-// The available column width is divided evenly across all lanes in the group —
-// no offsets, just equal slices. Cards in non-overlapping groups always occupy
-// the full width.
-//
-// CARD_LEFT_BASE: left margin from column edge to the first lane.
-// CARD_RIGHT_MARGIN: gap between the last lane and the column right edge.
-// LANE_GAP: horizontal gap between adjacent lanes so card borders don't merge.
-// MIN_CARD_WIDTH: floor on lane width — prevents cards becoming unreadable.
-//   At MIN_CARD_WIDTH, no more lanes are opened (greedy algorithm is capped).
 
 export const CARD_LEFT_BASE = 20;
 export const CARD_RIGHT_MARGIN = 10;
@@ -84,14 +87,11 @@ export function dateToTop(date: Date, timelineStart: Date): number {
   return differenceInCalendarDays(date, timelineStart) * PX_PER_DAY;
 }
 
-export type CardLayoutMode = "pill" | "compact" | "full";
-
 export interface TripGeometry {
   top: number;
   height: number;
   naturalHeight: number;
   durationDays: number;
-  layoutMode: CardLayoutMode;
 }
 
 export function getTripGeometry(trip: Trip, timelineStart: Date): TripGeometry {
@@ -107,25 +107,13 @@ export function getTripGeometry(trip: Trip, timelineStart: Date): TripGeometry {
   const naturalHeight = visualDays * PX_PER_DAY;
   const height = Math.max(CARD_MIN_HEIGHT, naturalHeight);
 
-  const layoutMode: CardLayoutMode =
-    height >= CARD_FULL_THRESHOLD
-      ? "full"
-      : height >= CARD_COMPACT_THRESHOLD
-        ? "compact"
-        : "pill";
-
-  return { top, height, naturalHeight, durationDays, layoutMode };
+  return { top, height, naturalHeight, durationDays };
 }
 
 // ─── Lane assignment ──────────────────────────────────────────────────────────
 
 export interface LaneAssignment {
-  /** 0-based index of this card's lane within its overlap group. */
   laneIndex: number;
-  /**
-   * Total number of lanes in this card's overlap group.
-   * Cards in a non-overlapping group always get numLanes = 1 (full width).
-   */
   numLanes: number;
 }
 
@@ -133,19 +121,16 @@ export interface LaneAssignment {
  * Assign each card an equal-width lane within its overlap group.
  *
  * An "overlap group" is a connected component of cards whose rendered
- * intervals [top, top+height] mutually touch or overlap. Within a group,
- * the column is divided into `numLanes` equal slices and each card occupies
- * exactly one slice.
+ * intervals [top, top+height] touch or overlap. Within a group the column
+ * is divided into numLanes equal slices. Cards outside any overlap group
+ * always get numLanes = 1 (full available width).
  *
  * Algorithm:
- *   1. Sort cards by top.
- *   2. Greedy lane assignment — find first free lane (laneBottom ≤ card.top).
- *      Open a new lane if none is free, subject to MIN_CARD_WIDTH floor.
- *   3. Union-Find to group all mutually overlapping cards into connected
- *      components.
- *   4. numLanes for a group = highest lane index in the group + 1.
- *
- * Returns Map<tripId, LaneAssignment>.
+ *   1. Sort by top. Greedy lane allocation — first free lane wins; open a new
+ *      lane if none free, subject to MIN_CARD_WIDTH floor; at cap reuse the
+ *      lane ending soonest.
+ *   2. Union-find to build connected overlap components.
+ *   3. numLanes per group = highest laneIndex in group + 1.
  */
 export function computeLaneAssignments(
   cards: Array<{ id: string; top: number; height: number }>,
@@ -154,13 +139,11 @@ export function computeLaneAssignments(
   if (cards.length === 0) return new Map();
 
   const availableWidth = columnWidth - CARD_LEFT_BASE - CARD_RIGHT_MARGIN;
-  // Maximum lanes before cards become too narrow to read.
   const maxLanes = Math.max(1, Math.floor(availableWidth / MIN_CARD_WIDTH));
 
   const sorted = [...cards].sort((a, b) => a.top - b.top);
 
-  // ── Step 1: greedy lane assignment ──────────────────────────────────────────
-  // laneBottoms[i] = pixel coordinate where the last card in lane i ends.
+  // ── Step 1: greedy lane allocation ──────────────────────────────────────────
   const laneBottoms: number[] = [];
   const laneIndexMap = new Map<string, number>();
 
@@ -176,11 +159,9 @@ export function computeLaneAssignments(
 
     if (assignedLane === -1) {
       if (laneBottoms.length < maxLanes) {
-        // Open a new lane.
         assignedLane = laneBottoms.length;
         laneBottoms.push(0);
       } else {
-        // At width cap — reuse the lane whose last card ends soonest.
         assignedLane = laneBottoms.reduce(
           (best, bottom, lane) => (bottom < laneBottoms[best] ? lane : best),
           0,
@@ -193,7 +174,6 @@ export function computeLaneAssignments(
   }
 
   // ── Step 2: union-find overlap groups ───────────────────────────────────────
-  // Two cards are in the same group if their rendered intervals overlap.
   const parent = new Map<string, string>(sorted.map((c) => [c.id, c.id]));
 
   function find(id: string): string {
@@ -204,18 +184,17 @@ export function computeLaneAssignments(
     parent.set(find(a), find(b));
   }
 
-  // O(n²) — fine for the small number of trips per traveler.
   for (let i = 0; i < sorted.length; i++) {
     for (let j = i + 1; j < sorted.length; j++) {
       const a = sorted[i];
       const b = sorted[j];
-      const overlaps = a.top < b.top + b.height && b.top < a.top + a.height;
-      if (overlaps) union(a.id, b.id);
+      if (a.top < b.top + b.height && b.top < a.top + a.height) {
+        union(a.id, b.id);
+      }
     }
   }
 
-  // ── Step 3: compute numLanes per group ──────────────────────────────────────
-  // numLanes = highest lane index in the group + 1.
+  // ── Step 3: numLanes per group ───────────────────────────────────────────────
   const groupMaxLane = new Map<string, number>();
   for (const card of sorted) {
     const root = find(card.id);

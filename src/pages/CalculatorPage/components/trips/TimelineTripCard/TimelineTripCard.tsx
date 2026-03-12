@@ -4,7 +4,10 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import type { Trip } from "@/types";
 import { VisaRegion } from "@/types";
-import type { CardLayoutMode } from "@/features/calculator/utils/timelineLayout";
+import {
+  SHOW_DATE_THRESHOLD,
+  SHOW_BADGE_THRESHOLD,
+} from "@/features/calculator/utils/timelineLayout";
 import { TravelerStatus } from "../../travelers/travelerStatus";
 import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
 
@@ -48,35 +51,12 @@ function TripBadge({
 interface TimelineTripCardProps {
   trip: Trip;
   top: number;
-  /** Rendered (clamped) height in pixels. */
   height: number;
-  /** Natural height (durationDays × PX_PER_DAY) — used for tooltip context. */
   naturalHeight: number;
   statusAtExit: TravelerStatus;
   durationDays: number;
-  /**
-   * Layout density, computed by the parent from rendered height vs thresholds.
-   *
-   * - "pill"    — 32–47px: single line (destination · Xd), tooltip for detail.
-   * - "compact" — 48–63px: destination + date range line + duration badge.
-   * - "full"    — 64px+  : full card with all badges.
-   */
-  layoutMode: CardLayoutMode;
-  /**
-   * Absolute pixel position from the column's left edge.
-   * Computed by TravelerTimelineColumn from lane index and lane width.
-   */
   cardLeft: number;
-  /**
-   * Absolute pixel width of this card.
-   * For lane-0 cards with no overlap this equals the full available width.
-   * For overlapping cards this equals availableWidth / numLanes (minus gap).
-   */
   cardWidth: number;
-  /**
-   * Base z-index derived from entry date rank (later entry = higher value).
-   * Card bumps to 50 on hover so it always reads above neighbours.
-   */
   baseZIndex: number;
   onEdit: () => void;
 }
@@ -86,11 +66,14 @@ interface TimelineTripCardProps {
 /**
  * Absolutely positioned trip card in the timeline view.
  *
- * Purely presentational — all layout decisions (position, size, z-index) are
- * computed by TravelerTimelineColumn and passed as props.
+ * Content is derived directly from rendered height against two named thresholds
+ * from timelineLayout.ts — no layoutMode enum, no separate render blocks.
  *
- * Uses `left` + `width` (not `right`) so overlapping cards can be sized
- * independently within their equal-width lane slots.
+ *   height < SHOW_DATE_THRESHOLD  → destination + duration suffix only
+ *   height >= SHOW_DATE_THRESHOLD → adds date range line; duration moves to badge
+ *   height >= SHOW_BADGE_THRESHOLD → adds region + remaining-days badges
+ *
+ * Tooltip is shown whenever badges are hidden so detail is never lost.
  */
 export function TimelineTripCard({
   trip,
@@ -99,7 +82,6 @@ export function TimelineTripCard({
   naturalHeight,
   statusAtExit,
   durationDays,
-  layoutMode,
   cardLeft,
   cardWidth,
   baseZIndex,
@@ -112,6 +94,10 @@ export function TimelineTripCard({
   const isSchengen = trip.region === VisaRegion.Schengen;
   const isExpanded = naturalHeight < height;
 
+  // Display flags — derived from height, not a layout mode enum.
+  const showDateRange = height >= SHOW_DATE_THRESHOLD;
+  const showBadges = height >= SHOW_BADGE_THRESHOLD;
+
   // Accent colour
   const accentColor = isPlanned
     ? tokens.amber
@@ -120,13 +106,11 @@ export function TimelineTripCard({
       : tokens.border;
 
   // Region label + colours
-  const regionLabel = isPlanned
-    ? "Planned"
-    : isOngoing
-      ? "Ongoing"
-      : isSchengen
-        ? "Schengen"
-        : "Elsewhere";
+  const regionLabel = isOngoing
+    ? "Ongoing"
+    : isSchengen
+      ? "Schengen"
+      : "Elsewhere";
   const regionBg = isPlanned
     ? tokens.amberBg
     : isSchengen
@@ -152,25 +136,26 @@ export function TimelineTripCard({
         ? tokens.amberText
         : tokens.redText;
 
-  // Tooltip for pill/compact modes so detail is never truly hidden.
-  const tooltipText = [
-    trip.destination || "—",
-    fmtDateRange(trip.entryDate, trip.exitDate),
-    `${durationDays}d · ${regionLabel}`,
-    isSchengen ? `${statusAtExit.daysRemaining}d remaining` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
+  // Tooltip whenever badges aren't visible — ensures detail is never lost.
+  const tooltipText = !showBadges
+    ? [
+        trip.destination || "—",
+        fmtDateRange(trip.entryDate, trip.exitDate),
+        `${durationDays}d · ${regionLabel}`,
+        isSchengen ? `${statusAtExit.daysRemaining}d remaining` : "",
+      ]
+        .filter(Boolean)
+        .join("\n")
+    : undefined;
 
   return (
     <Box
-      title={layoutMode !== "full" ? tooltipText : undefined}
+      title={tooltipText}
       onClick={onEdit}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       sx={{
         position: "absolute",
-        // left + width (not right) so lane widths are independent.
         left: cardLeft,
         width: cardWidth,
         top,
@@ -201,19 +186,27 @@ export function TimelineTripCard({
           width: 3,
           bgcolor: accentColor,
           borderRadius: "8px 0 0 8px",
-          flexShrink: 0,
         }}
       />
 
-      {/* ── Pill layout (32–47px) ──────────────────────────────────────────
-          Single line: destination (truncated) + "· Xd" duration hint.
-      ─────────────────────────────────────────────────────────────────── */}
-      {layoutMode === "pill" && (
+      {/* ── Content ───────────────────────────────────────────────────────── */}
+      <Box
+        sx={{
+          pl: "10px",
+          pr: "8px",
+          pt: showDateRange ? "6px" : 0,
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: showDateRange ? "flex-start" : "center",
+          gap: "3px",
+          overflow: "hidden",
+          minHeight: 0,
+        }}
+      >
+        {/* Destination — always visible */}
         <Box
           sx={{
-            pl: "10px",
-            pr: "8px",
-            height: "100%",
             display: "flex",
             alignItems: "center",
             gap: "4px",
@@ -223,11 +216,11 @@ export function TimelineTripCard({
           <Typography
             sx={{
               fontFamily: tokens.fontDisplay,
-              fontSize: "0.78rem",
+              fontSize: "0.8rem",
               fontStyle: "italic",
               fontWeight: 400,
               color: tokens.navy,
-              lineHeight: 1,
+              lineHeight: 1.2,
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
@@ -237,113 +230,34 @@ export function TimelineTripCard({
           >
             {trip.destination || "—"}
           </Typography>
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.6rem",
-              fontWeight: 700,
-              color: isExpanded ? tokens.textGhost : tokens.textSoft,
-              lineHeight: 1,
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-            }}
-          >
-            · {durationDays}d
-          </Typography>
-        </Box>
-      )}
 
-      {/* ── Compact layout (48–63px) ───────────────────────────────────────
-          Destination + date range + duration badge.
-      ─────────────────────────────────────────────────────────────────── */}
-      {layoutMode === "compact" && (
-        <Box
-          sx={{
-            pl: "10px",
-            pr: "8px",
-            pt: "6px",
-            pb: "5px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "3px",
-            overflow: "hidden",
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: tokens.fontDisplay,
-              fontSize: "0.82rem",
-              fontStyle: "italic",
-              fontWeight: 400,
-              color: tokens.navy,
-              lineHeight: 1.2,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {trip.destination || "—"}
-          </Typography>
-          <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
+          {/* Duration suffix — only when date range line is hidden */}
+          {!showDateRange && (
             <Typography
               sx={{
                 fontFamily: tokens.fontBody,
-                fontSize: "0.65rem",
-                color: tokens.textSoft,
-                fontWeight: 500,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
+                fontSize: "0.6rem",
+                fontWeight: 700,
+                color: isExpanded ? tokens.textGhost : tokens.textSoft,
+                lineHeight: 1,
                 whiteSpace: "nowrap",
-                flex: "1 1 0",
-                minWidth: 0,
+                flexShrink: 0,
               }}
             >
-              {fmtDateRange(trip.entryDate, trip.exitDate)}
+              · {durationDays}d
             </Typography>
-            <TripBadge color={tokens.textSoft} bg={tokens.mist}>
-              {durationDays}d
-            </TripBadge>
-          </Box>
+          )}
         </Box>
-      )}
 
-      {/* ── Full layout (64px+) ────────────────────────────────────────────
-          Destination + date range + all badges.
-      ─────────────────────────────────────────────────────────────────── */}
-      {layoutMode === "full" && (
-        <Box
-          sx={{
-            pl: "10px",
-            pr: "8px",
-            pt: "7px",
-            pb: "6px",
-            flex: 1,
-            overflow: "hidden",
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: tokens.fontDisplay,
-              fontSize: "0.88rem",
-              fontStyle: "italic",
-              fontWeight: 400,
-              color: tokens.navy,
-              lineHeight: 1.25,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {trip.destination || "—"}
-          </Typography>
+        {/* Date range — shown at SHOW_DATE_THRESHOLD */}
+        {showDateRange && (
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
-              fontSize: "0.7rem",
+              fontSize: "0.65rem",
               color: tokens.textSoft,
               fontWeight: 500,
-              mt: "2px",
-              mb: "7px",
+              lineHeight: 1.2,
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
@@ -351,12 +265,18 @@ export function TimelineTripCard({
           >
             {fmtDateRange(trip.entryDate, trip.exitDate)}
           </Typography>
+        )}
+
+        {/* Badge row — shown at SHOW_BADGE_THRESHOLD */}
+        {showBadges && (
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
               gap: "4px",
-              flexWrap: "wrap",
+              flexWrap: "nowrap",
+              overflow: "hidden",
+              mt: "2px",
             }}
           >
             <TripBadge color={tokens.textSoft} bg={tokens.mist}>
@@ -371,8 +291,8 @@ export function TimelineTripCard({
               </TripBadge>
             )}
           </Box>
-        </Box>
-      )}
+        )}
+      </Box>
     </Box>
   );
 }
