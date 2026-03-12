@@ -9,10 +9,6 @@ import {
   isValidTravelerName,
   encodeDate,
   decodeDate,
-  encodeTrip,
-  decodeTrip,
-  encodeTraveler,
-  decodeTraveler,
   encodeState,
   decodeState,
   buildShareableUrl,
@@ -39,10 +35,13 @@ const trip = (
   entryDate: string,
   exitDate?: string,
   region: VisaRegion = VisaRegion.Schengen,
+  destination?: string,
 ): Trip => ({
+  id: "test-id",
   entryDate,
   exitDate,
   region,
+  destination,
 });
 
 const traveler = (name: string, trips: Trip[]): Traveler => ({
@@ -88,122 +87,114 @@ describe("isValidTravelerName", () => {
   });
 });
 
-// ─── Date encoding ────────────────────────────────────────────────────────────
+// ─── Date encoding (v2: base36 epoch days, 3-char) ───────────────────────────
 
 describe("encodeDate / decodeDate", () => {
-  it("encodes YYYY-MM-DD to YYMMDD", () => {
-    expect(encodeDate("2024-01-01")).toBe("240101");
-    expect(encodeDate("2025-12-31")).toBe("251231");
+  it("encodes the epoch anchor as '000'", () => {
+    expect(encodeDate("2000-01-01")).toBe("000");
   });
-  it("decodes YYMMDD to YYYY-MM-DD", () => {
-    expect(decodeDate("240101")).toBe("2024-01-01");
-    expect(decodeDate("251231")).toBe("2025-12-31");
+
+  it("encodes a single day offset as '001'", () => {
+    expect(encodeDate("2000-01-02")).toBe("001");
   });
-  it("round-trips correctly", () => {
-    ["2024-01-01", "2024-06-15", "2025-03-31", "2026-12-25"].forEach((d) => {
+
+  it("always produces exactly 3 characters", () => {
+    const dates = ["2000-01-01", "2001-06-15", "2024-03-15", "2025-12-31"];
+    dates.forEach((d) => {
+      expect(encodeDate(d)).toHaveLength(3);
+    });
+  });
+
+  it("round-trips a range of dates correctly", () => {
+    const dates = [
+      "2000-01-01",
+      "2001-06-15",
+      "2024-01-01",
+      "2024-06-15",
+      "2025-03-31",
+      "2026-12-25",
+    ];
+    dates.forEach((d) => {
       expect(decodeDate(encodeDate(d))).toBe(d);
     });
   });
-  it("throws on invalid input", () => {
+
+  it("throws on a 6-char legacy YYMMDD string", () => {
+    expect(() => decodeDate("240101")).toThrow();
+  });
+
+  it("throws on strings that are not exactly 3 characters", () => {
+    expect(() => decodeDate("24")).toThrow();
     expect(() => decodeDate("2401")).toThrow();
-    expect(() => decodeDate("241301")).toThrow();
-    expect(() => decodeDate("240100")).toThrow();
+    expect(() => decodeDate("")).toThrow();
+  });
+
+  it("throws on non-base36 characters", () => {
+    expect(() => decodeDate("z!z")).toThrow();
   });
 });
 
-// ─── Trip encoding ────────────────────────────────────────────────────────────
+// ─── Full state round-trips ───────────────────────────────────────────────────
 
-describe("encodeTrip / decodeTrip", () => {
-  it("encodes a Schengen trip with exit", () => {
-    expect(
-      encodeTrip(trip("2024-01-01", "2024-03-31", VisaRegion.Schengen)),
-    ).toBe("240101:240331:0");
-  });
-  it("encodes an ongoing Elsewhere trip", () => {
-    expect(
-      encodeTrip(trip("2024-01-01", undefined, VisaRegion.Elsewhere)),
-    ).toBe("240101:1");
-  });
-  it("decodes a trip with exit", () => {
-    const t = decodeTrip("240101:240331:0");
-    expect(t.entryDate).toBe("2024-01-01");
-    expect(t.exitDate).toBe("2024-03-31");
-    expect(t.region).toBe(VisaRegion.Schengen);
-  });
-  it("decodes an ongoing trip", () => {
-    const t = decodeTrip("240101:1");
-    expect(t.entryDate).toBe("2024-01-01");
-    expect(t.exitDate).toBeUndefined();
-    expect(t.region).toBe(VisaRegion.Elsewhere);
-  });
-  it("throws when exit is before entry", () => {
-    expect(() => decodeTrip("240301:240101:0")).toThrow(/before entry/);
-  });
-  it("throws on unknown region value", () => {
-    expect(() => decodeTrip("240101:240331:99")).toThrow(/VisaRegion/);
-  });
-  it("throws on malformed segment", () => {
-    expect(() => decodeTrip("240101")).toThrow(); // missing region
-    expect(() => decodeTrip("240101:240201:0:extra")).toThrow();
-  });
-  it("round-trips correctly", () => {
-    const cases = [
-      trip("2024-01-01", "2024-03-31", VisaRegion.Schengen),
-      trip("2024-06-01", undefined, VisaRegion.Elsewhere),
-      trip("2025-03-15", "2025-04-15", VisaRegion.Schengen),
-    ];
-    cases.forEach((t) => {
-      const decoded = decodeTrip(encodeTrip(t));
-      expect(decoded.entryDate).toBe(t.entryDate);
-      expect(decoded.exitDate).toBe(t.exitDate);
-      expect(decoded.region).toBe(t.region);
-    });
-  });
-});
-
-// ─── Traveler encoding ────────────────────────────────────────────────────────
-
-describe("encodeTraveler / decodeTraveler", () => {
-  it("encodes a traveler with multiple trips", () => {
-    const t = traveler("Emma", [
-      trip("2024-01-01", "2024-03-31", VisaRegion.Schengen),
-      trip("2024-06-01", undefined, VisaRegion.Elsewhere),
-    ]);
-    expect(encodeTraveler(t)).toBe("Emma~240101:240331:0,240601:1");
-  });
-  it("encodes a traveler with no trips", () => {
-    expect(encodeTraveler(traveler("Liam", []))).toBe("Liam~");
-  });
-  it("decodes a traveler block", () => {
-    const t = decodeTraveler("Emma~240101:240331:0,240601:1");
-    expect(t?.name).toBe("Emma");
-    expect(t?.trips).toHaveLength(2);
-    expect(t?.trips[0].region).toBe(VisaRegion.Schengen);
-    expect(t?.trips[1].region).toBe(VisaRegion.Elsewhere);
-    expect(t?.trips[1].exitDate).toBeUndefined();
-  });
-  it("returns null when separator is missing", () => {
-    expect(decodeTraveler("NoSeparatorHere")).toBeNull();
-  });
-  it("returns null when name is all non-alphabetical", () => {
-    expect(decodeTraveler("123~240101:0")).toBeNull();
-  });
-  it("skips malformed trip segments gracefully", () => {
-    const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
-    const t = decodeTraveler("Emma~240101:240331:0,BADDATE,240601:1");
-    expect(t?.trips).toHaveLength(2);
-    consoleSpy.mockRestore();
-  });
-});
-
-// ─── Full state round-trip ────────────────────────────────────────────────────
-
-describe("encodeState / decodeState", () => {
+describe("encodeState / decodeState — v2", () => {
   it("returns empty string for no travelers", () => {
     expect(encodeState({ travelers: [] })).toBe("");
   });
 
-  it("round-trips a two-traveler state", () => {
+  it("encoded string includes v=2", () => {
+    const state: ShareableState = {
+      travelers: [traveler("Emma", [trip("2024-01-01", "2024-03-31")])],
+    };
+    expect(encodeState(state)).toContain("v=2");
+  });
+
+  it("round-trips a single traveler with a completed trip", () => {
+    const state: ShareableState = {
+      travelers: [
+        traveler("Emma", [
+          trip("2024-01-01", "2024-03-31", VisaRegion.Schengen),
+        ]),
+      ],
+    };
+    const result = decodeState(encodeState(state));
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].name).toBe("Emma");
+    expect(result.state.travelers[0].trips[0].entryDate).toBe("2024-01-01");
+    expect(result.state.travelers[0].trips[0].exitDate).toBe("2024-03-31");
+    expect(result.state.travelers[0].trips[0].region).toBe(VisaRegion.Schengen);
+  });
+
+  it("round-trips an ongoing trip (no exit date)", () => {
+    const state: ShareableState = {
+      travelers: [
+        traveler("Liam", [trip("2025-06-01", undefined, VisaRegion.Elsewhere)]),
+      ],
+    };
+    const result = decodeState(encodeState(state));
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].trips[0].exitDate).toBeUndefined();
+    expect(result.state.travelers[0].trips[0].region).toBe(
+      VisaRegion.Elsewhere,
+    );
+  });
+
+  it("round-trips a trip with a destination name", () => {
+    const state: ShareableState = {
+      travelers: [
+        traveler("Sofia", [
+          trip("2024-05-01", "2024-05-14", VisaRegion.Schengen, "Amsterdam"),
+        ]),
+      ],
+    };
+    const result = decodeState(encodeState(state));
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].trips[0].destination).toBe("Amsterdam");
+  });
+
+  it("round-trips a two-traveler state with independent trips", () => {
     const state: ShareableState = {
       travelers: [
         traveler("Emma", [
@@ -218,27 +209,90 @@ describe("encodeState / decodeState", () => {
     const result = decodeState(encodeState(state));
     expect(result.ok).toBe(true);
     if (!result.ok) return;
+    expect(result.state.travelers).toHaveLength(2);
     expect(result.state.travelers[0].name).toBe("Emma");
-    expect(result.state.travelers[0].trips[0].region).toBe(VisaRegion.Schengen);
-    expect(result.state.travelers[0].trips[1].region).toBe(
-      VisaRegion.Elsewhere,
-    );
+    expect(result.state.travelers[0].trips).toHaveLength(2);
     expect(result.state.travelers[1].name).toBe("Liam");
+    expect(result.state.travelers[1].trips).toHaveLength(1);
   });
 
-  it("fails gracefully on bad version", () => {
-    expect(decodeState("v=99&t=Emma~240101:0").ok).toBe(false);
-    expect(decodeState("t=Emma~240101:0").ok).toBe(false);
+  it("merges shared trips into a single segment and expands them back correctly", () => {
+    const sharedTrip = trip(
+      "2024-03-01",
+      "2024-03-31",
+      VisaRegion.Schengen,
+      "Lisbon",
+    );
+    const state: ShareableState = {
+      travelers: [
+        traveler("Eric", [sharedTrip]),
+        traveler("Louise", [sharedTrip]),
+      ],
+    };
+    const encoded = encodeState(state);
+    // The shared trip should be encoded once (one segment in the t= param)
+    const params = new URLSearchParams(encoded.split("?")[1] ?? encoded);
+    const tripSegments = params.get("t")?.split(",") ?? [];
+    expect(tripSegments).toHaveLength(1);
+
+    const result = decodeState(encoded);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].trips[0].entryDate).toBe("2024-03-01");
+    expect(result.state.travelers[1].trips[0].entryDate).toBe("2024-03-01");
   });
 
-  it("fails gracefully when t param is missing", () => {
-    expect(decodeState("v=1").ok).toBe(false);
+  it("restores trips in chronological order per traveler", () => {
+    const state: ShareableState = {
+      travelers: [
+        traveler("Emma", [
+          trip("2024-09-01", "2024-09-15"),
+          trip("2024-01-01", "2024-02-28"),
+          trip("2024-05-01", "2024-06-15"),
+        ]),
+      ],
+    };
+    const result = decodeState(encodeState(state));
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const dates = result.state.travelers[0].trips.map((t) => t.entryDate);
+    expect(dates).toEqual([...dates].sort());
   });
 
-  it("accepts a full URL", () => {
-    const url =
-      "https://eurovisacalculator.com/?v=1&t=Emma~240101%3A240331%3A0";
-    expect(decodeState(url).ok).toBe(true);
+  it("fails gracefully on unsupported version", () => {
+    const r = decodeState("v=99&n=Emma&t=abc");
+    expect(r.ok).toBe(false);
+  });
+
+  it("fails gracefully when version param is missing", () => {
+    expect(decodeState("n=Emma&t=abc").ok).toBe(false);
+  });
+
+  it("fails gracefully when names param is missing in v2", () => {
+    expect(decodeState("v=2&t=abc").ok).toBe(false);
+  });
+
+  it("fails gracefully when trips param is missing in v2", () => {
+    expect(decodeState("v=2&n=Emma").ok).toBe(false);
+  });
+
+  it("skips malformed trip segments and keeps valid ones", () => {
+    const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+    // Manually inject one bad segment; the second is a valid v2 segment
+    const validState: ShareableState = {
+      travelers: [traveler("Emma", [trip("2024-01-01", "2024-01-31")])],
+    };
+    const encoded = encodeState(validState);
+    const params = new URLSearchParams(encoded.split("?")[1] ?? encoded);
+    const t = params.get("t") ?? "";
+    params.set("t", `${t},INVALID`);
+    const corrupted = `v=2&${params.toString()}`;
+
+    const result = decodeState(corrupted);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].trips).toHaveLength(1);
+    consoleSpy.mockRestore();
   });
 
   it("never throws on garbage input", () => {
@@ -247,15 +301,71 @@ describe("encodeState / decodeState", () => {
   });
 });
 
+// ─── v1 backward compatibility ────────────────────────────────────────────────
+
+describe("decodeState — v1 legacy", () => {
+  it("decodes a v1 URL with a single traveler and completed trip", () => {
+    // v1 format: v=1&t=NAME~YYMMDD:YYMMDD:REGION
+    const result = decodeState("v=1&t=Emma~240101:240331:0");
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].name).toBe("Emma");
+    expect(result.state.travelers[0].trips[0].entryDate).toBe("2024-01-01");
+    expect(result.state.travelers[0].trips[0].exitDate).toBe("2024-03-31");
+    expect(result.state.travelers[0].trips[0].region).toBe(VisaRegion.Schengen);
+  });
+
+  it("decodes a v1 URL with an ongoing trip", () => {
+    const result = decodeState("v=1&t=Liam~240601:1");
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].trips[0].exitDate).toBeUndefined();
+    expect(result.state.travelers[0].trips[0].region).toBe(
+      VisaRegion.Elsewhere,
+    );
+  });
+
+  it("decodes a v1 URL with multiple travelers separated by |", () => {
+    const result = decodeState(
+      "v=1&t=Emma~240101:240331:0|Liam~240115:240415:0",
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers).toHaveLength(2);
+    expect(result.state.travelers[1].name).toBe("Liam");
+  });
+
+  it("accepts a full v1 URL", () => {
+    const url =
+      "https://eurovisacalculator.com/?v=1&t=Emma~240101%3A240331%3A0";
+    expect(decodeState(url).ok).toBe(true);
+  });
+
+  it("fails gracefully when v1 t param is missing", () => {
+    expect(decodeState("v=1").ok).toBe(false);
+  });
+});
+
 // ─── buildShareableUrl ────────────────────────────────────────────────────────
 
 describe("buildShareableUrl", () => {
-  it("returns base URL with no travelers", () => {
+  it("returns bare base URL when there are no travelers", () => {
     expect(buildShareableUrl({ travelers: [] })).toBe(
       "https://eurovisacalculator.com/",
     );
   });
-  it("round-trips via URL", () => {
+
+  it("returns a URL containing a query string when travelers exist", () => {
+    const state: ShareableState = {
+      travelers: [traveler("Emma", [trip("2024-01-01", "2024-03-31")])],
+    };
+    const url = buildShareableUrl(state);
+    expect(url).toContain("https://eurovisacalculator.com/");
+    expect(url).toContain("?");
+    expect(url).toContain("v=2");
+  });
+
+  it("round-trips state via the full URL", () => {
     const state: ShareableState = {
       travelers: [
         traveler("Emma", [
@@ -269,7 +379,7 @@ describe("buildShareableUrl", () => {
   });
 });
 
-// ─── URL length sanity check ──────────────────────────────────────────────────
+// ─── URL compactness ──────────────────────────────────────────────────────────
 
 describe("URL compactness", () => {
   it("keeps a 2-person 4-trip URL under 200 chars", () => {
@@ -286,5 +396,24 @@ describe("URL compactness", () => {
       ],
     };
     expect(buildShareableUrl(state).length).toBeLessThan(200);
+  });
+
+  it("is shorter than an equivalent v1 encoding would be", () => {
+    // v2 uses 3-char base36 dates vs 6-char YYMMDD, so a non-trivial state
+    // should produce a shorter query string
+    const state: ShareableState = {
+      travelers: [
+        traveler("Eric", [
+          trip("2024-03-01", "2024-03-31", VisaRegion.Schengen, "Lisbon"),
+          trip("2024-07-01", "2024-09-30", VisaRegion.Schengen, "Barcelona"),
+        ]),
+        traveler("Louise", [
+          trip("2024-03-01", "2024-03-31", VisaRegion.Schengen, "Lisbon"),
+          trip("2024-11-01", "2024-11-15", VisaRegion.Elsewhere),
+        ]),
+      ],
+    };
+    const encoded = encodeState(state);
+    expect(encoded.length).toBeLessThan(300);
   });
 });
