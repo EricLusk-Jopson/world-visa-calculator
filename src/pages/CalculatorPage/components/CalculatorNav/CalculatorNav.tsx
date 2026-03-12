@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { alpha } from "@mui/material/styles";
 import { tokens } from "@/styles/theme";
 import { NavButton } from "./NavButton";
 
@@ -60,7 +61,7 @@ const NAV_SX = {
   flexShrink: 0,
   zIndex: 10,
   position: "relative",
-  boxShadow: "0 2px 12px rgba(12,30,60,0.18)",
+  boxShadow: `0 2px 12px ${alpha(tokens.navy, 0.18)}`,
 } as const;
 
 const LOGO_DOT_SX = {
@@ -74,13 +75,13 @@ const LOGO_TEXT_SX = {
   fontFamily: tokens.fontDisplay,
   fontSize: "0.95rem",
   fontWeight: 600,
-  color: "#fff",
+  color: tokens.white,
   letterSpacing: "-0.01em",
 } as const;
 
 const VIEW_TOGGLE_WRAPPER_SX = {
   display: "flex",
-  bgcolor: "rgba(255,255,255,0.08)",
+  bgcolor: alpha(tokens.white, 0.08),
   borderRadius: "7px",
   p: "3px",
   gap: "2px",
@@ -102,11 +103,11 @@ const viewToggleButtonSx = (active: boolean) =>
     cursor: "pointer",
     transition: "all 0.15s",
     textTransform: "capitalize",
-    bgcolor: active ? "rgba(255,255,255,0.14)" : "transparent",
-    color: active ? "#fff" : "rgba(255,255,255,0.4)",
+    bgcolor: active ? alpha(tokens.white, 0.14) : "transparent",
+    color: active ? tokens.white : alpha(tokens.white, 0.4),
     "&:hover": {
-      bgcolor: active ? "rgba(255,255,255,0.14)" : "rgba(255,255,255,0.07)",
-      color: "#fff",
+      bgcolor: active ? alpha(tokens.white, 0.14) : alpha(tokens.white, 0.07),
+      color: tokens.white,
     },
   }) as const;
 

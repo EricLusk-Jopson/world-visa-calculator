@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import { alpha } from "@mui/material/styles";
 import { tokens } from "@/styles/theme";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -16,42 +17,47 @@ interface NavButtonProps {
 // ─── Variant styles ───────────────────────────────────────────────────────────
 
 const GHOST_STYLES = {
-  bgcolor: "rgba(255,255,255,0.08)",
-  border: "1px solid rgba(255,255,255,0.12)",
-  color: "rgba(255,255,255,0.65)",
+  bgcolor: alpha(tokens.white, 0.08),
+  border: `1px solid ${alpha(tokens.white, 0.12)}`,
+  color: alpha(tokens.white, 0.65),
   "&:hover:not(:disabled)": {
-    bgcolor: "rgba(255,255,255,0.14)",
-    borderColor: "rgba(255,255,255,0.28)",
-    color: "#fff",
+    bgcolor: alpha(tokens.white, 0.14),
+    borderColor: alpha(tokens.white, 0.28),
+    color: tokens.white,
   },
 } as const;
 
 const CTA_STYLES = {
   bgcolor: tokens.green,
   border: "1px solid transparent",
-  color: "#fff",
+  color: tokens.white,
   "&:hover:not(:disabled)": {
-    bgcolor: "#00A05C",
+    bgcolor: tokens.greenText, // darkened green, closest token
     borderColor: "transparent",
-    color: "#fff",
+    color: tokens.white,
   },
-} as const;
-
-const DISABLED_STYLES = {
-  bgcolor: "rgba(255,255,255,0.05)",
-  border: "1px solid transparent",
-  color: "rgba(255,255,255,0.2)",
-  cursor: "not-allowed",
 } as const;
 
 const DESTRUCTIVE_STYLES = {
   bgcolor: "transparent",
   border: "1px solid transparent",
-  color: "rgba(255,255,255,0.3)",
+  color: alpha(tokens.white, 0.3),
   "&:hover:not(:disabled)": {
-    bgcolor: `rgba(239,68,68,0.12)`,
-    borderColor: `rgba(239,68,68,0.3)`,
+    bgcolor: alpha(tokens.red, 0.12),
+    borderColor: alpha(tokens.red, 0.3),
     color: tokens.red,
+  },
+} as const;
+
+const DISABLED_STYLES = {
+  bgcolor: alpha(tokens.white, 0.05),
+  border: "1px solid transparent",
+  color: alpha(tokens.white, 0.2),
+  cursor: "not-allowed",
+  "&:hover": {
+    bgcolor: alpha(tokens.white, 0.05),
+    borderColor: "transparent",
+    color: alpha(tokens.white, 0.2),
   },
 } as const;
 
@@ -76,7 +82,6 @@ export function NavButton({
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
       sx={{
-        // Base
         display: "flex",
         alignItems: "center",
         gap: "5px",
@@ -88,7 +93,6 @@ export function NavButton({
         fontWeight: 600,
         cursor: "pointer",
         transition: "background 0.15s, border-color 0.15s, color 0.15s",
-        // Variant
         ...(disabled ? DISABLED_STYLES : VARIANT_MAP[variant]),
       }}
     >
