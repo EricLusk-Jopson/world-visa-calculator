@@ -10,7 +10,7 @@ interface CalculatorNavProps {
   onAddTraveler: () => void;
   onAddTrip: () => void;
   travelerCount: number;
-  onCopyLink: () => void;
+  onShare: () => void;
 }
 
 export function CalculatorNav({
@@ -19,7 +19,7 @@ export function CalculatorNav({
   onAddTraveler,
   onAddTrip,
   travelerCount,
-  onCopyLink,
+  onShare,
 }: CalculatorNavProps) {
   return (
     <Box
@@ -104,10 +104,10 @@ export function CalculatorNav({
 
       {/* Right actions */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        {/* Copy link */}
+        {/* Share */}
         <Box
           component="button"
-          onClick={onCopyLink}
+          onClick={onShare}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -126,27 +126,30 @@ export function CalculatorNav({
             "&:hover": {
               bgcolor: "rgba(255,255,255,0.14)",
               color: "#fff",
+              borderColor: "rgba(255,255,255,0.22)",
             },
           }}
         >
+          {/* Share / upload icon */}
           <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
             <path
-              d="M4 5.5a2 2 0 0 0 3 0L8.5 4A2.12 2.12 0 0 0 5.5 1L4.5 2"
+              d="M5.5 1v6.5M3 3.5L5.5 1 8 3.5"
               stroke="currentColor"
               strokeWidth="1.3"
               strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
-              d="M7 5.5a2 2 0 0 0-3 0L2.5 7A2.12 2.12 0 0 0 5.5 10L6.5 9"
+              d="M2 7.5v1.75C2 9.66 2.34 10 2.75 10h5.5C8.66 10 9 9.66 9 9.25V7.5"
               stroke="currentColor"
               strokeWidth="1.3"
               strokeLinecap="round"
             />
           </svg>
-          Copy link
+          Share
         </Box>
 
-        {/* Add Traveler — ghost style, secondary action */}
+        {/* Add Traveler */}
         <Box
           component="button"
           onClick={onAddTraveler}
@@ -182,7 +185,7 @@ export function CalculatorNav({
           Add Traveler
         </Box>
 
-        {/* Add Trip — green primary, most frequent action */}
+        {/* Add Trip */}
         <Box
           component="button"
           onClick={onAddTrip}

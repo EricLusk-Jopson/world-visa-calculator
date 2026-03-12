@@ -7,16 +7,24 @@
  * ───────────
  * ?v=1&t=<travelerBlock>|<travelerBlock>|…
  *
- * travelerBlock:  NAME~<tripBlock>,<tripBlock>,…
- * tripBlock:      YYMMDD:YYMMDD:R   (entry:exit:region)
- *                 YYMMDD:R          (ongoing — no exit yet)
+ * travelerBlock:  TRAVELER_NAME~<tripBlock>,<tripBlock>,…
+ * tripBlock (4 parts):  YYMMDD:YYMMDD:R:TRIP_NAME  (entry:exit:region:name)
+ * tripBlock (3 parts):  YYMMDD:YYMMDD:R            (entry:exit:region, no name — legacy)
+ *                       YYMMDD:R:TRIP_NAME          (ongoing with name)
+ *                       ↑ disambiguated by parts[1].length: 6 = date, 1 = region
+ * tripBlock (2 parts):  YYMMDD:R                   (ongoing, no name — legacy)
  *
- * R is the VisaRegion integer value (0, 1, 2, …).
- * Date encoding uses YYMMDD (6 chars) vs ISO YYYY-MM-DD (10 chars) — 40% shorter.
+ * R is the VisaRegion integer value (0, 1, 2, …) — always 1 char.
+ * Date segments are always 6 chars (YYMMDD). This lets the decoder distinguish
+ * "entry:exit:region" from "entry:region:name" unambiguously by part[1].length.
+ *
+ * TRIP_NAME is encodeURIComponent-encoded so any character is safe within the
+ * segment. URLSearchParams double-encodes the % signs; .get() reverses one
+ * layer, and decodeURIComponent in the decoder reverses the inner layer.
  *
  * Delimiter summary:
  *   |  traveler separator
- *   ~  name and trips separator
+ *   ~  traveler name / trips separator
  *   ,  trip separator
  *   :  field separator within a trip
  *
@@ -24,8 +32,8 @@
  *
  * EXAMPLE
  * ───────
- * Emma (Schengen trip) and Liam (ongoing Elsewhere):
- *   ?v=1&t=Emma~240101:240301:0|Liam~240901:1
+ * Emma (named Schengen trip) and Liam (ongoing Elsewhere, no name):
+ *   ?v=1&t=Emma~240101:240301:0:Paris%20%26%20Lyon|Liam~240901:1
  */
 
 import { nanoid } from "nanoid";
@@ -111,36 +119,89 @@ const decodeRegion = (raw: string): VisaRegion => {
 
 /**
  * Encodes a single Trip.
- *   With exit:  "240101:240201:0"
- *   Ongoing:    "240101:0"
+ *   With exit + name:    "240101:240201:0:Paris%20%26%20Lyon"
+ *   With exit, no name:  "240101:240201:0"
+ *   Ongoing with name:   "240101:0:Rome"
+ *   Ongoing, no name:    "240101:0"
  */
 export const encodeTrip = (trip: Trip): string => {
   const entry = encodeDate(trip.entryDate);
   const exit = trip.exitDate ? encodeDate(trip.exitDate) : null;
   const region = encodeRegion(trip.region);
-  return exit
-    ? `${entry}${DELIM.field}${exit}${DELIM.field}${region}`
-    : `${entry}${DELIM.field}${region}`;
+  // Encode the name so any character (spaces, colons, etc.) is safe within
+  // the segment. Empty / missing names are omitted to keep URLs compact.
+  const name =
+    trip.destination && trip.destination.trim()
+      ? encodeURIComponent(trip.destination.trim())
+      : null;
+
+  if (exit) {
+    return name
+      ? `${entry}${DELIM.field}${exit}${DELIM.field}${region}${DELIM.field}${name}`
+      : `${entry}${DELIM.field}${exit}${DELIM.field}${region}`;
+  } else {
+    return name
+      ? `${entry}${DELIM.field}${region}${DELIM.field}${name}`
+      : `${entry}${DELIM.field}${region}`;
+  }
 };
 
 /**
  * Decodes a compact trip string back to a Trip object.
- * Expects either 2 fields (entry:region) or 3 fields (entry:exit:region).
+ *
+ * Part-count dispatch:
+ *   2 parts — entry:region          (ongoing, no name — legacy)
+ *   3 parts — entry:exit:region     (with exit, no name — legacy)  [parts[1].length === 6]
+ *             entry:region:name     (ongoing with name — new)       [parts[1].length < 6]
+ *   4 parts — entry:exit:region:name
+ *
+ * IDs are assigned with nanoid() so the decoded trip can be matched and edited
+ * within the session (ids are not encoded in the URL).
  */
 export const decodeTrip = (raw: string): Trip => {
   const parts = raw.trim().split(DELIM.field);
 
+  // ── 2 parts: legacy ongoing, no name ──────────────────────────────────────
   if (parts.length === 2) {
     return {
+      id: nanoid(),
       entryDate: decodeDate(parts[0]),
       region: decodeRegion(parts[1]),
     };
   }
 
+  // ── 3 parts: disambiguate by parts[1].length ──────────────────────────────
   if (parts.length === 3) {
+    if (parts[1].length === 6) {
+      // Legacy: entry:exit:region (no name)
+      const entryDate = decodeDate(parts[0]);
+      const exitDate = decodeDate(parts[1]);
+      const region = decodeRegion(parts[2]);
+
+      if (exitDate < entryDate) {
+        throw new Error(
+          `Exit date ${exitDate} is before entry date ${entryDate} in segment "${raw}"`,
+        );
+      }
+
+      return { id: nanoid(), entryDate, exitDate, region };
+    } else {
+      // New: entry:region:destination (ongoing with name)
+      return {
+        id: nanoid(),
+        entryDate: decodeDate(parts[0]),
+        region: decodeRegion(parts[1]),
+        destination: decodeURIComponent(parts[2]),
+      };
+    }
+  }
+
+  // ── 4 parts: entry:exit:region:name ───────────────────────────────────────
+  if (parts.length === 4) {
     const entryDate = decodeDate(parts[0]);
     const exitDate = decodeDate(parts[1]);
     const region = decodeRegion(parts[2]);
+    const destination = decodeURIComponent(parts[3]);
 
     if (exitDate < entryDate) {
       throw new Error(
@@ -148,7 +209,7 @@ export const decodeTrip = (raw: string): Trip => {
       );
     }
 
-    return { entryDate, exitDate, region };
+    return { id: nanoid(), entryDate, exitDate, region, destination };
   }
 
   throw new Error(`Malformed trip segment: "${raw}"`);

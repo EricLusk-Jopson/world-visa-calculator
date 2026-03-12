@@ -1,7 +1,9 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import Box from "@mui/material/Box";
 import { Traveler, Trip } from "@/types";
+import type { ShareableState } from "@/types";
 import { tokens } from "@/styles/theme";
+import { useUrlSync } from "@/features/sharing";
 import {
   CalculatorNav,
   CardsView,
@@ -9,6 +11,7 @@ import {
   TravelerModal,
   TripModal,
 } from "./components";
+import { ShareModal } from "./components/ShareModal";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -47,22 +50,23 @@ function makeTraveler(name: string): Traveler {
 // Component
 // ---------------------------------------------------------------------------
 
-/**
- * CalculatorPage
- *
- * Top-level page orchestrator. Owns:
- *  - travelers[] state (synced to URL + localStorage via useUrlSync)
- *  - view toggle (timeline | cards)
- *  - modal state machine (traveler modal, add-trip modal, edit-trip modal)
- *
- * Note: wire `useUrlSync(travelers, setTravelers)` here once the hook is
- * available in the project.
- */
 export function CalculatorPage() {
   // ── State ────────────────────────────────────────────────────────────────
   const [view, setView] = useState<CalcView>("timeline");
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+
+  // ── URL / localStorage sync ───────────────────────────────────────────────
+  const shareableState = useMemo<ShareableState>(
+    () => ({ travelers }),
+    [travelers],
+  );
+
+  const { shareableUrl, copyShareableUrl } = useUrlSync({
+    state: shareableState,
+    onHydrate: (s) => setTravelers(s.travelers),
+  });
 
   // ── Traveler actions ─────────────────────────────────────────────────────
 
@@ -89,16 +93,6 @@ export function CalculatorPage() {
     setModal({ open: true, kind: "trip", mode: "edit", travelerId, trip });
   }, []);
 
-  /**
-   * Receives the list of traveler IDs and a canonical trip object from the
-   * modal, then writes to each traveler independently:
-   *
-   * - Edit mode: travelerIds is always length-1; the trip is updated in-place
-   *   (matched by id).
-   * - Add mode: travelerIds may be 1-N; each traveler receives a fresh copy of
-   *   the trip with its own UUID, so no shared mutable reference exists between
-   *   travelers.
-   */
   const handleTripSave = useCallback((travelerIds: string[], trip: Trip) => {
     setTravelers((prev) =>
       prev.map((t) => {
@@ -107,14 +101,11 @@ export function CalculatorPage() {
         const exists = t.trips.some((x) => x.id === trip.id);
 
         if (exists) {
-          // Edit path: update the trip in-place (same id).
           return {
             ...t,
             trips: t.trips.map((x) => (x.id === trip.id ? trip : x)),
           };
         } else {
-          // Add path: assign a fresh UUID so each traveler owns an independent
-          // object — avoids any accidental shared identity between travelers.
           return {
             ...t,
             trips: [...t.trips, { ...trip, id: crypto.randomUUID() }],
@@ -138,14 +129,6 @@ export function CalculatorPage() {
     setModal(CLOSED_MODAL);
   }, [modal]);
 
-  // ── Copy link ─────────────────────────────────────────────────────────────
-
-  const handleCopyLink = useCallback(() => {
-    navigator.clipboard.writeText(window.location.href).catch(() => {
-      // Silently fail — clipboard not available in all contexts
-    });
-  }, []);
-
   // ── Render ───────────────────────────────────────────────────────────────
 
   return (
@@ -166,7 +149,7 @@ export function CalculatorPage() {
         onAddTraveler={handleAddTraveler}
         onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
         travelerCount={travelers.length}
-        onCopyLink={handleCopyLink}
+        onShare={() => setShareModalOpen(true)}
       />
 
       {/* Active view */}
@@ -184,7 +167,6 @@ export function CalculatorPage() {
           onAddTrip={handleOpenAddTrip}
           onEditTrip={handleOpenEditTrip}
           onDeleteTraveler={handleDeleteTraveler}
-          onAddTraveler={handleAddTraveler}
         />
       )}
 
@@ -205,6 +187,15 @@ export function CalculatorPage() {
         onSave={handleTripSave}
         onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
         onClose={() => setModal(CLOSED_MODAL)}
+      />
+
+      {/* Share modal */}
+      <ShareModal
+        open={shareModalOpen}
+        shareableUrl={shareableUrl}
+        onCopy={copyShareableUrl}
+        onClose={() => setShareModalOpen(false)}
+        travelerCount={travelers.length}
       />
     </Box>
   );
