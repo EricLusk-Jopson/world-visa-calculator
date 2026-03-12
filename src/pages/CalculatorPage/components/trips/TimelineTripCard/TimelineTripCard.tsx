@@ -365,39 +365,6 @@ export function TimelineTripCard({
               )}
             </Box>
           </Box>
-
-          {hovered && (
-            <Box
-              sx={{
-                px: "8px",
-                py: "4px",
-                borderTop: `1px solid ${tokens.mist}`,
-                display: "flex",
-                alignItems: "center",
-                gap: "4px",
-                bgcolor: "rgba(255,255,255,0.96)",
-                flexShrink: 0,
-              }}
-            >
-              <Box
-                component="span"
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.64rem",
-                  fontWeight: 600,
-                  px: "8px",
-                  py: "3px",
-                  borderRadius: "5px",
-                  bgcolor: tokens.mist,
-                  color: tokens.textSoft,
-                  cursor: "pointer",
-                  "&:hover": { bgcolor: tokens.navy, color: "#fff" },
-                }}
-              >
-                Edit
-              </Box>
-            </Box>
-          )}
         </>
       )}
     </Box>
