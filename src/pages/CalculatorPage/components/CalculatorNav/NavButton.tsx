@@ -3,7 +3,7 @@ import { tokens } from "@/styles/theme";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type NavButtonVariant = "ghost" | "cta";
+type NavButtonVariant = "ghost" | "cta" | "destructive";
 
 interface NavButtonProps {
   onClick: () => void;
@@ -44,9 +44,21 @@ const DISABLED_STYLES = {
   cursor: "not-allowed",
 } as const;
 
+const DESTRUCTIVE_STYLES = {
+  bgcolor: "transparent",
+  border: "1px solid transparent",
+  color: "rgba(255,255,255,0.3)",
+  "&:hover:not(:disabled)": {
+    bgcolor: `rgba(239,68,68,0.12)`,
+    borderColor: `rgba(239,68,68,0.3)`,
+    color: tokens.red,
+  },
+} as const;
+
 const VARIANT_MAP: Record<NavButtonVariant, object> = {
   ghost: GHOST_STYLES,
   cta: CTA_STYLES,
+  destructive: DESTRUCTIVE_STYLES,
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────

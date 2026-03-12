@@ -14,6 +14,7 @@ interface CalculatorNavProps {
   onAddTrip: () => void;
   travelerCount: number;
   onShare: () => void;
+  onClearAll: () => void;
 }
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -58,6 +59,7 @@ const NAV_SX = {
   px: "20px",
   flexShrink: 0,
   zIndex: 10,
+  position: "relative",
   boxShadow: "0 2px 12px rgba(12,30,60,0.18)",
 } as const;
 
@@ -82,6 +84,9 @@ const VIEW_TOGGLE_WRAPPER_SX = {
   borderRadius: "7px",
   p: "3px",
   gap: "2px",
+  position: "absolute",
+  left: "50%",
+  transform: "translateX(-50%)",
 } as const;
 
 const viewToggleButtonSx = (active: boolean) =>
@@ -114,6 +119,7 @@ export function CalculatorNav({
   onAddTrip,
   travelerCount,
   onShare,
+  onClearAll,
 }: CalculatorNavProps) {
   return (
     <Box component="nav" sx={NAV_SX}>
@@ -139,6 +145,14 @@ export function CalculatorNav({
 
       {/* Right actions */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <NavButton
+          variant="destructive"
+          onClick={onClearAll}
+          disabled={travelerCount === 0}
+        >
+          Clear All
+        </NavButton>
+
         <NavButton variant="ghost" onClick={onShare} icon={<ShareIcon />}>
           Share
         </NavButton>

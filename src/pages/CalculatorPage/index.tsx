@@ -129,6 +129,12 @@ export function CalculatorPage() {
     setModal(CLOSED_MODAL);
   }, [modal]);
 
+  // ── Clear all trips ───────────────────────────────────────────────────────
+
+  const handleClearAllTrips = useCallback(() => {
+    setTravelers((prev) => prev.map((t) => ({ ...t, trips: [] })));
+  }, []);
+
   // ── Render ───────────────────────────────────────────────────────────────
 
   return (
@@ -150,6 +156,7 @@ export function CalculatorPage() {
         onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
         travelerCount={travelers.length}
         onShare={() => setShareModalOpen(true)}
+        onClearAll={handleClearAllTrips}
       />
 
       {/* Active view */}
