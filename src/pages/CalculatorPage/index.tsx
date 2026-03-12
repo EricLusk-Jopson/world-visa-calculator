@@ -12,6 +12,7 @@ import {
   TripModal,
 } from "./components";
 import { ShareModal } from "./components/ShareModal";
+import { LoadingScreen } from "./components/LoadingScreen";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -57,6 +58,10 @@ export function CalculatorPage() {
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
 
+  // True until useUrlSync has finished its one-time hydration attempt.
+  // Prevents the AddTravelerGhost from flashing before saved data loads.
+  const [isHydrating, setIsHydrating] = useState(true);
+
   // ── URL / localStorage sync ───────────────────────────────────────────────
   const shareableState = useMemo<ShareableState>(
     () => ({ travelers }),
@@ -66,6 +71,7 @@ export function CalculatorPage() {
   const { shareableUrl, copyShareableUrl } = useUrlSync({
     state: shareableState,
     onHydrate: (s) => setTravelers(s.travelers),
+    onHydrated: () => setIsHydrating(false),
   });
 
   // ── Traveler actions ─────────────────────────────────────────────────────
@@ -148,7 +154,7 @@ export function CalculatorPage() {
         overflow: "hidden",
       }}
     >
-      {/* Nav */}
+      {/* Nav renders immediately — it has no dependency on traveler data */}
       <CalculatorNav
         view={view}
         onViewChange={setView}
@@ -159,8 +165,10 @@ export function CalculatorPage() {
         onClearAll={handleClearAllTrips}
       />
 
-      {/* Active view */}
-      {view === "timeline" ? (
+      {/* Content area: hold on LoadingScreen until hydration settles */}
+      {isHydrating ? (
+        <LoadingScreen />
+      ) : view === "timeline" ? (
         <TimelineView
           travelers={travelers}
           onAddTrip={handleOpenAddTrip}
