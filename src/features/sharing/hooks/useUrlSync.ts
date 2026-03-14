@@ -67,6 +67,11 @@ export interface UseUrlSyncOptions {
   /** Called once on mount with the hydrated state (from URL or localStorage). */
   onHydrate: (state: ShareableState) => void;
   /**
+   * Called once on mount after the hydration attempt settles, regardless of
+   * whether any data was found. Use this to clear a loading state.
+   */
+  onHydrated?: () => void;
+  /**
    * If true, the URL is updated on every state change.
    * Set to false when you want to prevent the URL from updating
    * (e.g. during a "what-if" ephemeral scenario).
@@ -87,6 +92,7 @@ export interface UseUrlSyncReturn {
 export const useUrlSync = ({
   state,
   onHydrate,
+  onHydrated,
   syncToUrl = true,
 }: UseUrlSyncOptions): UseUrlSyncReturn => {
   const hasMounted = useRef(false);
@@ -102,6 +108,7 @@ export const useUrlSync = ({
       onHydrate(urlResult.state);
       // Persist the URL state to localStorage so it survives navigation.
       saveToLocalStorage(urlResult.state);
+      onHydrated?.();
       return;
     }
 
@@ -109,10 +116,12 @@ export const useUrlSync = ({
     const lsState = loadFromLocalStorage();
     if (lsState && lsState.travelers.length > 0) {
       onHydrate(lsState);
+      onHydrated?.();
       return;
     }
 
     // 3. Nothing to hydrate — app starts with default empty state.
+    onHydrated?.();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Sync state => URL + localStorage ────────────────────────────────────────

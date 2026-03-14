@@ -21,11 +21,13 @@ export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
 // ─── Core Domain Types ────────────────────────────────────────────────────────
 
 export interface Trip {
-  /** ISO date string: YYYY-MM-DD */
-  entryDate: string;
-  /** ISO date string: YYYY-MM-DD — absent means the trip is ongoing */
-  exitDate?: string;
+  /** Unique ID — required for edit/delete targeting. */
+  id: string;
+  entryDate: string; // YYYY-MM-DD
+  exitDate?: string; // YYYY-MM-DD; undefined = ongoing
   region: VisaRegion;
+  /** Optional human label shown on trip cards (e.g. "Paris & Barcelona"). */
+  destination?: string;
 }
 
 export interface Traveler {
