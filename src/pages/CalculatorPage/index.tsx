@@ -14,15 +14,12 @@ import {
 } from "./components";
 import { ShareModal } from "./components/ShareModal";
 import { LoadingScreen } from "./components/LoadingScreen";
+import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripView";
+import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
 
-// ---------------------------------------------------------------------------
-// Animation constants
-// ---------------------------------------------------------------------------
+// ─── Animation constants ──────────────────────────────────────────────────────
 
-/** Minimum time the loading screen is visible, in ms. */
 const MIN_LOAD_MS = 650;
-
-/** Duration of the crossfade between loader and content, in ms. */
 const FADE_MS = 300;
 
 const fadeIn = keyframes`
@@ -35,33 +32,16 @@ const fadeOut = keyframes`
   to   { opacity: 0; }
 `;
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 type CalcView = "timeline" | "cards";
-
-/**
- * loading  — loader visible, content not yet mounted
- * fading   — loader fading out, content fading in (both in DOM)
- * ready    — loader unmounted, content fully visible
- *
- * Derived — never stored in state — so no setState-in-effect cascade.
- *
- *   animationComplete=false, minTimeDone=false, hydrationDone=false → loading
- *   animationComplete=false, minTimeDone=true,  hydrationDone=true  → fading
- *   animationComplete=true                                          → ready
- */
 type LoadPhase = "loading" | "fading" | "ready";
 
 interface ModalState {
   open: boolean;
   kind: "none" | "traveler" | "trip";
-  /** Only set when kind === "trip" */
   mode: "add" | "edit";
-  /** Pre-selected traveler id when opening Add Trip from a specific column */
   travelerId: string | null;
-  /** The trip being edited; null when adding */
   trip: Trip | null;
 }
 
@@ -73,34 +53,38 @@ const CLOSED_MODAL: ModalState = {
   trip: null,
 };
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function makeTraveler(name: string): Traveler {
   return { id: crypto.randomUUID(), name, trips: [] };
 }
 
-// ---------------------------------------------------------------------------
-// Component
-// ---------------------------------------------------------------------------
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export function CalculatorPage() {
-  // ── State ────────────────────────────────────────────────────────────────
+  // ── Core state ───────────────────────────────────────────────────────────
   const [view, setView] = useState<CalcView>("timeline");
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
 
-  // ── Load phase (derived) ─────────────────────────────────────────────────
-  //
-  // Three primitive booleans — each set by a single, non-cascading source:
-  //   minTimeDone      ← setTimeout callback (external)
-  //   hydrationDone    ← useUrlSync onHydrated callback (external)
-  //   animationComplete ← onAnimationEnd DOM event (external)
-  //
-  // `phase` is computed from them inline; no syncing effect needed.
+  // ── Traveler visibility filter (mobile only) ──────────────────────────────
+  const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
 
+  const handleToggleTraveler = useCallback((id: string) => {
+    setHiddenTravelerIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
+    );
+  }, []);
+
+  // Prune hidden IDs when a traveler is deleted
+  useEffect(() => {
+    const validIds = new Set(travelers.map((t) => t.id));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setHiddenTravelerIds((prev) => prev.filter((id) => validIds.has(id)));
+  }, [travelers]);
+
+  // ── Load phase ────────────────────────────────────────────────────────────
   const [minTimeDone, setMinTimeDone] = useState(false);
   const [hydrationDone, setHydrationDone] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -111,8 +95,6 @@ export function CalculatorPage() {
       ? "fading"
       : "loading";
 
-  // Minimum display timer — driven by an external system (setTimeout), so
-  // calling setState in its callback is the correct pattern.
   useEffect(() => {
     const id = setTimeout(() => setMinTimeDone(true), MIN_LOAD_MS);
     return () => clearTimeout(id);
@@ -131,7 +113,6 @@ export function CalculatorPage() {
   });
 
   // ── Traveler actions ─────────────────────────────────────────────────────
-
   const handleAddTraveler = useCallback(() => {
     setModal({ ...CLOSED_MODAL, open: true, kind: "traveler" });
   }, []);
@@ -146,7 +127,6 @@ export function CalculatorPage() {
   }, []);
 
   // ── Trip actions ─────────────────────────────────────────────────────────
-
   const handleOpenAddTrip = useCallback((travelerId: string) => {
     setModal({ open: true, kind: "trip", mode: "add", travelerId, trip: null });
   }, []);
@@ -159,20 +139,17 @@ export function CalculatorPage() {
     setTravelers((prev) =>
       prev.map((t) => {
         if (!travelerIds.includes(t.id)) return t;
-
         const exists = t.trips.some((x) => x.id === trip.id);
-
         if (exists) {
           return {
             ...t,
             trips: t.trips.map((x) => (x.id === trip.id ? trip : x)),
           };
-        } else {
-          return {
-            ...t,
-            trips: [...t.trips, { ...trip, id: crypto.randomUUID() }],
-          };
         }
+        return {
+          ...t,
+          trips: [...t.trips, { ...trip, id: crypto.randomUUID() }],
+        };
       }),
     );
     setModal(CLOSED_MODAL);
@@ -191,14 +168,11 @@ export function CalculatorPage() {
     setModal(CLOSED_MODAL);
   }, [modal]);
 
-  // ── Clear all trips ───────────────────────────────────────────────────────
-
   const handleClearAllTrips = useCallback(() => {
     setTravelers((prev) => prev.map((t) => ({ ...t, trips: [] })));
   }, []);
 
-  // ── Render ───────────────────────────────────────────────────────────────
-
+  // ── Render ────────────────────────────────────────────────────────────────
   return (
     <Box
       sx={{
@@ -210,7 +184,6 @@ export function CalculatorPage() {
         overflow: "hidden",
       }}
     >
-      {/* Nav renders immediately — it has no dependency on traveler data */}
       <CalculatorNav
         view={view}
         onViewChange={setView}
@@ -221,15 +194,7 @@ export function CalculatorPage() {
         onClearAll={handleClearAllTrips}
       />
 
-      {/*
-       * Content area — a relative container so the loading screen can sit
-       * absolutely on top of the view during the crossfade.
-       */}
       <Box sx={{ flex: 1, position: "relative", overflow: "hidden" }}>
-        {/* ── App content ─────────────────────────────────────────────────
-         * Mounted as soon as we enter "fading" so it's already rendering
-         * while the loader is fading out above it.
-         */}
         {phase !== "loading" && (
           <Box
             sx={{
@@ -240,30 +205,66 @@ export function CalculatorPage() {
               animation: `${fadeIn} ${FADE_MS}ms ease-out both`,
             }}
           >
-            {view === "timeline" ? (
-              <TimelineView
+            {/*
+             * ── Mobile layout (xs only) ────────────────────────────────────
+             * TravelerFilterBar collapses per-traveler status into a single
+             * panel with visibility toggles. MobileTripsView merges all
+             * visible trips into a single chronological column.
+             */}
+            <Box
+              sx={{
+                display: { xs: "flex", sm: "none" },
+                flexDirection: "column",
+                flex: 1,
+                overflow: "hidden",
+              }}
+            >
+              <TravelerFilterBar
                 travelers={travelers}
-                onAddTrip={handleOpenAddTrip}
-                onEditTrip={handleOpenEditTrip}
+                hiddenTravelerIds={hiddenTravelerIds}
+                onToggleTraveler={handleToggleTraveler}
                 onDeleteTraveler={handleDeleteTraveler}
+              />
+              <MobileTripsView
+                travelers={travelers}
+                hiddenTravelerIds={hiddenTravelerIds}
+                onEditTrip={handleOpenEditTrip}
                 onAddTraveler={handleAddTraveler}
               />
-            ) : (
-              <CardsView
-                travelers={travelers}
-                onAddTrip={handleOpenAddTrip}
-                onEditTrip={handleOpenEditTrip}
-                onDeleteTraveler={handleDeleteTraveler}
-              />
-            )}
+            </Box>
+
+            {/*
+             * ── Desktop layout (sm+) ───────────────────────────────────────
+             * Original multi-column views, completely unchanged.
+             */}
+            <Box
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                flexDirection: "column",
+                flex: 1,
+                overflow: "hidden",
+              }}
+            >
+              {view === "timeline" ? (
+                <TimelineView
+                  travelers={travelers}
+                  onAddTrip={handleOpenAddTrip}
+                  onEditTrip={handleOpenEditTrip}
+                  onDeleteTraveler={handleDeleteTraveler}
+                  onAddTraveler={handleAddTraveler}
+                />
+              ) : (
+                <CardsView
+                  travelers={travelers}
+                  onAddTrip={handleOpenAddTrip}
+                  onEditTrip={handleOpenEditTrip}
+                  onDeleteTraveler={handleDeleteTraveler}
+                />
+              )}
+            </Box>
           </Box>
         )}
 
-        {/* ── Loading screen ───────────────────────────────────────────────
-         * Sits above the content via z-index. When phase reaches "fading"
-         * the fadeOut animation runs; onAnimationEnd flips animationComplete
-         * which derives phase to "ready" and removes this from the DOM.
-         */}
         {phase !== "ready" && (
           <Box
             onAnimationEnd={
@@ -286,14 +287,12 @@ export function CalculatorPage() {
         )}
       </Box>
 
-      {/* Traveler modal */}
       <TravelerModal
         open={modal.open && modal.kind === "traveler"}
         onAdd={handleTravelerSave}
         onClose={() => setModal(CLOSED_MODAL)}
       />
 
-      {/* Trip modal */}
       <TripModal
         open={modal.open && modal.kind === "trip"}
         mode={modal.mode}
@@ -305,7 +304,6 @@ export function CalculatorPage() {
         onClose={() => setModal(CLOSED_MODAL)}
       />
 
-      {/* Share modal */}
       <ShareModal
         open={shareModalOpen}
         shareableUrl={shareableUrl}
