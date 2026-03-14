@@ -17,6 +17,7 @@ import { addDays, formatDate, parseDate } from "./dates";
 /** Build a completed Trip whose dates are expressed as offsets from `anchor`. */
 function makeTrip(anchor: Date, startOffset: number, endOffset: number): Trip {
   return {
+    id: "test",
     region: VisaRegion.Schengen,
     entryDate: formatDate(addDays(anchor, startOffset)),
     exitDate: formatDate(addDays(anchor, endOffset)),

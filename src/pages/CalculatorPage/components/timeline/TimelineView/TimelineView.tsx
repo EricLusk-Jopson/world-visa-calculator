@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import Box from "@mui/material/Box";
 import { Traveler, Trip } from "@/types";
 
