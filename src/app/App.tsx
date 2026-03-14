@@ -1,23 +1,13 @@
-import { useState } from "react";
-import Button from "@mui/material/Button";
-import "./App.css";
+import { RouterProvider } from "react-router";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { router } from "./router";
+import theme from "../styles/theme";
 
-interface Trip {
-  traveler: string;
-  entry: string;
-  exit: string;
-}
-
-function App() {
-  // need to add and remove trips
-  const [trips, setTrips] = useState<Trip[]>([]);
+export default function App() {
   return (
-    <>
-      {trips.map((trip) => (
-        <Button sx={{ backgroundColor: "yellow" }}>{trip.traveler}</Button>
-      ))}
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
-
-export default App;
