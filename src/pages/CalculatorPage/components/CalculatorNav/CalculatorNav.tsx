@@ -7,8 +7,8 @@ import Divider from "@mui/material/Divider";
 import { alpha } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import IosShareIcon from "@mui/icons-material/IosShare";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import MenuIcon from "@mui/icons-material/Menu";
 import { tokens } from "@/styles/theme";
 import { NavButton } from "./NavButton";
 
@@ -223,7 +223,7 @@ export function CalculatorNav({
               },
             }}
           >
-            <MoreVertIcon sx={{ fontSize: "1.25rem" }} />
+            <MenuIcon sx={{ fontSize: "1.25rem" }} />
           </Box>
 
           <Menu
