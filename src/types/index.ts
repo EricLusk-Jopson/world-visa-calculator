@@ -36,6 +36,39 @@ export interface Traveler {
   trips: Trip[];
 }
 
+export interface MaxStayResult {
+  /** The proposed entry date this result was calculated against. */
+  entryDate: string;
+  /** Whether entry is possible on the given date. */
+  canEnter: boolean;
+  /** The last legal exit date. Null when canEnter is false. */
+  maxExitDate: string | null;
+  /** Total days available, entry and exit inclusive. Zero when canEnter is false. */
+  maxDays: number;
+}
+
+/**
+ * Result of an earliest-entry search.
+ * Answers: "given my history, when is the first day I can start a new trip?"
+ */
+export interface EarliestEntryResult {
+  /**
+   * ISO date string of the earliest date the traveler can enter Schengen.
+   * Null if no valid date was found within the search window (very unusual).
+   */
+  earliestDate: string | null;
+  /**
+   * Maximum stay available if entering on earliestDate (days).
+   * Zero when earliestDate is null.
+   */
+  maxDaysAvailable: number;
+  /**
+   * True when the search start date itself is a valid entry date —
+   * i.e. the traveler can enter today (or on the requested search-from date).
+   */
+  canEnterOnSearchDate: boolean;
+}
+
 // ─── Sharing ─────────────────────────────────────────────────────────────────
 
 export interface ShareableState {
