@@ -1,6 +1,14 @@
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Divider from "@mui/material/Divider";
 import { alpha } from "@mui/material/styles";
+import AddIcon from "@mui/icons-material/Add";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { tokens } from "@/styles/theme";
 import { NavButton } from "./NavButton";
 
@@ -18,36 +26,9 @@ interface CalculatorNavProps {
   onClearAll: () => void;
 }
 
-// ─── Icons ────────────────────────────────────────────────────────────────────
+// ─── Shared icon size ─────────────────────────────────────────────────────────
 
-const PlusIcon = () => (
-  <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-    <path
-      d="M5.5 1v9M1 5.5h9"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const ShareIcon = () => (
-  <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-    <path
-      d="M5.5 1v6.5M3 3.5L5.5 1 8 3.5"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M2 7.5v1.75C2 9.66 2.34 10 2.75 10h5.5C8.66 10 9 9.66 9 9.25V7.5"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeLinecap="round"
-    />
-  </svg>
-);
+const ICON_SX = { fontSize: "0.95rem" } as const;
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
@@ -69,6 +50,7 @@ const LOGO_DOT_SX = {
   height: 7,
   bgcolor: tokens.green,
   borderRadius: "50%",
+  flexShrink: 0,
 } as const;
 
 const LOGO_TEXT_SX = {
@@ -111,6 +93,18 @@ const viewToggleButtonSx = (active: boolean) =>
     },
   }) as const;
 
+const MENU_ITEM_SX = {
+  fontFamily: tokens.fontBody,
+  fontSize: "0.83rem",
+  fontWeight: 500,
+  color: alpha(tokens.white, 0.8),
+  gap: "8px",
+  py: "9px",
+  px: "14px",
+  "&:hover": { bgcolor: alpha(tokens.white, 0.07) },
+  "&.Mui-disabled": { color: alpha(tokens.white, 0.25), opacity: 1 },
+} as const;
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function CalculatorNav({
@@ -122,15 +116,31 @@ export function CalculatorNav({
   onShare,
   onClearAll,
 }: CalculatorNavProps) {
+  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
+
+  const closeMenu = () => setMenuAnchor(null);
+
+  const menuAction = (fn: () => void) => () => {
+    fn();
+    closeMenu();
+  };
+
   return (
     <Box component="nav" sx={NAV_SX}>
-      {/* Logo */}
+      {/* ── Logo ──────────────────────────────────────────────────────────── */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "7px" }}>
         <Box sx={LOGO_DOT_SX} />
-        <Typography sx={LOGO_TEXT_SX}>EuroVisaCalculator</Typography>
+        <Typography
+          sx={{
+            ...LOGO_TEXT_SX,
+            display: { xs: "none", sm: "block" },
+          }}
+        >
+          EuroVisaCalculator
+        </Typography>
       </Box>
 
-      {/* View toggle */}
+      {/* ── View toggle — always centred, always visible ───────────────────── */}
       <Box sx={VIEW_TOGGLE_WRAPPER_SX}>
         {(["timeline", "cards"] as const).map((v) => (
           <Box
@@ -144,32 +154,142 @@ export function CalculatorNav({
         ))}
       </Box>
 
-      {/* Right actions */}
+      {/* ── Right side ────────────────────────────────────────────────────── */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <NavButton
-          variant="destructive"
-          onClick={onClearAll}
-          disabled={travelerCount === 0}
+        {/* Desktop: individual action buttons */}
+        <Box
+          sx={{
+            display: { xs: "none", sm: "flex" },
+            alignItems: "center",
+            gap: "8px",
+          }}
         >
-          Clear All
-        </NavButton>
+          <NavButton
+            variant="destructive"
+            onClick={onClearAll}
+            disabled={travelerCount === 0}
+            icon={<DeleteOutlineIcon sx={ICON_SX} />}
+          >
+            Clear All
+          </NavButton>
 
-        <NavButton variant="ghost" onClick={onShare} icon={<ShareIcon />}>
-          Share
-        </NavButton>
+          <NavButton
+            variant="ghost"
+            onClick={onShare}
+            icon={<IosShareIcon sx={ICON_SX} />}
+          >
+            Share
+          </NavButton>
 
-        <NavButton variant="ghost" onClick={onAddTraveler} icon={<PlusIcon />}>
-          Add Traveler
-        </NavButton>
+          <NavButton
+            variant="ghost"
+            onClick={onAddTraveler}
+            icon={<AddIcon sx={ICON_SX} />}
+          >
+            Add Traveler
+          </NavButton>
 
-        <NavButton
-          variant="cta"
-          onClick={onAddTrip}
-          icon={<PlusIcon />}
-          disabled={travelerCount === 0}
-        >
-          Add Trip
-        </NavButton>
+          <NavButton
+            variant="cta"
+            onClick={onAddTrip}
+            icon={<AddIcon sx={ICON_SX} />}
+            disabled={travelerCount === 0}
+          >
+            Add Trip
+          </NavButton>
+        </Box>
+
+        {/* Mobile: kebab menu ─────────────────────────────────────────────── */}
+        <Box sx={{ display: { xs: "flex", sm: "none" } }}>
+          <Box
+            component="button"
+            onClick={(e: React.MouseEvent<HTMLElement>) =>
+              setMenuAnchor(e.currentTarget)
+            }
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 34,
+              height: 34,
+              bgcolor: "transparent",
+              border: "none",
+              borderRadius: "7px",
+              color: tokens.white,
+              cursor: "pointer",
+              transition: "background 0.15s",
+              "&:hover": {
+                bgcolor: alpha(tokens.white, 0.08),
+              },
+            }}
+          >
+            <MoreVertIcon sx={{ fontSize: "1.25rem" }} />
+          </Box>
+
+          <Menu
+            anchorEl={menuAnchor}
+            open={Boolean(menuAnchor)}
+            onClose={closeMenu}
+            transformOrigin={{ horizontal: "right", vertical: "top" }}
+            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+            slotProps={{
+              paper: {
+                sx: {
+                  bgcolor: tokens.navyMid,
+                  border: `1px solid ${alpha(tokens.white, 0.1)}`,
+                  boxShadow: `0 8px 32px ${alpha(tokens.navy, 0.5)}`,
+                  borderRadius: "10px",
+                  minWidth: 190,
+                  mt: "6px",
+                  colorScheme: "dark",
+                },
+              },
+            }}
+          >
+            <MenuItem onClick={menuAction(onAddTraveler)} sx={MENU_ITEM_SX}>
+              <AddIcon sx={ICON_SX} />
+              Add Traveler
+            </MenuItem>
+
+            <MenuItem
+              onClick={menuAction(onAddTrip)}
+              disabled={travelerCount === 0}
+              sx={MENU_ITEM_SX}
+            >
+              <AddIcon sx={ICON_SX} />
+              Add Trip
+            </MenuItem>
+
+            <MenuItem onClick={menuAction(onShare)} sx={MENU_ITEM_SX}>
+              <IosShareIcon sx={ICON_SX} />
+              Share
+            </MenuItem>
+
+            <Divider
+              sx={{ borderColor: alpha(tokens.white, 0.08), my: "4px" }}
+            />
+
+            <MenuItem
+              onClick={menuAction(onClearAll)}
+              disabled={travelerCount === 0}
+              sx={{
+                ...MENU_ITEM_SX,
+                color: alpha(tokens.red, 0.85),
+                "&:hover": {
+                  bgcolor: alpha(tokens.red, 0.1),
+                  color: tokens.red,
+                },
+                "&.Mui-disabled": {
+                  color: alpha(tokens.red, 0.25),
+                  opacity: 1,
+                },
+              }}
+            >
+              <DeleteOutlineIcon sx={ICON_SX} />
+              Clear All
+            </MenuItem>
+          </Menu>
+        </Box>
       </Box>
     </Box>
   );
