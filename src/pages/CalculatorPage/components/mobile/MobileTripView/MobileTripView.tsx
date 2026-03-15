@@ -23,7 +23,7 @@ interface MergedTrip {
 interface MobileTripsViewProps {
   travelers: Traveler[];
   hiddenTravelerIds: string[];
-  onEditTrip: (travelerId: string, trip: Trip) => void;
+  onEditTrip: (travelerIds: string[], trip: Trip) => void;
   onAddTrip: () => void;
   onAddTraveler: () => void;
 }
@@ -460,7 +460,10 @@ export function MobileTripsView({
                 key={`${merged.trip.entryDate}-${merged.trip.exitDate ?? "ongoing"}-${merged.trip.region}`}
                 merged={merged}
                 onEdit={() =>
-                  onEditTrip(merged.entries[0].traveler.id, merged.trip)
+                  onEditTrip(
+                    merged.entries.map((e) => e.traveler.id),
+                    merged.trip,
+                  )
                 }
               />
             ))}

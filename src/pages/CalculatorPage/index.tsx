@@ -31,7 +31,8 @@ interface ModalState {
   open: boolean;
   kind: "none" | "traveler" | "trip";
   mode: "add" | "edit";
-  travelerId: string | null;
+  /** All traveler IDs associated with this modal instance */
+  travelerIds: string[];
   trip: Trip | null;
 }
 
@@ -39,7 +40,7 @@ const CLOSED_MODAL: ModalState = {
   open: false,
   kind: "none",
   mode: "add",
-  travelerId: null,
+  travelerIds: [],
   trip: null,
 };
 
@@ -92,6 +93,8 @@ export function CalculatorPage() {
     onHydrated: () => setHydrationDone(true),
   });
 
+  // ── Traveler actions ────────────────────────────────────────────────────────
+
   const handleAddTraveler = useCallback(() => {
     setModal({ ...CLOSED_MODAL, open: true, kind: "traveler" });
   }, []);
@@ -105,13 +108,42 @@ export function CalculatorPage() {
     setTravelers((prev) => prev.filter((t) => t.id !== travelerId));
   }, []);
 
+  // ── Trip actions ────────────────────────────────────────────────────────────
+
   const handleOpenAddTrip = useCallback((travelerId: string) => {
-    setModal({ open: true, kind: "trip", mode: "add", travelerId, trip: null });
+    setModal({
+      open: true,
+      kind: "trip",
+      mode: "add",
+      travelerIds: [travelerId],
+      trip: null,
+    });
   }, []);
 
+  /** Desktop: single-traveler edit (one column = one person) */
   const handleOpenEditTrip = useCallback((travelerId: string, trip: Trip) => {
-    setModal({ open: true, kind: "trip", mode: "edit", travelerId, trip });
+    setModal({
+      open: true,
+      kind: "trip",
+      mode: "edit",
+      travelerIds: [travelerId],
+      trip,
+    });
   }, []);
+
+  /** Mobile: multi-traveler edit (merged card may represent several people) */
+  const handleOpenEditTripForMany = useCallback(
+    (travelerIds: string[], trip: Trip) => {
+      setModal({
+        open: true,
+        kind: "trip",
+        mode: "edit",
+        travelerIds,
+        trip,
+      });
+    },
+    [],
+  );
 
   const handleTripSave = useCallback((travelerIds: string[], trip: Trip) => {
     setTravelers((prev) =>
@@ -133,14 +165,25 @@ export function CalculatorPage() {
     setModal(CLOSED_MODAL);
   }, []);
 
+  /** Deletes the trip from every traveler in modal.travelerIds */
   const handleTripDelete = useCallback(() => {
-    if (!modal.travelerId || !modal.trip) return;
-    const { travelerId, trip } = modal;
+    if (modal.travelerIds.length === 0 || !modal.trip) return;
+    const { travelerIds, trip } = modal;
     setTravelers((prev) =>
       prev.map((t) =>
-        t.id !== travelerId
+        !travelerIds.includes(t.id)
           ? t
-          : { ...t, trips: t.trips.filter((x) => x.id !== trip.id) },
+          : {
+              ...t,
+              trips: t.trips.filter(
+                (x) =>
+                  !(
+                    x.entryDate === trip.entryDate &&
+                    x.exitDate === trip.exitDate &&
+                    x.region === trip.region
+                  ),
+              ),
+            },
       ),
     );
     setModal(CLOSED_MODAL);
@@ -149,6 +192,8 @@ export function CalculatorPage() {
   const handleClearAllTrips = useCallback(() => {
     setTravelers((prev) => prev.map((t) => ({ ...t, trips: [] })));
   }, []);
+
+  // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
     <Box
@@ -182,7 +227,7 @@ export function CalculatorPage() {
               animation: `${fadeIn} ${FADE_MS}ms ease-out both`,
             }}
           >
-            {/* ── Mobile layout (xs only) ──────────────────────────────────── */}
+            {/* ── Mobile layout (xs only) ────────────────────────────────── */}
             <Box
               sx={{
                 display: { xs: "flex", sm: "none" },
@@ -203,7 +248,7 @@ export function CalculatorPage() {
                 <MobileTimelineView
                   travelers={travelers}
                   hiddenTravelerIds={hiddenTravelerIds}
-                  onEditTrip={handleOpenEditTrip}
+                  onEditTrip={handleOpenEditTripForMany}
                   onAddTraveler={handleAddTraveler}
                   onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
                 />
@@ -211,14 +256,14 @@ export function CalculatorPage() {
                 <MobileTripsView
                   travelers={travelers}
                   hiddenTravelerIds={hiddenTravelerIds}
-                  onEditTrip={handleOpenEditTrip}
+                  onEditTrip={handleOpenEditTripForMany}
                   onAddTraveler={handleAddTraveler}
                   onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
                 />
               )}
             </Box>
 
-            {/* ── Desktop layout (sm+) — completely unchanged ──────────────── */}
+            {/* ── Desktop layout (sm+) — unchanged ──────────────────────── */}
             <Box
               sx={{
                 display: { xs: "none", sm: "flex" },
@@ -279,7 +324,7 @@ export function CalculatorPage() {
         open={modal.open && modal.kind === "trip"}
         mode={modal.mode}
         travelers={travelers}
-        initialTravelerId={modal.travelerId ?? ""}
+        initialTravelerIds={modal.travelerIds}
         initialTrip={modal.trip ?? undefined}
         onSave={handleTripSave}
         onDelete={modal.mode === "edit" ? handleTripDelete : undefined}

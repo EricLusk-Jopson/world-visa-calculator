@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -24,7 +24,6 @@ import {
   formatDate,
   addDays,
 } from "@/features/calculator/utils/dates";
-
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import {
   computeImpactBreakdown,
@@ -38,14 +37,14 @@ interface TripModalProps {
   open: boolean;
   mode: "add" | "edit";
   travelers: Traveler[];
-  initialTravelerId: string;
+  initialTravelerIds: string[];
   initialTrip?: Trip;
   onSave: (travelerIds: string[], trip: Trip) => void;
   onDelete?: () => void;
   onClose: () => void;
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function hasOverlap(
   trips: Trip[],
@@ -102,7 +101,7 @@ function FormLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ─── Shared input sx ─────────────────────────────────────────────────────────
+// ─── Shared input sx ──────────────────────────────────────────────────────────
 
 const INPUT_SX = {
   "& .MuiOutlinedInput-root": {
@@ -157,7 +156,7 @@ export function TripModal({
   open,
   mode,
   travelers,
-  initialTravelerId,
+  initialTravelerIds,
   initialTrip,
   onSave,
   onDelete,
@@ -165,7 +164,7 @@ export function TripModal({
 }: TripModalProps) {
   // ── Form state ──────────────────────────────────────────────────────────────
 
-  const [travelerIds, setTravelerIds] = useState<string[]>([initialTravelerId]);
+  const [travelerIds, setTravelerIds] = useState<string[]>(initialTravelerIds);
   const [destination, setDestination] = useState("");
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
@@ -176,7 +175,7 @@ export function TripModal({
   useEffect(() => {
     if (!open) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setTravelerIds([initialTravelerId]);
+    setTravelerIds(initialTravelerIds);
     setError(null);
     if (mode === "edit" && initialTrip) {
       setDestination(initialTrip.destination ?? "");
@@ -191,15 +190,14 @@ export function TripModal({
       setOngoing(false);
       setRegion(VisaRegion.Schengen);
     }
-  }, [open, mode, initialTrip, initialTravelerId]);
+  }, [open, mode, initialTrip, initialTravelerIds]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Entry constraint hint ───────────────────────────────────────────────────
 
-  // eslint-disable-next-line react-hooks/preserve-manual-memoization
-  const entryConstraint = useMemo(() => {
-    if (!entryDate || region !== VisaRegion.Schengen) return null;
-    if (exitDate || ongoing) return null;
+  let entryConstraint: { daysAvailable: number; latestExit: string } | null =
+    null;
 
+  if (entryDate && region === VisaRegion.Schengen && !exitDate && !ongoing) {
     let minDays = Infinity;
     let latestExit = "";
 
@@ -214,7 +212,8 @@ export function TripModal({
       const result = calculateMaxStay(entryDate, historicalTrips);
 
       if (!result.canEnter) {
-        return { daysAvailable: 0, latestExit: entryDate };
+        entryConstraint = { daysAvailable: 0, latestExit: entryDate };
+        break;
       }
 
       if (result.maxDays < minDays) {
@@ -223,25 +222,16 @@ export function TripModal({
       }
     }
 
-    if (!isFinite(minDays) || minDays <= 0) return null;
-    return { daysAvailable: minDays, latestExit };
-  }, [
-    entryDate,
-    exitDate,
-    ongoing,
-    region,
-    travelerIds,
-    travelers,
-    initialTrip,
-  ]);
+    if (entryConstraint === null && isFinite(minDays) && minDays > 0) {
+      entryConstraint = { daysAvailable: minDays, latestExit };
+    }
+  }
 
-  // ── Impact status (summary numbers for ImpactPreview header) ────────────────
+  // ── Impact status ───────────────────────────────────────────────────────────
 
-  const impactStatus = useMemo(() => {
-    if (!entryDate || region !== VisaRegion.Schengen) return null;
+  let impactStatus: ReturnType<typeof computeTravelerStatus> | null = null;
 
-    let worst: ReturnType<typeof computeTravelerStatus> | null = null;
-
+  if (entryDate && region === VisaRegion.Schengen) {
     for (const tid of travelerIds) {
       const traveler = travelers.find((t) => t.id === tid);
       if (!traveler) continue;
@@ -262,32 +252,22 @@ export function TripModal({
       const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
       const status = computeTravelerStatus(tempTraveler, refDate);
 
-      if (!worst || status.daysRemaining < worst.daysRemaining) {
-        worst = status;
+      if (!impactStatus || status.daysRemaining < impactStatus.daysRemaining) {
+        impactStatus = status;
       }
     }
+  }
 
-    return worst;
-  }, [
-    travelerIds,
-    travelers,
-    entryDate,
-    exitDate,
-    ongoing,
-    region,
-    destination,
-    initialTrip,
-  ]);
+  const impactVariant = impactStatus
+    ? getStatusVariant(impactStatus.daysRemaining)
+    : ("neutral" as const);
 
-  // ── Impact breakdown (shown when exit date is set, for the most constrained
-  //    selected traveler — same traveler whose status is shown above) ──────────
+  // ── Impact breakdown ────────────────────────────────────────────────────────
 
-  const impactBreakdown = useMemo(() => {
-    if (!entryDate || region !== VisaRegion.Schengen) return undefined;
-    if (!exitDate && !ongoing) return undefined;
+  let impactBreakdown: ReturnType<typeof computeImpactBreakdown> | undefined =
+    undefined;
 
-    // Find the most constrained traveler (fewest daysRemaining) so the
-    // breakdown matches the summary number shown.
+  if (entryDate && region === VisaRegion.Schengen && (exitDate || ongoing)) {
     let worstTraveler: Traveler | null = null;
     let worstRemaining = Infinity;
 
@@ -317,31 +297,18 @@ export function TripModal({
       }
     }
 
-    if (!worstTraveler) return undefined;
+    if (worstTraveler) {
+      const historicalTrips = worstTraveler.trips.filter(
+        (t) => t.region === VisaRegion.Schengen && t.id !== initialTrip?.id,
+      );
 
-    const historicalTrips = worstTraveler.trips.filter(
-      (t) => t.region === VisaRegion.Schengen && t.id !== initialTrip?.id,
-    );
-
-    return computeImpactBreakdown(
-      entryDate,
-      ongoing ? undefined : exitDate || undefined,
-      historicalTrips,
-    );
-  }, [
-    travelerIds,
-    travelers,
-    entryDate,
-    exitDate,
-    ongoing,
-    region,
-    destination,
-    initialTrip,
-  ]);
-
-  const impactVariant = impactStatus
-    ? getStatusVariant(impactStatus.daysRemaining)
-    : ("neutral" as const);
+      impactBreakdown = computeImpactBreakdown(
+        entryDate,
+        ongoing ? undefined : exitDate || undefined,
+        historicalTrips,
+      );
+    }
+  }
 
   // ── Validation & submit ─────────────────────────────────────────────────────
 
@@ -482,31 +449,43 @@ export function TripModal({
             flexDirection: "column",
             gap: "12px",
             overflowY: "scroll",
-
-            "&::-webkit-scrollbar": {
-              width: "5px", // thinner
-            },
-            "&::-webkit-scrollbar-track": {
-              background: "transparent",
-              mx: "3px", // MUI sx won't apply here — use margin in the thumb instead
-            },
+            "&::-webkit-scrollbar": { width: "5px" },
+            "&::-webkit-scrollbar-track": { background: "transparent" },
             "&::-webkit-scrollbar-thumb": {
               background: tokens.border,
               borderRadius: "4px",
-              border: "1px solid transparent", // creates a small gap around the thumb
+              border: "1px solid transparent",
             },
           }}
           onKeyDown={handleKeyDown}
         >
+          {/* Validation error — top of stack so it's always visible */}
+          {error && (
+            <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
+              {error}
+            </ValidationMessage>
+          )}
+
           {/* 1 · Traveler selector */}
           <Box>
             <FormLabel>{isEdit ? "Traveler" : "Traveler(s)"}</FormLabel>
             {isEdit ? (
+              /*
+               * Edit mode: show all travelers associated with this trip as
+               * a disabled multi-select. On desktop this is always one person;
+               * on mobile it may be several (merged card).
+               */
               <Select
-                value={travelerIds[0] ?? ""}
+                multiple
+                value={travelerIds}
                 disabled
                 fullWidth
                 size="small"
+                renderValue={(selected) =>
+                  (selected as string[])
+                    .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
+                    .join(", ")
+                }
                 sx={SELECT_BASE_SX}
               >
                 {travelers.map((t) => (
@@ -723,7 +702,7 @@ export function TripModal({
             </Box>
           )}
 
-          {/* Impact preview — shown once exit date (or ongoing) is set */}
+          {/* Impact preview */}
           {region === VisaRegion.Schengen &&
             entryDate &&
             (exitDate || ongoing) &&
@@ -735,13 +714,6 @@ export function TripModal({
                 breakdown={impactBreakdown}
               />
             )}
-
-          {/* Validation errors */}
-          {error && (
-            <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
-              {error}
-            </ValidationMessage>
-          )}
         </Box>
 
         {/* ── Divider ── */}

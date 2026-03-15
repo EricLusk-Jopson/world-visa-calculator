@@ -25,7 +25,7 @@ import { DateSidebar } from "../../timeline/DateSidebar";
 interface MobileTimelineViewProps {
   travelers: Traveler[];
   hiddenTravelerIds: string[];
-  onEditTrip: (travelerId: string, trip: Trip) => void;
+  onEditTrip: (travelerIds: string[], trip: Trip) => void;
   onAddTraveler: () => void;
   onAddTrip: () => void;
 }
@@ -455,7 +455,7 @@ export function MobileTimelineView({
                   positioned={positioned}
                   onClick={() =>
                     onEditTrip(
-                      positioned.entries[0].traveler.id,
+                      positioned.entries.map((e) => e.traveler.id),
                       positioned.entries[0].trip,
                     )
                   }
