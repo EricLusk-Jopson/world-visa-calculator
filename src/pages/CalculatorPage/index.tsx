@@ -14,25 +14,15 @@ import {
 } from "./components";
 import { ShareModal } from "./components/ShareModal";
 import { LoadingScreen } from "./components/LoadingScreen";
+import { MobileTimelineView } from "./components/mobile/MobileTimelineView/MobileTimelineView";
 import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripView";
 import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
-
-// ─── Animation constants ──────────────────────────────────────────────────────
 
 const MIN_LOAD_MS = 650;
 const FADE_MS = 300;
 
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to   { opacity: 1; }
-`;
-
-const fadeOut = keyframes`
-  from { opacity: 1; }
-  to   { opacity: 0; }
-`;
-
-// ─── Types ────────────────────────────────────────────────────────────────────
+const fadeIn = keyframes`from { opacity: 0; } to { opacity: 1; }`;
+const fadeOut = keyframes`from { opacity: 1; } to { opacity: 0; }`;
 
 type CalcView = "timeline" | "cards";
 type LoadPhase = "loading" | "fading" | "ready";
@@ -53,22 +43,15 @@ const CLOSED_MODAL: ModalState = {
   trip: null,
 };
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
 function makeTraveler(name: string): Traveler {
   return { id: crypto.randomUUID(), name, trips: [] };
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
 export function CalculatorPage() {
-  // ── Core state ───────────────────────────────────────────────────────────
   const [view, setView] = useState<CalcView>("timeline");
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
-
-  // ── Traveler visibility filter (mobile only) ──────────────────────────────
   const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
 
   const handleToggleTraveler = useCallback((id: string) => {
@@ -77,14 +60,12 @@ export function CalculatorPage() {
     );
   }, []);
 
-  // Prune hidden IDs when a traveler is deleted
   useEffect(() => {
     const validIds = new Set(travelers.map((t) => t.id));
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setHiddenTravelerIds((prev) => prev.filter((id) => validIds.has(id)));
   }, [travelers]);
 
-  // ── Load phase ────────────────────────────────────────────────────────────
   const [minTimeDone, setMinTimeDone] = useState(false);
   const [hydrationDone, setHydrationDone] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -100,7 +81,6 @@ export function CalculatorPage() {
     return () => clearTimeout(id);
   }, []);
 
-  // ── URL / localStorage sync ───────────────────────────────────────────────
   const shareableState = useMemo<ShareableState>(
     () => ({ travelers }),
     [travelers],
@@ -112,7 +92,6 @@ export function CalculatorPage() {
     onHydrated: () => setHydrationDone(true),
   });
 
-  // ── Traveler actions ─────────────────────────────────────────────────────
   const handleAddTraveler = useCallback(() => {
     setModal({ ...CLOSED_MODAL, open: true, kind: "traveler" });
   }, []);
@@ -126,7 +105,6 @@ export function CalculatorPage() {
     setTravelers((prev) => prev.filter((t) => t.id !== travelerId));
   }, []);
 
-  // ── Trip actions ─────────────────────────────────────────────────────────
   const handleOpenAddTrip = useCallback((travelerId: string) => {
     setModal({ open: true, kind: "trip", mode: "add", travelerId, trip: null });
   }, []);
@@ -172,7 +150,6 @@ export function CalculatorPage() {
     setTravelers((prev) => prev.map((t) => ({ ...t, trips: [] })));
   }, []);
 
-  // ── Render ────────────────────────────────────────────────────────────────
   return (
     <Box
       sx={{
@@ -205,12 +182,7 @@ export function CalculatorPage() {
               animation: `${fadeIn} ${FADE_MS}ms ease-out both`,
             }}
           >
-            {/*
-             * ── Mobile layout (xs only) ────────────────────────────────────
-             * TravelerFilterBar collapses per-traveler status into a single
-             * panel with visibility toggles. MobileTripsView merges all
-             * visible trips into a single chronological column.
-             */}
+            {/* ── Mobile layout (xs only) ──────────────────────────────────── */}
             <Box
               sx={{
                 display: { xs: "flex", sm: "none" },
@@ -225,18 +197,25 @@ export function CalculatorPage() {
                 onToggleTraveler={handleToggleTraveler}
                 onDeleteTraveler={handleDeleteTraveler}
               />
-              <MobileTripsView
-                travelers={travelers}
-                hiddenTravelerIds={hiddenTravelerIds}
-                onEditTrip={handleOpenEditTrip}
-                onAddTraveler={handleAddTraveler}
-              />
+
+              {view === "timeline" ? (
+                <MobileTimelineView
+                  travelers={travelers}
+                  hiddenTravelerIds={hiddenTravelerIds}
+                  onEditTrip={handleOpenEditTrip}
+                  onAddTraveler={handleAddTraveler}
+                />
+              ) : (
+                <MobileTripsView
+                  travelers={travelers}
+                  hiddenTravelerIds={hiddenTravelerIds}
+                  onEditTrip={handleOpenEditTrip}
+                  onAddTraveler={handleAddTraveler}
+                />
+              )}
             </Box>
 
-            {/*
-             * ── Desktop layout (sm+) ───────────────────────────────────────
-             * Original multi-column views, completely unchanged.
-             */}
+            {/* ── Desktop layout (sm+) — completely unchanged ──────────────── */}
             <Box
               sx={{
                 display: { xs: "none", sm: "flex" },

@@ -15,16 +15,12 @@ import { parseDate } from "@/features/calculator/utils/dates";
 import { format } from "date-fns";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 interface TravelerFilterBarProps {
   travelers: Traveler[];
   hiddenTravelerIds: string[];
   onToggleTraveler: (id: string) => void;
   onDeleteTraveler: (id: string) => void;
 }
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 type StatusLevel = "safe" | "caution" | "danger" | "neutral";
 
@@ -79,8 +75,6 @@ const ICON_BTN_SX = {
   flexShrink: 0,
 } as const;
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
 export function TravelerFilterBar({
   travelers,
   hiddenTravelerIds,
@@ -97,7 +91,9 @@ export function TravelerFilterBar({
         flexShrink: 0,
         bgcolor: tokens.white,
         borderBottom: `1px solid ${tokens.border}`,
+        borderRadius: 0, // ← no rounding; flush with nav above
         zIndex: 5,
+        overflow: "hidden",
       }}
     >
       {/* ── Collapse toggle ───────────────────────────────────────────────── */}
@@ -131,7 +127,6 @@ export function TravelerFilterBar({
           Travelers
         </Typography>
 
-        {/* Status dots — visible in both states */}
         <Box sx={{ display: "flex", gap: "4px", alignItems: "center" }}>
           {travelers.map((t, i) => (
             <Box
@@ -183,7 +178,6 @@ export function TravelerFilterBar({
                 transition: "opacity 0.15s",
               }}
             >
-              {/* Top row: dot · name · badge · spacer · eye · delete */}
               <Box
                 sx={{
                   display: "flex",
@@ -217,7 +211,6 @@ export function TravelerFilterBar({
                   {traveler.name}
                 </Typography>
 
-                {/* Status badge */}
                 {status.daysRemaining !== null && (
                   <Box
                     sx={{
@@ -252,7 +245,6 @@ export function TravelerFilterBar({
 
                 <Box sx={{ flex: 1 }} />
 
-                {/* Visibility toggle */}
                 <Box
                   component="button"
                   onClick={() => onToggleTraveler(traveler.id)}
@@ -272,7 +264,6 @@ export function TravelerFilterBar({
                   )}
                 </Box>
 
-                {/* Delete */}
                 <Box
                   component="button"
                   onClick={() => onDeleteTraveler(traveler.id)}
@@ -289,7 +280,6 @@ export function TravelerFilterBar({
                 </Box>
               </Box>
 
-              {/* Progress row */}
               <Box
                 sx={{
                   display: "flex",
