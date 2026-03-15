@@ -16,11 +16,6 @@ import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface MergedTrip {
-  /**
-   * The canonical trip record used for dates, region, and destination.
-   * When multiple travelers share the same trip, the first traveler's
-   * record is used.
-   */
   trip: Trip;
   entries: Array<{ traveler: Traveler; travelerIndex: number }>;
 }
@@ -29,20 +24,12 @@ interface MobileTripsViewProps {
   travelers: Traveler[];
   hiddenTravelerIds: string[];
   onEditTrip: (travelerId: string, trip: Trip) => void;
+  onAddTrip: () => void;
   onAddTraveler: () => void;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/**
- * Merges trips from all visible travelers into a single sorted list.
- *
- * Two trips are considered the same trip when they share identical
- * entryDate, exitDate, and region. When merged, the first traveler's
- * trip record is used as the canonical source.
- *
- * Sort order: ongoing → upcoming → past (most recent first within past).
- */
 function buildMergedTrips(
   travelers: Traveler[],
   hiddenIds: string[],
@@ -70,22 +57,57 @@ function buildMergedTrips(
   });
 
   const sortPriority = (t: Trip): number => {
-    if (!t.exitDate) return 0; // ongoing
-    if (t.entryDate > todayStr) return 1; // upcoming
-    return 2; // past
+    if (!t.exitDate) return 0;
+    if (t.entryDate > todayStr) return 1;
+    return 2;
   };
 
   return merged.sort((a, b) => {
     const pa = sortPriority(a.trip);
     const pb = sortPriority(b.trip);
     if (pa !== pb) return pa - pb;
-    // Within each group: most recent entry date first
     return b.trip.entryDate.localeCompare(a.trip.entryDate);
   });
 }
 
 function fmtDate(iso: string): string {
   return format(parseDate(iso), "MMM d");
+}
+
+// ─── Add Trip button ──────────────────────────────────────────────────────────
+
+function AddTripButton({ onClick }: { onClick: () => void }) {
+  return (
+    <Box
+      component="button"
+      onClick={onClick}
+      sx={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "6px",
+        py: "11px",
+        border: `1.5px dashed ${tokens.border}`,
+        borderRadius: "10px",
+        bgcolor: tokens.white,
+        fontFamily: tokens.fontBody,
+        fontSize: "0.82rem",
+        fontWeight: 600,
+        color: tokens.textSoft,
+        cursor: "pointer",
+        transition: "border-color 0.15s, color 0.15s, background 0.15s",
+        "&:active": {
+          borderColor: tokens.navy,
+          color: tokens.navy,
+          bgcolor: alpha(tokens.navy, 0.03),
+        },
+      }}
+    >
+      <AddIcon sx={{ fontSize: "0.95rem" }} />
+      Add Trip
+    </Box>
+  );
 }
 
 // ─── Badge ────────────────────────────────────────────────────────────────────
@@ -134,13 +156,10 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
         cursor: "pointer",
         boxShadow: "0 1px 3px rgba(12,30,60,0.06)",
         transition: "box-shadow 0.15s",
-        "&:active": {
-          boxShadow: "0 3px 10px rgba(12,30,60,0.1)",
-        },
+        "&:active": { boxShadow: "0 3px 10px rgba(12,30,60,0.1)" },
       }}
     >
       <Box sx={{ px: "14px", py: "10px" }}>
-        {/* Destination */}
         {trip.destination && (
           <Typography
             sx={{
@@ -159,7 +178,6 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
           </Typography>
         )}
 
-        {/* Date range */}
         <Typography
           sx={{
             fontSize: "0.72rem",
@@ -172,7 +190,6 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
           {isOngoing ? " → ongoing" : ` → ${fmtDate(trip.exitDate!)}`}
         </Typography>
 
-        {/* Badges + traveler chips */}
         <Box
           sx={{
             display: "flex",
@@ -181,14 +198,12 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
             gap: "5px",
           }}
         >
-          {/* Duration */}
           <Box
             sx={{ ...BADGE_SX, bgcolor: tokens.mist, color: tokens.textSoft }}
           >
             {days}d
           </Box>
 
-          {/* Region */}
           <Box
             sx={{
               ...BADGE_SX,
@@ -223,7 +238,6 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
             </Box>
           )}
 
-          {/* Traveler chips — pushed to the right */}
           <Box
             sx={{
               display: "flex",
@@ -285,6 +299,7 @@ export function MobileTripsView({
   travelers,
   hiddenTravelerIds,
   onEditTrip,
+  onAddTrip,
   onAddTraveler,
 }: MobileTripsViewProps) {
   const todayStr = todayISO();
@@ -366,10 +381,7 @@ export function MobileTripsView({
     );
   }
 
-  // All travelers hidden
-  const allHidden =
-    travelers.length > 0 &&
-    travelers.every((t) => hiddenTravelerIds.includes(t.id));
+  const allHidden = travelers.every((t) => hiddenTravelerIds.includes(t.id));
 
   if (allHidden) {
     return (
@@ -403,12 +415,16 @@ export function MobileTripsView({
           width: "100%",
           mx: "auto",
           px: "14px",
-          py: "14px",
+          pt: "14px",
+          pb: "24px",
           display: "flex",
           flexDirection: "column",
           gap: "8px",
         }}
       >
+        {/* Add Trip — top */}
+        <AddTripButton onClick={onAddTrip} />
+
         {mergedTrips.length === 0 ? (
           <Box
             sx={{
@@ -434,19 +450,24 @@ export function MobileTripsView({
               No trips yet
             </Typography>
             <Typography sx={{ fontSize: "0.78rem", color: tokens.textSoft }}>
-              Add a trip using the button above.
+              Use the button above to add your first trip.
             </Typography>
           </Box>
         ) : (
-          mergedTrips.map((merged) => (
-            <MergedTripCard
-              key={`${merged.trip.entryDate}-${merged.trip.exitDate ?? "ongoing"}-${merged.trip.region}`}
-              merged={merged}
-              onEdit={() =>
-                onEditTrip(merged.entries[0].traveler.id, merged.trip)
-              }
-            />
-          ))
+          <>
+            {mergedTrips.map((merged) => (
+              <MergedTripCard
+                key={`${merged.trip.entryDate}-${merged.trip.exitDate ?? "ongoing"}-${merged.trip.region}`}
+                merged={merged}
+                onEdit={() =>
+                  onEditTrip(merged.entries[0].traveler.id, merged.trip)
+                }
+              />
+            ))}
+
+            {/* Add Trip — bottom */}
+            <AddTripButton onClick={onAddTrip} />
+          </>
         )}
       </Box>
     </Box>

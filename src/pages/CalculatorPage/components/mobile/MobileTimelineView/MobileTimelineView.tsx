@@ -2,6 +2,7 @@ import { useEffect, useRef, useMemo } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
+import AddIcon from "@mui/icons-material/Add";
 import { format } from "date-fns";
 import { Traveler, Trip } from "@/types";
 import { tokens } from "@/styles/theme";
@@ -26,6 +27,7 @@ interface MobileTimelineViewProps {
   hiddenTravelerIds: string[];
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onAddTraveler: () => void;
+  onAddTrip: () => void;
 }
 
 interface TravelerEntry {
@@ -313,6 +315,7 @@ export function MobileTimelineView({
   hiddenTravelerIds,
   onEditTrip,
   onAddTraveler,
+  onAddTrip,
 }: MobileTimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasScrolledRef = useRef(false);
@@ -460,7 +463,49 @@ export function MobileTimelineView({
               </Box>
             );
           })}
+
+          {/* Add Trip — bottom of scrollable content */}
+          {!allHidden && (
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: 16,
+                left: CARD_GUTTER + 4,
+                right: CARD_GUTTER + 4,
+              }}
+            >
+              <Box
+                component="button"
+                onClick={onAddTrip}
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  py: "10px",
+                  border: `1.5px dashed ${tokens.border}`,
+                  borderRadius: "10px",
+                  bgcolor: alpha(tokens.white, 0.9),
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.82rem",
+                  fontWeight: 600,
+                  color: tokens.textSoft,
+                  cursor: "pointer",
+                  "&:active": {
+                    borderColor: tokens.navy,
+                    color: tokens.navy,
+                    bgcolor: tokens.white,
+                  },
+                }}
+              >
+                <AddIcon sx={{ fontSize: "0.95rem" }} />
+                Add Trip
+              </Box>
+            </Box>
+          )}
         </Box>
+        {/* ↑ content column closes here — button is now inside it */}
       </Box>
     </Box>
   );

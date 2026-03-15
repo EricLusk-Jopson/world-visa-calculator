@@ -196,6 +196,7 @@ export function CalculatorPage() {
                 hiddenTravelerIds={hiddenTravelerIds}
                 onToggleTraveler={handleToggleTraveler}
                 onDeleteTraveler={handleDeleteTraveler}
+                onAddTraveler={handleAddTraveler}
               />
 
               {view === "timeline" ? (
@@ -204,6 +205,7 @@ export function CalculatorPage() {
                   hiddenTravelerIds={hiddenTravelerIds}
                   onEditTrip={handleOpenEditTrip}
                   onAddTraveler={handleAddTraveler}
+                  onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
                 />
               ) : (
                 <MobileTripsView
@@ -211,6 +213,7 @@ export function CalculatorPage() {
                   hiddenTravelerIds={hiddenTravelerIds}
                   onEditTrip={handleOpenEditTrip}
                   onAddTraveler={handleAddTraveler}
+                  onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
                 />
               )}
             </Box>
