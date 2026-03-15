@@ -14,54 +14,25 @@ import {
 } from "./components";
 import { ShareModal } from "./components/ShareModal";
 import { LoadingScreen } from "./components/LoadingScreen";
+import { MobileTimelineView } from "./components/mobile/MobileTimelineView/MobileTimelineView";
+import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripView";
+import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
 
-// ---------------------------------------------------------------------------
-// Animation constants
-// ---------------------------------------------------------------------------
-
-/** Minimum time the loading screen is visible, in ms. */
 const MIN_LOAD_MS = 650;
-
-/** Duration of the crossfade between loader and content, in ms. */
 const FADE_MS = 300;
 
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to   { opacity: 1; }
-`;
-
-const fadeOut = keyframes`
-  from { opacity: 1; }
-  to   { opacity: 0; }
-`;
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+const fadeIn = keyframes`from { opacity: 0; } to { opacity: 1; }`;
+const fadeOut = keyframes`from { opacity: 1; } to { opacity: 0; }`;
 
 type CalcView = "timeline" | "cards";
-
-/**
- * loading  — loader visible, content not yet mounted
- * fading   — loader fading out, content fading in (both in DOM)
- * ready    — loader unmounted, content fully visible
- *
- * Derived — never stored in state — so no setState-in-effect cascade.
- *
- *   animationComplete=false, minTimeDone=false, hydrationDone=false → loading
- *   animationComplete=false, minTimeDone=true,  hydrationDone=true  → fading
- *   animationComplete=true                                          → ready
- */
 type LoadPhase = "loading" | "fading" | "ready";
 
 interface ModalState {
   open: boolean;
   kind: "none" | "traveler" | "trip";
-  /** Only set when kind === "trip" */
   mode: "add" | "edit";
-  /** Pre-selected traveler id when opening Add Trip from a specific column */
-  travelerId: string | null;
-  /** The trip being edited; null when adding */
+  /** All traveler IDs associated with this modal instance */
+  travelerIds: string[];
   trip: Trip | null;
 }
 
@@ -69,37 +40,32 @@ const CLOSED_MODAL: ModalState = {
   open: false,
   kind: "none",
   mode: "add",
-  travelerId: null,
+  travelerIds: [],
   trip: null,
 };
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 
 function makeTraveler(name: string): Traveler {
   return { id: crypto.randomUUID(), name, trips: [] };
 }
 
-// ---------------------------------------------------------------------------
-// Component
-// ---------------------------------------------------------------------------
-
 export function CalculatorPage() {
-  // ── State ────────────────────────────────────────────────────────────────
   const [view, setView] = useState<CalcView>("timeline");
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
 
-  // ── Load phase (derived) ─────────────────────────────────────────────────
-  //
-  // Three primitive booleans — each set by a single, non-cascading source:
-  //   minTimeDone      ← setTimeout callback (external)
-  //   hydrationDone    ← useUrlSync onHydrated callback (external)
-  //   animationComplete ← onAnimationEnd DOM event (external)
-  //
-  // `phase` is computed from them inline; no syncing effect needed.
+  const handleToggleTraveler = useCallback((id: string) => {
+    setHiddenTravelerIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
+    );
+  }, []);
+
+  useEffect(() => {
+    const validIds = new Set(travelers.map((t) => t.id));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setHiddenTravelerIds((prev) => prev.filter((id) => validIds.has(id)));
+  }, [travelers]);
 
   const [minTimeDone, setMinTimeDone] = useState(false);
   const [hydrationDone, setHydrationDone] = useState(false);
@@ -111,14 +77,11 @@ export function CalculatorPage() {
       ? "fading"
       : "loading";
 
-  // Minimum display timer — driven by an external system (setTimeout), so
-  // calling setState in its callback is the correct pattern.
   useEffect(() => {
     const id = setTimeout(() => setMinTimeDone(true), MIN_LOAD_MS);
     return () => clearTimeout(id);
   }, []);
 
-  // ── URL / localStorage sync ───────────────────────────────────────────────
   const shareableState = useMemo<ShareableState>(
     () => ({ travelers }),
     [travelers],
@@ -130,7 +93,7 @@ export function CalculatorPage() {
     onHydrated: () => setHydrationDone(true),
   });
 
-  // ── Traveler actions ─────────────────────────────────────────────────────
+  // ── Traveler actions ────────────────────────────────────────────────────────
 
   const handleAddTraveler = useCallback(() => {
     setModal({ ...CLOSED_MODAL, open: true, kind: "traveler" });
@@ -145,59 +108,108 @@ export function CalculatorPage() {
     setTravelers((prev) => prev.filter((t) => t.id !== travelerId));
   }, []);
 
-  // ── Trip actions ─────────────────────────────────────────────────────────
+  // ── Trip actions ────────────────────────────────────────────────────────────
 
   const handleOpenAddTrip = useCallback((travelerId: string) => {
-    setModal({ open: true, kind: "trip", mode: "add", travelerId, trip: null });
+    setModal({
+      open: true,
+      kind: "trip",
+      mode: "add",
+      travelerIds: [travelerId],
+      trip: null,
+    });
   }, []);
 
+  /** Desktop: single-traveler edit (one column = one person) */
   const handleOpenEditTrip = useCallback((travelerId: string, trip: Trip) => {
-    setModal({ open: true, kind: "trip", mode: "edit", travelerId, trip });
+    setModal({
+      open: true,
+      kind: "trip",
+      mode: "edit",
+      travelerIds: [travelerId],
+      trip,
+    });
   }, []);
 
-  const handleTripSave = useCallback((travelerIds: string[], trip: Trip) => {
-    setTravelers((prev) =>
-      prev.map((t) => {
-        if (!travelerIds.includes(t.id)) return t;
+  /** Mobile: multi-traveler edit (merged card may represent several people) */
+  const handleOpenEditTripForMany = useCallback(
+    (travelerIds: string[], trip: Trip) => {
+      setModal({
+        open: true,
+        kind: "trip",
+        mode: "edit",
+        travelerIds,
+        trip,
+      });
+    },
+    [],
+  );
 
-        const exists = t.trips.some((x) => x.id === trip.id);
+  const handleTripSave = useCallback(
+    (travelerIds: string[], trip: Trip) => {
+      setTravelers((prev) =>
+        prev.map((t) => {
+          if (!travelerIds.includes(t.id)) return t;
 
-        if (exists) {
-          return {
-            ...t,
-            trips: t.trips.map((x) => (x.id === trip.id ? trip : x)),
-          };
-        } else {
+          // Match by ID first (single-traveler add/edit), then by coordinates
+          // (multi-traveler edit where each copy has a different UUID).
+          const existingIndex = t.trips.findIndex(
+            (x) =>
+              x.id === trip.id ||
+              (x.entryDate === (modal.trip?.entryDate ?? "") &&
+                x.exitDate === modal.trip?.exitDate &&
+                x.region === (modal.trip?.region ?? trip.region)),
+          );
+
+          if (existingIndex !== -1) {
+            const updated = [...t.trips];
+            updated[existingIndex] = {
+              ...trip,
+              id: t.trips[existingIndex].id, // preserve each traveler's own ID
+            };
+            return { ...t, trips: updated };
+          }
+
           return {
             ...t,
             trips: [...t.trips, { ...trip, id: crypto.randomUUID() }],
           };
-        }
-      }),
-    );
-    setModal(CLOSED_MODAL);
-  }, []);
+        }),
+      );
+      setModal(CLOSED_MODAL);
+    },
+    [modal.trip],
+  );
 
+  /** Deletes the trip from every traveler in modal.travelerIds */
   const handleTripDelete = useCallback(() => {
-    if (!modal.travelerId || !modal.trip) return;
-    const { travelerId, trip } = modal;
+    if (modal.travelerIds.length === 0 || !modal.trip) return;
+    const { travelerIds, trip } = modal;
     setTravelers((prev) =>
       prev.map((t) =>
-        t.id !== travelerId
+        !travelerIds.includes(t.id)
           ? t
-          : { ...t, trips: t.trips.filter((x) => x.id !== trip.id) },
+          : {
+              ...t,
+              trips: t.trips.filter(
+                (x) =>
+                  !(
+                    x.entryDate === trip.entryDate &&
+                    x.exitDate === trip.exitDate &&
+                    x.region === trip.region
+                  ),
+              ),
+            },
       ),
     );
     setModal(CLOSED_MODAL);
   }, [modal]);
 
-  // ── Clear all trips ───────────────────────────────────────────────────────
-
   const handleClearAllTrips = useCallback(() => {
     setTravelers((prev) => prev.map((t) => ({ ...t, trips: [] })));
   }, []);
 
-  // ── Render ───────────────────────────────────────────────────────────────
+  // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
     <Box
@@ -210,7 +222,6 @@ export function CalculatorPage() {
         overflow: "hidden",
       }}
     >
-      {/* Nav renders immediately — it has no dependency on traveler data */}
       <CalculatorNav
         view={view}
         onViewChange={setView}
@@ -221,15 +232,7 @@ export function CalculatorPage() {
         onClearAll={handleClearAllTrips}
       />
 
-      {/*
-       * Content area — a relative container so the loading screen can sit
-       * absolutely on top of the view during the crossfade.
-       */}
       <Box sx={{ flex: 1, position: "relative", overflow: "hidden" }}>
-        {/* ── App content ─────────────────────────────────────────────────
-         * Mounted as soon as we enter "fading" so it's already rendering
-         * while the loader is fading out above it.
-         */}
         {phase !== "loading" && (
           <Box
             sx={{
@@ -240,30 +243,71 @@ export function CalculatorPage() {
               animation: `${fadeIn} ${FADE_MS}ms ease-out both`,
             }}
           >
-            {view === "timeline" ? (
-              <TimelineView
+            {/* ── Mobile layout (xs only) ────────────────────────────────── */}
+            <Box
+              sx={{
+                display: { xs: "flex", sm: "none" },
+                flexDirection: "column",
+                flex: 1,
+                overflow: "hidden",
+              }}
+            >
+              <TravelerFilterBar
                 travelers={travelers}
-                onAddTrip={handleOpenAddTrip}
-                onEditTrip={handleOpenEditTrip}
+                hiddenTravelerIds={hiddenTravelerIds}
+                onToggleTraveler={handleToggleTraveler}
                 onDeleteTraveler={handleDeleteTraveler}
                 onAddTraveler={handleAddTraveler}
               />
-            ) : (
-              <CardsView
-                travelers={travelers}
-                onAddTrip={handleOpenAddTrip}
-                onEditTrip={handleOpenEditTrip}
-                onDeleteTraveler={handleDeleteTraveler}
-              />
-            )}
+
+              {view === "timeline" ? (
+                <MobileTimelineView
+                  travelers={travelers}
+                  hiddenTravelerIds={hiddenTravelerIds}
+                  onEditTrip={handleOpenEditTripForMany}
+                  onAddTraveler={handleAddTraveler}
+                  onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
+                />
+              ) : (
+                <MobileTripsView
+                  travelers={travelers}
+                  hiddenTravelerIds={hiddenTravelerIds}
+                  onEditTrip={handleOpenEditTripForMany}
+                  onAddTraveler={handleAddTraveler}
+                  onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
+                />
+              )}
+            </Box>
+
+            {/* ── Desktop layout (sm+) — unchanged ──────────────────────── */}
+            <Box
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                flexDirection: "column",
+                flex: 1,
+                overflow: "hidden",
+              }}
+            >
+              {view === "timeline" ? (
+                <TimelineView
+                  travelers={travelers}
+                  onAddTrip={handleOpenAddTrip}
+                  onEditTrip={handleOpenEditTrip}
+                  onDeleteTraveler={handleDeleteTraveler}
+                  onAddTraveler={handleAddTraveler}
+                />
+              ) : (
+                <CardsView
+                  travelers={travelers}
+                  onAddTrip={handleOpenAddTrip}
+                  onEditTrip={handleOpenEditTrip}
+                  onDeleteTraveler={handleDeleteTraveler}
+                />
+              )}
+            </Box>
           </Box>
         )}
 
-        {/* ── Loading screen ───────────────────────────────────────────────
-         * Sits above the content via z-index. When phase reaches "fading"
-         * the fadeOut animation runs; onAnimationEnd flips animationComplete
-         * which derives phase to "ready" and removes this from the DOM.
-         */}
         {phase !== "ready" && (
           <Box
             onAnimationEnd={
@@ -286,26 +330,23 @@ export function CalculatorPage() {
         )}
       </Box>
 
-      {/* Traveler modal */}
       <TravelerModal
         open={modal.open && modal.kind === "traveler"}
         onAdd={handleTravelerSave}
         onClose={() => setModal(CLOSED_MODAL)}
       />
 
-      {/* Trip modal */}
       <TripModal
         open={modal.open && modal.kind === "trip"}
         mode={modal.mode}
         travelers={travelers}
-        initialTravelerId={modal.travelerId ?? ""}
+        initialTravelerIds={modal.travelerIds}
         initialTrip={modal.trip ?? undefined}
         onSave={handleTripSave}
         onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
         onClose={() => setModal(CLOSED_MODAL)}
       />
 
-      {/* Share modal */}
       <ShareModal
         open={shareModalOpen}
         shareableUrl={shareableUrl}
