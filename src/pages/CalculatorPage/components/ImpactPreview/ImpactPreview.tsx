@@ -8,12 +8,25 @@ import { ImpactBreakdown, StatusVariant } from "../travelers/travelerStatus";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+export interface TravelerImpact {
+  id: string;
+  name: string;
+  color: string;
+  daysRemaining: number;
+  daysUsed: number;
+}
+
 interface ImpactPreviewProps {
   daysRemaining: number;
   daysUsed: number;
   variant: StatusVariant | "neutral";
-  /** When provided, the breakdown toggle and detail panel are shown. */
   breakdown?: ImpactBreakdown;
+  /**
+   * When provided (multi-traveler add/edit), renders a per-traveler row
+   * instead of the single large number. The summary variant + breakdown
+   * still reflect the most constrained traveler.
+   */
+  travelerImpacts?: TravelerImpact[];
 }
 
 // ─── Design tokens by variant ────────────────────────────────────────────────
@@ -45,7 +58,7 @@ const VARIANT_COLORS = {
   },
 } as const;
 
-// ─── Internal helpers ─────────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const MONTH_NAMES = [
   "Jan",
@@ -71,6 +84,12 @@ function fmtShort(iso: string): string {
 
 function fmtRange(entryDate: string, exitDate?: string): string {
   return `${fmtShort(entryDate)} → ${exitDate ? fmtShort(exitDate) : "ongoing"}`;
+}
+
+function statusVariantForDays(days: number): StatusVariant {
+  if (days > 29) return "safe";
+  if (days > 9) return "caution";
+  return "danger";
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -192,6 +211,97 @@ function Divider() {
   return <Box sx={{ height: "1px", bgcolor: tokens.border, mx: "-12px" }} />;
 }
 
+// ─── Per-traveler row ─────────────────────────────────────────────────────────
+
+function TravelerImpactRow({ impact }: { impact: TravelerImpact }) {
+  const variant = statusVariantForDays(impact.daysRemaining);
+  const vc = VARIANT_COLORS[variant];
+  const fillPct = Math.min(100, (Math.max(0, impact.daysUsed) / 90) * 100);
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
+      }}
+    >
+      {/* Traveler color dot */}
+      <Box
+        sx={{
+          width: 7,
+          height: 7,
+          borderRadius: "50%",
+          bgcolor: impact.color,
+          flexShrink: 0,
+        }}
+      />
+
+      {/* Name */}
+      <Typography
+        sx={{
+          fontFamily: tokens.fontDisplay,
+          fontSize: "0.85rem",
+          fontStyle: "italic",
+          fontWeight: 400,
+          color: tokens.navy,
+          minWidth: 0,
+          flexShrink: 0,
+        }}
+      >
+        {impact.name}
+      </Typography>
+
+      {/* Progress bar */}
+      <Box
+        sx={{
+          flex: 1,
+          height: 3,
+          bgcolor: tokens.mist,
+          borderRadius: "100px",
+          overflow: "hidden",
+        }}
+      >
+        <Box
+          sx={{
+            height: "100%",
+            width: `${fillPct}%`,
+            bgcolor: vc.value,
+            borderRadius: "100px",
+          }}
+        />
+      </Box>
+
+      {/* Days remaining badge */}
+      <Box
+        sx={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "4px",
+          px: "7px",
+          py: "2px",
+          borderRadius: "100px",
+          bgcolor: vc.bg,
+          border: `1px solid ${vc.border}`,
+          flexShrink: 0,
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "0.65rem",
+            fontWeight: 700,
+            color: vc.text,
+            lineHeight: 1,
+            whiteSpace: "nowrap",
+          }}
+        >
+          {impact.daysRemaining}d left
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export function ImpactPreview({
@@ -199,9 +309,11 @@ export function ImpactPreview({
   daysUsed,
   variant,
   breakdown,
+  travelerImpacts,
 }: ImpactPreviewProps) {
   const [expanded, setExpanded] = useState(false);
   const colors = VARIANT_COLORS[variant];
+  const isMulti = travelerImpacts && travelerImpacts.length > 1;
 
   return (
     <Box
@@ -211,7 +323,7 @@ export function ImpactPreview({
         bgcolor: colors.bg,
       }}
     >
-      {/* ── Summary row (always visible) ── */}
+      {/* ── Summary row ── */}
       <Box
         sx={{
           display: "flex",
@@ -219,10 +331,18 @@ export function ImpactPreview({
           justifyContent: "space-between",
           px: "12px",
           py: "10px",
+          gap: "12px",
         }}
       >
         {/* Left: label + sublabel + toggle */}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "4px",
+            flex: isMulti ? 1 : "unset",
+          }}
+        >
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
@@ -236,19 +356,39 @@ export function ImpactPreview({
           >
             After this trip
           </Typography>
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.68rem",
-              fontWeight: 500,
-              color: colors.text,
-              opacity: 0.75,
-            }}
-          >
-            {daysUsed} of 90 days used
-          </Typography>
 
-          {/* Text toggle — only rendered when breakdown data is available */}
+          {/* Single-traveler sublabel */}
+          {!isMulti && (
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 500,
+                color: colors.text,
+                opacity: 0.75,
+              }}
+            >
+              {daysUsed} of 90 days used
+            </Typography>
+          )}
+
+          {/* Multi-traveler: per-traveler rows */}
+          {isMulti && (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "6px",
+                mt: "4px",
+              }}
+            >
+              {travelerImpacts.map((impact) => (
+                <TravelerImpactRow key={impact.id} impact={impact} />
+              ))}
+            </Box>
+          )}
+
+          {/* Breakdown toggle */}
           {breakdown && (
             <Typography
               component="button"
@@ -268,34 +408,52 @@ export function ImpactPreview({
               }}
             >
               {expanded ? "Hide breakdown" : "Show breakdown"}
+              {isMulti && (
+                <Typography
+                  component="span"
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.65rem",
+                    fontWeight: 500,
+                    color: colors.text,
+                    opacity: 0.7,
+                    ml: "4px",
+                  }}
+                >
+                  (most constrained)
+                </Typography>
+              )}
             </Typography>
           )}
         </Box>
 
-        {/* Right: numeric value */}
-        <Typography
-          sx={{
-            fontFamily: tokens.fontDisplay,
-            fontSize: "2rem",
-            fontWeight: 600,
-            lineHeight: 1,
-            color: colors.value,
-          }}
-        >
-          {daysRemaining}
+        {/* Right: big number — single traveler only */}
+        {!isMulti && (
           <Typography
-            component="span"
             sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.75rem",
+              fontFamily: tokens.fontDisplay,
+              fontSize: "2rem",
               fontWeight: 600,
-              color: colors.text,
-              ml: "3px",
+              lineHeight: 1,
+              color: colors.value,
+              flexShrink: 0,
             }}
           >
-            d
+            {daysRemaining}
+            <Typography
+              component="span"
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                color: colors.text,
+                ml: "3px",
+              }}
+            >
+              d
+            </Typography>
           </Typography>
-        </Typography>
+        )}
       </Box>
 
       {/* ── Expandable breakdown ── */}
@@ -312,7 +470,6 @@ export function ImpactPreview({
               gap: "8px",
             }}
           >
-            {/* Section A: previous trips in window */}
             <SectionRow
               label="Previous trips in window"
               days={breakdown.previousDaysTotal}
@@ -345,7 +502,6 @@ export function ImpactPreview({
 
             <Divider />
 
-            {/* Section B: days aging out */}
             <SectionRow
               label="Freed during this trip"
               days={breakdown.agingOutTotal}
@@ -378,7 +534,6 @@ export function ImpactPreview({
 
             <Divider />
 
-            {/* Section C: this trip */}
             <SectionRow
               label="This trip"
               days={breakdown.currentTripDays}
@@ -387,7 +542,6 @@ export function ImpactPreview({
 
             <Divider />
 
-            {/* Result */}
             <Box
               sx={{
                 display: "flex",
@@ -421,7 +575,6 @@ export function ImpactPreview({
               </Typography>
             </Box>
 
-            {/* Formula annotation */}
             <Typography
               sx={{
                 fontFamily: tokens.fontBody,

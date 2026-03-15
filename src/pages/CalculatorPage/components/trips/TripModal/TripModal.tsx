@@ -30,6 +30,8 @@ import {
   computeTravelerStatus,
   getStatusVariant,
 } from "../../travelers/travelerStatus";
+import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
+import { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -274,6 +276,44 @@ export function TripModal({
   const impactVariant = impactStatus
     ? getStatusVariant(impactStatus.daysRemaining)
     : ("neutral" as const);
+
+  // ── Per-traveler impacts (multi-traveler add/edit) ──────────────────────────
+
+  let travelerImpacts: TravelerImpact[] | undefined = undefined;
+
+  if (travelerIds.length > 1 && entryDate && region === VisaRegion.Schengen) {
+    travelerImpacts = travelerIds.flatMap((tid) => {
+      const traveler = travelers.find((t) => t.id === tid);
+      const travelerIndex = travelers.findIndex((t) => t.id === tid);
+      if (!traveler) return [];
+
+      const tempTrips = traveler.trips
+        .filter((t) => t.id !== initialTrip?.id)
+        .concat([
+          {
+            id: "__preview__",
+            entryDate,
+            exitDate: ongoing ? undefined : exitDate || undefined,
+            region: VisaRegion.Schengen,
+            destination,
+          },
+        ]);
+
+      const tempTraveler = { ...traveler, trips: tempTrips };
+      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
+      const status = computeTravelerStatus(tempTraveler, refDate);
+
+      return [
+        {
+          id: tid,
+          name: traveler.name,
+          color: getTravelerColor(travelerIndex),
+          daysRemaining: status.daysRemaining,
+          daysUsed: status.daysUsed,
+        },
+      ];
+    });
+  }
 
   // ── Impact breakdown ────────────────────────────────────────────────────────
 
@@ -726,6 +766,7 @@ export function TripModal({
                 daysUsed={impactStatus.daysUsed}
                 variant={impactVariant}
                 breakdown={impactBreakdown}
+                travelerImpacts={travelerImpacts}
               />
             )}
         </Box>
