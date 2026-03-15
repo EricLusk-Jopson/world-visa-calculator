@@ -145,25 +145,41 @@ export function CalculatorPage() {
     [],
   );
 
-  const handleTripSave = useCallback((travelerIds: string[], trip: Trip) => {
-    setTravelers((prev) =>
-      prev.map((t) => {
-        if (!travelerIds.includes(t.id)) return t;
-        const exists = t.trips.some((x) => x.id === trip.id);
-        if (exists) {
+  const handleTripSave = useCallback(
+    (travelerIds: string[], trip: Trip) => {
+      setTravelers((prev) =>
+        prev.map((t) => {
+          if (!travelerIds.includes(t.id)) return t;
+
+          // Match by ID first (single-traveler add/edit), then by coordinates
+          // (multi-traveler edit where each copy has a different UUID).
+          const existingIndex = t.trips.findIndex(
+            (x) =>
+              x.id === trip.id ||
+              (x.entryDate === (modal.trip?.entryDate ?? "") &&
+                x.exitDate === modal.trip?.exitDate &&
+                x.region === (modal.trip?.region ?? trip.region)),
+          );
+
+          if (existingIndex !== -1) {
+            const updated = [...t.trips];
+            updated[existingIndex] = {
+              ...trip,
+              id: t.trips[existingIndex].id, // preserve each traveler's own ID
+            };
+            return { ...t, trips: updated };
+          }
+
           return {
             ...t,
-            trips: t.trips.map((x) => (x.id === trip.id ? trip : x)),
+            trips: [...t.trips, { ...trip, id: crypto.randomUUID() }],
           };
-        }
-        return {
-          ...t,
-          trips: [...t.trips, { ...trip, id: crypto.randomUUID() }],
-        };
-      }),
-    );
-    setModal(CLOSED_MODAL);
-  }, []);
+        }),
+      );
+      setModal(CLOSED_MODAL);
+    },
+    [modal.trip],
+  );
 
   /** Deletes the trip from every traveler in modal.travelerIds */
   const handleTripDelete = useCallback(() => {

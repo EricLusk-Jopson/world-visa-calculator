@@ -52,12 +52,25 @@ function hasOverlap(
   exit: string | null,
   region: VisaRegion,
   excludeId?: string,
+  excludeTrip?: Pick<Trip, "entryDate" | "exitDate" | "region">,
 ): string | null {
   const nEntry = parseDate(entry);
   const nExit = exit ? parseDate(exit) : new Date("2099-01-01");
 
   for (const t of trips) {
     if (t.id === excludeId) continue;
+
+    // For multi-traveler edits each copy has a different ID — exclude by
+    // original coordinates so the trip being edited isn't flagged as an overlap.
+    if (
+      excludeTrip &&
+      t.entryDate === excludeTrip.entryDate &&
+      t.exitDate === excludeTrip.exitDate &&
+      t.region === excludeTrip.region
+    ) {
+      continue;
+    }
+
     if (t.region !== region) continue;
 
     const tEntry = parseDate(t.entryDate);
@@ -338,6 +351,7 @@ export function TripModal({
         resolvedExit ?? null,
         region,
         initialTrip?.id,
+        initialTrip,
       );
       if (msg) conflicts.push(`${traveler.name}: ${msg}`);
     }
