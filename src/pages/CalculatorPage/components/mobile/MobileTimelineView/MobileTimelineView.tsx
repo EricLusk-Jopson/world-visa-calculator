@@ -28,10 +28,17 @@ interface MobileTimelineViewProps {
   onAddTraveler: () => void;
 }
 
-interface PositionedTrip {
-  trip: Trip;
+interface TravelerEntry {
   traveler: Traveler;
   travelerIndex: number;
+  /** The original trip record for this traveler (used for editing) */
+  trip: Trip;
+}
+
+interface PositionedTrip {
+  /** Canonical trip — used for dates, region, destination, planned state */
+  trip: Trip;
+  entries: TravelerEntry[];
   top: number;
   height: number;
   lane: number;
@@ -43,9 +50,56 @@ interface PositionedTrip {
 const MIN_TRIP_HEIGHT = 28;
 const LANE_GAP = 2;
 const BOTTOM_PADDING = 80;
-const CARD_GUTTER = 3; // px gap between adjacent lanes
+const CARD_GUTTER = 3;
 
-// ─── Lane assignment ──────────────────────────────────────────────────────────
+// ─── Merge + lane assignment ──────────────────────────────────────────────────
+
+/**
+ * Merges trips that share the same entryDate, exitDate, and region across
+ * travelers, then assigns pixel positions and lanes to each merged group.
+ *
+ * Two trips are considered identical when entryDate + exitDate + region match.
+ * The first traveler's trip record becomes the canonical source for display.
+ */
+function buildPositionedTrips(
+  travelers: Traveler[],
+  hiddenIds: string[],
+  timelineStart: Date,
+  todayStr: string,
+): Omit<PositionedTrip, "lane" | "laneCount">[] {
+  const merged: Omit<PositionedTrip, "lane" | "laneCount">[] = [];
+
+  travelers.forEach((traveler, travelerIndex) => {
+    if (hiddenIds.includes(traveler.id)) return;
+
+    traveler.trips.forEach((trip) => {
+      const existing = merged.find(
+        (m) =>
+          m.trip.entryDate === trip.entryDate &&
+          m.trip.exitDate === trip.exitDate &&
+          m.trip.region === trip.region,
+      );
+
+      if (existing) {
+        existing.entries.push({ traveler, travelerIndex, trip });
+      } else {
+        const top = dateToTop(parseDate(trip.entryDate), timelineStart);
+        const exitStr = trip.exitDate ?? todayStr;
+        const rawBottom = dateToTop(parseDate(exitStr), timelineStart);
+        const height = Math.max(rawBottom - top, MIN_TRIP_HEIGHT);
+
+        merged.push({
+          trip,
+          entries: [{ traveler, travelerIndex, trip }],
+          top,
+          height,
+        });
+      }
+    });
+  });
+
+  return merged;
+}
 
 function assignLanes(
   travelers: Traveler[],
@@ -53,18 +107,12 @@ function assignLanes(
   timelineStart: Date,
   todayStr: string,
 ): PositionedTrip[] {
-  const flat: Omit<PositionedTrip, "lane" | "laneCount">[] = [];
-
-  travelers.forEach((traveler, travelerIndex) => {
-    if (hiddenIds.includes(traveler.id)) return;
-    traveler.trips.forEach((trip) => {
-      const top = dateToTop(parseDate(trip.entryDate), timelineStart);
-      const exitStr = trip.exitDate ?? todayStr;
-      const rawBottom = dateToTop(parseDate(exitStr), timelineStart);
-      const height = Math.max(rawBottom - top, MIN_TRIP_HEIGHT);
-      flat.push({ trip, traveler, travelerIndex, top, height });
-    });
-  });
+  const flat = buildPositionedTrips(
+    travelers,
+    hiddenIds,
+    timelineStart,
+    todayStr,
+  );
 
   flat.sort((a, b) => a.top - b.top || b.height - a.height);
 
@@ -100,11 +148,10 @@ function MobileTimelineTripCard({
   positioned,
   onClick,
 }: MobileTimelineTripCardProps) {
-  const { trip, traveler, travelerIndex, height } = positioned;
+  const { trip, entries, height } = positioned;
   const todayStr = todayISO();
 
   const isPlanned = trip.entryDate > todayStr;
-  const color = getTravelerColor(travelerIndex);
   const showDetails = height >= 52;
 
   return (
@@ -134,41 +181,51 @@ function MobileTimelineTripCard({
           pb: "4px",
           height: "100%",
           overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          gap: "2px",
         }}
       >
-        {/* Traveler chip — always visible */}
-        <Box
-          sx={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "3px",
-            px: "5px",
-            py: "1px",
-            borderRadius: "100px",
-            bgcolor: alpha(color, 0.1),
-            mb: "2px",
-          }}
-        >
-          <Box
-            sx={{
-              width: 5,
-              height: 5,
-              borderRadius: "50%",
-              bgcolor: color,
-              flexShrink: 0,
-            }}
-          />
-          <Typography
-            sx={{
-              fontSize: "0.58rem",
-              fontWeight: 700,
-              color,
-              lineHeight: 1,
-              userSelect: "none",
-            }}
-          >
-            {traveler.name}
-          </Typography>
+        {/* Traveler chips — one per entry, always visible */}
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "2px" }}>
+          {entries.map(({ traveler, travelerIndex }) => {
+            const color = getTravelerColor(travelerIndex);
+            return (
+              <Box
+                key={traveler.id}
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "3px",
+                  px: "5px",
+                  py: "1px",
+                  borderRadius: "100px",
+                  bgcolor: alpha(color, 0.1),
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 5,
+                    height: 5,
+                    borderRadius: "50%",
+                    bgcolor: color,
+                    flexShrink: 0,
+                  }}
+                />
+                <Typography
+                  sx={{
+                    fontSize: "0.58rem",
+                    fontWeight: 700,
+                    color,
+                    lineHeight: 1,
+                    userSelect: "none",
+                  }}
+                >
+                  {traveler.name}
+                </Typography>
+              </Box>
+            );
+          })}
         </Box>
 
         {showDetails && trip.destination && (
@@ -194,7 +251,6 @@ function MobileTimelineTripCard({
               fontSize: "0.62rem",
               color: tokens.textGhost,
               lineHeight: 1.3,
-              mt: "2px",
             }}
           >
             {format(parseDate(trip.entryDate), "MMM d")}
@@ -237,7 +293,6 @@ export function MobileTimelineView({
     return maxBottom + BOTTOM_PADDING;
   }, [positionedTrips]);
 
-  // Scroll to today on first render
   useEffect(() => {
     if (hasScrolledRef.current || !scrollRef.current) return;
     const vh = scrollRef.current.clientHeight;
@@ -342,7 +397,7 @@ export function MobileTimelineView({
 
             return (
               <Box
-                key={`${positioned.traveler.id}-${positioned.trip.id}`}
+                key={`${positioned.trip.entryDate}-${positioned.trip.exitDate ?? "ongoing"}-${positioned.trip.region}`}
                 sx={{
                   position: "absolute",
                   top,
@@ -354,7 +409,10 @@ export function MobileTimelineView({
                 <MobileTimelineTripCard
                   positioned={positioned}
                   onClick={() =>
-                    onEditTrip(positioned.traveler.id, positioned.trip)
+                    onEditTrip(
+                      positioned.entries[0].traveler.id,
+                      positioned.entries[0].trip,
+                    )
                   }
                 />
               </Box>
