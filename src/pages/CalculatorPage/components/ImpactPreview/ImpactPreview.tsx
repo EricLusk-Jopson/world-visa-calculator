@@ -489,21 +489,23 @@ export function ImpactPreview({
                 No previous Schengen trips in this window.
               </Typography>
             ) : (
-              breakdown.previousTrips.map((c) => (
-                <TripRow
-                  key={c.tripId}
-                  name={c.destination}
-                  range={fmtRange(c.entryDate, c.exitDate)}
-                  days={c.daysInWindow}
-                  sign="−"
-                />
-              ))
+              [...breakdown.previousTrips]
+                .sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1))
+                .map((c) => (
+                  <TripRow
+                    key={c.tripId}
+                    name={c.destination}
+                    range={fmtRange(c.entryDate, c.exitDate)}
+                    days={c.daysInWindow}
+                    sign="−"
+                  />
+                ))
             )}
 
             <Divider />
 
             <SectionRow
-              label="Freed during this trip"
+              label="Freed over max stay"
               days={breakdown.agingOutTotal}
               sign="+"
               dimmed={breakdown.agingOutTotal === 0}
@@ -560,7 +562,7 @@ export function ImpactPreview({
                   letterSpacing: "0.06em",
                 }}
               >
-                Remaining
+                Can extend by
               </Typography>
               <Typography
                 sx={{

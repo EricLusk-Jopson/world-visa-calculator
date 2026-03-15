@@ -7,7 +7,10 @@ import {
   subDays,
   differenceInCalendarDays,
 } from "@/features/calculator/utils/dates";
-import { getDaysUsedOnDate } from "@/features/calculator/utils/schengen";
+import {
+  calculateMaxStay,
+  getDaysUsedOnDate,
+} from "@/features/calculator/utils/schengen";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -15,6 +18,12 @@ export type StatusVariant = "safe" | "caution" | "danger";
 
 export interface TravelerStatus {
   daysUsed: number;
+  /**
+   * Additional days the traveler can extend beyond the specified exit date.
+   * Equivalent to calculateMaxStay(entryDate).maxDays − currentTripDays.
+   * Note: this is NOT "days remaining in allowance after this exit" — it is
+   * "how much further you could push the exit if you chose to stay."
+   */
   daysRemaining: number;
   variant: StatusVariant;
   /** YYYY-MM-DD — the start of the 180-day window evaluated at refDate. */
@@ -146,26 +155,29 @@ export function computeImpactBreakdown(
   const entry = parseDate(entryDate);
   const exit = exitDate ? parseDate(exitDate) : today();
 
-  // The 180-day window as-of the entry day covers [entry − 179, entry − 1]
-  // for historical trips (entry day itself is day 1 of the new trip).
+  // The maximum possible exit date given historical trips — this is what
+  // determines how far forward the aging-out window actually reaches.
+  const maxStay = calculateMaxStay(entryDate, historicalTrips);
+  const maxExitDate = maxStay.maxExitDate
+    ? parseDate(maxStay.maxExitDate)
+    : exit;
+
   const windowAtEntryStart = subDays(entry, 179);
   const entryMinus1 = subDays(entry, 1);
 
-  // A historical day H ages out during the stay when the window's back edge
-  // advances past it: that happens on day H + 180. For H to age out within
-  // [entry, exit], we need H + 180 ≤ exit, i.e. H ≤ exit − 180.
-  const agingOutCutoff = subDays(exit, 180);
+  // A historical day H ages out when H + 180 ≤ maxExitDate, i.e. H ≤ maxExitDate − 180.
+  // Using maxExitDate (not the specified exit) means we capture every historical
+  // day that will fall off the window before the stay is truly exhausted —
+  // including days that only age out after the user's specified exit date.
+  const agingOutCutoff = subDays(maxExitDate, 180);
 
   const contributions: TripContribution[] = [];
 
   for (const trip of historicalTrips) {
     const tEntry = parseDate(trip.entryDate);
-    // Ongoing historical trips are capped at entry − 1. They cannot extend
-    // into the new trip (that would be an overlap caught by validation).
     const tExit = trip.exitDate ? parseDate(trip.exitDate) : entryMinus1;
 
     // ── Days in window at entry ───────────────────────────────────────────
-    // Overlap of [tEntry, tExit] with [windowAtEntryStart, entry − 1].
     const inWinStart =
       tEntry < windowAtEntryStart ? windowAtEntryStart : tEntry;
     const inWinEnd = tExit > entryMinus1 ? entryMinus1 : tExit;
@@ -174,10 +186,7 @@ export function computeImpactBreakdown(
         ? differenceInCalendarDays(inWinEnd, inWinStart) + 1
         : 0;
 
-    // ── Days aging out during the stay ────────────────────────────────────
-    // Overlap of [tEntry, tExit] with [windowAtEntryStart, agingOutCutoff].
-    // The agingOutCutoff can precede windowAtEntryStart for short trips —
-    // in that case no days age out.
+    // ── Days aging out during the maximum possible stay ───────────────────
     let daysAgingOut = 0;
     if (agingOutCutoff >= windowAtEntryStart) {
       const aoStart = tEntry < windowAtEntryStart ? windowAtEntryStart : tEntry;
@@ -211,10 +220,11 @@ export function computeImpactBreakdown(
   );
   const currentTripDays = differenceInCalendarDays(exit, entry) + 1;
 
-  const daysRemaining = Math.max(
-    0,
-    90 - previousDaysTotal + agingOutTotal - currentTripDays,
-  );
+  // daysRemaining = how many additional days you can extend beyond exitDate.
+  // Equivalent to maxStay.maxDays − currentTripDays, and also to the formula
+  // 90 − previousDaysTotal + agingOutTotal − currentTripDays now that
+  // agingOutTotal is computed against maxExitDate rather than the specified exit.
+  const daysRemaining = Math.max(0, maxStay.maxDays - currentTripDays);
 
   return {
     previousTrips,
