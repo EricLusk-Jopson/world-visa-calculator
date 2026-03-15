@@ -152,7 +152,8 @@ function MobileTimelineTripCard({
   const todayStr = todayISO();
 
   const isPlanned = trip.entryDate > todayStr;
-  const showDetails = height >= 52;
+  const showDates = height >= 44;
+  const showNames = height >= 64;
 
   return (
     <Box
@@ -175,7 +176,7 @@ function MobileTimelineTripCard({
     >
       <Box
         sx={{
-          pl: "8px",
+          pl: "7px",
           pr: "5px",
           pt: "4px",
           pb: "4px",
@@ -186,71 +187,66 @@ function MobileTimelineTripCard({
           gap: "2px",
         }}
       >
-        {/* Traveler chips — one per entry, always visible */}
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "2px" }}>
-          {entries.map(({ traveler, travelerIndex }) => {
-            const color = getTravelerColor(travelerIndex);
-            return (
+        {/* ── Always visible: dots + destination/fallback ─────────────── */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "4px",
+            minWidth: 0,
+          }}
+        >
+          {/* Colored dot per traveler */}
+          <Box sx={{ display: "flex", gap: "2px", flexShrink: 0 }}>
+            {entries.map(({ traveler, travelerIndex }) => (
               <Box
                 key={traveler.id}
                 sx={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "3px",
-                  px: "5px",
-                  py: "1px",
-                  borderRadius: "100px",
-                  bgcolor: alpha(color, 0.1),
+                  width: 5,
+                  height: 5,
+                  borderRadius: "50%",
+                  bgcolor: getTravelerColor(travelerIndex),
+                  flexShrink: 0,
                 }}
-              >
-                <Box
-                  sx={{
-                    width: 5,
-                    height: 5,
-                    borderRadius: "50%",
-                    bgcolor: color,
-                    flexShrink: 0,
-                  }}
-                />
-                <Typography
-                  sx={{
-                    fontSize: "0.58rem",
-                    fontWeight: 700,
-                    color,
-                    lineHeight: 1,
-                    userSelect: "none",
-                  }}
-                >
-                  {traveler.name}
-                </Typography>
-              </Box>
-            );
-          })}
-        </Box>
+              />
+            ))}
+          </Box>
 
-        {showDetails && trip.destination && (
+          {/* Destination — falls back to date range if unnamed */}
           <Typography
             sx={{
-              fontFamily: tokens.fontDisplay,
-              fontSize: "0.75rem",
-              fontStyle: "italic",
+              fontFamily: trip.destination
+                ? tokens.fontDisplay
+                : tokens.fontBody,
+              fontSize: "0.72rem",
+              fontStyle: trip.destination ? "italic" : "normal",
+              fontWeight: trip.destination ? 400 : 500,
               color: tokens.navy,
               lineHeight: 1.2,
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
+              minWidth: 0,
             }}
           >
-            {trip.destination}
+            {trip.destination
+              ? trip.destination
+              : `${format(parseDate(trip.entryDate), "MMM d")}${
+                  trip.exitDate
+                    ? ` – ${format(parseDate(trip.exitDate), "MMM d")}`
+                    : " →"
+                }`}
           </Typography>
-        )}
+        </Box>
 
-        {showDetails && (
+        {/* ── Date range — shown when destination already occupies top row ── */}
+        {showDates && trip.destination && (
           <Typography
             sx={{
-              fontSize: "0.62rem",
+              fontSize: "0.6rem",
               color: tokens.textGhost,
-              lineHeight: 1.3,
+              lineHeight: 1.2,
+              whiteSpace: "nowrap",
             }}
           >
             {format(parseDate(trip.entryDate), "MMM d")}
@@ -258,6 +254,52 @@ function MobileTimelineTripCard({
               ? ` – ${format(parseDate(trip.exitDate), "MMM d")}`
               : " →"}
           </Typography>
+        )}
+
+        {/* ── Traveler name chips — only when there's real estate for them ── */}
+        {showNames && (
+          <Box
+            sx={{ display: "flex", flexWrap: "wrap", gap: "2px", mt: "1px" }}
+          >
+            {entries.map(({ traveler, travelerIndex }) => {
+              const color = getTravelerColor(travelerIndex);
+              return (
+                <Box
+                  key={traveler.id}
+                  sx={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "3px",
+                    px: "5px",
+                    py: "1px",
+                    borderRadius: "100px",
+                    bgcolor: alpha(color, 0.1),
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 5,
+                      height: 5,
+                      borderRadius: "50%",
+                      bgcolor: color,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      fontSize: "0.58rem",
+                      fontWeight: 700,
+                      color,
+                      lineHeight: 1,
+                      userSelect: "none",
+                    }}
+                  >
+                    {traveler.name}
+                  </Typography>
+                </Box>
+              );
+            })}
+          </Box>
         )}
       </Box>
     </Box>
