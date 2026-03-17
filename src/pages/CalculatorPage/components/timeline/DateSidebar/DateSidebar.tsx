@@ -12,6 +12,7 @@ import { today as getToday } from "@/features/calculator/utils/dates";
 
 interface DateSidebarProps {
   timelineStart: Date;
+  timelineEnd: Date;
 }
 
 /**
@@ -22,11 +23,11 @@ interface DateSidebarProps {
  * row (which TimelineView owns), this sidebar needs no header spacer — its
  * top:0 already aligns with top:0 of every card-body canvas.
  */
-export function DateSidebar({ timelineStart }: DateSidebarProps) {
-  const monthMarks = buildMonthMarks(timelineStart);
+export function DateSidebar({ timelineStart, timelineEnd }: DateSidebarProps) {
+  const monthMarks = buildMonthMarks(timelineStart, timelineEnd);
   const today = getToday();
   const todayTop = dateToTop(today, timelineStart);
-  const totalHeight = computeTotalHeight(timelineStart);
+  const totalHeight = computeTotalHeight(timelineStart, timelineEnd);
 
   return (
     <Box

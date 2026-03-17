@@ -8,6 +8,7 @@ import { Traveler, Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
 import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import {
+  computeTimelineEnd,
   computeTimelineStart,
   dateToTop,
   SIDEBAR_WIDTH,
@@ -391,6 +392,13 @@ export function MobileTimelineView({
     [travelers],
   );
 
+  // Dynamic end — extends past today + 90d whenever a trip exit falls later.
+  const timelineEnd = useMemo(
+    () => computeTimelineEnd(travelers),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [travelers],
+  );
+
   const positionedTrips = useMemo(
     () => assignLanes(travelers, hiddenTravelerIds, timelineStart, todayStr),
     [travelers, hiddenTravelerIds, timelineStart, todayStr],
@@ -423,27 +431,9 @@ export function MobileTimelineView({
   const todayTop = dateToTop(getToday(), timelineStart);
 
   return (
-    /*
-     * scrollRef owns all scrolling for this view.
-     * CalculatorNav and TravelerFilterBar live above this component in the
-     * flex column and are never inside this scroll container — they stay fixed.
-     */
     <Box ref={scrollRef} sx={{ flex: 1, overflow: "auto" }}>
-      {/*
-       * Flex column layout:
-       *   1. Timeline row (DateSidebar + canvas) — the tall scrollable part
-       *   2. Add Trip button — normal flow element below the canvas
-       *
-       * Previously the Add Trip was position:absolute inside the canvas,
-       * which made it feel detached from the scroll context. Now it's a
-       * regular block that scrolls with the content.
-       */}
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         {/* ── Timeline row ────────────────────────────────────────────────── */}
-        {/*
-         * minHeight drives the canvas height. DateSidebar stretches to match
-         * automatically via the default alignItems:stretch on the flex row.
-         */}
         <Box sx={{ display: "flex", minHeight: contentHeight }}>
           {/* Date sidebar */}
           <Box
@@ -455,7 +445,10 @@ export function MobileTimelineView({
               borderRight: `1px solid ${tokens.border}`,
             }}
           >
-            <DateSidebar timelineStart={timelineStart} />
+            <DateSidebar
+              timelineStart={timelineStart}
+              timelineEnd={timelineEnd}
+            />
           </Box>
 
           {/* Canvas — position:relative so trip cards can be absolutely placed */}
@@ -547,10 +540,6 @@ export function MobileTimelineView({
         </Box>
 
         {/* ── Add Trip — in normal flow, scrolls with content ─────────────── */}
-        {/*
-         * ml: SIDEBAR_WIDTH aligns the button with the canvas column,
-         * keeping it visually consistent with the trip cards above it.
-         */}
         {!allHidden && (
           <Box
             sx={{

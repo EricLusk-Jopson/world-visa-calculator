@@ -20,6 +20,7 @@ import { today as getToday } from "@/features/calculator/utils/dates";
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
   timelineStart: Date;
+  timelineEnd: Date;
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
 }
@@ -34,6 +35,7 @@ interface TravelerTimelineColumnProps {
 export function TravelerTimelineColumn({
   traveler,
   timelineStart,
+  timelineEnd,
   onAddTrip,
   onEditTrip,
 }: TravelerTimelineColumnProps) {
@@ -53,7 +55,7 @@ export function TravelerTimelineColumn({
 
   const today = getToday();
   const todayTop = dateToTop(today, timelineStart);
-  const totalHeight = computeTotalHeight(timelineStart);
+  const totalHeight = computeTotalHeight(timelineStart, timelineEnd);
 
   const sortedTrips = [...traveler.trips].sort((a, b) =>
     a.entryDate < b.entryDate ? -1 : 1,
