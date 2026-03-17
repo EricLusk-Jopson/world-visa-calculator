@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import { format } from "date-fns";
-import { Traveler, Trip } from "@/types";
+import { Traveler, Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
 import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import {
@@ -16,6 +16,7 @@ import {
   today as getToday,
   parseDate,
   todayISO,
+  countTripDays,
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
@@ -33,12 +34,10 @@ interface MobileTimelineViewProps {
 interface TravelerEntry {
   traveler: Traveler;
   travelerIndex: number;
-  /** The original trip record for this traveler (used for editing) */
   trip: Trip;
 }
 
 interface PositionedTrip {
-  /** Canonical trip — used for dates, region, destination, planned state */
   trip: Trip;
   entries: TravelerEntry[];
   top: number;
@@ -50,19 +49,15 @@ interface PositionedTrip {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const MIN_TRIP_HEIGHT = 28;
+// Progressive disclosure: richer content unlocks at taller card heights
+const HEIGHT_SHOW_DATES = 44; // date range when destination fills row 1
+const HEIGHT_SHOW_BADGES = 56; // duration + region chips
+const HEIGHT_SHOW_NAMES = 72; // traveler name chips
 const LANE_GAP = 2;
-const BOTTOM_PADDING = 80;
 const CARD_GUTTER = 3;
 
 // ─── Merge + lane assignment ──────────────────────────────────────────────────
 
-/**
- * Merges trips that share the same entryDate, exitDate, and region across
- * travelers, then assigns pixel positions and lanes to each merged group.
- *
- * Two trips are considered identical when entryDate + exitDate + region match.
- * The first traveler's trip record becomes the canonical source for display.
- */
 function buildPositionedTrips(
   travelers: Traveler[],
   hiddenIds: string[],
@@ -89,7 +84,6 @@ function buildPositionedTrips(
         const exitStr = trip.exitDate ?? todayStr;
         const rawBottom = dateToTop(parseDate(exitStr), timelineStart);
         const height = Math.max(rawBottom - top, MIN_TRIP_HEIGHT);
-
         merged.push({
           trip,
           entries: [{ traveler, travelerIndex, trip }],
@@ -115,7 +109,6 @@ function assignLanes(
     timelineStart,
     todayStr,
   );
-
   flat.sort((a, b) => a.top - b.top || b.height - a.height);
 
   const laneBottoms: number[] = [];
@@ -134,9 +127,39 @@ function assignLanes(
         other.top + other.height > item.top;
       return overlaps ? Math.max(max, lanes[j]) : max;
     }, lanes[i]);
-
     return { ...item, lane: lanes[i], laneCount: overlapMaxLane + 1 };
   });
+}
+
+// ─── Chip ─────────────────────────────────────────────────────────────────────
+
+const CHIP_SX = {
+  display: "inline-flex",
+  alignItems: "center",
+  fontSize: "0.58rem",
+  fontWeight: 700,
+  px: "5px",
+  py: "1px",
+  borderRadius: "100px",
+  lineHeight: "14px",
+  whiteSpace: "nowrap" as const,
+  flexShrink: 0,
+};
+
+function Chip({
+  children,
+  color,
+  bg,
+}: {
+  children: React.ReactNode;
+  color: string;
+  bg: string;
+}) {
+  return (
+    <Box component="span" sx={{ ...CHIP_SX, bgcolor: bg, color }}>
+      {children}
+    </Box>
+  );
 }
 
 // ─── Trip card ────────────────────────────────────────────────────────────────
@@ -153,9 +176,36 @@ function MobileTimelineTripCard({
   const { trip, entries, height } = positioned;
   const todayStr = todayISO();
 
+  const isOngoing = !trip.exitDate;
   const isPlanned = trip.entryDate > todayStr;
-  const showDates = height >= 44;
-  const showNames = height >= 64;
+  const isSchengen = trip.region === VisaRegion.Schengen;
+
+  const showDates = height >= HEIGHT_SHOW_DATES;
+  const showBadges = height >= HEIGHT_SHOW_BADGES;
+  const showNames = height >= HEIGHT_SHOW_NAMES;
+
+  const days = countTripDays(
+    parseDate(trip.entryDate),
+    parseDate(trip.exitDate ?? todayStr),
+  );
+
+  const regionLabel = isPlanned
+    ? "Planned"
+    : isOngoing
+      ? "Ongoing"
+      : isSchengen
+        ? "Schengen"
+        : "Elsewhere";
+  const regionBg = isPlanned
+    ? alpha(tokens.amber, 0.12)
+    : isSchengen
+      ? alpha(tokens.green, 0.12)
+      : tokens.mist;
+  const regionColor = isPlanned
+    ? tokens.amberText
+    : isSchengen
+      ? tokens.greenText
+      : tokens.textSoft;
 
   return (
     <Box
@@ -171,9 +221,7 @@ function MobileTimelineTripCard({
         overflow: "hidden",
         cursor: "pointer",
         boxShadow: "0 1px 3px rgba(12,30,60,0.05)",
-        "&:active": {
-          boxShadow: "0 3px 10px rgba(12,30,60,0.1)",
-        },
+        "&:active": { boxShadow: "0 3px 10px rgba(12,30,60,0.1)" },
       }}
     >
       <Box
@@ -189,7 +237,7 @@ function MobileTimelineTripCard({
           gap: "2px",
         }}
       >
-        {/* ── Always visible: dots + destination/fallback ─────────────── */}
+        {/* ── Always: traveler dots + destination/date fallback ─────────── */}
         <Box
           sx={{
             display: "flex",
@@ -198,7 +246,6 @@ function MobileTimelineTripCard({
             minWidth: 0,
           }}
         >
-          {/* Colored dot per traveler */}
           <Box sx={{ display: "flex", gap: "2px", flexShrink: 0 }}>
             {entries.map(({ traveler, travelerIndex }) => (
               <Box
@@ -213,8 +260,6 @@ function MobileTimelineTripCard({
               />
             ))}
           </Box>
-
-          {/* Destination — falls back to date range if unnamed */}
           <Typography
             sx={{
               fontFamily: trip.destination
@@ -241,7 +286,7 @@ function MobileTimelineTripCard({
           </Typography>
         </Box>
 
-        {/* ── Date range — shown when destination already occupies top row ── */}
+        {/* ── Date range (when destination already occupies row 1) ──────── */}
         {showDates && trip.destination && (
           <Typography
             sx={{
@@ -258,7 +303,26 @@ function MobileTimelineTripCard({
           </Typography>
         )}
 
-        {/* ── Traveler name chips — only when there's real estate for them ── */}
+        {/* ── Duration + region badges ──────────────────────────────────── */}
+        {showBadges && (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "3px",
+              overflow: "hidden",
+            }}
+          >
+            <Chip color={tokens.textSoft} bg={tokens.mist}>
+              {days}d
+            </Chip>
+            <Chip color={regionColor} bg={regionBg}>
+              {regionLabel}
+            </Chip>
+          </Box>
+        )}
+
+        {/* ── Traveler name chips ───────────────────────────────────────── */}
         {showNames && (
           <Box
             sx={{ display: "flex", flexWrap: "wrap", gap: "2px", mt: "1px" }}
@@ -332,10 +396,12 @@ export function MobileTimelineView({
     [travelers, hiddenTravelerIds, timelineStart, todayStr],
   );
 
+  // Canvas height: enough to contain the last trip + breathing room before
+  // the Add Trip button, which is now in normal flow below the canvas.
   const contentHeight = useMemo(() => {
     if (positionedTrips.length === 0) return 600;
     const maxBottom = Math.max(...positionedTrips.map((p) => p.top + p.height));
-    return maxBottom + BOTTOM_PADDING;
+    return maxBottom + 24;
   }, [positionedTrips]);
 
   useEffect(() => {
@@ -357,155 +423,174 @@ export function MobileTimelineView({
   const todayTop = dateToTop(getToday(), timelineStart);
 
   return (
+    /*
+     * scrollRef owns all scrolling for this view.
+     * CalculatorNav and TravelerFilterBar live above this component in the
+     * flex column and are never inside this scroll container — they stay fixed.
+     */
     <Box ref={scrollRef} sx={{ flex: 1, overflow: "auto" }}>
-      <Box sx={{ display: "flex", minHeight: "100%" }}>
-        {/* Date sidebar */}
-        <Box
-          sx={{
-            width: SIDEBAR_WIDTH,
-            minWidth: SIDEBAR_WIDTH,
-            flexShrink: 0,
-            bgcolor: tokens.offWhite,
-            borderRight: `1px solid ${tokens.border}`,
-          }}
-        >
-          <DateSidebar timelineStart={timelineStart} />
-        </Box>
-
-        {/* Single merged content column */}
-        <Box
-          sx={{
-            flex: 1,
-            position: "relative",
-            minHeight: contentHeight,
-          }}
-        >
-          {/* Today line */}
+      {/*
+       * Flex column layout:
+       *   1. Timeline row (DateSidebar + canvas) — the tall scrollable part
+       *   2. Add Trip button — normal flow element below the canvas
+       *
+       * Previously the Add Trip was position:absolute inside the canvas,
+       * which made it feel detached from the scroll context. Now it's a
+       * regular block that scrolls with the content.
+       */}
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        {/* ── Timeline row ────────────────────────────────────────────────── */}
+        {/*
+         * minHeight drives the canvas height. DateSidebar stretches to match
+         * automatically via the default alignItems:stretch on the flex row.
+         */}
+        <Box sx={{ display: "flex", minHeight: contentHeight }}>
+          {/* Date sidebar */}
           <Box
             sx={{
-              position: "absolute",
-              left: 0,
-              right: 0,
-              top: todayTop,
-              height: 2,
-              bgcolor: tokens.green,
-              zIndex: 3,
-              pointerEvents: "none",
+              width: SIDEBAR_WIDTH,
+              minWidth: SIDEBAR_WIDTH,
+              flexShrink: 0,
+              bgcolor: tokens.offWhite,
+              borderRight: `1px solid ${tokens.border}`,
+            }}
+          >
+            <DateSidebar timelineStart={timelineStart} />
+          </Box>
+
+          {/* Canvas — position:relative so trip cards can be absolutely placed */}
+          <Box sx={{ flex: 1, position: "relative" }}>
+            {/* Today line */}
+            <Box
+              sx={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                top: todayTop,
+                height: 2,
+                bgcolor: tokens.green,
+                zIndex: 3,
+                pointerEvents: "none",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: CARD_GUTTER,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  bgcolor: tokens.green,
+                  border: `2px solid ${tokens.white}`,
+                  boxShadow: `0 0 0 3px ${alpha(tokens.green, 0.2)}`,
+                }}
+              />
+            </Box>
+
+            {/* All hidden message */}
+            {allHidden && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                  pt: "48px",
+                  px: "24px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "0.85rem",
+                    color: tokens.textGhost,
+                    textAlign: "center",
+                  }}
+                >
+                  All travelers hidden — tap the eye icon above to show trips.
+                </Typography>
+              </Box>
+            )}
+
+            {/* Trip cards */}
+            {positionedTrips.map((positioned) => {
+              const { lane, laneCount, top, height } = positioned;
+              const pct = (1 / laneCount) * 100;
+              const leftPct = (lane / laneCount) * 100;
+
+              return (
+                <Box
+                  key={`${positioned.trip.entryDate}-${positioned.trip.exitDate ?? "ongoing"}-${positioned.trip.region}`}
+                  sx={{
+                    position: "absolute",
+                    top,
+                    height,
+                    left: `calc(${leftPct}% + ${CARD_GUTTER}px)`,
+                    width: `calc(${pct}% - ${CARD_GUTTER * 2}px)`,
+                  }}
+                >
+                  <MobileTimelineTripCard
+                    positioned={positioned}
+                    onClick={() =>
+                      onEditTrip(
+                        positioned.entries.map((e) => e.traveler.id),
+                        positioned.entries[0].trip,
+                      )
+                    }
+                  />
+                </Box>
+              );
+            })}
+          </Box>
+        </Box>
+
+        {/* ── Add Trip — in normal flow, scrolls with content ─────────────── */}
+        {/*
+         * ml: SIDEBAR_WIDTH aligns the button with the canvas column,
+         * keeping it visually consistent with the trip cards above it.
+         */}
+        {!allHidden && (
+          <Box
+            sx={{
+              ml: `${SIDEBAR_WIDTH}px`,
+              px: `${CARD_GUTTER + 4}px`,
+              pt: "8px",
+              pb: "20px",
+              borderTop: `1px solid ${tokens.border}`,
             }}
           >
             <Box
+              component="button"
+              onClick={onAddTrip}
               sx={{
-                position: "absolute",
-                left: CARD_GUTTER,
-                top: "50%",
-                transform: "translateY(-50%)",
-                width: 8,
-                height: 8,
-                borderRadius: "50%",
-                bgcolor: tokens.green,
-                border: `2px solid ${tokens.white}`,
-                boxShadow: `0 0 0 3px ${alpha(tokens.green, 0.2)}`,
-              }}
-            />
-          </Box>
-
-          {/* All hidden message */}
-          {allHidden && (
-            <Box
-              sx={{
-                position: "absolute",
-                inset: 0,
+                width: "100%",
                 display: "flex",
-                alignItems: "flex-start",
+                alignItems: "center",
                 justifyContent: "center",
-                pt: "48px",
-                px: "24px",
+                gap: "6px",
+                py: "10px",
+                border: `1.5px dashed ${tokens.border}`,
+                borderRadius: "10px",
+                bgcolor: alpha(tokens.white, 0.9),
+                fontFamily: tokens.fontBody,
+                fontSize: "0.82rem",
+                fontWeight: 600,
+                color: tokens.textSoft,
+                cursor: "pointer",
+                "&:active": {
+                  borderColor: tokens.navy,
+                  color: tokens.navy,
+                  bgcolor: tokens.white,
+                },
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: "0.85rem",
-                  color: tokens.textGhost,
-                  textAlign: "center",
-                }}
-              >
-                All travelers hidden — tap the eye icon above to show trips.
-              </Typography>
+              <AddIcon sx={{ fontSize: "0.95rem" }} />
+              Add Trip
             </Box>
-          )}
-
-          {/* Positioned trip cards */}
-          {positionedTrips.map((positioned) => {
-            const { lane, laneCount, top, height } = positioned;
-            const pct = (1 / laneCount) * 100;
-            const leftPct = (lane / laneCount) * 100;
-
-            return (
-              <Box
-                key={`${positioned.trip.entryDate}-${positioned.trip.exitDate ?? "ongoing"}-${positioned.trip.region}`}
-                sx={{
-                  position: "absolute",
-                  top,
-                  height,
-                  left: `calc(${leftPct}% + ${CARD_GUTTER}px)`,
-                  width: `calc(${pct}% - ${CARD_GUTTER * 2}px)`,
-                }}
-              >
-                <MobileTimelineTripCard
-                  positioned={positioned}
-                  onClick={() =>
-                    onEditTrip(
-                      positioned.entries.map((e) => e.traveler.id),
-                      positioned.entries[0].trip,
-                    )
-                  }
-                />
-              </Box>
-            );
-          })}
-
-          {/* Add Trip — bottom of scrollable content */}
-          {!allHidden && (
-            <Box
-              sx={{
-                position: "absolute",
-                bottom: 16,
-                left: CARD_GUTTER + 4,
-                right: CARD_GUTTER + 4,
-              }}
-            >
-              <Box
-                component="button"
-                onClick={onAddTrip}
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "6px",
-                  py: "10px",
-                  border: `1.5px dashed ${tokens.border}`,
-                  borderRadius: "10px",
-                  bgcolor: alpha(tokens.white, 0.9),
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.82rem",
-                  fontWeight: 600,
-                  color: tokens.textSoft,
-                  cursor: "pointer",
-                  "&:active": {
-                    borderColor: tokens.navy,
-                    color: tokens.navy,
-                    bgcolor: tokens.white,
-                  },
-                }}
-              >
-                <AddIcon sx={{ fontSize: "0.95rem" }} />
-                Add Trip
-              </Box>
-            </Box>
-          )}
-        </Box>
-        {/* ↑ content column closes here — button is now inside it */}
+          </Box>
+        )}
       </Box>
     </Box>
   );

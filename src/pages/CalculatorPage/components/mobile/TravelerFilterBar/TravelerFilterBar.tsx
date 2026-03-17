@@ -92,7 +92,8 @@ export function TravelerFilterBar({
   onDeleteTraveler,
   onAddTraveler,
 }: TravelerFilterBarProps) {
-  const [open, setOpen] = useState(true);
+  // Closed by default — users open it when they need it
+  const [open, setOpen] = useState(false);
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
   const pendingTraveler = travelers.find((t) => t.id === pendingDeleteId);
@@ -163,6 +164,7 @@ export function TravelerFilterBar({
         }}
       >
         {/* ── Collapse toggle ─────────────────────────────────────────────── */}
+        {/* py increased from 7px → 11px for a more comfortable tap target    */}
         <Box
           component="button"
           onClick={() => setOpen((v) => !v)}
@@ -172,7 +174,7 @@ export function TravelerFilterBar({
             alignItems: "center",
             gap: "8px",
             px: "16px",
-            py: "7px",
+            py: "11px",
             border: "none",
             bgcolor: "transparent",
             cursor: "pointer",
@@ -193,6 +195,7 @@ export function TravelerFilterBar({
             Travelers
           </Typography>
 
+          {/* Traveler dots — give a compact status summary when collapsed */}
           <Box sx={{ display: "flex", gap: "4px", alignItems: "center" }}>
             {travelers.map((t, i) => (
               <Box
