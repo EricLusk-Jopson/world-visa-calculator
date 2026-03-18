@@ -1,5 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
+import { alpha } from "@mui/material/styles";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Traveler, Trip } from "@/types";
 
 import { tokens } from "@/styles/theme";
@@ -16,6 +20,10 @@ import {
 } from "@/features/calculator/utils/timelineLayout";
 import { computeStatusAtTripExit } from "../../travelers/travelerStatus";
 import { today as getToday } from "@/features/calculator/utils/dates";
+import {
+  ReturnMarker,
+  computeReturnMarkers,
+} from "@/features/calculator/utils/returnmarkers";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
@@ -25,13 +33,121 @@ interface TravelerTimelineColumnProps {
   onEditTrip: (travelerId: string, trip: Trip) => void;
 }
 
+// ─── Return marker visual ─────────────────────────────────────────────────────
+
 /**
- * Card-body canvas for one traveler in the timeline.
+ * A horizontal marker on the timeline showing when a Schengen trip of `days`
+ * duration first becomes possible.
  *
- * Resolves lane geometry (cardLeft, cardWidth) and passes raw pixel values to
- * TimelineTripCard, which is purely presentational. The card derives its own
- * display decisions (what content to show) from its rendered height.
+ * Multiples of 30 (30d, 60d, 90d) are "major" — stronger line + opaque label.
+ * Other thresholds (10d, 20d, 40d …) are "minor" — faint line + dimmed label.
+ *
+ * The outer container is pointer-events:none so it doesn't intercept scroll,
+ * but the pill itself opts back in so the MUI Tooltip can trigger on hover.
  */
+function MarkerLine({ top, days }: ReturnMarker) {
+  const isMajor = days % 30 === 0;
+  const isGenerous = days >= 30;
+
+  const lineBase = isGenerous ? tokens.green : tokens.amber;
+  const textColor = isGenerous ? tokens.greenText : tokens.amberText;
+  const bgColor = isGenerous ? tokens.greenBg : tokens.amberBg;
+  const lineOpacity = isMajor ? 0.35 : 0.18;
+
+  const tooltipText = `From this date you can start a Schengen trip of up to ${days} days.`;
+
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top,
+        // Pointer events off on the container so it doesn't block scroll or
+        // click-through to trip cards. The pill re-enables them selectively.
+        pointerEvents: "none",
+        zIndex: 2,
+      }}
+    >
+      {/* Dashed horizontal rule */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: 30,
+          right: 10,
+          top: 0,
+          height: 0,
+          borderTop: `1px dashed ${alpha(lineBase, lineOpacity)}`,
+        }}
+      />
+
+      {/* Pill — opt back into pointer events so Tooltip works */}
+      <Tooltip
+        title={tooltipText}
+        placement="right"
+        arrow
+        enterDelay={200}
+        componentsProps={{
+          tooltip: {
+            sx: {
+              fontFamily: tokens.fontBody,
+              fontSize: "0.72rem",
+              fontWeight: 500,
+              bgcolor: tokens.navy,
+              "& .MuiTooltip-arrow": { color: tokens.navy },
+              maxWidth: 200,
+            },
+          },
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            left: 32,
+            top: 0,
+            transform: "translateY(-50%)",
+            zIndex: 3,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "3px",
+            px: "5px",
+            py: "1.5px",
+            borderRadius: "100px",
+            bgcolor: bgColor,
+            border: `1px solid ${alpha(lineBase, isMajor ? 0.3 : 0.15)}`,
+            // Re-enable pointer events on the pill itself
+            pointerEvents: "auto",
+            cursor: "default",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.52rem",
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+              color: isMajor ? textColor : alpha(textColor, 0.65),
+              lineHeight: 1,
+              userSelect: "none",
+            }}
+          >
+            {days}d
+          </Typography>
+          <InfoOutlinedIcon
+            sx={{
+              fontSize: "0.6rem",
+              color: isMajor ? textColor : alpha(textColor, 0.5),
+              flexShrink: 0,
+            }}
+          />
+        </Box>
+      </Tooltip>
+    </Box>
+  );
+}
+
+// ─── Column ───────────────────────────────────────────────────────────────────
+
 export function TravelerTimelineColumn({
   traveler,
   timelineStart,
@@ -90,6 +206,28 @@ export function TravelerTimelineColumn({
     return { cardLeft, cardWidth };
   }
 
+  const returnMarkers = useMemo(
+    () => computeReturnMarkers(traveler, timelineStart, timelineEnd),
+    [traveler, timelineStart, timelineEnd],
+  );
+
+  // Keep the Add Trip button below the last return marker so they never
+  // overlap. Default is 16px from the bottom of the canvas; if markers extend
+  // further down we push the button below the bottommost marker.
+  const ADD_BUTTON_HEIGHT = 36;
+  const ADD_BUTTON_BOTTOM_MARGIN = 16;
+  const defaultButtonTop =
+    totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_BOTTOM_MARGIN;
+
+  const addButtonTop = useMemo(() => {
+    if (returnMarkers.length === 0) return defaultButtonTop;
+    const lastMarkerTop = Math.max(...returnMarkers.map((m) => m.top));
+    // Pill is centered on the marker top (translateY -50%), so bottom edge is
+    // at lastMarkerTop + ~10px. Add 16px clearance below that.
+    const minTop = lastMarkerTop + 10 + 16;
+    return Math.max(defaultButtonTop, minTop);
+  }, [returnMarkers, defaultButtonTop]);
+
   const BASE_Z = 4;
 
   return (
@@ -100,7 +238,12 @@ export function TravelerTimelineColumn({
         zIndex: 1,
         minWidth: COLUMN_MIN_WIDTH,
         flex: 1,
-        height: totalHeight,
+        // Extend canvas height if the add button has been pushed below the
+        // default bottom so the button is never clipped.
+        height: Math.max(
+          totalHeight,
+          addButtonTop + ADD_BUTTON_HEIGHT + ADD_BUTTON_BOTTOM_MARGIN,
+        ),
         bgcolor: tokens.white,
         borderRight: `1px solid ${tokens.border}`,
         "&:last-of-type": { borderRight: "none" },
@@ -173,6 +316,11 @@ export function TravelerTimelineColumn({
         }}
       />
 
+      {/* Return markers */}
+      {returnMarkers.map((marker) => (
+        <MarkerLine key={marker.days} top={marker.top} days={marker.days} />
+      ))}
+
       {/* Trip cards */}
       {sortedTrips.map((trip, rank) => {
         const { top, height, naturalHeight, durationDays } = geometries.get(
@@ -198,15 +346,15 @@ export function TravelerTimelineColumn({
         );
       })}
 
-      {/* Add trip button */}
+      {/* Add trip button — positioned below the last return marker */}
       <Box
         onClick={() => onAddTrip(traveler.id)}
         sx={{
           position: "absolute",
           left: 40,
           right: 12,
-          bottom: 16,
-          height: 36,
+          top: addButtonTop,
+          height: ADD_BUTTON_HEIGHT,
           border: `1.5px dashed ${tokens.border}`,
           borderRadius: "8px",
           display: "flex",
