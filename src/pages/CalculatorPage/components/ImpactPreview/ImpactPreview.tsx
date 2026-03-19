@@ -27,6 +27,16 @@ interface ImpactPreviewProps {
    * still reflect the most constrained traveler.
    */
   travelerImpacts?: TravelerImpact[];
+  /**
+   * ISO entry date of the trip being previewed. Used to clip displayed date
+   * ranges in the breakdown so only the in-window portion is shown.
+   */
+  currentTripEntry?: string;
+  /**
+   * ISO exit date of the trip being previewed. Used to clip the aging-out
+   * date ranges in the breakdown.
+   */
+  currentTripExit?: string;
 }
 
 // ─── Design tokens by variant ────────────────────────────────────────────────
@@ -58,7 +68,7 @@ const VARIANT_COLORS = {
   },
 } as const;
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+// ─── Date helpers ──────────────────────────────────────────────────────────────
 
 const MONTH_NAMES = [
   "Jan",
@@ -84,6 +94,52 @@ function fmtShort(iso: string): string {
 
 function fmtRange(entryDate: string, exitDate?: string): string {
   return `${fmtShort(entryDate)} → ${exitDate ? fmtShort(exitDate) : "ongoing"}`;
+}
+
+/** Add n calendar days to an ISO date string (n may be negative). */
+function shiftIso(iso: string, n: number): string {
+  const d = parseDate(iso);
+  d.setDate(d.getDate() + n);
+  // Produce YYYY-MM-DD without timezone shift
+  return [
+    d.getFullYear(),
+    String(d.getMonth() + 1).padStart(2, "0"),
+    String(d.getDate()).padStart(2, "0"),
+  ].join("-");
+}
+
+/** Return the later of two ISO date strings. */
+function laterDate(a: string, b: string): string {
+  return a >= b ? a : b;
+}
+
+/** Return the earlier of two ISO date strings. */
+function earlierDate(a: string, b: string): string {
+  return a <= b ? a : b;
+}
+
+/**
+ * Clip a historic trip's date range to only the portion that is relevant for
+ * a given section of the breakdown.
+ *
+ * @param tripEntry   Historic trip entry (ISO)
+ * @param tripExit    Historic trip exit (ISO or undefined for ongoing)
+ * @param windowStart Earliest date that should appear in the range (ISO)
+ * @param windowEnd   Latest date that should appear in the range (ISO, optional)
+ */
+function clipRange(
+  tripEntry: string,
+  tripExit: string | undefined,
+  windowStart: string,
+  windowEnd?: string,
+): { entry: string; exit: string | undefined } {
+  const entry = laterDate(tripEntry, windowStart);
+  const exit = tripExit
+    ? windowEnd
+      ? earlierDate(tripExit, windowEnd)
+      : tripExit
+    : undefined;
+  return { entry, exit };
 }
 
 function statusVariantForDays(days: number): StatusVariant {
@@ -297,6 +353,8 @@ export function ImpactPreview({
   variant,
   breakdown,
   travelerImpacts,
+  currentTripEntry,
+  currentTripExit,
 }: ImpactPreviewProps) {
   const [expanded, setExpanded] = useState(false);
   // When a breakdown is present, color the whole component from the extendable
@@ -307,6 +365,27 @@ export function ImpactPreview({
     : variant;
   const colors = VARIANT_COLORS[effectiveVariant];
   const isMulti = travelerImpacts && travelerImpacts.length > 1;
+
+  // ── Pre-compute window boundaries for range clipping ──────────────────────
+  //
+  // windowStartAtEntry  = currentTripEntry − 180   (oldest day in window on entry)
+  // windowStartAtExit   = currentTripExit  − 180   (oldest day in window on exit)
+  // windowStartAtMaxExit = breakdown.maxExitDate − 180
+  //
+  // These let us show only the affected slice of each historic trip rather
+  // than its full entry→exit span.
+
+  const windowStartAtEntry = currentTripEntry
+    ? shiftIso(currentTripEntry, -180)
+    : null;
+
+  const windowStartAtExit = currentTripExit
+    ? shiftIso(currentTripExit, -180)
+    : null;
+
+  const windowStartAtMaxExit = breakdown?.maxExitDate
+    ? shiftIso(breakdown.maxExitDate, -180)
+    : null;
 
   return (
     <Box
@@ -503,15 +582,22 @@ export function ImpactPreview({
                 No previous Schengen trips in this window.
               </Typography>
             ) : (
-              breakdown.previousTrips.map((c) => (
-                <TripRow
-                  key={c.tripId}
-                  name={c.destination}
-                  range={fmtRange(c.entryDate, c.exitDate)}
-                  days={c.daysInWindow}
-                  sign="−"
-                />
-              ))
+              breakdown.previousTrips.map((c) => {
+                // Clip to the portion that falls inside the rolling window at
+                // the point the current trip begins.
+                const { entry, exit } = windowStartAtEntry
+                  ? clipRange(c.entryDate, c.exitDate, windowStartAtEntry)
+                  : { entry: c.entryDate, exit: c.exitDate };
+                return (
+                  <TripRow
+                    key={c.tripId}
+                    name={c.destination}
+                    range={fmtRange(entry, exit)}
+                    days={c.daysInWindow}
+                    sign="−"
+                  />
+                );
+              })
             )}
 
             <Divider />
@@ -536,15 +622,29 @@ export function ImpactPreview({
                 No days age out during this stay.
               </Typography>
             ) : (
-              breakdown.agingOutDuringTripTrips.map((c) => (
-                <TripRow
-                  key={c.tripId}
-                  name={c.destination}
-                  range={fmtRange(c.entryDate, c.exitDate)}
-                  days={c.daysAgingOutDuringTrip}
-                  sign="+"
-                />
-              ))
+              breakdown.agingOutDuringTripTrips.map((c) => {
+                // The portion that ages out spans from the window-start at
+                // entry through to the window-start at exit — clipped to the
+                // actual historic trip bounds.
+                const { entry, exit } =
+                  windowStartAtEntry && windowStartAtExit
+                    ? clipRange(
+                        c.entryDate,
+                        c.exitDate,
+                        windowStartAtEntry,
+                        windowStartAtExit,
+                      )
+                    : { entry: c.entryDate, exit: c.exitDate };
+                return (
+                  <TripRow
+                    key={c.tripId}
+                    name={c.destination}
+                    range={fmtRange(entry, exit)}
+                    days={c.daysAgingOutDuringTrip}
+                    sign="+"
+                  />
+                );
+              })
             )}
 
             <Divider />
@@ -578,15 +678,28 @@ export function ImpactPreview({
                 No additional days age out after this stay.
               </Typography>
             ) : (
-              breakdown.agingOutOverMaxStayTrips.map((c) => (
-                <TripRow
-                  key={c.tripId}
-                  name={c.destination}
-                  range={fmtRange(c.entryDate, c.exitDate)}
-                  days={c.daysAgingOutOverMaxStay}
-                  sign="+"
-                />
-              ))
+              breakdown.agingOutOverMaxStayTrips.map((c) => {
+                // The "freed if extended" portion spans from window-start at
+                // current exit through to window-start at the max exit date.
+                const { entry, exit } =
+                  windowStartAtExit && windowStartAtMaxExit
+                    ? clipRange(
+                        c.entryDate,
+                        c.exitDate,
+                        windowStartAtExit,
+                        windowStartAtMaxExit,
+                      )
+                    : { entry: c.entryDate, exit: c.exitDate };
+                return (
+                  <TripRow
+                    key={c.tripId}
+                    name={c.destination}
+                    range={fmtRange(entry, exit)}
+                    days={c.daysAgingOutOverMaxStay}
+                    sign="+"
+                  />
+                );
+              })
             )}
 
             <Divider />
@@ -635,9 +748,8 @@ export function ImpactPreview({
               }}
             >
               90 − {breakdown.previousDaysTotal} +{" "}
-              {breakdown.agingOutDuringTripTotal} +{" "}
-              {breakdown.agingOutOverMaxStayTotal} − {breakdown.currentTripDays}{" "}
-              = {breakdown.daysRemaining}
+              {breakdown.agingOutDuringTripTotal} − {breakdown.currentTripDays}{" "}
+              + {breakdown.agingOutOverMaxStayTotal} = {breakdown.daysRemaining}
             </Typography>
           </Box>
         </Collapse>

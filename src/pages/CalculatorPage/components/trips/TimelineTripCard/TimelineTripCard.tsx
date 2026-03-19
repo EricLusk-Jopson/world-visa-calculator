@@ -4,12 +4,25 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import type { Trip } from "@/types";
 import { VisaRegion } from "@/types";
+import { parseDate } from "@/features/calculator/utils/dates";
+import { format } from "date-fns";
 import {
   SHOW_DATE_THRESHOLD,
   SHOW_BADGE_THRESHOLD,
 } from "@/features/calculator/utils/timelineLayout";
-import { TravelerStatus } from "../../travelers/travelerStatus";
 import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function variantFromMaxStay(days: number): "safe" | "caution" | "danger" {
+  if (days > 29) return "safe";
+  if (days > 9) return "caution";
+  return "danger";
+}
+
+function fmtReEntry(iso: string): string {
+  return format(parseDate(iso), "d MMM");
+}
 
 // ─── Sub-component ────────────────────────────────────────────────────────────
 
@@ -17,10 +30,12 @@ function TripBadge({
   children,
   color,
   bg,
+  borderStyle = "solid",
 }: {
   children: React.ReactNode;
   color: string;
   bg: string;
+  borderStyle?: "solid" | "dashed";
 }) {
   return (
     <Box
@@ -37,6 +52,8 @@ function TripBadge({
         borderRadius: "100px",
         bgcolor: bg,
         color,
+        border: `1px solid ${color}22`,
+        borderStyle,
         whiteSpace: "nowrap",
         flexShrink: 0,
       }}
@@ -53,7 +70,16 @@ interface TimelineTripCardProps {
   top: number;
   height: number;
   naturalHeight: number;
-  statusAtExit: TravelerStatus;
+  /**
+   * Max stay available starting the day after this trip exits.
+   * 0 means re-entry is not possible immediately after exit.
+   */
+  maxStayAtExit: number;
+  /**
+   * Earliest date re-entry becomes possible, when maxStayAtExit === 0.
+   * Null if no re-entry is possible within the search horizon.
+   */
+  earliestReEntry: string | null;
   durationDays: number;
   cardLeft: number;
   cardWidth: number;
@@ -71,7 +97,7 @@ interface TimelineTripCardProps {
  *
  *   height < SHOW_DATE_THRESHOLD  → destination + duration suffix only
  *   height >= SHOW_DATE_THRESHOLD → adds date range line; duration moves to badge
- *   height >= SHOW_BADGE_THRESHOLD → adds region + remaining-days badges
+ *   height >= SHOW_BADGE_THRESHOLD → adds region + availability badges
  *
  * Tooltip is shown whenever badges are hidden so detail is never lost.
  */
@@ -80,7 +106,8 @@ export function TimelineTripCard({
   top,
   height,
   naturalHeight,
-  statusAtExit,
+  maxStayAtExit,
+  earliestReEntry,
   durationDays,
   cardLeft,
   cardWidth,
@@ -93,6 +120,7 @@ export function TimelineTripCard({
   const isOngoing = isTripOngoing(trip);
   const isSchengen = trip.region === VisaRegion.Schengen;
   const isExpanded = naturalHeight < height;
+  const showSchengenChips = isSchengen && !isOngoing;
 
   // Display flags — derived from height, not a layout mode enum.
   const showDateRange = height >= SHOW_DATE_THRESHOLD;
@@ -122,27 +150,36 @@ export function TimelineTripCard({
       ? tokens.greenText
       : tokens.textSoft;
 
-  // Remaining days chip colours
-  const remainingBg =
-    statusAtExit.variant === "safe"
+  // Availability chip colours
+  const stayVariant = variantFromMaxStay(maxStayAtExit);
+  const stayBg =
+    stayVariant === "safe"
       ? tokens.greenBg
-      : statusAtExit.variant === "caution"
+      : stayVariant === "caution"
         ? tokens.amberBg
         : tokens.redBg;
-  const remainingColor =
-    statusAtExit.variant === "safe"
+  const stayColor =
+    stayVariant === "safe"
       ? tokens.greenText
-      : statusAtExit.variant === "caution"
+      : stayVariant === "caution"
         ? tokens.amberText
         : tokens.redText;
 
   // Tooltip whenever badges aren't visible — ensures detail is never lost.
+  const availText = showSchengenChips
+    ? maxStayAtExit > 0
+      ? `+${maxStayAtExit}d available after exit`
+      : earliestReEntry
+        ? `re-entry from ${fmtReEntry(earliestReEntry)}`
+        : "no re-entry within horizon"
+    : "";
+
   const tooltipText = !showBadges
     ? [
         trip.destination || "—",
         fmtDateRange(trip.entryDate, trip.exitDate),
         `${durationDays}d · ${regionLabel}`,
-        isSchengen ? `${statusAtExit.daysRemaining}d remaining` : "",
+        availText,
       ]
         .filter(Boolean)
         .join("\n")
@@ -285,9 +322,20 @@ export function TimelineTripCard({
             <TripBadge color={regionColor} bg={regionBg}>
               {regionLabel}
             </TripBadge>
-            {isSchengen && (
-              <TripBadge color={remainingColor} bg={remainingBg}>
-                {statusAtExit.daysRemaining}d left
+            {showSchengenChips && maxStayAtExit > 0 && (
+              <TripBadge color={stayColor} bg={stayBg} borderStyle="dashed">
+                +{maxStayAtExit}d
+              </TripBadge>
+            )}
+            {showSchengenChips && maxStayAtExit === 0 && (
+              <TripBadge
+                color={tokens.redText}
+                bg={tokens.redBg}
+                borderStyle="dashed"
+              >
+                {earliestReEntry
+                  ? `from ${fmtReEntry(earliestReEntry)}`
+                  : "no re-entry"}
               </TripBadge>
             )}
           </Box>

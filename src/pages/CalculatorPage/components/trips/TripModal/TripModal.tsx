@@ -363,6 +363,10 @@ export function TripModal({
     }
   }
 
+  // ── Resolved exit for ImpactPreview ────────────────────────────────────────
+
+  const resolvedExitForPreview = ongoing ? undefined : exitDate || undefined;
+
   // ── Validation & submit ─────────────────────────────────────────────────────
 
   function handleSave() {
@@ -770,6 +774,8 @@ export function TripModal({
                 variant={impactVariant}
                 breakdown={impactBreakdown}
                 travelerImpacts={travelerImpacts}
+                currentTripEntry={entryDate}
+                currentTripExit={resolvedExitForPreview}
               />
             )}
         </Box>
