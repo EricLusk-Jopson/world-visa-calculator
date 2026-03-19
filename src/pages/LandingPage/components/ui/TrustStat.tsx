@@ -10,7 +10,6 @@ export function TrustStat({
   label: React.ReactNode;
   light?: boolean;
 }) {
-  console.log(light);
   return (
     <Box sx={{ textAlign: "center" }}>
       <Typography

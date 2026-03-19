@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import { alpha } from "@mui/material/styles";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Traveler, Trip } from "@/types";
+import { Traveler, Trip, VisaRegion } from "@/types";
 
 import { tokens } from "@/styles/theme";
 import { TimelineTripCard } from "../../trips/TimelineTripCard";
@@ -18,12 +18,21 @@ import {
   CARD_RIGHT_MARGIN,
   LANE_GAP,
 } from "@/features/calculator/utils/timelineLayout";
-import { computeStatusAtTripExit } from "../../travelers/travelerStatus";
-import { today as getToday } from "@/features/calculator/utils/dates";
+
+import {
+  today as getToday,
+  parseDate,
+  formatDate,
+  addDays,
+} from "@/features/calculator/utils/dates";
 import {
   ReturnMarker,
   computeReturnMarkers,
 } from "@/features/calculator/utils/returnmarkers";
+import {
+  calculateEarliestEntry,
+  calculateMaxStay,
+} from "@/features/calculator/utils/schengen";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
@@ -36,33 +45,16 @@ interface TravelerTimelineColumnProps {
 // ─── Marker visuals ───────────────────────────────────────────────────────────
 
 function markerColors(days: number, isCurrent: boolean) {
-  // Generous (≥30d) → green palette. Limited (<30d) → amber palette.
   const isGenerous = days >= 30;
   return {
     lineBase: isGenerous ? tokens.green : tokens.amber,
     textColor: isGenerous ? tokens.greenText : tokens.amberText,
     bgColor: isGenerous ? tokens.greenBg : tokens.amberBg,
-    // Current snapshot: slightly bolder treatment; threshold: subtler
     lineOpacity: isCurrent ? 0.45 : days % 30 === 0 ? 0.35 : 0.18,
     pillOpacity: isCurrent ? 1 : days % 30 === 0 ? 1 : 0.65,
   };
 }
 
-/**
- * A horizontal marker at a specific date on the timeline.
- *
- * Two variants:
- *
- * isCurrent=true  — "snapshot" chip at a phase boundary (today or the day
- *   after a pending trip ends). Shows the exact max stay available on that
- *   date. No dashed line — the pill floats alone against the timeline.
- *
- * isCurrent=false — "milestone" chip at the first date a given threshold
- *   (15/30/45/60/75/90) becomes achievable. Has a dashed horizontal rule.
- *
- * The outer Box uses pointerEvents:none so it never intercepts scroll or card
- * clicks. The pill re-enables them so the Tooltip can trigger on hover.
- */
 function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
   const { lineBase, textColor, bgColor, lineOpacity, pillOpacity } =
     markerColors(days, isCurrent);
@@ -82,7 +74,6 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
         zIndex: 2,
       }}
     >
-      {/* Dashed rule — only for milestone (threshold) chips */}
       {!isCurrent && (
         <Box
           sx={{
@@ -96,7 +87,6 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
         />
       )}
 
-      {/* Pill */}
       <Tooltip
         title={tooltipText}
         placement="right"
@@ -118,8 +108,6 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
         <Box
           sx={{
             position: "absolute",
-            // Current chips sit at the left column edge; threshold chips at
-            // the same left:32 position as before to align with the dashed line.
             left: isCurrent ? 20 : 32,
             top: 0,
             transform: "translateY(-50%)",
@@ -132,7 +120,6 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
             borderRadius: "100px",
             bgcolor: bgColor,
             border: `1px solid ${alpha(lineBase, isCurrent ? 0.4 : 0.2)}`,
-            // Solid border for current chips; inherit for threshold chips
             borderStyle: isCurrent ? "solid" : "dashed",
             pointerEvents: "auto",
             cursor: "default",
@@ -224,12 +211,46 @@ export function TravelerTimelineColumn({
     return { cardLeft, cardWidth };
   }
 
+  // Per-trip availability — computed once per traveler change.
+  const tripAvailability = useMemo(() => {
+    const schengenTrips = traveler.trips.filter(
+      (t) => t.region === VisaRegion.Schengen,
+    );
+    return new Map(
+      sortedTrips.map((trip) => {
+        if (trip.region !== VisaRegion.Schengen || !trip.exitDate) {
+          return [
+            trip.id,
+            { maxStayAtExit: 0, earliestReEntry: null as string | null },
+          ];
+        }
+        const exitDate = parseDate(trip.exitDate);
+        const nextEntryStr = formatDate(addDays(exitDate, 1));
+        const maxStay = calculateMaxStay(nextEntryStr, schengenTrips);
+        if (maxStay.canEnter) {
+          return [
+            trip.id,
+            {
+              maxStayAtExit: maxStay.maxDays,
+              earliestReEntry: null as string | null,
+            },
+          ];
+        }
+        const earliest = calculateEarliestEntry(schengenTrips, nextEntryStr);
+        return [
+          trip.id,
+          { maxStayAtExit: 0, earliestReEntry: earliest.earliestDate },
+        ];
+      }),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [traveler]);
+
   const returnMarkers = useMemo(
     () => computeReturnMarkers(traveler, timelineStart, timelineEnd),
     [traveler, timelineStart, timelineEnd],
   );
 
-  // Keep the Add Trip button clear of the lowest marker.
   const ADD_BUTTON_HEIGHT = 36;
   const ADD_BUTTON_MARGIN = 16;
   const defaultButtonTop = totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_MARGIN;
@@ -237,7 +258,6 @@ export function TravelerTimelineColumn({
   const addButtonTop = useMemo(() => {
     if (returnMarkers.length === 0) return defaultButtonTop;
     const lastMarkerTop = Math.max(...returnMarkers.map((m) => m.top));
-    // Pill is centered (translateY -50%); its bottom edge is ~top + 10px.
     const minTop = lastMarkerTop + 10 + ADD_BUTTON_MARGIN;
     return Math.max(defaultButtonTop, minTop);
   }, [returnMarkers, defaultButtonTop]);
@@ -252,7 +272,6 @@ export function TravelerTimelineColumn({
         zIndex: 1,
         minWidth: COLUMN_MIN_WIDTH,
         flex: 1,
-        // Extend canvas if the add button has been pushed below totalHeight.
         height: Math.max(
           totalHeight,
           addButtonTop + ADD_BUTTON_HEIGHT + ADD_BUTTON_MARGIN,
@@ -344,8 +363,10 @@ export function TravelerTimelineColumn({
         const { top, height, naturalHeight, durationDays } = geometries.get(
           trip.id,
         )!;
-        const statusAtExit = computeStatusAtTripExit(traveler, trip.id);
         const { cardLeft, cardWidth } = resolveCardGeometry(trip.id);
+        const { maxStayAtExit, earliestReEntry } = tripAvailability.get(
+          trip.id,
+        ) ?? { maxStayAtExit: 0, earliestReEntry: null };
 
         return (
           <TimelineTripCard
@@ -354,7 +375,8 @@ export function TravelerTimelineColumn({
             top={top}
             height={height}
             naturalHeight={naturalHeight}
-            statusAtExit={statusAtExit}
+            maxStayAtExit={maxStayAtExit}
+            earliestReEntry={earliestReEntry}
             durationDays={durationDays}
             cardLeft={cardLeft}
             cardWidth={cardWidth}
