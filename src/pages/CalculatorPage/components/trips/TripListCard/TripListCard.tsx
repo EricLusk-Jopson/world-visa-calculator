@@ -3,7 +3,8 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import type { Trip } from "@/types";
 import { VisaRegion } from "@/types";
-import { TravelerStatus } from "../../travelers/travelerStatus";
+import { parseDate } from "@/features/calculator/utils/dates";
+import { format } from "date-fns";
 import {
   isTripPlanned,
   isTripOngoing,
@@ -11,27 +12,37 @@ import {
   fmtDateRange,
 } from "../tripHelpers";
 
-interface TripListCardProps {
-  trip: Trip;
-  /** Allowance at trip exit, used for the "Xd left" chip on Schengen trips. */
-  statusAtExit: TravelerStatus;
-  onEdit: () => void;
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function variantFromMaxStay(days: number): "safe" | "caution" | "danger" {
+  if (days > 29) return "safe";
+  if (days > 9) return "caution";
+  return "danger";
 }
+
+function fmtReEntry(iso: string): string {
+  return format(parseDate(iso), "d MMM yyyy");
+}
+
+// ─── Sub-component ────────────────────────────────────────────────────────────
 
 function Chip({
   children,
   color,
   bg,
+  borderStyle = "solid",
 }: {
   children: React.ReactNode;
   color: string;
   bg: string;
+  borderStyle?: "solid" | "dashed";
 }) {
   return (
     <Box
       component="span"
       sx={{
         display: "inline-flex",
+        alignItems: "center",
         fontFamily: tokens.fontBody,
         fontSize: "0.6rem",
         fontWeight: 700,
@@ -42,6 +53,8 @@ function Chip({
         borderRadius: "100px",
         bgcolor: bg,
         color,
+        border: `1px solid ${color}22`,
+        borderStyle,
         whiteSpace: "nowrap" as const,
       }}
     >
@@ -50,20 +63,36 @@ function Chip({
   );
 }
 
-/**
- * Vertical list card used in the Cards view.
- * Distinct from the landing page TripCard — uses a top accent stripe,
- * not a left bar.
- */
+// ─── Props ────────────────────────────────────────────────────────────────────
+
+interface TripListCardProps {
+  trip: Trip;
+  /**
+   * Max stay available starting the day after this trip exits.
+   * 0 means re-entry is not possible immediately after exit.
+   */
+  maxStayAtExit: number;
+  /**
+   * Earliest date re-entry becomes possible, when maxStayAtExit === 0.
+   * Null if no re-entry is possible within the search horizon.
+   */
+  earliestReEntry: string | null;
+  onEdit: () => void;
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
 export function TripListCard({
   trip,
-  statusAtExit,
+  maxStayAtExit,
+  earliestReEntry,
   onEdit,
 }: TripListCardProps) {
   const isPlanned = isTripPlanned(trip);
   const isOngoing = isTripOngoing(trip);
   const isSchengen = trip.region === VisaRegion.Schengen;
   const dur = tripDurationDays(trip.entryDate, trip.exitDate);
+  const showSchengenChips = isSchengen && !isOngoing;
 
   const regionLabel = isPlanned
     ? "Planned"
@@ -89,16 +118,18 @@ export function TripListCard({
       ? tokens.green
       : tokens.border;
 
-  const remainingBg =
-    statusAtExit.variant === "safe"
+  // Max stay chip — dashed border distinguishes it from the solid duration chip.
+  const stayVariant = variantFromMaxStay(maxStayAtExit);
+  const stayBg =
+    stayVariant === "safe"
       ? tokens.greenBg
-      : statusAtExit.variant === "caution"
+      : stayVariant === "caution"
         ? tokens.amberBg
         : tokens.redBg;
-  const remainingColor =
-    statusAtExit.variant === "safe"
+  const stayColor =
+    stayVariant === "safe"
       ? tokens.greenText
-      : statusAtExit.variant === "caution"
+      : stayVariant === "caution"
         ? tokens.amberText
         : tokens.redText;
 
@@ -167,15 +198,28 @@ export function TripListCard({
             flexWrap: "wrap",
           }}
         >
+          {/* Trip duration — solid, neutral */}
           <Chip color={tokens.textSoft} bg={tokens.mist}>
             {dur}d
           </Chip>
+
+          {/* Region */}
           <Chip color={regionColor} bg={regionBg}>
             {regionLabel}
           </Chip>
-          {isSchengen && (
-            <Chip color={remainingColor} bg={remainingBg}>
-              {statusAtExit.daysRemaining}d left
+
+          {/* Schengen availability — dashed, status-coloured */}
+          {showSchengenChips && maxStayAtExit > 0 && (
+            <Chip color={stayColor} bg={stayBg} borderStyle="dashed">
+              +{maxStayAtExit}d
+            </Chip>
+          )}
+
+          {showSchengenChips && maxStayAtExit === 0 && (
+            <Chip color={tokens.redText} bg={tokens.redBg} borderStyle="dashed">
+              {earliestReEntry
+                ? `from ${fmtReEntry(earliestReEntry)}`
+                : "no re-entry"}
             </Chip>
           )}
         </Box>

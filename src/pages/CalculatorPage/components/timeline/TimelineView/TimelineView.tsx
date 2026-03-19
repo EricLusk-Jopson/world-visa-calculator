@@ -1,6 +1,6 @@
 import { useEffect, useRef, useMemo } from "react";
 import Box from "@mui/material/Box";
-import { Traveler, Trip } from "@/types";
+import { Traveler, Trip, VisaRegion } from "@/types";
 
 import { tokens } from "@/styles/theme";
 import { DateSidebar } from "../DateSidebar";
@@ -8,6 +8,7 @@ import { TravelerTimelineColumn } from "../TravelerTimelineColumn";
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import {
   computeTimelineStart,
   computeTimelineEnd,
@@ -16,7 +17,10 @@ import {
   COLUMN_MIN_WIDTH,
   COLUMN_HEADER_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
-import { today as getToday } from "@/features/calculator/utils/dates";
+import {
+  today as getToday,
+  formatDate,
+} from "@/features/calculator/utils/dates";
 
 interface TimelineViewProps {
   travelers: Traveler[];
@@ -34,9 +38,6 @@ export function TimelineView({
   onAddTraveler,
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  // Tracks whether the initial scroll-to-today has fired. After that, trip
-  // saves (which update travelers → timelineStart) must not move the viewport.
   const hasScrolledRef = useRef(false);
 
   const timelineStart = useMemo(
@@ -45,7 +46,6 @@ export function TimelineView({
     [travelers],
   );
 
-  // Dynamic end — extends past today + 90d whenever a trip exit falls later.
   const timelineEnd = useMemo(
     () => computeTimelineEnd(travelers),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,23 +53,21 @@ export function TimelineView({
   );
 
   useEffect(() => {
-    // Only scroll on the very first render. Subsequent updates (trip add/edit)
-    // leave the viewport wherever the user has scrolled to.
     if (hasScrolledRef.current) return;
     if (!scrollRef.current) return;
-
     const vh = scrollRef.current.clientHeight;
     const todayTop = dateToTop(getToday(), timelineStart);
     const scrollTop =
       COLUMN_HEADER_HEIGHT + todayTop - (vh - COLUMN_HEADER_HEIGHT) * 0.38;
     scrollRef.current.scrollTop = Math.max(0, scrollTop);
-
     hasScrolledRef.current = true;
   }, [timelineStart]);
 
   if (travelers.length === 0) {
     return <AddTravelerGhost onAddTraveler={onAddTraveler} />;
   }
+
+  const todayStr = formatDate(getToday());
 
   const sidebarSx = {
     width: SIDEBAR_WIDTH,
@@ -106,6 +104,16 @@ export function TimelineView({
 
           {travelers.map((traveler) => {
             const status = computeTravelerStatus(traveler);
+
+            // Max stay: calculateMaxStay correctly accounts for historical days
+            // aging off the window during the proposed trip, unlike the naive
+            // 90 − daysUsed figure in status.daysRemaining.
+            const schengenTrips = traveler.trips.filter(
+              (t) => t.region === VisaRegion.Schengen,
+            );
+            const maxStayResult = calculateMaxStay(todayStr, schengenTrips);
+            const maxStay = maxStayResult.canEnter ? maxStayResult.maxDays : 0;
+
             return (
               <Box
                 key={traveler.id}
@@ -120,6 +128,7 @@ export function TimelineView({
                 <TravelerColumnHeader
                   traveler={traveler}
                   status={status}
+                  maxStay={maxStay}
                   onDelete={() => onDeleteTraveler(traveler.id)}
                   sx={{ width: "100%" }}
                 />
@@ -131,13 +140,7 @@ export function TimelineView({
         </Box>
 
         {/* ── Content row ─────────────────────────────────────────────────── */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-          }}
-        >
+        <Box sx={{ display: "flex", flexDirection: "row", width: "100%" }}>
           <DateSidebar
             timelineStart={timelineStart}
             timelineEnd={timelineEnd}
@@ -155,11 +158,7 @@ export function TimelineView({
           ))}
 
           <Box
-            sx={{
-              ...rightSidebarSx,
-              height: "100%",
-              alignSelf: "stretch",
-            }}
+            sx={{ ...rightSidebarSx, height: "100%", alignSelf: "stretch" }}
           />
         </Box>
       </Box>

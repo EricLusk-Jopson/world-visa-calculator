@@ -1,49 +1,77 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { Traveler, Trip } from "@/types";
+import { Traveler, Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
 
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { TripListCard } from "../../trips/TripListCard";
+import { computeTravelerStatus } from "../../travelers/travelerStatus";
 import {
-  computeTravelerStatus,
-  computeStatusAtTripExit,
-} from "../../travelers/travelerStatus";
+  calculateMaxStay,
+  calculateEarliestEntry,
+} from "@/features/calculator/utils/schengen";
+import {
+  parseDate,
+  formatDate,
+  addDays,
+} from "@/features/calculator/utils/dates";
 import { AddTripButton } from "./AddTripButton";
+import { MIN_COLUMN_WIDTH } from "../CardsView/CardsView";
 
 interface TravelerCardsColumnProps {
   traveler: Traveler;
+  /**
+   * When true, every column header switches to the two-row compact layout.
+   * Sourced from CardsView so the transition fires simultaneously for all
+   * columns.
+   */
+  compact: boolean;
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
 }
 
 /**
- * One column in the cards view. Sticky header + scrollable list of trip cards
- * sorted chronologically + an "Add trip" button at the bottom.
+ * One column in the cards view. Sticky header + scrollable trip list +
+ * "Add trip" button at the bottom.
+ *
+ * flex: "1 1 0" — zero flex-basis ensures equal width distribution.
+ * minWidth: MIN_COLUMN_WIDTH — horizontal scroll kicks in before columns
+ * compress below the minimum content width.
  */
 export function TravelerCardsColumn({
   traveler,
+  compact,
   onAddTrip,
   onEditTrip,
   onDeleteTraveler,
 }: TravelerCardsColumnProps) {
   const status = computeTravelerStatus(traveler);
 
-  // Sort trips chronologically by entry date
   const sortedTrips = [...traveler.trips].sort(
     (a, b) => new Date(a.entryDate).getTime() - new Date(b.entryDate).getTime(),
   );
+
+  const schengenTrips = traveler.trips.filter(
+    (t) => t.region === VisaRegion.Schengen,
+  );
+
+  const todayStr = formatDate(new Date());
+  const headerMaxStayResult = calculateMaxStay(todayStr, schengenTrips);
+  const headerMaxStay = headerMaxStayResult.canEnter
+    ? headerMaxStayResult.maxDays
+    : 0;
 
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        minWidth: 280,
-        flex: 1,
+        // Zero flex-basis so every column starts from the same baseline before
+        // flex distributes the remaining space — guarantees equal widths.
+        flex: "1 1 0",
+        minWidth: MIN_COLUMN_WIDTH,
         height: "100%",
-
         borderRight: `1px solid ${tokens.border}`,
         "&:last-of-type": { borderRight: "none" },
       }}
@@ -62,6 +90,8 @@ export function TravelerCardsColumn({
         <TravelerColumnHeader
           traveler={traveler}
           status={status}
+          maxStay={headerMaxStay}
+          compact={compact}
           onDelete={() => onDeleteTraveler(traveler.id)}
         />
       </Box>
@@ -76,25 +106,23 @@ export function TravelerCardsColumn({
           flex: 1,
           minHeight: 0,
           overflowY: "auto",
-          "&::-webkit-scrollbar": {
-            width: "5px", // thinner
-          },
+          "&::-webkit-scrollbar": { width: "5px" },
           "&::-webkit-scrollbar-track": {
             background: "transparent",
-            mx: "3px", // MUI sx won't apply here — use margin in the thumb instead
+            mx: "3px",
             pt: "100px",
           },
           "&::-webkit-scrollbar-thumb": {
             background: tokens.border,
             borderRadius: "4px",
-            border: "1px solid transparent", // creates a small gap around the thumb
+            border: "1px solid transparent",
           },
         }}
       >
-        {/* Top "Add trip" — only when list is long */}
         {sortedTrips.length >= 5 && (
           <AddTripButton onClick={() => onAddTrip(traveler.id)} />
         )}
+
         {sortedTrips.length === 0 ? (
           <Box
             sx={{
@@ -125,24 +153,41 @@ export function TravelerCardsColumn({
                 textAlign: "center",
               }}
             >
-              Add a trip to start tracking this traveler's allowance.
+              Add a trip to start tracking this traveler&apos;s allowance.
             </Typography>
           </Box>
         ) : (
           sortedTrips.map((trip) => {
-            const statusAtExit = computeStatusAtTripExit(traveler, trip.id);
+            let maxStayAtExit = 0;
+            let earliestReEntry: string | null = null;
+
+            if (trip.region === VisaRegion.Schengen && trip.exitDate) {
+              const exitDate = parseDate(trip.exitDate);
+              const nextEntryStr = formatDate(addDays(exitDate, 1));
+              const maxStay = calculateMaxStay(nextEntryStr, schengenTrips);
+              if (maxStay.canEnter) {
+                maxStayAtExit = maxStay.maxDays;
+              } else {
+                const earliest = calculateEarliestEntry(
+                  schengenTrips,
+                  nextEntryStr,
+                );
+                earliestReEntry = earliest.earliestDate;
+              }
+            }
+
             return (
               <TripListCard
                 key={trip.id}
                 trip={trip}
-                statusAtExit={statusAtExit}
+                maxStayAtExit={maxStayAtExit}
+                earliestReEntry={earliestReEntry}
                 onEdit={() => onEditTrip(traveler.id, trip)}
               />
             );
           })
         )}
 
-        {/* Add trip button */}
         <AddTripButton
           onClick={() => onAddTrip(traveler.id)}
           mt={sortedTrips.length > 0 ? "4px" : 0}
