@@ -653,10 +653,13 @@ export function TripModal({
                   if (!date) return;
                   const iso = formatDate(date);
                   setEntryDate(iso);
-                  if (!exitDate && !ongoing) {
-                    setExitDate(formatDate(addDays(date, 1)));
+                  if (!ongoing) {
+                    // If there's no exit yet, or the existing exit is now on or
+                    // before the new entry, reset exit to entry + 1.
+                    if (!exitDate || exitDate <= iso) {
+                      setExitDate(formatDate(addDays(date, 1)));
+                    }
                   }
-                  if (!iso) setExitDate("");
                   setError(null);
                 }}
                 slotProps={{

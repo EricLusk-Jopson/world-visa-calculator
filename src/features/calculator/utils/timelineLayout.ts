@@ -45,16 +45,23 @@ export const CARD_RIGHT_MARGIN = 10;
 export const LANE_GAP = 4;
 export const MIN_CARD_WIDTH = 80;
 
-/** Minimum days before today the timeline shows (180-day lookback floor). */
+/** Minimum days before today the timeline always shows (180-day lookback floor). */
 export const TIMELINE_DAYS_BEFORE = 180;
-/** Days after today the timeline extends. */
+/**
+ * Minimum days after today the timeline always shows.
+ * This is a floor, not a ceiling — computeTimelineEnd extends beyond this
+ * whenever a trip's exit date falls later.
+ */
 export const TIMELINE_DAYS_AFTER = 90;
+
 const EARLY_TRIP_BUFFER = 14;
+/** Buffer added after the latest trip exit so it doesn't sit flush at the bottom. */
+const LATE_TRIP_BUFFER = 21;
 
 export const SIDEBAR_WIDTH = 64;
 export const COLUMN_MIN_WIDTH = 280;
 
-// ─── Dynamic timeline start ───────────────────────────────────────────────────
+// ─── Dynamic timeline bounds ──────────────────────────────────────────────────
 
 export function computeTimelineStart(travelers: Traveler[]): Date {
   const defaultStart = subDays(today(), TIMELINE_DAYS_BEFORE);
@@ -70,15 +77,48 @@ export function computeTimelineStart(travelers: Traveler[]): Date {
   return subDays(earliest, EARLY_TRIP_BUFFER);
 }
 
-// ─── Derived dimensions ───────────────────────────────────────────────────────
+/**
+ * The date at which the timeline ends.
+ *
+ * Takes the later of:
+ *   - today + TIMELINE_DAYS_AFTER  (90-day lookahead floor)
+ *   - the latest trip exit across all travelers + LATE_TRIP_BUFFER
+ *
+ * Mirrors computeTimelineStart — the timeline grows to accommodate trips
+ * regardless of how far into the future they extend.
+ *
+ * Ongoing trips (no exitDate) are excluded since their end is unknown;
+ * the floor already provides sufficient lookahead for them.
+ */
+export function computeTimelineEnd(travelers: Traveler[]): Date {
+  const defaultEnd = addDays(today(), TIMELINE_DAYS_AFTER);
+  let latest = defaultEnd;
 
-export function computeTotalDays(timelineStart: Date): number {
-  const end = addDays(today(), TIMELINE_DAYS_AFTER);
-  return differenceInCalendarDays(end, timelineStart) + 1;
+  for (const traveler of travelers) {
+    for (const trip of traveler.trips) {
+      if (!trip.exitDate) continue;
+      const exit = parseDate(trip.exitDate);
+      if (exit > latest) latest = exit;
+    }
+  }
+
+  return addDays(latest, LATE_TRIP_BUFFER);
 }
 
-export function computeTotalHeight(timelineStart: Date): number {
-  return computeTotalDays(timelineStart) * PX_PER_DAY;
+// ─── Derived dimensions ───────────────────────────────────────────────────────
+
+export function computeTotalDays(
+  timelineStart: Date,
+  timelineEnd: Date,
+): number {
+  return differenceInCalendarDays(timelineEnd, timelineStart) + 1;
+}
+
+export function computeTotalHeight(
+  timelineStart: Date,
+  timelineEnd: Date,
+): number {
+  return computeTotalDays(timelineStart, timelineEnd) * PX_PER_DAY;
 }
 
 // ─── Trip geometry ────────────────────────────────────────────────────────────
@@ -239,8 +279,11 @@ const MONTH_NAMES = [
   "Dec",
 ];
 
-export function buildMonthMarks(timelineStart: Date): MonthMark[] {
-  const totalDays = computeTotalDays(timelineStart);
+export function buildMonthMarks(
+  timelineStart: Date,
+  timelineEnd: Date,
+): MonthMark[] {
+  const totalDays = computeTotalDays(timelineStart, timelineEnd);
   const marks: MonthMark[] = [];
 
   const cursor = new Date(timelineStart);

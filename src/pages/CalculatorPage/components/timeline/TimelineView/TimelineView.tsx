@@ -10,6 +10,7 @@ import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
 import {
   computeTimelineStart,
+  computeTimelineEnd,
   dateToTop,
   SIDEBAR_WIDTH,
   COLUMN_MIN_WIDTH,
@@ -40,6 +41,13 @@ export function TimelineView({
 
   const timelineStart = useMemo(
     () => computeTimelineStart(travelers),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [travelers],
+  );
+
+  // Dynamic end — extends past today + 90d whenever a trip exit falls later.
+  const timelineEnd = useMemo(
+    () => computeTimelineEnd(travelers),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [travelers],
   );
@@ -130,13 +138,17 @@ export function TimelineView({
             width: "100%",
           }}
         >
-          <DateSidebar timelineStart={timelineStart} />
+          <DateSidebar
+            timelineStart={timelineStart}
+            timelineEnd={timelineEnd}
+          />
 
           {travelers.map((traveler) => (
             <TravelerTimelineColumn
               key={traveler.id}
               traveler={traveler}
               timelineStart={timelineStart}
+              timelineEnd={timelineEnd}
               onAddTrip={onAddTrip}
               onEditTrip={onEditTrip}
             />
