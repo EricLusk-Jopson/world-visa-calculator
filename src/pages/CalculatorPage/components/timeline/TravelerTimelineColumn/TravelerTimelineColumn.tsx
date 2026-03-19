@@ -33,28 +33,43 @@ interface TravelerTimelineColumnProps {
   onEditTrip: (travelerId: string, trip: Trip) => void;
 }
 
-// ─── Return marker visual ─────────────────────────────────────────────────────
+// ─── Marker visuals ───────────────────────────────────────────────────────────
+
+function markerColors(days: number, isCurrent: boolean) {
+  // Generous (≥30d) → green palette. Limited (<30d) → amber palette.
+  const isGenerous = days >= 30;
+  return {
+    lineBase: isGenerous ? tokens.green : tokens.amber,
+    textColor: isGenerous ? tokens.greenText : tokens.amberText,
+    bgColor: isGenerous ? tokens.greenBg : tokens.amberBg,
+    // Current snapshot: slightly bolder treatment; threshold: subtler
+    lineOpacity: isCurrent ? 0.45 : days % 30 === 0 ? 0.35 : 0.18,
+    pillOpacity: isCurrent ? 1 : days % 30 === 0 ? 1 : 0.65,
+  };
+}
 
 /**
- * A horizontal marker on the timeline showing when a Schengen trip of `days`
- * duration first becomes possible.
+ * A horizontal marker at a specific date on the timeline.
  *
- * Multiples of 30 (30d, 60d, 90d) are "major" — stronger line + opaque label.
- * Other thresholds (10d, 20d, 40d …) are "minor" — faint line + dimmed label.
+ * Two variants:
  *
- * The outer container is pointer-events:none so it doesn't intercept scroll,
- * but the pill itself opts back in so the MUI Tooltip can trigger on hover.
+ * isCurrent=true  — "snapshot" chip at a phase boundary (today or the day
+ *   after a pending trip ends). Shows the exact max stay available on that
+ *   date. No dashed line — the pill floats alone against the timeline.
+ *
+ * isCurrent=false — "milestone" chip at the first date a given threshold
+ *   (15/30/45/60/75/90) becomes achievable. Has a dashed horizontal rule.
+ *
+ * The outer Box uses pointerEvents:none so it never intercepts scroll or card
+ * clicks. The pill re-enables them so the Tooltip can trigger on hover.
  */
-function MarkerLine({ top, days }: ReturnMarker) {
-  const isMajor = days % 30 === 0;
-  const isGenerous = days >= 30;
+function MarkerLine({ top, days, isCurrent }: ReturnMarker) {
+  const { lineBase, textColor, bgColor, lineOpacity, pillOpacity } =
+    markerColors(days, isCurrent);
 
-  const lineBase = isGenerous ? tokens.green : tokens.amber;
-  const textColor = isGenerous ? tokens.greenText : tokens.amberText;
-  const bgColor = isGenerous ? tokens.greenBg : tokens.amberBg;
-  const lineOpacity = isMajor ? 0.35 : 0.18;
-
-  const tooltipText = `From this date you can start a Schengen trip of up to ${days} days.`;
+  const tooltipText = isCurrent
+    ? `Currently, you can start a Schengen trip of up to ${days} days.`
+    : `From this date, a ${days}-day Schengen trip first becomes possible.`;
 
   return (
     <Box
@@ -63,25 +78,25 @@ function MarkerLine({ top, days }: ReturnMarker) {
         left: 0,
         right: 0,
         top,
-        // Pointer events off on the container so it doesn't block scroll or
-        // click-through to trip cards. The pill re-enables them selectively.
         pointerEvents: "none",
         zIndex: 2,
       }}
     >
-      {/* Dashed horizontal rule */}
-      <Box
-        sx={{
-          position: "absolute",
-          left: 30,
-          right: 10,
-          top: 0,
-          height: 0,
-          borderTop: `1px dashed ${alpha(lineBase, lineOpacity)}`,
-        }}
-      />
+      {/* Dashed rule — only for milestone (threshold) chips */}
+      {!isCurrent && (
+        <Box
+          sx={{
+            position: "absolute",
+            left: 30,
+            right: 10,
+            top: 0,
+            height: 0,
+            borderTop: `1px dashed ${alpha(lineBase, lineOpacity)}`,
+          }}
+        />
+      )}
 
-      {/* Pill — opt back into pointer events so Tooltip works */}
+      {/* Pill */}
       <Tooltip
         title={tooltipText}
         placement="right"
@@ -95,7 +110,7 @@ function MarkerLine({ top, days }: ReturnMarker) {
               fontWeight: 500,
               bgcolor: tokens.navy,
               "& .MuiTooltip-arrow": { color: tokens.navy },
-              maxWidth: 200,
+              maxWidth: 220,
             },
           },
         }}
@@ -103,19 +118,22 @@ function MarkerLine({ top, days }: ReturnMarker) {
         <Box
           sx={{
             position: "absolute",
-            left: 32,
+            // Current chips sit at the left column edge; threshold chips at
+            // the same left:32 position as before to align with the dashed line.
+            left: isCurrent ? 20 : 32,
             top: 0,
             transform: "translateY(-50%)",
             zIndex: 3,
             display: "inline-flex",
             alignItems: "center",
             gap: "3px",
-            px: "5px",
-            py: "1.5px",
+            px: isCurrent ? "7px" : "5px",
+            py: "2px",
             borderRadius: "100px",
             bgcolor: bgColor,
-            border: `1px solid ${alpha(lineBase, isMajor ? 0.3 : 0.15)}`,
-            // Re-enable pointer events on the pill itself
+            border: `1px solid ${alpha(lineBase, isCurrent ? 0.4 : 0.2)}`,
+            // Solid border for current chips; inherit for threshold chips
+            borderStyle: isCurrent ? "solid" : "dashed",
             pointerEvents: "auto",
             cursor: "default",
           }}
@@ -123,10 +141,10 @@ function MarkerLine({ top, days }: ReturnMarker) {
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
-              fontSize: "0.52rem",
+              fontSize: isCurrent ? "0.58rem" : "0.52rem",
               fontWeight: 700,
               letterSpacing: "0.04em",
-              color: isMajor ? textColor : alpha(textColor, 0.65),
+              color: alpha(textColor, pillOpacity),
               lineHeight: 1,
               userSelect: "none",
             }}
@@ -135,8 +153,8 @@ function MarkerLine({ top, days }: ReturnMarker) {
           </Typography>
           <InfoOutlinedIcon
             sx={{
-              fontSize: "0.6rem",
-              color: isMajor ? textColor : alpha(textColor, 0.5),
+              fontSize: isCurrent ? "0.65rem" : "0.6rem",
+              color: alpha(textColor, pillOpacity * 0.7),
               flexShrink: 0,
             }}
           />
@@ -211,20 +229,16 @@ export function TravelerTimelineColumn({
     [traveler, timelineStart, timelineEnd],
   );
 
-  // Keep the Add Trip button below the last return marker so they never
-  // overlap. Default is 16px from the bottom of the canvas; if markers extend
-  // further down we push the button below the bottommost marker.
+  // Keep the Add Trip button clear of the lowest marker.
   const ADD_BUTTON_HEIGHT = 36;
-  const ADD_BUTTON_BOTTOM_MARGIN = 16;
-  const defaultButtonTop =
-    totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_BOTTOM_MARGIN;
+  const ADD_BUTTON_MARGIN = 16;
+  const defaultButtonTop = totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_MARGIN;
 
   const addButtonTop = useMemo(() => {
     if (returnMarkers.length === 0) return defaultButtonTop;
     const lastMarkerTop = Math.max(...returnMarkers.map((m) => m.top));
-    // Pill is centered on the marker top (translateY -50%), so bottom edge is
-    // at lastMarkerTop + ~10px. Add 16px clearance below that.
-    const minTop = lastMarkerTop + 10 + 16;
+    // Pill is centered (translateY -50%); its bottom edge is ~top + 10px.
+    const minTop = lastMarkerTop + 10 + ADD_BUTTON_MARGIN;
     return Math.max(defaultButtonTop, minTop);
   }, [returnMarkers, defaultButtonTop]);
 
@@ -238,11 +252,10 @@ export function TravelerTimelineColumn({
         zIndex: 1,
         minWidth: COLUMN_MIN_WIDTH,
         flex: 1,
-        // Extend canvas height if the add button has been pushed below the
-        // default bottom so the button is never clipped.
+        // Extend canvas if the add button has been pushed below totalHeight.
         height: Math.max(
           totalHeight,
-          addButtonTop + ADD_BUTTON_HEIGHT + ADD_BUTTON_BOTTOM_MARGIN,
+          addButtonTop + ADD_BUTTON_HEIGHT + ADD_BUTTON_MARGIN,
         ),
         bgcolor: tokens.white,
         borderRight: `1px solid ${tokens.border}`,
@@ -317,8 +330,11 @@ export function TravelerTimelineColumn({
       />
 
       {/* Return markers */}
-      {returnMarkers.map((marker) => (
-        <MarkerLine key={marker.days} top={marker.top} days={marker.days} />
+      {returnMarkers.map((marker, i) => (
+        <MarkerLine
+          key={`${marker.isCurrent ? "cur" : "thr"}-${marker.days}-${i}`}
+          {...marker}
+        />
       ))}
 
       {/* Trip cards */}
@@ -346,7 +362,7 @@ export function TravelerTimelineColumn({
         );
       })}
 
-      {/* Add trip button — positioned below the last return marker */}
+      {/* Add trip button */}
       <Box
         onClick={() => onAddTrip(traveler.id)}
         sx={{
