@@ -77,6 +77,11 @@ interface TripListCardProps {
    * Null if no re-entry is possible within the search horizon.
    */
   earliestReEntry: string | null;
+  /**
+   * When true the card renders with red background/text to indicate that
+   * this trip overlaps an overstay in the 90/180-day window.
+   */
+  isOverstay?: boolean;
   onEdit: () => void;
 }
 
@@ -86,6 +91,7 @@ export function TripListCard({
   trip,
   maxStayAtExit,
   earliestReEntry,
+  isOverstay = false,
   onEdit,
 }: TripListCardProps) {
   const isPlanned = isTripPlanned(trip);
@@ -94,31 +100,56 @@ export function TripListCard({
   const dur = tripDurationDays(trip.entryDate, trip.exitDate);
   const showSchengenChips = isSchengen && !isOngoing;
 
-  const regionLabel = isPlanned
-    ? "Planned"
-    : isOngoing
-      ? "Ongoing"
+  // Overstay overrides colour scheme
+  const regionLabel = isOverstay
+    ? "Overstay"
+    : isPlanned
+      ? "Planned"
+      : isOngoing
+        ? "Ongoing"
+        : isSchengen
+          ? "Schengen"
+          : "Elsewhere";
+
+  const regionBg = isOverstay
+    ? tokens.redBg
+    : isPlanned
+      ? tokens.amberBg
       : isSchengen
-        ? "Schengen"
-        : "Elsewhere";
-  const regionBg = isPlanned
-    ? tokens.amberBg
-    : isSchengen
-      ? tokens.greenBg
-      : tokens.mist;
-  const regionColor = isPlanned
-    ? tokens.amberText
-    : isSchengen
-      ? tokens.greenText
-      : tokens.textSoft;
+        ? tokens.greenBg
+        : tokens.mist;
 
-  const stripeColor = isPlanned
-    ? tokens.amber
-    : isSchengen
-      ? tokens.green
+  const regionColor = isOverstay
+    ? tokens.redText
+    : isPlanned
+      ? tokens.amberText
+      : isSchengen
+        ? tokens.greenText
+        : tokens.textSoft;
+
+  const stripeColor = isOverstay
+    ? tokens.red
+    : isPlanned
+      ? tokens.amber
+      : isSchengen
+        ? tokens.green
+        : tokens.border;
+
+  const cardBg = isOverstay
+    ? tokens.redBg
+    : isPlanned
+      ? "#FDFCF8"
+      : tokens.white;
+  const cardBorderColor = isOverstay
+    ? tokens.redBorder
+    : isPlanned
+      ? tokens.amberBorder
       : tokens.border;
+  const cardBorderStyle = isPlanned && !isOverstay ? "dashed" : "solid";
 
-  // Max stay chip — dashed border distinguishes it from the solid duration chip.
+  const destinationColor = isOverstay ? tokens.red : tokens.navy;
+
+  // Max stay chip colours
   const stayVariant = variantFromMaxStay(maxStayAtExit);
   const stayBg =
     stayVariant === "safe"
@@ -140,15 +171,19 @@ export function TripListCard({
         minHeight: "88px",
         position: "relative",
         borderRadius: "10px",
-        border: `1px solid ${isPlanned ? tokens.amberBorder : tokens.border}`,
-        borderStyle: isPlanned ? "dashed" : "solid",
-        bgcolor: isPlanned ? "#FDFCF8" : tokens.white,
+        border: `1px solid ${cardBorderColor}`,
+        borderStyle: cardBorderStyle,
+        bgcolor: cardBg,
         overflow: "hidden",
         cursor: "pointer",
-        boxShadow: "0 1px 3px rgba(12,30,60,0.06)",
+        boxShadow: isOverstay
+          ? `0 1px 3px rgba(239,68,68,0.12)`
+          : "0 1px 3px rgba(12,30,60,0.06)",
         transition: "box-shadow 0.15s, transform 0.12s",
         "&:hover": {
-          boxShadow: "0 4px 14px rgba(12,30,60,0.09)",
+          boxShadow: isOverstay
+            ? "0 4px 14px rgba(239,68,68,0.18)"
+            : "0 4px 14px rgba(12,30,60,0.09)",
           transform: "translateY(-1px)",
         },
       }}
@@ -164,8 +199,8 @@ export function TripListCard({
             fontFamily: tokens.fontDisplay,
             fontSize: "0.88rem",
             fontStyle: "italic",
-            fontWeight: 400,
-            color: tokens.navy,
+            fontWeight: isOverstay ? 500 : 400,
+            color: destinationColor,
             lineHeight: 1.25,
             mb: "2px",
             overflow: "hidden",
@@ -181,7 +216,7 @@ export function TripListCard({
           sx={{
             fontFamily: tokens.fontBody,
             fontSize: "0.7rem",
-            color: tokens.textSoft,
+            color: isOverstay ? tokens.redText : tokens.textSoft,
             fontWeight: 500,
             mb: "8px",
           }}
@@ -198,24 +233,24 @@ export function TripListCard({
             flexWrap: "wrap",
           }}
         >
-          {/* Trip duration — solid, neutral */}
+          {/* Duration — solid, neutral */}
           <Chip color={tokens.textSoft} bg={tokens.mist}>
             {dur}d
           </Chip>
 
-          {/* Region */}
+          {/* Region / overstay label */}
           <Chip color={regionColor} bg={regionBg}>
-            {regionLabel}
+            {isOverstay ? "⚠ Overstay" : regionLabel}
           </Chip>
 
-          {/* Schengen availability — dashed, status-coloured */}
-          {showSchengenChips && maxStayAtExit > 0 && (
+          {/* Schengen availability — dashed, status-coloured. Hidden when overstay. */}
+          {!isOverstay && showSchengenChips && maxStayAtExit > 0 && (
             <Chip color={stayColor} bg={stayBg} borderStyle="dashed">
               +{maxStayAtExit}d
             </Chip>
           )}
 
-          {showSchengenChips && maxStayAtExit === 0 && (
+          {!isOverstay && showSchengenChips && maxStayAtExit === 0 && (
             <Chip color={tokens.redText} bg={tokens.redBg} borderStyle="dashed">
               {earliestReEntry
                 ? `from ${fmtReEntry(earliestReEntry)}`

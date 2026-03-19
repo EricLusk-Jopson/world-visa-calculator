@@ -14,9 +14,39 @@ import {
   parseDate,
   formatDate,
   addDays,
+  today as getToday,
 } from "@/features/calculator/utils/dates";
 import { AddTripButton } from "./AddTripButton";
 import { MIN_COLUMN_WIDTH } from "../CardsView/CardsView";
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+/**
+ * Returns a Set of trip IDs that are in an overstay state at their exit date.
+ * A trip is overstay when, at the moment it ends, more than 90 Schengen days
+ * have been used in the trailing 180-day window.
+ */
+function computeOverstayTripIds(traveler: Traveler): Set<string> {
+  const schengenTrips = traveler.trips.filter(
+    (t) => t.region === VisaRegion.Schengen,
+  );
+  if (schengenTrips.length === 0) return new Set();
+
+  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const result = new Set<string>();
+
+  for (const trip of schengenTrips) {
+    const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
+    const status = computeTravelerStatus(mockTraveler, refDate);
+    if (status.daysUsed > 90) {
+      result.add(trip.id);
+    }
+  }
+
+  return result;
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 interface TravelerCardsColumnProps {
   traveler: Traveler;
@@ -61,6 +91,9 @@ export function TravelerCardsColumn({
   const headerMaxStay = headerMaxStayResult.canEnter
     ? headerMaxStayResult.maxDays
     : 0;
+
+  // Overstay detection — computed once for the column, passed per card.
+  const overstayTripIds = computeOverstayTripIds(traveler);
 
   return (
     <Box
@@ -182,6 +215,7 @@ export function TravelerCardsColumn({
                 trip={trip}
                 maxStayAtExit={maxStayAtExit}
                 earliestReEntry={earliestReEntry}
+                isOverstay={overstayTripIds.has(trip.id)}
                 onEdit={() => onEditTrip(traveler.id, trip)}
               />
             );

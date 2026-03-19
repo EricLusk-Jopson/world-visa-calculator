@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from "react";
+import { useRef, useEffect, useMemo } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
@@ -21,6 +21,7 @@ import {
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
+import { computeTravelerStatus } from "../../travelers/travelerStatus";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -45,17 +46,46 @@ interface PositionedTrip {
   height: number;
   lane: number;
   laneCount: number;
+  /** True if any traveler in this merged card is in an overstay state. */
+  isOverstay: boolean;
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const MIN_TRIP_HEIGHT = 28;
-// Progressive disclosure: richer content unlocks at taller card heights
-const HEIGHT_SHOW_DATES = 44; // date range when destination fills row 1
-const HEIGHT_SHOW_BADGES = 56; // duration + region chips
-const HEIGHT_SHOW_NAMES = 72; // traveler name chips
+const HEIGHT_SHOW_DATES = 44;
+const HEIGHT_SHOW_BADGES = 56;
+const HEIGHT_SHOW_NAMES = 72;
 const LANE_GAP = 2;
 const CARD_GUTTER = 3;
+
+// ─── Overstay helpers ─────────────────────────────────────────────────────────
+
+/**
+ * Returns a Set of trip coordinate keys ("entryDate|exitDate|region") that are
+ * in an overstay state at their exit date for the given traveler. Uses
+ * coordinate keys rather than UUIDs because mobile merged trips can't rely
+ * on a single canonical ID across travelers.
+ */
+function computeOverstayCoords(traveler: Traveler): Set<string> {
+  const schengenTrips = traveler.trips.filter(
+    (t) => t.region === VisaRegion.Schengen,
+  );
+  if (schengenTrips.length === 0) return new Set();
+
+  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const result = new Set<string>();
+
+  for (const trip of schengenTrips) {
+    const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
+    const status = computeTravelerStatus(mockTraveler, refDate);
+    if (status.daysUsed > 90) {
+      result.add(`${trip.entryDate}|${trip.exitDate ?? ""}|${trip.region}`);
+    }
+  }
+
+  return result;
+}
 
 // ─── Merge + lane assignment ──────────────────────────────────────────────────
 
@@ -65,12 +95,21 @@ function buildPositionedTrips(
   timelineStart: Date,
   todayStr: string,
 ): Omit<PositionedTrip, "lane" | "laneCount">[] {
+  // Pre-compute overstay coords per traveler once.
+  const overstayByTraveler = new Map<string, Set<string>>(
+    travelers.map((t) => [t.id, computeOverstayCoords(t)]),
+  );
+
   const merged: Omit<PositionedTrip, "lane" | "laneCount">[] = [];
 
   travelers.forEach((traveler, travelerIndex) => {
     if (hiddenIds.includes(traveler.id)) return;
 
     traveler.trips.forEach((trip) => {
+      const tripKey = `${trip.entryDate}|${trip.exitDate ?? ""}|${trip.region}`;
+      const tripIsOverstay =
+        overstayByTraveler.get(traveler.id)?.has(tripKey) ?? false;
+
       const existing = merged.find(
         (m) =>
           m.trip.entryDate === trip.entryDate &&
@@ -80,6 +119,10 @@ function buildPositionedTrips(
 
       if (existing) {
         existing.entries.push({ traveler, travelerIndex, trip });
+        // Propagate overstay flag — any traveler in overstay marks the card.
+        if (tripIsOverstay) {
+          (existing as PositionedTrip).isOverstay = true;
+        }
       } else {
         const top = dateToTop(parseDate(trip.entryDate), timelineStart);
         const exitStr = trip.exitDate ?? todayStr;
@@ -90,6 +133,7 @@ function buildPositionedTrips(
           entries: [{ traveler, travelerIndex, trip }],
           top,
           height,
+          isOverstay: tripIsOverstay,
         });
       }
     });
@@ -174,7 +218,7 @@ function MobileTimelineTripCard({
   positioned,
   onClick,
 }: MobileTimelineTripCardProps) {
-  const { trip, entries, height } = positioned;
+  const { trip, entries, height, isOverstay } = positioned;
   const todayStr = todayISO();
 
   const isOngoing = !trip.exitDate;
@@ -190,23 +234,44 @@ function MobileTimelineTripCard({
     parseDate(trip.exitDate ?? todayStr),
   );
 
-  const regionLabel = isPlanned
-    ? "Planned"
-    : isOngoing
-      ? "Ongoing"
+  const regionLabel = isOverstay
+    ? "⚠ Overstay"
+    : isPlanned
+      ? "Planned"
+      : isOngoing
+        ? "Ongoing"
+        : isSchengen
+          ? "Schengen"
+          : "Elsewhere";
+
+  const regionBg = isOverstay
+    ? alpha(tokens.red, 0.12)
+    : isPlanned
+      ? alpha(tokens.amber, 0.12)
       : isSchengen
-        ? "Schengen"
-        : "Elsewhere";
-  const regionBg = isPlanned
-    ? alpha(tokens.amber, 0.12)
-    : isSchengen
-      ? alpha(tokens.green, 0.12)
-      : tokens.mist;
-  const regionColor = isPlanned
-    ? tokens.amberText
-    : isSchengen
-      ? tokens.greenText
-      : tokens.textSoft;
+        ? alpha(tokens.green, 0.12)
+        : tokens.mist;
+
+  const regionColor = isOverstay
+    ? tokens.redText
+    : isPlanned
+      ? tokens.amberText
+      : isSchengen
+        ? tokens.greenText
+        : tokens.textSoft;
+
+  const cardBg = isOverstay
+    ? tokens.redBg
+    : isPlanned
+      ? "#FDFCF8"
+      : tokens.white;
+  const cardBorderColor = isOverstay
+    ? alpha(tokens.red, 0.28)
+    : isPlanned
+      ? alpha(tokens.amber, 0.28)
+      : tokens.border;
+
+  const destinationColor = isOverstay ? tokens.red : tokens.navy;
 
   return (
     <Box
@@ -214,15 +279,21 @@ function MobileTimelineTripCard({
       sx={{
         position: "absolute",
         inset: 0,
-        bgcolor: isPlanned ? "#FDFCF8" : tokens.white,
+        bgcolor: cardBg,
         border: "1px solid",
-        borderColor: isPlanned ? alpha(tokens.amber, 0.28) : tokens.border,
-        borderStyle: isPlanned ? "dashed" : "solid",
+        borderColor: cardBorderColor,
+        borderStyle: isPlanned && !isOverstay ? "dashed" : "solid",
         borderRadius: "6px",
         overflow: "hidden",
         cursor: "pointer",
-        boxShadow: "0 1px 3px rgba(12,30,60,0.05)",
-        "&:active": { boxShadow: "0 3px 10px rgba(12,30,60,0.1)" },
+        boxShadow: isOverstay
+          ? "0 1px 3px rgba(239,68,68,0.1)"
+          : "0 1px 3px rgba(12,30,60,0.05)",
+        "&:active": {
+          boxShadow: isOverstay
+            ? "0 3px 10px rgba(239,68,68,0.18)"
+            : "0 3px 10px rgba(12,30,60,0.1)",
+        },
       }}
     >
       <Box
@@ -238,7 +309,7 @@ function MobileTimelineTripCard({
           gap: "2px",
         }}
       >
-        {/* ── Always: traveler dots + destination/date fallback ─────────── */}
+        {/* ── Always: traveler dots + destination ───────────────────────── */}
         <Box
           sx={{
             display: "flex",
@@ -269,7 +340,7 @@ function MobileTimelineTripCard({
               fontSize: "0.72rem",
               fontStyle: trip.destination ? "italic" : "normal",
               fontWeight: trip.destination ? 400 : 500,
-              color: tokens.navy,
+              color: destinationColor,
               lineHeight: 1.2,
               overflow: "hidden",
               textOverflow: "ellipsis",
@@ -287,12 +358,12 @@ function MobileTimelineTripCard({
           </Typography>
         </Box>
 
-        {/* ── Date range (when destination already occupies row 1) ──────── */}
+        {/* ── Date range ────────────────────────────────────────────────── */}
         {showDates && trip.destination && (
           <Typography
             sx={{
               fontSize: "0.6rem",
-              color: tokens.textGhost,
+              color: isOverstay ? tokens.redText : tokens.textGhost,
               lineHeight: 1.2,
               whiteSpace: "nowrap",
             }}
@@ -392,7 +463,6 @@ export function MobileTimelineView({
     [travelers],
   );
 
-  // Dynamic end — extends past today + 90d whenever a trip exit falls later.
   const timelineEnd = useMemo(
     () => computeTimelineEnd(travelers),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -404,8 +474,6 @@ export function MobileTimelineView({
     [travelers, hiddenTravelerIds, timelineStart, todayStr],
   );
 
-  // Canvas height: enough to contain the last trip + breathing room before
-  // the Add Trip button, which is now in normal flow below the canvas.
   const contentHeight = useMemo(() => {
     if (positionedTrips.length === 0) return 600;
     const maxBottom = Math.max(...positionedTrips.map((p) => p.top + p.height));
@@ -451,7 +519,7 @@ export function MobileTimelineView({
             />
           </Box>
 
-          {/* Canvas — position:relative so trip cards can be absolutely placed */}
+          {/* Canvas */}
           <Box sx={{ flex: 1, position: "relative" }}>
             {/* Today line */}
             <Box
@@ -539,7 +607,7 @@ export function MobileTimelineView({
           </Box>
         </Box>
 
-        {/* ── Add Trip — in normal flow, scrolls with content ─────────────── */}
+        {/* ── Add Trip — in normal flow ────────────────────────────────────── */}
         {!allHidden && (
           <Box
             sx={{

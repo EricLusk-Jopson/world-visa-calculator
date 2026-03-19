@@ -36,6 +36,7 @@ import {
   calculateEarliestEntry,
   calculateMaxStay,
 } from "@/features/calculator/utils/schengen";
+import { computeTravelerStatus } from "../../travelers/travelerStatus";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
@@ -180,10 +181,6 @@ function AgingMarkerLine({ top, tripDays, destination }: AgingMarker) {
         zIndex: 2,
       }}
     >
-      {/*
-       * Line broken into left and right halves with a label in the center.
-       * Uses a flex row so the label naturally splits the dotted rule.
-       */}
       <Box
         sx={{
           position: "absolute",
@@ -195,7 +192,6 @@ function AgingMarkerLine({ top, tripDays, destination }: AgingMarker) {
           gap: "6px",
         }}
       >
-        {/* Left half of dotted line */}
         <Box
           sx={{
             flex: 1,
@@ -203,8 +199,6 @@ function AgingMarkerLine({ top, tripDays, destination }: AgingMarker) {
             borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
           }}
         />
-
-        {/* Centered label */}
         <Typography
           sx={{
             fontFamily: tokens.fontBody,
@@ -221,8 +215,6 @@ function AgingMarkerLine({ top, tripDays, destination }: AgingMarker) {
         >
           {destination} ages out
         </Typography>
-
-        {/* Right half of dotted line */}
         <Box
           sx={{
             flex: 1,
@@ -232,7 +224,6 @@ function AgingMarkerLine({ top, tripDays, destination }: AgingMarker) {
         />
       </Box>
 
-      {/* "+Xd" chip — right-aligned so it doesn't collide with threshold chips at left:32 */}
       <Tooltip
         title={tooltipText}
         placement="left"
@@ -372,7 +363,6 @@ export function TravelerTimelineColumn({
         }
         const exitDate = parseDate(trip.exitDate);
         const nextEntryStr = formatDate(addDays(exitDate, 1));
-        // Include current trip — its days remain in the window after exit.
         const maxStay = calculateMaxStay(nextEntryStr, schengenTrips);
         if (maxStay.canEnter) {
           return [
@@ -391,6 +381,31 @@ export function TravelerTimelineColumn({
       }),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [traveler]);
+
+  // Overstay detection — computed once per traveler change.
+  const overstayTripIds = useMemo(() => {
+    const schengenTrips = traveler.trips.filter(
+      (t) => t.region === VisaRegion.Schengen,
+    );
+    if (schengenTrips.length === 0) return new Set<string>();
+
+    const mockTraveler = {
+      id: "__overstay__",
+      name: "",
+      trips: schengenTrips,
+    };
+    const result = new Set<string>();
+
+    for (const trip of schengenTrips) {
+      const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
+      const status = computeTravelerStatus(mockTraveler, refDate);
+      if (status.daysUsed > 90) {
+        result.add(trip.id);
+      }
+    }
+
+    return result;
   }, [traveler]);
 
   const returnMarkers = useMemo(
@@ -539,6 +554,7 @@ export function TravelerTimelineColumn({
             cardLeft={cardLeft}
             cardWidth={cardWidth}
             baseZIndex={BASE_Z + rank}
+            isOverstay={overstayTripIds.has(trip.id)}
             onEdit={() => onEditTrip(traveler.id, trip)}
           />
         );
