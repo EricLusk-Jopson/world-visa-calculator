@@ -7,6 +7,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
+import Tooltip from "@mui/material/Tooltip";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -23,6 +24,7 @@ import {
   parseDate,
   formatDate,
   addDays,
+  today as getToday,
 } from "@/features/calculator/utils/dates";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import {
@@ -62,8 +64,6 @@ function hasOverlap(
   for (const t of trips) {
     if (t.id === excludeId) continue;
 
-    // For multi-traveler edits each copy has a different ID — exclude by
-    // original coordinates so the trip being edited isn't flagged as an overlap.
     if (
       excludeTrip &&
       t.entryDate === excludeTrip.entryDate &&
@@ -187,6 +187,13 @@ export function TripModal({
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
 
+  const todayStr = formatDate(getToday());
+
+  // True when the entry date is set to a future date. Ongoing trips require
+  // the traveler to already be inside Schengen, so this state is impossible
+  // for future-dated entries.
+  const entryIsInFuture = Boolean(entryDate && entryDate > todayStr);
+
   useEffect(() => {
     if (!open) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -277,7 +284,7 @@ export function TripModal({
     ? getStatusVariant(impactStatus.daysRemaining)
     : ("neutral" as const);
 
-  // ── Per-traveler impacts (multi-traveler add/edit) ──────────────────────────
+  // ── Per-traveler impacts ────────────────────────────────────────────────────
 
   let travelerImpacts: TravelerImpact[] | undefined = undefined;
 
@@ -362,8 +369,6 @@ export function TripModal({
       );
     }
   }
-
-  // ── Resolved exit for ImpactPreview ────────────────────────────────────────
 
   const resolvedExitForPreview = ongoing ? undefined : exitDate || undefined;
 
@@ -517,7 +522,7 @@ export function TripModal({
           }}
           onKeyDown={handleKeyDown}
         >
-          {/* Validation error — top of stack so it's always visible */}
+          {/* Validation error */}
           {error && (
             <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
               {error}
@@ -528,11 +533,6 @@ export function TripModal({
           <Box>
             <FormLabel>{isEdit ? "Traveler" : "Traveler(s)"}</FormLabel>
             {isEdit ? (
-              /*
-               * Edit mode: show all travelers associated with this trip as
-               * a disabled multi-select. On desktop this is always one person;
-               * on mobile it may be several (merged card).
-               */
               <Select
                 multiple
                 value={travelerIds}
@@ -657,9 +657,12 @@ export function TripModal({
                   if (!date) return;
                   const iso = formatDate(date);
                   setEntryDate(iso);
+                  // Auto-reset ongoing if the new entry is in the future —
+                  // you can't already be inside Schengen on a future date.
+                  if (iso > todayStr && ongoing) {
+                    setOngoing(false);
+                  }
                   if (!ongoing) {
-                    // If there's no exit yet, or the existing exit is now on or
-                    // before the new entry, reset exit to entry + 1.
                     if (!exitDate || exitDate <= iso) {
                       setExitDate(formatDate(addDays(date, 1)));
                     }
@@ -696,14 +699,49 @@ export function TripModal({
               />
             </Box>
 
-            <OngoingToggle
-              checked={ongoing}
-              onChange={(v) => {
-                setOngoing(v);
-                if (v) setExitDate("");
-                setError(null);
+            {/*
+             * Ongoing toggle — disabled (via pointer-events) when the entry
+             * date is in the future. You can't already be inside Schengen
+             * before you've arrived.
+             */}
+            <Tooltip
+              title={
+                entryIsInFuture
+                  ? "Ongoing trips require an entry date on or before today"
+                  : ""
+              }
+              placement="top"
+              arrow
+              disableHoverListener={!entryIsInFuture}
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    bgcolor: tokens.navy,
+                    "& .MuiTooltip-arrow": { color: tokens.navy },
+                  },
+                },
               }}
-            />
+            >
+              <Box
+                sx={{
+                  display: "inline-block",
+                  pointerEvents: entryIsInFuture ? "none" : "auto",
+                  opacity: entryIsInFuture ? 0.4 : 1,
+                  transition: "opacity 0.15s",
+                }}
+              >
+                <OngoingToggle
+                  checked={ongoing}
+                  onChange={(v) => {
+                    setOngoing(v);
+                    if (v) setExitDate("");
+                    setError(null);
+                  }}
+                />
+              </Box>
+            </Tooltip>
           </Box>
 
           {/* Entry constraint hint */}
@@ -793,7 +831,7 @@ export function TripModal({
           <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleSave} sx={{ flex: 2 }}>
+          <Button variant={"primary"} onClick={handleSave} sx={{ flex: 2 }}>
             Save Trip
           </Button>
         </Box>
