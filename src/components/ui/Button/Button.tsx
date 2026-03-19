@@ -20,8 +20,14 @@ const SIZE_MAP: Record<ButtonSize, MuiButtonProps["size"]> = {
 
 /*
  * Variant → MUI sx overrides.
- * We use sx rather than custom MUI variants to keep the theme lean
- * and make per-variant styles readable in one place.
+ *
+ * Each variant declares its own "&.Mui-disabled" block that re-states the
+ * active bgcolor + color at reduced opacity. Without this, MUI's theme
+ * replaces both properties with its own gray palette values, making the
+ * text invisible against the button background.
+ *
+ * Rule: "&:hover:not(:disabled)" keeps hover effects away from disabled
+ * buttons without requiring an extra specificity hack.
  */
 const VARIANT_SX: Record<ButtonVariant, object> = {
   primary: {
@@ -31,6 +37,11 @@ const VARIANT_SX: Record<ButtonVariant, object> = {
       bgcolor: tokens.navyMid,
       transform: "translateY(-1px)",
       boxShadow: "0 4px 14px rgba(12,30,60,0.18)",
+    },
+    "&.Mui-disabled": {
+      bgcolor: tokens.navy,
+      color: "#fff",
+      opacity: 0.45,
     },
   },
 
@@ -42,6 +53,11 @@ const VARIANT_SX: Record<ButtonVariant, object> = {
       transform: "translateY(-1px)",
       boxShadow: "0 6px 20px rgba(0,185,107,0.30)",
     },
+    "&.Mui-disabled": {
+      bgcolor: tokens.green,
+      color: "#fff",
+      opacity: 0.45,
+    },
   },
 
   ghost: {
@@ -50,6 +66,11 @@ const VARIANT_SX: Record<ButtonVariant, object> = {
     "&:hover:not(:disabled)": {
       bgcolor: tokens.border,
       color: tokens.text,
+    },
+    "&.Mui-disabled": {
+      bgcolor: tokens.mist,
+      color: tokens.textSoft,
+      opacity: 0.45,
     },
   },
 
@@ -62,6 +83,12 @@ const VARIANT_SX: Record<ButtonVariant, object> = {
       bgcolor: "transparent",
       color: tokens.navy,
     },
+    "&.Mui-disabled": {
+      bgcolor: "transparent",
+      color: tokens.textSoft,
+      border: `1.5px solid ${tokens.border}`,
+      opacity: 0.45,
+    },
   },
 
   danger: {
@@ -73,6 +100,12 @@ const VARIANT_SX: Record<ButtonVariant, object> = {
       color: "#fff",
       border: `1px solid ${tokens.red}`,
     },
+    "&.Mui-disabled": {
+      bgcolor: tokens.redBg,
+      color: tokens.redText,
+      border: `1px solid ${tokens.redBorder}`,
+      opacity: 0.45,
+    },
   },
 
   dashed: {
@@ -83,6 +116,12 @@ const VARIANT_SX: Record<ButtonVariant, object> = {
       border: `1.5px dashed ${tokens.navy}`,
       bgcolor: tokens.mist,
       color: tokens.navy,
+    },
+    "&.Mui-disabled": {
+      bgcolor: tokens.white,
+      color: tokens.textSoft,
+      border: `1.5px dashed ${tokens.border}`,
+      opacity: 0.45,
     },
   },
 };
@@ -118,7 +157,6 @@ export function Button({
       sx={{
         ...VARIANT_SX[variant],
         transition: "all 0.15s cubic-bezier(0.16, 1, 0.3, 1)",
-        "&:disabled": { opacity: 0.45 },
         ...sx,
       }}
       {...props}

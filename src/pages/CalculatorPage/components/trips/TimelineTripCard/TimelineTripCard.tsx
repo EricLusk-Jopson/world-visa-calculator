@@ -84,6 +84,11 @@ interface TimelineTripCardProps {
   cardLeft: number;
   cardWidth: number;
   baseZIndex: number;
+  /**
+   * When true the card renders with red styling to indicate that this trip
+   * falls within an overstay period in the 90/180-day window.
+   */
+  isOverstay?: boolean;
   onEdit: () => void;
 }
 
@@ -112,6 +117,7 @@ export function TimelineTripCard({
   cardLeft,
   cardWidth,
   baseZIndex,
+  isOverstay = false,
   onEdit,
 }: TimelineTripCardProps) {
   const [hovered, setHovered] = useState(false);
@@ -126,14 +132,30 @@ export function TimelineTripCard({
   const showDateRange = height >= SHOW_DATE_THRESHOLD;
   const showBadges = height >= SHOW_BADGE_THRESHOLD;
 
-  // Accent colour
-  const accentColor = isPlanned
-    ? tokens.amber
-    : isSchengen
-      ? tokens.green
+  // Overstay overrides accent and background colours.
+  const accentColor = isOverstay
+    ? tokens.red
+    : isPlanned
+      ? tokens.amber
+      : isSchengen
+        ? tokens.green
+        : tokens.border;
+
+  const cardBg = isOverstay
+    ? tokens.redBg
+    : isPlanned
+      ? "#FDFCF8"
+      : tokens.white;
+
+  const cardBorderColor = isOverstay
+    ? tokens.redBorder
+    : isPlanned
+      ? tokens.amberBorder
       : tokens.border;
 
-  // Region label + colours
+  const destinationColor = isOverstay ? tokens.red : tokens.navy;
+
+  // Region label + colours (only used when not overstay)
   const regionLabel = isOngoing
     ? "Ongoing"
     : isSchengen
@@ -174,16 +196,15 @@ export function TimelineTripCard({
         : "no re-entry within horizon"
     : "";
 
-  const tooltipText = !showBadges
-    ? [
-        trip.destination || "—",
-        fmtDateRange(trip.entryDate, trip.exitDate),
-        `${durationDays}d · ${regionLabel}`,
-        availText,
-      ]
-        .filter(Boolean)
-        .join("\n")
-    : undefined;
+  const tooltipLines = [
+    isOverstay ? "⚠ Overstay — exceeds 90/180 days" : null,
+    trip.destination || "—",
+    fmtDateRange(trip.entryDate, trip.exitDate),
+    `${durationDays}d · ${isOverstay ? "Overstay" : regionLabel}`,
+    availText,
+  ].filter(Boolean);
+
+  const tooltipText = !showBadges ? tooltipLines.join("\n") : undefined;
 
   return (
     <Box
@@ -198,15 +219,19 @@ export function TimelineTripCard({
         top,
         height,
         borderRadius: "8px",
-        border: `1px solid ${isPlanned ? tokens.amberBorder : tokens.border}`,
-        borderStyle: isPlanned ? "dashed" : "solid",
-        bgcolor: isPlanned ? "#FDFCF8" : tokens.white,
+        border: `1px solid ${cardBorderColor}`,
+        borderStyle: isPlanned && !isOverstay ? "dashed" : "solid",
+        bgcolor: cardBg,
         overflow: "hidden",
         cursor: "pointer",
         zIndex: hovered ? 50 : baseZIndex,
         boxShadow: hovered
-          ? "0 4px 14px rgba(12,30,60,0.09)"
-          : "0 1px 3px rgba(12,30,60,0.06)",
+          ? isOverstay
+            ? "0 4px 14px rgba(239,68,68,0.18)"
+            : "0 4px 14px rgba(12,30,60,0.09)"
+          : isOverstay
+            ? "0 1px 3px rgba(239,68,68,0.1)"
+            : "0 1px 3px rgba(12,30,60,0.06)",
         transform: hovered ? "translateX(2px)" : "none",
         transition: "box-shadow 0.12s, transform 0.12s, z-index 0s",
         display: "flex",
@@ -256,7 +281,7 @@ export function TimelineTripCard({
               fontSize: "0.8rem",
               fontStyle: "italic",
               fontWeight: 400,
-              color: tokens.navy,
+              color: destinationColor,
               lineHeight: 1.2,
               overflow: "hidden",
               textOverflow: "ellipsis",
@@ -275,7 +300,11 @@ export function TimelineTripCard({
                 fontFamily: tokens.fontBody,
                 fontSize: "0.6rem",
                 fontWeight: 700,
-                color: isExpanded ? tokens.textGhost : tokens.textSoft,
+                color: isOverstay
+                  ? tokens.redText
+                  : isExpanded
+                    ? tokens.textGhost
+                    : tokens.textSoft,
                 lineHeight: 1,
                 whiteSpace: "nowrap",
                 flexShrink: 0,
@@ -292,7 +321,7 @@ export function TimelineTripCard({
             sx={{
               fontFamily: tokens.fontBody,
               fontSize: "0.65rem",
-              color: tokens.textSoft,
+              color: isOverstay ? tokens.redText : tokens.textSoft,
               fontWeight: 500,
               lineHeight: 1.2,
               overflow: "hidden",
@@ -319,24 +348,33 @@ export function TimelineTripCard({
             <TripBadge color={tokens.textSoft} bg={tokens.mist}>
               {durationDays}d
             </TripBadge>
-            <TripBadge color={regionColor} bg={regionBg}>
-              {regionLabel}
-            </TripBadge>
-            {showSchengenChips && maxStayAtExit > 0 && (
-              <TripBadge color={stayColor} bg={stayBg} borderStyle="dashed">
-                +{maxStayAtExit}d
+
+            {isOverstay ? (
+              <TripBadge color={tokens.redText} bg={tokens.redBg}>
+                ⚠ Overstay
               </TripBadge>
-            )}
-            {showSchengenChips && maxStayAtExit === 0 && (
-              <TripBadge
-                color={tokens.redText}
-                bg={tokens.redBg}
-                borderStyle="dashed"
-              >
-                {earliestReEntry
-                  ? `from ${fmtReEntry(earliestReEntry)}`
-                  : "no re-entry"}
-              </TripBadge>
+            ) : (
+              <>
+                <TripBadge color={regionColor} bg={regionBg}>
+                  {regionLabel}
+                </TripBadge>
+                {showSchengenChips && maxStayAtExit > 0 && (
+                  <TripBadge color={stayColor} bg={stayBg} borderStyle="dashed">
+                    +{maxStayAtExit}d
+                  </TripBadge>
+                )}
+                {showSchengenChips && maxStayAtExit === 0 && (
+                  <TripBadge
+                    color={tokens.redText}
+                    bg={tokens.redBg}
+                    borderStyle="dashed"
+                  >
+                    {earliestReEntry
+                      ? `from ${fmtReEntry(earliestReEntry)}`
+                      : "no re-entry"}
+                  </TripBadge>
+                )}
+              </>
             )}
           </Box>
         )}

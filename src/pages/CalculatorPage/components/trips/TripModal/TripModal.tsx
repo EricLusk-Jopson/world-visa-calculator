@@ -7,6 +7,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
+import Tooltip from "@mui/material/Tooltip";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -23,6 +24,7 @@ import {
   parseDate,
   formatDate,
   addDays,
+  today as getToday,
 } from "@/features/calculator/utils/dates";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import {
@@ -62,8 +64,6 @@ function hasOverlap(
   for (const t of trips) {
     if (t.id === excludeId) continue;
 
-    // For multi-traveler edits each copy has a different ID — exclude by
-    // original coordinates so the trip being edited isn't flagged as an overlap.
     if (
       excludeTrip &&
       t.entryDate === excludeTrip.entryDate &&
@@ -187,6 +187,10 @@ export function TripModal({
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
 
+  const todayStr = formatDate(getToday());
+
+  const entryIsInFuture = Boolean(entryDate && entryDate > todayStr);
+
   useEffect(() => {
     if (!open) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -206,6 +210,33 @@ export function TripModal({
       setRegion(VisaRegion.Schengen);
     }
   }, [open, mode, initialTrip, initialTravelerIds]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Real-time overlap check ─────────────────────────────────────────────────
+  // Runs on every render so the Save button and inline message stay in sync
+  // without waiting for the user to click Save.
+
+  const resolvedExit = ongoing ? undefined : exitDate || undefined;
+
+  const overlapError: string | null = (() => {
+    if (!entryDate) return null;
+
+    const conflicts: string[] = [];
+    for (const tid of travelerIds) {
+      const traveler = travelers.find((t) => t.id === tid);
+      if (!traveler) continue;
+      const msg = hasOverlap(
+        traveler.trips,
+        entryDate,
+        resolvedExit ?? null,
+        region,
+        initialTrip?.id,
+        initialTrip,
+      );
+      if (msg) conflicts.push(`${traveler.name}: ${msg}`);
+    }
+
+    return conflicts.length > 0 ? conflicts.join("\n") : null;
+  })();
 
   // ── Entry constraint hint ───────────────────────────────────────────────────
 
@@ -241,7 +272,6 @@ export function TripModal({
       entryConstraint = { daysAvailable: minDays, latestExit };
     }
   }
-
   // ── Impact status ───────────────────────────────────────────────────────────
 
   let impactStatus: ReturnType<typeof computeTravelerStatus> | null = null;
@@ -277,7 +307,7 @@ export function TripModal({
     ? getStatusVariant(impactStatus.daysRemaining)
     : ("neutral" as const);
 
-  // ── Per-traveler impacts (multi-traveler add/edit) ──────────────────────────
+  // ── Per-traveler impacts ────────────────────────────────────────────────────
 
   let travelerImpacts: TravelerImpact[] | undefined = undefined;
 
@@ -363,8 +393,6 @@ export function TripModal({
     }
   }
 
-  // ── Resolved exit for ImpactPreview ────────────────────────────────────────
-
   const resolvedExitForPreview = ongoing ? undefined : exitDate || undefined;
 
   // ── Validation & submit ─────────────────────────────────────────────────────
@@ -382,28 +410,8 @@ export function TripModal({
       setError("Exit date must be after entry date.");
       return;
     }
-
-    const resolvedExit = ongoing ? undefined : exitDate || undefined;
-
-    const conflicts: string[] = [];
-    for (const tid of travelerIds) {
-      const traveler = travelers.find((t) => t.id === tid);
-      if (!traveler) continue;
-      const msg = hasOverlap(
-        traveler.trips,
-        entryDate,
-        resolvedExit ?? null,
-        region,
-        initialTrip?.id,
-        initialTrip,
-      );
-      if (msg) conflicts.push(`${traveler.name}: ${msg}`);
-    }
-
-    if (conflicts.length > 0) {
-      setError(conflicts.join("\n"));
-      return;
-    }
+    // overlapError is already shown inline — guard here as a safety net
+    if (overlapError) return;
 
     const trip: Trip = {
       id: initialTrip?.id ?? crypto.randomUUID(),
@@ -428,6 +436,7 @@ export function TripModal({
   }
 
   const isEdit = mode === "edit";
+  const isSaveDisabled = Boolean(overlapError);
 
   // ── Render ───────────────────────────────────────────────────────────────────
 
@@ -517,80 +526,58 @@ export function TripModal({
           }}
           onKeyDown={handleKeyDown}
         >
-          {/* Validation error — top of stack so it's always visible */}
+          {/* Validation error (non-overlap) */}
           {error && (
             <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
               {error}
             </ValidationMessage>
           )}
 
-          {/* 1 · Traveler selector */}
+          {/* Real-time overlap error */}
+          {overlapError && (
+            <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
+              {overlapError}
+            </ValidationMessage>
+          )}
+
+          {/* 1 · Traveler selector — editable in both add and edit modes */}
           <Box>
-            <FormLabel>{isEdit ? "Traveler" : "Traveler(s)"}</FormLabel>
-            {isEdit ? (
-              /*
-               * Edit mode: show all travelers associated with this trip as
-               * a disabled multi-select. On desktop this is always one person;
-               * on mobile it may be several (merged card).
-               */
-              <Select
-                multiple
-                value={travelerIds}
-                disabled
-                fullWidth
-                size="small"
-                renderValue={(selected) =>
-                  (selected as string[])
-                    .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
-                    .join(", ")
-                }
-                sx={SELECT_BASE_SX}
-              >
-                {travelers.map((t) => (
-                  <MenuItem
-                    key={t.id}
-                    value={t.id}
-                    sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
-                  >
-                    {t.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            ) : (
-              <Select
-                multiple
-                value={travelerIds}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setTravelerIds(
-                    typeof val === "string" ? val.split(",") : val,
+            <FormLabel>Traveler(s)</FormLabel>
+            <Select
+              multiple
+              value={travelerIds}
+              onChange={(e) => {
+                const val = e.target.value;
+                setTravelerIds(typeof val === "string" ? val.split(",") : val);
+                setError(null);
+              }}
+              fullWidth
+              size="small"
+              displayEmpty
+              renderValue={(selected) => {
+                if ((selected as string[]).length === 0) {
+                  return (
+                    <Typography
+                      sx={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.85rem",
+                        color: tokens.textGhost,
+                      }}
+                    >
+                      Select travelers…
+                    </Typography>
                   );
-                  setError(null);
-                }}
-                fullWidth
-                size="small"
-                displayEmpty
-                renderValue={(selected) => {
-                  if ((selected as string[]).length === 0) {
-                    return (
-                      <Typography
-                        sx={{
-                          fontFamily: tokens.fontBody,
-                          fontSize: "0.85rem",
-                          color: tokens.textGhost,
-                        }}
-                      >
-                        Select travelers…
-                      </Typography>
-                    );
-                  }
-                  return (selected as string[])
-                    .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
-                    .join(", ");
-                }}
-                sx={SELECT_BASE_SX}
-              >
-                {travelers.map((t) => (
+                }
+                return (selected as string[])
+                  .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
+                  .join(", ");
+              }}
+              sx={SELECT_BASE_SX}
+            >
+              {travelers.map((t) => {
+                const alreadyOnTrip =
+                  isEdit && initialTravelerIds.includes(t.id);
+                return (
                   <MenuItem
                     key={t.id}
                     value={t.id}
@@ -603,15 +590,23 @@ export function TripModal({
                     />
                     <ListItemText
                       primary={t.name}
+                      secondary={
+                        alreadyOnTrip ? "Already on this trip" : undefined
+                      }
                       primaryTypographyProps={{
                         fontFamily: tokens.fontBody,
                         fontSize: "0.85rem",
                       }}
+                      secondaryTypographyProps={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.68rem",
+                        color: tokens.textGhost,
+                      }}
                     />
                   </MenuItem>
-                ))}
-              </Select>
-            )}
+                );
+              })}
+            </Select>
           </Box>
 
           {/* 2 · Region */}
@@ -657,9 +652,10 @@ export function TripModal({
                   if (!date) return;
                   const iso = formatDate(date);
                   setEntryDate(iso);
+                  if (iso > todayStr && ongoing) {
+                    setOngoing(false);
+                  }
                   if (!ongoing) {
-                    // If there's no exit yet, or the existing exit is now on or
-                    // before the new entry, reset exit to entry + 1.
                     if (!exitDate || exitDate <= iso) {
                       setExitDate(formatDate(addDays(date, 1)));
                     }
@@ -696,14 +692,44 @@ export function TripModal({
               />
             </Box>
 
-            <OngoingToggle
-              checked={ongoing}
-              onChange={(v) => {
-                setOngoing(v);
-                if (v) setExitDate("");
-                setError(null);
+            <Tooltip
+              title={
+                entryIsInFuture
+                  ? "Ongoing trips require an entry date on or before today"
+                  : ""
+              }
+              placement="top"
+              arrow
+              disableHoverListener={!entryIsInFuture}
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    bgcolor: tokens.navy,
+                    "& .MuiTooltip-arrow": { color: tokens.navy },
+                  },
+                },
               }}
-            />
+            >
+              <Box
+                sx={{
+                  display: "inline-block",
+                  pointerEvents: entryIsInFuture ? "none" : "auto",
+                  opacity: entryIsInFuture ? 0.4 : 1,
+                  transition: "opacity 0.15s",
+                }}
+              >
+                <OngoingToggle
+                  checked={ongoing}
+                  onChange={(v) => {
+                    setOngoing(v);
+                    if (v) setExitDate("");
+                    setError(null);
+                  }}
+                />
+              </Box>
+            </Tooltip>
           </Box>
 
           {/* Entry constraint hint */}
@@ -793,8 +819,13 @@ export function TripModal({
           <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleSave} sx={{ flex: 2 }}>
-            Save Trip
+          <Button
+            // variant="primary"
+            onClick={handleSave}
+            disabled={isSaveDisabled}
+            sx={{ flex: 2 }}
+          >
+            {isSaveDisabled ? "Overlap detected" : "Save Trip"}
           </Button>
         </Box>
       </Dialog>

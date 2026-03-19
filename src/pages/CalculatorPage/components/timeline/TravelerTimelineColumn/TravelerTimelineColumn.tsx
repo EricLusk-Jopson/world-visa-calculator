@@ -18,7 +18,6 @@ import {
   CARD_RIGHT_MARGIN,
   LANE_GAP,
 } from "@/features/calculator/utils/timelineLayout";
-
 import {
   today as getToday,
   parseDate,
@@ -30,9 +29,14 @@ import {
   computeReturnMarkers,
 } from "@/features/calculator/utils/returnmarkers";
 import {
+  AgingMarker,
+  computeAgingMarkers,
+} from "@/features/calculator/utils/agingMarkers";
+import {
   calculateEarliestEntry,
   calculateMaxStay,
 } from "@/features/calculator/utils/schengen";
+import { computeTravelerStatus } from "../../travelers/travelerStatus";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
@@ -42,7 +46,7 @@ interface TravelerTimelineColumnProps {
   onEditTrip: (travelerId: string, trip: Trip) => void;
 }
 
-// ─── Marker visuals ───────────────────────────────────────────────────────────
+// ─── Return marker visual ─────────────────────────────────────────────────────
 
 function markerColors(days: number, isCurrent: boolean) {
   const isGenerous = days >= 30;
@@ -86,7 +90,6 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
           }}
         />
       )}
-
       <Tooltip
         title={tooltipText}
         placement="right"
@@ -142,6 +145,140 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
             sx={{
               fontSize: isCurrent ? "0.65rem" : "0.6rem",
               color: alpha(textColor, pillOpacity * 0.7),
+              flexShrink: 0,
+            }}
+          />
+        </Box>
+      </Tooltip>
+    </Box>
+  );
+}
+
+// ─── Aging-out marker visual ──────────────────────────────────────────────────
+
+/**
+ * Marks the date when a historical trip's days start aging out of the 180-day
+ * window. Visually distinct from return markers: dotted line (vs dashed),
+ * lower opacity, and a centered label breaking the line.
+ */
+function AgingMarkerLine({ top, tripDays, destination }: AgingMarker) {
+  const LINE_OPACITY = 0.12;
+  const TEXT_OPACITY = 0.4;
+
+  const tooltipText =
+    `From this date, the ${destination} trip's ${tripDays} Schengen days begin ` +
+    `aging out of the 180-day window. As each day exits, your available allowance ` +
+    `grows — this is typically what causes max stay to jump noticeably.`;
+
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top,
+        pointerEvents: "none",
+        zIndex: 2,
+      }}
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          left: 30,
+          right: 10,
+          top: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+        }}
+      >
+        <Box
+          sx={{
+            flex: 1,
+            height: 0,
+            borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
+          }}
+        />
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.52rem",
+            fontWeight: 600,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: alpha(tokens.textGhost, TEXT_OPACITY),
+            whiteSpace: "nowrap",
+            lineHeight: 1,
+            userSelect: "none",
+            flexShrink: 0,
+          }}
+        >
+          {destination} ages out
+        </Typography>
+        <Box
+          sx={{
+            flex: 1,
+            height: 0,
+            borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
+          }}
+        />
+      </Box>
+
+      <Tooltip
+        title={tooltipText}
+        placement="left"
+        arrow
+        enterDelay={200}
+        componentsProps={{
+          tooltip: {
+            sx: {
+              fontFamily: tokens.fontBody,
+              fontSize: "0.72rem",
+              fontWeight: 500,
+              bgcolor: tokens.navy,
+              "& .MuiTooltip-arrow": { color: tokens.navy },
+              maxWidth: 240,
+            },
+          },
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            right: 10,
+            top: 0,
+            transform: "translateY(-50%)",
+            zIndex: 3,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "2px",
+            px: "5px",
+            py: "1.5px",
+            borderRadius: "100px",
+            bgcolor: tokens.mist,
+            border: `1px solid ${alpha(tokens.textGhost, 0.15)}`,
+            borderStyle: "dotted",
+            pointerEvents: "auto",
+            cursor: "default",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.5rem",
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+              color: alpha(tokens.textSoft, 0.7),
+              lineHeight: 1,
+              userSelect: "none",
+            }}
+          >
+            +{tripDays}d
+          </Typography>
+          <InfoOutlinedIcon
+            sx={{
+              fontSize: "0.55rem",
+              color: alpha(tokens.textGhost, 0.5),
               flexShrink: 0,
             }}
           />
@@ -211,7 +348,7 @@ export function TravelerTimelineColumn({
     return { cardLeft, cardWidth };
   }
 
-  // Per-trip availability — computed once per traveler change.
+  // Per-trip availability.
   const tripAvailability = useMemo(() => {
     const schengenTrips = traveler.trips.filter(
       (t) => t.region === VisaRegion.Schengen,
@@ -246,8 +383,38 @@ export function TravelerTimelineColumn({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [traveler]);
 
+  // Overstay detection — computed once per traveler change.
+  const overstayTripIds = useMemo(() => {
+    const schengenTrips = traveler.trips.filter(
+      (t) => t.region === VisaRegion.Schengen,
+    );
+    if (schengenTrips.length === 0) return new Set<string>();
+
+    const mockTraveler = {
+      id: "__overstay__",
+      name: "",
+      trips: schengenTrips,
+    };
+    const result = new Set<string>();
+
+    for (const trip of schengenTrips) {
+      const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
+      const status = computeTravelerStatus(mockTraveler, refDate);
+      if (status.daysUsed > 90) {
+        result.add(trip.id);
+      }
+    }
+
+    return result;
+  }, [traveler]);
+
   const returnMarkers = useMemo(
     () => computeReturnMarkers(traveler, timelineStart, timelineEnd),
+    [traveler, timelineStart, timelineEnd],
+  );
+
+  const agingMarkers = useMemo(
+    () => computeAgingMarkers(traveler, timelineStart, timelineEnd),
     [traveler, timelineStart, timelineEnd],
   );
 
@@ -256,11 +423,15 @@ export function TravelerTimelineColumn({
   const defaultButtonTop = totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_MARGIN;
 
   const addButtonTop = useMemo(() => {
-    if (returnMarkers.length === 0) return defaultButtonTop;
-    const lastMarkerTop = Math.max(...returnMarkers.map((m) => m.top));
+    const allMarkerTops = [
+      ...returnMarkers.map((m) => m.top),
+      ...agingMarkers.map((m) => m.top),
+    ];
+    if (allMarkerTops.length === 0) return defaultButtonTop;
+    const lastMarkerTop = Math.max(...allMarkerTops);
     const minTop = lastMarkerTop + 10 + ADD_BUTTON_MARGIN;
     return Math.max(defaultButtonTop, minTop);
-  }, [returnMarkers, defaultButtonTop]);
+  }, [returnMarkers, agingMarkers, defaultButtonTop]);
 
   const BASE_Z = 4;
 
@@ -348,15 +519,17 @@ export function TravelerTimelineColumn({
         }}
       />
 
-      {/* Return markers */}
+      {/* Return markers (threshold milestones) */}
       {returnMarkers
         .filter((marker) => !marker.isCurrent)
         .map((marker, i) => (
-          <MarkerLine
-            key={`${marker.isCurrent ? "cur" : "thr"}-${marker.days}-${i}`}
-            {...marker}
-          />
+          <MarkerLine key={`thr-${marker.days}-${i}`} {...marker} />
         ))}
+
+      {/* Aging-out markers */}
+      {agingMarkers.map((marker, i) => (
+        <AgingMarkerLine key={`aging-${marker.entryDate}-${i}`} {...marker} />
+      ))}
 
       {/* Trip cards */}
       {sortedTrips.map((trip, rank) => {
@@ -381,6 +554,7 @@ export function TravelerTimelineColumn({
             cardLeft={cardLeft}
             cardWidth={cardWidth}
             baseZIndex={BASE_Z + rank}
+            isOverstay={overstayTripIds.has(trip.id)}
             onEdit={() => onEditTrip(traveler.id, trip)}
           />
         );

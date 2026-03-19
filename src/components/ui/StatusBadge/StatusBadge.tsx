@@ -1,5 +1,7 @@
 import Chip from "@mui/material/Chip";
 import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 
 export type BadgeVariant = "safe" | "caution" | "danger" | "neutral";
@@ -37,10 +39,17 @@ const VARIANT_CONFIG: Record<
 interface StatusBadgeProps {
   variant: BadgeVariant;
   label: string;
+  /** When provided, an info icon is rendered inside the chip and a Tooltip wraps it. */
+  tooltip?: string;
   sx?: object;
 }
 
-export function StatusBadge({ variant, label, sx = {} }: StatusBadgeProps) {
+export function StatusBadge({
+  variant,
+  label,
+  tooltip,
+  sx = {},
+}: StatusBadgeProps) {
   const cfg = VARIANT_CONFIG[variant];
 
   const dot = (
@@ -53,15 +62,29 @@ export function StatusBadge({ variant, label, sx = {} }: StatusBadgeProps) {
         bgcolor: cfg.dot,
         flexShrink: 0,
         display: "inline-block",
-        // MUI Chip icon gets extra padding we don't want — override
         "&.MuiChip-icon": { ml: "8px", mr: 0 },
       }}
     />
   );
 
-  return (
+  // When a tooltip is provided the label becomes a flex row: text + info icon.
+  const labelNode = tooltip ? (
+    <Box
+      component="span"
+      sx={{ display: "inline-flex", alignItems: "center", gap: "4px" }}
+    >
+      {label}
+      <InfoOutlinedIcon
+        sx={{ fontSize: "0.6rem", opacity: 0.6, flexShrink: 0 }}
+      />
+    </Box>
+  ) : (
+    label
+  );
+
+  const chip = (
     <Chip
-      label={label}
+      label={labelNode}
       icon={dot}
       size="small"
       sx={{
@@ -88,5 +111,31 @@ export function StatusBadge({ variant, label, sx = {} }: StatusBadgeProps) {
         ...sx,
       }}
     />
+  );
+
+  if (!tooltip) return chip;
+
+  return (
+    <Tooltip
+      title={tooltip}
+      placement="bottom"
+      arrow
+      enterDelay={300}
+      componentsProps={{
+        tooltip: {
+          sx: {
+            fontFamily: tokens.fontBody,
+            fontSize: "0.72rem",
+            fontWeight: 500,
+            bgcolor: tokens.navy,
+            "& .MuiTooltip-arrow": { color: tokens.navy },
+            maxWidth: 240,
+          },
+        },
+      }}
+    >
+      {/* Tooltip requires a forwardRef-compatible child */}
+      <span>{chip}</span>
+    </Tooltip>
   );
 }

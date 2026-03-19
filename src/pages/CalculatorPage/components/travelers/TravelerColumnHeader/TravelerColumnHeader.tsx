@@ -9,13 +9,26 @@ import { TravelerStatus } from "../travelerStatus";
 interface TravelerColumnHeaderProps {
   traveler: Traveler;
   status: TravelerStatus;
+  /**
+   * Longest single trip startable today, accounting for historical days aging
+   * out of the window. Distinct from status.daysRemaining.
+   */
+  maxStay: number;
+  /**
+   * When true the header uses a two-row layout:
+   *   Row A — traveler name (flex:1) + delete button (always opposite the name)
+   *   Row B — status chips
+   *
+   * This flag comes from CardsView and is the same for every column, so the
+   * transition always fires simultaneously across all headers.
+   */
+  compact?: boolean;
   onDelete: () => void;
   sx?: object;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/** Format an ISO date string as "4 Sep 2024" for compact display. */
 function fmtWindowDate(iso: string): string {
   try {
     return new Date(iso).toLocaleDateString("en-GB", {
@@ -30,23 +43,11 @@ function fmtWindowDate(iso: string): string {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-/**
- * Shared column header used in both the Timeline and Cards views.
- *
- * Changes from previous version:
- *  1. Delete button is in the flex flow (not absolutely positioned), so it
- *     can never overlap the status badge. Space is always reserved; the button
- *     fades in on hover via opacity.
- *  2. Progress bar now shows temporal context: "Schengen" label, "X/90 used
- *     · as of today" count, and (when windowStart is provided) date flankers
- *     below the bar marking the window boundaries.
- *  3. Deletion requires confirmation when the traveler has existing trips
- *     (tripCount > 0). An inline strip replaces the header content until the
- *     user confirms or cancels. Zero-trip deletion remains immediate.
- */
 export function TravelerColumnHeader({
   traveler,
   status,
+  maxStay,
+  compact = false,
   onDelete,
   sx = {},
 }: TravelerColumnHeaderProps) {
@@ -64,36 +65,50 @@ export function TravelerColumnHeader({
         ? tokens.amber
         : tokens.red;
 
-  // ── Delete handling ─────────────────────────────────────────────────────────
-
   const handleDeleteClick = () => {
-    if (tripCount === 0) {
-      // No trips — delete immediately, no confirmation needed.
-      onDelete();
-    } else {
-      setConfirmingDelete(true);
-    }
+    if (tripCount === 0) onDelete();
+    else setConfirmingDelete(true);
   };
-
   const handleConfirmDelete = () => {
     setConfirmingDelete(false);
     onDelete();
   };
+  const handleCancelDelete = () => setConfirmingDelete(false);
 
-  const handleCancelDelete = () => {
-    setConfirmingDelete(false);
-  };
-
-  // ── Render ──────────────────────────────────────────────────────────────────
+  // The delete button is always on the same row as the traveler name (right-aligned).
+  // Its opacity is 0 when not hovered so it takes up space but remains invisible.
+  const deleteButton = (
+    <Box
+      component="button"
+      onClick={handleDeleteClick}
+      aria-label={`Remove ${traveler.name}`}
+      sx={{
+        flexShrink: 0,
+        width: 22,
+        height: 22,
+        border: "none",
+        borderRadius: "4px",
+        bgcolor: "transparent",
+        color: tokens.textGhost,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "0.7rem",
+        lineHeight: 1,
+        transition: "opacity 0.14s, background-color 0.14s, color 0.14s",
+        opacity: hovered && !confirmingDelete ? 1 : 0,
+        "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
+      }}
+    >
+      ✕
+    </Box>
+  );
 
   return (
     <Box
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => {
-        setHovered(false);
-        // Don't cancel confirmingDelete on mouse-leave — user needs to be
-        // able to move to the confirm/cancel buttons.
-      }}
+      onMouseLeave={() => setHovered(false)}
       sx={{
         bgcolor: tokens.offWhite,
         px: "14px",
@@ -107,7 +122,12 @@ export function TravelerColumnHeader({
         ...sx,
       }}
     >
-      {/* ── Row 1: Name · StatusBadge · Delete (in flow, no absolute) ────── */}
+      {/*
+       * ── Name row (always Row A) ────────────────────────────────────────
+       *
+       * The delete button lives here in both modes so it is always visually
+       * opposite the traveler name.
+       */}
       <Box
         sx={{
           display: "flex",
@@ -116,7 +136,6 @@ export function TravelerColumnHeader({
           minWidth: 0,
         }}
       >
-        {/* Name */}
         <Typography
           sx={{
             fontFamily: tokens.fontDisplay,
@@ -135,85 +154,133 @@ export function TravelerColumnHeader({
           {traveler.name}
         </Typography>
 
-        {/* Status badge */}
-        <StatusBadge
-          variant={variant}
-          label={`${daysRemaining} days left`}
-          sx={{ flexShrink: 0 }}
-        />
+        {/*
+         * Normal mode: badges between name and delete on the same row.
+         * Compact mode: badges are rendered separately below; only the delete
+         * button stays here so it remains opposite the name.
+         */}
+        {!compact && (
+          <>
+            <StatusBadge
+              variant={variant}
+              label={`${daysRemaining}d avail`}
+              tooltip={
+                `Days you could begin a new Schengen trip right now, based on the ` +
+                `${daysUsed} days used in the last 180-day window. Increases as old trips age out.`
+              }
+            />
+            <StatusBadge
+              variant={maxStay > daysRemaining ? "safe" : variant}
+              label={`${maxStay}d max`}
+              tooltip={
+                `The longest single trip you could start today, accounting for historical ` +
+                `days that will age out as your stay progresses. Can jump well above "avail" ` +
+                `when a past trip is about to exit the 180-day window.`
+              }
+            />
+          </>
+        )}
 
-        {/* Delete button — in flow so it never overlaps the badge.
-            Width is always reserved; opacity controls visibility. */}
-        <Box
-          component="button"
-          onClick={handleDeleteClick}
-          aria-label={`Remove ${traveler.name}`}
-          sx={{
-            flexShrink: 0,
-            width: 22,
-            height: 22,
-            border: "none",
-            borderRadius: "4px",
-            bgcolor: "transparent",
-            color: tokens.textGhost,
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "0.7rem",
-            lineHeight: 1,
-            transition: "opacity 0.14s, background-color 0.14s, color 0.14s",
-            opacity: hovered && !confirmingDelete ? 1 : 0,
-            // Keep it tabbable even when hidden so keyboard users can reach it.
-            // Pointer events still fire so the hover logic works correctly.
-            "&:hover": {
-              bgcolor: tokens.redBg,
-              color: tokens.red,
-            },
-          }}
-        >
-          ✕
+        {deleteButton}
+      </Box>
+
+      {/*
+       * ── Badges row (compact mode only, Row B) ─────────────────────────
+       *
+       * Rendered below the name row when there isn't room for everything on
+       * one line.
+       */}
+      {compact && (
+        <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <StatusBadge
+            variant={variant}
+            label={`${daysRemaining}d avail`}
+            tooltip={
+              `Days you could begin a new Schengen trip right now, based on the ` +
+              `${daysUsed} days used in the last 180-day window. Increases as old trips age out.`
+            }
+          />
+          <StatusBadge
+            variant={maxStay > daysRemaining ? "safe" : variant}
+            label={`${maxStay}d max`}
+            tooltip={
+              `The longest single trip you could start today, accounting for historical ` +
+              `days that will age out as your stay progresses. Can jump well above "avail" ` +
+              `when a past trip is about to exit the 180-day window.`
+            }
+          />
         </Box>
-      </Box>
+      )}
 
-      {/* ── Row 2: Schengen label + days count ──────────────────────────── */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "baseline",
-          justifyContent: "space-between",
-          gap: "6px",
-        }}
-      >
-        {/* "Schengen" — makes it explicit which allowance this bar tracks */}
-        <Typography
+      {/*
+       * ── Schengen usage info ───────────────────────────────────────────
+       *
+       * Normal: label and date string on the same row (space-between).
+       * Compact: date string wraps below the label in a smaller, lighter
+       *   weight so it doesn't compete for horizontal space.
+       */}
+      {compact ? (
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.62rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: tokens.textGhost,
+            }}
+          >
+            Schengen
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.62rem",
+              fontWeight: 500,
+              color: tokens.textGhost,
+              lineHeight: 1.35,
+            }}
+          >
+            {daysUsed}/90 used since {fmtWindowDate(status.windowStart)}
+          </Typography>
+        </Box>
+      ) : (
+        <Box
           sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.62rem",
-            fontWeight: 700,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: tokens.textGhost,
+            display: "flex",
+            alignItems: "baseline",
+            justifyContent: "space-between",
+            gap: "6px",
           }}
         >
-          Schengen
-        </Typography>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.62rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: tokens.textGhost,
+            }}
+          >
+            Schengen
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.68rem",
+              fontWeight: 600,
+              color: tokens.textSoft,
+              whiteSpace: "nowrap",
+            }}
+          >
+            {daysUsed}/90 used since {fmtWindowDate(status.windowStart)}
+          </Typography>
+        </Box>
+      )}
 
-        {/* Days count with temporal anchor */}
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.68rem",
-            fontWeight: 600,
-            color: tokens.textSoft,
-            whiteSpace: "nowrap",
-          }}
-        >
-          {daysUsed}/90 days used since {fmtWindowDate(status.windowStart)}
-        </Typography>
-      </Box>
-
-      {/* ── Row 3: Progress bar ─────────────────────────────────────────── */}
+      {/* ── Progress bar ──────────────────────────────────────────────── */}
       <Box
         sx={{
           height: 3,
@@ -233,7 +300,7 @@ export function TravelerColumnHeader({
         />
       </Box>
 
-      {/* ── Delete confirmation strip ────────────────────────────────────── */}
+      {/* ── Delete confirmation strip ──────────────────────────────────── */}
       {confirmingDelete && (
         <Box
           sx={{
@@ -257,8 +324,6 @@ export function TravelerColumnHeader({
             Remove {traveler.name} and their {tripCount} trip
             {tripCount !== 1 ? "s" : ""}?
           </Typography>
-
-          {/* Cancel */}
           <Box
             component="button"
             onClick={handleCancelDelete}
@@ -274,16 +339,11 @@ export function TravelerColumnHeader({
               py: "4px",
               cursor: "pointer",
               transition: "all 0.12s",
-              "&:hover": {
-                bgcolor: tokens.border,
-                color: tokens.text,
-              },
+              "&:hover": { bgcolor: tokens.border, color: tokens.text },
             }}
           >
             Cancel
           </Box>
-
-          {/* Confirm remove */}
           <Box
             component="button"
             onClick={handleConfirmDelete}

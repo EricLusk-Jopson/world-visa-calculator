@@ -14,11 +14,17 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import { tokens } from "@/styles/theme";
-import { Traveler } from "@/types";
+import { Traveler, VisaRegion } from "@/types";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
-import { parseDate } from "@/features/calculator/utils/dates";
+import {
+  parseDate,
+  today as getToday,
+  formatDate,
+} from "@/features/calculator/utils/dates";
+import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import { format } from "date-fns";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -151,6 +157,8 @@ export function TravelerFilterBar({
     );
   }
 
+  const todayStr = formatDate(getToday());
+
   return (
     <>
       <Box
@@ -164,7 +172,6 @@ export function TravelerFilterBar({
         }}
       >
         {/* ── Collapse toggle ─────────────────────────────────────────────── */}
-        {/* py increased from 7px → 11px for a more comfortable tap target    */}
         <Box
           component="button"
           onClick={() => setOpen((v) => !v)}
@@ -238,6 +245,16 @@ export function TravelerFilterBar({
               ? format(parseDate(status.windowStart), "MMM d")
               : null;
 
+            // Max stay: longest single trip startable today, accounting for
+            // historical days aging out. Same calculation as TravelerColumnHeader.
+            const schengenTrips = traveler.trips.filter(
+              (t) => t.region === VisaRegion.Schengen,
+            );
+            const maxStayResult = calculateMaxStay(todayStr, schengenTrips);
+            const maxStay = maxStayResult.canEnter ? maxStayResult.maxDays : 0;
+
+            const { variant, daysRemaining } = status;
+
             return (
               <Box
                 key={traveler.id}
@@ -247,7 +264,7 @@ export function TravelerFilterBar({
                   transition: "opacity 0.15s",
                 }}
               >
-                {/* Name row */}
+                {/* ── Name row ──────────────────────────────────────────── */}
                 <Box
                   sx={{
                     display: "flex",
@@ -280,38 +297,6 @@ export function TravelerFilterBar({
                   >
                     {traveler.name}
                   </Typography>
-
-                  {status.daysRemaining !== null && (
-                    <Box
-                      sx={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "5px",
-                        fontSize: "0.66rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
-                        px: "9px",
-                        py: "3px",
-                        borderRadius: "100px",
-                        bgcolor: sc.bg,
-                        color: sc.text,
-                        border: `1px solid ${sc.border}`,
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: 5,
-                          height: 5,
-                          borderRadius: "50%",
-                          bgcolor: sc.bar,
-                          flexShrink: 0,
-                        }}
-                      />
-                      {status.daysRemaining}d left
-                    </Box>
-                  )}
 
                   <Box sx={{ flex: 1 }} />
 
@@ -352,7 +337,38 @@ export function TravelerFilterBar({
                   </Box>
                 </Box>
 
-                {/* Progress row */}
+                {/* ── Avail + max stay badges ────────────────────────────── */}
+                {daysRemaining !== null && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      px: "14px",
+                      pb: "6px",
+                    }}
+                  >
+                    <StatusBadge
+                      variant={variant}
+                      label={`${daysRemaining}d avail`}
+                      tooltip={
+                        `Days you could begin a new Schengen trip right now, based on the ` +
+                        `${daysUsed} days used in the last 180-day window. Increases as old trips age out.`
+                      }
+                    />
+                    <StatusBadge
+                      variant={maxStay > daysRemaining ? "safe" : variant}
+                      label={`${maxStay}d max`}
+                      tooltip={
+                        `The longest single trip you could start today, accounting for historical ` +
+                        `days that will age out as your stay progresses. Can jump well above "avail" ` +
+                        `when a past trip is about to exit the 180-day window.`
+                      }
+                    />
+                  </Box>
+                )}
+
+                {/* ── Progress row ───────────────────────────────────────── */}
                 <Box
                   sx={{
                     display: "flex",
@@ -390,7 +406,7 @@ export function TravelerFilterBar({
                       whiteSpace: "nowrap",
                     }}
                   >
-                    {status.daysRemaining !== null
+                    {daysRemaining !== null
                       ? `${daysUsed}/90${windowStartFmt ? ` since ${windowStartFmt}` : ""}`
                       : "No trips yet"}
                   </Typography>

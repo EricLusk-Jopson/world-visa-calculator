@@ -10,14 +10,17 @@ import {
   parseDate,
   todayISO,
   countTripDays,
+  today as getToday,
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
+import { computeTravelerStatus } from "../../travelers/travelerStatus";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface MergedTrip {
   trip: Trip;
   entries: Array<{ traveler: Traveler; travelerIndex: number }>;
+  isOverstay: boolean;
 }
 
 interface MobileTripsViewProps {
@@ -28,6 +31,34 @@ interface MobileTripsViewProps {
   onAddTraveler: () => void;
 }
 
+// ─── Overstay helpers ─────────────────────────────────────────────────────────
+
+/**
+ * Returns a Set of coordinate keys ("entryDate|exitDate|region") that are in
+ * an overstay state at their exit date for the given traveler. Coordinate
+ * keys are used instead of UUIDs because merged cards consolidate trips from
+ * multiple travelers, each with a different UUID.
+ */
+function computeOverstayCoords(traveler: Traveler): Set<string> {
+  const schengenTrips = traveler.trips.filter(
+    (t) => t.region === VisaRegion.Schengen,
+  );
+  if (schengenTrips.length === 0) return new Set();
+
+  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const result = new Set<string>();
+
+  for (const trip of schengenTrips) {
+    const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
+    const status = computeTravelerStatus(mockTraveler, refDate);
+    if (status.daysUsed > 90) {
+      result.add(`${trip.entryDate}|${trip.exitDate ?? ""}|${trip.region}`);
+    }
+  }
+
+  return result;
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function buildMergedTrips(
@@ -35,12 +66,21 @@ function buildMergedTrips(
   hiddenIds: string[],
   todayStr: string,
 ): MergedTrip[] {
+  // Pre-compute overstay coords per traveler once.
+  const overstayByTraveler = new Map<string, Set<string>>(
+    travelers.map((t) => [t.id, computeOverstayCoords(t)]),
+  );
+
   const merged: MergedTrip[] = [];
 
   travelers.forEach((traveler, travelerIndex) => {
     if (hiddenIds.includes(traveler.id)) return;
 
     traveler.trips.forEach((trip) => {
+      const tripKey = `${trip.entryDate}|${trip.exitDate ?? ""}|${trip.region}`;
+      const tripIsOverstay =
+        overstayByTraveler.get(traveler.id)?.has(tripKey) ?? false;
+
       const existing = merged.find(
         (m) =>
           m.trip.entryDate === trip.entryDate &&
@@ -50,8 +90,14 @@ function buildMergedTrips(
 
       if (existing) {
         existing.entries.push({ traveler, travelerIndex });
+        // Any traveler in overstay marks the merged card.
+        if (tripIsOverstay) existing.isOverstay = true;
       } else {
-        merged.push({ trip, entries: [{ traveler, travelerIndex }] });
+        merged.push({
+          trip,
+          entries: [{ traveler, travelerIndex }],
+          isOverstay: tripIsOverstay,
+        });
       }
     });
   });
@@ -133,7 +179,7 @@ interface MergedTripCardProps {
 
 function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
   const todayStr = todayISO();
-  const { trip, entries } = merged;
+  const { trip, entries, isOverstay } = merged;
 
   const isOngoing = !trip.exitDate;
   const isPlanned = trip.entryDate > todayStr;
@@ -143,22 +189,56 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
     parseDate(trip.exitDate ?? todayStr),
   );
 
+  // Overstay overrides the card's colour scheme.
+  const cardBg = isOverstay
+    ? tokens.redBg
+    : isPlanned
+      ? "#FDFCF8"
+      : tokens.white;
+  const cardBorderColor = isOverstay
+    ? alpha(tokens.red, 0.35)
+    : isPlanned
+      ? alpha(tokens.amber, 0.3)
+      : tokens.border;
+  const cardBorderStyle = isPlanned && !isOverstay ? "dashed" : "solid";
+
+  const destinationColor = isOverstay ? tokens.red : tokens.navy;
+  const dateColor = isOverstay ? tokens.redText : tokens.textSoft;
+
+  // Top accent stripe colour
+  const stripeColor = isOverstay
+    ? tokens.red
+    : isPlanned
+      ? tokens.amber
+      : isSchengen
+        ? tokens.green
+        : tokens.border;
+
   return (
     <Box
       onClick={onEdit}
       sx={{
-        bgcolor: isPlanned ? "#FDFCF8" : tokens.white,
+        bgcolor: cardBg,
         border: "1px solid",
-        borderColor: isPlanned ? alpha(tokens.amber, 0.3) : tokens.border,
-        borderStyle: isPlanned ? "dashed" : "solid",
+        borderColor: cardBorderColor,
+        borderStyle: cardBorderStyle,
         borderRadius: "10px",
         overflow: "hidden",
         cursor: "pointer",
-        boxShadow: "0 1px 3px rgba(12,30,60,0.06)",
+        boxShadow: isOverstay
+          ? "0 1px 3px rgba(239,68,68,0.1)"
+          : "0 1px 3px rgba(12,30,60,0.06)",
         transition: "box-shadow 0.15s",
-        "&:active": { boxShadow: "0 3px 10px rgba(12,30,60,0.1)" },
+        "&:active": {
+          boxShadow: isOverstay
+            ? "0 3px 10px rgba(239,68,68,0.18)"
+            : "0 3px 10px rgba(12,30,60,0.1)",
+        },
       }}
     >
+      {/* Top accent stripe */}
+      <Box sx={{ height: 3, bgcolor: stripeColor }} />
+
       <Box sx={{ px: "14px", py: "10px" }}>
         {trip.destination && (
           <Typography
@@ -166,7 +246,8 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
               fontFamily: tokens.fontDisplay,
               fontSize: "0.9rem",
               fontStyle: "italic",
-              color: tokens.navy,
+              color: destinationColor,
+              fontWeight: isOverstay ? 500 : 400,
               lineHeight: 1.25,
               mb: "3px",
               overflow: "hidden",
@@ -181,7 +262,7 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
         <Typography
           sx={{
             fontSize: "0.72rem",
-            color: tokens.textSoft,
+            color: dateColor,
             fontWeight: 500,
             mb: "8px",
           }}
@@ -198,46 +279,63 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
             gap: "5px",
           }}
         >
+          {/* Duration badge — always neutral */}
           <Box
             sx={{ ...BADGE_SX, bgcolor: tokens.mist, color: tokens.textSoft }}
           >
             {days}d
           </Box>
 
-          <Box
-            sx={{
-              ...BADGE_SX,
-              bgcolor: isSchengen ? alpha(tokens.green, 0.1) : tokens.mist,
-              color: isSchengen ? tokens.greenText : tokens.textSoft,
-            }}
-          >
-            {isSchengen ? "Schengen" : "Elsewhere"}
-          </Box>
-
-          {isOngoing && (
+          {/* Region / overstay label */}
+          {isOverstay ? (
             <Box
               sx={{
                 ...BADGE_SX,
-                bgcolor: alpha(tokens.green, 0.1),
-                color: tokens.greenText,
+                bgcolor: alpha(tokens.red, 0.12),
+                color: tokens.redText,
               }}
             >
-              Ongoing
+              ⚠ Overstay
             </Box>
+          ) : (
+            <>
+              <Box
+                sx={{
+                  ...BADGE_SX,
+                  bgcolor: isSchengen ? alpha(tokens.green, 0.1) : tokens.mist,
+                  color: isSchengen ? tokens.greenText : tokens.textSoft,
+                }}
+              >
+                {isSchengen ? "Schengen" : "Elsewhere"}
+              </Box>
+
+              {isOngoing && (
+                <Box
+                  sx={{
+                    ...BADGE_SX,
+                    bgcolor: alpha(tokens.green, 0.1),
+                    color: tokens.greenText,
+                  }}
+                >
+                  Ongoing
+                </Box>
+              )}
+
+              {isPlanned && (
+                <Box
+                  sx={{
+                    ...BADGE_SX,
+                    bgcolor: alpha(tokens.amber, 0.1),
+                    color: tokens.amberText,
+                  }}
+                >
+                  Planned
+                </Box>
+              )}
+            </>
           )}
 
-          {isPlanned && (
-            <Box
-              sx={{
-                ...BADGE_SX,
-                bgcolor: alpha(tokens.amber, 0.1),
-                color: tokens.amberText,
-              }}
-            >
-              Planned
-            </Box>
-          )}
-
+          {/* Traveler chips — right-aligned, unaffected by overstay */}
           <Box
             sx={{
               display: "flex",
