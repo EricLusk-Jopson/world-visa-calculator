@@ -149,7 +149,25 @@ export function CalculatorPage() {
     (travelerIds: string[], trip: Trip) => {
       setTravelers((prev) =>
         prev.map((t) => {
-          if (!travelerIds.includes(t.id)) return t;
+          const wasOnTrip = modal.travelerIds.includes(t.id);
+          const isOnTrip = travelerIds.includes(t.id);
+
+          // Traveler was unchecked — remove this trip from their list.
+          if (wasOnTrip && !isOnTrip && modal.trip) {
+            return {
+              ...t,
+              trips: t.trips.filter(
+                (x) =>
+                  !(
+                    x.entryDate === modal.trip!.entryDate &&
+                    x.exitDate === modal.trip!.exitDate &&
+                    x.region === modal.trip!.region
+                  ),
+              ),
+            };
+          }
+
+          if (!isOnTrip) return t;
 
           // Match by ID first (single-traveler add/edit), then by coordinates
           // (multi-traveler edit where each copy has a different UUID).
@@ -170,6 +188,7 @@ export function CalculatorPage() {
             return { ...t, trips: updated };
           }
 
+          // Traveler newly added to this trip.
           return {
             ...t,
             trips: [...t.trips, { ...trip, id: crypto.randomUUID() }],
@@ -178,7 +197,7 @@ export function CalculatorPage() {
       );
       setModal(CLOSED_MODAL);
     },
-    [modal.trip],
+    [modal.trip, modal.travelerIds],
   );
 
   /** Deletes the trip from every traveler in modal.travelerIds */

@@ -189,9 +189,6 @@ export function TripModal({
 
   const todayStr = formatDate(getToday());
 
-  // True when the entry date is set to a future date. Ongoing trips require
-  // the traveler to already be inside Schengen, so this state is impossible
-  // for future-dated entries.
   const entryIsInFuture = Boolean(entryDate && entryDate > todayStr);
 
   useEffect(() => {
@@ -248,7 +245,6 @@ export function TripModal({
       entryConstraint = { daysAvailable: minDays, latestExit };
     }
   }
-
   // ── Impact status ───────────────────────────────────────────────────────────
 
   let impactStatus: ReturnType<typeof computeTravelerStatus> | null = null;
@@ -529,68 +525,44 @@ export function TripModal({
             </ValidationMessage>
           )}
 
-          {/* 1 · Traveler selector */}
+          {/* 1 · Traveler selector — editable in both add and edit modes */}
           <Box>
-            <FormLabel>{isEdit ? "Traveler" : "Traveler(s)"}</FormLabel>
-            {isEdit ? (
-              <Select
-                multiple
-                value={travelerIds}
-                disabled
-                fullWidth
-                size="small"
-                renderValue={(selected) =>
-                  (selected as string[])
-                    .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
-                    .join(", ")
-                }
-                sx={SELECT_BASE_SX}
-              >
-                {travelers.map((t) => (
-                  <MenuItem
-                    key={t.id}
-                    value={t.id}
-                    sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem" }}
-                  >
-                    {t.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            ) : (
-              <Select
-                multiple
-                value={travelerIds}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setTravelerIds(
-                    typeof val === "string" ? val.split(",") : val,
+            <FormLabel>Traveler(s)</FormLabel>
+            <Select
+              multiple
+              value={travelerIds}
+              onChange={(e) => {
+                const val = e.target.value;
+                setTravelerIds(typeof val === "string" ? val.split(",") : val);
+                setError(null);
+              }}
+              fullWidth
+              size="small"
+              displayEmpty
+              renderValue={(selected) => {
+                if ((selected as string[]).length === 0) {
+                  return (
+                    <Typography
+                      sx={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.85rem",
+                        color: tokens.textGhost,
+                      }}
+                    >
+                      Select travelers…
+                    </Typography>
                   );
-                  setError(null);
-                }}
-                fullWidth
-                size="small"
-                displayEmpty
-                renderValue={(selected) => {
-                  if ((selected as string[]).length === 0) {
-                    return (
-                      <Typography
-                        sx={{
-                          fontFamily: tokens.fontBody,
-                          fontSize: "0.85rem",
-                          color: tokens.textGhost,
-                        }}
-                      >
-                        Select travelers…
-                      </Typography>
-                    );
-                  }
-                  return (selected as string[])
-                    .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
-                    .join(", ");
-                }}
-                sx={SELECT_BASE_SX}
-              >
-                {travelers.map((t) => (
+                }
+                return (selected as string[])
+                  .map((id) => travelers.find((t) => t.id === id)?.name ?? id)
+                  .join(", ");
+              }}
+              sx={SELECT_BASE_SX}
+            >
+              {travelers.map((t) => {
+                const alreadyOnTrip =
+                  isEdit && initialTravelerIds.includes(t.id);
+                return (
                   <MenuItem
                     key={t.id}
                     value={t.id}
@@ -603,15 +575,23 @@ export function TripModal({
                     />
                     <ListItemText
                       primary={t.name}
+                      secondary={
+                        alreadyOnTrip ? "Already on this trip" : undefined
+                      }
                       primaryTypographyProps={{
                         fontFamily: tokens.fontBody,
                         fontSize: "0.85rem",
                       }}
+                      secondaryTypographyProps={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.68rem",
+                        color: tokens.textGhost,
+                      }}
                     />
                   </MenuItem>
-                ))}
-              </Select>
-            )}
+                );
+              })}
+            </Select>
           </Box>
 
           {/* 2 · Region */}
