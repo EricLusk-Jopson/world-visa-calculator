@@ -60,6 +60,7 @@ import { dateToTop } from "@/features/calculator/utils/timelineLayout";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface ReturnMarker {
+  date: Date;
   /** Pixel offset from the top of the canvas. */
   top: number;
   /**
@@ -203,6 +204,7 @@ export function computeReturnMarkers(
 
     // Emit snapshot chip — the exact max stay available at this phase boundary.
     allMarkers.push({
+      date: phase.start,
       top: dateToTop(phase.start, timelineStart),
       days: maxNow,
       isCurrent: true,
@@ -246,6 +248,7 @@ export function computeReturnMarkers(
       const markerDate = addDays(arrayStart, k + 180);
 
       allMarkers.push({
+        date: markerDate,
         top: dateToTop(markerDate, timelineStart),
         days: nextThreshold,
         isCurrent: false,

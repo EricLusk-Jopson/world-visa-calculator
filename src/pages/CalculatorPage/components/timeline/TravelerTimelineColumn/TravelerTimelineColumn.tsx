@@ -63,13 +63,13 @@ function markerColors(days: number, isCurrent: boolean) {
  * The outer Box uses pointerEvents:none so it never intercepts scroll or card
  * clicks. The pill re-enables them so the Tooltip can trigger on hover.
  */
-function MarkerLine({ top, days, isCurrent }: ReturnMarker) {
+function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
   const { lineBase, textColor, bgColor, lineOpacity, pillOpacity } =
     markerColors(days, isCurrent);
 
   const tooltipText = isCurrent
     ? `Currently, you can start a Schengen trip of up to ${days} days.`
-    : `From this date, a ${days}-day Schengen trip first becomes possible.`;
+    : `From ${date.toDateString()}, a ${days}-day Schengen trip first becomes possible.`;
 
   return (
     <Box
@@ -330,12 +330,14 @@ export function TravelerTimelineColumn({
       />
 
       {/* Return markers */}
-      {returnMarkers.map((marker, i) => (
-        <MarkerLine
-          key={`${marker.isCurrent ? "cur" : "thr"}-${marker.days}-${i}`}
-          {...marker}
-        />
-      ))}
+      {returnMarkers
+        .filter((marker) => !marker.isCurrent)
+        .map((marker, i) => (
+          <MarkerLine
+            key={`${marker.isCurrent ? "cur" : "thr"}-${marker.days}-${i}`}
+            {...marker}
+          />
+        ))}
 
       {/* Trip cards */}
       {sortedTrips.map((trip, rank) => {
