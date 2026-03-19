@@ -18,7 +18,7 @@ export const MIN_COLUMN_WIDTH = MIN_COLUMN_CONTENT_WIDTH + COLUMN_H_PADDING; // 
  * (name + delete on row A, badges on row B). The flag is shared so all headers
  * always flip simultaneously.
  */
-const COMPACT_THRESHOLD = 260;
+const COMPACT_THRESHOLD = 340;
 
 interface CardsViewProps {
   travelers: Traveler[];
