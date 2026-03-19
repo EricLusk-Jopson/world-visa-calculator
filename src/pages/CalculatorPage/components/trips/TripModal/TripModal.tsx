@@ -211,6 +211,33 @@ export function TripModal({
     }
   }, [open, mode, initialTrip, initialTravelerIds]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Real-time overlap check ─────────────────────────────────────────────────
+  // Runs on every render so the Save button and inline message stay in sync
+  // without waiting for the user to click Save.
+
+  const resolvedExit = ongoing ? undefined : exitDate || undefined;
+
+  const overlapError: string | null = (() => {
+    if (!entryDate) return null;
+
+    const conflicts: string[] = [];
+    for (const tid of travelerIds) {
+      const traveler = travelers.find((t) => t.id === tid);
+      if (!traveler) continue;
+      const msg = hasOverlap(
+        traveler.trips,
+        entryDate,
+        resolvedExit ?? null,
+        region,
+        initialTrip?.id,
+        initialTrip,
+      );
+      if (msg) conflicts.push(`${traveler.name}: ${msg}`);
+    }
+
+    return conflicts.length > 0 ? conflicts.join("\n") : null;
+  })();
+
   // ── Entry constraint hint ───────────────────────────────────────────────────
 
   let entryConstraint: { daysAvailable: number; latestExit: string } | null =
@@ -383,28 +410,8 @@ export function TripModal({
       setError("Exit date must be after entry date.");
       return;
     }
-
-    const resolvedExit = ongoing ? undefined : exitDate || undefined;
-
-    const conflicts: string[] = [];
-    for (const tid of travelerIds) {
-      const traveler = travelers.find((t) => t.id === tid);
-      if (!traveler) continue;
-      const msg = hasOverlap(
-        traveler.trips,
-        entryDate,
-        resolvedExit ?? null,
-        region,
-        initialTrip?.id,
-        initialTrip,
-      );
-      if (msg) conflicts.push(`${traveler.name}: ${msg}`);
-    }
-
-    if (conflicts.length > 0) {
-      setError(conflicts.join("\n"));
-      return;
-    }
+    // overlapError is already shown inline — guard here as a safety net
+    if (overlapError) return;
 
     const trip: Trip = {
       id: initialTrip?.id ?? crypto.randomUUID(),
@@ -429,6 +436,7 @@ export function TripModal({
   }
 
   const isEdit = mode === "edit";
+  const isSaveDisabled = Boolean(overlapError);
 
   // ── Render ───────────────────────────────────────────────────────────────────
 
@@ -518,10 +526,17 @@ export function TripModal({
           }}
           onKeyDown={handleKeyDown}
         >
-          {/* Validation error */}
+          {/* Validation error (non-overlap) */}
           {error && (
             <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
               {error}
+            </ValidationMessage>
+          )}
+
+          {/* Real-time overlap error */}
+          {overlapError && (
+            <ValidationMessage variant="error" sx={{ whiteSpace: "pre-line" }}>
+              {overlapError}
             </ValidationMessage>
           )}
 
@@ -637,8 +652,6 @@ export function TripModal({
                   if (!date) return;
                   const iso = formatDate(date);
                   setEntryDate(iso);
-                  // Auto-reset ongoing if the new entry is in the future —
-                  // you can't already be inside Schengen on a future date.
                   if (iso > todayStr && ongoing) {
                     setOngoing(false);
                   }
@@ -679,11 +692,6 @@ export function TripModal({
               />
             </Box>
 
-            {/*
-             * Ongoing toggle — disabled (via pointer-events) when the entry
-             * date is in the future. You can't already be inside Schengen
-             * before you've arrived.
-             */}
             <Tooltip
               title={
                 entryIsInFuture
@@ -811,8 +819,13 @@ export function TripModal({
           <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
             Cancel
           </Button>
-          <Button variant={"primary"} onClick={handleSave} sx={{ flex: 2 }}>
-            Save Trip
+          <Button
+            // variant="primary"
+            onClick={handleSave}
+            disabled={isSaveDisabled}
+            sx={{ flex: 2 }}
+          >
+            {isSaveDisabled ? "Overlap detected" : "Save Trip"}
           </Button>
         </Box>
       </Dialog>
