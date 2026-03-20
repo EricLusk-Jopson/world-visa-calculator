@@ -25,6 +25,10 @@ import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import { format } from "date-fns";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import {
+  AVAILABLE_DAYS_DESCRIPTION,
+  MAX_STAY_DESCRIPTION,
+} from "@/features/calculator/utils/schengenConstants";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -351,19 +355,12 @@ export function TravelerFilterBar({
                     <StatusBadge
                       variant={variant}
                       label={`${daysRemaining}d avail`}
-                      tooltip={
-                        `Days you could begin a new Schengen trip right now, based on the ` +
-                        `${daysUsed} days used in the last 180-day window. Increases as old trips age out.`
-                      }
+                      tooltip={AVAILABLE_DAYS_DESCRIPTION}
                     />
                     <StatusBadge
                       variant={maxStay > daysRemaining ? "safe" : variant}
                       label={`${maxStay}d max`}
-                      tooltip={
-                        `The longest single trip you could start today, accounting for historical ` +
-                        `days that will age out as your stay progresses. Can jump well above "avail" ` +
-                        `when a past trip is about to exit the 180-day window.`
-                      }
+                      tooltip={MAX_STAY_DESCRIPTION}
                     />
                   </Box>
                 )}
