@@ -161,15 +161,26 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
  * window. Visually distinct from return markers: dotted line (vs dashed),
  * lower opacity, and a centered label breaking the line.
  */
-function AgingMarkerLine({ top, tripDays, destination }: AgingMarker) {
+function AgingMarkerLine({
+  top,
+  tripDays,
+  destination,
+  entryDate,
+}: AgingMarker) {
   const LINE_OPACITY = 0.12;
   const TEXT_OPACITY = 0.4;
 
+  const agingDate = addDays(parseDate(entryDate), 180);
+  const agingDateStr = agingDate.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
   const tooltipText =
-    `From this date, the ${destination} trip's ${tripDays} Schengen days begin ` +
+    `From ${agingDateStr}, the ${destination} trip's ${tripDays} Schengen days begin ` +
     `aging out of the 180-day window. As each day exits, your available allowance ` +
     `grows — this is typically what causes max stay to jump noticeably.`;
-
   return (
     <Box
       sx={{
