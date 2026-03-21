@@ -85,8 +85,20 @@ export function computeReturnMarkers(
 
   const insideSchengenNow = allSchengen.some((t) => !t.exitDate);
 
+  // BUG FIX: use >= so that a trip starting exactly today is included in
+  // futureTrips. Previously `> todayDate` excluded same-day entries, causing
+  // the trip to be invisible to both the futureTrips phase builder AND the
+  // Phase 0 historical set (which only includes trips whose exit < today).
+  // The result was Phase 0 running with an incomplete historical record,
+  // letting the algorithm conclude that 90 days were available when in fact
+  // the traveler was already mid-trip.
+  //
+  // With >=, a trip starting today is treated as a pending future trip.
+  // Phase 0's end becomes (today − 1), which is before today, so the
+  // `cappedEnd >= todayDate` guard naturally skips Phase 0. The phase that
+  // runs after the trip exits then correctly includes it in its historical set.
   const futureTrips = allSchengen
-    .filter((t) => t.exitDate && parseDate(t.entryDate) > todayDate)
+    .filter((t) => t.exitDate && parseDate(t.entryDate) >= todayDate)
     .sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1));
 
   type Phase = { start: Date; end: Date; historical: Trip[] };
