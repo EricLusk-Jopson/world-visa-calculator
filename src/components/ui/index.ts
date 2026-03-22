@@ -6,4 +6,5 @@ export { ValidationMessage } from "./ValidationMessage";
 export type { ValidationVariant } from "./ValidationMessage";
 export { RegionSelector } from "./RegionSelector";
 export { OngoingToggle } from "./OngoingToggle";
+export { FormLabel } from "./FormLabel";
 export { ImpactPreview } from "../../pages/CalculatorPage/components/ImpactPreview";

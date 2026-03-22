@@ -1,5 +1,7 @@
 // Utils
 export {
+  TRAVELER_NAME_MAX_LENGTH,
+  TRAVELER_NAME_PATTERN,
   sanitizeTravelerName,
   isValidTravelerName,
   encodeDate,

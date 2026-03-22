@@ -13,13 +13,26 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
+import {
+  INPUT_SX,
+  INPUT_ERROR_SX,
+  SELECT_BASE_SX,
+} from "@/styles/formStyles";
+import {
+  STANDARD_TRANSITION,
+  DIALOG_BOX_SHADOW,
+  DIALOG_BORDER_RADIUS,
+} from "@/styles/constants";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
-import { ValidationMessage } from "@/components/ui/ValidationMessage";
-import { Button } from "@/components/ui/Button";
-import { RegionSelector } from "@/components/ui/RegionSelector";
-import { OngoingToggle } from "@/components/ui/OngoingToggle";
-import { ImpactPreview } from "@/components/ui";
+import {
+  ValidationMessage,
+  Button,
+  RegionSelector,
+  OngoingToggle,
+  FormLabel,
+  ImpactPreview,
+} from "@/components/ui";
 import {
   parseDate,
   formatDate,
@@ -27,6 +40,10 @@ import {
   today as getToday,
 } from "@/features/calculator/utils/dates";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
+import {
+  PREVIEW_TRIP_ID,
+  TRIP_NAME_MAX_LENGTH,
+} from "@/features/calculator/utils/schengenConstants";
 import {
   computeImpactBreakdown,
   computeTravelerStatus,
@@ -93,77 +110,6 @@ function fmtHintDate(iso: string): string {
     year: "numeric",
   }).format(d);
 }
-
-// ─── Form label ───────────────────────────────────────────────────────────────
-
-function FormLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <Typography
-      component="label"
-      sx={{
-        display: "block",
-        fontFamily: tokens.fontBody,
-        fontSize: "0.68rem",
-        fontWeight: 700,
-        textTransform: "uppercase",
-        letterSpacing: "0.08em",
-        color: tokens.textSoft,
-        mb: "5px",
-      }}
-    >
-      {children}
-    </Typography>
-  );
-}
-
-// ─── Shared input sx ──────────────────────────────────────────────────────────
-
-const INPUT_SX = {
-  "& .MuiOutlinedInput-root": {
-    fontFamily: tokens.fontBody,
-    fontSize: "0.85rem",
-    bgcolor: tokens.mist,
-    borderRadius: "10px",
-    "& fieldset": { borderColor: tokens.border, borderWidth: 1.5 },
-    "&:hover fieldset": { borderColor: tokens.navy },
-    "&.Mui-focused fieldset": {
-      borderColor: tokens.navy,
-      borderWidth: 1.5,
-      boxShadow: `0 0 0 3px rgba(12,30,60,0.06)`,
-    },
-  },
-  "& .MuiOutlinedInput-input": {
-    py: "9px",
-    px: "11px",
-    color: tokens.text,
-    "&::placeholder": { color: tokens.textGhost, opacity: 1 },
-  },
-} as const;
-
-const INPUT_ERROR_SX = {
-  "& .MuiOutlinedInput-root": {
-    ...INPUT_SX["& .MuiOutlinedInput-root"],
-    bgcolor: tokens.redBg,
-    "& fieldset": { borderColor: tokens.red, borderWidth: 1.5 },
-  },
-} as const;
-
-const SELECT_BASE_SX = {
-  fontFamily: tokens.fontBody,
-  fontSize: "0.85rem",
-  bgcolor: tokens.mist,
-  borderRadius: "10px",
-  "& .MuiOutlinedInput-notchedOutline": {
-    borderColor: tokens.border,
-    borderWidth: 1.5,
-  },
-  "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: tokens.navy },
-  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-    borderColor: tokens.navy,
-    borderWidth: 1.5,
-  },
-  "& .MuiSelect-select": { py: "9px", px: "11px" },
-} as const;
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -285,7 +231,7 @@ export function TripModal({
         .filter((t) => t.id !== initialTrip?.id)
         .concat([
           {
-            id: "__preview__",
+            id: PREVIEW_TRIP_ID,
             entryDate,
             exitDate: ongoing ? undefined : exitDate || undefined,
             region: VisaRegion.Schengen,
@@ -321,7 +267,7 @@ export function TripModal({
         .filter((t) => t.id !== initialTrip?.id)
         .concat([
           {
-            id: "__preview__",
+            id: PREVIEW_TRIP_ID,
             entryDate,
             exitDate: ongoing ? undefined : exitDate || undefined,
             region: VisaRegion.Schengen,
@@ -362,7 +308,7 @@ export function TripModal({
         .filter((t) => t.id !== initialTrip?.id)
         .concat([
           {
-            id: "__preview__",
+            id: PREVIEW_TRIP_ID,
             entryDate,
             exitDate: ongoing ? undefined : exitDate || undefined,
             region: VisaRegion.Schengen,
@@ -448,14 +394,14 @@ export function TripModal({
         slotProps={{
           paper: {
             sx: {
-              borderRadius: "20px",
+              borderRadius: DIALOG_BORDER_RADIUS,
               width: 420,
               maxWidth: "calc(100vw - 32px)",
               display: "flex",
               flexDirection: "column",
               overflow: "hidden",
               maxHeight: "85vh",
-              boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
+              boxShadow: DIALOG_BOX_SHADOW,
             },
           },
         }}
@@ -497,7 +443,7 @@ export function TripModal({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              transition: "all 0.15s",
+              transition: STANDARD_TRANSITION,
               "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
             }}
           >
@@ -630,7 +576,7 @@ export function TripModal({
               placeholder="e.g. Paris & Barcelona"
               fullWidth
               autoFocus={!isEdit}
-              inputProps={{ maxLength: 60 }}
+              inputProps={{ maxLength: TRIP_NAME_MAX_LENGTH }}
               sx={INPUT_SX}
             />
           </Box>

@@ -76,20 +76,26 @@ const V2_DELIM = {
 
 // ─── Name validation / sanitisation ──────────────────────────────────────────
 
+/** Maximum allowed length for traveler names. */
+export const TRAVELER_NAME_MAX_LENGTH = 30;
+
+/** Regex pattern for valid traveler names (alphabetical only, 1–30 chars). */
+export const TRAVELER_NAME_PATTERN = /^[a-zA-Z]{1,30}$/;
+
 /**
- * Strips all non-alphabetical characters and trims to 30 chars.
+ * Strips all non-alphabetical characters and trims to TRAVELER_NAME_MAX_LENGTH chars.
  * Returns null if the result is empty.
  */
 export const sanitizeTravelerName = (raw: string): string | null => {
-  const cleaned = raw.replace(/[^a-zA-Z]/g, "").slice(0, 30);
+  const cleaned = raw.replace(/[^a-zA-Z]/g, "").slice(0, TRAVELER_NAME_MAX_LENGTH);
   return cleaned.length > 0 ? cleaned : null;
 };
 
 /**
- * Returns true when the name is purely alphabetical and 1–30 chars long.
+ * Returns true when the name is purely alphabetical and 1–TRAVELER_NAME_MAX_LENGTH chars long.
  */
 export const isValidTravelerName = (name: string): boolean => {
-  return /^[a-zA-Z]{1,30}$/.test(name);
+  return TRAVELER_NAME_PATTERN.test(name);
 };
 
 // ─── Date helpers — v2 (base36 epoch days) ───────────────────────────────────

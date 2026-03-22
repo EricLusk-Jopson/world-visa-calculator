@@ -3,6 +3,7 @@ import {
   today,
   parseDate,
   differenceInCalendarDays,
+  MONTH_NAMES,
 } from "@/features/calculator/utils/dates";
 
 // ─── Duration ─────────────────────────────────────────────────────────────────
@@ -18,21 +19,6 @@ export function tripDurationDays(entryDate: string, exitDate?: string): number {
 }
 
 // ─── Display helpers ──────────────────────────────────────────────────────────
-
-const MONTH_NAMES = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
 
 /**
  * Human-readable short date: "12 Jan" in the current year, "12 Jan 2024"

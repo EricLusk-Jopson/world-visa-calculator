@@ -3,8 +3,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Collapse from "@mui/material/Collapse";
 import { tokens } from "@/styles/theme";
-import { parseDate } from "@/features/calculator/utils/dates";
-import { ImpactBreakdown, StatusVariant } from "../travelers/travelerStatus";
+import { fmtShort } from "../trips/tripHelpers";
+import {
+  ImpactBreakdown,
+  StatusVariant,
+  STATUS_SAFE_THRESHOLD,
+  STATUS_CAUTION_THRESHOLD,
+} from "../travelers/travelerStatus";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -70,28 +75,6 @@ const VARIANT_COLORS = {
 
 // ─── Date helpers ──────────────────────────────────────────────────────────────
 
-const MONTH_NAMES = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-function fmtShort(iso: string): string {
-  const d = parseDate(iso);
-  const suffix =
-    d.getFullYear() !== new Date().getFullYear() ? ` ${d.getFullYear()}` : "";
-  return `${d.getDate()} ${MONTH_NAMES[d.getMonth()]}${suffix}`;
-}
-
 function fmtRange(entryDate: string, exitDate?: string): string {
   return `${fmtShort(entryDate)} → ${exitDate ? fmtShort(exitDate) : "ongoing"}`;
 }
@@ -143,8 +126,8 @@ function clipRange(
 }
 
 function statusVariantForDays(days: number): StatusVariant {
-  if (days > 29) return "safe";
-  if (days > 9) return "caution";
+  if (days >= STATUS_SAFE_THRESHOLD) return "safe";
+  if (days >= STATUS_CAUTION_THRESHOLD) return "caution";
   return "danger";
 }
 

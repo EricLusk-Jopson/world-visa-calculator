@@ -3,18 +3,20 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { alpha } from "@mui/material/styles";
 
-import { NavBar } from "./components/NavBar";
-import { HeroCalculatorCard } from "./components/HeroCalculatorCard";
-import { AllowanceBar } from "./components/AllowanceBar";
+import {
+  NavBar,
+  HeroCalculatorCard,
+  AllowanceBar,
+  FeatureItem,
+  ProofItem,
+  RulePill,
+  SectionHeading,
+  SectionSub,
+  SectionTag,
+  StepCard,
+  TrustStat,
+} from "./components";
 import { tokens } from "../../styles/theme";
-import { FeatureItem } from "./components/ui/FeatureItem";
-import { ProofItem } from "./components/ui/ProofItem";
-import { RulePill } from "./components/ui/RulePill";
-import { SectionHeading } from "./components/ui/section/SectionHeading";
-import { SectionSub } from "./components/ui/section/SectionSub";
-import { SectionTag } from "./components/ui/section/SectionTag";
-import { StepCard } from "./components/ui/StepCard";
-import { TrustStat } from "./components/ui/TrustStat";
 
 export default function LandingPage() {
   return (

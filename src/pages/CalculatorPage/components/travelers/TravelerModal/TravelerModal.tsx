@@ -4,8 +4,14 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { tokens } from "@/styles/theme";
-import { ValidationMessage } from "@/components/ui/ValidationMessage";
-import { Button } from "@/components/ui/Button";
+import { TRAVELER_NAME_MAX_LENGTH } from "@/features/sharing";
+import { INPUT_SX, INPUT_ERROR_SX } from "@/styles/formStyles";
+import {
+  STANDARD_TRANSITION,
+  DIALOG_BOX_SHADOW,
+  DIALOG_BORDER_RADIUS,
+} from "@/styles/constants";
+import { ValidationMessage, Button, FormLabel } from "@/components/ui";
 
 interface TravelerModalProps {
   open: boolean;
@@ -52,11 +58,11 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
       onClose={onClose}
       PaperProps={{
         sx: {
-          borderRadius: "20px",
+          borderRadius: DIALOG_BORDER_RADIUS,
           width: 360,
           maxWidth: "calc(100vw - 32px)",
           overflow: "hidden",
-          boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
+          boxShadow: DIALOG_BOX_SHADOW,
         },
       }}
     >
@@ -97,7 +103,7 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
             alignItems: "center",
             justifyContent: "center",
             fontSize: "0.85rem",
-            transition: "all 0.15s",
+            transition: STANDARD_TRANSITION,
             "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
           }}
         >
@@ -116,20 +122,7 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-          <Typography
-            component="label"
-            htmlFor="traveler-name-input"
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.68rem",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              color: tokens.textSoft,
-            }}
-          >
-            Name
-          </Typography>
+          <FormLabel htmlFor="traveler-name-input">Name</FormLabel>
           <TextField
             id="traveler-name-input"
             value={name}
@@ -140,31 +133,8 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
             onKeyDown={handleKeyDown}
             placeholder="e.g. Sophie"
             autoFocus
-            inputProps={{ maxLength: 30 }}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                fontFamily: tokens.fontBody,
-                fontSize: "0.85rem",
-                bgcolor: tokens.mist,
-                borderRadius: "10px",
-                "& fieldset": {
-                  borderColor: error ? tokens.red : tokens.border,
-                  borderWidth: 1.5,
-                },
-                "&:hover fieldset": { borderColor: tokens.navy },
-                "&.Mui-focused fieldset": {
-                  borderColor: tokens.navy,
-                  borderWidth: 1.5,
-                  boxShadow: `0 0 0 3px rgba(12,30,60,0.06)`,
-                },
-              },
-              "& .MuiOutlinedInput-input": {
-                py: "9px",
-                px: "11px",
-                color: tokens.text,
-                "&::placeholder": { color: tokens.textGhost, opacity: 1 },
-              },
-            }}
+            inputProps={{ maxLength: TRAVELER_NAME_MAX_LENGTH }}
+            sx={error ? INPUT_ERROR_SX : INPUT_SX}
           />
         </Box>
 

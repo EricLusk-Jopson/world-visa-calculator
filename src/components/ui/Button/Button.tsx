@@ -2,6 +2,7 @@ import MuiButton from "@mui/material/Button";
 import type { ButtonProps as MuiButtonProps } from "@mui/material/Button";
 import type { ReactNode } from "react";
 import { tokens } from "@/styles/theme";
+import { STANDARD_TRANSITION } from "@/styles/constants";
 
 export type ButtonVariant =
   | "primary"
@@ -156,7 +157,7 @@ export function Button({
       size={SIZE_MAP[size]}
       sx={{
         ...VARIANT_SX[variant],
-        transition: "all 0.15s cubic-bezier(0.16, 1, 0.3, 1)",
+        transition: STANDARD_TRANSITION,
         ...sx,
       }}
       {...props}

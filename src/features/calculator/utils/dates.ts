@@ -96,6 +96,24 @@ export function countDaysInWindow(
   return differenceInCalendarDays(overlapEnd, overlapStart) + 1;
 }
 
+// ─── Display Helpers ──────────────────────────────────────────────────────────
+
+/** Short month names used for human-readable date display. */
+export const MONTH_NAMES = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+] as const;
+
 // ─── Validation Helpers ────────────────────────────────────────────────────────
 
 /** True if a string is a valid "YYYY-MM-DD" date. */

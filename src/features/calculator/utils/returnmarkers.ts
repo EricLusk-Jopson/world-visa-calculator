@@ -67,7 +67,8 @@ export interface ReturnMarker {
   isCurrent: boolean;
 }
 
-const THRESHOLDS = [15, 30, 45, 60, 75, 90];
+/** Day-count milestones used to place return-opportunity markers on the timeline. */
+export const RETURN_MARKER_THRESHOLDS = [15, 30, 45, 60, 75, 90] as const;
 
 // ─── Public API ───────────────────────────────────────────────────────────────
 
@@ -165,7 +166,7 @@ export function computeReturnMarkers(
     });
 
     // Thresholds remaining above maxAtStart.
-    const pending = THRESHOLDS.filter((t) => t > maxAtStart);
+    const pending = RETURN_MARKER_THRESHOLDS.filter((t) => t > maxAtStart);
     if (pending.length === 0) continue;
 
     // Day-by-day scan within the phase.

@@ -11,20 +11,21 @@ import {
   TimelineView,
   TravelerModal,
   TripModal,
+  ShareModal,
+  LoadingScreen,
 } from "./components";
-import { ShareModal } from "./components/ShareModal";
-import { LoadingScreen } from "./components/LoadingScreen";
-import { MobileTimelineView } from "./components/mobile/MobileTimelineView/MobileTimelineView";
-import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripView";
-import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
+import type { CalcView } from "./components";
+import {
+  MobileTimelineView,
+  MobileTripsView,
+  TravelerFilterBar,
+} from "./components/mobile";
 
 const MIN_LOAD_MS = 650;
 const FADE_MS = 300;
 
 const fadeIn = keyframes`from { opacity: 0; } to { opacity: 1; }`;
 const fadeOut = keyframes`from { opacity: 1; } to { opacity: 0; }`;
-
-type CalcView = "timeline" | "cards";
 type LoadPhase = "loading" | "fading" | "ready";
 
 interface ModalState {

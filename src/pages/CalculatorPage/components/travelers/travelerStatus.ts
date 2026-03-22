@@ -88,11 +88,18 @@ export interface ImpactBreakdown {
   maxExitDate: string | null;
 }
 
+// ─── Status thresholds ────────────────────────────────────────────────────────
+
+/** Minimum days remaining to show "safe" status. */
+export const STATUS_SAFE_THRESHOLD = 30;
+/** Minimum days remaining to show "caution" status (below this = "danger"). */
+export const STATUS_CAUTION_THRESHOLD = 10;
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 export function getStatusVariant(daysRemaining: number): StatusVariant {
-  if (daysRemaining >= 30) return "safe";
-  if (daysRemaining >= 10) return "caution";
+  if (daysRemaining >= STATUS_SAFE_THRESHOLD) return "safe";
+  if (daysRemaining >= STATUS_CAUTION_THRESHOLD) return "caution";
   return "danger";
 }
 

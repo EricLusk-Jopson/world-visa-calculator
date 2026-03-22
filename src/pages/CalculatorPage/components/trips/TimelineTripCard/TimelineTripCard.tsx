@@ -11,12 +11,16 @@ import {
   SHOW_BADGE_THRESHOLD,
 } from "@/features/calculator/utils/timelineLayout";
 import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
+import {
+  STATUS_SAFE_THRESHOLD,
+  STATUS_CAUTION_THRESHOLD,
+} from "../../travelers/travelerStatus";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function variantFromMaxStay(days: number): "safe" | "caution" | "danger" {
-  if (days > 29) return "safe";
-  if (days > 9) return "caution";
+  if (days >= STATUS_SAFE_THRESHOLD) return "safe";
+  if (days >= STATUS_CAUTION_THRESHOLD) return "caution";
   return "danger";
 }
 

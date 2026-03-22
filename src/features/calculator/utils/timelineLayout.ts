@@ -5,6 +5,7 @@ import {
   differenceInCalendarDays,
   subDays,
   addDays,
+  MONTH_NAMES,
 } from "@/features/calculator/utils/dates";
 
 // ─── Layout constants ─────────────────────────────────────────────────────────
@@ -263,21 +264,6 @@ export interface MonthMark {
   year: number;
   month: number;
 }
-
-const MONTH_NAMES = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
 
 export function buildMonthMarks(
   timelineStart: Date,
