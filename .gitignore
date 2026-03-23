@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Astro generated types (auto-created by astro dev/build)
+.astro
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
