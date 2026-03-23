@@ -1,3 +1,15 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers",
+  description = "Free Schengen calculator for couples, families and groups. Track each person's 90-day allowance with a visual timeline, overstay warnings, and shareable links. No account needed.",
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,13 +21,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- ── Primary SEO ──────────────────────────────────────────────────── -->
-    <title>
-      Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers
-    </title>
-    <meta
-      name="description"
-      content="Free Schengen calculator for couples, families and groups. Track each person's 90-day allowance with a visual timeline, overstay warnings, and shareable links. No account needed."
-    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://eurovisacalculator.com/" />
 
@@ -76,9 +83,12 @@
     <!-- ── Fonts ─────────────────────────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <slot />
   </body>
 </html>
