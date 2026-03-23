@@ -85,20 +85,22 @@ export function computeReturnMarkers(
 
   const insideSchengenNow = allSchengen.some((t) => !t.exitDate);
 
-  // BUG FIX: use >= so that a trip starting exactly today is included in
-  // futureTrips. Previously `> todayDate` excluded same-day entries, causing
-  // the trip to be invisible to both the futureTrips phase builder AND the
-  // Phase 0 historical set (which only includes trips whose exit < today).
-  // The result was Phase 0 running with an incomplete historical record,
-  // letting the algorithm conclude that 90 days were available when in fact
-  // the traveler was already mid-trip.
+  // "Pending" trips: any Schengen trip whose exit date is on or after today.
+  // This correctly captures three cases:
+  //   1. Future trips   — entryDate >= today (entirely in the future)
+  //   2. Straddling trips — entryDate < today, exitDate >= today (started in
+  //      the past but hasn't exited yet). Previously these were invisible:
+  //      entryDate < today excluded them from futureTrips, and exitDate >= today
+  //      excluded them from Phase 0's historical set, so Phase 0 ran with no
+  //      knowledge of the active trip. Filtering by exitDate instead of
+  //      entryDate fixes this.
+  //   3. Today-entry trips — entryDate == today (edge case of case 1)
   //
-  // With >=, a trip starting today is treated as a pending future trip.
-  // Phase 0's end becomes (today − 1), which is before today, so the
-  // `cappedEnd >= todayDate` guard naturally skips Phase 0. The phase that
-  // runs after the trip exits then correctly includes it in its historical set.
+  // For a straddling trip, Phase 0's end = subDays(entryDate, 1) < today, so
+  // the `cappedEnd >= todayDate` guard naturally skips Phase 0. The phase that
+  // opens after the trip exits correctly includes it in its historical set.
   const futureTrips = allSchengen
-    .filter((t) => t.exitDate && parseDate(t.entryDate) >= todayDate)
+    .filter((t) => t.exitDate && parseDate(t.exitDate) >= todayDate)
     .sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1));
 
   type Phase = { start: Date; end: Date; historical: Trip[] };
