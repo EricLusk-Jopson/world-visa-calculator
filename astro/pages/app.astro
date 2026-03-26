@@ -1,0 +1,25 @@
+---
+/**
+ * Calculator page — /app
+ *
+ * A thin Astro shell that mounts the full interactive React calculator as a
+ * client-only island (`client:only="react"`). The calculator accesses
+ * `window.location` during render (via useUrlSync → buildShareableUrl), which
+ * is incompatible with Astro's server-side pre-render pass required by
+ * `client:load`. Using `client:only` skips SSR for this route entirely —
+ * the same behaviour as the original Vite SPA.
+ *
+ * All state management, URL sync, and MUI rendering happen inside the React
+ * island; this file is purely the Astro routing entry-point for /app.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { CalculatorIsland } from "@/islands/CalculatorIsland";
+---
+
+<BaseLayout
+  title="EuroVisaCalculator — Calculator"
+  description="Track your Schengen visa allowance. Add trips, see remaining days, and share a link with your travel partner."
+  canonicalUrl="https://eurovisacalculator.com/app"
+>
+  <CalculatorIsland client:only="react" />
+</BaseLayout>

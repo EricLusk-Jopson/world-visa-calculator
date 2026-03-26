@@ -1,0 +1,18 @@
+---
+/**
+ * Landing page — /
+ *
+ * The existing React LandingPage component is mounted as a client-only React
+ * island so that MUI's Emotion styling works correctly. True zero-JS SSR would
+ * require @emotion/server extraction; see LandingPageIsland.tsx for details.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { LandingPageIsland } from "@/islands/LandingPageIsland";
+---
+
+<BaseLayout
+  title="EuroVisaCalculator — Schengen 90/180 Day Tracker"
+  description="Track your Schengen visa allowance across multiple travelers. Free, no account required. Official EU rolling-window algorithm."
+>
+  <LandingPageIsland client:only="react" />
+</BaseLayout>

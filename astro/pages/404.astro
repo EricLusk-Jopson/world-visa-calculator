@@ -1,0 +1,32 @@
+---
+/**
+ * 404 page — rendered as plain static HTML, zero JavaScript.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 — EuroVisaCalculator">
+  <main
+    style="font-family: 'Plus Jakarta Sans', sans-serif; max-width: 480px; margin: 120px auto; padding: 0 24px; text-align: center; color: #1A2B4A;"
+  >
+    <p
+      style="font-size: 5rem; margin: 0; font-family: 'Fraunces', serif; font-weight: 400; color: #0C1E3C;"
+    >
+      404
+    </p>
+    <h1
+      style="font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 400; margin: 8px 0 16px;"
+    >
+      Page not found
+    </h1>
+    <p style="color: #5A6A82; line-height: 1.6; margin-bottom: 32px;">
+      The page you're looking for doesn't exist or has moved.
+    </p>
+    <a
+      href="/"
+      style="display: inline-flex; padding: 12px 28px; background: #0C1E3C; color: #fff; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 0.9rem;"
+    >
+      ← Back to home
+    </a>
+  </main>
+</BaseLayout>

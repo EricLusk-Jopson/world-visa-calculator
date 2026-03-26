@@ -1,0 +1,41 @@
+---
+/**
+ * Blog index — /blog
+ *
+ * Pure static Astro page: zero client JavaScript, rendered to plain HTML at
+ * build time. Add individual posts as src/pages/blog/[slug].astro or as
+ * Markdown files (src/content/blog/*.md with @astrojs/mdx) when ready.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Blog — EuroVisaCalculator"
+  description="Guides and articles about Schengen visa rules, 90/180 rule explained, and travel compliance tips."
+  canonicalUrl="https://eurovisacalculator.com/blog"
+>
+  <main
+    style="font-family: 'Plus Jakarta Sans', sans-serif; max-width: 720px; margin: 100px auto; padding: 0 24px; color: #1A2B4A;"
+  >
+    <p
+      style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #00B96B; margin-bottom: 12px;"
+    >
+      Blog
+    </p>
+    <h1
+      style="font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 400; line-height: 1.15; margin: 0 0 16px;"
+    >
+      Schengen guides &amp; travel tips
+    </h1>
+    <p style="color: #5A6A82; line-height: 1.7; margin-bottom: 40px;">
+      Articles on the 90/180-day rule, planning long-term travel, and staying
+      compliant are on their way. Check back soon.
+    </p>
+    <a
+      href="/app"
+      style="display: inline-flex; padding: 12px 28px; background: #00B96B; color: #fff; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 0.95rem;"
+    >
+      Open the calculator →
+    </a>
+  </main>
+</BaseLayout>

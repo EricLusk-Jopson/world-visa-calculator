@@ -1,3 +1,17 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers",
+  description = "Free Schengen calculator for couples, families and groups. Track each person's 90-day allowance with a visual timeline, overstay warnings, and shareable links. No account needed.",
+  canonicalUrl = "https://eurovisacalculator.com/",
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,19 +23,14 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- ── Primary SEO ──────────────────────────────────────────────────── -->
-    <title>
-      Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers
-    </title>
-    <meta
-      name="description"
-      content="Free Schengen calculator for couples, families and groups. Track each person's 90-day allowance with a visual timeline, overstay warnings, and shareable links. No account needed."
-    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://eurovisacalculator.com/" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp previews) ───────────── -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://eurovisacalculator.com/" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta
       property="og:title"
       content="Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers"
@@ -41,7 +50,7 @@
 
     <!-- ── Twitter / X card ─────────────────────────────────────────────── -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://eurovisacalculator.com/" />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta
       name="twitter:title"
       content="Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers"
@@ -76,9 +85,12 @@
     <!-- ── Fonts ─────────────────────────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <slot />
   </body>
 </html>
