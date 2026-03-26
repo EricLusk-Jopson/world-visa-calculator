@@ -56,9 +56,9 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       </div>
     </div>
 
-    <!-- Right column — calculator card (island added in next task) -->
+    <!-- Right column — interactive calculator card -->
     <div class="hero__right">
-      <!-- HERO CARD PLACEHOLDER -->
+      <HeroCalculatorIsland client:visible />
     </div>
   </section>
 </BaseLayout>
@@ -94,7 +94,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     }
   }
 
-  /* ── Right column (placeholder until Task 4) ────────────────────────────── */
+  /* ── Right column ──────────────────────────────────────────────────────── */
   .hero__right {
     background: var(--color-white);
     border-top: 1px solid var(--color-border);
