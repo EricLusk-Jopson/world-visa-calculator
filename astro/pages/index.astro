@@ -61,6 +61,28 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       <HeroCalculatorIsland client:visible />
     </div>
   </section>
+
+  <!-- ── TRUST STRIP ──────────────────────────────────────────────────────── -->
+  <section class="trust-strip" aria-label="Key statistics">
+    <div class="trust-strip__grid">
+      <div class="trust-stat">
+        <span class="trust-stat__num">90</span>
+        <span class="trust-stat__label">days allowed<br />in any 180-day window</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-stat__num">4+</span>
+        <span class="trust-stat__label">travelers tracked<br />simultaneously</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-stat__num">26</span>
+        <span class="trust-stat__label">Schengen countries<br />using the same rule</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-stat__num">0</span>
+        <span class="trust-stat__label">accounts required<br />to get started</span>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -196,5 +218,68 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Trust strip ────────────────────────────────────────────────────────── */
+  .trust-strip {
+    background: var(--color-navy);
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trust-strip::before {
+    content: "";
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 185, 107, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .trust-strip {
+      padding: 100px 80px;
+    }
+  }
+
+  .trust-strip__grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .trust-strip__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+  }
+
+  .trust-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .trust-stat__num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--color-white);
+    line-height: 1;
+  }
+
+  .trust-stat__label {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
   }
 </style>
