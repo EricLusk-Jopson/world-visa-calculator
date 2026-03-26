@@ -1,0 +1,49 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Design tokens — sourced from src/styles/theme.ts
+   Import this file in BaseLayout.astro so every Astro page inherits them.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Colours */
+  --color-navy:          #0C1E3C;
+  --color-navy-mid:      #163258;
+  --color-green:         #00B96B;
+  --color-green-bg:      #E8FBF2;
+  --color-green-border:  rgba(0, 185, 107, 0.22);
+  --color-green-text:    #047857;
+  --color-amber:         #F59E0B;
+  --color-amber-bg:      #FFFBEB;
+  --color-amber-border:  rgba(245, 158, 11, 0.22);
+  --color-amber-text:    #92400E;
+  --color-red:           #EF4444;
+  --color-red-bg:        #FEF2F2;
+  --color-red-border:    rgba(239, 68, 68, 0.22);
+  --color-red-text:      #991B1B;
+  --color-off-white:     #F7F5F1;
+  --color-mist:          #EDF0F5;
+  --color-white:         #FFFFFF;
+  --color-border:        #D5DCE8;
+  --color-text:          #1A2B4A;
+  --color-text-soft:     #5A6A82;
+  --color-text-ghost:    #A0AABB;
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* ── Reset ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-off-white);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
