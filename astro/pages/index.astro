@@ -1,18 +1,200 @@
 ---
-/**
- * Landing page — /
- *
- * The existing React LandingPage component is mounted as a client-only React
- * island so that MUI's Emotion styling works correctly. True zero-JS SSR would
- * require @emotion/server extraction; see LandingPageIsland.tsx for details.
- */
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { LandingPageIsland } from "@/islands/LandingPageIsland";
+import LandingNav from "../components/LandingNav.astro";
+import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
 ---
 
 <BaseLayout
   title="EuroVisaCalculator — Schengen 90/180 Day Tracker"
   description="Track your Schengen visa allowance across multiple travelers. Free, no account required. Official EU rolling-window algorithm."
 >
-  <LandingPageIsland client:only="react" />
+  <LandingNav />
+
+  <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <!-- Left column — static copy -->
+    <div class="hero__left">
+      <!-- Eyebrow badge -->
+      <div class="eyebrow">
+        <span class="eyebrow__dot"></span>
+        Free · No account required
+      </div>
+
+      <!-- Heading -->
+      <h1 class="hero__h1">
+        Know exactly how long you can <em>stay in Europe.</em>
+      </h1>
+
+      <!-- Sub-copy -->
+      <p class="hero__sub">
+        Track your 90-day Schengen allowance across multiple travelers. Add
+        trips, see remaining days, and plan without guessing.
+      </p>
+
+      <!-- Proof items -->
+      <div class="proof-items">
+        <span class="proof-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 1L9.8 5.8L15 6.2L11.2 9.6L12.4 15L8 12.4L3.6 15L4.8 9.6L1 6.2L6.2 5.8L8 1Z" />
+          </svg>
+          Official EU rolling-window algorithm
+        </span>
+        <span class="proof-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 8C2 4.686 4.686 2 8 2s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5.5 8l2 2L11 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Multiple travelers, one view
+        </span>
+        <span class="proof-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 2v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M2 8C2 4.686 4.686 2 8 2s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6z" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          URL-shareable results
+        </span>
+      </div>
+    </div>
+
+    <!-- Right column — calculator card (island added in next task) -->
+    <div class="hero__right">
+      <!-- HERO CARD PLACEHOLDER -->
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  /* ── Hero layout ────────────────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ── Left column ────────────────────────────────────────────────────────── */
+  .hero__left {
+    padding: 60px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  @media (min-width: 768px) {
+    .hero__left {
+      padding: 80px 80px;
+    }
+  }
+
+  /* ── Right column (placeholder until Task 4) ────────────────────────────── */
+  .hero__right {
+    background: var(--color-white);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    min-height: 400px;
+  }
+
+  @media (min-width: 768px) {
+    .hero__right {
+      border-top: none;
+      border-left: 1px solid var(--color-border);
+      padding: 80px 60px;
+      min-height: auto;
+    }
+  }
+
+  /* ── Eyebrow badge ──────────────────────────────────────────────────────── */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    background: var(--color-green-bg);
+    padding: 5px 14px;
+    border-radius: 100px;
+    width: fit-content;
+    border: 1px solid var(--color-green-border);
+    animation: fadeUp 0.5s 0.1s both ease-out;
+  }
+
+  .eyebrow__dot {
+    width: 7px;
+    height: 7px;
+    background: var(--color-green);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Heading ────────────────────────────────────────────────────────────── */
+  .hero__h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--color-navy);
+    letter-spacing: -0.01em;
+    margin: 0;
+    animation: fadeUp 0.6s 0.2s both ease-out;
+  }
+
+  .hero__h1 em {
+    font-style: italic;
+    color: var(--color-green);
+  }
+
+  /* ── Sub-copy ───────────────────────────────────────────────────────────── */
+  .hero__sub {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-soft);
+    max-width: 440px;
+    margin: 0;
+    animation: fadeUp 0.6s 0.3s both ease-out;
+  }
+
+  /* ── Proof items ────────────────────────────────────────────────────────── */
+  .proof-items {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s both ease-out;
+  }
+
+  .proof-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--color-text-soft);
+  }
+
+  .proof-item svg {
+    color: var(--color-green);
+    flex-shrink: 0;
+  }
+
+  /* ── Shared fade-up animation ───────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
