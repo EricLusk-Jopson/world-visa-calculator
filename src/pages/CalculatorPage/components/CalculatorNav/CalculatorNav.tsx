@@ -45,14 +45,6 @@ const NAV_SX = {
   boxShadow: `0 2px 12px ${alpha(tokens.navy, 0.18)}`,
 } as const;
 
-const LOGO_DOT_SX = {
-  width: 7,
-  height: 7,
-  bgcolor: tokens.green,
-  borderRadius: "50%",
-  flexShrink: 0,
-} as const;
-
 const LOGO_TEXT_SX = {
   fontFamily: tokens.fontDisplay,
   fontSize: "0.95rem",
@@ -131,10 +123,14 @@ export function CalculatorNav({
 
   return (
     <Box component="nav" sx={NAV_SX}>
-      {/* ── Logo ──────────────────────────────────────────────────────────── */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "7px" }}>
-        <Box sx={LOGO_DOT_SX} />
-        {/* Hide text when collapsed to avoid crowding the centred toggle */}
+        <img
+          src="/geo-dark.svg"
+          alt=""
+          width={32}
+          height={32}
+          style={{ display: "block", flexShrink: 0 }}
+        />
         {isDesktop && (
           <Typography sx={LOGO_TEXT_SX}>EuroVisaCalculator</Typography>
         )}

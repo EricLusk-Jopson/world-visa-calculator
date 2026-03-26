@@ -76,16 +76,11 @@ export function NavBar({
             "&:visited&:hover": { color: tokens.navyMid },
           }}
         >
-          {/* Green pulse dot */}
           <Box
-            component="span"
-            sx={{
-              width: 8,
-              height: 8,
-              bgcolor: tokens.green,
-              borderRadius: "50%",
-              flexShrink: 0,
-            }}
+            component="img"
+            src="/geo-light.svg"
+            alt=""
+            sx={{ width: 32, height: 32, display: "block", flexShrink: 0 }}
           />
           EuroVisaCalculator
         </Link>
