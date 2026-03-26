@@ -83,6 +83,60 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       </div>
     </div>
   </section>
+
+  <!-- ── HOW IT WORKS ─────────────────────────────────────────────────────── -->
+  <section id="how" class="how">
+    <div class="how__inner">
+      <p class="section-tag">How it works</p>
+      <h2 class="section-heading">
+        Simple enough to use<br />
+        in <em>thirty seconds.</em>
+      </h2>
+      <p class="section-sub">
+        No spreadsheets. No manual math. Just add your trips and get a clear answer.
+      </p>
+
+      <div class="steps-grid">
+        <!-- Step 01 -->
+        <div class="step-card">
+          <span class="step-card__num">01</span>
+          <div class="step-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4 17c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-card__title">Add your travelers</h3>
+          <p class="step-card__desc">Enter names for everyone you want to track — yourself, a partner, family members. Each person gets their own column.</p>
+        </div>
+        <!-- Step 02 -->
+        <div class="step-card step-card--border-left">
+          <span class="step-card__num">02</span>
+          <div class="step-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3 9h14" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 2v4M13 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-card__title">Log entry &amp; exit dates</h3>
+          <p class="step-card__desc">Add each Schengen trip with entry and exit dates. Mark ongoing trips with no exit date yet. Planned future trips show up too.</p>
+        </div>
+        <!-- Step 03 -->
+        <div class="step-card step-card--border-left">
+          <span class="step-card__num">03</span>
+          <div class="step-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-card__title">See remaining days instantly</h3>
+          <p class="step-card__desc">Color-coded statuses update live. Green means safe, yellow means caution, red means at risk. Share the link with your travel partner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -281,5 +335,144 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     font-size: 0.82rem;
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.5;
+  }
+
+  /* ── Shared section typography ──────────────────────────────────────────── */
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+    margin: 0 0 16px;
+  }
+
+  .section-tag::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--color-green);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-navy);
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+  }
+
+  .section-heading em { font-style: italic; }
+
+  .section-heading--light { color: var(--color-white); }
+
+  .section-sub {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-soft);
+    max-width: 520px;
+    margin: 0;
+  }
+
+  .section-sub--light { color: rgba(255, 255, 255, 0.6); }
+
+  /* ── How it works ───────────────────────────────────────────────────────── */
+  .how {
+    padding: 60px 24px;
+  }
+
+  @media (min-width: 768px) {
+    .how {
+      padding: 100px 80px;
+    }
+  }
+
+  .how__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 60px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    gap: 2px;
+    background: var(--color-border);
+  }
+
+  @media (min-width: 768px) {
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .step-card {
+    background: var(--color-white);
+    padding: 40px 36px;
+    transition: background 0.2s;
+  }
+
+  .step-card:hover { background: #FAFBFD; }
+
+  .step-card--border-left {
+    /* On mobile the gap handles separation; on desktop show left border */
+  }
+
+  @media (min-width: 768px) {
+    .step-card--border-left {
+      border-left: none; /* gap + background trick handles it */
+    }
+  }
+
+  .step-card__num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--color-text-soft);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step-card__icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-green-bg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-green);
+    margin-bottom: 20px;
+  }
+
+  .step-card__title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-navy);
+    margin: 0 0 10px;
+  }
+
+  .step-card__desc {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-soft);
+    line-height: 1.7;
+    margin: 0;
   }
 </style>
