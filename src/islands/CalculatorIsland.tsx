@@ -5,9 +5,9 @@ import { CalculatorPage } from "@/pages/CalculatorPage";
 /**
  * Astro island wrapper for the calculator page.
  *
- * Used with `client:load` in src/pages/app.astro so the full React app
- * hydrates immediately. Provides the MUI ThemeProvider that was previously
- * supplied by src/app/App.tsx in the Vite SPA.
+ * Used with `client:only="react"` in astro/pages/app.astro so the full React
+ * app hydrates on the client only. Provides the MUI ThemeProvider that was
+ * previously supplied by src/app/App.tsx in the Vite SPA.
  *
  * The CalculatorPage component and all its dependencies are left untouched;
  * this file is the sole Astro-layer addition for /app.

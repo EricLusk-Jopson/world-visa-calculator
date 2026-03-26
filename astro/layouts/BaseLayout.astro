@@ -2,11 +2,13 @@
 export interface Props {
   title?: string;
   description?: string;
+  canonicalUrl?: string;
 }
 
 const {
   title = "Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers",
   description = "Free Schengen calculator for couples, families and groups. Track each person's 90-day allowance with a visual timeline, overstay warnings, and shareable links. No account needed.",
+  canonicalUrl = "https://eurovisacalculator.com/",
 } = Astro.props;
 ---
 
@@ -24,11 +26,11 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://eurovisacalculator.com/" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp previews) ───────────── -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://eurovisacalculator.com/" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta
       property="og:title"
       content="Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers"
@@ -48,7 +50,7 @@ const {
 
     <!-- ── Twitter / X card ─────────────────────────────────────────────── -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://eurovisacalculator.com/" />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta
       name="twitter:title"
       content="Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers"
