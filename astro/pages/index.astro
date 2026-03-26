@@ -222,6 +222,80 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       </div>
     </div>
   </section>
+
+  <!-- ── RULES EXPLAINER ──────────────────────────────────────────────────── -->
+  <section id="rules" class="rules">
+    <div class="rules__inner">
+      <!-- Left: text -->
+      <div class="rules__text">
+        <p class="section-tag">The 90/180 Rule</p>
+        <h2 class="section-heading">
+          It's not "90 days<br />
+          then leave for 90." <em>It's more complex.</em>
+        </h2>
+        <p class="section-sub">
+          The rule applies to a <strong>rolling 180-day window</strong> — not
+          fixed half-years. At any given moment, look back 180 days. If you've
+          spent 90 or more days in Schengen during that window, you cannot enter.
+        </p>
+        <p class="rules__body">
+          This means days "roll off" your count as time passes, which can free
+          up allowance earlier than most travelers expect — but also means
+          miscalculations happen easily.
+        </p>
+        <a href="https://eurovisacalculator.com/app" class="btn-green" style="margin-top:32px;display:inline-flex;">
+          Calculate my days →
+        </a>
+      </div>
+
+      <!-- Right: demo card -->
+      <div class="allowance-card">
+        <!-- Card header — mimics browser chrome -->
+        <div class="allowance-card__header">
+          <span class="traffic-dot traffic-dot--red"></span>
+          <span class="traffic-dot traffic-dot--amber"></span>
+          <span class="traffic-dot traffic-dot--green"></span>
+          <span class="allowance-card__label">Traveler status · today</span>
+        </div>
+
+        <!-- Allowance bars -->
+        <div class="allowance-bars">
+          <!-- Emma — safe (43/90, 47 remaining) -->
+          <div class="allowance-row">
+            <span class="allowance-name">Emma</span>
+            <div class="allowance-track" role="progressbar" aria-valuenow="43" aria-valuemax="90" aria-label="Emma: 43 of 90 days used">
+              <div class="allowance-fill allowance-fill--safe" style="width:43%"></div>
+            </div>
+            <span class="allowance-badge allowance-badge--safe">47 days left</span>
+          </div>
+          <!-- Liam — caution (76/90, 14 remaining) -->
+          <div class="allowance-row">
+            <span class="allowance-name">Liam</span>
+            <div class="allowance-track" role="progressbar" aria-valuenow="76" aria-valuemax="90" aria-label="Liam: 76 of 90 days used">
+              <div class="allowance-fill allowance-fill--caution" style="width:76%"></div>
+            </div>
+            <span class="allowance-badge allowance-badge--caution">14 days left</span>
+          </div>
+          <!-- Sofia — danger (88/90, 2 remaining) -->
+          <div class="allowance-row">
+            <span class="allowance-name">Sofia</span>
+            <div class="allowance-track" role="progressbar" aria-valuenow="88" aria-valuemax="90" aria-label="Sofia: 88 of 90 days used">
+              <div class="allowance-fill allowance-fill--danger" style="width:88%"></div>
+            </div>
+            <span class="allowance-badge allowance-badge--danger">2 days left</span>
+          </div>
+        </div>
+
+        <!-- Rule pills -->
+        <div class="rule-pills">
+          <span class="rule-pill">Rolling 180-day window</span>
+          <span class="rule-pill">26 Schengen countries</span>
+          <span class="rule-pill">Entry + exit days count</span>
+          <span class="rule-pill">No fixed reset date</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -679,5 +753,161 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   .btn-green:hover {
     background: #00A05C;
     box-shadow: 0 6px 24px rgba(0, 185, 107, 0.35);
+  }
+
+  /* ── Rules explainer ────────────────────────────────────────────────────── */
+  .rules {
+    background: var(--color-mist);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 60px 24px;
+  }
+
+  @media (min-width: 768px) {
+    .rules {
+      padding: 100px 80px;
+    }
+  }
+
+  .rules__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .rules__inner {
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+    }
+  }
+
+  .rules__body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-soft);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 8px 0 0;
+  }
+
+  /* ── Allowance demo card ────────────────────────────────────────────────── */
+  .allowance-card {
+    background: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    box-shadow: 0 2px 24px rgba(12, 30, 60, 0.06);
+  }
+
+  .allowance-card__header {
+    background: var(--color-navy);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .traffic-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .traffic-dot--red   { background: var(--color-red); }
+  .traffic-dot--amber { background: var(--color-amber); }
+  .traffic-dot--green { background: var(--color-green); }
+
+  .allowance-card__label {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: 6px;
+  }
+
+  .allowance-bars {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .allowance-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .allowance-name {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-soft);
+    width: 60px;
+    flex-shrink: 0;
+  }
+
+  .allowance-track {
+    flex: 1;
+    height: 28px;
+    background: var(--color-mist);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .allowance-fill {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 5%;
+    border-radius: 4px;
+    /* width set inline as % of track; actual fill = value * 0.9 to stay within inset */
+    transform: scaleX(0.9);
+    transform-origin: left;
+  }
+
+  .allowance-fill--safe   { background: var(--color-green);  opacity: 0.75; }
+  .allowance-fill--caution { background: var(--color-amber); opacity: 0.85; }
+  .allowance-fill--danger  { background: var(--color-red);   opacity: 0.85; }
+
+  .allowance-badge {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .allowance-badge--safe    { background: var(--color-green-bg);  color: var(--color-green-text); }
+  .allowance-badge--caution { background: var(--color-amber-bg);  color: var(--color-amber-text); }
+  .allowance-badge--danger  { background: var(--color-red-bg);    color: var(--color-red-text); }
+
+  /* ── Rule pills ─────────────────────────────────────────────────────────── */
+  .rule-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px 20px 20px;
+    border-top: 1px solid var(--color-mist);
+  }
+
+  .rule-pill {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-green-text);
+    background: var(--color-mist);
+    padding: 3px 10px;
+    border-radius: 100px;
   }
 </style>
