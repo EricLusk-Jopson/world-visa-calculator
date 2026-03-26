@@ -5,7 +5,7 @@ import LandingPage from "@/pages/LandingPage";
 /**
  * Astro island wrapper for the landing page.
  *
- * Used with `client:only="react"` in src/pages/index.astro because MUI's
+ * Used with `client:only="react"` in astro/pages/index.astro because MUI's
  * Emotion-based styling requires the client-side runtime to inject CSS rules.
  * Without `client:only`, Astro would SSR the component to plain HTML but
  * Emotion would not produce the corresponding <style> tags (that requires
