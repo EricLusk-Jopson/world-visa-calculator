@@ -342,14 +342,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   .hero {
     min-height: 100vh;
     padding-top: 32px;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     align-items: stretch;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .hero {
-      grid-template-columns: 1fr 1fr;
+      flex-direction: row;
     }
   }
 
@@ -362,8 +362,9 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     gap: 28px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .hero__left {
+      flex: 1;
       padding: 80px 80px;
     }
   }
@@ -376,15 +377,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     align-items: center;
     justify-content: center;
     padding: 40px 24px;
-    min-height: 400px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .hero__right {
+      flex: 1;
       border-top: none;
       border-left: 1px solid var(--color-border);
       padding: 80px 60px;
-      min-height: auto;
     }
   }
 
@@ -517,6 +517,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   .trust-stat {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 8px;
   }
 
@@ -524,7 +526,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     font-family: var(--font-display);
     font-size: 2.4rem;
     font-weight: 400;
-    color: var(--color-white);
+    color: var(--color-green);
     line-height: 1;
   }
 
@@ -545,7 +547,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-soft);
+    color: var(--color-green);
     margin: 0 0 16px;
   }
 
@@ -568,7 +570,10 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     margin: 0 0 16px;
   }
 
-  .section-heading em { font-style: italic; }
+  .section-heading em {
+    font-style: italic;
+    color: var(--color-green);
+  }
 
   .section-heading--light { color: var(--color-white); }
 
@@ -715,14 +720,6 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       grid-template-columns: 1fr 1fr;
       gap: 60px;
     }
-  }
-
-  .section-tag--light {
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  .section-tag--light::before {
-    background: var(--color-green);
   }
 
   .features__right {
