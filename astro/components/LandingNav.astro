@@ -1,0 +1,152 @@
+---
+/**
+ * LandingNav — pure HTML/CSS fixed nav for the landing page.
+ *
+ * The frosted-glass "scrolled" effect is handled entirely with CSS
+ * scroll-driven animations (animation-timeline: scroll(root)), requiring
+ * zero JavaScript. At the top of the page the background is semi-transparent;
+ * it becomes more opaque and acquires a border after 24 px of scroll.
+ *
+ * Browser support (as of 2025): Chrome 115+, Firefox 110+, Safari 18+.
+ * Older browsers fall back to the lighter semi-transparent state permanently.
+ */
+---
+
+<nav class="landing-nav" aria-label="Main navigation">
+  <div class="landing-nav__inner">
+    <!-- Logo -->
+    <a href="#" class="landing-nav__logo">
+      <img src="/geo-trans.svg" alt="" width="32" height="32" />
+      EuroVisaCalculator
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="landing-nav__links" role="list">
+      <a href="#how" class="landing-nav__link" role="listitem">How it works</a>
+      <a href="#features" class="landing-nav__link" role="listitem">Features</a>
+      <a href="#rules" class="landing-nav__link" role="listitem">The 90/180 Rule</a>
+      <a
+        href="https://eurovisacalculator.com/app"
+        class="landing-nav__cta"
+        role="listitem"
+      >Open calculator →</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* ── Scroll-driven frosted glass ────────────────────────────────────────── */
+  @keyframes nav-scrolled {
+    from {
+      background: rgba(247, 245, 241, 0.72);
+      border-bottom-color: transparent;
+      box-shadow: none;
+    }
+    to {
+      background: rgba(247, 245, 241, 0.92);
+      border-bottom-color: var(--color-border);
+      box-shadow: 0 1px 0 var(--color-border);
+    }
+  }
+
+  .landing-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* default = unscrolled state */
+    background: rgba(247, 245, 241, 0.72);
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+    /* scroll-driven animation overrides above as user scrolls */
+    animation: nav-scrolled linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0px 24px;
+  }
+
+  /* ── Inner layout ───────────────────────────────────────────────────────── */
+  .landing-nav__inner {
+    height: 100%;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  @media (min-width: 900px) {
+    .landing-nav__inner {
+      padding: 0 40px;
+    }
+  }
+
+  /* ── Logo ───────────────────────────────────────────────────────────────── */
+  .landing-nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .landing-nav__logo:hover {
+    color: var(--color-navy-mid);
+  }
+
+  .landing-nav__logo img {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* ── Nav links ──────────────────────────────────────────────────────────── */
+  .landing-nav__links {
+    display: none;
+    align-items: center;
+    gap: 28px;
+  }
+
+  @media (min-width: 900px) {
+    .landing-nav__links {
+      display: flex;
+    }
+  }
+
+  .landing-nav__link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-soft);
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .landing-nav__link:hover {
+    color: var(--color-navy);
+  }
+
+  /* ── CTA pill ───────────────────────────────────────────────────────────── */
+  .landing-nav__cta {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-white);
+    background: var(--color-navy);
+    padding: 7px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+
+  .landing-nav__cta:hover {
+    background: var(--color-navy-mid);
+  }
+</style>
