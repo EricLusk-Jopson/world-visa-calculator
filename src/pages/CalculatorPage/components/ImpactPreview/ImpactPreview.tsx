@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Collapse from "@mui/material/Collapse";
 import { tokens } from "@/styles/theme";
 import { parseDate } from "@/features/calculator/utils/dates";
-import { ImpactBreakdown, StatusVariant } from "../travelers/travelerStatus";
+import type { ImpactBreakdown, StatusVariant } from "../travelers/travelerStatus";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

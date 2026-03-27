@@ -25,7 +25,7 @@ import {
   addDays,
 } from "@/features/calculator/utils/dates";
 import {
-  ReturnMarker,
+  type ReturnMarker,
   computeReturnMarkers,
 } from "@/features/calculator/utils/returnmarkers";
 import {
