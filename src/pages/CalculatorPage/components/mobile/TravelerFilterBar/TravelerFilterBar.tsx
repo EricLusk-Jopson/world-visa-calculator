@@ -14,7 +14,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import { tokens } from "@/styles/theme";
-import { Traveler, VisaRegion } from "@/types";
+import { type Traveler, VisaRegion } from "@/types";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
 import {
   parseDate,

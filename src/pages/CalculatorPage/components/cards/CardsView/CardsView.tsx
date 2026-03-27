@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import { Traveler, Trip } from "@/types";
+import type { Traveler, Trip } from "@/types";
 import { TravelerCardsColumn } from "../TravelerCardsColumn";
 import { tokens } from "@/styles/theme";
 import { SIDEBAR_WIDTH } from "../../timeline/timelineConstants";

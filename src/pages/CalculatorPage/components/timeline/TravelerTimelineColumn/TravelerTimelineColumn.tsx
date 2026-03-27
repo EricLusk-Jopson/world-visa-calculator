@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import { alpha } from "@mui/material/styles";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Traveler, Trip, VisaRegion } from "@/types";
+import { type Traveler, type Trip, VisaRegion } from "@/types";
 
 import { tokens } from "@/styles/theme";
 import { TimelineTripCard } from "../../trips/TimelineTripCard";
@@ -25,11 +25,11 @@ import {
   addDays,
 } from "@/features/calculator/utils/dates";
 import {
-  ReturnMarker,
+  type ReturnMarker,
   computeReturnMarkers,
 } from "@/features/calculator/utils/returnmarkers";
 import {
-  AgingMarker,
+  type AgingMarker,
   computeAgingMarkers,
 } from "@/features/calculator/utils/agingMarkers";
 import {
