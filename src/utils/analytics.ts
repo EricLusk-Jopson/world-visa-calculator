@@ -1,4 +1,4 @@
-const ANALYTICS_URL = import.meta.env.VITE_ANALYTICS_URL as string;
+const ANALYTICS_URL = import.meta.env.PUBLIC_ANALYTICS_URL as string;
 
 console.log("[analytics] ANALYTICS_URL =", ANALYTICS_URL || "(not set)");
 console.log("[analytics] all import.meta.env keys:", Object.keys(import.meta.env));
