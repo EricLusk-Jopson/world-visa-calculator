@@ -111,9 +111,9 @@ export function CalculatorNav({
 }: CalculatorNavProps) {
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
 
-  // Collapse to kebab menu below 1051px to prevent action buttons
+  // Collapse to kebab menu below 1300px to prevent action buttons
   // from overlapping the absolutely-centred view toggle.
-  const isDesktop = useMediaQuery("(min-width:1051px)");
+  const isDesktop = useMediaQuery("(min-width:1300px)");
 
   const closeMenu = () => setMenuAnchor(null);
 
