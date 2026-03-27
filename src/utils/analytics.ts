@@ -1,6 +1,8 @@
 const ANALYTICS_URL = import.meta.env.VITE_ANALYTICS_URL as string;
 
 console.log("[analytics] ANALYTICS_URL =", ANALYTICS_URL || "(not set)");
+console.log("[analytics] all import.meta.env keys:", Object.keys(import.meta.env));
+console.log("[analytics] import.meta.env.VITE_ANALYTICS_URL (raw):", import.meta.env.VITE_ANALYTICS_URL);
 
 interface EventProperties {
   [key: string]: string | number | boolean | undefined;
