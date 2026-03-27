@@ -10,6 +10,7 @@ export function trackEvent(event: string, properties: EventProperties = {}): voi
   console.log("[analytics] trackEvent called:", event, "| URL set:", !!ANALYTICS_URL);
 
   // Silently skip if no endpoint configured (e.g. local dev)
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!ANALYTICS_URL) {
     console.warn("[analytics] Skipping — VITE_ANALYTICS_URL is not set");
     return;
