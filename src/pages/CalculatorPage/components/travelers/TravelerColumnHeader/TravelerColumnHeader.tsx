@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { Traveler } from "@/types";
-import { TravelerStatus } from "../travelerStatus";
+import type { TravelerStatus } from "../travelerStatus";
 import {
   AVAILABLE_DAYS_DESCRIPTION,
   MAX_STAY_DESCRIPTION,

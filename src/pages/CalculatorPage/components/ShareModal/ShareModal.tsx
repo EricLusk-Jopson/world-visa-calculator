@@ -375,7 +375,46 @@ export function ShareModal({
         </Box>
 
         {/* ── Footer ── */}
-        <Box sx={{ px: "20px", pb: "20px", pt: "4px" }}>
+        <Box sx={{ px: "20px", pb: "20px", pt: "4px", display: "flex", flexDirection: "column", gap: "8px" }}>
+          {/* Ko-fi support CTA */}
+          <Box
+            component="a"
+            href="https://ko-fi.com/ericluskjopson"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              px: "14px",
+              py: "10px",
+              bgcolor: "rgba(255, 94, 91, 0.06)",
+              border: "1px solid rgba(255, 94, 91, 0.2)",
+              borderRadius: "10px",
+              textDecoration: "none",
+              transition: "background 0.15s, border-color 0.15s",
+              "&:hover": {
+                bgcolor: "rgba(255, 94, 91, 0.11)",
+                borderColor: "rgba(255, 94, 91, 0.4)",
+              },
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF5E5B" aria-hidden="true" style={{ flexShrink: 0 }}>
+              <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+            </svg>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <Typography sx={{ fontSize: "0.8rem", fontWeight: 700, color: "#FF5E5B", lineHeight: 1.3 }}>
+                Support this project
+              </Typography>
+              <Typography sx={{ fontSize: "0.72rem", color: tokens.textSoft, lineHeight: 1.4, mt: "1px" }}>
+                EuroVisaCalculator is free. If it's helped you, consider buying me a coffee.
+              </Typography>
+            </Box>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style={{ flexShrink: 0, color: tokens.textGhost }}>
+              <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Box>
+
           <Box
             component="button"
             onClick={onClose}

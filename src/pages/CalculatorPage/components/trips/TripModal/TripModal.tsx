@@ -33,7 +33,7 @@ import {
   getStatusVariant,
 } from "../../travelers/travelerStatus";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
-import { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
+import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import { trackEvent } from "@/utils/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────

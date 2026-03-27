@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { Traveler, Trip, VisaRegion } from "@/types";
+import { type Traveler, type Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
 
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";

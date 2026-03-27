@@ -2,8 +2,7 @@ import { useState, useCallback, useMemo, useEffect } from "react";
 import { trackEvent } from "@/utils/analytics";
 import Box from "@mui/material/Box";
 import { keyframes } from "@mui/system";
-import { Traveler, Trip } from "@/types";
-import type { ShareableState } from "@/types";
+import type { Traveler, Trip, ShareableState } from "@/types";
 import { tokens } from "@/styles/theme";
 import { useUrlSync } from "@/features/sharing";
 import {
