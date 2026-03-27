@@ -5,8 +5,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import { alpha } from "@mui/material/styles";
-import { DaysRemainingDisplay } from "../../../components/ui/DaysRemainingDisplay/DaysRemainingDisplay";
-import type { DaysVariant } from "../../../components/ui/DaysRemainingDisplay/DaysRemainingDisplay";
+import { DaysRemainingDisplay } from "@/components/ui/DaysRemainingDisplay/DaysRemainingDisplay";
+import type { DaysVariant } from "@/components/ui/DaysRemainingDisplay/DaysRemainingDisplay";
 import { tokens } from "@/styles/theme";
 
 // ── 90/180 algorithm ─────────────────────────────────────────────────────────

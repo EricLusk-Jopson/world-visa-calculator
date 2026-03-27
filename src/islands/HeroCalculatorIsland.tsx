@@ -1,6 +1,6 @@
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "@/styles/theme";
-import { HeroCalculatorCard } from "@/pages/LandingPage/components/HeroCalculatorCard";
+import { HeroCalculatorCard } from "@/components/HeroCalculatorCard";
 
 /**
  * Astro island wrapper for the HeroCalculatorCard.
