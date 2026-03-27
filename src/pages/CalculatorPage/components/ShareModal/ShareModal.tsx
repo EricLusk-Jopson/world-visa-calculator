@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { tokens } from "@/styles/theme";
+import { trackEvent } from "@/utils/analytics";
 
 interface ShareModalProps {
   open: boolean;
@@ -23,6 +24,7 @@ export function ShareModal({
 
   const handleCopy = useCallback(async () => {
     await onCopy();
+    trackEvent("link_copied");
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
   }, [onCopy]);

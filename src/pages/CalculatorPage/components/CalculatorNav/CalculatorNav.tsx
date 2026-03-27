@@ -11,6 +11,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { tokens } from "@/styles/theme";
 import { NavButton } from "./NavButton";
+import { trackEvent } from "@/utils/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -142,7 +143,7 @@ export function CalculatorNav({
           <Box
             key={v}
             component="button"
-            onClick={() => onViewChange(v)}
+            onClick={() => { onViewChange(v); trackEvent("view_toggled", { view_type: v }); }}
             sx={viewToggleButtonSx(view === v)}
           >
             {v}

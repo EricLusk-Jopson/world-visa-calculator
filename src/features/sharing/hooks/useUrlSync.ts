@@ -24,6 +24,7 @@ import {
   decodeState,
 } from "../utils/urlEncoding";
 import type { ShareableState } from "@/types";
+import { trackEvent } from "@/utils/analytics";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -108,6 +109,7 @@ export const useUrlSync = ({
       onHydrate(urlResult.state);
       // Persist the URL state to localStorage so it survives navigation.
       saveToLocalStorage(urlResult.state);
+      trackEvent("data_loaded_from_url");
       onHydrated?.();
       return;
     }
@@ -116,6 +118,7 @@ export const useUrlSync = ({
     const lsState = loadFromLocalStorage();
     if (lsState && lsState.travelers.length > 0) {
       onHydrate(lsState);
+      trackEvent("data_loaded_from_localstorage");
       onHydrated?.();
       return;
     }
