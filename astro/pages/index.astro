@@ -328,11 +328,24 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         making travel decisions.<br />
         Not legal advice. Schengen rules apply to all non-EU/EEA nationals.
       </p>
-      <nav class="footer__links" aria-label="Footer navigation">
-        <a href="#" class="footer__link">Privacy</a>
-        <a href="#how" class="footer__link">How it works</a>
-        <a href="https://eurovisacalculator.com/app" class="footer__link">Calculator</a>
-      </nav>
+      <div class="footer__right">
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#how" class="footer__link">How it works</a>
+          <a href="https://eurovisacalculator.com/app" class="footer__link">Calculator</a>
+        </nav>
+        <a
+          href="https://ko-fi.com/ericluskjopson"
+          class="footer__kofi"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+          </svg>
+          Support this project
+        </a>
+      </div>
     </div>
   </footer>
 </BaseLayout>
@@ -1083,9 +1096,43 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     }
   }
 
+  .footer__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .footer__right {
+      align-items: flex-end;
+    }
+  }
+
   .footer__links {
     display: flex;
     gap: 24px;
+  }
+
+  .footer__kofi {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #FF5E5B;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 94, 91, 0.35);
+    background: rgba(255, 94, 91, 0.08);
+    transition: background 0.18s, border-color 0.18s;
+  }
+
+  .footer__kofi:hover {
+    background: rgba(255, 94, 91, 0.16);
+    border-color: rgba(255, 94, 91, 0.6);
   }
 
   .footer__link {
