@@ -18,6 +18,7 @@ import {
 } from "@/features/calculator/utils/dates";
 import { AddTripButton } from "./AddTripButton";
 import { MIN_COLUMN_WIDTH } from "../CardsView/CardsView";
+import { DisclaimerBanner } from "@/features/calculator/components/DisclaimerBanner";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -127,6 +128,7 @@ export function TravelerCardsColumn({
           compact={compact}
           onDelete={() => onDeleteTraveler(traveler.id)}
         />
+        <DisclaimerBanner daysRemaining={status.daysRemaining} />
       </Box>
 
       {/* Trip list */}

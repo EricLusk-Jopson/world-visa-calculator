@@ -1,6 +1,9 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { trackEvent } from "@/utils/analytics";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router";
 import { keyframes } from "@mui/system";
 import type { Traveler, Trip, ShareableState } from "@/types";
 import { tokens } from "@/styles/theme";
@@ -363,6 +366,37 @@ export function CalculatorPage() {
             <LoadingScreen />
           </Box>
         )}
+      </Box>
+
+      <Box
+        component="footer"
+        sx={{
+          py: 1.5,
+          px: 2,
+          textAlign: "center",
+          borderTop: `1px solid ${tokens.border}`,
+          bgcolor: tokens.offWhite,
+          flexShrink: 0,
+        }}
+      >
+        <Typography variant="caption" color="text.secondary">
+          <Link component={RouterLink} to="/privacy" color="inherit">
+            Privacy Policy
+          </Link>
+          {" · "}
+          EuroVisaCalculator is a free tool. No ads, no account required.
+        </Typography>
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          display="block"
+          sx={{ mt: 0.5, opacity: 0.7 }}
+        >
+          Informational only — not legal advice. Always verify dates against
+          official records. We recommend leaving at least 2 days unused as a
+          buffer. Border decisions are at the discretion of member state
+          authorities.
+        </Typography>
       </Box>
 
       <TravelerModal
