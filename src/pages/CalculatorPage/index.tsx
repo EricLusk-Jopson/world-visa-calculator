@@ -2,8 +2,6 @@ import { useState, useCallback, useMemo, useEffect } from "react";
 import { trackEvent } from "@/utils/analytics";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import { Link as RouterLink } from "react-router";
 import { keyframes } from "@mui/system";
 import type { Traveler, Trip, ShareableState } from "@/types";
 import { tokens } from "@/styles/theme";
@@ -380,9 +378,9 @@ export function CalculatorPage() {
         }}
       >
         <Typography variant="caption" color="text.secondary">
-          <Link component={RouterLink} to="/privacy" color="inherit">
+          <a href="/privacy" style={{ color: "inherit" }}>
             Privacy Policy
-          </Link>
+          </a>
           {" · "}
           EuroVisaCalculator is a free tool. No ads, no account required.
         </Typography>
