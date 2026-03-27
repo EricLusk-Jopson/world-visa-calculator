@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -97,6 +98,53 @@ const MENU_ITEM_SX = {
   "&.Mui-disabled": { color: alpha(tokens.white, 0.25), opacity: 1 },
 } as const;
 
+const MENU_PAPER_SX = {
+  bgcolor: tokens.navyMid,
+  border: `1px solid ${alpha(tokens.white, 0.1)}`,
+  boxShadow: `0 8px 32px ${alpha(tokens.navy, 0.5)}`,
+  borderRadius: "10px",
+  minWidth: 190,
+  mt: "6px",
+  colorScheme: "dark",
+} as const;
+
+// ─── Ko-fi link (shared between tiers) ────────────────────────────────────────
+
+function KofiLink() {
+  return (
+    <Link
+      href="https://ko-fi.com/ericluskjopson"
+      target="_blank"
+      rel="noopener noreferrer"
+      underline="none"
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: "5px",
+        px: "14px",
+        py: "6px",
+        borderRadius: "7px",
+        fontFamily: tokens.fontBody,
+        fontSize: "0.78rem",
+        fontWeight: 600,
+        color: "#FF5E5B",
+        bgcolor: alpha("#FF5E5B", 0.1),
+        border: `1px solid ${alpha("#FF5E5B", 0.25)}`,
+        transition: "background 0.15s, border-color 0.15s",
+        "&:hover": {
+          bgcolor: alpha("#FF5E5B", 0.18),
+          borderColor: alpha("#FF5E5B", 0.5),
+        },
+      }}
+    >
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+      </svg>
+      Support
+    </Link>
+  );
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function CalculatorNav({
@@ -109,20 +157,82 @@ export function CalculatorNav({
   onClearAll,
 }: CalculatorNavProps) {
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
+  const [addMenuAnchor, setAddMenuAnchor] = useState<null | HTMLElement>(null);
 
-  // Collapse to kebab menu below 1051px to prevent action buttons
-  // from overlapping the absolutely-centred view toggle.
-  const isDesktop = useMediaQuery("(min-width:1051px)");
+  // Breakpoint tiers
+  const isXL = useMediaQuery("(min-width:1300px)");     // full individual buttons
+  const isLarge = useMediaQuery("(min-width:1000px)");  // clear all + support + share + combo add
+  const isMedium = useMediaQuery("(min-width:780px)");  // clear all + share + combo add
 
   const closeMenu = () => setMenuAnchor(null);
+  const closeAddMenu = () => setAddMenuAnchor(null);
 
   const menuAction = (fn: () => void) => () => {
     fn();
     closeMenu();
   };
 
+  // ── Combo-add dropdown button ──────────────────────────────────────────────
+  const ComboAddButton = (
+    <>
+      <Box
+        component="button"
+        onClick={(e: React.MouseEvent<HTMLElement>) => setAddMenuAnchor(e.currentTarget)}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "5px",
+          px: "14px",
+          py: "6px",
+          borderRadius: "7px",
+          fontFamily: tokens.fontBody,
+          fontSize: "0.78rem",
+          fontWeight: 600,
+          cursor: "pointer",
+          transition: "background 0.15s",
+          bgcolor: tokens.green,
+          border: "1px solid transparent",
+          color: tokens.white,
+          "&:hover": { bgcolor: tokens.greenText },
+        }}
+      >
+        <AddIcon sx={ICON_SX} />
+        Add
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" style={{ marginLeft: 1 }}>
+          <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </Box>
+
+      <Menu
+        anchorEl={addMenuAnchor}
+        open={Boolean(addMenuAnchor)}
+        onClose={closeAddMenu}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        slotProps={{ paper: { sx: MENU_PAPER_SX } }}
+      >
+        <MenuItem
+          onClick={() => { onAddTraveler(); closeAddMenu(); }}
+          sx={MENU_ITEM_SX}
+        >
+          <AddIcon sx={ICON_SX} />
+          Add Traveler
+        </MenuItem>
+        <MenuItem
+          onClick={() => { onAddTrip(); closeAddMenu(); }}
+          disabled={travelerCount === 0}
+          sx={MENU_ITEM_SX}
+        >
+          <AddIcon sx={ICON_SX} />
+          Add Trip
+        </MenuItem>
+      </Menu>
+    </>
+  );
+
   return (
     <Box component="nav" sx={NAV_SX}>
+      {/* ── Logo ──────────────────────────────────────────────────────────── */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "7px" }}>
         <img
           src="/geo-dark.svg"
@@ -131,7 +241,7 @@ export function CalculatorNav({
           height={32}
           style={{ display: "block", flexShrink: 0 }}
         />
-        {isDesktop && (
+        {isMedium && (
           <Typography sx={LOGO_TEXT_SX}>EuroVisaCalculator</Typography>
         )}
       </Box>
@@ -152,8 +262,9 @@ export function CalculatorNav({
 
       {/* ── Right side ────────────────────────────────────────────────────── */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        {/* Desktop: individual action buttons */}
-        {isDesktop && (
+
+        {/* XL ≥1300px: clear all · support · share · add traveler · add trip */}
+        {isXL && (
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <NavButton
               variant="destructive"
@@ -163,6 +274,8 @@ export function CalculatorNav({
             >
               Clear All
             </NavButton>
+
+            <KofiLink />
 
             <NavButton
               variant="ghost"
@@ -191,8 +304,58 @@ export function CalculatorNav({
           </Box>
         )}
 
-        {/* Mobile/narrow: kebab menu */}
-        {!isDesktop && (
+        {/* Large 900–1299px: clear all · support · share · combo add */}
+        {isLarge && !isXL && (
+          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <NavButton
+              variant="destructive"
+              onClick={onClearAll}
+              disabled={travelerCount === 0}
+              icon={<DeleteOutlineIcon sx={ICON_SX} />}
+            >
+              Clear All
+            </NavButton>
+
+            <KofiLink />
+
+            <NavButton
+              variant="ghost"
+              onClick={onShare}
+              icon={<IosShareIcon sx={ICON_SX} />}
+            >
+              Share
+            </NavButton>
+
+            {ComboAddButton}
+          </Box>
+        )}
+
+        {/* Medium 640–899px: clear all · share · combo add */}
+        {isMedium && !isLarge && (
+          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <NavButton
+              variant="destructive"
+              onClick={onClearAll}
+              disabled={travelerCount === 0}
+              icon={<DeleteOutlineIcon sx={ICON_SX} />}
+            >
+              Clear All
+            </NavButton>
+
+            <NavButton
+              variant="ghost"
+              onClick={onShare}
+              icon={<IosShareIcon sx={ICON_SX} />}
+            >
+              Share
+            </NavButton>
+
+            {ComboAddButton}
+          </Box>
+        )}
+
+        {/* Small <640px: kebab menu with everything */}
+        {!isMedium && (
           <Box>
             <Box
               component="button"
@@ -225,19 +388,7 @@ export function CalculatorNav({
               onClose={closeMenu}
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-              slotProps={{
-                paper: {
-                  sx: {
-                    bgcolor: tokens.navyMid,
-                    border: `1px solid ${alpha(tokens.white, 0.1)}`,
-                    boxShadow: `0 8px 32px ${alpha(tokens.navy, 0.5)}`,
-                    borderRadius: "10px",
-                    minWidth: 190,
-                    mt: "6px",
-                    colorScheme: "dark",
-                  },
-                },
-              }}
+              slotProps={{ paper: { sx: MENU_PAPER_SX } }}
             >
               <MenuItem onClick={menuAction(onAddTraveler)} sx={MENU_ITEM_SX}>
                 <AddIcon sx={ICON_SX} />
@@ -256,6 +407,20 @@ export function CalculatorNav({
               <MenuItem onClick={menuAction(onShare)} sx={MENU_ITEM_SX}>
                 <IosShareIcon sx={ICON_SX} />
                 Share
+              </MenuItem>
+
+              <MenuItem
+                component="a"
+                href="https://ko-fi.com/ericluskjopson"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+                sx={{ ...MENU_ITEM_SX, color: "#FF5E5B", "&:hover": { bgcolor: alpha("#FF5E5B", 0.1), color: "#FF5E5B" } }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+                </svg>
+                Support this project
               </MenuItem>
 
               <Divider
