@@ -161,8 +161,8 @@ export function CalculatorNav({
 
   // Breakpoint tiers
   const isXL = useMediaQuery("(min-width:1300px)");     // full individual buttons
-  const isLarge = useMediaQuery("(min-width:900px)");   // clear all + support + share + combo add
-  const isMedium = useMediaQuery("(min-width:640px)");  // clear all + share + combo add
+  const isLarge = useMediaQuery("(min-width:1000px)");  // clear all + support + share + combo add
+  const isMedium = useMediaQuery("(min-width:780px)");  // clear all + share + combo add
 
   const closeMenu = () => setMenuAnchor(null);
   const closeAddMenu = () => setAddMenuAnchor(null);
@@ -241,7 +241,7 @@ export function CalculatorNav({
           height={32}
           style={{ display: "block", flexShrink: 0 }}
         />
-        {isXL && (
+        {isMedium && (
           <Typography sx={LOGO_TEXT_SX}>EuroVisaCalculator</Typography>
         )}
       </Box>
