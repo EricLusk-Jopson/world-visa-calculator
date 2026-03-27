@@ -190,7 +190,7 @@ export function CalculatorNav({
           fontWeight: 600,
           cursor: "pointer",
           transition: "background 0.15s",
-          bgcolor: travelerCount === 0 ? alpha(tokens.green, 0.45) : tokens.green,
+          bgcolor: tokens.green,
           border: "1px solid transparent",
           color: tokens.white,
           "&:hover": { bgcolor: tokens.greenText },
