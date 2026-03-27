@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
+import { trackEvent } from "@/utils/analytics";
 import Box from "@mui/material/Box";
 import { keyframes } from "@mui/system";
 import type { Traveler, Trip, ShareableState } from "@/types";
@@ -99,12 +100,19 @@ export function CalculatorPage() {
   }, []);
 
   const handleTravelerSave = useCallback((name: string) => {
-    setTravelers((prev) => [...prev, makeTraveler(name)]);
+    setTravelers((prev) => {
+      trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+      return [...prev, makeTraveler(name)];
+    });
     setModal(CLOSED_MODAL);
   }, []);
 
   const handleDeleteTraveler = useCallback((travelerId: string) => {
-    setTravelers((prev) => prev.filter((t) => t.id !== travelerId));
+    setTravelers((prev) => {
+      const next = prev.filter((t) => t.id !== travelerId);
+      trackEvent("traveler_removed", { remaining_travelers: next.length });
+      return next;
+    });
   }, []);
 
   // ── Trip actions ────────────────────────────────────────────────────────────
@@ -146,6 +154,14 @@ export function CalculatorPage() {
 
   const handleTripSave = useCallback(
     (travelerIds: string[], trip: Trip) => {
+      if (modal.mode === "add") {
+        trackEvent("trip_added", {
+          traveler_count: travelers.length,
+          is_ongoing: !trip.exitDate,
+        });
+      } else {
+        trackEvent("trip_edited");
+      }
       setTravelers((prev) =>
         prev.map((t) => {
           const wasOnTrip = modal.travelerIds.includes(t.id);
@@ -196,12 +212,13 @@ export function CalculatorPage() {
       );
       setModal(CLOSED_MODAL);
     },
-    [modal.trip, modal.travelerIds],
+    [modal.trip, modal.travelerIds, modal.mode, travelers.length],
   );
 
   /** Deletes the trip from every traveler in modal.travelerIds */
   const handleTripDelete = useCallback(() => {
     if (modal.travelerIds.length === 0 || !modal.trip) return;
+    trackEvent("trip_deleted");
     const { travelerIds, trip } = modal;
     setTravelers((prev) =>
       prev.map((t) =>

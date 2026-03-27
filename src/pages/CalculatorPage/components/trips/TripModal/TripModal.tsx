@@ -34,6 +34,7 @@ import {
 } from "../../travelers/travelerStatus";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
+import { trackEvent } from "@/utils/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -412,6 +413,12 @@ export function TripModal({
     }
     // overlapError is already shown inline — guard here as a safety net
     if (overlapError) return;
+
+    if (impactStatus && impactStatus.daysRemaining < 0) {
+      trackEvent("overstay_warning_shown", {
+        days_over: Math.abs(impactStatus.daysRemaining),
+      });
+    }
 
     const trip: Trip = {
       id: initialTrip?.id ?? crypto.randomUUID(),
