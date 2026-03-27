@@ -29,7 +29,7 @@ import {
   computeReturnMarkers,
 } from "@/features/calculator/utils/returnmarkers";
 import {
-  AgingMarker,
+  type AgingMarker,
   computeAgingMarkers,
 } from "@/features/calculator/utils/agingMarkers";
 import {
