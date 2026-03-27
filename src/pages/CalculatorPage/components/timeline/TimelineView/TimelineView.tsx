@@ -1,6 +1,6 @@
 import { useEffect, useRef, useMemo } from "react";
 import Box from "@mui/material/Box";
-import { Traveler, Trip, VisaRegion } from "@/types";
+import { type Traveler, type Trip, VisaRegion } from "@/types";
 
 import { tokens } from "@/styles/theme";
 import { DateSidebar } from "../DateSidebar";

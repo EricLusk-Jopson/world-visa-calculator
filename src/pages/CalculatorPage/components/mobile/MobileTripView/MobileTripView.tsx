@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import { format } from "date-fns";
 import AddIcon from "@mui/icons-material/Add";
-import { Traveler, Trip, VisaRegion } from "@/types";
+import { type Traveler, type Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
 import {
   parseDate,
