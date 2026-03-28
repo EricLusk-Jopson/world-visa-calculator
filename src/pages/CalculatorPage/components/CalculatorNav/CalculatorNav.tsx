@@ -35,7 +35,8 @@ const ICON_SX = { fontSize: "0.95rem" } as const;
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const NAV_SX = {
-  height: 54,
+  height: "calc(54px + env(safe-area-inset-top))",
+  paddingTop: "env(safe-area-inset-top)",
   bgcolor: tokens.navy,
   display: "flex",
   alignItems: "center",
