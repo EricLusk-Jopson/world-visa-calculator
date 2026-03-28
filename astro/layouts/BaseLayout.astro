@@ -5,14 +5,12 @@ export interface Props {
   title?: string;
   description?: string;
   canonicalUrl?: string;
-  themeColor?: string;
 }
 
 const {
   title = "Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers",
   description = "Free Schengen calculator for couples, families and groups. Track each person's 90-day allowance with a visual timeline, overstay warnings, and shareable links. No account needed.",
   canonicalUrl = "https://eurovisacalculator.com/",
-  themeColor,
 } = Astro.props;
 ---
 
@@ -20,13 +18,10 @@ const {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ── Google Search Console verification ──────────────────────────────── -->
     <meta name="google-site-verification" content="9DuKyzXPa-bHZ6MP46KOf7z9n0KLoEnTwIAYeP7iWc8" />
-
-    <!-- ── Theme color (mobile browser chrome) ──────────────────────────── -->
-    {themeColor && <meta name="theme-color" content={themeColor} />}
 
     <!-- ── Favicon ──────────────────────────────────────────────────────── -->
     <link rel="icon" type="image/svg+xml" href="/geo-dark.svg" />
@@ -99,8 +94,6 @@ const {
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-
-    <slot name="head" />
   </head>
   <body>
     <slot />

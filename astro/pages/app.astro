@@ -20,11 +20,6 @@ import { CalculatorIsland } from "@/islands/CalculatorIsland";
   title="EuroVisaCalculator — Calculator"
   description="Track your Schengen visa allowance. Add trips, see remaining days, and share a link with your travel partner."
   canonicalUrl="https://eurovisacalculator.com/app"
-  themeColor="#0C1E3C"
 >
-  <style slot="head" is:global>
-    /* Ensures the area behind the iOS status bar is navy before React hydrates */
-    html, body { background: #0C1E3C; margin: 0; }
-  </style>
   <CalculatorIsland client:only="react" />
 </BaseLayout>
