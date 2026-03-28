@@ -5,12 +5,14 @@ export interface Props {
   title?: string;
   description?: string;
   canonicalUrl?: string;
+  themeColor?: string;
 }
 
 const {
   title = "Schengen Visa Calculator — Track 90/180 Days for Multiple Travelers",
   description = "Free Schengen calculator for couples, families and groups. Track each person's 90-day allowance with a visual timeline, overstay warnings, and shareable links. No account needed.",
   canonicalUrl = "https://eurovisacalculator.com/",
+  themeColor,
 } = Astro.props;
 ---
 
@@ -22,6 +24,9 @@ const {
 
     <!-- ── Google Search Console verification ──────────────────────────────── -->
     <meta name="google-site-verification" content="9DuKyzXPa-bHZ6MP46KOf7z9n0KLoEnTwIAYeP7iWc8" />
+
+    <!-- ── Theme color (mobile browser chrome) ──────────────────────────── -->
+    {themeColor && <meta name="theme-color" content={themeColor} />}
 
     <!-- ── Favicon ──────────────────────────────────────────────────────── -->
     <link rel="icon" type="image/svg+xml" href="/geo-dark.svg" />
