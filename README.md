@@ -1,73 +1,102 @@
-# React + TypeScript + Vite
+# EuroVisaCalculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Track your Schengen 90/180-day visa allowance across multiple travelers. Free, no account required.
 
-Currently, two official plugins are available:
+**Live:** [eurovisacalculator.com](https://eurovisacalculator.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## What it does
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The Schengen Area allows non-EU/EEA nationals a maximum of 90 days in any rolling 180-day window. This tool implements that rule and lets you:
 
-## Expanding the ESLint configuration
+- Track multiple travelers (couples, families, groups) simultaneously
+- Add past, current, and planned Schengen trips
+- See days used, days remaining, and earliest re-entry dates in real time
+- Switch between a **Timeline** view and a **Cards** view
+- Share your current state with anyone via a URL — no account, no backend
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+All trip data lives in your browser (URL + local storage). Nothing is sent to a server.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Layer | Tech |
+|---|---|
+| Framework | [Astro](https://astro.build) (static pages) + React 19 (interactive calculator) |
+| UI | [Material UI v7](https://mui.com) + Emotion |
+| Routing | React Router v7 (within the `/app` island) |
+| Date logic | date-fns v4 |
+| Language | TypeScript |
+| Testing | Vitest |
+| Build | Astro (wraps Vite) |
+
+---
+
+## Project structure
+
+```
+astro/
+  layouts/BaseLayout.astro     # HTML shell, SEO meta tags, fonts
+  pages/
+    index.astro                # Landing page (/)
+    app.astro                  # Calculator shell (/app)
+    privacy.astro              # Privacy policy (/privacy)
+  components/LandingNav.astro  # Frosted-glass nav for static pages
+
+src/
+  app/
+    App.tsx                    # React root — ThemeProvider + RouterProvider
+    router.tsx                 # React Router config
+  pages/
+    CalculatorPage/            # Main interactive calculator
+    SharedPage.tsx             # Read-only shared view (/shared/:token)
+    NotFoundPage.tsx           # 404 fallback
+  features/
+    calculator/utils/          # Schengen rule logic, date helpers
+    sharing/                   # URL encoding/decoding for shareable links
+  components/ui/               # Reusable MUI-based UI primitives
+  islands/
+    CalculatorIsland.tsx       # Astro island wrapper (client:only)
+  styles/theme.ts              # MUI theme + design tokens
+  types/index.ts               # Shared TypeScript types
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Routes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Path | Description |
+|---|---|
+| `/` | Marketing landing page |
+| `/app` | Interactive calculator |
+| `/shared/:token` | Read-only shared view (decoded from URL token) |
+| `/privacy` | Privacy policy |
+
+---
+
+## Getting started
+
+```bash
+npm install
+npm run dev       # Start dev server at localhost:4321
+npm run build     # Production build
+npm run preview   # Preview production build locally
+npm run test      # Run Vitest unit tests
+npm run lint      # ESLint
 ```
+
+---
+
+## How the Schengen rule works
+
+The 90/180 rule is a **rolling window**, not a calendar year. On any given day, the tool looks back 180 days and counts how many of those days were spent in the Schengen Area. If the count is at or above 90, entry is not permitted.
+
+The calculation logic lives in `src/features/calculator/utils/schengen.ts` and is verified against the [official EU Visa Calculator](https://ec.europa.eu/assets/home/visa-calculator/calculator.htm).
+
+---
+
+## Sharing
+
+The "Share" button encodes the current traveler and trip state into a compressed URL token. Anyone with the link can view (but not edit) the same data. No data is stored on any server.
