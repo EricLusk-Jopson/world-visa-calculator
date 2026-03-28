@@ -228,6 +228,26 @@ export function TravelerCardsColumn({
           onClick={() => onAddTrip(traveler.id)}
           mt={sortedTrips.length > 0 ? "4px" : 0}
         />
+
+        <Typography
+          variant="caption"
+          sx={{
+            display: "block",
+            mt: 3,
+            mb: 1,
+            px: 1,
+            color: tokens.textGhost,
+            lineHeight: 1.6,
+          }}
+        >
+          Informational only — not legal advice. Always verify dates against
+          official records and leave a buffer of at least 2 days. Border
+          decisions are at the discretion of member state authorities.{" "}
+          <a href="/privacy" style={{ color: "inherit" }}>
+            Privacy Policy
+          </a>
+          .
+        </Typography>
       </Box>
     </Box>
   );

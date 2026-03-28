@@ -1,7 +1,6 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { trackEvent } from "@/utils/analytics";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import { keyframes } from "@mui/system";
 import type { Traveler, Trip, ShareableState } from "@/types";
 import { tokens } from "@/styles/theme";
@@ -366,27 +365,7 @@ export function CalculatorPage() {
         )}
       </Box>
 
-      <Box
-        component="footer"
-        sx={{
-          py: 1.5,
-          px: 2,
-          textAlign: "center",
-          borderTop: `1px solid ${tokens.border}`,
-          bgcolor: tokens.offWhite,
-          flexShrink: 0,
-        }}
-      >
-        <Typography variant="caption" color="text.secondary">
-          <a href="/privacy" style={{ color: "inherit" }}>
-            Privacy Policy
-          </a>
-          {" · "}
-          EuroVisaCalculator is a free tool. No ads, no account required.
-        </Typography>
-      </Box>
-
-      <TravelerModal
+<TravelerModal
         open={modal.open && modal.kind === "traveler"}
         onAdd={handleTravelerSave}
         onClose={() => setModal(CLOSED_MODAL)}
