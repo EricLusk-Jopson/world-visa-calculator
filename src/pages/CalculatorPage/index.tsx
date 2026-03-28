@@ -384,17 +384,6 @@ export function CalculatorPage() {
           {" · "}
           EuroVisaCalculator is a free tool. No ads, no account required.
         </Typography>
-        <Typography
-          variant="caption"
-          color="text.secondary"
-          display="block"
-          sx={{ mt: 0.5, opacity: 0.7 }}
-        >
-          Informational only — not legal advice. Always verify dates against
-          official records. We recommend leaving at least 2 days unused as a
-          buffer. Border decisions are at the discretion of member state
-          authorities.
-        </Typography>
       </Box>
 
       <TravelerModal
