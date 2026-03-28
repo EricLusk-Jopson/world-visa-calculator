@@ -365,7 +365,7 @@ export function CalculatorPage() {
         )}
       </Box>
 
-      <TravelerModal
+<TravelerModal
         open={modal.open && modal.kind === "traveler"}
         onAdd={handleTravelerSave}
         onClose={() => setModal(CLOSED_MODAL)}

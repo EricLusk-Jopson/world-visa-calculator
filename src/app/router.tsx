@@ -15,7 +15,6 @@ export const router = createBrowserRouter([
   // Future routes:
   // { path: '/blog', element: <BlogPage /> },
   // { path: '/blog/:slug', element: <BlogPostPage /> },
-  // { path: '/privacy', element: <PrivacyPage /> },
   // { path: '/terms', element: <TermsPage /> },
   // { path: '/auth/login', element: <LoginPage /> },
   {
