@@ -22,5 +22,9 @@ import { CalculatorIsland } from "@/islands/CalculatorIsland";
   canonicalUrl="https://eurovisacalculator.com/app"
   themeColor="#0C1E3C"
 >
+  <style slot="head" is:global>
+    /* Ensures the area behind the iOS status bar is navy before React hydrates */
+    html, body { background: #0C1E3C; margin: 0; }
+  </style>
   <CalculatorIsland client:only="react" />
 </BaseLayout>
