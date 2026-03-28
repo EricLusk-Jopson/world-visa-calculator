@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
 
@@ -18,7 +17,6 @@ import {
 } from "@/features/calculator/utils/dates";
 import { AddTripButton } from "./AddTripButton";
 import { MIN_COLUMN_WIDTH } from "../CardsView/CardsView";
-import { DisclaimerBanner } from "@/features/calculator/components/DisclaimerBanner";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -128,7 +126,6 @@ export function TravelerCardsColumn({
           compact={compact}
           onDelete={() => onDeleteTraveler(traveler.id)}
         />
-        <DisclaimerBanner daysRemaining={status.daysRemaining} />
       </Box>
 
       {/* Trip list */}
@@ -228,26 +225,6 @@ export function TravelerCardsColumn({
           onClick={() => onAddTrip(traveler.id)}
           mt={sortedTrips.length > 0 ? "4px" : 0}
         />
-
-        <Typography
-          variant="caption"
-          sx={{
-            display: "block",
-            mt: 3,
-            mb: 1,
-            px: 1,
-            color: tokens.textGhost,
-            lineHeight: 1.6,
-          }}
-        >
-          Informational only — not legal advice. Always verify dates against
-          official records and leave a buffer of at least 2 days. Border
-          decisions are at the discretion of member state authorities.{" "}
-          <a href="/privacy" style={{ color: "inherit" }}>
-            Privacy Policy
-          </a>
-          .
-        </Typography>
       </Box>
     </Box>
   );
