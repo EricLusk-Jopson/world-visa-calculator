@@ -15,7 +15,6 @@
 import type { Traveler } from "@/types";
 import { VisaRegion } from "@/types";
 import {
-  today,
   parseDate,
   addDays,
   countTripDays,
@@ -43,8 +42,6 @@ export function computeAgingMarkers(
   timelineStart: Date,
   timelineEnd: Date,
 ): AgingMarker[] {
-  const todayDate = today();
-
   return traveler.trips
     .filter((t) => t.region === VisaRegion.Schengen && t.exitDate)
     .flatMap((trip) => {
@@ -52,9 +49,9 @@ export function computeAgingMarkers(
       const exit = parseDate(trip.exitDate!);
       const agingStart = addDays(entry, 180);
 
-      // Only show markers for trips whose aging starts in the future and
-      // within the visible timeline range.
-      if (agingStart <= todayDate || agingStart > timelineEnd) return [];
+      // Show markers for any trip whose aging-start falls within the visible
+      // timeline range, regardless of whether it is past or future.
+      if (agingStart < timelineStart || agingStart > timelineEnd) return [];
 
       const tripDays = countTripDays(entry, exit);
 
