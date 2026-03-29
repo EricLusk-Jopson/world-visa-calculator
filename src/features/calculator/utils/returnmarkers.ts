@@ -7,7 +7,7 @@
  *
  * The timeline is split into phases separated by pending Schengen trips:
  *
- *   Phase 0 : today         → day before first pending trip's entry
+ *   Phase 0 : timelineStart → day before first relevant trip's entry
  *   Phase n : trip[n].exit+1 → day before trip[n+1].entry
  *   Final   : lastTrip.exit+1 → timelineEnd
  *
@@ -43,7 +43,6 @@
 import { VisaRegion } from "@/types";
 import type { Traveler, Trip } from "@/types";
 import {
-  today,
   parseDate,
   formatDate,
   addDays,
@@ -76,50 +75,44 @@ export function computeReturnMarkers(
   timelineStart: Date,
   timelineEnd: Date,
 ): ReturnMarker[] {
-  const todayDate = today();
   const allSchengen = traveler.trips.filter(
     (t) => t.region === VisaRegion.Schengen,
   );
 
   // ── Build phases ─────────────────────────────────────────────────────────────
 
-  const insideSchengenNow = allSchengen.some((t) => !t.exitDate);
+  const insideSchengenAtStart = allSchengen.some((t) => !t.exitDate);
 
-  // "Pending" trips: any Schengen trip whose exit date is on or after today.
-  // This correctly captures three cases:
-  //   1. Future trips   — entryDate >= today (entirely in the future)
-  //   2. Straddling trips — entryDate < today, exitDate >= today (started in
-  //      the past but hasn't exited yet). Previously these were invisible:
-  //      entryDate < today excluded them from futureTrips, and exitDate >= today
-  //      excluded them from Phase 0's historical set, so Phase 0 ran with no
-  //      knowledge of the active trip. Filtering by exitDate instead of
-  //      entryDate fixes this.
-  //   3. Today-entry trips — entryDate == today (edge case of case 1)
+  // "Relevant" trips: any Schengen trip whose exit date is on or after
+  // timelineStart. This covers:
+  //   1. Past trips that exit within the visible range
+  //   2. Straddling trips — entryDate < timelineStart, exitDate >= timelineStart
+  //   3. Future trips entirely ahead of timelineStart
   //
-  // For a straddling trip, Phase 0's end = subDays(entryDate, 1) < today, so
-  // the `cappedEnd >= todayDate` guard naturally skips Phase 0. The phase that
-  // opens after the trip exits correctly includes it in its historical set.
+  // For a straddling trip, Phase 0's end = subDays(entryDate, 1) < timelineStart,
+  // so the `cappedEnd >= timelineStart` guard naturally skips Phase 0. The phase
+  // that opens after the trip exits correctly includes it in its historical set.
   const futureTrips = allSchengen
-    .filter((t) => t.exitDate && parseDate(t.exitDate) >= todayDate)
+    .filter((t) => t.exitDate && parseDate(t.exitDate) >= timelineStart)
     .sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1));
 
   type Phase = { start: Date; end: Date; historical: Trip[] };
   const phases: Phase[] = [];
 
-  // Phase 0: today → day before first pending trip (or timelineEnd).
+  // Phase 0: timelineStart → day before first relevant trip (or timelineEnd).
   // Skipped if currently inside Schengen — re-entry date is unknown.
-  if (!insideSchengenNow) {
+  if (!insideSchengenAtStart) {
     const p0End =
       futureTrips.length > 0
         ? subDays(parseDate(futureTrips[0].entryDate), 1)
         : timelineEnd;
     const cappedEnd = p0End < timelineEnd ? p0End : timelineEnd;
-    if (cappedEnd >= todayDate) {
-      // Historical: Schengen trips that ended before today.
+    if (cappedEnd >= timelineStart) {
+      // Historical: Schengen trips that ended before timelineStart.
       const hist = allSchengen.filter(
-        (t) => t.exitDate && parseDate(t.exitDate) < todayDate,
+        (t) => t.exitDate && parseDate(t.exitDate) < timelineStart,
       );
-      phases.push({ start: todayDate, end: cappedEnd, historical: hist });
+      phases.push({ start: timelineStart, end: cappedEnd, historical: hist });
     }
   }
 
