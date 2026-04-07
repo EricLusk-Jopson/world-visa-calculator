@@ -590,23 +590,20 @@ function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileRe
   });
   const dedupedEntries = [...perTraveler.values()].sort((a, b) => a.top - b.top);
 
-  // Tooltip: one traveler → concise sentence; multiple → per-traveler list.
-  const tooltipTitle =
-    dedupedEntries.length === 1 ? (
-      `From ${format(dedupedEntries[0].date, "MMM d, yyyy")}, a ${dedupedEntries[0].days}-day Schengen trip first becomes possible.`
-    ) : (
-      <Box component="div">
-        {dedupedEntries.map((e, i) => (
-          <Box
-            key={i}
-            component="div"
-            sx={{ "&:not(:last-child)": { mb: "3px" } }}
-          >
-            {e.travelerName} · {format(e.date, "MMM d")} · up to {e.days}d
-          </Box>
-        ))}
-      </Box>
-    );
+  // Tooltip: always a per-traveler list (same format for one or many).
+  const tooltipTitle = (
+    <Box component="div">
+      {dedupedEntries.map((e, i) => (
+        <Box
+          key={i}
+          component="div"
+          sx={{ "&:not(:last-child)": { mb: "3px" } }}
+        >
+          {e.travelerName} · {format(e.date, "MMM d, yyyy")} · up to {e.days}d
+        </Box>
+      ))}
+    </Box>
+  );
 
   return (
     <Box
@@ -716,26 +713,9 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
     ? `${markers[0].destination} ages out`
     : `${markers.length} Trips Age Out`;
 
-  // Tooltip: single trip → two-line format (trip summary + behaviour note);
-  // multiple trips → compact per-trip list, no em dashes.
-  const tooltipTitle = isSingle ? (
-    (() => {
-      const m = markers[0];
-      const agingDate = addDays(parseDate(m.entryDate), 180);
-      const dateStr = format(agingDate, "MMM d, yyyy");
-      return (
-        <Box component="div">
-          <Box component="div">
-            {m.destination} ({m.tripDays}d) ages out {dateStr}
-          </Box>
-          <Box component="div" sx={{ mt: "4px", opacity: 0.8 }}>
-            Each exiting day frees up allowance and typically causes a
-            noticeable jump in max stay.
-          </Box>
-        </Box>
-      );
-    })()
-  ) : (
+  // Tooltip: always a per-trip list followed by the behaviour note (same
+  // format for one trip or many).
+  const tooltipTitle = (
     <Box component="div">
       {markers.map((m, i) => {
         const agingDate = addDays(parseDate(m.entryDate), 180);
@@ -745,10 +725,14 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
             component="div"
             sx={{ "&:not(:last-child)": { mb: "3px" } }}
           >
-            {m.destination} ({m.tripDays}d) ages out {format(agingDate, "MMM d")}
+            {m.destination} ({m.tripDays}d) ages out {format(agingDate, "MMM d, yyyy")}
           </Box>
         );
       })}
+      <Box component="div" sx={{ mt: "4px", opacity: 0.8 }}>
+        Each exiting day frees up allowance and typically causes a noticeable
+        jump in max stay.
+      </Box>
     </Box>
   );
 
