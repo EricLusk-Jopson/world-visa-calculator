@@ -2,6 +2,8 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import { tokens } from "@/styles/theme";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { Traveler } from "@/types";
@@ -72,6 +74,7 @@ export function TravelerColumnHeader({
   const [hovered, setHovered] = useState(false);
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const [nationalityModalOpen, setNationalityModalOpen] = useState(false);
+  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
 
   const { daysUsed, daysRemaining, variant } = status;
   const tripCount = traveler.trips?.length ?? 0;
@@ -98,52 +101,36 @@ export function TravelerColumnHeader({
   };
   const handleCancelDelete = () => setConfirmingDelete(false);
 
-  // ── Icon buttons (delete + edit nationality) ─────────────────────────────
+  // ── Overflow menu ────────────────────────────────────────────────────────
 
-  const iconButtonBaseSx = {
-    flexShrink: 0,
-    width: 22,
-    height: 22,
-    border: "none",
-    borderRadius: "4px",
-    bgcolor: "transparent",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "0.7rem",
-    lineHeight: 1,
-    transition: "opacity 0.14s, background-color 0.14s, color 0.14s",
-    opacity: hovered && !confirmingDelete ? 1 : 0,
-  } as const;
+  const closeMenu = () => setMenuAnchor(null);
 
-  const editButton = (
+  const menuButton = (
     <Box
       component="button"
-      onClick={() => setNationalityModalOpen(true)}
-      aria-label={`Change nationality for ${traveler.name}`}
+      onClick={(e: React.MouseEvent<HTMLElement>) => setMenuAnchor(e.currentTarget)}
+      aria-label={`Options for ${traveler.name}`}
       sx={{
-        ...iconButtonBaseSx,
+        flexShrink: 0,
+        width: 22,
+        height: 22,
+        border: "none",
+        borderRadius: "4px",
+        bgcolor: "transparent",
         color: tokens.textGhost,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "1rem",
+        lineHeight: 1,
+        letterSpacing: "0.02em",
+        transition: "opacity 0.14s, background-color 0.14s, color 0.14s",
+        opacity: hovered && !confirmingDelete ? 1 : 0,
         "&:hover": { bgcolor: tokens.mist, color: tokens.navy },
       }}
     >
-      ✎
-    </Box>
-  );
-
-  const deleteButton = (
-    <Box
-      component="button"
-      onClick={handleDeleteClick}
-      aria-label={`Remove ${traveler.name}`}
-      sx={{
-        ...iconButtonBaseSx,
-        color: tokens.textGhost,
-        "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
-      }}
-    >
-      ✕
+      ⋮
     </Box>
   );
 
@@ -168,7 +155,7 @@ export function TravelerColumnHeader({
        * ── Name row (always Row A) ────────────────────────────────────────────
        *
        * Flag emoji (when nationality set), traveler name, optional badges
-       * (normal mode), edit icon, delete icon.
+       * (normal mode), overflow menu button (hover-only).
        */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0 }}>
         {hasNationality && (
@@ -218,9 +205,55 @@ export function TravelerColumnHeader({
           </>
         )}
 
-        {editButton}
-        {deleteButton}
+        {menuButton}
       </Box>
+
+      {/* ── Overflow menu ──────────────────────────────────────────────────── */}
+      <Menu
+        anchorEl={menuAnchor}
+        open={Boolean(menuAnchor)}
+        onClose={closeMenu}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: "10px",
+              minWidth: 160,
+              boxShadow: "0 4px 20px rgba(12,30,60,0.14)",
+              border: `1px solid ${tokens.border}`,
+              mt: "4px",
+            },
+          },
+        }}
+      >
+        <MenuItem
+          onClick={() => { closeMenu(); setNationalityModalOpen(true); }}
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.82rem",
+            color: tokens.text,
+            py: "8px",
+            px: "14px",
+            "&:hover": { bgcolor: tokens.mist },
+          }}
+        >
+          Edit nationality
+        </MenuItem>
+        <MenuItem
+          onClick={() => { closeMenu(); handleDeleteClick(); }}
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.82rem",
+            color: tokens.red,
+            py: "8px",
+            px: "14px",
+            "&:hover": { bgcolor: tokens.redBg },
+          }}
+        >
+          Remove {traveler.name}
+        </MenuItem>
+      </Menu>
 
       {/*
        * ── Badges row (compact mode only, Row B) ─────────────────────────────
