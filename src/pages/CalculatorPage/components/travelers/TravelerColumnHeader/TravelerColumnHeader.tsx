@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { alpha } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
 import { tokens } from "@/styles/theme";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { Traveler } from "@/types";
@@ -12,8 +12,6 @@ import {
 } from "@/features/calculator/utils/schengenConstants";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { NationalitySelector } from "../NationalitySelector";
-
-const ETIAS_STORAGE_KEY = "etias_notice_dismissed";
 
 interface TravelerColumnHeaderProps {
   traveler: Traveler;
@@ -51,6 +49,15 @@ function fmtWindowDate(iso: string): string {
   }
 }
 
+/** Converts an ISO Alpha-2 country code to its flag emoji. */
+function countryFlag(code: string): string {
+  return code
+    .toUpperCase()
+    .split("")
+    .map((ch) => String.fromCodePoint(0x1f1e6 + ch.charCodeAt(0) - 65))
+    .join("");
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function TravelerColumnHeader({
@@ -64,20 +71,15 @@ export function TravelerColumnHeader({
 }: TravelerColumnHeaderProps) {
   const [hovered, setHovered] = useState(false);
   const [confirmingDelete, setConfirmingDelete] = useState(false);
-  const [editingPassport, setEditingPassport] = useState(false);
-  const [etiasDismissed, setEtiasDismissed] = useState(() => {
-    try {
-      return sessionStorage.getItem(ETIAS_STORAGE_KEY) === "1";
-    } catch {
-      return false;
-    }
-  });
+  const [nationalityModalOpen, setNationalityModalOpen] = useState(false);
 
   const { daysUsed, daysRemaining, variant } = status;
   const tripCount = traveler.trips?.length ?? 0;
   const fillPct = Math.min(100, (daysUsed / 90) * 100);
 
   const rule = getSchengenRule(traveler.passportCode);
+  const hasNationality = traveler.passportCode !== null;
+  const showCalculator = hasNationality;
 
   const barColor =
     variant === "safe"
@@ -96,220 +98,54 @@ export function TravelerColumnHeader({
   };
   const handleCancelDelete = () => setConfirmingDelete(false);
 
-  const handleDismissEtias = () => {
-    try {
-      sessionStorage.setItem(ETIAS_STORAGE_KEY, "1");
-    } catch {
-      // sessionStorage unavailable — dismiss for this render only
-    }
-    setEtiasDismissed(true);
-  };
+  // ── Icon buttons (delete + edit nationality) ─────────────────────────────
 
-  // Reset inline passport editor when traveler changes
-  useEffect(() => {
-    setEditingPassport(false);
-  }, [traveler.id]);
+  const iconButtonBaseSx = {
+    flexShrink: 0,
+    width: 22,
+    height: 22,
+    border: "none",
+    borderRadius: "4px",
+    bgcolor: "transparent",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "0.7rem",
+    lineHeight: 1,
+    transition: "opacity 0.14s, background-color 0.14s, color 0.14s",
+    opacity: hovered && !confirmingDelete ? 1 : 0,
+  } as const;
 
-  // The delete button is always on the same row as the traveler name (right-aligned).
-  // Its opacity is 0 when not hovered so it takes up space but remains invisible.
+  const editButton = (
+    <Box
+      component="button"
+      onClick={() => setNationalityModalOpen(true)}
+      aria-label={`Change nationality for ${traveler.name}`}
+      sx={{
+        ...iconButtonBaseSx,
+        color: tokens.textGhost,
+        "&:hover": { bgcolor: tokens.mist, color: tokens.navy },
+      }}
+    >
+      ✎
+    </Box>
+  );
+
   const deleteButton = (
     <Box
       component="button"
       onClick={handleDeleteClick}
       aria-label={`Remove ${traveler.name}`}
       sx={{
-        flexShrink: 0,
-        width: 22,
-        height: 22,
-        border: "none",
-        borderRadius: "4px",
-        bgcolor: "transparent",
+        ...iconButtonBaseSx,
         color: tokens.textGhost,
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: "0.7rem",
-        lineHeight: 1,
-        transition: "opacity 0.14s, background-color 0.14s, color 0.14s",
-        opacity: hovered && !confirmingDelete ? 1 : 0,
         "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
       }}
     >
       ✕
     </Box>
   );
-
-  // ── Passport rule label ──────────────────────────────────────────────────────
-
-  const ruleLabel = (() => {
-    if (!traveler.passportCode) {
-      return (
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.68rem",
-            fontStyle: "italic",
-            color: tokens.textGhost,
-            flex: 1,
-            minWidth: 0,
-          }}
-        >
-          Select nationality to see your entitlement
-        </Typography>
-      );
-    }
-    if (rule.access === "free_movement") {
-      return (
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.68rem",
-            fontWeight: 600,
-            color: tokens.green,
-            flex: 1,
-            minWidth: 0,
-          }}
-        >
-          EU / EEA / Swiss -- no day limit
-        </Typography>
-      );
-    }
-    if (rule.access === "visa_free") {
-      return (
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.68rem",
-            color: tokens.textSoft,
-            flex: 1,
-            minWidth: 0,
-          }}
-        >
-          Visa-free &middot; 90 days in any 180-day period
-        </Typography>
-      );
-    }
-    if (rule.access === "suspended") {
-      return (
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.68rem",
-            color: tokens.amber,
-            flex: 1,
-            minWidth: 0,
-          }}
-        >
-          Access suspended
-        </Typography>
-      );
-    }
-    // visa_required
-    return (
-      <Typography
-        component="a"
-        href="/info/schengen-visa-required"
-        sx={{
-          fontFamily: tokens.fontBody,
-          fontSize: "0.68rem",
-          color: tokens.textSoft,
-          flex: 1,
-          minWidth: 0,
-          textDecoration: "none",
-          "&:hover": { color: tokens.navy, textDecoration: "underline" },
-        }}
-      >
-        Visa required -- learn more
-      </Typography>
-    );
-  })();
-
-  // ── Calculator guard: what to show instead of usage block ───────────────────
-
-  const guardMessage = (() => {
-    if (rule.access === "visa_free") return null; // show normal calculator
-
-    if (!traveler.passportCode) {
-      return (
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.68rem",
-            fontStyle: "italic",
-            color: tokens.textGhost,
-          }}
-        >
-          Select your nationality to see your entitlement
-        </Typography>
-      );
-    }
-    if (rule.access === "free_movement") {
-      return (
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.68rem",
-            fontWeight: 600,
-            color: tokens.green,
-          }}
-        >
-          No Schengen day limit applies to your passport.
-        </Typography>
-      );
-    }
-    if (rule.access === "visa_required") {
-      return (
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.68rem",
-            color: tokens.textSoft,
-          }}
-        >
-          The 90/180-day calculator applies to visa-free travelers only.
-        </Typography>
-      );
-    }
-    if (rule.access === "suspended") {
-      return (
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "3px" }}>
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.68rem",
-              color: tokens.amber,
-              lineHeight: 1.4,
-            }}
-          >
-            {rule.suspensionNote}
-          </Typography>
-          <Typography
-            component="a"
-            href="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en"
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.65rem",
-              color: tokens.textGhost,
-              textDecoration: "none",
-              "&:hover": { textDecoration: "underline", color: tokens.textSoft },
-            }}
-          >
-            EU official source
-          </Typography>
-        </Box>
-      );
-    }
-    return null;
-  })();
-
-  const showCalculator = rule.access === "visa_free";
-  const showEtias =
-    showCalculator &&
-    rule.requiresETIAS === true &&
-    !etiasDismissed;
 
   return (
     <Box
@@ -331,17 +167,20 @@ export function TravelerColumnHeader({
       {/*
        * ── Name row (always Row A) ────────────────────────────────────────────
        *
-       * The delete button lives here in both modes so it is always visually
-       * opposite the traveler name.
+       * Flag emoji (when nationality set), traveler name, optional badges
+       * (normal mode), edit icon, delete icon.
        */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
-          minWidth: 0,
-        }}
-      >
+      <Box sx={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0 }}>
+        {hasNationality && (
+          <Typography
+            component="span"
+            sx={{ fontSize: "0.9rem", lineHeight: 1, flexShrink: 0 }}
+            aria-hidden="true"
+          >
+            {countryFlag(traveler.passportCode!)}
+          </Typography>
+        )}
+
         <Typography
           sx={{
             fontFamily: tokens.fontDisplay,
@@ -361,9 +200,8 @@ export function TravelerColumnHeader({
         </Typography>
 
         {/*
-         * Normal mode: badges between name and delete on the same row.
-         * Compact mode: badges are rendered separately below; only the delete
-         * button stays here so it remains opposite the name.
+         * Normal mode: badges between name and action buttons on the same row.
+         * Compact mode: badges are rendered separately below.
          */}
         {!compact && showCalculator && (
           <>
@@ -380,14 +218,12 @@ export function TravelerColumnHeader({
           </>
         )}
 
+        {editButton}
         {deleteButton}
       </Box>
 
       {/*
        * ── Badges row (compact mode only, Row B) ─────────────────────────────
-       *
-       * Rendered below the name row when there isn't room for everything on
-       * one line.
        */}
       {compact && showCalculator && (
         <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
@@ -404,70 +240,9 @@ export function TravelerColumnHeader({
         </Box>
       )}
 
-      {/* ── Passport rule row ──────────────────────────────────────────────── */}
-      {editingPassport ? (
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <NationalitySelector
-            value={traveler.passportCode}
-            onChange={(code) => {
-              onPassportChange(code);
-              setEditingPassport(false);
-            }}
-            autoFocus
-          />
-          <Box
-            component="button"
-            onClick={() => setEditingPassport(false)}
-            sx={{
-              border: "none",
-              bgcolor: "transparent",
-              fontFamily: tokens.fontBody,
-              fontSize: "0.65rem",
-              color: tokens.textGhost,
-              cursor: "pointer",
-              textAlign: "left",
-              p: 0,
-              "&:hover": { color: tokens.textSoft },
-            }}
-          >
-            Cancel
-          </Box>
-        </Box>
-      ) : (
-        <Box sx={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0 }}>
-          {ruleLabel}
-          <Box
-            component="button"
-            onClick={() => setEditingPassport(true)}
-            sx={{
-              flexShrink: 0,
-              border: "none",
-              bgcolor: "transparent",
-              fontFamily: tokens.fontBody,
-              fontSize: "0.62rem",
-              color: tokens.textGhost,
-              cursor: "pointer",
-              p: 0,
-              lineHeight: 1,
-              transition: "color 0.12s",
-              "&:hover": { color: tokens.navy },
-            }}
-          >
-            (change)
-          </Box>
-        </Box>
-      )}
-
-      {/* ── Calculator section (visa_free only) or guard message ──────────── */}
+      {/* ── Schengen bar or no-nationality prompt ──────────────────────────── */}
       {showCalculator ? (
         <>
-          {/*
-           * ── Schengen usage info ──────────────────────────────────────────
-           *
-           * Normal: label and date string on the same row (space-between).
-           * Compact: date string wraps below the label in a smaller, lighter
-           *   weight so it doesn't compete for horizontal space.
-           */}
           {compact ? (
             <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
               <Typography
@@ -529,7 +304,6 @@ export function TravelerColumnHeader({
             </Box>
           )}
 
-          {/* ── Progress bar ─────────────────────────────────────────────── */}
           <Box
             sx={{
               height: 3,
@@ -548,73 +322,51 @@ export function TravelerColumnHeader({
               }}
             />
           </Box>
-
-          {/* ── ETIAS notice (dismissible per session) ────────────────────── */}
-          {showEtias && (
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "6px",
-                bgcolor: alpha(tokens.navy, 0.05),
-                border: `1px solid ${alpha(tokens.navy, 0.12)}`,
-                borderRadius: "8px",
-                px: "10px",
-                py: "8px",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.65rem",
-                  color: tokens.textSoft,
-                  flex: 1,
-                  lineHeight: 1.45,
-                }}
-              >
-                ETIAS launching late 2026: Visa-free travelers will need a EUR 20
-                pre-travel authorisation. Your 90-day allowance is unchanged.{" "}
-                <Typography
-                  component="a"
-                  href="/info/etias"
-                  sx={{
-                    fontSize: "inherit",
-                    fontFamily: "inherit",
-                    color: tokens.navy,
-                    textDecoration: "none",
-                    "&:hover": { textDecoration: "underline" },
-                  }}
-                >
-                  Learn more
-                </Typography>
-              </Typography>
-              <Box
-                component="button"
-                onClick={handleDismissEtias}
-                aria-label="Dismiss ETIAS notice"
-                sx={{
-                  flexShrink: 0,
-                  border: "none",
-                  bgcolor: "transparent",
-                  color: tokens.textGhost,
-                  cursor: "pointer",
-                  fontSize: "0.65rem",
-                  lineHeight: 1,
-                  p: 0,
-                  mt: "1px",
-                  "&:hover": { color: tokens.textSoft },
-                }}
-              >
-                ✕
-              </Box>
-            </Box>
-          )}
         </>
       ) : (
-        /* Guard message for non-visa-free passports */
-        guardMessage && (
-          <Box sx={{ mt: "2px" }}>{guardMessage}</Box>
-        )
+        /* No nationality selected -- prompt the traveler to set one */
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "6px",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.65rem",
+              fontStyle: "italic",
+              color: tokens.textGhost,
+              flex: 1,
+              minWidth: 0,
+            }}
+          >
+            Add nationality to track Schengen days
+          </Typography>
+          <Box
+            component="button"
+            onClick={() => setNationalityModalOpen(true)}
+            sx={{
+              flexShrink: 0,
+              border: `1px solid ${tokens.border}`,
+              borderRadius: "6px",
+              bgcolor: tokens.mist,
+              color: tokens.textSoft,
+              fontFamily: tokens.fontBody,
+              fontSize: "0.65rem",
+              fontWeight: 600,
+              px: "8px",
+              py: "3px",
+              cursor: "pointer",
+              transition: "all 0.12s",
+              "&:hover": { bgcolor: tokens.border, color: tokens.text },
+            }}
+          >
+            Select
+          </Box>
+        </Box>
       )}
 
       {/* ── Delete confirmation strip ────────────────────────────────────── */}
@@ -687,6 +439,91 @@ export function TravelerColumnHeader({
           </Box>
         </Box>
       )}
+
+      {/* ── Nationality selection modal ────────────────────────────────────── */}
+      <Dialog
+        open={nationalityModalOpen}
+        onClose={() => setNationalityModalOpen(false)}
+        PaperProps={{
+          sx: {
+            borderRadius: "16px",
+            width: 360,
+            maxWidth: "calc(100vw - 32px)",
+            overflow: "visible",
+            boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            px: "20px",
+            pt: "18px",
+            pb: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: tokens.fontDisplay,
+              fontSize: "1.1rem",
+              fontStyle: "italic",
+              fontWeight: 400,
+              color: tokens.navy,
+            }}
+          >
+            {traveler.name}&apos;s passport
+          </Typography>
+          <Box
+            component="button"
+            onClick={() => setNationalityModalOpen(false)}
+            sx={{
+              width: 26,
+              height: 26,
+              border: "none",
+              borderRadius: "5px",
+              bgcolor: tokens.mist,
+              color: tokens.textSoft,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "0.85rem",
+              transition: "all 0.15s",
+              "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
+            }}
+          >
+            ✕
+          </Box>
+        </Box>
+
+        <Box sx={{ px: "20px", py: "16px", display: "flex", flexDirection: "column", gap: "10px" }}>
+          <NationalitySelector
+            value={traveler.passportCode}
+            onChange={(code) => {
+              onPassportChange(code);
+              setNationalityModalOpen(false);
+            }}
+            autoFocus
+          />
+          {rule.access !== 'visa_free' && traveler.passportCode && (
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.72rem",
+                color: tokens.textGhost,
+              }}
+            >
+              {rule.access === 'free_movement'
+                ? 'EU/EEA/Swiss passports have free movement -- no 90-day limit applies.'
+                : rule.access === 'suspended'
+                  ? rule.suspensionNote
+                  : 'A Schengen visa is required for this passport.'}
+            </Typography>
+          )}
+        </Box>
+      </Dialog>
     </Box>
   );
 }
