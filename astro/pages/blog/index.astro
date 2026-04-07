@@ -3,39 +3,161 @@
  * Blog index — /blog
  *
  * Pure static Astro page: zero client JavaScript, rendered to plain HTML at
- * build time. Add individual posts as src/pages/blog/[slug].astro or as
- * Markdown files (src/content/blog/*.md with @astrojs/mdx) when ready.
+ * build time. Add individual posts as astro/pages/blog/[slug].astro when ready.
  */
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
 ---
 
 <BaseLayout
   title="Blog — EuroVisaCalculator"
-  description="Guides and articles about Schengen visa rules, 90/180 rule explained, and travel compliance tips."
+  description="Guides and articles about Schengen visa rules, the 90/180 rule explained, and travel compliance tips."
   canonicalUrl="https://eurovisacalculator.com/blog"
 >
-  <main
-    style="font-family: 'Plus Jakarta Sans', sans-serif; max-width: 720px; margin: 100px auto; padding: 0 24px; color: #1A2B4A;"
-  >
-    <p
-      style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #00B96B; margin-bottom: 12px;"
-    >
-      Blog
-    </p>
-    <h1
-      style="font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 400; line-height: 1.15; margin: 0 0 16px;"
-    >
-      Schengen guides &amp; travel tips
-    </h1>
-    <p style="color: #5A6A82; line-height: 1.7; margin-bottom: 40px;">
-      Articles on the 90/180-day rule, planning long-term travel, and staying
-      compliant are on their way. Check back soon.
-    </p>
-    <a
-      href="/app"
-      style="display: inline-flex; padding: 12px 28px; background: #00B96B; color: #fff; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 0.95rem;"
-    >
-      Open the calculator →
-    </a>
+  <LandingNav />
+
+  <main class="blog">
+    <div class="blog__inner">
+      <p class="blog__tag">Blog</p>
+      <h1 class="blog__title">Schengen guides &amp; travel tips</h1>
+      <p class="blog__sub">
+        Articles on the 90/180-day rule, planning long-term travel, and staying
+        compliant.
+      </p>
+
+      <div class="post-list">
+        <a
+          href="/blog/why-schengen-calculators-give-different-results"
+          class="post-card"
+        >
+          <p class="post-card__tag">Article</p>
+          <h2 class="post-card__title">
+            Why Schengen Calculators Give Different Results — And How to Know
+            Which One Is Right
+          </h2>
+          <p class="post-card__excerpt">
+            Three calculators, three different answers on the same dates. Here's
+            why Schengen tools disagree, what algorithmic choices cause the gaps,
+            and which source to trust when results conflict.
+          </p>
+          <span class="post-card__read">Read article →</span>
+        </a>
+      </div>
+
+      <a href="/app" class="blog__cta">Open the calculator →</a>
+    </div>
   </main>
 </BaseLayout>
+
+<style>
+  .blog {
+    min-height: 100vh;
+    background: #f7f5f1;
+    padding: 128px 24px 96px;
+  }
+
+  .blog__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .blog__tag {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 12px;
+  }
+
+  .blog__title {
+    font-family: "Fraunces", serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .blog__sub {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1rem;
+    color: #5a6a82;
+    line-height: 1.7;
+    margin: 0 0 48px;
+  }
+
+  .post-list {
+    margin-bottom: 40px;
+  }
+
+  .post-card {
+    display: block;
+    padding: 28px 32px;
+    border: 1px solid #e0dbd3;
+    border-radius: 14px;
+    text-decoration: none;
+    background: #fff;
+    transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+  }
+
+  .post-card:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    border-color: #c8c4bc;
+    transform: translateY(-1px);
+  }
+
+  .post-card__tag {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 10px;
+  }
+
+  .post-card__title {
+    font-family: "Fraunces", serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    line-height: 1.35;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .post-card__excerpt {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #5a6a82;
+    margin: 0 0 18px;
+  }
+
+  .post-card__read {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0c1e3c;
+  }
+
+  .blog__cta {
+    display: inline-flex;
+    padding: 12px 28px;
+    background: #00b96b;
+    color: #fff;
+    border-radius: 10px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+
+  .blog__cta:hover {
+    background: #009e5a;
+  }
+</style>

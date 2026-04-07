@@ -1,0 +1,299 @@
+---
+/**
+ * Blog post: Why Schengen Calculators Give Different Results
+ * URL: /blog/why-schengen-calculators-give-different-results
+ *
+ * Static Astro page — zero client JavaScript, rendered to plain HTML at
+ * build time.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
+---
+
+<BaseLayout
+  title="Why Schengen Calculators Give Different Results — EuroVisaCalculator"
+  description="Three calculators, three different answers. Here's why Schengen tools disagree — and how to know which one to trust."
+  canonicalUrl="https://eurovisacalculator.com/blog/why-schengen-calculators-give-different-results"
+>
+  <LandingNav />
+
+  <article class="article">
+    <header class="article__header">
+      <p class="article__tag">Blog</p>
+      <h1 class="article__title">
+        Why Schengen Calculators Give Different Results — And How to Know Which
+        One Is Right
+      </h1>
+      <p class="article__meta">April 7, 2026 · 5 min read</p>
+    </header>
+
+    <div class="article__body">
+      <p>
+        Someone posted to r/SchengenVisa recently in a quiet panic. They had
+        entered the same travel dates into three different Schengen calculators
+        and gotten back three different answers. The official European Commission
+        tool said they had 69 days remaining. Two other popular sites said 15.
+      </p>
+
+      <p>They were considering cancelling their Christmas trip.</p>
+
+      <p>
+        The dates were the same. The results were 54 days apart. And they had no
+        way of knowing which one was right.
+      </p>
+
+      <p>
+        This is not unusual. In the same forum, another traveler described
+        running their dates through several calculators and getting confusing
+        results across all of them — before turning to ChatGPT as a tiebreaker.
+        A third described cross-referencing two tools against each other just to
+        feel more confident, not because either one had earned their trust.
+      </p>
+
+      <hr />
+
+      <h2>Which calculator to trust</h2>
+
+      <p>
+        The short answer: use the{" "}
+        <a
+          href="https://ec.europa.eu/assets/home/visa-calculator/calculator.htm"
+          target="_blank"
+          rel="noopener noreferrer"
+          >official European Commission Schengen calculator</a
+        >. It's maintained by the EU itself, uses the correct methodology, and
+        is the authoritative reference. When results conflict, defer to it.
+      </p>
+
+      <p>
+        If you need more than what it offers — tracking two people with
+        different travel dates, saving your calculation, sharing a link with a
+        partner, or planning future trips alongside confirmed past ones — that's
+        what EuroVisaCalculator is built for. It uses the same methodology as
+        the EU calculator, and we encourage you to run your dates through both
+        and compare. If they disagree, we want to know.
+      </p>
+
+      <p>
+        EuroVisaCalculator also has multi-country support on the roadmap, so as
+        your travel extends beyond Schengen, the tool will grow with you.
+      </p>
+
+      <hr />
+
+      <h2>Why calculators disagree in the first place</h2>
+
+      <p>
+        The Schengen rule itself is consistent. The disagreements come from two
+        specific algorithmic choices that different tools make differently — and
+        most tools don't tell you which choices they've made.
+      </p>
+
+      <h3>How the rolling window is applied</h3>
+
+      <p>
+        The 90/180 rule uses a rolling window, not a fixed period. On any given
+        day, you look back exactly 180 days and count how many of those days you
+        spent in Schengen. That total must never exceed 90.
+      </p>
+
+      <p>
+        Some calculators don't implement it this way. Instead of a rolling
+        window, they treat the 180 days as a fixed block with a defined start
+        date. That's incorrect, and it produces dramatically different results
+        for anyone with a complex travel history. The 54-day gap in the example
+        above almost certainly comes from this — the EU calculator used the
+        rolling window correctly; the others did not.
+      </p>
+
+      <h3>How entry and exit days are counted</h3>
+
+      <p>
+        The EU's official position is that both your entry day and your exit day
+        count as full Schengen days, regardless of what time you cross the
+        border. Not every calculator follows this. Some exclude one or both
+        border days, treating a partial day as not counting. Over several trips,
+        those small differences add up — easily 8 to 12 days across a year of
+        frequent travel.
+      </p>
+
+      <p>
+        These aren't bugs. They're algorithmic choices. The problem is that most
+        tools don't document which choices they've made, so you can't evaluate
+        the result you're being shown.
+      </p>
+
+      <hr />
+
+      <h2>Why ChatGPT doesn't help</h2>
+
+      <p>
+        Using an AI chatbot as a tiebreaker is understandable — when two
+        calculators disagree, a third opinion feels like progress. But language
+        models don't do date arithmetic. They produce confident-sounding answers
+        based on patterns in text, not actual calculation. For a rolling window
+        across multiple trips, they're frequently wrong and have no way to flag
+        their own uncertainty.
+      </p>
+
+      <p>A chatbot is not the right tool to verify a calculator result.</p>
+
+      <hr />
+
+      <h2>How to spot a calculator using the wrong methodology</h2>
+
+      <p>
+        Enter a single past trip of exactly 10 days and see how many days the
+        tool counts. If it says 8 or 9, it's excluding border days — not the
+        official methodology. If it says 10, it's counting correctly.
+      </p>
+
+      <p>
+        The rolling window is harder to test without a complex travel history,
+        but if you have trips spanning more than 180 days and two tools give
+        results more than a few days apart, the one using a rolling window is
+        right.
+      </p>
+
+      <p>
+        The Christmas trip in that Reddit post was fine. The 69-day result from
+        the EU calculator was correct. But that person had no way of knowing
+        that without someone explaining why the tools disagreed — and that's not
+        a problem anyone should have to solve mid-trip.
+      </p>
+
+      <hr />
+
+      <p class="article__footer-links">
+        Want to understand the rolling window before entering your dates?{" "}
+        <a href="#">The full explanation is here.</a> Confused specifically about
+        whether your entry and exit days count?{" "}
+        <a href="#">That's covered here.</a>
+      </p>
+
+      <p>
+        Otherwise, <a href="/app">run your dates here</a> — and compare the
+        result against the official EU calculator. If they match, you can trust
+        the number.
+      </p>
+    </div>
+
+    <div class="article__back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    min-height: 100vh;
+    background: #f7f5f1;
+    padding: 128px 24px 96px;
+  }
+
+  .article__header {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .article__tag {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 14px;
+  }
+
+  .article__title {
+    font-family: "Fraunces", serif;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .article__meta {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.82rem;
+    color: #8fa0b4;
+    margin: 0;
+  }
+
+  .article__body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article__body p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+  }
+
+  .article__body h2 {
+    font-family: "Fraunces", serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article__body h3 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0c1e3c;
+    margin: 1.75rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article__body hr {
+    border: none;
+    border-top: 1px solid #e0dbd3;
+    margin: 2.5rem 0;
+  }
+
+  .article__body a {
+    color: #00b96b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s;
+  }
+
+  .article__body a:hover {
+    border-bottom-color: #00b96b;
+  }
+
+  .article__footer-links {
+    font-style: italic;
+    color: #5a6a82 !important;
+  }
+
+  .article__back {
+    max-width: 680px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #e0dbd3;
+  }
+
+  .article__back-link {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #5a6a82;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .article__back-link:hover {
+    color: #0c1e3c;
+  }
+</style>
