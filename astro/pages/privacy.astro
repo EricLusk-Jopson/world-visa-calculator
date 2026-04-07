@@ -18,9 +18,9 @@ import LandingNav from "../components/LandingNav.astro";
         <h2 class="section__title">What this tool does</h2>
         <p class="section__body">
           EuroVisaCalculator is a client-side web application. Your trip dates,
-          traveler names, and travel history are stored in your browser only —
+          traveler names, and travel history are stored in your browser only, both
           in your URL and in your browser's local storage. This data never
-          leaves your device to our servers. We have no knowledge of where
+          leaves your device to our servers. In fact, we aren't maintaining any servers. We have no knowledge of where
           you've traveled, when, or for how long. That information exists only
           in your browser.
         </p>
@@ -53,12 +53,12 @@ import LandingNav from "../components/LandingNav.astro";
         <p class="section__body">
           Your trip data is saved in your browser's local storage so it persists
           between visits. You can clear this at any time by clearing your browser
-          data, or by using the "Reset all data" option in the app. You can also
-          share your data with others via the shareable URL — only people you
+          data, or by using the "Clear All" option in the app. You can also
+          share your data with others via the shareable URL. Only people you
           share that URL with can see your trips. If you share your URL with
           others, anyone who has that link can view the trip data encoded in it.
           Only share your URL with people you intend to give access to your
-          travel history.
+          travel history. 
         </p>
         <p class="section__body" style="margin-top:12px;">
           Because all calculation logic runs in your browser, the calculator
@@ -71,8 +71,8 @@ import LandingNav from "../components/LandingNav.astro";
         <h2 class="section__title">Analytics</h2>
         <p class="section__body">
           We collect anonymous usage events using a lightweight custom webhook.
-          Events are written to a private spreadsheet via Google Apps Script —
-          a Google service — and are not shared with anyone. No third-party
+          Events are written to a private spreadsheet via Google Apps Script, 
+          a Google service, and are not shared with anyone. No third-party
           analytics SDK is embedded in the page. The data collected includes
           actions like "trip added" or "link copied", your approximate screen
           size, browser type, and page referrer. No travel dates, traveler
