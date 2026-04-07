@@ -631,69 +631,76 @@ function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileRe
         }}
       />
 
-      {/* Pill: traveller colour dots + max threshold */}
-      <MobileAwareTooltip
-        title={tooltipTitle}
-        placement="bottom-start"
-        arrow
-        componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
+      {/* Pill: traveller colour dots + max threshold.
+          The absolute positioning lives on the outer Box so that the span
+          MobileAwareTooltip inserts has a measurable size for Popper to anchor. */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: CARD_GUTTER + 2,
+          top: 0,
+          transform: "translateY(-50%)",
+          zIndex: 2,
+        }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            left: CARD_GUTTER + 2,
-            top: 0,
-            transform: "translateY(-50%)",
-            zIndex: 2,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "3px",
-            px: "5px",
-            py: "2px",
-            borderRadius: "100px",
-            bgcolor: bgColor,
-            border: `1px dashed ${alpha(lineBase, 0.25)}`,
-            pointerEvents: "auto",
-            cursor: "default",
-            opacity: pillOpacity,
-          }}
+        <MobileAwareTooltip
+          title={tooltipTitle}
+          placement="bottom-start"
+          arrow
+          componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
         >
-          {travelerIndices.map((idx) => (
-            <Box
-              key={idx}
+          <Box
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "3px",
+              px: "5px",
+              py: "2px",
+              borderRadius: "100px",
+              bgcolor: bgColor,
+              border: `1px dashed ${alpha(lineBase, 0.25)}`,
+              pointerEvents: "auto",
+              cursor: "default",
+              opacity: pillOpacity,
+            }}
+          >
+            {travelerIndices.map((idx) => (
+              <Box
+                key={idx}
+                sx={{
+                  width: 4,
+                  height: 4,
+                  borderRadius: "50%",
+                  bgcolor: getTravelerColor(idx),
+                  flexShrink: 0,
+                }}
+              />
+            ))}
+
+            <Typography
               sx={{
-                width: 4,
-                height: 4,
-                borderRadius: "50%",
-                bgcolor: getTravelerColor(idx),
+                fontFamily: tokens.fontBody,
+                fontSize: "0.52rem",
+                fontWeight: 700,
+                letterSpacing: "0.04em",
+                color: alpha(textColor, pillOpacity),
+                lineHeight: 1,
+                userSelect: "none",
+              }}
+            >
+              {maxDays}d
+            </Typography>
+
+            <InfoOutlinedIcon
+              sx={{
+                fontSize: "0.55rem",
+                color: alpha(textColor, pillOpacity * 0.7),
                 flexShrink: 0,
               }}
             />
-          ))}
-
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.52rem",
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              color: alpha(textColor, pillOpacity),
-              lineHeight: 1,
-              userSelect: "none",
-            }}
-          >
-            {maxDays}d
-          </Typography>
-
-          <InfoOutlinedIcon
-            sx={{
-              fontSize: "0.55rem",
-              color: alpha(textColor, pillOpacity * 0.7),
-              flexShrink: 0,
-            }}
-          />
-        </Box>
-      </MobileAwareTooltip>
+          </Box>
+        </MobileAwareTooltip>
+      </Box>
     </Box>
   );
 }
@@ -826,35 +833,40 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
         />
       </Box>
 
-      {/* Right-side info pill */}
-      <MobileAwareTooltip
-        title={tooltipTitle}
-        placement="bottom-start"
-        arrow
-        componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
+      {/* Right-side info pill — same anchor-sizing fix as return marker above. */}
+      <Box
+        sx={{
+          position: "absolute",
+          right: CARD_GUTTER + 2,
+          top: 0,
+          transform: "translateY(-50%)",
+          zIndex: 2,
+        }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            right: CARD_GUTTER + 2,
-            top: 0,
-            transform: "translateY(-50%)",
-            zIndex: 2,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "2px",
-            px: "5px",
-            py: "1.5px",
-            borderRadius: "100px",
-            bgcolor: tokens.mist,
-            border: `1px dotted ${alpha(tokens.textGhost, 0.15)}`,
-            pointerEvents: "auto",
-            cursor: "default",
-          }}
+        <MobileAwareTooltip
+          title={tooltipTitle}
+          placement="bottom-start"
+          arrow
+          componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
         >
-          {pillContent}
-        </Box>
-      </MobileAwareTooltip>
+          <Box
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "2px",
+              px: "5px",
+              py: "1.5px",
+              borderRadius: "100px",
+              bgcolor: tokens.mist,
+              border: `1px dotted ${alpha(tokens.textGhost, 0.15)}`,
+              pointerEvents: "auto",
+              cursor: "default",
+            }}
+          >
+            {pillContent}
+          </Box>
+        </MobileAwareTooltip>
+      </Box>
     </Box>
   );
 }
