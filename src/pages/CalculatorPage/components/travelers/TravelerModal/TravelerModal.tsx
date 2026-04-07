@@ -6,12 +6,13 @@ import TextField from "@mui/material/TextField";
 import { tokens } from "@/styles/theme";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
+import { NationalitySelector } from "../NationalitySelector";
 
 interface TravelerModalProps {
   open: boolean;
   onClose: () => void;
-  /** Called with the new traveler name when the user confirms. */
-  onAdd: (name: string) => void;
+  /** Called with the new traveler name and passport code when the user confirms. */
+  onAdd: (name: string, passportCode: string | null) => void;
 }
 
 /**
@@ -20,6 +21,7 @@ interface TravelerModalProps {
  */
 export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
   const [name, setName] = useState("");
+  const [passportCode, setPassportCode] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   // Reset state when modal opens
@@ -27,6 +29,8 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
     if (open) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setName("");
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setPassportCode(null);
       setError(null);
     }
   }, [open]);
@@ -37,7 +41,7 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
       setError("Please enter a name.");
       return;
     }
-    onAdd(trimmed);
+    onAdd(trimmed, passportCode);
     onClose();
   }
 
@@ -179,8 +183,35 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
             color: tokens.textSoft,
           }}
         >
-          Use first names — they appear as column headers in the tracker.
+          Use first names -- they appear as column headers in the tracker.
         </Typography>
+
+        {/* Nationality */}
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <Typography
+            component="label"
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.68rem",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: tokens.textSoft,
+            }}
+          >
+            Passport / nationality
+          </Typography>
+          <NationalitySelector value={passportCode} onChange={setPassportCode} />
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.72rem",
+              color: tokens.textGhost,
+            }}
+          >
+            Optional -- sets your Schengen entitlement rule.
+          </Typography>
+        </Box>
       </Box>
 
       {/* Divider */}

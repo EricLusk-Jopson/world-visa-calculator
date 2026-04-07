@@ -35,6 +35,8 @@ export interface Traveler {
   id: string;
   /** Alphabetical characters only, 1–30 chars */
   name: string;
+  /** ISO Alpha-2 passport code; null = not yet selected */
+  passportCode: string | null;
   trips: Trip[];
 }
 
@@ -69,6 +71,46 @@ export interface EarliestEntryResult {
    * i.e. the traveler can enter today (or on the requested search-from date).
    */
   canEnterOnSearchDate: boolean;
+}
+
+// ─── Passport / Nationality ───────────────────────────────────────────────────
+
+export type SchengenAccess =
+  | 'free_movement'  // EU/EEA/Swiss — no 90/180 limit applies
+  | 'visa_free'      // 90 days in any 180-day period
+  | 'visa_required'  // Must apply for a Schengen visa
+  | 'suspended';     // Visa-free access temporarily suspended
+
+export interface PassportRule {
+  access: SchengenAccess;
+  /** Present for visa_free only */
+  allowanceDays?: number;
+  /** Present for visa_free only */
+  windowDays?: number;
+  /** Present for visa_free — ETIAS launching late 2026 */
+  requiresETIAS?: boolean;
+  /** Present for suspended — human-readable explanation */
+  suspensionNote?: string;
+}
+
+export interface RegionDefinition {
+  code: string;
+  name: string;
+  /** ISO Alpha-2 codes of member countries */
+  memberStates: string[];
+  rule: {
+    allowanceDays: number;
+    windowDays: number;
+    entryCountsAsDay: boolean;
+    exitCountsAsDay: boolean;
+  };
+  /** ISO date — used in UI and for audit trail */
+  lastVerified: string;
+  /** Official government source */
+  sourceUrl: string;
+  passportRules: Record<string, PassportRule>;
+  /** Fallback for any code not in passportRules */
+  defaultRule: PassportRule;
 }
 
 // ─── Sharing ─────────────────────────────────────────────────────────────────

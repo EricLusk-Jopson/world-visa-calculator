@@ -25,19 +25,20 @@ interface CardsViewProps {
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
+  onPassportChange: (travelerId: string, passportCode: string | null) => void;
 }
 
 /**
  * Cards view layout.
  *
- * Equal-width columns — every TravelerCardsColumn uses `flex: "1 1 0"` (zero
+ * Equal-width columns -- every TravelerCardsColumn uses `flex: "1 1 0"` (zero
  * flex-basis) so available space is distributed equally regardless of content.
  *
- * Horizontal scroll — once columns hit MIN_COLUMN_WIDTH the container scrolls
+ * Horizontal scroll -- once columns hit MIN_COLUMN_WIDTH the container scrolls
  * horizontally instead of compressing further. Vertical scroll is handled
  * internally by each column's trip list.
  *
- * Synchronised compact layout — a ResizeObserver tracks container width and
+ * Synchronised compact layout -- a ResizeObserver tracks container width and
  * derives an `effectiveColumnWidth = max(MIN_COLUMN_WIDTH, available / N)`.
  * One shared `compact` boolean is passed to every column so all headers switch
  * layout at exactly the same moment.
@@ -47,6 +48,7 @@ export function CardsView({
   onAddTrip,
   onEditTrip,
   onDeleteTraveler,
+  onPassportChange,
 }: CardsViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -105,6 +107,7 @@ export function CardsView({
           onAddTrip={onAddTrip}
           onEditTrip={onEditTrip}
           onDeleteTraveler={onDeleteTraveler}
+          onPassportChange={onPassportChange}
         />
       ))}
 

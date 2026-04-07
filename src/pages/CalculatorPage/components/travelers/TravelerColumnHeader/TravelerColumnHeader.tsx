@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { alpha } from "@mui/material/styles";
 import { tokens } from "@/styles/theme";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { Traveler } from "@/types";
@@ -9,6 +10,10 @@ import {
   AVAILABLE_DAYS_DESCRIPTION,
   MAX_STAY_DESCRIPTION,
 } from "@/features/calculator/utils/schengenConstants";
+import { getSchengenRule } from "@/data/regions/schengen";
+import { NationalitySelector } from "../NationalitySelector";
+
+const ETIAS_STORAGE_KEY = "etias_notice_dismissed";
 
 interface TravelerColumnHeaderProps {
   traveler: Traveler;
@@ -20,14 +25,15 @@ interface TravelerColumnHeaderProps {
   maxStay: number;
   /**
    * When true the header uses a two-row layout:
-   *   Row A — traveler name (flex:1) + delete button (always opposite the name)
-   *   Row B — status chips
+   *   Row A -- traveler name (flex:1) + delete button (always opposite the name)
+   *   Row B -- status chips
    *
    * This flag comes from CardsView and is the same for every column, so the
    * transition always fires simultaneously across all headers.
    */
   compact?: boolean;
   onDelete: () => void;
+  onPassportChange: (code: string | null) => void;
   sx?: object;
 }
 
@@ -53,14 +59,25 @@ export function TravelerColumnHeader({
   maxStay,
   compact = false,
   onDelete,
+  onPassportChange,
   sx = {},
 }: TravelerColumnHeaderProps) {
   const [hovered, setHovered] = useState(false);
   const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const [editingPassport, setEditingPassport] = useState(false);
+  const [etiasDismissed, setEtiasDismissed] = useState(() => {
+    try {
+      return sessionStorage.getItem(ETIAS_STORAGE_KEY) === "1";
+    } catch {
+      return false;
+    }
+  });
 
   const { daysUsed, daysRemaining, variant } = status;
   const tripCount = traveler.trips?.length ?? 0;
   const fillPct = Math.min(100, (daysUsed / 90) * 100);
+
+  const rule = getSchengenRule(traveler.passportCode);
 
   const barColor =
     variant === "safe"
@@ -78,6 +95,20 @@ export function TravelerColumnHeader({
     onDelete();
   };
   const handleCancelDelete = () => setConfirmingDelete(false);
+
+  const handleDismissEtias = () => {
+    try {
+      sessionStorage.setItem(ETIAS_STORAGE_KEY, "1");
+    } catch {
+      // sessionStorage unavailable — dismiss for this render only
+    }
+    setEtiasDismissed(true);
+  };
+
+  // Reset inline passport editor when traveler changes
+  useEffect(() => {
+    setEditingPassport(false);
+  }, [traveler.id]);
 
   // The delete button is always on the same row as the traveler name (right-aligned).
   // Its opacity is 0 when not hovered so it takes up space but remains invisible.
@@ -109,6 +140,177 @@ export function TravelerColumnHeader({
     </Box>
   );
 
+  // ── Passport rule label ──────────────────────────────────────────────────────
+
+  const ruleLabel = (() => {
+    if (!traveler.passportCode) {
+      return (
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.68rem",
+            fontStyle: "italic",
+            color: tokens.textGhost,
+            flex: 1,
+            minWidth: 0,
+          }}
+        >
+          Select nationality to see your entitlement
+        </Typography>
+      );
+    }
+    if (rule.access === "free_movement") {
+      return (
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.68rem",
+            fontWeight: 600,
+            color: tokens.green,
+            flex: 1,
+            minWidth: 0,
+          }}
+        >
+          EU / EEA / Swiss -- no day limit
+        </Typography>
+      );
+    }
+    if (rule.access === "visa_free") {
+      return (
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.68rem",
+            color: tokens.textSoft,
+            flex: 1,
+            minWidth: 0,
+          }}
+        >
+          Visa-free &middot; 90 days in any 180-day period
+        </Typography>
+      );
+    }
+    if (rule.access === "suspended") {
+      return (
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.68rem",
+            color: tokens.amber,
+            flex: 1,
+            minWidth: 0,
+          }}
+        >
+          Access suspended
+        </Typography>
+      );
+    }
+    // visa_required
+    return (
+      <Typography
+        component="a"
+        href="/info/schengen-visa-required"
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.68rem",
+          color: tokens.textSoft,
+          flex: 1,
+          minWidth: 0,
+          textDecoration: "none",
+          "&:hover": { color: tokens.navy, textDecoration: "underline" },
+        }}
+      >
+        Visa required -- learn more
+      </Typography>
+    );
+  })();
+
+  // ── Calculator guard: what to show instead of usage block ───────────────────
+
+  const guardMessage = (() => {
+    if (rule.access === "visa_free") return null; // show normal calculator
+
+    if (!traveler.passportCode) {
+      return (
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.68rem",
+            fontStyle: "italic",
+            color: tokens.textGhost,
+          }}
+        >
+          Select your nationality to see your entitlement
+        </Typography>
+      );
+    }
+    if (rule.access === "free_movement") {
+      return (
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.68rem",
+            fontWeight: 600,
+            color: tokens.green,
+          }}
+        >
+          No Schengen day limit applies to your passport.
+        </Typography>
+      );
+    }
+    if (rule.access === "visa_required") {
+      return (
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.68rem",
+            color: tokens.textSoft,
+          }}
+        >
+          The 90/180-day calculator applies to visa-free travelers only.
+        </Typography>
+      );
+    }
+    if (rule.access === "suspended") {
+      return (
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.68rem",
+              color: tokens.amber,
+              lineHeight: 1.4,
+            }}
+          >
+            {rule.suspensionNote}
+          </Typography>
+          <Typography
+            component="a"
+            href="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.65rem",
+              color: tokens.textGhost,
+              textDecoration: "none",
+              "&:hover": { textDecoration: "underline", color: tokens.textSoft },
+            }}
+          >
+            EU official source
+          </Typography>
+        </Box>
+      );
+    }
+    return null;
+  })();
+
+  const showCalculator = rule.access === "visa_free";
+  const showEtias =
+    showCalculator &&
+    rule.requiresETIAS === true &&
+    !etiasDismissed;
+
   return (
     <Box
       onMouseEnter={() => setHovered(true)}
@@ -127,7 +329,7 @@ export function TravelerColumnHeader({
       }}
     >
       {/*
-       * ── Name row (always Row A) ────────────────────────────────────────
+       * ── Name row (always Row A) ────────────────────────────────────────────
        *
        * The delete button lives here in both modes so it is always visually
        * opposite the traveler name.
@@ -163,7 +365,7 @@ export function TravelerColumnHeader({
          * Compact mode: badges are rendered separately below; only the delete
          * button stays here so it remains opposite the name.
          */}
-        {!compact && (
+        {!compact && showCalculator && (
           <>
             <StatusBadge
               variant={variant}
@@ -182,12 +384,12 @@ export function TravelerColumnHeader({
       </Box>
 
       {/*
-       * ── Badges row (compact mode only, Row B) ─────────────────────────
+       * ── Badges row (compact mode only, Row B) ─────────────────────────────
        *
        * Rendered below the name row when there isn't room for everything on
        * one line.
        */}
-      {compact && (
+      {compact && showCalculator && (
         <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
           <StatusBadge
             variant={variant}
@@ -202,95 +404,220 @@ export function TravelerColumnHeader({
         </Box>
       )}
 
-      {/*
-       * ── Schengen usage info ───────────────────────────────────────────
-       *
-       * Normal: label and date string on the same row (space-between).
-       * Compact: date string wraps below the label in a smaller, lighter
-       *   weight so it doesn't compete for horizontal space.
-       */}
-      {compact ? (
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-          <Typography
+      {/* ── Passport rule row ──────────────────────────────────────────────── */}
+      {editingPassport ? (
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          <NationalitySelector
+            value={traveler.passportCode}
+            onChange={(code) => {
+              onPassportChange(code);
+              setEditingPassport(false);
+            }}
+            autoFocus
+          />
+          <Box
+            component="button"
+            onClick={() => setEditingPassport(false)}
             sx={{
+              border: "none",
+              bgcolor: "transparent",
               fontFamily: tokens.fontBody,
-              fontSize: "0.62rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
+              fontSize: "0.65rem",
               color: tokens.textGhost,
+              cursor: "pointer",
+              textAlign: "left",
+              p: 0,
+              "&:hover": { color: tokens.textSoft },
             }}
           >
-            Schengen
-          </Typography>
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.62rem",
-              fontWeight: 500,
-              color: tokens.textGhost,
-              lineHeight: 1.35,
-            }}
-          >
-            {daysUsed}/90 used since {fmtWindowDate(status.windowStart)}
-          </Typography>
+            Cancel
+          </Box>
         </Box>
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "baseline",
-            justifyContent: "space-between",
-            gap: "6px",
-          }}
-        >
-          <Typography
+        <Box sx={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0 }}>
+          {ruleLabel}
+          <Box
+            component="button"
+            onClick={() => setEditingPassport(true)}
             sx={{
+              flexShrink: 0,
+              border: "none",
+              bgcolor: "transparent",
               fontFamily: tokens.fontBody,
               fontSize: "0.62rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
               color: tokens.textGhost,
+              cursor: "pointer",
+              p: 0,
+              lineHeight: 1,
+              transition: "color 0.12s",
+              "&:hover": { color: tokens.navy },
             }}
           >
-            Schengen
-          </Typography>
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.68rem",
-              fontWeight: 600,
-              color: tokens.textSoft,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {daysUsed}/90 used since {fmtWindowDate(status.windowStart)}
-          </Typography>
+            (change)
+          </Box>
         </Box>
       )}
 
-      {/* ── Progress bar ──────────────────────────────────────────────── */}
-      <Box
-        sx={{
-          height: 3,
-          bgcolor: tokens.border,
-          borderRadius: "100px",
-          overflow: "hidden",
-        }}
-      >
-        <Box
-          sx={{
-            height: "100%",
-            width: `${fillPct}%`,
-            bgcolor: barColor,
-            borderRadius: "100px",
-            transition: "width 0.4s cubic-bezier(0.16,1,0.3,1)",
-          }}
-        />
-      </Box>
+      {/* ── Calculator section (visa_free only) or guard message ──────────── */}
+      {showCalculator ? (
+        <>
+          {/*
+           * ── Schengen usage info ──────────────────────────────────────────
+           *
+           * Normal: label and date string on the same row (space-between).
+           * Compact: date string wraps below the label in a smaller, lighter
+           *   weight so it doesn't compete for horizontal space.
+           */}
+          {compact ? (
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.62rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: tokens.textGhost,
+                }}
+              >
+                Schengen
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.62rem",
+                  fontWeight: 500,
+                  color: tokens.textGhost,
+                  lineHeight: 1.35,
+                }}
+              >
+                {daysUsed}/90 used since {fmtWindowDate(status.windowStart)}
+              </Typography>
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                gap: "6px",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.62rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: tokens.textGhost,
+                }}
+              >
+                Schengen
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.68rem",
+                  fontWeight: 600,
+                  color: tokens.textSoft,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {daysUsed}/90 used since {fmtWindowDate(status.windowStart)}
+              </Typography>
+            </Box>
+          )}
 
-      {/* ── Delete confirmation strip ──────────────────────────────────── */}
+          {/* ── Progress bar ─────────────────────────────────────────────── */}
+          <Box
+            sx={{
+              height: 3,
+              bgcolor: tokens.border,
+              borderRadius: "100px",
+              overflow: "hidden",
+            }}
+          >
+            <Box
+              sx={{
+                height: "100%",
+                width: `${fillPct}%`,
+                bgcolor: barColor,
+                borderRadius: "100px",
+                transition: "width 0.4s cubic-bezier(0.16,1,0.3,1)",
+              }}
+            />
+          </Box>
+
+          {/* ── ETIAS notice (dismissible per session) ────────────────────── */}
+          {showEtias && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "6px",
+                bgcolor: alpha(tokens.navy, 0.05),
+                border: `1px solid ${alpha(tokens.navy, 0.12)}`,
+                borderRadius: "8px",
+                px: "10px",
+                py: "8px",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.65rem",
+                  color: tokens.textSoft,
+                  flex: 1,
+                  lineHeight: 1.45,
+                }}
+              >
+                ETIAS launching late 2026: Visa-free travelers will need a EUR 20
+                pre-travel authorisation. Your 90-day allowance is unchanged.{" "}
+                <Typography
+                  component="a"
+                  href="/info/etias"
+                  sx={{
+                    fontSize: "inherit",
+                    fontFamily: "inherit",
+                    color: tokens.navy,
+                    textDecoration: "none",
+                    "&:hover": { textDecoration: "underline" },
+                  }}
+                >
+                  Learn more
+                </Typography>
+              </Typography>
+              <Box
+                component="button"
+                onClick={handleDismissEtias}
+                aria-label="Dismiss ETIAS notice"
+                sx={{
+                  flexShrink: 0,
+                  border: "none",
+                  bgcolor: "transparent",
+                  color: tokens.textGhost,
+                  cursor: "pointer",
+                  fontSize: "0.65rem",
+                  lineHeight: 1,
+                  p: 0,
+                  mt: "1px",
+                  "&:hover": { color: tokens.textSoft },
+                }}
+              >
+                ✕
+              </Box>
+            </Box>
+          )}
+        </>
+      ) : (
+        /* Guard message for non-visa-free passports */
+        guardMessage && (
+          <Box sx={{ mt: "2px" }}>{guardMessage}</Box>
+        )
+      )}
+
+      {/* ── Delete confirmation strip ────────────────────────────────────── */}
       {confirmingDelete && (
         <Box
           sx={{

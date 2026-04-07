@@ -31,7 +31,7 @@ function computeOverstayTripIds(traveler: Traveler): Set<string> {
   );
   if (schengenTrips.length === 0) return new Set();
 
-  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
   const result = new Set<string>();
 
   for (const trip of schengenTrips) {
@@ -58,6 +58,7 @@ interface TravelerCardsColumnProps {
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
+  onPassportChange: (travelerId: string, passportCode: string | null) => void;
 }
 
 /**
@@ -74,6 +75,7 @@ export function TravelerCardsColumn({
   onAddTrip,
   onEditTrip,
   onDeleteTraveler,
+  onPassportChange,
 }: TravelerCardsColumnProps) {
   const status = computeTravelerStatus(traveler);
 
@@ -125,6 +127,7 @@ export function TravelerCardsColumn({
           maxStay={headerMaxStay}
           compact={compact}
           onDelete={() => onDeleteTraveler(traveler.id)}
+          onPassportChange={(code) => onPassportChange(traveler.id, code)}
         />
       </Box>
 

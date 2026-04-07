@@ -404,6 +404,7 @@ export function TravelerTimelineColumn({
     const mockTraveler = {
       id: "__overstay__",
       name: "",
+      passportCode: null,
       trips: schengenTrips,
     };
     const result = new Set<string>();

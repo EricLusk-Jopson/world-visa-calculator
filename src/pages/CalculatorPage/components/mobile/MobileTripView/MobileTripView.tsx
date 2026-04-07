@@ -45,7 +45,7 @@ function computeOverstayCoords(traveler: Traveler): Set<string> {
   );
   if (schengenTrips.length === 0) return new Set();
 
-  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
   const result = new Set<string>();
 
   for (const trip of schengenTrips) {
