@@ -7,6 +7,12 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 
 import { tokens } from "@/styles/theme";
+import {
+  returnMarkerCurrentText,
+  returnMarkerThresholdText,
+  agingMarkerTripLine,
+  AGING_MARKER_EXPLANATION,
+} from "@/features/calculator/utils/markerTooltips";
 import { TimelineTripCard } from "../../trips/TimelineTripCard";
 import {
   dateToTop,
@@ -64,8 +70,8 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
     markerColors(days, isCurrent);
 
   const tooltipText = isCurrent
-    ? `Currently, you can start a Schengen trip of up to ${days} days.`
-    : `From ${date.toDateString()}, a ${days}-day Schengen trip first becomes possible.`;
+    ? returnMarkerCurrentText(days)
+    : returnMarkerThresholdText(date, days);
 
   return (
     <Box
@@ -171,16 +177,7 @@ function AgingMarkerLine({
   const TEXT_OPACITY = 0.4;
 
   const agingDate = addDays(parseDate(entryDate), 180);
-  const agingDateStr = agingDate.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-
-  const tooltipText =
-    `From ${agingDateStr}, the ${destination} trip's ${tripDays} Schengen days begin ` +
-    `aging out of the 180-day window. As each day exits, your available allowance ` +
-    `grows — this is typically what causes max stay to jump noticeably.`;
+  const tooltipText = `${agingMarkerTripLine(destination, tripDays, agingDate)}. ${AGING_MARKER_EXPLANATION}`;
   return (
     <Box
       sx={{

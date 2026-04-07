@@ -34,6 +34,11 @@ import {
   computeAgingMarkers,
 } from "@/features/calculator/utils/agingMarkers";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import {
+  returnMarkerRowText,
+  agingMarkerTripLine,
+  AGING_MARKER_EXPLANATION,
+} from "@/features/calculator/utils/markerTooltips";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -599,7 +604,7 @@ function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileRe
           component="div"
           sx={{ "&:not(:last-child)": { mb: "3px" } }}
         >
-          {e.travelerName} · {format(e.date, "MMM d, yyyy")} · up to {e.days}d
+          {returnMarkerRowText(e.travelerName, e.date, e.days)}
         </Box>
       ))}
     </Box>
@@ -725,13 +730,12 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
             component="div"
             sx={{ "&:not(:last-child)": { mb: "3px" } }}
           >
-            {m.destination} ({m.tripDays}d) ages out {format(agingDate, "MMM d, yyyy")}
+            {agingMarkerTripLine(m.destination, m.tripDays, agingDate)}
           </Box>
         );
       })}
       <Box component="div" sx={{ mt: "4px", opacity: 0.8 }}>
-        Each exiting day frees up allowance and typically causes a noticeable
-        jump in max stay.
+        {AGING_MARKER_EXPLANATION}
       </Box>
     </Box>
   );
