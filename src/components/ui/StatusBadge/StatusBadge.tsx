@@ -1,8 +1,8 @@
 import Chip from "@mui/material/Chip";
 import Box from "@mui/material/Box";
-import Tooltip from "@mui/material/Tooltip";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 
 export type BadgeVariant = "safe" | "caution" | "danger" | "neutral";
 
@@ -116,7 +116,7 @@ export function StatusBadge({
   if (!tooltip) return chip;
 
   return (
-    <Tooltip
+    <MobileAwareTooltip
       title={tooltip}
       placement="bottom"
       arrow
@@ -136,6 +136,6 @@ export function StatusBadge({
     >
       {/* Tooltip requires a forwardRef-compatible child */}
       <span>{chip}</span>
-    </Tooltip>
+    </MobileAwareTooltip>
   );
 }

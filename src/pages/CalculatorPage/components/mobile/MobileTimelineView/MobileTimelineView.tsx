@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { format } from "date-fns";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
@@ -11,6 +12,7 @@ import {
   computeTimelineEnd,
   computeTimelineStart,
   dateToTop,
+  PX_PER_DAY,
   SIDEBAR_WIDTH,
 } from "@/features/calculator/utils/timelineLayout";
 import {
@@ -18,10 +20,25 @@ import {
   parseDate,
   todayISO,
   countTripDays,
+  addDays,
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import {
+  type ReturnMarker,
+  computeReturnMarkers,
+} from "@/features/calculator/utils/returnmarkers";
+import {
+  type AgingMarker,
+  computeAgingMarkers,
+} from "@/features/calculator/utils/agingMarkers";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import {
+  returnMarkerRowText,
+  agingMarkerTripLine,
+  AGING_MARKER_EXPLANATION,
+} from "@/features/calculator/utils/markerTooltips";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -50,6 +67,39 @@ interface PositionedTrip {
   isOverstay: boolean;
 }
 
+/** One entry contributed by a traveler into a return-marker group. */
+interface ReturnMarkerEntry {
+  top: number;
+  date: Date;
+  days: number;
+  travelerIndex: number;
+  travelerName: string;
+}
+
+/**
+ * A group of return-marker entries whose dates fall within a 6-day window of
+ * the earliest entry. The group is displayed at `top` (the earliest entry's
+ * position) with a combined pill and unified tooltip.
+ */
+interface MobileReturnMarkerGroup {
+  top: number;
+  entries: ReturnMarkerEntry[];
+  /** Unique traveler indices across all entries (for colour dots). */
+  travelerIndices: number[];
+  /** Highest threshold across all entries. */
+  maxDays: number;
+}
+
+/**
+ * A group of aging markers whose dates fall within a 6-day window of the
+ * earliest marker. When more than one trip is in the group the centre label
+ * reads "X Trips Age Out" instead of the trip destination.
+ */
+interface MobileAgingMarkerGroup {
+  top: number;
+  markers: AgingMarker[];
+}
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const MIN_TRIP_HEIGHT = 28;
@@ -59,14 +109,21 @@ const HEIGHT_SHOW_NAMES = 72;
 const LANE_GAP = 2;
 const CARD_GUTTER = 3;
 
+/** 6-day rollup window in pixels. */
+const ROLLUP_PX = 6 * PX_PER_DAY;
+
+/** Shared tooltip styling used by both mobile marker types. */
+const TOOLTIP_SX = {
+  fontFamily: tokens.fontBody,
+  fontSize: "0.72rem",
+  fontWeight: 500,
+  bgcolor: tokens.navy,
+  "& .MuiTooltip-arrow": { color: tokens.navy },
+  maxWidth: 260,
+};
+
 // ─── Overstay helpers ─────────────────────────────────────────────────────────
 
-/**
- * Returns a Set of trip coordinate keys ("entryDate|exitDate|region") that are
- * in an overstay state at their exit date for the given traveler. Uses
- * coordinate keys rather than UUIDs because mobile merged trips can't rely
- * on a single canonical ID across travelers.
- */
 function computeOverstayCoords(traveler: Traveler): Set<string> {
   const schengenTrips = traveler.trips.filter(
     (t) => t.region === VisaRegion.Schengen,
@@ -95,7 +152,6 @@ function buildPositionedTrips(
   timelineStart: Date,
   todayStr: string,
 ): Omit<PositionedTrip, "lane" | "laneCount">[] {
-  // Pre-compute overstay coords per traveler once.
   const overstayByTraveler = new Map<string, Set<string>>(
     travelers.map((t) => [t.id, computeOverstayCoords(t)]),
   );
@@ -119,7 +175,6 @@ function buildPositionedTrips(
 
       if (existing) {
         existing.entries.push({ traveler, travelerIndex, trip });
-        // Propagate overstay flag — any traveler in overstay marks the card.
         if (tripIsOverstay) {
           (existing as PositionedTrip).isOverstay = true;
         }
@@ -174,6 +229,80 @@ function assignLanes(
     }, lanes[i]);
     return { ...item, lane: lanes[i], laneCount: overlapMaxLane + 1 };
   });
+}
+
+// ─── Marker grouping helpers ──────────────────────────────────────────────────
+
+/**
+ * Groups return-marker entries whose pixel positions fall within a 6-day window
+ * of the earliest entry in a run. The window is anchored to the first entry —
+ * it does NOT cascade (the window never advances beyond the original anchor).
+ */
+function groupReturnMarkers(
+  entries: ReturnMarkerEntry[],
+): MobileReturnMarkerGroup[] {
+  if (entries.length === 0) return [];
+
+  const sorted = [...entries].sort((a, b) => a.top - b.top);
+  const visited = new Set<number>();
+  const groups: MobileReturnMarkerGroup[] = [];
+
+  for (let i = 0; i < sorted.length; i++) {
+    if (visited.has(i)) continue;
+    visited.add(i);
+    const anchor = sorted[i];
+    const group: ReturnMarkerEntry[] = [anchor];
+
+    for (let j = i + 1; j < sorted.length; j++) {
+      if (visited.has(j)) continue;
+      if (sorted[j].top - anchor.top <= ROLLUP_PX) {
+        group.push(sorted[j]);
+        visited.add(j);
+      }
+    }
+
+    groups.push({
+      top: anchor.top,
+      entries: group,
+      travelerIndices: [...new Set(group.map((e) => e.travelerIndex))],
+      maxDays: Math.max(...group.map((e) => e.days)),
+    });
+  }
+
+  return groups;
+}
+
+/**
+ * Groups aging markers whose pixel positions fall within a 6-day window of the
+ * earliest marker in a run. Same non-cascading anchor logic as return markers.
+ */
+function groupAgingMarkers(
+  markers: AgingMarker[],
+): MobileAgingMarkerGroup[] {
+  if (markers.length === 0) return [];
+
+  const sorted = [...markers].sort((a, b) => a.top - b.top);
+  const visited = new Set<number>();
+  const groups: MobileAgingMarkerGroup[] = [];
+
+  for (let i = 0; i < sorted.length; i++) {
+    if (visited.has(i)) continue;
+    visited.add(i);
+    const anchor = sorted[i];
+    const group: AgingMarker[] = [anchor];
+
+    for (let j = i + 1; j < sorted.length; j++) {
+      if (visited.has(j)) continue;
+      if (sorted[j].top - anchor.top <= ROLLUP_PX) {
+        group.push(sorted[j]);
+        visited.add(j);
+      }
+    }
+
+    groups.push({ top: anchor.top, markers: group });
+  }
+
+  return groups;
 }
 
 // ─── Chip ─────────────────────────────────────────────────────────────────────
@@ -444,6 +573,292 @@ function MobileTimelineTripCard({
   );
 }
 
+// ─── Mobile return marker ─────────────────────────────────────────────────────
+
+function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileReturnMarkerGroup) {
+  const isGenerous = maxDays >= 30;
+  const lineBase = isGenerous ? tokens.green : tokens.amber;
+  const textColor = isGenerous ? tokens.greenText : tokens.amberText;
+  const bgColor = isGenerous ? tokens.greenBg : tokens.amberBg;
+
+  // Opacity mirrors desktop logic, keyed to the smallest threshold in the group.
+  const minDays = Math.min(...entries.map((e) => e.days));
+  const lineOpacity = minDays % 30 === 0 ? 0.35 : 0.18;
+  const pillOpacity = minDays % 30 === 0 ? 1 : 0.65;
+
+  // Deduplicate entries by traveler, keeping only the max-threshold entry per
+  // traveler. This mirrors the pill logic: only the best reachable value matters.
+  const perTraveler = new Map<number, ReturnMarkerEntry>();
+  entries.forEach((e) => {
+    const existing = perTraveler.get(e.travelerIndex);
+    if (!existing || e.days > existing.days) perTraveler.set(e.travelerIndex, e);
+  });
+  const dedupedEntries = [...perTraveler.values()].sort((a, b) => a.top - b.top);
+
+  // Tooltip: always a per-traveler list (same format for one or many).
+  const tooltipTitle = (
+    <Box component="div">
+      {dedupedEntries.map((e, i) => (
+        <Box
+          key={i}
+          component="div"
+          sx={{ "&:not(:last-child)": { mb: "3px" } }}
+        >
+          {returnMarkerRowText(e.travelerName, e.date, e.days)}
+        </Box>
+      ))}
+    </Box>
+  );
+
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top,
+        pointerEvents: "none",
+        zIndex: 1,
+      }}
+    >
+      {/* Dashed threshold line */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: 0,
+          borderTop: `1px dashed ${alpha(lineBase, lineOpacity)}`,
+        }}
+      />
+
+      {/* Pill: traveller colour dots + max threshold.
+          The absolute positioning lives on the outer Box so that the span
+          MobileAwareTooltip inserts has a measurable size for Popper to anchor. */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: CARD_GUTTER + 2,
+          top: 0,
+          transform: "translateY(-50%)",
+          zIndex: 2,
+        }}
+      >
+        <MobileAwareTooltip
+          title={tooltipTitle}
+          placement="bottom-start"
+          arrow
+          componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
+        >
+          <Box
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "3px",
+              px: "5px",
+              py: "2px",
+              borderRadius: "100px",
+              bgcolor: bgColor,
+              border: `1px dashed ${alpha(lineBase, 0.25)}`,
+              pointerEvents: "auto",
+              cursor: "default",
+              opacity: pillOpacity,
+            }}
+          >
+            {travelerIndices.map((idx) => (
+              <Box
+                key={idx}
+                sx={{
+                  width: 4,
+                  height: 4,
+                  borderRadius: "50%",
+                  bgcolor: getTravelerColor(idx),
+                  flexShrink: 0,
+                }}
+              />
+            ))}
+
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.52rem",
+                fontWeight: 700,
+                letterSpacing: "0.04em",
+                color: alpha(textColor, pillOpacity),
+                lineHeight: 1,
+                userSelect: "none",
+              }}
+            >
+              {maxDays}d
+            </Typography>
+
+            <InfoOutlinedIcon
+              sx={{
+                fontSize: "0.55rem",
+                color: alpha(textColor, pillOpacity * 0.7),
+                flexShrink: 0,
+              }}
+            />
+          </Box>
+        </MobileAwareTooltip>
+      </Box>
+    </Box>
+  );
+}
+
+// ─── Mobile aging marker ──────────────────────────────────────────────────────
+
+function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
+  const LINE_OPACITY = 0.12;
+  const TEXT_OPACITY = 0.4;
+
+  const isSingle = markers.length === 1;
+  const centreLabel = isSingle
+    ? `${markers[0].destination} ages out`
+    : `${markers.length} Trips Age Out`;
+
+  // Tooltip: always a per-trip list followed by the behaviour note (same
+  // format for one trip or many).
+  const tooltipTitle = (
+    <Box component="div">
+      {markers.map((m, i) => {
+        const agingDate = addDays(parseDate(m.entryDate), 180);
+        return (
+          <Box
+            key={i}
+            component="div"
+            sx={{ "&:not(:last-child)": { mb: "3px" } }}
+          >
+            {agingMarkerTripLine(m.destination, m.tripDays, agingDate)}
+          </Box>
+        );
+      })}
+      <Box component="div" sx={{ mt: "4px", opacity: 0.8 }}>
+        {AGING_MARKER_EXPLANATION}
+      </Box>
+    </Box>
+  );
+
+  // Right-side pill: "+Xd" for a single trip; info icon only for multiples.
+  const pillContent = isSingle ? (
+    <>
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.5rem",
+          fontWeight: 700,
+          letterSpacing: "0.04em",
+          color: alpha(tokens.textSoft, 0.7),
+          lineHeight: 1,
+          userSelect: "none",
+        }}
+      >
+        +{markers[0].tripDays}d
+      </Typography>
+      <InfoOutlinedIcon
+        sx={{ fontSize: "0.55rem", color: alpha(tokens.textGhost, 0.5), flexShrink: 0 }}
+      />
+    </>
+  ) : (
+    <InfoOutlinedIcon
+      sx={{ fontSize: "0.6rem", color: alpha(tokens.textGhost, 0.6), flexShrink: 0 }}
+    />
+  );
+
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top,
+        pointerEvents: "none",
+        zIndex: 1,
+      }}
+    >
+      {/* Dotted line with centred label */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: CARD_GUTTER + 2,
+          right: 36,
+          top: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+        }}
+      >
+        <Box
+          sx={{
+            flex: 1,
+            height: 0,
+            borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
+          }}
+        />
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.52rem",
+            fontWeight: 600,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: alpha(tokens.textGhost, TEXT_OPACITY),
+            whiteSpace: "nowrap",
+            lineHeight: 1,
+            userSelect: "none",
+            flexShrink: 0,
+          }}
+        >
+          {centreLabel}
+        </Typography>
+        <Box
+          sx={{
+            flex: 1,
+            height: 0,
+            borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
+          }}
+        />
+      </Box>
+
+      {/* Right-side info pill — same anchor-sizing fix as return marker above. */}
+      <Box
+        sx={{
+          position: "absolute",
+          right: CARD_GUTTER + 2,
+          top: 0,
+          transform: "translateY(-50%)",
+          zIndex: 2,
+        }}
+      >
+        <MobileAwareTooltip
+          title={tooltipTitle}
+          placement="bottom-start"
+          arrow
+          componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
+        >
+          <Box
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "2px",
+              px: "5px",
+              py: "1.5px",
+              borderRadius: "100px",
+              bgcolor: tokens.mist,
+              border: `1px dotted ${alpha(tokens.textGhost, 0.15)}`,
+              pointerEvents: "auto",
+              cursor: "default",
+            }}
+          >
+            {pillContent}
+          </Box>
+        </MobileAwareTooltip>
+      </Box>
+    </Box>
+  );
+}
+
 // ─── MobileTimelineView ───────────────────────────────────────────────────────
 
 export function MobileTimelineView({
@@ -474,11 +889,65 @@ export function MobileTimelineView({
     [travelers, hiddenTravelerIds, timelineStart, todayStr],
   );
 
+  // ── Return marker groups (6-day rollup) ───────────────────────────────────
+  const returnMarkerGroups = useMemo((): MobileReturnMarkerGroup[] => {
+    const allEntries: ReturnMarkerEntry[] = [];
+
+    travelers.forEach((traveler, i) => {
+      if (hiddenTravelerIds.includes(traveler.id)) return;
+
+      computeReturnMarkers(traveler, timelineStart, timelineEnd)
+        .filter((m: ReturnMarker) => !m.isCurrent)
+        .forEach((m: ReturnMarker) => {
+          allEntries.push({
+            top: m.top,
+            date: m.date,
+            days: m.days,
+            travelerIndex: i,
+            travelerName: traveler.name,
+          });
+        });
+    });
+
+    return groupReturnMarkers(allEntries);
+  }, [travelers, hiddenTravelerIds, timelineStart, timelineEnd]);
+
+  // ── Aging marker groups (deduplicated + 6-day rollup) ─────────────────────
+  const agingMarkerGroups = useMemo((): MobileAgingMarkerGroup[] => {
+    const seen = new Set<string>();
+    const unique: AgingMarker[] = [];
+
+    travelers.forEach((traveler) => {
+      if (hiddenTravelerIds.includes(traveler.id)) return;
+
+      computeAgingMarkers(traveler, timelineStart, timelineEnd).forEach((m) => {
+        const key = `${m.entryDate}|${m.exitDate}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          unique.push(m);
+        }
+      });
+    });
+
+    return groupAgingMarkers(unique);
+  }, [travelers, hiddenTravelerIds, timelineStart, timelineEnd]);
+
   const contentHeight = useMemo(() => {
-    if (positionedTrips.length === 0) return 600;
-    const maxBottom = Math.max(...positionedTrips.map((p) => p.top + p.height));
-    return maxBottom + 24;
-  }, [positionedTrips]);
+    const tripBottom =
+      positionedTrips.length === 0
+        ? 0
+        : Math.max(...positionedTrips.map((p) => p.top + p.height));
+
+    const allMarkerTops = [
+      ...returnMarkerGroups.map((g) => g.top),
+      ...agingMarkerGroups.map((g) => g.top),
+    ];
+    const markerBottom =
+      allMarkerTops.length === 0 ? 0 : Math.max(...allMarkerTops);
+
+    const maxBottom = Math.max(tripBottom, markerBottom);
+    return maxBottom === 0 ? 600 : maxBottom + 24;
+  }, [positionedTrips, returnMarkerGroups, agingMarkerGroups]);
 
   useEffect(() => {
     if (hasScrolledRef.current || !scrollRef.current) return;
@@ -521,7 +990,7 @@ export function MobileTimelineView({
 
           {/* Canvas */}
           <Box sx={{ flex: 1, position: "relative" }}>
-            {/* Today line */}
+            {/* Today line — above cards */}
             <Box
               sx={{
                 position: "absolute",
@@ -530,7 +999,7 @@ export function MobileTimelineView({
                 top: todayTop,
                 height: 2,
                 bgcolor: tokens.green,
-                zIndex: 3,
+                zIndex: 4,
                 pointerEvents: "none",
               }}
             >
@@ -575,7 +1044,25 @@ export function MobileTimelineView({
               </Box>
             )}
 
-            {/* Trip cards */}
+            {/* Return markers — zIndex 1, below trip cards */}
+            {!allHidden &&
+              returnMarkerGroups.map((group) => (
+                <MobileReturnMarker
+                  key={`ret-${group.top}-${group.maxDays}`}
+                  {...group}
+                />
+              ))}
+
+            {/* Aging-out markers — zIndex 1, below trip cards */}
+            {!allHidden &&
+              agingMarkerGroups.map((group) => (
+                <MobileAgingMarker
+                  key={`aging-${group.top}-${group.markers.length}`}
+                  {...group}
+                />
+              ))}
+
+            {/* Trip cards — zIndex 3, above markers */}
             {positionedTrips.map((positioned) => {
               const { lane, laneCount, top, height } = positioned;
               const pct = (1 / laneCount) * 100;
@@ -590,6 +1077,7 @@ export function MobileTimelineView({
                     height,
                     left: `calc(${leftPct}% + ${CARD_GUTTER}px)`,
                     width: `calc(${pct}% - ${CARD_GUTTER * 2}px)`,
+                    zIndex: 3,
                   }}
                 >
                   <MobileTimelineTripCard
