@@ -581,13 +581,22 @@ function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileRe
   const lineOpacity = minDays % 30 === 0 ? 0.35 : 0.18;
   const pillOpacity = minDays % 30 === 0 ? 1 : 0.65;
 
-  // Tooltip: single entry → concise sentence; multiple → per-entry list.
+  // Deduplicate entries by traveler, keeping only the max-threshold entry per
+  // traveler. This mirrors the pill logic: only the best reachable value matters.
+  const perTraveler = new Map<number, ReturnMarkerEntry>();
+  entries.forEach((e) => {
+    const existing = perTraveler.get(e.travelerIndex);
+    if (!existing || e.days > existing.days) perTraveler.set(e.travelerIndex, e);
+  });
+  const dedupedEntries = [...perTraveler.values()].sort((a, b) => a.top - b.top);
+
+  // Tooltip: one traveler → concise sentence; multiple → per-traveler list.
   const tooltipTitle =
-    entries.length === 1 ? (
-      `From ${format(entries[0].date, "MMM d, yyyy")}, a ${entries[0].days}-day Schengen trip first becomes possible.`
+    dedupedEntries.length === 1 ? (
+      `From ${format(dedupedEntries[0].date, "MMM d, yyyy")}, a ${dedupedEntries[0].days}-day Schengen trip first becomes possible.`
     ) : (
       <Box component="div">
-        {entries.map((e, i) => (
+        {dedupedEntries.map((e, i) => (
           <Box
             key={i}
             component="div"
@@ -700,16 +709,23 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
     ? `${markers[0].destination} ages out`
     : `${markers.length} Trips Age Out`;
 
-  // Tooltip: single trip → expanded explanation; multiple → per-trip list.
+  // Tooltip: single trip → two-line format (trip summary + behaviour note);
+  // multiple trips → compact per-trip list, no em dashes.
   const tooltipTitle = isSingle ? (
     (() => {
       const m = markers[0];
       const agingDate = addDays(parseDate(m.entryDate), 180);
       const dateStr = format(agingDate, "MMM d, yyyy");
       return (
-        `From ${dateStr}, the ${m.destination} trip's ${m.tripDays} Schengen days begin ` +
-        `aging out of the 180-day window. As each day exits, your available allowance ` +
-        `grows — this is typically what causes max stay to jump noticeably.`
+        <Box component="div">
+          <Box component="div">
+            {m.destination} ({m.tripDays}d) ages out {dateStr}
+          </Box>
+          <Box component="div" sx={{ mt: "4px", opacity: 0.8 }}>
+            Each exiting day frees up allowance and typically causes a
+            noticeable jump in max stay.
+          </Box>
+        </Box>
       );
     })()
   ) : (
@@ -722,7 +738,7 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
             component="div"
             sx={{ "&:not(:last-child)": { mb: "3px" } }}
           >
-            {m.destination} ({m.tripDays}d) — ages out {format(agingDate, "MMM d")}
+            {m.destination} ({m.tripDays}d) ages out {format(agingDate, "MMM d")}
           </Box>
         );
       })}
