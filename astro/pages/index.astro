@@ -17,7 +17,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       <!-- Eyebrow badge -->
       <div class="eyebrow">
         <span class="eyebrow__dot"></span>
-        Free · No account required
+        Free · No account · No signup · Works instantly
       </div>
 
       <!-- Heading -->
@@ -53,6 +53,19 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           </svg>
           URL-shareable results
         </span>
+        <span class="proof-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="4" y="7" width="8" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Your data never leaves your device
+        </span>
+        <span class="proof-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 2l1.5 4.5H14l-3.75 2.75L11.5 14 8 11.25 4.5 14l1.25-4.75L2 6.5h4.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+          </svg>
+          No signup — use it immediately
+        </span>
       </div>
     </div>
 
@@ -70,8 +83,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         <span class="trust-stat__label">days allowed<br />in any 180-day window</span>
       </div>
       <div class="trust-stat">
-        <span class="trust-stat__num">4+</span>
-        <span class="trust-stat__label">travelers tracked<br />simultaneously</span>
+        <span class="trust-stat__num">0</span>
+        <span class="trust-stat__label">bytes of your data<br />sent to any server</span>
       </div>
       <div class="trust-stat">
         <span class="trust-stat__num">29</span>
@@ -107,7 +120,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             </svg>
           </div>
           <h3 class="step-card__title">Add your travelers</h3>
-          <p class="step-card__desc">Enter names for everyone you want to track — yourself, a partner, family members. Each person gets their own column.</p>
+          <p class="step-card__desc">Enter names for everyone you want to track: yourself, a partner, family members. Each person gets their own column.</p>
         </div>
         <!-- Step 02 -->
         <div class="step-card step-card--border-left">
@@ -205,7 +218,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           </div>
           <div>
             <p class="feature-item__title">Date picker with live feedback</p>
-            <p class="feature-item__desc">Calendar cells are color-coded as you pick dates — green for safe, yellow for caution, red for overstay. No surprises after you click confirm.</p>
+            <p class="feature-item__desc">Calendar cells are color-coded as you pick dates: green for safe, yellow for caution, red for overstay. No surprises after you click confirm.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -217,6 +230,18 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           <div>
             <p class="feature-item__title">Trip validation &amp; overstay warnings</p>
             <p class="feature-item__desc">Alerts fire before you save a trip that would push you over the limit. Overlapping dates are caught automatically.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item__icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <rect x="4" y="8" width="10" height="8" rx="2" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M6.5 8V6a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="feature-item__title">Completely private, no backend</p>
+            <p class="feature-item__desc">Your trips are saved in your browser's local storage and encoded in the URL. No account needed and no server ever sees your travel history. Works offline once the app is loaded. Share the link and your travel partner sees exactly what you see.</p>
           </div>
         </div>
       </div>
@@ -234,13 +259,13 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           then leave for 90." <em>It's more complex.</em>
         </h2>
         <p class="section-sub">
-          The rule applies to a <strong>rolling 180-day window</strong> — not
+          The rule applies to a <strong>rolling 180-day window</strong>, not
           fixed half-years. At any given moment, look back 180 days. If you've
-          spent 90 or more days in Schengen during that window, you cannot enter.
+          spent 90 or more days in Schengen during that window, you're non-compliant.
         </p>
         <p class="rules__body">
           This means days "roll off" your count as time passes, which can free
-          up allowance earlier than most travelers expect — but also means
+          up allowance much earlier than most travelers expect, but also requires multiple calculations and means
           miscalculations happen easily.
         </p>
         <a href="https://eurovisacalculator.com/app" class="btn-green" style="margin-top:32px;display:inline-flex;">
@@ -305,7 +330,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         Start tracking <em>in seconds.</em>
       </h2>
       <p class="cta-band__sub">
-        Free, no account required. Add travelers, enter your trips, and share
+        Free, no account required. Your trip data is stored in your browser —
+        never on our servers. Add travelers, enter your trips, and share
         a link with your travel partner immediately.
       </p>
       <div class="cta-band__actions">
