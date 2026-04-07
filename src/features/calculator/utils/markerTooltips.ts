@@ -23,7 +23,7 @@ export const returnMarkerCurrentText = (days: number): string =>
 
 /** Desktop pill: future threshold that first becomes reachable on `date`. */
 export const returnMarkerThresholdText = (date: Date, days: number): string =>
-  `From ${format(date, DATE_FMT)}, a ${days}-day Schengen trip first becomes possible.`;
+  `From ${format(date, DATE_FMT)}, a ${days}d Schengen trip first becomes possible.`;
 
 /**
  * Mobile list-row: one line per traveler inside a grouped return marker tooltip.
