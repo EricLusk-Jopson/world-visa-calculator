@@ -12,7 +12,7 @@ import LandingNav from "../components/LandingNav.astro";
   <div class="page">
     <div class="page__inner">
       <h1 class="page__title">Privacy Policy</h1>
-      <p class="page__date">Last updated: March 2026</p>
+      <p class="page__date">Last updated: April 2026</p>
 
       <section class="section">
         <h2 class="section__title">What this tool does</h2>
@@ -20,7 +20,9 @@ import LandingNav from "../components/LandingNav.astro";
           EuroVisaCalculator is a client-side web application. Your trip dates,
           traveler names, and travel history are stored in your browser only —
           in your URL and in your browser's local storage. This data never
-          leaves your device to our servers.
+          leaves your device to our servers. We have no knowledge of where
+          you've traveled, when, or for how long. That information exists only
+          in your browser.
         </p>
       </section>
 
@@ -29,9 +31,9 @@ import LandingNav from "../components/LandingNav.astro";
         <p class="section__body">
           We collect anonymous usage events to understand how the tool is used
           and to improve it. These events include actions like "trip added" or
-          "link copied", along with your approximate screen size and browser
-          type. We do not collect your name, email address, IP address, or any
-          actual travel dates.
+          "link copied", along with your approximate screen size, browser type,
+          and page referrer. We do not collect your name, email address, IP
+          address, or any actual travel dates.
         </p>
       </section>
 
@@ -53,17 +55,38 @@ import LandingNav from "../components/LandingNav.astro";
           between visits. You can clear this at any time by clearing your browser
           data, or by using the "Reset all data" option in the app. You can also
           share your data with others via the shareable URL — only people you
-          share that URL with can see your trips.
+          share that URL with can see your trips. If you share your URL with
+          others, anyone who has that link can view the trip data encoded in it.
+          Only share your URL with people you intend to give access to your
+          travel history.
+        </p>
+        <p class="section__body" style="margin-top:12px;">
+          Because all calculation logic runs in your browser, the calculator
+          continues to work without an internet connection once the page has
+          been loaded.
         </p>
       </section>
 
       <section class="section">
         <h2 class="section__title">Analytics</h2>
         <p class="section__body">
-          We use a lightweight, self-hosted analytics setup. No third-party
-          analytics platforms (such as Google Analytics) are used. The anonymous
-          event data we collect is used solely to understand feature usage and
-          fix bugs.
+          We collect anonymous usage events using a lightweight custom webhook.
+          Events are written to a private spreadsheet via Google Apps Script —
+          a Google service — and are not shared with anyone. No third-party
+          analytics SDK is embedded in the page. The data collected includes
+          actions like "trip added" or "link copied", your approximate screen
+          size, browser type, and page referrer. No travel dates, traveler
+          names, or personally identifiable information is ever collected.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Data retention and deletion</h2>
+        <p class="section__body">
+          Anonymous usage events are retained in our private spreadsheet
+          indefinitely for product analysis. Because no personal data is
+          collected, there is nothing to delete on request — but you can contact
+          us at [your contact email] if you have questions.
         </p>
       </section>
 
