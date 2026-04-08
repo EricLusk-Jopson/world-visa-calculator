@@ -12,7 +12,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
 <BaseLayout
   title="Why Schengen Calculators Give Different Results — EuroVisaCalculator"
-  description="Three calculators, three different answers. Here's why Schengen tools disagree — and how to know which one to trust."
+  description="Three calculators, two different answers. Here's why Schengen tools disagree and how to know which one to trust."
   canonicalUrl="https://eurovisacalculator.com/blog/why-schengen-calculators-give-different-results"
 >
   <LandingNav />
@@ -21,7 +21,7 @@ import LandingNav from "../../components/LandingNav.astro";
     <header class="article__header">
       <p class="article__tag">Blog</p>
       <h1 class="article__title">
-        Why Schengen Calculators Give Different Results — And How to Know Which
+        Why Schengen Calculators Give Different Results And How To Know Which
         One Is Right
       </h1>
       <p class="article__meta">April 7, 2026 · 5 min read</p>
@@ -29,23 +29,23 @@ import LandingNav from "../../components/LandingNav.astro";
 
     <div class="article__body">
       <p>
-        Someone posted to r/SchengenVisa recently in a quiet panic. They had
+        A redditor posted to r/SchengenVisa recently in a quiet panic. They had
         entered the same travel dates into three different Schengen calculators
-        and gotten back three different answers. The official European Commission
-        tool said they had 69 days remaining. Two other popular sites said 15.
+        and gotten back two different answers. The official European Commission
+        colculator said they had 69 days remaining. Two other tools said 15.
       </p>
 
       <p>They were considering cancelling their Christmas trip.</p>
 
       <p>
-        The dates were the same. The results were 54 days apart. And they had no
+        The dates were the same. The results were 54 days apart. Someone was wrong, and the user had no
         way of knowing which one was right.
       </p>
 
       <p>
-        This is not unusual. In the same forum, another traveler described
+        This is not unusual. In the same forum, on the morning of writing this article, another traveler described
         running their dates through several calculators and getting confusing
-        results across all of them — before turning to ChatGPT as a tiebreaker.
+        results across all of them, before turning to ChatGPT as a tiebreaker.
         A third described cross-referencing two tools against each other just to
         feel more confident, not because either one had earned their trust.
       </p>
@@ -61,14 +61,14 @@ import LandingNav from "../../components/LandingNav.astro";
           target="_blank"
           rel="noopener noreferrer"
           >official European Commission Schengen calculator</a
-        >. It's maintained by the EU itself, uses the correct methodology, and
+        >. It's maintained by the European Commission itself, uses the only official methodology, and
         is the authoritative reference. When results conflict, defer to it.
       </p>
 
       <p>
-        If you need more than what it offers — tracking two people with
+        While useful, the official tool is limited. If you need more than what it offers, i.e. tracking multiple people with
         different travel dates, saving your calculation, sharing a link with a
-        partner, or planning future trips alongside confirmed past ones — that's
+        partner, or planning future trips alongside confirmed past ones, then that's
         what EuroVisaCalculator is built for. It uses the same methodology as
         the EU calculator, and we encourage you to run your dates through both
         and compare. If they disagree, we want to know.
@@ -84,9 +84,11 @@ import LandingNav from "../../components/LandingNav.astro";
       <h2>Why calculators disagree in the first place</h2>
 
       <p>
-        The Schengen rule itself is consistent. The disagreements come from two
-        specific algorithmic choices that different tools make differently — and
-        most tools don't tell you which choices they've made.
+        They shouldn't. The Schengen rule itself is consistent. The disagreements come from
+        specific algorithmic choices that different tools make differently, and
+        most tools don't tell you which choices they've made. Given there is an official standard, 
+        this mostly comes down to developer error and misunderstanding. 
+        A third party calculation with a differing answer is never right.
       </p>
 
       <h3>How the rolling window is applied</h3>
@@ -102,8 +104,21 @@ import LandingNav from "../../components/LandingNav.astro";
         window, they treat the 180 days as a fixed block with a defined start
         date. That's incorrect, and it produces dramatically different results
         for anyone with a complex travel history. The 54-day gap in the example
-        above almost certainly comes from this — the EU calculator used the
+        above almost certainly comes from this. The EU calculator used the
         rolling window correctly; the others did not.
+      </p>
+
+      <p>
+        Another pitfall awaiting travelers planning a trip to Europe, is the question
+        of how long you could stay if you started a trip on a given day in the future. 
+        To determine this, knowing your current allowance is not enough, nor is knowing 
+        your allowance on the planned start date. Because the window moves along with your trip,
+        older trips may age out during the course of your planned one. This requires a different
+        calculation entirely, where both your allowance and the position of older trips in the window
+        are taken into account. For many small, third party tools, it is not made clear
+        which calculation is used until after your trips have been entered. The official tool handles this, 
+        and we've built on it even further, to display the earliest date where a trip of 15, 30, 45, 60, 75 or 90 days
+        is once again made possible. 
       </p>
 
       <h3>How entry and exit days are counted</h3>
@@ -113,13 +128,12 @@ import LandingNav from "../../components/LandingNav.astro";
         count as full Schengen days, regardless of what time you cross the
         border. Not every calculator follows this. Some exclude one or both
         border days, treating a partial day as not counting. Over several trips,
-        those small differences add up — easily 8 to 12 days across a year of
-        frequent travel.
+        those small differences add up.
       </p>
 
       <p>
-        These aren't bugs. They're algorithmic choices. The problem is that most
-        tools don't document which choices they've made, so you can't evaluate
+        These aren't bugs. They're algorithmic choices, albeit wrong ones which differ from the official calculations. 
+        The problem is that most tools don't document which choices they've made, so you can't evaluate
         the result you're being shown.
       </p>
 
@@ -128,7 +142,7 @@ import LandingNav from "../../components/LandingNav.astro";
       <h2>Why ChatGPT doesn't help</h2>
 
       <p>
-        Using an AI chatbot as a tiebreaker is understandable — when two
+        Using an AI chatbot as a tiebreaker is understandable. when two
         calculators disagree, a third opinion feels like progress. But language
         models don't do date arithmetic. They produce confident-sounding answers
         based on patterns in text, not actual calculation. For a rolling window
@@ -136,7 +150,7 @@ import LandingNav from "../../components/LandingNav.astro";
         their own uncertainty.
       </p>
 
-      <p>A chatbot is not the right tool to verify a calculator result.</p>
+      <p>A chatbot is never the right tool to verify a calculator result.</p>
 
       <hr />
 
@@ -144,7 +158,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         Enter a single past trip of exactly 10 days and see how many days the
-        tool counts. If it says 8 or 9, it's excluding border days — not the
+        tool counts. If it says 8 or 9, it's excluding border days and is not following the
         official methodology. If it says 10, it's counting correctly.
       </p>
 
@@ -158,7 +172,7 @@ import LandingNav from "../../components/LandingNav.astro";
       <p>
         The Christmas trip in that Reddit post was fine. The 69-day result from
         the EU calculator was correct. But that person had no way of knowing
-        that without someone explaining why the tools disagreed — and that's not
+        that without someone explaining why the tools disagreed, and that's not
         a problem anyone should have to solve mid-trip.
       </p>
 
