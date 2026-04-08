@@ -405,7 +405,7 @@ function MobileTimelineTripCard({
                   </Chip>
                 )}
                 {rules.some((r) => r.requiresATV) && (
-                  <Chip color={tokens.amberText} bg={alpha(tokens.amber, 0.1)}>
+                  <Chip color={tokens.white} bg={tokens.red}>
                     ATV
                   </Chip>
                 )}

@@ -273,7 +273,7 @@ export function TripListCard({
                 </Chip>
               )}
               {passportRule.requiresATV && (
-                <Chip color={tokens.amberText} bg={tokens.amberBg}>
+                <Chip color={tokens.white} bg={tokens.red}>
                   Transit visa
                 </Chip>
               )}

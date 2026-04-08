@@ -26,11 +26,13 @@ describe('getSchengenRule', () => {
     expect(rule).toEqual(SCHENGEN.defaultRule);
   });
 
-  it('returns suspended access with a suspensionNote for GE (Georgia)', () => {
+  it('returns suspended access with a note for GE (Georgia)', () => {
     const rule = getSchengenRule('GE');
     expect(rule.access).toBe('suspended');
-    expect(typeof rule.suspensionNote).toBe('string');
-    expect(rule.suspensionNote!.length).toBeGreaterThan(0);
+    expect(Array.isArray(rule.notes)).toBe(true);
+    expect(rule.notes!.length).toBeGreaterThan(0);
+    expect(rule.notes![0].text.length).toBeGreaterThan(0);
+    expect(rule.notes![0].source.directUrl.length).toBeGreaterThan(0);
   });
 
   it('sets requiresETIAS true for US and false for VA (Vatican)', () => {

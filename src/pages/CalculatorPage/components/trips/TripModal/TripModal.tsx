@@ -631,13 +631,7 @@ export function TripModal({
 
           {/* 2b · Nationality entry notice — Schengen only */}
           {region === VisaRegion.Schengen && travelerIds.length > 0 && (
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "4px",
-              }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
               {travelerIds.map((tid) => {
                 const t = travelers.find((x) => x.id === tid);
                 if (!t) return null;
@@ -646,11 +640,11 @@ export function TripModal({
                   if (!t.passportCode)
                     return { label: "Set nationality to see entry requirements", color: tokens.textGhost };
                   if (rule.access === "free_movement")
-                    return { label: "Free movement -- no day limit", color: tokens.green };
+                    return { label: "Free movement — no day limit", color: tokens.green };
                   if (rule.access === "visa_free")
                     return {
                       label: rule.requiresETIAS
-                        ? "Visa-free entry -- ETIAS required from late 2026"
+                        ? "Visa-free entry — ETIAS required from late 2026"
                         : "Visa-free entry",
                       color: tokens.green,
                     };
@@ -659,31 +653,75 @@ export function TripModal({
                   return { label: "Schengen visa required", color: tokens.red };
                 })();
                 return (
-                  <Box
-                    key={tid}
-                    sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}
-                  >
-                    <Typography
-                      sx={{
-                        fontFamily: tokens.fontBody,
-                        fontSize: "0.72rem",
-                        fontWeight: 600,
-                        color: tokens.textSoft,
-                        flexShrink: 0,
-                      }}
-                    >
-                      {t.name}:
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontFamily: tokens.fontBody,
-                        fontSize: "0.72rem",
-                        color,
-                        fontWeight: 500,
-                      }}
-                    >
-                      {label}
-                    </Typography>
+                  <Box key={tid} sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                    {/* Status line */}
+                    <Box sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                      <Typography
+                        sx={{
+                          fontFamily: tokens.fontBody,
+                          fontSize: "0.72rem",
+                          fontWeight: 600,
+                          color: tokens.textSoft,
+                          flexShrink: 0,
+                        }}
+                      >
+                        {t.name}:
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontFamily: tokens.fontBody,
+                          fontSize: "0.72rem",
+                          color,
+                          fontWeight: 500,
+                        }}
+                      >
+                        {label}
+                      </Typography>
+                    </Box>
+
+                    {/* Notes (suspension details, specific ATV requirements, etc.) */}
+                    {rule.notes?.map((note, i) => (
+                      <Box
+                        key={i}
+                        sx={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "5px",
+                          pl: "10px",
+                          borderLeft: `2px solid ${color === tokens.green ? tokens.greenBorder : color === tokens.amber ? tokens.amberBorder : tokens.redBorder}`,
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.67rem",
+                            color: tokens.textSoft,
+                            lineHeight: 1.5,
+                            flex: 1,
+                          }}
+                        >
+                          {note.text}
+                        </Typography>
+                        <Box
+                          component="a"
+                          href={note.source.directUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.62rem",
+                            fontWeight: 700,
+                            color: tokens.textGhost,
+                            textDecoration: "none",
+                            flexShrink: 0,
+                            mt: "1px",
+                            "&:hover": { color: tokens.navy },
+                          }}
+                        >
+                          src ↗
+                        </Box>
+                      </Box>
+                    ))}
                   </Box>
                 );
               })}

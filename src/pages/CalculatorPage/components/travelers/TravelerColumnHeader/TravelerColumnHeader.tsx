@@ -549,9 +549,9 @@ export function TravelerColumnHeader({
               }}
             >
               {rule.access === 'free_movement'
-                ? 'EU/EEA/Swiss passports have free movement -- no 90-day limit applies.'
+                ? 'EU/EEA/Swiss passports have free movement — no 90-day limit applies.'
                 : rule.access === 'suspended'
-                  ? rule.suspensionNote
+                  ? (rule.notes?.[0]?.text ?? 'Visa-free access is temporarily suspended.')
                   : 'A Schengen visa is required for this passport.'}
             </Typography>
           )}

@@ -81,6 +81,28 @@ export type SchengenAccess =
   | 'visa_required'  // Must apply for a Schengen visa
   | 'suspended';     // Visa-free access temporarily suspended
 
+/**
+ * Reference to an authoritative regulatory source.
+ * Every PassportNote must carry one of these.
+ */
+export interface SourceDoc {
+  /** Direct link to the specific regulation, annex, or document */
+  directUrl: string;
+  /** Overview/parent page that links to the document — for human navigation */
+  parentUrl?: string;
+  /** ISO date (YYYY-MM-DD) when this data was last verified against the source */
+  dateChecked: string;
+}
+
+/**
+ * An advisory note attached to a PassportRule — e.g. suspension details,
+ * specific-member-state ATV requirements, or other per-nationality caveats.
+ */
+export interface PassportNote {
+  text: string;
+  source: SourceDoc;
+}
+
 export interface PassportRule {
   access: SchengenAccess;
   /** Present for visa_free only */
@@ -89,14 +111,19 @@ export interface PassportRule {
   windowDays?: number;
   /** Present for visa_free — ETIAS launching late 2026 */
   requiresETIAS?: boolean;
-  /** Present for suspended — human-readable explanation */
-  suspensionNote?: string;
   /**
-   * Airport Transit Visa required — nationals must hold an ATV even to transit
-   * through the international zone of a Schengen airport without entering.
-   * Source: EU Regulation (EU) 2018/1806 Annex IV.
+   * Airport Transit Visa required at ALL Schengen airports — nationals must hold
+   * an ATV even to transit the international zone without entering.
+   * Source: EU Regulation (EU) 2018/1806 Annex IV (common list).
+   * For member-state-specific ATV requirements see notes.
    */
   requiresATV?: boolean;
+  /**
+   * Advisory notes with regulatory sources — e.g. suspension reasons,
+   * specific-member-state ATV requirements (Visa Code Handbook Annex 7B),
+   * or other per-nationality caveats.
+   */
+  notes?: PassportNote[];
 }
 
 export interface RegionDefinition {

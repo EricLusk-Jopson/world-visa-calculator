@@ -390,7 +390,7 @@ export function TimelineTripCard({
                       </TripBadge>
                     )}
                     {passportRule.requiresATV && (
-                      <TripBadge color={tokens.amberText} bg={tokens.amberBg}>
+                      <TripBadge color={tokens.white} bg={tokens.red}>
                         Transit visa
                       </TripBadge>
                     )}

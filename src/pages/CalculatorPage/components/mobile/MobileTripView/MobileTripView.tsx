@@ -344,7 +344,7 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
                 </Box>
               )}
               {isSchengen && !isOngoing && rules.some((r) => r.requiresATV) && (
-                <Box sx={{ ...BADGE_SX, bgcolor: alpha(tokens.amber, 0.1), color: tokens.amberText }}>
+                <Box sx={{ ...BADGE_SX, bgcolor: tokens.red, color: tokens.white }}>
                   Transit visa
                 </Box>
               )}
