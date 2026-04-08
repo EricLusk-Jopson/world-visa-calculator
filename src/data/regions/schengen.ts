@@ -132,6 +132,26 @@ export const SCHENGEN: RegionDefinition = {
     'VA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: false }, // Vatican (microstate, ETIAS exempt)
     'VU': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Vanuatu
 
+    // ── Airport Transit Visa (ATV) required — Annex IV Reg. (EU) 2018/1806 ──
+    // These nationals need an ATV even to transit the international zone of a
+    // Schengen airport (i.e. without formally entering Schengen territory).
+    // All 12 are also visa_required for entry; ATV is an additional layer.
+    // Verified against: https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en
+    // Note: Iraq (IQ) appears on the EU official list but was omitted from the
+    // original brief — it has been added here per the authoritative source.
+    'AF': { access: 'visa_required', requiresATV: true },  // Afghanistan
+    'BD': { access: 'visa_required', requiresATV: true },  // Bangladesh
+    'CD': { access: 'visa_required', requiresATV: true },  // Congo (Democratic Republic)
+    'ER': { access: 'visa_required', requiresATV: true },  // Eritrea
+    'ET': { access: 'visa_required', requiresATV: true },  // Ethiopia
+    'GH': { access: 'visa_required', requiresATV: true },  // Ghana
+    'IR': { access: 'visa_required', requiresATV: true },  // Iran
+    'IQ': { access: 'visa_required', requiresATV: true },  // Iraq (on EU list; not in original brief)
+    'NG': { access: 'visa_required', requiresATV: true },  // Nigeria
+    'PK': { access: 'visa_required', requiresATV: true },  // Pakistan
+    'SO': { access: 'visa_required', requiresATV: true },  // Somalia
+    'LK': { access: 'visa_required', requiresATV: true },  // Sri Lanka
+
     // ── Suspended ─────────────────────────────────────────────────────────────
     'GE': {
       access: 'suspended',

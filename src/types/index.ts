@@ -91,6 +91,12 @@ export interface PassportRule {
   requiresETIAS?: boolean;
   /** Present for suspended — human-readable explanation */
   suspensionNote?: string;
+  /**
+   * Airport Transit Visa required — nationals must hold an ATV even to transit
+   * through the international zone of a Schengen airport without entering.
+   * Source: EU Regulation (EU) 2018/1806 Annex IV.
+   */
+  requiresATV?: boolean;
 }
 
 export interface RegionDefinition {

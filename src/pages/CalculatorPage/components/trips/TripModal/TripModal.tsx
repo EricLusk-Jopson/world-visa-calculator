@@ -14,7 +14,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
-import type { Trip, Traveler } from "@/types";
+import type { Trip, Traveler, PassportRule } from "@/types";
+import { getSchengenRule } from "@/data/regions/schengen";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
@@ -627,6 +628,67 @@ export function TripModal({
               }}
             />
           </Box>
+
+          {/* 2b · Nationality entry notice — Schengen only */}
+          {region === VisaRegion.Schengen && travelerIds.length > 0 && (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
+              }}
+            >
+              {travelerIds.map((tid) => {
+                const t = travelers.find((x) => x.id === tid);
+                if (!t) return null;
+                const rule: PassportRule = getSchengenRule(t.passportCode);
+                const { label, color } = (() => {
+                  if (!t.passportCode)
+                    return { label: "Set nationality to see entry requirements", color: tokens.textGhost };
+                  if (rule.access === "free_movement")
+                    return { label: "Free movement -- no day limit", color: tokens.green };
+                  if (rule.access === "visa_free")
+                    return {
+                      label: rule.requiresETIAS
+                        ? "Visa-free entry -- ETIAS required from late 2026"
+                        : "Visa-free entry",
+                      color: tokens.green,
+                    };
+                  if (rule.access === "suspended")
+                    return { label: "Access temporarily suspended", color: tokens.amber };
+                  return { label: "Schengen visa required", color: tokens.red };
+                })();
+                return (
+                  <Box
+                    key={tid}
+                    sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.72rem",
+                        fontWeight: 600,
+                        color: tokens.textSoft,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {t.name}:
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.72rem",
+                        color,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {label}
+                    </Typography>
+                  </Box>
+                );
+              })}
+            </Box>
+          )}
 
           {/* 3 · Trip name */}
           <Box>

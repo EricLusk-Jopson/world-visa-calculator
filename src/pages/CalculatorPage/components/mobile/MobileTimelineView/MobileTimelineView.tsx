@@ -22,6 +22,7 @@ import {
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { getSchengenRule } from "@/data/regions/schengen";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -219,6 +220,9 @@ function MobileTimelineTripCard({
   onClick,
 }: MobileTimelineTripCardProps) {
   const { trip, entries, height, isOverstay } = positioned;
+
+  // Aggregate passport rules across all travelers in this merged card.
+  const rules = entries.map((e) => getSchengenRule(e.traveler.passportCode));
   const todayStr = todayISO();
 
   const isOngoing = !trip.exitDate;
@@ -391,6 +395,32 @@ function MobileTimelineTripCard({
             <Chip color={regionColor} bg={regionBg}>
               {regionLabel}
             </Chip>
+
+            {/* Passport rule chips — Schengen trips, not overstay, not ongoing */}
+            {isSchengen && !isOverstay && !isOngoing && (
+              <>
+                {rules.some((r) => r.access === "visa_required") && (
+                  <Chip color={tokens.redText} bg={alpha(tokens.red, 0.1)}>
+                    Visa req.
+                  </Chip>
+                )}
+                {rules.some((r) => r.requiresATV) && (
+                  <Chip color={tokens.amberText} bg={alpha(tokens.amber, 0.1)}>
+                    ATV
+                  </Chip>
+                )}
+                {rules.some((r) => r.requiresETIAS) && (
+                  <Chip color={tokens.navy} bg={tokens.mist}>
+                    ETIAS
+                  </Chip>
+                )}
+                {rules.some((r) => r.access === "suspended") && (
+                  <Chip color={tokens.amberText} bg={alpha(tokens.amber, 0.1)}>
+                    Suspended
+                  </Chip>
+                )}
+              </>
+            )}
           </Box>
         )}
 

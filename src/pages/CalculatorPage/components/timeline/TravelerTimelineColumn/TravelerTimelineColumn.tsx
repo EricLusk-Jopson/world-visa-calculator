@@ -37,6 +37,7 @@ import {
   calculateMaxStay,
 } from "@/features/calculator/utils/schengen";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { getSchengenRule } from "@/data/regions/schengen";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
@@ -567,6 +568,7 @@ export function TravelerTimelineColumn({
             cardWidth={cardWidth}
             baseZIndex={BASE_Z + rank}
             isOverstay={overstayTripIds.has(trip.id)}
+            passportRule={getSchengenRule(traveler.passportCode)}
             onEdit={() => onEditTrip(traveler.id, trip)}
           />
         );

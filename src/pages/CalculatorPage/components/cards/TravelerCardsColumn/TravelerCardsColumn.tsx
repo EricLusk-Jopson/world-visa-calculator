@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
+import { getSchengenRule } from "@/data/regions/schengen";
 
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { TripListCard } from "../../trips/TripListCard";
@@ -218,6 +220,7 @@ export function TravelerCardsColumn({
                 maxStayAtExit={maxStayAtExit}
                 earliestReEntry={earliestReEntry}
                 isOverstay={overstayTripIds.has(trip.id)}
+                passportRule={getSchengenRule(traveler.passportCode)}
                 onEdit={() => onEditTrip(traveler.id, trip)}
               />
             );
