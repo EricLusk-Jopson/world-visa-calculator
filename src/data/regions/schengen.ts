@@ -33,7 +33,7 @@ const SPECIFIC_ATV_SOURCE: SourceDoc = {
 /** Regulation (EU) 2018/1806 — third-country visa/exempt lists (consolidated) */
 const VISA_LIST_SOURCE: SourceDoc = {
   directUrl: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230',
-  parentUrl: 'https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf',
+  parentUrl: 'https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en',
   dateChecked: '2026-04-08',
 };
 
@@ -48,6 +48,63 @@ function specificATVNote(memberStates: string): PassportRule['notes'] {
   return [{
     text: `Airport transit visa required at airports in: ${memberStates}. Not required at other Schengen airports.`,
     source: SPECIFIC_ATV_SOURCE,
+  }];
+}
+
+// ─── Annex II footnote note builders ─────────────────────────────────────────
+
+/**
+ * Footnotes 6 and 10 — biometric passport required.
+ * Applies to: Albania (AL), Bosnia and Herzegovina (BA), North Macedonia (MK), Montenegro (ME).
+ */
+function biometricOnlyNote(): PassportRule['notes'] {
+  return [{
+    text: 'Visa exemption applies to holders of biometric passports only.',
+    source: VISA_LIST_SOURCE,
+  }];
+}
+
+/**
+ * Footnotes 7 and 11 — exemption pending entry into force of an EU visa exemption agreement.
+ * Applies to: UAE (AE), Dominica (DM), Micronesia (FM), Grenada (GD), Kiribati (KI),
+ * Saint Lucia (LC), Marshall Islands (MH), Nauru (NR), Palau (PW), Peru (PE),
+ * Timor-Leste (TL), Tonga (TO), Tuvalu (TV), Saint Vincent and the Grenadines (VC).
+ */
+function pendingAgreementNote(): PassportRule['notes'] {
+  return [{
+    text: 'Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force.',
+    source: VISA_LIST_SOURCE,
+  }];
+}
+
+/**
+ * Footnote 9 — Moldova biometric ICAO passport required.
+ */
+function moldovaNote(): PassportRule['notes'] {
+  return [{
+    text: 'Visa exemption applies to holders of biometric passports issued by Moldova in line with ICAO standards.',
+    source: VISA_LIST_SOURCE,
+  }];
+}
+
+/**
+ * Footnote 12 — Serbia biometric ICAO passport required; Serbian Coordination
+ * Directorate passports excluded.
+ */
+function serbiaNote(): PassportRule['notes'] {
+  return [{
+    text: 'Visa exemption applies to holders of biometric passports issued in line with ICAO standards. Does not apply to holders of Serbian passports issued by the Serbian Coordination Directorate (Koordinaciona uprava).',
+    source: VISA_LIST_SOURCE,
+  }];
+}
+
+/**
+ * Footnote 13 — Ukraine biometric ICAO passport required.
+ */
+function ukraineNote(): PassportRule['notes'] {
+  return [{
+    text: 'Visa exemption applies to holders of biometric passports issued by Ukraine in line with ICAO standards.',
+    source: VISA_LIST_SOURCE,
   }];
 }
 
@@ -107,75 +164,183 @@ export const SCHENGEN: RegionDefinition = {
     'CH': { access: 'free_movement' }, // Switzerland
 
     // ── Visa-free — 90 days in any 180-day period ─────────────────────────────
-    // Source: EU Annex II Regulation (EU) 2018/1806
-    // requiresETIAS: true = ETIAS required once launched (expected late 2026)
-    // Microstates (AD, MC, SM, VA) are ETIAS-exempt per current EU guidance
+    // Source: EU Regulation (EU) 2018/1806 Annex II (consolidated to 2025-12-30).
+    // requiresETIAS: true = ETIAS required once launched (expected late 2026).
+    // Microstates (AD, MC, SM, VA) are ETIAS-exempt per current EU guidance.
+    // Footnoted entries carry conditions documented in the notes array.
 
-    'AL': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Albania
+    // ── Unconditional visa-free ────────────────────────────────────────────────
+
     'AD': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: false }, // Andorra (microstate, ETIAS exempt)
     'AG': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Antigua and Barbuda
     'AR': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Argentina
     'AU': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Australia
-    'BS': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Bahamas
     'BB': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Barbados
-    'BR': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Brazil
     'BN': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Brunei
+    'BR': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Brazil
+    'BS': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Bahamas
     'CA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Canada
     'CL': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Chile
     'CO': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Colombia
     'CR': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Costa Rica
-    'DM': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Dominica
-    'DO': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Dominican Republic
-    'GD': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Grenada
+    'GB': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // United Kingdom
     'GT': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Guatemala
-    'GY': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Guyana
     'HN': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Honduras
-    'HK': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Hong Kong (SAR)
     'IL': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Israel
     'JP': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Japan
-    'KI': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Kiribati
-    'MO': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Macao (SAR)
-    'MY': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Malaysia
-    'MH': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Marshall Islands
+    'KN': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Saint Kitts and Nevis
+    'KR': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // South Korea
+    'MC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: false }, // Monaco (microstate, ETIAS exempt)
     'MU': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Mauritius
     'MX': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Mexico
-    'MC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: false }, // Monaco (microstate, ETIAS exempt)
-    'ME': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Montenegro
-    'MK': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // North Macedonia
-    'FM': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Micronesia
-    'MD': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Moldova
-    'NZ': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // New Zealand
+    'MY': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Malaysia
     'NI': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Nicaragua
+    'NZ': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // New Zealand
     'PA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Panama
-    'PW': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Palau
-    'PE': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Peru
-    'PH': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Philippines
-    'KN': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Saint Kitts and Nevis
-    'LC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Saint Lucia
-    'VC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Saint Vincent and the Grenadines
-    'WS': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Samoa
-    'SM': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: false }, // San Marino (microstate, ETIAS exempt)
-    'RS': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Serbia
+    'PY': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Paraguay
+    'SB': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Solomon Islands
     'SC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Seychelles
     'SG': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Singapore
-    'SB': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Solomon Islands
-    'ZA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // South Africa
-    'KR': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // South Korea
-    'TW': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Taiwan
+    'SM': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: false }, // San Marino (microstate, ETIAS exempt)
+    'SV': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // El Salvador
     'TT': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Trinidad and Tobago
-    'TV': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Tuvalu
-    'UA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Ukraine
-    'GB': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // United Kingdom
     'US': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // United States
     'UY': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Uruguay
-    'VA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: false }, // Vatican (microstate, ETIAS exempt)
-    'VU': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Vanuatu
+    'VA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: false }, // Holy See (microstate, ETIAS exempt)
+    'VE': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Venezuela
+    'WS': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Samoa
+
+    // ── Visa-free — biometric passport required (Annex II footnotes 6 and 10) ─
+
+    // Footnote 6: Exemption applies to holders of biometric passports only.
+    'AL': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true,  notes: biometricOnlyNote() }, // Albania
+    'BA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true,  notes: biometricOnlyNote() }, // Bosnia and Herzegovina
+    'MK': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true,  notes: biometricOnlyNote() }, // North Macedonia
+
+    // Footnote 10: Exemption applies to holders of biometric passports only.
+    'ME': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true,  notes: biometricOnlyNote() }, // Montenegro
+
+    // ── Visa-free — biometric ICAO passport required ───────────────────────────
+
+    // Footnote 9: Moldova biometric ICAO passport.
+    'MD': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true,  notes: moldovaNote() }, // Moldova
+
+    // Footnote 12: Serbia biometric ICAO passport; Coordination Directorate passports excluded.
+    'RS': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true,  notes: serbiaNote() }, // Serbia
+
+    // Footnote 13: Ukraine biometric ICAO passport.
+    'UA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true,  notes: ukraineNote() }, // Ukraine
+
+    // ── Visa-free — specific document type required ────────────────────────────
+
+    // Footnote 14: Exemption applies only to holders of a 'Hong Kong Special
+    // Administrative Region' passport.
+    'HK': {
+      access: 'visa_free',
+      allowanceDays: 90,
+      windowDays: 180,
+      requiresETIAS: true,
+      notes: [{
+        text: "Visa exemption applies only to holders of a 'Hong Kong Special Administrative Region' passport.",
+        source: VISA_LIST_SOURCE,
+      }],
+    }, // Hong Kong SAR
+
+    // Footnote 15: Exemption applies only to holders of a 'Região Administrativa
+    // Especial de Macau' passport.
+    'MO': {
+      access: 'visa_free',
+      allowanceDays: 90,
+      windowDays: 180,
+      requiresETIAS: true,
+      notes: [{
+        text: "Visa exemption applies only to holders of a 'Região Administrativa Especial de Macau' passport.",
+        source: VISA_LIST_SOURCE,
+      }],
+    }, // Macao SAR
+
+    // Footnote 17: Exemption applies only to holders of passports issued by Taiwan
+    // which include an identity card number.
+    'TW': {
+      access: 'visa_free',
+      allowanceDays: 90,
+      windowDays: 180,
+      requiresETIAS: true,
+      notes: [{
+        text: 'Visa exemption applies only to holders of passports issued by Taiwan which include an identity card number.',
+        source: VISA_LIST_SOURCE,
+      }],
+    }, // Taiwan
+
+    // ── Visa-free — conditional on entry into force of EU agreement ────────────
+    // Footnotes 7 and 11: Exemption applies from the date of entry into force of a
+    // visa exemption agreement to be concluded with the EU. Verify status before travel.
+
+    'AE': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // United Arab Emirates (fn 7)
+    'DM': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Dominica (fn 7)
+    'FM': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Micronesia (fn 7)
+    'GD': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Grenada (fn 7)
+    'KI': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Kiribati (fn 7)
+    'LC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Saint Lucia (fn 7)
+    'MH': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Marshall Islands (fn 11)
+    'NR': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Nauru (fn 11)
+    'PE': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Peru (fn 11)
+    'PW': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Palau (fn 11)
+    'TL': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Timor-Leste (fn 11)
+    'TO': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Tonga (fn 11)
+    'TV': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Tuvalu (fn 11)
+    'VC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: pendingAgreementNote() }, // Saint Vincent and the Grenadines (fn 11)
+
+    // ── Visa-free — entity not recognised as state ─────────────────────────────
+
+    // Kosovo — footnotes 18, 19, 20.
+    // Fn 18: Designation without prejudice to positions on status, in line with UNSCR 1244/1999.
+    // Fn 19: Exemption applies to holders of biometric passports issued by Kosovo per ICAO standards.
+    // Fn 20: Exemption applies from ETIAS launch date or 1 January 2024, whichever is earlier.
+    //        Since 1 January 2024 has passed, Kosovo nationals with biometric passports are currently visa-free.
+    'XK': {
+      access: 'visa_free',
+      allowanceDays: 90,
+      windowDays: 180,
+      requiresETIAS: true,
+      notes: [
+        {
+          text: 'Visa exemption applies to holders of biometric passports issued by Kosovo in line with ICAO standards.',
+          source: VISA_LIST_SOURCE,
+        },
+        {
+          text: 'This designation is without prejudice to positions on status, and is in line with UNSCR 1244/1999 and the ICJ Opinion on the Kosovo declaration of independence.',
+          source: VISA_LIST_SOURCE,
+        },
+      ],
+    }, // Kosovo
+
+    // ── Suspended ─────────────────────────────────────────────────────────────
+
+    // Georgia — Annex II footnote 8 (biometric ICAO passports required).
+    // Ordinary biometric passports remain visa-free. Visa-free access has been
+    // suspended for diplomatic, service, and official passport holders only,
+    // by EU Council decision, March 2026–March 2027.
+    'GE': {
+      access: 'visa_free',
+      allowanceDays: 90,
+      windowDays: 180,
+      requiresETIAS: true,
+      notes: [
+        {
+          text: 'Visa exemption applies to holders of biometric passports issued by Georgia in line with ICAO standards.',
+          source: VISA_LIST_SOURCE,
+        },
+        {
+          text: 'Diplomatic, service, and official passport holders: visa-free access suspended March 2026 to March 2027 by EU Council decision. Ordinary biometric passport holders are unaffected.',
+          source: VISA_LIST_SOURCE,
+        },
+      ],
+    }, // Georgia
 
     // ── Airport Transit Visa — common list (Annex IV, Reg. EC 810/2009) ────────
     // These 12 nationals need an ATV to transit ANY Schengen airport international
     // zone, even without entering Schengen territory.
-    // Note: Iraq (IQ) is on the EU official list but was absent from the original
-    // project brief — included here per the authoritative source.
     'AF': { access: 'visa_required', requiresATV: true, notes: [{ text: ATV_COMMON_NOTE, source: ATV_COMMON_SOURCE }] }, // Afghanistan
     'BD': { access: 'visa_required', requiresATV: true, notes: [{ text: ATV_COMMON_NOTE, source: ATV_COMMON_SOURCE }] }, // Bangladesh
     'CD': { access: 'visa_required', requiresATV: true, notes: [{ text: ATV_COMMON_NOTE, source: ATV_COMMON_SOURCE }] }, // Congo (Dem. Rep.)
@@ -192,105 +357,255 @@ export const SCHENGEN: RegionDefinition = {
     // ── Airport Transit Visa — member-state specific (Annex 7B) ───────────────
     // These nationals are NOT on the common list but individual Schengen states
     // have unilaterally imposed ATV requirements at their own airports.
-    // Source: Visa Code Handbook Annex 7B (last verified 2026-04-08).
+    // Source: Visa Code Handbook Annex 7B (verified against PDF, 2026-04-08).
     //
-    // Member state abbreviations used in comments:
-    //   AT=Austria  BE=Belgium   CH=Switzerland  CY=Cyprus    DE=Germany
-    //   DK=Denmark  ES=Spain     FI=Finland      FR=France    HR=Croatia
-    //   HU=Hungary  IT=Italy     LT=Lithuania    LU=Luxembourg LV=Latvia
-    //   NL=Netherlands  NO=Norway  PL=Poland  PT=Portugal  RO=Romania
-    //   SE=Sweden   SI=Slovenia  SK=Slovakia
+    // Global column-level footnote exemptions:
+    //   BE, ES, NL, CH — ATV does not apply to service or special passport holders.
+    //   FR              — ATV applies to ordinary passport holders unless noted otherwise.
+    //
+    // Country-specific footnote exceptions are documented inline per entry.
 
-    // Algeria — BE
-    'DZ': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Angola — BE
-    'AO': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Armenia — BE, FR
-    'AM': { access: 'visa_required', notes: specificATVNote('Belgium, France') },
-    // Burkina Faso — BE
-    'BF': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Bolivia — BE (ordinary passports; service/special exempt)
-    'BO': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Cameroon — BE, DE, FR, FI, AT
-    'CM': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Finland, Austria') },
-    // Central African Republic — BE, DE, AT
-    'CF': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, Austria') },
-    // Chad — BE, DE, FR, AT
-    'TD': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Congo (Republic) — BE, DE, FR, AT
-    'CG': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Côte d'Ivoire — BE, DE
-    'CI': { access: 'visa_required', notes: specificATVNote('Belgium, Germany') },
-    // Cuba — BE, DE, ES, FR, LT, HU, RO
-    'CU': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, Spain, France, Lithuania, Hungary, Romania') },
-    // Djibouti — BE
-    'DJ': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Egypt — BE, DE, FR, AT
-    'EG': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Gambia — BE
-    'GM': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Guinea — BE, DE, FR, AT (service passport holders also included)
-    'GN': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Guinea-Bissau — BE, DE, FR
-    'GW': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France') },
-    // Haiti — BE, FR (ordinary), AT (ordinary, from Sep 2021), SI
-    'HT': { access: 'visa_required', notes: specificATVNote('Belgium, France, Austria, Slovenia') },
-    // India — BE, DE, FR, AT
-    'IN': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Jordan — BE, AT
-    'JO': { access: 'visa_required', notes: specificATVNote('Belgium, Austria') },
-    // Kenya — BE
-    'KE': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Lebanon — BE, DE, FR
-    'LB': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France') },
-    // Liberia — BE
-    'LR': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Libya — BE
-    'LY': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Mali — BE, DE, FR, AT
-    'ML': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Morocco — BE
-    'MA': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Mauritania — BE, DE, FR, AT
-    'MR': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Nepal — BE, DE, FR, AT, NL, SI
-    'NP': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Netherlands, Slovenia') },
-    // Niger — BE
-    'NE': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Palestinians — BE, DE, FR, AT, CH
-    'PS': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Switzerland') },
-    // Russia — BE, DE, FR, CH (from specific third-country airports)
-    'RU': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Switzerland') },
-    // Senegal — BE, DE, FR, AT, NL, SI
-    'SN': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Netherlands, Slovenia') },
-    // Sierra Leone — BE, DE, FR
-    'SL': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France') },
-    // South Sudan — BE, DE, FR, AT, SI
-    'SS': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Slovenia') },
-    // Sudan — BE, DE, FR, CY, NL, AT, PL, RO, FI
-    'SD': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Cyprus, Netherlands, Austria, Poland, Romania, Finland') },
-    // Syria — BE, DK, DE, ES, FR, IT, CY, LV, LT, NL, AT, PL, RO, SI, FI
-    'SY': { access: 'visa_required', notes: specificATVNote('Belgium, Denmark, Germany, Spain, France, Italy, Cyprus, Latvia, Lithuania, Netherlands, Austria, Poland, Romania, Slovenia, Finland') },
-    // Tajikistan — BE, DE, FR, AT
-    'TJ': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Togo — BE, DE, FR
-    'TG': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France') },
-    // Tunisia — BE
-    'TN': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Turkey — BE, DE, FR, CY, NL, AT, RO
-    'TR': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Cyprus, Netherlands, Austria, Romania') },
-    // Uzbekistan — BE, DE, FR, AT, RO, SI
-    'UZ': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Romania, Slovenia') },
-    // Yemen — BE, AT (ordinary), RO, SI, FI
-    'YE': { access: 'visa_required', notes: specificATVNote('Belgium, Austria, Romania, Slovenia, Finland') },
+    // Algeria — CZ only
+    'DZ': { access: 'visa_required', notes: specificATVNote('Czech Republic') },
 
-    // ── Suspended ─────────────────────────────────────────────────────────────
-    'GE': {
-      access: 'suspended',
-      notes: [{
-        text: 'Visa-free access suspended March 2026 to March 2027. Applies to diplomatic, service, and official passport holders only; ordinary Georgian passports remain visa-free.',
-        source: VISA_LIST_SOURCE,
-      }],
+    // Angola — FR only
+    'AO': { access: 'visa_required', notes: specificATVNote('France') },
+
+    // Armenia — CZ, PL
+    'AM': { access: 'visa_required', notes: specificATVNote('Czech Republic, Poland') },
+
+    // Burkina Faso — ES only
+    'BF': { access: 'visa_required', notes: specificATVNote('Spain') },
+
+    // Bolivia — FR only (ordinary passports; ES/NL/CH service/special exempt per column footnote)
+    'BO': { access: 'visa_required', notes: specificATVNote('France') },
+
+    // Cameroon — EL, ES, FR, CY
+    'CM': { access: 'visa_required', notes: specificATVNote('Greece, Spain, France, Cyprus') },
+
+    // Central African Republic — ES, FR, NL
+    'CF': { access: 'visa_required', notes: specificATVNote('Spain, France, Netherlands') },
+
+    // Chad — CZ, ES, FR, NL
+    'TD': { access: 'visa_required', notes: specificATVNote('Czech Republic, Spain, France, Netherlands') },
+
+    // Congo (Republic of) — EL, ES, FR
+    'CG': { access: 'visa_required', notes: specificATVNote('Greece, Spain, France') },
+
+    // Côte d'Ivoire — ES, FR
+    'CI': { access: 'visa_required', notes: specificATVNote('Spain, France') },
+
+    // Cuba — CZ, DE, ES, FR, NL, PL, CH
+    'CU': { access: 'visa_required', notes: specificATVNote('Czech Republic, Germany, Spain, France, Netherlands, Poland, Switzerland') },
+
+    // Djibouti — ES only
+    'DJ': { access: 'visa_required', notes: specificATVNote('Spain') },
+
+    // Dominican Republic — BE, FR
+    'DO': { access: 'visa_required', notes: specificATVNote('Belgium, France') },
+
+    // Egypt — CZ, ES, PL, RO
+    'EG': { access: 'visa_required', notes: specificATVNote('Czech Republic, Spain, Poland, Romania') },
+
+    // Gambia — ES only
+    'GM': { access: 'visa_required', notes: specificATVNote('Spain') },
+
+    // Guinea — BE, ES, FR, NL, PT
+    // Footnote 6 on FR cell: ATV applies to both ordinary AND service passport holders
+    // (exception to the general FR ordinary-passport-only column rule).
+    'GN': {
+      access: 'visa_required',
+      notes: [
+        {
+          text: 'Airport transit visa required at airports in: Belgium, Spain, France, Netherlands, Portugal. Not required at other Schengen airports.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+        {
+          text: 'France: ATV applies to both ordinary and service passport holders (unlike most entries where France applies to ordinary passports only).',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+      ],
+    },
+
+    // Guinea-Bissau — BE, ES, NL
+    'GW': { access: 'visa_required', notes: specificATVNote('Belgium, Spain, Netherlands') },
+
+    // Haiti — BE, ES, FR
+    // Footnote 7 on BE cell: applies to ordinary passports only.
+    // Footnote 8 on ES cell: applies to ordinary passports issued from 1 September 2021.
+    'HT': {
+      access: 'visa_required',
+      notes: [
+        {
+          text: 'Airport transit visa required at airports in: Belgium, Spain, France. Not required at other Schengen airports.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+        {
+          text: 'Belgium: applies to ordinary passports only. Spain: applies to ordinary passports issued from 1 September 2021.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+      ],
+    },
+
+    // India — CZ, DE, FR, RO
+    'IN': { access: 'visa_required', notes: specificATVNote('Czech Republic, Germany, France, Romania') },
+
+    // Jordan — DE only
+    // Footnote 9 on DE cell: exemption if holder has valid AU/IL/NZ visa + confirmed
+    // onward ticket, or is returning to Jordan after an authorised stay in those countries.
+    // Onward flight must depart within 12 hours of arrival in Germany.
+    'JO': {
+      access: 'visa_required',
+      notes: [
+        {
+          text: 'Airport transit visa required at airports in: Germany. Not required at other Schengen airports.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+        {
+          text: 'Germany exemption: ATV not required for holders of a valid visa for Australia, Israel, or New Zealand with a confirmed onward ticket to that country, or those returning to Jordan after an authorised stay in one of those countries. Onward flight must depart within 12 hours of arrival in Germany.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+      ],
+    },
+
+    // Kenya — ES only
+    'KE': { access: 'visa_required', notes: specificATVNote('Spain') },
+
+    // Lebanon — CZ, DE, RO
+    'LB': { access: 'visa_required', notes: specificATVNote('Czech Republic, Germany, Romania') },
+
+    // Liberia — ES only
+    'LR': { access: 'visa_required', notes: specificATVNote('Spain') },
+
+    // Libya — CZ only
+    'LY': { access: 'visa_required', notes: specificATVNote('Czech Republic') },
+
+    // Mali — CZ, DE, ES, FR
+    'ML': { access: 'visa_required', notes: specificATVNote('Czech Republic, Germany, Spain, France') },
+
+    // Morocco — RO only
+    'MA': { access: 'visa_required', notes: specificATVNote('Romania') },
+
+    // Mauritania — CZ, ES, FR, NL
+    'MR': { access: 'visa_required', notes: specificATVNote('Czech Republic, Spain, France, Netherlands') },
+
+    // Nepal — BE, ES, FR, NL, RO
+    'NP': { access: 'visa_required', notes: specificATVNote('Belgium, Spain, France, Netherlands, Romania') },
+
+    // Niger — CZ only
+    'NE': { access: 'visa_required', notes: specificATVNote('Czech Republic') },
+
+    // Palestinians — BE, CZ, ES, FR, RO
+    // Footnote 14 on FR cell: requirement applies specifically to holders of the travel
+    // document for Palestinian refugees (not all travel documents issued to Palestinians).
+    'PS': {
+      access: 'visa_required',
+      notes: [
+        {
+          text: 'Airport transit visa required at airports in: Belgium, Czech Republic, Spain, France, Romania. Not required at other Schengen airports.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+        {
+          text: 'France: ATV requirement applies to holders of the travel document for Palestinian refugees.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+      ],
+    },
+
+    // Philippines — FR only
+    // Footnote 10 on FR cell: does not apply to sea crew holding a seafarer's identity
+    // document under ILO Conventions No. 108 (1958) or No. 185 (2003) and the FAL Convention.
+    'PH': {
+      access: 'visa_required',
+      notes: [
+        {
+          text: 'Airport transit visa required at airports in: France. Not required at other Schengen airports.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+        {
+          text: "France exemption: ATV does not apply to sea crew holding a valid seafarer's identity document issued under ILO Conventions No. 108 (1958) or No. 185 (2003) and the FAL Convention.",
+          source: SPECIFIC_ATV_SOURCE,
+        },
+      ],
+    },
+
+    // Russia — CZ, ES, FR
+    // Footnote 11 on FR cell: requirement applies only to Russian nationals departing
+    // from airports in Armenia, Azerbaijan, Georgia, Ukraine, Belarus, Moldova, Turkey,
+    // or Egypt.
+    'RU': {
+      access: 'visa_required',
+      notes: [
+        {
+          text: 'Airport transit visa required at airports in: Czech Republic, Spain, France. Not required at other Schengen airports.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+        {
+          text: 'France: ATV requirement applies only to Russian nationals departing from airports in Armenia, Azerbaijan, Georgia, Ukraine, Belarus, Moldova, Turkey, or Egypt.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+      ],
+    },
+
+    // Senegal — ES, FR, IT, NL, PT
+    'SN': { access: 'visa_required', notes: specificATVNote('Spain, France, Italy, Netherlands, Portugal') },
+
+    // Sierra Leone — ES, FR, NL
+    'SL': { access: 'visa_required', notes: specificATVNote('Spain, France, Netherlands') },
+
+    // South Sudan — BE, CZ, DE, FR, NL
+    'SS': { access: 'visa_required', notes: specificATVNote('Belgium, Czech Republic, Germany, France, Netherlands') },
+
+    // Sudan — BE, CZ, DE, EL, ES, FR, CY, NL
+    'SD': { access: 'visa_required', notes: specificATVNote('Belgium, Czech Republic, Germany, Greece, Spain, France, Cyprus, Netherlands') },
+
+    // Syria — BE, CZ, DK, DE, EL, ES, FR, IT, NL, AT, RO, NO, CH
+    'SY': { access: 'visa_required', notes: specificATVNote('Belgium, Czech Republic, Denmark, Germany, Greece, Spain, France, Italy, Netherlands, Austria, Romania, Norway, Switzerland') },
+
+    // Tajikistan — BE, ES, IT, RO
+    'TJ': { access: 'visa_required', notes: specificATVNote('Belgium, Spain, Italy, Romania') },
+
+    // Togo — ES, FR
+    'TG': { access: 'visa_required', notes: specificATVNote('Spain, France') },
+
+    // Tunisia — RO only
+    'TN': { access: 'visa_required', notes: specificATVNote('Romania') },
+
+    // Turkey — BE, CZ, DE, ES, FR, CY, NL, NO, CH
+    // Footnote 12 on NL cell: does not apply to seafarers holding a valid seafarer's
+    // identity document under ILO Conventions No. 108 (1958) or No. 185 (2003) and
+    // the FAL Convention.
+    'TR': {
+      access: 'visa_required',
+      notes: [
+        {
+          text: 'Airport transit visa required at airports in: Belgium, Czech Republic, Germany, Spain, France, Cyprus, Netherlands, Norway, Switzerland. Not required at other Schengen airports.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+        {
+          text: "Netherlands exemption: ATV does not apply to seafarers holding a valid seafarer's identity document issued under ILO Conventions No. 108 (1958) or No. 185 (2003) and the FAL Convention.",
+          source: SPECIFIC_ATV_SOURCE,
+        },
+      ],
+    },
+
+    // Uzbekistan — BE, ES, FR, IT, PT, RO
+    'UZ': { access: 'visa_required', notes: specificATVNote('Belgium, Spain, France, Italy, Portugal, Romania') },
+
+    // Yemen — BE, CZ, ES, NL, RO
+    // Footnote 13 on BE cell: Belgium applies to ordinary passports only.
+    'YE': {
+      access: 'visa_required',
+      notes: [
+        {
+          text: 'Airport transit visa required at airports in: Belgium, Czech Republic, Spain, Netherlands, Romania. Not required at other Schengen airports.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+        {
+          text: 'Belgium: applies to ordinary passports only.',
+          source: SPECIFIC_ATV_SOURCE,
+        },
+      ],
     },
   },
 };
