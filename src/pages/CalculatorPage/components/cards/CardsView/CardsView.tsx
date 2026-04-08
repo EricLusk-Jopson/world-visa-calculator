@@ -25,7 +25,7 @@ interface CardsViewProps {
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
-  onPassportChange: (travelerId: string, passportCode: string | null) => void;
+  onEdit: (travelerId: string, name: string, passportCode: string | null) => void;
 }
 
 /**
@@ -48,7 +48,7 @@ export function CardsView({
   onAddTrip,
   onEditTrip,
   onDeleteTraveler,
-  onPassportChange,
+  onEdit,
 }: CardsViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -107,7 +107,7 @@ export function CardsView({
           onAddTrip={onAddTrip}
           onEditTrip={onEditTrip}
           onDeleteTraveler={onDeleteTraveler}
-          onPassportChange={onPassportChange}
+          onEdit={onEdit}
         />
       ))}
 

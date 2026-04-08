@@ -28,7 +28,7 @@ interface TimelineViewProps {
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
   onAddTraveler: () => void;
-  onPassportChange: (travelerId: string, passportCode: string | null) => void;
+  onEdit: (travelerId: string, name: string, passportCode: string | null) => void;
 }
 
 export function TimelineView({
@@ -37,7 +37,7 @@ export function TimelineView({
   onEditTrip,
   onDeleteTraveler,
   onAddTraveler,
-  onPassportChange,
+  onEdit,
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasScrolledRef = useRef(false);
@@ -132,7 +132,7 @@ export function TimelineView({
                   status={status}
                   maxStay={maxStay}
                   onDelete={() => onDeleteTraveler(traveler.id)}
-                  onPassportChange={(code) => onPassportChange(traveler.id, code)}
+                  onEdit={(name, code) => onEdit(traveler.id, name, code)}
                   sx={{ width: "100%" }}
                 />
               </Box>

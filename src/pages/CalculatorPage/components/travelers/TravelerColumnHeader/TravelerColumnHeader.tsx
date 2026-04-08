@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -33,7 +34,8 @@ interface TravelerColumnHeaderProps {
    */
   compact?: boolean;
   onDelete: () => void;
-  onPassportChange: (code: string | null) => void;
+  /** Called when the user saves changes from the edit modal. */
+  onEdit: (name: string, passportCode: string | null) => void;
   sx?: object;
 }
 
@@ -68,13 +70,24 @@ export function TravelerColumnHeader({
   maxStay,
   compact = false,
   onDelete,
-  onPassportChange,
+  onEdit,
   sx = {},
 }: TravelerColumnHeaderProps) {
   const [hovered, setHovered] = useState(false);
   const [confirmingDelete, setConfirmingDelete] = useState(false);
-  const [nationalityModalOpen, setNationalityModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
+
+  // Pending edit values — reset each time the modal opens
+  const [editName, setEditName] = useState(traveler.name);
+  const [editCode, setEditCode] = useState<string | null>(traveler.passportCode);
+
+  useEffect(() => {
+    if (editModalOpen) {
+      setEditName(traveler.name);
+      setEditCode(traveler.passportCode);
+    }
+  }, [editModalOpen, traveler.name, traveler.passportCode]);
 
   const { daysUsed, daysRemaining, variant } = status;
   const tripCount = traveler.trips?.length ?? 0;
@@ -228,7 +241,7 @@ export function TravelerColumnHeader({
         }}
       >
         <MenuItem
-          onClick={() => { closeMenu(); setNationalityModalOpen(true); }}
+          onClick={() => { closeMenu(); setEditModalOpen(true); }}
           sx={{
             fontFamily: tokens.fontBody,
             fontSize: "0.82rem",
@@ -238,7 +251,7 @@ export function TravelerColumnHeader({
             "&:hover": { bgcolor: tokens.mist },
           }}
         >
-          Edit nationality
+          Edit traveler
         </MenuItem>
         <MenuItem
           onClick={() => { closeMenu(); handleDeleteClick(); }}
@@ -380,7 +393,7 @@ export function TravelerColumnHeader({
           </Typography>
           <Box
             component="button"
-            onClick={() => setNationalityModalOpen(true)}
+            onClick={() => setEditModalOpen(true)}
             sx={{
               flexShrink: 0,
               border: `1px solid ${tokens.border}`,
@@ -473,10 +486,10 @@ export function TravelerColumnHeader({
         </Box>
       )}
 
-      {/* ── Nationality selection modal ────────────────────────────────────── */}
+      {/* ── Edit traveler modal (name + nationality) ──────────────────────── */}
       <Dialog
-        open={nationalityModalOpen}
-        onClose={() => setNationalityModalOpen(false)}
+        open={editModalOpen}
+        onClose={() => setEditModalOpen(false)}
         PaperProps={{
           sx: {
             borderRadius: "16px",
@@ -487,6 +500,7 @@ export function TravelerColumnHeader({
           },
         }}
       >
+        {/* Header */}
         <Box
           sx={{
             px: "20px",
@@ -506,11 +520,11 @@ export function TravelerColumnHeader({
               color: tokens.navy,
             }}
           >
-            {traveler.name}&apos;s passport
+            Edit traveler
           </Typography>
           <Box
             component="button"
-            onClick={() => setNationalityModalOpen(false)}
+            onClick={() => setEditModalOpen(false)}
             sx={{
               width: 26,
               height: 26,
@@ -531,30 +545,137 @@ export function TravelerColumnHeader({
           </Box>
         </Box>
 
-        <Box sx={{ px: "20px", py: "16px", display: "flex", flexDirection: "column", gap: "10px" }}>
-          <NationalitySelector
-            value={traveler.passportCode}
-            onChange={(code) => {
-              onPassportChange(code);
-              setNationalityModalOpen(false);
-            }}
-            autoFocus
-          />
-          {rule.access !== 'visa_free' && traveler.passportCode && (
+        {/* Body */}
+        <Box sx={{ px: "20px", pt: "14px", pb: "16px", display: "flex", flexDirection: "column", gap: "12px" }}>
+          {/* Name field */}
+          <Box>
             <Typography
+              component="label"
               sx={{
+                display: "block",
                 fontFamily: tokens.fontBody,
-                fontSize: "0.72rem",
-                color: tokens.textGhost,
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: tokens.textSoft,
+                mb: "5px",
               }}
             >
-              {rule.access === 'free_movement'
-                ? 'EU/EEA/Swiss passports have free movement — no 90-day limit applies.'
-                : rule.access === 'suspended'
-                  ? (rule.notes?.[0]?.text ?? 'Visa-free access is temporarily suspended.')
-                  : 'A Schengen visa is required for this passport.'}
+              Name
             </Typography>
-          )}
+            <TextField
+              value={editName}
+              onChange={(e) => setEditName(e.target.value)}
+              fullWidth
+              autoFocus
+              inputProps={{ maxLength: 30 }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.85rem",
+                  bgcolor: tokens.mist,
+                  borderRadius: "10px",
+                  "& fieldset": { borderColor: tokens.border, borderWidth: 1.5 },
+                  "&:hover fieldset": { borderColor: tokens.navy },
+                  "&.Mui-focused fieldset": { borderColor: tokens.navy, borderWidth: 1.5 },
+                },
+                "& .MuiOutlinedInput-input": {
+                  py: "9px",
+                  px: "11px",
+                  color: tokens.text,
+                },
+              }}
+            />
+          </Box>
+
+          {/* Nationality field */}
+          <Box>
+            <Typography
+              component="label"
+              sx={{
+                display: "block",
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: tokens.textSoft,
+                mb: "5px",
+              }}
+            >
+              Nationality
+            </Typography>
+            <NationalitySelector
+              value={editCode}
+              onChange={(code) => setEditCode(code)}
+            />
+          </Box>
+
+          {/* Informational note for non-visa-free passports */}
+          {editCode && (() => {
+            const r = getSchengenRule(editCode);
+            if (r.access === 'visa_free') return null;
+            return (
+              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost }}>
+                {r.access === 'free_movement'
+                  ? 'EU/EEA/Swiss passports have free movement — no 90-day limit applies.'
+                  : r.access === 'suspended'
+                    ? (r.notes?.[0]?.text ?? 'Visa-free access is temporarily suspended.')
+                    : 'A Schengen visa is required for this passport.'}
+              </Typography>
+            );
+          })()}
+        </Box>
+
+        {/* Footer */}
+        <Box sx={{ height: 1, bgcolor: tokens.border }} />
+        <Box sx={{ px: "20px", py: "12px", display: "flex", gap: "7px" }}>
+          <Box
+            component="button"
+            onClick={() => setEditModalOpen(false)}
+            sx={{
+              flex: 1,
+              border: `1px solid ${tokens.border}`,
+              borderRadius: "8px",
+              bgcolor: tokens.mist,
+              color: tokens.textSoft,
+              fontFamily: tokens.fontBody,
+              fontSize: "0.82rem",
+              fontWeight: 600,
+              py: "8px",
+              cursor: "pointer",
+              transition: "all 0.12s",
+              "&:hover": { bgcolor: tokens.border, color: tokens.text },
+            }}
+          >
+            Cancel
+          </Box>
+          <Box
+            component="button"
+            disabled={!editName.trim()}
+            onClick={() => {
+              if (!editName.trim()) return;
+              onEdit(editName.trim(), editCode);
+              setEditModalOpen(false);
+            }}
+            sx={{
+              flex: 2,
+              border: "none",
+              borderRadius: "8px",
+              bgcolor: editName.trim() ? tokens.navy : tokens.border,
+              color: editName.trim() ? tokens.white : tokens.textGhost,
+              fontFamily: tokens.fontBody,
+              fontSize: "0.82rem",
+              fontWeight: 600,
+              py: "8px",
+              cursor: editName.trim() ? "pointer" : "default",
+              transition: "all 0.12s",
+              "&:hover": editName.trim() ? { bgcolor: tokens.navyMid } : {},
+            }}
+          >
+            Save
+          </Box>
         </Box>
       </Dialog>
     </Box>

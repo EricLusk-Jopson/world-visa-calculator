@@ -60,7 +60,7 @@ interface TravelerCardsColumnProps {
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
-  onPassportChange: (travelerId: string, passportCode: string | null) => void;
+  onEdit: (travelerId: string, name: string, passportCode: string | null) => void;
 }
 
 /**
@@ -77,7 +77,7 @@ export function TravelerCardsColumn({
   onAddTrip,
   onEditTrip,
   onDeleteTraveler,
-  onPassportChange,
+  onEdit,
 }: TravelerCardsColumnProps) {
   const status = computeTravelerStatus(traveler);
 
@@ -129,7 +129,7 @@ export function TravelerCardsColumn({
           maxStay={headerMaxStay}
           compact={compact}
           onDelete={() => onDeleteTraveler(traveler.id)}
-          onPassportChange={(code) => onPassportChange(traveler.id, code)}
+          onEdit={(name, code) => onEdit(traveler.id, name, code)}
         />
       </Box>
 

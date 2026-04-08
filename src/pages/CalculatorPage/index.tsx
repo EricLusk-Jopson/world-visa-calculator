@@ -107,10 +107,10 @@ export function CalculatorPage() {
     setModal(CLOSED_MODAL);
   }, []);
 
-  const handlePassportChange = useCallback(
-    (travelerId: string, passportCode: string | null) => {
+  const handleTravelerEdit = useCallback(
+    (travelerId: string, name: string, passportCode: string | null) => {
       setTravelers((prev) =>
-        prev.map((t) => (t.id === travelerId ? { ...t, passportCode } : t)),
+        prev.map((t) => (t.id === travelerId ? { ...t, name, passportCode } : t)),
       );
     },
     [],
@@ -339,7 +339,7 @@ export function CalculatorPage() {
                   onEditTrip={handleOpenEditTrip}
                   onDeleteTraveler={handleDeleteTraveler}
                   onAddTraveler={handleAddTraveler}
-                  onPassportChange={handlePassportChange}
+                  onEdit={handleTravelerEdit}
                 />
               ) : (
                 <CardsView
@@ -347,7 +347,7 @@ export function CalculatorPage() {
                   onAddTrip={handleOpenAddTrip}
                   onEditTrip={handleOpenEditTrip}
                   onDeleteTraveler={handleDeleteTraveler}
-                  onPassportChange={handlePassportChange}
+                  onEdit={handleTravelerEdit}
                 />
               )}
             </Box>
