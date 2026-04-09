@@ -15,7 +15,9 @@ import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler, PassportRule } from "@/types";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { getSchengenRule } from "@/data/regions/schengen";
+import { getCountryName } from "@/data/countries";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
@@ -636,21 +638,24 @@ export function TripModal({
                 const t = travelers.find((x) => x.id === tid);
                 if (!t) return null;
                 const rule: PassportRule = getSchengenRule(t.passportCode);
+                const nationalityLabel = t.passportCode
+                  ? `${getCountryName(t.passportCode)} passport`
+                  : null;
                 const { label, color } = (() => {
                   if (!t.passportCode)
                     return { label: "Set nationality to see entry requirements", color: tokens.textGhost };
                   if (rule.access === "free_movement")
-                    return { label: "Free movement — no day limit", color: tokens.green };
+                    return { label: `Free movement — no day limit (${nationalityLabel})`, color: tokens.green };
                   if (rule.access === "visa_free")
                     return {
                       label: rule.requiresETIAS
-                        ? "Visa-free entry — ETIAS required from late 2026"
-                        : "Visa-free entry",
+                        ? `Visa-free entry — ETIAS required from late 2026 (${nationalityLabel})`
+                        : `Visa-free entry (${nationalityLabel})`,
                       color: tokens.green,
                     };
                   if (rule.access === "suspended")
-                    return { label: "Access temporarily suspended", color: tokens.amber };
-                  return { label: "Schengen visa required", color: tokens.red };
+                    return { label: `Access temporarily suspended (${nationalityLabel})`, color: tokens.amber };
+                  return { label: `Schengen visa required (${nationalityLabel})`, color: tokens.red };
                 })();
                 return (
                   <Box key={tid} sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
@@ -702,24 +707,64 @@ export function TripModal({
                         >
                           {note.text}
                         </Typography>
-                        <Box
-                          component="a"
-                          href={note.source.directUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          sx={{
-                            fontFamily: tokens.fontBody,
-                            fontSize: "0.62rem",
-                            fontWeight: 700,
-                            color: tokens.textGhost,
-                            textDecoration: "none",
-                            flexShrink: 0,
-                            mt: "1px",
-                            "&:hover": { color: tokens.navy },
+                        <Tooltip
+                          placement="top-end"
+                          arrow
+                          enterDelay={200}
+                          title={
+                            <Box sx={{ display: "flex", flexDirection: "column", gap: "5px", py: "2px" }}>
+                              <Box
+                                component="a"
+                                href={note.source.directUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                sx={{ fontFamily: tokens.fontBody, fontSize: "0.68rem", color: "#fff", textDecoration: "underline", "&:hover": { opacity: 0.85 } }}
+                              >
+                                Source ↗
+                              </Box>
+                              {note.source.parentUrl && (
+                                <Box
+                                  component="a"
+                                  href={note.source.parentUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  sx={{ fontFamily: tokens.fontBody, fontSize: "0.68rem", color: "#fff", textDecoration: "underline", "&:hover": { opacity: 0.85 } }}
+                                >
+                                  Overview ↗
+                                </Box>
+                              )}
+                              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.63rem", color: "rgba(255,255,255,0.65)", mt: "1px" }}>
+                                Verified {note.source.dateChecked}
+                              </Typography>
+                            </Box>
+                          }
+                          componentsProps={{
+                            tooltip: {
+                              sx: {
+                                bgcolor: tokens.navy,
+                                borderRadius: "8px",
+                                px: "10px",
+                                py: "8px",
+                                maxWidth: 220,
+                                "& .MuiTooltip-arrow": { color: tokens.navy },
+                              },
+                            },
                           }}
                         >
-                          src ↗
-                        </Box>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              flexShrink: 0,
+                              mt: "1px",
+                              color: tokens.textGhost,
+                              cursor: "default",
+                              "&:hover": { color: tokens.navy },
+                            }}
+                          >
+                            <InfoOutlinedIcon sx={{ fontSize: "0.85rem" }} />
+                          </Box>
+                        </Tooltip>
                       </Box>
                     ))}
                   </Box>

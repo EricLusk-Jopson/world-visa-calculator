@@ -13,6 +13,7 @@
  */
 
 import type { RegionDefinition, PassportRule, SourceDoc } from '@/types';
+import { getCountryName } from '@/data/countries';
 
 // ─── Source document references ───────────────────────────────────────────────
 
@@ -33,7 +34,7 @@ const SPECIFIC_ATV_SOURCE: SourceDoc = {
 /** Regulation (EU) 2018/1806 — third-country visa/exempt lists (consolidated) */
 const VISA_LIST_SOURCE: SourceDoc = {
   directUrl: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230',
-  parentUrl: 'https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf',
+  parentUrl: 'https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en',
   dateChecked: '2026-04-08',
 };
 
@@ -43,10 +44,15 @@ const VISA_LIST_SOURCE: SourceDoc = {
 const ATV_COMMON_NOTE =
   'Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory.';
 
-/** Builds a specific-ATV note listing the member states that require it */
-function specificATVNote(memberStates: string): PassportRule['notes'] {
+/**
+ * Builds a standard member-state-specific ATV note from ISO Alpha-2 codes.
+ * Pass the codes of the Schengen states that impose the requirement;
+ * names are resolved from the shared countries master list.
+ */
+function specificATVNote(memberStateCodes: string[]): PassportRule['notes'] {
+  const names = memberStateCodes.map(getCountryName).join(', ');
   return [{
-    text: `Airport transit visa required at airports in: ${memberStates}. Not required at other Schengen airports.`,
+    text: `Airport transit visa required at airports in: ${names}. Not required at other Schengen airports.`,
     source: SPECIFIC_ATV_SOURCE,
   }];
 }
@@ -125,7 +131,9 @@ export const SCHENGEN: RegionDefinition = {
     'CO': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Colombia
     'CR': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Costa Rica
     'DM': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Dominica
-    'DO': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Dominican Republic
+    // Dominican Republic — visa-free for entry, but Annex 7B imposes an ATV requirement
+    // at Belgium and France airports for transit without entering Schengen territory.
+    'DO': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: specificATVNote(['BE', 'FR']) },  // Dominican Republic
     'GD': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Grenada
     'GT': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Guatemala
     'GY': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Guyana
@@ -149,7 +157,10 @@ export const SCHENGEN: RegionDefinition = {
     'PA': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Panama
     'PW': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Palau
     'PE': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Peru
-    'PH': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Philippines
+    // Philippines — visa-free for entry, but Annex 7B imposes an ATV requirement at
+    // France airports for transit. Exception: seafarers with a valid ILO identity document
+    // (Convention No. 108 or No. 185) are exempt.
+    'PH': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true, notes: [{ text: 'Airport transit visa required at airports in: France. Exception: does not apply to sea crew holding a seafarer\'s identity document issued under ILO Conventions No. 108 or No. 185. Not required at other Schengen airports.', source: SPECIFIC_ATV_SOURCE }] },  // Philippines
     'KN': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Saint Kitts and Nevis
     'LC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Saint Lucia
     'VC': { access: 'visa_free', allowanceDays: 90, windowDays: 180, requiresETIAS: true },  // Saint Vincent and the Grenadines
@@ -190,99 +201,106 @@ export const SCHENGEN: RegionDefinition = {
     'LK': { access: 'visa_required', requiresATV: true, notes: [{ text: ATV_COMMON_NOTE, source: ATV_COMMON_SOURCE }] }, // Sri Lanka
 
     // ── Airport Transit Visa — member-state specific (Annex 7B) ───────────────
-    // These nationals are NOT on the common list but individual Schengen states
-    // have unilaterally imposed ATV requirements at their own airports.
-    // Source: Visa Code Handbook Annex 7B (last verified 2026-04-08).
+    // Source: Visa Code Handbook Annex 7B — third countries whose nationals
+    // require an ATV when transiting airports of one or more member states.
+    // These nationals are NOT on the common list (Annex IV); individual Schengen
+    // states have unilaterally imposed the requirement at their own airports.
+    // Last verified: 2026-04-08.
     //
-    // Member state abbreviations used in comments:
-    //   AT=Austria  BE=Belgium   CH=Switzerland  CY=Cyprus    DE=Germany
-    //   DK=Denmark  ES=Spain     FI=Finland      FR=France    HR=Croatia
-    //   HU=Hungary  IT=Italy     LT=Lithuania    LU=Luxembourg LV=Latvia
-    //   NL=Netherlands  NO=Norway  PL=Poland  PT=Portugal  RO=Romania
-    //   SE=Sweden   SI=Slovenia  SK=Slovakia
+    // Member state ISO codes used below:
+    //   AT=Austria   BE=Belgium   CH=Switzerland  CY=Cyprus   CZ=Czech Republic
+    //   DE=Germany   DK=Denmark   ES=Spain        FR=France   GR=Greece
+    //   HU=Hungary   IS=Iceland   IT=Italy        NL=Netherlands  NO=Norway
+    //   PL=Poland    PT=Portugal  RO=Romania      SE=Sweden   SI=Slovenia
+    //
+    // Footnotes from the official table that qualify specific state requirements:
+    //   BE,ES,NL,CH — ATV does not apply to holders of service/special passports.
+    //   FR           — ATV applies to holders of ordinary passports unless noted.
 
-    // Algeria — BE
-    'DZ': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Angola — BE
-    'AO': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Armenia — BE, FR
-    'AM': { access: 'visa_required', notes: specificATVNote('Belgium, France') },
-    // Burkina Faso — BE
-    'BF': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Bolivia — BE (ordinary passports; service/special exempt)
-    'BO': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Cameroon — BE, DE, FR, FI, AT
-    'CM': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Finland, Austria') },
-    // Central African Republic — BE, DE, AT
-    'CF': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, Austria') },
-    // Chad — BE, DE, FR, AT
-    'TD': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Congo (Republic) — BE, DE, FR, AT
-    'CG': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Côte d'Ivoire — BE, DE
-    'CI': { access: 'visa_required', notes: specificATVNote('Belgium, Germany') },
-    // Cuba — BE, DE, ES, FR, LT, HU, RO
-    'CU': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, Spain, France, Lithuania, Hungary, Romania') },
-    // Djibouti — BE
-    'DJ': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Egypt — BE, DE, FR, AT
-    'EG': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Gambia — BE
-    'GM': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Guinea — BE, DE, FR, AT (service passport holders also included)
-    'GN': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Guinea-Bissau — BE, DE, FR
-    'GW': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France') },
-    // Haiti — BE, FR (ordinary), AT (ordinary, from Sep 2021), SI
-    'HT': { access: 'visa_required', notes: specificATVNote('Belgium, France, Austria, Slovenia') },
-    // India — BE, DE, FR, AT
-    'IN': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Jordan — BE, AT
-    'JO': { access: 'visa_required', notes: specificATVNote('Belgium, Austria') },
-    // Kenya — BE
-    'KE': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Lebanon — BE, DE, FR
-    'LB': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France') },
-    // Liberia — BE
-    'LR': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Libya — BE
-    'LY': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Mali — BE, DE, FR, AT
-    'ML': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Morocco — BE
-    'MA': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Mauritania — BE, DE, FR, AT
-    'MR': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Nepal — BE, DE, FR, AT, NL, SI
-    'NP': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Netherlands, Slovenia') },
-    // Niger — BE
-    'NE': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Palestinians — BE, DE, FR, AT, CH
-    'PS': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Switzerland') },
-    // Russia — BE, DE, FR, CH (from specific third-country airports)
-    'RU': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Switzerland') },
-    // Senegal — BE, DE, FR, AT, NL, SI
-    'SN': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Netherlands, Slovenia') },
-    // Sierra Leone — BE, DE, FR
-    'SL': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France') },
-    // South Sudan — BE, DE, FR, AT, SI
-    'SS': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Slovenia') },
-    // Sudan — BE, DE, FR, CY, NL, AT, PL, RO, FI
-    'SD': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Cyprus, Netherlands, Austria, Poland, Romania, Finland') },
-    // Syria — BE, DK, DE, ES, FR, IT, CY, LV, LT, NL, AT, PL, RO, SI, FI
-    'SY': { access: 'visa_required', notes: specificATVNote('Belgium, Denmark, Germany, Spain, France, Italy, Cyprus, Latvia, Lithuania, Netherlands, Austria, Poland, Romania, Slovenia, Finland') },
-    // Tajikistan — BE, DE, FR, AT
-    'TJ': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria') },
-    // Togo — BE, DE, FR
-    'TG': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France') },
-    // Tunisia — BE
-    'TN': { access: 'visa_required', notes: specificATVNote('Belgium') },
-    // Turkey — BE, DE, FR, CY, NL, AT, RO
-    'TR': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Cyprus, Netherlands, Austria, Romania') },
-    // Uzbekistan — BE, DE, FR, AT, RO, SI
-    'UZ': { access: 'visa_required', notes: specificATVNote('Belgium, Germany, France, Austria, Romania, Slovenia') },
-    // Yemen — BE, AT (ordinary), RO, SI, FI
-    'YE': { access: 'visa_required', notes: specificATVNote('Belgium, Austria, Romania, Slovenia, Finland') },
+    // Algeria — CZ
+    'DZ': { access: 'visa_required', notes: specificATVNote(['CZ']) },
+    // Angola — FR
+    'AO': { access: 'visa_required', notes: specificATVNote(['FR']) },
+    // Armenia — CZ, AT
+    'AM': { access: 'visa_required', notes: specificATVNote(['CZ', 'AT']) },
+    // Burkina Faso — ES
+    'BF': { access: 'visa_required', notes: specificATVNote(['ES']) },
+    // Bolivia — FR
+    'BO': { access: 'visa_required', notes: specificATVNote(['FR']) },
+    // Cameroon — GR, ES, FR, CY
+    'CM': { access: 'visa_required', notes: specificATVNote(['GR', 'ES', 'FR', 'CY']) },
+    // Central African Republic — ES, FR, NL
+    'CF': { access: 'visa_required', notes: specificATVNote(['ES', 'FR', 'NL']) },
+    // Chad — CZ, ES, FR, NL
+    'TD': { access: 'visa_required', notes: specificATVNote(['CZ', 'ES', 'FR', 'NL']) },
+    // Congo (Republic of) — GR, ES, FR
+    'CG': { access: 'visa_required', notes: specificATVNote(['GR', 'ES', 'FR']) },
+    // Côte d'Ivoire — ES, FR
+    'CI': { access: 'visa_required', notes: specificATVNote(['ES', 'FR']) },
+    // Cuba — CZ, DE, ES, FR, HU, NL, PL, CH
+    'CU': { access: 'visa_required', notes: specificATVNote(['CZ', 'DE', 'ES', 'FR', 'HU', 'NL', 'PL', 'CH']) },
+    // Djibouti — ES
+    'DJ': { access: 'visa_required', notes: specificATVNote(['ES']) },
+    // Egypt — CZ, ES, AT, RO
+    'EG': { access: 'visa_required', notes: specificATVNote(['CZ', 'ES', 'AT', 'RO']) },
+    // Gambia — ES
+    'GM': { access: 'visa_required', notes: specificATVNote(['ES']) },
+    // Guinea — BE, ES, NL, PT; FR also required (including service passport holders)
+    'GN': { access: 'visa_required', notes: [{ text: 'Airport transit visa required at airports in: Belgium, Spain, France (including service passport holders), Netherlands, Portugal. Not required at other Schengen airports.', source: SPECIFIC_ATV_SOURCE }] },
+    // Guinea-Bissau — BE, ES, NL
+    'GW': { access: 'visa_required', notes: specificATVNote(['BE', 'ES', 'NL']) },
+    // Haiti — BE (ordinary passports only), AT (ordinary passports from 1 Sep 2021), FR
+    'HT': { access: 'visa_required', notes: [{ text: 'Airport transit visa required at airports in: Belgium (ordinary passports only), Austria (ordinary passports issued from 1 September 2021), France. Not required at other Schengen airports.', source: SPECIFIC_ATV_SOURCE }] },
+    // India — CZ, DE, FR, RO
+    'IN': { access: 'visa_required', notes: specificATVNote(['CZ', 'DE', 'FR', 'RO']) },
+    // Jordan — DE only; does not apply to holders of valid visa for Australia, Israel, or
+    //          New Zealand with a confirmed onward ticket to that country (departing within 12h)
+    'JO': { access: 'visa_required', notes: [{ text: 'Airport transit visa required at airports in: Germany. Exception: does not apply to holders of a valid visa for Australia, Israel, or New Zealand with a confirmed onward ticket to that country, provided the onward flight departs within 12 hours of arrival. Not required at other Schengen airports.', source: SPECIFIC_ATV_SOURCE }] },
+    // Kenya — ES
+    'KE': { access: 'visa_required', notes: specificATVNote(['ES']) },
+    // Lebanon — CZ, DE, RO
+    'LB': { access: 'visa_required', notes: specificATVNote(['CZ', 'DE', 'RO']) },
+    // Liberia — ES
+    'LR': { access: 'visa_required', notes: specificATVNote(['ES']) },
+    // Libya — CZ
+    'LY': { access: 'visa_required', notes: specificATVNote(['CZ']) },
+    // Mali — CZ, DE, ES, FR
+    'ML': { access: 'visa_required', notes: specificATVNote(['CZ', 'DE', 'ES', 'FR']) },
+    // Morocco — RO
+    'MA': { access: 'visa_required', notes: specificATVNote(['RO']) },
+    // Mauritania — CZ, ES, FR, NL
+    'MR': { access: 'visa_required', notes: specificATVNote(['CZ', 'ES', 'FR', 'NL']) },
+    // Nepal — BE, ES, FR, NL, RO
+    'NP': { access: 'visa_required', notes: specificATVNote(['BE', 'ES', 'FR', 'NL', 'RO']) },
+    // Niger — CZ
+    'NE': { access: 'visa_required', notes: specificATVNote(['CZ']) },
+    // Palestinians — BE, CZ, ES, FR (travel document holders), RO
+    'PS': { access: 'visa_required', notes: [{ text: 'Airport transit visa required at airports in: Belgium, Czech Republic, Spain, France (applies to holders of the travel document for Palestinian refugees), Romania. Not required at other Schengen airports.', source: SPECIFIC_ATV_SOURCE }] },
+    // Russia — CZ, ES, FR (applies when travelling from airports in Armenia, Azerbaijan,
+    //          Georgia, Ukraine, Belarus, Moldova, Turkey, or Egypt)
+    'RU': { access: 'visa_required', notes: [{ text: 'Airport transit visa required at airports in: Czech Republic, Spain, France. For France: applies to Russian nationals travelling from an airport in Armenia, Azerbaijan, Georgia, Ukraine, Belarus, Moldova, Turkey, or Egypt. Not required at other Schengen airports.', source: SPECIFIC_ATV_SOURCE }] },
+    // Senegal — ES, FR, IT, NL, RO
+    'SN': { access: 'visa_required', notes: specificATVNote(['ES', 'FR', 'IT', 'NL', 'RO']) },
+    // Sierra Leone — ES, FR, NL
+    'SL': { access: 'visa_required', notes: specificATVNote(['ES', 'FR', 'NL']) },
+    // South Sudan — BE, CZ, DE, FR, NL
+    'SS': { access: 'visa_required', notes: specificATVNote(['BE', 'CZ', 'DE', 'FR', 'NL']) },
+    // Sudan — BE, CZ, DE, GR, ES, FR, CY, NL
+    'SD': { access: 'visa_required', notes: specificATVNote(['BE', 'CZ', 'DE', 'GR', 'ES', 'FR', 'CY', 'NL']) },
+    // Syria — BE, CZ, DK, DE, GR, ES, FR, IT, NL, AT, RO, NO, CH
+    'SY': { access: 'visa_required', notes: specificATVNote(['BE', 'CZ', 'DK', 'DE', 'GR', 'ES', 'FR', 'IT', 'NL', 'AT', 'RO', 'NO', 'CH']) },
+    // Tajikistan — BE, ES, CY, RO
+    'TJ': { access: 'visa_required', notes: specificATVNote(['BE', 'ES', 'CY', 'RO']) },
+    // Togo — ES, FR
+    'TG': { access: 'visa_required', notes: specificATVNote(['ES', 'FR']) },
+    // Tunisia — RO
+    'TN': { access: 'visa_required', notes: specificATVNote(['RO']) },
+    // Turkey — BE, CZ, DE, ES, FR, CY, NL (seafarers with ILO document exempt), NO, CH
+    'TR': { access: 'visa_required', notes: [{ text: 'Airport transit visa required at airports in: Belgium, Czech Republic, Germany, Spain, France, Cyprus, Netherlands, Norway, Switzerland. For Netherlands: does not apply to seafarers holding a valid seafarer\'s identity document under ILO Conventions No. 108 or No. 185. Not required at other Schengen airports.', source: SPECIFIC_ATV_SOURCE }] },
+    // Uzbekistan — BE, ES, FR, IT, PT, RO
+    'UZ': { access: 'visa_required', notes: specificATVNote(['BE', 'ES', 'FR', 'IT', 'PT', 'RO']) },
+    // Yemen — BE (ordinary passports only), CZ, ES, NL, RO
+    'YE': { access: 'visa_required', notes: [{ text: 'Airport transit visa required at airports in: Belgium (ordinary passports only), Czech Republic, Spain, Netherlands, Romania. Not required at other Schengen airports.', source: SPECIFIC_ATV_SOURCE }] },
 
     // ── Suspended ─────────────────────────────────────────────────────────────
     'GE': {
