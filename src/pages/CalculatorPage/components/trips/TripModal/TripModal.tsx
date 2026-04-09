@@ -701,7 +701,6 @@ export function TripModal({
                   gap: "8px",
                   px: "12px",
                   py: "8px",
-                  bgcolor: tokens.mist,
                   cursor: "pointer",
                   userSelect: "none",
                   borderBottom: entryNoticeSectionExpanded
