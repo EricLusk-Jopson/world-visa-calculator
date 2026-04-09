@@ -10,7 +10,22 @@ interface RegionOption {
 const OPTIONS: RegionOption[] = [
   { region: VisaRegion.Schengen, label: "Schengen Zone" },
   { region: VisaRegion.Elsewhere, label: "Elsewhere" },
+  { region: VisaRegion.Ireland, label: "Ireland" },
+  { region: VisaRegion.UnitedKingdom, label: "United Kingdom" },
 ];
+
+function activeStyles(region: VisaRegion) {
+  switch (region) {
+    case VisaRegion.Schengen:
+      return { borderColor: tokens.green, bgcolor: tokens.greenBg, color: tokens.greenText };
+    case VisaRegion.Elsewhere:
+      return { borderColor: tokens.border, bgcolor: tokens.navy, color: "#fff" };
+    case VisaRegion.Ireland:
+      return { borderColor: tokens.amber, bgcolor: tokens.amberBg, color: tokens.amberText };
+    case VisaRegion.UnitedKingdom:
+      return { borderColor: tokens.red, bgcolor: tokens.redBg, color: tokens.redText };
+  }
+}
 
 interface RegionSelectorProps {
   value: VisaRegion;
@@ -20,8 +35,8 @@ interface RegionSelectorProps {
 }
 
 /**
- * Two-button segmented control for selecting a visa region.
- * Active state differs per region: Schengen = green tint, Elsewhere = navy fill.
+ * Segmented control for selecting a visa region.
+ * Renders in a 2×2 grid. Active state colour varies per region.
  */
 export function RegionSelector({
   value,
@@ -29,11 +44,16 @@ export function RegionSelector({
   sx = {},
 }: RegionSelectorProps) {
   return (
-    <Box sx={{ display: "flex", gap: "6px", ...sx }}>
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "6px",
+        ...sx,
+      }}
+    >
       {OPTIONS.map(({ region, label }) => {
         const isActive = value === region;
-        const activeSchengen = isActive && region === VisaRegion.Schengen;
-        const activeElsewhere = isActive && region === VisaRegion.Elsewhere;
 
         return (
           <Box
@@ -41,7 +61,6 @@ export function RegionSelector({
             component="button"
             onClick={() => onChange(region)}
             sx={{
-              flex: 1,
               py: "8px",
               px: "6px",
               textAlign: "center",
@@ -58,16 +77,7 @@ export function RegionSelector({
               bgcolor: tokens.mist,
               color: tokens.textSoft,
               // Active overrides
-              ...(activeSchengen && {
-                borderColor: tokens.green,
-                bgcolor: tokens.greenBg,
-                color: tokens.greenText,
-              }),
-              ...(activeElsewhere && {
-                borderColor: tokens.border,
-                bgcolor: tokens.navy,
-                color: "#fff",
-              }),
+              ...(isActive && activeStyles(region)),
               "&:hover:not(:disabled)": {
                 borderColor: isActive ? undefined : tokens.navy,
                 color: isActive ? undefined : tokens.navy,
