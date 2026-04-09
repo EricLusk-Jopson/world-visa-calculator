@@ -208,6 +208,7 @@ export function TripModal({
   const [ongoing, setOngoing] = useState(false);
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
+  const [isEdit, setIsEdit] = useState(mode === "edit");
   const [entryNoticeSectionExpanded, setEntryNoticeSectionExpanded] = useState(true);
   const [sourcePopover, setSourcePopover] = useState<{
     anchor: HTMLElement;
@@ -221,6 +222,7 @@ export function TripModal({
   useEffect(() => {
     if (!open) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsEdit(mode === "edit");
     setTravelerIds(initialTravelerIds);
     setError(null);
     if (mode === "edit" && initialTrip) {
@@ -497,7 +499,6 @@ export function TripModal({
     if (e.key === "Escape") onClose();
   }
 
-  const isEdit = mode === "edit";
   const isSaveDisabled = Boolean(overlapError);
 
   // ── Render ───────────────────────────────────────────────────────────────────
