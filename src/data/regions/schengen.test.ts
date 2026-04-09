@@ -26,13 +26,16 @@ describe('getSchengenRule', () => {
     expect(rule).toEqual(SCHENGEN.defaultRule);
   });
 
-  it('returns suspended access with a note for GE (Georgia)', () => {
+  it('returns visa_free with suspension note for GE (Georgia ordinary passports)', () => {
+    // Ordinary Georgian passports remain visa-free; only diplomatic/service/official
+    // passports were suspended (March 2026 – March 2027).
     const rule = getSchengenRule('GE');
-    expect(rule.access).toBe('suspended');
+    expect(rule.access).toBe('visa_free');
     expect(Array.isArray(rule.notes)).toBe(true);
     expect(rule.notes!.length).toBeGreaterThan(0);
-    expect(rule.notes![0].text.length).toBeGreaterThan(0);
-    expect(rule.notes![0].source.directUrl.length).toBeGreaterThan(0);
+    const suspensionNote = rule.notes!.find((n) => n.text.toLowerCase().includes('suspended'));
+    expect(suspensionNote).toBeDefined();
+    expect(suspensionNote!.source.directUrl.length).toBeGreaterThan(0);
   });
 
   it('sets requiresETIAS true for US and false for VA (Vatican)', () => {
