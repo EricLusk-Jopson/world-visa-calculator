@@ -89,7 +89,7 @@ export interface SourceDoc {
   /** Direct link to the specific regulation, annex, or document */
   directUrl: string;
   /** Overview/parent page that links to the document — for human navigation */
-  parentUrl?: string;
+  parentUrl: string;
   /** ISO date (YYYY-MM-DD) when this data was last verified against the source */
   dateChecked: string;
 }

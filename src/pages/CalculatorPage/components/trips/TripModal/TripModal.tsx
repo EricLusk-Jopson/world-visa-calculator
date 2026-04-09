@@ -8,13 +8,16 @@ import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import Tooltip from "@mui/material/Tooltip";
+import Popover from "@mui/material/Popover";
+import IconButton from "@mui/material/IconButton";
+import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
-import type { Trip, Traveler, PassportRule } from "@/types";
+import type { Trip, Traveler, PassportRule, PassportNote } from "@/types";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
@@ -94,6 +97,19 @@ function fmtHintDate(iso: string): string {
     month: "short",
     year: "numeric",
   }).format(d);
+}
+
+/** Returns "🇺🇸 United States" style string for a given ISO Alpha-2 code */
+function countryDisplay(code: string): string {
+  const flag = Array.from(code.toUpperCase())
+    .map((c) => String.fromCodePoint(0x1f1e6 + c.charCodeAt(0) - 65))
+    .join("");
+  try {
+    const names = new Intl.DisplayNames(["en"], { type: "region" });
+    return `${flag} ${names.of(code) ?? code}`;
+  } catch {
+    return `${flag} ${code}`;
+  }
 }
 
 // ─── Form label ───────────────────────────────────────────────────────────────
@@ -188,6 +204,10 @@ export function TripModal({
   const [ongoing, setOngoing] = useState(false);
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
+  const [sourcePopover, setSourcePopover] = useState<{
+    anchor: HTMLElement;
+    note: PassportNote;
+  } | null>(null);
 
   const todayStr = formatDate(getToday());
 
@@ -637,20 +657,21 @@ export function TripModal({
                 if (!t) return null;
                 const rule: PassportRule = getSchengenRule(t.passportCode);
                 const { label, color } = (() => {
+                  const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
                   if (!t.passportCode)
                     return { label: "Set nationality to see entry requirements", color: tokens.textGhost };
                   if (rule.access === "free_movement")
-                    return { label: "Free movement — no day limit", color: tokens.green };
+                    return { label: `${nat}Free movement, no day limit`, color: tokens.green };
                   if (rule.access === "visa_free")
                     return {
                       label: rule.requiresETIAS
-                        ? "Visa-free entry — ETIAS required from late 2026"
-                        : "Visa-free entry",
+                        ? `${nat}Visa-free entry -- ETIAS required from late 2026`
+                        : `${nat}Visa-free entry`,
                       color: tokens.green,
                     };
                   if (rule.access === "suspended")
-                    return { label: "Access temporarily suspended", color: tokens.amber };
-                  return { label: "Schengen visa required", color: tokens.red };
+                    return { label: `${nat}Access temporarily suspended`, color: tokens.amber };
+                  return { label: `${nat}Schengen visa required`, color: tokens.red };
                 })();
                 return (
                   <Box key={tid} sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
@@ -686,7 +707,7 @@ export function TripModal({
                         sx={{
                           display: "flex",
                           alignItems: "flex-start",
-                          gap: "5px",
+                          gap: "4px",
                           pl: "10px",
                           borderLeft: `2px solid ${color === tokens.green ? tokens.greenBorder : color === tokens.amber ? tokens.amberBorder : tokens.redBorder}`,
                         }}
@@ -702,24 +723,18 @@ export function TripModal({
                         >
                           {note.text}
                         </Typography>
-                        <Box
-                          component="a"
-                          href={note.source.directUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <IconButton
+                          size="small"
+                          onClick={(e) => setSourcePopover({ anchor: e.currentTarget, note })}
                           sx={{
-                            fontFamily: tokens.fontBody,
-                            fontSize: "0.62rem",
-                            fontWeight: 700,
-                            color: tokens.textGhost,
-                            textDecoration: "none",
+                            p: "2px",
                             flexShrink: 0,
-                            mt: "1px",
-                            "&:hover": { color: tokens.navy },
+                            color: tokens.textGhost,
+                            "&:hover": { color: tokens.navy, bgcolor: "transparent" },
                           }}
                         >
-                          src ↗
-                        </Box>
+                          <InfoOutlineIcon sx={{ fontSize: "0.85rem" }} />
+                        </IconButton>
                       </Box>
                     ))}
                   </Box>
@@ -727,6 +742,73 @@ export function TripModal({
               })}
             </Box>
           )}
+
+          {/* Source info popover */}
+          <Popover
+            open={Boolean(sourcePopover)}
+            anchorEl={sourcePopover?.anchor}
+            onClose={() => setSourcePopover(null)}
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            transformOrigin={{ vertical: "top", horizontal: "right" }}
+            slotProps={{
+              paper: {
+                sx: {
+                  borderRadius: "10px",
+                  p: "12px 14px",
+                  boxShadow: "0 4px 20px rgba(12,30,60,0.15)",
+                  maxWidth: 300,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                },
+              },
+            }}
+          >
+            {sourcePopover && (
+              <>
+                <Box
+                  component="a"
+                  href={sourcePopover.note.source.directUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    color: tokens.navy,
+                    textDecoration: "none",
+                    "&:hover": { textDecoration: "underline" },
+                  }}
+                >
+                  Direct source ↗
+                </Box>
+                <Box
+                  component="a"
+                  href={sourcePopover.note.source.parentUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    color: tokens.navy,
+                    textDecoration: "none",
+                    "&:hover": { textDecoration: "underline" },
+                  }}
+                >
+                  Overview page ↗
+                </Box>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.67rem",
+                    color: tokens.textSoft,
+                    mt: "2px",
+                  }}
+                >
+                  Last verified: {sourcePopover.note.source.dateChecked}
+                </Typography>
+              </>
+            )}
+          </Popover>
 
           {/* 3 · Trip name */}
           <Box>
