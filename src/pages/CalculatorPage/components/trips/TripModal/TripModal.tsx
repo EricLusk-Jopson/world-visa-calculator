@@ -204,6 +204,7 @@ export function TripModal({
   const [ongoing, setOngoing] = useState(false);
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
+  const [expandedNoteIds, setExpandedNoteIds] = useState<Set<string>>(new Set());
   const [sourcePopover, setSourcePopover] = useState<{
     anchor: HTMLElement;
     note: PassportNote;
@@ -673,10 +674,27 @@ export function TripModal({
                     return { label: `${nat}Access temporarily suspended`, color: tokens.amber };
                   return { label: `${nat}Schengen visa required`, color: tokens.red };
                 })();
+                const hasNotes = Boolean(rule.notes?.length);
+                const notesExpanded = expandedNoteIds.has(tid);
+                const borderColor = color === tokens.green ? tokens.greenBorder : color === tokens.amber ? tokens.amberBorder : tokens.redBorder;
+
                 return (
                   <Box key={tid} sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                    {/* Status line */}
-                    <Box sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                    {/* Status line — clickable when notes are available */}
+                    <Box
+                      onClick={hasNotes ? () => setExpandedNoteIds((prev) => {
+                        const next = new Set(prev);
+                        next.has(tid) ? next.delete(tid) : next.add(tid);
+                        return next;
+                      }) : undefined}
+                      sx={{
+                        display: "flex",
+                        alignItems: "baseline",
+                        gap: "6px",
+                        cursor: hasNotes ? "pointer" : "default",
+                        userSelect: "none",
+                      }}
+                    >
                       <Typography
                         sx={{
                           fontFamily: tokens.fontBody,
@@ -694,14 +712,28 @@ export function TripModal({
                           fontSize: "0.72rem",
                           color,
                           fontWeight: 500,
+                          flex: 1,
                         }}
                       >
                         {label}
                       </Typography>
+                      {hasNotes && (
+                        <Typography
+                          sx={{
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.65rem",
+                            color: tokens.textGhost,
+                            flexShrink: 0,
+                            lineHeight: 1,
+                          }}
+                        >
+                          {notesExpanded ? "▾" : "▸"}
+                        </Typography>
+                      )}
                     </Box>
 
-                    {/* Notes (suspension details, specific ATV requirements, etc.) */}
-                    {rule.notes?.map((note, i) => (
+                    {/* Notes — collapsible per traveler */}
+                    {hasNotes && notesExpanded && rule.notes!.map((note, i) => (
                       <Box
                         key={i}
                         sx={{
@@ -709,7 +741,7 @@ export function TripModal({
                           alignItems: "flex-start",
                           gap: "4px",
                           pl: "10px",
-                          borderLeft: `2px solid ${color === tokens.green ? tokens.greenBorder : color === tokens.amber ? tokens.amberBorder : tokens.redBorder}`,
+                          borderLeft: `2px solid ${borderColor}`,
                         }}
                       >
                         <Typography
