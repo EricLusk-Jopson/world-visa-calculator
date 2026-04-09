@@ -689,6 +689,7 @@ export function TripModal({
                 border: `1px solid ${tokens.border}`,
                 borderRadius: "10px",
                 overflow: "hidden",
+                flexShrink: 0,
               }}
             >
               {/* ── Header ── */}
