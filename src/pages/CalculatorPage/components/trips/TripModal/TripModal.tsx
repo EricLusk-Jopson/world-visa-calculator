@@ -710,6 +710,9 @@ export function TripModal({
               >
                 {/* Summary chips */}
                 <Box sx={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
+                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.68rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: tokens.textSoft }}>
+                    Visa Status:
+                  </Typography>
                   {schengenSafeCount > 0 && (
                     <Tooltip
                       title={`${schengenSafeCount} ${schengenSafeCount === 1 ? "traveler" : "travelers"} can enter without a visa`}
