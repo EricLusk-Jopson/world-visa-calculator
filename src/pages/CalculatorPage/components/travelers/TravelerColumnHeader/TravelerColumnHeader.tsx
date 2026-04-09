@@ -95,7 +95,8 @@ export function TravelerColumnHeader({
 
   const rule = getSchengenRule(traveler.passportCode);
   const hasNationality = traveler.passportCode !== null;
-  const showCalculator = hasNationality;
+  const isVisaRequired = hasNationality && (rule.access === 'visa_required' || rule.access === 'suspended');
+  const showCalculator = !isVisaRequired;
 
   const barColor =
     variant === "safe"
@@ -370,49 +371,17 @@ export function TravelerColumnHeader({
           </Box>
         </>
       ) : (
-        /* No nationality selected -- prompt the traveler to set one */
-        <Box
+        /* Visa-required nationality — disclaimer in place of the tracker */
+        <Typography
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "6px",
+            fontFamily: tokens.fontBody,
+            fontSize: "0.65rem",
+            fontStyle: "italic",
+            color: tokens.textGhost,
           }}
         >
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.65rem",
-              fontStyle: "italic",
-              color: tokens.textGhost,
-              flex: 1,
-              minWidth: 0,
-            }}
-          >
-            Add nationality to track Schengen days
-          </Typography>
-          <Box
-            component="button"
-            onClick={() => setEditModalOpen(true)}
-            sx={{
-              flexShrink: 0,
-              border: `1px solid ${tokens.border}`,
-              borderRadius: "6px",
-              bgcolor: tokens.mist,
-              color: tokens.textSoft,
-              fontFamily: tokens.fontBody,
-              fontSize: "0.65rem",
-              fontWeight: 600,
-              px: "8px",
-              py: "3px",
-              cursor: "pointer",
-              transition: "all 0.12s",
-              "&:hover": { bgcolor: tokens.border, color: tokens.text },
-            }}
-          >
-            Select
-          </Box>
-        </Box>
+          Schengen visa – day tracking varies by visa terms.
+        </Typography>
       )}
 
       {/* ── Delete confirmation strip ────────────────────────────────────── */}

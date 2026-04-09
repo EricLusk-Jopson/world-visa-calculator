@@ -925,6 +925,8 @@ export function MobileTimelineView({
 
     travelers.forEach((traveler, i) => {
       if (hiddenTravelerIds.includes(traveler.id)) return;
+      const rule = getSchengenRule(traveler.passportCode);
+      if (traveler.passportCode !== null && (rule.access === 'visa_required' || rule.access === 'suspended')) return;
 
       computeReturnMarkers(traveler, timelineStart, timelineEnd)
         .filter((m: ReturnMarker) => !m.isCurrent)
@@ -949,6 +951,8 @@ export function MobileTimelineView({
 
     travelers.forEach((traveler) => {
       if (hiddenTravelerIds.includes(traveler.id)) return;
+      const rule = getSchengenRule(traveler.passportCode);
+      if (traveler.passportCode !== null && (rule.access === 'visa_required' || rule.access === 'suspended')) return;
 
       computeAgingMarkers(traveler, timelineStart, timelineEnd).forEach((m) => {
         const key = `${m.entryDate}|${m.exitDate}`;
