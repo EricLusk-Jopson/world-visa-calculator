@@ -115,6 +115,8 @@ export const encodeDate = (iso: string): string => {
 export const decodeDate = (compact: string): string => {
   if (compact.length !== 3)
     throw new Error(`Invalid v2 compact date: "${compact}"`);
+  if (!/^[0-9a-z]{3}$/i.test(compact))
+    throw new Error(`Non-base36 characters in date: "${compact}"`);
   const days = parseInt(compact, 36);
   if (isNaN(days) || days < 0)
     throw new Error(`Non-numeric base36 date: "${compact}"`);
