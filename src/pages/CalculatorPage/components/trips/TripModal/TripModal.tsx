@@ -245,6 +245,7 @@ export function TripModal({
   const resolvedExit = ongoing ? undefined : exitDate || undefined;
 
   const overlapError: string | null = (() => {
+    if (!open) return null;
     if (!entryDate) return null;
 
     const conflicts: string[] = [];
