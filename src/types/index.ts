@@ -6,8 +6,8 @@
 export const VisaRegion = {
   Schengen: 0,
   Elsewhere: 1,
-  // Ireland: 2,
-  // UnitedKingdom: 3,
+  Ireland: 2,
+  UnitedKingdom: 3,
   // Turkiye: 4,
 } as const;
 
@@ -16,6 +16,8 @@ export type VisaRegion = (typeof VisaRegion)[keyof typeof VisaRegion];
 export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
   [VisaRegion.Schengen]: "Schengen Zone",
   [VisaRegion.Elsewhere]: "Elsewhere",
+  [VisaRegion.Ireland]: "Ireland",
+  [VisaRegion.UnitedKingdom]: "United Kingdom",
 };
 
 // ─── Core Domain Types ────────────────────────────────────────────────────────
