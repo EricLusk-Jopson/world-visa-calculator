@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Collapse from "@mui/material/Collapse";
@@ -6,10 +6,12 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
 import { alpha } from "@mui/material/styles";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
@@ -22,6 +24,7 @@ import {
   formatDate,
 } from "@/features/calculator/utils/dates";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
+import { getSchengenRule } from "@/data/regions/schengen";
 import { format } from "date-fns";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { StatusBadge } from "@/components/ui/StatusBadge";
@@ -29,6 +32,7 @@ import {
   AVAILABLE_DAYS_DESCRIPTION,
   MAX_STAY_DESCRIPTION,
 } from "@/features/calculator/utils/schengenConstants";
+import { NationalitySelector } from "../../travelers/NationalitySelector";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -37,6 +41,7 @@ interface TravelerFilterBarProps {
   hiddenTravelerIds: string[];
   onToggleTraveler: (id: string) => void;
   onDeleteTraveler: (id: string) => void;
+  onEditTraveler: (id: string, name: string, passportCode: string | null) => void;
   onAddTraveler: () => void;
 }
 
@@ -47,6 +52,14 @@ function getStatusLevel(daysRemaining: number | null): StatusLevel {
   if (daysRemaining > 29) return "safe";
   if (daysRemaining > 9) return "caution";
   return "danger";
+}
+
+function countryFlag(code: string): string {
+  return code
+    .toUpperCase()
+    .split("")
+    .map((ch) => String.fromCodePoint(0x1f1e6 + ch.charCodeAt(0) - 65))
+    .join("");
 }
 
 const STATUS_COLORS: Record<
@@ -100,12 +113,13 @@ export function TravelerFilterBar({
   hiddenTravelerIds,
   onToggleTraveler,
   onDeleteTraveler,
+  onEditTraveler,
   onAddTraveler,
 }: TravelerFilterBarProps) {
-  // Closed by default — users open it when they need it
   const [open, setOpen] = useState(false);
-  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
+  // ── Delete confirmation ──────────────────────────────────────────────────
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
   const pendingTraveler = travelers.find((t) => t.id === pendingDeleteId);
 
   const handleDeleteClick = (traveler: Traveler) => {
@@ -121,8 +135,36 @@ export function TravelerFilterBar({
     setPendingDeleteId(null);
   };
 
+  // ── Overflow menu ────────────────────────────────────────────────────────
+  const [menuAnchor, setMenuAnchor] = useState<{
+    el: HTMLElement;
+    traveler: Traveler;
+  } | null>(null);
+
+  const closeMenu = () => setMenuAnchor(null);
+
+  // ── Edit modal ───────────────────────────────────────────────────────────
+  const [editingTraveler, setEditingTraveler] = useState<Traveler | null>(null);
+  const [editName, setEditName] = useState("");
+  const [editCode, setEditCode] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (editingTraveler) {
+      setEditName(editingTraveler.name);
+      setEditCode(editingTraveler.passportCode);
+    }
+  }, [editingTraveler]);
+
+  const openEdit = (traveler: Traveler) => setEditingTraveler(traveler);
+  const closeEdit = () => setEditingTraveler(null);
+
+  const handleEditSave = () => {
+    if (!editingTraveler || !editName.trim()) return;
+    onEditTraveler(editingTraveler.id, editName.trim(), editCode);
+    closeEdit();
+  };
+
   if (travelers.length === 0) {
-    // No travelers yet — show a standalone Add Traveler button
     return (
       <Box
         sx={{
@@ -206,7 +248,7 @@ export function TravelerFilterBar({
             Travelers
           </Typography>
 
-          {/* Traveler dots — give a compact status summary when collapsed */}
+          {/* Traveler dots — compact status summary when collapsed */}
           <Box sx={{ display: "flex", gap: "4px", alignItems: "center" }}>
             {travelers.map((t, i) => (
               <Box
@@ -224,13 +266,9 @@ export function TravelerFilterBar({
           </Box>
 
           {open ? (
-            <ExpandLessIcon
-              sx={{ fontSize: "0.9rem", color: tokens.textGhost }}
-            />
+            <ExpandLessIcon sx={{ fontSize: "0.9rem", color: tokens.textGhost }} />
           ) : (
-            <ExpandMoreIcon
-              sx={{ fontSize: "0.9rem", color: tokens.textGhost }}
-            />
+            <ExpandMoreIcon sx={{ fontSize: "0.9rem", color: tokens.textGhost }} />
           )}
         </Box>
 
@@ -249,8 +287,6 @@ export function TravelerFilterBar({
               ? format(parseDate(status.windowStart), "MMM d")
               : null;
 
-            // Max stay: longest single trip startable today, accounting for
-            // historical days aging out. Same calculation as TravelerColumnHeader.
             const schengenTrips = traveler.trips.filter(
               (t) => t.region === VisaRegion.Schengen,
             );
@@ -258,6 +294,11 @@ export function TravelerFilterBar({
             const maxStay = maxStayResult.canEnter ? maxStayResult.maxDays : 0;
 
             const { variant, daysRemaining } = status;
+
+            const rule = getSchengenRule(traveler.passportCode);
+            const showCalculator =
+              traveler.passportCode !== null &&
+              (rule.access === "visa_free" || rule.access === "free_movement");
 
             return (
               <Box
@@ -279,6 +320,7 @@ export function TravelerFilterBar({
                     pb: "6px",
                   }}
                 >
+                  {/* Colour dot */}
                   <Box
                     sx={{
                       width: 7,
@@ -289,6 +331,18 @@ export function TravelerFilterBar({
                     }}
                   />
 
+                  {/* Flag */}
+                  {traveler.passportCode && (
+                    <Typography
+                      component="span"
+                      sx={{ fontSize: "0.9rem", lineHeight: 1, flexShrink: 0 }}
+                      aria-hidden="true"
+                    >
+                      {countryFlag(traveler.passportCode)}
+                    </Typography>
+                  )}
+
+                  {/* Name */}
                   <Typography
                     sx={{
                       fontFamily: tokens.fontDisplay,
@@ -297,12 +351,15 @@ export function TravelerFilterBar({
                       fontWeight: 400,
                       color: hidden ? tokens.textGhost : tokens.navy,
                       lineHeight: 1,
+                      flex: 1,
+                      minWidth: 0,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
                     }}
                   >
                     {traveler.name}
                   </Typography>
-
-                  <Box sx={{ flex: 1 }} />
 
                   {/* Visibility toggle */}
                   <Box
@@ -324,25 +381,31 @@ export function TravelerFilterBar({
                     )}
                   </Box>
 
-                  {/* Delete */}
+                  {/* Overflow menu trigger */}
                   <Box
                     component="button"
-                    onClick={() => handleDeleteClick(traveler)}
+                    onClick={(e: React.MouseEvent<HTMLElement>) =>
+                      setMenuAnchor({ el: e.currentTarget, traveler })
+                    }
+                    aria-label={`Options for ${traveler.name}`}
                     sx={{
                       ...ICON_BTN_SX,
                       color: tokens.textGhost,
+                      fontSize: "1rem",
+                      lineHeight: 1,
+                      letterSpacing: "0.02em",
                       "&:active": {
-                        bgcolor: alpha(tokens.red, 0.08),
-                        color: tokens.red,
+                        bgcolor: alpha(tokens.navy, 0.06),
+                        color: tokens.navy,
                       },
                     }}
                   >
-                    <DeleteOutlineIcon sx={{ fontSize: "1rem" }} />
+                    ⋮
                   </Box>
                 </Box>
 
                 {/* ── Avail + max stay badges ────────────────────────────── */}
-                {daysRemaining !== null && (
+                {showCalculator && daysRemaining !== null && (
                   <Box
                     sx={{
                       display: "flex",
@@ -366,48 +429,96 @@ export function TravelerFilterBar({
                 )}
 
                 {/* ── Progress row ───────────────────────────────────────── */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    px: "14px",
-                    pb: "10px",
-                  }}
-                >
+                {showCalculator && (
                   <Box
                     sx={{
-                      flex: 1,
-                      height: 3,
-                      bgcolor: tokens.mist,
-                      borderRadius: "100px",
-                      overflow: "hidden",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      px: "14px",
+                      pb: "10px",
                     }}
                   >
                     <Box
                       sx={{
-                        height: "100%",
-                        width: `${fillPct}%`,
-                        bgcolor: hidden ? tokens.border : sc.bar,
+                        flex: 1,
+                        height: 3,
+                        bgcolor: tokens.mist,
                         borderRadius: "100px",
-                        transition: "width 0.3s ease-out",
+                        overflow: "hidden",
                       }}
-                    />
-                  </Box>
+                    >
+                      <Box
+                        sx={{
+                          height: "100%",
+                          width: `${fillPct}%`,
+                          bgcolor: hidden ? tokens.border : sc.bar,
+                          borderRadius: "100px",
+                          transition: "width 0.3s ease-out",
+                        }}
+                      />
+                    </Box>
 
-                  <Typography
+                    <Typography
+                      sx={{
+                        fontSize: "0.65rem",
+                        fontWeight: 600,
+                        color: tokens.textSoft,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {daysRemaining !== null
+                        ? `${daysUsed}/90${windowStartFmt ? ` since ${windowStartFmt}` : ""}`
+                        : "No trips yet"}
+                    </Typography>
+                  </Box>
+                )}
+
+                {/* ── No-nationality prompt ──────────────────────────────── */}
+                {!traveler.passportCode && (
+                  <Box
                     sx={{
-                      fontSize: "0.65rem",
-                      fontWeight: 600,
-                      color: tokens.textSoft,
-                      whiteSpace: "nowrap",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      px: "14px",
+                      pb: "10px",
                     }}
                   >
-                    {daysRemaining !== null
-                      ? `${daysUsed}/90${windowStartFmt ? ` since ${windowStartFmt}` : ""}`
-                      : "No trips yet"}
-                  </Typography>
-                </Box>
+                    <Typography
+                      sx={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.65rem",
+                        fontStyle: "italic",
+                        color: tokens.textGhost,
+                        flex: 1,
+                      }}
+                    >
+                      Add nationality to track Schengen days
+                    </Typography>
+                    <Box
+                      component="button"
+                      onClick={() => openEdit(traveler)}
+                      sx={{
+                        flexShrink: 0,
+                        border: `1px solid ${tokens.border}`,
+                        borderRadius: "6px",
+                        bgcolor: tokens.mist,
+                        color: tokens.textSoft,
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.65rem",
+                        fontWeight: 600,
+                        px: "8px",
+                        py: "3px",
+                        cursor: "pointer",
+                        transition: "all 0.12s",
+                        "&:active": { bgcolor: tokens.border, color: tokens.text },
+                      }}
+                    >
+                      Select
+                    </Box>
+                  </Box>
+                )}
               </Box>
             );
           })}
@@ -444,6 +555,255 @@ export function TravelerFilterBar({
           </Box>
         </Collapse>
       </Box>
+
+      {/* ── Overflow menu ─────────────────────────────────────────────────────── */}
+      <Menu
+        anchorEl={menuAnchor?.el}
+        open={Boolean(menuAnchor)}
+        onClose={closeMenu}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: "10px",
+              minWidth: 160,
+              boxShadow: "0 4px 20px rgba(12,30,60,0.14)",
+              border: `1px solid ${tokens.border}`,
+              mt: "4px",
+            },
+          },
+        }}
+      >
+        <MenuItem
+          onClick={() => {
+            const t = menuAnchor!.traveler;
+            closeMenu();
+            openEdit(t);
+          }}
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.82rem",
+            color: tokens.text,
+            py: "8px",
+            px: "14px",
+            "&:hover": { bgcolor: tokens.mist },
+          }}
+        >
+          Edit traveler
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            const t = menuAnchor!.traveler;
+            closeMenu();
+            handleDeleteClick(t);
+          }}
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.82rem",
+            color: tokens.red,
+            py: "8px",
+            px: "14px",
+            "&:hover": { bgcolor: tokens.redBg },
+          }}
+        >
+          Remove {menuAnchor?.traveler.name}
+        </MenuItem>
+      </Menu>
+
+      {/* ── Edit traveler modal ───────────────────────────────────────────────── */}
+      <Dialog
+        open={Boolean(editingTraveler)}
+        onClose={closeEdit}
+        PaperProps={{
+          sx: {
+            borderRadius: "16px",
+            width: 360,
+            maxWidth: "calc(100vw - 32px)",
+            overflow: "visible",
+            boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            px: "20px",
+            pt: "18px",
+            pb: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: tokens.fontDisplay,
+              fontSize: "1.1rem",
+              fontStyle: "italic",
+              fontWeight: 400,
+              color: tokens.navy,
+            }}
+          >
+            Edit traveler
+          </Typography>
+          <Box
+            component="button"
+            onClick={closeEdit}
+            sx={{
+              width: 26,
+              height: 26,
+              border: "none",
+              borderRadius: "5px",
+              bgcolor: tokens.mist,
+              color: tokens.textSoft,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "0.85rem",
+              transition: "all 0.15s",
+              "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
+            }}
+          >
+            ✕
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            px: "20px",
+            pt: "14px",
+            pb: "16px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+          }}
+        >
+          <Box>
+            <Typography
+              component="label"
+              sx={{
+                display: "block",
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: tokens.textSoft,
+                mb: "5px",
+              }}
+            >
+              Name
+            </Typography>
+            <TextField
+              value={editName}
+              onChange={(e) => setEditName(e.target.value)}
+              fullWidth
+              autoFocus
+              inputProps={{ maxLength: 30 }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.85rem",
+                  bgcolor: tokens.mist,
+                  borderRadius: "10px",
+                  "& fieldset": { borderColor: tokens.border, borderWidth: 1.5 },
+                  "&:hover fieldset": { borderColor: tokens.navy },
+                  "&.Mui-focused fieldset": { borderColor: tokens.navy, borderWidth: 1.5 },
+                },
+                "& .MuiOutlinedInput-input": { py: "9px", px: "11px", color: tokens.text },
+              }}
+            />
+          </Box>
+
+          <Box>
+            <Typography
+              component="label"
+              sx={{
+                display: "block",
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: tokens.textSoft,
+                mb: "5px",
+              }}
+            >
+              Nationality
+            </Typography>
+            <NationalitySelector
+              value={editCode}
+              onChange={(code) => setEditCode(code)}
+            />
+          </Box>
+
+          {editCode && (() => {
+            const r = getSchengenRule(editCode);
+            if (r.access === "visa_free") return null;
+            return (
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.72rem",
+                  color: tokens.textGhost,
+                }}
+              >
+                {r.access === "free_movement"
+                  ? "EU/EEA/Swiss passports have free movement — no 90-day limit applies."
+                  : r.access === "suspended"
+                    ? (r.notes?.[0]?.text ?? "Visa-free access is temporarily suspended.")
+                    : "A Schengen visa is required for this passport."}
+              </Typography>
+            );
+          })()}
+        </Box>
+
+        <Box sx={{ height: 1, bgcolor: tokens.border }} />
+        <Box sx={{ px: "20px", py: "12px", display: "flex", gap: "7px" }}>
+          <Box
+            component="button"
+            onClick={closeEdit}
+            sx={{
+              flex: 1,
+              border: `1px solid ${tokens.border}`,
+              borderRadius: "8px",
+              bgcolor: tokens.mist,
+              color: tokens.textSoft,
+              fontFamily: tokens.fontBody,
+              fontSize: "0.82rem",
+              fontWeight: 600,
+              py: "8px",
+              cursor: "pointer",
+              transition: "all 0.12s",
+              "&:hover": { bgcolor: tokens.border, color: tokens.text },
+            }}
+          >
+            Cancel
+          </Box>
+          <Box
+            component="button"
+            disabled={!editName.trim()}
+            onClick={handleEditSave}
+            sx={{
+              flex: 2,
+              border: "none",
+              borderRadius: "8px",
+              bgcolor: editName.trim() ? tokens.navy : tokens.border,
+              color: editName.trim() ? tokens.white : tokens.textGhost,
+              fontFamily: tokens.fontBody,
+              fontSize: "0.82rem",
+              fontWeight: 600,
+              py: "8px",
+              cursor: editName.trim() ? "pointer" : "default",
+              transition: "all 0.12s",
+              "&:hover": editName.trim() ? { bgcolor: tokens.navyMid } : {},
+            }}
+          >
+            Save
+          </Box>
+        </Box>
+      </Dialog>
 
       {/* ── Delete confirmation dialog ─────────────────────────────────────── */}
       <Dialog

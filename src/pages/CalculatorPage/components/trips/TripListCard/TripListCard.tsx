@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
-import type { Trip } from "@/types";
+import type { Trip, PassportRule } from "@/types";
 import { VisaRegion } from "@/types";
 import { parseDate } from "@/features/calculator/utils/dates";
 import { format } from "date-fns";
@@ -82,6 +82,11 @@ interface TripListCardProps {
    * this trip overlaps an overstay in the 90/180-day window.
    */
   isOverstay?: boolean;
+  /**
+   * Resolved Schengen passport rule for the traveler who owns this card.
+   * When provided and the trip is Schengen, visa-requirement chips are shown.
+   */
+  passportRule?: PassportRule;
   onEdit: () => void;
 }
 
@@ -92,6 +97,7 @@ export function TripListCard({
   maxStayAtExit,
   earliestReEntry,
   isOverstay = false,
+  passportRule,
   onEdit,
 }: TripListCardProps) {
   const isPlanned = isTripPlanned(trip);
@@ -256,6 +262,32 @@ export function TripListCard({
                 ? `from ${fmtReEntry(earliestReEntry)}`
                 : "no re-entry"}
             </Chip>
+          )}
+
+          {/* Passport rule chips — Schengen trips only */}
+          {isSchengen && !isOverstay && passportRule && (
+            <>
+              {passportRule.access === "visa_required" && (
+                <Chip color={tokens.redText} bg={tokens.redBg}>
+                  Visa required
+                </Chip>
+              )}
+              {passportRule.requiresATV && (
+                <Chip color={tokens.white} bg={tokens.red}>
+                  Transit visa
+                </Chip>
+              )}
+              {passportRule.requiresETIAS && (
+                <Chip color={tokens.navy} bg={tokens.mist}>
+                  ETIAS 2026
+                </Chip>
+              )}
+              {passportRule.access === "suspended" && (
+                <Chip color={tokens.amberText} bg={tokens.amberBg}>
+                  Suspended
+                </Chip>
+              )}
+            </>
           )}
         </Box>
       </Box>

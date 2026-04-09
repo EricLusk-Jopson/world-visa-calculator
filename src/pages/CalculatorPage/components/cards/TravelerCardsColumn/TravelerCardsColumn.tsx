@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
+import { getSchengenRule } from "@/data/regions/schengen";
 
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { TripListCard } from "../../trips/TripListCard";
@@ -31,7 +33,7 @@ function computeOverstayTripIds(traveler: Traveler): Set<string> {
   );
   if (schengenTrips.length === 0) return new Set();
 
-  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
   const result = new Set<string>();
 
   for (const trip of schengenTrips) {
@@ -58,6 +60,7 @@ interface TravelerCardsColumnProps {
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
+  onEdit: (travelerId: string, name: string, passportCode: string | null) => void;
 }
 
 /**
@@ -74,6 +77,7 @@ export function TravelerCardsColumn({
   onAddTrip,
   onEditTrip,
   onDeleteTraveler,
+  onEdit,
 }: TravelerCardsColumnProps) {
   const status = computeTravelerStatus(traveler);
 
@@ -125,6 +129,7 @@ export function TravelerCardsColumn({
           maxStay={headerMaxStay}
           compact={compact}
           onDelete={() => onDeleteTraveler(traveler.id)}
+          onEdit={(name, code) => onEdit(traveler.id, name, code)}
         />
       </Box>
 
@@ -215,6 +220,7 @@ export function TravelerCardsColumn({
                 maxStayAtExit={maxStayAtExit}
                 earliestReEntry={earliestReEntry}
                 isOverstay={overstayTripIds.has(trip.id)}
+                passportRule={getSchengenRule(traveler.passportCode)}
                 onEdit={() => onEditTrip(traveler.id, trip)}
               />
             );

@@ -60,6 +60,7 @@ const CURRENT_VERSION = V2;
 const PARAM_VERSION = "v";
 const PARAM_NAMES = "n";
 const PARAM_TRIPS = "t"; // used by both v1 (traveler blocks) and v2 (trip segments)
+const PARAM_PASSPORTS = "p"; // v2 only: comma-separated ISO Alpha-2 codes, "" = null
 
 const V1_DELIM = {
   traveler: "|",
@@ -114,6 +115,8 @@ export const encodeDate = (iso: string): string => {
 export const decodeDate = (compact: string): string => {
   if (compact.length !== 3)
     throw new Error(`Invalid v2 compact date: "${compact}"`);
+  if (!/^[0-9a-z]{3}$/i.test(compact))
+    throw new Error(`Non-base36 characters in date: "${compact}"`);
   const days = parseInt(compact, 36);
   if (isNaN(days) || days < 0)
     throw new Error(`Non-numeric base36 date: "${compact}"`);
@@ -266,10 +269,12 @@ const buildSharedSegments = (travelers: Traveler[]): SharedTripSegment[] => {
 const expandSharedSegments = (
   names: string[],
   segments: SharedTripSegment[],
+  passportCodes: (string | null)[] = [],
 ): Traveler[] => {
-  const travelers: Traveler[] = names.map((name) => ({
+  const travelers: Traveler[] = names.map((name, idx) => ({
     id: nanoid(),
     name,
+    passportCode: passportCodes[idx] ?? null,
     trips: [] as Trip[],
   }));
 
@@ -370,7 +375,7 @@ const decodeTravelerV1 = (block: string): Traveler | null => {
         }, [])
     : [];
 
-  return { id: nanoid(), name, trips };
+  return { id: nanoid(), name, passportCode: null, trips };
 };
 
 // ─── Public API ───────────────────────────────────────────────────────────────
@@ -386,11 +391,22 @@ export const encodeState = (state: ShareableState): string => {
   const segments = buildSharedSegments(state.travelers);
   const tripsParam = segments.map(encodeSegmentV2).join(V2_DELIM.trip);
 
-  return new URLSearchParams({
+  const params: Record<string, string> = {
     [PARAM_VERSION]: CURRENT_VERSION,
     [PARAM_NAMES]: names,
     [PARAM_TRIPS]: tripsParam,
-  }).toString();
+  };
+
+  // Only include p= when at least one traveler has a passport code set.
+  // Omitting it keeps existing shared URLs valid (all travelers decode to null).
+  const hasCodes = state.travelers.some((t) => t.passportCode !== null);
+  if (hasCodes) {
+    params[PARAM_PASSPORTS] = state.travelers
+      .map((t) => t.passportCode ?? "")
+      .join(V2_DELIM.name);
+  }
+
+  return new URLSearchParams(params).toString();
 };
 
 /**
@@ -476,7 +492,15 @@ export const decodeState = (input: string): DecodeResult => {
           return acc;
         }, []);
 
-      const travelers = expandSharedSegments(names, segments);
+      // Decode passport codes — absent param means all null (legacy URLs safe)
+      const passportsParam = params.get(PARAM_PASSPORTS);
+      const passportCodes: (string | null)[] = passportsParam
+        ? passportsParam
+            .split(V2_DELIM.name)
+            .map((code) => (code.length === 2 ? code.toUpperCase() : null))
+        : [];
+
+      const travelers = expandSharedSegments(names, segments, passportCodes);
       return { ok: true, state: { travelers } };
     }
 

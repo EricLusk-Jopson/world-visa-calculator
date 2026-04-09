@@ -14,6 +14,7 @@ import {
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { getSchengenRule } from "@/data/regions/schengen";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -45,7 +46,7 @@ function computeOverstayCoords(traveler: Traveler): Set<string> {
   );
   if (schengenTrips.length === 0) return new Set();
 
-  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
   const result = new Set<string>();
 
   for (const trip of schengenTrips) {
@@ -180,6 +181,9 @@ interface MergedTripCardProps {
 function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
   const todayStr = todayISO();
   const { trip, entries, isOverstay } = merged;
+
+  // Aggregate passport rules across all travelers in this merged card.
+  const rules = entries.map((e) => getSchengenRule(e.traveler.passportCode));
 
   const isOngoing = !trip.exitDate;
   const isPlanned = trip.entryDate > todayStr;
@@ -330,6 +334,28 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
                   }}
                 >
                   Planned
+                </Box>
+              )}
+
+              {/* Passport rule chips — Schengen trips only */}
+              {isSchengen && !isOngoing && rules.some((r) => r.access === "visa_required") && (
+                <Box sx={{ ...BADGE_SX, bgcolor: alpha(tokens.red, 0.1), color: tokens.redText }}>
+                  Visa req.
+                </Box>
+              )}
+              {isSchengen && !isOngoing && rules.some((r) => r.requiresATV) && (
+                <Box sx={{ ...BADGE_SX, bgcolor: tokens.red, color: tokens.white }}>
+                  Transit visa
+                </Box>
+              )}
+              {isSchengen && !isOngoing && rules.some((r) => r.requiresETIAS) && (
+                <Box sx={{ ...BADGE_SX, bgcolor: tokens.mist, color: tokens.navy }}>
+                  ETIAS 2026
+                </Box>
+              )}
+              {isSchengen && !isOngoing && rules.some((r) => r.access === "suspended") && (
+                <Box sx={{ ...BADGE_SX, bgcolor: alpha(tokens.amber, 0.1), color: tokens.amberText }}>
+                  Suspended
                 </Box>
               )}
             </>
