@@ -422,6 +422,34 @@ export function TripModal({
 
   const resolvedExitForPreview = ongoing ? undefined : exitDate || undefined;
 
+  // ── Schengen entry notice data ──────────────────────────────────────────────
+
+  const schengenTravelerData =
+    region === VisaRegion.Schengen
+      ? travelerIds.flatMap((tid) => {
+          const t = travelers.find((x) => x.id === tid);
+          if (!t) return [];
+          const rule = getSchengenRule(t.passportCode);
+          return [{ t, rule }];
+        })
+      : [];
+
+  const schengenSafeCount = schengenTravelerData.filter(
+    ({ t, rule }) =>
+      t.passportCode &&
+      (rule.access === "free_movement" || rule.access === "visa_free"),
+  ).length;
+
+  const schengenWarnCount = schengenTravelerData.filter(
+    ({ t, rule }) =>
+      t.passportCode &&
+      (rule.access === "visa_required" || rule.access === "suspended"),
+  ).length;
+
+  const schengenUnknownCount = schengenTravelerData.filter(
+    ({ t }) => !t.passportCode,
+  ).length;
+
   // ── Validation & submit ─────────────────────────────────────────────────────
 
   function handleSave() {
@@ -655,164 +683,230 @@ export function TripModal({
           </Box>
 
           {/* 2b · Nationality entry notice — Schengen only */}
-          {region === VisaRegion.Schengen && travelerIds.length > 0 && (() => {
-            const resolvedTravelers = travelerIds.flatMap((tid) => {
-              const t = travelers.find((x) => x.id === tid);
-              if (!t) return [];
-              const rule = getSchengenRule(t.passportCode);
-              return [{ t, rule }];
-            });
-
-            const safeCount = resolvedTravelers.filter(
-              ({ t, rule }) => t.passportCode && (rule.access === "free_movement" || rule.access === "visa_free"),
-            ).length;
-            const warnCount = resolvedTravelers.filter(
-              ({ t, rule }) => t.passportCode && (rule.access === "visa_required" || rule.access === "suspended"),
-            ).length;
-            const unknownCount = resolvedTravelers.filter(({ t }) => !t.passportCode).length;
-
-            const tooltipSx = {
-              fontFamily: tokens.fontBody,
-              fontSize: "0.72rem",
-              bgcolor: tokens.navy,
-              "& .MuiTooltip-arrow": { color: tokens.navy },
-            };
-
-            return (
+          {region === VisaRegion.Schengen && schengenTravelerData.length > 0 && (
+            <Box
+              sx={{
+                border: `1px solid ${tokens.border}`,
+                borderRadius: "10px",
+                overflow: "hidden",
+              }}
+            >
+              {/* ── Header ── */}
               <Box
+                onClick={() => setEntryNoticeSectionExpanded((v) => !v)}
                 sx={{
-                  border: `1px solid ${tokens.border}`,
-                  borderRadius: "10px",
-                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  px: "12px",
+                  py: "8px",
+                  bgcolor: tokens.mist,
+                  cursor: "pointer",
+                  userSelect: "none",
+                  borderBottom: entryNoticeSectionExpanded
+                    ? `1px solid ${tokens.border}`
+                    : "none",
                 }}
               >
-                {/* ── Header ── */}
-                <Box
-                  onClick={() => setEntryNoticeSectionExpanded((v) => !v)}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    px: "12px",
-                    py: "8px",
-                    bgcolor: tokens.mist,
-                    cursor: "pointer",
-                    userSelect: "none",
-                    borderBottom: entryNoticeSectionExpanded ? `1px solid ${tokens.border}` : "none",
-                  }}
-                >
-                  {/* Summary chips */}
-                  <Box sx={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
-                    {safeCount > 0 && (
-                      <Tooltip
-                        title={`${safeCount} ${safeCount === 1 ? "traveler" : "travelers"} can enter without a visa`}
-                        placement="top"
-                        arrow
-                        componentsProps={{ tooltip: { sx: tooltipSx } }}
+                {/* Summary chips */}
+                <Box sx={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
+                  {schengenSafeCount > 0 && (
+                    <Tooltip
+                      title={`${schengenSafeCount} ${schengenSafeCount === 1 ? "traveler" : "travelers"} can enter without a visa`}
+                      placement="top"
+                      arrow
+                      componentsProps={{
+                        tooltip: {
+                          sx: {
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.72rem",
+                            bgcolor: tokens.navy,
+                            "& .MuiTooltip-arrow": { color: tokens.navy },
+                          },
+                        },
+                      }}
+                    >
+                      <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
+                        <CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />
+                        <Typography
+                          sx={{
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.72rem",
+                            fontWeight: 600,
+                            color: tokens.green,
+                          }}
+                        >
+                          {schengenSafeCount}
+                        </Typography>
+                      </Box>
+                    </Tooltip>
+                  )}
+                  {schengenWarnCount > 0 && (
+                    <Tooltip
+                      title={`${schengenWarnCount} ${schengenWarnCount === 1 ? "traveler requires" : "travelers require"} a visa`}
+                      placement="top"
+                      arrow
+                      componentsProps={{
+                        tooltip: {
+                          sx: {
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.72rem",
+                            bgcolor: tokens.navy,
+                            "& .MuiTooltip-arrow": { color: tokens.navy },
+                          },
+                        },
+                      }}
+                    >
+                      <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
+                        <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />
+                        <Typography
+                          sx={{
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.72rem",
+                            fontWeight: 600,
+                            color: tokens.red,
+                          }}
+                        >
+                          {schengenWarnCount}
+                        </Typography>
+                      </Box>
+                    </Tooltip>
+                  )}
+                  {schengenSafeCount === 0 &&
+                    schengenWarnCount === 0 &&
+                    schengenUnknownCount > 0 && (
+                      <Typography
+                        sx={{
+                          fontFamily: tokens.fontBody,
+                          fontSize: "0.72rem",
+                          color: tokens.textGhost,
+                          fontStyle: "italic",
+                        }}
                       >
-                        <Box sx={{ display: "flex", alignItems: "center", gap: "3px", cursor: "default" }}>
-                          <CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />
-                          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.green }}>
-                            {safeCount}
-                          </Typography>
-                        </Box>
-                      </Tooltip>
-                    )}
-                    {warnCount > 0 && (
-                      <Tooltip
-                        title={`${warnCount} ${warnCount === 1 ? "traveler requires" : "travelers require"} a visa`}
-                        placement="top"
-                        arrow
-                        componentsProps={{ tooltip: { sx: tooltipSx } }}
-                      >
-                        <Box sx={{ display: "flex", alignItems: "center", gap: "3px", cursor: "default" }}>
-                          <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />
-                          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.red }}>
-                            {warnCount}
-                          </Typography>
-                        </Box>
-                      </Tooltip>
-                    )}
-                    {safeCount === 0 && warnCount === 0 && unknownCount > 0 && (
-                      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost, fontStyle: "italic" }}>
                         Set nationality to see entry requirements
                       </Typography>
                     )}
-                  </Box>
-                  {entryNoticeSectionExpanded
-                    ? <ExpandLessIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
-                    : <ExpandMoreIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
-                  }
                 </Box>
-
-                {/* ── Body ── */}
-                {entryNoticeSectionExpanded && (
-                  <Box sx={{ px: "12px", py: "10px", display: "flex", flexDirection: "column", gap: "8px" }}>
-                    {resolvedTravelers.map(({ t, rule }) => {
-                      const { label, color } = (() => {
-                        const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
-                        if (!t.passportCode)
-                          return { label: "Set nationality to see entry requirements", color: tokens.textGhost };
-                        if (rule.access === "free_movement")
-                          return { label: `${nat}Free movement, no day limit`, color: tokens.green };
-                        if (rule.access === "visa_free")
-                          return {
-                            label: rule.requiresETIAS
-                              ? `${nat}Visa-free entry -- ETIAS required from late 2026`
-                              : `${nat}Visa-free entry`,
-                            color: tokens.green,
-                          };
-                        if (rule.access === "suspended")
-                          return { label: `${nat}Access temporarily suspended`, color: tokens.amber };
-                        return { label: `${nat}Schengen visa required`, color: tokens.red };
-                      })();
-
-                      const borderColor = color === tokens.green ? tokens.greenBorder : color === tokens.amber ? tokens.amberBorder : tokens.redBorder;
-
-                      return (
-                        <Box key={t.id} sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                          {/* Status line */}
-                          <Box sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
-                            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.textSoft, flexShrink: 0 }}>
-                              {t.name}:
-                            </Typography>
-                            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color, fontWeight: 500 }}>
-                              {label}
-                            </Typography>
-                          </Box>
-
-                          {/* Notes */}
-                          {rule.notes?.map((note, i) => (
-                            <Box
-                              key={i}
-                              sx={{
-                                display: "flex",
-                                alignItems: "flex-start",
-                                gap: "4px",
-                                pl: "10px",
-                                borderLeft: `2px solid ${borderColor}`,
-                              }}
-                            >
-                              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.67rem", color: tokens.textSoft, lineHeight: 1.5, flex: 1 }}>
-                                {note.text}
-                              </Typography>
-                              <IconButton
-                                size="small"
-                                onClick={(e) => setSourcePopover({ anchor: e.currentTarget, note })}
-                                sx={{ p: "2px", flexShrink: 0, color: tokens.textGhost, "&:hover": { color: tokens.navy, bgcolor: "transparent" } }}
-                              >
-                                <InfoOutlineIcon sx={{ fontSize: "0.85rem" }} />
-                              </IconButton>
-                            </Box>
-                          ))}
-                        </Box>
-                      );
-                    })}
-                  </Box>
+                {entryNoticeSectionExpanded ? (
+                  <ExpandLessIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
+                ) : (
+                  <ExpandMoreIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
                 )}
               </Box>
-            );
-          })()}
+
+              {/* ── Body ── */}
+              {entryNoticeSectionExpanded && (
+                <Box
+                  sx={{
+                    px: "12px",
+                    py: "10px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "8px",
+                  }}
+                >
+                  {schengenTravelerData.map(({ t, rule }) => {
+                    const nat = t.passportCode
+                      ? `${countryDisplay(t.passportCode)} -- `
+                      : "";
+                    const { label, color } = !t.passportCode
+                      ? { label: "Set nationality to see entry requirements", color: tokens.textGhost }
+                      : rule.access === "free_movement"
+                        ? { label: `${nat}Free movement, no day limit`, color: tokens.green }
+                        : rule.access === "visa_free"
+                          ? {
+                              label: rule.requiresETIAS
+                                ? `${nat}Visa-free entry -- ETIAS required from late 2026`
+                                : `${nat}Visa-free entry`,
+                              color: tokens.green,
+                            }
+                          : rule.access === "suspended"
+                            ? { label: `${nat}Access temporarily suspended`, color: tokens.amber }
+                            : { label: `${nat}Schengen visa required`, color: tokens.red };
+
+                    const borderColor =
+                      color === tokens.green
+                        ? tokens.greenBorder
+                        : color === tokens.amber
+                          ? tokens.amberBorder
+                          : tokens.redBorder;
+
+                    return (
+                      <Box
+                        key={t.id}
+                        sx={{ display: "flex", flexDirection: "column", gap: "4px" }}
+                      >
+                        {/* Status line */}
+                        <Box sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                          <Typography
+                            sx={{
+                              fontFamily: tokens.fontBody,
+                              fontSize: "0.72rem",
+                              fontWeight: 600,
+                              color: tokens.textSoft,
+                              flexShrink: 0,
+                            }}
+                          >
+                            {t.name}:
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontFamily: tokens.fontBody,
+                              fontSize: "0.72rem",
+                              color,
+                              fontWeight: 500,
+                            }}
+                          >
+                            {label}
+                          </Typography>
+                        </Box>
+
+                        {/* Notes */}
+                        {rule.notes?.map((note, i) => (
+                          <Box
+                            key={i}
+                            sx={{
+                              display: "flex",
+                              alignItems: "flex-start",
+                              gap: "4px",
+                              pl: "10px",
+                              borderLeft: `2px solid ${borderColor}`,
+                            }}
+                          >
+                            <Typography
+                              sx={{
+                                fontFamily: tokens.fontBody,
+                                fontSize: "0.67rem",
+                                color: tokens.textSoft,
+                                lineHeight: 1.5,
+                                flex: 1,
+                              }}
+                            >
+                              {note.text}
+                            </Typography>
+                            <IconButton
+                              size="small"
+                              onClick={(e) =>
+                                setSourcePopover({ anchor: e.currentTarget, note })
+                              }
+                              sx={{
+                                p: "2px",
+                                flexShrink: 0,
+                                color: tokens.textGhost,
+                                "&:hover": { color: tokens.navy, bgcolor: "transparent" },
+                              }}
+                            >
+                              <InfoOutlineIcon sx={{ fontSize: "0.85rem" }} />
+                            </IconButton>
+                          </Box>
+                        ))}
+                      </Box>
+                    );
+                  })}
+                </Box>
+              )}
+            </Box>
+          )}
 
           {/* Source info popover */}
           <Popover
