@@ -301,6 +301,7 @@ export function CalculatorPage() {
                 hiddenTravelerIds={hiddenTravelerIds}
                 onToggleTraveler={handleToggleTraveler}
                 onDeleteTraveler={handleDeleteTraveler}
+                onEditTraveler={handleTravelerEdit}
                 onAddTraveler={handleAddTraveler}
               />
 
