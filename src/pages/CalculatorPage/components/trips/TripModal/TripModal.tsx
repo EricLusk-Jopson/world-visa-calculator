@@ -453,6 +453,10 @@ export function TripModal({
     ({ t }) => !t.passportCode,
   ).length;
 
+  // Null passport = treated as visa-free (default permissive). Show ImpactPreview
+  // only when at least one traveler is not visa-required.
+  const hasVisaFreeTravelers = schengenSafeCount > 0 || schengenUnknownCount > 0;
+
   // ── Validation & submit ─────────────────────────────────────────────────────
 
   function handleSave() {
@@ -1152,7 +1156,8 @@ export function TripModal({
           {region === VisaRegion.Schengen &&
             entryDate &&
             (exitDate || ongoing) &&
-            impactStatus && (
+            impactStatus &&
+            hasVisaFreeTravelers && (
               <ImpactPreview
                 daysRemaining={impactStatus.daysRemaining}
                 daysUsed={impactStatus.daysUsed}
@@ -1162,6 +1167,26 @@ export function TripModal({
                 currentTripEntry={entryDate}
                 currentTripExit={resolvedExitForPreview}
               />
+            )}
+
+          {/* Visa-required disclaimer — shown when no visa-free travelers are selected */}
+          {region === VisaRegion.Schengen &&
+            schengenWarnCount > 0 &&
+            !hasVisaFreeTravelers &&
+            entryDate &&
+            (exitDate || ongoing) && (
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.75rem",
+                  fontStyle: "italic",
+                  color: tokens.textGhost,
+                  px: "20px",
+                  pb: "12px",
+                }}
+              >
+                Day tracking isn't available yet for Schengen visa holders as allowances depend on the specific visa granted.
+              </Typography>
             )}
         </Box>
 

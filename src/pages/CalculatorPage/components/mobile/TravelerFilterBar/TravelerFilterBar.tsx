@@ -296,9 +296,10 @@ export function TravelerFilterBar({
             const { variant, daysRemaining } = status;
 
             const rule = getSchengenRule(traveler.passportCode);
-            const showCalculator =
+            const isVisaRequired =
               traveler.passportCode !== null &&
-              (rule.access === "visa_free" || rule.access === "free_movement");
+              (rule.access === "visa_required" || rule.access === "suspended");
+            const showCalculator = !isVisaRequired;
 
             return (
               <Box
@@ -474,49 +475,19 @@ export function TravelerFilterBar({
                   </Box>
                 )}
 
-                {/* ── No-nationality prompt ──────────────────────────────── */}
-                {!traveler.passportCode && (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "6px",
-                      px: "14px",
-                      pb: "10px",
-                    }}
-                  >
+                {/* ── Visa-required disclaimer ───────────────────────────── */}
+                {isVisaRequired && (
+                  <Box sx={{ px: "14px", pb: "10px" }}>
                     <Typography
                       sx={{
                         fontFamily: tokens.fontBody,
                         fontSize: "0.65rem",
                         fontStyle: "italic",
                         color: tokens.textGhost,
-                        flex: 1,
                       }}
                     >
-                      Add nationality to track Schengen days
+                      Schengen visa – day tracking varies by visa terms.
                     </Typography>
-                    <Box
-                      component="button"
-                      onClick={() => openEdit(traveler)}
-                      sx={{
-                        flexShrink: 0,
-                        border: `1px solid ${tokens.border}`,
-                        borderRadius: "6px",
-                        bgcolor: tokens.mist,
-                        color: tokens.textSoft,
-                        fontFamily: tokens.fontBody,
-                        fontSize: "0.65rem",
-                        fontWeight: 600,
-                        px: "8px",
-                        py: "3px",
-                        cursor: "pointer",
-                        transition: "all 0.12s",
-                        "&:active": { bgcolor: tokens.border, color: tokens.text },
-                      }}
-                    >
-                      Select
-                    </Box>
                   </Box>
                 )}
               </Box>
