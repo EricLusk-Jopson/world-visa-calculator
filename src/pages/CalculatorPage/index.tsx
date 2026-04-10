@@ -44,8 +44,8 @@ const CLOSED_MODAL: ModalState = {
   trip: null,
 };
 
-function makeTraveler(name: string): Traveler {
-  return { id: crypto.randomUUID(), name, trips: [] };
+function makeTraveler(name: string, passportCode: string | null = null): Traveler {
+  return { id: crypto.randomUUID(), name, passportCode, trips: [] };
 }
 
 export function CalculatorPage() {
@@ -99,13 +99,22 @@ export function CalculatorPage() {
     setModal({ ...CLOSED_MODAL, open: true, kind: "traveler" });
   }, []);
 
-  const handleTravelerSave = useCallback((name: string) => {
+  const handleTravelerSave = useCallback((name: string, passportCode: string | null) => {
     setTravelers((prev) => {
       trackEvent("traveler_added", { total_travelers: prev.length + 1 });
-      return [...prev, makeTraveler(name)];
+      return [...prev, makeTraveler(name, passportCode)];
     });
     setModal(CLOSED_MODAL);
   }, []);
+
+  const handleTravelerEdit = useCallback(
+    (travelerId: string, name: string, passportCode: string | null) => {
+      setTravelers((prev) =>
+        prev.map((t) => (t.id === travelerId ? { ...t, name, passportCode } : t)),
+      );
+    },
+    [],
+  );
 
   const handleDeleteTraveler = useCallback((travelerId: string) => {
     setTravelers((prev) => {
@@ -292,6 +301,7 @@ export function CalculatorPage() {
                 hiddenTravelerIds={hiddenTravelerIds}
                 onToggleTraveler={handleToggleTraveler}
                 onDeleteTraveler={handleDeleteTraveler}
+                onEditTraveler={handleTravelerEdit}
                 onAddTraveler={handleAddTraveler}
               />
 
@@ -330,6 +340,7 @@ export function CalculatorPage() {
                   onEditTrip={handleOpenEditTrip}
                   onDeleteTraveler={handleDeleteTraveler}
                   onAddTraveler={handleAddTraveler}
+                  onEdit={handleTravelerEdit}
                 />
               ) : (
                 <CardsView
@@ -337,6 +348,7 @@ export function CalculatorPage() {
                   onAddTrip={handleOpenAddTrip}
                   onEditTrip={handleOpenEditTrip}
                   onDeleteTraveler={handleDeleteTraveler}
+                  onEdit={handleTravelerEdit}
                 />
               )}
             </Box>

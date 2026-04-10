@@ -43,6 +43,7 @@ import {
   calculateMaxStay,
 } from "@/features/calculator/utils/schengen";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { getSchengenRule } from "@/data/regions/schengen";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
@@ -401,6 +402,7 @@ export function TravelerTimelineColumn({
     const mockTraveler = {
       id: "__overstay__",
       name: "",
+      passportCode: null,
       trips: schengenTrips,
     };
     const result = new Set<string>();
@@ -415,6 +417,11 @@ export function TravelerTimelineColumn({
 
     return result;
   }, [traveler]);
+
+  const schengenRule = getSchengenRule(traveler.passportCode);
+  const isVisaRequired =
+    traveler.passportCode !== null &&
+    (schengenRule.access === 'visa_required' || schengenRule.access === 'suspended');
 
   const returnMarkers = useMemo(
     () => computeReturnMarkers(traveler, timelineStart, timelineEnd),
@@ -431,6 +438,7 @@ export function TravelerTimelineColumn({
   const defaultButtonTop = totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_MARGIN;
 
   const addButtonTop = useMemo(() => {
+    if (isVisaRequired) return defaultButtonTop;
     const allMarkerTops = [
       ...returnMarkers.map((m) => m.top),
       ...agingMarkers.map((m) => m.top),
@@ -439,7 +447,7 @@ export function TravelerTimelineColumn({
     const lastMarkerTop = Math.max(...allMarkerTops);
     const minTop = lastMarkerTop + 10 + ADD_BUTTON_MARGIN;
     return Math.max(defaultButtonTop, minTop);
-  }, [returnMarkers, agingMarkers, defaultButtonTop]);
+  }, [returnMarkers, agingMarkers, defaultButtonTop, isVisaRequired]);
 
   const BASE_Z = 4;
 
@@ -528,14 +536,14 @@ export function TravelerTimelineColumn({
       />
 
       {/* Return markers (threshold milestones) */}
-      {returnMarkers
+      {!isVisaRequired && returnMarkers
         .filter((marker) => !marker.isCurrent)
         .map((marker, i) => (
           <MarkerLine key={`thr-${marker.days}-${i}`} {...marker} />
         ))}
 
       {/* Aging-out markers */}
-      {agingMarkers.map((marker, i) => (
+      {!isVisaRequired && agingMarkers.map((marker, i) => (
         <AgingMarkerLine key={`aging-${marker.entryDate}-${i}`} {...marker} />
       ))}
 
@@ -563,6 +571,7 @@ export function TravelerTimelineColumn({
             cardWidth={cardWidth}
             baseZIndex={BASE_Z + rank}
             isOverstay={overstayTripIds.has(trip.id)}
+            passportRule={getSchengenRule(traveler.passportCode)}
             onEdit={() => onEditTrip(traveler.id, trip)}
           />
         );

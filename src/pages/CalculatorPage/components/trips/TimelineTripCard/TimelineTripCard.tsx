@@ -2,7 +2,7 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
-import type { Trip } from "@/types";
+import type { Trip, PassportRule } from "@/types";
 import { VisaRegion } from "@/types";
 import { parseDate } from "@/features/calculator/utils/dates";
 import { format } from "date-fns";
@@ -89,6 +89,12 @@ interface TimelineTripCardProps {
    * falls within an overstay period in the 90/180-day window.
    */
   isOverstay?: boolean;
+  /**
+   * Resolved Schengen passport rule for the traveler who owns this card.
+   * When provided and the trip is Schengen, visa-requirement badges are shown
+   * at SHOW_BADGE_THRESHOLD and above.
+   */
+  passportRule?: PassportRule;
   onEdit: () => void;
 }
 
@@ -118,6 +124,7 @@ export function TimelineTripCard({
   cardWidth,
   baseZIndex,
   isOverstay = false,
+  passportRule,
   onEdit,
 }: TimelineTripCardProps) {
   const [hovered, setHovered] = useState(false);
@@ -373,6 +380,31 @@ export function TimelineTripCard({
                       ? `from ${fmtReEntry(earliestReEntry)}`
                       : "no re-entry"}
                   </TripBadge>
+                )}
+
+                {isSchengen && passportRule && (
+                  <>
+                    {passportRule.access === "visa_required" && (
+                      <TripBadge color={tokens.redText} bg={tokens.redBg}>
+                        Visa req.
+                      </TripBadge>
+                    )}
+                    {passportRule.requiresATV && (
+                      <TripBadge color={tokens.white} bg={tokens.red}>
+                        Transit visa
+                      </TripBadge>
+                    )}
+                    {passportRule.requiresETIAS && (
+                      <TripBadge color={tokens.navy} bg={tokens.mist}>
+                        ETIAS 2026
+                      </TripBadge>
+                    )}
+                    {passportRule.access === "suspended" && (
+                      <TripBadge color={tokens.amberText} bg={tokens.amberBg}>
+                        Suspended
+                      </TripBadge>
+                    )}
+                  </>
                 )}
               </>
             )}
