@@ -1185,7 +1185,7 @@ export function TripModal({
                   pb: "12px",
                 }}
               >
-                Day tracking isn't available for Schengen visa holders — allowances depend on the specific visa granted.
+                Day tracking isn't available yet for Schengen visa holders as allowances depend on the specific visa granted.
               </Typography>
             )}
         </Box>
