@@ -380,7 +380,7 @@ export function TravelerColumnHeader({
             color: tokens.textGhost,
           }}
         >
-          Schengen visa – day tracking varies by visa terms.
+          Day tracking not yet supported for passports requiring Schengen visas.
         </Typography>
       )}
 
