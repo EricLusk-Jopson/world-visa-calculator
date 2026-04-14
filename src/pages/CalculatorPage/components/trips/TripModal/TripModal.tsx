@@ -23,6 +23,7 @@ import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler, PassportRule, PassportNote } from "@/types";
 import { getSchengenRule } from "@/data/regions/schengen";
+import { getUKRule } from "@/data/regions/uk";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
@@ -914,6 +915,100 @@ export function TripModal({
                   })}
                 </Box>
               )}
+            </Box>
+          )}
+
+          {/* 2c · Nationality entry notice — UK only */}
+          {region === VisaRegion.UnitedKingdom && travelerIds.length > 0 && (
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+              {travelerIds.map((tid) => {
+                const t = travelers.find((x) => x.id === tid);
+                if (!t) return null;
+                const rule: PassportRule = getUKRule(t.passportCode);
+                const { label, color } = (() => {
+                  const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
+                  if (!t.passportCode)
+                    return { label: "Set nationality to see entry requirements", color: tokens.textGhost };
+                  if (rule.access === "free_movement")
+                    return { label: `${nat}Free movement (Common Travel Area)`, color: tokens.green };
+                  if (rule.access === "visa_free")
+                    return {
+                      label: rule.requiresETA
+                        ? `${nat}Visa-free -- ETA required, up to 6 months`
+                        : `${nat}Visa-free, up to 6 months`,
+                      color: tokens.green,
+                    };
+                  if (rule.requiresDATV)
+                    return { label: `${nat}Visitor visa required -- DATV for airside transit`, color: tokens.red };
+                  return { label: `${nat}Visitor visa required`, color: tokens.red };
+                })();
+                return (
+                  <Box key={tid} sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                    {/* Status line */}
+                    <Box sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                      <Typography
+                        sx={{
+                          fontFamily: tokens.fontBody,
+                          fontSize: "0.72rem",
+                          fontWeight: 600,
+                          color: tokens.textSoft,
+                          flexShrink: 0,
+                        }}
+                      >
+                        {t.name}:
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontFamily: tokens.fontBody,
+                          fontSize: "0.72rem",
+                          color,
+                          fontWeight: 500,
+                        }}
+                      >
+                        {label}
+                      </Typography>
+                    </Box>
+
+                    {/* Notes (ETA details, DATV requirements, etc.) */}
+                    {rule.notes?.map((note, i) => (
+                      <Box
+                        key={i}
+                        sx={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "4px",
+                          pl: "10px",
+                          borderLeft: `2px solid ${color === tokens.green ? tokens.greenBorder : tokens.redBorder}`,
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.67rem",
+                            color: tokens.textSoft,
+                            lineHeight: 1.5,
+                            flex: 1,
+                          }}
+                        >
+                          {note.text}
+                        </Typography>
+                        <IconButton
+                          size="small"
+                          onClick={(e) => setSourcePopover({ anchor: e.currentTarget, note })}
+                          sx={{
+                            p: "2px",
+                            flexShrink: 0,
+                            color: tokens.textGhost,
+                            "&:hover": { color: tokens.navy, bgcolor: "transparent" },
+                          }}
+                        >
+                          <InfoOutlineIcon sx={{ fontSize: "0.85rem" }} />
+                        </IconButton>
+                      </Box>
+                    ))}
+                  </Box>
+                );
+              })}
             </Box>
           )}
 

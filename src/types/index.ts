@@ -121,6 +121,16 @@ export interface PassportRule {
    */
   requiresATV?: boolean;
   /**
+   * UK Electronic Travel Authorisation required before travelling.
+   * Applies to visa-free nationals (post April 2025). Not a visa.
+   */
+  requiresETA?: boolean;
+  /**
+   * UK Direct Airside Transit Visa required to transit through a UK airport
+   * without passing through immigration (international zone only).
+   */
+  requiresDATV?: boolean;
+  /**
    * Advisory notes with regulatory sources — e.g. suspension reasons,
    * specific-member-state ATV requirements (Visa Code Handbook Annex 7B),
    * or other per-nationality caveats.
