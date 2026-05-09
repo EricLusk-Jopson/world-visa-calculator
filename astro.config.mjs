@@ -8,11 +8,11 @@ import sitemap from "@astrojs/sitemap";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  site: "https://eurovisacalculator.com",
+  site: "https://www.eurovisacalculator.com",
   integrations: [
     react(),
     sitemap({
-      filter: (page) => page !== "https://eurovisacalculator.com/app/",
+      filter: (page) => page !== "https://www.eurovisacalculator.com/app/",
     }),
   ],
   output: "static",
