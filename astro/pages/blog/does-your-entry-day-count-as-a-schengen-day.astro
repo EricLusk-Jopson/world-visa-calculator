@@ -17,6 +17,10 @@ import LandingNav from "../../components/LandingNav.astro";
   <LandingNav />
 
   <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
     <header class="article__header">
       <p class="article__tag">Blog</p>
 
@@ -101,8 +105,9 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        Some unofficial calculators don't handle these rules correctly, but you
-        can test any calculator quickly: enter a single round trip and count the
+        <a href="/blog/why-schengen-calculators-give-different-results"
+          >Some unofficial calculators don't handle these rules correctly</a
+        >, but you can test any calculator quickly: enter a single round trip and count the
         calendar days manually, including both border days. If the calculator
         shows fewer, it isn't following official methodology. Doubt any
         calculator that records your entry or exit time.{" "}
@@ -169,6 +174,11 @@ import LandingNav from "../../components/LandingNav.astro";
     min-height: 100vh;
     background: #f7f5f1;
     padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
   }
 
   .article__header {
