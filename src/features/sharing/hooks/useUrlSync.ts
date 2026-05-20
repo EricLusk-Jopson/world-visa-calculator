@@ -100,8 +100,8 @@ export const useUrlSync = ({
   const notrackRef = useRef(
     new URLSearchParams(window.location.search).has("notrack")
   );
-  const safeRef = useRef(
-    new URLSearchParams(window.location.search).has("safe")
+  const nosaveRef = useRef(
+    new URLSearchParams(window.location.search).has("nosave")
   );
 
   // ── Hydration on mount ──────────────────────────────────────────────────────
@@ -114,7 +114,7 @@ export const useUrlSync = ({
     if (urlResult.ok && urlResult.state.travelers.length > 0) {
       onHydrate(urlResult.state);
       // Safe links (e.g. blog examples) must not overwrite the reader's own itinerary.
-      if (!safeRef.current) saveToLocalStorage(urlResult.state);
+      if (!nosaveRef.current) saveToLocalStorage(urlResult.state);
       trackEvent("data_loaded_from_url");
       onHydrated?.();
       return;
@@ -142,15 +142,15 @@ export const useUrlSync = ({
       if (notrackRef.current) {
         url += url.includes("?") ? "&notrack" : "?notrack";
       }
-      if (safeRef.current) {
-        url += url.includes("?") ? "&safe" : "?safe";
+      if (nosaveRef.current) {
+        url += url.includes("?") ? "&nosave" : "?nosave";
       }
       // replaceState keeps the back button clean.
       window.history.replaceState(null, "", url);
     }
 
-    // Persist to localStorage — skipped for safe links to protect the reader's own itinerary.
-    if (!safeRef.current) saveToLocalStorage(state);
+    // Persist to localStorage — skipped for nosave links to protect the reader's own itinerary.
+    if (!nosaveRef.current) saveToLocalStorage(state);
   }, [state, syncToUrl]);
 
   // ── Helpers ─────────────────────────────────────────────────────────────────
