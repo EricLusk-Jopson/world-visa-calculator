@@ -97,6 +97,9 @@ export const useUrlSync = ({
   syncToUrl = true,
 }: UseUrlSyncOptions): UseUrlSyncReturn => {
   const hasMounted = useRef(false);
+  const notrackRef = useRef(
+    new URLSearchParams(window.location.search).has("notrack")
+  );
 
   // ── Hydration on mount ──────────────────────────────────────────────────────
   useEffect(() => {
@@ -132,7 +135,10 @@ export const useUrlSync = ({
     if (!hasMounted.current) return; // don't sync before hydration completes
 
     if (syncToUrl) {
-      const url = buildShareableUrl(state);
+      let url = buildShareableUrl(state);
+      if (notrackRef.current) {
+        url += url.includes("?") ? "&notrack" : "?notrack";
+      }
       // replaceState keeps the back button clean.
       window.history.replaceState(null, "", url);
     }
