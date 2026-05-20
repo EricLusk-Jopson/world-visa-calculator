@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eurovisacalculator.com/sitemap-index.xml
