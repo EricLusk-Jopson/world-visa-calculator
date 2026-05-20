@@ -17,6 +17,10 @@ import LandingNav from "../../components/LandingNav.astro";
   <LandingNav />
 
   <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
     <header class="article__header">
       <p class="article__tag">Blog</p>
 
@@ -75,9 +79,9 @@ import LandingNav from "../../components/LandingNav.astro";
         saving trips, comparing multiple travelers, or planning future travel in
         detail. It does not help to plan trips to nearby countries outside the
         Schengen Area. If you need those features, that is where
-        EuroVisaCalculator comes in. It follows the same methodology as the EU
-        calculator, and you can run your dates through both to verify results.
-        If they ever disagree, we want to know.
+        <a href="/app">EuroVisaCalculator</a> comes in. It follows the same
+        methodology as the EU calculator, and you can run your dates through
+        both to verify results. If they ever disagree, we want to know.
       </p>
 
       <p>
@@ -165,8 +169,9 @@ import LandingNav from "../../components/LandingNav.astro";
       <h3>How entry and exit days are counted</h3>
 
       <p>
-        The official rule is that both your entry day and your exit day count as
-        full Schengen days, regardless of the time you cross the border.
+        The official rule is that <a href="/blog/does-your-entry-day-count-as-a-schengen-day"
+          >both your entry day and your exit day count as full Schengen days</a
+        >, regardless of the time you cross the border.
         Unfortunately, not every calculator follows this. Some exclude one or
         both border days, treating partial days as zero. Over multiple trips,
         these small differences add up.
@@ -257,6 +262,15 @@ import LandingNav from "../../components/LandingNav.astro";
           >official EU tool</a
         >.
       </p>
+
+      <hr />
+
+      <p>
+        How entry and exit days are counted in detail:{" "}
+        <a href="/blog/does-your-entry-day-count-as-a-schengen-day"
+          >Does Your Entry Day Count as a Schengen Day?</a
+        >.
+      </p>
     </div>
 
     <div class="article__back">
@@ -270,6 +284,11 @@ import LandingNav from "../../components/LandingNav.astro";
     min-height: 100vh;
     background: #f7f5f1;
     padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
   }
 
   .article__header {
