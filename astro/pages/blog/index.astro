@@ -27,6 +27,22 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <div class="post-list">
         <a
+          href="/blog/does-your-entry-day-count-as-a-schengen-day"
+          class="post-card"
+        >
+          <p class="post-card__tag">Article</p>
+          <h2 class="post-card__title">
+            Does Your Entry Day Count as a Schengen Day? Yes, yes it does.
+          </h2>
+          <p class="post-card__excerpt">
+            Both your entry day and your exit day count as full Schengen days,
+            regardless of what time you cross the border. Here's what that
+            means for your allowance.
+          </p>
+          <span class="post-card__read">Read article →</span>
+        </a>
+
+        <a
           href="/blog/why-schengen-calculators-give-different-results"
           class="post-card"
         >
@@ -90,6 +106,9 @@ import LandingNav from "../../components/LandingNav.astro";
   }
 
   .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     margin-bottom: 40px;
   }
 
