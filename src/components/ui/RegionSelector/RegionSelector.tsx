@@ -3,8 +3,12 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import { SCHENGEN_COUNTRIES_TOOLTIP } from "@/features/calculator/utils/schengenConstants";
 
 // ─── Option types ─────────────────────────────────────────────────────────────
 
@@ -261,6 +265,9 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
           key: React.Key;
         } & React.HTMLAttributes<HTMLLIElement>;
 
+        const isSchengenRegion =
+          option.kind === "region" && option.region === VisaRegion.Schengen;
+
         return (
           <Box
             component="li"
@@ -270,25 +277,66 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
               fontFamily: tokens.fontBody,
               fontSize: "0.85rem",
               color: selected ? `${tokens.greenText} !important` : tokens.text,
+              display: "flex !important",
+              alignItems: "center !important",
+              justifyContent: "space-between !important",
             }}
           >
-            {option.kind === "country" ? (
-              <>
-                {option.countryName}
-                <Typography
-                  component="span"
+            <Box component="span" sx={{ flex: 1, minWidth: 0 }}>
+              {option.kind === "country" ? (
+                <>
+                  {option.countryName}
+                  <Typography
+                    component="span"
+                    sx={{
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.72rem",
+                      color: selected ? tokens.greenText : tokens.textGhost,
+                      ml: "5px",
+                    }}
+                  >
+                    (Schengen Area)
+                  </Typography>
+                </>
+              ) : (
+                option.label
+              )}
+            </Box>
+            {isSchengenRegion && (
+              <MobileAwareTooltip
+                title={SCHENGEN_COUNTRIES_TOOLTIP}
+                placement="right"
+                arrow
+                enterDelay={200}
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.75rem",
+                      fontWeight: 500,
+                      bgcolor: tokens.navy,
+                      "& .MuiTooltip-arrow": { color: tokens.navy },
+                      maxWidth: 300,
+                    },
+                  },
+                }}
+              >
+                <IconButton
+                  size="small"
+                  onClick={(e) => e.stopPropagation()}
+                  onMouseDown={(e) => e.stopPropagation()}
                   sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.72rem",
-                    color: selected ? tokens.greenText : tokens.textGhost,
-                    ml: "5px",
+                    ml: "6px",
+                    p: "2px",
+                    flexShrink: 0,
+                    color: tokens.textGhost,
+                    "&:hover": { color: tokens.navy, bgcolor: "transparent" },
                   }}
+                  aria-label="Schengen Area countries"
                 >
-                  (Schengen Area)
-                </Typography>
-              </>
-            ) : (
-              option.label
+                  <InfoOutlinedIcon sx={{ fontSize: "1rem" }} />
+                </IconButton>
+              </MobileAwareTooltip>
             )}
           </Box>
         );

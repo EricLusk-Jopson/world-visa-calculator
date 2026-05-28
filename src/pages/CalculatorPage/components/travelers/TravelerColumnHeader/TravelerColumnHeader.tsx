@@ -9,10 +9,13 @@ import { tokens } from "@/styles/theme";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import type { Traveler } from "@/types";
 import type { TravelerStatus } from "../travelerStatus";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import {
   AVAILABLE_DAYS_DESCRIPTION,
   MAX_STAY_DESCRIPTION,
+  SCHENGEN_COUNTRIES_TOOLTIP,
 } from "@/features/calculator/utils/schengenConstants";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { NationalitySelector } from "../NationalitySelector";
 
@@ -292,18 +295,43 @@ export function TravelerColumnHeader({
         <>
           {compact ? (
             <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.62rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: tokens.textGhost,
+              <MobileAwareTooltip
+                title={SCHENGEN_COUNTRIES_TOOLTIP}
+                placement="bottom"
+                arrow
+                enterDelay={300}
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.72rem",
+                      fontWeight: 500,
+                      bgcolor: tokens.navy,
+                      "& .MuiTooltip-arrow": { color: tokens.navy },
+                      maxWidth: 280,
+                    },
+                  },
                 }}
               >
-                Schengen
-              </Typography>
+                <Typography
+                  component="span"
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.62rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: tokens.textGhost,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "3px",
+                    cursor: "default",
+                  }}
+                >
+                  Schengen
+                  <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6 }} />
+                </Typography>
+              </MobileAwareTooltip>
               <Typography
                 sx={{
                   fontFamily: tokens.fontBody,
@@ -325,18 +353,43 @@ export function TravelerColumnHeader({
                 gap: "6px",
               }}
             >
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.62rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: tokens.textGhost,
+              <MobileAwareTooltip
+                title={SCHENGEN_COUNTRIES_TOOLTIP}
+                placement="bottom"
+                arrow
+                enterDelay={300}
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.72rem",
+                      fontWeight: 500,
+                      bgcolor: tokens.navy,
+                      "& .MuiTooltip-arrow": { color: tokens.navy },
+                      maxWidth: 280,
+                    },
+                  },
                 }}
               >
-                Schengen
-              </Typography>
+                <Typography
+                  component="span"
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.62rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: tokens.textGhost,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "3px",
+                    cursor: "default",
+                  }}
+                >
+                  Schengen
+                  <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6 }} />
+                </Typography>
+              </MobileAwareTooltip>
               <Typography
                 sx={{
                   fontFamily: tokens.fontBody,

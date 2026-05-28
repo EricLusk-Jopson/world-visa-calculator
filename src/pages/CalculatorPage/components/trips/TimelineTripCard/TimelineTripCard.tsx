@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import type { Trip, PassportRule } from "@/types";
 import { VisaRegion } from "@/types";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import { SCHENGEN_COUNTRIES_TOOLTIP } from "@/features/calculator/utils/schengenConstants";
 import { parseDate } from "@/features/calculator/utils/dates";
 import { format } from "date-fns";
 import {
@@ -31,17 +34,20 @@ function TripBadge({
   color,
   bg,
   borderStyle = "solid",
+  tooltip,
 }: {
   children: React.ReactNode;
   color: string;
   bg: string;
   borderStyle?: "solid" | "dashed";
+  tooltip?: string;
 }) {
-  return (
+  const badge = (
     <Box
       component="span"
       sx={{
         display: "inline-flex",
+        alignItems: "center",
         fontFamily: tokens.fontBody,
         fontSize: "0.6rem",
         fontWeight: 700,
@@ -56,10 +62,39 @@ function TripBadge({
         borderStyle,
         whiteSpace: "nowrap",
         flexShrink: 0,
+        gap: "3px",
       }}
     >
       {children}
+      {tooltip && (
+        <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6, flexShrink: 0 }} />
+      )}
     </Box>
+  );
+
+  if (!tooltip) return badge;
+
+  return (
+    <MobileAwareTooltip
+      title={tooltip}
+      placement="bottom"
+      arrow
+      enterDelay={300}
+      componentsProps={{
+        tooltip: {
+          sx: {
+            fontFamily: tokens.fontBody,
+            fontSize: "0.72rem",
+            fontWeight: 500,
+            bgcolor: tokens.navy,
+            "& .MuiTooltip-arrow": { color: tokens.navy },
+            maxWidth: 280,
+          },
+        },
+      }}
+    >
+      <span>{badge}</span>
+    </MobileAwareTooltip>
   );
 }
 
@@ -362,7 +397,11 @@ export function TimelineTripCard({
               </TripBadge>
             ) : (
               <>
-                <TripBadge color={regionColor} bg={regionBg}>
+                <TripBadge
+                  color={regionColor}
+                  bg={regionBg}
+                  tooltip={isSchengen ? SCHENGEN_COUNTRIES_TOOLTIP : undefined}
+                >
                   {regionLabel}
                 </TripBadge>
                 {showSchengenChips && maxStayAtExit > 0 && (
