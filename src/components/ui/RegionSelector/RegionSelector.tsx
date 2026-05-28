@@ -325,6 +325,8 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
                   size="small"
                   onClick={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
+                  onTouchStart={(e) => e.stopPropagation()}
+                  onTouchEnd={(e) => e.stopPropagation()}
                   sx={{
                     ml: "6px",
                     p: "2px",

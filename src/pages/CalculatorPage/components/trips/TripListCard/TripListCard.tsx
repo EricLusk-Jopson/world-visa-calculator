@@ -232,7 +232,7 @@ export function TripListCard({
       <Box sx={{ height: 3, bgcolor: stripeColor }} />
 
       {/* Body */}
-      <Box sx={{ px: "12px", pt: "8px", pb: "10px" }}>
+      <Box sx={{ px: "12px", pt: "8px", pb: "10px", minWidth: 0, overflow: "hidden" }}>
         {/* Destination */}
         <Typography
           sx={{
@@ -259,6 +259,9 @@ export function TripListCard({
             color: isOverstay ? tokens.redText : tokens.textSoft,
             fontWeight: 500,
             mb: "8px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
           }}
         >
           {fmtDateRange(trip.entryDate, trip.exitDate)}
