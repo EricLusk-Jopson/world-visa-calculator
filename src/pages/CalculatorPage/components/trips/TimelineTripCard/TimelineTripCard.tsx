@@ -345,9 +345,9 @@ export function TimelineTripCard({
           <Box
             sx={{
               display: "flex",
-              alignItems: "center",
+              alignItems: "flex-start",
               gap: "4px",
-              flexWrap: "nowrap",
+              flexWrap: "wrap",
               overflow: "hidden",
               mt: "2px",
             }}
