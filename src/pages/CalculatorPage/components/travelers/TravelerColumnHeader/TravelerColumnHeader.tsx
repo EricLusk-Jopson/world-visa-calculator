@@ -13,9 +13,9 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import {
   AVAILABLE_DAYS_DESCRIPTION,
   MAX_STAY_DESCRIPTION,
-  SCHENGEN_COUNTRIES_TOOLTIP,
 } from "@/features/calculator/utils/schengenConstants";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { NationalitySelector } from "../NationalitySelector";
 
@@ -296,7 +296,7 @@ export function TravelerColumnHeader({
           {compact ? (
             <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
               <MobileAwareTooltip
-                title={SCHENGEN_COUNTRIES_TOOLTIP}
+                title={<SchengenTooltipContent />}
                 placement="bottom"
                 arrow
                 enterDelay={300}
@@ -308,7 +308,7 @@ export function TravelerColumnHeader({
                       fontWeight: 500,
                       bgcolor: tokens.navy,
                       "& .MuiTooltip-arrow": { color: tokens.navy },
-                      maxWidth: 280,
+                      maxWidth: 320,
                     },
                   },
                 }}
@@ -354,7 +354,7 @@ export function TravelerColumnHeader({
               }}
             >
               <MobileAwareTooltip
-                title={SCHENGEN_COUNTRIES_TOOLTIP}
+                title={<SchengenTooltipContent />}
                 placement="bottom"
                 arrow
                 enterDelay={300}
@@ -366,7 +366,7 @@ export function TravelerColumnHeader({
                       fontWeight: 500,
                       bgcolor: tokens.navy,
                       "& .MuiTooltip-arrow": { color: tokens.navy },
-                      maxWidth: 280,
+                      maxWidth: 320,
                     },
                   },
                 }}

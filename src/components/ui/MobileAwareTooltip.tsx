@@ -70,9 +70,15 @@ export function MobileAwareTooltip({
 
   return (
     // The ClickAwayListener's bound element is the outer <span>. Any tap
-    // outside this element (including taps on the portal-rendered tooltip
-    // popup) fires onClickAway and closes the tooltip.
-    <ClickAwayListener onClickAway={() => setOpen(false)}>
+    // outside this element fires onClickAway — but we exclude taps inside the
+    // tooltip Popper (rendered in a portal) so interactive tooltip content
+    // (e.g. buttons) can be used without closing the tooltip.
+    <ClickAwayListener
+      onClickAway={(e) => {
+        if ((e.target as Element)?.closest?.(".MuiTooltip-popper")) return;
+        setOpen(false);
+      }}
+    >
       <span style={{ display: "inline-flex", pointerEvents: "auto" }}>
         <Tooltip
           title={mobileTitle}

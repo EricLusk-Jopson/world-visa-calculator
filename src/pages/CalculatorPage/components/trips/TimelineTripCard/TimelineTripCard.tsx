@@ -6,7 +6,7 @@ import { tokens } from "@/styles/theme";
 import type { Trip, PassportRule } from "@/types";
 import { VisaRegion } from "@/types";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
-import { SCHENGEN_COUNTRIES_TOOLTIP } from "@/features/calculator/utils/schengenConstants";
+import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 import { parseDate } from "@/features/calculator/utils/dates";
 import { format } from "date-fns";
 import {
@@ -40,7 +40,7 @@ function TripBadge({
   color: string;
   bg: string;
   borderStyle?: "solid" | "dashed";
-  tooltip?: string;
+  tooltip?: React.ReactNode;
 }) {
   const badge = (
     <Box
@@ -88,7 +88,7 @@ function TripBadge({
             fontWeight: 500,
             bgcolor: tokens.navy,
             "& .MuiTooltip-arrow": { color: tokens.navy },
-            maxWidth: 280,
+            maxWidth: 320,
           },
         },
       }}
@@ -400,7 +400,7 @@ export function TimelineTripCard({
                 <TripBadge
                   color={regionColor}
                   bg={regionBg}
-                  tooltip={isSchengen ? SCHENGEN_COUNTRIES_TOOLTIP : undefined}
+                  tooltip={isSchengen ? <SchengenTooltipContent /> : undefined}
                 >
                   {regionLabel}
                 </TripBadge>

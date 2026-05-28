@@ -8,7 +8,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
-import { SCHENGEN_COUNTRIES_TOOLTIP } from "@/features/calculator/utils/schengenConstants";
+import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 
 // ─── Option types ─────────────────────────────────────────────────────────────
 
@@ -304,7 +304,7 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
             </Box>
             {isSchengenRegion && (
               <MobileAwareTooltip
-                title={SCHENGEN_COUNTRIES_TOOLTIP}
+                title={<SchengenTooltipContent />}
                 placement="right"
                 arrow
                 enterDelay={200}
@@ -316,7 +316,7 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
                       fontWeight: 500,
                       bgcolor: tokens.navy,
                       "& .MuiTooltip-arrow": { color: tokens.navy },
-                      maxWidth: 300,
+                      maxWidth: 320,
                     },
                   },
                 }}

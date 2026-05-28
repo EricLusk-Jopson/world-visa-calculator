@@ -5,7 +5,7 @@ import { tokens } from "@/styles/theme";
 import type { Trip, PassportRule } from "@/types";
 import { VisaRegion } from "@/types";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
-import { SCHENGEN_COUNTRIES_TOOLTIP } from "@/features/calculator/utils/schengenConstants";
+import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 import { parseDate } from "@/features/calculator/utils/dates";
 import { format } from "date-fns";
 import {
@@ -40,7 +40,7 @@ function Chip({
   color: string;
   bg: string;
   borderStyle?: "solid" | "dashed";
-  tooltip?: string;
+  tooltip?: React.ReactNode;
 }) {
   const chip = (
     <Box
@@ -87,7 +87,7 @@ function Chip({
             fontWeight: 500,
             bgcolor: tokens.navy,
             "& .MuiTooltip-arrow": { color: tokens.navy },
-            maxWidth: 280,
+            maxWidth: 320,
           },
         },
       }}
@@ -282,7 +282,7 @@ export function TripListCard({
           <Chip
             color={regionColor}
             bg={regionBg}
-            tooltip={isSchengen && !isOverstay ? SCHENGEN_COUNTRIES_TOOLTIP : undefined}
+            tooltip={isSchengen && !isOverstay ? <SchengenTooltipContent /> : undefined}
           >
             {isOverstay ? "⚠ Overstay" : regionLabel}
           </Chip>
