@@ -25,8 +25,8 @@
  *     Phase 4 — 02 Apr 2025: EU/EEA countries + Monaco, San Marino, Vatican,
  *                             Switzerland, Liechtenstein, Andorra
  *   An ETA is NOT a visa — it is a pre-travel electronic clearance linked to
- *   the passport. It costs £10 and is valid for 2 years or until passport
- *   expiry. Nationals who already require a visa are unaffected.
+ *   the passport. It is valid for 2 years or until passport expiry.
+ *   Nationals who already require a visa are unaffected.
  *   Irish citizens are permanently exempt (CTA).
  *
  *   Source (ETA): https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta
@@ -94,8 +94,7 @@ const CTA_SOURCE: SourceDoc = {
 
 const ETA_NOTE =
   'An Electronic Travel Authorisation (ETA) is required before travelling. ' +
-  'The ETA costs £10, is linked to your passport, and is valid for 2 years ' +
-  'or until the passport expires. Apply at: https://www.gov.uk/apply-electronic-travel-authorisation';
+  'The ETA is linked to your passport and is valid for 2 years or until the passport expires.';
 
 const DATV_NOTE =
   'A Direct Airside Transit Visa (DATV) is required to transit through a UK ' +
@@ -272,7 +271,7 @@ export const UNITED_KINGDOM: RegionDefinition = {
       notes: [{
         text:
           'Taiwan passport holders whose passport includes a national identity ' +
-          'card number are eligible to apply for an ETA (£10) rather than a ' +
+          'card number are eligible to apply for an ETA rather than a ' +
           'Standard Visitor Visa. Check the UKVI ETA guidance to confirm eligibility.',
         source: ETA_LIST_SOURCE,
       }],
