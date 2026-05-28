@@ -204,14 +204,10 @@ function assignLanes(
   timelineStart: Date,
   todayStr: string,
 ): PositionedTrip[] {
-  const flat = buildPositionedTrips(
-    travelers,
-    hiddenIds,
-    timelineStart,
-    todayStr,
-  );
+  const flat = buildPositionedTrips(travelers, hiddenIds, timelineStart, todayStr);
   flat.sort((a, b) => a.top - b.top || b.height - a.height);
 
+  // Step 1: greedy lane assignment — first free lane wins.
   const laneBottoms: number[] = [];
   const lanes = flat.map((item) => {
     let lane = laneBottoms.findIndex((bottom) => bottom + LANE_GAP <= item.top);
@@ -220,16 +216,84 @@ function assignLanes(
     return lane;
   });
 
-  return flat.map((item, i) => {
-    const overlapMaxLane = flat.reduce((max, other, j) => {
-      if (i === j) return max;
-      const overlaps =
-        other.top < item.top + item.height &&
-        other.top + other.height > item.top;
-      return overlaps ? Math.max(max, lanes[j]) : max;
-    }, lanes[i]);
-    return { ...item, lane: lanes[i], laneCount: overlapMaxLane + 1 };
-  });
+  // Step 2: find connected components of overlapping trips so we can permute
+  // lanes within each component by traveler priority. Trips that never overlap
+  // with any other trip form singleton components and are unaffected.
+  const component = new Int32Array(flat.length).fill(-1);
+  let numComponents = 0;
+  for (let i = 0; i < flat.length; i++) {
+    if (component[i] !== -1) continue;
+    const id = numComponents++;
+    const queue = [i];
+    while (queue.length > 0) {
+      const idx = queue.shift()!;
+      if (component[idx] !== -1) continue;
+      component[idx] = id;
+      for (let j = 0; j < flat.length; j++) {
+        if (component[j] !== -1) continue;
+        const a = flat[idx], b = flat[j];
+        if (a.top < b.top + b.height && a.top + a.height > b.top) {
+          queue.push(j);
+        }
+      }
+    }
+  }
+
+  // Step 3: within each component, permute lane indices so that lanes whose
+  // trips skew toward earlier travelers receive lower (leftward) indices, and
+  // lanes whose trips skew toward later travelers receive higher (rightward)
+  // indices.  Any permutation of indices within a component is always valid
+  // because the greedy step already guarantees no two overlapping trips share
+  // a lane — renaming indices preserves that invariant.
+  const tripMinTravelerIdx = (item: Omit<PositionedTrip, "lane" | "laneCount">): number =>
+    Math.min(...item.entries.map((e) => e.travelerIndex));
+
+  for (let c = 0; c < numComponents; c++) {
+    // Collect trips in this component.
+    const indices: number[] = [];
+    for (let i = 0; i < flat.length; i++) {
+      if (component[i] === c) indices.push(i);
+    }
+    if (indices.length < 2) continue; // singleton — nothing to permute
+
+    // For each lane used in this component, find the minimum traveler index
+    // across all trips assigned to that lane.
+    const laneMinPriority = new Map<number, number>();
+    for (const i of indices) {
+      const lane = lanes[i];
+      const prio = tripMinTravelerIdx(flat[i]);
+      const best = laneMinPriority.get(lane);
+      if (best === undefined || prio < best) laneMinPriority.set(lane, prio);
+    }
+
+    // Sort lanes ascending by min-priority so lane 0 is the "earliest traveler"
+    // lane.  Ties preserve the original relative order (stable sort).
+    const sortedLanes = [...laneMinPriority.keys()].sort(
+      (a, b) => laneMinPriority.get(a)! - laneMinPriority.get(b)!,
+    );
+
+    // Build the remap and apply it.
+    const remap = new Map<number, number>(sortedLanes.map((old, rank) => [old, rank]));
+    for (const i of indices) lanes[i] = remap.get(lanes[i])!;
+  }
+
+  // Step 4: compute laneCount as the component-wide max lane + 1.
+  // Using a per-trip local max (overlapping neighbours only) causes collisions
+  // in chain-overlap groups (A↔B↔C where A∩C=∅): A and C see laneCount=2
+  // while B sees laneCount=3, so their % widths don't align and cards overlap.
+  // The component-wide max guarantees every trip in a group uses the same
+  // divisor, at the cost of some empty horizontal space in sparse time windows.
+  const compMaxLane = new Int32Array(numComponents).fill(0);
+  for (let i = 0; i < flat.length; i++) {
+    const c = component[i];
+    if (lanes[i] > compMaxLane[c]) compMaxLane[c] = lanes[i];
+  }
+
+  return flat.map((item, i) => ({
+    ...item,
+    lane: lanes[i],
+    laneCount: compMaxLane[component[i]] + 1,
+  }));
 }
 
 // ─── Marker grouping helpers ──────────────────────────────────────────────────
