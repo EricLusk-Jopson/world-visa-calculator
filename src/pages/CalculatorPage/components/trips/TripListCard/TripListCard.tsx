@@ -1,8 +1,11 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import type { Trip, PassportRule } from "@/types";
 import { VisaRegion } from "@/types";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 import { parseDate } from "@/features/calculator/utils/dates";
 import { format } from "date-fns";
 import {
@@ -31,13 +34,15 @@ function Chip({
   color,
   bg,
   borderStyle = "solid",
+  tooltip,
 }: {
   children: React.ReactNode;
   color: string;
   bg: string;
   borderStyle?: "solid" | "dashed";
+  tooltip?: React.ReactNode;
 }) {
-  return (
+  const chip = (
     <Box
       component="span"
       sx={{
@@ -56,10 +61,39 @@ function Chip({
         border: `1px solid ${color}22`,
         borderStyle,
         whiteSpace: "nowrap" as const,
+        gap: "3px",
       }}
     >
       {children}
+      {tooltip && (
+        <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6, flexShrink: 0 }} />
+      )}
     </Box>
+  );
+
+  if (!tooltip) return chip;
+
+  return (
+    <MobileAwareTooltip
+      title={tooltip}
+      placement="bottom"
+      arrow
+      enterDelay={300}
+      componentsProps={{
+        tooltip: {
+          sx: {
+            fontFamily: tokens.fontBody,
+            fontSize: "0.72rem",
+            fontWeight: 500,
+            bgcolor: tokens.navy,
+            "& .MuiTooltip-arrow": { color: tokens.navy },
+            maxWidth: 320,
+          },
+        },
+      }}
+    >
+      <span>{chip}</span>
+    </MobileAwareTooltip>
   );
 }
 
@@ -245,7 +279,11 @@ export function TripListCard({
           </Chip>
 
           {/* Region / overstay label */}
-          <Chip color={regionColor} bg={regionBg}>
+          <Chip
+            color={regionColor}
+            bg={regionBg}
+            tooltip={isSchengen && !isOverstay ? <SchengenTooltipContent /> : undefined}
+          >
             {isOverstay ? "⚠ Overstay" : regionLabel}
           </Chip>
 
