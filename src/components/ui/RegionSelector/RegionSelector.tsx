@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
@@ -173,6 +174,7 @@ interface RegionSelectorProps {
 export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps) {
   const selectedOption =
     REGION_OPTIONS.find((o) => o.region === value) ?? REGION_OPTIONS[1];
+  const isTouchDevice = useMediaQuery("(hover: none)");
 
   return (
     <Autocomplete<SelectorOption, false, true>
@@ -302,7 +304,7 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
                 option.label
               )}
             </Box>
-            {isSchengenRegion && (
+            {isSchengenRegion && !isTouchDevice && (
               <MobileAwareTooltip
                 title={<SchengenTooltipContent />}
                 placement="right"

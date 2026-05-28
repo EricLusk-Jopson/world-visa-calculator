@@ -383,6 +383,7 @@ export function TimelineTripCard({
               alignItems: "flex-start",
               gap: "4px",
               flexWrap: "wrap",
+              overflow: "hidden",
               mt: "2px",
             }}
           >
