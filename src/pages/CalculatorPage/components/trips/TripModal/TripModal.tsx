@@ -20,6 +20,7 @@ import { VisaRegion } from "@/types";
 import type { Trip, Traveler, PassportRule, PassportNote } from "@/types";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { getUKRule } from "@/data/regions/uk";
+import { getIrelandRule } from "@/data/regions/ireland";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
@@ -838,6 +839,93 @@ export function TripModal({
             </Box>
           )}
 
+          {/* 2d · Nationality entry notice — Ireland only */}
+          {region === VisaRegion.Ireland && travelerIds.length > 0 && (
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+              {travelerIds.map((tid) => {
+                const t = travelers.find((x) => x.id === tid);
+                if (!t) return null;
+                const rule: PassportRule = getIrelandRule(t.passportCode);
+                const { label, color } = (() => {
+                  const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
+                  if (!t.passportCode)
+                    return { label: "Set nationality to see entry requirements", color: tokens.textGhost };
+                  if (rule.access === "free_movement")
+                    return { label: `${nat}Free movement, no day limit`, color: tokens.green };
+                  if (rule.access === "visa_free")
+                    return { label: `${nat}Visa-free entry, up to 90 days per permission`, color: tokens.green };
+                  return { label: `${nat}Ireland visa required`, color: tokens.red };
+                })();
+                return (
+                  <Box key={tid} sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                    {/* Status line */}
+                    <Box sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                      <Typography
+                        sx={{
+                          fontFamily: tokens.fontBody,
+                          fontSize: "0.72rem",
+                          fontWeight: 600,
+                          color: tokens.textSoft,
+                          flexShrink: 0,
+                        }}
+                      >
+                        {t.name}:
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontFamily: tokens.fontBody,
+                          fontSize: "0.72rem",
+                          color,
+                          fontWeight: 500,
+                        }}
+                      >
+                        {label}
+                      </Typography>
+                    </Box>
+
+                    {/* Notes (BIVS, SSVWP, transit visa, CTA, etc.) */}
+                    {rule.notes?.map((note, i) => (
+                      <Box
+                        key={i}
+                        sx={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "4px",
+                          pl: "10px",
+                          borderLeft: `2px solid ${color === tokens.green ? tokens.greenBorder : tokens.redBorder}`,
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontFamily: tokens.fontBody,
+                            fontSize: "0.67rem",
+                            color: tokens.textSoft,
+                            lineHeight: 1.5,
+                            flex: 1,
+                          }}
+                        >
+                          {note.text}
+                        </Typography>
+                        <IconButton
+                          size="small"
+                          onClick={(e) => setSourcePopover({ anchor: e.currentTarget, note })}
+                          sx={{
+                            p: "2px",
+                            flexShrink: 0,
+                            color: tokens.textGhost,
+                            "&:hover": { color: tokens.navy, bgcolor: "transparent" },
+                          }}
+                        >
+                          <InfoOutlineIcon sx={{ fontSize: "0.85rem" }} />
+                        </IconButton>
+                      </Box>
+                    ))}
+                  </Box>
+                );
+              })}
+            </Box>
+          )}
+
           {/* Source info popover */}
           <Popover
             open={Boolean(sourcePopover)}
@@ -1006,6 +1094,12 @@ export function TripModal({
               >
                 <OngoingToggle
                   checked={ongoing}
+                  label={
+                    region === VisaRegion.Schengen ? "Currently inside Schengen (no exit yet)" :
+                    region === VisaRegion.UnitedKingdom ? "Currently in the UK (no exit yet)" :
+                    region === VisaRegion.Ireland ? "Currently in Ireland (no exit yet)" :
+                    "Currently travelling (no exit date yet)"
+                  }
                   onChange={(v) => {
                     setOngoing(v);
                     if (v) setExitDate("");

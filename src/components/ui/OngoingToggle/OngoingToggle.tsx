@@ -15,7 +15,7 @@ interface OngoingToggleProps {
 export function OngoingToggle({
   checked,
   onChange,
-  label = "Currently inside Schengen (no exit yet)",
+  label = "Currently travelling (no exit date yet)",
   sx = {},
 }: OngoingToggleProps) {
   return (
