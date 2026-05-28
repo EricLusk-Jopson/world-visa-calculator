@@ -277,17 +277,23 @@ function assignLanes(
     for (const i of indices) lanes[i] = remap.get(lanes[i])!;
   }
 
-  // Step 4: compute per-trip laneCount using the (now permuted) lane assignments.
-  return flat.map((item, i) => {
-    const overlapMaxLane = flat.reduce((max, other, j) => {
-      if (i === j) return max;
-      const overlaps =
-        other.top < item.top + item.height &&
-        other.top + other.height > item.top;
-      return overlaps ? Math.max(max, lanes[j]) : max;
-    }, lanes[i]);
-    return { ...item, lane: lanes[i], laneCount: overlapMaxLane + 1 };
-  });
+  // Step 4: compute laneCount as the component-wide max lane + 1.
+  // Using a per-trip local max (overlapping neighbours only) causes collisions
+  // in chain-overlap groups (A↔B↔C where A∩C=∅): A and C see laneCount=2
+  // while B sees laneCount=3, so their % widths don't align and cards overlap.
+  // The component-wide max guarantees every trip in a group uses the same
+  // divisor, at the cost of some empty horizontal space in sparse time windows.
+  const compMaxLane = new Int32Array(numComponents).fill(0);
+  for (let i = 0; i < flat.length; i++) {
+    const c = component[i];
+    if (lanes[i] > compMaxLane[c]) compMaxLane[c] = lanes[i];
+  }
+
+  return flat.map((item, i) => ({
+    ...item,
+    lane: lanes[i],
+    laneCount: compMaxLane[component[i]] + 1,
+  }));
 }
 
 // ─── Marker grouping helpers ──────────────────────────────────────────────────
