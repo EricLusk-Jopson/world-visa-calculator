@@ -220,6 +220,11 @@ interface NationalitySelectorProps {
   autoFocus?: boolean;
 }
 
+export function getCountryName(code: string | null): string | null {
+  if (!code) return null;
+  return COUNTRIES.find((c) => c.code === code)?.name ?? null;
+}
+
 export function NationalitySelector({
   value,
   onChange,

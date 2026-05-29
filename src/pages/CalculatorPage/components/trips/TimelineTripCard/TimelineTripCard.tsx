@@ -14,6 +14,21 @@ import {
   SHOW_BADGE_THRESHOLD,
 } from "@/features/calculator/utils/timelineLayout";
 import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
+import {
+  CHIP_TOOLTIP_DURATION,
+  CHIP_TOOLTIP_SCHENGEN_AVAIL,
+  CHIP_TOOLTIP_REENTRY_DATE,
+  CHIP_TOOLTIP_NO_REENTRY,
+  CHIP_TOOLTIP_PLANNED,
+  CHIP_TOOLTIP_ONGOING,
+  CHIP_TOOLTIP_OVERSTAY,
+  CHIP_TOOLTIP_UNITED_KINGDOM,
+  CHIP_TOOLTIP_IRELAND,
+  CHIP_TOOLTIP_VISA_REQUIRED,
+  CHIP_TOOLTIP_TRANSIT_VISA,
+  CHIP_TOOLTIP_ETIAS,
+  CHIP_TOOLTIP_SUSPENDED,
+} from "@/features/calculator/utils/chipTooltips";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -48,6 +63,7 @@ function TripBadge({
       sx={{
         display: "inline-flex",
         alignItems: "center",
+        gap: "3px",
         fontFamily: tokens.fontBody,
         fontSize: "0.6rem",
         fontWeight: 700,
@@ -62,7 +78,6 @@ function TripBadge({
         borderStyle,
         whiteSpace: "nowrap",
         flexShrink: 0,
-        gap: "3px",
       }}
     >
       {children}
@@ -125,6 +140,11 @@ interface TimelineTripCardProps {
    */
   isOverstay?: boolean;
   /**
+   * When true the left accent bar is rendered in green — used for the currently
+   * ongoing trip or the next upcoming trip when no trip is ongoing.
+   */
+  isHighlighted?: boolean;
+  /**
    * Resolved Schengen passport rule for the traveler who owns this card.
    * When provided and the trip is Schengen, visa-requirement badges are shown
    * at SHOW_BADGE_THRESHOLD and above.
@@ -159,6 +179,7 @@ export function TimelineTripCard({
   cardWidth,
   baseZIndex,
   isOverstay = false,
+  isHighlighted = false,
   passportRule,
   onEdit,
 }: TimelineTripCardProps) {
@@ -167,6 +188,8 @@ export function TimelineTripCard({
   const isPlanned = isTripPlanned(trip);
   const isOngoing = isTripOngoing(trip);
   const isSchengen = trip.region === VisaRegion.Schengen;
+  const isUK = trip.region === VisaRegion.UnitedKingdom;
+  const isIreland = trip.region === VisaRegion.Ireland;
   const isExpanded = naturalHeight < height;
   const showSchengenChips = isSchengen && !isOngoing;
 
@@ -179,7 +202,7 @@ export function TimelineTripCard({
     ? tokens.red
     : isPlanned
       ? tokens.amber
-      : isSchengen
+      : isHighlighted
         ? tokens.green
         : tokens.border;
 
@@ -202,7 +225,22 @@ export function TimelineTripCard({
     ? "Ongoing"
     : isSchengen
       ? "Schengen"
-      : "Elsewhere";
+      : isUK
+        ? "United Kingdom"
+        : isIreland
+          ? "Ireland"
+          : null; // Elsewhere → no badge
+
+  const regionTooltip: React.ReactNode = isOngoing
+    ? CHIP_TOOLTIP_ONGOING
+    : isSchengen
+      ? <SchengenTooltipContent />
+      : isUK
+        ? CHIP_TOOLTIP_UNITED_KINGDOM
+        : isIreland
+          ? CHIP_TOOLTIP_IRELAND
+          : undefined;
+
   const regionBg = isPlanned
     ? tokens.amberBg
     : isSchengen
@@ -387,25 +425,28 @@ export function TimelineTripCard({
               mt: "2px",
             }}
           >
-            <TripBadge color={tokens.textSoft} bg={tokens.mist}>
+            <TripBadge color={tokens.textSoft} bg={tokens.mist} tooltip={CHIP_TOOLTIP_DURATION}>
               {durationDays}d
             </TripBadge>
 
             {isOverstay ? (
-              <TripBadge color={tokens.redText} bg={tokens.redBg}>
+              <TripBadge color={tokens.redText} bg={tokens.redBg} tooltip={CHIP_TOOLTIP_OVERSTAY}>
                 ⚠ Overstay
               </TripBadge>
             ) : (
               <>
-                <TripBadge
-                  color={regionColor}
-                  bg={regionBg}
-                  tooltip={isSchengen ? <SchengenTooltipContent /> : undefined}
-                >
-                  {regionLabel}
-                </TripBadge>
+                {isPlanned && (
+                  <TripBadge color={regionColor} bg={regionBg} tooltip={CHIP_TOOLTIP_PLANNED}>
+                    Planned
+                  </TripBadge>
+                )}
+                {!isPlanned && regionLabel && (
+                  <TripBadge color={regionColor} bg={regionBg} tooltip={regionTooltip}>
+                    {regionLabel}
+                  </TripBadge>
+                )}
                 {showSchengenChips && maxStayAtExit > 0 && (
-                  <TripBadge color={stayColor} bg={stayBg} borderStyle="dashed">
+                  <TripBadge color={stayColor} bg={stayBg} borderStyle="dashed" tooltip={CHIP_TOOLTIP_SCHENGEN_AVAIL}>
                     +{maxStayAtExit}d
                   </TripBadge>
                 )}
@@ -414,6 +455,7 @@ export function TimelineTripCard({
                     color={tokens.redText}
                     bg={tokens.redBg}
                     borderStyle="dashed"
+                    tooltip={earliestReEntry ? CHIP_TOOLTIP_REENTRY_DATE : CHIP_TOOLTIP_NO_REENTRY}
                   >
                     {earliestReEntry
                       ? `from ${fmtReEntry(earliestReEntry)}`
@@ -424,22 +466,22 @@ export function TimelineTripCard({
                 {isSchengen && passportRule && (
                   <>
                     {passportRule.access === "visa_required" && (
-                      <TripBadge color={tokens.redText} bg={tokens.redBg}>
+                      <TripBadge color={tokens.redText} bg={tokens.redBg} tooltip={CHIP_TOOLTIP_VISA_REQUIRED}>
                         Visa req.
                       </TripBadge>
                     )}
                     {passportRule.requiresATV && (
-                      <TripBadge color={tokens.white} bg={tokens.red}>
+                      <TripBadge color={tokens.white} bg={tokens.red} tooltip={CHIP_TOOLTIP_TRANSIT_VISA}>
                         Transit visa
                       </TripBadge>
                     )}
                     {passportRule.requiresETIAS && (
-                      <TripBadge color={tokens.navy} bg={tokens.mist}>
+                      <TripBadge color={tokens.navy} bg={tokens.mist} tooltip={CHIP_TOOLTIP_ETIAS}>
                         ETIAS 2026
                       </TripBadge>
                     )}
                     {passportRule.access === "suspended" && (
-                      <TripBadge color={tokens.amberText} bg={tokens.amberBg}>
+                      <TripBadge color={tokens.amberText} bg={tokens.amberBg} tooltip={CHIP_TOOLTIP_SUSPENDED}>
                         Suspended
                       </TripBadge>
                     )}
