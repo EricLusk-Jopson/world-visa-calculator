@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import type { Trip, PassportRule } from "@/types";
 import { VisaRegion } from "@/types";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 import { parseDate } from "@/features/calculator/utils/dates";
 import { format } from "date-fns";
 import {
@@ -54,7 +55,7 @@ function TripBadge({
   color: string;
   bg: string;
   borderStyle?: "solid" | "dashed";
-  tooltip?: string;
+  tooltip?: React.ReactNode;
 }) {
   const badge = (
     <Box
@@ -89,11 +90,11 @@ function TripBadge({
   if (!tooltip) return badge;
 
   return (
-    <Tooltip
+    <MobileAwareTooltip
       title={tooltip}
-      placement="top"
+      placement="bottom"
       arrow
-      enterDelay={200}
+      enterDelay={300}
       componentsProps={{
         tooltip: {
           sx: {
@@ -102,13 +103,13 @@ function TripBadge({
             fontWeight: 500,
             bgcolor: tokens.navy,
             "& .MuiTooltip-arrow": { color: tokens.navy },
-            maxWidth: 240,
+            maxWidth: 320,
           },
         },
       }}
     >
-      {badge}
-    </Tooltip>
+      <span>{badge}</span>
+    </MobileAwareTooltip>
   );
 }
 
@@ -229,13 +230,17 @@ export function TimelineTripCard({
         : isIreland
           ? "Ireland"
           : null; // Elsewhere → no badge
-  const regionTooltip = isOngoing
+
+  const regionTooltip: React.ReactNode = isOngoing
     ? CHIP_TOOLTIP_ONGOING
-    : isUK
-      ? CHIP_TOOLTIP_UNITED_KINGDOM
-      : isIreland
-        ? CHIP_TOOLTIP_IRELAND
-        : undefined;
+    : isSchengen
+      ? <SchengenTooltipContent />
+      : isUK
+        ? CHIP_TOOLTIP_UNITED_KINGDOM
+        : isIreland
+          ? CHIP_TOOLTIP_IRELAND
+          : undefined;
+
   const regionBg = isPlanned
     ? tokens.amberBg
     : isSchengen
