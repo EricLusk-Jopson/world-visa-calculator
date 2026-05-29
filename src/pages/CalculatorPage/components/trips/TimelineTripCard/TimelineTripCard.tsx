@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import {
   SHOW_DATE_THRESHOLD,
   SHOW_BADGE_THRESHOLD,
+  SHOW_BADGE_ROW_2_THRESHOLD,
 } from "@/features/calculator/utils/timelineLayout";
 import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
 
@@ -138,6 +139,10 @@ export function TimelineTripCard({
   // Display flags — derived from height, not a layout mode enum.
   const showDateRange = height >= SHOW_DATE_THRESHOLD;
   const showBadges = height >= SHOW_BADGE_THRESHOLD;
+  // Only allow chips to wrap to a second row when the card is tall enough to
+  // house the additional row. Below this threshold chips stay on one line and
+  // horizontal overflow is clipped by the container's overflow:hidden.
+  const allowBadgeWrap = height >= SHOW_BADGE_ROW_2_THRESHOLD;
 
   // Overstay overrides accent and background colours.
   const accentColor = isOverstay
@@ -345,9 +350,9 @@ export function TimelineTripCard({
           <Box
             sx={{
               display: "flex",
-              alignItems: "flex-start",
+              alignItems: allowBadgeWrap ? "flex-start" : "center",
               gap: "4px",
-              flexWrap: "wrap",
+              flexWrap: allowBadgeWrap ? "wrap" : "nowrap",
               overflow: "hidden",
               mt: "2px",
             }}

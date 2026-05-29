@@ -37,6 +37,13 @@ export const CARD_MIN_HEIGHT = 28;
 
 export const SHOW_DATE_THRESHOLD = 42;
 export const SHOW_BADGE_THRESHOLD = 58;
+/**
+ * Minimum card height before badge chips are allowed to wrap to a second row.
+ * Below this threshold chips stay on one line (clipped horizontally by overflow:hidden).
+ * Derived from the approximate height of all content above the badge row (~42px)
+ * plus two chip rows with gap (18 + 4 + 18 = 40px) plus a small bottom buffer.
+ */
+export const SHOW_BADGE_ROW_2_THRESHOLD = 84;
 
 // ─── Lane layout ──────────────────────────────────────────────────────────────
 
