@@ -328,6 +328,14 @@ export function TravelerTimelineColumn({
     a.entryDate < b.entryDate ? -1 : 1,
   );
 
+  const todayStr = formatDate(today);
+  const highlightedTripId = (() => {
+    const ongoing = sortedTrips.find((t) => !t.exitDate && t.entryDate <= todayStr);
+    if (ongoing) return ongoing.id;
+    const upcoming = sortedTrips.find((t) => t.entryDate > todayStr);
+    return upcoming?.id ?? null;
+  })();
+
   const geometries = new Map(
     sortedTrips.map((trip) => [trip.id, getTripGeometry(trip, timelineStart)]),
   );
@@ -571,6 +579,7 @@ export function TravelerTimelineColumn({
             cardWidth={cardWidth}
             baseZIndex={BASE_Z + rank}
             isOverstay={overstayTripIds.has(trip.id)}
+            isHighlighted={trip.id === highlightedTripId}
             passportRule={getSchengenRule(traveler.passportCode)}
             onEdit={() => onEditTrip(traveler.id, trip)}
           />

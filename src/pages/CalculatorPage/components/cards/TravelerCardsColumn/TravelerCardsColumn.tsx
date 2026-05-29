@@ -98,6 +98,14 @@ export function TravelerCardsColumn({
   // Overstay detection — computed once for the column, passed per card.
   const overstayTripIds = computeOverstayTripIds(traveler);
 
+  // Highlighted trip: ongoing trip, or if none, the next upcoming trip.
+  const highlightedTripId = (() => {
+    const ongoing = sortedTrips.find((t) => !t.exitDate && t.entryDate <= todayStr);
+    if (ongoing) return ongoing.id;
+    const upcoming = sortedTrips.find((t) => t.entryDate > todayStr);
+    return upcoming?.id ?? null;
+  })();
+
   return (
     <Box
       sx={{
@@ -220,6 +228,7 @@ export function TravelerCardsColumn({
                 maxStayAtExit={maxStayAtExit}
                 earliestReEntry={earliestReEntry}
                 isOverstay={overstayTripIds.has(trip.id)}
+                isHighlighted={trip.id === highlightedTripId}
                 passportRule={getSchengenRule(traveler.passportCode)}
                 onEdit={() => onEditTrip(traveler.id, trip)}
               />

@@ -15,6 +15,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import EditIcon from "@mui/icons-material/Edit";
 import { tokens } from "@/styles/theme";
 import { type Traveler, VisaRegion } from "@/types";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
@@ -32,7 +33,7 @@ import {
   AVAILABLE_DAYS_DESCRIPTION,
   MAX_STAY_DESCRIPTION,
 } from "@/features/calculator/utils/schengenConstants";
-import { NationalitySelector } from "../../travelers/NationalitySelector";
+import { NationalitySelector, getCountryName } from "../../travelers/NationalitySelector";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -318,7 +319,7 @@ export function TravelerFilterBar({
                     gap: "8px",
                     px: "14px",
                     pt: "10px",
-                    pb: "6px",
+                    pb: traveler.passportCode ? "2px" : "6px",
                   }}
                 >
                   {/* Colour dot */}
@@ -362,6 +363,23 @@ export function TravelerFilterBar({
                     {traveler.name}
                   </Typography>
 
+                  {/* Direct edit button */}
+                  <Box
+                    component="button"
+                    onClick={() => openEdit(traveler)}
+                    aria-label={`Edit ${traveler.name}`}
+                    sx={{
+                      ...ICON_BTN_SX,
+                      color: tokens.textGhost,
+                      "&:active": {
+                        bgcolor: alpha(tokens.navy, 0.06),
+                        color: tokens.navy,
+                      },
+                    }}
+                  >
+                    <EditIcon sx={{ fontSize: "0.95rem" }} />
+                  </Box>
+
                   {/* Visibility toggle */}
                   <Box
                     component="button"
@@ -382,7 +400,7 @@ export function TravelerFilterBar({
                     )}
                   </Box>
 
-                  {/* Overflow menu trigger */}
+                  {/* Overflow menu trigger (delete) */}
                   <Box
                     component="button"
                     onClick={(e: React.MouseEvent<HTMLElement>) =>
@@ -404,6 +422,22 @@ export function TravelerFilterBar({
                     ⋮
                   </Box>
                 </Box>
+
+                {/* ── Nationality subtitle ───────────────────────────────── */}
+                {traveler.passportCode && (
+                  <Box sx={{ px: "14px", pb: "6px", pl: "29px" }}>
+                    <Typography
+                      sx={{
+                        fontFamily: tokens.fontBody,
+                        fontSize: "0.65rem",
+                        color: hidden ? tokens.textGhost : tokens.textSoft,
+                        lineHeight: 1,
+                      }}
+                    >
+                      {getCountryName(traveler.passportCode)}
+                    </Typography>
+                  </Box>
+                )}
 
                 {/* ── Avail + max stay badges ────────────────────────────── */}
                 {showCalculator && daysRemaining !== null && (
@@ -546,23 +580,6 @@ export function TravelerFilterBar({
           },
         }}
       >
-        <MenuItem
-          onClick={() => {
-            const t = menuAnchor!.traveler;
-            closeMenu();
-            openEdit(t);
-          }}
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.82rem",
-            color: tokens.text,
-            py: "8px",
-            px: "14px",
-            "&:hover": { bgcolor: tokens.mist },
-          }}
-        >
-          Edit traveler
-        </MenuItem>
         <MenuItem
           onClick={() => {
             const t = menuAnchor!.traveler;

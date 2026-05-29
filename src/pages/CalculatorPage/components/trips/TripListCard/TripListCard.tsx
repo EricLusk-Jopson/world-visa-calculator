@@ -1,5 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import type { Trip, PassportRule } from "@/types";
 import { VisaRegion } from "@/types";
@@ -11,6 +13,21 @@ import {
   tripDurationDays,
   fmtDateRange,
 } from "../tripHelpers";
+import {
+  CHIP_TOOLTIP_DURATION,
+  CHIP_TOOLTIP_SCHENGEN_AVAIL,
+  CHIP_TOOLTIP_REENTRY_DATE,
+  CHIP_TOOLTIP_NO_REENTRY,
+  CHIP_TOOLTIP_PLANNED,
+  CHIP_TOOLTIP_ONGOING,
+  CHIP_TOOLTIP_OVERSTAY,
+  CHIP_TOOLTIP_UNITED_KINGDOM,
+  CHIP_TOOLTIP_IRELAND,
+  CHIP_TOOLTIP_VISA_REQUIRED,
+  CHIP_TOOLTIP_TRANSIT_VISA,
+  CHIP_TOOLTIP_ETIAS,
+  CHIP_TOOLTIP_SUSPENDED,
+} from "@/features/calculator/utils/chipTooltips";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -31,18 +48,21 @@ function Chip({
   color,
   bg,
   borderStyle = "solid",
+  tooltip,
 }: {
   children: React.ReactNode;
   color: string;
   bg: string;
   borderStyle?: "solid" | "dashed";
+  tooltip?: string;
 }) {
-  return (
+  const chip = (
     <Box
       component="span"
       sx={{
         display: "inline-flex",
         alignItems: "center",
+        gap: "3px",
         fontFamily: tokens.fontBody,
         fontSize: "0.6rem",
         fontWeight: 700,
@@ -59,7 +79,35 @@ function Chip({
       }}
     >
       {children}
+      {tooltip && (
+        <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6, flexShrink: 0 }} />
+      )}
     </Box>
+  );
+
+  if (!tooltip) return chip;
+
+  return (
+    <Tooltip
+      title={tooltip}
+      placement="top"
+      arrow
+      enterDelay={200}
+      componentsProps={{
+        tooltip: {
+          sx: {
+            fontFamily: tokens.fontBody,
+            fontSize: "0.72rem",
+            fontWeight: 500,
+            bgcolor: tokens.navy,
+            "& .MuiTooltip-arrow": { color: tokens.navy },
+            maxWidth: 240,
+          },
+        },
+      }}
+    >
+      {chip}
+    </Tooltip>
   );
 }
 
@@ -83,6 +131,11 @@ interface TripListCardProps {
    */
   isOverstay?: boolean;
   /**
+   * When true the top stripe is rendered in green — used for the currently
+   * ongoing trip or the next upcoming trip when no trip is ongoing.
+   */
+  isHighlighted?: boolean;
+  /**
    * Resolved Schengen passport rule for the traveler who owns this card.
    * When provided and the trip is Schengen, visa-requirement chips are shown.
    */
@@ -97,16 +150,19 @@ export function TripListCard({
   maxStayAtExit,
   earliestReEntry,
   isOverstay = false,
+  isHighlighted = false,
   passportRule,
   onEdit,
 }: TripListCardProps) {
   const isPlanned = isTripPlanned(trip);
   const isOngoing = isTripOngoing(trip);
   const isSchengen = trip.region === VisaRegion.Schengen;
+  const isUK = trip.region === VisaRegion.UnitedKingdom;
+  const isIreland = trip.region === VisaRegion.Ireland;
   const dur = tripDurationDays(trip.entryDate, trip.exitDate);
   const showSchengenChips = isSchengen && !isOngoing;
 
-  // Overstay overrides colour scheme
+  // Region label — no "Elsewhere" chip; UK/Ireland get their real name
   const regionLabel = isOverstay
     ? "Overstay"
     : isPlanned
@@ -115,7 +171,23 @@ export function TripListCard({
         ? "Ongoing"
         : isSchengen
           ? "Schengen"
-          : "Elsewhere";
+          : isUK
+            ? "United Kingdom"
+            : isIreland
+              ? "Ireland"
+              : null; // Elsewhere → no chip
+
+  const regionTooltip = isOverstay
+    ? CHIP_TOOLTIP_OVERSTAY
+    : isPlanned
+      ? CHIP_TOOLTIP_PLANNED
+      : isOngoing
+        ? CHIP_TOOLTIP_ONGOING
+        : isUK
+          ? CHIP_TOOLTIP_UNITED_KINGDOM
+          : isIreland
+            ? CHIP_TOOLTIP_IRELAND
+            : undefined;
 
   const regionBg = isOverstay
     ? tokens.redBg
@@ -137,7 +209,7 @@ export function TripListCard({
     ? tokens.red
     : isPlanned
       ? tokens.amber
-      : isSchengen
+      : isHighlighted
         ? tokens.green
         : tokens.border;
 
@@ -239,25 +311,32 @@ export function TripListCard({
             flexWrap: "wrap",
           }}
         >
-          {/* Duration — solid, neutral */}
-          <Chip color={tokens.textSoft} bg={tokens.mist}>
+          {/* Duration */}
+          <Chip color={tokens.textSoft} bg={tokens.mist} tooltip={CHIP_TOOLTIP_DURATION}>
             {dur}d
           </Chip>
 
-          {/* Region / overstay label */}
-          <Chip color={regionColor} bg={regionBg}>
-            {isOverstay ? "⚠ Overstay" : regionLabel}
-          </Chip>
+          {/* Region / overstay label — suppressed for plain Elsewhere */}
+          {regionLabel && (
+            <Chip color={regionColor} bg={regionBg} tooltip={regionTooltip}>
+              {isOverstay ? "⚠ Overstay" : regionLabel}
+            </Chip>
+          )}
 
           {/* Schengen availability — dashed, status-coloured. Hidden when overstay. */}
           {!isOverstay && showSchengenChips && maxStayAtExit > 0 && (
-            <Chip color={stayColor} bg={stayBg} borderStyle="dashed">
+            <Chip color={stayColor} bg={stayBg} borderStyle="dashed" tooltip={CHIP_TOOLTIP_SCHENGEN_AVAIL}>
               +{maxStayAtExit}d
             </Chip>
           )}
 
           {!isOverstay && showSchengenChips && maxStayAtExit === 0 && (
-            <Chip color={tokens.redText} bg={tokens.redBg} borderStyle="dashed">
+            <Chip
+              color={tokens.redText}
+              bg={tokens.redBg}
+              borderStyle="dashed"
+              tooltip={earliestReEntry ? CHIP_TOOLTIP_REENTRY_DATE : CHIP_TOOLTIP_NO_REENTRY}
+            >
               {earliestReEntry
                 ? `from ${fmtReEntry(earliestReEntry)}`
                 : "no re-entry"}
@@ -268,22 +347,22 @@ export function TripListCard({
           {isSchengen && !isOverstay && passportRule && (
             <>
               {passportRule.access === "visa_required" && (
-                <Chip color={tokens.redText} bg={tokens.redBg}>
+                <Chip color={tokens.redText} bg={tokens.redBg} tooltip={CHIP_TOOLTIP_VISA_REQUIRED}>
                   Visa required
                 </Chip>
               )}
               {passportRule.requiresATV && (
-                <Chip color={tokens.white} bg={tokens.red}>
+                <Chip color={tokens.white} bg={tokens.red} tooltip={CHIP_TOOLTIP_TRANSIT_VISA}>
                   Transit visa
                 </Chip>
               )}
               {passportRule.requiresETIAS && (
-                <Chip color={tokens.navy} bg={tokens.mist}>
+                <Chip color={tokens.navy} bg={tokens.mist} tooltip={CHIP_TOOLTIP_ETIAS}>
                   ETIAS 2026
                 </Chip>
               )}
               {passportRule.access === "suspended" && (
-                <Chip color={tokens.amberText} bg={tokens.amberBg}>
+                <Chip color={tokens.amberText} bg={tokens.amberBg} tooltip={CHIP_TOOLTIP_SUSPENDED}>
                   Suspended
                 </Chip>
               )}
