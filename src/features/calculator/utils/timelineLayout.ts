@@ -37,13 +37,27 @@ export const CARD_MIN_HEIGHT = 28;
 
 export const SHOW_DATE_THRESHOLD = 42;
 export const SHOW_BADGE_THRESHOLD = 58;
-/**
- * Minimum card height before badge chips are allowed to wrap to a second row.
- * Below this threshold chips stay on one line (clipped horizontally by overflow:hidden).
- * Derived from the approximate height of all content above the badge row (~42px)
- * plus two chip rows with gap (18 + 4 + 18 = 40px) plus a small bottom buffer.
- */
-export const SHOW_BADGE_ROW_2_THRESHOLD = 84;
+
+// ─── Badge-row layout constants ───────────────────────────────────────────────
+//
+// Used by TimelineTripCard to compute how many chip rows fit in the available
+// vertical space. Values are approximations derived from the chip and card
+// typography styles; the measurement effect always verifies horizontal fit
+// against real DOM widths.
+//
+// BADGE_CONTENT_ABOVE  — height of everything above the badge row when badges
+//   are visible: pt(6) + destination(~15) + gap(3) + date-range(~12) + gap(3)
+//   + badge-row mt(2) ≈ 41 px.
+//
+// CHIP_ROW_HEIGHT — approximate rendered height of one badge chip:
+//   font(0.6rem≈9.6px) × lineHeight(1.2) + py(2+2) + border(1+1) ≈ 18 px.
+//
+// CHIP_ROW_GAP — vertical gap between wrapped rows, matches gap:"4px" in the
+//   badge-row container.
+
+export const BADGE_CONTENT_ABOVE = 42;
+export const CHIP_ROW_HEIGHT = 18;
+export const CHIP_ROW_GAP = 4;
 
 // ─── Lane layout ──────────────────────────────────────────────────────────────
 

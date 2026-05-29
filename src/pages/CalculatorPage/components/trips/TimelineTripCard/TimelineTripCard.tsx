@@ -9,7 +9,9 @@ import { format } from "date-fns";
 import {
   SHOW_DATE_THRESHOLD,
   SHOW_BADGE_THRESHOLD,
-  SHOW_BADGE_ROW_2_THRESHOLD,
+  BADGE_CONTENT_ABOVE,
+  CHIP_ROW_HEIGHT,
+  CHIP_ROW_GAP,
 } from "@/features/calculator/utils/timelineLayout";
 import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
 
@@ -141,10 +143,6 @@ export function TimelineTripCard({
   // Display flags — derived from height, not a layout mode enum.
   const showDateRange = height >= SHOW_DATE_THRESHOLD;
   const showBadges = height >= SHOW_BADGE_THRESHOLD;
-  // Only allow chips to wrap to a second row when the card is tall enough to
-  // house the additional row. Below this threshold chips stay on one line and
-  // horizontal overflow is clipped by the container's overflow:hidden.
-  const allowBadgeWrap = height >= SHOW_BADGE_ROW_2_THRESHOLD;
 
   // Overstay overrides accent and background colours.
   const accentColor = isOverstay
@@ -220,25 +218,35 @@ export function TimelineTripCard({
 
   const tooltipText = !showBadges ? tooltipLines.join("\n") : undefined;
 
-  // Hide chips that overflow horizontally in single-row (nowrap) mode.
-  // The reset to "" at the start also clears any stale display:none when
-  // transitioning from nowrap to wrap mode.
+  // Greedy chip-visibility pass: hide any chip that would overflow the badge
+  // row either horizontally (no room on the current row) or vertically (no
+  // room to open a new row). Runs before paint so the user never sees clipped
+  // chips — they simply don't appear.
   useLayoutEffect(() => {
     const container = badgeRowRef.current;
     if (!container) return;
 
     const children = Array.from(container.children) as HTMLElement[];
 
-    // Always start with every chip visible so we measure from a clean slate.
+    // Reset to visible so every measurement pass starts from a clean slate.
     children.forEach((c) => (c.style.display = ""));
 
-    // In wrap mode the flex container handles horizontal distribution; nothing
-    // further to do here (y-overflow handled separately in the next phase).
-    if (!showBadges || allowBadgeWrap) return;
+    if (!showBadges) return;
 
     const containerWidth = container.clientWidth;
-    const gap = 4; // matches gap: "4px" on the badge row container
-    let usedWidth = 0;
+    // How many complete chip rows fit in the vertical space below the badge row's
+    // upper boundary? Each row occupies CHIP_ROW_HEIGHT px; rows are separated
+    // by CHIP_ROW_GAP px (matching gap:"4px" on the container).
+    const availableForBadges = height - BADGE_CONTENT_ABOVE;
+    const maxRows = Math.max(
+      1,
+      Math.floor(
+        (availableForBadges + CHIP_ROW_GAP) / (CHIP_ROW_HEIGHT + CHIP_ROW_GAP),
+      ),
+    );
+
+    let currentRow = 0;
+    let rowUsedWidth = 0;
     let overflow = false;
 
     for (const child of children) {
@@ -246,20 +254,27 @@ export function TimelineTripCard({
         child.style.display = "none";
         continue;
       }
+
+      const chipWidth = child.offsetWidth;
       const needed =
-        usedWidth === 0
-          ? child.offsetWidth
-          : usedWidth + gap + child.offsetWidth;
+        rowUsedWidth === 0 ? chipWidth : rowUsedWidth + CHIP_ROW_GAP + chipWidth;
+
       if (needed <= containerWidth) {
-        usedWidth = needed;
+        // Chip fits on the current row.
+        rowUsedWidth = needed;
+      } else if (currentRow + 1 < maxRows) {
+        // Chip doesn't fit horizontally but a new row is available vertically.
+        currentRow++;
+        rowUsedWidth = chipWidth;
       } else {
+        // No room — hide this chip and every subsequent one.
         overflow = true;
         child.style.display = "none";
       }
     }
   }, [
     showBadges,
-    allowBadgeWrap,
+    height,
     cardWidth,
     durationDays,
     isOverstay,
@@ -404,9 +419,9 @@ export function TimelineTripCard({
             ref={badgeRowRef}
             sx={{
               display: "flex",
-              alignItems: allowBadgeWrap ? "flex-start" : "center",
+              alignItems: "flex-start",
               gap: "4px",
-              flexWrap: allowBadgeWrap ? "wrap" : "nowrap",
+              flexWrap: "wrap",
               overflow: "hidden",
               mt: "2px",
             }}
