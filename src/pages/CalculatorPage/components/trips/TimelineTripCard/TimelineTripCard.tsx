@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import {
   SHOW_DATE_THRESHOLD,
   SHOW_BADGE_THRESHOLD,
+  CARD_PADDING_V,
   BADGE_CONTENT_ABOVE,
   CHIP_ROW_HEIGHT,
   CHIP_ROW_GAP,
@@ -235,9 +236,10 @@ export function TimelineTripCard({
 
     const containerWidth = container.clientWidth;
     // How many complete chip rows fit in the vertical space below the badge row's
-    // upper boundary? Each row occupies CHIP_ROW_HEIGHT px; rows are separated
-    // by CHIP_ROW_GAP px (matching gap:"4px" on the container).
-    const availableForBadges = height - BADGE_CONTENT_ABOVE;
+    // upper boundary? BADGE_CONTENT_ABOVE accounts for top padding + content
+    // above chips; CARD_PADDING_V reserves the mandatory bottom padding so chips
+    // never intrude into that space.
+    const availableForBadges = height - BADGE_CONTENT_ABOVE - CARD_PADDING_V;
     const maxRows = Math.max(
       1,
       Math.floor(
@@ -336,7 +338,8 @@ export function TimelineTripCard({
         sx={{
           pl: "10px",
           pr: "8px",
-          pt: showDateRange ? "6px" : 0,
+          pt: showDateRange ? `${CARD_PADDING_V}px` : 0,
+          pb: showDateRange ? `${CARD_PADDING_V}px` : 0,
           flex: 1,
           display: "flex",
           flexDirection: "column",
