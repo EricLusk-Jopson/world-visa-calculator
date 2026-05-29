@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
@@ -130,6 +130,8 @@ export function TimelineTripCard({
 }: TimelineTripCardProps) {
   const [hovered, setHovered] = useState(false);
 
+  const badgeRowRef = useRef<HTMLDivElement>(null);
+
   const isPlanned = isTripPlanned(trip);
   const isOngoing = isTripOngoing(trip);
   const isSchengen = trip.region === VisaRegion.Schengen;
@@ -217,6 +219,57 @@ export function TimelineTripCard({
   ].filter(Boolean);
 
   const tooltipText = !showBadges ? tooltipLines.join("\n") : undefined;
+
+  // Hide chips that overflow horizontally in single-row (nowrap) mode.
+  // The reset to "" at the start also clears any stale display:none when
+  // transitioning from nowrap to wrap mode.
+  useLayoutEffect(() => {
+    const container = badgeRowRef.current;
+    if (!container) return;
+
+    const children = Array.from(container.children) as HTMLElement[];
+
+    // Always start with every chip visible so we measure from a clean slate.
+    children.forEach((c) => (c.style.display = ""));
+
+    // In wrap mode the flex container handles horizontal distribution; nothing
+    // further to do here (y-overflow handled separately in the next phase).
+    if (!showBadges || allowBadgeWrap) return;
+
+    const containerWidth = container.clientWidth;
+    const gap = 4; // matches gap: "4px" on the badge row container
+    let usedWidth = 0;
+    let overflow = false;
+
+    for (const child of children) {
+      if (overflow) {
+        child.style.display = "none";
+        continue;
+      }
+      const needed =
+        usedWidth === 0
+          ? child.offsetWidth
+          : usedWidth + gap + child.offsetWidth;
+      if (needed <= containerWidth) {
+        usedWidth = needed;
+      } else {
+        overflow = true;
+        child.style.display = "none";
+      }
+    }
+  }, [
+    showBadges,
+    allowBadgeWrap,
+    cardWidth,
+    durationDays,
+    isOverstay,
+    showSchengenChips,
+    maxStayAtExit,
+    earliestReEntry,
+    passportRule?.access,
+    passportRule?.requiresATV,
+    passportRule?.requiresETIAS,
+  ]);
 
   return (
     <Box
@@ -348,6 +401,7 @@ export function TimelineTripCard({
         {/* Badge row — shown at SHOW_BADGE_THRESHOLD */}
         {showBadges && (
           <Box
+            ref={badgeRowRef}
             sx={{
               display: "flex",
               alignItems: allowBadgeWrap ? "flex-start" : "center",
