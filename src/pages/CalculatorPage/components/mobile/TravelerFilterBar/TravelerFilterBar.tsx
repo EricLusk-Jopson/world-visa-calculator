@@ -32,7 +32,7 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import {
   AVAILABLE_DAYS_DESCRIPTION,
   MAX_STAY_DESCRIPTION,
-} from "@/features/calculator/utils/schengenConstants";
+} from "@/features/calculator/utils/schengen";
 import { NationalitySelector, getCountryName } from "../../travelers/NationalitySelector";
 
 // ─── Types ────────────────────────────────────────────────────────────────────

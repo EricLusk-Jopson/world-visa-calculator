@@ -8,9 +8,9 @@ import {
   calculateMaxStay,
   SCHENGEN_MAX_DAYS,
   SCHENGEN_WINDOW_SIZE,
-} from "./schengen";
-import { VisaRegion, type Trip } from "../../../types";
-import { addDays, formatDate, parseDate } from "./dates";
+} from "./calculator";
+import { VisaRegion, type Trip } from "../../../../types";
+import { addDays, formatDate, parseDate } from "../dates";
 
 // ─── Helper ────────────────────────────────────────────────────────────────────
 

@@ -26,20 +26,16 @@ import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
 import { getSchengenRule } from "@/data/regions/schengen";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import {
   type ReturnMarker,
   computeReturnMarkers,
-} from "@/features/calculator/utils/returnmarkers";
-import {
   type AgingMarker,
   computeAgingMarkers,
-} from "@/features/calculator/utils/agingMarkers";
-import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
-import {
   returnMarkerRowText,
   agingMarkerTripLine,
   AGING_MARKER_EXPLANATION,
-} from "@/features/calculator/utils/markerTooltips";
+} from "@/features/calculator/utils/schengen";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

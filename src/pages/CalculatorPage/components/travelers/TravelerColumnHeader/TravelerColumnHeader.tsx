@@ -13,7 +13,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import {
   AVAILABLE_DAYS_DESCRIPTION,
   MAX_STAY_DESCRIPTION,
-} from "@/features/calculator/utils/schengenConstants";
+} from "@/features/calculator/utils/schengen";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 import { getSchengenRule } from "@/data/regions/schengen";

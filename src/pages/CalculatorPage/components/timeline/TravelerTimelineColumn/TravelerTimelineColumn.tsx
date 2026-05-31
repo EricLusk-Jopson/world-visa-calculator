@@ -7,12 +7,6 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 
 import { tokens } from "@/styles/theme";
-import {
-  returnMarkerCurrentText,
-  returnMarkerThresholdText,
-  agingMarkerTripLine,
-  AGING_MARKER_EXPLANATION,
-} from "@/features/calculator/utils/markerTooltips";
 import { TimelineTripCard } from "../../trips/TimelineTripCard";
 import {
   dateToTop,
@@ -33,14 +27,14 @@ import {
 import {
   type ReturnMarker,
   computeReturnMarkers,
-} from "@/features/calculator/utils/returnmarkers";
-import {
   type AgingMarker,
   computeAgingMarkers,
-} from "@/features/calculator/utils/agingMarkers";
-import {
   calculateEarliestEntry,
   calculateMaxStay,
+  returnMarkerCurrentText,
+  returnMarkerThresholdText,
+  agingMarkerTripLine,
+  AGING_MARKER_EXPLANATION,
 } from "@/features/calculator/utils/schengen";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
 import { getSchengenRule } from "@/data/regions/schengen";
