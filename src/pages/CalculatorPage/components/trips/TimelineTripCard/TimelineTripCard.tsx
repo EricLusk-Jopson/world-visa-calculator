@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -12,6 +12,10 @@ import { format } from "date-fns";
 import {
   SHOW_DATE_THRESHOLD,
   SHOW_BADGE_THRESHOLD,
+  CARD_PADDING_V,
+  BADGE_CONTENT_ABOVE,
+  CHIP_ROW_HEIGHT,
+  CHIP_ROW_GAP,
 } from "@/features/calculator/utils/timelineLayout";
 import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
 import {
@@ -185,6 +189,8 @@ export function TimelineTripCard({
 }: TimelineTripCardProps) {
   const [hovered, setHovered] = useState(false);
 
+  const badgeRowRef = useRef<HTMLDivElement>(null);
+
   const isPlanned = isTripPlanned(trip);
   const isOngoing = isTripOngoing(trip);
   const isSchengen = trip.region === VisaRegion.Schengen;
@@ -286,6 +292,75 @@ export function TimelineTripCard({
 
   const tooltipText = !showBadges ? tooltipLines.join("\n") : undefined;
 
+  // Greedy chip-visibility pass: hide any chip that would overflow the badge
+  // row either horizontally (no room on the current row) or vertically (no
+  // room to open a new row). Runs before paint so the user never sees clipped
+  // chips — they simply don't appear.
+  useLayoutEffect(() => {
+    const container = badgeRowRef.current;
+    if (!container) return;
+
+    const children = Array.from(container.children) as HTMLElement[];
+
+    // Reset to visible so every measurement pass starts from a clean slate.
+    children.forEach((c) => (c.style.display = ""));
+
+    if (!showBadges) return;
+
+    const containerWidth = container.clientWidth;
+    // How many complete chip rows fit in the vertical space below the badge row's
+    // upper boundary? BADGE_CONTENT_ABOVE accounts for top padding + content
+    // above chips; CARD_PADDING_V reserves the mandatory bottom padding so chips
+    // never intrude into that space.
+    const availableForBadges = height - BADGE_CONTENT_ABOVE - CARD_PADDING_V;
+    const maxRows = Math.max(
+      1,
+      Math.floor(
+        (availableForBadges + CHIP_ROW_GAP) / (CHIP_ROW_HEIGHT + CHIP_ROW_GAP),
+      ),
+    );
+
+    let currentRow = 0;
+    let rowUsedWidth = 0;
+    let overflow = false;
+
+    for (const child of children) {
+      if (overflow) {
+        child.style.display = "none";
+        continue;
+      }
+
+      const chipWidth = child.offsetWidth;
+      const needed =
+        rowUsedWidth === 0 ? chipWidth : rowUsedWidth + CHIP_ROW_GAP + chipWidth;
+
+      if (needed <= containerWidth) {
+        // Chip fits on the current row.
+        rowUsedWidth = needed;
+      } else if (currentRow + 1 < maxRows) {
+        // Chip doesn't fit horizontally but a new row is available vertically.
+        currentRow++;
+        rowUsedWidth = chipWidth;
+      } else {
+        // No room — hide this chip and every subsequent one.
+        overflow = true;
+        child.style.display = "none";
+      }
+    }
+  }, [
+    showBadges,
+    height,
+    cardWidth,
+    durationDays,
+    isOverstay,
+    showSchengenChips,
+    maxStayAtExit,
+    earliestReEntry,
+    passportRule?.access,
+    passportRule?.requiresATV,
+    passportRule?.requiresETIAS,
+  ]);
+
   return (
     <Box
       title={tooltipText}
@@ -336,7 +411,8 @@ export function TimelineTripCard({
         sx={{
           pl: "10px",
           pr: "8px",
-          pt: showDateRange ? "6px" : 0,
+          pt: showDateRange ? `${CARD_PADDING_V}px` : 0,
+          pb: showDateRange ? `${CARD_PADDING_V}px` : 0,
           flex: 1,
           display: "flex",
           flexDirection: "column",
@@ -416,11 +492,12 @@ export function TimelineTripCard({
         {/* Badge row — shown at SHOW_BADGE_THRESHOLD */}
         {showBadges && (
           <Box
+            ref={badgeRowRef}
             sx={{
               display: "flex",
-              alignItems: "center",
+              alignItems: "flex-start",
               gap: "4px",
-              flexWrap: "nowrap",
+              flexWrap: "wrap",
               overflow: "hidden",
               mt: "2px",
             }}
