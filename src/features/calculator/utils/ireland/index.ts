@@ -10,3 +10,10 @@ export {
   assessIrelandStay,
   detectIrelandReentryRisk,
 } from "./calculator";
+export {
+  CHIP_TOOLTIP_IRELAND_STAY_CAUTION,
+  CHIP_TOOLTIP_IRELAND_STAY_DANGER,
+  CHIP_TOOLTIP_IRELAND_REENTRY_DANGER,
+  CHIP_TOOLTIP_IRELAND_REENTRY_CAUTION,
+  CHIP_TOOLTIP_IRELAND_REENTRY_SAFE,
+} from "./chipTooltips";

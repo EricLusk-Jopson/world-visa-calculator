@@ -64,7 +64,9 @@ export interface UKReentryRisk {
   lastTripExit: string;
   /** Duration of the flagged trip in calendar days. */
   lastTripDays: number;
-  variant: "caution" | "danger";
+  /** Calendar days between the last trip's exit and the proposed entry. */
+  daysSinceExit: number;
+  variant: "danger" | "caution" | "safe";
 }
 
 // ─── Public API ───────────────────────────────────────────────────────────────
@@ -114,6 +116,15 @@ export function assessUKStay(
  * @param ukTrips            Completed UK trips for a single traveler.
  * @param proposedEntryDateStr  The entry date being evaluated in the trip modal.
  */
+// Approximate max-stay used for cooldown thresholds (6 calendar months ≈ 180d).
+const UK_APPROXIMATE_MAX_DAYS = 180;
+
+// Cooldown thresholds expressed as multiples of UK_APPROXIMATE_MAX_DAYS.
+// Stays of UK_CAUTION_DAYS or more trigger the cooldown window.
+const UK_REENTRY_DANGER_DAYS = Math.floor(UK_APPROXIMATE_MAX_DAYS * 0.75); // 135
+const UK_REENTRY_CAUTION_DAYS = Math.floor(UK_APPROXIMATE_MAX_DAYS * 1.5); // 270
+const UK_REENTRY_SAFE_DAYS = Math.floor(UK_APPROXIMATE_MAX_DAYS * 2.0);    // 360
+
 export function detectUKReentryRisk(
   ukTrips: Trip[],
   proposedEntryDateStr: string,
@@ -127,22 +138,24 @@ export function detectUKReentryRisk(
   const last = pastTrips[0];
   const assessment = assessUKStay(last.entryDate, last.exitDate);
 
-  if (assessment.variant === "danger" || assessment.daysRemaining <= 0) {
-    return {
-      lastTripEntry: last.entryDate,
-      lastTripExit: last.exitDate!,
-      lastTripDays: assessment.tripDays,
-      variant: "danger",
-    };
-  }
-  if (assessment.variant === "caution") {
-    return {
-      lastTripEntry: last.entryDate,
-      lastTripExit: last.exitDate!,
-      lastTripDays: assessment.tripDays,
-      variant: "caution",
-    };
-  }
+  if (assessment.tripDays < UK_CAUTION_DAYS) return null;
 
-  return null;
+  const daysSinceExit = differenceInCalendarDays(
+    parseDate(proposedEntryDateStr),
+    parseDate(last.exitDate!),
+  );
+
+  let variant: "danger" | "caution" | "safe";
+  if (daysSinceExit < UK_REENTRY_DANGER_DAYS) variant = "danger";
+  else if (daysSinceExit < UK_REENTRY_CAUTION_DAYS) variant = "caution";
+  else if (daysSinceExit < UK_REENTRY_SAFE_DAYS) variant = "safe";
+  else return null;
+
+  return {
+    lastTripEntry: last.entryDate,
+    lastTripExit: last.exitDate!,
+    lastTripDays: assessment.tripDays,
+    daysSinceExit,
+    variant,
+  };
 }

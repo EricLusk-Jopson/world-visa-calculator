@@ -12,8 +12,7 @@ export const CHIP_TOOLTIP_NO_REENTRY =
 export const CHIP_TOOLTIP_OVERSTAY =
   "This trip exceeds the Schengen 90-in-180-day limit based on your travel history.";
 
-export const CHIP_TOOLTIP_VISA_REQUIRED =
-  "A visa is required to enter the Schengen Area with your current passport.";
+// CHIP_TOOLTIP_VISA_REQUIRED was moved to @/features/calculator/utils/chipTooltips (generic).
 
 export const CHIP_TOOLTIP_TRANSIT_VISA =
   "An Airport Transit Visa (ATV) is required when transiting through Schengen airports with your passport.";

@@ -16,3 +16,6 @@ export const CHIP_TOOLTIP_UNITED_KINGDOM =
 
 export const CHIP_TOOLTIP_IRELAND =
   "Ireland is not in the Schengen Area, but shares the Common Travel Area with the UK.";
+
+export const CHIP_TOOLTIP_VISA_REQUIRED =
+  "A visa is required to enter with your current passport.";

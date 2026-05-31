@@ -58,7 +58,9 @@ export interface IrelandReentryRisk {
   lastTripExit: string;
   /** Duration of the flagged trip in calendar days. */
   lastTripDays: number;
-  variant: "caution" | "danger";
+  /** Calendar days between the last trip's exit and the proposed entry. */
+  daysSinceExit: number;
+  variant: "danger" | "caution" | "safe";
 }
 
 // ─── Public API ───────────────────────────────────────────────────────────────
@@ -105,6 +107,12 @@ export function assessIrelandStay(
  * @param irelandTrips          Completed Ireland trips for a single traveler.
  * @param proposedEntryDateStr  The entry date being evaluated in the trip modal.
  */
+// Cooldown thresholds expressed as multiples of IRELAND_MAX_DAYS (90).
+// Stays of IRELAND_CAUTION_DAYS or more trigger the cooldown window.
+const IRELAND_REENTRY_DANGER_DAYS = Math.floor(IRELAND_MAX_DAYS * 0.75); // 67
+const IRELAND_REENTRY_CAUTION_DAYS = Math.floor(IRELAND_MAX_DAYS * 1.5); // 135
+const IRELAND_REENTRY_SAFE_DAYS = Math.floor(IRELAND_MAX_DAYS * 2.0);    // 180
+
 export function detectIrelandReentryRisk(
   irelandTrips: Trip[],
   proposedEntryDateStr: string,
@@ -118,22 +126,24 @@ export function detectIrelandReentryRisk(
   const last = pastTrips[0];
   const assessment = assessIrelandStay(last.entryDate, last.exitDate);
 
-  if (assessment.variant === "danger" || assessment.tripDays >= IRELAND_MAX_DAYS) {
-    return {
-      lastTripEntry: last.entryDate,
-      lastTripExit: last.exitDate!,
-      lastTripDays: assessment.tripDays,
-      variant: "danger",
-    };
-  }
-  if (assessment.variant === "caution") {
-    return {
-      lastTripEntry: last.entryDate,
-      lastTripExit: last.exitDate!,
-      lastTripDays: assessment.tripDays,
-      variant: "caution",
-    };
-  }
+  if (assessment.tripDays < IRELAND_CAUTION_DAYS) return null;
 
-  return null;
+  const daysSinceExit = differenceInCalendarDays(
+    parseDate(proposedEntryDateStr),
+    parseDate(last.exitDate!),
+  );
+
+  let variant: "danger" | "caution" | "safe";
+  if (daysSinceExit < IRELAND_REENTRY_DANGER_DAYS) variant = "danger";
+  else if (daysSinceExit < IRELAND_REENTRY_CAUTION_DAYS) variant = "caution";
+  else if (daysSinceExit < IRELAND_REENTRY_SAFE_DAYS) variant = "safe";
+  else return null;
+
+  return {
+    lastTripEntry: last.entryDate,
+    lastTripExit: last.exitDate!,
+    lastTripDays: assessment.tripDays,
+    daysSinceExit,
+    variant,
+  };
 }

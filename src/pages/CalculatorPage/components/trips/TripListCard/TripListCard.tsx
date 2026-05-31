@@ -20,17 +20,50 @@ import {
   CHIP_TOOLTIP_ONGOING,
   CHIP_TOOLTIP_UNITED_KINGDOM,
   CHIP_TOOLTIP_IRELAND,
+  CHIP_TOOLTIP_VISA_REQUIRED,
 } from "@/features/calculator/utils/chipTooltips";
 import {
   CHIP_TOOLTIP_SCHENGEN_AVAIL,
   CHIP_TOOLTIP_REENTRY_DATE,
   CHIP_TOOLTIP_NO_REENTRY,
   CHIP_TOOLTIP_OVERSTAY,
-  CHIP_TOOLTIP_VISA_REQUIRED,
   CHIP_TOOLTIP_TRANSIT_VISA,
   CHIP_TOOLTIP_ETIAS,
   CHIP_TOOLTIP_SUSPENDED,
 } from "@/features/calculator/utils/schengen";
+import {
+  CHIP_TOOLTIP_UK_ETA,
+  CHIP_TOOLTIP_UK_DATV,
+  CHIP_TOOLTIP_UK_STAY_CAUTION,
+  CHIP_TOOLTIP_UK_STAY_DANGER,
+  CHIP_TOOLTIP_UK_REENTRY_DANGER,
+  CHIP_TOOLTIP_UK_REENTRY_CAUTION,
+  CHIP_TOOLTIP_UK_REENTRY_SAFE,
+} from "@/features/calculator/utils/uk";
+import {
+  CHIP_TOOLTIP_IRELAND_STAY_CAUTION,
+  CHIP_TOOLTIP_IRELAND_STAY_DANGER,
+  CHIP_TOOLTIP_IRELAND_REENTRY_DANGER,
+  CHIP_TOOLTIP_IRELAND_REENTRY_CAUTION,
+  CHIP_TOOLTIP_IRELAND_REENTRY_SAFE,
+} from "@/features/calculator/utils/ireland";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface ChipDef {
+  rank: number;
+  label: string;
+  color: string;
+  bg: string;
+  borderStyle?: "solid" | "dashed";
+  tooltip?: React.ReactNode;
+}
+
+interface PerVisitStayInfo {
+  stayVariant: "safe" | "caution" | "danger";
+  daysRemaining: number;
+  reentryVariant?: "danger" | "caution" | "safe";
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -119,12 +152,12 @@ function Chip({
 interface TripListCardProps {
   trip: Trip;
   /**
-   * Max stay available starting the day after this trip exits.
+   * Max stay available starting the day after this trip exits (Schengen).
    * 0 means re-entry is not possible immediately after exit.
    */
   maxStayAtExit: number;
   /**
-   * Earliest date re-entry becomes possible, when maxStayAtExit === 0.
+   * Earliest Schengen re-entry date when maxStayAtExit === 0.
    * Null if no re-entry is possible within the search horizon.
    */
   earliestReEntry: string | null;
@@ -138,11 +171,16 @@ interface TripListCardProps {
    * ongoing trip or the next upcoming trip when no trip is ongoing.
    */
   isHighlighted?: boolean;
-  /**
-   * Resolved Schengen passport rule for the traveler who owns this card.
-   * When provided and the trip is Schengen, visa-requirement chips are shown.
-   */
+  /** Resolved Schengen passport rule for visa chips on Schengen trips. */
   passportRule?: PassportRule;
+  /** Resolved UK passport rule for visa/ETA/DATV chips on UK trips. */
+  ukPassportRule?: PassportRule;
+  /** Resolved Ireland passport rule for visa chips on Ireland trips. */
+  irelandPassportRule?: PassportRule;
+  /** Stay assessment for UK per-visit trips. */
+  ukStayInfo?: PerVisitStayInfo;
+  /** Stay assessment for Ireland per-visit trips. */
+  irelandStayInfo?: PerVisitStayInfo;
   onEdit: () => void;
 }
 
@@ -155,6 +193,10 @@ export function TripListCard({
   isOverstay = false,
   isHighlighted = false,
   passportRule,
+  ukPassportRule,
+  irelandPassportRule,
+  ukStayInfo,
+  irelandStayInfo,
   onEdit,
 }: TripListCardProps) {
   const isPlanned = isTripPlanned(trip);
@@ -164,51 +206,6 @@ export function TripListCard({
   const isIreland = trip.region === VisaRegion.Ireland;
   const dur = tripDurationDays(trip.entryDate, trip.exitDate);
   const showSchengenChips = isSchengen && !isOngoing;
-
-  // Region label — no "Elsewhere" chip; UK/Ireland get their real name
-  const regionLabel = isOverstay
-    ? "Overstay"
-    : isPlanned
-      ? "Planned"
-      : isOngoing
-        ? "Ongoing"
-        : isSchengen
-          ? "Schengen"
-          : isUK
-            ? "United Kingdom"
-            : isIreland
-              ? "Ireland"
-              : null; // Elsewhere → no chip
-
-  const regionTooltip: React.ReactNode = isOverstay
-    ? CHIP_TOOLTIP_OVERSTAY
-    : isPlanned
-      ? CHIP_TOOLTIP_PLANNED
-      : isOngoing
-        ? CHIP_TOOLTIP_ONGOING
-        : isSchengen
-          ? <SchengenTooltipContent />
-          : isUK
-            ? CHIP_TOOLTIP_UNITED_KINGDOM
-            : isIreland
-              ? CHIP_TOOLTIP_IRELAND
-              : undefined;
-
-  const regionBg = isOverstay
-    ? tokens.redBg
-    : isPlanned
-      ? tokens.amberBg
-      : isSchengen
-        ? tokens.greenBg
-        : tokens.mist;
-
-  const regionColor = isOverstay
-    ? tokens.redText
-    : isPlanned
-      ? tokens.amberText
-      : isSchengen
-        ? tokens.greenText
-        : tokens.textSoft;
 
   const stripeColor = isOverstay
     ? tokens.red
@@ -232,20 +229,163 @@ export function TripListCard({
 
   const destinationColor = isOverstay ? tokens.red : tokens.navy;
 
-  // Max stay chip colours
-  const stayVariant = variantFromMaxStay(maxStayAtExit);
-  const stayBg =
-    stayVariant === "safe"
-      ? tokens.greenBg
-      : stayVariant === "caution"
-        ? tokens.amberBg
-        : tokens.redBg;
-  const stayColor =
-    stayVariant === "safe"
-      ? tokens.greenText
-      : stayVariant === "caution"
-        ? tokens.amberText
-        : tokens.redText;
+  // ── Ranked chip list ────────────────────────────────────────────────────────
+
+  const chips: ChipDef[] = [];
+
+  // ── Duration chip (rank 500) ─────────────────────────────────────────────
+  chips.push({
+    rank: 500,
+    label: `${dur}d`,
+    color: tokens.textSoft,
+    bg: tokens.mist,
+    tooltip: CHIP_TOOLTIP_DURATION,
+  });
+
+  if (isOverstay) {
+    // Overstay overrides the region chip and most status chips (rank 200)
+    chips.push({
+      rank: 200,
+      label: "⚠ Overstay",
+      color: tokens.redText,
+      bg: tokens.redBg,
+      tooltip: CHIP_TOOLTIP_OVERSTAY,
+    });
+  } else {
+    // ── Region label chip (rank 400) ────────────────────────────────────────
+    const regionLabel = isPlanned
+      ? "Planned"
+      : isOngoing
+        ? "Ongoing"
+        : isSchengen
+          ? "Schengen"
+          : isUK
+            ? "United Kingdom"
+            : isIreland
+              ? "Ireland"
+              : null;
+
+    if (regionLabel) {
+      const regionTooltip: React.ReactNode = isPlanned
+        ? CHIP_TOOLTIP_PLANNED
+        : isOngoing
+          ? CHIP_TOOLTIP_ONGOING
+          : isSchengen
+            ? <SchengenTooltipContent />
+            : isUK
+              ? CHIP_TOOLTIP_UNITED_KINGDOM
+              : isIreland
+                ? CHIP_TOOLTIP_IRELAND
+                : undefined;
+
+      const regionBg = isPlanned ? tokens.amberBg : tokens.mist;
+      const regionColor = isPlanned ? tokens.amberText : tokens.textSoft;
+
+      chips.push({
+        rank: 400,
+        label: regionLabel,
+        color: regionColor,
+        bg: regionBg,
+        tooltip: regionTooltip,
+      });
+    }
+
+    // ── Schengen chips ──────────────────────────────────────────────────────
+    if (showSchengenChips) {
+      const stayVariant = variantFromMaxStay(maxStayAtExit);
+      const stayBg =
+        stayVariant === "safe" ? tokens.greenBg : stayVariant === "caution" ? tokens.amberBg : tokens.redBg;
+      const stayColor =
+        stayVariant === "safe" ? tokens.greenText : stayVariant === "caution" ? tokens.amberText : tokens.redText;
+
+      if (maxStayAtExit > 0) {
+        chips.push({
+          rank: 330,
+          label: `+${maxStayAtExit}d`,
+          color: stayColor,
+          bg: stayBg,
+          borderStyle: "dashed",
+          tooltip: CHIP_TOOLTIP_SCHENGEN_AVAIL,
+        });
+      } else {
+        chips.push({
+          rank: 310,
+          label: earliestReEntry ? `from ${fmtReEntry(earliestReEntry)}` : "no re-entry",
+          color: tokens.redText,
+          bg: tokens.redBg,
+          borderStyle: "dashed",
+          tooltip: earliestReEntry ? CHIP_TOOLTIP_REENTRY_DATE : CHIP_TOOLTIP_NO_REENTRY,
+        });
+      }
+    }
+
+    if (isSchengen && passportRule) {
+      if (passportRule.access === "visa_required") {
+        chips.push({ rank: 100, label: "Visa required", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_VISA_REQUIRED });
+      }
+      if (passportRule.requiresATV) {
+        chips.push({ rank: 101, label: "Transit visa", color: tokens.white, bg: tokens.red, tooltip: CHIP_TOOLTIP_TRANSIT_VISA });
+      }
+      if (passportRule.requiresETIAS) {
+        chips.push({ rank: 111, label: "ETIAS 2026", color: tokens.textSoft, bg: tokens.mist, tooltip: CHIP_TOOLTIP_ETIAS });
+      }
+      if (passportRule.access === "suspended") {
+        chips.push({ rank: 120, label: "Suspended", color: tokens.amberText, bg: tokens.amberBg, tooltip: CHIP_TOOLTIP_SUSPENDED });
+      }
+    }
+
+    // ── UK chips ────────────────────────────────────────────────────────────
+    if (isUK && ukPassportRule) {
+      if (ukPassportRule.access === "visa_required") {
+        chips.push({ rank: 100, label: "Visa required", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_VISA_REQUIRED });
+      }
+      if (ukPassportRule.requiresDATV) {
+        chips.push({ rank: 101, label: "Transit visa", color: tokens.white, bg: tokens.red, tooltip: CHIP_TOOLTIP_UK_DATV });
+      }
+      if (ukPassportRule.requiresETA) {
+        chips.push({ rank: 110, label: "UK ETA", color: tokens.textSoft, bg: tokens.mist, tooltip: CHIP_TOOLTIP_UK_ETA });
+      }
+    }
+
+    if (isUK && ukStayInfo && !isOngoing) {
+      if (ukStayInfo.stayVariant === "danger") {
+        chips.push({ rank: 300, label: "Over 6mo", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_UK_STAY_DANGER });
+      } else if (ukStayInfo.stayVariant === "caution") {
+        chips.push({ rank: 311, label: "~150d stay", color: tokens.amberText, bg: tokens.amberBg, tooltip: CHIP_TOOLTIP_UK_STAY_CAUTION });
+      }
+      if (ukStayInfo.reentryVariant === "danger") {
+        chips.push({ rank: 210, label: "Re-entry risk", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_UK_REENTRY_DANGER });
+      } else if (ukStayInfo.reentryVariant === "caution") {
+        chips.push({ rank: 320, label: "Prior long stay", color: tokens.amberText, bg: tokens.amberBg, tooltip: CHIP_TOOLTIP_UK_REENTRY_CAUTION });
+      } else if (ukStayInfo.reentryVariant === "safe") {
+        chips.push({ rank: 331, label: "Prior stay", color: tokens.greenText, bg: tokens.greenBg, tooltip: CHIP_TOOLTIP_UK_REENTRY_SAFE });
+      }
+    }
+
+    // ── Ireland chips ────────────────────────────────────────────────────────
+    if (isIreland && irelandPassportRule) {
+      if (irelandPassportRule.access === "visa_required") {
+        chips.push({ rank: 100, label: "Visa required", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_VISA_REQUIRED });
+      }
+    }
+
+    if (isIreland && irelandStayInfo && !isOngoing) {
+      if (irelandStayInfo.stayVariant === "danger") {
+        chips.push({ rank: 300, label: "Over 90d", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_IRELAND_STAY_DANGER });
+      } else if (irelandStayInfo.stayVariant === "caution") {
+        chips.push({ rank: 311, label: "~75d stay", color: tokens.amberText, bg: tokens.amberBg, tooltip: CHIP_TOOLTIP_IRELAND_STAY_CAUTION });
+      }
+      if (irelandStayInfo.reentryVariant === "danger") {
+        chips.push({ rank: 210, label: "Re-entry risk", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_IRELAND_REENTRY_DANGER });
+      } else if (irelandStayInfo.reentryVariant === "caution") {
+        chips.push({ rank: 320, label: "Prior long stay", color: tokens.amberText, bg: tokens.amberBg, tooltip: CHIP_TOOLTIP_IRELAND_REENTRY_CAUTION });
+      } else if (irelandStayInfo.reentryVariant === "safe") {
+        chips.push({ rank: 331, label: "Prior stay", color: tokens.greenText, bg: tokens.greenBg, tooltip: CHIP_TOOLTIP_IRELAND_REENTRY_SAFE });
+      }
+    }
+  }
+
+  chips.sort((a, b) => a.rank - b.rank);
 
   return (
     <Box
@@ -310,72 +450,19 @@ export function TripListCard({
           {fmtDateRange(trip.entryDate, trip.exitDate)}
         </Typography>
 
-        {/* Badges */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "4px",
-            flexWrap: "wrap",
-          }}
-        >
-          {/* Duration */}
-          <Chip color={tokens.textSoft} bg={tokens.mist} tooltip={CHIP_TOOLTIP_DURATION}>
-            {dur}d
-          </Chip>
-
-          {/* Region / overstay label — suppressed for plain Elsewhere */}
-          {regionLabel && (
-            <Chip color={regionColor} bg={regionBg} tooltip={regionTooltip}>
-              {isOverstay ? "⚠ Overstay" : regionLabel}
-            </Chip>
-          )}
-
-          {/* Schengen availability — dashed, status-coloured. Hidden when overstay. */}
-          {!isOverstay && showSchengenChips && maxStayAtExit > 0 && (
-            <Chip color={stayColor} bg={stayBg} borderStyle="dashed" tooltip={CHIP_TOOLTIP_SCHENGEN_AVAIL}>
-              +{maxStayAtExit}d
-            </Chip>
-          )}
-
-          {!isOverstay && showSchengenChips && maxStayAtExit === 0 && (
+        {/* Chips — sorted by rank */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: "4px", flexWrap: "wrap" }}>
+          {chips.map((chip, i) => (
             <Chip
-              color={tokens.redText}
-              bg={tokens.redBg}
-              borderStyle="dashed"
-              tooltip={earliestReEntry ? CHIP_TOOLTIP_REENTRY_DATE : CHIP_TOOLTIP_NO_REENTRY}
+              key={i}
+              color={chip.color}
+              bg={chip.bg}
+              borderStyle={chip.borderStyle}
+              tooltip={chip.tooltip}
             >
-              {earliestReEntry
-                ? `from ${fmtReEntry(earliestReEntry)}`
-                : "no re-entry"}
+              {chip.label}
             </Chip>
-          )}
-
-          {/* Passport rule chips — Schengen trips only */}
-          {isSchengen && !isOverstay && passportRule && (
-            <>
-              {passportRule.access === "visa_required" && (
-                <Chip color={tokens.redText} bg={tokens.redBg} tooltip={CHIP_TOOLTIP_VISA_REQUIRED}>
-                  Visa required
-                </Chip>
-              )}
-              {passportRule.requiresATV && (
-                <Chip color={tokens.white} bg={tokens.red} tooltip={CHIP_TOOLTIP_TRANSIT_VISA}>
-                  Transit visa
-                </Chip>
-              )}
-              {passportRule.requiresETIAS && (
-                <Chip color={tokens.navy} bg={tokens.mist} tooltip={CHIP_TOOLTIP_ETIAS}>
-                  ETIAS 2026
-                </Chip>
-              )}
-              {passportRule.access === "suspended" && (
-                <Chip color={tokens.amberText} bg={tokens.amberBg} tooltip={CHIP_TOOLTIP_SUSPENDED}>
-                  Suspended
-                </Chip>
-              )}
-            </>
-          )}
+          ))}
         </Box>
       </Box>
     </Box>
