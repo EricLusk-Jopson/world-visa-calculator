@@ -45,6 +45,19 @@ import {
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import { trackEvent } from "@/utils/analytics";
+import {
+  assessUKStay,
+  detectUKReentryRisk,
+} from "@/features/calculator/utils/uk";
+import type { UKStayAssessment, UKReentryRisk } from "@/features/calculator/utils/uk";
+import {
+  assessIrelandStay,
+  detectIrelandReentryRisk,
+} from "@/features/calculator/utils/ireland";
+import type {
+  IrelandStayAssessment,
+  IrelandReentryRisk,
+} from "@/features/calculator/utils/ireland";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -458,6 +471,74 @@ export function TripModal({
   // Null passport = treated as visa-free (default permissive). Show ImpactPreview
   // only when at least one traveler is not visa-required.
   const hasVisaFreeTravelers = schengenSafeCount > 0 || schengenUnknownCount > 0;
+
+  // ── UK max-stay assessment ──────────────────────────────────────────────────
+
+  const ukVisaFreeTravelers =
+    region === VisaRegion.UnitedKingdom
+      ? travelerIds.flatMap((tid) => {
+          const t = travelers.find((x) => x.id === tid);
+          if (!t) return [];
+          return getUKRule(t.passportCode).access === "visa_free" ? [t] : [];
+        })
+      : [];
+
+  const ukMaxStay: UKStayAssessment | null =
+    entryDate && ukVisaFreeTravelers.length > 0
+      ? assessUKStay(entryDate, ongoing ? undefined : exitDate || undefined)
+      : null;
+
+  const ukReentryRisk: UKReentryRisk | null =
+    entryDate && ukVisaFreeTravelers.length > 0
+      ? (() => {
+          let worst: UKReentryRisk | null = null;
+          for (const t of ukVisaFreeTravelers) {
+            const ukTrips = t.trips.filter(
+              (tr) =>
+                tr.region === VisaRegion.UnitedKingdom &&
+                tr.exitDate &&
+                tr.id !== initialTrip?.id,
+            );
+            const risk = detectUKReentryRisk(ukTrips, entryDate);
+            if (risk && (!worst || risk.variant === "danger")) worst = risk;
+          }
+          return worst;
+        })()
+      : null;
+
+  // ── Ireland max-stay assessment ─────────────────────────────────────────────
+
+  const irelandVisaFreeTravelers =
+    region === VisaRegion.Ireland
+      ? travelerIds.flatMap((tid) => {
+          const t = travelers.find((x) => x.id === tid);
+          if (!t) return [];
+          return getIrelandRule(t.passportCode).access === "visa_free" ? [t] : [];
+        })
+      : [];
+
+  const irelandMaxStay: IrelandStayAssessment | null =
+    entryDate && irelandVisaFreeTravelers.length > 0
+      ? assessIrelandStay(entryDate, ongoing ? undefined : exitDate || undefined)
+      : null;
+
+  const irelandReentryRisk: IrelandReentryRisk | null =
+    entryDate && irelandVisaFreeTravelers.length > 0
+      ? (() => {
+          let worst: IrelandReentryRisk | null = null;
+          for (const t of irelandVisaFreeTravelers) {
+            const irelandTrips = t.trips.filter(
+              (tr) =>
+                tr.region === VisaRegion.Ireland &&
+                tr.exitDate &&
+                tr.id !== initialTrip?.id,
+            );
+            const risk = detectIrelandReentryRisk(irelandTrips, entryDate);
+            if (risk && (!worst || risk.variant === "danger")) worst = risk;
+          }
+          return worst;
+        })()
+      : null;
 
   // ── Validation & submit ─────────────────────────────────────────────────────
 
@@ -1013,6 +1094,152 @@ export function TripModal({
             </Box>
           )}
 
+          {/* 2c-ext · UK max-stay warning */}
+          {ukMaxStay && (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "6px",
+                px: "12px",
+                py: "9px",
+                bgcolor:
+                  ukMaxStay.variant === "danger"
+                    ? "rgba(220,38,38,0.06)"
+                    : ukMaxStay.variant === "caution"
+                      ? tokens.amberBg
+                      : tokens.mist,
+                border: `1px solid ${
+                  ukMaxStay.variant === "danger"
+                    ? tokens.red
+                    : ukMaxStay.variant === "caution"
+                      ? tokens.amberBorder
+                      : tokens.border
+                }`,
+                borderRadius: "10px",
+              }}
+            >
+              {/* Max exit date row */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: "8px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.75rem",
+                    color: tokens.textSoft,
+                    fontWeight: 500,
+                  }}
+                >
+                  {ukMaxStay.variant === "danger" && ukMaxStay.daysRemaining < 0
+                    ? `Over the 6-month limit by ${Math.abs(ukMaxStay.daysRemaining)} day${Math.abs(ukMaxStay.daysRemaining) === 1 ? "" : "s"}`
+                    : `${ukMaxStay.tripDays} day${ukMaxStay.tripDays === 1 ? "" : "s"} of 6-month visit`}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    color:
+                      ukMaxStay.variant === "danger"
+                        ? tokens.red
+                        : ukMaxStay.variant === "caution"
+                          ? tokens.amberText
+                          : tokens.navy,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Latest exit: {fmtHintDate(ukMaxStay.maxExitDate)}
+                </Typography>
+              </Box>
+
+              {/* Caution/danger message */}
+              {ukMaxStay.variant !== "safe" && (
+                <Box sx={{ display: "flex", alignItems: "flex-start", gap: "5px" }}>
+                  <WarningAmberIcon
+                    sx={{
+                      fontSize: "0.85rem",
+                      mt: "1px",
+                      flexShrink: 0,
+                      color:
+                        ukMaxStay.variant === "danger" ? tokens.red : tokens.amberText,
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.72rem",
+                      color:
+                        ukMaxStay.variant === "danger" ? tokens.red : tokens.amberText,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {ukMaxStay.variant === "danger"
+                      ? "This trip exceeds the 6-month visit limit. Border Force may deny entry or curtail leave."
+                      : "Approaching the 6-month visit limit. Leave time before the deadline."}
+                  </Typography>
+                </Box>
+              )}
+            </Box>
+          )}
+
+          {/* 2c-ext2 · UK re-entry risk */}
+          {ukReentryRisk && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "6px",
+                px: "12px",
+                py: "9px",
+                bgcolor:
+                  ukReentryRisk.variant === "danger"
+                    ? "rgba(220,38,38,0.06)"
+                    : tokens.amberBg,
+                border: `1px solid ${ukReentryRisk.variant === "danger" ? tokens.red : tokens.amberBorder}`,
+                borderRadius: "10px",
+              }}
+            >
+              <WarningAmberIcon
+                sx={{
+                  fontSize: "0.85rem",
+                  mt: "2px",
+                  flexShrink: 0,
+                  color: ukReentryRisk.variant === "danger" ? tokens.red : tokens.amberText,
+                }}
+              />
+              <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color:
+                      ukReentryRisk.variant === "danger" ? tokens.red : tokens.amberText,
+                  }}
+                >
+                  Previous {ukReentryRisk.variant === "danger" ? "maximum" : "long"} stay detected
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    color: tokens.textSoft,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  Last UK trip: {ukReentryRisk.lastTripDays} days ({fmtHintDate(ukReentryRisk.lastTripEntry)}–{fmtHintDate(ukReentryRisk.lastTripExit)}).
+                  Border Force may scrutinise this entry under the genuine visitor test.
+                </Typography>
+              </Box>
+            </Box>
+          )}
+
           {/* 2d · Nationality entry notice — Ireland only */}
           {region === VisaRegion.Ireland && travelerIds.length > 0 && (
             <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -1097,6 +1324,167 @@ export function TripModal({
                   </Box>
                 );
               })}
+            </Box>
+          )}
+
+          {/* 2d-ext · Ireland max-stay warning */}
+          {irelandMaxStay && (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "6px",
+                px: "12px",
+                py: "9px",
+                bgcolor:
+                  irelandMaxStay.variant === "danger"
+                    ? "rgba(220,38,38,0.06)"
+                    : irelandMaxStay.variant === "caution"
+                      ? tokens.amberBg
+                      : tokens.mist,
+                border: `1px solid ${
+                  irelandMaxStay.variant === "danger"
+                    ? tokens.red
+                    : irelandMaxStay.variant === "caution"
+                      ? tokens.amberBorder
+                      : tokens.border
+                }`,
+                borderRadius: "10px",
+              }}
+            >
+              {/* Max exit date row */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: "8px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.75rem",
+                    color: tokens.textSoft,
+                    fontWeight: 500,
+                  }}
+                >
+                  {irelandMaxStay.variant === "danger" && irelandMaxStay.daysRemaining < 0
+                    ? `Over the 90-day limit by ${Math.abs(irelandMaxStay.daysRemaining)} day${Math.abs(irelandMaxStay.daysRemaining) === 1 ? "" : "s"}`
+                    : `${irelandMaxStay.tripDays} day${irelandMaxStay.tripDays === 1 ? "" : "s"} of 90-day permission`}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    color:
+                      irelandMaxStay.variant === "danger"
+                        ? tokens.red
+                        : irelandMaxStay.variant === "caution"
+                          ? tokens.amberText
+                          : tokens.navy,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Latest exit: {fmtHintDate(irelandMaxStay.maxExitDate)}
+                </Typography>
+              </Box>
+
+              {/* Caution/danger message */}
+              {irelandMaxStay.variant !== "safe" && (
+                <Box sx={{ display: "flex", alignItems: "flex-start", gap: "5px" }}>
+                  <WarningAmberIcon
+                    sx={{
+                      fontSize: "0.85rem",
+                      mt: "1px",
+                      flexShrink: 0,
+                      color:
+                        irelandMaxStay.variant === "danger"
+                          ? tokens.red
+                          : tokens.amberText,
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.72rem",
+                      color:
+                        irelandMaxStay.variant === "danger"
+                          ? tokens.red
+                          : tokens.amberText,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {irelandMaxStay.variant === "danger"
+                      ? "This trip exceeds the 90-day permission limit. You may be asked to leave."
+                      : "Approaching the 90-day permission limit. Plan an exit date before the deadline."}
+                  </Typography>
+                </Box>
+              )}
+            </Box>
+          )}
+
+          {/* 2d-ext2 · Ireland re-entry risk */}
+          {irelandReentryRisk && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "6px",
+                px: "12px",
+                py: "9px",
+                bgcolor:
+                  irelandReentryRisk.variant === "danger"
+                    ? "rgba(220,38,38,0.06)"
+                    : tokens.amberBg,
+                border: `1px solid ${
+                  irelandReentryRisk.variant === "danger"
+                    ? tokens.red
+                    : tokens.amberBorder
+                }`,
+                borderRadius: "10px",
+              }}
+            >
+              <WarningAmberIcon
+                sx={{
+                  fontSize: "0.85rem",
+                  mt: "2px",
+                  flexShrink: 0,
+                  color:
+                    irelandReentryRisk.variant === "danger"
+                      ? tokens.red
+                      : tokens.amberText,
+                }}
+              />
+              <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color:
+                      irelandReentryRisk.variant === "danger"
+                        ? tokens.red
+                        : tokens.amberText,
+                  }}
+                >
+                  {irelandReentryRisk.variant === "danger"
+                    ? "Re-entry after maximum-duration stay"
+                    : "Re-entry after long stay"}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    color: tokens.textSoft,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  Last Ireland trip: {irelandReentryRisk.lastTripDays} days ({fmtHintDate(irelandReentryRisk.lastTripEntry)}–{fmtHintDate(irelandReentryRisk.lastTripExit)}).
+                  INIS has stated that immediate re-entry after a maximum-duration visit is not permitted; this entry may be refused.
+                </Typography>
+              </Box>
             </Box>
           )}
 
