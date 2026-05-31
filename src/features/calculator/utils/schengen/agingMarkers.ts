@@ -7,9 +7,9 @@
  * one more day of the trip becomes available each calendar day until the
  * last day (exitDate) ages out at exitDate + 180.
  *
- * We place the marker at entryDate + 180 — the first moment any benefit is
- * felt — and label it "+Xd" where X is the full trip duration. This is the
- * date that typically triggers the "wild jump" in max stay.
+ * We place the marker at entryDate + SCHENGEN_WINDOW_SIZE — the first moment
+ * any benefit is felt — and label it "+Xd" where X is the full trip duration.
+ * This is the date that typically triggers the "wild jump" in max stay.
  */
 
 import type { Traveler } from "@/types";
@@ -20,6 +20,7 @@ import {
   countTripDays,
 } from "@/features/calculator/utils/dates";
 import { dateToTop } from "@/features/calculator/utils/timelineLayout";
+import { SCHENGEN_WINDOW_SIZE } from "./calculator";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -47,7 +48,7 @@ export function computeAgingMarkers(
     .flatMap((trip) => {
       const entry = parseDate(trip.entryDate);
       const exit = parseDate(trip.exitDate!);
-      const agingStart = addDays(entry, 180);
+      const agingStart = addDays(entry, SCHENGEN_WINDOW_SIZE);
 
       // Show markers for any trip whose aging-start falls within the visible
       // timeline range, regardless of whether it is past or future.

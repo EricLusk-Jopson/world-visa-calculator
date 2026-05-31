@@ -20,19 +20,21 @@ import {
 import { isTripPlanned, isTripOngoing, fmtDateRange } from "../tripHelpers";
 import {
   CHIP_TOOLTIP_DURATION,
+  CHIP_TOOLTIP_PLANNED,
+  CHIP_TOOLTIP_ONGOING,
+  CHIP_TOOLTIP_UNITED_KINGDOM,
+  CHIP_TOOLTIP_IRELAND,
+} from "@/features/calculator/utils/chipTooltips";
+import {
   CHIP_TOOLTIP_SCHENGEN_AVAIL,
   CHIP_TOOLTIP_REENTRY_DATE,
   CHIP_TOOLTIP_NO_REENTRY,
-  CHIP_TOOLTIP_PLANNED,
-  CHIP_TOOLTIP_ONGOING,
   CHIP_TOOLTIP_OVERSTAY,
-  CHIP_TOOLTIP_UNITED_KINGDOM,
-  CHIP_TOOLTIP_IRELAND,
   CHIP_TOOLTIP_VISA_REQUIRED,
   CHIP_TOOLTIP_TRANSIT_VISA,
   CHIP_TOOLTIP_ETIAS,
   CHIP_TOOLTIP_SUSPENDED,
-} from "@/features/calculator/utils/chipTooltips";
+} from "@/features/calculator/utils/schengen";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
