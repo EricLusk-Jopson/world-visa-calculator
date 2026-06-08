@@ -100,7 +100,6 @@ import LandingNav from "../../components/LandingNav.astro";
           </div>
         </div>
         <div class="stats-wrap"><div class="stats-container"></div></div>
-        <div class="legend"></div>
       </div>
 
       <hr />
@@ -155,7 +154,6 @@ import LandingNav from "../../components/LandingNav.astro";
           </div>
         </div>
         <div class="stats-wrap"><div class="stats-container"></div></div>
-        <div class="legend"></div>
       </div>
 
       <p>
@@ -187,7 +185,6 @@ import LandingNav from "../../components/LandingNav.astro";
           </div>
         </div>
         <div class="stats-wrap"><div class="stats-container"></div></div>
-        <div class="legend"></div>
       </div>
 
       <blockquote>
@@ -265,7 +262,7 @@ import LandingNav from "../../components/LandingNav.astro";
         also stay for the full 90 days.
       </p>
 
-      <div class="schengen-explorer" data-scenario="4" data-show-tabs="false">
+      <div class="schengen-explorer" data-scenario="3" data-show-tabs="true">
         <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
         <div class="scenario-tabs"></div>
         <div class="scenario-label"></div>
@@ -278,7 +275,6 @@ import LandingNav from "../../components/LandingNav.astro";
           </div>
         </div>
         <div class="stats-wrap"><div class="stats-container"></div></div>
-        <div class="legend"></div>
       </div>
 
       <blockquote>
@@ -300,7 +296,7 @@ import LandingNav from "../../components/LandingNav.astro";
         recent honeymoon, that illustrates how these principles stack:
       </p>
 
-      <div class="schengen-explorer" data-scenario="5" data-show-tabs="false">
+      <div class="schengen-explorer" data-scenario="4" data-show-tabs="false">
         <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
         <div class="scenario-tabs"></div>
         <div class="scenario-label"></div>
@@ -313,7 +309,6 @@ import LandingNav from "../../components/LandingNav.astro";
           </div>
         </div>
         <div class="stats-wrap"><div class="stats-container"></div></div>
-        <div class="legend"></div>
       </div>
 
       <hr />
@@ -566,7 +561,6 @@ import LandingNav from "../../components/LandingNav.astro";
     function addDays(dt: Date, n: number) { const r = new Date(dt); r.setDate(r.getDate() + n); return r; }
     function diffDays(a: Date, b: Date) { return Math.round((b.getTime() - a.getTime()) / 86400000); }
     function fmtDate(dt: Date) { return dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
-    function fmtShort(dt: Date) { return dt.toLocaleDateString("en-GB", { day: "numeric", month: "short" }); }
 
     const PERSONS = [
       { key: "anna",   label: "Anna",   color: "#c46e1a", row: 0 },
@@ -583,10 +577,10 @@ import LandingNav from "../../components/LandingNav.astro";
       PERSONS.map((p) => ({ start: d(2025, 2, 1), end: d(2025, 3, 22), label: "Group trip", color: "#378add", person: p.key }));
 
     const RETURN_TRIPS: Trip[] = [
-      { start: d(2025, 5, 3),  end: d(2025, 6, 11),  label: "Anna (40 days)",   color: "#c46e1a", person: "anna"   },
-      { start: d(2025, 7, 15), end: d(2025, 10, 12), label: "Marcus (90 days)", color: "#1d9e75", person: "marcus" },
-      { start: d(2025, 8, 1),  end: d(2025, 10, 29), label: "Ilker (90 days)",  color: "#2e86c1", person: "ilker"  },
-      { start: d(2025, 9, 19), end: d(2025, 12, 17), label: "Olivia (90 days)", color: "#7b52c9", person: "olivia" },
+      { start: d(2025, 5, 3),  end: d(2025, 6, 11),  label: "Anna",   color: "#c46e1a", person: "anna"   },
+      { start: d(2025, 7, 15), end: d(2025, 10, 12), label: "Marcus", color: "#1d9e75", person: "marcus" },
+      { start: d(2025, 8, 1),  end: d(2025, 10, 29), label: "Ilker",  color: "#2e86c1", person: "ilker"  },
+      { start: d(2025, 9, 19), end: d(2025, 12, 17), label: "Olivia", color: "#7b52c9", person: "olivia" },
     ];
 
     const COMBINED_TRIPS: Trip[] = [...makeGroupTrips(), ...RETURN_TRIPS];
@@ -613,19 +607,10 @@ import LandingNav from "../../components/LandingNav.astro";
         id: "s3", label: "90 days out, 90 days back — the myth", mode: "single",
         desc: "<strong>Patricia</strong> spends 90 days (Jan 1–Mar 31), leaves for exactly 90 days, then returns Jul 1 believing her counter has reset. Drag the window to Jul 1 — her first trip is still almost entirely inside it.",
         trips: [
-          { start: d(2025, 1, 1), end: d(2025, 3, 31), label: "Patricia (trip 1)", color: "#378add", person: "p" },
-          { start: d(2025, 7, 1), end: d(2025, 9, 28), label: "Patricia (trip 2)", color: "#1d9e75", person: "p" },
+          { start: d(2025, 1, 1), end: d(2025, 3, 31), label: "First trip",  color: "#378add", person: "p" },
+          { start: d(2025, 7, 1), end: d(2025, 9, 28), label: "Return trip", color: "#1d9e75", person: "p" },
         ],
         windowDefault: d(2025, 7, 1),
-      },
-      {
-        id: "s4", label: "Overstay", mode: "single",
-        desc: "<strong>Patricia</strong> returns Jul 1 and stays a full 90 days (Jul 1–Sep 28), not realising her first trip is still largely inside the window. Drag into July and August to see the combined days climb above 90 — the window turns red.",
-        trips: [
-          { start: d(2025, 1, 1), end: d(2025, 3, 31), label: "Trip 1",           color: "#378add", person: "p" },
-          { start: d(2025, 7, 1), end: d(2025, 9, 28), label: "Trip 2 (overstay)", color: "#993556", person: "p" },
-        ],
-        windowDefault: d(2025, 8, 1),
       },
       {
         id: "s5", label: "Four friends, same trip", mode: "quad",
@@ -637,10 +622,10 @@ import LandingNav from "../../components/LandingNav.astro";
         id: "s6", label: "Real travel history (2025)", mode: "single",
         desc: "A real year of travel: Mar 14–21 Paris/Zagreb, Apr 18–Jul 2 Croatia/Slovenia, Sep 19–26 Iceland, Nov 27–Dec 30 Azores/Canarias/Madeira. All trips count as Schengen days.",
         trips: [
-          { start: d(2025, 3, 14), end: d(2025, 3, 21),  label: "Paris/Zagreb",           color: "#378add", person: "p" },
-          { start: d(2025, 4, 18), end: d(2025, 7, 2),   label: "Croatia/Slovenia",        color: "#378add", person: "p" },
-          { start: d(2025, 9, 19), end: d(2025, 9, 26),  label: "Iceland",                 color: "#378add", person: "p" },
-          { start: d(2025, 11, 27), end: d(2025, 12, 30), label: "Azores/Canarias/Madeira", color: "#378add", person: "p" },
+          { start: d(2025, 3, 14), end: d(2025, 3, 21),  label: "Honeymoon", color: "#378add", person: "p" },
+          { start: d(2025, 4, 18), end: d(2025, 7, 2),   label: "Honeymoon", color: "#378add", person: "p" },
+          { start: d(2025, 9, 19), end: d(2025, 9, 26),  label: "Honeymoon", color: "#378add", person: "p" },
+          { start: d(2025, 11, 27), end: d(2025, 12, 30), label: "Honeymoon", color: "#378add", person: "p" },
         ],
         windowDefault: d(2025, 9, 1),
       },
@@ -657,7 +642,6 @@ import LandingNav from "../../components/LandingNav.astro";
       const slider      = container.querySelector<HTMLInputElement>("input[type=range]")!;
       const dateLabelEl = container.querySelector<HTMLElement>(".window-date-label")!;
       const statsEl     = container.querySelector<HTMLElement>(".stats-container")!;
-      const legendEl    = container.querySelector<HTMLElement>(".legend")!;
       const ctx         = canvas.getContext("2d")!;
 
       let currentScenario: Scenario | null = null;
@@ -705,10 +689,6 @@ import LandingNav from "../../components/LandingNav.astro";
             <div class="stat-card">
               <div class="stat-label">Remaining allowance</div>
               <div class="stat-val ${remaining === 0 ? "danger" : remaining < 20 ? "warn" : "ok"}">${remaining}</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Window ends</div>
-              <div class="stat-val" style="font-size:15px;padding-top:4px;">${fmtShort(windowEnd)}</div>
             </div>
           </div>`;
       }
@@ -851,28 +831,6 @@ import LandingNav from "../../components/LandingNav.astro";
         ctx.fillText("window end", lx, mTop - 8);
       }
 
-      function buildLegend(trips: Trip[]) {
-        legendEl.innerHTML = "";
-        const items: { bg: string; border?: string; label: string }[] = [
-          { bg: "rgba(55,138,221,0.12)", border: "0.5px solid rgba(55,138,221,0.35)", label: "180-day window" },
-          { bg: "rgba(163,45,45,0.15)",  border: "0.5px solid #f09595",               label: "Over 90 days"  },
-        ];
-        const seen = new Set<string>();
-        trips.forEach((t) => {
-          if (!seen.has(t.color)) { seen.add(t.color); items.push({ bg: t.color, label: t.label }); }
-        });
-        items.forEach((item) => {
-          const el = document.createElement("div"); el.className = "leg-item";
-          const sw = document.createElement("div"); sw.className = "leg-swatch";
-          sw.style.background = item.bg;
-          if (item.border) sw.style.border = item.border;
-          el.appendChild(sw);
-          const txt = document.createElement("span"); txt.textContent = item.label;
-          el.appendChild(txt);
-          legendEl.appendChild(el);
-        });
-      }
-
       function setScenario(idx: number) {
         currentScenario = displayScenarios[idx];
         if (showTabs) {
@@ -899,7 +857,6 @@ import LandingNav from "../../components/LandingNav.astro";
         }
 
         dateLabelEl.textContent = fmtDate(windowEnd);
-        buildLegend(currentScenario.trips);
       }
 
       if (showTabs) {
@@ -1072,7 +1029,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
   .schengen-explorer .stats-single {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
