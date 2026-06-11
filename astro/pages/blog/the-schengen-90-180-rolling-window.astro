@@ -623,8 +623,8 @@ import LandingNav from "../../components/LandingNav.astro";
       {
         id: "s1", label: "Full allowance available", mode: "single",
         desc: "<strong>Patricia</strong> is planning her first European trip of the year. She has not been to Schengen in the past 180 days. Move the window to her planned arrival date and see her full 90-day allowance.",
-        trips: [{ start: d(2025, 6, 1), end: d(2025, 8, 29), label: "Patricia", color: "#378add", person: "p" }],
-        windowDefault: d(2025, 6, 1),
+        trips: [{ start: d(2025, 3, 1), end: d(2025, 5, 29), label: "Patricia", color: "#378add", person: "p" }],
+        windowDefault: d(2025, 2, 28),
       },
       {
         id: "s2", label: "Used 90 days — when can she return?", mode: "single",
@@ -634,12 +634,12 @@ import LandingNav from "../../components/LandingNav.astro";
       },
       {
         id: "s3", label: "90 days out, 90 days back — the myth", mode: "single",
-        desc: "<strong>Patricia</strong> spends 90 days (Jan 1–Mar 31), leaves for exactly 90 days, then returns Jul 1 believing her counter has reset. Drag the window to Jul 1 — her first trip is still almost entirely inside it.",
+        desc: "<strong>Patricia</strong> spends 90 days (Mar 1–May 29), leaves for about 90 days, then returns Aug 28 believing her counter has reset. Drag the window to Aug 28 — her first trip is still almost entirely inside it.",
         trips: [
-          { start: d(2025, 1, 1), end: d(2025, 3, 31), label: "First trip",  color: "#378add", person: "p" },
-          { start: d(2025, 7, 1), end: d(2025, 9, 28), label: "Return trip", color: "#1d9e75", person: "p" },
+          { start: d(2025, 3, 1),  end: d(2025, 5, 29), label: "First trip",  color: "#378add", person: "p" },
+          { start: d(2025, 8, 28), end: d(2025, 11, 25), label: "Return trip", color: "#1d9e75", person: "p" },
         ],
-        windowDefault: d(2025, 7, 1),
+        windowDefault: d(2025, 8, 28),
       },
       {
         id: "s5", label: "Four friends, same trip", mode: "quad",
