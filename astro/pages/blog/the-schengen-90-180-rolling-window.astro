@@ -49,15 +49,17 @@ import LandingNav from "../../components/LandingNav.astro";
       <h2>What the rule actually says</h2>
 
       <p>
-        At any point in time, look back exactly 180 days from today. Count
+        At any point in time, look back 180 days. Count
         every day you spent inside the Schengen Area during that period. That
         number must be 90 days or fewer.
       </p>
 
       <p>
-        That's it. There is no start date, no reset and no fixed period. Old
-        trips age out of the window one day after another as the calendar
-        moves forward.
+        That's it. There is no start date, no reset and no fixed period. 
+        If you want to check your comliance today, then you count over the last 180 days. 
+        If you want to check your compliance at the start of your next trip, you'll count
+        over the 180 days before it begins. The 180-day window is relative to whatever day you're inspecting. 
+        This means that as time moves along, old trips age out of the window one day after another.
       </p>
 
       <p>
@@ -75,7 +77,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         If you haven't been to Schengen at all in the past 180 days, your
-        window contains zero Schengen days and your allowance is the full 90
+        window contains 0 Schengen days and your allowance is the full 90
         days.
       </p>
 
@@ -104,14 +106,14 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         Patricia spent 90 days in the Schengen Area. Her allowance is now
-        zero days. The window contains all her 90 days spent inside the
+        0 days. The window contains all her 90 days spent inside the
         Schengen Area.
       </p>
 
       <p>She wants to return as soon as possible. When is she allowed back?</p>
 
       <p>
-        First of all, the window keeps rolling forward. On June 1st, a few
+        The window keeps rolling forward. On June 1st, a few
         days after returning home, the window still contains her 90 days spent
         within the Schengen Area. Because the window moves one day at a time,
         things will remain this way until late August as the end of the window
@@ -119,10 +121,10 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        On August 28th a change occurs. From this day, the window looks back
+        On August 28th a change occurs. On this day, the window looks back
         180 days to March 2nd. This is the second day of Patricia's old trip.
         March 1st is no longer included in the window, meaning the first day
-        of her trip has just dropped out. She now has 1 day available to spend
+        of her old trip has just dropped out. She now has 1 day available to spend
         in the Schengen Area. In other words, Patricia now has an allowance of
         1 day.
       </p>
@@ -135,8 +137,7 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        She can re-enter on August 28th for a single day, or wait a few days
-        to have meaningful room.
+        She can re-enter on August 28th at the earliest.
       </p>
 
       <div class="schengen-explorer" data-scenario="1">
@@ -164,8 +165,7 @@ import LandingNav from "../../components/LandingNav.astro";
         on, every morning she is within the Schengen zone, her allowance will
         both gain a day (from her previous trip aging out) and lose a day (by
         currently being inside the Schengen Area). Her allowance isn't growing
-        because she spends the freed days exactly as they arrive, cancelling
-        each other out.
+        because she spends the freed days as they arrive.
       </p>
 
       <p>This lets her stay in Schengen for a new 90 days.</p>
@@ -199,7 +199,7 @@ import LandingNav from "../../components/LandingNav.astro";
       <p>This is where the rolling window creates confusion.</p>
 
       <p>
-        Four friends travel together in Schengen from February 1st to March
+        Four friends travel together inside the Schengen Area from February 1st to March
         22nd (50 days), leaving 40 days in their remaining allowances. They
         all arrive and exit together on the same day. Later in the year, each
         one wants to return to Schengen independently and at different times,
@@ -212,8 +212,8 @@ import LandingNav from "../../components/LandingNav.astro";
         Anna wants to return in early May, just a few weeks after leaving. Her
         new trip starts May 3rd. At that point, the entire February–March
         group trip sits squarely inside the 180-day window. Her re-entry to
-        Schengen is soon enough that both trips fall within the same window
-        completely. Since the older trip will not age out during her second
+        Schengen is soon enough that both trips fall completely within the window.
+        Since the older trip will not age out during her second
         stay, and since both trips cannot exceed 90 days combined, her new
         trip is capped to a limit of 40 days.
       </p>
