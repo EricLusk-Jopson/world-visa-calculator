@@ -800,14 +800,14 @@ import LandingNav from "../../components/LandingNav.astro";
         ctx.lineWidth = 1;
         ctx.strokeRect(x0w, mTop - 4, x1w - x0w, axisY - (mTop - 4));
 
-        // "180-day window" label — centered inside the overlay near the bottom
+        // "180-day window" label — centered just below the overlay's bottom border
         const winMidX = Math.min(Math.max((x0w + x1w) / 2, mL + 60), W - mR - 60);
         ctx.fillStyle = refOver
-          ? isDark ? "rgba(240,149,149,0.4)" : "rgba(163,45,45,0.3)"
-          : isDark ? "rgba(130,180,240,0.4)" : "rgba(55,138,221,0.3)";
+          ? isDark ? "rgba(240,149,149,0.6)" : "rgba(163,45,45,0.45)"
+          : isDark ? "rgba(130,180,240,0.6)" : "rgba(55,138,221,0.45)";
         ctx.font = "500 10px var(--font-sans,sans-serif)";
         ctx.textAlign = "center";
-        ctx.fillText("180-day window", winMidX, axisY - 8);
+        ctx.fillText("180-day window", winMidX, axisY + 12);
 
         // Axis
         ctx.strokeStyle = isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.1)";
