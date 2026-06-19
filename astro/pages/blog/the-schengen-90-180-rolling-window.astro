@@ -10,7 +10,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
 <BaseLayout
   title="The Schengen 90/180 Rolling Window"
-  description="The Schengen rule uses a rolling 180-day window, not a fixed reset. Your days age out one at a time. We walk through five scenarios, from simple to complex."
+  description="The rule for the Schengen Area uses a rolling 180-day window, not a fixed reset. Your days age out one at a time. We walk through five scenarios, from simple to complex."
   canonicalUrl="https://eurovisacalculator.com/blog/the-schengen-90-180-rolling-window"
 >
   <LandingNav />
@@ -24,66 +24,127 @@ import LandingNav from "../../components/LandingNav.astro";
       <p class="article__tag">Blog</p>
 
       <h1 class="article__title">
-        The Schengen 90/180 Rolling Window Explained Visually
+        The 90/180 Rolling Window for the Schengen Area, Explained Visually
       </h1>
 
       <p class="article__meta">June 8, 2026 · 10 min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you're planning a long-term
+        trip with more than one stay in the Schengen Area, and you want to
+        keep your plans flexible without accidentally overstaying.
+        <br/>
+        <br/>
+        <strong>It's probably not necessary if:</strong> you're taking a
+        single trip under 90 days with no return visits planned. In that
+        case, the rule is simple and a single calculation will tell you
+        everything you need to know.
+      </p>
     </header>
 
+
+
     <div class="article__body">
-      <p>
-        When planning an extended trip in Europe, you've probably heard the
-        advice: spend 90 days in the{" "}
+
+    <p>
+        When planning an extended trip in Europe, you'll quickly encounter the
+        following advice: spend 90 days in the{" "}
         <a
           href="https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/schengen-area_en"
           target="_blank"
           rel="noopener noreferrer"
           >Schengen Area</a
-        >, leave for 90 days, then you can come back. It sounds clean and
-        while it's not wrong, it is rigid. It also misrepresents the way the
-        rule works.
-      </p>
+        >, leave for 90 days <em>and then</em> you can come back. It sounds clean and
+        while it's technically correct, it's a rigid misrepresentation of the rule.
+    </p>
+    <p>
+        If you want to plan a long-term European itinerary with confidence, it's critical to understand how the 90/180 rule actually works.
+        This is the key to keeping a year-long trip flexible and visa-free.
+    </p>
 
-      <hr />
+      <nav class="article__toc" aria-label="Table of contents">
+        <p class="article__toc-title">On this page</p>
+        <ol>
+          <li><a href="#what-the-rule-says">What the rule actually says</a></li>
+          <li><a href="#case-1">Case 1: Full allowance, no existing history</a></li>
+          <li><a href="#case-2">Case 2: 90 days used, earliest return</a></li>
+          <li><a href="#case-3">Case 3: Multiple shorter trips, maximizing stays</a></li>
+          <li><a href="#real-travel-year">What a real travel year looks like</a></li>
+          <li><a href="#permanent-90th-day">The "permanent 90th day" problem</a></li>
+          <li><a href="#bad-advice">Variants of bad advice we've seen online</a></li>
+          <li><a href="#how-to-apply">How to apply this in practice</a></li>
+          <li><a href="#faq">Frequently asked questions</a></li>
+        </ol>
+      </nav>
 
-      <h2>What the rule actually says</h2>
+     <h2 id="what-the-rule-says">What the rule actually says</h2>
+
+  <h3>Making sense of the official documentation</h3>
+
+<p>The official Schengen <a href="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en">visa policy</a> states:</p>
+
+<blockquote cite="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en#:~:text=Non%2DEU%20nationals%20need%20a%20visa%20to%20enter%20the%20Schengen%20area%20for%20a%20visit%20of%20up%20to%2090%20days%20in%20any%20180%2Dday%20period.">
+  When someone enters a country in the Schengen area, the 180-day period starts. 
+  They can enter Schengen area countries as many times as they want, 
+  but only stay for a total of 90 days, every 180 days.
+</blockquote>
+
+<p>
+  Firstly, we want to clear up some terms. For practical purposes, when checking your compliance on a certain date, 
+  the 180-day period mentioned above is the 180 days immediately <strong><em>before</em></strong> whatever date you are checking. 
+  We refer to this 180-day period as the "window". 
+  </p>
+<p>
+Count the days spent in the Schengen Area within that window: 
+  if the total is under 90, you are compliant and the remainder is your allowance.
+</p>
+<p>
+By running this calculation across every
+  day of a planned itinerary, it is possible to know exactly when you
+  would overstay and when you are free to return, even on the most
+  complicated travel histories.
+</p>
+
+<h3>The window's edges</h3>
+
+<p>
+  The window has two edges: the end date (whatever day you are checking) and
+  the start date (180 days prior). Days inside the window count against
+  your allowance. Days outside it do not.
+</p>
+
+<p>
+  Checking each day of an itinerary in sequence gives the impression of a
+  window sliding forward, but what is actually moving is your inspection
+  point, not the window itself. When a past day crosses behind the window's start
+  date, it is no longer part of the calculation: it has aged out of the window. Old
+  trips age out day by day, and your allowance recovers at the same rate.
+</p>
+
+<p>
+  The cases below build on this intuition: what happens when you return too
+  soon, how a previous trip aging out can extend your stay, and when
+  waiting longer is actually worth it.
+</p>
+
+<hr />
+
+      <h2 id="case-1">Case 1 — Patricia: full allowance, no existing history</h2>
 
       <p>
-        At any point in time, look back 180 days. Count
-        every day you spent inside the Schengen Area during that period. That
-        number must be 90 days or fewer.
+        Patricia is planning her first trip to the Schengen Area in a while. She plans to
+        arrive on March 1st. She hasn't spent any time in the Schengen Area in the past 180
+        days, so her window contains 0 days and her allowance is the full 90 days.
       </p>
 
       <p>
-        That's it. There is no start date, no reset and no fixed period. 
-        If you want to check your comliance today, then you count over the last 180 days. 
-        If you want to check your compliance at the start of your next trip, you'll count
-        over the 180 days before it begins. The 180-day window is relative to whatever day you're inspecting. 
-        This means that as time moves along, old trips age out of the window one day after another.
-      </p>
-
-      <p>
-        The common recommendation of 90 days in, 90 days out is a foolproof
-        but oversimplified way to handle this. By following this advice, many
-        travelers have wrongly understood that on the 90th day out, their
-        allowance refreshes. It doesn't. In fact, your allowance will{" "}
-        <em>never</em> gain more than one day at a time. We'll see this in
-        practice in a moment.
-      </p>
-
-      <hr />
-
-      <h2>Case 1: Full allowance, no existing history</h2>
-
-      <p>
-        If you haven't been to Schengen at all in the past 180 days, your
-        window contains 0 Schengen days and your allowance is the full 90
-        days.
-      </p>
-
-      <p>
-        Patricia is planning her first European trip in a while. When she
-        arrives, the prior 180 days contain no Schengen visits.
+        <em
+          >The panel below is interactive. Drag the slider to move the
+          inspected date. The shaded region always shows the 180 days
+          before whatever date you land on, and the stats update to match.
+          Try it now: drag the slider and watch the window move with
+          it.</em
+        >
       </p>
 
       <div class="schengen-explorer" data-scenario="0">
@@ -102,19 +163,19 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <hr />
 
-      <h2>Case 2: 90 days used</h2>
+      <h2 id="case-2">Case 2 — Patricia: 90 days used, when can she return?</h2>
 
       <p>
-        Patricia spent 90 days in the Schengen Area. Her allowance is now
-        0 days. The window contains all her 90 days spent inside the
-        Schengen Area.
+        Patricia spent 90 days in the Schengen Area, from March 1st to May 29th.
+        Her allowance is now 0 days. The window contains all 90 of the days
+        she spent inside the Schengen Area.
       </p>
 
       <p>She wants to return as soon as possible. When is she allowed back?</p>
 
       <p>
-        The window keeps rolling forward. On June 1st, a few
-        days after returning home, the window still contains her 90 days spent
+        First, the window keeps rolling forward. On June 1st, a few
+        days after returning home, the window still contains her full 90 days spent
         within the Schengen Area. Because the window moves one day at a time,
         things will remain this way until late August as the end of the window
         creeps up to the start of her old trip.
@@ -160,15 +221,15 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        You probably noticed that if Patricia re-enters Schengen on August
+        You probably noticed that if Patricia re-enters the Schengen Area on August
         28th, she will be using her only available day of allowance. From here
-        on, every morning she is within the Schengen zone, her allowance will
+        on, every morning she is within the Schengen Area, her allowance will
         both gain a day (from her previous trip aging out) and lose a day (by
         currently being inside the Schengen Area). Her allowance isn't growing
         because she spends the freed days as they arrive.
       </p>
 
-      <p>This lets her stay in Schengen for a new 90 days.</p>
+      <p>This lets her stay in the Schengen Area for a new 90 days.</p>
 
       <div class="schengen-explorer" data-scenario="2">
         <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
@@ -194,15 +255,15 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <hr />
 
-      <h2>Case 3: Multiple Shorter Trips</h2>
+      <h2 id="case-3">Case 3 — Anna, Marcus, Ilker, and Olivia: multiple shorter trips</h2>
 
       <p>This is where the rolling window creates confusion.</p>
 
       <p>
-        Four friends travel together inside the Schengen Area from February 1st to March
-        22nd (50 days), leaving 40 days in their remaining allowances. They
+        Four friends, Anna, Marcus, Ilker, and Olivia, travel together inside the Schengen Area from
+        February 1st to March 22nd (50 days), leaving 40 days in their remaining allowances. They
         all arrive and exit together on the same day. Later in the year, each
-        one wants to return to Schengen independently and at different times,
+        one wants to return to the Schengen Area independently and at different times,
         for as long as possible.
       </p>
 
@@ -212,7 +273,7 @@ import LandingNav from "../../components/LandingNav.astro";
         Anna wants to return in early May, just a few weeks after leaving. Her
         new trip starts May 3rd. At that point, the entire February–March
         group trip sits squarely inside the 180-day window. Her re-entry to
-        Schengen is soon enough that both trips fall completely within the window.
+        the Schengen Area is soon enough that both trips fall completely within the window.
         Since the older trip will not age out during her second
         stay, and since both trips cannot exceed 90 days combined, her new
         trip is capped to a limit of 40 days.
@@ -236,7 +297,7 @@ import LandingNav from "../../components/LandingNav.astro";
       <p>
         On August 1st, February 2nd has fallen out of the window. And so
         on — each new morning sees one day freed, and because he is inside
-        Schengen, one day used. This effectively freezes his existing
+        the Schengen Area, one day used. This effectively freezes his existing
         allowance while the old trip ages out. By the time his group trip has
         aged out completely, his allowance hasn't changed for 50 days, and he
         can enjoy traveling on the remaining days in his allowance.
@@ -261,9 +322,9 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         Olivia waits 180 days after the group trip ages out completely. She
-        arrives without any Schengen days in the window. This scenario is
-        identical to Case 1, and like Patricia, Olivia can also stay for the
-        full 90 days.
+        arrives without any days spent in the Schengen Area inside the window.
+        This scenario is identical to Case 1, and like Patricia, Olivia can
+        also stay for the full 90 days.
       </p>
 
       <div class="schengen-explorer" data-scenario="3">
@@ -323,13 +384,13 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <hr />
 
-      <h2>What a real travel year looks like</h2>
+      <h2 id="real-travel-year">What a real travel year looks like</h2>
 
       <p>
         Even in the above example, the itinerary was fairly simple. Each
         traveler had only one prior visit to worry about. Here is a personal
         real-world example. A year of travel, pulled from the Schengen
-        segments of my own honeymoon.
+        Area segments of my own honeymoon.
       </p>
 
       <div class="schengen-explorer" data-scenario="4">
@@ -348,7 +409,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <hr />
 
-      <h2>The "permanent 90th day" problem</h2>
+      <h2 id="permanent-90th-day">The "permanent 90th day" problem</h2>
 
       <p>
         We'll revisit an important re-entry situation mentioned earlier before
@@ -365,9 +426,9 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         First: if you are traveling day by day on time released from an aging
-        trip, you must be certain to exit Schengen before your old trip ages
+        trip, you must be certain to exit the Schengen Area before your old trip ages
         off completely. This is particularly important if you have no buffer
-        days in your allowance, because your transportation out of Schengen is
+        days in your allowance, because your transportation out of the Schengen Area is
         always susceptible to delay or cancellation. A missed connection or a
         rebooked flight that pushes your departure is enough to tip you into
         an overstay. As pointed out in{" "}
@@ -391,7 +452,7 @@ import LandingNav from "../../components/LandingNav.astro";
       <blockquote>
         <p>
           <strong>Note:</strong> Travelers do not have an absolute right to
-          enter Schengen as a tourist. Border officials always retain the
+          enter the Schengen Area as a tourist. Border officials always retain the
           authority to deny entry. For most travelers this is a non-issue, but
           we strongly recommend against planning itineraries that could attract
           attention at the border.
@@ -406,7 +467,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <hr />
 
-      <h2>Different variants of bad advice we've seen online</h2>
+      <h2 id="bad-advice">Different variants of bad advice we've seen online</h2>
 
       <p>
         <strong>"You need to leave for 90 days before you can go back."</strong>
@@ -415,8 +476,8 @@ import LandingNav from "../../components/LandingNav.astro";
       <p>
         This implies a fixed reset 90 days after departure. There is no such
         reset. You can go back as soon as your rolling window contains fewer
-        than 90 Schengen days, which could be the very next day depending on
-        your history.
+        than 90 days spent in the Schengen Area, which could be the very next
+        day depending on your history.
       </p>
 
       <p>
@@ -424,10 +485,10 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        Also wrong. 180 days out would clear the entire window (no Schengen
-        days in the last 180 days), giving you a full 90 back. But you don't
-        need a full 90 to re-enter. You just need any positive allowance.
-        Waiting 180 days is always longer than necessary.
+        Also wrong. 180 days out would clear the entire window (no days spent
+        in the Schengen Area in the last 180 days), giving you a full 90 back.
+        But you don't need a full 90 to re-enter. You just need any positive
+        allowance. Waiting 180 days is always longer than necessary.
       </p>
 
       <p>
@@ -437,10 +498,10 @@ import LandingNav from "../../components/LandingNav.astro";
       <p>
         Close but structurally wrong. The 180-day window rolls continuously.
         It's not a fixed six-month period that resets on a schedule. If you
-        used 45 days in January, you don't automatically get 45 back in July.
-        You get those specific days back one at a time, as each individual day
-        ages out of the 180-day window. The result can be the same in some
-        cases, but the mechanism is completely different.
+        spent 45 days in the Schengen Area in January, you don't automatically
+        get 45 back in July. You get those specific days back one at a time,
+        as each individual day ages out of the 180-day window. The result can
+        be the same in some cases, but the mechanism is completely different.
       </p>
 
       <p>
@@ -454,7 +515,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <hr />
 
-      <h2>How to apply this in practice</h2>
+      <h2 id="how-to-apply">How to apply this in practice</h2>
 
       <p>
         The rolling window is complicated to calculate by hand for anything
@@ -480,12 +541,12 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <hr />
 
-      <h2>Frequently asked questions</h2>
+      <h2 id="faq">Frequently asked questions</h2>
 
       <p>
         <strong
-          >My Schengen days aren't resetting on a set date. How do I know when
-          I can go back?</strong
+          >My days spent in the Schengen Area aren't resetting on a set date.
+          How do I know when I can go back?</strong
         >
       </p>
 
@@ -505,9 +566,9 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         The earliest return date is the first date on which the last 180 days
-        contain fewer than 90 Schengen days. If you used all 90, this is
-        typically around the time your oldest trip starts aging out, 180 days
-        after your first day in Schengen on that stay.
+        contain fewer than 90 days spent in the Schengen Area. If you used all
+        90, this is typically around the time your oldest trip starts aging
+        out, 180 days after your first day in the Schengen Area on that stay.
       </p>
 
       <p>
@@ -528,8 +589,9 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         <strong
-          >I entered Schengen with 22 days remaining, but after being here for
-          2 weeks my remaining days didn't change. Is that a bug?</strong
+          >I entered the Schengen Area with 22 days remaining, but after being
+          here for 2 weeks my remaining days didn't change. Is that a
+          bug?</strong
         >
       </p>
 
@@ -540,24 +602,24 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        <strong>Does it matter which Schengen country I enter through?</strong>
+        <strong>Does it matter which country in the Schengen Area I enter through?</strong>
       </p>
 
       <p>
-        For the 90/180 calculation, no. All Schengen countries are treated as
+        For the 90/180 calculation, no. The entire Schengen Area is treated as
         a single zone.
       </p>
 
       <p>
         <strong
           >What about bilateral agreements, can those give me more than 90
-          Schengen days?</strong
+          days in the Schengen Area?</strong
         >
       </p>
 
       <p>
         Some countries have bilateral agreements that provide a separate
-        allowance outside the standard Schengen counter. Canada, for example,
+        allowance outside the standard Schengen Area counter. Canada, for example,
         has agreements with Denmark, Norway, Sweden, Finland, and Hungary.
         This information is best sourced online from official sites, as it's
         subject to change.
@@ -622,13 +684,13 @@ import LandingNav from "../../components/LandingNav.astro";
     const SCENARIOS: Scenario[] = [
       {
         id: "s1", label: "Full allowance available", mode: "single",
-        desc: "<strong>Patricia</strong> is planning her first European trip of the year. She has not been to Schengen in the past 180 days. Move the window to her planned arrival date and see her full 90-day allowance.",
+        desc: "<strong>Patricia</strong> is planning her first trip to the Schengen Area in a while. She plans to arrive June 1st, 2025. She has not spent any time in the Schengen Area in the past 180 days. Move the window to her planned arrival date and see her full 90-day allowance.",
         trips: [{ start: d(2025, 3, 1), end: d(2025, 5, 29), label: "Patricia", color: "#378add", person: "p" }],
         windowDefault: d(2025, 2, 28),
       },
       {
         id: "s2", label: "Used 90 days — when can she return?", mode: "single",
-        desc: "<strong>Patricia</strong> spent 90 days in Schengen (Mar 1–May 29). She left and wants to return as soon as possible. Drag the window forward past late August to watch her days free up one at a time.",
+        desc: "<strong>Patricia</strong> spent 90 days in the Schengen Area (Mar 1–May 29). She left and wants to return as soon as possible. Drag the window forward past late August to watch her days free up one at a time.",
         trips: [{ start: d(2025, 3, 1), end: d(2025, 5, 29), label: "Patricia", color: "#378add", person: "p" }],
         windowDefault: d(2025, 8, 28),
       },
@@ -643,13 +705,13 @@ import LandingNav from "../../components/LandingNav.astro";
       },
       {
         id: "s5", label: "Four friends, same trip", mode: "quad",
-        desc: "All four friends took the same group trip (Feb 1–Mar 22, 50 days), then each returned to Schengen at a different point in the year. <strong>Anna</strong> returns May 3 — both trips overlap fully in any window, capping her at 40 days. <strong>Marcus</strong> returns Jul 15 — his first trip ages out during his stay, allowing a full 90 days. <strong>Ilker</strong> returns Aug 1 — similar to Marcus, allowing 90 days. <strong>Olivia</strong> waits until Sep 19 — the first trip has fully cleared and she starts with a clean slate. <em>Drag the window across the year to compare all four at once.</em>",
+        desc: "All four friends took the same group trip (Feb 1–Mar 22, 50 days), then each returned to the Schengen Area at a different point in the year. <strong>Anna</strong> returns May 3 — both trips overlap fully in any window, capping her at 40 days. <strong>Marcus</strong> returns Jul 15 — his first trip ages out during his stay, allowing a full 90 days. <strong>Ilker</strong> returns Aug 1 — similar to Marcus, allowing 90 days. <strong>Olivia</strong> waits until Sep 19 — the first trip has fully cleared and she starts with a clean slate. <em>Drag the window across the year to compare all four at once.</em>",
         trips: COMBINED_TRIPS,
         windowDefault: d(2025, 7, 15),
       },
       {
         id: "s6", label: "Real travel history (2025–2026)", mode: "single",
-        desc: "Schengen trips from a real honeymoon: Paris/Zagreb (Mar), Croatia/Slovenia (Apr–Jul), Iceland (Sep), Azores/Canary Islands/Madeira (Nov–Dec) in 2025, then Malta (Apr) and Belgium/Luxembourg/The Netherlands (Apr–May) in 2026.",
+        desc: "Trips spent in the Schengen Area from a real honeymoon: Paris/Zagreb (Mar), Croatia/Slovenia (Apr–Jul), Iceland (Sep), Azores/Canary Islands/Madeira (Nov–Dec) in 2025, then Malta (Apr) and Belgium/Luxembourg/The Netherlands (Apr–May) in 2026.",
         trips: [
           { start: d(2025, 3, 14), end: d(2025, 3, 21),  label: "Honeymoon", color: "#378add", person: "p", showLabel: false },
           { start: d(2025, 4, 18), end: d(2025, 7, 2),   label: "Honeymoon", color: "#378add", person: "p", showLabel: false },
@@ -1113,12 +1175,70 @@ import LandingNav from "../../components/LandingNav.astro";
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 0.82rem;
     color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+  .article__audience {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
     margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
   }
 
   .article__body {
     max-width: 680px;
     margin: 0 auto;
+  }
+
+  .article__toc {
+    background: #eef1ea;
+    border: 1px solid #e0dbd3;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 0 0 2rem;
+  }
+
+  .article__toc-title {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a6a82;
+    margin: 0 0 10px;
+  }
+
+  .article__toc ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .article__toc li {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #3d4f65;
+  }
+
+  .article__toc a {
+    color: #0c1e3c;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s, color 0.18s;
+  }
+
+  .article__toc a:hover {
+    color: #00b96b;
+    border-bottom-color: #00b96b;
   }
 
   .article__body p {
