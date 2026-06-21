@@ -1,0 +1,1300 @@
+---
+/**
+ * Blog post: The Schengen 90/180 Rolling Window
+ * URL: /blog/the-schengen-90-180-rolling-window
+ * Static Astro page, rendered to plain HTML at build time.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
+---
+
+<BaseLayout
+  title="The Schengen 90/180 Rolling Window"
+  description="The rule for the Schengen Area uses a rolling 180-day window, not a fixed reset. Your days age out one at a time. We walk through five scenarios, from simple to complex."
+  canonicalUrl="https://eurovisacalculator.com/blog/the-schengen-90-180-rolling-window"
+>
+  <LandingNav />
+
+  <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
+    <header class="article__header">
+      <p class="article__tag">Blog</p>
+
+      <h1 class="article__title">
+        The 90/180 Rolling Window for the Schengen Area, Explained Visually
+      </h1>
+
+      <p class="article__meta">June 8, 2026 · 10 min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you're planning a long-term
+        trip with more than one stay in the Schengen Area, and you want to
+        keep your plans flexible without accidentally overstaying.
+        <br/>
+        <br/>
+        <strong>It's probably not necessary if:</strong> you're taking a
+        single trip under 90 days with no return visits planned. In that
+        case, the rule is simple and a single calculation will tell you
+        everything you need to know.
+      </p>
+    </header>
+
+
+
+    <div class="article__body">
+
+    <p>
+        When planning an extended trip in Europe, you'll quickly encounter the
+        following advice: spend 90 days in the{" "}
+        <a
+          href="https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/schengen-area_en"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Schengen Area</a
+        >, leave for 90 days <em>and then</em> you can come back. It sounds clean and
+        while it's technically correct, it's a rigid misrepresentation of the rule.
+    </p>
+    <p>
+        If you want to plan a long-term European itinerary with confidence, it's critical to understand how the 90/180 rule actually works.
+        This is the key to keeping a year-long trip flexible and visa-free.
+    </p>
+
+      <nav class="article__toc" aria-label="Table of contents">
+        <p class="article__toc-title">On this page</p>
+        <ol>
+          <li><a href="#what-the-rule-says">What the rule actually says</a></li>
+          <li><a href="#case-1">Case 1: Full allowance, no existing history</a></li>
+          <li><a href="#case-2">Case 2: 90 days used, earliest return</a></li>
+          <li><a href="#case-3">Case 3: Multiple shorter trips, maximizing stays</a></li>
+          <li><a href="#real-travel-year">What a real travel year looks like</a></li>
+          <li><a href="#permanent-90th-day">The "permanent 90th day" problem</a></li>
+          <li><a href="#bad-advice">Variants of bad advice we've seen online</a></li>
+          <li><a href="#how-to-apply">How to apply this in practice</a></li>
+          <li><a href="#faq">Frequently asked questions</a></li>
+        </ol>
+      </nav>
+
+     <h2 id="what-the-rule-says">What the rule actually says</h2>
+
+  <h3>Making sense of the official documentation</h3>
+
+<p>The official Schengen <a href="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en">visa policy</a> states:</p>
+
+<blockquote cite="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en#:~:text=Non%2DEU%20nationals%20need%20a%20visa%20to%20enter%20the%20Schengen%20area%20for%20a%20visit%20of%20up%20to%2090%20days%20in%20any%20180%2Dday%20period.">
+  When someone enters a country in the Schengen area, the 180-day period starts. 
+  They can enter Schengen area countries as many times as they want, 
+  but only stay for a total of 90 days, every 180 days.
+</blockquote>
+
+<p>
+  Firstly, we want to clear up some terms. For practical purposes, when checking your compliance on a certain date, 
+  the 180-day period mentioned above is the 180 days immediately <strong><em>before</em></strong> whatever date you are checking. 
+  We refer to this 180-day period as the "window". 
+  </p>
+<p>
+Count the days spent in the Schengen Area within that window: 
+  if the total is under 90, you are compliant and the remainder is your allowance.
+  If you are already inside the Schengen Area, being compliant means you can continue your stay. 
+  If you are outside the Schengen Area, being compliant means you can immediately revisit.
+</p>
+<p>
+By running this calculation across every
+  day of a planned itinerary, it is possible to know exactly when you
+  would overstay and when you are free to return, even on the most
+  complicated travel plans.
+</p>
+
+<h3>The window's edges</h3>
+
+<p>
+  The 180-day window has two edges: the end date (whatever day you are checking) and
+  the start date (180 days prior). If a day spent in the Schengen Area falls inside the window, it counts against
+  your allowance. Days spent outside the Schengen Area do not count, 
+  and neither do days outside the window, regardless of where they were spent.
+</p>
+
+<blockquote>
+  <p>
+    <strong>Note:</strong> As you will see in the interactive examples below, 
+    checking each day of an itinerary in sequence gives the impression of a
+    window sliding forward, but what is actually moving is your inspection
+    point, not the window itself. When a past day crosses behind the window's start
+    date, it is no longer part of the calculation: it has aged out of the window. Old
+    trips age out day by day, and your allowance recovers at the same rate.
+  </p>
+</blockquote>
+
+<p>
+  The cases below build on this intuition: what happens when you return too
+  soon, how a previous trip aging out can extend your stay, and when
+  waiting longer is actually worth it.
+</p>
+
+<hr />
+
+      <h2 id="case-1">Case 1 — Patricia: full allowance, no existing history</h2>
+
+      <p>
+        Patricia is planning her first trip in a while to the Schengen Area. She plans to
+        arrive on March 1st. She hasn't spent any time in the Schengen Area in the past 180
+        days, so her window contains 0 days and her allowance is the full 90 days.
+      </p>
+
+      <p>
+        <em>The panel below is interactive. Drag the slider to move the
+        inspected date. The shaded region always shows the 180 days
+        before whatever date you land on, and the stats update to match.
+        Try it now: drag the slider and watch the window move with it.</em>
+      </p>
+
+      <div class="schengen-explorer" data-scenario="0">
+        <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
+        <div class="scenario-label"></div>
+        <div class="timeline-outer"><canvas height="200"></canvas></div>
+        <div class="controls">
+          <div class="ctrl-row">
+            <span class="ctrl-label">Window end date</span>
+            <input type="range" min="0" max="100" value="50" step="1" />
+            <span class="window-date-label"></span>
+          </div>
+        </div>
+        <div class="stats-wrap"><div class="stats-container"></div></div>
+      </div>
+
+      <hr />
+
+      <h2 id="case-2">Case 2 — Patricia: 90 days used, when can she return?</h2>
+
+      <p>
+        Patricia's trip finishes and she returns home. In total, she spent 90 days in the Schengen Area, 
+        from March 1st to May 29th. After flying home, Patricia wants to return to the Schengen Area as soon as possible,
+        but her allowance is all used up. As long as the window contains all 90 of the days
+        she spent inside the Schengen Area, she can't return. 
+      </p>
+
+      <p>When is she allowed back?</p>
+
+      <p>
+        Patricia's allowance will remain empty until the start of the window
+        moves past the beginning of her old trip. This occurs on August 28th.
+        On this day, the window looks back 180 days to March 2nd, which is the second day of her old trip.
+        March 1st, the first day of her trip is no longer included in the window; 
+        it just aged out. Patricia now has an allowance of 1 day, allowing her to re-enter.
+      </p>
+
+      <p>
+        On the following day, both March 1st and 2nd have aged out. This makes two days of allowance.
+        From here, Patricia's allowance will grow one day at a time, matching the rate at which the
+        old trip ages out of the window.
+      </p>
+
+      <p>
+        She can re-enter on August 28th at the earliest.
+      </p>
+
+      <div class="schengen-explorer" data-scenario="1">
+        <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
+        <div class="scenario-label"></div>
+        <div class="timeline-outer"><canvas height="200"></canvas></div>
+        <div class="controls">
+          <div class="ctrl-row">
+            <span class="ctrl-label">Window end date</span>
+            <input type="range" min="0" max="100" value="50" step="1" />
+            <span class="window-date-label"></span>
+          </div>
+        </div>
+        <div class="stats-wrap"><div class="stats-container"></div></div>
+      </div>
+
+      <p>
+        If Patricia re-enters the Schengen Area on August 28th, she will be
+        using her only available day of allowance. From here, on each additional
+        day she spends within the Schengen Area, her allowance will appear to stay the same. 
+        This is because she will both gain a day (from her previous trip aging out) 
+        and lose a day (by currently being inside the Schengen Area).
+      </p>
+
+      <p>
+        As of August 28th, Patricia can stay in the Schengen Area for a new 90 days, traveling the entire time on what is technically her "90th day".
+        This might be confusing at first, but the interactive panel below should make it clear.
+      </p>
+
+      <div class="schengen-explorer" data-scenario="2">
+        <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
+        <div class="scenario-label"></div>
+        <div class="timeline-outer"><canvas height="200"></canvas></div>
+        <div class="controls">
+          <div class="ctrl-row">
+            <span class="ctrl-label">Window end date</span>
+            <input type="range" min="0" max="100" value="50" step="1" />
+            <span class="window-date-label"></span>
+          </div>
+        </div>
+        <div class="stats-wrap"><div class="stats-container"></div></div>
+      </div>
+
+      <blockquote>
+        <p>
+          <strong>Note:</strong> Pay attention to the counters for Days in window and Remaining allowance. 
+          Because the math is tight when re-entering on the earliest possible date, 
+          we recommend building in a small buffer before you re-enter for a long stay.
+        </p>
+      </blockquote>
+
+      <hr />
+
+      <h2 id="case-3">Case 3 — Anna, Marcus, Ilker, and Olivia: multiple shorter trips</h2>
+
+      <p>
+        Four friends, Anna, Marcus, Ilker, and Olivia, travel together inside the Schengen Area from
+        February 1st to March 22nd (50 days), leaving 40 days in their remaining allowances. 
+        Later in the year, each one wants to return to the Schengen Area independently and at different times,
+        for as long as possible.
+      </p>
+
+      <h3>Anna: returning soon</h3>
+
+      <p>
+        Anna wants to return a few weeks after leaving. Her new trip starts May 3rd.
+        At that point, the previous group trip sits squarely inside the
+        180-day window. Her re-entry to the Schengen Area is soon enough that both trips
+        fall completely within the window. Since the older trip will not age out during
+        her second stay, and since both trips cannot exceed 90 days combined, her new
+        trip is capped to a limit of 40 days.
+      </p>
+
+      <h3>Marcus: returning before 180 days</h3>
+
+      <p>
+        Marcus returns later than Anna, on July 15th. On that day, the 180-day window
+        runs back to January 17th. His February–March trip is still fully
+        inside the window. Like Anna, he has 40 days of allowance on entry.
+      </p>
+
+      <p>
+        Unlike Anna, as his new trip progresses, the earliest days from the
+        February trip begin aging out. On August 1st, the 180-day window no
+        longer includes February 1st, meaning the first day of the group trip
+        has just aged out. Marcus regains one day of allowance.
+      </p>
+
+      <p>
+        On August 2nd, February 2nd has fallen out of the window, returning one day to his allowance.
+        Because he is inside the Schengen Area, he also uses one day. This effectively freezes his existing
+        allowance while the old trip ages out. By the time his group trip has
+        aged out completely, his allowance hasn't changed for 50 days, and he
+        can enjoy traveling on the remaining days in his allowance.
+      </p>
+
+      <p>
+        Even though his allowance is 40 days on re-entry, Marcus can stay
+        much longer than 40 days because his old trip begins to age out during
+        his current stay.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>This is the most important concept in rolling window
+          math:</strong> your maximum stay is not always your remaining
+          allowance on the day you enter. It can be longer, sometimes
+          significantly longer, if a previous trip is scheduled to age out
+          during your new stay.
+        </p>
+      </blockquote>
+
+      <h3>Ilker: returning on the age-out date</h3>
+
+      <p>
+        181 days after their group trip first started, Ilker arrives on August 1st,
+        the first day on which February 1st falls outside the window. He arrives
+        with 41 days in his allowance. Like Marcus, the remaining days continue 
+        aging out during his stay, and he too can stay for 90 days.
+      </p>
+
+      <h3>Olivia: returning after the window clears</h3>
+
+      <p>
+        Olivia waits until September 19th, the first day on which the entire group
+        trip has fully cleared the window. She arrives without any days spent in the
+        Schengen Area inside the window, her situation is identical to Case 1,
+        and like Patricia, she can stay for the full 90 days.
+      </p>
+
+      <div class="schengen-explorer" data-scenario="3">
+        <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
+        <div class="scenario-label"></div>
+        <div class="timeline-outer"><canvas height="200"></canvas></div>
+        <div class="controls">
+          <div class="ctrl-row">
+            <span class="ctrl-label">Window end date</span>
+            <input type="range" min="0" max="100" value="50" step="1" />
+            <span class="window-date-label"></span>
+          </div>
+        </div>
+        <div class="stats-wrap"><div class="stats-container"></div></div>
+      </div>
+
+      <p>
+        Since all four friends wanted to revisit the Schengen Area for as long as
+        possible, Anna drew the short straw by re-entering so much earlier than
+        the others. Like Marcus, she re-entered with an allowance of 40 days,
+        but at a time when the group trip had not yet started aging out of the
+        window, meaning both trips counted together against her 90-day limit.
+      </p>
+
+      <p>
+        Marcus, Ilker, and Olivia were all able to re-enter for 90 days despite
+        having different allowances on their re-entry dates. The key is that
+        their new trips either started on or after August 1st, the date the
+        group trip began aging out. In fact, Marcus could have started his
+        second trip even earlier, as long as he began within 40 days of
+        August 1st.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Test your understanding: When can Anna re-enter?</strong>
+          Anna can re-enter for a third trip on August 1st, the same date
+          the group trip begins aging out of the window. No matter how many
+          times she has entered and left since then, it is always her oldest
+          trip within the window that ages out and returns days to her
+          allowance. Her most recent trip has no effect on when she can
+          next re-enter.
+        </p>
+      </blockquote>
+
+      <hr />
+
+      <h2 id="real-travel-year">What a real travel year looks like</h2>
+
+      <p>
+        Even in the above example, the itinerary was fairly simple. Each
+        traveler had only one prior visit to worry about. Here is a personal
+        real-world example. A year of travel, pulled from the Schengen
+        Area segments of my own honeymoon.
+      </p>
+
+      <div class="schengen-explorer" data-scenario="4">
+        <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
+        <div class="scenario-label"></div>
+        <div class="timeline-outer"><canvas height="200"></canvas></div>
+        <div class="controls">
+          <div class="ctrl-row">
+            <span class="ctrl-label">Window end date</span>
+            <input type="range" min="0" max="100" value="50" step="1" />
+            <span class="window-date-label"></span>
+          </div>
+        </div>
+        <div class="stats-wrap"><div class="stats-container"></div></div>
+      </div>
+
+      <hr />
+
+      <h2 id="permanent-90th-day">The "permanent 90th day" problem</h2>
+
+      <p>
+        We'll revisit an important re-entry situation mentioned earlier.
+      </p>
+
+      <p>
+        Suppose your travel history leaves you with room to stay exactly one
+        more day, and the only reason you can stay another day is because an
+        old trip is simultaneously aging out. This is much more common than
+        you might expect and is central to the 90 in/90 out advice, but there
+        are two practical issues worth noting.
+      </p>
+
+      <p>
+        First: if you are traveling day by day on your 90th day inside the Schengen Area, on time released from an aging
+        trip, you are exactly one mistake away from overstaying. Take a look at Patricia's <em>Days in window</em> statistic during her second trip in <a href="#case-2">case 2</a> above.
+        You must be certain to exit the Schengen Area before your old trip ages
+        off completely. This is particularly important if you have no buffer
+        days in your allowance, because your transportation out of the Schengen Area is
+        always susceptible to delay or cancellation. A missed connection or a
+        rebooked flight that pushes your departure is enough to tip you into
+        an overstay. As pointed out in{" "}
+        <a href="/blog/does-your-entry-day-count-as-a-schengen-day"
+          >our post on counting border days</a
+        >, this could be a matter of a few hours if leaving late at night.
+        Plus, with the new automated entry and exit system, an overstay of
+        even 1 day will be caught and possibly penalized.
+      </p>
+
+      <p>
+        Second: according to the customs officer reviewing your passport upon
+        exit, you have stayed 90 days of your available 90 and waited until
+        the last possible moment to leave. This is technically allowed, but it
+        may attract an inquisitive eye. Worse still, making a habit of
+        maximising your stay can lead to questioning at entry on your next
+        trip. This may be less of an issue under the new automated entry and
+        exit system.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Note:</strong> Travelers do not have an absolute right to
+          enter the Schengen Area as a tourist. Border officials always retain the
+          authority to deny entry. For most travelers this is a non-issue, but
+          we strongly recommend against planning itineraries that could attract
+          attention at the border.
+        </p>
+      </blockquote>
+
+      <hr />
+
+      <h2 id="bad-advice">Different variants of bad advice we've seen online</h2>
+
+      <p>
+        <strong>"You need to leave for 90 days before you can go back."</strong>
+      </p>
+
+      <p>
+        This implies a fixed reset 90 days after departure. There is no such
+        reset. You can go back as soon as your rolling window contains fewer
+        than 90 days spent in the Schengen Area, which could be the very next
+        day depending on your history.
+      </p>
+
+      <p>
+        <strong>"You need to stay out for 180 days."</strong>
+      </p>
+
+      <p>
+        Also wrong. 180 days out would clear the entire window (no days spent
+        in the Schengen Area in the last 180 days), giving you a full 90 back.
+        But you don't need a full 90 to re-enter. You just need any positive
+        allowance. Waiting 180 days is always longer than necessary.
+      </p>
+
+      <p>
+        <strong>"You get 90 days every six months."</strong>
+      </p>
+
+      <p>
+        Close but structurally wrong. The 180-day window rolls continuously.
+        It's not a fixed six-month period that resets on a schedule. If you
+        spent 45 days in the Schengen Area in January, you don't automatically
+        get 45 back in July. You get those specific days back one at a time,
+        as each individual day ages out of the 180-day window. The result can
+        be the same in some cases, but the mechanism is completely different.
+      </p>
+
+      <p>
+        <strong
+          >"Once you use 90 days, you have to wait until the start of the
+          next year."</strong
+        >
+      </p>
+
+      <p>The calendar year has nothing to do with it.</p>
+
+      <hr />
+
+      <h2 id="how-to-apply">How to apply this in practice</h2>
+
+      <p>
+        The rolling window is complicated to calculate by hand for anything
+        more complex than a single trip. For travel history with more than one
+        trip, or any situation where you want to know your maximum possible
+        stay, use a dedicated calculator.
+      </p>
+
+      <p>
+        <a href="/app">EuroVisaCalculator</a> shows you the exact days counted
+        in any window, handles multiple travelers with different entry and exit
+        dates, and includes an overstay warning before you save a trip. You
+        can{" "}
+        <a href="/app">try it with your actual dates</a>.
+      </p>
+
+      <p>
+        The official EU calculator is also worth using as a cross-check. It
+        applies the same methodology and is the authoritative reference. The
+        two tools should give identical results; if they don't, we want to
+        know.
+      </p>
+
+      <hr />
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <p>
+        <strong
+          >My days spent in the Schengen Area aren't resetting on a set date.
+          How do I know when I can go back?</strong
+        >
+      </p>
+
+      <p>
+        Use the calculator and look at the remaining allowance on your most
+        recent trip. If the value is greater than zero, you can re-enter
+        immediately. Otherwise, possible re-entry dates are present on the
+        timeline for trips of various sizes.
+      </p>
+
+      <p>
+        <strong
+          >What if I just want to know the absolute earliest I can
+          return?</strong
+        >
+      </p>
+
+      <p>
+        The earliest return date is the first date on which the last 180 days
+        contain fewer than 90 days spent in the Schengen Area. If you used all
+        90, this is typically around the time your oldest trip starts aging
+        out, 180 days after your first day in the Schengen Area on that stay.
+      </p>
+
+      <p>
+        <strong
+          >Can I stay longer than my remaining allowance shows on the day I
+          enter?</strong
+        >
+      </p>
+
+      <p>
+        Yes, if you have a previous trip that will partially age out during
+        your new visit. This is the Case 3 situation above. You can calculate
+        your true maximum stay by projecting forward through your trip and
+        watching the window roll.{" "}
+        <a href="/app">EuroVisaCalculator</a> does this calculation when you
+        add a planned trip.
+      </p>
+
+      <p>
+        <strong
+          >I entered the Schengen Area with 22 days remaining, but after being
+          here for 2 weeks my remaining days didn't change. Is that a
+          bug?</strong
+        >
+      </p>
+
+      <p>
+        No. A previous trip was aging out of the window as you were
+        accumulating new days. This is expected behaviour of the rolling
+        window.
+      </p>
+
+      <p>
+        <strong>Does it matter which country in the Schengen Area I enter through?</strong>
+      </p>
+
+      <p>
+        For the 90/180 calculation, no. The entire Schengen Area is treated as
+        a single zone.
+      </p>
+
+      <p>
+        <strong
+          >What about bilateral agreements, can those give me more than 90
+          days in the Schengen Area?</strong
+        >
+      </p>
+
+      <p>
+        Some countries have bilateral agreements that provide a separate
+        allowance outside the standard Schengen Area counter. Canada, for example,
+        has agreements with Denmark, Norway, Sweden, Finland, and Hungary.
+        This information is best sourced online from official sites, as it's
+        subject to change.
+      </p>
+
+      <hr />
+
+      <p>
+        For more on how entry and exit days are counted:{" "}
+        <a href="/blog/does-your-entry-day-count-as-a-schengen-day"
+          >Does Your Entry Day Count as a Schengen Day?</a
+        >.
+      </p>
+    </div>
+
+    <div class="article__back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  (function () {
+    const PAD = 195;
+    function d(y: number, m: number, day: number) { return new Date(y, m - 1, day); }
+    function addDays(dt: Date, n: number) { const r = new Date(dt); r.setDate(r.getDate() + n); return r; }
+    function diffDays(a: Date, b: Date) { return Math.round((b.getTime() - a.getTime()) / 86400000); }
+    function fmtDate(dt: Date) { return dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
+    function fmtShort(dt: Date) {
+      const M = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      return M[dt.getMonth()] + " " + String(dt.getDate()).padStart(2, "0");
+    }
+
+    const PERSONS = [
+      { key: "anna",   label: "Anna",   color: "#c46e1a", row: 0 },
+      { key: "marcus", label: "Marcus", color: "#1d9e75", row: 1 },
+      { key: "ilker",  label: "Ilker",  color: "#2e86c1", row: 2 },
+      { key: "olivia", label: "Olivia", color: "#7b52c9", row: 3 },
+    ] as const;
+    type PersonKey = typeof PERSONS[number]["key"];
+    const PERSON_MAP = Object.fromEntries(PERSONS.map((p) => [p.key, p])) as Record<PersonKey, typeof PERSONS[number]>;
+
+    interface Trip { start: Date; end: Date; label: string; color: string; person: string; showLabel?: boolean; }
+
+    const makeGroupTrips = (): Trip[] =>
+      PERSONS.map((p) => ({ start: d(2025, 2, 1), end: d(2025, 3, 22), label: "Group trip", color: "#378add", person: p.key }));
+
+    const RETURN_TRIPS: Trip[] = [
+      { start: d(2025, 5, 3),  end: d(2025, 6, 11),  label: "Anna",   color: "#c46e1a", person: "anna"   },
+      { start: d(2025, 7, 15), end: d(2025, 10, 12), label: "Marcus", color: "#1d9e75", person: "marcus" },
+      { start: d(2025, 8, 1),  end: d(2025, 10, 29), label: "Ilker",  color: "#2e86c1", person: "ilker"  },
+      { start: d(2025, 9, 19), end: d(2025, 12, 17), label: "Olivia", color: "#7b52c9", person: "olivia" },
+    ];
+
+    const COMBINED_TRIPS: Trip[] = [...makeGroupTrips(), ...RETURN_TRIPS];
+
+    interface Scenario {
+      id: string; label: string; mode: "single" | "quad";
+      desc: string; trips: Trip[]; windowDefault: Date;
+    }
+
+    const SCENARIOS: Scenario[] = [
+      {
+        id: "s1", label: "Full allowance available", mode: "single",
+        desc: "<strong>Patricia</strong> plans to arrive March 1st and visit the Schengen Area for 90 days. Move the slider to inspect her allowance and her days used before, during and after her trip.",
+        trips: [{ start: d(2025, 3, 1), end: d(2025, 5, 29), label: "Patricia", color: "#378add", person: "p" }],
+        windowDefault: d(2025, 2, 28),
+      },
+      {
+        id: "s2", label: "90 days used. When can she return?", mode: "single",
+        desc: "<strong>Patricia</strong> spent 90 days in the Schengen Area (Mar 1–May 29). Her trip is over and she wants to return as soon as possible. Drag the window forward past late August to watch her days free up one at a time, allowing her to return.",
+        trips: [{ start: d(2025, 3, 1), end: d(2025, 5, 29), label: "Patricia", color: "#378add", person: "p" }],
+        windowDefault: d(2025, 8, 28),
+      },
+      {
+        id: "s3", label: "90 days out, 90 days back", mode: "single",
+        desc: "<strong>Patricia</strong> spends 90 days (Mar 1–May 29), leaves for about 90 days, then returns Aug 28 believing her counter has reset. Drag the window to Aug 28. Her first trip is still almost entirely inside the window.",
+        trips: [
+          { start: d(2025, 3, 1),  end: d(2025, 5, 29), label: "First trip",  color: "#378add", person: "p" },
+          { start: d(2025, 8, 28), end: d(2025, 11, 25), label: "Return trip", color: "#1d9e75", person: "p" },
+        ],
+        windowDefault: d(2025, 8, 28),
+      },
+      {
+        id: "s5", label: "Four friends, same trip", mode: "quad",
+        desc: "All four friends took the same group trip (Feb 1–Mar 22, 50 days), then each returned to the Schengen Area at a different point in the year. <em>Drag the window across the year to compare all four at once.</em>",
+        trips: COMBINED_TRIPS,
+        windowDefault: d(2025, 7, 15),
+      },
+      {
+        id: "s6", label: "Real travel history (2025–2026)", mode: "single",
+        desc: "Trips spent in the Schengen Area from a real honeymoon: Paris/Zagreb (Mar), Croatia/Slovenia (Apr–Jul), Iceland (Sep), Azores/Canary Islands/Madeira (Nov–Dec) in 2025, then Malta (Apr) and Belgium/Luxembourg/The Netherlands (Apr–May) in 2026.",
+        trips: [
+          { start: d(2025, 3, 14), end: d(2025, 3, 21),  label: "Honeymoon", color: "#378add", person: "p", showLabel: false },
+          { start: d(2025, 4, 18), end: d(2025, 7, 2),   label: "Honeymoon", color: "#378add", person: "p", showLabel: false },
+          { start: d(2025, 9, 19), end: d(2025, 9, 26),  label: "Honeymoon", color: "#378add", person: "p", showLabel: false },
+          { start: d(2025, 11, 27), end: d(2025, 12, 30), label: "Honeymoon", color: "#378add", person: "p", showLabel: false },
+          { start: d(2026, 4, 12), end: d(2026, 4, 17),  label: "Honeymoon", color: "#378add", person: "p", showLabel: false },
+          { start: d(2026, 4, 23), end: d(2026, 5, 10),  label: "Honeymoon", color: "#378add", person: "p", showLabel: false },
+        ],
+        windowDefault: d(2025, 9, 1),
+      },
+    ];
+
+    function initExplorer(container: HTMLElement) {
+      const scenarioIdx = parseInt(container.dataset.scenario ?? "0") || 0;
+      const isDark = matchMedia("(prefers-color-scheme: dark)").matches;
+
+      const descEl      = container.querySelector<HTMLElement>(".scenario-label")!;
+      const canvas      = container.querySelector<HTMLCanvasElement>("canvas")!;
+      const slider      = container.querySelector<HTMLInputElement>("input[type=range]")!;
+      const dateLabelEl = container.querySelector<HTMLElement>(".window-date-label")!;
+      const statsEl     = container.querySelector<HTMLElement>(".stats-container")!;
+      const ctx         = canvas.getContext("2d")!;
+
+      const currentScenario: Scenario = SCENARIOS[scenarioIdx];
+      let TL_START: Date, TL_END: Date, TL_TOTAL: number;
+
+      function computeRange(trips: Trip[]) {
+        const mn = trips.reduce((a, t) => (t.start < a ? t.start : a), trips[0].start);
+        const mx = trips.reduce((a, t) => (t.end > a ? t.end : a), trips[0].end);
+        return { start: addDays(mn, -PAD), end: addDays(mx, PAD) };
+      }
+
+      function countForPerson(trips: Trip[], windowEnd: Date, personKey: string) {
+        const windowStart = addDays(windowEnd, -179);
+        let count = 0;
+        trips.filter((t) => t.person === personKey).forEach((t) => {
+          const os = t.start > windowStart ? t.start : windowStart;
+          const oe = t.end < windowEnd ? t.end : windowEnd;
+          if (oe >= os) count += diffDays(os, oe) + 1;
+        });
+        return count;
+      }
+
+      function countAll(trips: Trip[], windowEnd: Date) {
+        const windowStart = addDays(windowEnd, -179);
+        let count = 0;
+        trips.forEach((t) => {
+          const os = t.start > windowStart ? t.start : windowStart;
+          const oe = t.end < windowEnd ? t.end : windowEnd;
+          if (oe >= os) count += diffDays(os, oe) + 1;
+        });
+        return count;
+      }
+
+      function renderStatsSingle(trips: Trip[], windowEnd: Date) {
+        const days = countAll(trips, windowEnd);
+        const remaining = Math.max(0, 90 - days);
+        statsEl.innerHTML = `
+          <div class="stats-single">
+            <div class="stat-card">
+              <div class="stat-label">Days in window</div>
+              <div class="stat-val ${days > 90 ? "danger" : days > 70 ? "warn" : "ok"}">${days}</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Remaining allowance</div>
+              <div class="stat-val ${remaining === 0 ? "danger" : remaining < 20 ? "warn" : "ok"}">${remaining}</div>
+            </div>
+          </div>`;
+      }
+
+      function renderStatsQuad(trips: Trip[], windowEnd: Date) {
+        const cards = PERSONS.map((p) => {
+          const days = countForPerson(trips, windowEnd, p.key);
+          const remaining = Math.max(0, 90 - days);
+          return `<div class="stat-card" style="border-left-color:${p.color}">
+            <div class="stat-label" style="color:${p.color};font-weight:500;">${p.label}</div>
+            <div class="stat-val ${days > 90 ? "danger" : days > 70 ? "warn" : "ok"}">${days} <span style="font-size:12px;font-weight:400;color:var(--color-text-secondary)">/ 90</span></div>
+            <div class="stat-sublabel">${remaining === 0 ? "No allowance left" : `${remaining} days left`}</div>
+          </div>`;
+        }).join("");
+        statsEl.innerHTML = `<div class="stats-quad">${cards}</div>`;
+      }
+
+      function drawTimeline(windowEnd: Date) {
+        const sc = currentScenario;
+        const trips = sc.trips;
+        const isQuad = sc.mode === "quad";
+        const W = canvas.width;
+        const mL = isQuad ? 68 : 10, mR = 10, mTop = 28;
+        const tripH = 20, tripGap = 5;
+        const plotW = W - mL - mR;
+        const windowStart = addDays(windowEnd, -179);
+
+        const xOf = (dt: Date) => mL + (diffDays(TL_START, dt) / TL_TOTAL) * plotW;
+
+        let numRows: number;
+        let getTripRow: (t: Trip, i: number) => number;
+
+        if (isQuad) {
+          numRows = PERSONS.length;
+          getTripRow = (t) => PERSON_MAP[t.person as PersonKey]?.row ?? 0;
+        } else {
+          const rowAssign = new Array(trips.length).fill(0);
+          const rowEnds: (Date | undefined)[] = [];
+          numRows = 1;
+          trips.forEach((t, i) => {
+            let r = 0;
+            while (rowEnds[r] !== undefined && rowEnds[r]! >= t.start) r++;
+            rowAssign[i] = r;
+            rowEnds[r] = t.end;
+            if (r + 1 > numRows) numRows = r + 1;
+          });
+          getTripRow = (_, i) => rowAssign[i];
+        }
+
+        const totalTripH = numRows * tripH + (numRows - 1) * tripGap;
+        const tripAreaTop = mTop + 20;
+        const axisY = tripAreaTop + totalTripH + 16;
+        canvas.height = axisY + 22;
+
+        ctx.clearRect(0, 0, W, canvas.height);
+
+        if (isQuad) {
+          ctx.font = "500 11px var(--font-sans,sans-serif)";
+          ctx.textAlign = "right";
+          PERSONS.forEach((p) => {
+            const ty = tripAreaTop + p.row * (tripH + tripGap);
+            ctx.fillStyle = p.color;
+            ctx.fillText(p.label, mL - 6, ty + tripH / 2 + 4);
+          });
+        }
+
+        const refOver = isQuad
+          ? PERSONS.some((p) => countForPerson(trips, windowEnd, p.key) > 90)
+          : countAll(trips, windowEnd) > 90;
+
+        const x0w = Math.max(mL, xOf(windowStart));
+        const x1w = Math.min(W - mR, xOf(addDays(windowEnd, 1)));
+
+        // Window overlay
+        ctx.fillStyle = refOver
+          ? isDark ? "rgba(163,45,45,0.18)" : "rgba(240,149,149,0.15)"
+          : isDark ? "rgba(55,138,221,0.12)" : "rgba(55,138,221,0.08)";
+        ctx.fillRect(x0w, mTop - 4, x1w - x0w, axisY - (mTop - 4));
+        ctx.strokeStyle = refOver
+          ? isDark ? "rgba(240,149,149,0.5)" : "rgba(163,45,45,0.35)"
+          : isDark ? "rgba(55,138,221,0.4)"  : "rgba(55,138,221,0.35)";
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x0w, mTop - 4, x1w - x0w, axisY - (mTop - 4));
+
+        // "180-day window" label centered just below the overlay's bottom border
+        const winMidX = Math.min(Math.max((x0w + x1w) / 2, mL + 60), W - mR - 60);
+        ctx.fillStyle = refOver
+          ? isDark ? "rgba(240,149,149,0.6)" : "rgba(163,45,45,0.45)"
+          : isDark ? "rgba(130,180,240,0.6)" : "rgba(55,138,221,0.45)";
+        ctx.font = "500 10px var(--font-sans,sans-serif)";
+        ctx.textAlign = "center";
+        ctx.fillText("180-day window", winMidX, axisY + 12);
+
+        // Axis
+        ctx.strokeStyle = isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.1)";
+        ctx.lineWidth = 0.5;
+        ctx.beginPath(); ctx.moveTo(mL, axisY); ctx.lineTo(W - mR, axisY); ctx.stroke();
+
+        // Month grid lines + labels
+        ctx.font = "11px var(--font-sans,sans-serif)";
+        ctx.textAlign = "center";
+        const cur = new Date(TL_START); cur.setDate(1);
+        while (cur <= TL_END) {
+          const x = xOf(cur);
+          if (x >= mL && x <= W - mR) {
+            ctx.strokeStyle = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)";
+            ctx.lineWidth = 0.5;
+            ctx.beginPath(); ctx.moveTo(x, mTop - 4); ctx.lineTo(x, axisY); ctx.stroke();
+            const lx = x + (plotW / TL_TOTAL) * 15;
+            if (lx < W - mR - 5) {
+              ctx.fillStyle = isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
+              ctx.fillText(cur.toLocaleDateString("en-GB", { month: "short" }), lx, axisY + 12);
+            }
+          }
+          cur.setMonth(cur.getMonth() + 1);
+        }
+
+        // Trip bars
+        trips.forEach((t, i) => {
+          const row = getTripRow(t, i);
+          const ty = tripAreaTop + row * (tripH + tripGap);
+          const x0 = xOf(t.start);
+          const x1 = xOf(addDays(t.end, 1));
+          const tw = Math.max(x1 - x0, 2);
+
+          ctx.fillStyle = t.color;
+          ctx.beginPath(); (ctx as any).roundRect(x0, ty, tw, tripH, 4); ctx.fill();
+
+          const os = t.start > windowStart ? t.start : windowStart;
+          const oe = t.end < windowEnd ? t.end : windowEnd;
+          if (oe >= os) {
+            const xa = xOf(os), xb = xOf(addDays(oe, 1));
+            ctx.fillStyle = "rgba(255,255,255,0.22)";
+            ctx.beginPath(); (ctx as any).roundRect(xa, ty, xb - xa, tripH, 4); ctx.fill();
+          }
+
+          if (tw > 44 && t.showLabel !== false) {
+            ctx.fillStyle = "rgba(255,255,255,0.92)";
+            ctx.font = "500 11px var(--font-sans,sans-serif)";
+            ctx.textAlign = "center";
+            ctx.fillText(t.label, x0 + tw / 2, ty + tripH / 2 + 4);
+          }
+        });
+
+        // Window end dashed line
+        const xEnd = xOf(addDays(windowEnd, 1));
+        ctx.strokeStyle = isDark ? "rgba(212,83,126,0.85)" : "#d4537e";
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(xEnd, mTop - 4); ctx.lineTo(xEnd, axisY); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Window end date above the dashed line
+        ctx.fillStyle = "#d4537e";
+        ctx.font = "500 10px var(--font-sans,sans-serif)";
+        ctx.textAlign = "center";
+        const endLx = Math.min(Math.max(xEnd, mL + 30), W - mR - 30);
+        ctx.fillText(fmtShort(windowEnd), endLx, mTop - 8);
+
+        // Window start date above the left edge of the window (only when visible)
+        const xWinStart = xOf(windowStart);
+        if (xWinStart > mL) {
+          ctx.fillStyle = isDark ? "rgba(100,160,230,0.8)" : "rgba(55,138,221,0.7)";
+          ctx.font = "500 10px var(--font-sans,sans-serif)";
+          ctx.textAlign = "left";
+          ctx.fillText(fmtShort(windowStart), xWinStart + 2, mTop - 8);
+        }
+      }
+
+      function init() {
+        descEl.innerHTML = currentScenario.desc;
+
+        const range = computeRange(currentScenario.trips);
+        TL_START = range.start; TL_END = range.end; TL_TOTAL = diffDays(TL_START, TL_END);
+        slider.min = "179"; slider.max = String(TL_TOTAL - 1);
+        const def = diffDays(TL_START, currentScenario.windowDefault);
+        slider.value = String(Math.min(Math.max(def, 179), TL_TOTAL - 1));
+
+        canvas.width = Math.max(520, container.clientWidth - 42);
+        const windowEnd = addDays(TL_START, parseInt(slider.value));
+        drawTimeline(windowEnd);
+
+        if (currentScenario.mode === "quad") {
+          renderStatsQuad(currentScenario.trips, windowEnd);
+        } else {
+          renderStatsSingle(currentScenario.trips, windowEnd);
+        }
+
+        dateLabelEl.textContent = fmtDate(windowEnd);
+      }
+
+      slider.addEventListener("input", () => {
+        const windowEnd = addDays(TL_START, parseInt(slider.value));
+        drawTimeline(windowEnd);
+        if (currentScenario.mode === "quad") {
+          renderStatsQuad(currentScenario.trips, windowEnd);
+        } else {
+          renderStatsSingle(currentScenario.trips, windowEnd);
+        }
+        dateLabelEl.textContent = fmtDate(windowEnd);
+      });
+
+      window.addEventListener("resize", () => {
+        canvas.width = Math.max(520, container.clientWidth - 42);
+        const windowEnd = addDays(TL_START, parseInt(slider.value));
+        drawTimeline(windowEnd);
+      });
+
+      init();
+    }
+
+    document.querySelectorAll<HTMLElement>(".schengen-explorer[data-scenario]").forEach(initExplorer);
+  })();
+</script>
+
+<style is:global>
+  .schengen-explorer {
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f3f4f6;
+    --color-text-primary: #0c1e3c;
+    --color-text-secondary: #5a6a82;
+    --color-text-tertiary: #8fa0b4;
+    --color-border-primary: #c8c4bc;
+    --color-border-secondary: #e0dbd3;
+    --color-border-tertiary: #ede9e3;
+    --border-radius-md: 8px;
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+    background: var(--color-background-primary);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 12px;
+    padding: 20px 20px 16px;
+    margin: 2rem 0;
+    overflow: hidden;
+  }
+
+  .schengen-explorer .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .schengen-explorer * { box-sizing: border-box; }
+
+  .schengen-explorer .scenario-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    padding: 10px 14px;
+    border-radius: var(--border-radius-md);
+    border: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-secondary);
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer .scenario-label strong {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  .schengen-explorer .scenario-label em {
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  .schengen-explorer .timeline-outer {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .schengen-explorer canvas { display: block; }
+
+  .schengen-explorer .controls {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .schengen-explorer .ctrl-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .schengen-explorer .ctrl-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    min-width: 110px;
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer input[type="range"] { flex: 1; }
+
+  .schengen-explorer .window-date-label {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 90px;
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer .stats-wrap { margin-top: 1.25rem; }
+
+  .schengen-explorer .stats-single {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .schengen-explorer .stats-quad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .schengen-explorer .stat-card {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 12px 14px;
+    border-left: 3px solid transparent;
+  }
+
+  .schengen-explorer .stat-label {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer .stat-val {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer .stat-val.warn   { color: #ba7517; }
+  .schengen-explorer .stat-val.danger { color: #a32d2d; }
+  .schengen-explorer .stat-val.ok     { color: #3b6d11; }
+
+  .schengen-explorer .stat-sublabel {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    margin-top: 2px;
+    font-family: var(--font-sans);
+  }
+</style>
+
+<style>
+  .article {
+    min-height: 100vh;
+    background: #f7f5f1;
+    padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .article__header {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .article__tag {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 14px;
+  }
+
+  .article__title {
+    font-family: "Fraunces", serif;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .article__meta {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.82rem;
+    color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+  .article__audience {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
+  }
+
+  .article__body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article__toc {
+    background: #eef1ea;
+    border: 1px solid #e0dbd3;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 0 0 2rem;
+  }
+
+  .article__toc-title {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a6a82;
+    margin: 0 0 10px;
+  }
+
+  .article__toc ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .article__toc li {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #3d4f65;
+  }
+
+  .article__toc a {
+    color: #0c1e3c;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s, color 0.18s;
+  }
+
+  .article__toc a:hover {
+    color: #00b96b;
+    border-bottom-color: #00b96b;
+  }
+
+  .article__body p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+  }
+
+  .article__body h2 {
+    font-family: "Fraunces", serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article__body h3 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0c1e3c;
+    margin: 1.75rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article__body hr {
+    border: none;
+    border-top: 1px solid #e0dbd3;
+    margin: 2.5rem 0;
+  }
+
+  .article__body a {
+    color: #00b96b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s;
+  }
+
+  .article__body a:hover {
+    border-bottom-color: #00b96b;
+  }
+
+  .article__body blockquote {
+    margin: 1.5rem 0;
+    padding: 14px 18px;
+    background: #f0f4f8;
+    border-left: 3px solid #b8c8d8;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .article__body blockquote p {
+    margin: 0;
+    font-size: 0.93rem;
+    color: #3d4f65;
+    line-height: 1.7;
+  }
+
+  .article__back {
+    max-width: 680px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #e0dbd3;
+  }
+
+  .article__back-link {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #5a6a82;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .article__back-link:hover {
+    color: #0c1e3c;
+  }
+</style>
