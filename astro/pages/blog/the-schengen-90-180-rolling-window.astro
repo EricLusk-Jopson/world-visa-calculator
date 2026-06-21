@@ -97,29 +97,35 @@ import LandingNav from "../../components/LandingNav.astro";
 <p>
 Count the days spent in the Schengen Area within that window: 
   if the total is under 90, you are compliant and the remainder is your allowance.
+  If you are already inside the Schengen Area, being compliant means you can continue your stay. 
+  If you are outside the Schengen Area, being compliant means you can immediately revisit.
 </p>
 <p>
 By running this calculation across every
   day of a planned itinerary, it is possible to know exactly when you
   would overstay and when you are free to return, even on the most
-  complicated travel histories.
+  complicated travel plans.
 </p>
 
 <h3>The window's edges</h3>
 
 <p>
-  The window has two edges: the end date (whatever day you are checking) and
-  the start date (180 days prior). Days inside the window count against
-  your allowance. Days outside it do not.
+  The 180-day window has two edges: the end date (whatever day you are checking) and
+  the start date (180 days prior). If a day spent in the Schengen Area falls inside the window, it counts against
+  your allowance. Days spent outside the Schengen Area do not count, 
+  and neither do days outside the window, regardless of where they were spent.
 </p>
 
-<p>
-  Checking each day of an itinerary in sequence gives the impression of a
-  window sliding forward, but what is actually moving is your inspection
-  point, not the window itself. When a past day crosses behind the window's start
-  date, it is no longer part of the calculation: it has aged out of the window. Old
-  trips age out day by day, and your allowance recovers at the same rate.
-</p>
+<blockquote>
+  <p>
+    <strong>Note:</strong> As you will see in the interactive examples below, 
+    checking each day of an itinerary in sequence gives the impression of a
+    window sliding forward, but what is actually moving is your inspection
+    point, not the window itself. When a past day crosses behind the window's start
+    date, it is no longer part of the calculation: it has aged out of the window. Old
+    trips age out day by day, and your allowance recovers at the same rate.
+  </p>
+</blockquote>
 
 <p>
   The cases below build on this intuition: what happens when you return too
@@ -132,7 +138,7 @@ By running this calculation across every
       <h2 id="case-1">Case 1 — Patricia: full allowance, no existing history</h2>
 
       <p>
-        Patricia is planning her first trip to the Schengen Area in a while. She plans to
+        Patricia is planning her first trip in a while to the Schengen Area. She plans to
         arrive on March 1st. She hasn't spent any time in the Schengen Area in the past 180
         days, so her window contains 0 days and her allowance is the full 90 days.
       </p>
@@ -163,31 +169,26 @@ By running this calculation across every
       <h2 id="case-2">Case 2 — Patricia: 90 days used, when can she return?</h2>
 
       <p>
-        Patricia spent 90 days in the Schengen Area, from March 1st to May 29th.
-        Her allowance is now 0 days. The window contains all 90 of the days
-        she spent inside the Schengen Area.
+        Patricia's trip finishes and she returns home. In total, she spent 90 days in the Schengen Area, 
+        from March 1st to May 29th. After flying home, Patricia wants to return to the Schengen Area as soon as possible,
+        but her allowance is all used up. As long as the window contains all 90 of the days
+        she spent inside the Schengen Area, she can't return. 
       </p>
 
-      <p>She wants to return as soon as possible. When is she allowed back?</p>
+      <p>When is she allowed back?</p>
 
       <p>
-        On June 1st, a few days after returning home, the window still contains her full 90
-        days spent within the Schengen Area. Things will remain this way until late August,
-        as the window's start date creeps up toward the first day of her trip.
-      </p>
-
-      <p>
-        On August 28th a change occurs. On this day, the window looks back
-        180 days to March 2nd — the second day of Patricia's old trip.
-        March 1st is no longer included in the window: the first day of her
-        trip has just aged out. She now has an allowance of 1 day.
+        Patricia's allowance will remain empty until the tail end of the window
+        moves past the beginning of her old trip. This occurs on August 28th.
+        On this day, the window looks back 180 days to March 2nd, which is the second day of her old trip.
+        March 1st, the first day of her trip is no longer included in the window; 
+        it just aged out. Patricia now has an allowance of 1 day, allowing her to re-enter.
       </p>
 
       <p>
-        On August 29th, the window looks back to March 3rd.
-        Now both March 1st and 2nd have aged out. Two days of allowance.
-        The allowance grows one day at a time, matching the rate at which the
-        old trip ages out.
+        On the following day, both March 1st and 2nd have aged out. This makes two days of allowance.
+        From here, Patricia's allowance will grow one day at a time, matching the rate at which the
+        old trip ages out of the window.
       </p>
 
       <p>
@@ -209,20 +210,14 @@ By running this calculation across every
       </div>
 
       <p>
-        Drag the window forward past late August and watch the remaining
-        allowance increase one day at a time.
-      </p>
-
-      <p>
         If Patricia re-enters the Schengen Area on August 28th, she will be
-        using her only available day of allowance. From here on, every morning
-        she is within the Schengen Area, her allowance will both gain a day
-        (from her previous trip aging out) and lose a day (by currently being
-        inside the Schengen Area). Her allowance isn't growing because she
-        spends the freed days as they arrive.
+        using her only available day of allowance. From here, on each additional
+        day she spends within the Schengen Area, her allowance will appear to stay the same. 
+        This is because she will both gain a day (from her previous trip aging out) 
+        and lose a day (by currently being inside the Schengen Area).
       </p>
 
-      <p>This lets her stay in the Schengen Area for a new 90 days.</p>
+      <p>As of August 28th, Patricia can stay in the Schengen Area for a new 90 days.</p>
 
       <div class="schengen-explorer" data-scenario="2">
         <h2 class="sr-only">Interactive Schengen rolling window explorer</h2>
@@ -240,9 +235,9 @@ By running this calculation across every
 
       <blockquote>
         <p>
-          <strong>Note:</strong> Because the math is tight when re-entering on
-          the earliest possible date, we recommend building in a small buffer
-          before you re-enter for a long stay.
+          <strong>Note:</strong> Pay attention to the counters for Days in window and Remaining allowance. 
+          Because the math is tight when re-entering on the earliest possible date, 
+          we recommend building in a small buffer before you re-enter for a long stay.
         </p>
       </blockquote>
 
@@ -250,33 +245,30 @@ By running this calculation across every
 
       <h2 id="case-3">Case 3 — Anna, Marcus, Ilker, and Olivia: multiple shorter trips</h2>
 
-      <p>This is where the rolling window creates confusion.</p>
-
       <p>
         Four friends, Anna, Marcus, Ilker, and Olivia, travel together inside the Schengen Area from
-        February 1st to March 22nd (50 days), leaving 40 days in their remaining allowances. They
-        all arrive and exit together on the same day. Later in the year, each
-        one wants to return to the Schengen Area independently and at different times,
+        February 1st to March 22nd (50 days), leaving 40 days in their remaining allowances. 
+        Later in the year, each one wants to return to the Schengen Area independently and at different times,
         for as long as possible.
       </p>
 
       <h3>Anna: returning soon</h3>
 
       <p>
-        Anna wants to return about six weeks after leaving. Her new trip starts May 3rd.
-        At that point, the entire February–March group trip sits squarely inside the
+        Anna wants to return a few weeks after leaving. Her new trip starts May 3rd.
+        At that point, the previous group trip sits squarely inside the
         180-day window. Her re-entry to the Schengen Area is soon enough that both trips
         fall completely within the window. Since the older trip will not age out during
         her second stay, and since both trips cannot exceed 90 days combined, her new
         trip is capped to a limit of 40 days.
       </p>
 
-      <h3>Marcus: returning mid-window</h3>
+      <h3>Marcus: returning before 180 days</h3>
 
       <p>
-        Marcus returns later, on July 15th. On that day, the 180-day window
+        Marcus returns later than Anna, on July 15th. On that day, the 180-day window
         runs back to January 17th. His February–March trip is still fully
-        inside it. Like Anna, he has 40 days of allowance on entry.
+        inside the window. Like Anna, he has 40 days of allowance on entry.
       </p>
 
       <p>
@@ -287,9 +279,8 @@ By running this calculation across every
       </p>
 
       <p>
-        On August 2nd, February 2nd has fallen out of the window. And so
-        on — each new morning sees one day freed, and because he is inside
-        the Schengen Area, one day used. This effectively freezes his existing
+        On August 2nd, February 2nd has fallen out of the window, returning one day to his allowance.
+        Because he is inside the Schengen Area, he also uses one day. This effectively freezes his existing
         allowance while the old trip ages out. By the time his group trip has
         aged out completely, his allowance hasn't changed for 50 days, and he
         can enjoy traveling on the remaining days in his allowance.
@@ -304,21 +295,17 @@ By running this calculation across every
       <h3>Ilker: returning on the age-out date</h3>
 
       <p>
-        180 days after their group trip first started, Ilker arrives — August 1st,
+        181 days after their group trip first started, Ilker arrives on August 1st,
         the first day on which February 1st falls outside the window. He arrives
-        with 41 days in his allowance: the window on August 1st runs February 2nd
-        to August 1st, leaving 49 of the group's 50 days still inside it.
-        Like Marcus, the remaining days continue aging out during his stay,
-        and he too can stay for 90 days.
+        with 41 days in his allowance. Like Marcus, the remaining days continue 
+        aging out during his stay, and he too can stay for 90 days.
       </p>
 
       <h3>Olivia: returning after the window clears</h3>
 
       <p>
-        Olivia waits until September 19th — the first day on which the group
-        trip has fully cleared the window. On this day, the window runs March
-        23rd to September 19th, meaning March 22nd, the last day of the group
-        trip, has just aged out. She arrives without any days spent in the
+        Olivia waits until September 19th, the first day on which the entire group
+        trip has fully cleared the window. She arrives without any days spent in the
         Schengen Area inside the window, her situation is identical to Case 1,
         and like Patricia, she can stay for the full 90 days.
       </p>
@@ -338,17 +325,17 @@ By running this calculation across every
       </div>
 
       <p>
-        All four friends wanted to revisit the Schengen Area for as long as
-        possible. Anna drew the short straw by re-entering so much earlier than
+        Since all four friends wanted to revisit the Schengen Area for as long as
+        possible, Anna drew the short straw by re-entering so much earlier than
         the others. Like Marcus, she re-entered with an allowance of 40 days,
         but at a time when the group trip had not yet started aging out of the
-        window — so both trips counted together against her 90-day limit.
+        window, meaning both trips counted together against her 90-day limit.
       </p>
 
       <p>
         Marcus, Ilker, and Olivia were all able to re-enter for 90 days despite
         having different allowances on their re-entry dates. The key is that
-        their new trips either started on or after August 1st — the date the
+        their new trips either started on or after August 1st, the date the
         group trip began aging out. In fact, Marcus could have started his
         second trip even earlier, as long as he began within 40 days of
         August 1st.
@@ -367,10 +354,10 @@ By running this calculation across every
       <blockquote>
         <p>
           <strong>Test your understanding: When can Anna re-enter?</strong>
-          Anna can re-enter for a third trip on August 1st — the same date
+          Anna can re-enter for a third trip on August 1st, the same date
           the group trip begins aging out of the window. No matter how many
           times she has entered and left since then, it is always her oldest
-          trip within the window that ages out first and returns days to her
+          trip within the window that ages out and returns days to her
           allowance. Her most recent trip has no effect on when she can
           next re-enter.
         </p>
@@ -678,19 +665,19 @@ By running this calculation across every
     const SCENARIOS: Scenario[] = [
       {
         id: "s1", label: "Full allowance available", mode: "single",
-        desc: "<strong>Patricia</strong> is planning her first trip to the Schengen Area in a while. She plans to arrive March 1st, 2025. She has not spent any time in the Schengen Area in the past 180 days. Move the window to her planned arrival date and see her full 90-day allowance.",
+        desc: "<strong>Patricia</strong> plans to arrive March 1st and visit the Schengen Area for 90 days. Move the slider to inspect her allowance and her days used before, during and after her trip.",
         trips: [{ start: d(2025, 3, 1), end: d(2025, 5, 29), label: "Patricia", color: "#378add", person: "p" }],
         windowDefault: d(2025, 2, 28),
       },
       {
-        id: "s2", label: "Used 90 days — when can she return?", mode: "single",
-        desc: "<strong>Patricia</strong> spent 90 days in the Schengen Area (Mar 1–May 29). She left and wants to return as soon as possible. Drag the window forward past late August to watch her days free up one at a time.",
+        id: "s2", label: "90 days used. When can she return?", mode: "single",
+        desc: "<strong>Patricia</strong> spent 90 days in the Schengen Area (Mar 1–May 29). Her trip is over and she wants to return as soon as possible. Drag the window forward past late August to watch her days free up one at a time, allowing her to return.",
         trips: [{ start: d(2025, 3, 1), end: d(2025, 5, 29), label: "Patricia", color: "#378add", person: "p" }],
         windowDefault: d(2025, 8, 28),
       },
       {
-        id: "s3", label: "90 days out, 90 days back — the myth", mode: "single",
-        desc: "<strong>Patricia</strong> spends 90 days (Mar 1–May 29), leaves for about 90 days, then returns Aug 28 believing her counter has reset. Drag the window to Aug 28 — her first trip is still almost entirely inside it.",
+        id: "s3", label: "90 days out, 90 days back", mode: "single",
+        desc: "<strong>Patricia</strong> spends 90 days (Mar 1–May 29), leaves for about 90 days, then returns Aug 28 believing her counter has reset. Drag the window to Aug 28. Her first trip is still almost entirely inside the window.",
         trips: [
           { start: d(2025, 3, 1),  end: d(2025, 5, 29), label: "First trip",  color: "#378add", person: "p" },
           { start: d(2025, 8, 28), end: d(2025, 11, 25), label: "Return trip", color: "#1d9e75", person: "p" },
@@ -699,7 +686,7 @@ By running this calculation across every
       },
       {
         id: "s5", label: "Four friends, same trip", mode: "quad",
-        desc: "All four friends took the same group trip (Feb 1–Mar 22, 50 days), then each returned to the Schengen Area at a different point in the year. <strong>Anna</strong> returns May 3 — both trips overlap fully in any window, capping her at 40 days. <strong>Marcus</strong> returns Jul 15 — his first trip ages out during his stay, allowing a full 90 days. <strong>Ilker</strong> returns Aug 1 — similar to Marcus, allowing 90 days. <strong>Olivia</strong> waits until Sep 19 — the first trip has fully cleared and she starts with a clean slate. <em>Drag the window across the year to compare all four at once.</em>",
+        desc: "All four friends took the same group trip (Feb 1–Mar 22, 50 days), then each returned to the Schengen Area at a different point in the year. <em>Drag the window across the year to compare all four at once.</em>",
         trips: COMBINED_TRIPS,
         windowDefault: d(2025, 7, 15),
       },
@@ -856,7 +843,7 @@ By running this calculation across every
         ctx.lineWidth = 1;
         ctx.strokeRect(x0w, mTop - 4, x1w - x0w, axisY - (mTop - 4));
 
-        // "180-day window" label — centered just below the overlay's bottom border
+        // "180-day window" label centered just below the overlay's bottom border
         const winMidX = Math.min(Math.max((x0w + x1w) / 2, mL + 60), W - mR - 60);
         ctx.fillStyle = refOver
           ? isDark ? "rgba(240,149,149,0.6)" : "rgba(163,45,45,0.45)"
@@ -924,14 +911,14 @@ By running this calculation across every
         ctx.beginPath(); ctx.moveTo(xEnd, mTop - 4); ctx.lineTo(xEnd, axisY); ctx.stroke();
         ctx.setLineDash([]);
 
-        // Window end date — above the dashed line
+        // Window end date above the dashed line
         ctx.fillStyle = "#d4537e";
         ctx.font = "500 10px var(--font-sans,sans-serif)";
         ctx.textAlign = "center";
         const endLx = Math.min(Math.max(xEnd, mL + 30), W - mR - 30);
         ctx.fillText(fmtShort(windowEnd), endLx, mTop - 8);
 
-        // Window start date — above the left edge of the window (only when visible)
+        // Window start date above the left edge of the window (only when visible)
         const xWinStart = xOf(windowStart);
         if (xWinStart > mL) {
           ctx.fillStyle = isDark ? "rgba(100,160,230,0.8)" : "rgba(55,138,221,0.7)";
