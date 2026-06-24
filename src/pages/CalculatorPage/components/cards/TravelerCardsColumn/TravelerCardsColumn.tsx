@@ -234,8 +234,15 @@ export function TravelerCardsColumn({
             const ukRule = getUKRule(traveler.passportCode);
             const irelandRule = getIrelandRule(traveler.passportCode);
 
+            // Compute stay info for visa_free AND unknown-passport travelers
+            // (mirrors Schengen's permissive-default for unset nationality).
+            // Passport-rule chips (ETA, DATV, visa req.) are suppressed when
+            // no nationality is set, so passing `undefined` for the rule prop.
+            const ukIsEligible = ukRule.access === "visa_free" || !traveler.passportCode;
+            const irelandIsEligible = irelandRule.access === "visa_free" || !traveler.passportCode;
+
             const ukStayInfo =
-              trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukRule.access === "visa_free"
+              trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukIsEligible
                 ? (() => {
                     const assessment = assessUKStay(trip.entryDate, trip.exitDate);
                     const ukTrips = traveler.trips.filter(
@@ -251,7 +258,7 @@ export function TravelerCardsColumn({
                 : undefined;
 
             const irelandStayInfo =
-              trip.region === VisaRegion.Ireland && trip.exitDate && irelandRule.access === "visa_free"
+              trip.region === VisaRegion.Ireland && trip.exitDate && irelandIsEligible
                 ? (() => {
                     const assessment = assessIrelandStay(trip.entryDate, trip.exitDate);
                     const irelandTrips = traveler.trips.filter(
@@ -275,8 +282,8 @@ export function TravelerCardsColumn({
                 isOverstay={overstayTripIds.has(trip.id)}
                 isHighlighted={trip.id === highlightedTripId}
                 passportRule={getSchengenRule(traveler.passportCode)}
-                ukPassportRule={ukRule}
-                irelandPassportRule={irelandRule}
+                ukPassportRule={traveler.passportCode ? ukRule : undefined}
+                irelandPassportRule={traveler.passportCode ? irelandRule : undefined}
                 ukStayInfo={ukStayInfo}
                 irelandStayInfo={irelandStayInfo}
                 onEdit={() => onEditTrip(traveler.id, trip)}

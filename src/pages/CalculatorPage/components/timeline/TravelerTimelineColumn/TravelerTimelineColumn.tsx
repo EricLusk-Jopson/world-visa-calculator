@@ -572,8 +572,11 @@ export function TravelerTimelineColumn({
         const ukRule = getUKRule(traveler.passportCode);
         const irelandRule = getIrelandRule(traveler.passportCode);
 
+        const ukIsEligible = ukRule.access === "visa_free" || !traveler.passportCode;
+        const irelandIsEligible = irelandRule.access === "visa_free" || !traveler.passportCode;
+
         const ukStayInfo =
-          trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukRule.access === "visa_free"
+          trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukIsEligible
             ? (() => {
                 const assessment = assessUKStay(trip.entryDate, trip.exitDate);
                 const ukTrips = traveler.trips.filter(
@@ -589,7 +592,7 @@ export function TravelerTimelineColumn({
             : undefined;
 
         const irelandStayInfo =
-          trip.region === VisaRegion.Ireland && trip.exitDate && irelandRule.access === "visa_free"
+          trip.region === VisaRegion.Ireland && trip.exitDate && irelandIsEligible
             ? (() => {
                 const assessment = assessIrelandStay(trip.entryDate, trip.exitDate);
                 const irelandTrips = traveler.trips.filter(
@@ -620,8 +623,8 @@ export function TravelerTimelineColumn({
             isOverstay={overstayTripIds.has(trip.id)}
             isHighlighted={trip.id === highlightedTripId}
             passportRule={getSchengenRule(traveler.passportCode)}
-            ukPassportRule={ukRule}
-            irelandPassportRule={irelandRule}
+            ukPassportRule={traveler.passportCode ? ukRule : undefined}
+            irelandPassportRule={traveler.passportCode ? irelandRule : undefined}
             ukStayInfo={ukStayInfo}
             irelandStayInfo={irelandStayInfo}
             onEdit={() => onEditTrip(traveler.id, trip)}

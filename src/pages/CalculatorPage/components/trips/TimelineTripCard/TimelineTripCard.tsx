@@ -264,8 +264,8 @@ export function TimelineTripCard({
   chips.push({
     rank: 500,
     label: `${durationDays}d`,
-    color: tokens.textSoft,
-    bg: tokens.mist,
+    color: isOverstay ? tokens.redText : tokens.textSoft,
+    bg: isOverstay ? tokens.redBg : tokens.mist,
     tooltip: CHIP_TOOLTIP_DURATION,
   });
 

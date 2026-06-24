@@ -665,12 +665,15 @@ export function TripModal({
 
   // ── UK max-stay assessment ──────────────────────────────────────────────────
 
+  // Include visa_free AND unknown-passport travelers (mirrors Schengen's permissive
+  // default for unset nationality — no passport = assume visa-free entitlement).
   const ukVisaFreeTravelers =
     region === VisaRegion.UnitedKingdom
       ? travelerIds.flatMap((tid) => {
           const t = travelers.find((x) => x.id === tid);
           if (!t) return [];
-          return getUKRule(t.passportCode).access === "visa_free" ? [t] : [];
+          const rule = getUKRule(t.passportCode);
+          return rule.access === "visa_free" || !t.passportCode ? [t] : [];
         })
       : [];
 
@@ -704,7 +707,8 @@ export function TripModal({
       ? travelerIds.flatMap((tid) => {
           const t = travelers.find((x) => x.id === tid);
           if (!t) return [];
-          return getIrelandRule(t.passportCode).access === "visa_free" ? [t] : [];
+          const rule = getIrelandRule(t.passportCode);
+          return rule.access === "visa_free" || !t.passportCode ? [t] : [];
         })
       : [];
 

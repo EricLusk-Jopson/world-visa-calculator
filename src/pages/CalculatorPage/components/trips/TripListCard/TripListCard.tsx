@@ -237,8 +237,8 @@ export function TripListCard({
   chips.push({
     rank: 500,
     label: `${dur}d`,
-    color: tokens.textSoft,
-    bg: tokens.mist,
+    color: isOverstay ? tokens.redText : tokens.textSoft,
+    bg: isOverstay ? tokens.redBg : tokens.mist,
     tooltip: CHIP_TOOLTIP_DURATION,
   });
 
