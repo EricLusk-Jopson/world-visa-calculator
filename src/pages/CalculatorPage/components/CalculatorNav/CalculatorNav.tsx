@@ -4,12 +4,12 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Divider from "@mui/material/Divider";
 import { alpha, useMediaQuery } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import { tokens } from "@/styles/theme";
 import { NavButton } from "./NavButton";
 import { trackEvent } from "@/utils/analytics";
@@ -26,6 +26,7 @@ interface CalculatorNavProps {
   travelerCount: number;
   onShare: () => void;
   onClearAll: () => void;
+  onOpenUtility?: () => void;
 }
 
 // ─── Shared icon size ─────────────────────────────────────────────────────────
@@ -156,8 +157,8 @@ export function CalculatorNav({
   travelerCount,
   onShare,
   onClearAll,
+  onOpenUtility,
 }: CalculatorNavProps) {
-  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [addMenuAnchor, setAddMenuAnchor] = useState<null | HTMLElement>(null);
 
   // Breakpoint tiers
@@ -165,13 +166,7 @@ export function CalculatorNav({
   const isLarge = useMediaQuery("(min-width:1000px)");  // clear all + support + share + combo add
   const isMedium = useMediaQuery("(min-width:780px)");  // clear all + share + combo add
 
-  const closeMenu = () => setMenuAnchor(null);
   const closeAddMenu = () => setAddMenuAnchor(null);
-
-  const menuAction = (fn: () => void) => () => {
-    fn();
-    closeMenu();
-  };
 
   // ── Combo-add dropdown button ──────────────────────────────────────────────
   const ComboAddButton = (
@@ -355,99 +350,52 @@ export function CalculatorNav({
           </Box>
         )}
 
-        {/* Small <640px: kebab menu with everything */}
+        {/* Small <780px: Add Traveler icon + utility/overflow icon */}
         {!isMedium && (
-          <Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
             <Box
               component="button"
-              onClick={(e: React.MouseEvent<HTMLElement>) =>
-                setMenuAnchor(e.currentTarget)
-              }
+              onClick={onAddTraveler}
+              aria-label="Add traveler"
               sx={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: 34,
-                height: 34,
+                width: 36,
+                height: 36,
                 bgcolor: "transparent",
                 border: "none",
                 borderRadius: "7px",
                 color: tokens.white,
                 cursor: "pointer",
                 transition: "background 0.15s",
-                "&:hover": {
-                  bgcolor: alpha(tokens.white, 0.08),
-                },
+                "&:hover": { bgcolor: alpha(tokens.white, 0.08) },
+              }}
+            >
+              <PersonAddAlt1Icon sx={{ fontSize: "1.15rem" }} />
+            </Box>
+
+            <Box
+              component="button"
+              onClick={onOpenUtility}
+              aria-label="More options"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 36,
+                height: 36,
+                bgcolor: "transparent",
+                border: "none",
+                borderRadius: "7px",
+                color: tokens.white,
+                cursor: "pointer",
+                transition: "background 0.15s",
+                "&:hover": { bgcolor: alpha(tokens.white, 0.08) },
               }}
             >
               <MoreVertIcon sx={{ fontSize: "1.25rem" }} />
             </Box>
-
-            <Menu
-              anchorEl={menuAnchor}
-              open={Boolean(menuAnchor)}
-              onClose={closeMenu}
-              transformOrigin={{ horizontal: "right", vertical: "top" }}
-              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-              slotProps={{ paper: { sx: MENU_PAPER_SX } }}
-            >
-              <MenuItem onClick={menuAction(onAddTraveler)} sx={MENU_ITEM_SX}>
-                <AddIcon sx={ICON_SX} />
-                Add Traveler
-              </MenuItem>
-
-              <MenuItem
-                onClick={menuAction(onAddTrip)}
-                disabled={travelerCount === 0}
-                sx={MENU_ITEM_SX}
-              >
-                <AddIcon sx={ICON_SX} />
-                Add Trip
-              </MenuItem>
-
-              <MenuItem onClick={menuAction(onShare)} sx={MENU_ITEM_SX}>
-                <IosShareIcon sx={ICON_SX} />
-                Share
-              </MenuItem>
-
-              <MenuItem
-                component="a"
-                href="https://ko-fi.com/ericluskjopson"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-                sx={{ ...MENU_ITEM_SX, color: "#FF5E5B", "&:hover": { bgcolor: alpha("#FF5E5B", 0.1), color: "#FF5E5B" } }}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
-                </svg>
-                Support this project
-              </MenuItem>
-
-              <Divider
-                sx={{ borderColor: alpha(tokens.white, 0.08), my: "4px" }}
-              />
-
-              <MenuItem
-                onClick={menuAction(onClearAll)}
-                disabled={travelerCount === 0}
-                sx={{
-                  ...MENU_ITEM_SX,
-                  color: alpha(tokens.red, 0.85),
-                  "&:hover": {
-                    bgcolor: alpha(tokens.red, 0.1),
-                    color: tokens.red,
-                  },
-                  "&.Mui-disabled": {
-                    color: alpha(tokens.red, 0.25),
-                    opacity: 1,
-                  },
-                }}
-              >
-                <DeleteOutlineIcon sx={ICON_SX} />
-                Clear All
-              </MenuItem>
-            </Menu>
           </Box>
         )}
       </Box>
