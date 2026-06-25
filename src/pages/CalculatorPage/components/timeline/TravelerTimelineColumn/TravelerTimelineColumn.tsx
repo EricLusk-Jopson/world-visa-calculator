@@ -433,7 +433,7 @@ export function TravelerTimelineColumn({
   const schengenRule = getSchengenRule(traveler.passportCode);
   const isVisaRequired =
     traveler.passportCode !== null &&
-    (schengenRule.access === 'visa_required' || schengenRule.access === 'suspended');
+    schengenRule.access === 'visa_required';
 
   const returnMarkers = useMemo(
     () => computeReturnMarkers(traveler, timelineStart, timelineEnd),
@@ -572,8 +572,8 @@ export function TravelerTimelineColumn({
         const ukRule = getUKRule(traveler.passportCode);
         const irelandRule = getIrelandRule(traveler.passportCode);
 
-        const ukIsEligible = ukRule.access === "visa_free" || !traveler.passportCode;
-        const irelandIsEligible = irelandRule.access === "visa_free" || !traveler.passportCode;
+        const ukIsEligible = ukRule.access === "entitled" || !traveler.passportCode;
+        const irelandIsEligible = irelandRule.access === "entitled" || !traveler.passportCode;
 
         const ukStayInfo =
           trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukIsEligible

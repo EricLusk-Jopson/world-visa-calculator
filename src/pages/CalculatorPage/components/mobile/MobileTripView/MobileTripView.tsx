@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import { format } from "date-fns";
 import AddIcon from "@mui/icons-material/Add";
-import { type Traveler, type Trip, VisaRegion } from "@/types";
+import { type Traveler, type Trip, VisaRegion, isEntitled, isVisaRequired } from "@/types";
 import { tokens } from "@/styles/theme";
 import {
   parseDate,
@@ -343,19 +343,14 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
                   Visa req.
                 </Box>
               )}
-              {isSchengen && !isOngoing && rules.some((r) => r.requiresATV) && (
+              {isSchengen && !isOngoing && rules.some((r) => isVisaRequired(r) && r.notes?.some(n => n.text.startsWith('Airport transit visa'))) && (
                 <Box sx={{ ...BADGE_SX, bgcolor: tokens.red, color: tokens.white }}>
                   Transit visa
                 </Box>
               )}
-              {isSchengen && !isOngoing && rules.some((r) => r.requiresETIAS) && (
+              {isSchengen && !isOngoing && rules.some((r) => isEntitled(r) && r.entitlements.some(e => e.preAuth?.type === 'ETIAS')) && (
                 <Box sx={{ ...BADGE_SX, bgcolor: tokens.mist, color: tokens.navy }}>
                   ETIAS 2026
-                </Box>
-              )}
-              {isSchengen && !isOngoing && rules.some((r) => r.access === "suspended") && (
-                <Box sx={{ ...BADGE_SX, bgcolor: alpha(tokens.amber, 0.1), color: tokens.amberText }}>
-                  Suspended
                 </Box>
               )}
             </>

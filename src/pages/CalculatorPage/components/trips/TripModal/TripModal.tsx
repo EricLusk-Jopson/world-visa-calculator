@@ -21,7 +21,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
-import type { Trip, Traveler, PassportRule, PassportNote } from "@/types";
+import type { Trip, Traveler, RuleNote } from "@/types";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { getUKRule } from "@/data/regions/uk";
 import { getIrelandRule } from "@/data/regions/ireland";
@@ -66,7 +66,7 @@ interface VisaInfoRow {
   label: string;
   labelColor: string;
   borderColor: string;
-  notes?: PassportNote[];
+  notes?: RuleNote[];
 }
 
 function VisaInfoSection({
@@ -84,7 +84,7 @@ function VisaInfoSection({
   greenCount: number;
   warnCount: number;
   unknownCount: number;
-  onSourceClick: (anchor: HTMLElement, note: PassportNote) => void;
+  onSourceClick: (anchor: HTMLElement, note: RuleNote) => void;
 }) {
   return (
     <Box
@@ -170,13 +170,15 @@ function VisaInfoSection({
                   <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.67rem", color: tokens.textSoft, lineHeight: 1.5, flex: 1 }}>
                     {note.text}
                   </Typography>
-                  <IconButton
-                    size="small"
-                    onClick={(e) => onSourceClick(e.currentTarget, note)}
-                    sx={{ p: "2px", flexShrink: 0, color: tokens.textGhost, "&:hover": { color: tokens.navy, bgcolor: "transparent" } }}
-                  >
-                    <InfoOutlineIcon sx={{ fontSize: "0.85rem" }} />
-                  </IconButton>
+                  {note.source && (
+                    <IconButton
+                      size="small"
+                      onClick={(e) => onSourceClick(e.currentTarget, note)}
+                      sx={{ p: "2px", flexShrink: 0, color: tokens.textGhost, "&:hover": { color: tokens.navy, bgcolor: "transparent" } }}
+                    >
+                      <InfoOutlineIcon sx={{ fontSize: "0.85rem" }} />
+                    </IconButton>
+                  )}
                 </Box>
               ))}
             </Box>
@@ -355,7 +357,7 @@ export function TripModal({
   const [entryNoticeSectionExpanded, setEntryNoticeSectionExpanded] = useState(true);
   const [sourcePopover, setSourcePopover] = useState<{
     anchor: HTMLElement;
-    note: PassportNote;
+    note: RuleNote;
   } | null>(null);
 
   const todayStr = formatDate(getToday());
@@ -583,13 +585,13 @@ export function TripModal({
   const schengenSafeCount = schengenTravelerData.filter(
     ({ t, rule }) =>
       t.passportCode &&
-      (rule.access === "free_movement" || rule.access === "visa_free"),
+      (rule.access === "free_movement" || rule.access === "entitled"),
   ).length;
 
   const schengenWarnCount = schengenTravelerData.filter(
     ({ t, rule }) =>
       t.passportCode &&
-      (rule.access === "visa_required" || rule.access === "suspended"),
+      rule.access === "visa_required",
   ).length;
 
   const schengenUnknownCount = schengenTravelerData.filter(
@@ -611,12 +613,10 @@ export function TripModal({
         const { label, color } =
           rule.access === "free_movement"
             ? { label: `${nat}Free movement, no day limit`, color: tokens.green }
-            : rule.access === "visa_free"
-              ? { label: rule.requiresETIAS ? `${nat}Visa-free entry -- ETIAS required from late 2026` : `${nat}Visa-free entry`, color: tokens.green }
-              : rule.access === "suspended"
-                ? { label: `${nat}Access temporarily suspended`, color: tokens.amber }
-                : { label: `${nat}Schengen visa required`, color: tokens.red };
-        const borderColor = color === tokens.green ? tokens.greenBorder : color === tokens.amber ? tokens.amberBorder : tokens.redBorder;
+            : rule.access === "entitled"
+              ? { label: rule.entitlements.some(e => e.preAuth?.type === 'ETIAS') ? `${nat}Visa-free entry -- ETIAS required from late 2026` : `${nat}Visa-free entry`, color: tokens.green }
+              : { label: `${nat}Schengen visa required`, color: tokens.red };
+        const borderColor = color === tokens.green ? tokens.greenBorder : tokens.redBorder;
         return { traveler: t, label, labelColor: color, borderColor, notes: rule.notes };
       });
     }
@@ -630,9 +630,9 @@ export function TripModal({
           ? { label: "Set nationality to see entry requirements", color: tokens.textGhost }
           : rule.access === "free_movement"
             ? { label: `${nat}Free movement (Common Travel Area)`, color: tokens.green }
-            : rule.access === "visa_free"
-              ? { label: rule.requiresETA ? `${nat}Visa-free -- ETA required, up to 6 months` : `${nat}Visa-free, up to 6 months`, color: tokens.green }
-              : rule.requiresDATV
+            : rule.access === "entitled"
+              ? { label: rule.entitlements.some(e => e.preAuth?.type === 'ETA') ? `${nat}Visa-free -- ETA required, up to 6 months` : `${nat}Visa-free, up to 6 months`, color: tokens.green }
+              : rule.notes?.some(n => n.text.includes('DATV'))
                 ? { label: `${nat}Visitor visa required -- DATV for airside transit`, color: tokens.red }
                 : { label: `${nat}Visitor visa required`, color: tokens.red };
         const borderColor = color === tokens.green ? tokens.greenBorder : tokens.redBorder;
@@ -649,7 +649,7 @@ export function TripModal({
           ? { label: "Set nationality to see entry requirements", color: tokens.textGhost }
           : rule.access === "free_movement"
             ? { label: `${nat}Free movement, no day limit`, color: tokens.green }
-            : rule.access === "visa_free"
+            : rule.access === "entitled"
               ? { label: `${nat}Visa-free entry, up to 90 days per permission`, color: tokens.green }
               : { label: `${nat}Ireland visa required`, color: tokens.red };
         const borderColor = color === tokens.green ? tokens.greenBorder : tokens.redBorder;
@@ -673,7 +673,7 @@ export function TripModal({
           const t = travelers.find((x) => x.id === tid);
           if (!t) return [];
           const rule = getUKRule(t.passportCode);
-          return rule.access === "visa_free" || !t.passportCode ? [t] : [];
+          return rule.access === "entitled" || !t.passportCode ? [t] : [];
         })
       : [];
 
@@ -708,7 +708,7 @@ export function TripModal({
           const t = travelers.find((x) => x.id === tid);
           if (!t) return [];
           const rule = getIrelandRule(t.passportCode);
-          return rule.access === "visa_free" || !t.passportCode ? [t] : [];
+          return rule.access === "entitled" || !t.passportCode ? [t] : [];
         })
       : [];
 
@@ -1000,7 +1000,7 @@ export function TripModal({
               },
             }}
           >
-            {sourcePopover && (
+            {sourcePopover && sourcePopover.note.source && (
               <>
                 <Box
                   component="a"

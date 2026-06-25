@@ -7,14 +7,12 @@
  * ── Visa scheme overview ─────────────────────────────────────────────────────
  *
  * STANDARD VISITOR VISA / VISA-FREE ENTRY
- *   Most nationals visit the UK under the "Standard Visitor" route. Those from
- *   visa-required countries must obtain a Standard Visitor Visa in advance.
- *   Visa-exempt nationals may enter for up to SIX MONTHS (180 days) per visit.
- *   Unlike Schengen, the UK does not apply a rolling-window calculation —
- *   the limit is per visit, not an aggregate over a period.
- *
- *   Source (visitor route): https://www.gov.uk/standard-visitor
- *   Source (visa nationals list): https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list
+ *   Most nationals visit the UK under the "Standard Visitor" route. Visa-exempt
+ *   nationals may enter for up to 180 days per visit. Unlike Schengen, the UK
+ *   does not apply a rolling-window calculation — the limit is per visit.
+ *   Repeated maximum-duration stays with short gaps may attract Border Force
+ *   scrutiny under Appendix V ("genuine visitor" test) even when each individual
+ *   visit is within the limit.
  *
  * ELECTRONIC TRAVEL AUTHORISATION (ETA)
  *   The ETA scheme rolled out in phases:
@@ -22,107 +20,90 @@
  *     Phase 2 — 22 Feb 2024: Bahrain, Kuwait, Oman, UAE, Saudi Arabia
  *     Phase 3 — 08 Jan 2025: ~60 nationalities (Anglosphere, Americas,
  *                             East/South-East Asia, Pacific, Middle East)
- *     Phase 4 — 02 Apr 2025: EU/EEA countries + Monaco, San Marino, Vatican,
+ *     Phase 4 — 02 Apr 2025: EU/EEA + Monaco, San Marino, Vatican,
  *                             Switzerland, Liechtenstein, Andorra
- *   An ETA is NOT a visa — it is a pre-travel electronic clearance linked to
- *   the passport. It is valid for 2 years or until passport expiry.
- *   Nationals who already require a visa are unaffected.
- *   Irish citizens are permanently exempt (CTA).
- *
- *   Source (ETA): https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta
- *   Source (ETA national list): https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list
+ *   An ETA is NOT a visa. It is valid for 2 years or until passport expiry
+ *   and permits multiple entries. Visa nationals are unaffected.
+ *   Irish citizens are permanently exempt under the CTA.
  *
  * DIRECT AIRSIDE TRANSIT VISA (DATV)
- *   Certain visa-required nationals also need a DATV to pass through the
- *   international (airside) zone of a UK airport without passing through
- *   immigration. This is in addition to, not instead of, a visitor visa for
- *   actual entry to the UK.
- *
- *   Source (carriers list): https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers
+ *   Certain visa-required nationals also need a DATV to transit through a UK
+ *   airport airside without passing through immigration. This is tracked as a
+ *   note on the relevant visa_required rules — it is a transit requirement,
+ *   not a stay entitlement, so it does not affect calculator logic.
  *
  * COMMON TRAVEL AREA (CTA)
- *   Irish citizens enjoy freedom of movement throughout the UK under the
- *   Common Travel Area — a bilateral arrangement predating both countries'
- *   EU membership. Irish citizens do not require a visa, ETA, or any other
- *   pre-travel authorisation to enter the UK. They may live and work freely.
+ *   Irish citizens have unrestricted freedom of movement throughout the UK
+ *   under the CTA — a bilateral arrangement predating both countries' EU
+ *   membership. No visa, ETA, or pre-travel authorisation required.
  *
- *   Source (CTA): https://www.gov.uk/government/publications/common-travel-area-guidance
+ * ── Coverage ─────────────────────────────────────────────────────────────────
+ *   All nationalities in Appendix ETA National List, Appendix Visitor Visa
+ *   National List, and the carriers' DATV list are explicitly encoded.
+ *   The defaultRule (visa_required) covers any code not listed.
  *
- * ── Coverage note ────────────────────────────────────────────────────────────
- *   This file covers all nationalities listed in:
- *   - Appendix ETA National List (ETA required)
- *   - Appendix Visitor Visa National List (visa required)
- *   - Carriers' DATV list (airside transit visa required)
- *   The defaultRule is visa_required for any nationality not explicitly listed.
+ * All source URLs are in UKSources (@/data/sources).
  *
  * Last verified: 2026-04-14
  */
 
-import type { RegionDefinition, PassportRule, SourceDoc } from '@/types';
+import type {
+  RegionDefinition,
+  PassportRule,
+  EntitledRule,
+  VisaRequiredRule,
+  PreTravelAuth,
+  PerVisitLimit,
+} from '@/types';
+import { UKSources } from '@/data/sources';
 
-// ─── Source document references ───────────────────────────────────────────────
+// ─── Stay limit ───────────────────────────────────────────────────────────────
 
-/** UK Immigration Rules — Appendix ETA National List */
-const ETA_LIST_SOURCE: SourceDoc = {
-  directUrl: 'https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list',
-  parentUrl: 'https://www.gov.uk/eta',
-  dateChecked: '2026-04-14',
+const UK_LIMIT: PerVisitLimit = {
+  type: 'per_visit',
+  days: 180,
 };
 
-/** UK Immigration Rules — Appendix Visitor Visa National List */
-const VNL_SOURCE: SourceDoc = {
-  directUrl: 'https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list',
-  parentUrl: 'https://www.gov.uk/guidance/immigration-rules',
-  dateChecked: '2026-04-14',
+// ─── Pre-travel authorisation ─────────────────────────────────────────────────
+
+const UK_ETA: PreTravelAuth = {
+  type: 'ETA',
+  name: 'UK Electronic Travel Authorisation',
+  applicationUrl: UKSources.etaApplication.directUrl,
+  cost: { amount: 20, currency: 'GBP' },
+  authValidityDays: 730, // 2 years or passport expiry, whichever sooner
+  multiEntry: true,
 };
 
-/** UK carriers DATV requirement list */
-const DATV_SOURCE: SourceDoc = {
-  directUrl: 'https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers',
-  parentUrl: 'https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers',
-  dateChecked: '2026-04-14',
+// ─── Shared rule constants ────────────────────────────────────────────────────
+
+/**
+ * Standard ETA rule — 180 days per visit with UK ETA pre-travel authorisation.
+ * Covers all 85 ETA-scheme nationalities across all four rollout phases.
+ */
+const ETA_RULE: EntitledRule = {
+  access: 'entitled',
+  entitlements: [{
+    limits: [UK_LIMIT],
+    preAuth: UK_ETA,
+  }],
 };
-
-/** Common Travel Area — official guidance */
-const CTA_SOURCE: SourceDoc = {
-  directUrl: 'https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance',
-  parentUrl: 'https://www.gov.uk/government/publications/common-travel-area-guidance',
-  dateChecked: '2026-04-14',
-};
-
-// ─── Shared note text ─────────────────────────────────────────────────────────
-
-const ETA_NOTE =
-  'An Electronic Travel Authorisation (ETA) is required before travelling. ' +
-  'The ETA is linked to your passport and is valid for 2 years or until the passport expires.';
 
 const DATV_NOTE =
   'A Direct Airside Transit Visa (DATV) is required to transit through a UK ' +
   'airport without passing through immigration (airside only). This is separate ' +
   'from the Standard Visitor Visa required for entry to the UK.';
 
-const CTA_NOTE =
-  'Irish citizens have unrestricted freedom of movement throughout the UK ' +
-  'under the Common Travel Area (CTA). No visa, ETA, or pre-travel ' +
-  'authorisation is required.';
-
-// ─── Shared rule constants ────────────────────────────────────────────────────
-
-const ETA_RULE: PassportRule = {
-  access: 'visa_free',
-  allowanceDays: 180,
-  windowDays: 365,
-  requiresETA: true,
-  notes: [{ text: ETA_NOTE, source: ETA_LIST_SOURCE }],
-};
-
-const DATV_RULE: PassportRule = {
+/**
+ * Visa required + DATV for airside transit.
+ * Used for nationalities that require both a visitor visa and a DATV.
+ */
+const VISA_REQUIRED_DATV: VisaRequiredRule = {
   access: 'visa_required',
-  requiresDATV: true,
-  notes: [{ text: DATV_NOTE, source: DATV_SOURCE }],
+  notes: [{ text: DATV_NOTE, source: UKSources.carriersList }],
 };
 
-const VISA_REQUIRED: PassportRule = {
+const VISA_REQUIRED: VisaRequiredRule = {
   access: 'visa_required',
 };
 
@@ -133,23 +114,32 @@ export const UNITED_KINGDOM: RegionDefinition = {
   name: 'United Kingdom',
   memberStates: ['GB'],
 
-  // The Standard Visitor route permits up to 6 months (180 days) per visit.
-  // IMPORTANT: This is a per-visit limit, NOT a rolling 180-day window like
-  // Schengen. Multiple consecutive visits may be scrutinised by Border Force
-  // even if each individual visit is under 180 days.
   rule: {
+    type: 'per_visit',
     allowanceDays: 180,
-    windowDays: 365,
     entryCountsAsDay: true,
     exitCountsAsDay: true,
+    notes: [{
+      text:
+        'Repeated maximum-duration stays with short gaps between them may lead ' +
+        'Border Force to conclude that you are using the visitor route as de facto ' +
+        'residence, even when each individual visit is within the 180-day limit. ' +
+        'This is assessed holistically under Appendix V of the Immigration Rules ' +
+        'and is not calculable by a tool.',
+      source: UKSources.standardVisitor,
+    }],
   },
 
   lastVerified: '2026-04-14',
-  sourceUrl: 'https://www.gov.uk/standard-visitor',
-
-  defaultRule: { access: 'visa_required' },
+  sourceUrl: UKSources.standardVisitor.directUrl,
+  defaultRule: VISA_REQUIRED,
 
   passportRules: {
+
+    // ── Note placement convention (applies across all region files) ─────────
+    //   EntitledRule.notes        → rule-level context, especially fallback explanation
+    //   StayEntitlement.notes     → condition-specific context
+    // See schengen.ts entitled() for full documentation.
 
     // ── British citizens ───────────────────────────────────────────────────
     'GB': { access: 'free_movement' },
@@ -157,7 +147,13 @@ export const UNITED_KINGDOM: RegionDefinition = {
     // ── Common Travel Area — Irish citizens ────────────────────────────────
     'IE': {
       access: 'free_movement',
-      notes: [{ text: CTA_NOTE, source: CTA_SOURCE }],
+      notes: [{
+        text:
+          'Irish citizens have unrestricted freedom of movement throughout the UK ' +
+          'under the Common Travel Area (CTA). No visa, ETA, or pre-travel ' +
+          'authorisation is required.',
+        source: UKSources.ctaGuidance,
+      }],
     },
 
     // ── ETA required — Phase 1 (15 Nov 2023) ─────────────────────────────
@@ -223,7 +219,7 @@ export const UNITED_KINGDOM: RegionDefinition = {
     'US': ETA_RULE,
 
     // ── ETA required — Phase 4 (2 Apr 2025) ──────────────────────────────
-    // EU member states (post-Brexit — no longer free movement)
+    // EU member states (post-Brexit — no longer free movement in the UK)
     'AT': ETA_RULE,
     'BE': ETA_RULE,
     'BG': ETA_RULE,
@@ -261,131 +257,132 @@ export const UNITED_KINGDOM: RegionDefinition = {
     'SM': ETA_RULE,
     'VA': ETA_RULE,
 
-    // ── Taiwan — visa required, but ETA-eligible for certain passports ────
-    // Taiwan is on the Visitor Visa National List. However, holders of a
-    // Taiwan passport that includes a national identity card number are
-    // eligible for an ETA instead of a visa. Classify as visa_required with
-    // explanatory note.
+    // ── Taiwan — ETA-eligible for specific passport variant ────────────────
+    // Taiwan is on the Visitor Visa National List. However, holders of a Taiwan
+    // passport that includes a national identity card number are eligible for an
+    // ETA rather than a Standard Visitor Visa.
     'TW': {
-      access: 'visa_required',
+      access: 'entitled',
+      entitlements: [{
+        limits: [UK_LIMIT],
+        preAuth: UK_ETA,
+        conditions: [{
+          type: 'passport_identifier',
+          description: 'Applies only to holders of passports issued by Taiwan which include a national identity card number.',
+        }],
+      }],
       notes: [{
         text:
-          'Taiwan passport holders whose passport includes a national identity ' +
-          'card number are eligible to apply for an ETA rather than a ' +
-          'Standard Visitor Visa. Check the UKVI ETA guidance to confirm eligibility.',
-        source: ETA_LIST_SOURCE,
+          'Only Taiwan passport holders whose passport includes a national identity ' +
+          'card number are eligible for an ETA. All other Taiwan passport holders ' +
+          'require a Standard Visitor Visa.',
+        source: UKSources.etaNationalList,
       }],
     },
 
-    // ── China — visa required + DATV for airside transit ─────────────────
+    // ── China — visa required + DATV for airside transit ──────────────────
     // China mainland passports require a DATV for airside transit.
-    // Exception: Hong Kong SAR (HK) and Macao SAR (MO) passport holders
-    // are in the ETA scheme (see above).
+    // HK SAR and Macao SAR passport holders are in the ETA scheme (see above).
     'CN': {
       access: 'visa_required',
-      requiresDATV: true,
       notes: [
-        { text: DATV_NOTE, source: DATV_SOURCE },
+        { text: DATV_NOTE, source: UKSources.carriersList },
         {
           text:
             'Holders of Hong Kong SAR or Macao SAR passports are NOT subject ' +
             'to this requirement and may apply for an ETA instead.',
-          source: ETA_LIST_SOURCE,
+          source: UKSources.etaNationalList,
         },
       ],
     },
 
     // ── Venezuela — DATV for non-biometric passport holders ───────────────
-    // Biometric VE passport holders are visa-required (no DATV).
-    // Non-biometric VE passport holders require a DATV for airside transit.
+    // Biometric VE passport holders: visa required, no DATV.
+    // Non-biometric VE passport holders: visa required + DATV.
     'VE': {
       access: 'visa_required',
-      requiresDATV: true,
       notes: [
-        { text: DATV_NOTE, source: DATV_SOURCE },
+        { text: DATV_NOTE, source: UKSources.carriersList },
         {
           text:
             'Holders of a biometric Venezuelan passport do NOT require a DATV ' +
             'for airside transit, but still require a Standard Visitor Visa to ' +
             'enter the UK.',
-          source: DATV_SOURCE,
+          source: UKSources.carriersList,
         },
       ],
     },
 
-    // ── Visa required + DATV (airside transit visa required) ─────────────
-    // These nationalities require both a visitor visa to enter the UK AND
-    // a DATV to transit UK airports airside.
-    // Source: UK visa requirements for international carriers (carriers list).
-    'AF': DATV_RULE,
-    'AL': DATV_RULE,
-    'DZ': DATV_RULE,
-    'AO': DATV_RULE,
-    'BD': DATV_RULE,
-    'BY': DATV_RULE,
-    'BW': DATV_RULE,
-    'BI': DATV_RULE,
-    'CM': DATV_RULE,
-    'CO': DATV_RULE,
-    'CG': DATV_RULE,
-    'CD': DATV_RULE,
-    'DM': DATV_RULE,
-    'EG': DATV_RULE,
-    'SV': DATV_RULE,
-    'ER': DATV_RULE,
-    'SZ': DATV_RULE,
-    'ET': DATV_RULE,
-    'GM': DATV_RULE,
-    'GE': DATV_RULE,
-    'GH': DATV_RULE,
-    'GN': DATV_RULE,
-    'GW': DATV_RULE,
-    'HN': DATV_RULE,
-    'IN': DATV_RULE,
-    'IR': DATV_RULE,
-    'IQ': DATV_RULE,
-    'JM': DATV_RULE,
-    'JO': DATV_RULE,
-    'KE': DATV_RULE,
-    'XK': DATV_RULE,  // Kosovo (XK = user-assigned ISO code)
-    'LB': DATV_RULE,
-    'LS': DATV_RULE,
-    'LR': DATV_RULE,
-    'LY': DATV_RULE,
-    'MW': DATV_RULE,
-    'MD': DATV_RULE,
-    'MN': DATV_RULE,
-    'MM': DATV_RULE,
-    'NA': DATV_RULE,
-    'NP': DATV_RULE,
-    'NI': DATV_RULE,
-    'NG': DATV_RULE,
-    'MK': DATV_RULE,  // North Macedonia
-    'PK': DATV_RULE,
-    'PS': DATV_RULE,
-    'RU': DATV_RULE,
-    'RW': DATV_RULE,
-    'SN': DATV_RULE,
-    'RS': DATV_RULE,
-    'SL': DATV_RULE,
-    'SO': DATV_RULE,
-    'ZA': DATV_RULE,
-    'SS': DATV_RULE,
-    'LK': DATV_RULE,
-    'SD': DATV_RULE,
-    'SY': DATV_RULE,
-    'TZ': DATV_RULE,
-    'TL': DATV_RULE,
-    'TT': DATV_RULE,
-    'TR': DATV_RULE,
-    'UG': DATV_RULE,
-    'VN': DATV_RULE,
-    'YE': DATV_RULE,
-    'ZW': DATV_RULE,
+    // ── Visa required + DATV ──────────────────────────────────────────────
+    // These nationalities require both a Standard Visitor Visa to enter the UK
+    // and a DATV to transit UK airports airside.
+    'AF': VISA_REQUIRED_DATV,
+    'AL': VISA_REQUIRED_DATV,
+    'DZ': VISA_REQUIRED_DATV,
+    'AO': VISA_REQUIRED_DATV,
+    'BD': VISA_REQUIRED_DATV,
+    'BY': VISA_REQUIRED_DATV,
+    'BW': VISA_REQUIRED_DATV,
+    'BI': VISA_REQUIRED_DATV,
+    'CM': VISA_REQUIRED_DATV,
+    'CO': VISA_REQUIRED_DATV,
+    'CG': VISA_REQUIRED_DATV,
+    'CD': VISA_REQUIRED_DATV,
+    'DM': VISA_REQUIRED_DATV,
+    'EG': VISA_REQUIRED_DATV,
+    'SV': VISA_REQUIRED_DATV,
+    'ER': VISA_REQUIRED_DATV,
+    'SZ': VISA_REQUIRED_DATV,
+    'ET': VISA_REQUIRED_DATV,
+    'GM': VISA_REQUIRED_DATV,
+    'GE': VISA_REQUIRED_DATV,
+    'GH': VISA_REQUIRED_DATV,
+    'GN': VISA_REQUIRED_DATV,
+    'GW': VISA_REQUIRED_DATV,
+    'HN': VISA_REQUIRED_DATV,
+    'IN': VISA_REQUIRED_DATV,
+    'IR': VISA_REQUIRED_DATV,
+    'IQ': VISA_REQUIRED_DATV,
+    'JM': VISA_REQUIRED_DATV,
+    'JO': VISA_REQUIRED_DATV,
+    'KE': VISA_REQUIRED_DATV,
+    'XK': VISA_REQUIRED_DATV, // Kosovo (XK = user-assigned ISO code)
+    'LB': VISA_REQUIRED_DATV,
+    'LS': VISA_REQUIRED_DATV,
+    'LR': VISA_REQUIRED_DATV,
+    'LY': VISA_REQUIRED_DATV,
+    'MW': VISA_REQUIRED_DATV,
+    'MD': VISA_REQUIRED_DATV,
+    'MN': VISA_REQUIRED_DATV,
+    'MM': VISA_REQUIRED_DATV,
+    'NA': VISA_REQUIRED_DATV,
+    'NP': VISA_REQUIRED_DATV,
+    'NI': VISA_REQUIRED_DATV,
+    'NG': VISA_REQUIRED_DATV,
+    'MK': VISA_REQUIRED_DATV, // North Macedonia
+    'PK': VISA_REQUIRED_DATV,
+    'PS': VISA_REQUIRED_DATV,
+    'RU': VISA_REQUIRED_DATV,
+    'RW': VISA_REQUIRED_DATV,
+    'SN': VISA_REQUIRED_DATV,
+    'RS': VISA_REQUIRED_DATV,
+    'SL': VISA_REQUIRED_DATV,
+    'SO': VISA_REQUIRED_DATV,
+    'ZA': VISA_REQUIRED_DATV,
+    'SS': VISA_REQUIRED_DATV,
+    'LK': VISA_REQUIRED_DATV,
+    'SD': VISA_REQUIRED_DATV,
+    'SY': VISA_REQUIRED_DATV,
+    'TZ': VISA_REQUIRED_DATV,
+    'TL': VISA_REQUIRED_DATV,
+    'TT': VISA_REQUIRED_DATV,
+    'TR': VISA_REQUIRED_DATV,
+    'UG': VISA_REQUIRED_DATV,
+    'VN': VISA_REQUIRED_DATV,
+    'YE': VISA_REQUIRED_DATV,
+    'ZW': VISA_REQUIRED_DATV,
 
-    // ── Visa required only (no DATV) ─────────────────────────────────────
-    // These nationalities require a Standard Visitor Visa but do NOT need
-    // a DATV for airside transit.
+    // ── Visa required only (no DATV) ──────────────────────────────────────
     'AM': VISA_REQUIRED,
     'AZ': VISA_REQUIRED,
     'BJ': VISA_REQUIRED,

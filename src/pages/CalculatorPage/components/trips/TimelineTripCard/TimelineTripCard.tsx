@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import type { Trip, PassportRule } from "@/types";
-import { VisaRegion } from "@/types";
+import { VisaRegion, isEntitled, isVisaRequired } from "@/types";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 import { parseDate } from "@/features/calculator/utils/dates";
@@ -33,7 +33,6 @@ import {
   CHIP_TOOLTIP_OVERSTAY,
   CHIP_TOOLTIP_TRANSIT_VISA,
   CHIP_TOOLTIP_ETIAS,
-  CHIP_TOOLTIP_SUSPENDED,
 } from "@/features/calculator/utils/schengen";
 import {
   CHIP_TOOLTIP_UK_ETA,
@@ -345,14 +344,11 @@ export function TimelineTripCard({
       if (passportRule.access === "visa_required") {
         chips.push({ rank: 100, label: "Visa req.", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_VISA_REQUIRED });
       }
-      if (passportRule.requiresATV) {
+      if (isVisaRequired(passportRule) && passportRule.notes?.some(n => n.text.startsWith('Airport transit visa'))) {
         chips.push({ rank: 101, label: "Transit visa", color: tokens.white, bg: tokens.red, tooltip: CHIP_TOOLTIP_TRANSIT_VISA });
       }
-      if (passportRule.requiresETIAS) {
+      if (isEntitled(passportRule) && passportRule.entitlements.some(e => e.preAuth?.type === 'ETIAS')) {
         chips.push({ rank: 111, label: "ETIAS 2026", color: tokens.textSoft, bg: tokens.mist, tooltip: CHIP_TOOLTIP_ETIAS });
-      }
-      if (passportRule.access === "suspended") {
-        chips.push({ rank: 120, label: "Suspended", color: tokens.amberText, bg: tokens.amberBg, tooltip: CHIP_TOOLTIP_SUSPENDED });
       }
     }
 
@@ -361,10 +357,10 @@ export function TimelineTripCard({
       if (ukPassportRule.access === "visa_required") {
         chips.push({ rank: 100, label: "Visa req.", color: tokens.redText, bg: tokens.redBg, tooltip: CHIP_TOOLTIP_VISA_REQUIRED });
       }
-      if (ukPassportRule.requiresDATV) {
+      if (isVisaRequired(ukPassportRule) && ukPassportRule.notes?.some(n => n.text.includes('DATV'))) {
         chips.push({ rank: 101, label: "Transit visa", color: tokens.white, bg: tokens.red, tooltip: CHIP_TOOLTIP_UK_DATV });
       }
-      if (ukPassportRule.requiresETA) {
+      if (isEntitled(ukPassportRule) && ukPassportRule.entitlements.some(e => e.preAuth?.type === 'ETA')) {
         chips.push({ rank: 110, label: "UK ETA", color: tokens.textSoft, bg: tokens.mist, tooltip: CHIP_TOOLTIP_UK_ETA });
       }
     }
@@ -480,12 +476,8 @@ export function TimelineTripCard({
     showSchengenChips,
     maxStayAtExit,
     earliestReEntry,
-    passportRule?.access,
-    passportRule?.requiresATV,
-    passportRule?.requiresETIAS,
-    ukPassportRule?.access,
-    ukPassportRule?.requiresETA,
-    ukPassportRule?.requiresDATV,
+    passportRule,
+    ukPassportRule,
     irelandPassportRule?.access,
     ukStayInfo?.stayVariant,
     ukStayInfo?.reentryVariant,
