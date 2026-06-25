@@ -238,8 +238,8 @@ export function TravelerCardsColumn({
             // (mirrors Schengen's permissive-default for unset nationality).
             // Passport-rule chips (ETA, DATV, visa req.) are suppressed when
             // no nationality is set, so passing `undefined` for the rule prop.
-            const ukIsEligible = ukRule.access === "visa_free" || !traveler.passportCode;
-            const irelandIsEligible = irelandRule.access === "visa_free" || !traveler.passportCode;
+            const ukIsEligible = ukRule.access === "entitled" || !traveler.passportCode;
+            const irelandIsEligible = irelandRule.access === "entitled" || !traveler.passportCode;
 
             const ukStayInfo =
               trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukIsEligible

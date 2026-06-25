@@ -5,7 +5,7 @@ import { alpha } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { format } from "date-fns";
-import { type Traveler, type Trip, VisaRegion } from "@/types";
+import { type Traveler, type Trip, VisaRegion, isEntitled, isVisaRequired } from "@/types";
 import { tokens } from "@/styles/theme";
 import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import {
@@ -557,19 +557,14 @@ function MobileTimelineTripCard({
                     Visa req.
                   </Chip>
                 )}
-                {rules.some((r) => r.requiresATV) && (
+                {rules.some((r) => isVisaRequired(r) && r.notes?.some(n => n.text.startsWith('Airport transit visa'))) && (
                   <Chip color={tokens.white} bg={tokens.red}>
                     ATV
                   </Chip>
                 )}
-                {rules.some((r) => r.requiresETIAS) && (
+                {rules.some((r) => isEntitled(r) && r.entitlements.some(e => e.preAuth?.type === 'ETIAS')) && (
                   <Chip color={tokens.navy} bg={tokens.mist}>
                     ETIAS
-                  </Chip>
-                )}
-                {rules.some((r) => r.access === "suspended") && (
-                  <Chip color={tokens.amberText} bg={alpha(tokens.amber, 0.1)}>
-                    Suspended
                   </Chip>
                 )}
               </>
@@ -922,7 +917,7 @@ export function MobileTimelineView({
     travelers.forEach((traveler, i) => {
       if (hiddenTravelerIds.includes(traveler.id)) return;
       const rule = getSchengenRule(traveler.passportCode);
-      if (traveler.passportCode !== null && (rule.access === 'visa_required' || rule.access === 'suspended')) return;
+      if (traveler.passportCode !== null && rule.access === 'visa_required') return;
 
       computeReturnMarkers(traveler, timelineStart, timelineEnd)
         .filter((m: ReturnMarker) => !m.isCurrent)
@@ -948,7 +943,7 @@ export function MobileTimelineView({
     travelers.forEach((traveler) => {
       if (hiddenTravelerIds.includes(traveler.id)) return;
       const rule = getSchengenRule(traveler.passportCode);
-      if (traveler.passportCode !== null && (rule.access === 'visa_required' || rule.access === 'suspended')) return;
+      if (traveler.passportCode !== null && rule.access === 'visa_required') return;
 
       computeAgingMarkers(traveler, timelineStart, timelineEnd).forEach((m) => {
         const key = `${m.entryDate}|${m.exitDate}`;

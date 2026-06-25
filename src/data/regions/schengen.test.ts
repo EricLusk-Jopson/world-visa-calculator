@@ -1,12 +1,15 @@
 import { describe, it, expect } from 'vitest';
 import { getSchengenRule, SCHENGEN } from './schengen';
+import { isEntitled, type RollingWindowLimit } from '@/types';
 
 describe('getSchengenRule', () => {
-  it('returns visa_free for a visa-free nationality (US)', () => {
+  it('returns entitled for a visa-free nationality (US)', () => {
     const rule = getSchengenRule('US');
-    expect(rule.access).toBe('visa_free');
-    expect(rule.allowanceDays).toBe(90);
-    expect(rule.windowDays).toBe(180);
+    expect(rule.access).toBe('entitled');
+    if (rule.access !== 'entitled') return;
+    const limit = rule.entitlements[0].limits[0] as RollingWindowLimit;
+    expect(limit.days).toBe(90);
+    expect(limit.windowDays).toBe(180);
   });
 
   it('returns free_movement for an EU nationality (FR)', () => {
@@ -26,20 +29,23 @@ describe('getSchengenRule', () => {
     expect(rule).toEqual(SCHENGEN.defaultRule);
   });
 
-  it('returns visa_free with suspension note for GE (Georgia ordinary passports)', () => {
-    // Ordinary Georgian passports remain visa-free; only diplomatic/service/official
-    // passports were suspended (March 2026 – March 2027).
+  it('returns entitled with suspension note for GE (Georgia ordinary passports)', () => {
+    // Diplomatic/service/official passports suspended March 2026–March 2027;
+    // ordinary biometric passport holders remain entitled.
     const rule = getSchengenRule('GE');
-    expect(rule.access).toBe('visa_free');
-    expect(Array.isArray(rule.notes)).toBe(true);
-    expect(rule.notes!.length).toBeGreaterThan(0);
-    const suspensionNote = rule.notes!.find((n) => n.text.toLowerCase().includes('suspended'));
+    expect(rule.access).toBe('entitled');
+    if (rule.access !== 'entitled') return;
+    const entitlementNotes = rule.entitlements[0].notes;
+    expect(Array.isArray(entitlementNotes)).toBe(true);
+    expect(entitlementNotes!.length).toBeGreaterThan(0);
+    const suspensionNote = entitlementNotes!.find((n) => n.text.toLowerCase().includes('suspended'));
     expect(suspensionNote).toBeDefined();
-    expect(suspensionNote!.source.directUrl.length).toBeGreaterThan(0);
   });
 
-  it('sets requiresETIAS true for US and false for VA (Vatican)', () => {
-    expect(getSchengenRule('US').requiresETIAS).toBe(true);
-    expect(getSchengenRule('VA').requiresETIAS).toBe(false);
+  it('sets ETIAS preAuth for US and not for VA (Vatican)', () => {
+    const usRule = getSchengenRule('US');
+    const vaRule = getSchengenRule('VA');
+    expect(isEntitled(usRule) && usRule.entitlements.some(e => e.preAuth?.type === 'ETIAS')).toBe(true);
+    expect(isEntitled(vaRule) && vaRule.entitlements.some(e => e.preAuth?.type === 'ETIAS')).toBe(false);
   });
 });

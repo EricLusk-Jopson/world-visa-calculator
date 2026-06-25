@@ -299,7 +299,7 @@ export function TravelerFilterBar({
             const rule = getSchengenRule(traveler.passportCode);
             const isVisaRequired =
               traveler.passportCode !== null &&
-              (rule.access === "visa_required" || rule.access === "suspended");
+              rule.access === "visa_required";
             const showCalculator = !isVisaRequired;
 
             return (
@@ -728,7 +728,7 @@ export function TravelerFilterBar({
 
           {editCode && (() => {
             const r = getSchengenRule(editCode);
-            if (r.access === "visa_free") return null;
+            if (r.access === "entitled") return null;
             return (
               <Typography
                 sx={{
@@ -739,9 +739,7 @@ export function TravelerFilterBar({
               >
                 {r.access === "free_movement"
                   ? "EU/EEA/Swiss passports have free movement — no 90-day limit applies."
-                  : r.access === "suspended"
-                    ? (r.notes?.[0]?.text ?? "Visa-free access is temporarily suspended.")
-                    : "A Schengen visa is required for this passport."}
+                  : "A Schengen visa is required for this passport."}
               </Typography>
             );
           })()}
