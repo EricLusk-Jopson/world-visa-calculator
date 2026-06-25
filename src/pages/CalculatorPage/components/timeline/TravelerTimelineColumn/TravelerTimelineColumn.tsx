@@ -7,12 +7,6 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 
 import { tokens } from "@/styles/theme";
-import {
-  returnMarkerCurrentText,
-  returnMarkerThresholdText,
-  agingMarkerTripLine,
-  AGING_MARKER_EXPLANATION,
-} from "@/features/calculator/utils/markerTooltips";
 import { TimelineTripCard } from "../../trips/TimelineTripCard";
 import {
   dateToTop,
@@ -33,16 +27,27 @@ import {
 import {
   type ReturnMarker,
   computeReturnMarkers,
-} from "@/features/calculator/utils/returnmarkers";
-import {
   type AgingMarker,
   computeAgingMarkers,
-} from "@/features/calculator/utils/agingMarkers";
-import {
   calculateEarliestEntry,
   calculateMaxStay,
+  returnMarkerCurrentText,
+  returnMarkerThresholdText,
+  agingMarkerTripLine,
+  AGING_MARKER_EXPLANATION,
 } from "@/features/calculator/utils/schengen";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { getSchengenRule } from "@/data/regions/schengen";
+import { getUKRule } from "@/data/regions/uk";
+import { getIrelandRule } from "@/data/regions/ireland";
+import {
+  assessUKStay,
+  detectUKReentryRisk,
+} from "@/features/calculator/utils/uk";
+import {
+  assessIrelandStay,
+  detectIrelandReentryRisk,
+} from "@/features/calculator/utils/ireland";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
@@ -327,6 +332,14 @@ export function TravelerTimelineColumn({
     a.entryDate < b.entryDate ? -1 : 1,
   );
 
+  const todayStr = formatDate(today);
+  const highlightedTripId = (() => {
+    const ongoing = sortedTrips.find((t) => !t.exitDate && t.entryDate <= todayStr);
+    if (ongoing) return ongoing.id;
+    const upcoming = sortedTrips.find((t) => t.entryDate > todayStr);
+    return upcoming?.id ?? null;
+  })();
+
   const geometries = new Map(
     sortedTrips.map((trip) => [trip.id, getTripGeometry(trip, timelineStart)]),
   );
@@ -401,6 +414,7 @@ export function TravelerTimelineColumn({
     const mockTraveler = {
       id: "__overstay__",
       name: "",
+      passportCode: null,
       trips: schengenTrips,
     };
     const result = new Set<string>();
@@ -415,6 +429,11 @@ export function TravelerTimelineColumn({
 
     return result;
   }, [traveler]);
+
+  const schengenRule = getSchengenRule(traveler.passportCode);
+  const isVisaRequired =
+    traveler.passportCode !== null &&
+    schengenRule.access === 'visa_required';
 
   const returnMarkers = useMemo(
     () => computeReturnMarkers(traveler, timelineStart, timelineEnd),
@@ -431,6 +450,7 @@ export function TravelerTimelineColumn({
   const defaultButtonTop = totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_MARGIN;
 
   const addButtonTop = useMemo(() => {
+    if (isVisaRequired) return defaultButtonTop;
     const allMarkerTops = [
       ...returnMarkers.map((m) => m.top),
       ...agingMarkers.map((m) => m.top),
@@ -439,7 +459,7 @@ export function TravelerTimelineColumn({
     const lastMarkerTop = Math.max(...allMarkerTops);
     const minTop = lastMarkerTop + 10 + ADD_BUTTON_MARGIN;
     return Math.max(defaultButtonTop, minTop);
-  }, [returnMarkers, agingMarkers, defaultButtonTop]);
+  }, [returnMarkers, agingMarkers, defaultButtonTop, isVisaRequired]);
 
   const BASE_Z = 4;
 
@@ -528,14 +548,14 @@ export function TravelerTimelineColumn({
       />
 
       {/* Return markers (threshold milestones) */}
-      {returnMarkers
+      {!isVisaRequired && returnMarkers
         .filter((marker) => !marker.isCurrent)
         .map((marker, i) => (
           <MarkerLine key={`thr-${marker.days}-${i}`} {...marker} />
         ))}
 
       {/* Aging-out markers */}
-      {agingMarkers.map((marker, i) => (
+      {!isVisaRequired && agingMarkers.map((marker, i) => (
         <AgingMarkerLine key={`aging-${marker.entryDate}-${i}`} {...marker} />
       ))}
 
@@ -548,6 +568,44 @@ export function TravelerTimelineColumn({
         const { maxStayAtExit, earliestReEntry } = tripAvailability.get(
           trip.id,
         ) ?? { maxStayAtExit: 0, earliestReEntry: null };
+
+        const ukRule = getUKRule(traveler.passportCode);
+        const irelandRule = getIrelandRule(traveler.passportCode);
+
+        const ukIsEligible = ukRule.access === "entitled" || !traveler.passportCode;
+        const irelandIsEligible = irelandRule.access === "entitled" || !traveler.passportCode;
+
+        const ukStayInfo =
+          trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukIsEligible
+            ? (() => {
+                const assessment = assessUKStay(trip.entryDate, trip.exitDate);
+                const ukTrips = traveler.trips.filter(
+                  (t) => t.region === VisaRegion.UnitedKingdom && t.exitDate && t.id !== trip.id,
+                );
+                const risk = detectUKReentryRisk(ukTrips, trip.entryDate);
+                return {
+                  stayVariant: assessment.variant,
+                  daysRemaining: assessment.daysRemaining,
+                  reentryVariant: risk?.variant,
+                };
+              })()
+            : undefined;
+
+        const irelandStayInfo =
+          trip.region === VisaRegion.Ireland && trip.exitDate && irelandIsEligible
+            ? (() => {
+                const assessment = assessIrelandStay(trip.entryDate, trip.exitDate);
+                const irelandTrips = traveler.trips.filter(
+                  (t) => t.region === VisaRegion.Ireland && t.exitDate && t.id !== trip.id,
+                );
+                const risk = detectIrelandReentryRisk(irelandTrips, trip.entryDate);
+                return {
+                  stayVariant: assessment.variant,
+                  daysRemaining: assessment.daysRemaining,
+                  reentryVariant: risk?.variant,
+                };
+              })()
+            : undefined;
 
         return (
           <TimelineTripCard
@@ -563,6 +621,12 @@ export function TravelerTimelineColumn({
             cardWidth={cardWidth}
             baseZIndex={BASE_Z + rank}
             isOverstay={overstayTripIds.has(trip.id)}
+            isHighlighted={trip.id === highlightedTripId}
+            passportRule={getSchengenRule(traveler.passportCode)}
+            ukPassportRule={traveler.passportCode ? ukRule : undefined}
+            irelandPassportRule={traveler.passportCode ? irelandRule : undefined}
+            ukStayInfo={ukStayInfo}
+            irelandStayInfo={irelandStayInfo}
             onEdit={() => onEditTrip(traveler.id, trip)}
           />
         );

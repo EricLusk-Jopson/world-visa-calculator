@@ -50,7 +50,7 @@ import {
   differenceInCalendarDays,
 } from "@/features/calculator/utils/dates";
 import { dateToTop } from "@/features/calculator/utils/timelineLayout";
-import { calculateMaxStay } from "./schengen";
+import { calculateMaxStay } from "./calculator";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

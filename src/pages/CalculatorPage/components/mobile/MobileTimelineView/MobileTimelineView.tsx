@@ -5,7 +5,7 @@ import { alpha } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { format } from "date-fns";
-import { type Traveler, type Trip, VisaRegion } from "@/types";
+import { type Traveler, type Trip, VisaRegion, isEntitled, isVisaRequired } from "@/types";
 import { tokens } from "@/styles/theme";
 import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import {
@@ -25,20 +25,17 @@ import {
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { getSchengenRule } from "@/data/regions/schengen";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import {
   type ReturnMarker,
   computeReturnMarkers,
-} from "@/features/calculator/utils/returnmarkers";
-import {
   type AgingMarker,
   computeAgingMarkers,
-} from "@/features/calculator/utils/agingMarkers";
-import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
-import {
   returnMarkerRowText,
   agingMarkerTripLine,
   AGING_MARKER_EXPLANATION,
-} from "@/features/calculator/utils/markerTooltips";
+} from "@/features/calculator/utils/schengen";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -105,7 +102,6 @@ interface MobileAgingMarkerGroup {
 const MIN_TRIP_HEIGHT = 28;
 const HEIGHT_SHOW_DATES = 44;
 const HEIGHT_SHOW_BADGES = 56;
-const HEIGHT_SHOW_NAMES = 72;
 const LANE_GAP = 2;
 const CARD_GUTTER = 3;
 
@@ -130,7 +126,7 @@ function computeOverstayCoords(traveler: Traveler): Set<string> {
   );
   if (schengenTrips.length === 0) return new Set();
 
-  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
   const result = new Set<string>();
 
   for (const trip of schengenTrips) {
@@ -340,23 +336,29 @@ function Chip({
 
 interface MobileTimelineTripCardProps {
   positioned: PositionedTrip;
+  isHighlighted: boolean;
   onClick: () => void;
 }
 
 function MobileTimelineTripCard({
   positioned,
+  isHighlighted,
   onClick,
 }: MobileTimelineTripCardProps) {
   const { trip, entries, height, isOverstay } = positioned;
+
+  // Aggregate passport rules across all travelers in this merged card.
+  const rules = entries.map((e) => getSchengenRule(e.traveler.passportCode));
   const todayStr = todayISO();
 
   const isOngoing = !trip.exitDate;
   const isPlanned = trip.entryDate > todayStr;
   const isSchengen = trip.region === VisaRegion.Schengen;
+  const isUK = trip.region === VisaRegion.UnitedKingdom;
+  const isIreland = trip.region === VisaRegion.Ireland;
 
   const showDates = height >= HEIGHT_SHOW_DATES;
   const showBadges = height >= HEIGHT_SHOW_BADGES;
-  const showNames = height >= HEIGHT_SHOW_NAMES;
 
   const days = countTripDays(
     parseDate(trip.entryDate),
@@ -371,7 +373,11 @@ function MobileTimelineTripCard({
         ? "Ongoing"
         : isSchengen
           ? "Schengen"
-          : "Elsewhere";
+          : isUK
+            ? "United Kingdom"
+            : isIreland
+              ? "Ireland"
+              : null; // Elsewhere → no chip
 
   const regionBg = isOverstay
     ? alpha(tokens.red, 0.12)
@@ -388,6 +394,14 @@ function MobileTimelineTripCard({
       : isSchengen
         ? tokens.greenText
         : tokens.textSoft;
+
+  const accentColor = isOverstay
+    ? tokens.red
+    : isPlanned
+      ? tokens.amber
+      : isHighlighted
+        ? tokens.green
+        : tokens.border;
 
   const cardBg = isOverstay
     ? tokens.redBg
@@ -425,9 +439,21 @@ function MobileTimelineTripCard({
         },
       }}
     >
+      {/* Left accent bar */}
       <Box
         sx={{
-          pl: "7px",
+          position: "absolute",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: 3,
+          bgcolor: accentColor,
+          borderRadius: "6px 0 0 6px",
+        }}
+      />
+      <Box
+        sx={{
+          pl: "10px",
           pr: "5px",
           pt: "4px",
           pb: "4px",
@@ -517,57 +543,35 @@ function MobileTimelineTripCard({
             <Chip color={tokens.textSoft} bg={tokens.mist}>
               {days}d
             </Chip>
-            <Chip color={regionColor} bg={regionBg}>
-              {regionLabel}
-            </Chip>
+            {regionLabel && (
+              <Chip color={regionColor} bg={regionBg}>
+                {regionLabel}
+              </Chip>
+            )}
+
+            {/* Passport rule chips — Schengen trips, not overstay, not ongoing */}
+            {isSchengen && !isOverstay && !isOngoing && (
+              <>
+                {rules.some((r) => r.access === "visa_required") && (
+                  <Chip color={tokens.redText} bg={alpha(tokens.red, 0.1)}>
+                    Visa req.
+                  </Chip>
+                )}
+                {rules.some((r) => isVisaRequired(r) && r.notes?.some(n => n.text.startsWith('Airport transit visa'))) && (
+                  <Chip color={tokens.white} bg={tokens.red}>
+                    ATV
+                  </Chip>
+                )}
+                {rules.some((r) => isEntitled(r) && r.entitlements.some(e => e.preAuth?.type === 'ETIAS')) && (
+                  <Chip color={tokens.navy} bg={tokens.mist}>
+                    ETIAS
+                  </Chip>
+                )}
+              </>
+            )}
           </Box>
         )}
 
-        {/* ── Traveler name chips ───────────────────────────────────────── */}
-        {showNames && (
-          <Box
-            sx={{ display: "flex", flexWrap: "wrap", gap: "2px", mt: "1px" }}
-          >
-            {entries.map(({ traveler, travelerIndex }) => {
-              const color = getTravelerColor(travelerIndex);
-              return (
-                <Box
-                  key={traveler.id}
-                  sx={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "3px",
-                    px: "5px",
-                    py: "1px",
-                    borderRadius: "100px",
-                    bgcolor: alpha(color, 0.1),
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 5,
-                      height: 5,
-                      borderRadius: "50%",
-                      bgcolor: color,
-                      flexShrink: 0,
-                    }}
-                  />
-                  <Typography
-                    sx={{
-                      fontSize: "0.58rem",
-                      fontWeight: 700,
-                      color,
-                      lineHeight: 1,
-                      userSelect: "none",
-                    }}
-                  >
-                    {traveler.name}
-                  </Typography>
-                </Box>
-              );
-            })}
-          </Box>
-        )}
       </Box>
     </Box>
   );
@@ -889,12 +893,31 @@ export function MobileTimelineView({
     [travelers, hiddenTravelerIds, timelineStart, todayStr],
   );
 
+  // Set of trip keys that are highlighted (ongoing or next-upcoming per traveler).
+  const highlightedKeys = useMemo((): Set<string> => {
+    const keys = new Set<string>();
+    travelers.forEach((traveler) => {
+      if (hiddenTravelerIds.includes(traveler.id)) return;
+      const sorted = [...traveler.trips].sort((a, b) =>
+        a.entryDate < b.entryDate ? -1 : 1,
+      );
+      const ongoing = sorted.find((t) => !t.exitDate && t.entryDate <= todayStr);
+      const highlighted = ongoing ?? sorted.find((t) => t.entryDate > todayStr);
+      if (highlighted) {
+        keys.add(`${highlighted.entryDate}|${highlighted.exitDate ?? ""}|${highlighted.region}`);
+      }
+    });
+    return keys;
+  }, [travelers, hiddenTravelerIds, todayStr]);
+
   // ── Return marker groups (6-day rollup) ───────────────────────────────────
   const returnMarkerGroups = useMemo((): MobileReturnMarkerGroup[] => {
     const allEntries: ReturnMarkerEntry[] = [];
 
     travelers.forEach((traveler, i) => {
       if (hiddenTravelerIds.includes(traveler.id)) return;
+      const rule = getSchengenRule(traveler.passportCode);
+      if (traveler.passportCode !== null && rule.access === 'visa_required') return;
 
       computeReturnMarkers(traveler, timelineStart, timelineEnd)
         .filter((m: ReturnMarker) => !m.isCurrent)
@@ -919,6 +942,8 @@ export function MobileTimelineView({
 
     travelers.forEach((traveler) => {
       if (hiddenTravelerIds.includes(traveler.id)) return;
+      const rule = getSchengenRule(traveler.passportCode);
+      if (traveler.passportCode !== null && rule.access === 'visa_required') return;
 
       computeAgingMarkers(traveler, timelineStart, timelineEnd).forEach((m) => {
         const key = `${m.entryDate}|${m.exitDate}`;
@@ -1082,6 +1107,9 @@ export function MobileTimelineView({
                 >
                   <MobileTimelineTripCard
                     positioned={positioned}
+                    isHighlighted={highlightedKeys.has(
+                      `${positioned.trip.entryDate}|${positioned.trip.exitDate ?? ""}|${positioned.trip.region}`
+                    )}
                     onClick={() =>
                       onEditTrip(
                         positioned.entries.map((e) => e.traveler.id),

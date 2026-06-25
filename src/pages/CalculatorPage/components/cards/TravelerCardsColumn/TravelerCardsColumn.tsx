@@ -1,6 +1,10 @@
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
+import { getSchengenRule } from "@/data/regions/schengen";
+import { getUKRule } from "@/data/regions/uk";
+import { getIrelandRule } from "@/data/regions/ireland";
 
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { TripListCard } from "../../trips/TripListCard";
@@ -9,6 +13,14 @@ import {
   calculateMaxStay,
   calculateEarliestEntry,
 } from "@/features/calculator/utils/schengen";
+import {
+  assessUKStay,
+  detectUKReentryRisk,
+} from "@/features/calculator/utils/uk";
+import {
+  assessIrelandStay,
+  detectIrelandReentryRisk,
+} from "@/features/calculator/utils/ireland";
 import {
   parseDate,
   formatDate,
@@ -31,7 +43,7 @@ function computeOverstayTripIds(traveler: Traveler): Set<string> {
   );
   if (schengenTrips.length === 0) return new Set();
 
-  const mockTraveler = { id: "__overstay__", name: "", trips: schengenTrips };
+  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
   const result = new Set<string>();
 
   for (const trip of schengenTrips) {
@@ -58,6 +70,7 @@ interface TravelerCardsColumnProps {
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
+  onEdit: (travelerId: string, name: string, passportCode: string | null) => void;
 }
 
 /**
@@ -74,6 +87,7 @@ export function TravelerCardsColumn({
   onAddTrip,
   onEditTrip,
   onDeleteTraveler,
+  onEdit,
 }: TravelerCardsColumnProps) {
   const status = computeTravelerStatus(traveler);
 
@@ -93,6 +107,14 @@ export function TravelerCardsColumn({
 
   // Overstay detection — computed once for the column, passed per card.
   const overstayTripIds = computeOverstayTripIds(traveler);
+
+  // Highlighted trip: ongoing trip, or if none, the next upcoming trip.
+  const highlightedTripId = (() => {
+    const ongoing = sortedTrips.find((t) => !t.exitDate && t.entryDate <= todayStr);
+    if (ongoing) return ongoing.id;
+    const upcoming = sortedTrips.find((t) => t.entryDate > todayStr);
+    return upcoming?.id ?? null;
+  })();
 
   return (
     <Box
@@ -125,6 +147,7 @@ export function TravelerCardsColumn({
           maxStay={headerMaxStay}
           compact={compact}
           onDelete={() => onDeleteTraveler(traveler.id)}
+          onEdit={(name, code) => onEdit(traveler.id, name, code)}
         />
       </Box>
 
@@ -208,6 +231,48 @@ export function TravelerCardsColumn({
               }
             }
 
+            const ukRule = getUKRule(traveler.passportCode);
+            const irelandRule = getIrelandRule(traveler.passportCode);
+
+            // Compute stay info for visa_free AND unknown-passport travelers
+            // (mirrors Schengen's permissive-default for unset nationality).
+            // Passport-rule chips (ETA, DATV, visa req.) are suppressed when
+            // no nationality is set, so passing `undefined` for the rule prop.
+            const ukIsEligible = ukRule.access === "entitled" || !traveler.passportCode;
+            const irelandIsEligible = irelandRule.access === "entitled" || !traveler.passportCode;
+
+            const ukStayInfo =
+              trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukIsEligible
+                ? (() => {
+                    const assessment = assessUKStay(trip.entryDate, trip.exitDate);
+                    const ukTrips = traveler.trips.filter(
+                      (t) => t.region === VisaRegion.UnitedKingdom && t.exitDate && t.id !== trip.id,
+                    );
+                    const risk = detectUKReentryRisk(ukTrips, trip.entryDate);
+                    return {
+                      stayVariant: assessment.variant,
+                      daysRemaining: assessment.daysRemaining,
+                      reentryVariant: risk?.variant,
+                    };
+                  })()
+                : undefined;
+
+            const irelandStayInfo =
+              trip.region === VisaRegion.Ireland && trip.exitDate && irelandIsEligible
+                ? (() => {
+                    const assessment = assessIrelandStay(trip.entryDate, trip.exitDate);
+                    const irelandTrips = traveler.trips.filter(
+                      (t) => t.region === VisaRegion.Ireland && t.exitDate && t.id !== trip.id,
+                    );
+                    const risk = detectIrelandReentryRisk(irelandTrips, trip.entryDate);
+                    return {
+                      stayVariant: assessment.variant,
+                      daysRemaining: assessment.daysRemaining,
+                      reentryVariant: risk?.variant,
+                    };
+                  })()
+                : undefined;
+
             return (
               <TripListCard
                 key={trip.id}
@@ -215,6 +280,12 @@ export function TravelerCardsColumn({
                 maxStayAtExit={maxStayAtExit}
                 earliestReEntry={earliestReEntry}
                 isOverstay={overstayTripIds.has(trip.id)}
+                isHighlighted={trip.id === highlightedTripId}
+                passportRule={getSchengenRule(traveler.passportCode)}
+                ukPassportRule={traveler.passportCode ? ukRule : undefined}
+                irelandPassportRule={traveler.passportCode ? irelandRule : undefined}
+                ukStayInfo={ukStayInfo}
+                irelandStayInfo={irelandStayInfo}
                 onEdit={() => onEditTrip(traveler.id, trip)}
               />
             );

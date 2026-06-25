@@ -47,6 +47,7 @@ const trip = (
 const traveler = (name: string, trips: Trip[]): Traveler => ({
   id: "test-id",
   name,
+  passportCode: null,
   trips,
 });
 

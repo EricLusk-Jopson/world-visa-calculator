@@ -22,21 +22,45 @@ export const CARD_MIN_HEIGHT = 28;
 
 // ─── Card display thresholds ──────────────────────────────────────────────────
 //
-// Rather than a "layout mode" enum, the card derives what to show directly
-// from its rendered height against these two thresholds. This gives finer
-// control and makes intermediate sizes (e.g. 36px) well-defined.
+// Thresholds are expressed as trip durations (days) and converted to pixels via
+// PX_PER_DAY so the intent is clear when the scale changes.
 //
-// At CARD_MIN_HEIGHT (24px):
-//   → destination name only, duration suffix, tooltip for everything else.
+// SHOW_DATE_DAYS (15 d → 42 px):
+//   → adds the date-range row; duration moves from inline suffix to badge row.
 //
-// At SHOW_DATE_THRESHOLD (42px):
-//   → adds the date range line. Duration moves from inline suffix to badge row.
-//
-// At SHOW_BADGE_THRESHOLD (58px):
-//   → adds the region and remaining-days badge row.
+// SHOW_BADGE_DAYS (25 d → 72 px):
+//   → adds the badge chip row. Must be tall enough for CARD_PADDING_V (bottom)
+//     + at least one CHIP_ROW_HEIGHT without clipping.
 
-export const SHOW_DATE_THRESHOLD = 42;
-export const SHOW_BADGE_THRESHOLD = 58;
+export const SHOW_DATE_DAYS = 15;
+export const SHOW_DATE_THRESHOLD = (SHOW_DATE_DAYS - 1) * PX_PER_DAY; // 42 px
+
+export const SHOW_BADGE_DAYS = 25;
+export const SHOW_BADGE_THRESHOLD = (SHOW_BADGE_DAYS - 1) * PX_PER_DAY; // 72 px
+
+// ─── Badge-row layout constants ───────────────────────────────────────────────
+//
+// Used by TimelineTripCard to compute how many chip rows fit in the available
+// vertical space. The measurement effect always verifies horizontal fit against
+// real DOM widths; these constants govern the vertical budget.
+//
+// CARD_PADDING_V      — top AND bottom padding on the card content box (px).
+//                       Chips must not enter this reserved space.
+//
+// BADGE_CONTENT_ABOVE — height consumed by the content above the badge row when
+//                       badges are visible: pt(6) + destination(~15) + gap(3)
+//                       + date-range(~12) + gap(3) + badge-row mt(2) ≈ 41 px.
+//                       Includes the top CARD_PADDING_V; the bottom padding is
+//                       subtracted separately in the available-height formula.
+//
+// CHIP_ROW_HEIGHT     — measured rendered height of one badge chip (px).
+//
+// CHIP_ROW_GAP        — vertical gap between wrapped rows; matches gap:"4px".
+
+export const CARD_PADDING_V = 6;
+export const BADGE_CONTENT_ABOVE = 42;
+export const CHIP_ROW_HEIGHT = 22;
+export const CHIP_ROW_GAP = 4;
 
 // ─── Lane layout ──────────────────────────────────────────────────────────────
 
