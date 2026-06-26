@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, forwardRef } from "react";
+import { useState, useEffect, useCallback, useRef, forwardRef } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -46,10 +46,14 @@ function PassportPickerScreen({
   onClose: () => void;
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const inputWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) { setDropdownOpen(false); return; }
-    const id = setTimeout(() => setDropdownOpen(true), DROPDOWN_DELAY_MS);
+    const id = setTimeout(() => {
+      setDropdownOpen(true);
+      inputWrapRef.current?.querySelector<HTMLInputElement>("input")?.focus();
+    }, DROPDOWN_DELAY_MS);
     return () => clearTimeout(id);
   }, [open]);
 
@@ -101,7 +105,7 @@ function PassportPickerScreen({
       </Box>
 
       {/* Search — dropdown opens after Dialog entrance animation */}
-      <Box sx={{ px: "16px", pt: "16px" }}>
+      <Box ref={inputWrapRef} sx={{ px: "16px", pt: "16px" }}>
         <NationalitySelector
           value={value}
           onChange={onSelect}
