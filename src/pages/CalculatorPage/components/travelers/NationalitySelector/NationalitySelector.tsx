@@ -221,6 +221,7 @@ interface NationalitySelectorProps {
   open?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
+  inputRef?: React.RefObject<HTMLInputElement | null>;
 }
 
 export function getCountryName(code: string | null): string | null {
@@ -236,6 +237,7 @@ export function NationalitySelector({
   open,
   onOpen,
   onClose,
+  inputRef,
 }: NationalitySelectorProps) {
   const selected = COUNTRIES.find((c) => c.code === value) ?? null;
 
@@ -257,6 +259,7 @@ export function NationalitySelector({
           label={undefined}
           placeholder={label}
           autoFocus={autoFocus}
+          inputRef={inputRef}
           sx={{
             "& .MuiOutlinedInput-root": {
               fontFamily: tokens.fontBody,

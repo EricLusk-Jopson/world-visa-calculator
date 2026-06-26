@@ -1,11 +1,8 @@
-import { useState, useEffect, useCallback, useRef, forwardRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import Dialog from "@mui/material/Dialog";
 import IconButton from "@mui/material/IconButton";
-import Slide from "@mui/material/Slide";
-import type { TransitionProps } from "@mui/material/transitions";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { tokens } from "@/styles/theme";
 import { BottomDrawer } from "@/components/ui/BottomDrawer";
@@ -20,58 +17,59 @@ interface AddTravelerDrawerProps {
   onAdd: (name: string, passportCode: string | null) => void;
 }
 
-// ─── Slide-up transition ───────────────────────────────────────────────────────
+// ─── Passport picker ──────────────────────────────────────────────────────────
+//
+// iOS Safari only opens the keyboard when focus() is called synchronously
+// inside a user-gesture handler. Using a Dialog (which unmounts/remounts)
+// makes that impossible because the <input> doesn't exist at click time.
+//
+// Fix: render the picker as a position:fixed overlay that is ALWAYS in the
+// DOM, hidden only via transform:translateY(100%). The inputRef is therefore
+// always valid, so we can call focus() synchronously in the button's onClick
+// before any state update — iOS respects the gesture chain and opens the
+// keyboard immediately as the overlay slides into view.
 
-const SlideUpTransition = forwardRef(function Transition(
-  props: TransitionProps & { children: React.ReactElement },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide {...props} direction="up" ref={ref} />;
-});
-
-// ─── Passport picker (full-screen) ────────────────────────────────────────────
-
-// Dialog entrance animation is 225ms; open the dropdown after it settles.
+// Dropdown delay: let the CSS slide-up finish before asking the Autocomplete
+// Popper to measure and position itself.
 const DROPDOWN_DELAY_MS = 260;
 
 function PassportPickerScreen({
-  open,
+  pickerOpen,
+  pickerInputRef,
   value,
   onSelect,
   onClose,
 }: {
-  open: boolean;
+  pickerOpen: boolean;
+  pickerInputRef: React.RefObject<HTMLInputElement | null>;
   value: string | null;
   onSelect: (code: string | null) => void;
   onClose: () => void;
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const inputWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!open) { setDropdownOpen(false); return; }
-    const id = setTimeout(() => {
-      setDropdownOpen(true);
-      inputWrapRef.current?.querySelector<HTMLInputElement>("input")?.focus();
-    }, DROPDOWN_DELAY_MS);
+    if (!pickerOpen) { setDropdownOpen(false); return; }
+    const id = setTimeout(() => setDropdownOpen(true), DROPDOWN_DELAY_MS);
     return () => clearTimeout(id);
-  }, [open]);
+  }, [pickerOpen]);
 
-  const handleClose = useCallback(() => setDropdownOpen(false), []);
-  const handleOpen  = useCallback(() => setDropdownOpen(true),  []);
+  const handleDropdownOpen  = useCallback(() => setDropdownOpen(true),  []);
+  const handleDropdownClose = useCallback(() => setDropdownOpen(false), []);
 
   return (
-    <Dialog
-      fullScreen
-      open={open}
-      onClose={onClose}
-      TransitionComponent={SlideUpTransition}
-      PaperProps={{
-        sx: {
-          bgcolor: tokens.offWhite,
-          display: "flex",
-          flexDirection: "column",
-        },
+    <Box
+      aria-hidden={!pickerOpen}
+      sx={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 1400,
+        bgcolor: tokens.offWhite,
+        display: "flex",
+        flexDirection: "column",
+        transform: pickerOpen ? "translateY(0)" : "translateY(100%)",
+        transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+        pointerEvents: pickerOpen ? "auto" : "none",
       }}
     >
       {/* Navy header — back arrow + title */}
@@ -104,17 +102,18 @@ function PassportPickerScreen({
         </Typography>
       </Box>
 
-      {/* Search — dropdown opens after Dialog entrance animation */}
-      <Box ref={inputWrapRef} sx={{ px: "16px", pt: "16px" }}>
+      {/* Search input — Autocomplete dropdown opens after slide animation */}
+      <Box sx={{ px: "16px", pt: "16px" }}>
         <NationalitySelector
           value={value}
           onChange={onSelect}
+          inputRef={pickerInputRef}
           open={dropdownOpen}
-          onOpen={handleOpen}
-          onClose={handleClose}
+          onOpen={handleDropdownOpen}
+          onClose={handleDropdownClose}
         />
       </Box>
-    </Dialog>
+    </Box>
   );
 }
 
@@ -140,13 +139,26 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
   const [error, setError] = useState<string | null>(null);
   const [passportPickerOpen, setPassportPickerOpen] = useState(false);
 
+  // Ref to the native <input> inside PassportPickerScreen's NationalitySelector.
+  // Always valid because the picker is always mounted.
+  const pickerInputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     if (open) {
       setName("");
       setPassportCode(null);
       setError(null);
+    } else {
+      setPassportPickerOpen(false);
     }
   }, [open]);
+
+  function handleOpenPicker() {
+    // Focus synchronously inside the gesture handler so iOS opens the keyboard
+    // as the overlay slides into view — setTimeout breaks the gesture chain.
+    pickerInputRef.current?.focus();
+    setPassportPickerOpen(true);
+  }
 
   function handleAdd() {
     const trimmed = name.trim();
@@ -235,7 +247,7 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
             </Typography>
             <Box
               component="button"
-              onClick={() => setPassportPickerOpen(true)}
+              onClick={handleOpenPicker}
               sx={{
                 width: "100%",
                 display: "flex",
@@ -317,8 +329,10 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
         </Box>
       </BottomDrawer>
 
+      {/* Always mounted — keeps pickerInputRef valid for synchronous focus() */}
       <PassportPickerScreen
-        open={passportPickerOpen}
+        pickerOpen={passportPickerOpen}
+        pickerInputRef={pickerInputRef}
         value={passportCode}
         onSelect={(code) => {
           setPassportCode(code);
