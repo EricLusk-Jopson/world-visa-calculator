@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import Box from "@mui/material/Box";
+import Portal from "@mui/material/Portal";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
@@ -40,9 +41,8 @@ function PassportPickerScreen({
 }) {
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    if (pickerOpen) setQuery("");
-  }, [pickerOpen]);
+  // Reset search when picker opens
+  useEffect(() => { if (pickerOpen) setQuery(""); }, [pickerOpen]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -50,7 +50,10 @@ function PassportPickerScreen({
     return COUNTRIES.filter((c) => c.name.toLowerCase().includes(q));
   }, [query]);
 
+  // Portal lifts the overlay out of CalculatorPage's stacking context so it
+  // renders above MUI Drawer portals regardless of z-index comparisons.
   return (
+    <Portal>
     <Box
       aria-hidden={!pickerOpen}
       sx={{
@@ -176,6 +179,7 @@ function PassportPickerScreen({
         )}
       </Box>
     </Box>
+    </Portal>
   );
 }
 
