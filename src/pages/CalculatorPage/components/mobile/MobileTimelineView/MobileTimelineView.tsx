@@ -2,7 +2,6 @@ import { useRef, useEffect, useMemo } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
-import AddIcon from "@mui/icons-material/Add";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { format } from "date-fns";
 import { type Traveler, type Trip, VisaRegion, isEntitled, isVisaRequired } from "@/types";
@@ -44,7 +43,6 @@ interface MobileTimelineViewProps {
   hiddenTravelerIds: string[];
   onEditTrip: (travelerIds: string[], trip: Trip) => void;
   onAddTraveler: () => void;
-  onAddTrip: () => void;
 }
 
 interface TravelerEntry {
@@ -870,7 +868,6 @@ export function MobileTimelineView({
   hiddenTravelerIds,
   onEditTrip,
   onAddTraveler,
-  onAddTrip,
 }: MobileTimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasScrolledRef = useRef(false);
@@ -1123,47 +1120,6 @@ export function MobileTimelineView({
           </Box>
         </Box>
 
-        {/* ── Add Trip — in normal flow ────────────────────────────────────── */}
-        {!allHidden && (
-          <Box
-            sx={{
-              ml: `${SIDEBAR_WIDTH}px`,
-              px: `${CARD_GUTTER + 4}px`,
-              pt: "8px",
-              pb: "20px",
-              borderTop: `1px solid ${tokens.border}`,
-            }}
-          >
-            <Box
-              component="button"
-              onClick={onAddTrip}
-              sx={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "6px",
-                py: "10px",
-                border: `1.5px dashed ${tokens.border}`,
-                borderRadius: "10px",
-                bgcolor: alpha(tokens.white, 0.9),
-                fontFamily: tokens.fontBody,
-                fontSize: "0.82rem",
-                fontWeight: 600,
-                color: tokens.textSoft,
-                cursor: "pointer",
-                "&:active": {
-                  borderColor: tokens.navy,
-                  color: tokens.navy,
-                  bgcolor: tokens.white,
-                },
-              }}
-            >
-              <AddIcon sx={{ fontSize: "0.95rem" }} />
-              Add Trip
-            </Box>
-          </Box>
-        )}
       </Box>
     </Box>
   );

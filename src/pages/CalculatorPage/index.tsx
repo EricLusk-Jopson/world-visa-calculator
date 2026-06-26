@@ -300,8 +300,11 @@ export function CalculatorPage() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100dvh",
-        width: "100vw",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         bgcolor: tokens.offWhite,
         overflow: "hidden",
       }}
@@ -352,7 +355,6 @@ export function CalculatorPage() {
                   hiddenTravelerIds={hiddenTravelerIds}
                   onEditTrip={(ids, trip) => setTripView({ travelerIds: ids, trip })}
                   onAddTraveler={handleAddTraveler}
-                  onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
                 />
               ) : (
                 <MobileTripsView
