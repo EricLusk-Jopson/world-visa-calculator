@@ -1,4 +1,4 @@
-import { useState, useEffect, forwardRef } from "react";
+import { useState, useEffect, useCallback, forwardRef } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -31,6 +31,9 @@ const SlideUpTransition = forwardRef(function Transition(
 
 // ─── Passport picker (full-screen) ────────────────────────────────────────────
 
+// Dialog entrance animation is 225ms; open the dropdown after it settles.
+const DROPDOWN_DELAY_MS = 260;
+
 function PassportPickerScreen({
   open,
   value,
@@ -42,6 +45,17 @@ function PassportPickerScreen({
   onSelect: (code: string | null) => void;
   onClose: () => void;
 }) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) { setDropdownOpen(false); return; }
+    const id = setTimeout(() => setDropdownOpen(true), DROPDOWN_DELAY_MS);
+    return () => clearTimeout(id);
+  }, [open]);
+
+  const handleClose = useCallback(() => setDropdownOpen(false), []);
+  const handleOpen  = useCallback(() => setDropdownOpen(true),  []);
+
   return (
     <Dialog
       fullScreen
@@ -86,13 +100,14 @@ function PassportPickerScreen({
         </Typography>
       </Box>
 
-      {/* Search — autofocused, keyboard opens immediately */}
+      {/* Search — dropdown opens after Dialog entrance animation */}
       <Box sx={{ px: "16px", pt: "16px" }}>
         <NationalitySelector
           value={value}
           onChange={onSelect}
-          autoFocus
-          openOnFocus
+          open={dropdownOpen}
+          onOpen={handleOpen}
+          onClose={handleClose}
         />
       </Box>
     </Dialog>
