@@ -1,8 +1,5 @@
-import { useState, useEffect, forwardRef } from "react";
+import { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
-import Slide from "@mui/material/Slide";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import type { TransitionProps } from "@mui/material/transitions";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -13,6 +10,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Tooltip from "@mui/material/Tooltip";
 import Popover from "@mui/material/Popover";
 import IconButton from "@mui/material/IconButton";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
@@ -335,15 +333,6 @@ const SELECT_BASE_SX = {
   "& .MuiSelect-select": { py: "9px", px: "11px" },
 } as const;
 
-// ─── Mobile slide transition ──────────────────────────────────────────────────
-
-const MobileSlideTransition = forwardRef(function Transition(
-  props: TransitionProps & { children: React.ReactElement },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide {...props} direction={props.in ? "left" : "right"} ref={ref} />;
-});
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function TripModal({
@@ -371,8 +360,6 @@ export function TripModal({
     anchor: HTMLElement;
     note: RuleNote;
   } | null>(null);
-
-  const isMobile = useMediaQuery("(max-width:599.95px)");
 
   const todayStr = formatDate(getToday());
 
@@ -804,142 +791,38 @@ export function TripModal({
       <Dialog
         open={open}
         onClose={onClose}
-        fullScreen={isMobile}
-        TransitionComponent={isMobile ? MobileSlideTransition : undefined}
+        fullScreen
         slotProps={{
           paper: {
-            sx: isMobile
-              ? {
-                  display: "flex",
-                  flexDirection: "column",
-                  bgcolor: tokens.offWhite,
-                  overflow: "hidden",
-                }
-              : {
-                  borderRadius: "20px",
-                  width: 420,
-                  maxWidth: "calc(100vw - 32px)",
-                  display: "flex",
-                  flexDirection: "column",
-                  overflow: "hidden",
-                  maxHeight: "85vh",
-                  boxShadow: "0 12px 40px rgba(12,30,60,0.18)",
-                },
+            sx: {
+              display: "flex",
+              flexDirection: "column",
+              bgcolor: tokens.offWhite,
+              overflow: "hidden",
+            },
           },
         }}
       >
         {/* ── Header ── */}
-        {isMobile ? (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "4px",
-              pl: "4px",
-              pr: "12px",
-              py: "8px",
-              bgcolor: tokens.navy,
-              flexShrink: 0,
-            }}
-          >
-            <Box
-              component="button"
-              onClick={onClose}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 36,
-                height: 36,
-                border: "none",
-                borderRadius: "8px",
-                bgcolor: "transparent",
-                color: tokens.white,
-                cursor: "pointer",
-                fontSize: "1rem",
-                "&:active": { bgcolor: "rgba(255,255,255,0.1)" },
-              }}
-            >
-              ‹
-            </Box>
-            <Typography
-              sx={{
-                fontFamily: tokens.fontDisplay,
-                fontSize: "1rem",
-                fontStyle: "italic",
-                fontWeight: 400,
-                color: tokens.white,
-                flex: 1,
-              }}
-            >
-              {isEdit ? "Edit trip" : "Add a trip"}
-            </Typography>
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              px: "20px",
-              pt: "18px",
-              pb: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography
-              sx={{
-                fontFamily: tokens.fontDisplay,
-                fontSize: "1.1rem",
-                fontStyle: "italic",
-                fontWeight: 400,
-                color: tokens.navy,
-              }}
-            >
-              {isEdit ? "Edit trip" : "Add a trip"}
-            </Typography>
-            <Box
-              component="button"
-              onClick={onClose}
-              sx={{
-                width: 26,
-                height: 26,
-                border: "none",
-                borderRadius: "5px",
-                bgcolor: tokens.mist,
-                color: tokens.textSoft,
-                cursor: "pointer",
-                fontSize: "0.85rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "all 0.15s",
-                "&:hover": { bgcolor: tokens.redBg, color: tokens.red },
-              }}
-            >
-              ✕
-            </Box>
-          </Box>
-        )}
+        <Box sx={{ bgcolor: tokens.navy, display: "flex", alignItems: "center", gap: "4px", pl: "4px", pr: "12px", py: "8px", flexShrink: 0 }}>
+          <IconButton onClick={onClose} size="small" sx={{ color: tokens.white, p: "8px" }}>
+            <ArrowBackIosNewIcon sx={{ fontSize: "1rem" }} />
+          </IconButton>
+          <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "1rem", fontStyle: "italic", fontWeight: 400, color: tokens.white }}>
+            {isEdit ? "Edit trip" : "Add a trip"}
+          </Typography>
+        </Box>
 
         {/* ── Body ── */}
         <Box
           sx={{
-            pl: "20px",
-            pr: isMobile ? "20px" : "14px",
-            mr: isMobile ? 0 : "6px",
+            px: "20px",
             py: "16px",
             display: "flex",
             flexDirection: "column",
             gap: "12px",
-            overflowY: "scroll",
-            flex: isMobile ? 1 : undefined,
-            "&::-webkit-scrollbar": { width: "5px" },
-            "&::-webkit-scrollbar-track": { background: "transparent" },
-            "&::-webkit-scrollbar-thumb": {
-              background: tokens.border,
-              borderRadius: "4px",
-              border: "1px solid transparent",
-            },
+            overflowY: "auto",
+            flex: 1,
           }}
           onKeyDown={handleKeyDown}
         >
@@ -1506,9 +1389,7 @@ export function TripModal({
           sx={{
             px: "20px",
             py: "16px",
-            paddingBottom: isMobile
-              ? "calc(env(safe-area-inset-bottom) + 16px)"
-              : "16px",
+            paddingBottom: "calc(env(safe-area-inset-bottom) + 16px)",
             display: "flex",
             gap: "7px",
           }}
