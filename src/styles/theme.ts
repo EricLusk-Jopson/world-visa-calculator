@@ -198,6 +198,15 @@ const theme = createTheme({
       },
     },
 
+    // ── Input base — 16px minimum prevents iOS Safari auto-zoom on focus ──
+    MuiInputBase: {
+      styleOverrides: {
+        input: {
+          fontSize: "1rem",
+        },
+      },
+    },
+
     // ── Input / TextField ──
     MuiOutlinedInput: {
       styleOverrides: {
@@ -223,7 +232,7 @@ const theme = createTheme({
         },
         input: {
           padding: "11px 14px",
-          fontSize: "0.92rem",
+          fontSize: "1rem",
           color: tokens.text,
           "&::placeholder": { color: tokens.textGhost, opacity: 1 },
         },
