@@ -16,10 +16,6 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler, RuleNote } from "@/types";
@@ -508,8 +504,7 @@ export function MobileTripDialog({
   const isSaveDisabled = Boolean(overlapError);
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Dialog
+    <Dialog
         open={open}
         onClose={onClose}
         fullScreen
@@ -629,24 +624,29 @@ export function MobileTripDialog({
           <Box>
             <FormLabel>Dates</FormLabel>
             <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", mb: "6px" }}>
-              <DatePicker
-                value={entryDate ? parseISO(entryDate) : null}
-                onChange={(date) => {
-                  if (!date) return;
-                  const iso = formatDate(date);
+              <TextField
+                type="date"
+                size="small"
+                value={entryDate}
+                onChange={(e) => {
+                  const iso = e.target.value;
                   setEntryDate(iso);
                   if (iso > todayStr && ongoing) setOngoing(false);
-                  if (!ongoing) { if (!exitDate || exitDate <= iso) setExitDate(formatDate(addDays(date, 1))); }
+                  if (!ongoing && iso) {
+                    if (!exitDate || exitDate <= iso) setExitDate(formatDate(addDays(parseDate(iso), 1)));
+                  }
                   setError(null);
                 }}
-                slotProps={{ textField: { size: "small", placeholder: "Entry", sx: error && !entryDate ? INPUT_ERROR_SX : INPUT_SX } }}
+                sx={error && !entryDate ? INPUT_ERROR_SX : INPUT_SX}
               />
-              <DatePicker
-                value={exitDate ? parseISO(exitDate) : null}
+              <TextField
+                type="date"
+                size="small"
+                value={exitDate}
                 disabled={ongoing || !entryDate}
-                minDate={entryDate ? parseISO(entryDate) : undefined}
-                onChange={(date) => { if (!date) return; setExitDate(formatDate(date)); setError(null); }}
-                slotProps={{ textField: { size: "small", placeholder: "Exit", sx: { ...(ongoing || !entryDate ? { opacity: 0.5 } : {}), ...INPUT_SX } } }}
+                inputProps={{ min: entryDate || undefined }}
+                onChange={(e) => { setExitDate(e.target.value); setError(null); }}
+                sx={{ ...(ongoing || !entryDate ? { opacity: 0.5 } : {}), ...INPUT_SX }}
               />
             </Box>
             <Tooltip
@@ -815,6 +815,5 @@ export function MobileTripDialog({
           </Button>
         </Box>
       </Dialog>
-    </LocalizationProvider>
   );
 }
