@@ -21,6 +21,7 @@ import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripVi
 import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
 import { TripViewSlider } from "./components/mobile/TripViewSlider";
 import { AddTravelerDrawer } from "./components/mobile/AddTravelerDrawer";
+import { MobileTripDialog } from "./components/mobile/MobileTripDialog";
 import { UtilityDrawer } from "./components/mobile/UtilityDrawer";
 
 const MIN_LOAD_MS = 650;
@@ -435,16 +436,29 @@ export function CalculatorPage() {
         />
       )}
 
-      <TripModal
-        open={modal.open && modal.kind === "trip"}
-        mode={modal.mode}
-        travelers={travelers}
-        initialTravelerIds={modal.travelerIds}
-        initialTrip={modal.trip ?? undefined}
-        onSave={handleTripSave}
-        onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
-        onClose={() => setModal(CLOSED_MODAL)}
-      />
+      {isMobile ? (
+        <MobileTripDialog
+          open={modal.open && modal.kind === "trip"}
+          mode={modal.mode}
+          travelers={travelers}
+          initialTravelerIds={modal.travelerIds}
+          initialTrip={modal.trip ?? undefined}
+          onSave={handleTripSave}
+          onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
+          onClose={() => setModal(CLOSED_MODAL)}
+        />
+      ) : (
+        <TripModal
+          open={modal.open && modal.kind === "trip"}
+          mode={modal.mode}
+          travelers={travelers}
+          initialTravelerIds={modal.travelerIds}
+          initialTrip={modal.trip ?? undefined}
+          onSave={handleTripSave}
+          onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
+          onClose={() => setModal(CLOSED_MODAL)}
+        />
+      )}
 
       <ShareModal
         open={shareModalOpen}
