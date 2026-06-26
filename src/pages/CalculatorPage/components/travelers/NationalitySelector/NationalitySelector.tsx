@@ -5,12 +5,12 @@ import { tokens } from "@/styles/theme";
 // ─── ISO 3166-1 Alpha-2 country list ─────────────────────────────────────────
 // Sorted alphabetically by name. Used only at build time as static data.
 
-interface Country {
+export interface Country {
   code: string;
   name: string;
 }
 
-const COUNTRIES: Country[] = [
+export const COUNTRIES: Country[] = [
   { code: 'AF', name: 'Afghanistan' },
   { code: 'AL', name: 'Albania' },
   { code: 'DZ', name: 'Algeria' },

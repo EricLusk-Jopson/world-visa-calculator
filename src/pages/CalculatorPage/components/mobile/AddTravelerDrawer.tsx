@@ -1,12 +1,14 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import CheckIcon from "@mui/icons-material/Check";
+import { alpha } from "@mui/material/styles";
 import { tokens } from "@/styles/theme";
 import { BottomDrawer } from "@/components/ui/BottomDrawer";
-import { NationalitySelector, getCountryName } from "../travelers/NationalitySelector";
+import { COUNTRIES, getCountryName } from "../travelers/NationalitySelector";
 import { getSchengenRule } from "@/data/regions/schengen";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -20,18 +22,8 @@ interface AddTravelerDrawerProps {
 // ─── Passport picker ──────────────────────────────────────────────────────────
 //
 // iOS Safari only opens the keyboard when focus() is called synchronously
-// inside a user-gesture handler. Using a Dialog (which unmounts/remounts)
-// makes that impossible because the <input> doesn't exist at click time.
-//
-// Fix: render the picker as a position:fixed overlay that is ALWAYS in the
-// DOM, hidden only via transform:translateY(100%). The inputRef is therefore
-// always valid, so we can call focus() synchronously in the button's onClick
-// before any state update — iOS respects the gesture chain and opens the
-// keyboard immediately as the overlay slides into view.
-
-// Dropdown delay: let the CSS slide-up finish before asking the Autocomplete
-// Popper to measure and position itself.
-const DROPDOWN_DELAY_MS = 260;
+// inside a user-gesture handler. The overlay is always mounted so the ref
+// is always valid — we call focus() synchronously in the button's onClick.
 
 function PassportPickerScreen({
   pickerOpen,
@@ -46,16 +38,17 @@ function PassportPickerScreen({
   onSelect: (code: string | null) => void;
   onClose: () => void;
 }) {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    if (!pickerOpen) { setDropdownOpen(false); return; }
-    const id = setTimeout(() => setDropdownOpen(true), DROPDOWN_DELAY_MS);
-    return () => clearTimeout(id);
+    if (pickerOpen) setQuery("");
   }, [pickerOpen]);
 
-  const handleDropdownOpen  = useCallback(() => setDropdownOpen(true),  []);
-  const handleDropdownClose = useCallback(() => setDropdownOpen(false), []);
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return COUNTRIES;
+    return COUNTRIES.filter((c) => c.name.toLowerCase().includes(q));
+  }, [query]);
 
   return (
     <Box
@@ -72,7 +65,7 @@ function PassportPickerScreen({
         pointerEvents: pickerOpen ? "auto" : "none",
       }}
     >
-      {/* Navy header — back arrow + title */}
+      {/* Navy header */}
       <Box
         sx={{
           bgcolor: tokens.navy,
@@ -102,16 +95,85 @@ function PassportPickerScreen({
         </Typography>
       </Box>
 
-      {/* Search input — Autocomplete dropdown opens after slide animation */}
-      <Box sx={{ px: "16px", pt: "16px" }}>
-        <NationalitySelector
-          value={value}
-          onChange={onSelect}
-          inputRef={pickerInputRef}
-          open={dropdownOpen}
-          onOpen={handleDropdownOpen}
-          onClose={handleDropdownClose}
+      {/* Search input */}
+      <Box sx={{ px: "16px", py: "12px", flexShrink: 0, bgcolor: tokens.offWhite }}>
+        <Box
+          ref={pickerInputRef}
+          component="input"
+          value={query}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+          placeholder="Search countries…"
+          sx={{
+            display: "block",
+            width: "100%",
+            px: "14px",
+            py: "11px",
+            bgcolor: tokens.mist,
+            border: `1.5px solid ${tokens.border}`,
+            borderRadius: "10px",
+            fontFamily: tokens.fontBody,
+            fontSize: "1rem",
+            color: tokens.text,
+            outline: "none",
+            "&:focus": {
+              borderColor: tokens.navy,
+              boxShadow: `0 0 0 3px ${alpha(tokens.navy, 0.06)}`,
+            },
+            "&::placeholder": { color: tokens.textGhost },
+          }}
         />
+      </Box>
+
+      {/* Country list */}
+      <Box sx={{ flex: 1, overflowY: "auto" }}>
+        {filtered.length === 0 ? (
+          <Typography
+            sx={{
+              px: "20px",
+              py: "24px",
+              fontFamily: tokens.fontBody,
+              fontSize: "0.88rem",
+              color: tokens.textGhost,
+              textAlign: "center",
+            }}
+          >
+            No countries match "{query}"
+          </Typography>
+        ) : (
+          filtered.map((country) => {
+            const isSelected = country.code === value;
+            return (
+              <Box
+                key={country.code}
+                component="button"
+                onClick={() => onSelect(country.code)}
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  px: "20px",
+                  py: "14px",
+                  bgcolor: isSelected ? alpha(tokens.navy, 0.04) : "transparent",
+                  border: "none",
+                  borderBottom: `1px solid ${tokens.border}`,
+                  textAlign: "left",
+                  cursor: "pointer",
+                  fontFamily: tokens.fontBody,
+                  fontSize: "0.92rem",
+                  fontWeight: isSelected ? 600 : 400,
+                  color: isSelected ? tokens.navy : tokens.text,
+                  "&:active": { bgcolor: tokens.mist },
+                }}
+              >
+                {country.name}
+                {isSelected && (
+                  <CheckIcon sx={{ fontSize: "1rem", color: tokens.green, flexShrink: 0 }} />
+                )}
+              </Box>
+            );
+          })
+        )}
       </Box>
     </Box>
   );
@@ -139,8 +201,6 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
   const [error, setError] = useState<string | null>(null);
   const [passportPickerOpen, setPassportPickerOpen] = useState(false);
 
-  // Ref to the native <input> inside PassportPickerScreen's NationalitySelector.
-  // Always valid because the picker is always mounted.
   const pickerInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -154,8 +214,6 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
   }, [open]);
 
   function handleOpenPicker() {
-    // Focus synchronously inside the gesture handler so iOS opens the keyboard
-    // as the overlay slides into view — setTimeout breaks the gesture chain.
     pickerInputRef.current?.focus();
     setPassportPickerOpen(true);
   }
@@ -262,10 +320,7 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
                 color: passportDisplayName ? tokens.text : tokens.textGhost,
                 cursor: "pointer",
                 textAlign: "left",
-                "&:focus-visible": {
-                  outline: `2px solid ${tokens.navy}`,
-                  outlineOffset: 2,
-                },
+                "&:active": { borderColor: tokens.navy },
               }}
             >
               {passportDisplayName ?? "Passport / nationality"}
@@ -329,14 +384,14 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
         </Box>
       </BottomDrawer>
 
-      {/* Always mounted — keeps pickerInputRef valid for synchronous focus() */}
+      {/* Always mounted so pickerInputRef is valid for synchronous focus() */}
       <PassportPickerScreen
         pickerOpen={passportPickerOpen}
         pickerInputRef={pickerInputRef}
         value={passportCode}
         onSelect={(code) => {
           setPassportCode(code);
-          if (code !== null) setPassportPickerOpen(false);
+          setPassportPickerOpen(false);
         }}
         onClose={() => setPassportPickerOpen(false)}
       />
