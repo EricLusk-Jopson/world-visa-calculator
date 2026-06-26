@@ -92,6 +92,7 @@ function PassportPickerScreen({
           value={value}
           onChange={onSelect}
           autoFocus
+          openOnFocus
         />
       </Box>
     </Dialog>

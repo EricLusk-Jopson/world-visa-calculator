@@ -218,6 +218,7 @@ interface NationalitySelectorProps {
   onChange: (code: string | null) => void;
   label?: string;
   autoFocus?: boolean;
+  openOnFocus?: boolean;
 }
 
 export function getCountryName(code: string | null): string | null {
@@ -230,6 +231,7 @@ export function NationalitySelector({
   onChange,
   label = "Passport / nationality",
   autoFocus = false,
+  openOnFocus = false,
 }: NationalitySelectorProps) {
   const selected = COUNTRIES.find((c) => c.code === value) ?? null;
 
@@ -242,6 +244,7 @@ export function NationalitySelector({
       isOptionEqualToValue={(option, val) => option.code === val.code}
       autoHighlight
       clearOnEscape
+      openOnFocus={openOnFocus}
       renderInput={(params) => (
         <TextField
           {...params}
