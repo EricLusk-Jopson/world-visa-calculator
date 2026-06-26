@@ -100,24 +100,13 @@ function PassportPickerScreen({
 
       {/* Search input */}
       <Box sx={{ px: "16px", py: "12px", flexShrink: 0, bgcolor: tokens.offWhite }}>
-        <input
-          ref={pickerInputRef}
+        <TextField
+          inputRef={pickerInputRef}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search countries…"
-          style={{
-            display: "block",
-            width: "100%",
-            padding: "11px 14px",
-            background: tokens.mist,
-            border: `1.5px solid ${tokens.border}`,
-            borderRadius: "10px",
-            fontFamily: tokens.fontBody,
-            fontSize: "16px",
-            color: tokens.text,
-            outline: "none",
-            boxSizing: "border-box",
-          }}
+          fullWidth
+          size="small"
         />
       </Box>
 
