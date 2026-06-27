@@ -9,7 +9,8 @@ export interface TripFormCardProps {
   expanded: boolean;
   onExpand: () => void;
   children: React.ReactNode;
-  headerRight?: React.ReactNode;
+  onDone?: () => void;
+  onClear?: () => void;
 }
 
 const LABEL_SX = {
@@ -21,13 +22,25 @@ const LABEL_SX = {
   flexShrink: 0,
 };
 
+const HEADER_BTN_SX = {
+  border: "none",
+  bgcolor: "transparent",
+  fontFamily: tokens.fontBody,
+  fontSize: "0.8rem",
+  fontWeight: 600,
+  cursor: "pointer",
+  px: "4px",
+  py: "2px",
+};
+
 export function TripFormCard({
   label,
   summary,
   expanded,
   onExpand,
   children,
-  headerRight,
+  onDone,
+  onClear,
 }: TripFormCardProps) {
   return (
     <Box
@@ -52,7 +65,26 @@ export function TripFormCard({
             }}
           >
             <Typography sx={{ ...LABEL_SX, color: tokens.navy }}>{label}</Typography>
-            {headerRight}
+            <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
+              {onClear && (
+                <Box
+                  component="button"
+                  onClick={onClear}
+                  sx={{ ...HEADER_BTN_SX, color: tokens.textSoft }}
+                >
+                  Clear
+                </Box>
+              )}
+              {onDone && (
+                <Box
+                  component="button"
+                  onClick={onDone}
+                  sx={{ ...HEADER_BTN_SX, color: tokens.navy }}
+                >
+                  Done
+                </Box>
+              )}
+            </Box>
           </Box>
           {children}
         </Box>

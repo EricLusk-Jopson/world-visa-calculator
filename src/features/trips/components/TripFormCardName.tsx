@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { tokens } from "@/styles/theme";
@@ -7,6 +6,7 @@ import { TripFormCard } from "./TripFormCard";
 interface Props {
   name: string;
   onChange: (v: string) => void;
+  onClear: () => void;
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
@@ -18,7 +18,7 @@ const SUMMARY_SX = {
   textAlign: "right" as const,
 };
 
-export function TripFormCardName({ name, onChange, expanded, onExpand, onCollapse }: Props) {
+export function TripFormCardName({ name, onChange, onClear, expanded, onExpand, onCollapse }: Props) {
   const filled = name.trim().length > 0;
 
   const summary = (
@@ -27,33 +27,14 @@ export function TripFormCardName({ name, onChange, expanded, onExpand, onCollaps
     </Typography>
   );
 
-  const doneButton = (
-    <Box
-      component="button"
-      onClick={onCollapse}
-      sx={{
-        border: "none",
-        bgcolor: "transparent",
-        fontFamily: tokens.fontBody,
-        fontSize: "0.8rem",
-        fontWeight: 600,
-        color: tokens.navy,
-        cursor: "pointer",
-        px: "4px",
-        py: "2px",
-      }}
-    >
-      Done
-    </Box>
-  );
-
   return (
     <TripFormCard
       label="Trip name"
       summary={summary}
       expanded={expanded}
       onExpand={onExpand}
-      headerRight={doneButton}
+      onDone={onCollapse}
+      onClear={onClear}
     >
       <TextField
         value={name}

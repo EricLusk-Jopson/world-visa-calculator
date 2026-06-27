@@ -1,7 +1,6 @@
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
-import { parseDate } from "@/features/calculator/utils/dates";
+import { parseDate, today } from "@/features/calculator/utils/dates";
 import { OngoingToggle } from "@/components/ui/OngoingToggle";
 import { TripFormCard } from "./TripFormCard";
 import { TripDateRangeCalendar } from "./TripDateRangeCalendar";
@@ -13,8 +12,10 @@ interface Props {
   onEntryChange: (iso: string) => void;
   onExitChange: (iso: string) => void;
   onOngoingChange: (v: boolean) => void;
+  onClear: () => void;
   expanded: boolean;
   onExpand: () => void;
+  onCollapse: () => void;
 }
 
 function fmtShort(iso: string) {
@@ -49,8 +50,10 @@ export function TripFormCardDates({
   onEntryChange,
   onExitChange,
   onOngoingChange,
+  onClear,
   expanded,
   onExpand,
+  onCollapse,
 }: Props) {
   const summary = buildSummary(entryDate, exitDate, ongoing);
   const filled = !!entryDate;
@@ -67,15 +70,21 @@ export function TripFormCardDates({
     </Typography>
   );
 
+  // Ongoing only makes sense if the trip has already started (entry ≤ today)
+  const ongoingDisabled = !!entryDate && parseDate(entryDate) > today();
+
   return (
     <TripFormCard
       label="Dates"
       summary={summaryNode}
       expanded={expanded}
       onExpand={onExpand}
+      onDone={onCollapse}
+      onClear={onClear}
     >
       <OngoingToggle
         checked={ongoing}
+        disabled={ongoingDisabled}
         onChange={(v) => {
           onOngoingChange(v);
           if (v) onExitChange("");

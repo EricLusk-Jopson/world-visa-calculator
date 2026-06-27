@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
 import { Button } from "@/components/ui/Button";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
-import { tokens } from "@/styles/theme";
 import { TripFormCardName } from "./TripFormCardName";
 import { TripFormCardTravelers } from "./TripFormCardTravelers";
 import { TripFormCardDestination } from "./TripFormCardDestination";
@@ -43,7 +41,6 @@ export function TripFormSlider({
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
   const [ongoing, setOngoing] = useState(false);
-  const [attempted, setAttempted] = useState(false);
 
   // Auto-select newly added traveler
   const prevTravelerCountRef = useRef(travelers.length);
@@ -65,7 +62,6 @@ export function TripFormSlider({
   useEffect(() => {
     if (!open) return;
     setActiveCard(null);
-    setAttempted(false);
     setTravelerIds(initialTravelerIds);
     if (mode === "edit" && initialTrip) {
       setName(initialTrip.destination ?? "");
@@ -85,10 +81,9 @@ export function TripFormSlider({
   const canSave =
     travelerIds.length > 0 &&
     !!entryDate &&
-    (!exitDate || !ongoing && exitDate > entryDate || ongoing);
+    (ongoing || (!!exitDate && exitDate > entryDate));
 
   const handleSave = useCallback(() => {
-    setAttempted(true);
     if (!canSave) return;
     const resolvedExit = ongoing ? undefined : exitDate || undefined;
     onSave(travelerIds, {
@@ -104,14 +99,6 @@ export function TripFormSlider({
   const openCard = useCallback((card: ActiveCard) => setActiveCard(card), []);
   const closeCard = useCallback(() => setActiveCard(null), []);
 
-  const validationError = attempted && !canSave
-    ? travelerIds.length === 0
-      ? "Please select at least one traveler."
-      : !entryDate
-        ? "Please select an entry date."
-        : "Exit date must be after entry date."
-    : null;
-
   const footer = (
     <Box sx={{ display: "flex", gap: "8px" }}>
       {mode === "edit" && onDelete && (
@@ -122,7 +109,7 @@ export function TripFormSlider({
       <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
         Cancel
       </Button>
-      <Button onClick={handleSave} disabled={attempted && !canSave} sx={{ flex: 2 }}>
+      <Button onClick={handleSave} disabled={!canSave} sx={{ flex: 2 }}>
         Save Trip
       </Button>
     </Box>
@@ -147,6 +134,7 @@ export function TripFormSlider({
         <TripFormCardName
           name={name}
           onChange={setName}
+          onClear={() => setName("")}
           expanded={activeCard === "name"}
           onExpand={() => openCard("name")}
           onCollapse={closeCard}
@@ -161,13 +149,16 @@ export function TripFormSlider({
             )
           }
           onAddNewTraveler={onAddNewTraveler}
+          onClear={() => setTravelerIds([])}
           expanded={activeCard === "travelers"}
           onExpand={() => openCard("travelers")}
+          onCollapse={closeCard}
         />
 
         <TripFormCardDestination
           region={region}
           onRegionChange={setRegion}
+          onClear={() => setRegion(VisaRegion.Schengen)}
           expanded={activeCard === "destination"}
           onExpand={() => openCard("destination")}
           onCollapse={closeCard}
@@ -180,22 +171,11 @@ export function TripFormSlider({
           onEntryChange={setEntryDate}
           onExitChange={setExitDate}
           onOngoingChange={setOngoing}
+          onClear={() => { setEntryDate(""); setExitDate(""); setOngoing(false); }}
           expanded={activeCard === "dates"}
           onExpand={() => openCard("dates")}
+          onCollapse={closeCard}
         />
-
-        {validationError && (
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.8rem",
-              color: tokens.red,
-              px: "4px",
-            }}
-          >
-            {validationError}
-          </Typography>
-        )}
       </Box>
     </FullScreenSlider>
   );

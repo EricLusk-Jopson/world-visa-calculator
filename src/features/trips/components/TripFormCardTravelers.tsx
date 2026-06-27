@@ -10,8 +10,10 @@ interface Props {
   travelerIds: string[];
   onToggle: (id: string) => void;
   onAddNewTraveler: () => void;
+  onClear: () => void;
   expanded: boolean;
   onExpand: () => void;
+  onCollapse: () => void;
 }
 
 const SUMMARY_SX = {
@@ -25,8 +27,10 @@ export function TripFormCardTravelers({
   travelerIds,
   onToggle,
   onAddNewTraveler,
+  onClear,
   expanded,
   onExpand,
+  onCollapse,
 }: Props) {
   const filled = travelerIds.length > 0;
   const names = travelers
@@ -46,6 +50,8 @@ export function TripFormCardTravelers({
       summary={summary}
       expanded={expanded}
       onExpand={onExpand}
+      onDone={onCollapse}
+      onClear={onClear}
     >
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
         {travelers.map((t) => {

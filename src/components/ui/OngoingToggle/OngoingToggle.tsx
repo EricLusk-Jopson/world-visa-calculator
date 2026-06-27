@@ -5,6 +5,7 @@ interface OngoingToggleProps {
   checked: boolean;
   onChange: (checked: boolean) => void;
   label?: string;
+  disabled?: boolean;
   sx?: object;
 }
 
@@ -16,6 +17,7 @@ export function OngoingToggle({
   checked,
   onChange,
   label = "Currently travelling (no exit date yet)",
+  disabled = false,
   sx = {},
 }: OngoingToggleProps) {
   return (
@@ -23,7 +25,8 @@ export function OngoingToggle({
       component="button"
       role="checkbox"
       aria-checked={checked}
-      onClick={() => onChange(!checked)}
+      aria-disabled={disabled}
+      onClick={() => !disabled && onChange(!checked)}
       sx={{
         display: "flex",
         alignItems: "center",
@@ -48,6 +51,12 @@ export function OngoingToggle({
           bgcolor: tokens.greenBg,
           borderColor: tokens.greenBorder,
           color: tokens.greenText,
+        }),
+        // Disabled
+        ...(disabled && {
+          opacity: 0.4,
+          cursor: "not-allowed",
+          pointerEvents: "none",
         }),
         ...sx,
       }}

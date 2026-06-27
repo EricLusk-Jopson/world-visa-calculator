@@ -118,6 +118,7 @@ function RegionPickerScreen({
 interface Props {
   region: VisaRegion;
   onRegionChange: (r: VisaRegion) => void;
+  onClear: () => void;
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
@@ -134,6 +135,7 @@ const SUMMARY_SX = {
 export function TripFormCardDestination({
   region,
   onRegionChange,
+  onClear,
   expanded,
   onExpand,
   onCollapse,
@@ -159,6 +161,8 @@ export function TripFormCardDestination({
         summary={summary}
         expanded={expanded}
         onExpand={onExpand}
+        onDone={onCollapse}
+        onClear={onClear}
       >
         <TextField
           placeholder="Search regions…"

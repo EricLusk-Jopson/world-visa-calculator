@@ -1,4 +1,5 @@
 import "react-day-picker/style.css";
+import { useRef, useEffect } from "react";
 import { DayPicker } from "react-day-picker";
 import type { DateRange } from "react-day-picker";
 import Box from "@mui/material/Box";
@@ -12,6 +13,11 @@ interface Props {
   onEntryChange: (iso: string) => void;
   onExitChange: (iso: string) => void;
 }
+
+// 24 months of history + 12 months forward = 36 total
+const _now = new Date();
+const START_MONTH = new Date(_now.getFullYear(), _now.getMonth() - 24, 1);
+const TOTAL_MONTHS = 36;
 
 const CALENDAR_SX = {
   maxHeight: "55dvh",
@@ -46,6 +52,19 @@ const CALENDAR_SX = {
   overflowX: "auto",
 };
 
+function useScrollToToday(ref: React.RefObject<HTMLDivElement | null>) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // react-day-picker marks today's button with aria-current="date"
+    const todayBtn = el.querySelector<HTMLElement>('[aria-current="date"]');
+    if (!todayBtn) return;
+    const containerTop = el.getBoundingClientRect().top;
+    const btnTop = todayBtn.getBoundingClientRect().top;
+    el.scrollTop = btnTop - containerTop - 40;
+  }, []);
+}
+
 export function TripDateRangeCalendar({
   ongoing,
   entryDate,
@@ -53,12 +72,15 @@ export function TripDateRangeCalendar({
   onEntryChange,
   onExitChange,
 }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  useScrollToToday(containerRef);
+
   const entryDateObj = entryDate ? parseDate(entryDate) : undefined;
   const exitDateObj = exitDate ? parseDate(exitDate) : undefined;
 
   if (ongoing) {
     return (
-      <Box sx={CALENDAR_SX}>
+      <Box ref={containerRef} sx={CALENDAR_SX}>
         {/* TODO: add modifiers prop for green/yellow/red day shading — requires useDateModifiers hook */}
         <DayPicker
           mode="single"
@@ -66,7 +88,8 @@ export function TripDateRangeCalendar({
           onSelect={(date) => {
             onEntryChange(date ? formatDate(date) : "");
           }}
-          numberOfMonths={18}
+          defaultMonth={START_MONTH}
+          numberOfMonths={TOTAL_MONTHS}
           hideNavigation
         />
       </Box>
@@ -78,7 +101,7 @@ export function TripDateRangeCalendar({
     : undefined;
 
   return (
-    <Box sx={CALENDAR_SX}>
+    <Box ref={containerRef} sx={CALENDAR_SX}>
       {/* TODO: add modifiers prop for green/yellow/red day shading — requires useDateModifiers hook */}
       <DayPicker
         mode="range"
@@ -87,7 +110,8 @@ export function TripDateRangeCalendar({
           onEntryChange(selected?.from ? formatDate(selected.from) : "");
           onExitChange(selected?.to ? formatDate(selected.to) : "");
         }}
-        numberOfMonths={18}
+        defaultMonth={START_MONTH}
+        numberOfMonths={TOTAL_MONTHS}
         hideNavigation
       />
     </Box>
