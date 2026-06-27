@@ -40,7 +40,7 @@ function RegionPickerScreen({
   }, [query]);
 
   return (
-    <Dialog fullScreen open={open} onClose={onClose}>
+    <Dialog fullScreen open={open} onClose={onClose} style={{ zIndex: 1400 }}>
       <Box
         sx={{
           bgcolor: tokens.navy,

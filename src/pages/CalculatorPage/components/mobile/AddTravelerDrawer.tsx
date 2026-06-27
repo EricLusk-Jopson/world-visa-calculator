@@ -39,7 +39,7 @@ function PassportPickerScreen({
   }, [query]);
 
   return (
-    <Dialog fullScreen open={open} onClose={onClose}>
+    <Dialog fullScreen open={open} onClose={onClose} style={{ zIndex: 1500 }}>
       <Box sx={{ bgcolor: tokens.navy, display: "flex", alignItems: "center", gap: "4px", pl: "4px", pr: "12px", py: "8px", flexShrink: 0 }}>
         <IconButton onClick={onClose} size="small" sx={{ color: tokens.white, p: "8px" }}>
           <ArrowBackIosNewIcon sx={{ fontSize: "1rem" }} />
