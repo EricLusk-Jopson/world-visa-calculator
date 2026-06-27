@@ -131,6 +131,7 @@ function RegionPickerScreen({
 const CARD_BASE = {
   borderRadius: "14px",
   border: `1.5px solid ${tokens.border}`,
+  bgcolor: tokens.white,
   overflow: "hidden",
   transition: "border-color 0.15s",
 } as const;
@@ -141,7 +142,7 @@ function CardLabel({ children, active }: { children: React.ReactNode; active: bo
       fontFamily: tokens.fontBody, fontSize: "0.65rem", fontWeight: 700,
       textTransform: "uppercase", letterSpacing: "0.09em",
       color: active ? tokens.navy : tokens.textSoft,
-      mb: "4px", transition: "color 0.15s",
+      transition: "color 0.15s", flexShrink: 0,
     }}>
       {children}
     </Typography>
@@ -215,9 +216,9 @@ export function MobileTripDialog({
       onClick={!nameActive ? () => setActiveCard("name") : undefined}
     >
       <Box sx={{ px: "16px", pt: "14px", pb: nameActive ? "12px" : "14px" }}>
-        <CardLabel active={nameActive}>Trip name</CardLabel>
         {nameActive ? (
           <>
+            <CardLabel active={true}>Trip name</CardLabel>
             <TextField
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
@@ -226,16 +227,19 @@ export function MobileTripDialog({
               autoFocus
               inputProps={{ maxLength: 60 }}
               variant="standard"
-              sx={{ "& .MuiInputBase-input": { fontFamily: tokens.fontBody, fontSize: "1rem", color: tokens.text, "&::placeholder": { color: tokens.textGhost, opacity: 1 } }, "& .MuiInput-underline:before": { borderBottomColor: tokens.border }, "& .MuiInput-underline:after": { borderBottomColor: tokens.navy } }}
+              sx={{ mt: "6px", "& .MuiInputBase-input": { fontFamily: tokens.fontBody, fontSize: "1rem", color: tokens.text, "&::placeholder": { color: tokens.textGhost, opacity: 1 } }, "& .MuiInput-underline:before": { borderBottomColor: tokens.border }, "& .MuiInput-underline:after": { borderBottomColor: tokens.navy } }}
             />
             <Box sx={{ display: "flex", justifyContent: "flex-end", mt: "10px" }}>
               <Box component="button" onClick={() => setActiveCard(null)} sx={{ border: "none", bgcolor: "transparent", fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: 600, color: tokens.navy, cursor: "pointer", px: "4px", py: "4px" }}>Done</Box>
             </Box>
           </>
         ) : (
-          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.95rem", color: nameFilled ? tokens.text : tokens.textGhost, fontWeight: nameFilled ? 500 : 400 }}>
-            {nameFilled ? destination : "e.g. Paris & Barcelona"}
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
+            <CardLabel active={false}>Trip name</CardLabel>
+            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.95rem", color: nameFilled ? tokens.text : tokens.textGhost, fontWeight: nameFilled ? 500 : 400, textAlign: "right" }}>
+              {nameFilled ? destination : "Add name"}
+            </Typography>
+          </Box>
         )}
       </Box>
     </Box>
@@ -250,9 +254,9 @@ export function MobileTripDialog({
       sx={{ ...CARD_BASE, borderColor: regionActive ? tokens.navy : tokens.border, cursor: "pointer" }}
       onClick={() => { setActiveCard("region"); setRegionPickerOpen(true); }}
     >
-      <Box sx={{ px: "16px", py: "14px" }}>
+      <Box sx={{ px: "16px", py: "14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
         <CardLabel active={false}>Region</CardLabel>
-        <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.95rem", color: tokens.text, fontWeight: 500 }}>
+        <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.95rem", color: tokens.text, fontWeight: 500, textAlign: "right" }}>
           {regionLabel(region)}
         </Typography>
       </Box>
@@ -271,9 +275,9 @@ export function MobileTripDialog({
       onClick={!datesActive ? () => setActiveCard("dates") : undefined}
     >
       <Box sx={{ px: "16px", pt: "14px", pb: datesActive ? "12px" : "14px" }}>
-        <CardLabel active={datesActive}>Dates</CardLabel>
         {datesActive ? (
           <>
+            <CardLabel active={true}>Dates</CardLabel>
             <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", mt: "8px", mb: "12px" }}>
               <Box>
                 <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.65rem", fontWeight: 600, color: tokens.textSoft, textTransform: "uppercase", letterSpacing: "0.06em", mb: "4px" }}>Entry</Typography>
@@ -311,9 +315,12 @@ export function MobileTripDialog({
             </Box>
           </>
         ) : (
-          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.95rem", color: datesFilled ? tokens.text : tokens.textGhost, fontWeight: datesFilled ? 500 : 400 }}>
-            {datesFilled ? datesSummary : "Select dates"}
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
+            <CardLabel active={false}>Dates</CardLabel>
+            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.95rem", color: datesFilled ? tokens.text : tokens.textGhost, fontWeight: datesFilled ? 500 : 400, textAlign: "right" }}>
+              {datesFilled ? datesSummary : "Select dates"}
+            </Typography>
+          </Box>
         )}
       </Box>
     </Box>
@@ -331,9 +338,9 @@ export function MobileTripDialog({
       onClick={!travelersActive ? () => setActiveCard("travelers") : undefined}
     >
       <Box sx={{ px: "16px", pt: "14px", pb: travelersActive ? "12px" : "14px" }}>
-        <CardLabel active={travelersActive}>Traveler(s)</CardLabel>
         {travelersActive ? (
           <>
+            <CardLabel active={true}>Traveler(s)</CardLabel>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px", mt: "10px" }}>
               {travelers.map((t) => {
                 const selected = travelerIds.includes(t.id);
@@ -364,9 +371,12 @@ export function MobileTripDialog({
             </Box>
           </>
         ) : (
-          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.95rem", color: travelersFilled ? tokens.text : tokens.textGhost, fontWeight: travelersFilled ? 500 : 400 }}>
-            {travelersFilled ? travelerNames : "Select travelers"}
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
+            <CardLabel active={false}>Traveler(s)</CardLabel>
+            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.95rem", color: travelersFilled ? tokens.text : tokens.textGhost, fontWeight: travelersFilled ? 500 : 400, textAlign: "right" }}>
+              {travelersFilled ? travelerNames : "Select travelers"}
+            </Typography>
+          </Box>
         )}
       </Box>
     </Box>
