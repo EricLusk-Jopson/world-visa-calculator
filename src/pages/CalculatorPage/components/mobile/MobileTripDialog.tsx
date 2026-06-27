@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import CheckIcon from "@mui/icons-material/Check";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
@@ -183,66 +182,10 @@ export function MobileTripDialog({
         }}
       >
         {error && (
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.8rem",
-              color: tokens.red,
-            }}
-          >
+          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", color: tokens.red }}>
             {error}
           </Typography>
         )}
-
-        {/* Travelers */}
-        {travelers.length > 0 && (
-          <Box>
-            <FormLabel>Traveler(s)</FormLabel>
-            <Box
-              sx={{
-                border: `1.5px solid ${tokens.border}`,
-                borderRadius: "10px",
-                overflow: "hidden",
-              }}
-            >
-              {travelers.map((t, i) => {
-                const selected = travelerIds.includes(t.id);
-                return (
-                  <Box
-                    key={t.id}
-                    component="button"
-                    onClick={() => toggleTraveler(t.id)}
-                    sx={{
-                      width: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      px: "14px",
-                      py: "12px",
-                      border: "none",
-                      borderTop: i > 0 ? `1px solid ${tokens.border}` : "none",
-                      bgcolor: selected ? tokens.navy : "transparent",
-                      color: selected ? tokens.white : tokens.text,
-                      fontFamily: tokens.fontBody,
-                      fontSize: "0.92rem",
-                      textAlign: "left",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {t.name}
-                    {selected && <CheckIcon sx={{ fontSize: "1rem" }} />}
-                  </Box>
-                );
-              })}
-            </Box>
-          </Box>
-        )}
-
-        {/* Region */}
-        <Box>
-          <FormLabel>Region</FormLabel>
-          <RegionSelector value={region} onChange={setRegion} />
-        </Box>
 
         {/* Trip name */}
         <Box>
@@ -316,6 +259,47 @@ export function MobileTripDialog({
             }}
           />
         </Box>
+
+        {/* Region */}
+        <Box>
+          <FormLabel>Region</FormLabel>
+          <RegionSelector value={region} onChange={setRegion} />
+        </Box>
+
+        {/* Travelers */}
+        {travelers.length > 0 && (
+          <Box>
+            <FormLabel>Traveler(s)</FormLabel>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+              {travelers.map((t) => {
+                const selected = travelerIds.includes(t.id);
+                return (
+                  <Box
+                    key={t.id}
+                    component="button"
+                    onClick={() => toggleTraveler(t.id)}
+                    sx={{
+                      px: "14px",
+                      py: "7px",
+                      border: `1.5px solid ${selected ? tokens.navy : tokens.border}`,
+                      borderRadius: "100px",
+                      bgcolor: selected ? tokens.navy : "transparent",
+                      color: selected ? tokens.white : tokens.textSoft,
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.85rem",
+                      fontWeight: selected ? 600 : 400,
+                      cursor: "pointer",
+                      transition: "all 0.15s",
+                      "&:active": { opacity: 0.75 },
+                    }}
+                  >
+                    {t.name}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+        )}
       </Box>
 
       {/* Footer */}
