@@ -17,7 +17,6 @@ export interface TripFormSliderProps {
   initialTravelerIds: string[];
   initialTrip?: Trip;
   onSave: (travelerIds: string[], trip: Trip) => void;
-  onDelete?: () => void;
   onClose: () => void;
   onAddNewTraveler: () => void;
 }
@@ -31,7 +30,6 @@ export function TripFormSlider({
   initialTravelerIds,
   initialTrip,
   onSave,
-  onDelete,
   onClose,
   onAddNewTraveler,
 }: TripFormSliderProps) {
@@ -105,11 +103,6 @@ export function TripFormSlider({
 
   const footer = (
     <Box sx={{ display: "flex", gap: "8px" }}>
-      {mode === "edit" && onDelete && (
-        <Button variant="danger" onClick={onDelete}>
-          Delete
-        </Button>
-      )}
       <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
         Cancel
       </Button>

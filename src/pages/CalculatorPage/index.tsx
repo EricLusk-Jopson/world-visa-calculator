@@ -466,7 +466,6 @@ export function CalculatorPage() {
           initialTravelerIds={modal.travelerIds}
           initialTrip={modal.trip ?? undefined}
           onSave={handleTripSave}
-          onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
           onClose={() => setModal(CLOSED_MODAL)}
           onAddNewTraveler={() => setAddTravelerFromTripOpen(true)}
         />
