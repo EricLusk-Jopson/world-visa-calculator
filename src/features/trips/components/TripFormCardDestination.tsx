@@ -164,7 +164,6 @@ export function TripFormCardDestination({
           placeholder="Search regions…"
           fullWidth
           size="small"
-          onFocus={() => setPickerOpen(true)}
           onClick={() => setPickerOpen(true)}
           inputProps={{ readOnly: true }}
           sx={{

@@ -14,6 +14,8 @@ interface Props {
 }
 
 const CALENDAR_SX = {
+  maxHeight: "55dvh",
+  overflowY: "auto" as const,
   // Override react-day-picker CSS variables to match app tokens
   "& .rdp-root": {
     "--rdp-accent-color": tokens.navy,

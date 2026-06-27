@@ -43,7 +43,6 @@ export function TripFormSlider({
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
   const [ongoing, setOngoing] = useState(false);
-  const [isPlanned, setIsPlanned] = useState(false);
   const [attempted, setAttempted] = useState(false);
 
   // Auto-select newly added traveler
@@ -67,7 +66,6 @@ export function TripFormSlider({
     if (!open) return;
     setActiveCard(null);
     setAttempted(false);
-    setIsPlanned(false);
     setTravelerIds(initialTravelerIds);
     if (mode === "edit" && initialTrip) {
       setName(initialTrip.destination ?? "");
@@ -179,11 +177,9 @@ export function TripFormSlider({
           entryDate={entryDate}
           exitDate={exitDate}
           ongoing={ongoing}
-          isPlanned={isPlanned}
           onEntryChange={setEntryDate}
           onExitChange={setExitDate}
           onOngoingChange={setOngoing}
-          onPlannedChange={setIsPlanned}
           expanded={activeCard === "dates"}
           onExpand={() => openCard("dates")}
         />

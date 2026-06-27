@@ -18,6 +18,7 @@ export function BottomDrawer({ open, onClose, title, children }: BottomDrawerPro
       onClose={onClose}
       onOpen={() => {}}
       disableSwipeToOpen
+      style={{ zIndex: 1400 }}
       PaperProps={{
         sx: {
           borderRadius: "16px 16px 0 0",
