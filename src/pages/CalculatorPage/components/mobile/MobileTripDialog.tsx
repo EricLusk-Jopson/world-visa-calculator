@@ -393,9 +393,9 @@ export function MobileTripDialog({
             <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", color: tokens.red, px: "4px" }}>{error}</Typography>
           )}
           {NameCard}
+          {TravelersCard}
           {RegionCard}
           {DatesCard}
-          {TravelersCard}
         </Box>
 
         {/* Footer */}
