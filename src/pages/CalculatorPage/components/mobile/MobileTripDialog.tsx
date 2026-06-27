@@ -182,7 +182,13 @@ export function MobileTripDialog({
         }}
       >
         {error && (
-          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", color: tokens.red }}>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.8rem",
+              color: tokens.red,
+            }}
+          >
             {error}
           </Typography>
         )}
@@ -198,6 +204,12 @@ export function MobileTripDialog({
             inputProps={{ maxLength: 60 }}
             sx={INPUT_SX}
           />
+        </Box>
+
+        {/* Region */}
+        <Box>
+          <FormLabel>Region</FormLabel>
+          <RegionSelector value={region} onChange={setRegion} />
         </Box>
 
         {/* Dates */}
@@ -258,12 +270,6 @@ export function MobileTripDialog({
               setError(null);
             }}
           />
-        </Box>
-
-        {/* Region */}
-        <Box>
-          <FormLabel>Region</FormLabel>
-          <RegionSelector value={region} onChange={setRegion} />
         </Box>
 
         {/* Travelers */}
