@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
 import { parseDate, today } from "@/features/calculator/utils/dates";
@@ -55,6 +57,8 @@ export function TripFormCardDates({
   onExpand,
   onCollapse,
 }: Props) {
+  const scrollToTodayRef = useRef<(() => void) | null>(null);
+
   const summary = buildSummary(entryDate, exitDate, ongoing);
   const filled = !!entryDate;
 
@@ -73,6 +77,26 @@ export function TripFormCardDates({
   // Ongoing only makes sense if the trip has already started (entry ≤ today)
   const ongoingDisabled = !!entryDate && parseDate(entryDate) > today();
 
+  const todayBtn = (
+    <Box
+      component="button"
+      onClick={() => scrollToTodayRef.current?.()}
+      sx={{
+        border: "none",
+        bgcolor: "transparent",
+        fontFamily: tokens.fontBody,
+        fontSize: "0.8rem",
+        fontWeight: 600,
+        cursor: "pointer",
+        px: "4px",
+        py: "2px",
+        color: tokens.textSoft,
+      }}
+    >
+      Today
+    </Box>
+  );
+
   return (
     <TripFormCard
       label="Dates"
@@ -81,6 +105,7 @@ export function TripFormCardDates({
       onExpand={onExpand}
       onDone={onCollapse}
       onReset={onReset}
+      headerExtra={todayBtn}
     >
       <OngoingToggle
         checked={ongoing}
@@ -98,6 +123,7 @@ export function TripFormCardDates({
         exitDate={exitDate}
         onEntryChange={onEntryChange}
         onExitChange={onExitChange}
+        scrollToTodayRef={scrollToTodayRef}
       />
 
       {/* TODO: per-traveler stay summary rows — deferred to same pass as day colouring */}

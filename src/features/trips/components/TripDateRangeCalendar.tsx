@@ -12,15 +12,16 @@ interface Props {
   exitDate: string;
   onEntryChange: (iso: string) => void;
   onExitChange: (iso: string) => void;
+  /** Assign a ref here and call ref.current() to jump to today's month. */
+  scrollToTodayRef?: React.MutableRefObject<(() => void) | null>;
 }
 
 const MONTHS_FORWARD = 24;
-const BASE_MONTHS_BACK = 120; // 10 years; extended by scrolling to top
+const BASE_MONTHS_BACK = 120; // 10 years; extended dynamically by scrolling to top
 
 const CALENDAR_SX = {
   maxHeight: "55dvh",
   overflowY: "auto" as const,
-  // Override react-day-picker CSS variables to match app tokens
   "& .rdp-root": {
     "--rdp-accent-color": tokens.navy,
     "--rdp-accent-background-color": tokens.mist,
@@ -50,23 +51,13 @@ const CALENDAR_SX = {
   overflowX: "auto",
 };
 
-/** Walk the offsetParent chain to find an element's top relative to a scrollable container. */
-function offsetFromContainer(el: HTMLElement, container: HTMLElement): number {
-  let offset = 0;
-  let node: HTMLElement | null = el;
-  while (node && node !== container) {
-    offset += node.offsetTop;
-    node = node.offsetParent as HTMLElement | null;
-  }
-  return offset;
-}
-
 export function TripDateRangeCalendar({
   ongoing,
   entryDate,
   exitDate,
   onEntryChange,
   onExitChange,
+  scrollToTodayRef,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -78,18 +69,26 @@ export function TripDateRangeCalendar({
   const startMonth = new Date(now.getFullYear(), now.getMonth() - totalMonthsBack, 1);
   const totalMonths = totalMonthsBack + MONTHS_FORWARD;
 
-  // Scroll to today on initial mount
-  useEffect(() => {
+  // Build the scroll-to-today function using the current layout values.
+  // Each month is assumed equal height; the ratio gives accurate positioning.
+  function doScrollToToday() {
     const el = containerRef.current;
-    if (!el) return;
-    requestAnimationFrame(() => {
-      const todayBtn = el.querySelector<HTMLElement>('[aria-current="date"]');
-      if (!todayBtn) return;
-      el.scrollTop = Math.max(0, offsetFromContainer(todayBtn, el) - 40);
-    });
-  }, []); // run once
+    if (!el || el.scrollHeight === 0) return;
+    const avgMonthPx = el.scrollHeight / totalMonths;
+    el.scrollTop = Math.max(0, avgMonthPx * totalMonthsBack - 40);
+  }
 
-  // When extra months are prepended, restore the relative scroll position
+  // Keep the external ref in sync so Today button always calls the latest version.
+  useEffect(() => {
+    if (scrollToTodayRef) scrollToTodayRef.current = doScrollToToday;
+  });
+
+  // Scroll to today on mount, after the browser has calculated layout.
+  useEffect(() => {
+    requestAnimationFrame(doScrollToToday);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // When extra months are prepended, preserve relative scroll position.
   useLayoutEffect(() => {
     const el = containerRef.current;
     if (!el || savedScrollHeightRef.current === 0) return;
@@ -97,7 +96,7 @@ export function TripDateRangeCalendar({
     savedScrollHeightRef.current = 0;
   }, [extraMonthsBack]);
 
-  // IntersectionObserver: load more months when the user scrolls to the top
+  // Prepend 12 months when the user scrolls to the top sentinel.
   useEffect(() => {
     const sentinel = sentinelRef.current;
     const container = containerRef.current;
@@ -122,13 +121,11 @@ export function TripDateRangeCalendar({
     return (
       <Box ref={containerRef} sx={CALENDAR_SX}>
         <Box ref={sentinelRef} sx={{ height: "1px" }} />
-        {/* TODO: add modifiers prop for green/yellow/red day shading — requires useDateModifiers hook */}
+        {/* TODO: add modifiers prop for green/yellow/red day shading */}
         <DayPicker
           mode="single"
           selected={entryDateObj}
-          onSelect={(date) => {
-            onEntryChange(date ? formatDate(date) : "");
-          }}
+          onSelect={(date) => onEntryChange(date ? formatDate(date) : "")}
           defaultMonth={startMonth}
           numberOfMonths={totalMonths}
           hideNavigation
@@ -144,7 +141,7 @@ export function TripDateRangeCalendar({
   return (
     <Box ref={containerRef} sx={CALENDAR_SX}>
       <Box ref={sentinelRef} sx={{ height: "1px" }} />
-      {/* TODO: add modifiers prop for green/yellow/red day shading — requires useDateModifiers hook */}
+      {/* TODO: add modifiers prop for green/yellow/red day shading */}
       <DayPicker
         mode="range"
         selected={range}

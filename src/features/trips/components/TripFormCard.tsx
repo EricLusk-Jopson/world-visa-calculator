@@ -11,6 +11,7 @@ export interface TripFormCardProps {
   children: React.ReactNode;
   onDone?: () => void;
   onReset?: () => void;
+  headerExtra?: React.ReactNode;
 }
 
 const LABEL_SX = {
@@ -41,6 +42,7 @@ export function TripFormCard({
   children,
   onDone,
   onReset,
+  headerExtra,
 }: TripFormCardProps) {
   return (
     <Box
@@ -66,6 +68,7 @@ export function TripFormCard({
           >
             <Typography sx={{ ...LABEL_SX, color: tokens.navy }}>{label}</Typography>
             <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
+              {headerExtra}
               {onReset && (
                 <Box
                   component="button"
