@@ -58,7 +58,10 @@ export function TripFormSlider({
     prevTravelerCountRef.current = travelers.length;
   }, [travelers, open]);
 
-  // Reset form when opening
+  // Reset form only when the slider transitions from closed → open.
+  // Deliberately omit mode/initialTrip/initialTravelerIds from deps so that
+  // mid-session changes (e.g. adding a traveler while the form is open) don't
+  // clobber the user's current selections.
   useEffect(() => {
     if (!open) return;
     setActiveCard(null);
@@ -76,7 +79,7 @@ export function TripFormSlider({
       setOngoing(false);
       setRegion(VisaRegion.Schengen);
     }
-  }, [open, mode, initialTrip, initialTravelerIds]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const canSave =
     travelerIds.length > 0 &&
