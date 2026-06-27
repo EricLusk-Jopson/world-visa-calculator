@@ -12,7 +12,7 @@ interface Props {
   onEntryChange: (iso: string) => void;
   onExitChange: (iso: string) => void;
   onOngoingChange: (v: boolean) => void;
-  onClear: () => void;
+  onReset: () => void;
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
@@ -50,7 +50,7 @@ export function TripFormCardDates({
   onEntryChange,
   onExitChange,
   onOngoingChange,
-  onClear,
+  onReset,
   expanded,
   onExpand,
   onCollapse,
@@ -80,7 +80,7 @@ export function TripFormCardDates({
       expanded={expanded}
       onExpand={onExpand}
       onDone={onCollapse}
-      onClear={onClear}
+      onReset={onReset}
     >
       <OngoingToggle
         checked={ongoing}

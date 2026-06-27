@@ -10,7 +10,7 @@ interface Props {
   travelerIds: string[];
   onToggle: (id: string) => void;
   onAddNewTraveler: () => void;
-  onClear: () => void;
+  onReset: () => void;
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
@@ -27,7 +27,7 @@ export function TripFormCardTravelers({
   travelerIds,
   onToggle,
   onAddNewTraveler,
-  onClear,
+  onReset,
   expanded,
   onExpand,
   onCollapse,
@@ -51,7 +51,7 @@ export function TripFormCardTravelers({
       expanded={expanded}
       onExpand={onExpand}
       onDone={onCollapse}
-      onClear={onClear}
+      onReset={onReset}
     >
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
         {travelers.map((t) => {

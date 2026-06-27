@@ -10,7 +10,7 @@ export interface TripFormCardProps {
   onExpand: () => void;
   children: React.ReactNode;
   onDone?: () => void;
-  onClear?: () => void;
+  onReset?: () => void;
 }
 
 const LABEL_SX = {
@@ -40,7 +40,7 @@ export function TripFormCard({
   onExpand,
   children,
   onDone,
-  onClear,
+  onReset,
 }: TripFormCardProps) {
   return (
     <Box
@@ -66,13 +66,13 @@ export function TripFormCard({
           >
             <Typography sx={{ ...LABEL_SX, color: tokens.navy }}>{label}</Typography>
             <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
-              {onClear && (
+              {onReset && (
                 <Box
                   component="button"
-                  onClick={onClear}
+                  onClick={onReset}
                   sx={{ ...HEADER_BTN_SX, color: tokens.textSoft }}
                 >
-                  Clear
+                  Reset
                 </Box>
               )}
               {onDone && (

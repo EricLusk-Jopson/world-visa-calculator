@@ -137,7 +137,7 @@ export function TripFormSlider({
         <TripFormCardName
           name={name}
           onChange={setName}
-          onClear={() => setName("")}
+          onReset={() => setName("")}
           expanded={activeCard === "name"}
           onExpand={() => openCard("name")}
           onCollapse={closeCard}
@@ -152,7 +152,7 @@ export function TripFormSlider({
             )
           }
           onAddNewTraveler={onAddNewTraveler}
-          onClear={() => setTravelerIds([])}
+          onReset={() => setTravelerIds([])}
           expanded={activeCard === "travelers"}
           onExpand={() => openCard("travelers")}
           onCollapse={closeCard}
@@ -161,7 +161,7 @@ export function TripFormSlider({
         <TripFormCardDestination
           region={region}
           onRegionChange={setRegion}
-          onClear={() => setRegion(VisaRegion.Schengen)}
+          onReset={() => setRegion(VisaRegion.Schengen)}
           expanded={activeCard === "destination"}
           onExpand={() => openCard("destination")}
           onCollapse={closeCard}
@@ -174,7 +174,7 @@ export function TripFormSlider({
           onEntryChange={setEntryDate}
           onExitChange={setExitDate}
           onOngoingChange={setOngoing}
-          onClear={() => { setEntryDate(""); setExitDate(""); setOngoing(false); }}
+          onReset={() => { setEntryDate(""); setExitDate(""); setOngoing(false); }}
           expanded={activeCard === "dates"}
           onExpand={() => openCard("dates")}
           onCollapse={closeCard}

@@ -6,7 +6,7 @@ import { TripFormCard } from "./TripFormCard";
 interface Props {
   name: string;
   onChange: (v: string) => void;
-  onClear: () => void;
+  onReset: () => void;
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
@@ -18,7 +18,7 @@ const SUMMARY_SX = {
   textAlign: "right" as const,
 };
 
-export function TripFormCardName({ name, onChange, onClear, expanded, onExpand, onCollapse }: Props) {
+export function TripFormCardName({ name, onChange, onReset, expanded, onExpand, onCollapse }: Props) {
   const filled = name.trim().length > 0;
 
   const summary = (
@@ -34,7 +34,7 @@ export function TripFormCardName({ name, onChange, onClear, expanded, onExpand, 
       expanded={expanded}
       onExpand={onExpand}
       onDone={onCollapse}
-      onClear={onClear}
+      onReset={onReset}
     >
       <TextField
         value={name}

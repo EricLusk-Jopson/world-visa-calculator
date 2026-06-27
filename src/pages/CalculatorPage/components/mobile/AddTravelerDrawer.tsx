@@ -146,6 +146,13 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
             </Typography>
             <Box
               component="button"
+              onTouchStart={() => {
+                // Blur any focused input before the Dialog opens so iOS
+                // dismisses the keyboard and restores the viewport. Without
+                // this, the Dialog can render with its header off-screen
+                // because the visual viewport is still shifted upward.
+                (document.activeElement as HTMLElement | null)?.blur();
+              }}
               onClick={() => setPickerOpen(true)}
               sx={{
                 width: "100%", display: "flex", alignItems: "center",
