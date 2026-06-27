@@ -21,7 +21,7 @@ import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripVi
 import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
 import { TripViewSlider } from "./components/mobile/TripViewSlider";
 import { AddTravelerDrawer } from "./components/mobile/AddTravelerDrawer";
-import { MobileTripDialog } from "./components/mobile/MobileTripDialog";
+import { TripFormSlider } from "@/features/trips/components";
 import { UtilityDrawer } from "./components/mobile/UtilityDrawer";
 
 const MIN_LOAD_MS = 650;
@@ -69,6 +69,7 @@ export function CalculatorPage() {
     trip: Trip;
   } | null>(null);
   const [utilityDrawerOpen, setUtilityDrawerOpen] = useState(false);
+  const [addTravelerFromTripOpen, setAddTravelerFromTripOpen] = useState(false);
 
   const handleToggleTraveler = useCallback((id: string) => {
     setHiddenTravelerIds((prev) =>
@@ -121,6 +122,18 @@ export function CalculatorPage() {
     });
     setModal(CLOSED_MODAL);
   }, []);
+
+  // Called when adding a traveler from inside the trip form — keeps the trip modal open
+  const handleTravelerSaveFromTrip = useCallback(
+    (name: string, passportCode: string | null) => {
+      setTravelers((prev) => {
+        trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+        return [...prev, makeTraveler(name, passportCode)];
+      });
+      setAddTravelerFromTripOpen(false);
+    },
+    [],
+  );
 
   const handleTravelerEdit = useCallback(
     (travelerId: string, name: string, passportCode: string | null) => {
@@ -424,9 +437,18 @@ export function CalculatorPage() {
       {/* Traveler modal — bottom drawer on mobile, centered dialog on desktop */}
       {isMobile ? (
         <AddTravelerDrawer
-          open={modal.open && modal.kind === "traveler"}
-          onClose={() => setModal(CLOSED_MODAL)}
-          onAdd={handleTravelerSave}
+          open={
+            (modal.open && modal.kind === "traveler") || addTravelerFromTripOpen
+          }
+          onClose={() => {
+            if (addTravelerFromTripOpen) setAddTravelerFromTripOpen(false);
+            else setModal(CLOSED_MODAL);
+          }}
+          onAdd={
+            addTravelerFromTripOpen
+              ? handleTravelerSaveFromTrip
+              : handleTravelerSave
+          }
         />
       ) : (
         <TravelerModal
@@ -437,7 +459,7 @@ export function CalculatorPage() {
       )}
 
       {isMobile ? (
-        <MobileTripDialog
+        <TripFormSlider
           open={modal.open && modal.kind === "trip"}
           mode={modal.mode}
           travelers={travelers}
@@ -446,6 +468,7 @@ export function CalculatorPage() {
           onSave={handleTripSave}
           onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
           onClose={() => setModal(CLOSED_MODAL)}
+          onAddNewTraveler={() => setAddTravelerFromTripOpen(true)}
         />
       ) : (
         <TripModal
