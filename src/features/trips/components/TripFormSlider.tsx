@@ -4,6 +4,7 @@ import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
 import { Button } from "@/components/ui/Button";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
+import { parseDate, today } from "@/features/calculator/utils/dates";
 import { TripFormCardName } from "./TripFormCardName";
 import { TripFormCardTravelers } from "./TripFormCardTravelers";
 import { TripFormCardDestination } from "./TripFormCardDestination";
@@ -171,7 +172,11 @@ export function TripFormSlider({
           entryDate={entryDate}
           exitDate={exitDate}
           ongoing={ongoing}
-          onEntryChange={setEntryDate}
+          onEntryChange={(iso) => {
+            setEntryDate(iso);
+            // Clear ongoing when entry is removed or set to a future date.
+            if (!iso || parseDate(iso) > today()) setOngoing(false);
+          }}
           onExitChange={setExitDate}
           onOngoingChange={setOngoing}
           onReset={() => { setEntryDate(""); setExitDate(""); setOngoing(false); }}

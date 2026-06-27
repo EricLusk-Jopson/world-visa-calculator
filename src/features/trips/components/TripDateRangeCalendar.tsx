@@ -29,6 +29,7 @@ const CALENDAR_SX = {
     "--rdp-range_start-date-background-color": tokens.navy,
     "--rdp-range_end-date-background-color": tokens.navy,
     "--rdp-today-color": tokens.navy,
+    "--rdp-disabled-opacity": 1,
     fontFamily: tokens.fontBody,
     fontSize: "0.9rem",
     width: "100%",
@@ -46,6 +47,26 @@ const CALENDAR_SX = {
   },
   "& .rdp-day_button": {
     fontFamily: tokens.fontBody,
+  },
+  // Blue dot below today when not part of a selected range
+  "& .rdp-today:not(.rdp-range_start):not(.rdp-range_end):not(.rdp-range_middle) .rdp-day_button": {
+    position: "relative",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      bottom: "3px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      width: "4px",
+      height: "4px",
+      borderRadius: "50%",
+      background: tokens.navy,
+    },
+  },
+  // Disabled days: use explicit grey rather than opacity fade
+  "& .rdp-disabled:not(.rdp-selected) .rdp-day_button": {
+    color: tokens.border,
+    cursor: "default",
   },
   width: "100%",
   overflowX: "auto",
@@ -138,6 +159,9 @@ export function TripDateRangeCalendar({
     ? { from: entryDateObj, to: exitDateObj }
     : undefined;
 
+  // Disable dates before the entry date while the user is picking an exit date.
+  const disabledDays = entryDateObj && !exitDateObj ? { before: entryDateObj } : undefined;
+
   return (
     <Box ref={containerRef} sx={CALENDAR_SX}>
       <Box ref={sentinelRef} sx={{ height: "1px" }} />
@@ -145,6 +169,7 @@ export function TripDateRangeCalendar({
       <DayPicker
         mode="range"
         selected={range}
+        disabled={disabledDays}
         onSelect={(selected) => {
           onEntryChange(selected?.from ? formatDate(selected.from) : "");
           onExitChange(selected?.to ? formatDate(selected.to) : "");

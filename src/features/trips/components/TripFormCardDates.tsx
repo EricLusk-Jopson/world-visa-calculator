@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
@@ -58,6 +58,16 @@ export function TripFormCardDates({
   onCollapse,
 }: Props) {
   const scrollToTodayRef = useRef<(() => void) | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Scroll the card into view when it expands so the calendar is visible.
+  useEffect(() => {
+    if (expanded) {
+      requestAnimationFrame(() => {
+        cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [expanded]);
 
   const summary = buildSummary(entryDate, exitDate, ongoing);
   const filled = !!entryDate;
@@ -74,8 +84,8 @@ export function TripFormCardDates({
     </Typography>
   );
 
-  // Ongoing only makes sense if the trip has already started (entry ≤ today)
-  const ongoingDisabled = !!entryDate && parseDate(entryDate) > today();
+  // Disabled until a past/today entry date is selected.
+  const ongoingDisabled = !entryDate || parseDate(entryDate) > today();
 
   const todayBtn = (
     <Box
@@ -98,6 +108,7 @@ export function TripFormCardDates({
   );
 
   return (
+    <div ref={cardRef}>
     <TripFormCard
       label="Dates"
       summary={summaryNode}
@@ -128,5 +139,6 @@ export function TripFormCardDates({
 
       {/* TODO: per-traveler stay summary rows — deferred to same pass as day colouring */}
     </TripFormCard>
+    </div>
   );
 }
