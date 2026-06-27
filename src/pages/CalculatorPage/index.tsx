@@ -2,6 +2,8 @@ import { useState, useCallback, useMemo, useEffect } from "react";
 import { trackEvent } from "@/utils/analytics";
 import Box from "@mui/material/Box";
 import { keyframes } from "@mui/system";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import AddIcon from "@mui/icons-material/Add";
 import type { Traveler, Trip, ShareableState } from "@/types";
 import { tokens } from "@/styles/theme";
 import { useUrlSync } from "@/features/sharing";
@@ -17,6 +19,10 @@ import { LoadingScreen } from "./components/LoadingScreen";
 import { MobileTimelineView } from "./components/mobile/MobileTimelineView/MobileTimelineView";
 import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripView";
 import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
+import { TripViewSlider } from "./components/mobile/TripViewSlider";
+import { AddTravelerDrawer } from "./components/mobile/AddTravelerDrawer";
+import { TripFormSlider } from "@/features/trips/components";
+import { UtilityDrawer } from "./components/mobile/UtilityDrawer";
 
 const MIN_LOAD_MS = 650;
 const FADE_MS = 300;
@@ -49,11 +55,21 @@ function makeTraveler(name: string, passportCode: string | null = null): Travele
 }
 
 export function CalculatorPage() {
+  const isMobile = useMediaQuery("(max-width:599.95px)");
+
   const [view, setView] = useState<CalcView>("timeline");
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
+
+  // Mobile surface state
+  const [tripView, setTripView] = useState<{
+    travelerIds: string[];
+    trip: Trip;
+  } | null>(null);
+  const [utilityDrawerOpen, setUtilityDrawerOpen] = useState(false);
+  const [addTravelerFromTripOpen, setAddTravelerFromTripOpen] = useState(false);
 
   const handleToggleTraveler = useCallback((id: string) => {
     setHiddenTravelerIds((prev) =>
@@ -106,6 +122,18 @@ export function CalculatorPage() {
     });
     setModal(CLOSED_MODAL);
   }, []);
+
+  // Called when adding a traveler from inside the trip form — keeps the trip modal open
+  const handleTravelerSaveFromTrip = useCallback(
+    (name: string, passportCode: string | null) => {
+      setTravelers((prev) => {
+        trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+        return [...prev, makeTraveler(name, passportCode)];
+      });
+      setAddTravelerFromTripOpen(false);
+    },
+    [],
+  );
 
   const handleTravelerEdit = useCallback(
     (travelerId: string, name: string, passportCode: string | null) => {
@@ -253,6 +281,32 @@ export function CalculatorPage() {
     setTravelers((prev) => prev.map((t) => ({ ...t, trips: [] })));
   }, []);
 
+  /** Deletes a trip directly (used from TripViewSlider, no modal state required). */
+  const handleDeleteTripDirect = useCallback(
+    (travelerIds: string[], trip: Trip) => {
+      trackEvent("trip_deleted");
+      setTravelers((prev) =>
+        prev.map((t) =>
+          !travelerIds.includes(t.id)
+            ? t
+            : {
+                ...t,
+                trips: t.trips.filter(
+                  (x) =>
+                    !(
+                      x.entryDate === trip.entryDate &&
+                      x.exitDate === trip.exitDate &&
+                      x.region === trip.region
+                    ),
+                ),
+              },
+        ),
+      );
+      setTripView(null);
+    },
+    [],
+  );
+
   // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
@@ -260,8 +314,11 @@ export function CalculatorPage() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100vh",
-        width: "100vw",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         bgcolor: tokens.offWhite,
         overflow: "hidden",
       }}
@@ -274,6 +331,7 @@ export function CalculatorPage() {
         travelerCount={travelers.length}
         onShare={() => setShareModalOpen(true)}
         onClearAll={handleClearAllTrips}
+        onOpenUtility={() => setUtilityDrawerOpen(true)}
       />
 
       <Box sx={{ flex: 1, position: "relative", overflow: "hidden" }}>
@@ -309,15 +367,14 @@ export function CalculatorPage() {
                 <MobileTimelineView
                   travelers={travelers}
                   hiddenTravelerIds={hiddenTravelerIds}
-                  onEditTrip={handleOpenEditTripForMany}
+                  onEditTrip={(ids, trip) => setTripView({ travelerIds: ids, trip })}
                   onAddTraveler={handleAddTraveler}
-                  onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
                 />
               ) : (
                 <MobileTripsView
                   travelers={travelers}
                   hiddenTravelerIds={hiddenTravelerIds}
-                  onEditTrip={handleOpenEditTripForMany}
+                  onEditTrip={(ids, trip) => setTripView({ travelerIds: ids, trip })}
                   onAddTraveler={handleAddTraveler}
                   onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
                 />
@@ -377,22 +434,53 @@ export function CalculatorPage() {
         )}
       </Box>
 
-<TravelerModal
-        open={modal.open && modal.kind === "traveler"}
-        onAdd={handleTravelerSave}
-        onClose={() => setModal(CLOSED_MODAL)}
-      />
+      {/* Traveler modal — bottom drawer on mobile, centered dialog on desktop */}
+      {isMobile ? (
+        <AddTravelerDrawer
+          open={
+            (modal.open && modal.kind === "traveler") || addTravelerFromTripOpen
+          }
+          onClose={() => {
+            if (addTravelerFromTripOpen) setAddTravelerFromTripOpen(false);
+            else setModal(CLOSED_MODAL);
+          }}
+          onAdd={
+            addTravelerFromTripOpen
+              ? handleTravelerSaveFromTrip
+              : handleTravelerSave
+          }
+        />
+      ) : (
+        <TravelerModal
+          open={modal.open && modal.kind === "traveler"}
+          onAdd={handleTravelerSave}
+          onClose={() => setModal(CLOSED_MODAL)}
+        />
+      )}
 
-      <TripModal
-        open={modal.open && modal.kind === "trip"}
-        mode={modal.mode}
-        travelers={travelers}
-        initialTravelerIds={modal.travelerIds}
-        initialTrip={modal.trip ?? undefined}
-        onSave={handleTripSave}
-        onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
-        onClose={() => setModal(CLOSED_MODAL)}
-      />
+      {isMobile ? (
+        <TripFormSlider
+          open={modal.open && modal.kind === "trip"}
+          mode={modal.mode}
+          travelers={travelers}
+          initialTravelerIds={modal.travelerIds}
+          initialTrip={modal.trip ?? undefined}
+          onSave={handleTripSave}
+          onClose={() => setModal(CLOSED_MODAL)}
+          onAddNewTraveler={() => setAddTravelerFromTripOpen(true)}
+        />
+      ) : (
+        <TripModal
+          open={modal.open && modal.kind === "trip"}
+          mode={modal.mode}
+          travelers={travelers}
+          initialTravelerIds={modal.travelerIds}
+          initialTrip={modal.trip ?? undefined}
+          onSave={handleTripSave}
+          onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
+          onClose={() => setModal(CLOSED_MODAL)}
+        />
+      )}
 
       <ShareModal
         open={shareModalOpen}
@@ -401,6 +489,64 @@ export function CalculatorPage() {
         onClose={() => setShareModalOpen(false)}
         travelerCount={travelers.length}
       />
+
+      {/* ── Mobile-only surfaces ──────────────────────────────────────────── */}
+
+      {/* Trip view (Surface 2) — full-screen slide-in when tapping a trip */}
+      <TripViewSlider
+        open={tripView !== null}
+        onClose={() => setTripView(null)}
+        travelers={travelers}
+        travelerIds={tripView?.travelerIds ?? []}
+        trip={tripView?.trip ?? null}
+        onModify={() => {
+          const tv = tripView;
+          setTripView(null);
+          if (tv) handleOpenEditTripForMany(tv.travelerIds, tv.trip);
+        }}
+        onDelete={handleDeleteTripDirect}
+      />
+
+      {/* Utility drawer (Surface 5) — share / support / clear all */}
+      <UtilityDrawer
+        open={utilityDrawerOpen}
+        onClose={() => setUtilityDrawerOpen(false)}
+        onShare={copyShareableUrl}
+        onClearAll={handleClearAllTrips}
+        travelerCount={travelers.length}
+      />
+
+      {/* FAB — mobile only, fixed above safe area */}
+      {isMobile && travelers.length > 0 && (
+        <Box
+          component="button"
+          onClick={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
+          sx={{
+            position: "fixed",
+            bottom: "calc(env(safe-area-inset-bottom) + 16px)",
+            right: "16px",
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            px: "18px",
+            py: "12px",
+            bgcolor: tokens.green,
+            border: "none",
+            borderRadius: "100px",
+            color: tokens.white,
+            fontFamily: tokens.fontBody,
+            fontSize: "0.88rem",
+            fontWeight: 700,
+            cursor: "pointer",
+            boxShadow: "0 4px 16px rgba(0,185,107,0.35)",
+            zIndex: 1050,
+            "&:active": { bgcolor: tokens.greenText, boxShadow: "none" },
+          }}
+        >
+          <AddIcon sx={{ fontSize: "1rem" }} />
+          Add Trip
+        </Box>
+      )}
     </Box>
   );
 }

@@ -5,12 +5,12 @@ import { tokens } from "@/styles/theme";
 // ─── ISO 3166-1 Alpha-2 country list ─────────────────────────────────────────
 // Sorted alphabetically by name. Used only at build time as static data.
 
-interface Country {
+export interface Country {
   code: string;
   name: string;
 }
 
-const COUNTRIES: Country[] = [
+export const COUNTRIES: Country[] = [
   { code: 'AF', name: 'Afghanistan' },
   { code: 'AL', name: 'Albania' },
   { code: 'DZ', name: 'Algeria' },
@@ -218,6 +218,10 @@ interface NationalitySelectorProps {
   onChange: (code: string | null) => void;
   label?: string;
   autoFocus?: boolean;
+  open?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
+  inputRef?: React.RefObject<HTMLInputElement | null>;
 }
 
 export function getCountryName(code: string | null): string | null {
@@ -230,8 +234,14 @@ export function NationalitySelector({
   onChange,
   label = "Passport / nationality",
   autoFocus = false,
+  open,
+  onOpen,
+  onClose,
+  inputRef,
 }: NationalitySelectorProps) {
   const selected = COUNTRIES.find((c) => c.code === value) ?? null;
+
+  const controlled = open !== undefined;
 
   return (
     <Autocomplete
@@ -242,12 +252,14 @@ export function NationalitySelector({
       isOptionEqualToValue={(option, val) => option.code === val.code}
       autoHighlight
       clearOnEscape
+      {...(controlled ? { open, onOpen, onClose } : {})}
       renderInput={(params) => (
         <TextField
           {...params}
           label={undefined}
           placeholder={label}
           autoFocus={autoFocus}
+          inputRef={inputRef}
           sx={{
             "& .MuiOutlinedInput-root": {
               fontFamily: tokens.fontBody,

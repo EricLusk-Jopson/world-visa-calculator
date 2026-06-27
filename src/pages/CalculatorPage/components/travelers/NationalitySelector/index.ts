@@ -1,1 +1,2 @@
-export { NationalitySelector, getCountryName } from './NationalitySelector';
+export { NationalitySelector, getCountryName, COUNTRIES } from './NationalitySelector';
+export type { Country } from './NationalitySelector';

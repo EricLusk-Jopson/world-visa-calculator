@@ -128,7 +128,7 @@ interface HeroCalculatorCardProps {
 }
 
 export function HeroCalculatorCard({
-  appHref = "https://eurovisacalculator.com/app",
+  appHref = "/app",
 }: HeroCalculatorCardProps) {
   const [name, setName] = useState("");
   const [entryDate, setEntryDate] = useState("");
