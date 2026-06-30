@@ -39,18 +39,12 @@ import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import { trackEvent } from "@/utils/analytics";
 import {
-  assessUKStay,
-  detectUKReentryRisk,
-} from "@/features/calculator/utils/uk";
-import type { UKStayAssessment, UKReentryRisk } from "@/features/calculator/utils/uk";
-import {
-  assessIrelandStay,
-  detectIrelandReentryRisk,
-} from "@/features/calculator/utils/ireland";
-import type {
-  IrelandStayAssessment,
-  IrelandReentryRisk,
-} from "@/features/calculator/utils/ireland";
+  assessStay,
+  detectReentryRisk,
+  regionRuleToLimits,
+} from "@/features/calculator/utils/stayCalculator";
+import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
+import { getRegionDefinition } from "@/data/regions";
 import { EntryEligibilityPanel } from "./EntryEligibilityPanel";
 import { DurationPanel } from "./DurationPanel";
 
@@ -430,77 +424,57 @@ export function TripModal({
         getPassportRule(VisaRegion.Schengen, t.passportCode).access !== "visa_required";
     });
 
-  // ── UK max-stay assessment ──────────────────────────────────────────────────
+  // ── Generic stay assessment (per_visit + rolling_window regions) ─────────────
 
-  // Include visa_free AND unknown-passport travelers (mirrors Schengen's permissive
-  // default for unset nationality — no passport = assume visa-free entitlement).
-  const ukVisaFreeTravelers =
-    region === VisaRegion.UnitedKingdom
-      ? travelerIds.flatMap((tid) => {
-          const t = travelers.find((x) => x.id === tid);
-          if (!t) return [];
-          const rule = getPassportRule(VisaRegion.UnitedKingdom, t.passportCode);
-          return rule.access === "entitled" || !t.passportCode ? [t] : [];
-        })
-      : [];
+  let stayAssessment: StayAssessment | null = null;
+  let reentryRisk: ReentryRisk | null = null;
 
-  const ukMaxStay: UKStayAssessment | null =
-    entryDate && ukVisaFreeTravelers.length > 0
-      ? assessUKStay(entryDate, ongoing ? undefined : exitDate || undefined)
-      : null;
+  if (
+    region !== VisaRegion.Schengen &&
+    region !== VisaRegion.Elsewhere &&
+    entryDate
+  ) {
+    const regionDef = getRegionDefinition(region);
+    const regionRule = regionDef?.rule;
+    const limits = regionRule ? regionRuleToLimits(regionRule) : null;
 
-  const ukReentryRisk: UKReentryRisk | null =
-    entryDate && ukVisaFreeTravelers.length > 0
-      ? (() => {
-          let worst: UKReentryRisk | null = null;
-          for (const t of ukVisaFreeTravelers) {
-            const ukTrips = t.trips.filter(
-              (tr) =>
-                tr.region === VisaRegion.UnitedKingdom &&
-                tr.exitDate &&
-                tr.id !== initialTrip?.id,
-            );
-            const risk = detectUKReentryRisk(ukTrips, entryDate);
-            if (risk && (!worst || risk.variant === "danger")) worst = risk;
+    if (limits && regionRule) {
+      const checkDate = ongoing ? undefined : exitDate || undefined;
+
+      const eligibleTravelers = travelerIds.flatMap((tid) => {
+        const t = travelers.find((x) => x.id === tid);
+        if (!t) return [];
+        const rule = getPassportRule(region, t.passportCode);
+        return rule.access === "entitled" || !t.passportCode ? [t] : [];
+      });
+
+      if (eligibleTravelers.length > 0) {
+        let worstAssessment: StayAssessment | null = null;
+        for (const t of eligibleTravelers) {
+          const tripHistory = t.trips.filter(
+            (tr) => tr.region === region && tr.id !== initialTrip?.id,
+          );
+          const assessment = assessStay(limits, tripHistory, entryDate, checkDate);
+          if (assessment && (!worstAssessment || assessment.daysRemaining < worstAssessment.daysRemaining)) {
+            worstAssessment = assessment;
           }
-          return worst;
-        })()
-      : null;
+        }
+        stayAssessment = worstAssessment;
 
-  // ── Ireland max-stay assessment ─────────────────────────────────────────────
-
-  const irelandVisaFreeTravelers =
-    region === VisaRegion.Ireland
-      ? travelerIds.flatMap((tid) => {
-          const t = travelers.find((x) => x.id === tid);
-          if (!t) return [];
-          const rule = getPassportRule(VisaRegion.Ireland, t.passportCode);
-          return rule.access === "entitled" || !t.passportCode ? [t] : [];
-        })
-      : [];
-
-  const irelandMaxStay: IrelandStayAssessment | null =
-    entryDate && irelandVisaFreeTravelers.length > 0
-      ? assessIrelandStay(entryDate, ongoing ? undefined : exitDate || undefined)
-      : null;
-
-  const irelandReentryRisk: IrelandReentryRisk | null =
-    entryDate && irelandVisaFreeTravelers.length > 0
-      ? (() => {
-          let worst: IrelandReentryRisk | null = null;
-          for (const t of irelandVisaFreeTravelers) {
-            const irelandTrips = t.trips.filter(
-              (tr) =>
-                tr.region === VisaRegion.Ireland &&
-                tr.exitDate &&
-                tr.id !== initialTrip?.id,
+        if (regionRule.type === "per_visit") {
+          let worstRisk: ReentryRisk | null = null;
+          for (const t of eligibleTravelers) {
+            const completedTrips = t.trips.filter(
+              (tr) => tr.region === region && tr.exitDate && tr.id !== initialTrip?.id,
             );
-            const risk = detectIrelandReentryRisk(irelandTrips, entryDate);
-            if (risk && (!worst || risk.variant === "danger")) worst = risk;
+            const risk = detectReentryRisk(regionRule.allowanceDays, completedTrips, entryDate);
+            if (risk && (!worstRisk || risk.variant === "danger")) worstRisk = risk;
           }
-          return worst;
-        })()
-      : null;
+          reentryRisk = worstRisk;
+        }
+      }
+    }
+  }
 
   // ── Validation & submit ─────────────────────────────────────────────────────
 
@@ -928,10 +902,8 @@ export function TripModal({
             impactBreakdown={impactBreakdown}
             travelerImpacts={travelerImpacts}
             hasVisaFreeTravelers={hasVisaFreeTravelers}
-            ukMaxStay={ukMaxStay}
-            ukReentryRisk={ukReentryRisk}
-            irelandMaxStay={irelandMaxStay}
-            irelandReentryRisk={irelandReentryRisk}
+            stayAssessment={stayAssessment}
+            reentryRisk={reentryRisk}
           />
         </Box>
 

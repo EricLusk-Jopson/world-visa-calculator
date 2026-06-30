@@ -192,11 +192,11 @@ export function EntryEligibilityPanel({ travelers, travelerIds, region }: EntryE
 
   const regionLabel = VISA_REGION_LABELS[region];
 
-  const rows: VisaInfoRow[] = travelerIds.flatMap((tid) => {
+  const rows: VisaInfoRow[] = travelerIds.flatMap((tid): VisaInfoRow[] => {
     const t = travelers.find((x) => x.id === tid);
     if (!t) return [];
     if (!t.passportCode) {
-      return [{ traveler: t, label: "Set nationality to see entry requirements", labelColor: tokens.textGhost, borderColor: tokens.border }];
+      return [{ traveler: t, label: "Set nationality to see entry requirements", labelColor: tokens.textGhost, borderColor: tokens.border, notes: undefined }];
     }
     const rule = getPassportRule(region, t.passportCode);
     const { label, color } = describePassportRule(rule, regionLabel);

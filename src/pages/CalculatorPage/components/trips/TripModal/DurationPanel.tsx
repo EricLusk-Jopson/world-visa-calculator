@@ -6,8 +6,7 @@ import { VisaRegion } from "@/types";
 import { ImpactPreview } from "@/components/ui";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import type { TravelerStatus, ImpactBreakdown } from "../../travelers/travelerStatus";
-import type { UKStayAssessment, UKReentryRisk } from "@/features/calculator/utils/uk";
-import type { IrelandStayAssessment, IrelandReentryRisk } from "@/features/calculator/utils/ireland";
+import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
 import { parseDate } from "@/features/calculator/utils/dates";
 
 // ─── Helper ───────────────────────────────────────────────────────────────────
@@ -36,12 +35,9 @@ export interface DurationPanelProps {
   impactBreakdown: ImpactBreakdown | undefined;
   travelerImpacts: TravelerImpact[] | undefined;
   hasVisaFreeTravelers: boolean;
-  // UK
-  ukMaxStay: UKStayAssessment | null;
-  ukReentryRisk: UKReentryRisk | null;
-  // Ireland
-  irelandMaxStay: IrelandStayAssessment | null;
-  irelandReentryRisk: IrelandReentryRisk | null;
+  // Generic stay assessment (per_visit + rolling_window regions)
+  stayAssessment: StayAssessment | null;
+  reentryRisk: ReentryRisk | null;
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -58,10 +54,8 @@ export function DurationPanel({
   impactBreakdown,
   travelerImpacts,
   hasVisaFreeTravelers,
-  ukMaxStay,
-  ukReentryRisk,
-  irelandMaxStay,
-  irelandReentryRisk,
+  stayAssessment,
+  reentryRisk,
 }: DurationPanelProps) {
   const resolvedExit = ongoing ? undefined : exitDate || undefined;
 
@@ -124,7 +118,7 @@ export function DurationPanel({
         </Box>
       )}
 
-      {/* Impact preview */}
+      {/* Impact preview (Schengen only) */}
       {region === VisaRegion.Schengen &&
         entryDate &&
         (exitDate || ongoing) &&
@@ -141,7 +135,7 @@ export function DurationPanel({
           />
         )}
 
-      {/* Visa-required disclaimer — shown when no visa-free travelers are selected */}
+      {/* Visa-required disclaimer (Schengen only) */}
       {region === VisaRegion.Schengen &&
         !hasVisaFreeTravelers &&
         entryDate &&
@@ -160,8 +154,8 @@ export function DurationPanel({
           </Typography>
         )}
 
-      {/* UK max-stay warning */}
-      {ukMaxStay && (
+      {/* Generic stay assessment */}
+      {stayAssessment && (
         <Box
           sx={{
             display: "flex",
@@ -170,15 +164,15 @@ export function DurationPanel({
             px: "12px",
             py: "9px",
             bgcolor:
-              ukMaxStay.variant === "danger"
+              stayAssessment.variant === "danger"
                 ? "rgba(220,38,38,0.06)"
-                : ukMaxStay.variant === "caution"
+                : stayAssessment.variant === "caution"
                   ? tokens.amberBg
                   : tokens.mist,
             border: `1px solid ${
-              ukMaxStay.variant === "danger"
+              stayAssessment.variant === "danger"
                 ? tokens.red
-                : ukMaxStay.variant === "caution"
+                : stayAssessment.variant === "caution"
                   ? tokens.amberBorder
                   : tokens.border
             }`,
@@ -187,136 +181,54 @@ export function DurationPanel({
         >
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
             <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, fontWeight: 500 }}>
-              {ukMaxStay.variant === "danger" && ukMaxStay.daysRemaining < 0
-                ? `Over the 6-month limit by ${Math.abs(ukMaxStay.daysRemaining)} day${Math.abs(ukMaxStay.daysRemaining) === 1 ? "" : "s"}`
-                : `${ukMaxStay.tripDays} day${ukMaxStay.tripDays === 1 ? "" : "s"} of 6-month visit`}
+              {stayAssessment.variant === "danger" && stayAssessment.daysRemaining < 0
+                ? `Over the ${stayAssessment.daysAllowed}-day limit by ${Math.abs(stayAssessment.daysRemaining)} day${Math.abs(stayAssessment.daysRemaining) === 1 ? "" : "s"}`
+                : stayAssessment.limitType === "rolling_window"
+                  ? `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} used of ${stayAssessment.daysAllowed}-day allowance`
+                  : `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} of ${stayAssessment.daysAllowed}-day visit`}
             </Typography>
             <Typography
               sx={{
                 fontFamily: tokens.fontBody,
                 fontSize: "0.75rem",
                 fontWeight: 700,
-                color: ukMaxStay.variant === "danger" ? tokens.red : ukMaxStay.variant === "caution" ? tokens.amberText : tokens.navy,
+                color: stayAssessment.variant === "danger" ? tokens.red : stayAssessment.variant === "caution" ? tokens.amberText : tokens.navy,
                 whiteSpace: "nowrap",
               }}
             >
-              Latest exit: {fmtHintDate(ukMaxStay.maxExitDate)}
+              Latest exit: {fmtHintDate(stayAssessment.maxExitDate)}
             </Typography>
           </Box>
-          {ukMaxStay.variant !== "safe" && (
+          {stayAssessment.variant !== "safe" && (
             <Box sx={{ display: "flex", alignItems: "flex-start", gap: "5px" }}>
-              <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "1px", flexShrink: 0, color: ukMaxStay.variant === "danger" ? tokens.red : tokens.amberText }} />
-              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: ukMaxStay.variant === "danger" ? tokens.red : tokens.amberText, lineHeight: 1.4 }}>
-                {ukMaxStay.variant === "danger"
-                  ? "This trip exceeds the 6-month visit limit. Border Force may deny entry or curtail leave."
-                  : "Approaching the 6-month visit limit. Leave time before the deadline."}
+              <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "1px", flexShrink: 0, color: stayAssessment.variant === "danger" ? tokens.red : tokens.amberText }} />
+              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: stayAssessment.variant === "danger" ? tokens.red : tokens.amberText, lineHeight: 1.4 }}>
+                {stayAssessment.variant === "danger"
+                  ? `This trip exceeds the ${stayAssessment.daysAllowed}-day limit. Authorities may require you to leave or deny entry.`
+                  : `Approaching the ${stayAssessment.daysAllowed}-day limit. Plan an exit date before the deadline.`}
               </Typography>
             </Box>
           )}
         </Box>
       )}
 
-      {/* UK re-entry risk */}
-      {ukReentryRisk && (() => {
-        const isRed = ukReentryRisk.variant === "danger";
-        const isAmber = ukReentryRisk.variant === "caution";
+      {/* Re-entry risk (per-visit regions) */}
+      {reentryRisk && (() => {
+        const isRed = reentryRisk.variant === "danger";
+        const isAmber = reentryRisk.variant === "caution";
         const bg = isRed ? "rgba(220,38,38,0.06)" : isAmber ? tokens.amberBg : tokens.greenBg;
         const borderColor = isRed ? tokens.red : isAmber ? tokens.amberBorder : tokens.greenBorder;
         const textColor = isRed ? tokens.red : isAmber ? tokens.amberText : tokens.greenText;
         const heading = isRed
-          ? "Re-entry after a long UK stay — high scrutiny"
+          ? "Re-entry after a maximum-duration stay — entry may be refused"
           : isAmber
-            ? "Previous long UK stay on record"
-            : "Previous UK stay noted";
+            ? "Previous long stay on record"
+            : "Previous stay noted";
         const body = isRed
-          ? `Your last UK trip lasted ${ukReentryRisk.lastTripDays} days, exiting only ${ukReentryRisk.daysSinceExit} days ago. Immediate re-entry after a near-maximum stay is likely to be refused under the genuine visitor test.`
+          ? `Your last trip lasted ${reentryRisk.lastTripDays} days, exiting only ${reentryRisk.daysSinceExit} days ago. Immediate re-entry after a near-maximum stay is likely to attract scrutiny.`
           : isAmber
-            ? `Your last UK trip lasted ${ukReentryRisk.lastTripDays} days. Border Force may scrutinise this entry — carry evidence of ties to your home country and clear reasons for returning.`
-            : `A previous UK trip of ${ukReentryRisk.lastTripDays} days is on record. This entry is unlikely to cause issues, but be ready to explain your travel pattern if asked.`;
-        return (
-          <Box sx={{ display: "flex", alignItems: "flex-start", gap: "6px", px: "12px", py: "9px", bgcolor: bg, border: `1px solid ${borderColor}`, borderRadius: "10px" }}>
-            <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "2px", flexShrink: 0, color: textColor }} />
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: textColor }}>{heading}</Typography>
-              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft, lineHeight: 1.4 }}>{body}</Typography>
-            </Box>
-          </Box>
-        );
-      })()}
-
-      {/* Ireland max-stay warning */}
-      {irelandMaxStay && (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "6px",
-            px: "12px",
-            py: "9px",
-            bgcolor:
-              irelandMaxStay.variant === "danger"
-                ? "rgba(220,38,38,0.06)"
-                : irelandMaxStay.variant === "caution"
-                  ? tokens.amberBg
-                  : tokens.mist,
-            border: `1px solid ${
-              irelandMaxStay.variant === "danger"
-                ? tokens.red
-                : irelandMaxStay.variant === "caution"
-                  ? tokens.amberBorder
-                  : tokens.border
-            }`,
-            borderRadius: "10px",
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
-            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, fontWeight: 500 }}>
-              {irelandMaxStay.variant === "danger" && irelandMaxStay.daysRemaining < 0
-                ? `Over the 90-day limit by ${Math.abs(irelandMaxStay.daysRemaining)} day${Math.abs(irelandMaxStay.daysRemaining) === 1 ? "" : "s"}`
-                : `${irelandMaxStay.tripDays} day${irelandMaxStay.tripDays === 1 ? "" : "s"} of 90-day permission`}
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: tokens.fontBody,
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                color: irelandMaxStay.variant === "danger" ? tokens.red : irelandMaxStay.variant === "caution" ? tokens.amberText : tokens.navy,
-                whiteSpace: "nowrap",
-              }}
-            >
-              Latest exit: {fmtHintDate(irelandMaxStay.maxExitDate)}
-            </Typography>
-          </Box>
-          {irelandMaxStay.variant !== "safe" && (
-            <Box sx={{ display: "flex", alignItems: "flex-start", gap: "5px" }}>
-              <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "1px", flexShrink: 0, color: irelandMaxStay.variant === "danger" ? tokens.red : tokens.amberText }} />
-              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: irelandMaxStay.variant === "danger" ? tokens.red : tokens.amberText, lineHeight: 1.4 }}>
-                {irelandMaxStay.variant === "danger"
-                  ? "This trip exceeds the 90-day permission limit. You may be asked to leave."
-                  : "Approaching the 90-day permission limit. Plan an exit date before the deadline."}
-              </Typography>
-            </Box>
-          )}
-        </Box>
-      )}
-
-      {/* Ireland re-entry risk */}
-      {irelandReentryRisk && (() => {
-        const isRed = irelandReentryRisk.variant === "danger";
-        const isAmber = irelandReentryRisk.variant === "caution";
-        const bg = isRed ? "rgba(220,38,38,0.06)" : isAmber ? tokens.amberBg : tokens.greenBg;
-        const borderColor = isRed ? tokens.red : isAmber ? tokens.amberBorder : tokens.greenBorder;
-        const textColor = isRed ? tokens.red : isAmber ? tokens.amberText : tokens.greenText;
-        const heading = isRed
-          ? "Re-entry after a maximum-duration Ireland stay — entry may be refused"
-          : isAmber
-            ? "Previous long Ireland stay on record"
-            : "Previous Ireland stay noted";
-        const body = isRed
-          ? `Your last Ireland trip lasted ${irelandReentryRisk.lastTripDays} days, exiting only ${irelandReentryRisk.daysSinceExit} days ago. INIS has explicitly stated that immediate re-entry after a maximum-duration stay is not permitted.`
-          : isAmber
-            ? `Your last Ireland trip lasted ${irelandReentryRisk.lastTripDays} days. Officers may scrutinise this entry — carry evidence of your home ties and clear reasons for visiting.`
-            : `A previous Ireland trip of ${irelandReentryRisk.lastTripDays} days is on record. This entry is unlikely to cause issues, but be prepared to explain your travel pattern.`;
+            ? `Your last trip lasted ${reentryRisk.lastTripDays} days. Officers may scrutinise this entry — carry evidence of ties to your home country and clear reasons for returning.`
+            : `A previous trip of ${reentryRisk.lastTripDays} days is on record. This entry is unlikely to cause issues, but be ready to explain your travel pattern if asked.`;
         return (
           <Box sx={{ display: "flex", alignItems: "flex-start", gap: "6px", px: "12px", py: "9px", bgcolor: bg, border: `1px solid ${borderColor}`, borderRadius: "10px" }}>
             <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "2px", flexShrink: 0, color: textColor }} />
