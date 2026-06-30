@@ -25,9 +25,7 @@ import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler, RuleNote } from "@/types";
-import { getSchengenRule } from "@/data/regions/schengen";
-import { getUKRule } from "@/data/regions/uk";
-import { getIrelandRule } from "@/data/regions/ireland";
+import { getPassportRule } from "@/data/regions";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
@@ -591,7 +589,7 @@ export function TripModal({
       ? travelerIds.flatMap((tid) => {
           const t = travelers.find((x) => x.id === tid);
           if (!t) return [];
-          const rule = getSchengenRule(t.passportCode);
+          const rule = getPassportRule(VisaRegion.Schengen, t.passportCode);
           return [{ t, rule }];
         })
       : [];
@@ -638,7 +636,7 @@ export function TripModal({
       return travelerIds.flatMap((tid) => {
         const t = travelers.find((x) => x.id === tid);
         if (!t) return [];
-        const rule = getUKRule(t.passportCode);
+        const rule = getPassportRule(region, t.passportCode);
         const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
         const { label, color } = !t.passportCode
           ? { label: "Set nationality to see entry requirements", color: tokens.textGhost }
@@ -657,7 +655,7 @@ export function TripModal({
       return travelerIds.flatMap((tid) => {
         const t = travelers.find((x) => x.id === tid);
         if (!t) return [];
-        const rule = getIrelandRule(t.passportCode);
+        const rule = getPassportRule(region, t.passportCode);
         const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
         const { label, color } = !t.passportCode
           ? { label: "Set nationality to see entry requirements", color: tokens.textGhost }
@@ -667,6 +665,33 @@ export function TripModal({
               ? { label: `${nat}Visa-free entry, up to 90 days per permission`, color: tokens.green }
               : { label: `${nat}Ireland visa required`, color: tokens.red };
         const borderColor = color === tokens.green ? tokens.greenBorder : tokens.redBorder;
+        return [{ traveler: t, label, labelColor: color, borderColor, notes: rule.notes }];
+      });
+    }
+    if (region === VisaRegion.Turkiye) {
+      return travelerIds.flatMap((tid) => {
+        const t = travelers.find((x) => x.id === tid);
+        if (!t) return [];
+        const rule = getPassportRule(region, t.passportCode);
+        const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
+        const { label, color } = !t.passportCode
+          ? { label: "Set nationality to see entry requirements", color: tokens.textGhost }
+          : rule.access === "free_movement"
+            ? { label: `${nat}Free movement, no day limit`, color: tokens.green }
+            : rule.access === "entitled"
+              ? (() => {
+                  const preAuth = rule.entitlements[0]?.preAuth;
+                  if (preAuth?.type === "e_visa")
+                    return { label: `${nat}Visa-free — e-Visa required (online application)`, color: tokens.green };
+                  if (preAuth?.type === "e_visa_conditional")
+                    return { label: `${nat}e-Visa available with valid Schengen/US/UK/IE visa`, color: tokens.green };
+                  return { label: `${nat}Visa-free entry`, color: tokens.green };
+                })()
+              : { label: `${nat}Türkiye visa required`, color: tokens.red };
+        const borderColor =
+          color === tokens.green ? tokens.greenBorder
+          : color === tokens.textGhost ? tokens.border
+          : tokens.redBorder;
         return [{ traveler: t, label, labelColor: color, borderColor, notes: rule.notes }];
       });
     }
@@ -686,7 +711,7 @@ export function TripModal({
       ? travelerIds.flatMap((tid) => {
           const t = travelers.find((x) => x.id === tid);
           if (!t) return [];
-          const rule = getUKRule(t.passportCode);
+          const rule = getPassportRule(VisaRegion.UnitedKingdom, t.passportCode);
           return rule.access === "entitled" || !t.passportCode ? [t] : [];
         })
       : [];
@@ -721,7 +746,7 @@ export function TripModal({
       ? travelerIds.flatMap((tid) => {
           const t = travelers.find((x) => x.id === tid);
           if (!t) return [];
-          const rule = getIrelandRule(t.passportCode);
+          const rule = getPassportRule(VisaRegion.Ireland, t.passportCode);
           return rule.access === "entitled" || !t.passportCode ? [t] : [];
         })
       : [];
