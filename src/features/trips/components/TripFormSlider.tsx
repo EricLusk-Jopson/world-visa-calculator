@@ -4,7 +4,6 @@ import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
 import { Button } from "@/components/ui/Button";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
-import { parseDate, today } from "@/features/calculator/utils/dates";
 import { TripFormCardName } from "./TripFormCardName";
 import { TripFormCardTravelers } from "./TripFormCardTravelers";
 import { TripFormCardDestination } from "./TripFormCardDestination";
@@ -39,7 +38,6 @@ export function TripFormSlider({
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
-  const [ongoing, setOngoing] = useState(false);
 
   // Auto-select newly added traveler
   const prevTravelerCountRef = useRef(travelers.length);
@@ -69,13 +67,11 @@ export function TripFormSlider({
       setName(initialTrip.destination ?? "");
       setEntryDate(initialTrip.entryDate);
       setExitDate(initialTrip.exitDate ?? "");
-      setOngoing(!initialTrip.exitDate);
       setRegion(initialTrip.region);
     } else {
       setName("");
       setEntryDate("");
       setExitDate("");
-      setOngoing(false);
       setRegion(VisaRegion.Schengen);
     }
   }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -83,20 +79,20 @@ export function TripFormSlider({
   const canSave =
     travelerIds.length > 0 &&
     !!entryDate &&
-    (ongoing || (!!exitDate && exitDate > entryDate));
+    !!exitDate &&
+    exitDate > entryDate;
 
   const handleSave = useCallback(() => {
     if (!canSave) return;
-    const resolvedExit = ongoing ? undefined : exitDate || undefined;
     onSave(travelerIds, {
       id: initialTrip?.id ?? crypto.randomUUID(),
       entryDate,
-      exitDate: resolvedExit,
+      exitDate: exitDate || undefined,
       region,
       destination: name.trim() || undefined,
     });
     onClose();
-  }, [canSave, ongoing, exitDate, travelerIds, entryDate, region, name, initialTrip, onSave, onClose]);
+  }, [canSave, exitDate, travelerIds, entryDate, region, name, initialTrip, onSave, onClose]);
 
   const openCard = useCallback((card: ActiveCard) => setActiveCard(card), []);
   const closeCard = useCallback(() => setActiveCard(null), []);
@@ -164,15 +160,9 @@ export function TripFormSlider({
         <TripFormCardDates
           entryDate={entryDate}
           exitDate={exitDate}
-          ongoing={ongoing}
-          onEntryChange={(iso) => {
-            setEntryDate(iso);
-            // Clear ongoing when entry is removed or set to a future date.
-            if (!iso || parseDate(iso) > today()) setOngoing(false);
-          }}
+          onEntryChange={setEntryDate}
           onExitChange={setExitDate}
-          onOngoingChange={setOngoing}
-          onReset={() => { setEntryDate(""); setExitDate(""); setOngoing(false); }}
+          onReset={() => { setEntryDate(""); setExitDate(""); }}
           expanded={activeCard === "dates"}
           onExpand={() => openCard("dates")}
           onCollapse={closeCard}

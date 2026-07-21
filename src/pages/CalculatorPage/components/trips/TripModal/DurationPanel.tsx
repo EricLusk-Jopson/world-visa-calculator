@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import { tokens } from "@/styles/theme";
-import { VisaRegion } from "@/types";
+import { VisaRegion, VISA_REGION_LABELS } from "@/types";
 import { ImpactPreview } from "@/components/ui";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import type { TravelerStatus, ImpactBreakdown } from "../../travelers/travelerStatus";
@@ -26,7 +26,6 @@ export interface DurationPanelProps {
   region: VisaRegion;
   entryDate: string;
   exitDate: string;
-  ongoing: boolean;
   travelerCount: number;
   // Schengen
   entryConstraint: { daysAvailable: number; latestExit: string } | null;
@@ -46,7 +45,6 @@ export function DurationPanel({
   region,
   entryDate,
   exitDate,
-  ongoing,
   travelerCount,
   entryConstraint,
   impactStatus,
@@ -57,7 +55,7 @@ export function DurationPanel({
   stayAssessment,
   reentryRisk,
 }: DurationPanelProps) {
-  const resolvedExit = ongoing ? undefined : exitDate || undefined;
+  const resolvedExit = exitDate || undefined;
 
   return (
     <>
@@ -121,7 +119,7 @@ export function DurationPanel({
       {/* Impact preview (Schengen only) */}
       {region === VisaRegion.Schengen &&
         entryDate &&
-        (exitDate || ongoing) &&
+        exitDate &&
         impactStatus &&
         hasVisaFreeTravelers && (
           <ImpactPreview
@@ -135,11 +133,12 @@ export function DurationPanel({
           />
         )}
 
-      {/* Visa-required disclaimer (Schengen only) */}
-      {region === VisaRegion.Schengen &&
+      {/* Visa-required disclaimer — shown for any region when every selected
+          traveler needs a visa (day tracking depends on the specific visa). */}
+      {region !== VisaRegion.Elsewhere &&
         !hasVisaFreeTravelers &&
         entryDate &&
-        (exitDate || ongoing) && (
+        exitDate && (
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
@@ -150,7 +149,8 @@ export function DurationPanel({
               pb: "12px",
             }}
           >
-            Day tracking isn't available yet for Schengen visa holders as allowances depend on the specific visa granted.
+            Day tracking isn't available yet for {VISA_REGION_LABELS[region]} visa
+            holders as allowances depend on the specific visa granted.
           </Typography>
         )}
 

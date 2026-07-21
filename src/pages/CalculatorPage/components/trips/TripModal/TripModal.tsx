@@ -10,7 +10,6 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
-import Tooltip from "@mui/material/Tooltip";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -22,12 +21,10 @@ import { getPassportRule } from "@/data/regions";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
-import { OngoingToggle } from "@/components/ui/OngoingToggle";
 import {
   parseDate,
   formatDate,
   addDays,
-  today as getToday,
 } from "@/features/calculator/utils/dates";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import {
@@ -154,6 +151,22 @@ const INPUT_ERROR_SX = {
   },
 } as const;
 
+// Amber-highlighted field — used to flag a caution-level overstay / re-entry risk.
+const INPUT_CAUTION_SX = {
+  "& .MuiOutlinedInput-root": {
+    ...INPUT_SX["& .MuiOutlinedInput-root"],
+    bgcolor: tokens.amberBg,
+    "& fieldset": { borderColor: tokens.amber, borderWidth: 1.5 },
+  },
+} as const;
+
+// Map a caution/danger variant to the matching field style (null = default).
+function fieldSxForVariant(variant: "caution" | "danger" | null) {
+  if (variant === "danger") return INPUT_ERROR_SX;
+  if (variant === "caution") return INPUT_CAUTION_SX;
+  return INPUT_SX;
+}
+
 const SELECT_BASE_SX = {
   fontFamily: tokens.fontBody,
   fontSize: "0.85rem",
@@ -198,16 +211,11 @@ export function TripModal({
   const [destination, setDestination] = useState("");
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
-  const [ongoing, setOngoing] = useState(false);
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
   const [isEdit, setIsEdit] = useState(mode === "edit");
 
   const isMobile = useMediaQuery("(max-width:599.95px)");
-
-  const todayStr = formatDate(getToday());
-
-  const entryIsInFuture = Boolean(entryDate && entryDate > todayStr);
 
   useEffect(() => {
     if (!open) return;
@@ -219,13 +227,11 @@ export function TripModal({
       setDestination(initialTrip.destination ?? "");
       setEntryDate(initialTrip.entryDate);
       setExitDate(initialTrip.exitDate ?? "");
-      setOngoing(!initialTrip.exitDate);
       setRegion(initialTrip.region);
     } else {
       setDestination("");
       setEntryDate("");
       setExitDate("");
-      setOngoing(false);
       setRegion(VisaRegion.Schengen);
     }
   }, [open, mode, initialTrip, initialTravelerIds]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -234,7 +240,7 @@ export function TripModal({
   // Runs on every render so the Save button and inline message stay in sync
   // without waiting for the user to click Save.
 
-  const resolvedExit = ongoing ? undefined : exitDate || undefined;
+  const resolvedExit = exitDate || undefined;
 
   const overlapError: string | null = (() => {
     if (!open) return null;
@@ -263,7 +269,7 @@ export function TripModal({
   let entryConstraint: { daysAvailable: number; latestExit: string } | null =
     null;
 
-  if (entryDate && region === VisaRegion.Schengen && !exitDate && !ongoing) {
+  if (entryDate && region === VisaRegion.Schengen && !exitDate) {
     let minDays = Infinity;
     let latestExit = "";
 
@@ -308,14 +314,14 @@ export function TripModal({
           {
             id: "__preview__",
             entryDate,
-            exitDate: ongoing ? undefined : exitDate || undefined,
+            exitDate: exitDate || undefined,
             region: VisaRegion.Schengen,
             destination,
           },
         ]);
 
       const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
+      const refDate = exitDate ? parseDate(exitDate) : new Date();
       const status = computeTravelerStatus(tempTraveler, refDate);
 
       if (!impactStatus || status.daysRemaining < impactStatus.daysRemaining) {
@@ -344,14 +350,14 @@ export function TripModal({
           {
             id: "__preview__",
             entryDate,
-            exitDate: ongoing ? undefined : exitDate || undefined,
+            exitDate: exitDate || undefined,
             region: VisaRegion.Schengen,
             destination,
           },
         ]);
 
       const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
+      const refDate = exitDate ? parseDate(exitDate) : new Date();
       const status = computeTravelerStatus(tempTraveler, refDate);
 
       return [
@@ -371,7 +377,7 @@ export function TripModal({
   let impactBreakdown: ReturnType<typeof computeImpactBreakdown> | undefined =
     undefined;
 
-  if (entryDate && region === VisaRegion.Schengen && (exitDate || ongoing)) {
+  if (entryDate && region === VisaRegion.Schengen && exitDate) {
     let worstTraveler: Traveler | null = null;
     let worstRemaining = Infinity;
 
@@ -385,14 +391,14 @@ export function TripModal({
           {
             id: "__preview__",
             entryDate,
-            exitDate: ongoing ? undefined : exitDate || undefined,
+            exitDate: exitDate || undefined,
             region: VisaRegion.Schengen,
             destination,
           },
         ]);
 
       const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
+      const refDate = exitDate ? parseDate(exitDate) : new Date();
       const status = computeTravelerStatus(tempTraveler, refDate);
 
       if (status.daysRemaining < worstRemaining) {
@@ -408,7 +414,7 @@ export function TripModal({
 
       impactBreakdown = computeImpactBreakdown(
         entryDate,
-        ongoing ? undefined : exitDate || undefined,
+        exitDate || undefined,
         historicalTrips,
       );
     }
@@ -416,14 +422,16 @@ export function TripModal({
 
   // ── Visa-free traveler flags ────────────────────────────────────────────────
 
-  // Null passport = treated as visa-free (default permissive). Show ImpactPreview
-  // only when at least one traveler is not visa-required.
+  // Null passport = treated as visa-free (default permissive). False only when
+  // at least one traveler is selected AND every selected traveler is
+  // visa-required for the current region — the case where day tracking can't
+  // be shown and the visa-holder disclaimer applies instead.
   const hasVisaFreeTravelers =
-    region !== VisaRegion.Schengen ||
+    travelerIds.length === 0 ||
     travelerIds.some((tid) => {
       const t = travelers.find((x) => x.id === tid);
       return !t?.passportCode ||
-        getPassportRule(VisaRegion.Schengen, t.passportCode).access !== "visa_required";
+        getPassportRule(region, t.passportCode).access !== "visa_required";
     });
 
   // ── Generic stay assessment (per_visit + rolling_window regions) ─────────────
@@ -437,7 +445,7 @@ export function TripModal({
     entryDate
   ) {
     const regionRule = getRegionDefinition(region)?.rule ?? null;
-    const checkDate = ongoing ? undefined : exitDate || undefined;
+    const checkDate = exitDate || undefined;
 
     let worstAssessment: StayAssessment | null = null;
     let worstRisk: ReentryRisk | null = null;
@@ -484,6 +492,31 @@ export function TripModal({
     reentryRisk = worstRisk;
   }
 
+  // ── Date-field highlighting ─────────────────────────────────────────────────
+  // Exit date mirrors the duration assessment (overstay); entry date mirrors
+  // the re-entry risk. Both surface caution (amber) / danger (red) only.
+
+  const exitVariant: "caution" | "danger" | null =
+    region === VisaRegion.Schengen
+      ? hasVisaFreeTravelers &&
+        (impactVariant === "caution" || impactVariant === "danger")
+        ? impactVariant
+        : null
+      : stayAssessment &&
+          (stayAssessment.variant === "caution" ||
+            stayAssessment.variant === "danger")
+        ? stayAssessment.variant
+        : null;
+
+  const entryVariant: "caution" | "danger" | null =
+    reentryRisk &&
+    (reentryRisk.variant === "caution" || reentryRisk.variant === "danger")
+      ? reentryRisk.variant
+      : null;
+
+  const entryFieldSx = fieldSxForVariant(entryVariant);
+  const exitFieldSx = fieldSxForVariant(exitVariant);
+
   // ── Validation & submit ─────────────────────────────────────────────────────
 
   function handleSave() {
@@ -495,7 +528,11 @@ export function TripModal({
       setError("Please enter an entry date.");
       return;
     }
-    if (!ongoing && exitDate && exitDate < entryDate) {
+    if (!exitDate) {
+      setError("Please enter an exit date.");
+      return;
+    }
+    if (exitDate < entryDate) {
       setError("Exit date must be after entry date.");
       return;
     }
@@ -811,13 +848,8 @@ export function TripModal({
                   if (!date) return;
                   const iso = formatDate(date);
                   setEntryDate(iso);
-                  if (iso > todayStr && ongoing) {
-                    setOngoing(false);
-                  }
-                  if (!ongoing) {
-                    if (!exitDate || exitDate <= iso) {
-                      setExitDate(formatDate(addDays(date, 1)));
-                    }
+                  if (!exitDate || exitDate <= iso) {
+                    setExitDate(formatDate(addDays(date, 1)));
                   }
                   setError(null);
                 }}
@@ -825,13 +857,16 @@ export function TripModal({
                   textField: {
                     size: "small",
                     placeholder: "Entry",
-                    sx: error && !entryDate ? INPUT_ERROR_SX : INPUT_SX,
+                    sx:
+                      error && !entryDate
+                        ? INPUT_ERROR_SX
+                        : entryFieldSx,
                   },
                 }}
               />
               <DatePicker
                 value={exitDate ? parseISO(exitDate) : null}
-                disabled={ongoing || !entryDate}
+                disabled={!entryDate}
                 minDate={entryDate ? parseISO(entryDate) : undefined}
                 onChange={(date) => {
                   if (!date) return;
@@ -843,58 +878,13 @@ export function TripModal({
                     size: "small",
                     placeholder: "Exit",
                     sx: {
-                      ...(ongoing || !entryDate ? { opacity: 0.5 } : {}),
-                      ...INPUT_SX,
+                      ...(!entryDate ? { opacity: 0.5 } : {}),
+                      ...exitFieldSx,
                     },
                   },
                 }}
               />
             </Box>
-
-            <Tooltip
-              title={
-                entryIsInFuture
-                  ? "Ongoing trips require an entry date on or before today"
-                  : ""
-              }
-              placement="top"
-              arrow
-              disableHoverListener={!entryIsInFuture}
-              componentsProps={{
-                tooltip: {
-                  sx: {
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.72rem",
-                    bgcolor: tokens.navy,
-                    "& .MuiTooltip-arrow": { color: tokens.navy },
-                  },
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: "inline-block",
-                  pointerEvents: entryIsInFuture ? "none" : "auto",
-                  opacity: entryIsInFuture ? 0.4 : 1,
-                  transition: "opacity 0.15s",
-                }}
-              >
-                <OngoingToggle
-                  checked={ongoing}
-                  label={
-                    region === VisaRegion.Schengen ? "Currently inside Schengen (no exit yet)" :
-                    region === VisaRegion.UnitedKingdom ? "Currently in the UK (no exit yet)" :
-                    region === VisaRegion.Ireland ? "Currently in Ireland (no exit yet)" :
-                    "Currently travelling (no exit date yet)"
-                  }
-                  onChange={(v) => {
-                    setOngoing(v);
-                    if (v) setExitDate("");
-                    setError(null);
-                  }}
-                />
-              </Box>
-            </Tooltip>
           </Box>
 
           {/* 5 · Duration & overstay analysis */}
@@ -902,7 +892,6 @@ export function TripModal({
             region={region}
             entryDate={entryDate}
             exitDate={exitDate}
-            ongoing={ongoing}
             travelerCount={travelerIds.length}
             entryConstraint={entryConstraint}
             impactStatus={impactStatus}

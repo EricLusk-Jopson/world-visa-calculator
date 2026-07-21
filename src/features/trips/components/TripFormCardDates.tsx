@@ -2,18 +2,15 @@ import { useRef, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { tokens } from "@/styles/theme";
-import { parseDate, today } from "@/features/calculator/utils/dates";
-import { OngoingToggle } from "@/components/ui/OngoingToggle";
+import { parseDate } from "@/features/calculator/utils/dates";
 import { TripFormCard } from "./TripFormCard";
 import { TripDateRangeCalendar } from "./TripDateRangeCalendar";
 
 interface Props {
   entryDate: string;
   exitDate: string;
-  ongoing: boolean;
   onEntryChange: (iso: string) => void;
   onExitChange: (iso: string) => void;
-  onOngoingChange: (v: boolean) => void;
   onReset: () => void;
   expanded: boolean;
   onExpand: () => void;
@@ -27,11 +24,9 @@ function fmtShort(iso: string) {
   });
 }
 
-function buildSummary(entry: string, exit: string, ongoing: boolean): string {
+function buildSummary(entry: string, exit: string): string {
   if (!entry) return "";
-  if (ongoing || !exit) {
-    return `From ${fmtShort(entry)} · ongoing`;
-  }
+  if (!exit) return `From ${fmtShort(entry)}`;
   const days =
     Math.round(
       (parseDate(exit).getTime() - parseDate(entry).getTime()) / 86_400_000,
@@ -48,10 +43,8 @@ const SUMMARY_SX = {
 export function TripFormCardDates({
   entryDate,
   exitDate,
-  ongoing,
   onEntryChange,
   onExitChange,
-  onOngoingChange,
   onReset,
   expanded,
   onExpand,
@@ -69,7 +62,7 @@ export function TripFormCardDates({
     }
   }, [expanded]);
 
-  const summary = buildSummary(entryDate, exitDate, ongoing);
+  const summary = buildSummary(entryDate, exitDate);
   const filled = !!entryDate;
 
   const summaryNode = (
@@ -83,9 +76,6 @@ export function TripFormCardDates({
       {filled ? summary : "Select dates"}
     </Typography>
   );
-
-  // Disabled until a past/today entry date is selected.
-  const ongoingDisabled = !entryDate || parseDate(entryDate) > today();
 
   const todayBtn = (
     <Box
@@ -118,18 +108,7 @@ export function TripFormCardDates({
       onReset={onReset}
       headerExtra={todayBtn}
     >
-      <OngoingToggle
-        checked={ongoing}
-        disabled={ongoingDisabled}
-        onChange={(v) => {
-          onOngoingChange(v);
-          if (v) onExitChange("");
-        }}
-        sx={{ mb: "12px" }}
-      />
-
       <TripDateRangeCalendar
-        ongoing={ongoing}
         entryDate={entryDate}
         exitDate={exitDate}
         onEntryChange={onEntryChange}

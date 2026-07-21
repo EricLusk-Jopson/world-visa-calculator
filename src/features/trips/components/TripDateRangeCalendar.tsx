@@ -7,7 +7,6 @@ import { tokens } from "@/styles/theme";
 import { parseDate, formatDate } from "@/features/calculator/utils/dates";
 
 interface Props {
-  ongoing: boolean;
   entryDate: string;
   exitDate: string;
   onEntryChange: (iso: string) => void;
@@ -73,7 +72,6 @@ const CALENDAR_SX = {
 };
 
 export function TripDateRangeCalendar({
-  ongoing,
   entryDate,
   exitDate,
   onEntryChange,
@@ -137,23 +135,6 @@ export function TripDateRangeCalendar({
 
   const entryDateObj = entryDate ? parseDate(entryDate) : undefined;
   const exitDateObj = exitDate ? parseDate(exitDate) : undefined;
-
-  if (ongoing) {
-    return (
-      <Box ref={containerRef} sx={CALENDAR_SX}>
-        <Box ref={sentinelRef} sx={{ height: "1px" }} />
-        {/* TODO: add modifiers prop for green/yellow/red day shading */}
-        <DayPicker
-          mode="single"
-          selected={entryDateObj}
-          onSelect={(date) => onEntryChange(date ? formatDate(date) : "")}
-          defaultMonth={startMonth}
-          numberOfMonths={totalMonths}
-          hideNavigation
-        />
-      </Box>
-    );
-  }
 
   const range: DateRange | undefined = entryDateObj
     ? { from: entryDateObj, to: exitDateObj }
