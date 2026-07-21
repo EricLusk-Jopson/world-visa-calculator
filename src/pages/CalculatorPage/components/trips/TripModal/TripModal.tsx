@@ -41,9 +41,11 @@ import { trackEvent } from "@/utils/analytics";
 import {
   assessStay,
   detectReentryRisk,
-  regionRuleToLimits,
+  resolveStayLimits,
+  perVisitApproxDays,
 } from "@/features/calculator/utils/stayCalculator";
 import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
+import type { PerVisitLimit } from "@/types";
 import { getRegionDefinition } from "@/data/regions";
 import { EntryEligibilityPanel } from "./EntryEligibilityPanel";
 import { DurationPanel } from "./DurationPanel";
@@ -434,46 +436,52 @@ export function TripModal({
     region !== VisaRegion.Elsewhere &&
     entryDate
   ) {
-    const regionDef = getRegionDefinition(region);
-    const regionRule = regionDef?.rule;
-    const limits = regionRule ? regionRuleToLimits(regionRule) : null;
+    const regionRule = getRegionDefinition(region)?.rule ?? null;
+    const checkDate = ongoing ? undefined : exitDate || undefined;
 
-    if (limits && regionRule) {
-      const checkDate = ongoing ? undefined : exitDate || undefined;
+    let worstAssessment: StayAssessment | null = null;
+    let worstRisk: ReentryRisk | null = null;
 
-      const eligibleTravelers = travelerIds.flatMap((tid) => {
-        const t = travelers.find((x) => x.id === tid);
-        if (!t) return [];
-        const rule = getPassportRule(region, t.passportCode);
-        return rule.access === "entitled" || !t.passportCode ? [t] : [];
-      });
+    for (const tid of travelerIds) {
+      const t = travelers.find((x) => x.id === tid);
+      if (!t) continue;
 
-      if (eligibleTravelers.length > 0) {
-        let worstAssessment: StayAssessment | null = null;
-        for (const t of eligibleTravelers) {
-          const tripHistory = t.trips.filter(
-            (tr) => tr.region === region && tr.id !== initialTrip?.id,
-          );
-          const assessment = assessStay(limits, tripHistory, entryDate, checkDate);
-          if (assessment && (!worstAssessment || assessment.daysRemaining < worstAssessment.daysRemaining)) {
-            worstAssessment = assessment;
-          }
-        }
-        stayAssessment = worstAssessment;
+      // Limits come from the traveler's own passport entitlement (respecting
+      // per-passport allowances and units), falling back to the region default
+      // for travelers with no nationality set.
+      const rule = getPassportRule(region, t.passportCode);
+      const limits = resolveStayLimits(t.passportCode, rule, regionRule);
+      if (!limits) continue;
 
-        if (regionRule.type === "per_visit") {
-          let worstRisk: ReentryRisk | null = null;
-          for (const t of eligibleTravelers) {
-            const completedTrips = t.trips.filter(
-              (tr) => tr.region === region && tr.exitDate && tr.id !== initialTrip?.id,
-            );
-            const risk = detectReentryRisk(regionRule.allowanceDays, completedTrips, entryDate);
-            if (risk && (!worstRisk || risk.variant === "danger")) worstRisk = risk;
-          }
-          reentryRisk = worstRisk;
-        }
+      const tripHistory = t.trips.filter(
+        (tr) => tr.region === region && tr.id !== initialTrip?.id,
+      );
+      const assessment = assessStay(limits, tripHistory, entryDate, checkDate);
+      if (
+        assessment &&
+        (!worstAssessment || assessment.daysRemaining < worstAssessment.daysRemaining)
+      ) {
+        worstAssessment = assessment;
+      }
+
+      const perVisit = limits.find(
+        (l): l is PerVisitLimit => l.type === "per_visit",
+      );
+      if (perVisit) {
+        const completedTrips = t.trips.filter(
+          (tr) => tr.region === region && tr.exitDate && tr.id !== initialTrip?.id,
+        );
+        const risk = detectReentryRisk(
+          perVisitApproxDays(perVisit),
+          completedTrips,
+          entryDate,
+        );
+        if (risk && (!worstRisk || risk.variant === "danger")) worstRisk = risk;
       }
     }
+
+    stayAssessment = worstAssessment;
+    reentryRisk = worstRisk;
   }
 
   // ── Validation & submit ─────────────────────────────────────────────────────

@@ -40,14 +40,7 @@ import { computeTravelerStatus } from "../../travelers/travelerStatus";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { getUKRule } from "@/data/regions/uk";
 import { getIrelandRule } from "@/data/regions/ireland";
-import {
-  assessUKStay,
-  detectUKReentryRisk,
-} from "@/features/calculator/utils/uk";
-import {
-  assessIrelandStay,
-  detectIrelandReentryRisk,
-} from "@/features/calculator/utils/ireland";
+import { assessRegionTripStay } from "@/features/calculator/utils/stayCalculator";
 
 interface TravelerTimelineColumnProps {
   traveler: Traveler;
@@ -572,39 +565,24 @@ export function TravelerTimelineColumn({
         const ukRule = getUKRule(traveler.passportCode);
         const irelandRule = getIrelandRule(traveler.passportCode);
 
-        const ukIsEligible = ukRule.access === "entitled" || !traveler.passportCode;
-        const irelandIsEligible = irelandRule.access === "entitled" || !traveler.passportCode;
-
         const ukStayInfo =
-          trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukIsEligible
-            ? (() => {
-                const assessment = assessUKStay(trip.entryDate, trip.exitDate);
-                const ukTrips = traveler.trips.filter(
-                  (t) => t.region === VisaRegion.UnitedKingdom && t.exitDate && t.id !== trip.id,
-                );
-                const risk = detectUKReentryRisk(ukTrips, trip.entryDate);
-                return {
-                  stayVariant: assessment.variant,
-                  daysRemaining: assessment.daysRemaining,
-                  reentryVariant: risk?.variant,
-                };
-              })()
+          trip.region === VisaRegion.UnitedKingdom && trip.exitDate
+            ? assessRegionTripStay(
+                VisaRegion.UnitedKingdom,
+                traveler.passportCode,
+                trip,
+                traveler.trips,
+              ) ?? undefined
             : undefined;
 
         const irelandStayInfo =
-          trip.region === VisaRegion.Ireland && trip.exitDate && irelandIsEligible
-            ? (() => {
-                const assessment = assessIrelandStay(trip.entryDate, trip.exitDate);
-                const irelandTrips = traveler.trips.filter(
-                  (t) => t.region === VisaRegion.Ireland && t.exitDate && t.id !== trip.id,
-                );
-                const risk = detectIrelandReentryRisk(irelandTrips, trip.entryDate);
-                return {
-                  stayVariant: assessment.variant,
-                  daysRemaining: assessment.daysRemaining,
-                  reentryVariant: risk?.variant,
-                };
-              })()
+          trip.region === VisaRegion.Ireland && trip.exitDate
+            ? assessRegionTripStay(
+                VisaRegion.Ireland,
+                traveler.passportCode,
+                trip,
+                traveler.trips,
+              ) ?? undefined
             : undefined;
 
         return (

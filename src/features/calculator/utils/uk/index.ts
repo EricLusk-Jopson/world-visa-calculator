@@ -1,11 +1,6 @@
-export type { StayVariant, UKStayAssessment, UKReentryRisk } from "./calculator";
-export {
-  UK_MAX_CALENDAR_MONTHS,
-  UK_CAUTION_DAYS,
-  calculateUKMaxExitDate,
-  assessUKStay,
-  detectUKReentryRisk,
-} from "./calculator";
+// UK stay calculation is handled by the generic stayCalculator
+// (@/features/calculator/utils/stayCalculator). Only the UI tooltip copy
+// remains region-specific.
 export {
   CHIP_TOOLTIP_UK_ETA,
   CHIP_TOOLTIP_UK_DATV,

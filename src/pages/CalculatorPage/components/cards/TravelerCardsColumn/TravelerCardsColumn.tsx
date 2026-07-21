@@ -13,14 +13,7 @@ import {
   calculateMaxStay,
   calculateEarliestEntry,
 } from "@/features/calculator/utils/schengen";
-import {
-  assessUKStay,
-  detectUKReentryRisk,
-} from "@/features/calculator/utils/uk";
-import {
-  assessIrelandStay,
-  detectIrelandReentryRisk,
-} from "@/features/calculator/utils/ireland";
+import { assessRegionTripStay } from "@/features/calculator/utils/stayCalculator";
 import {
   parseDate,
   formatDate,
@@ -234,43 +227,29 @@ export function TravelerCardsColumn({
             const ukRule = getUKRule(traveler.passportCode);
             const irelandRule = getIrelandRule(traveler.passportCode);
 
-            // Compute stay info for visa_free AND unknown-passport travelers
-            // (mirrors Schengen's permissive-default for unset nationality).
-            // Passport-rule chips (ETA, DATV, visa req.) are suppressed when
-            // no nationality is set, so passing `undefined` for the rule prop.
-            const ukIsEligible = ukRule.access === "entitled" || !traveler.passportCode;
-            const irelandIsEligible = irelandRule.access === "entitled" || !traveler.passportCode;
-
+            // Stay info covers entitled AND unknown-passport travelers
+            // (mirrors Schengen's permissive-default for unset nationality) —
+            // assessRegionTripStay returns null when the traveler is not
+            // eligible. Passport-rule chips (ETA, DATV, visa req.) are
+            // suppressed separately when no nationality is set.
             const ukStayInfo =
-              trip.region === VisaRegion.UnitedKingdom && trip.exitDate && ukIsEligible
-                ? (() => {
-                    const assessment = assessUKStay(trip.entryDate, trip.exitDate);
-                    const ukTrips = traveler.trips.filter(
-                      (t) => t.region === VisaRegion.UnitedKingdom && t.exitDate && t.id !== trip.id,
-                    );
-                    const risk = detectUKReentryRisk(ukTrips, trip.entryDate);
-                    return {
-                      stayVariant: assessment.variant,
-                      daysRemaining: assessment.daysRemaining,
-                      reentryVariant: risk?.variant,
-                    };
-                  })()
+              trip.region === VisaRegion.UnitedKingdom && trip.exitDate
+                ? assessRegionTripStay(
+                    VisaRegion.UnitedKingdom,
+                    traveler.passportCode,
+                    trip,
+                    traveler.trips,
+                  ) ?? undefined
                 : undefined;
 
             const irelandStayInfo =
-              trip.region === VisaRegion.Ireland && trip.exitDate && irelandIsEligible
-                ? (() => {
-                    const assessment = assessIrelandStay(trip.entryDate, trip.exitDate);
-                    const irelandTrips = traveler.trips.filter(
-                      (t) => t.region === VisaRegion.Ireland && t.exitDate && t.id !== trip.id,
-                    );
-                    const risk = detectIrelandReentryRisk(irelandTrips, trip.entryDate);
-                    return {
-                      stayVariant: assessment.variant,
-                      daysRemaining: assessment.daysRemaining,
-                      reentryVariant: risk?.variant,
-                    };
-                  })()
+              trip.region === VisaRegion.Ireland && trip.exitDate
+                ? assessRegionTripStay(
+                    VisaRegion.Ireland,
+                    traveler.passportCode,
+                    trip,
+                    traveler.trips,
+                  ) ?? undefined
                 : undefined;
 
             return (

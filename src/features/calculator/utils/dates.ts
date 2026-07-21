@@ -11,6 +11,9 @@ import {
   differenceInCalendarDays,
   addDays,
   subDays,
+  addWeeks,
+  addMonths,
+  addYears,
   isAfter,
   isBefore,
   isEqual,
@@ -20,9 +23,9 @@ import {
   min,
 } from "date-fns";
 
-// These three are re-exported because the calculator uses them directly
+// These are re-exported because the calculator uses them directly
 // rather than through a named wrapper.
-export { differenceInCalendarDays, addDays, subDays };
+export { differenceInCalendarDays, addDays, subDays, addWeeks, addMonths, addYears };
 
 // ─── Parsing & Formatting ──────────────────────────────────────────────────────
 

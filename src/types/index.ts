@@ -113,12 +113,28 @@ export interface RuleNote {
 // ─── Stay limits ──────────────────────────────────────────────────────────────
 
 /**
+ * Unit a stay allowance is measured in.
+ *
+ * Note on inclusivity — the two families behave differently by design, because
+ * that is how the underlying rules are written:
+ *   - 'days' / 'weeks'   → counted days. A 90-day permission entered on day 1
+ *                          expires on the 90th day (entry + 89).
+ *   - 'months' / 'years' → calendar anchored. A 6-month visit entered on Jan 15
+ *                          expires on Jul 15 (addMonths(entry, 6)). 'years' is
+ *                          used for multi-year authorisation validity (e.g. a
+ *                          2-year ETA).
+ */
+export type StayUnit = 'days' | 'weeks' | 'months' | 'years';
+
+/**
  * Per-visit limit. Resets on each departure and re-entry.
- * Examples: UK (180 days), Ireland (90 days), Türkiye e-visa entrants.
+ * Examples: UK (6 months), Ireland (90 days), Türkiye e-visa entrants (30 days).
  */
 export interface PerVisitLimit {
   readonly type: 'per_visit';
-  days: number;
+  /** Length of the allowance, expressed in `unit`. */
+  value: number;
+  unit: StayUnit;
 }
 
 /**

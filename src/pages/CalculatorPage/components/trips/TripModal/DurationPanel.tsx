@@ -182,10 +182,10 @@ export function DurationPanel({
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
             <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, fontWeight: 500 }}>
               {stayAssessment.variant === "danger" && stayAssessment.daysRemaining < 0
-                ? `Over the ${stayAssessment.daysAllowed}-day limit by ${Math.abs(stayAssessment.daysRemaining)} day${Math.abs(stayAssessment.daysRemaining) === 1 ? "" : "s"}`
+                ? `Over the ${stayAssessment.limitLabel} limit by ${Math.abs(stayAssessment.daysRemaining)} day${Math.abs(stayAssessment.daysRemaining) === 1 ? "" : "s"}`
                 : stayAssessment.limitType === "rolling_window"
-                  ? `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} used of ${stayAssessment.daysAllowed}-day allowance`
-                  : `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} of ${stayAssessment.daysAllowed}-day visit`}
+                  ? `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} used of ${stayAssessment.limitLabel} allowance`
+                  : `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} of ${stayAssessment.limitLabel} visit`}
             </Typography>
             <Typography
               sx={{
@@ -204,8 +204,8 @@ export function DurationPanel({
               <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "1px", flexShrink: 0, color: stayAssessment.variant === "danger" ? tokens.red : tokens.amberText }} />
               <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: stayAssessment.variant === "danger" ? tokens.red : tokens.amberText, lineHeight: 1.4 }}>
                 {stayAssessment.variant === "danger"
-                  ? `This trip exceeds the ${stayAssessment.daysAllowed}-day limit. Authorities may require you to leave or deny entry.`
-                  : `Approaching the ${stayAssessment.daysAllowed}-day limit. Plan an exit date before the deadline.`}
+                  ? `This trip exceeds the ${stayAssessment.limitLabel} limit. Authorities may require you to leave or deny entry.`
+                  : `Approaching the ${stayAssessment.limitLabel} limit. Plan an exit date before the deadline.`}
               </Typography>
             </Box>
           )}

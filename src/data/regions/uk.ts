@@ -61,7 +61,8 @@ import { UKSources } from '@/data/sources';
 
 const UK_LIMIT: PerVisitLimit = {
   type: 'per_visit',
-  days: 180,
+  value: 6,
+  unit: 'months',
 };
 
 // ─── Pre-travel authorisation ─────────────────────────────────────────────────

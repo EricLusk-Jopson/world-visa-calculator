@@ -1,15 +1,6 @@
-export type {
-  StayVariant,
-  IrelandStayAssessment,
-  IrelandReentryRisk,
-} from "./calculator";
-export {
-  IRELAND_MAX_DAYS,
-  IRELAND_CAUTION_DAYS,
-  calculateIrelandMaxExitDate,
-  assessIrelandStay,
-  detectIrelandReentryRisk,
-} from "./calculator";
+// Ireland stay calculation is handled by the generic stayCalculator
+// (@/features/calculator/utils/stayCalculator). Only the UI tooltip copy
+// remains region-specific.
 export {
   CHIP_TOOLTIP_IRELAND_STAY_CAUTION,
   CHIP_TOOLTIP_IRELAND_STAY_DANGER,

@@ -68,7 +68,7 @@ import { TurkiyeSources } from '@/data/sources';
 
 const TR_ROLLING_90: RollingWindowLimit = { type: 'rolling_window', days: 90,  windowDays: 180 };
 const TR_ROLLING_60: RollingWindowLimit = { type: 'rolling_window', days: 60,  windowDays: 180 };
-const TR_PER_VISIT_30: PerVisitLimit    = { type: 'per_visit',       days: 30 };
+const TR_PER_VISIT_30: PerVisitLimit    = { type: 'per_visit',       value: 30, unit: 'days' };
 const TR_FROM_ENTRY_90: FixedWindowFromEntryLimit = {
   type: 'fixed_window_from_entry',
   days: 90,

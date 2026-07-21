@@ -86,7 +86,8 @@ import { IrelandSources } from '@/data/sources';
 
 const IRELAND_LIMIT: PerVisitLimit = {
   type: 'per_visit',
-  days: 90,
+  value: 90,
+  unit: 'days',
 };
 
 // ─── Shared note text ─────────────────────────────────────────────────────────

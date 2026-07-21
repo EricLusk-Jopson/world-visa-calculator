@@ -89,17 +89,24 @@ export type RuleNote = {
 
 // ─── Stay limits ─────────────────────────────────────────────────────────────
 
+/** Unit a stay allowance is measured in. */
+export type StayUnit = 'days' | 'weeks' | 'months' | 'years';
+
 /**
  * Per-visit limit.
  * The clock resets on each departure and re-entry. Each visit is assessed
  * independently. Repeated visits may attract officer scrutiny at some
  * destinations even when each individual visit is within the limit.
  *
- * Examples: UK (180 days), Ireland (90 days), Türkiye e-visa (30 or 90 days)
+ * `days`/`weeks` are counted inclusively; `months`/`years` are calendar
+ * anchored (a 6-month visit entered Jan 15 expires Jul 15).
+ *
+ * Examples: UK (6 months), Ireland (90 days), Türkiye e-visa (30 or 90 days)
  */
 export type PerVisitLimit = {
   readonly type: 'per_visit';
-  days: number;
+  value: number;
+  unit: StayUnit;
 };
 
 /**
