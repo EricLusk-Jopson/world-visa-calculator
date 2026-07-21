@@ -8,6 +8,11 @@ import { TripFormCardName } from "./TripFormCardName";
 import { TripFormCardTravelers } from "./TripFormCardTravelers";
 import { TripFormCardDestination } from "./TripFormCardDestination";
 import { TripFormCardDates } from "./TripFormCardDates";
+import { TripSummaryRow } from "./TripSummaryRow";
+import { MobileEligibilityFrame } from "./MobileEligibilityFrame";
+import { MobileDurationFrame } from "./MobileDurationFrame";
+import { computeTravelerEligibility } from "@/pages/CalculatorPage/components/trips/tripEligibility";
+import { computeTravelerDurations } from "@/pages/CalculatorPage/components/trips/tripDuration";
 
 export interface TripFormSliderProps {
   open: boolean;
@@ -33,6 +38,7 @@ export function TripFormSlider({
   onAddNewTraveler,
 }: TripFormSliderProps) {
   const [activeCard, setActiveCard] = useState<ActiveCard>(null);
+  const [frame, setFrame] = useState<"eligibility" | "duration" | null>(null);
   const [name, setName] = useState("");
   const [travelerIds, setTravelerIds] = useState<string[]>([]);
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
@@ -62,6 +68,7 @@ export function TripFormSlider({
   useEffect(() => {
     if (!open) return;
     setActiveCard(null);
+    setFrame(null);
     setTravelerIds(initialTravelerIds);
     if (mode === "edit" && initialTrip) {
       setName(initialTrip.destination ?? "");
@@ -81,6 +88,32 @@ export function TripFormSlider({
     !!entryDate &&
     !!exitDate &&
     exitDate > entryDate;
+
+  // ── Entry eligibility + stay duration summaries ──
+  const datesSet = !!entryDate && !!exitDate;
+
+  const eligibility =
+    region !== VisaRegion.Elsewhere
+      ? computeTravelerEligibility(region, travelers, travelerIds)
+      : [];
+  const eligOk = eligibility.filter((e) => e.ok).length;
+  const eligWarn = eligibility.filter((e) => !e.ok).length;
+
+  const durations = datesSet
+    ? computeTravelerDurations({
+        region,
+        travelers,
+        travelerIds,
+        entryDate,
+        exitDate,
+        destination: name,
+        excludeTripId: initialTrip?.id,
+      })
+    : [];
+  const durOk = durations.filter((d) => !d.hasIssue).length;
+  const durWarn = durations.filter((d) => d.hasIssue).length;
+  const allVisaRequired =
+    eligibility.length > 0 && eligibility.every((e) => e.access === "visa_required");
 
   const handleSave = useCallback(() => {
     if (!canSave) return;
@@ -155,6 +188,18 @@ export function TripFormSlider({
           expanded={activeCard === "destination"}
           onExpand={() => openCard("destination")}
           onCollapse={closeCard}
+          footer={
+            region !== VisaRegion.Elsewhere ? (
+              <TripSummaryRow
+                label="Entry Eligibility"
+                okCount={eligOk}
+                warnCount={eligWarn}
+                placeholder="Select travelers"
+                disabled={eligibility.length === 0}
+                onClick={() => setFrame("eligibility")}
+              />
+            ) : undefined
+          }
         />
 
         <TripFormCardDates
@@ -166,8 +211,32 @@ export function TripFormSlider({
           expanded={activeCard === "dates"}
           onExpand={() => openCard("dates")}
           onCollapse={closeCard}
+          footer={
+            region !== VisaRegion.Elsewhere ? (
+              <TripSummaryRow
+                label="Stay Duration"
+                okCount={durOk}
+                warnCount={durWarn}
+                placeholder={!datesSet ? "Set dates" : allVisaRequired ? "Not tracked" : ""}
+                disabled={!datesSet}
+                onClick={() => setFrame("duration")}
+              />
+            ) : undefined
+          }
         />
       </Box>
+
+      <MobileEligibilityFrame
+        open={frame === "eligibility"}
+        onClose={() => setFrame(null)}
+        eligibility={eligibility}
+      />
+      <MobileDurationFrame
+        open={frame === "duration"}
+        onClose={() => setFrame(null)}
+        durations={durations}
+        allVisaRequired={allVisaRequired}
+      />
     </FullScreenSlider>
   );
 }

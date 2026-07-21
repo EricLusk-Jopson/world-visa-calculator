@@ -15,6 +15,7 @@ interface Props {
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
+  footer?: React.ReactNode;
 }
 
 function fmtShort(iso: string) {
@@ -49,6 +50,7 @@ export function TripFormCardDates({
   expanded,
   onExpand,
   onCollapse,
+  footer,
 }: Props) {
   const scrollToTodayRef = useRef<(() => void) | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -107,6 +109,7 @@ export function TripFormCardDates({
       onDone={onCollapse}
       onReset={onReset}
       headerExtra={todayBtn}
+      footer={footer}
     >
       <TripDateRangeCalendar
         entryDate={entryDate}
