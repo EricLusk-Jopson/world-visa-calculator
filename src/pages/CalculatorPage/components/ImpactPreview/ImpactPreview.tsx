@@ -364,7 +364,11 @@ export function ImpactPreview({
     ? statusVariantForDays(breakdown.daysRemaining)
     : variant;
   const colors = VARIANT_COLORS[effectiveVariant];
-  const isMulti = travelerImpacts && travelerImpacts.length > 1;
+  // Always render the per-traveler bar rows when we have traveler data — the
+  // bar treatment is shown for every trip, solo or group. "most constrained"
+  // labelling still only applies when there is more than one traveler.
+  const showBars = Boolean(travelerImpacts && travelerImpacts.length >= 1);
+  const isMulti = Boolean(travelerImpacts && travelerImpacts.length > 1);
 
   // ── Pre-compute window boundaries for range clipping ──────────────────────
   //
@@ -411,7 +415,7 @@ export function ImpactPreview({
             display: "flex",
             flexDirection: "column",
             gap: "4px",
-            flex: isMulti ? 1 : "unset",
+            flex: showBars ? 1 : "unset",
           }}
         >
           <Typography
@@ -428,7 +432,7 @@ export function ImpactPreview({
             After this trip
           </Typography>
 
-          {!isMulti && (
+          {!showBars && (
             <Typography
               sx={{
                 fontFamily: tokens.fontBody,
@@ -444,7 +448,7 @@ export function ImpactPreview({
             </Typography>
           )}
 
-          {isMulti && (
+          {showBars && (
             <Box
               sx={{
                 display: "flex",
@@ -453,7 +457,7 @@ export function ImpactPreview({
                 mt: "4px",
               }}
             >
-              {travelerImpacts.map((impact) => (
+              {travelerImpacts!.map((impact) => (
                 <TravelerImpactRow key={impact.id} impact={impact} />
               ))}
             </Box>
@@ -497,7 +501,7 @@ export function ImpactPreview({
           )}
         </Box>
 
-        {!isMulti && (
+        {!showBars && (
           <Box
             sx={{
               display: "flex",

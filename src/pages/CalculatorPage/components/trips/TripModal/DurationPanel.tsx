@@ -39,14 +39,80 @@ export interface DurationPanelProps {
   reentryRisk: ReentryRisk | null;
 }
 
+// ─── Entry constraint hint ─────────────────────────────────────────────────────
+// Shown pre-exit (Schengen): "X days available · latest exit …". Rendered
+// standalone by TripModal, so it survives the Duration Status panel gating.
+
+export function EntryConstraintHint({
+  entryConstraint,
+  travelerCount,
+}: {
+  entryConstraint: { daysAvailable: number; latestExit: string };
+  travelerCount: number;
+}) {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        px: "12px",
+        py: "9px",
+        bgcolor: tokens.mist,
+        border: `1px solid ${tokens.border}`,
+        borderRadius: "10px",
+      }}
+    >
+      {entryConstraint.daysAvailable === 0 ? (
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.75rem",
+            color: tokens.red,
+            fontWeight: 600,
+          }}
+        >
+          No days available — entry not possible on this date.
+        </Typography>
+      ) : (
+        <>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.75rem",
+              color: tokens.textSoft,
+              fontWeight: 500,
+            }}
+          >
+            {entryConstraint.daysAvailable === 1
+              ? "1 day available"
+              : `${entryConstraint.daysAvailable} days available`}
+            {travelerCount > 1 && " (most constrained)"}
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              color: tokens.navy,
+              ml: "8px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Latest exit: {fmtHintDate(entryConstraint.latestExit)}
+          </Typography>
+        </>
+      )}
+    </Box>
+  );
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function DurationPanel({
   region,
   entryDate,
   exitDate,
-  travelerCount,
-  entryConstraint,
   impactStatus,
   impactVariant,
   impactBreakdown,
@@ -59,63 +125,6 @@ export function DurationPanel({
 
   return (
     <>
-      {/* Entry constraint hint */}
-      {entryConstraint && (
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            px: "12px",
-            py: "9px",
-            bgcolor: tokens.mist,
-            border: `1px solid ${tokens.border}`,
-            borderRadius: "10px",
-          }}
-        >
-          {entryConstraint.daysAvailable === 0 ? (
-            <Typography
-              sx={{
-                fontFamily: tokens.fontBody,
-                fontSize: "0.75rem",
-                color: tokens.red,
-                fontWeight: 600,
-              }}
-            >
-              No days available — entry not possible on this date.
-            </Typography>
-          ) : (
-            <>
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.75rem",
-                  color: tokens.textSoft,
-                  fontWeight: 500,
-                }}
-              >
-                {entryConstraint.daysAvailable === 1
-                  ? "1 day available"
-                  : `${entryConstraint.daysAvailable} days available`}
-                {travelerCount > 1 && " (most constrained)"}
-              </Typography>
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  color: tokens.navy,
-                  ml: "8px",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Latest exit: {fmtHintDate(entryConstraint.latestExit)}
-              </Typography>
-            </>
-          )}
-        </Box>
-      )}
-
       {/* Impact preview (Schengen only) */}
       {region === VisaRegion.Schengen &&
         entryDate &&

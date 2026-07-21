@@ -32,7 +32,6 @@ import {
   computeTravelerStatus,
   getStatusVariant,
 } from "../../travelers/travelerStatus";
-import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import { trackEvent } from "@/utils/analytics";
 import {
@@ -45,7 +44,9 @@ import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/st
 import type { PerVisitLimit } from "@/types";
 import { getRegionDefinition } from "@/data/regions";
 import { EntryEligibilityPanel } from "./EntryEligibilityPanel";
-import { DurationPanel } from "./DurationPanel";
+import { EntryConstraintHint } from "./DurationPanel";
+import { DurationStatusPanel } from "./DurationStatusPanel";
+import { computeTravelerDurations } from "../tripDuration";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -334,44 +335,6 @@ export function TripModal({
     ? getStatusVariant(impactStatus.daysRemaining)
     : ("neutral" as const);
 
-  // ── Per-traveler impacts ────────────────────────────────────────────────────
-
-  let travelerImpacts: TravelerImpact[] | undefined = undefined;
-
-  if (travelerIds.length > 1 && entryDate && region === VisaRegion.Schengen) {
-    travelerImpacts = travelerIds.flatMap((tid) => {
-      const traveler = travelers.find((t) => t.id === tid);
-      const travelerIndex = travelers.findIndex((t) => t.id === tid);
-      if (!traveler) return [];
-
-      const tempTrips = traveler.trips
-        .filter((t) => t.id !== initialTrip?.id)
-        .concat([
-          {
-            id: "__preview__",
-            entryDate,
-            exitDate: exitDate || undefined,
-            region: VisaRegion.Schengen,
-            destination,
-          },
-        ]);
-
-      const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = exitDate ? parseDate(exitDate) : new Date();
-      const status = computeTravelerStatus(tempTraveler, refDate);
-
-      return [
-        {
-          id: tid,
-          name: traveler.name,
-          color: getTravelerColor(travelerIndex),
-          daysRemaining: status.daysRemaining,
-          daysUsed: status.daysUsed,
-        },
-      ];
-    });
-  }
-
   // ── Impact breakdown ────────────────────────────────────────────────────────
 
   let impactBreakdown: ReturnType<typeof computeImpactBreakdown> | undefined =
@@ -491,6 +454,31 @@ export function TripModal({
     stayAssessment = worstAssessment;
     reentryRisk = worstRisk;
   }
+
+  // ── Per-traveler duration data (all regions) ────────────────────────────────
+
+  const durations = computeTravelerDurations({
+    region,
+    travelers,
+    travelerIds,
+    entryDate,
+    exitDate,
+    destination,
+    excludeTripId: initialTrip?.id,
+  });
+
+  // Schengen ImpactPreview bars are driven by the same duration data so the
+  // header counts and the bars always agree.
+  const travelerImpacts: TravelerImpact[] | undefined =
+    region === VisaRegion.Schengen && durations.length > 0
+      ? durations.map((d) => ({
+          id: d.id,
+          name: d.name,
+          color: d.color,
+          daysRemaining: d.schengenStatus?.daysRemaining ?? 0,
+          daysUsed: d.schengenStatus?.daysUsed ?? 0,
+        }))
+      : undefined;
 
   // ── Date-field highlighting ─────────────────────────────────────────────────
   // Exit date mirrors the duration assessment (overstay); entry date mirrors
@@ -888,11 +876,18 @@ export function TripModal({
           </Box>
 
           {/* 5 · Duration & overstay analysis */}
-          <DurationPanel
+          {entryConstraint && (
+            <EntryConstraintHint
+              entryConstraint={entryConstraint}
+              travelerCount={travelerIds.length}
+            />
+          )}
+          <DurationStatusPanel
             region={region}
             entryDate={entryDate}
             exitDate={exitDate}
             travelerCount={travelerIds.length}
+            durations={durations}
             entryConstraint={entryConstraint}
             impactStatus={impactStatus}
             impactVariant={impactVariant}
