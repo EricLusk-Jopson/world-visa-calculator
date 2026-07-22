@@ -9,7 +9,7 @@
  */
 
 import { VisaRegion } from "@/types";
-import type { Traveler, PerVisitLimit, RollingWindowLimit } from "@/types";
+import type { Traveler, PerVisitLimit, StayLimit } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import {
   resolveStayLimits,
@@ -97,6 +97,24 @@ function chipFor(daysRemaining: number): string {
   return daysRemaining >= 0
     ? `${daysRemaining}d left`
     : `over by ${Math.abs(daysRemaining)}d`;
+}
+
+/**
+ * The binding window for a set of limits, if any. Rolling, fixed-from-entry and
+ * calendar-period limits are all shown with the rolling-window breakdown (an
+ * accurate approximation for a single trip; the exact reset semantics are
+ * spelled out in the eligibility rule text).
+ */
+function windowOf(
+  limits: readonly StayLimit[],
+): { days: number; windowDays: number } | null {
+  for (const l of limits) {
+    if (l.type === "rolling_window" || l.type === "fixed_window_from_entry")
+      return { days: l.days, windowDays: l.windowDays };
+    if (l.type === "calendar_period")
+      return { days: l.days, windowDays: l.periodDays };
+  }
+  return null;
 }
 
 /** Build a rolling-window duration entry (Schengen / Türkiye / any rolling limit). */
@@ -194,14 +212,16 @@ export function computeTravelerDurations(
     const limits = resolveStayLimits(traveler.passportCode, rule, regionRule);
     if (!limits) continue; // free-movement → no day limit
 
-    // A rolling-window limit (e.g. Türkiye 90/180) uses the same breakdown as
-    // Schengen rather than a per-visit summary.
-    const rolling = limits.find(
-      (l): l is RollingWindowLimit => l.type === "rolling_window",
-    );
-    if (rolling) {
+    const perVisit = limits.find((l): l is PerVisitLimit => l.type === "per_visit");
+
+    // A window-based limit with no per-visit cap (e.g. Türkiye 90/180 rolling,
+    // or Albania's 90-in-180 from first entry) uses the rolling breakdown.
+    // When a per-visit cap also applies, the stacked assessment below (most
+    // restrictive) governs instead.
+    const window = perVisit ? null : windowOf(limits);
+    if (window) {
       result.push(
-        buildRolling(tid, traveler, color, region, params, rolling.days, rolling.windowDays),
+        buildRolling(tid, traveler, color, region, params, window.days, window.windowDays),
       );
       continue;
     }
@@ -212,7 +232,6 @@ export function computeTravelerDurations(
     const assessment = assessStay(limits, tripHistory, entryDate, exitDate || undefined);
     if (!assessment) continue;
 
-    const perVisit = limits.find((l): l is PerVisitLimit => l.type === "per_visit");
     let reentry: ReentryRisk | null = null;
     if (perVisit) {
       const completed = traveler.trips.filter(
