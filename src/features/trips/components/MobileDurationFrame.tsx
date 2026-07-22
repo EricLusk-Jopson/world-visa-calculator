@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
@@ -60,7 +61,9 @@ function DurationCard({ d }: { d: TravelerDuration }) {
         <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "1rem", fontStyle: "italic", color: tokens.navy, flex: 1 }}>
           {d.name}
         </Typography>
-        {ok ? (
+        {!d.tracked ? (
+          <HelpOutlineIcon sx={{ fontSize: "1.1rem", color: tokens.textGhost }} />
+        ) : ok ? (
           <CheckCircleOutlineIcon sx={{ fontSize: "1.1rem", color: tokens.green }} />
         ) : (
           <WarningAmberIcon sx={{ fontSize: "1.1rem", color: VARIANT_VALUE[d.variant] }} />
@@ -72,7 +75,15 @@ function DurationCard({ d }: { d: TravelerDuration }) {
         )}
       </Box>
 
-      {open && (
+      {open && !d.tracked && (
+        <Box sx={{ px: "14px", pb: "14px" }}>
+          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.78rem", color: tokens.textSoft, lineHeight: 1.5 }}>
+            {d.note}
+          </Typography>
+        </Box>
+      )}
+
+      {open && d.tracked && (
         <Box sx={{ px: "14px", pb: "14px", display: "flex", flexDirection: "column", gap: "12px" }}>
           {/* Progress bar + chip */}
           <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>

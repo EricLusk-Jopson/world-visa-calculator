@@ -110,8 +110,9 @@ export function TripFormSlider({
         excludeTripId: initialTrip?.id,
       })
     : [];
-  const durOk = durations.filter((d) => !d.hasIssue).length;
-  const durWarn = durations.filter((d) => d.hasIssue).length;
+  const durOk = durations.filter((d) => d.tracked && !d.hasIssue).length;
+  const durWarn = durations.filter((d) => d.tracked && d.hasIssue).length;
+  const durUnknown = durations.filter((d) => !d.tracked).length;
   const allVisaRequired =
     eligibility.length > 0 && eligibility.every((e) => e.access === "visa_required");
 
@@ -217,7 +218,8 @@ export function TripFormSlider({
                 label="Stay Duration"
                 okCount={durOk}
                 warnCount={durWarn}
-                placeholder={!datesSet ? "Set dates" : allVisaRequired ? "Not tracked" : ""}
+                unknownCount={durUnknown}
+                placeholder={!datesSet ? "Set dates" : ""}
                 disabled={!datesSet}
                 onClick={() => setFrame("duration")}
               />

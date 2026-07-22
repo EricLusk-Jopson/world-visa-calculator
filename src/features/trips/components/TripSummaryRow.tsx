@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { tokens } from "@/styles/theme";
 
@@ -9,6 +10,8 @@ export interface TripSummaryRowProps {
   label: string;
   okCount: number;
   warnCount: number;
+  /** Visa-required / untracked travelers (grey). */
+  unknownCount?: number;
   /** Muted placeholder shown when there are no counts (e.g. dates not set). */
   placeholder?: string;
   disabled?: boolean;
@@ -23,11 +26,12 @@ export function TripSummaryRow({
   label,
   okCount,
   warnCount,
+  unknownCount = 0,
   placeholder,
   disabled,
   onClick,
 }: TripSummaryRowProps) {
-  const empty = okCount === 0 && warnCount === 0;
+  const empty = okCount === 0 && warnCount === 0 && unknownCount === 0;
   return (
     <Box
       component="button"
@@ -90,6 +94,14 @@ export function TripSummaryRow({
                 <WarningAmberIcon sx={{ fontSize: "1rem", color: tokens.red }} />
                 <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: 600, color: tokens.red }}>
                   {warnCount}
+                </Typography>
+              </Box>
+            )}
+            {unknownCount > 0 && (
+              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
+                <HelpOutlineIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
+                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: 600, color: tokens.textGhost }}>
+                  {unknownCount}
                 </Typography>
               </Box>
             )}

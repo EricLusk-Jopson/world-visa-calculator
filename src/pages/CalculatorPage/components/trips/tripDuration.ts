@@ -38,11 +38,21 @@ import { parseDate } from "@/features/calculator/utils/dates";
 
 const SCHENGEN_MAX_DAYS = 90;
 
+export const VISA_REQUIRED_DURATION_NOTE =
+  "Visa required — the day allowance depends on the specific visa granted, so it can't be tracked automatically.";
+
 export interface TravelerDuration {
   id: string;
   name: string;
   color: string;
-  /** Overall status for the bar / chip. */
+  /**
+   * False for visa-required travelers: there is no calculable day allowance,
+   * so the bar / chip fields are placeholders and `note` explains why.
+   */
+  tracked: boolean;
+  /** Explanatory note shown when `tracked` is false. */
+  note?: string;
+  /** Overall status for the bar / chip (only meaningful when tracked). */
   variant: StayVariant;
   /** Bar fill, 0–100. */
   fillPct: number;
@@ -56,6 +66,24 @@ export interface TravelerDuration {
   // ── Generic (per-visit / rolling) detail ──
   assessment?: StayAssessment;
   reentry?: ReentryRisk | null;
+}
+
+function untrackedEntry(
+  id: string,
+  name: string,
+  color: string,
+): TravelerDuration {
+  return {
+    id,
+    name,
+    color,
+    tracked: false,
+    note: VISA_REQUIRED_DURATION_NOTE,
+    variant: "safe",
+    fillPct: 0,
+    chipLabel: "",
+    hasIssue: false,
+  };
 }
 
 export interface ComputeTravelerDurationsParams {
@@ -95,12 +123,13 @@ export function computeTravelerDurations({
 
     if (region === VisaRegion.Schengen) {
       // Visa-required Schengen travelers have no calculable day allowance
-      // (it depends on the specific visa) — they surface in the disclaimer.
+      // (it depends on the specific visa) — represent them as untracked.
       if (
         traveler.passportCode &&
         getPassportRule(VisaRegion.Schengen, traveler.passportCode).access ===
           "visa_required"
       ) {
+        result.push(untrackedEntry(tid, traveler.name, color));
         continue;
       }
 
@@ -138,6 +167,7 @@ export function computeTravelerDurations({
         id: tid,
         name: traveler.name,
         color,
+        tracked: true,
         variant,
         fillPct,
         chipLabel: chipFor(daysRemaining),
@@ -151,8 +181,16 @@ export function computeTravelerDurations({
     // ── Per-visit / rolling regions (UK, Ireland, Türkiye) ──
     const regionRule = getRegionDefinition(region)?.rule ?? null;
     const rule = getPassportRule(region, traveler.passportCode);
+
+    // Visa-required (with a passport set) → untracked. No-passport travelers
+    // fall through to the permissive region default below.
+    if (traveler.passportCode && rule.access === "visa_required") {
+      result.push(untrackedEntry(tid, traveler.name, color));
+      continue;
+    }
+
     const limits = resolveStayLimits(traveler.passportCode, rule, regionRule);
-    if (!limits) continue; // visa-required or free-movement → no calculable cap
+    if (!limits) continue; // free-movement → no day limit
 
     const tripHistory = traveler.trips.filter(
       (t) => t.region === region && t.id !== excludeTripId,
@@ -182,6 +220,7 @@ export function computeTravelerDurations({
       id: tid,
       name: traveler.name,
       color,
+      tracked: true,
       variant: assessment.variant,
       fillPct,
       chipLabel: chipFor(assessment.daysRemaining),

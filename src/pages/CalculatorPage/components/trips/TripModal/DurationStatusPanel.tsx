@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
@@ -27,6 +28,22 @@ const VARIANT_CHIP = {
   caution: { bg: tokens.amberBg, border: tokens.amberBorder, text: tokens.amberText },
   danger: { bg: tokens.redBg, border: tokens.redBorder, text: tokens.redText },
 } as const;
+
+function UntrackedRow({ duration }: { duration: TravelerDuration }) {
+  return (
+    <Box sx={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+      <HelpOutlineIcon sx={{ fontSize: "1rem", color: tokens.textGhost, mt: "1px", flexShrink: 0 }} />
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "1px", minWidth: 0 }}>
+        <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "0.85rem", fontStyle: "italic", color: tokens.navy }}>
+          {duration.name}
+        </Typography>
+        <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.68rem", color: tokens.textSoft, lineHeight: 1.4 }}>
+          {duration.note}
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
 
 function DurationBarRow({ duration }: { duration: TravelerDuration }) {
   const chip = VARIANT_CHIP[duration.variant];
@@ -105,8 +122,10 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
   // Only meaningful once both dates are chosen for a tracked region.
   if (region === VisaRegion.Elsewhere || !entryDate || !exitDate) return null;
 
-  const okCount = durations.filter((d) => !d.hasIssue).length;
-  const issueCount = durations.filter((d) => d.hasIssue).length;
+  const okCount = durations.filter((d) => d.tracked && !d.hasIssue).length;
+  const issueCount = durations.filter((d) => d.tracked && d.hasIssue).length;
+  const untrackedCount = durations.filter((d) => !d.tracked).length;
+  const untracked = durations.filter((d) => !d.tracked);
   const noneTracked = durations.length === 0;
 
   return (
@@ -171,6 +190,19 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
               </Box>
             </Tooltip>
           )}
+          {untrackedCount > 0 && (
+            <Tooltip
+              title={`${untrackedCount} visa-required ${untrackedCount === 1 ? "traveler has" : "travelers have"} no automatic day tracking`}
+              placement="top"
+              arrow
+              componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
+                <HelpOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.textGhost }} />
+                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.textGhost }}>{untrackedCount}</Typography>
+              </Box>
+            </Tooltip>
+          )}
           {noneTracked && (
             <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost, fontStyle: "italic" }}>
               {hasVisaFreeTravelers ? "No day limit" : "Not tracked for visa holders"}
@@ -189,10 +221,21 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
         <Box sx={{ px: "12px", py: "10px", display: "flex", flexDirection: "column", gap: "10px" }}>
           {/* Per-traveler bars for non-Schengen regions (Schengen renders its
               own bars inside ImpactPreview below). */}
-          {region !== VisaRegion.Schengen && durations.length > 0 && (
+          {region !== VisaRegion.Schengen &&
+            durations.some((d) => d.tracked) && (
+              <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                {durations
+                  .filter((d) => d.tracked)
+                  .map((d) => (
+                    <DurationBarRow key={d.id} duration={d} />
+                  ))}
+              </Box>
+            )}
+          {/* Visa-required travelers — grey, with an explanatory note. */}
+          {untracked.length > 0 && (
             <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-              {durations.map((d) => (
-                <DurationBarRow key={d.id} duration={d} />
+              {untracked.map((d) => (
+                <UntrackedRow key={d.id} duration={d} />
               ))}
             </Box>
           )}

@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import { tokens } from "@/styles/theme";
-import { VisaRegion, VISA_REGION_LABELS } from "@/types";
+import { VisaRegion } from "@/types";
 import { ImpactPreview } from "@/components/ui";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import type { TravelerStatus, ImpactBreakdown } from "../../travelers/travelerStatus";
@@ -142,26 +142,8 @@ export function DurationPanel({
           />
         )}
 
-      {/* Visa-required disclaimer — shown for any region when every selected
-          traveler needs a visa (day tracking depends on the specific visa). */}
-      {region !== VisaRegion.Elsewhere &&
-        !hasVisaFreeTravelers &&
-        entryDate &&
-        exitDate && (
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.75rem",
-              fontStyle: "italic",
-              color: tokens.textGhost,
-              px: "20px",
-              pb: "12px",
-            }}
-          >
-            Day tracking isn't available yet for {VISA_REGION_LABELS[region]} visa
-            holders as allowances depend on the specific visa granted.
-          </Typography>
-        )}
+      {/* Visa-required travelers are surfaced per-traveler (grey, with a note)
+          by DurationStatusPanel, so no region-level disclaimer is needed here. */}
 
       {/* Generic stay assessment */}
       {stayAssessment && (

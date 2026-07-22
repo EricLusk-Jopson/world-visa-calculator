@@ -469,14 +469,18 @@ export function TripModal({
 
   // Schengen ImpactPreview bars are driven by the same duration data so the
   // header counts and the bars always agree.
+  const trackedSchengen =
+    region === VisaRegion.Schengen
+      ? durations.filter((d) => d.tracked && d.schengenStatus)
+      : [];
   const travelerImpacts: TravelerImpact[] | undefined =
-    region === VisaRegion.Schengen && durations.length > 0
-      ? durations.map((d) => ({
+    trackedSchengen.length > 0
+      ? trackedSchengen.map((d) => ({
           id: d.id,
           name: d.name,
           color: d.color,
-          daysRemaining: d.schengenStatus?.daysRemaining ?? 0,
-          daysUsed: d.schengenStatus?.daysUsed ?? 0,
+          daysRemaining: d.schengenStatus!.daysRemaining,
+          daysUsed: d.schengenStatus!.daysUsed,
         }))
       : undefined;
 
