@@ -9,7 +9,10 @@ import { tokens } from "@/styles/theme";
 export interface TripSummaryRowProps {
   label: string;
   okCount: number;
-  warnCount: number;
+  /** Approaching a limit (amber). */
+  cautionCount?: number;
+  /** Over a limit / refused (red). */
+  dangerCount: number;
   /** Visa-required / untracked travelers (grey). */
   unknownCount?: number;
   /** Muted placeholder shown when there are no counts (e.g. dates not set). */
@@ -37,13 +40,14 @@ function Count({ icon, value, color }: { icon: React.ReactNode; value: number; c
 export function TripSummaryRow({
   label,
   okCount,
-  warnCount,
+  cautionCount = 0,
+  dangerCount,
   unknownCount = 0,
   placeholder,
   disabled,
   onClick,
 }: TripSummaryRowProps) {
-  const empty = okCount === 0 && warnCount === 0 && unknownCount === 0;
+  const empty = okCount === 0 && cautionCount === 0 && dangerCount === 0 && unknownCount === 0;
   return (
     <Box
       component="button"
@@ -95,9 +99,16 @@ export function TripSummaryRow({
                 icon={<CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />}
               />
             )}
-            {warnCount > 0 && (
+            {cautionCount > 0 && (
               <Count
-                value={warnCount}
+                value={cautionCount}
+                color={tokens.amberText}
+                icon={<WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.amber }} />}
+              />
+            )}
+            {dangerCount > 0 && (
+              <Count
+                value={dangerCount}
                 color={tokens.red}
                 icon={<WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />}
               />

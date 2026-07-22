@@ -117,8 +117,9 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
 
   const tracked = durations.filter((d) => d.tracked);
   const untracked = durations.filter((d) => !d.tracked);
-  const okCount = tracked.filter((d) => !d.hasIssue).length;
-  const issueCount = tracked.filter((d) => d.hasIssue).length;
+  const okCount = tracked.filter((d) => d.severity === "safe").length;
+  const cautionCount = tracked.filter((d) => d.severity === "caution").length;
+  const dangerCount = tracked.filter((d) => d.severity === "danger").length;
   const untrackedCount = untracked.length;
   const noneTracked = durations.length === 0;
 
@@ -190,16 +191,29 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
               </Box>
             </Tooltip>
           )}
-          {issueCount > 0 && (
+          {cautionCount > 0 && (
             <Tooltip
-              title={`${issueCount} ${issueCount === 1 ? "traveler has" : "travelers have"} a stay or re-entry concern`}
+              title={`${cautionCount} ${cautionCount === 1 ? "traveler is" : "travelers are"} approaching a stay limit`}
+              placement="top"
+              arrow
+              componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
+                <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.amber }} />
+                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.amberText }}>{cautionCount}</Typography>
+              </Box>
+            </Tooltip>
+          )}
+          {dangerCount > 0 && (
+            <Tooltip
+              title={`${dangerCount} ${dangerCount === 1 ? "traveler is over a limit" : "travelers are over a limit"} or at re-entry risk`}
               placement="top"
               arrow
               componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
             >
               <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
                 <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.red }}>{issueCount}</Typography>
+                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.red }}>{dangerCount}</Typography>
               </Box>
             </Tooltip>
           )}

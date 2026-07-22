@@ -109,8 +109,9 @@ export function TripFormSlider({
         excludeTripId: initialTrip?.id,
       })
     : [];
-  const durOk = durations.filter((d) => d.tracked && !d.hasIssue).length;
-  const durWarn = durations.filter((d) => d.tracked && d.hasIssue).length;
+  const durOk = durations.filter((d) => d.tracked && d.severity === "safe").length;
+  const durCaution = durations.filter((d) => d.tracked && d.severity === "caution").length;
+  const durDanger = durations.filter((d) => d.tracked && d.severity === "danger").length;
   const durUnknown = durations.filter((d) => !d.tracked).length;
 
   const handleSave = useCallback(() => {
@@ -191,7 +192,7 @@ export function TripFormSlider({
               <TripSummaryRow
                 label="Entry Eligibility"
                 okCount={eligOk}
-                warnCount={eligWarn}
+                dangerCount={eligWarn}
                 placeholder="Select travelers"
                 disabled={eligibility.length === 0}
                 onClick={() => setDetailOpen(true)}
@@ -214,7 +215,8 @@ export function TripFormSlider({
               <TripSummaryRow
                 label="Stay Duration"
                 okCount={durOk}
-                warnCount={durWarn}
+                cautionCount={durCaution}
+                dangerCount={durDanger}
                 unknownCount={durUnknown}
                 placeholder={!datesSet ? "Set dates" : ""}
                 disabled={!datesSet}

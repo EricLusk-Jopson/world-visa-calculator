@@ -9,7 +9,7 @@
  */
 
 import { VisaRegion } from "@/types";
-import type { Traveler, PerVisitLimit, StayLimit } from "@/types";
+import type { Traveler, PerVisitLimit, RollingWindowLimit } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import {
   resolveStayLimits,
@@ -52,8 +52,14 @@ export interface TravelerDuration {
   tracked: boolean;
   /** Explanatory note shown when `tracked` is false. */
   note?: string;
-  /** Overall status for the bar / chip (only meaningful when tracked). */
+  /** Stay-duration status, drives the bar / chip colour (only when tracked). */
   variant: StayVariant;
+  /**
+   * Overall status for the status icon / counts: the worse of the stay variant
+   * and any re-entry risk. caution = approaching overstay (amber), danger = over
+   * or refused (red).
+   */
+  severity: StayVariant;
   /** Bar fill, 0–100. */
   fillPct: number;
   /** Chip text, e.g. "34d left" or "over by 3d". */
@@ -76,10 +82,18 @@ function untrackedEntry(id: string, name: string, color: string): TravelerDurati
     tracked: false,
     note: VISA_REQUIRED_DURATION_NOTE,
     variant: "safe",
+    severity: "safe",
     fillPct: 0,
     chipLabel: "",
     hasIssue: false,
   };
+}
+
+const SEVERITY_RANK: Record<StayVariant, number> = { safe: 0, caution: 1, danger: 2 };
+
+/** The worse of two variants (danger > caution > safe). */
+function worseVariant(a: StayVariant, b: StayVariant | undefined): StayVariant {
+  return b && SEVERITY_RANK[b] > SEVERITY_RANK[a] ? b : a;
 }
 
 export interface ComputeTravelerDurationsParams {
@@ -99,25 +113,7 @@ function chipFor(daysRemaining: number): string {
     : `over by ${Math.abs(daysRemaining)}d`;
 }
 
-/**
- * The binding window for a set of limits, if any. Rolling, fixed-from-entry and
- * calendar-period limits are all shown with the rolling-window breakdown (an
- * accurate approximation for a single trip; the exact reset semantics are
- * spelled out in the eligibility rule text).
- */
-function windowOf(
-  limits: readonly StayLimit[],
-): { days: number; windowDays: number } | null {
-  for (const l of limits) {
-    if (l.type === "rolling_window" || l.type === "fixed_window_from_entry")
-      return { days: l.days, windowDays: l.windowDays };
-    if (l.type === "calendar_period")
-      return { days: l.days, windowDays: l.periodDays };
-  }
-  return null;
-}
-
-/** Build a rolling-window duration entry (Schengen / Türkiye / any rolling limit). */
+/** Build a rolling-window duration entry (Schengen / Türkiye rolling limits). */
 function buildRolling(
   id: string,
   traveler: Traveler,
@@ -163,6 +159,7 @@ function buildRolling(
     color,
     tracked: true,
     variant,
+    severity: variant,
     fillPct,
     chipLabel: chipFor(daysRemaining),
     hasIssue: variant !== "safe",
@@ -214,16 +211,20 @@ export function computeTravelerDurations(
 
     const perVisit = limits.find((l): l is PerVisitLimit => l.type === "per_visit");
 
-    // A window-based limit with no per-visit cap (e.g. Türkiye 90/180 rolling,
-    // or Albania's 90-in-180 from first entry) uses the rolling breakdown.
-    // When a per-visit cap also applies, the stacked assessment below (most
-    // restrictive) governs instead.
-    const window = perVisit ? null : windowOf(limits);
-    if (window) {
-      result.push(
-        buildRolling(tid, traveler, color, region, params, window.days, window.windowDays),
+    // A rolling-window limit with no per-visit cap (e.g. Türkiye 90/180) uses
+    // the rolling breakdown (aging-out calculation). Everything else — per-visit,
+    // fixed-window-from-entry, calendar-period, or a stacked combination — uses
+    // the precise stay assessment, most restrictive limit governing.
+    if (!perVisit) {
+      const rolling = limits.find(
+        (l): l is RollingWindowLimit => l.type === "rolling_window",
       );
-      continue;
+      if (rolling) {
+        result.push(
+          buildRolling(tid, traveler, color, region, params, rolling.days, rolling.windowDays),
+        );
+        continue;
+      }
     }
 
     const tripHistory = traveler.trips.filter(
@@ -241,8 +242,7 @@ export function computeTravelerDurations(
     }
 
     const fillPct = Math.min(100, (assessment.tripDays / assessment.daysAllowed) * 100);
-    const hasIssue =
-      assessment.variant !== "safe" || (reentry != null && reentry.variant !== "safe");
+    const severity = worseVariant(assessment.variant, reentry?.variant);
 
     result.push({
       id: tid,
@@ -250,9 +250,10 @@ export function computeTravelerDurations(
       color,
       tracked: true,
       variant: assessment.variant,
+      severity,
       fillPct,
       chipLabel: chipFor(assessment.daysRemaining),
-      hasIssue,
+      hasIssue: severity !== "safe",
       assessment,
       reentry,
     });

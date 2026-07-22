@@ -188,8 +188,12 @@ function TravelerCard({
   exitDate: string;
 }) {
   const [open, setOpen] = useState(true);
-  const accentColor = e.ok ? tokens.green : tokens.red;
   const accessColor = e.access === "visa_required" ? tokens.red : tokens.text;
+
+  // Header icon reflects the worst of entry eligibility and stay duration:
+  // visa-required/unknown → red, approaching a limit → amber, otherwise green.
+  const durSeverity = dur?.tracked ? dur.severity : "safe";
+  const overall: "safe" | "caution" | "danger" = !e.ok ? "danger" : durSeverity;
 
   return (
     <Box sx={{ borderRadius: "14px", border: `1.5px solid ${tokens.border}`, bgcolor: tokens.white, overflow: "hidden" }}>
@@ -202,10 +206,10 @@ function TravelerCard({
         <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "1rem", fontStyle: "italic", color: tokens.navy, flex: 1 }}>
           {e.name}
         </Typography>
-        {e.ok ? (
-          <CheckCircleOutlineIcon sx={{ fontSize: "1.1rem", color: accentColor }} />
+        {overall === "safe" ? (
+          <CheckCircleOutlineIcon sx={{ fontSize: "1.1rem", color: tokens.green }} />
         ) : (
-          <WarningAmberIcon sx={{ fontSize: "1.1rem", color: accentColor }} />
+          <WarningAmberIcon sx={{ fontSize: "1.1rem", color: overall === "danger" ? tokens.red : tokens.amber }} />
         )}
         {open ? (
           <ExpandLessIcon sx={{ fontSize: "1.2rem", color: tokens.textGhost }} />
