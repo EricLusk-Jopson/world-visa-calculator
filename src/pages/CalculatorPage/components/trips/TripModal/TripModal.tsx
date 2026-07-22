@@ -27,12 +27,6 @@ import {
   addDays,
 } from "@/features/calculator/utils/dates";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
-import {
-  computeImpactBreakdown,
-  computeTravelerStatus,
-  getStatusVariant,
-} from "../../travelers/travelerStatus";
-import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import { trackEvent } from "@/utils/analytics";
 import {
   assessStay,
@@ -300,103 +294,6 @@ export function TripModal({
     }
   }
 
-  // ── Impact status ───────────────────────────────────────────────────────────
-
-  let impactStatus: ReturnType<typeof computeTravelerStatus> | null = null;
-
-  if (entryDate && region === VisaRegion.Schengen) {
-    for (const tid of travelerIds) {
-      const traveler = travelers.find((t) => t.id === tid);
-      if (!traveler) continue;
-
-      const tempTrips = traveler.trips
-        .filter((t) => t.id !== initialTrip?.id)
-        .concat([
-          {
-            id: "__preview__",
-            entryDate,
-            exitDate: exitDate || undefined,
-            region: VisaRegion.Schengen,
-            destination,
-          },
-        ]);
-
-      const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = exitDate ? parseDate(exitDate) : new Date();
-      const status = computeTravelerStatus(tempTraveler, refDate);
-
-      if (!impactStatus || status.daysRemaining < impactStatus.daysRemaining) {
-        impactStatus = status;
-      }
-    }
-  }
-
-  const impactVariant = impactStatus
-    ? getStatusVariant(impactStatus.daysRemaining)
-    : ("neutral" as const);
-
-  // ── Impact breakdown ────────────────────────────────────────────────────────
-
-  let impactBreakdown: ReturnType<typeof computeImpactBreakdown> | undefined =
-    undefined;
-
-  if (entryDate && region === VisaRegion.Schengen && exitDate) {
-    let worstTraveler: Traveler | null = null;
-    let worstRemaining = Infinity;
-
-    for (const tid of travelerIds) {
-      const traveler = travelers.find((t) => t.id === tid);
-      if (!traveler) continue;
-
-      const tempTrips = traveler.trips
-        .filter((t) => t.id !== initialTrip?.id)
-        .concat([
-          {
-            id: "__preview__",
-            entryDate,
-            exitDate: exitDate || undefined,
-            region: VisaRegion.Schengen,
-            destination,
-          },
-        ]);
-
-      const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = exitDate ? parseDate(exitDate) : new Date();
-      const status = computeTravelerStatus(tempTraveler, refDate);
-
-      if (status.daysRemaining < worstRemaining) {
-        worstRemaining = status.daysRemaining;
-        worstTraveler = traveler;
-      }
-    }
-
-    if (worstTraveler) {
-      const historicalTrips = worstTraveler.trips.filter(
-        (t) => t.region === VisaRegion.Schengen && t.id !== initialTrip?.id,
-      );
-
-      impactBreakdown = computeImpactBreakdown(
-        entryDate,
-        exitDate || undefined,
-        historicalTrips,
-      );
-    }
-  }
-
-  // ── Visa-free traveler flags ────────────────────────────────────────────────
-
-  // Null passport = treated as visa-free (default permissive). False only when
-  // at least one traveler is selected AND every selected traveler is
-  // visa-required for the current region — the case where day tracking can't
-  // be shown and the visa-holder disclaimer applies instead.
-  const hasVisaFreeTravelers =
-    travelerIds.length === 0 ||
-    travelerIds.some((tid) => {
-      const t = travelers.find((x) => x.id === tid);
-      return !t?.passportCode ||
-        getPassportRule(region, t.passportCode).access !== "visa_required";
-    });
-
   // ── Generic stay assessment (per_visit + rolling_window regions) ─────────────
 
   let stayAssessment: StayAssessment | null = null;
@@ -467,38 +364,23 @@ export function TripModal({
     excludeTripId: initialTrip?.id,
   });
 
-  // Schengen ImpactPreview bars are driven by the same duration data so the
-  // header counts and the bars always agree.
-  const trackedSchengen =
-    region === VisaRegion.Schengen
-      ? durations.filter((d) => d.tracked && d.schengenStatus)
-      : [];
-  const travelerImpacts: TravelerImpact[] | undefined =
-    trackedSchengen.length > 0
-      ? trackedSchengen.map((d) => ({
-          id: d.id,
-          name: d.name,
-          color: d.color,
-          daysRemaining: d.schengenStatus!.daysRemaining,
-          daysUsed: d.schengenStatus!.daysUsed,
-        }))
-      : undefined;
-
   // ── Date-field highlighting ─────────────────────────────────────────────────
   // Exit date mirrors the duration assessment (overstay); entry date mirrors
   // the re-entry risk. Both surface caution (amber) / danger (red) only.
 
+  const worstTrackedVariant = durations
+    .filter((d) => d.tracked)
+    .reduce<"safe" | "caution" | "danger" | null>(
+      (w, d) =>
+        d.variant === "danger" || (d.variant === "caution" && w !== "danger")
+          ? d.variant
+          : w,
+      null,
+    );
   const exitVariant: "caution" | "danger" | null =
-    region === VisaRegion.Schengen
-      ? hasVisaFreeTravelers &&
-        (impactVariant === "caution" || impactVariant === "danger")
-        ? impactVariant
-        : null
-      : stayAssessment &&
-          (stayAssessment.variant === "caution" ||
-            stayAssessment.variant === "danger")
-        ? stayAssessment.variant
-        : null;
+    worstTrackedVariant === "caution" || worstTrackedVariant === "danger"
+      ? worstTrackedVariant
+      : null;
 
   const entryVariant: "caution" | "danger" | null =
     reentryRisk &&
@@ -531,9 +413,19 @@ export function TripModal({
     // overlapError is already shown inline — guard here as a safety net
     if (overlapError) return;
 
-    if (impactStatus && impactStatus.daysRemaining < 0) {
+    const worstRemaining = durations
+      .filter((d) => d.tracked)
+      .reduce((min, d) => {
+        const dr =
+          d.rollingBreakdown?.daysRemaining ??
+          d.rollingStatus?.daysRemaining ??
+          d.assessment?.daysRemaining ??
+          0;
+        return Math.min(min, dr);
+      }, Infinity);
+    if (Number.isFinite(worstRemaining) && worstRemaining < 0) {
       trackEvent("overstay_warning_shown", {
-        days_over: Math.abs(impactStatus.daysRemaining),
+        days_over: Math.abs(worstRemaining),
       });
     }
 
@@ -890,14 +782,7 @@ export function TripModal({
             region={region}
             entryDate={entryDate}
             exitDate={exitDate}
-            travelerCount={travelerIds.length}
             durations={durations}
-            entryConstraint={entryConstraint}
-            impactStatus={impactStatus}
-            impactVariant={impactVariant}
-            impactBreakdown={impactBreakdown}
-            travelerImpacts={travelerImpacts}
-            hasVisaFreeTravelers={hasVisaFreeTravelers}
             stayAssessment={stayAssessment}
             reentryRisk={reentryRisk}
           />

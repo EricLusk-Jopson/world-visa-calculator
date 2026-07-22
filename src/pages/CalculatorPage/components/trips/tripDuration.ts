@@ -2,19 +2,14 @@
  * Per-traveler duration computation shared by the desktop Duration Status panel
  * and the mobile duration frame.
  *
- * For each selected traveler with a calculable stay, produces:
- *   - a progress bar fill (rolling window → balance used; per-visit → proportion
- *     of the entitlement consumed by this trip)
- *   - a status variant + chip label ("34d left" / "over by 3d")
- *   - the underlying detail needed to render the expanded view (Schengen impact
- *     breakdown, or the generic stay assessment + re-entry risk).
- *
- * Visa-required travelers (no calculable stay) are omitted — they surface in the
- * visa-holder disclaimer instead.
+ * Rolling-window regions (Schengen AND Türkiye and any rolling limit) run
+ * through the same rolling-window breakdown so the full "days in window"
+ * calculation is available. Per-visit regions (UK, Ireland) use the stay
+ * assessment. Visa-required travelers are represented as untracked entries.
  */
 
 import { VisaRegion } from "@/types";
-import type { Traveler, PerVisitLimit } from "@/types";
+import type { Traveler, PerVisitLimit, RollingWindowLimit } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import {
   resolveStayLimits,
@@ -28,18 +23,23 @@ import type {
   StayVariant,
 } from "@/features/calculator/utils/stayCalculator";
 import {
-  computeTravelerStatus,
   computeImpactBreakdown,
   getStatusVariant,
 } from "../travelers/travelerStatus";
-import type { TravelerStatus, ImpactBreakdown } from "../travelers/travelerStatus";
+import type { ImpactBreakdown } from "../travelers/travelerStatus";
+import { createRollingWindowCalculator } from "@/features/calculator/utils/rollingWindowCalculator";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
-import { parseDate } from "@/features/calculator/utils/dates";
-
-const SCHENGEN_MAX_DAYS = 90;
+import { parseDate, formatDate } from "@/features/calculator/utils/dates";
 
 export const VISA_REQUIRED_DURATION_NOTE =
   "Visa required — the day allowance depends on the specific visa granted, so it can't be tracked automatically.";
+
+/** Rolling-window status (days used / remaining in the window) for a traveler. */
+export interface RollingStatus {
+  daysUsed: number;
+  daysRemaining: number;
+  maxDays: number;
+}
 
 export interface TravelerDuration {
   id: string;
@@ -60,19 +60,15 @@ export interface TravelerDuration {
   chipLabel: string;
   /** True when this traveler has a stay overstay or re-entry concern. */
   hasIssue: boolean;
-  // ── Schengen detail ──
-  schengenStatus?: TravelerStatus;
-  schengenBreakdown?: ImpactBreakdown;
-  // ── Generic (per-visit / rolling) detail ──
+  // ── Rolling-window detail (Schengen, Türkiye, …) ──
+  rollingStatus?: RollingStatus;
+  rollingBreakdown?: ImpactBreakdown;
+  // ── Per-visit detail (UK, Ireland) ──
   assessment?: StayAssessment;
   reentry?: ReentryRisk | null;
 }
 
-function untrackedEntry(
-  id: string,
-  name: string,
-  color: string,
-): TravelerDuration {
+function untrackedEntry(id: string, name: string, color: string): TravelerDuration {
   return {
     id,
     name,
@@ -103,15 +99,64 @@ function chipFor(daysRemaining: number): string {
     : `over by ${Math.abs(daysRemaining)}d`;
 }
 
-export function computeTravelerDurations({
-  region,
-  travelers,
-  travelerIds,
-  entryDate,
-  exitDate,
-  destination,
-  excludeTripId,
-}: ComputeTravelerDurationsParams): TravelerDuration[] {
+/** Build a rolling-window duration entry (Schengen / Türkiye / any rolling limit). */
+function buildRolling(
+  id: string,
+  traveler: Traveler,
+  color: string,
+  region: VisaRegion,
+  params: ComputeTravelerDurationsParams,
+  maxDays: number,
+  windowDays: number,
+): TravelerDuration {
+  const { entryDate, exitDate, destination, excludeTripId } = params;
+
+  const regionTrips = traveler.trips.filter(
+    (t) => t.region === region && t.id !== excludeTripId,
+  );
+  const withPreview = regionTrips.concat([
+    { id: "__preview__", entryDate, exitDate: exitDate || undefined, region, destination },
+  ]);
+
+  const { getDaysUsedOnDate } = createRollingWindowCalculator({
+    maxDays,
+    windowSize: windowDays,
+  });
+  const refDate = exitDate ? parseDate(exitDate) : new Date();
+  const daysUsed = getDaysUsedOnDate(formatDate(refDate), withPreview);
+  const daysRemainingRaw = Math.max(0, maxDays - daysUsed);
+
+  const breakdown = exitDate
+    ? computeImpactBreakdown(entryDate, exitDate || undefined, regionTrips, {
+        maxDays,
+        windowDays,
+      })
+    : undefined;
+
+  // The breakdown's extendable figure accounts for days rolling off the window,
+  // so it is the truer "days remaining" when available.
+  const daysRemaining = breakdown ? breakdown.daysRemaining : daysRemainingRaw;
+  const variant = getStatusVariant(daysRemaining);
+  const fillPct = Math.min(100, (Math.max(0, daysUsed) / maxDays) * 100);
+
+  return {
+    id,
+    name: traveler.name,
+    color,
+    tracked: true,
+    variant,
+    fillPct,
+    chipLabel: chipFor(daysRemaining),
+    hasIssue: variant !== "safe",
+    rollingStatus: { daysUsed, daysRemaining: daysRemainingRaw, maxDays },
+    rollingBreakdown: breakdown,
+  };
+}
+
+export function computeTravelerDurations(
+  params: ComputeTravelerDurationsParams,
+): TravelerDuration[] {
+  const { region, travelers, travelerIds, entryDate, exitDate, excludeTripId } = params;
   if (!entryDate || region === VisaRegion.Elsewhere) return [];
 
   const result: TravelerDuration[] = [];
@@ -121,9 +166,8 @@ export function computeTravelerDurations({
     if (!traveler) continue;
     const color = getTravelerColor(travelers.findIndex((t) => t.id === tid));
 
+    // Schengen — rolling 90/180. Visa-required holders are untracked.
     if (region === VisaRegion.Schengen) {
-      // Visa-required Schengen travelers have no calculable day allowance
-      // (it depends on the specific visa) — represent them as untracked.
       if (
         traveler.passportCode &&
         getPassportRule(VisaRegion.Schengen, traveler.passportCode).access ===
@@ -132,49 +176,7 @@ export function computeTravelerDurations({
         result.push(untrackedEntry(tid, traveler.name, color));
         continue;
       }
-
-      const tempTrips = traveler.trips
-        .filter((t) => t.id !== excludeTripId)
-        .concat([
-          {
-            id: "__preview__",
-            entryDate,
-            exitDate: exitDate || undefined,
-            region: VisaRegion.Schengen,
-            destination,
-          },
-        ]);
-      const refDate = exitDate ? parseDate(exitDate) : new Date();
-      const status = computeTravelerStatus({ ...traveler, trips: tempTrips }, refDate);
-
-      const historical = traveler.trips.filter(
-        (t) => t.region === VisaRegion.Schengen && t.id !== excludeTripId,
-      );
-      const breakdown = exitDate
-        ? computeImpactBreakdown(entryDate, exitDate || undefined, historical)
-        : undefined;
-
-      // The breakdown's extendable figure accounts for days rolling off the
-      // window, so it is the truer "days remaining" when available.
-      const daysRemaining = breakdown ? breakdown.daysRemaining : status.daysRemaining;
-      const variant = getStatusVariant(daysRemaining);
-      const fillPct = Math.min(
-        100,
-        (Math.max(0, status.daysUsed) / SCHENGEN_MAX_DAYS) * 100,
-      );
-
-      result.push({
-        id: tid,
-        name: traveler.name,
-        color,
-        tracked: true,
-        variant,
-        fillPct,
-        chipLabel: chipFor(daysRemaining),
-        hasIssue: variant !== "safe",
-        schengenStatus: status,
-        schengenBreakdown: breakdown,
-      });
+      result.push(buildRolling(tid, traveler, color, region, params, 90, 180));
       continue;
     }
 
@@ -192,15 +194,25 @@ export function computeTravelerDurations({
     const limits = resolveStayLimits(traveler.passportCode, rule, regionRule);
     if (!limits) continue; // free-movement → no day limit
 
+    // A rolling-window limit (e.g. Türkiye 90/180) uses the same breakdown as
+    // Schengen rather than a per-visit summary.
+    const rolling = limits.find(
+      (l): l is RollingWindowLimit => l.type === "rolling_window",
+    );
+    if (rolling) {
+      result.push(
+        buildRolling(tid, traveler, color, region, params, rolling.days, rolling.windowDays),
+      );
+      continue;
+    }
+
     const tripHistory = traveler.trips.filter(
       (t) => t.region === region && t.id !== excludeTripId,
     );
     const assessment = assessStay(limits, tripHistory, entryDate, exitDate || undefined);
     if (!assessment) continue;
 
-    const perVisit = limits.find(
-      (l): l is PerVisitLimit => l.type === "per_visit",
-    );
+    const perVisit = limits.find((l): l is PerVisitLimit => l.type === "per_visit");
     let reentry: ReentryRisk | null = null;
     if (perVisit) {
       const completed = traveler.trips.filter(
@@ -209,10 +221,7 @@ export function computeTravelerDurations({
       reentry = detectReentryRisk(perVisitApproxDays(perVisit), completed, entryDate);
     }
 
-    const fillPct = Math.min(
-      100,
-      (assessment.tripDays / assessment.daysAllowed) * 100,
-    );
+    const fillPct = Math.min(100, (assessment.tripDays / assessment.daysAllowed) * 100);
     const hasIssue =
       assessment.variant !== "safe" || (reentry != null && reentry.variant !== "safe");
 

@@ -2,10 +2,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import { tokens } from "@/styles/theme";
-import { VisaRegion } from "@/types";
-import { ImpactPreview } from "@/components/ui";
-import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
-import type { TravelerStatus, ImpactBreakdown } from "../../travelers/travelerStatus";
 import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
 import { parseDate } from "@/features/calculator/utils/dates";
 
@@ -18,25 +14,6 @@ function fmtHintDate(iso: string): string {
     month: "short",
     year: "numeric",
   }).format(d);
-}
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-export interface DurationPanelProps {
-  region: VisaRegion;
-  entryDate: string;
-  exitDate: string;
-  travelerCount: number;
-  // Schengen
-  entryConstraint: { daysAvailable: number; latestExit: string } | null;
-  impactStatus: TravelerStatus | null;
-  impactVariant: "safe" | "caution" | "danger" | "neutral";
-  impactBreakdown: ImpactBreakdown | undefined;
-  travelerImpacts: TravelerImpact[] | undefined;
-  hasVisaFreeTravelers: boolean;
-  // Generic stay assessment (per_visit + rolling_window regions)
-  stayAssessment: StayAssessment | null;
-  reentryRisk: ReentryRisk | null;
 }
 
 // ─── Entry constraint hint ─────────────────────────────────────────────────────
@@ -107,45 +84,19 @@ export function EntryConstraintHint({
   );
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Per-visit detail (UK / Ireland) ───────────────────────────────────────────
+// The stay assessment box + re-entry risk box shown for the most-constrained
+// traveler. Rolling-window regions render ImpactPreview instead (handled by
+// DurationStatusPanel).
 
-export function DurationPanel({
-  region,
-  entryDate,
-  exitDate,
-  impactStatus,
-  impactVariant,
-  impactBreakdown,
-  travelerImpacts,
-  hasVisaFreeTravelers,
-  stayAssessment,
-  reentryRisk,
-}: DurationPanelProps) {
-  const resolvedExit = exitDate || undefined;
+export interface DurationPanelProps {
+  stayAssessment: StayAssessment | null;
+  reentryRisk: ReentryRisk | null;
+}
 
+export function DurationPanel({ stayAssessment, reentryRisk }: DurationPanelProps) {
   return (
     <>
-      {/* Impact preview (Schengen only) */}
-      {region === VisaRegion.Schengen &&
-        entryDate &&
-        exitDate &&
-        impactStatus &&
-        hasVisaFreeTravelers && (
-          <ImpactPreview
-            daysRemaining={impactStatus.daysRemaining}
-            daysUsed={impactStatus.daysUsed}
-            variant={impactVariant}
-            breakdown={impactBreakdown}
-            travelerImpacts={travelerImpacts}
-            currentTripEntry={entryDate}
-            currentTripExit={resolvedExit}
-          />
-        )}
-
-      {/* Visa-required travelers are surfaced per-traveler (grey, with a note)
-          by DurationStatusPanel, so no region-level disclaimer is needed here. */}
-
-      {/* Generic stay assessment */}
       {stayAssessment && (
         <Box
           sx={{
@@ -174,9 +125,7 @@ export function DurationPanel({
             <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, fontWeight: 500 }}>
               {stayAssessment.variant === "danger" && stayAssessment.daysRemaining < 0
                 ? `Over the ${stayAssessment.limitLabel} limit by ${Math.abs(stayAssessment.daysRemaining)} day${Math.abs(stayAssessment.daysRemaining) === 1 ? "" : "s"}`
-                : stayAssessment.limitType === "rolling_window"
-                  ? `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} used of ${stayAssessment.limitLabel} allowance`
-                  : `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} of ${stayAssessment.limitLabel} visit`}
+                : `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} of ${stayAssessment.limitLabel} visit`}
             </Typography>
             <Typography
               sx={{
@@ -203,7 +152,6 @@ export function DurationPanel({
         </Box>
       )}
 
-      {/* Re-entry risk (per-visit regions) */}
       {reentryRisk && (() => {
         const isRed = reentryRisk.variant === "danger";
         const isAmber = reentryRisk.variant === "caution";

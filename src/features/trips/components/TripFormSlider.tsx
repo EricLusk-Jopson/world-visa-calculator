@@ -9,8 +9,7 @@ import { TripFormCardTravelers } from "./TripFormCardTravelers";
 import { TripFormCardDestination } from "./TripFormCardDestination";
 import { TripFormCardDates } from "./TripFormCardDates";
 import { TripSummaryRow } from "./TripSummaryRow";
-import { MobileEligibilityFrame } from "./MobileEligibilityFrame";
-import { MobileDurationFrame } from "./MobileDurationFrame";
+import { MobileTripDetailFrame } from "./MobileTripDetailFrame";
 import { computeTravelerEligibility } from "@/pages/CalculatorPage/components/trips/tripEligibility";
 import { computeTravelerDurations } from "@/pages/CalculatorPage/components/trips/tripDuration";
 
@@ -38,7 +37,7 @@ export function TripFormSlider({
   onAddNewTraveler,
 }: TripFormSliderProps) {
   const [activeCard, setActiveCard] = useState<ActiveCard>(null);
-  const [frame, setFrame] = useState<"eligibility" | "duration" | null>(null);
+  const [detailOpen, setDetailOpen] = useState(false);
   const [name, setName] = useState("");
   const [travelerIds, setTravelerIds] = useState<string[]>([]);
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
@@ -68,7 +67,7 @@ export function TripFormSlider({
   useEffect(() => {
     if (!open) return;
     setActiveCard(null);
-    setFrame(null);
+    setDetailOpen(false);
     setTravelerIds(initialTravelerIds);
     if (mode === "edit" && initialTrip) {
       setName(initialTrip.destination ?? "");
@@ -113,8 +112,6 @@ export function TripFormSlider({
   const durOk = durations.filter((d) => d.tracked && !d.hasIssue).length;
   const durWarn = durations.filter((d) => d.tracked && d.hasIssue).length;
   const durUnknown = durations.filter((d) => !d.tracked).length;
-  const allVisaRequired =
-    eligibility.length > 0 && eligibility.every((e) => e.access === "visa_required");
 
   const handleSave = useCallback(() => {
     if (!canSave) return;
@@ -197,7 +194,7 @@ export function TripFormSlider({
                 warnCount={eligWarn}
                 placeholder="Select travelers"
                 disabled={eligibility.length === 0}
-                onClick={() => setFrame("eligibility")}
+                onClick={() => setDetailOpen(true)}
               />
             ) : undefined
           }
@@ -221,23 +218,20 @@ export function TripFormSlider({
                 unknownCount={durUnknown}
                 placeholder={!datesSet ? "Set dates" : ""}
                 disabled={!datesSet}
-                onClick={() => setFrame("duration")}
+                onClick={() => setDetailOpen(true)}
               />
             ) : undefined
           }
         />
       </Box>
 
-      <MobileEligibilityFrame
-        open={frame === "eligibility"}
-        onClose={() => setFrame(null)}
+      <MobileTripDetailFrame
+        open={detailOpen}
+        onClose={() => setDetailOpen(false)}
         eligibility={eligibility}
-      />
-      <MobileDurationFrame
-        open={frame === "duration"}
-        onClose={() => setFrame(null)}
         durations={durations}
-        allVisaRequired={allVisaRequired}
+        entryDate={entryDate}
+        exitDate={exitDate}
       />
     </FullScreenSlider>
   );

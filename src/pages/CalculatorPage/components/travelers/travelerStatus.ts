@@ -7,10 +7,8 @@ import {
   subDays,
   differenceInCalendarDays,
 } from "@/features/calculator/utils/dates";
-import {
-  getDaysUsedOnDate,
-  calculateMaxStay,
-} from "@/features/calculator/utils/schengen";
+import { getDaysUsedOnDate } from "@/features/calculator/utils/schengen";
+import { createRollingWindowCalculator } from "@/features/calculator/utils/rollingWindowCalculator";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -169,29 +167,43 @@ export function computeStatusAtTripExit(
  *                         (today is used as the reference exit).
  * @param historicalTrips  Schengen trips excluding the proposed trip itself.
  */
+/** Rolling-window configuration. Defaults to the Schengen 90/180 rule. */
+export interface RollingConfig {
+  maxDays: number;
+  windowDays: number;
+}
+
+const SCHENGEN_CONFIG: RollingConfig = { maxDays: 90, windowDays: 180 };
+
 export function computeImpactBreakdown(
   entryDate: string,
   exitDate: string | undefined,
   historicalTrips: Trip[],
+  config: RollingConfig = SCHENGEN_CONFIG,
 ): ImpactBreakdown {
+  const { windowDays } = config;
   const entry = parseDate(entryDate);
   const exit = exitDate ? parseDate(exitDate) : today();
 
-  // Maximum possible exit given the historical record.
-  const maxStay = calculateMaxStay(entryDate, historicalTrips);
+  // Maximum possible exit given the historical record (configured window).
+  const { calculateMaxStay: calcMaxStay } = createRollingWindowCalculator({
+    maxDays: config.maxDays,
+    windowSize: windowDays,
+  });
+  const maxStay = calcMaxStay(entryDate, historicalTrips);
   const maxExitDate = maxStay.maxExitDate
     ? parseDate(maxStay.maxExitDate)
     : exit;
 
-  const windowAtEntryStart = subDays(entry, 179);
+  const windowAtEntryStart = subDays(entry, windowDays - 1);
   const entryMinus1 = subDays(entry, 1);
 
   // Two aging-out cutoffs:
   //   duringTrip   — days that fall off before the specified exit
   //   overMaxStay  — days that fall off between specified exit and max exit
-  // A historical day H ages out when H + 180 ≤ referenceExit, i.e. H ≤ referenceExit − 180.
-  const duringTripCutoff = subDays(exit, 180);
-  const overMaxStayCutoff = subDays(maxExitDate, 180);
+  // A historical day H ages out when H + windowDays ≤ referenceExit.
+  const duringTripCutoff = subDays(exit, windowDays);
+  const overMaxStayCutoff = subDays(maxExitDate, windowDays);
 
   const contributions: TripContribution[] = [];
 

@@ -113,7 +113,8 @@ export function computeTravelerEligibility(
   travelerIds: string[],
 ): TravelerEligibility[] {
   const regionLabel = VISA_REGION_LABELS[region];
-  const regionRule = getRegionDefinition(region)?.rule ?? null;
+  const regionDef = getRegionDefinition(region);
+  const regionRule = regionDef?.rule ?? null;
 
   return travelerIds.flatMap((tid): TravelerEligibility[] => {
     const traveler = travelers.find((t) => t.id === tid);
@@ -145,9 +146,23 @@ export function computeTravelerEligibility(
       rule.access === "free_movement"
         ? "Free movement — no day limit"
         : rule.access === "visa_required"
-          ? `${regionLabel} visa required`
-          : "Visa-free (entitled)";
+          ? "Visa Required"
+          : "No Visa Required";
     const ok = rule.access !== "visa_required";
+
+    // Any visa-required status carries a source link to the region's official
+    // entry-requirements page.
+    if (rule.access === "visa_required" && regionDef) {
+      notes.push({
+        label: "Visa required",
+        text: `A visa must be obtained in advance before travelling to ${regionLabel}.`,
+        source: {
+          directUrl: regionDef.sourceUrl,
+          parentUrl: regionDef.sourceUrl,
+          dateChecked: regionDef.lastVerified,
+        },
+      });
+    }
 
     // Admittance rule text: prefer the traveler's own entitlement limits,
     // otherwise fall back to the region rule.

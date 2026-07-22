@@ -9,8 +9,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
+import { ImpactPreview } from "@/components/ui";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
-import type { TravelerStatus, ImpactBreakdown } from "../../travelers/travelerStatus";
 import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
 import type { TravelerDuration } from "../tripDuration";
 import { DurationPanel } from "./DurationPanel";
@@ -100,15 +100,8 @@ export interface DurationStatusPanelProps {
   region: VisaRegion;
   entryDate: string;
   exitDate: string;
-  travelerCount: number;
   durations: TravelerDuration[];
-  // Passed through to DurationPanel (the expanded detail view).
-  entryConstraint: { daysAvailable: number; latestExit: string } | null;
-  impactStatus: TravelerStatus | null;
-  impactVariant: "safe" | "caution" | "danger" | "neutral";
-  impactBreakdown: ImpactBreakdown | undefined;
-  travelerImpacts: TravelerImpact[] | undefined;
-  hasVisaFreeTravelers: boolean;
+  // Per-visit detail (UK / Ireland), for the most-constrained traveler.
   stayAssessment: StayAssessment | null;
   reentryRisk: ReentryRisk | null;
 }
@@ -116,17 +109,37 @@ export interface DurationStatusPanelProps {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function DurationStatusPanel(props: DurationStatusPanelProps) {
-  const { region, entryDate, exitDate, durations, hasVisaFreeTravelers } = props;
+  const { region, entryDate, exitDate, durations, stayAssessment, reentryRisk } = props;
   const [expanded, setExpanded] = useState(true);
 
   // Only meaningful once both dates are chosen for a tracked region.
   if (region === VisaRegion.Elsewhere || !entryDate || !exitDate) return null;
 
-  const okCount = durations.filter((d) => d.tracked && !d.hasIssue).length;
-  const issueCount = durations.filter((d) => d.tracked && d.hasIssue).length;
-  const untrackedCount = durations.filter((d) => !d.tracked).length;
+  const tracked = durations.filter((d) => d.tracked);
   const untracked = durations.filter((d) => !d.tracked);
+  const okCount = tracked.filter((d) => !d.hasIssue).length;
+  const issueCount = tracked.filter((d) => d.hasIssue).length;
+  const untrackedCount = untracked.length;
   const noneTracked = durations.length === 0;
+
+  // Rolling-window travelers (Schengen, Türkiye, …) render ImpactPreview with
+  // the full breakdown; per-visit travelers (UK, Ireland) render bars + boxes.
+  const rollingTravelers = tracked.filter((d) => d.rollingStatus);
+  const isRolling = rollingTravelers.length > 0;
+
+  const extendableDays = (d: TravelerDuration) =>
+    d.rollingBreakdown?.daysRemaining ?? d.rollingStatus?.daysRemaining ?? 0;
+  const worst = rollingTravelers.reduce<TravelerDuration | null>(
+    (w, d) => (w === null || extendableDays(d) < extendableDays(w) ? d : w),
+    null,
+  );
+  const impactTravelers: TravelerImpact[] = rollingTravelers.map((d) => ({
+    id: d.id,
+    name: d.name,
+    color: d.color,
+    daysRemaining: d.rollingStatus!.daysRemaining,
+    daysUsed: d.rollingStatus!.daysUsed,
+  }));
 
   return (
     <Box
@@ -205,7 +218,7 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
           )}
           {noneTracked && (
             <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost, fontStyle: "italic" }}>
-              {hasVisaFreeTravelers ? "No day limit" : "Not tracked for visa holders"}
+              No day limit
             </Typography>
           )}
         </Box>
@@ -219,18 +232,29 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
       {/* ── Body ── */}
       {expanded && (
         <Box sx={{ px: "12px", py: "10px", display: "flex", flexDirection: "column", gap: "10px" }}>
-          {/* Per-traveler bars for non-Schengen regions (Schengen renders its
-              own bars inside ImpactPreview below). */}
-          {region !== VisaRegion.Schengen &&
-            durations.some((d) => d.tracked) && (
-              <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                {durations
-                  .filter((d) => d.tracked)
-                  .map((d) => (
-                    <DurationBarRow key={d.id} duration={d} />
-                  ))}
-              </Box>
-            )}
+          {/* Rolling-window regions: full ImpactPreview breakdown. */}
+          {isRolling && worst && worst.rollingStatus && (
+            <ImpactPreview
+              daysRemaining={worst.rollingStatus.daysRemaining}
+              daysUsed={worst.rollingStatus.daysUsed}
+              variant={worst.variant}
+              maxDays={worst.rollingStatus.maxDays}
+              breakdown={worst.rollingBreakdown}
+              travelerImpacts={impactTravelers}
+              currentTripEntry={entryDate}
+              currentTripExit={exitDate || undefined}
+            />
+          )}
+
+          {/* Per-visit regions: per-traveler bars + stay/re-entry boxes. */}
+          {!isRolling && tracked.length > 0 && (
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+              {tracked.map((d) => (
+                <DurationBarRow key={d.id} duration={d} />
+              ))}
+            </Box>
+          )}
+
           {/* Visa-required travelers — grey, with an explanatory note. */}
           {untracked.length > 0 && (
             <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -239,7 +263,10 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
               ))}
             </Box>
           )}
-          <DurationPanel {...props} />
+
+          {!isRolling && (
+            <DurationPanel stayAssessment={stayAssessment} reentryRisk={reentryRisk} />
+          )}
         </Box>
       )}
     </Box>

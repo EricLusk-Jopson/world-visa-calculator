@@ -18,9 +18,21 @@ export interface TripSummaryRowProps {
   onClick: () => void;
 }
 
+function Count({ icon, value, color }: { icon: React.ReactNode; value: number; color: string }) {
+  return (
+    <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
+      {icon}
+      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color }}>
+        {value}
+      </Typography>
+    </Box>
+  );
+}
+
 /**
  * Tappable summary row attached beneath the Where / When cards on mobile.
- * Shows an icon + count per status and opens a full-screen detail frame.
+ * Deliberately lighter than the input rows above it: shorter, muted, with the
+ * status icons pushed to the right beside the caret.
  */
 export function TripSummaryRow({
   label,
@@ -45,9 +57,9 @@ export function TripSummaryRow({
         borderTop: `1px solid ${tokens.border}`,
         display: "flex",
         alignItems: "center",
-        gap: "10px",
+        gap: "8px",
         px: "16px",
-        py: "13px",
+        py: "10px",
         cursor: disabled ? "default" : "pointer",
         opacity: disabled ? 0.6 : 1,
         textAlign: "left",
@@ -56,60 +68,51 @@ export function TripSummaryRow({
       <Typography
         sx={{
           fontFamily: tokens.fontBody,
-          fontSize: "0.65rem",
-          fontWeight: 700,
+          fontSize: "0.6rem",
+          fontWeight: 600,
           textTransform: "uppercase",
-          letterSpacing: "0.09em",
-          color: tokens.textSoft,
-          flexShrink: 0,
+          letterSpacing: "0.08em",
+          color: tokens.textGhost,
+          flex: 1,
         }}
       >
         {label}
       </Typography>
 
-      <Box sx={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
-        {empty ? (
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.78rem",
-              color: tokens.textGhost,
-              fontStyle: "italic",
-            }}
-          >
-            {placeholder ?? ""}
-          </Typography>
-        ) : (
-          <>
+      {/* Status icons — right-aligned, beside the caret. */}
+      {empty
+        ? placeholder && (
+            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost, fontStyle: "italic" }}>
+              {placeholder}
+            </Typography>
+          )
+        : (
+          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             {okCount > 0 && (
-              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-                <CheckCircleOutlineIcon sx={{ fontSize: "1rem", color: tokens.green }} />
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: 600, color: tokens.green }}>
-                  {okCount}
-                </Typography>
-              </Box>
+              <Count
+                value={okCount}
+                color={tokens.green}
+                icon={<CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />}
+              />
             )}
             {warnCount > 0 && (
-              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-                <WarningAmberIcon sx={{ fontSize: "1rem", color: tokens.red }} />
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: 600, color: tokens.red }}>
-                  {warnCount}
-                </Typography>
-              </Box>
+              <Count
+                value={warnCount}
+                color={tokens.red}
+                icon={<WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />}
+              />
             )}
             {unknownCount > 0 && (
-              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-                <HelpOutlineIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: 600, color: tokens.textGhost }}>
-                  {unknownCount}
-                </Typography>
-              </Box>
+              <Count
+                value={unknownCount}
+                color={tokens.textGhost}
+                icon={<HelpOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.textGhost }} />}
+              />
             )}
-          </>
+          </Box>
         )}
-      </Box>
 
-      <ChevronRightIcon sx={{ fontSize: "1.3rem", color: tokens.textGhost, flexShrink: 0 }} />
+      <ChevronRightIcon sx={{ fontSize: "1.1rem", color: tokens.textGhost, flexShrink: 0 }} />
     </Box>
   );
 }

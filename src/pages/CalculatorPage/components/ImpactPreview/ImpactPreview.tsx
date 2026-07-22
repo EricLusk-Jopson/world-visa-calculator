@@ -20,6 +20,8 @@ interface ImpactPreviewProps {
   daysRemaining: number;
   daysUsed: number;
   variant: StatusVariant | "neutral";
+  /** Window allowance (90 for Schengen). Used in the subtitle and equation. */
+  maxDays?: number;
   breakdown?: ImpactBreakdown;
   /**
    * When provided (multi-traveler add/edit), renders a per-traveler row
@@ -351,6 +353,7 @@ export function ImpactPreview({
   daysRemaining,
   daysUsed,
   variant,
+  maxDays = 90,
   breakdown,
   travelerImpacts,
   currentTripEntry,
@@ -443,8 +446,8 @@ export function ImpactPreview({
               }}
             >
               {breakdown && breakdown.agingOutTotal > 0
-                ? `${daysUsed}/90 used · ${breakdown.agingOutTotal}d rolling off`
-                : `${daysUsed} of 90 days used`}
+                ? `${daysUsed}/${maxDays} used · ${breakdown.agingOutTotal}d rolling off`
+                : `${daysUsed} of ${maxDays} days used`}
             </Typography>
           )}
 
@@ -751,7 +754,7 @@ export function ImpactPreview({
                 mt: "-4px",
               }}
             >
-              90 − {breakdown.previousDaysTotal} +{" "}
+              {maxDays} − {breakdown.previousDaysTotal} +{" "}
               {breakdown.agingOutDuringTripTotal} − {breakdown.currentTripDays}{" "}
               + {breakdown.agingOutOverMaxStayTotal} = {breakdown.daysRemaining}
             </Typography>
