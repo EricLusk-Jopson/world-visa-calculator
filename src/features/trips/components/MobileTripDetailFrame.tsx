@@ -9,6 +9,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
 import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
 import { ImpactPreview } from "@/components/ui";
+import { DurationIcon, type DurationState } from "@/components/ui/DurationIcon";
 import { parseDate } from "@/features/calculator/utils/dates";
 import type { TravelerEligibility, EligibilityNote } from "@/pages/CalculatorPage/components/trips/tripEligibility";
 import type { TravelerDuration } from "@/pages/CalculatorPage/components/trips/tripDuration";
@@ -192,8 +193,13 @@ function TravelerCard({
 
   // Header icon reflects the worst of entry eligibility and stay duration:
   // visa-required/unknown → red, approaching a limit → amber, otherwise green.
-  const durSeverity = dur?.tracked ? dur.severity : "safe";
-  const overall: "safe" | "caution" | "danger" = !e.ok ? "danger" : durSeverity;
+  // Two status icons per traveler: entry eligibility (check / warning) and
+  // stay duration (clock / warning / question).
+  const durState: DurationState = !dur
+    ? "pending"
+    : dur.tracked
+      ? dur.severity
+      : "untracked";
 
   return (
     <Box sx={{ borderRadius: "14px", border: `1.5px solid ${tokens.border}`, bgcolor: tokens.white, overflow: "hidden" }}>
@@ -206,11 +212,14 @@ function TravelerCard({
         <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "1rem", fontStyle: "italic", color: tokens.navy, flex: 1 }}>
           {e.name}
         </Typography>
-        {overall === "safe" ? (
-          <CheckCircleOutlineIcon sx={{ fontSize: "1.1rem", color: tokens.green }} />
-        ) : (
-          <WarningAmberIcon sx={{ fontSize: "1.1rem", color: overall === "danger" ? tokens.red : tokens.amber }} />
-        )}
+        <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          {e.ok ? (
+            <CheckCircleOutlineIcon sx={{ fontSize: "1.1rem", color: tokens.green }} />
+          ) : (
+            <WarningAmberIcon sx={{ fontSize: "1.1rem", color: tokens.red }} />
+          )}
+          <DurationIcon state={durState} />
+        </Box>
         {open ? (
           <ExpandLessIcon sx={{ fontSize: "1.2rem", color: tokens.textGhost }} />
         ) : (

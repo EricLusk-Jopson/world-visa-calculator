@@ -2,14 +2,13 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
 import { ImpactPreview } from "@/components/ui";
+import { DurationIcon } from "@/components/ui/DurationIcon";
 import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
 import type { TravelerDuration } from "../tripDuration";
@@ -186,7 +185,7 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
               componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
             >
               <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-                <CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />
+                <DurationIcon state="safe" size="0.9rem" />
                 <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.green }}>{okCount}</Typography>
               </Box>
             </Tooltip>
@@ -199,7 +198,7 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
               componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
             >
               <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-                <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.amber }} />
+                <DurationIcon state="caution" size="0.9rem" />
                 <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.amberText }}>{cautionCount}</Typography>
               </Box>
             </Tooltip>
@@ -212,7 +211,7 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
               componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
             >
               <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-                <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />
+                <DurationIcon state="danger" size="0.9rem" />
                 <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.red }}>{dangerCount}</Typography>
               </Box>
             </Tooltip>

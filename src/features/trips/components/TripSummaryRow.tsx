@@ -5,9 +5,12 @@ import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { tokens } from "@/styles/theme";
+import { DurationIcon } from "@/components/ui/DurationIcon";
 
 export interface TripSummaryRowProps {
   label: string;
+  /** "eligibility" uses check/warning; "duration" uses clock/warning icons. */
+  statusKind?: "eligibility" | "duration";
   okCount: number;
   /** Approaching a limit (amber). */
   cautionCount?: number;
@@ -39,6 +42,7 @@ function Count({ icon, value, color }: { icon: React.ReactNode; value: number; c
  */
 export function TripSummaryRow({
   label,
+  statusKind = "eligibility",
   okCount,
   cautionCount = 0,
   dangerCount,
@@ -48,6 +52,7 @@ export function TripSummaryRow({
   onClick,
 }: TripSummaryRowProps) {
   const empty = okCount === 0 && cautionCount === 0 && dangerCount === 0 && unknownCount === 0;
+  const isDuration = statusKind === "duration";
   return (
     <Box
       component="button"
@@ -96,14 +101,20 @@ export function TripSummaryRow({
               <Count
                 value={okCount}
                 color={tokens.green}
-                icon={<CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />}
+                icon={
+                  isDuration ? (
+                    <DurationIcon state="safe" size="0.9rem" />
+                  ) : (
+                    <CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />
+                  )
+                }
               />
             )}
             {cautionCount > 0 && (
               <Count
                 value={cautionCount}
                 color={tokens.amberText}
-                icon={<WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.amber }} />}
+                icon={<DurationIcon state="caution" size="0.9rem" />}
               />
             )}
             {dangerCount > 0 && (

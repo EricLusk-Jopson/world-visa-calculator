@@ -214,6 +214,7 @@ export function TripFormSlider({
             region !== VisaRegion.Elsewhere ? (
               <TripSummaryRow
                 label="Stay Duration"
+                statusKind="duration"
                 okCount={durOk}
                 cautionCount={durCaution}
                 dangerCount={durDanger}
