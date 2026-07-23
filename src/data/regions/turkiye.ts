@@ -10,9 +10,13 @@
  *   in structure to the Schengen rule. This is fully calculable.
  *
  *   Several nationalities have shorter or differently-structured allowances:
- *   - "Within 6 months from first entry" (9 nationalities): encoded as
- *     fixed_window_from_entry — anchored to each trip's first entry date,
- *     resets on re-entry. See entitledFromFirstEntry().
+ *   - "Within 180 days from first entry" / "within six months" (9 nationalities):
+ *     classified as the standard 90/180 rolling window, NOT
+ *     fixed_window_from_entry. Under Article 11(1) of Law No. 6458 the 90-in-180
+ *     ceiling governs every visa exemption regardless of MFA phrasing; the
+ *     "from first entry" wording is drafting variance, not a reset mechanic.
+ *     See entitled90FromEntryPhrasing(). fixed_window_from_entry is reserved for
+ *     cases where a primary source confirms genuine reset behaviour.
  *   - Russia (ordinary): 60-day rolling window.
  *   - Indonesia: 30 days per entry, max 90 in any 180 — stacked limits.
  *   - Belarus: 30 days per entry, max 90 within 1 calendar year — stacked limits.
@@ -58,7 +62,6 @@ import type {
   PreTravelAuth,
   RollingWindowLimit,
   PerVisitLimit,
-  FixedWindowFromEntryLimit,
   CalendarPeriodLimit,
   EntitlementCondition,
 } from '@/types';
@@ -69,12 +72,10 @@ import { TurkiyeSources } from '@/data/sources';
 const TR_ROLLING_90: RollingWindowLimit = { type: 'rolling_window', days: 90,  windowDays: 180 };
 const TR_ROLLING_60: RollingWindowLimit = { type: 'rolling_window', days: 60,  windowDays: 180 };
 const TR_PER_VISIT_30: PerVisitLimit    = { type: 'per_visit',       value: 30, unit: 'days' };
-const TR_FROM_ENTRY_90: FixedWindowFromEntryLimit = {
-  type: 'fixed_window_from_entry',
-  days: 90,
-  windowDays: 180, // ≈ 6 months
-};
 const TR_CALENDAR_90: CalendarPeriodLimit = { type: 'calendar_period', days: 90, periodDays: 365 };
+// NOTE: fixed_window_from_entry is intentionally unused for Türkiye. See
+// entitled90FromEntryPhrasing() — the "within 180 days from first entry" MFA
+// wording is classified as the 90/180 rolling window per Law No. 6458 Art.11(1).
 
 // ─── Pre-travel authorisation ─────────────────────────────────────────────────
 
@@ -120,11 +121,13 @@ const CONDITIONAL_EVISA_NOTE =
   'and hotel reservation, and have at least USD 50 per day of stay. Travel must ' +
   'be for tourism or commerce, and entry must be via an airport only.';
 
-const FROM_FIRST_ENTRY_NOTE =
-  'The 90-day allowance is measured within six months from the date of first ' +
-  'entry into Türkiye, not as a continuously rolling 180-day window. The ' +
-  'period resets on each new trip. This functions similarly to a per-visit ' +
-  'cap rather than a pure rolling window.';
+const MFA_FIRST_ENTRY_ROLLING_NOTE =
+  'Türkiye’s MFA describes this exemption as "90 days within 180 days ' +
+  'from the first entry date" (some entries say "within six months"). Under ' +
+  'Article 11(1) of Law No. 6458 — which caps every visa exemption at 90 ' +
+  'days in every 180 days — this is calculated as the standard 90/180 ' +
+  'rolling window. A reset-on-first-entry mechanic is not applied unless a ' +
+  'specific bilateral treaty affirmatively confirms it.';
 
 const OFFICIAL_PASSPORT_VISA_NOTE =
   'Holders of official (diplomatic, service, special) passports are required ' +
@@ -160,24 +163,19 @@ function entitled90(
 }
 
 /**
- * 90 days within 6 months from the date of first entry.
- * fixed_window_from_entry — anchored to trip start, resets on re-entry.
+ * Entries whose MFA text reads "90 days within 180 days from first entry" (or
+ * "within six months"). Classified as the standard 90/180 rolling window per
+ * Article 11(1) of Law No. 6458; see MFA_FIRST_ENTRY_ROLLING_NOTE.
+ *
+ * `fixed_window_from_entry` is intentionally reserved for cases where a primary
+ * source (treaty text, Resmî Gazete entry, or consular confirmation) explicitly
+ * confirms genuine reset behaviour — none are currently classified as such.
  */
-function entitledFromFirstEntry(
-  entitlementNotes?: RuleNote[],
-  ruleNotes?: RuleNote[],
-): EntitledRule {
-  return {
-    access: 'entitled',
-    entitlements: [{
-      limits: [TR_FROM_ENTRY_90],
-      notes: [
-        { text: FROM_FIRST_ENTRY_NOTE, source: TurkiyeSources.mfaVisaInfo },
-        ...(entitlementNotes ?? []),
-      ],
-    }],
-    ...(ruleNotes?.length && { notes: ruleNotes }),
-  };
+function entitled90FromEntryPhrasing(entitlementNotes?: RuleNote[]): EntitledRule {
+  return entitled90([
+    { text: MFA_FIRST_ENTRY_ROLLING_NOTE, source: TurkiyeSources.mfaVisaInfo },
+    ...(entitlementNotes ?? []),
+  ]);
 }
 
 /** Unconditional e-Visa, 90 days, multiple entry. Tourism/commerce only. */
@@ -362,18 +360,26 @@ export const TURKIYE: RegionDefinition = {
     'HK': entitled90([{ text: "Applies to holders of 'Hong Kong Special Administrative Region of the People's Republic of China' passports only. Holders of British National (Overseas) — BNO — passports are required to obtain a 3-month multiple-entry e-Visa via www.evisa.gov.tr. Holders of 'Document of Identity for Visa Purposes (Hong Kong)' must obtain a visa from Turkish diplomatic or consular missions abroad.", source: TurkiyeSources.mfaVisaInfo }]),
     'VE': entitled90([{ text: 'The 90-day allowance applies within each six-month period. Official passport holders are visa-free for up to 30 days.', source: TurkiyeSources.mfaVisaInfo }]),
 
-    // ── Entitled — 90 days within 6 months from date of first entry ────────
-    // fixed_window_from_entry: anchored to trip start, resets on re-entry.
+    // ── Entitled — MFA phrasing "90 days within 180 days from first entry" ──
+    // Classified as the standard 90/180 rolling window, not
+    // fixed_window_from_entry. Article 11(1) of Law No. 6458 caps every visa
+    // exemption at 90 days in every 180 days; the "from first entry" / "within
+    // six months" wording is drafting/translation variance, not a distinct
+    // reset mechanic. See MFA_FIRST_ENTRY_ROLLING_NOTE.
 
-    'AL': entitledFromFirstEntry(),
-    'EE': entitledFromFirstEntry(),
-    'JO': entitledFromFirstEntry([{ text: 'Touristic purposes and transit only.', source: TurkiyeSources.mfaVisaInfo }]),
-    'XK': entitledFromFirstEntry([{ text: 'Touristic purposes and transit only.', source: TurkiyeSources.mfaVisaInfo }]),
-    'LB': entitledFromFirstEntry([{ text: 'Touristic purposes and transit only.', source: TurkiyeSources.mfaVisaInfo }]),
-    'ME': entitledFromFirstEntry(),
-    'PY': entitledFromFirstEntry(),
-    'QA': entitledFromFirstEntry([{ text: 'Applies to all passport types including service, special, and official passports.', source: TurkiyeSources.mfaVisaInfo }]),
-    'RS': entitledFromFirstEntry([{ text: 'Applies to all passport types including travel documents. Touristic purposes and transit only.', source: TurkiyeSources.mfaVisaInfo }]),
+    'AL': entitled90FromEntryPhrasing(),
+    'EE': entitled90FromEntryPhrasing(),
+    'JO': entitled90FromEntryPhrasing([{ text: 'Touristic purposes and transit only.', source: TurkiyeSources.mfaVisaInfo }]),
+    'XK': entitled90FromEntryPhrasing([{ text: 'Touristic purposes and transit only.', source: TurkiyeSources.mfaVisaInfo }]),
+    'LB': entitled90FromEntryPhrasing([{ text: 'Touristic purposes and transit only.', source: TurkiyeSources.mfaVisaInfo }]),
+    'ME': entitled90FromEntryPhrasing(),
+    'PY': entitled90FromEntryPhrasing(),
+    // QA and RS extend the exemption to official/diplomatic passports, which is
+    // also the category most likely (though unconfirmed) to carry a bilateral
+    // treaty that overrides the 90/180 ceiling. Flagged for follow-up against
+    // the Resmî Gazete / consular sources before assuming any reset mechanic.
+    'QA': entitled90FromEntryPhrasing([{ text: 'Applies to all passport types including service, special, and official passports.', source: TurkiyeSources.mfaVisaInfo }]),
+    'RS': entitled90FromEntryPhrasing([{ text: 'Applies to all passport types including travel documents. Touristic purposes and transit only.', source: TurkiyeSources.mfaVisaInfo }]),
 
     // ── Entitled — 60-day rolling window ──────────────────────────────────
 
