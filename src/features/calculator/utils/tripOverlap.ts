@@ -8,7 +8,7 @@
  * overlap of two or more days as a conflict.
  */
 
-import type { Traveler } from "@/types";
+import type { Traveler, Trip } from "@/types";
 import { parseDate, addDays, differenceInCalendarDays } from "./dates";
 
 export interface BlockedRange {
@@ -16,9 +16,32 @@ export interface BlockedRange {
   to: Date;
 }
 
+/** Coordinates identifying the trip being edited across all its per-traveler copies. */
+export type ExcludeTrip = Pick<Trip, "entryDate" | "exitDate" | "region">;
+
 /** Far-future stand-in exit for ongoing trips (no exit date recorded). */
 function resolveExit(exitDate: string | undefined): Date {
   return exitDate ? parseDate(exitDate) : addDays(new Date(), 3650);
+}
+
+/**
+ * True when `trip` is the trip being edited. Trip ids are per-traveler copies
+ * (and are regenerated on URL decode), so a shared trip is matched by its
+ * (entryDate, exitDate, region) coordinates — the identity the rest of the app
+ * uses — falling back to the id for a plain single-traveler edit.
+ */
+function isExcluded(
+  trip: Trip,
+  excludeTripId: string | undefined,
+  excludeTrip: ExcludeTrip | undefined,
+): boolean {
+  if (excludeTripId !== undefined && trip.id === excludeTripId) return true;
+  return (
+    excludeTrip !== undefined &&
+    trip.entryDate === excludeTrip.entryDate &&
+    trip.exitDate === excludeTrip.exitDate &&
+    trip.region === excludeTrip.region
+  );
 }
 
 /**
@@ -30,6 +53,7 @@ export function blockedTripRanges(
   travelers: Traveler[],
   travelerIds: string[],
   excludeTripId?: string,
+  excludeTrip?: ExcludeTrip,
 ): BlockedRange[] {
   const ranges: BlockedRange[] = [];
   const seen = new Set<string>();
@@ -39,7 +63,7 @@ export function blockedTripRanges(
     if (!traveler) continue;
 
     for (const trip of traveler.trips) {
-      if (trip.id === excludeTripId) continue;
+      if (isExcluded(trip, excludeTripId, excludeTrip)) continue;
       const key = `${trip.entryDate}|${trip.exitDate ?? ""}`;
       if (seen.has(key)) continue;
       seen.add(key);
@@ -68,6 +92,7 @@ export function hasBlockingOverlap(
   entryDate: string,
   exitDate: string | undefined,
   excludeTripId?: string,
+  excludeTrip?: ExcludeTrip,
 ): boolean {
   const nEntry = parseDate(entryDate);
   const nExit = resolveExit(exitDate);
@@ -77,7 +102,7 @@ export function hasBlockingOverlap(
     if (!traveler) continue;
 
     for (const trip of traveler.trips) {
-      if (trip.id === excludeTripId) continue;
+      if (isExcluded(trip, excludeTripId, excludeTrip)) continue;
       const tEntry = parseDate(trip.entryDate);
       const tExit = resolveExit(trip.exitDate);
 

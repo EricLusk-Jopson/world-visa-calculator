@@ -263,7 +263,7 @@ export function TripModal({
   })();
 
   // Interior days of the travelers' other trips — disabled in the date pickers.
-  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id);
+  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id, initialTrip);
   const isDayBlocked = (date: Date) => isDateBlocked(date, blockedRanges);
 
   // ── Entry constraint hint ───────────────────────────────────────────────────

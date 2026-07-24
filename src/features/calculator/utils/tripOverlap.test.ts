@@ -47,6 +47,34 @@ describe("hasBlockingOverlap", () => {
     ];
     expect(hasBlockingOverlap(two, ["t1", "t2"], "2026-09-10", "2026-09-20")).toBe(true);
   });
+
+  it("excludes all per-traveler copies of a shared trip by coordinates", () => {
+    // Same trip held by two travelers, but with DIFFERENT ids per copy.
+    const shared = [
+      traveler("t1", [trip("copy-1", "2026-09-01", "2026-09-30")]),
+      traveler("t2", [trip("copy-2", "2026-09-01", "2026-09-30")]),
+    ];
+    const excludeTrip = { entryDate: "2026-09-01", exitDate: "2026-09-30", region: VisaRegion.Turkiye };
+    // Resizing the shared trip: id matches only copy-1, coordinates exclude both.
+    expect(
+      hasBlockingOverlap(shared, ["t1", "t2"], "2026-09-05", "2026-10-10", "copy-1", excludeTrip),
+    ).toBe(false);
+  });
+
+  it("still blocks a genuine overlap with a different trip when editing a shared one", () => {
+    const shared = [
+      traveler("t1", [
+        trip("copy-1", "2026-09-01", "2026-09-30"),
+        trip("other", "2026-11-01", "2026-11-30"),
+      ]),
+      traveler("t2", [trip("copy-2", "2026-09-01", "2026-09-30")]),
+    ];
+    const excludeTrip = { entryDate: "2026-09-01", exitDate: "2026-09-30", region: VisaRegion.Turkiye };
+    // New dates for the edited trip collide with the "other" trip by 2+ days.
+    expect(
+      hasBlockingOverlap(shared, ["t1", "t2"], "2026-11-15", "2026-11-25", "copy-1", excludeTrip),
+    ).toBe(true);
+  });
 });
 
 describe("blockedTripRanges / isDateBlocked", () => {
@@ -66,5 +94,17 @@ describe("blockedTripRanges / isDateBlocked", () => {
 
   it("excludes the trip being edited", () => {
     expect(blockedTripRanges(T, ["t1"], "a")).toHaveLength(0);
+  });
+
+  it("excludes all per-traveler copies of a shared trip by coordinates", () => {
+    const shared = [
+      traveler("t1", [trip("copy-1", "2026-09-01", "2026-09-30")]),
+      traveler("t2", [trip("copy-2", "2026-09-01", "2026-09-30")]),
+    ];
+    const excludeTrip = { entryDate: "2026-09-01", exitDate: "2026-09-30", region: VisaRegion.Turkiye };
+    // id matches only copy-1; coordinates must exclude both copies' interior days.
+    const ranges = blockedTripRanges(shared, ["t1", "t2"], "copy-1", excludeTrip);
+    expect(ranges).toHaveLength(0);
+    expect(isDateBlocked(parseDate("2026-09-15"), ranges)).toBe(false);
   });
 });

@@ -83,7 +83,7 @@ export function TripFormSlider({
     }
   }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id);
+  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id, initialTrip);
 
   const canSave =
     name.trim().length > 0 &&
@@ -91,7 +91,14 @@ export function TripFormSlider({
     !!entryDate &&
     !!exitDate &&
     exitDate > entryDate &&
-    !hasBlockingOverlap(travelers, travelerIds, entryDate, exitDate || undefined, initialTrip?.id);
+    !hasBlockingOverlap(
+      travelers,
+      travelerIds,
+      entryDate,
+      exitDate || undefined,
+      initialTrip?.id,
+      initialTrip,
+    );
 
   // ── Entry eligibility + stay duration summaries ──
   const datesSet = !!entryDate && !!exitDate;
