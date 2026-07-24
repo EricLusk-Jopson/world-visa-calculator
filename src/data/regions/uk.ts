@@ -91,11 +91,11 @@ const ETA_RULE: EntitledRule = {
 };
 
 const DATV_NOTE =
-  'A Direct Airside Transit Visa (DATV) is a separate, additional requirement ' +
-  'from the visa needed to enter the UK. It is required only to pass airside ' +
-  'through a UK airport (changing flights without passing through immigration) ' +
-  'and does not by itself grant entry to the UK — the Standard Visitor Visa ' +
-  'above is still required to enter.';
+  'A Direct Airside Transit Visa (DATV) is separate from the visa needed to ' +
+  'enter the UK. It is required only to pass airside through a UK airport ' +
+  '(changing flights without passing through immigration) and does not by ' +
+  'itself grant entry. To enter the UK, the Standard Visitor Visa above is ' +
+  'still required.';
 
 /**
  * Visa required + DATV for airside transit.

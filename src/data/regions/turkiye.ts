@@ -123,11 +123,11 @@ const CONDITIONAL_EVISA_NOTE =
 
 const MFA_FIRST_ENTRY_ROLLING_NOTE =
   'Türkiye’s MFA describes this exemption as "90 days within 180 days ' +
-  'from the first entry date" (some entries say "within six months"). Under ' +
-  'Article 11(1) of Law No. 6458 — which caps every visa exemption at 90 ' +
-  'days in every 180 days — this is calculated as the standard 90/180 ' +
-  'rolling window. A reset-on-first-entry mechanic is not applied unless a ' +
-  'specific bilateral treaty affirmatively confirms it.';
+  'from the first entry date" (some entries say "within six months"). ' +
+  'Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in ' +
+  'any 180 days, so this is treated as the standard 90/180 rolling window. ' +
+  'A reset-on-first-entry mechanic is not applied unless a specific ' +
+  'bilateral treaty confirms it.';
 
 const OFFICIAL_PASSPORT_VISA_NOTE =
   'Holders of official (diplomatic, service, special) passports are required ' +
@@ -249,10 +249,10 @@ export const TURKIYE: RegionDefinition = {
     notes: [{
       text:
         'The standard allowance is 90 days in any 180-day rolling window. ' +
-        'Several nationalities have shorter allowances (30 or 60 days) or ' +
-        'differently-structured windows — see your passport rule for details. ' +
-        'Passports must be valid for at least 60 days beyond the intended ' +
-        'duration of stay.',
+        'Some nationalities have shorter allowances (30 or 60 days) or ' +
+        'differently structured windows; see your passport rule for details. ' +
+        'Passports must be valid for at least 60 days beyond your intended ' +
+        'stay.',
       source: TurkiyeSources.mfaVisaInfo,
     }],
   },
@@ -357,7 +357,7 @@ export const TURKIYE: RegionDefinition = {
     // Standard 90/180 — with additional conditions or notes
     'BH': entitled90([{ text: 'Ordinary passport holders are visa-free for 90 days in any 180. Official passport holders require a visa; official passport holders may obtain a visa for up to 15 days at Turkish border crossings.', source: TurkiyeSources.mfaVisaInfo }]),
     'CN': entitled90([{ text: 'Ordinary passport holders are visa-free as of 2 January 2026. Holders of official passports are visa-free for up to 30 days.', source: TurkiyeSources.mfaVisaInfo }]),
-    'HK': entitled90([{ text: "Applies to holders of 'Hong Kong Special Administrative Region of the People's Republic of China' passports only. Holders of British National (Overseas) — BNO — passports are required to obtain a 3-month multiple-entry e-Visa via www.evisa.gov.tr. Holders of 'Document of Identity for Visa Purposes (Hong Kong)' must obtain a visa from Turkish diplomatic or consular missions abroad.", source: TurkiyeSources.mfaVisaInfo }]),
+    'HK': entitled90([{ text: "Applies to holders of 'Hong Kong Special Administrative Region of the People's Republic of China' passports only. British National (Overseas) (BNO) passport holders must obtain a 3-month multiple-entry e-Visa via www.evisa.gov.tr. Holders of 'Document of Identity for Visa Purposes (Hong Kong)' must obtain a visa from Turkish diplomatic or consular missions abroad.", source: TurkiyeSources.mfaVisaInfo }]),
     'VE': entitled90([{ text: 'The 90-day allowance applies within each six-month period. Official passport holders are visa-free for up to 30 days.', source: TurkiyeSources.mfaVisaInfo }]),
 
     // ── Entitled — MFA phrasing "90 days within 180 days from first entry" ──
