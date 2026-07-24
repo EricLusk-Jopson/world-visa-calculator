@@ -756,7 +756,12 @@ export function ImpactPreview({
             >
               {maxDays} − {breakdown.previousDaysTotal} +{" "}
               {breakdown.agingOutDuringTripTotal} − {breakdown.currentTripDays}{" "}
-              + {breakdown.agingOutOverMaxStayTotal} = {breakdown.daysRemaining}
+              + {breakdown.agingOutOverMaxStayTotal} ={" "}
+              {maxDays -
+                breakdown.previousDaysTotal +
+                breakdown.agingOutDuringTripTotal -
+                breakdown.currentTripDays +
+                breakdown.agingOutOverMaxStayTotal}
             </Typography>
           </Box>
         </Collapse>

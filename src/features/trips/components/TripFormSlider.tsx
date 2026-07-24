@@ -12,6 +12,7 @@ import { TripSummaryRow } from "./TripSummaryRow";
 import { MobileTripDetailFrame } from "./MobileTripDetailFrame";
 import { computeTravelerEligibility } from "@/pages/CalculatorPage/components/trips/tripEligibility";
 import { computeTravelerDurations } from "@/pages/CalculatorPage/components/trips/tripDuration";
+import { blockedTripRanges, hasBlockingOverlap } from "@/features/calculator/utils/tripOverlap";
 
 export interface TripFormSliderProps {
   open: boolean;
@@ -82,11 +83,15 @@ export function TripFormSlider({
     }
   }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id);
+
   const canSave =
+    name.trim().length > 0 &&
     travelerIds.length > 0 &&
     !!entryDate &&
     !!exitDate &&
-    exitDate > entryDate;
+    exitDate > entryDate &&
+    !hasBlockingOverlap(travelers, travelerIds, entryDate, exitDate || undefined, initialTrip?.id);
 
   // ── Entry eligibility + stay duration summaries ──
   const datesSet = !!entryDate && !!exitDate;
@@ -206,6 +211,7 @@ export function TripFormSlider({
           exitDate={exitDate}
           onEntryChange={setEntryDate}
           onExitChange={setExitDate}
+          blockedRanges={blockedRanges}
           onReset={() => { setEntryDate(""); setExitDate(""); }}
           expanded={activeCard === "dates"}
           onExpand={() => openCard("dates")}

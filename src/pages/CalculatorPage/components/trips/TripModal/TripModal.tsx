@@ -25,7 +25,9 @@ import {
   parseDate,
   formatDate,
   addDays,
+  differenceInCalendarDays,
 } from "@/features/calculator/utils/dates";
+import { blockedTripRanges, isDateBlocked } from "@/features/calculator/utils/tripOverlap";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
 import { trackEvent } from "@/utils/analytics";
 import {
@@ -61,7 +63,6 @@ function hasOverlap(
   trips: Trip[],
   entry: string,
   exit: string | null,
-  region: VisaRegion,
   excludeId?: string,
   excludeTrip?: Pick<Trip, "entryDate" | "exitDate" | "region">,
 ): string | null {
@@ -80,12 +81,15 @@ function hasOverlap(
       continue;
     }
 
-    if (t.region !== region) continue;
-
     const tEntry = parseDate(t.entryDate);
     const tExit = t.exitDate ? parseDate(t.exitDate) : new Date("2099-01-01");
 
-    if (nEntry < tExit && nExit > tEntry) {
+    // Trips may touch on a single day (an overland crossing to another region);
+    // an overlap of two or more days is a conflict, in any region.
+    const overlapStart = nEntry > tEntry ? nEntry : tEntry;
+    const overlapEnd = nExit < tExit ? nExit : tExit;
+    const overlapDays = differenceInCalendarDays(overlapEnd, overlapStart) + 1;
+    if (overlapDays >= 2) {
       return `Overlaps with "${t.destination || t.entryDate}".`;
     }
   }
@@ -249,7 +253,6 @@ export function TripModal({
         traveler.trips,
         entryDate,
         resolvedExit ?? null,
-        region,
         initialTrip?.id,
         initialTrip,
       );
@@ -258,6 +261,10 @@ export function TripModal({
 
     return conflicts.length > 0 ? conflicts.join("\n") : null;
   })();
+
+  // Interior days of the travelers' other trips — disabled in the date pickers.
+  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id);
+  const isDayBlocked = (date: Date) => isDateBlocked(date, blockedRanges);
 
   // ── Entry constraint hint ───────────────────────────────────────────────────
 
@@ -394,6 +401,10 @@ export function TripModal({
   // ── Validation & submit ─────────────────────────────────────────────────────
 
   function handleSave() {
+    if (!destination.trim()) {
+      setError("Please enter a trip name.");
+      return;
+    }
     if (travelerIds.length === 0) {
       setError("Please select at least one traveler.");
       return;
@@ -728,6 +739,7 @@ export function TripModal({
             >
               <DatePicker
                 value={entryDate ? parseISO(entryDate) : null}
+                shouldDisableDate={isDayBlocked}
                 onChange={(date) => {
                   if (!date) return;
                   const iso = formatDate(date);
@@ -752,6 +764,7 @@ export function TripModal({
                 value={exitDate ? parseISO(exitDate) : null}
                 disabled={!entryDate}
                 minDate={entryDate ? parseISO(entryDate) : undefined}
+                shouldDisableDate={isDayBlocked}
                 onChange={(date) => {
                   if (!date) return;
                   setExitDate(formatDate(date));

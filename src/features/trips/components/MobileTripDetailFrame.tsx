@@ -24,6 +24,14 @@ function fmtDate(iso: string): string {
   return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" }).format(parseDate(iso));
 }
 
+/** Days a tracked trip is over its allowance (0 when within the limit). */
+function overstayDays(dur?: TravelerDuration): number {
+  if (!dur || !dur.tracked) return 0;
+  if (dur.assessment) return dur.assessment.daysRemaining < 0 ? -dur.assessment.daysRemaining : 0;
+  if (dur.rollingStatus) return Math.max(0, dur.rollingStatus.daysUsed - dur.rollingStatus.maxDays);
+  return 0;
+}
+
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <Typography
@@ -43,11 +51,11 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function InfoRow({ label, value, valueColor }: { label: string; value: string; valueColor?: string }) {
   return (
-    <Box sx={{ display: "flex", gap: "10px", alignItems: "baseline" }}>
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.textSoft, minWidth: 92, flexShrink: 0 }}>
+    <Box sx={{ display: "flex", gap: "12px", alignItems: "baseline", justifyContent: "space-between" }}>
+      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.textSoft, flexShrink: 0 }}>
         {label}
       </Typography>
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: valueColor ? 600 : 400, color: valueColor ?? tokens.text }}>
+      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: valueColor ? 600 : 400, color: valueColor ?? tokens.text, textAlign: "right" }}>
         {value}
       </Typography>
     </Box>
@@ -253,7 +261,14 @@ function TravelerCard({
 
           {/* Duration */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <SectionLabel>Stay duration</SectionLabel>
+            <Box sx={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "10px" }}>
+              <SectionLabel>Stay duration</SectionLabel>
+              {overstayDays(dur) > 0 && (
+                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.7rem", fontWeight: 700, color: tokens.red }}>
+                  Over by {overstayDays(dur)}d
+                </Typography>
+              )}
+            </Box>
             <DurationSection dur={dur} entryDate={entryDate} exitDate={exitDate} />
           </Box>
         </Box>
