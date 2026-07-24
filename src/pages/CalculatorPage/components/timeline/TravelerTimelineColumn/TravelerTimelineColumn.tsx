@@ -36,7 +36,7 @@ import {
   agingMarkerTripLine,
   AGING_MARKER_EXPLANATION,
 } from "@/features/calculator/utils/schengen";
-import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { computeOverstayTripIds } from "../../trips/tripDuration";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { getUKRule } from "@/data/regions/uk";
 import { getIrelandRule } from "@/data/regions/ireland";
@@ -397,31 +397,11 @@ export function TravelerTimelineColumn({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [traveler]);
 
-  // Overstay detection — computed once per traveler change.
-  const overstayTripIds = useMemo(() => {
-    const schengenTrips = traveler.trips.filter(
-      (t) => t.region === VisaRegion.Schengen,
-    );
-    if (schengenTrips.length === 0) return new Set<string>();
-
-    const mockTraveler = {
-      id: "__overstay__",
-      name: "",
-      passportCode: null,
-      trips: schengenTrips,
-    };
-    const result = new Set<string>();
-
-    for (const trip of schengenTrips) {
-      const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
-      const status = computeTravelerStatus(mockTraveler, refDate);
-      if (status.daysUsed > 90) {
-        result.add(trip.id);
-      }
-    }
-
-    return result;
-  }, [traveler]);
+  // Overstay detection — region-aware (Schengen, Türkiye, UK, Ireland).
+  const overstayTripIds = useMemo(
+    () => computeOverstayTripIds(traveler),
+    [traveler],
+  );
 
   const schengenRule = getSchengenRule(traveler.passportCode);
   const isVisaRequired =

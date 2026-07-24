@@ -9,6 +9,7 @@ import { getIrelandRule } from "@/data/regions/ireland";
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { TripListCard } from "../../trips/TripListCard";
 import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { computeOverstayTripIds } from "../../trips/tripDuration";
 import {
   calculateMaxStay,
   calculateEarliestEntry,
@@ -22,33 +23,6 @@ import {
 } from "@/features/calculator/utils/dates";
 import { AddTripButton } from "./AddTripButton";
 import { MIN_COLUMN_WIDTH } from "../CardsView/CardsView";
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-/**
- * Returns a Set of trip IDs that are in an overstay state at their exit date.
- * A trip is overstay when, at the moment it ends, more than 90 Schengen days
- * have been used in the trailing 180-day window.
- */
-function computeOverstayTripIds(traveler: Traveler): Set<string> {
-  const schengenTrips = traveler.trips.filter(
-    (t) => t.region === VisaRegion.Schengen,
-  );
-  if (schengenTrips.length === 0) return new Set();
-
-  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
-  const result = new Set<string>();
-
-  for (const trip of schengenTrips) {
-    const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
-    const status = computeTravelerStatus(mockTraveler, refDate);
-    if (status.daysUsed > 90) {
-      result.add(trip.id);
-    }
-  }
-
-  return result;
-}
 
 // ─── Component ────────────────────────────────────────────────────────────────
 

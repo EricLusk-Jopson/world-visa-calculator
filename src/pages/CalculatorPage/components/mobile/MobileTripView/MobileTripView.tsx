@@ -13,7 +13,7 @@ import {
   today as getToday,
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
-import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { computeOverstayTripIds } from "../../trips/tripDuration";
 import { getSchengenRule } from "@/data/regions/schengen";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -32,34 +32,6 @@ interface MobileTripsViewProps {
   onAddTraveler: () => void;
 }
 
-// ─── Overstay helpers ─────────────────────────────────────────────────────────
-
-/**
- * Returns a Set of coordinate keys ("entryDate|exitDate|region") that are in
- * an overstay state at their exit date for the given traveler. Coordinate
- * keys are used instead of UUIDs because merged cards consolidate trips from
- * multiple travelers, each with a different UUID.
- */
-function computeOverstayCoords(traveler: Traveler): Set<string> {
-  const schengenTrips = traveler.trips.filter(
-    (t) => t.region === VisaRegion.Schengen,
-  );
-  if (schengenTrips.length === 0) return new Set();
-
-  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
-  const result = new Set<string>();
-
-  for (const trip of schengenTrips) {
-    const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
-    const status = computeTravelerStatus(mockTraveler, refDate);
-    if (status.daysUsed > 90) {
-      result.add(`${trip.entryDate}|${trip.exitDate ?? ""}|${trip.region}`);
-    }
-  }
-
-  return result;
-}
-
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function buildMergedTrips(
@@ -67,9 +39,9 @@ function buildMergedTrips(
   hiddenIds: string[],
   todayStr: string,
 ): MergedTrip[] {
-  // Pre-compute overstay coords per traveler once.
+  // Pre-compute overstay trip ids per traveler once (region-aware).
   const overstayByTraveler = new Map<string, Set<string>>(
-    travelers.map((t) => [t.id, computeOverstayCoords(t)]),
+    travelers.map((t) => [t.id, computeOverstayTripIds(t)]),
   );
 
   const merged: MergedTrip[] = [];
@@ -78,9 +50,8 @@ function buildMergedTrips(
     if (hiddenIds.includes(traveler.id)) return;
 
     traveler.trips.forEach((trip) => {
-      const tripKey = `${trip.entryDate}|${trip.exitDate ?? ""}|${trip.region}`;
       const tripIsOverstay =
-        overstayByTraveler.get(traveler.id)?.has(tripKey) ?? false;
+        overstayByTraveler.get(traveler.id)?.has(trip.id) ?? false;
 
       const existing = merged.find(
         (m) =>
@@ -194,11 +165,7 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
   );
 
   // Overstay overrides the card's colour scheme.
-  const cardBg = isOverstay
-    ? tokens.redBg
-    : isPlanned
-      ? "#FDFCF8"
-      : tokens.white;
+  const cardBg = isOverstay ? tokens.redBg : tokens.white;
   const cardBorderColor = isOverstay
     ? alpha(tokens.red, 0.35)
     : isPlanned

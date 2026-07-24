@@ -271,3 +271,26 @@ export function computeTravelerDurations(
 
   return result;
 }
+
+/**
+ * Ids of a traveler's own trips that exceed the stay limit for their region — a
+ * true overstay. Region-aware (Schengen, Türkiye rolling, UK/Ireland per-visit)
+ * by assessing each trip against the traveler's other same-region trips via
+ * computeTravelerDurations, so it handles far more than the 90/180 window.
+ */
+export function computeOverstayTripIds(traveler: Traveler): Set<string> {
+  const result = new Set<string>();
+  for (const trip of traveler.trips) {
+    const durations = computeTravelerDurations({
+      region: trip.region,
+      travelers: [traveler],
+      travelerIds: [traveler.id],
+      entryDate: trip.entryDate,
+      exitDate: trip.exitDate ?? "",
+      destination: trip.destination ?? "",
+      excludeTripId: trip.id,
+    });
+    if (durations[0]?.overstay) result.add(trip.id);
+  }
+  return result;
+}
