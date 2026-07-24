@@ -44,15 +44,16 @@ describe("computeImpactBreakdown", () => {
     expect(b.daysRemaining).toBe(0);
   });
 
-  it("dates the roll-out of a previous trip freed during this trip", () => {
+  it("dates when a previous trip starts to age out during this trip", () => {
     // Previous trip 1–5 Jan 2025; each day leaves the 180-day window on
-    // day + 180, so the last day (5 Jan) ages out on 4 Jul 2025.
+    // day + 180, so it STARTS to age out when its earliest day (1 Jan) rolls
+    // out, on 30 Jun 2025.
     const history = [trip("p", "2025-01-01", "2025-01-05")];
     const b = computeImpactBreakdown("2025-06-25", "2025-07-31", history);
 
     const during = b.agingOutDuringTripTrips.find((c) => c.tripId === "p");
     expect(during).toBeDefined();
     expect(during!.daysAgingOutDuringTrip).toBe(5);
-    expect(during!.agesOutDuringDate).toBe("2025-07-04");
+    expect(during!.agesOutDuringDate).toBe("2025-06-30");
   });
 });

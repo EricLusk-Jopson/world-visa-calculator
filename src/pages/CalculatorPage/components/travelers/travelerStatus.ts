@@ -258,8 +258,9 @@ export function computeImpactBreakdown(
       const aoEnd = tExit > duringTripCutoff ? duringTripCutoff : tExit;
       if (aoStart <= aoEnd) {
         daysAgingOutDuringTrip = differenceInCalendarDays(aoEnd, aoStart) + 1;
-        // The last freed day leaves the window windowDays later.
-        agesOutDuringDate = formatDate(subDays(aoEnd, -windowDays));
+        // Date this trip STARTS to age out: its earliest in-range day leaves
+        // the window windowDays later.
+        agesOutDuringDate = formatDate(subDays(aoStart, -windowDays));
       }
     }
 
@@ -277,7 +278,7 @@ export function computeImpactBreakdown(
       const aoEnd = tExit > overMaxStayCutoff ? overMaxStayCutoff : tExit;
       if (aoStart <= aoEnd) {
         daysAgingOutOverMaxStay = differenceInCalendarDays(aoEnd, aoStart) + 1;
-        agesOutOverMaxDate = formatDate(subDays(aoEnd, -windowDays));
+        agesOutOverMaxDate = formatDate(subDays(aoStart, -windowDays));
       }
     }
 
