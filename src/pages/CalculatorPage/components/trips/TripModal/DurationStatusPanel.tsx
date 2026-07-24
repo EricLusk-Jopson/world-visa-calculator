@@ -118,7 +118,10 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
   const untracked = durations.filter((d) => !d.tracked);
   const okCount = tracked.filter((d) => d.severity === "safe").length;
   const cautionCount = tracked.filter((d) => d.severity === "caution").length;
-  const dangerCount = tracked.filter((d) => d.severity === "danger").length;
+  // "danger" covers both close-to-limit (red clock) and actual overstay (red
+  // warning); split them so the summary icons match the per-traveler ones.
+  const dangerCount = tracked.filter((d) => d.severity === "danger" && !d.overstay).length;
+  const overstayCount = tracked.filter((d) => d.overstay).length;
   const untrackedCount = untracked.length;
   const noneTracked = durations.length === 0;
 
@@ -205,7 +208,7 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
           )}
           {dangerCount > 0 && (
             <Tooltip
-              title={`${dangerCount} ${dangerCount === 1 ? "traveler is over a limit" : "travelers are over a limit"} or at re-entry risk`}
+              title={`${dangerCount} ${dangerCount === 1 ? "traveler is" : "travelers are"} close to a limit or at re-entry risk`}
               placement="top"
               arrow
               componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
@@ -213,6 +216,19 @@ export function DurationStatusPanel(props: DurationStatusPanelProps) {
               <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
                 <DurationIcon state="danger" size="0.9rem" />
                 <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.red }}>{dangerCount}</Typography>
+              </Box>
+            </Tooltip>
+          )}
+          {overstayCount > 0 && (
+            <Tooltip
+              title={`${overstayCount} ${overstayCount === 1 ? "traveler exceeds" : "travelers exceed"} a stay limit`}
+              placement="top"
+              arrow
+              componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
+                <DurationIcon state="overstay" size="0.9rem" />
+                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.red }}>{overstayCount}</Typography>
               </Box>
             </Tooltip>
           )}

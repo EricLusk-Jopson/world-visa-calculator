@@ -123,7 +123,9 @@ export function TripFormSlider({
     : [];
   const durOk = durations.filter((d) => d.tracked && d.severity === "safe").length;
   const durCaution = durations.filter((d) => d.tracked && d.severity === "caution").length;
-  const durDanger = durations.filter((d) => d.tracked && d.severity === "danger").length;
+  // "danger" splits into close-to-limit (red clock) and actual overstay (red warning).
+  const durDanger = durations.filter((d) => d.tracked && d.severity === "danger" && !d.overstay).length;
+  const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
   const durUnknown = durations.filter((d) => !d.tracked).length;
 
   const handleSave = useCallback(() => {
@@ -231,6 +233,7 @@ export function TripFormSlider({
                 okCount={durOk}
                 cautionCount={durCaution}
                 dangerCount={durDanger}
+                overstayCount={durOverstay}
                 unknownCount={durUnknown}
                 placeholder={!datesSet ? "Set dates" : ""}
                 disabled={!datesSet}

@@ -14,8 +14,10 @@ export interface TripSummaryRowProps {
   okCount: number;
   /** Approaching a limit (amber). */
   cautionCount?: number;
-  /** Over a limit / refused (red). */
+  /** Close to a limit / refused (red). For duration this is the red clock. */
   dangerCount: number;
+  /** Actual overstay (red warning). Duration rows only. */
+  overstayCount?: number;
   /** Visa-required / untracked travelers (grey). */
   unknownCount?: number;
   /** Muted placeholder shown when there are no counts (e.g. dates not set). */
@@ -46,12 +48,18 @@ export function TripSummaryRow({
   okCount,
   cautionCount = 0,
   dangerCount,
+  overstayCount = 0,
   unknownCount = 0,
   placeholder,
   disabled,
   onClick,
 }: TripSummaryRowProps) {
-  const empty = okCount === 0 && cautionCount === 0 && dangerCount === 0 && unknownCount === 0;
+  const empty =
+    okCount === 0 &&
+    cautionCount === 0 &&
+    dangerCount === 0 &&
+    overstayCount === 0 &&
+    unknownCount === 0;
   const isDuration = statusKind === "duration";
   return (
     <Box
@@ -120,6 +128,19 @@ export function TripSummaryRow({
             {dangerCount > 0 && (
               <Count
                 value={dangerCount}
+                color={tokens.red}
+                icon={
+                  isDuration ? (
+                    <DurationIcon state="danger" size="0.9rem" />
+                  ) : (
+                    <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />
+                  )
+                }
+              />
+            )}
+            {overstayCount > 0 && (
+              <Count
+                value={overstayCount}
                 color={tokens.red}
                 icon={<WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />}
               />

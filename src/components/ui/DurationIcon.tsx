@@ -5,13 +5,20 @@ import { tokens } from "@/styles/theme";
 
 /**
  * Status of a traveler's stay duration:
- *   safe      — within the allowance (green clock)
+ *   safe      — comfortably within the allowance (green clock)
  *   caution   — approaching the limit (amber clock)
- *   danger    — over the limit / refused (red warning)
+ *   danger    — close to the limit but still legal (red clock)
+ *   overstay  — over the limit / refused (red warning)
  *   untracked — visa-required, no automatic tracking (grey question)
  *   pending   — no trip dates yet (muted clock)
  */
-export type DurationState = "safe" | "caution" | "danger" | "untracked" | "pending";
+export type DurationState =
+  | "safe"
+  | "caution"
+  | "danger"
+  | "overstay"
+  | "untracked"
+  | "pending";
 
 export function durationColor(state: DurationState): string {
   switch (state) {
@@ -20,6 +27,7 @@ export function durationColor(state: DurationState): string {
     case "caution":
       return tokens.amber;
     case "danger":
+    case "overstay":
       return tokens.red;
     case "untracked":
     case "pending":
@@ -37,8 +45,8 @@ export function DurationIcon({
   const color = durationColor(state);
   if (state === "untracked")
     return <HelpOutlineIcon sx={{ fontSize: size, color }} />;
-  if (state === "danger")
+  if (state === "overstay")
     return <WarningAmberIcon sx={{ fontSize: size, color }} />;
-  // safe / caution / pending → circled clock
+  // safe / caution / danger / pending → circled clock (red when danger)
   return <AccessTimeIcon sx={{ fontSize: size, color }} />;
 }

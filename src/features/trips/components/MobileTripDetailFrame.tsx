@@ -205,9 +205,11 @@ function TravelerCard({
   // stay duration (clock / warning / question).
   const durState: DurationState = !dur
     ? "pending"
-    : dur.tracked
-      ? dur.severity
-      : "untracked";
+    : !dur.tracked
+      ? "untracked"
+      : dur.overstay
+        ? "overstay"
+        : dur.severity;
 
   return (
     <Box sx={{ borderRadius: "14px", border: `1.5px solid ${tokens.border}`, bgcolor: tokens.white, overflow: "hidden" }}>

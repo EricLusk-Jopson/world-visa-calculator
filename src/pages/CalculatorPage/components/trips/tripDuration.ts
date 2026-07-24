@@ -60,6 +60,12 @@ export interface TravelerDuration {
    * or refused (red).
    */
   severity: StayVariant;
+  /**
+   * True when the stay actually exceeds the limit (negative headroom). Splits
+   * the red "danger" clock (approaching but legal) from the red overstay
+   * warning in the icon layer.
+   */
+  overstay: boolean;
   /** Bar fill, 0–100. */
   fillPct: number;
   /** Chip text, e.g. "34d left" or "over by 3d". */
@@ -83,6 +89,7 @@ function untrackedEntry(id: string, name: string, color: string): TravelerDurati
     note: VISA_REQUIRED_DURATION_NOTE,
     variant: "safe",
     severity: "safe",
+    overstay: false,
     fillPct: 0,
     chipLabel: "",
     hasIssue: false,
@@ -147,10 +154,11 @@ function buildRolling(
       })
     : undefined;
 
-  // The breakdown's extendable figure accounts for days rolling off the window,
-  // so it is the truer "days remaining" when available.
-  const daysRemaining = breakdown ? breakdown.daysRemaining : daysRemainingRaw;
-  const variant = getStatusVariant(daysRemaining);
+  // Unclamped extension headroom (days-from-overstay). The breakdown accounts
+  // for days rolling off the window; negative means the planned trip overstays.
+  const headroom = breakdown ? breakdown.daysRemainingRaw : maxDays - daysUsed;
+  const variant = getStatusVariant(headroom);
+  const overstay = headroom < 0;
   const fillPct = Math.min(100, (Math.max(0, daysUsed) / maxDays) * 100);
 
   return {
@@ -160,8 +168,9 @@ function buildRolling(
     tracked: true,
     variant,
     severity: variant,
+    overstay,
     fillPct,
-    chipLabel: chipFor(daysRemaining),
+    chipLabel: chipFor(headroom),
     hasIssue: variant !== "safe",
     rollingStatus: { daysUsed, daysRemaining: daysRemainingRaw, maxDays },
     rollingBreakdown: breakdown,
@@ -251,6 +260,7 @@ export function computeTravelerDurations(
       tracked: true,
       variant: assessment.variant,
       severity,
+      overstay: assessment.daysRemaining < 0,
       fillPct,
       chipLabel: chipFor(assessment.daysRemaining),
       hasIssue: severity !== "safe",
