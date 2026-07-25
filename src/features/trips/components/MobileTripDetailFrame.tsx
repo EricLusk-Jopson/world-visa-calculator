@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
@@ -11,24 +10,41 @@ import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
 import { ImpactPreview } from "@/components/ui";
 import { DurationIcon, type DurationState } from "@/components/ui/DurationIcon";
 import { parseDate } from "@/features/calculator/utils/dates";
-import type { TravelerEligibility, EligibilityNote } from "@/pages/CalculatorPage/components/trips/tripEligibility";
+import type {
+  TravelerEligibility,
+  EligibilityNote,
+} from "@/pages/CalculatorPage/components/trips/tripEligibility";
 import type { TravelerDuration } from "@/pages/CalculatorPage/components/trips/tripDuration";
 
 const VARIANT_CHIP = {
-  safe: { bg: tokens.greenBg, border: tokens.greenBorder, text: tokens.greenText },
-  caution: { bg: tokens.amberBg, border: tokens.amberBorder, text: tokens.amberText },
+  safe: {
+    bg: tokens.greenBg,
+    border: tokens.greenBorder,
+    text: tokens.greenText,
+  },
+  caution: {
+    bg: tokens.amberBg,
+    border: tokens.amberBorder,
+    text: tokens.amberText,
+  },
   danger: { bg: tokens.redBg, border: tokens.redBorder, text: tokens.redText },
 } as const;
 
 function fmtDate(iso: string): string {
-  return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" }).format(parseDate(iso));
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(parseDate(iso));
 }
 
 /** Days a tracked trip is over its allowance (0 when within the limit). */
 function overstayDays(dur?: TravelerDuration): number {
   if (!dur || !dur.tracked) return 0;
-  if (dur.assessment) return dur.assessment.daysRemaining < 0 ? -dur.assessment.daysRemaining : 0;
-  if (dur.rollingStatus) return Math.max(0, dur.rollingStatus.daysUsed - dur.rollingStatus.maxDays);
+  if (dur.assessment)
+    return dur.assessment.daysRemaining < 0 ? -dur.assessment.daysRemaining : 0;
+  if (dur.rollingStatus)
+    return Math.max(0, dur.rollingStatus.daysUsed - dur.rollingStatus.maxDays);
   return 0;
 }
 
@@ -49,13 +65,44 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function InfoRow({ label, value, valueColor }: { label: string; value: string; valueColor?: string }) {
+function InfoRow({
+  label,
+  value,
+  valueColor,
+}: {
+  label: string;
+  value: string;
+  valueColor?: string;
+}) {
   return (
-    <Box sx={{ display: "flex", gap: "12px", alignItems: "baseline", justifyContent: "space-between" }}>
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.textSoft, flexShrink: 0 }}>
+    <Box
+      sx={{
+        display: "flex",
+        gap: "12px",
+        alignItems: "baseline",
+        justifyContent: "space-between",
+      }}
+    >
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.72rem",
+          fontWeight: 600,
+          color: tokens.textSoft,
+          flexShrink: 0,
+        }}
+      >
         {label}
       </Typography>
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", fontWeight: valueColor ? 600 : 400, color: valueColor ?? tokens.text, textAlign: "right" }}>
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.8rem",
+          fontWeight: valueColor ? 600 : 400,
+          color: valueColor ?? tokens.text,
+          textAlign: "right",
+        }}
+      >
         {value}
       </Typography>
     </Box>
@@ -64,9 +111,26 @@ function InfoRow({ label, value, valueColor }: { label: string; value: string; v
 
 function NoteBlock({ note }: { note: EligibilityNote }) {
   return (
-    <Box sx={{ bgcolor: tokens.mist, borderRadius: "8px", px: "10px", py: "8px", display: "flex", flexDirection: "column", gap: "3px" }}>
+    <Box
+      sx={{
+        bgcolor: tokens.mist,
+        borderRadius: "8px",
+        px: "10px",
+        py: "8px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "3px",
+      }}
+    >
       <SectionLabel>{note.label}</SectionLabel>
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.76rem", color: tokens.textSoft, lineHeight: 1.5 }}>
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.76rem",
+          color: tokens.textSoft,
+          lineHeight: 1.5,
+        }}
+      >
         {note.text}
       </Typography>
       {note.source && (
@@ -75,7 +139,13 @@ function NoteBlock({ note }: { note: EligibilityNote }) {
           href={note.source.directUrl}
           target="_blank"
           rel="noopener noreferrer"
-          sx={{ fontFamily: tokens.fontBody, fontSize: "0.7rem", color: tokens.navy, textDecoration: "none", "&:hover": { textDecoration: "underline" } }}
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.7rem",
+            color: tokens.navy,
+            textDecoration: "none",
+            "&:hover": { textDecoration: "underline" },
+          }}
         >
           Source ↗
         </Box>
@@ -86,21 +156,72 @@ function NoteBlock({ note }: { note: EligibilityNote }) {
 
 function EqRow({ label, value }: { label: string; value: string }) {
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "8px" }}>
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.74rem", color: tokens.textSoft }}>{label}</Typography>
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.78rem", fontWeight: 600, color: tokens.navy, whiteSpace: "nowrap" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "baseline",
+        gap: "8px",
+      }}
+    >
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.74rem",
+          color: tokens.textSoft,
+        }}
+      >
+        {label}
+      </Typography>
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.78rem",
+          fontWeight: 600,
+          color: tokens.navy,
+          whiteSpace: "nowrap",
+        }}
+      >
         {value}
       </Typography>
     </Box>
   );
 }
 
-function WarningBlock({ variant, text }: { variant: "caution" | "danger"; text: string }) {
+function WarningBlock({
+  variant,
+  text,
+}: {
+  variant: "caution" | "danger";
+  text: string;
+}) {
   const c = VARIANT_CHIP[variant];
   return (
-    <Box sx={{ display: "flex", gap: "6px", alignItems: "flex-start", bgcolor: c.bg, border: `1px solid ${c.border}`, borderRadius: "8px", px: "10px", py: "8px" }}>
-      <WarningAmberIcon sx={{ fontSize: "0.9rem", color: c.text, mt: "1px", flexShrink: 0 }} />
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: c.text, lineHeight: 1.45 }}>{text}</Typography>
+    <Box
+      sx={{
+        display: "flex",
+        gap: "6px",
+        alignItems: "flex-start",
+        bgcolor: c.bg,
+        border: `1px solid ${c.border}`,
+        borderRadius: "8px",
+        px: "10px",
+        py: "8px",
+      }}
+    >
+      <WarningAmberIcon
+        sx={{ fontSize: "0.9rem", color: c.text, mt: "1px", flexShrink: 0 }}
+      />
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.75rem",
+          color: c.text,
+          lineHeight: 1.45,
+        }}
+      >
+        {text}
+      </Typography>
     </Box>
   );
 }
@@ -118,7 +239,14 @@ function DurationSection({
 }) {
   if (!dur || !entryDate || !exitDate) {
     return (
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.76rem", color: tokens.textGhost, fontStyle: "italic" }}>
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.76rem",
+          color: tokens.textGhost,
+          fontStyle: "italic",
+        }}
+      >
         Add trip dates to see stay duration.
       </Typography>
     );
@@ -126,7 +254,14 @@ function DurationSection({
 
   if (!dur.tracked) {
     return (
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.78rem", color: tokens.textSoft, lineHeight: 1.5 }}>
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.78rem",
+          color: tokens.textSoft,
+          lineHeight: 1.5,
+        }}
+      >
         {dur.note}
       </Typography>
     );
@@ -141,7 +276,15 @@ function DurationSection({
         variant={dur.variant}
         maxDays={dur.rollingStatus.maxDays}
         breakdown={dur.rollingBreakdown}
-        travelerImpacts={[{ id: dur.id, name: dur.name, color: dur.color, daysRemaining: dur.rollingStatus.daysRemaining, daysUsed: dur.rollingStatus.daysUsed }]}
+        travelerImpacts={[
+          {
+            id: dur.id,
+            name: dur.name,
+            color: dur.color,
+            daysRemaining: dur.rollingStatus.daysRemaining,
+            daysUsed: dur.rollingStatus.daysUsed,
+          },
+        ]}
         currentTripEntry={entryDate}
         currentTripExit={exitDate || undefined}
       />
@@ -153,9 +296,25 @@ function DurationSection({
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
       {a && (
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "5px", bgcolor: tokens.mist, borderRadius: "8px", px: "10px", py: "9px" }}>
-          <EqRow label="This trip" value={`${a.tripDays} of ${a.limitLabel} visit`} />
-          <EqRow label={a.daysRemaining >= 0 ? "Days remaining" : "Over by"} value={`${Math.abs(a.daysRemaining)}d`} />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "5px",
+            bgcolor: tokens.mist,
+            borderRadius: "8px",
+            px: "10px",
+            py: "9px",
+          }}
+        >
+          <EqRow
+            label="This trip"
+            value={`${a.tripDays} of ${a.limitLabel} visit`}
+          />
+          <EqRow
+            label={a.daysRemaining >= 0 ? "Days remaining" : "Over by"}
+            value={`${Math.abs(a.daysRemaining)}d`}
+          />
           <EqRow label="Latest exit" value={fmtDate(a.maxExitDate)} />
         </Box>
       )}
@@ -212,46 +371,100 @@ function TravelerCard({
         : dur.severity;
 
   return (
-    <Box sx={{ borderRadius: "14px", border: `1.5px solid ${tokens.border}`, bgcolor: tokens.white, overflow: "hidden" }}>
+    <Box
+      sx={{
+        borderRadius: "14px",
+        border: `1.5px solid ${tokens.border}`,
+        bgcolor: tokens.white,
+        overflow: "hidden",
+      }}
+    >
       {/* Title bar */}
       <Box
         onClick={() => setOpen((v) => !v)}
-        sx={{ display: "flex", alignItems: "center", gap: "8px", px: "14px", py: "12px", cursor: "pointer", userSelect: "none" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          px: "14px",
+          py: "12px",
+          cursor: "pointer",
+          userSelect: "none",
+        }}
       >
-        <Box sx={{ width: 8, height: 8, borderRadius: "50%", bgcolor: e.color, flexShrink: 0 }} />
-        <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "1rem", fontStyle: "italic", color: tokens.navy, flex: 1 }}>
+        <Box
+          sx={{
+            width: 8,
+            height: 8,
+            borderRadius: "50%",
+            bgcolor: e.color,
+            flexShrink: 0,
+          }}
+        />
+        <Typography
+          sx={{
+            fontFamily: tokens.fontDisplay,
+            fontSize: "1rem",
+            fontStyle: "italic",
+            color: tokens.navy,
+            flex: 1,
+          }}
+        >
           {e.name}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
           {e.ok ? (
-            <CheckCircleOutlineIcon sx={{ fontSize: "1.1rem", color: tokens.green }} />
+            <CheckCircleOutlineIcon
+              sx={{ fontSize: "1.1rem", color: tokens.green }}
+            />
           ) : (
             <WarningAmberIcon sx={{ fontSize: "1.1rem", color: tokens.red }} />
           )}
           <DurationIcon state={durState} />
         </Box>
         {open ? (
-          <ExpandLessIcon sx={{ fontSize: "1.2rem", color: tokens.textGhost }} />
+          <ExpandLessIcon
+            sx={{ fontSize: "1.2rem", color: tokens.textGhost }}
+          />
         ) : (
-          <ExpandMoreIcon sx={{ fontSize: "1.2rem", color: tokens.textGhost }} />
+          <ExpandMoreIcon
+            sx={{ fontSize: "1.2rem", color: tokens.textGhost }}
+          />
         )}
       </Box>
 
       {open && (
-        <Box sx={{ px: "14px", pb: "14px", display: "flex", flexDirection: "column", gap: "14px" }}>
+        <Box
+          sx={{
+            px: "14px",
+            pb: "14px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "14px",
+          }}
+        >
           {/* Eligibility */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             <SectionLabel>Entry eligibility</SectionLabel>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
               <InfoRow label="Passport" value={e.passportDisplay} />
               <InfoRow label="Destination" value={e.regionLabel} />
-              <InfoRow label="Access" value={e.accessLabel} valueColor={accessColor} />
+              <InfoRow
+                label="Access"
+                value={e.accessLabel}
+                valueColor={accessColor}
+              />
               {e.ruleTexts.length > 0 && (
-                <InfoRow label={e.ruleTexts.length > 1 ? "Rules" : "Rule"} value={e.ruleTexts.join(" · ")} />
+                <InfoRow
+                  label={e.ruleTexts.length > 1 ? "Rules" : "Rule"}
+                  value={e.ruleTexts.join(" · ")}
+                />
               )}
             </Box>
             {e.notes.length > 0 && (
-              <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "6px" }}
+              >
                 {e.notes.map((n, i) => (
                   <NoteBlock key={i} note={n} />
                 ))}
@@ -263,15 +476,33 @@ function TravelerCard({
 
           {/* Duration */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <Box sx={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "10px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                gap: "10px",
+              }}
+            >
               <SectionLabel>Stay duration</SectionLabel>
               {overstayDays(dur) > 0 && (
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.7rem", fontWeight: 700, color: tokens.red }}>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    color: tokens.red,
+                  }}
+                >
                   Over by {overstayDays(dur)}d
                 </Typography>
               )}
             </Box>
-            <DurationSection dur={dur} entryDate={entryDate} exitDate={exitDate} />
+            <DurationSection
+              dur={dur}
+              entryDate={entryDate}
+              exitDate={exitDate}
+            />
           </Box>
         </Box>
       )}
@@ -297,10 +528,30 @@ export function MobileTripDetailFrame({
   exitDate: string;
 }) {
   return (
-    <FullScreenSlider open={open} onClose={onClose} title="Eligibility & Duration">
-      <Box sx={{ px: "16px", py: "16px", display: "flex", flexDirection: "column", gap: "12px" }}>
+    <FullScreenSlider
+      open={open}
+      onClose={onClose}
+      title="Eligibility & Duration"
+    >
+      <Box
+        sx={{
+          px: "16px",
+          py: "16px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+        }}
+      >
         {eligibility.length === 0 ? (
-          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem", color: tokens.textGhost, textAlign: "center", mt: "24px" }}>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.85rem",
+              color: tokens.textGhost,
+              textAlign: "center",
+              mt: "24px",
+            }}
+          >
             Select travelers and a destination to see entry requirements.
           </Typography>
         ) : (

@@ -300,7 +300,6 @@ export function TravelerTimelineColumn({
   traveler,
   timelineStart,
   timelineEnd,
-  onAddTrip,
   onEditTrip,
 }: TravelerTimelineColumnProps) {
   const columnRef = useRef<HTMLDivElement>(null);
@@ -327,7 +326,9 @@ export function TravelerTimelineColumn({
 
   const todayStr = formatDate(today);
   const highlightedTripId = (() => {
-    const ongoing = sortedTrips.find((t) => !t.exitDate && t.entryDate <= todayStr);
+    const ongoing = sortedTrips.find(
+      (t) => !t.exitDate && t.entryDate <= todayStr,
+    );
     if (ongoing) return ongoing.id;
     const upcoming = sortedTrips.find((t) => t.entryDate > todayStr);
     return upcoming?.id ?? null;
@@ -405,8 +406,7 @@ export function TravelerTimelineColumn({
 
   const schengenRule = getSchengenRule(traveler.passportCode);
   const isVisaRequired =
-    traveler.passportCode !== null &&
-    schengenRule.access === 'visa_required';
+    traveler.passportCode !== null && schengenRule.access === "visa_required";
 
   const returnMarkers = useMemo(
     () => computeReturnMarkers(traveler, timelineStart, timelineEnd),
@@ -521,16 +521,18 @@ export function TravelerTimelineColumn({
       />
 
       {/* Return markers (threshold milestones) */}
-      {!isVisaRequired && returnMarkers
-        .filter((marker) => !marker.isCurrent)
-        .map((marker, i) => (
-          <MarkerLine key={`thr-${marker.days}-${i}`} {...marker} />
-        ))}
+      {!isVisaRequired &&
+        returnMarkers
+          .filter((marker) => !marker.isCurrent)
+          .map((marker, i) => (
+            <MarkerLine key={`thr-${marker.days}-${i}`} {...marker} />
+          ))}
 
       {/* Aging-out markers */}
-      {!isVisaRequired && agingMarkers.map((marker, i) => (
-        <AgingMarkerLine key={`aging-${marker.entryDate}-${i}`} {...marker} />
-      ))}
+      {!isVisaRequired &&
+        agingMarkers.map((marker, i) => (
+          <AgingMarkerLine key={`aging-${marker.entryDate}-${i}`} {...marker} />
+        ))}
 
       {/* Trip cards */}
       {sortedTrips.map((trip, rank) => {
@@ -547,22 +549,22 @@ export function TravelerTimelineColumn({
 
         const ukStayInfo =
           trip.region === VisaRegion.UnitedKingdom && trip.exitDate
-            ? assessRegionTripStay(
+            ? (assessRegionTripStay(
                 VisaRegion.UnitedKingdom,
                 traveler.passportCode,
                 trip,
                 traveler.trips,
-              ) ?? undefined
+              ) ?? undefined)
             : undefined;
 
         const irelandStayInfo =
           trip.region === VisaRegion.Ireland && trip.exitDate
-            ? assessRegionTripStay(
+            ? (assessRegionTripStay(
                 VisaRegion.Ireland,
                 traveler.passportCode,
                 trip,
                 traveler.trips,
-              ) ?? undefined
+              ) ?? undefined)
             : undefined;
 
         return (
@@ -582,49 +584,15 @@ export function TravelerTimelineColumn({
             isHighlighted={trip.id === highlightedTripId}
             passportRule={getSchengenRule(traveler.passportCode)}
             ukPassportRule={traveler.passportCode ? ukRule : undefined}
-            irelandPassportRule={traveler.passportCode ? irelandRule : undefined}
+            irelandPassportRule={
+              traveler.passportCode ? irelandRule : undefined
+            }
             ukStayInfo={ukStayInfo}
             irelandStayInfo={irelandStayInfo}
             onEdit={() => onEditTrip(traveler.id, trip)}
           />
         );
       })}
-
-      {/* Add trip button */}
-      <Box
-        onClick={() => onAddTrip(traveler.id)}
-        sx={{
-          position: "absolute",
-          left: 40,
-          right: 12,
-          top: addButtonTop,
-          height: ADD_BUTTON_HEIGHT,
-          border: `1.5px dashed ${tokens.border}`,
-          borderRadius: "8px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "6px",
-          cursor: "pointer",
-          bgcolor: tokens.white,
-          color: tokens.textSoft,
-          fontFamily: tokens.fontBody,
-          fontSize: "0.75rem",
-          fontWeight: 600,
-          zIndex: 3,
-          transition: "all 0.15s",
-          "&:hover": {
-            borderColor: tokens.navy,
-            color: tokens.navy,
-            bgcolor: tokens.mist,
-          },
-        }}
-      >
-        <Box component="span" sx={{ fontSize: "0.9rem", lineHeight: 1 }}>
-          +
-        </Box>
-        Add trip
-      </Box>
     </Box>
   );
 }

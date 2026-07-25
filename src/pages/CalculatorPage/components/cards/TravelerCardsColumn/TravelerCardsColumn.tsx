@@ -19,9 +19,7 @@ import {
   parseDate,
   formatDate,
   addDays,
-  today as getToday,
 } from "@/features/calculator/utils/dates";
-import { AddTripButton } from "./AddTripButton";
 import { MIN_COLUMN_WIDTH } from "../CardsView/CardsView";
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -37,12 +35,15 @@ interface TravelerCardsColumnProps {
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
-  onEdit: (travelerId: string, name: string, passportCode: string | null) => void;
+  onEdit: (
+    travelerId: string,
+    name: string,
+    passportCode: string | null,
+  ) => void;
 }
 
 /**
- * One column in the cards view. Sticky header + scrollable trip list +
- * "Add trip" button at the bottom.
+ * One column in the cards view. Sticky header + scrollable trip list
  *
  * flex: "1 1 0" — zero flex-basis ensures equal width distribution.
  * minWidth: MIN_COLUMN_WIDTH — horizontal scroll kicks in before columns
@@ -51,7 +52,6 @@ interface TravelerCardsColumnProps {
 export function TravelerCardsColumn({
   traveler,
   compact,
-  onAddTrip,
   onEditTrip,
   onDeleteTraveler,
   onEdit,
@@ -77,7 +77,9 @@ export function TravelerCardsColumn({
 
   // Highlighted trip: ongoing trip, or if none, the next upcoming trip.
   const highlightedTripId = (() => {
-    const ongoing = sortedTrips.find((t) => !t.exitDate && t.entryDate <= todayStr);
+    const ongoing = sortedTrips.find(
+      (t) => !t.exitDate && t.entryDate <= todayStr,
+    );
     if (ongoing) return ongoing.id;
     const upcoming = sortedTrips.find((t) => t.entryDate > todayStr);
     return upcoming?.id ?? null;
@@ -141,10 +143,6 @@ export function TravelerCardsColumn({
           },
         }}
       >
-        {sortedTrips.length >= 5 && (
-          <AddTripButton onClick={() => onAddTrip(traveler.id)} />
-        )}
-
         {sortedTrips.length === 0 ? (
           <Box
             sx={{
@@ -208,22 +206,22 @@ export function TravelerCardsColumn({
             // suppressed separately when no nationality is set.
             const ukStayInfo =
               trip.region === VisaRegion.UnitedKingdom && trip.exitDate
-                ? assessRegionTripStay(
+                ? (assessRegionTripStay(
                     VisaRegion.UnitedKingdom,
                     traveler.passportCode,
                     trip,
                     traveler.trips,
-                  ) ?? undefined
+                  ) ?? undefined)
                 : undefined;
 
             const irelandStayInfo =
               trip.region === VisaRegion.Ireland && trip.exitDate
-                ? assessRegionTripStay(
+                ? (assessRegionTripStay(
                     VisaRegion.Ireland,
                     traveler.passportCode,
                     trip,
                     traveler.trips,
-                  ) ?? undefined
+                  ) ?? undefined)
                 : undefined;
 
             return (
@@ -236,7 +234,9 @@ export function TravelerCardsColumn({
                 isHighlighted={trip.id === highlightedTripId}
                 passportRule={getSchengenRule(traveler.passportCode)}
                 ukPassportRule={traveler.passportCode ? ukRule : undefined}
-                irelandPassportRule={traveler.passportCode ? irelandRule : undefined}
+                irelandPassportRule={
+                  traveler.passportCode ? irelandRule : undefined
+                }
                 ukStayInfo={ukStayInfo}
                 irelandStayInfo={irelandStayInfo}
                 onEdit={() => onEditTrip(traveler.id, trip)}
@@ -244,11 +244,6 @@ export function TravelerCardsColumn({
             );
           })
         )}
-
-        <AddTripButton
-          onClick={() => onAddTrip(traveler.id)}
-          mt={sortedTrips.length > 0 ? "4px" : 0}
-        />
       </Box>
     </Box>
   );

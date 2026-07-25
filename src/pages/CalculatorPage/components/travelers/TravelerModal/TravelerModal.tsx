@@ -176,16 +176,6 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
           <ValidationMessage variant="error">{error}</ValidationMessage>
         )}
 
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.72rem",
-            color: tokens.textSoft,
-          }}
-        >
-          Use first names -- they appear as column headers in the tracker.
-        </Typography>
-
         {/* Nationality */}
         <Box sx={{ display: "flex", flexDirection: "column", gap: "5px" }}>
           <Typography
@@ -201,7 +191,10 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
           >
             Passport / nationality
           </Typography>
-          <NationalitySelector value={passportCode} onChange={setPassportCode} />
+          <NationalitySelector
+            value={passportCode}
+            onChange={setPassportCode}
+          />
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
@@ -209,7 +202,7 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
               color: tokens.textGhost,
             }}
           >
-            Optional -- sets your Schengen entitlement rule.
+            Optional. Helps determine visa requirements and travel restrictions.
           </Typography>
         </Box>
       </Box>

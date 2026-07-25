@@ -4,13 +4,18 @@ import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import { format } from "date-fns";
 import AddIcon from "@mui/icons-material/Add";
-import { type Traveler, type Trip, VisaRegion, isEntitled, isVisaRequired } from "@/types";
+import {
+  type Traveler,
+  type Trip,
+  VisaRegion,
+  isEntitled,
+  isVisaRequired,
+} from "@/types";
 import { tokens } from "@/styles/theme";
 import {
   parseDate,
   todayISO,
   countTripDays,
-  today as getToday,
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { computeOverstayTripIds } from "../../trips/tripDuration";
@@ -90,42 +95,6 @@ function buildMergedTrips(
 
 function fmtDate(iso: string): string {
   return format(parseDate(iso), "MMM d");
-}
-
-// ─── Add Trip button ──────────────────────────────────────────────────────────
-
-function AddTripButton({ onClick }: { onClick: () => void }) {
-  return (
-    <Box
-      component="button"
-      onClick={onClick}
-      sx={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "6px",
-        py: "11px",
-        border: `1.5px dashed ${tokens.border}`,
-        borderRadius: "10px",
-        bgcolor: tokens.white,
-        fontFamily: tokens.fontBody,
-        fontSize: "0.82rem",
-        fontWeight: 600,
-        color: tokens.textSoft,
-        cursor: "pointer",
-        transition: "border-color 0.15s, color 0.15s, background 0.15s",
-        "&:active": {
-          borderColor: tokens.navy,
-          color: tokens.navy,
-          bgcolor: alpha(tokens.navy, 0.03),
-        },
-      }}
-    >
-      <AddIcon sx={{ fontSize: "0.95rem" }} />
-      Add Trip
-    </Box>
-  );
 }
 
 // ─── Badge ────────────────────────────────────────────────────────────────────
@@ -305,21 +274,55 @@ function MergedTripCard({ merged, onEdit }: MergedTripCardProps) {
               )}
 
               {/* Passport rule chips — Schengen trips only */}
-              {isSchengen && !isOngoing && rules.some((r) => r.access === "visa_required") && (
-                <Box sx={{ ...BADGE_SX, bgcolor: alpha(tokens.red, 0.1), color: tokens.redText }}>
-                  Visa req.
-                </Box>
-              )}
-              {isSchengen && !isOngoing && rules.some((r) => isVisaRequired(r) && r.notes?.some(n => n.text.startsWith('Airport transit visa'))) && (
-                <Box sx={{ ...BADGE_SX, bgcolor: tokens.red, color: tokens.white }}>
-                  Transit visa
-                </Box>
-              )}
-              {isSchengen && !isOngoing && rules.some((r) => isEntitled(r) && r.entitlements.some(e => e.preAuth?.type === 'ETIAS')) && (
-                <Box sx={{ ...BADGE_SX, bgcolor: tokens.mist, color: tokens.navy }}>
-                  ETIAS 2026
-                </Box>
-              )}
+              {isSchengen &&
+                !isOngoing &&
+                rules.some((r) => r.access === "visa_required") && (
+                  <Box
+                    sx={{
+                      ...BADGE_SX,
+                      bgcolor: alpha(tokens.red, 0.1),
+                      color: tokens.redText,
+                    }}
+                  >
+                    Visa req.
+                  </Box>
+                )}
+              {isSchengen &&
+                !isOngoing &&
+                rules.some(
+                  (r) =>
+                    isVisaRequired(r) &&
+                    r.notes?.some((n) =>
+                      n.text.startsWith("Airport transit visa"),
+                    ),
+                ) && (
+                  <Box
+                    sx={{
+                      ...BADGE_SX,
+                      bgcolor: tokens.red,
+                      color: tokens.white,
+                    }}
+                  >
+                    Transit visa
+                  </Box>
+                )}
+              {isSchengen &&
+                !isOngoing &&
+                rules.some(
+                  (r) =>
+                    isEntitled(r) &&
+                    r.entitlements.some((e) => e.preAuth?.type === "ETIAS"),
+                ) && (
+                  <Box
+                    sx={{
+                      ...BADGE_SX,
+                      bgcolor: tokens.mist,
+                      color: tokens.navy,
+                    }}
+                  >
+                    ETIAS 2026
+                  </Box>
+                )}
             </>
           )}
 
@@ -385,7 +388,6 @@ export function MobileTripsView({
   travelers,
   hiddenTravelerIds,
   onEditTrip,
-  onAddTrip,
   onAddTraveler,
 }: MobileTripsViewProps) {
   const todayStr = todayISO();
@@ -508,9 +510,6 @@ export function MobileTripsView({
           gap: "8px",
         }}
       >
-        {/* Add Trip — top */}
-        <AddTripButton onClick={onAddTrip} />
-
         {mergedTrips.length === 0 ? (
           <Box
             sx={{
@@ -553,9 +552,6 @@ export function MobileTripsView({
                 }
               />
             ))}
-
-            {/* Add Trip — bottom */}
-            <AddTripButton onClick={onAddTrip} />
           </>
         )}
       </Box>
