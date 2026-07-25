@@ -875,53 +875,36 @@ export function TripModal({
         </Box>
 
         {/* ── Eligibility & Duration detail overlay ── */}
+        {/* Matches the modal's own chrome: same background, and the title sits
+            in the same place as the modal header (title left, control right). */}
         {detailOpen && (
           <Box
             sx={{
               position: "absolute",
               inset: 0,
               zIndex: 3,
-              bgcolor: tokens.offWhite,
+              bgcolor: tokens.white,
               display: "flex",
               flexDirection: "column",
               overflow: "hidden",
             }}
           >
-            {/* Header with back control */}
+            {/* Header — mirrors the modal header layout */}
             <Box
               sx={{
+                px: "20px",
+                pt: "18px",
+                pb: 0,
                 display: "flex",
                 alignItems: "center",
-                gap: "8px",
-                px: "12px",
-                py: "12px",
-                borderBottom: `1px solid ${tokens.border}`,
+                justifyContent: "space-between",
                 flexShrink: 0,
               }}
             >
-              <Box
-                component="button"
-                onClick={() => setDetailOpen(false)}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 30,
-                  height: 30,
-                  border: "none",
-                  borderRadius: "7px",
-                  bgcolor: tokens.mist,
-                  color: tokens.textSoft,
-                  cursor: "pointer",
-                  "&:hover": { bgcolor: tokens.border },
-                }}
-              >
-                <ArrowBackIosNewIcon sx={{ fontSize: "0.9rem" }} />
-              </Box>
               <Typography
                 sx={{
                   fontFamily: tokens.fontDisplay,
-                  fontSize: "1.05rem",
+                  fontSize: "1.1rem",
                   fontStyle: "italic",
                   fontWeight: 400,
                   color: tokens.navy,
@@ -929,6 +912,27 @@ export function TripModal({
               >
                 Eligibility & Duration
               </Typography>
+              <Box
+                component="button"
+                onClick={() => setDetailOpen(false)}
+                aria-label="Back to trip form"
+                sx={{
+                  width: 26,
+                  height: 26,
+                  border: "none",
+                  borderRadius: "5px",
+                  bgcolor: tokens.mist,
+                  color: tokens.textSoft,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 0.15s",
+                  "&:hover": { bgcolor: tokens.border, color: tokens.navy },
+                }}
+              >
+                <ArrowBackIosNewIcon sx={{ fontSize: "0.8rem" }} />
+              </Box>
             </Box>
 
             {/* Scrollable per-traveler detail */}
@@ -936,7 +940,8 @@ export function TripModal({
               sx={{
                 flex: 1,
                 overflowY: "auto",
-                px: "16px",
+                pl: "20px",
+                pr: "14px",
                 py: "16px",
                 display: "flex",
                 flexDirection: "column",
@@ -948,6 +953,7 @@ export function TripModal({
                 durations={durations}
                 entryDate={entryDate}
                 exitDate={exitDate}
+                defaultOpen={false}
               />
             </Box>
           </Box>
