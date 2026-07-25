@@ -452,9 +452,18 @@ export function CalculatorPage() {
         />
       ) : (
         <TravelerModal
-          open={modal.open && modal.kind === "traveler"}
-          onAdd={handleTravelerSave}
-          onClose={() => setModal(CLOSED_MODAL)}
+          open={
+            (modal.open && modal.kind === "traveler") || addTravelerFromTripOpen
+          }
+          onAdd={
+            addTravelerFromTripOpen
+              ? handleTravelerSaveFromTrip
+              : handleTravelerSave
+          }
+          onClose={() => {
+            if (addTravelerFromTripOpen) setAddTravelerFromTripOpen(false);
+            else setModal(CLOSED_MODAL);
+          }}
         />
       )}
 
@@ -479,6 +488,7 @@ export function CalculatorPage() {
           onSave={handleTripSave}
           onDelete={modal.mode === "edit" ? handleTripDelete : undefined}
           onClose={() => setModal(CLOSED_MODAL)}
+          onAddNewTraveler={() => setAddTravelerFromTripOpen(true)}
         />
       )}
 
