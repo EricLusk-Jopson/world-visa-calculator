@@ -1,9 +1,10 @@
 /**
  * Generic stay calculator driven by StayLimit enum values.
  *
- * Supports per_visit and rolling_window limit types. When a traveler's
- * entitlement carries multiple simultaneous limits, all apply; the
- * most restrictive result (lowest daysRemaining) is returned.
+ * Supports all four limit types — per_visit, rolling_window,
+ * fixed_window_from_entry, and calendar_period. When a traveler's entitlement
+ * carries multiple simultaneous limits, all apply; the most restrictive result
+ * (lowest daysRemaining) is returned.
  *
  * Re-entry risk uses proportional thresholds so the same logic works
  * for any per-visit allowance (UK 6 months, Ireland 90 days, etc.).
@@ -12,6 +13,8 @@
 import type {
   StayLimit,
   PerVisitLimit,
+  FixedWindowFromEntryLimit,
+  CalendarPeriodLimit,
   StayUnit,
   RegionRule,
   PassportRule,
@@ -28,6 +31,7 @@ import {
   addMonths,
   addYears,
   countTripDays,
+  countDaysInWindow,
   differenceInCalendarDays,
 } from "./dates";
 import { createRollingWindowCalculator } from "./rollingWindowCalculator";
@@ -217,6 +221,128 @@ function assessRollingWindow(
   };
 }
 
+function minDate(a: Date, b: Date): Date {
+  return a < b ? a : b;
+}
+
+/**
+ * Shared assessor for the two "fixed budget inside a fixed window" limit types.
+ * Within [windowStart, windowEnd], total presence must not exceed `days`. Unlike
+ * a rolling window, days do not age out during the trip — the window is fixed.
+ */
+function assessBudgetWindow(
+  limitType: StayLimit["type"],
+  days: number,
+  windowStart: Date,
+  windowEnd: Date,
+  historicalTrips: Trip[],
+  entryDate: string,
+  checkDate?: string,
+): StayAssessment {
+  const entry = parseDate(entryDate);
+  const check = checkDate ? parseDate(checkDate) : today();
+  const priorCutoff = addDays(entry, -1);
+
+  // Days already spent inside the window by completed trips, before this entry.
+  let usedBefore = 0;
+  for (const t of historicalTrips) {
+    const tEntry = parseDate(t.entryDate);
+    const tExit = t.exitDate ? parseDate(t.exitDate) : check;
+    usedBefore += countDaysInWindow(
+      tEntry,
+      tExit,
+      windowStart,
+      minDate(windowEnd, priorCutoff),
+    );
+  }
+
+  const remainingBudget = Math.max(0, days - usedBefore);
+  const tripDays = countTripDays(entry, check);
+
+  // Max exit is bounded by the remaining budget and the window's end.
+  const budgetExit = addDays(entry, remainingBudget - 1);
+  const maxExit = minDate(budgetExit, windowEnd);
+  const daysRemaining = differenceInCalendarDays(maxExit, check);
+
+  let variant: StayVariant;
+  if (remainingBudget <= 0 || daysRemaining < 0) variant = "danger";
+  else if (tripDays >= cautionThreshold(days)) variant = "caution";
+  else variant = "safe";
+
+  return {
+    limitType,
+    daysAllowed: days,
+    limitLabel: `${days}-day`,
+    tripDays,
+    daysRemaining,
+    maxExitDate: formatDate(maxExit),
+    variant,
+  };
+}
+
+/**
+ * Fixed window anchored to first entry (e.g. Türkiye 90-in-180 from entry).
+ * The window resets once a fresh entry falls `windowDays` or more after the
+ * current anchor; consecutive trips inside the window share the day budget.
+ */
+function assessFixedWindow(
+  limit: FixedWindowFromEntryLimit,
+  historicalTrips: Trip[],
+  entryDate: string,
+  checkDate?: string,
+): StayAssessment {
+  const entries = historicalTrips
+    .filter((t) => t.entryDate < entryDate)
+    .map((t) => t.entryDate)
+    .concat(entryDate)
+    .sort();
+
+  let anchor = entries[0];
+  for (const e of entries) {
+    if (differenceInCalendarDays(parseDate(e), parseDate(anchor)) >= limit.windowDays) {
+      anchor = e;
+    }
+  }
+
+  const windowStart = parseDate(anchor);
+  const windowEnd = addDays(windowStart, limit.windowDays - 1);
+  return assessBudgetWindow(
+    "fixed_window_from_entry",
+    limit.days,
+    windowStart,
+    windowEnd,
+    historicalTrips,
+    entryDate,
+    checkDate,
+  );
+}
+
+/**
+ * Calendar-period limit (e.g. Türkiye Belarus: 90 days per calendar year).
+ * The budget resets on 1 January. Max exit is capped at year-end; a trip that
+ * spans into January draws on the next year's fresh budget, which the more
+ * restrictive per-visit cap that always accompanies this limit governs.
+ */
+function assessCalendarPeriod(
+  limit: CalendarPeriodLimit,
+  historicalTrips: Trip[],
+  entryDate: string,
+  checkDate?: string,
+): StayAssessment {
+  const year = parseDate(entryDate).getFullYear();
+  const windowStart = new Date(year, 0, 1);
+  const windowEnd = new Date(year, 11, 31);
+  return assessBudgetWindow(
+    "calendar_period",
+    limit.days,
+    windowStart,
+    windowEnd,
+    historicalTrips,
+    entryDate,
+    checkDate,
+  );
+}
+
 // ─── Public API ───────────────────────────────────────────────────────────────
 
 /**
@@ -237,6 +363,10 @@ export function assessStay(
       results.push(assessPerVisit(limit, entryDate, checkDate));
     } else if (limit.type === "rolling_window") {
       results.push(assessRollingWindow(limit, historicalTrips, entryDate, checkDate));
+    } else if (limit.type === "fixed_window_from_entry") {
+      results.push(assessFixedWindow(limit, historicalTrips, entryDate, checkDate));
+    } else if (limit.type === "calendar_period") {
+      results.push(assessCalendarPeriod(limit, historicalTrips, entryDate, checkDate));
     }
   }
 

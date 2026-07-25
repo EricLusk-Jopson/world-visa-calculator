@@ -2,10 +2,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import { tokens } from "@/styles/theme";
-import { VisaRegion, VISA_REGION_LABELS } from "@/types";
-import { ImpactPreview } from "@/components/ui";
-import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
-import type { TravelerStatus, ImpactBreakdown } from "../../travelers/travelerStatus";
 import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
 import { parseDate } from "@/features/calculator/utils/dates";
 
@@ -20,141 +16,87 @@ function fmtHintDate(iso: string): string {
   }).format(d);
 }
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// ─── Entry constraint hint ─────────────────────────────────────────────────────
+// Shown pre-exit (Schengen): "X days available · latest exit …". Rendered
+// standalone by TripModal, so it survives the Duration Status panel gating.
 
-export interface DurationPanelProps {
-  region: VisaRegion;
-  entryDate: string;
-  exitDate: string;
-  travelerCount: number;
-  // Schengen
-  entryConstraint: { daysAvailable: number; latestExit: string } | null;
-  impactStatus: TravelerStatus | null;
-  impactVariant: "safe" | "caution" | "danger" | "neutral";
-  impactBreakdown: ImpactBreakdown | undefined;
-  travelerImpacts: TravelerImpact[] | undefined;
-  hasVisaFreeTravelers: boolean;
-  // Generic stay assessment (per_visit + rolling_window regions)
-  stayAssessment: StayAssessment | null;
-  reentryRisk: ReentryRisk | null;
-}
-
-// ─── Component ────────────────────────────────────────────────────────────────
-
-export function DurationPanel({
-  region,
-  entryDate,
-  exitDate,
-  travelerCount,
+export function EntryConstraintHint({
   entryConstraint,
-  impactStatus,
-  impactVariant,
-  impactBreakdown,
-  travelerImpacts,
-  hasVisaFreeTravelers,
-  stayAssessment,
-  reentryRisk,
-}: DurationPanelProps) {
-  const resolvedExit = exitDate || undefined;
-
+  travelerCount,
+}: {
+  entryConstraint: { daysAvailable: number; latestExit: string };
+  travelerCount: number;
+}) {
   return (
-    <>
-      {/* Entry constraint hint */}
-      {entryConstraint && (
-        <Box
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        px: "12px",
+        py: "9px",
+        bgcolor: tokens.mist,
+        border: `1px solid ${tokens.border}`,
+        borderRadius: "10px",
+      }}
+    >
+      {entryConstraint.daysAvailable === 0 ? (
+        <Typography
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            px: "12px",
-            py: "9px",
-            bgcolor: tokens.mist,
-            border: `1px solid ${tokens.border}`,
-            borderRadius: "10px",
+            fontFamily: tokens.fontBody,
+            fontSize: "0.75rem",
+            color: tokens.red,
+            fontWeight: 600,
           }}
         >
-          {entryConstraint.daysAvailable === 0 ? (
-            <Typography
-              sx={{
-                fontFamily: tokens.fontBody,
-                fontSize: "0.75rem",
-                color: tokens.red,
-                fontWeight: 600,
-              }}
-            >
-              No days available — entry not possible on this date.
-            </Typography>
-          ) : (
-            <>
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.75rem",
-                  color: tokens.textSoft,
-                  fontWeight: 500,
-                }}
-              >
-                {entryConstraint.daysAvailable === 1
-                  ? "1 day available"
-                  : `${entryConstraint.daysAvailable} days available`}
-                {travelerCount > 1 && " (most constrained)"}
-              </Typography>
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  color: tokens.navy,
-                  ml: "8px",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Latest exit: {fmtHintDate(entryConstraint.latestExit)}
-              </Typography>
-            </>
-          )}
-        </Box>
-      )}
-
-      {/* Impact preview (Schengen only) */}
-      {region === VisaRegion.Schengen &&
-        entryDate &&
-        exitDate &&
-        impactStatus &&
-        hasVisaFreeTravelers && (
-          <ImpactPreview
-            daysRemaining={impactStatus.daysRemaining}
-            daysUsed={impactStatus.daysUsed}
-            variant={impactVariant}
-            breakdown={impactBreakdown}
-            travelerImpacts={travelerImpacts}
-            currentTripEntry={entryDate}
-            currentTripExit={resolvedExit}
-          />
-        )}
-
-      {/* Visa-required disclaimer — shown for any region when every selected
-          traveler needs a visa (day tracking depends on the specific visa). */}
-      {region !== VisaRegion.Elsewhere &&
-        !hasVisaFreeTravelers &&
-        entryDate &&
-        exitDate && (
+          No days available — entry not possible on this date.
+        </Typography>
+      ) : (
+        <>
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
               fontSize: "0.75rem",
-              fontStyle: "italic",
-              color: tokens.textGhost,
-              px: "20px",
-              pb: "12px",
+              color: tokens.textSoft,
+              fontWeight: 500,
             }}
           >
-            Day tracking isn't available yet for {VISA_REGION_LABELS[region]} visa
-            holders as allowances depend on the specific visa granted.
+            {entryConstraint.daysAvailable === 1
+              ? "1 day available"
+              : `${entryConstraint.daysAvailable} days available`}
+            {travelerCount > 1 && " (most constrained)"}
           </Typography>
-        )}
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              color: tokens.navy,
+              ml: "8px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Latest exit: {fmtHintDate(entryConstraint.latestExit)}
+          </Typography>
+        </>
+      )}
+    </Box>
+  );
+}
 
-      {/* Generic stay assessment */}
+// ─── Per-visit detail (UK / Ireland) ───────────────────────────────────────────
+// The stay assessment box + re-entry risk box shown for the most-constrained
+// traveler. Rolling-window regions render ImpactPreview instead (handled by
+// DurationStatusPanel).
+
+export interface DurationPanelProps {
+  stayAssessment: StayAssessment | null;
+  reentryRisk: ReentryRisk | null;
+}
+
+export function DurationPanel({ stayAssessment, reentryRisk }: DurationPanelProps) {
+  return (
+    <>
       {stayAssessment && (
         <Box
           sx={{
@@ -183,9 +125,7 @@ export function DurationPanel({
             <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, fontWeight: 500 }}>
               {stayAssessment.variant === "danger" && stayAssessment.daysRemaining < 0
                 ? `Over the ${stayAssessment.limitLabel} limit by ${Math.abs(stayAssessment.daysRemaining)} day${Math.abs(stayAssessment.daysRemaining) === 1 ? "" : "s"}`
-                : stayAssessment.limitType === "rolling_window"
-                  ? `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} used of ${stayAssessment.limitLabel} allowance`
-                  : `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} of ${stayAssessment.limitLabel} visit`}
+                : `${stayAssessment.tripDays} day${stayAssessment.tripDays === 1 ? "" : "s"} of ${stayAssessment.limitLabel} visit`}
             </Typography>
             <Typography
               sx={{
@@ -212,7 +152,6 @@ export function DurationPanel({
         </Box>
       )}
 
-      {/* Re-entry risk (per-visit regions) */}
       {reentryRisk && (() => {
         const isRed = reentryRisk.variant === "danger";
         const isAmber = reentryRisk.variant === "caution";

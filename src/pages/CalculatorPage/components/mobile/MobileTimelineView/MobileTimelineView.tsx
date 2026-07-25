@@ -23,7 +23,7 @@ import {
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
-import { computeTravelerStatus } from "../../travelers/travelerStatus";
+import { computeOverstayTripIds } from "../../trips/tripDuration";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import {
@@ -116,28 +116,6 @@ const TOOLTIP_SX = {
   maxWidth: 260,
 };
 
-// ─── Overstay helpers ─────────────────────────────────────────────────────────
-
-function computeOverstayCoords(traveler: Traveler): Set<string> {
-  const schengenTrips = traveler.trips.filter(
-    (t) => t.region === VisaRegion.Schengen,
-  );
-  if (schengenTrips.length === 0) return new Set();
-
-  const mockTraveler = { id: "__overstay__", name: "", passportCode: null, trips: schengenTrips };
-  const result = new Set<string>();
-
-  for (const trip of schengenTrips) {
-    const refDate = trip.exitDate ? parseDate(trip.exitDate) : getToday();
-    const status = computeTravelerStatus(mockTraveler, refDate);
-    if (status.daysUsed > 90) {
-      result.add(`${trip.entryDate}|${trip.exitDate ?? ""}|${trip.region}`);
-    }
-  }
-
-  return result;
-}
-
 // ─── Merge + lane assignment ──────────────────────────────────────────────────
 
 function buildPositionedTrips(
@@ -147,7 +125,7 @@ function buildPositionedTrips(
   todayStr: string,
 ): Omit<PositionedTrip, "lane" | "laneCount">[] {
   const overstayByTraveler = new Map<string, Set<string>>(
-    travelers.map((t) => [t.id, computeOverstayCoords(t)]),
+    travelers.map((t) => [t.id, computeOverstayTripIds(t)]),
   );
 
   const merged: Omit<PositionedTrip, "lane" | "laneCount">[] = [];
@@ -156,9 +134,8 @@ function buildPositionedTrips(
     if (hiddenIds.includes(traveler.id)) return;
 
     traveler.trips.forEach((trip) => {
-      const tripKey = `${trip.entryDate}|${trip.exitDate ?? ""}|${trip.region}`;
       const tripIsOverstay =
-        overstayByTraveler.get(traveler.id)?.has(tripKey) ?? false;
+        overstayByTraveler.get(traveler.id)?.has(trip.id) ?? false;
 
       const existing = merged.find(
         (m) =>
@@ -401,11 +378,7 @@ function MobileTimelineTripCard({
         ? tokens.green
         : tokens.border;
 
-  const cardBg = isOverstay
-    ? tokens.redBg
-    : isPlanned
-      ? "#FDFCF8"
-      : tokens.white;
+  const cardBg = isOverstay ? tokens.redBg : tokens.white;
   const cardBorderColor = isOverstay
     ? alpha(tokens.red, 0.28)
     : isPlanned

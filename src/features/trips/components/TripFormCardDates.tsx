@@ -5,16 +5,19 @@ import { tokens } from "@/styles/theme";
 import { parseDate } from "@/features/calculator/utils/dates";
 import { TripFormCard } from "./TripFormCard";
 import { TripDateRangeCalendar } from "./TripDateRangeCalendar";
+import type { BlockedRange } from "@/features/calculator/utils/tripOverlap";
 
 interface Props {
   entryDate: string;
   exitDate: string;
   onEntryChange: (iso: string) => void;
   onExitChange: (iso: string) => void;
+  blockedRanges?: BlockedRange[];
   onReset: () => void;
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
+  footer?: React.ReactNode;
 }
 
 function fmtShort(iso: string) {
@@ -45,10 +48,12 @@ export function TripFormCardDates({
   exitDate,
   onEntryChange,
   onExitChange,
+  blockedRanges,
   onReset,
   expanded,
   onExpand,
   onCollapse,
+  footer,
 }: Props) {
   const scrollToTodayRef = useRef<(() => void) | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -107,12 +112,14 @@ export function TripFormCardDates({
       onDone={onCollapse}
       onReset={onReset}
       headerExtra={todayBtn}
+      footer={footer}
     >
       <TripDateRangeCalendar
         entryDate={entryDate}
         exitDate={exitDate}
         onEntryChange={onEntryChange}
         onExitChange={onExitChange}
+        blockedRanges={blockedRanges}
         scrollToTodayRef={scrollToTodayRef}
       />
 

@@ -1,16 +1,19 @@
 import "react-day-picker/style.css";
 import { useRef, useEffect, useLayoutEffect, useState } from "react";
 import { DayPicker } from "react-day-picker";
-import type { DateRange } from "react-day-picker";
+import type { DateRange, Matcher } from "react-day-picker";
 import Box from "@mui/material/Box";
 import { tokens } from "@/styles/theme";
 import { parseDate, formatDate } from "@/features/calculator/utils/dates";
+import type { BlockedRange } from "@/features/calculator/utils/tripOverlap";
 
 interface Props {
   entryDate: string;
   exitDate: string;
   onEntryChange: (iso: string) => void;
   onExitChange: (iso: string) => void;
+  /** Interior days of the travelers' other trips — disabled (not selectable). */
+  blockedRanges?: BlockedRange[];
   /** Assign a ref here and call ref.current() to jump to today's month. */
   scrollToTodayRef?: React.MutableRefObject<(() => void) | null>;
 }
@@ -76,6 +79,7 @@ export function TripDateRangeCalendar({
   exitDate,
   onEntryChange,
   onExitChange,
+  blockedRanges,
   scrollToTodayRef,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -140,8 +144,11 @@ export function TripDateRangeCalendar({
     ? { from: entryDateObj, to: exitDateObj }
     : undefined;
 
-  // Disable dates before the entry date while the user is picking an exit date.
-  const disabledDays = entryDateObj && !exitDateObj ? { before: entryDateObj } : undefined;
+  // Disable other trips' interior days, plus dates before the entry date while
+  // the user is picking an exit. excludeDisabled stops a range from spanning a
+  // blocked day.
+  const disabled: Matcher[] = [...(blockedRanges ?? [])];
+  if (entryDateObj && !exitDateObj) disabled.push({ before: entryDateObj });
 
   return (
     <Box ref={containerRef} sx={CALENDAR_SX}>
@@ -150,7 +157,8 @@ export function TripDateRangeCalendar({
       <DayPicker
         mode="range"
         selected={range}
-        disabled={disabledDays}
+        disabled={disabled}
+        excludeDisabled
         onSelect={(selected) => {
           onEntryChange(selected?.from ? formatDate(selected.from) : "");
           onExitChange(selected?.to ? formatDate(selected.to) : "");

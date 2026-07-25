@@ -12,6 +12,9 @@ export interface TripFormCardProps {
   onDone?: () => void;
   onReset?: () => void;
   headerExtra?: React.ReactNode;
+  /** Optional row rendered inside the card border at the bottom (e.g. a
+   *  tappable summary that opens a detail frame). Always visible. */
+  footer?: React.ReactNode;
 }
 
 const LABEL_SX = {
@@ -43,6 +46,7 @@ export function TripFormCard({
   onDone,
   onReset,
   headerExtra,
+  footer,
 }: TripFormCardProps) {
   return (
     <Box
@@ -52,10 +56,12 @@ export function TripFormCard({
         bgcolor: tokens.white,
         overflow: "hidden",
         transition: "border-color 0.15s",
-        cursor: expanded ? "default" : "pointer",
       }}
-      onClick={!expanded ? onExpand : undefined}
     >
+      <Box
+        onClick={!expanded ? onExpand : undefined}
+        sx={{ cursor: expanded ? "default" : "pointer" }}
+      >
       {expanded ? (
         <Box sx={{ px: "16px", pt: "14px", pb: "14px" }}>
           <Box
@@ -108,6 +114,8 @@ export function TripFormCard({
           />
         </Box>
       )}
+      </Box>
+      {footer}
     </Box>
   );
 }

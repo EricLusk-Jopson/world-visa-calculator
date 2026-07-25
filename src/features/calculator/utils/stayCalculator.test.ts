@@ -139,6 +139,66 @@ describe("assessStay — Ireland per_visit (90 days)", () => {
   });
 });
 
+// ─── Fixed window from first entry (Türkiye — Albania et al.) ─────────────────
+
+describe("assessStay — fixed_window_from_entry (90 in 180 from entry)", () => {
+  const limits: [StayLimit] = [
+    { type: "fixed_window_from_entry", days: 90, windowDays: 180 },
+  ];
+  const anchor = parseDate("2026-08-01");
+
+  it("gives a fresh 90-day budget with no history", () => {
+    // No prior trips → window anchored at entry, maxExit = entry+89.
+    // A 31-day trip (entry..entry+30) leaves 59 days.
+    const r = assessStay(limits, [], "2026-08-01", iso(anchor, 30));
+    expect(r!.limitType).toBe("fixed_window_from_entry");
+    expect(r!.tripDays).toBe(31);
+    expect(r!.maxExitDate).toBe(iso(anchor, 89));
+    expect(r!.daysRemaining).toBe(59);
+    expect(r!.variant).toBe("safe");
+  });
+
+  it("subtracts days already used earlier in the same window", () => {
+    // Prior 30-day trip (Jun 1–30) sits in the same 180-day window as the Aug 1
+    // entry (61 days later) → budget 60, so a 31-day trip leaves 29 days.
+    const prior = completedTrip(VisaRegion.Turkiye, "2026-06-01", iso(parseDate("2026-06-01"), 29));
+    const r = assessStay(limits, [prior], "2026-08-01", iso(anchor, 30));
+    expect(r!.daysRemaining).toBe(29);
+  });
+
+  it("resets the window once a gap of at least windowDays passes", () => {
+    // Prior trip in early January is >180 days before the Aug entry, so the
+    // window resets and the full 90-day budget is available again.
+    const prior = completedTrip(VisaRegion.Turkiye, "2026-01-01", "2026-03-01");
+    const r = assessStay(limits, [prior], "2026-08-01", iso(anchor, 30));
+    expect(r!.daysRemaining).toBe(59);
+  });
+});
+
+// ─── Calendar-period limit (Türkiye — Belarus: 90 per calendar year) ──────────
+
+describe("assessStay — calendar_period (90 per calendar year)", () => {
+  const limits: [StayLimit] = [{ type: "calendar_period", days: 90, periodDays: 365 }];
+
+  it("counts only days within the entry's calendar year", () => {
+    // 40 days already used in Feb → budget 50; a 10-day Aug trip leaves 40.
+    const prior = completedTrip(VisaRegion.Turkiye, "2026-02-01", iso(parseDate("2026-02-01"), 39));
+    const entry = parseDate("2026-08-01");
+    const r = assessStay(limits, [prior], "2026-08-01", iso(entry, 9));
+    expect(r!.limitType).toBe("calendar_period");
+    expect(r!.maxExitDate).toBe(iso(entry, 49));
+    expect(r!.daysRemaining).toBe(40);
+  });
+
+  it("ignores days used in a different calendar year", () => {
+    // A trip in the previous year does not count against this year's budget.
+    const prior = completedTrip(VisaRegion.Turkiye, "2025-11-01", "2025-12-15");
+    const entry = parseDate("2026-08-01");
+    const r = assessStay(limits, [prior], "2026-08-01", iso(entry, 9));
+    expect(r!.daysRemaining).toBe(80); // full 90 budget, 10-day trip → 80 left
+  });
+});
+
 // ─── Re-entry risk (proportional thresholds, Ireland allowance = 90) ──────────
 
 describe("detectReentryRisk", () => {

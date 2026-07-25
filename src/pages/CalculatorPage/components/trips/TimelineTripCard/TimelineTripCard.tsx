@@ -242,11 +242,7 @@ export function TimelineTripCard({
         ? tokens.green
         : tokens.border;
 
-  const cardBg = isOverstay
-    ? tokens.redBg
-    : isPlanned
-      ? "#FDFCF8"
-      : tokens.white;
+  const cardBg = isOverstay ? tokens.redBg : tokens.white;
 
   const cardBorderColor = isOverstay
     ? tokens.redBorder
