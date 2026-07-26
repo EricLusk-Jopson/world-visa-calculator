@@ -39,10 +39,12 @@ import {
 import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
 import type { PerVisitLimit } from "@/types";
 import { getRegionDefinition } from "@/data/regions";
-import { EntryEligibilityPanel } from "./EntryEligibilityPanel";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { EntryConstraintHint } from "./DurationPanel";
-import { DurationStatusPanel } from "./DurationStatusPanel";
 import { computeTravelerDurations } from "../tripDuration";
+import { computeTravelerEligibility } from "../tripEligibility";
+import { TripSummaryRow } from "@/features/trips/components/TripSummaryRow";
+import { TripDetailStack } from "@/features/trips/components/TripDetailStack";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -213,6 +215,7 @@ export function TripModal({
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
   const [isEdit, setIsEdit] = useState(mode === "edit");
+  const [detailOpen, setDetailOpen] = useState(false);
 
   const isMobile = useMediaQuery("(max-width:599.95px)");
 
@@ -222,6 +225,7 @@ export function TripModal({
     setIsEdit(mode === "edit");
     setTravelerIds(initialTravelerIds);
     setError(null);
+    setDetailOpen(false);
     if (mode === "edit" && initialTrip) {
       setDestination(initialTrip.destination ?? "");
       setEntryDate(initialTrip.entryDate);
@@ -371,6 +375,25 @@ export function TripModal({
     excludeTripId: initialTrip?.id,
   });
 
+  // ── Per-traveler eligibility + summary counts (for the detail overlay) ──────
+
+  const eligibility =
+    region !== VisaRegion.Elsewhere
+      ? computeTravelerEligibility(region, travelers, travelerIds)
+      : [];
+  const eligOk = eligibility.filter((e) => e.ok).length;
+  // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
+  const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
+  const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
+
+  const datesSet = !!entryDate && !!exitDate;
+  const durOk = durations.filter((d) => d.tracked && d.severity === "safe").length;
+  const durCaution = durations.filter((d) => d.tracked && d.severity === "caution").length;
+  // "danger" splits into close-to-limit (red clock) and actual overstay (red warning).
+  const durDanger = durations.filter((d) => d.tracked && d.severity === "danger" && !d.overstay).length;
+  const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
+  const durUnknown = durations.filter((d) => !d.tracked).length;
+
   // ── Date-field highlighting ─────────────────────────────────────────────────
   // Exit date mirrors the duration assessment (overstay); entry date mirrors
   // the re-entry risk. Both surface caution (amber) / danger (red) only.
@@ -477,12 +500,14 @@ export function TripModal({
           paper: {
             sx: isMobile
               ? {
+                  position: "relative",
                   display: "flex",
                   flexDirection: "column",
                   bgcolor: tokens.offWhite,
                   overflow: "hidden",
                 }
               : {
+                  position: "relative",
                   borderRadius: "20px",
                   width: 420,
                   maxWidth: "calc(100vw - 32px)",
@@ -705,13 +730,6 @@ export function TripModal({
             />
           </Box>
 
-          {/* 2b · Entry eligibility per traveler */}
-          <EntryEligibilityPanel
-            travelers={travelers}
-            travelerIds={travelerIds}
-            region={region}
-          />
-
           {/* 3 · Trip name */}
           <Box>
             <FormLabel>Trip name</FormLabel>
@@ -791,14 +809,40 @@ export function TripModal({
               travelerCount={travelerIds.length}
             />
           )}
-          <DurationStatusPanel
-            region={region}
-            entryDate={entryDate}
-            exitDate={exitDate}
-            durations={durations}
-            stayAssessment={stayAssessment}
-            reentryRisk={reentryRisk}
-          />
+
+          {/* 6 · Eligibility & duration — open the per-traveler detail overlay */}
+          {region !== VisaRegion.Elsewhere && (
+            <Box
+              sx={{
+                border: `1px solid ${tokens.border}`,
+                borderRadius: "10px",
+                overflow: "hidden",
+                "& > button:first-of-type": { borderTop: "none" },
+              }}
+            >
+              <TripSummaryRow
+                label="Entry Eligibility"
+                okCount={eligOk}
+                dangerCount={eligWarn}
+                unknownCount={eligUnknown}
+                placeholder="Select travelers"
+                disabled={eligibility.length === 0}
+                onClick={() => setDetailOpen(true)}
+              />
+              <TripSummaryRow
+                label="Stay Duration"
+                statusKind="duration"
+                okCount={durOk}
+                cautionCount={durCaution}
+                dangerCount={durDanger}
+                overstayCount={durOverstay}
+                unknownCount={durUnknown}
+                placeholder={!datesSet ? "Set dates" : ""}
+                disabled={!datesSet}
+                onClick={() => setDetailOpen(true)}
+              />
+            </Box>
+          )}
         </Box>
 
         {/* ── Divider ── */}
@@ -832,6 +876,91 @@ export function TripModal({
             {isSaveDisabled ? "Overlap detected" : "Save Trip"}
           </Button>
         </Box>
+
+        {/* ── Eligibility & Duration detail overlay ── */}
+        {/* Matches the modal's own chrome: same background, and the title sits
+            in the same place as the modal header (title left, control right). */}
+        {detailOpen && (
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 3,
+              bgcolor: tokens.white,
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+            }}
+          >
+            {/* Header — mirrors the modal header layout */}
+            <Box
+              sx={{
+                px: "20px",
+                pt: "18px",
+                pb: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexShrink: 0,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontDisplay,
+                  fontSize: "1.1rem",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  color: tokens.navy,
+                }}
+              >
+                Eligibility & Duration
+              </Typography>
+              <Box
+                component="button"
+                onClick={() => setDetailOpen(false)}
+                aria-label="Back to trip form"
+                sx={{
+                  width: 26,
+                  height: 26,
+                  border: "none",
+                  borderRadius: "5px",
+                  bgcolor: tokens.mist,
+                  color: tokens.textSoft,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 0.15s",
+                  "&:hover": { bgcolor: tokens.border, color: tokens.navy },
+                }}
+              >
+                <ArrowBackIosNewIcon sx={{ fontSize: "0.8rem" }} />
+              </Box>
+            </Box>
+
+            {/* Scrollable per-traveler detail */}
+            <Box
+              sx={{
+                flex: 1,
+                overflowY: "auto",
+                pl: "20px",
+                pr: "14px",
+                py: "16px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
+            >
+              <TripDetailStack
+                eligibility={eligibility}
+                durations={durations}
+                entryDate={entryDate}
+                exitDate={exitDate}
+                defaultOpen={false}
+              />
+            </Box>
+          </Box>
+        )}
       </Dialog>
     </LocalizationProvider>
   );
