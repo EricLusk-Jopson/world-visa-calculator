@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
@@ -87,7 +88,12 @@ function TravelerCard({
           {e.name}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          {e.ok ? (
+          {e.access === "unknown" ? (
+            // Nationality not set — unknown eligibility, not a failure.
+            <HelpOutlineIcon
+              sx={{ fontSize: "1.1rem", color: tokens.textGhost }}
+            />
+          ) : e.ok ? (
             <CheckCircleOutlineIcon
               sx={{ fontSize: "1.1rem", color: tokens.green }}
             />

@@ -382,7 +382,9 @@ export function TripModal({
       ? computeTravelerEligibility(region, travelers, travelerIds)
       : [];
   const eligOk = eligibility.filter((e) => e.ok).length;
-  const eligWarn = eligibility.filter((e) => !e.ok).length;
+  // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
+  const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
+  const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
 
   const datesSet = !!entryDate && !!exitDate;
   const durOk = durations.filter((d) => d.tracked && d.severity === "safe").length;
@@ -822,6 +824,7 @@ export function TripModal({
                 label="Entry Eligibility"
                 okCount={eligOk}
                 dangerCount={eligWarn}
+                unknownCount={eligUnknown}
                 placeholder="Select travelers"
                 disabled={eligibility.length === 0}
                 onClick={() => setDetailOpen(true)}

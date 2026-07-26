@@ -108,7 +108,9 @@ export function TripFormSlider({
       ? computeTravelerEligibility(region, travelers, travelerIds)
       : [];
   const eligOk = eligibility.filter((e) => e.ok).length;
-  const eligWarn = eligibility.filter((e) => !e.ok).length;
+  // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
+  const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
+  const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
 
   const durations = datesSet
     ? computeTravelerDurations({
@@ -207,6 +209,7 @@ export function TripFormSlider({
                 label="Entry Eligibility"
                 okCount={eligOk}
                 dangerCount={eligWarn}
+                unknownCount={eligUnknown}
                 placeholder="Select travelers"
                 disabled={eligibility.length === 0}
                 onClick={() => setDetailOpen(true)}
