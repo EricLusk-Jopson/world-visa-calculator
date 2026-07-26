@@ -9,7 +9,7 @@
  */
 
 import { VisaRegion } from "@/types";
-import type { Traveler, PerVisitLimit, RollingWindowLimit } from "@/types";
+import type { Traveler, Trip, PerVisitLimit, RollingWindowLimit } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import {
   resolveStayLimits,
@@ -112,6 +112,28 @@ export interface ComputeTravelerDurationsParams {
   destination: string;
   /** Trip being edited — excluded from each traveler's history. */
   excludeTripId?: string;
+  /**
+   * Coordinates of the trip being edited/viewed. Since a trip shared by N
+   * travelers is stored as N copies with distinct ids, matching on
+   * (entryDate, exitDate, region) excludes every copy — not just the one whose
+   * id was passed. Prevents the trip double-counting against itself.
+   */
+  excludeTrip?: Pick<Trip, "entryDate" | "exitDate" | "region">;
+}
+
+/** True when a historical trip is the one being edited/viewed (id or coords). */
+function isExcludedTrip(
+  t: Trip,
+  excludeTripId: string | undefined,
+  excludeTrip: Pick<Trip, "entryDate" | "exitDate" | "region"> | undefined,
+): boolean {
+  if (excludeTripId !== undefined && t.id === excludeTripId) return true;
+  return (
+    excludeTrip !== undefined &&
+    t.entryDate === excludeTrip.entryDate &&
+    t.exitDate === excludeTrip.exitDate &&
+    t.region === excludeTrip.region
+  );
 }
 
 function chipFor(daysRemaining: number): string {
@@ -130,10 +152,10 @@ function buildRolling(
   maxDays: number,
   windowDays: number,
 ): TravelerDuration {
-  const { entryDate, exitDate, destination, excludeTripId } = params;
+  const { entryDate, exitDate, destination, excludeTripId, excludeTrip } = params;
 
   const regionTrips = traveler.trips.filter(
-    (t) => t.region === region && t.id !== excludeTripId,
+    (t) => t.region === region && !isExcludedTrip(t, excludeTripId, excludeTrip),
   );
   const withPreview = regionTrips.concat([
     { id: "__preview__", entryDate, exitDate: exitDate || undefined, region, destination },
@@ -180,7 +202,7 @@ function buildRolling(
 export function computeTravelerDurations(
   params: ComputeTravelerDurationsParams,
 ): TravelerDuration[] {
-  const { region, travelers, travelerIds, entryDate, exitDate, excludeTripId } = params;
+  const { region, travelers, travelerIds, entryDate, exitDate, excludeTripId, excludeTrip } = params;
   if (!entryDate || region === VisaRegion.Elsewhere) return [];
 
   const result: TravelerDuration[] = [];
@@ -237,7 +259,7 @@ export function computeTravelerDurations(
     }
 
     const tripHistory = traveler.trips.filter(
-      (t) => t.region === region && t.id !== excludeTripId,
+      (t) => t.region === region && !isExcludedTrip(t, excludeTripId, excludeTrip),
     );
     const assessment = assessStay(limits, tripHistory, entryDate, exitDate || undefined);
     if (!assessment) continue;
@@ -245,7 +267,10 @@ export function computeTravelerDurations(
     let reentry: ReentryRisk | null = null;
     if (perVisit) {
       const completed = traveler.trips.filter(
-        (t) => t.region === region && t.exitDate && t.id !== excludeTripId,
+        (t) =>
+          t.region === region &&
+          t.exitDate &&
+          !isExcludedTrip(t, excludeTripId, excludeTrip),
       );
       reentry = detectReentryRisk(perVisitApproxDays(perVisit), completed, entryDate);
     }
