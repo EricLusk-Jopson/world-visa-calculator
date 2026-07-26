@@ -47,6 +47,24 @@ function getRegionLabel(region: VisaRegion): string {
   }
 }
 
+/** Small uppercase label for a header status group ("Entry" / "Duration"). */
+function GroupLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <Typography
+      sx={{
+        fontFamily: tokens.fontBody,
+        fontSize: "0.6rem",
+        fontWeight: 700,
+        textTransform: "uppercase",
+        letterSpacing: "0.07em",
+        color: tokens.textGhost,
+      }}
+    >
+      {children}
+    </Typography>
+  );
+}
+
 /** A status icon paired with a count (used in the header summary strip). */
 function IconCount({
   icon,
@@ -240,7 +258,8 @@ export function TripViewSlider({
                 }}
               >
                 {hasElig && (
-                  <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <GroupLabel>Entry</GroupLabel>
                     {eligOk > 0 && (
                       <IconCount
                         count={eligOk}
@@ -270,7 +289,8 @@ export function TripViewSlider({
                 )}
 
                 {hasDur && (
-                  <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <GroupLabel>Duration</GroupLabel>
                     {durOk > 0 && (
                       <IconCount count={durOk} color={tokens.green} icon={<DurationIcon state="safe" size="1.05rem" />} />
                     )}
