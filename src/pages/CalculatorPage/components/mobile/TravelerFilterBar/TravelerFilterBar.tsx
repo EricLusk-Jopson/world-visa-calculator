@@ -148,7 +148,9 @@ export function TravelerFilterBar({
       </Box>
 
       {/* ── Traveler rows ──────────────────────────────────────────────── */}
+      {/* Cap the expanded list at ~half the screen and scroll beyond that. */}
       <Collapse in={open}>
+        <Box sx={{ maxHeight: "50vh", overflowY: "auto" }}>
         {travelers.map((traveler, i) => {
           const color = getTravelerColor(i);
           const hidden = hiddenTravelerIds.includes(traveler.id);
@@ -264,6 +266,7 @@ export function TravelerFilterBar({
             </Box>
           );
         })}
+        </Box>
       </Collapse>
     </Box>
   );
