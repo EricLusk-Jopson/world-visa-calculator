@@ -25,14 +25,6 @@ interface TravelerFilterBarProps {
   onAddTraveler: () => void;
 }
 
-function countryFlag(code: string): string {
-  return code
-    .toUpperCase()
-    .split("")
-    .map((ch) => String.fromCodePoint(0x1f1e6 + ch.charCodeAt(0) - 65))
-    .join("");
-}
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function TravelerFilterBar({
@@ -185,17 +177,6 @@ export function TravelerFilterBar({
                   flexShrink: 0,
                 }}
               />
-
-              {/* Flag */}
-              {traveler.passportCode && (
-                <Typography
-                  component="span"
-                  sx={{ fontSize: "1rem", lineHeight: 1, flexShrink: 0 }}
-                  aria-hidden="true"
-                >
-                  {countryFlag(traveler.passportCode)}
-                </Typography>
-              )}
 
               {/* Name + nationality */}
               <Box sx={{ minWidth: 0, flex: 1 }}>

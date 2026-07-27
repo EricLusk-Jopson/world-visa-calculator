@@ -25,14 +25,6 @@ interface TravelerViewSliderProps {
   onDelete: () => void;
 }
 
-function countryFlag(code: string): string {
-  return code
-    .toUpperCase()
-    .split("")
-    .map((ch) => String.fromCodePoint(0x1f1e6 + ch.charCodeAt(0) - 65))
-    .join("");
-}
-
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <Typography
@@ -177,7 +169,7 @@ export function TravelerViewSlider({
               }}
             >
               {traveler.passportCode
-                ? `${countryFlag(traveler.passportCode)} ${getCountryName(traveler.passportCode)}`
+                ? getCountryName(traveler.passportCode)
                 : "No nationality set"}
               {tripCount > 0
                 ? ` · ${tripCount} trip${tripCount === 1 ? "" : "s"}`
