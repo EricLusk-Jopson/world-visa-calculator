@@ -557,40 +557,73 @@ export function CalculatorPage() {
         travelerCount={travelers.length}
       />
 
-      {/* FAB — mobile only, fixed above safe area. With no travelers yet it
-          adds a traveler; otherwise it adds a trip. */}
+      {/* FAB — mobile only, fixed above safe area. Split pill: the left half
+          adds a traveler, the right half adds a trip (disabled until there is
+          at least one traveler). */}
       {isMobile && (
         <Box
-          component="button"
-          onClick={() =>
-            travelers.length === 0
-              ? handleAddTraveler()
-              : handleOpenAddTrip(travelers[0]?.id ?? "")
-          }
           sx={{
             position: "fixed",
             bottom: "calc(env(safe-area-inset-bottom) + 16px)",
             right: "16px",
             display: "flex",
-            alignItems: "center",
-            gap: "6px",
-            px: "18px",
-            py: "12px",
+            alignItems: "stretch",
             bgcolor: tokens.green,
-            border: "none",
             borderRadius: "100px",
-            color: tokens.white,
-            fontFamily: tokens.fontBody,
-            fontSize: "0.88rem",
-            fontWeight: 700,
-            cursor: "pointer",
             boxShadow: "0 4px 16px rgba(0,185,107,0.35)",
             zIndex: 1050,
-            "&:active": { bgcolor: tokens.greenText, boxShadow: "none" },
+            overflow: "hidden",
           }}
         >
-          <AddIcon sx={{ fontSize: "1rem" }} />
-          {travelers.length === 0 ? "Add Traveler" : "Add Trip"}
+          <Box
+            component="button"
+            onClick={handleAddTraveler}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              pl: "18px",
+              pr: "14px",
+              py: "12px",
+              border: "none",
+              bgcolor: "transparent",
+              color: tokens.white,
+              fontFamily: tokens.fontBody,
+              fontSize: "0.88rem",
+              fontWeight: 700,
+              cursor: "pointer",
+              "&:active": { bgcolor: tokens.greenText },
+            }}
+          >
+            <AddIcon sx={{ fontSize: "1rem" }} />
+            Add Traveler
+          </Box>
+
+          <Box sx={{ width: "1px", my: "9px", bgcolor: "rgba(255,255,255,0.4)" }} />
+
+          <Box
+            component="button"
+            disabled={travelers.length === 0}
+            onClick={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              pl: "14px",
+              pr: "18px",
+              py: "12px",
+              border: "none",
+              bgcolor: "transparent",
+              color: tokens.white,
+              fontFamily: tokens.fontBody,
+              fontSize: "0.88rem",
+              fontWeight: 700,
+              opacity: travelers.length === 0 ? 0.5 : 1,
+              cursor: travelers.length === 0 ? "default" : "pointer",
+              "&:active": travelers.length > 0 ? { bgcolor: tokens.greenText } : {},
+            }}
+          >
+            Trip
+          </Box>
         </Box>
       )}
     </Box>
