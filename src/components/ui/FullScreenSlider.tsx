@@ -12,8 +12,8 @@ const SlideTransition = forwardRef(function Transition(
   props: TransitionProps & { children: React.ReactElement },
   ref: React.Ref<unknown>,
 ) {
-  // Enter from right (left-travel), exit to right (right-travel) — iOS push feel
-  return <Slide {...props} direction={props.in ? "left" : "right"} ref={ref} />;
+  // Fixed "left" direction: the frame closes by sliding out to the right.
+  return <Slide {...props} direction="left" ref={ref} />;
 });
 
 interface FullScreenSliderProps {
