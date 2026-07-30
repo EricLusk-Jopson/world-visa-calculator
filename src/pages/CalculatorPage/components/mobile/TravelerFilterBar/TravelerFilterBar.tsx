@@ -8,7 +8,6 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import { tokens } from "@/styles/theme";
 import type { Traveler } from "@/types";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
@@ -22,7 +21,6 @@ interface TravelerFilterBarProps {
   onToggleTraveler: (id: string) => void;
   /** Open the full-screen traveler frame for this traveler. */
   onOpenTraveler: (id: string) => void;
-  onAddTraveler: () => void;
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -32,47 +30,11 @@ export function TravelerFilterBar({
   hiddenTravelerIds,
   onToggleTraveler,
   onOpenTraveler,
-  onAddTraveler,
 }: TravelerFilterBarProps) {
   const [open, setOpen] = useState(false);
 
-  if (travelers.length === 0) {
-    return (
-      <Box
-        sx={{
-          flexShrink: 0,
-          bgcolor: tokens.white,
-          borderBottom: `1px solid ${tokens.border}`,
-          zIndex: 5,
-        }}
-      >
-        <Box
-          component="button"
-          onClick={onAddTraveler}
-          sx={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "6px",
-            px: "16px",
-            py: "12px",
-            border: "none",
-            bgcolor: "transparent",
-            cursor: "pointer",
-            color: tokens.textSoft,
-            fontFamily: tokens.fontBody,
-            fontSize: "0.82rem",
-            fontWeight: 600,
-            "&:active": { bgcolor: alpha(tokens.navy, 0.04) },
-          }}
-        >
-          <PersonAddAlt1Icon sx={{ fontSize: "1rem" }} />
-          Add Traveler
-        </Box>
-      </Box>
-    );
-  }
+  // No travelers yet — the green FAB (bottom-right) is the add-traveler entry.
+  if (travelers.length === 0) return null;
 
   return (
     <Box

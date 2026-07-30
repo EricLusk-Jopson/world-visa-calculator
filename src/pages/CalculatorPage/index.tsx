@@ -363,7 +363,6 @@ export function CalculatorPage() {
                 hiddenTravelerIds={hiddenTravelerIds}
                 onToggleTraveler={handleToggleTraveler}
                 onOpenTraveler={setTravelerViewId}
-                onAddTraveler={handleAddTraveler}
               />
 
               {view === "timeline" ? (
@@ -558,11 +557,16 @@ export function CalculatorPage() {
         travelerCount={travelers.length}
       />
 
-      {/* FAB — mobile only, fixed above safe area */}
-      {isMobile && travelers.length > 0 && (
+      {/* FAB — mobile only, fixed above safe area. With no travelers yet it
+          adds a traveler; otherwise it adds a trip. */}
+      {isMobile && (
         <Box
           component="button"
-          onClick={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
+          onClick={() =>
+            travelers.length === 0
+              ? handleAddTraveler()
+              : handleOpenAddTrip(travelers[0]?.id ?? "")
+          }
           sx={{
             position: "fixed",
             bottom: "calc(env(safe-area-inset-bottom) + 16px)",
@@ -586,7 +590,7 @@ export function CalculatorPage() {
           }}
         >
           <AddIcon sx={{ fontSize: "1rem" }} />
-          Add Trip
+          {travelers.length === 0 ? "Add Traveler" : "Add Trip"}
         </Box>
       )}
     </Box>
