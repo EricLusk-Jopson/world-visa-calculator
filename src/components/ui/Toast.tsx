@@ -13,6 +13,8 @@ interface ToastProps {
   duration?: number;
   /** Override the stacking context — e.g. to render above a full-screen frame opened at a raised z-index. */
   zIndex?: number;
+  /** Distance from the top of the viewport, in px. Defaults to 20 — raise it to clear a fixed header bar. */
+  topOffset?: number;
 }
 
 /**
@@ -20,7 +22,7 @@ interface ToastProps {
  * (e.g. "Link copied") — there's no global toast host, each caller owns its
  * own `open` state and renders its own `<Toast />`.
  */
-export function Toast({ open, message, onClose, duration = 2200, zIndex }: ToastProps) {
+export function Toast({ open, message, onClose, duration = 2200, zIndex, topOffset = 20 }: ToastProps) {
   return (
     // Snackbar renders in place rather than through its own portal — wrapped in
     // Portal here so it always mounts as a direct document.body child. Without
@@ -31,11 +33,11 @@ export function Toast({ open, message, onClose, duration = 2200, zIndex }: Toast
         open={open}
         onClose={onClose}
         autoHideDuration={duration}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
         slots={{ transition: Slide }}
-        slotProps={{ transition: { direction: "up" } }}
+        slotProps={{ transition: { direction: "down" } }}
         sx={{
-          bottom: "calc(env(safe-area-inset-bottom) + 20px) !important",
+          top: `calc(env(safe-area-inset-top) + ${topOffset}px) !important`,
           ...(zIndex !== undefined && { zIndex }),
         }}
       >

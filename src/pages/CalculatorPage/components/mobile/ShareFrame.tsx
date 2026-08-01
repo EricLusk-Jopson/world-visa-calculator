@@ -127,14 +127,13 @@ export function ShareFrame({
               How sharing works
             </Typography>
             <Typography sx={{ fontSize: "0.85rem", color: tokens.text, lineHeight: 1.6 }}>
-              All traveler data is encoded directly into the URL — no account
-              or server needed. Anyone with the link can open the tracker and
-              see the same trips and statuses instantly.
+              All traveler data lives in the URL. No account or server
+              needed, and it updates automatically as you make changes.
             </Typography>
             <Typography sx={{ fontSize: "0.8rem", color: tokens.textSoft, lineHeight: 1.55 }}>
-              Your own itinerary is saved only in <strong>this browser</strong> —
-              it won't show up on another browser or device, and clearing your
-              browser data will clear it too.
+              Your own itinerary is saved only in <strong>this browser</strong>.
+              It won't appear on another browser or device, and clearing your
+              browser data clears it too.
             </Typography>
           </Box>
 
@@ -170,17 +169,14 @@ export function ShareFrame({
             <Typography sx={{ fontSize: "0.82rem", color: tokens.textSoft, lineHeight: 1.55 }}>
               {linkType === "nosave" ? (
                 <>
-                  Opening this link won't overwrite any itinerary the
-                  recipient has already saved in their own browser. Use this
-                  when posting somewhere public — a blog post, forum, or
-                  social media — so you don't accidentally clobber a
-                  reader's own trips.
+                  Won't overwrite anything the recipient has already saved.
+                  Use it for public posts, like a blog, forum, or social
+                  media.
                 </>
               ) : (
                 <>
-                  Opening this link replaces whatever itinerary is currently
-                  saved in the recipient's browser with the one you're
-                  sharing now.
+                  Replaces any itinerary already saved in the recipient's
+                  browser.
                 </>
               )}
             </Typography>
@@ -203,8 +199,8 @@ export function ShareFrame({
                 ⚠
               </Typography>
               <Typography sx={{ fontSize: "0.82rem", color: tokens.amberText, lineHeight: 1.5 }}>
-                No travelers added yet. Add a traveler and some trips — the
-                link will include everything automatically.
+                No travelers added yet. Add a traveler and some trips, and
+                the link will include them automatically.
               </Typography>
             </Box>
           )}
@@ -282,6 +278,7 @@ export function ShareFrame({
         message="Link copied to clipboard"
         onClose={() => setToastOpen(false)}
         zIndex={1500}
+        topOffset={64}
       />
     </>
   );

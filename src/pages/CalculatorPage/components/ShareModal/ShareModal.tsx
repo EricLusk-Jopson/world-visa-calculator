@@ -86,14 +86,17 @@ export function ShareModal({
     >
       <Box
         sx={{
-          width: 440,
-          maxWidth: "100%",
+          width: 560,
+          maxWidth: "calc(100vw - 32px)",
+          maxHeight: "88vh",
           bgcolor: tokens.white,
           borderRadius: "20px",
           boxShadow:
             "0 12px 40px rgba(12,30,60,0.13), 0 2px 6px rgba(12,30,60,0.06)",
           overflow: "hidden",
           outline: "none",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         {/* ── Header ── */}
@@ -106,6 +109,7 @@ export function ShareModal({
             alignItems: "center",
             justifyContent: "space-between",
             borderBottom: `1px solid ${tokens.border}`,
+            flexShrink: 0,
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -182,6 +186,9 @@ export function ShareModal({
             display: "flex",
             flexDirection: "column",
             gap: "14px",
+            flex: 1,
+            minHeight: 0,
+            overflowY: "auto",
           }}
         >
           {/* How it works */}
@@ -213,9 +220,8 @@ export function ShareModal({
                 lineHeight: 1.6,
               }}
             >
-              All traveler data is encoded directly into the URL — no account or
-              server needed. Anyone with the link can open the tracker and see
-              the same trips and statuses instantly.
+              All traveler data lives in the URL. No account or server needed,
+              and it updates automatically as you make changes.
             </Typography>
             <Typography
               sx={{
@@ -224,19 +230,9 @@ export function ShareModal({
                 lineHeight: 1.55,
               }}
             >
-              The link stays current as you make changes, so re-share any time
-              to send an updated snapshot.
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: "0.78rem",
-                color: tokens.textSoft,
-                lineHeight: 1.55,
-              }}
-            >
-              Your own itinerary is saved only in <strong>this browser</strong> —
-              it won't show up if you open the app on another browser or
-              device, and clearing your browser data will clear it too.
+              Your own itinerary is saved only in <strong>this browser</strong>.
+              It won't appear on another browser or device, and clearing your
+              browser data clears it too.
             </Typography>
           </Box>
 
@@ -278,17 +274,14 @@ export function ShareModal({
             >
               {linkType === "nosave" ? (
                 <>
-                  Opening this link won't overwrite any itinerary the
-                  recipient has already saved in their own browser. Use this
-                  when posting somewhere public — a blog post, forum, or
-                  social media — so you don't accidentally clobber a
-                  reader's own trips.
+                  Won't overwrite anything the recipient has already saved.
+                  Use it for public posts, like a blog, forum, or social
+                  media.
                 </>
               ) : (
                 <>
-                  Opening this link replaces whatever itinerary is currently
-                  saved in the recipient's browser with the one you're
-                  sharing now.
+                  Replaces any itinerary already saved in the recipient's
+                  browser.
                 </>
               )}
             </Typography>
@@ -324,8 +317,8 @@ export function ShareModal({
                   lineHeight: 1.5,
                 }}
               >
-                No travelers added yet. Add a traveler and some trips — the link
-                will include everything automatically.
+                No travelers added yet. Add a traveler and some trips, and
+                the link will include them automatically.
               </Typography>
             </Box>
           )}
@@ -482,7 +475,18 @@ export function ShareModal({
         </Box>
 
         {/* ── Footer ── */}
-        <Box sx={{ px: "20px", pb: "20px", pt: "4px", display: "flex", flexDirection: "column", gap: "8px" }}>
+        <Box
+          sx={{
+            px: "20px",
+            pb: "20px",
+            pt: "4px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "8px",
+            flexShrink: 0,
+            borderTop: `1px solid ${tokens.border}`,
+          }}
+        >
           {/* Ko-fi support CTA */}
           <Box
             component="a"
