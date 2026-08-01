@@ -8,3 +8,4 @@ export { RegionSelector } from "./RegionSelector";
 export { ImpactPreview } from "../../pages/CalculatorPage/components/ImpactPreview";
 export { BottomDrawer } from "./BottomDrawer";
 export { FullScreenSlider } from "./FullScreenSlider";
+export { DestinationSlider } from "./DestinationSlider";

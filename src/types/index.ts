@@ -64,6 +64,14 @@ export interface Traveler {
   /** ISO Alpha-2 passport code; null = not yet selected */
   passportCode: string | null;
   trips: Trip[];
+  /**
+   * Explicit override for which destination's allowance the desktop header
+   * displays. undefined/null = auto — resolve to the "active trip" destination
+   * (current trip, else next planned, else most recent) within the 1-year
+   * lookback window. Set only when the traveler picks a destination other than
+   * the computed default from the edit-traveler modal.
+   */
+  targetRegion?: VisaRegion | null;
 }
 
 export interface MaxStayResult {
