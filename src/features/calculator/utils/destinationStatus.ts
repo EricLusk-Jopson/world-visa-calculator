@@ -13,13 +13,14 @@
  */
 
 import { VisaRegion, VISA_REGION_LABELS } from "@/types";
-import type { Traveler, Trip, RegionRule } from "@/types";
+import type { Traveler, Trip, RegionRule, PerVisitLimit } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import { createRollingWindowCalculator } from "./rollingWindowCalculator";
 import {
   assessStay,
-  detectReentryRisk,
+  resolveStayLimits,
   perVisitApproxDays,
+  perVisitLimitLabel,
   type StayVariant,
 } from "./stayCalculator";
 import {
@@ -31,14 +32,12 @@ import {
 } from "./dates";
 import type { BadgeVariant } from "@/components/ui/StatusBadge";
 import {
-  CHIP_TOOLTIP_UK_REENTRY_DANGER,
-  CHIP_TOOLTIP_UK_REENTRY_CAUTION,
-  CHIP_TOOLTIP_UK_REENTRY_SAFE,
+  CHIP_TOOLTIP_UK_STAY_CAUTION,
+  CHIP_TOOLTIP_UK_STAY_DANGER,
 } from "./uk/chipTooltips";
 import {
-  CHIP_TOOLTIP_IRELAND_REENTRY_DANGER,
-  CHIP_TOOLTIP_IRELAND_REENTRY_CAUTION,
-  CHIP_TOOLTIP_IRELAND_REENTRY_SAFE,
+  CHIP_TOOLTIP_IRELAND_STAY_CAUTION,
+  CHIP_TOOLTIP_IRELAND_STAY_DANGER,
 } from "./ireland/chipTooltips";
 
 /**
@@ -216,20 +215,17 @@ function fmtWindowDate(iso: string): string {
   });
 }
 
-function reentryTooltip(region: VisaRegion, variant: StayVariant): string | undefined {
+/**
+ * Tooltip for a near-max per-visit stay — the trip whose length may itself
+ * trigger a cooldown before the traveler can re-enter. Only called for
+ * caution/danger; there's nothing to say when the stay is comfortably safe.
+ */
+function stayLimitTooltip(region: VisaRegion, variant: "caution" | "danger"): string | undefined {
   if (region === VisaRegion.UnitedKingdom) {
-    return variant === "danger"
-      ? CHIP_TOOLTIP_UK_REENTRY_DANGER
-      : variant === "caution"
-        ? CHIP_TOOLTIP_UK_REENTRY_CAUTION
-        : CHIP_TOOLTIP_UK_REENTRY_SAFE;
+    return variant === "danger" ? CHIP_TOOLTIP_UK_STAY_DANGER : CHIP_TOOLTIP_UK_STAY_CAUTION;
   }
   if (region === VisaRegion.Ireland) {
-    return variant === "danger"
-      ? CHIP_TOOLTIP_IRELAND_REENTRY_DANGER
-      : variant === "caution"
-        ? CHIP_TOOLTIP_IRELAND_REENTRY_CAUTION
-        : CHIP_TOOLTIP_IRELAND_REENTRY_SAFE;
+    return variant === "danger" ? CHIP_TOOLTIP_IRELAND_STAY_DANGER : CHIP_TOOLTIP_IRELAND_STAY_CAUTION;
   }
   return undefined;
 }
@@ -292,6 +288,7 @@ export function computeDestinationStatus(
     const maxStayResult = calculateMaxStay(refDateStr, regionTrips);
     const maxStay = maxStayResult.canEnter ? maxStayResult.maxDays : 0;
     const windowStart = formatDate(subDays(refDate, config.windowSize - 1));
+    const todayFmt = fmtWindowDate(refDateStr);
     const fillPct = Math.min(100, (daysUsed / config.maxDays) * 100);
 
     return {
@@ -304,59 +301,97 @@ export function computeDestinationStatus(
       availableChip: {
         label: `${daysRemaining}d avail`,
         variant,
-        tooltip: `Your current balance for ${regionName}. Ticks up by one each time an earlier day rolls out of the ${config.windowSize}-day window.`,
+        tooltip: `Your balance today, ${todayFmt}. Ticks up by one each time an earlier day rolls out of the ${config.windowSize}-day window.`,
       },
       secondChip: {
         label: `${maxStay}d max`,
         variant: maxStay > daysRemaining ? "safe" : variant,
-        tooltip: `The longest stay you could start today in ${regionName}, including days that free up as you go.`,
+        tooltip: `The longest stay you could start today, ${todayFmt}, in ${regionName}, including days that free up as you go.`,
       },
-      summaryLine: `${daysUsed}/${config.maxDays} used since ${fmtWindowDate(windowStart)}`,
+      summaryLine: `As of today, ${todayFmt}: ${daysUsed}/${config.maxDays} used`,
       note:
         daysUsed > 0
-          ? `${config.maxDays}-day allowance in the rolling ${config.windowSize}-day window, since ${fmtWindowDate(windowStart)}.`
-          : `No ${regionName} days used yet in the rolling ${config.windowSize}-day window.`,
+          ? `${config.maxDays}-day allowance in the rolling ${config.windowSize}-day window. As of today, ${todayFmt}, the window started ${fmtWindowDate(windowStart)}.`
+          : `No ${regionName} days used in the rolling ${config.windowSize}-day window as of today, ${todayFmt}.`,
     };
   }
 
   if (regionRule.type === "per_visit") {
-    const allowanceDays = regionRule.allowanceDays;
-    const active = pickActiveTrip(regionTrips, refDate);
-    if (!active) {
-      return unavailableStatus(region, `No ${regionName} trips on record.`);
+    // Resolve the traveler's ACTUAL entitlement limit (unit-aware — e.g. UK is
+    // "6 months", calendar-anchored via addMonths, not a flat 180 days). The
+    // region-level RegionRule.allowanceDays is only a rounded approximation
+    // and must never drive the exit-date/day-count math.
+    const limits = resolveStayLimits(passportCode, rule, regionRule);
+    const perVisitLimit = limits?.find((l): l is PerVisitLimit => l.type === "per_visit") ?? null;
+    const todayFmt = fmtWindowDate(refDateStr);
+
+    if (!perVisitLimit) {
+      return {
+        region,
+        regionName,
+        ruleKind: "per_visit",
+        eligible: true,
+        fillPct: 0,
+        variant: "safe",
+        availableChip: null,
+        secondChip: null,
+        summaryLine: "No day limit",
+        note:
+          rule.access === "free_movement"
+            ? `Free movement — no per-visit limit applies to this passport in ${regionName}.`
+            : `No calculable per-visit limit for this passport in ${regionName}.`,
+      };
     }
 
-    const { trip: repTrip } = active;
-    const history = regionTrips.filter((t) => t.id !== repTrip.id);
-    const assessment = assessStay(
-      [{ type: "per_visit", value: allowanceDays, unit: "days" }],
-      history,
-      repTrip.entryDate,
-      repTrip.exitDate,
-    );
+    const daysAllowed = perVisitApproxDays(perVisitLimit);
+    const limitLabel = perVisitLimitLabel(perVisitLimit);
+
+    // Allowances only make sense in the context of a trip happening right now.
+    // A trip that's finished or hasn't started yet doesn't reflect the
+    // traveler's current allowance — only an ongoing trip does.
+    const ongoingTrip = regionTrips.find((t) => !t.exitDate && t.entryDate <= refDateStr);
+
+    if (!ongoingTrip) {
+      return {
+        region,
+        regionName,
+        ruleKind: "per_visit",
+        eligible: true,
+        fillPct: 0,
+        variant: "safe",
+        availableChip: {
+          label: `${daysAllowed}d avail`,
+          variant: "safe",
+          tooltip: `Full ${limitLabel} allowance for ${regionName} — there's no trip there happening today, ${todayFmt}.`,
+        },
+        secondChip: null,
+        summaryLine: `Not there today, ${todayFmt} — full allowance available`,
+        note: `${limitLabel} allowance per visit for ${regionName}, resetting on each departure and re-entry. The full allowance is shown because there's no trip there today, ${todayFmt}.`,
+      };
+    }
+
+    const history = regionTrips.filter((t) => t.id !== ongoingTrip.id);
+    const assessment = assessStay([perVisitLimit], history, ongoingTrip.entryDate, refDateStr);
 
     const tripDays = assessment?.tripDays ?? 0;
-    const daysRemaining = Math.max(0, assessment?.daysRemaining ?? allowanceDays);
+    const daysRemaining = Math.max(0, assessment?.daysRemaining ?? daysAllowed);
     const variant: StayVariant = assessment?.variant ?? "safe";
-    const fillPct = Math.min(100, (tripDays / allowanceDays) * 100);
+    const fillPct = Math.min(100, (tripDays / daysAllowed) * 100);
 
-    const completedPrior = regionTrips.filter((t) => t.exitDate && t.id !== repTrip.id);
-    const proposedEntryDate = repTrip.entryDate > refDateStr ? repTrip.entryDate : refDateStr;
-    const risk = detectReentryRisk(allowanceDays, completedPrior, proposedEntryDate);
-
-    const secondChip: DestinationChipData = risk
-      ? {
-          label: `${risk.daysSinceExit}d cooldown`,
-          variant: risk.variant,
-          tooltip:
-            reentryTooltip(region, risk.variant) ??
-            `The previous ${regionName} trip lasted ${risk.lastTripDays} days, close to the ${allowanceDays}-day limit. Immediate re-entry so soon after (${risk.daysSinceExit}d) may draw extra scrutiny.`,
-        }
-      : {
-          label: "No cooldown risk",
-          variant: "neutral",
-          tooltip: `No recent long stay in ${regionName} on record — re-entry should be routine.`,
-        };
+    // Cooldown is a boolean-ish state on the trip that might CAUSE one — a
+    // near-max stay — not a lookup against a previous trip's re-entry gap.
+    // Mirrors the trip modal's own duration alerts (safe/caution/danger);
+    // hidden entirely when safe, per the same alerts never firing then.
+    const stayTooltip =
+      variant === "safe" ? undefined : stayLimitTooltip(region, variant);
+    const secondChip: DestinationChipData | null =
+      variant === "safe"
+        ? null
+        : {
+            label: variant === "danger" ? "Cooldown risk" : "Cooldown ahead",
+            variant,
+            tooltip: stayTooltip,
+          };
 
     return {
       region,
@@ -368,14 +403,13 @@ export function computeDestinationStatus(
       availableChip: {
         label: `${daysRemaining}d avail`,
         variant,
-        tooltip: `Days remaining in this stay before the ${allowanceDays}-day per-visit limit for ${regionName} is reached.`,
+        tooltip: `Days remaining in this stay before the ${limitLabel} per-visit limit for ${regionName} is reached.`,
       },
       secondChip,
-      summaryLine: `Day ${Math.min(tripDays, allowanceDays)} of ${allowanceDays}`,
-      note: risk
-        ? (reentryTooltip(region, risk.variant) ??
-          `The previous ${regionName} trip lasted ${risk.lastTripDays} days. Re-entering ${risk.daysSinceExit} days after exit may draw extra scrutiny under the genuine-visitor test.`)
-        : `${allowanceDays}-day allowance per visit for ${regionName}, resetting on each departure and re-entry.`,
+      summaryLine: `Day ${Math.min(tripDays, daysAllowed)} of ${limitLabel} visit — as of today, ${todayFmt}`,
+      note:
+        stayTooltip ??
+        `${limitLabel} allowance per visit for ${regionName}, resetting on each departure and re-entry.`,
     };
   }
 

@@ -86,6 +86,11 @@ export function perVisitApproxDays(limit: PerVisitLimit): number {
   return limit.value * APPROX_DAYS_PER_UNIT[limit.unit];
 }
 
+/** Human adjective form of a per-visit allowance, e.g. "6-month", "90-day". */
+export function perVisitLimitLabel(limit: PerVisitLimit): string {
+  return `${limit.value}-${UNIT_SINGULAR[limit.unit]}`;
+}
+
 /**
  * Last legal day of presence for a per-visit allowance entered on `entry`.
  *

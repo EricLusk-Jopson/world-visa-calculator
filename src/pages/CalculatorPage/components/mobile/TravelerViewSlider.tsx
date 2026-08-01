@@ -9,6 +9,7 @@ import DialogActions from "@mui/material/DialogActions";
 import { alpha } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import { VisaRegion, type Traveler } from "@/types";
 import { StatusBadge } from "@/components/ui/StatusBadge";
@@ -18,8 +19,17 @@ import {
   rankDestinationCandidates,
   type DestinationTier,
 } from "@/features/calculator/utils/destinationStatus";
+import { today } from "@/features/calculator/utils/dates";
 import { getCountryName } from "../travelers/NationalitySelector";
 import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
+
+function fmtToday(): string {
+  return today().toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
 
 interface TravelerViewSliderProps {
   open: boolean;
@@ -299,6 +309,31 @@ export function TravelerViewSlider({
               {tripCount > 0
                 ? ` · ${tripCount} trip${tripCount === 1 ? "" : "s"}`
                 : ""}
+            </Typography>
+          </Box>
+
+          {/* ── Today banner — allowances shown are current-trip-only ────────── */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "8px",
+              px: "12px",
+              py: "10px",
+              bgcolor: tokens.mist,
+              border: `1px solid ${tokens.border}`,
+              borderRadius: "10px",
+            }}
+          >
+            <InfoOutlinedIcon sx={{ fontSize: "1rem", color: tokens.textSoft, mt: "1px", flexShrink: 0 }} />
+            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, lineHeight: 1.45 }}>
+              <Box component="span" sx={{ fontWeight: 700, color: tokens.navy }}>
+                Today, {fmtToday()}.
+              </Box>{" "}
+              Allowances below reflect right now. Rolling-window destinations
+              (Schengen, Türkiye) always show today&apos;s balance; per-visit
+              destinations (UK, Ireland) show the current trip only — if
+              there&apos;s no trip there today, the full allowance is available.
             </Typography>
           </Box>
 

@@ -12,7 +12,7 @@ import {
   isWithinLookback,
 } from "./destinationStatus";
 import { VisaRegion, type Traveler, type Trip } from "@/types";
-import { addDays, formatDate, parseDate } from "./dates";
+import { addDays, addMonths, differenceInCalendarDays, formatDate, parseDate } from "./dates";
 
 const iso = (anchor: Date, offset: number) => formatDate(addDays(anchor, offset));
 
@@ -132,23 +132,58 @@ describe("computeDestinationStatus — rolling_window (Schengen)", () => {
 });
 
 describe("computeDestinationStatus — per_visit (UK / Ireland)", () => {
-  it("shows a 'no cooldown risk' chip when there is no prior long stay", () => {
+  it("uses calendar months for the UK's 6-month limit, not a flat 180 days (regression)", () => {
+    // Entering 1 Jul, the real limit is addMonths(entry, 6) = 1 Jan — 184
+    // calendar days later. The old bug used a flat 180-day count instead,
+    // which would report this traveler overstaying (negative days remaining)
+    // 3 days before they actually run out of allowance.
+    const entry = "2026-07-01";
+    const checkDate = parseDate(iso(parseDate(entry), 182)); // day 183 of the stay
+    const trav = traveler([trip("uk", VisaRegion.UnitedKingdom, entry)]);
+
+    const status = computeDestinationStatus(trav, VisaRegion.UnitedKingdom, checkDate);
+
+    const maxExit = addMonths(parseDate(entry), 6); // 2027-01-01
+    const expectedDaysRemaining = differenceInCalendarDays(maxExit, checkDate);
+    expect(expectedDaysRemaining).toBeGreaterThan(0); // sanity: still within the real limit
+
+    expect(status.variant).not.toBe("danger");
+    expect(status.availableChip?.label).toBe(`${expectedDaysRemaining}d avail`);
+  });
+
+  it("hides the cooldown chip for an ongoing trip that's comfortably within the limit", () => {
     const trav = traveler([trip("a", VisaRegion.UnitedKingdom, iso(REF, -10))]); // ongoing, short so far
     const status = computeDestinationStatus(trav, VisaRegion.UnitedKingdom, REF);
     expect(status.ruleKind).toBe("per_visit");
-    expect(status.secondChip?.variant).toBe("neutral");
-    expect(status.secondChip?.label).toBe("No cooldown risk");
+    expect(status.secondChip).toBeNull();
   });
 
-  it("flags cooldown risk after a near-maximum-length prior visit followed by a quick re-entry", () => {
+  it("shows a cooldown chip (no day count) when the ongoing trip is itself near the limit", () => {
+    // Ireland: 90-day limit, caution threshold = floor(90*5/6) = 75.
+    const trav = traveler([trip("a", VisaRegion.Ireland, iso(REF, -80))]); // 81 days in, ongoing
+    const status = computeDestinationStatus(trav, VisaRegion.Ireland, REF);
+    expect(status.secondChip).not.toBeNull();
+    expect(status.secondChip?.variant).toBe("caution");
+    expect(status.secondChip?.label).not.toMatch(/\d/); // boolean-ish state, no day count
+  });
+
+  it("ignores a past trip and shows full availability when there's no current trip", () => {
     const trav = traveler([
-      trip("prev", VisaRegion.Ireland, iso(REF, -100), iso(REF, -20)), // 81-day stay, close to 90
-      trip("next", VisaRegion.Ireland, iso(REF, -5)), // re-entered 15 days after exit
+      trip("prev", VisaRegion.Ireland, iso(REF, -100), iso(REF, -20)), // 81-day stay, long finished
     ]);
     const status = computeDestinationStatus(trav, VisaRegion.Ireland, REF);
-    expect(status.secondChip?.variant).toBe("danger");
-    expect(status.secondChip?.label).toMatch(/cooldown$/);
-    expect(status.note.length).toBeGreaterThan(0);
+    expect(status.variant).toBe("safe");
+    expect(status.secondChip).toBeNull();
+    expect(status.fillPct).toBe(0);
+    expect(status.availableChip?.variant).toBe("safe");
+  });
+
+  it("ignores an upcoming trip and shows full availability until it starts", () => {
+    const trav = traveler([trip("next", VisaRegion.UnitedKingdom, iso(REF, 10), iso(REF, 20))]);
+    const status = computeDestinationStatus(trav, VisaRegion.UnitedKingdom, REF);
+    expect(status.variant).toBe("safe");
+    expect(status.secondChip).toBeNull();
+    expect(status.fillPct).toBe(0);
   });
 });
 
