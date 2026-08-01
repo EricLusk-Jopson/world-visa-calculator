@@ -16,6 +16,10 @@ interface AddTravelerDrawerProps {
   open: boolean;
   onClose: () => void;
   onAdd: (name: string, passportCode: string | null) => void;
+  /** "edit" reskins the drawer (title + save label) and prefills the fields. */
+  mode?: "add" | "edit";
+  initialName?: string;
+  initialPassportCode?: string | null;
 }
 
 function PassportPickerScreen({
@@ -93,22 +97,31 @@ function PassportPickerScreen({
   );
 }
 
-export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerProps) {
-  const [name, setName] = useState("");
-  const [passportCode, setPassportCode] = useState<string | null>(null);
+export function AddTravelerDrawer({
+  open,
+  onClose,
+  onAdd,
+  mode = "add",
+  initialName = "",
+  initialPassportCode = null,
+}: AddTravelerDrawerProps) {
+  const [name, setName] = useState(initialName);
+  const [passportCode, setPassportCode] = useState<string | null>(initialPassportCode);
   const [error, setError] = useState<string | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
 
   useEffect(() => {
-    if (open) { setName(""); setPassportCode(null); setError(null); }
+    if (open) { setName(initialName); setPassportCode(initialPassportCode); setError(null); }
     else setPickerOpen(false);
-  }, [open]);
+  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleAdd() {
     const trimmed = name.trim();
     if (!trimmed) { setError("Please enter a name."); return; }
     onAdd(trimmed, passportCode);
   }
+
+  const isEdit = mode === "edit";
 
   const schengenHint = passportCode ? (() => {
     const r = getSchengenRule(passportCode);
@@ -122,7 +135,7 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
 
   return (
     <>
-      <BottomDrawer open={open} onClose={onClose} title="Add Traveler">
+      <BottomDrawer open={open} onClose={onClose} title={isEdit ? "Edit Traveler" : "Add Traveler"}>
         <Box sx={{ px: "20px", pb: "8px", display: "flex", flexDirection: "column", gap: "16px" }}>
           <Box>
             <Typography component="label" sx={{ display: "block", fontFamily: tokens.fontBody, fontSize: "0.68rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: tokens.textSoft, mb: "6px" }}>
@@ -179,7 +192,7 @@ export function AddTravelerDrawer({ open, onClose, onAdd }: AddTravelerDrawerPro
               Cancel
             </Box>
             <Box component="button" onClick={handleAdd} disabled={isDisabled} sx={{ flex: 2, py: "11px", border: "none", borderRadius: "10px", bgcolor: isDisabled ? tokens.border : tokens.navy, color: isDisabled ? tokens.textGhost : tokens.white, fontFamily: tokens.fontBody, fontSize: "0.85rem", fontWeight: 600, cursor: isDisabled ? "default" : "pointer", "&:active": !isDisabled ? { opacity: 0.85 } : {} }}>
-              Add
+              {isEdit ? "Save" : "Add"}
             </Box>
           </Box>
         </Box>
