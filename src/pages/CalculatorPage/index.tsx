@@ -5,6 +5,7 @@ import { keyframes } from "@mui/system";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AddIcon from "@mui/icons-material/Add";
 import type { Traveler, Trip, ShareableState } from "@/types";
+import { VisaRegion } from "@/types";
 import { tokens } from "@/styles/theme";
 import { useUrlSync } from "@/features/sharing";
 import {
@@ -140,9 +141,23 @@ export function CalculatorPage() {
   );
 
   const handleTravelerEdit = useCallback(
-    (travelerId: string, name: string, passportCode: string | null) => {
+    (
+      travelerId: string,
+      name: string,
+      passportCode: string | null,
+      targetRegion?: VisaRegion | null,
+    ) => {
       setTravelers((prev) =>
-        prev.map((t) => (t.id === travelerId ? { ...t, name, passportCode } : t)),
+        prev.map((t) =>
+          t.id === travelerId
+            ? {
+                ...t,
+                name,
+                passportCode,
+                targetRegion: targetRegion === undefined ? t.targetRegion : targetRegion,
+              }
+            : t,
+        ),
       );
     },
     [],

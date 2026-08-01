@@ -7,8 +7,7 @@ import { DateSidebar } from "../DateSidebar";
 import { TravelerTimelineColumn } from "../TravelerTimelineColumn";
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
-import { computeTravelerStatus } from "../../travelers/travelerStatus";
-import { calculateMaxStay } from "@/features/calculator/utils/schengen";
+import { resolveDisplayRegion } from "@/features/calculator/utils/destinationStatus";
 import {
   computeTimelineStart,
   computeTimelineEnd,
@@ -17,10 +16,7 @@ import {
   COLUMN_MIN_WIDTH,
   COLUMN_HEADER_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
-import {
-  today as getToday,
-  formatDate,
-} from "@/features/calculator/utils/dates";
+import { today as getToday } from "@/features/calculator/utils/dates";
 
 interface TimelineViewProps {
   travelers: Traveler[];
@@ -28,7 +24,12 @@ interface TimelineViewProps {
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
   onAddTraveler: () => void;
-  onEdit: (travelerId: string, name: string, passportCode: string | null) => void;
+  onEdit: (
+    travelerId: string,
+    name: string,
+    passportCode: string | null,
+    targetRegion: VisaRegion | null,
+  ) => void;
 }
 
 export function TimelineView({
@@ -69,8 +70,6 @@ export function TimelineView({
     return <AddTravelerGhost onAddTraveler={onAddTraveler} />;
   }
 
-  const todayStr = formatDate(getToday());
-
   const sidebarSx = {
     width: SIDEBAR_WIDTH,
     minWidth: SIDEBAR_WIDTH,
@@ -105,16 +104,7 @@ export function TimelineView({
           <Box sx={{ ...sidebarSx, alignSelf: "stretch" }} />
 
           {travelers.map((traveler) => {
-            const status = computeTravelerStatus(traveler);
-
-            // Max stay: calculateMaxStay correctly accounts for historical days
-            // aging off the window during the proposed trip, unlike the naive
-            // 90 − daysUsed figure in status.daysRemaining.
-            const schengenTrips = traveler.trips.filter(
-              (t) => t.region === VisaRegion.Schengen,
-            );
-            const maxStayResult = calculateMaxStay(todayStr, schengenTrips);
-            const maxStay = maxStayResult.canEnter ? maxStayResult.maxDays : 0;
+            const displayRegion = resolveDisplayRegion(traveler);
 
             return (
               <Box
@@ -129,10 +119,11 @@ export function TimelineView({
               >
                 <TravelerColumnHeader
                   traveler={traveler}
-                  status={status}
-                  maxStay={maxStay}
+                  region={displayRegion}
                   onDelete={() => onDeleteTraveler(traveler.id)}
-                  onEdit={(name, code) => onEdit(traveler.id, name, code)}
+                  onEdit={(name, code, targetRegion) =>
+                    onEdit(traveler.id, name, code, targetRegion)
+                  }
                   sx={{ width: "100%" }}
                 />
               </Box>

@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import type { Traveler, Trip } from "@/types";
+import type { Traveler, Trip, VisaRegion } from "@/types";
 import { TravelerCardsColumn } from "../TravelerCardsColumn";
 import { tokens } from "@/styles/theme";
 import { SIDEBAR_WIDTH } from "../../timeline/timelineConstants";
@@ -25,7 +25,12 @@ interface CardsViewProps {
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
-  onEdit: (travelerId: string, name: string, passportCode: string | null) => void;
+  onEdit: (
+    travelerId: string,
+    name: string,
+    passportCode: string | null,
+    targetRegion: VisaRegion | null,
+  ) => void;
 }
 
 /**
