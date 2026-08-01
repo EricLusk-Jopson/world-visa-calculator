@@ -7,10 +7,8 @@ import {
   subDays,
   differenceInCalendarDays,
 } from "@/features/calculator/utils/dates";
-import {
-  getDaysUsedOnDate,
-  calculateMaxStay,
-} from "@/features/calculator/utils/schengen";
+import { getDaysUsedOnDate } from "@/features/calculator/utils/schengen";
+import { createRollingWindowCalculator } from "@/features/calculator/utils/rollingWindowCalculator";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -42,6 +40,17 @@ export interface TripContribution {
    * extends beyond their planned exit.
    */
   daysAgingOutOverMaxStay: number;
+  /**
+   * Date (ISO) on which this trip's during-trip freed days finish rolling out
+   * of the window — the day the last such day exits. Set only when
+   * daysAgingOutDuringTrip > 0.
+   */
+  agesOutDuringDate?: string;
+  /**
+   * Date (ISO) on which this trip's freed-if-extended days finish rolling out
+   * of the window. Set only when daysAgingOutOverMaxStay > 0.
+   */
+  agesOutOverMaxDate?: string;
 }
 
 export interface ImpactBreakdown {
@@ -82,6 +91,19 @@ export interface ImpactBreakdown {
   daysRemaining: number;
 
   /**
+   * Same as daysRemaining but UNclamped — negative when the planned trip
+   * already exceeds the maximum stay (an overstay). Drives severity + the
+   * overstay icon; daysRemaining stays floored at 0 for display.
+   */
+  daysRemainingRaw: number;
+
+  /**
+   * Allowance left the moment this trip ends: maxDays − previous + freed-during
+   * − this-trip. Equals the "Xd left" chip. May be negative on overstay.
+   */
+  remainingAfterTrip: number;
+
+  /**
    * The latest legal exit date if the traveler stays as long as possible.
    * Null only when canEnter is false (no allowance at all).
    */
@@ -90,9 +112,14 @@ export interface ImpactBreakdown {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
+/**
+ * Rolling-window severity keyed on days-from-overstay (the extension headroom):
+ * green > 14, amber 4–14, red < 4 (including overstay, which the icon layer
+ * then splits into the red warning via the separate overstay flag).
+ */
 export function getStatusVariant(daysRemaining: number): StatusVariant {
-  if (daysRemaining >= 30) return "safe";
-  if (daysRemaining >= 10) return "caution";
+  if (daysRemaining > 14) return "safe";
+  if (daysRemaining >= 4) return "caution";
   return "danger";
 }
 
@@ -169,29 +196,43 @@ export function computeStatusAtTripExit(
  *                         (today is used as the reference exit).
  * @param historicalTrips  Schengen trips excluding the proposed trip itself.
  */
+/** Rolling-window configuration. Defaults to the Schengen 90/180 rule. */
+export interface RollingConfig {
+  maxDays: number;
+  windowDays: number;
+}
+
+const SCHENGEN_CONFIG: RollingConfig = { maxDays: 90, windowDays: 180 };
+
 export function computeImpactBreakdown(
   entryDate: string,
   exitDate: string | undefined,
   historicalTrips: Trip[],
+  config: RollingConfig = SCHENGEN_CONFIG,
 ): ImpactBreakdown {
+  const { windowDays } = config;
   const entry = parseDate(entryDate);
   const exit = exitDate ? parseDate(exitDate) : today();
 
-  // Maximum possible exit given the historical record.
-  const maxStay = calculateMaxStay(entryDate, historicalTrips);
+  // Maximum possible exit given the historical record (configured window).
+  const { calculateMaxStay: calcMaxStay } = createRollingWindowCalculator({
+    maxDays: config.maxDays,
+    windowSize: windowDays,
+  });
+  const maxStay = calcMaxStay(entryDate, historicalTrips);
   const maxExitDate = maxStay.maxExitDate
     ? parseDate(maxStay.maxExitDate)
     : exit;
 
-  const windowAtEntryStart = subDays(entry, 179);
+  const windowAtEntryStart = subDays(entry, windowDays - 1);
   const entryMinus1 = subDays(entry, 1);
 
   // Two aging-out cutoffs:
   //   duringTrip   — days that fall off before the specified exit
   //   overMaxStay  — days that fall off between specified exit and max exit
-  // A historical day H ages out when H + 180 ≤ referenceExit, i.e. H ≤ referenceExit − 180.
-  const duringTripCutoff = subDays(exit, 180);
-  const overMaxStayCutoff = subDays(maxExitDate, 180);
+  // A historical day H ages out when H + windowDays ≤ referenceExit.
+  const duringTripCutoff = subDays(exit, windowDays);
+  const overMaxStayCutoff = subDays(maxExitDate, windowDays);
 
   const contributions: TripContribution[] = [];
 
@@ -211,17 +252,23 @@ export function computeImpactBreakdown(
     // ── Days aging out during the specified trip ───────────────────────────
     // Overlap of [tEntry, tExit] with [windowAtEntryStart, duringTripCutoff].
     let daysAgingOutDuringTrip = 0;
+    let agesOutDuringDate: string | undefined;
     if (duringTripCutoff >= windowAtEntryStart) {
       const aoStart = tEntry < windowAtEntryStart ? windowAtEntryStart : tEntry;
       const aoEnd = tExit > duringTripCutoff ? duringTripCutoff : tExit;
-      daysAgingOutDuringTrip =
-        aoStart <= aoEnd ? differenceInCalendarDays(aoEnd, aoStart) + 1 : 0;
+      if (aoStart <= aoEnd) {
+        daysAgingOutDuringTrip = differenceInCalendarDays(aoEnd, aoStart) + 1;
+        // Date this trip STARTS to age out: its earliest in-range day leaves
+        // the window windowDays later.
+        agesOutDuringDate = formatDate(subDays(aoStart, -windowDays));
+      }
     }
 
     // ── Days aging out between specified exit and max stay exit ───────────
     // Overlap of [tEntry, tExit] with [duringTripCutoff + 1, overMaxStayCutoff].
     // These days only become free if the traveler extends past their planned exit.
     let daysAgingOutOverMaxStay = 0;
+    let agesOutOverMaxDate: string | undefined;
     const overMaxStayStart = subDays(duringTripCutoff, -1); // duringTripCutoff + 1
     if (
       overMaxStayCutoff >= overMaxStayStart &&
@@ -229,8 +276,10 @@ export function computeImpactBreakdown(
     ) {
       const aoStart = tEntry < overMaxStayStart ? overMaxStayStart : tEntry;
       const aoEnd = tExit > overMaxStayCutoff ? overMaxStayCutoff : tExit;
-      daysAgingOutOverMaxStay =
-        aoStart <= aoEnd ? differenceInCalendarDays(aoEnd, aoStart) + 1 : 0;
+      if (aoStart <= aoEnd) {
+        daysAgingOutOverMaxStay = differenceInCalendarDays(aoEnd, aoStart) + 1;
+        agesOutOverMaxDate = formatDate(subDays(aoStart, -windowDays));
+      }
     }
 
     if (
@@ -246,6 +295,8 @@ export function computeImpactBreakdown(
         daysInWindow,
         daysAgingOutDuringTrip,
         daysAgingOutOverMaxStay,
+        agesOutDuringDate,
+        agesOutOverMaxDate,
       });
     }
   }
@@ -280,7 +331,13 @@ export function computeImpactBreakdown(
   const agingOutTotal = agingOutDuringTripTotal + agingOutOverMaxStayTotal;
   const currentTripDays = differenceInCalendarDays(exit, entry) + 1;
 
-  const daysRemaining = Math.max(0, maxStay.maxDays - currentTripDays);
+  const daysRemainingRaw = maxStay.maxDays - currentTripDays;
+  const daysRemaining = Math.max(0, daysRemainingRaw);
+  const remainingAfterTrip =
+    config.maxDays -
+    previousDaysTotal +
+    agingOutDuringTripTotal -
+    currentTripDays;
 
   return {
     previousTrips,
@@ -292,6 +349,8 @@ export function computeImpactBreakdown(
     agingOutTotal,
     currentTripDays,
     daysRemaining,
+    daysRemainingRaw,
+    remainingAfterTrip,
     maxExitDate: maxStay.maxExitDate,
   };
 }

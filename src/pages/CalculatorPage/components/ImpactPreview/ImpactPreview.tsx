@@ -2,8 +2,14 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Collapse from "@mui/material/Collapse";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { tokens } from "@/styles/theme";
 import { parseDate } from "@/features/calculator/utils/dates";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import {
+  AVAILABLE_DAYS_DESCRIPTION,
+  MAX_STAY_DESCRIPTION,
+} from "@/features/calculator/utils/schengen";
 import type { ImpactBreakdown, StatusVariant } from "../travelers/travelerStatus";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -20,6 +26,8 @@ interface ImpactPreviewProps {
   daysRemaining: number;
   daysUsed: number;
   variant: StatusVariant | "neutral";
+  /** Window allowance (90 for Schengen). Used in the subtitle and equation. */
+  maxDays?: number;
   breakdown?: ImpactBreakdown;
   /**
    * When provided (multi-traveler add/edit), renders a per-traveler row
@@ -143,9 +151,37 @@ function clipRange(
 }
 
 function statusVariantForDays(days: number): StatusVariant {
-  if (days > 29) return "safe";
-  if (days > 9) return "caution";
+  // Days-from-overstay: green > 14, amber 4–14, red < 4 (matches getStatusVariant).
+  if (days > 14) return "safe";
+  if (days >= 4) return "caution";
   return "danger";
+}
+
+/** Small info "i" that reveals an explanatory tooltip on hover / tap. */
+function InfoTip({ title }: { title: string }) {
+  return (
+    <MobileAwareTooltip
+      title={title}
+      placement="bottom"
+      arrow
+      enterDelay={300}
+      componentsProps={{
+        tooltip: {
+          sx: {
+            fontFamily: tokens.fontBody,
+            fontSize: "0.72rem",
+            maxWidth: 240,
+            bgcolor: tokens.navy,
+            "& .MuiTooltip-arrow": { color: tokens.navy },
+          },
+        },
+      }}
+    >
+      <InfoOutlinedIcon
+        sx={{ fontSize: "0.72rem", opacity: 0.6, flexShrink: 0, cursor: "help" }}
+      />
+    </MobileAwareTooltip>
+  );
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -202,11 +238,13 @@ function SectionRow({
 function TripRow({
   name,
   range,
+  agesOut,
   days,
   sign,
 }: {
   name?: string;
   range: string;
+  agesOut?: string;
   days: number;
   sign: "+" | "−";
 }) {
@@ -245,6 +283,19 @@ function TripRow({
         >
           {range}
         </Typography>
+        {agesOut && (
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.64rem",
+              fontStyle: "italic",
+              color: tokens.textGhost,
+              lineHeight: 1.4,
+            }}
+          >
+            ages out {agesOut}
+          </Typography>
+        )}
       </Box>
       <Typography
         sx={{
@@ -351,6 +402,7 @@ export function ImpactPreview({
   daysRemaining,
   daysUsed,
   variant,
+  maxDays = 90,
   breakdown,
   travelerImpacts,
   currentTripEntry,
@@ -361,10 +413,14 @@ export function ImpactPreview({
   // days figure rather than the raw daysRemaining prop, which is computed from
   // 90 − daysUsed and doesn't account for days rolling off the window.
   const effectiveVariant = breakdown
-    ? statusVariantForDays(breakdown.daysRemaining)
+    ? statusVariantForDays(breakdown.daysRemainingRaw)
     : variant;
   const colors = VARIANT_COLORS[effectiveVariant];
-  const isMulti = travelerImpacts && travelerImpacts.length > 1;
+  // Always render the per-traveler bar rows when we have traveler data — the
+  // bar treatment is shown for every trip, solo or group. "most constrained"
+  // labelling still only applies when there is more than one traveler.
+  const showBars = Boolean(travelerImpacts && travelerImpacts.length >= 1);
+  const isMulti = Boolean(travelerImpacts && travelerImpacts.length > 1);
 
   // ── Pre-compute window boundaries for range clipping ──────────────────────
   //
@@ -411,7 +467,7 @@ export function ImpactPreview({
             display: "flex",
             flexDirection: "column",
             gap: "4px",
-            flex: isMulti ? 1 : "unset",
+            flex: showBars ? 1 : "unset",
           }}
         >
           <Typography
@@ -428,7 +484,7 @@ export function ImpactPreview({
             After this trip
           </Typography>
 
-          {!isMulti && (
+          {!showBars && (
             <Typography
               sx={{
                 fontFamily: tokens.fontBody,
@@ -439,12 +495,12 @@ export function ImpactPreview({
               }}
             >
               {breakdown && breakdown.agingOutTotal > 0
-                ? `${daysUsed}/90 used · ${breakdown.agingOutTotal}d rolling off`
-                : `${daysUsed} of 90 days used`}
+                ? `${daysUsed}/${maxDays} used · ${breakdown.agingOutTotal}d rolling off`
+                : `${daysUsed} of ${maxDays} days used`}
             </Typography>
           )}
 
-          {isMulti && (
+          {showBars && (
             <Box
               sx={{
                 display: "flex",
@@ -453,7 +509,7 @@ export function ImpactPreview({
                 mt: "4px",
               }}
             >
-              {travelerImpacts.map((impact) => (
+              {travelerImpacts!.map((impact) => (
                 <TravelerImpactRow key={impact.id} impact={impact} />
               ))}
             </Box>
@@ -497,7 +553,7 @@ export function ImpactPreview({
           )}
         </Box>
 
-        {!isMulti && (
+        {!showBars && (
           <Box
             sx={{
               display: "flex",
@@ -602,59 +658,97 @@ export function ImpactPreview({
 
             <Divider />
 
-            {/* Freed during specified trip */}
-            <SectionRow
-              label="Freed during this trip"
-              days={breakdown.agingOutDuringTripTotal}
-              sign="+"
-              dimmed={breakdown.agingOutDuringTripTotal === 0}
-            />
-            {breakdown.agingOutDuringTripTrips.length === 0 ? (
-              <Typography
-                sx={{
-                  pl: "10px",
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.68rem",
-                  color: tokens.textGhost,
-                  fontStyle: "italic",
-                }}
-              >
-                No days age out during this stay.
-              </Typography>
-            ) : (
-              breakdown.agingOutDuringTripTrips.map((c) => {
-                // The portion that ages out spans from the window-start at
-                // entry through to the window-start at exit — clipped to the
-                // actual historic trip bounds.
-                const { entry, exit } =
-                  windowStartAtEntry && windowStartAtExit
-                    ? clipRange(
-                        c.entryDate,
-                        c.exitDate,
-                        windowStartAtEntry,
-                        windowStartAtExit,
-                      )
-                    : { entry: c.entryDate, exit: c.exitDate };
-                return (
-                  <TripRow
-                    key={c.tripId}
-                    name={c.destination}
-                    range={fmtRange(entry, exit)}
-                    days={c.daysAgingOutDuringTrip}
-                    sign="+"
-                  />
-                );
-              })
-            )}
-
-            <Divider />
-
-            {/* This trip */}
-            <SectionRow
-              label="This trip"
+            {/* Changes during this trip: this trip's cost, net of days that
+                age out of the window while it runs. */}
+            {(() => {
+              const net =
+                breakdown.agingOutDuringTripTotal - breakdown.currentTripDays;
+              return (
+                <SectionRow
+                  label="Changes during this trip"
+                  days={Math.abs(net)}
+                  sign={net < 0 ? "−" : "+"}
+                />
+              );
+            })()}
+            <TripRow
+              name="This trip"
+              range={
+                currentTripEntry
+                  ? fmtRange(currentTripEntry, currentTripExit)
+                  : ""
+              }
               days={breakdown.currentTripDays}
               sign="−"
             />
+            {breakdown.agingOutDuringTripTrips.map((c) => {
+              // The portion that ages out spans from the window-start at entry
+              // through to the window-start at exit — clipped to the historic
+              // trip bounds.
+              const { entry, exit } =
+                windowStartAtEntry && windowStartAtExit
+                  ? clipRange(
+                      c.entryDate,
+                      c.exitDate,
+                      windowStartAtEntry,
+                      windowStartAtExit,
+                    )
+                  : { entry: c.entryDate, exit: c.exitDate };
+              return (
+                <TripRow
+                  key={c.tripId}
+                  name={c.destination}
+                  range={fmtRange(entry, exit)}
+                  agesOut={
+                    c.agesOutDuringDate ? fmtShort(c.agesOutDuringDate) : undefined
+                  }
+                  days={c.daysAgingOutDuringTrip}
+                  sign="+"
+                />
+              );
+            })}
+
+            <Divider />
+
+            {/* Running subtotal — equals the "Xd left" chip. */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                gap: "8px",
+              }}
+            >
+              <Box
+                sx={{ display: "flex", alignItems: "center", gap: "4px", minWidth: 0 }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    color: colors.text,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  Remaining allowance after trip
+                </Typography>
+                <InfoTip title={AVAILABLE_DAYS_DESCRIPTION} />
+              </Box>
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontDisplay,
+                  fontSize: "0.9rem",
+                  fontWeight: 600,
+                  fontStyle: "italic",
+                  color: colors.value,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {breakdown.remainingAfterTrip}d
+              </Typography>
+            </Box>
 
             <Divider />
 
@@ -695,6 +789,9 @@ export function ImpactPreview({
                     key={c.tripId}
                     name={c.destination}
                     range={fmtRange(entry, exit)}
+                    agesOut={
+                      c.agesOutOverMaxDate ? fmtShort(c.agesOutOverMaxDate) : undefined
+                    }
                     days={c.daysAgingOutOverMaxStay}
                     sign="+"
                   />
@@ -713,18 +810,23 @@ export function ImpactPreview({
                 gap: "8px",
               }}
             >
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.72rem",
-                  fontWeight: 700,
-                  color: colors.text,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                }}
+              <Box
+                sx={{ display: "flex", alignItems: "center", gap: "4px", minWidth: 0 }}
               >
-                Can extend by
-              </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    color: colors.text,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  Can extend by
+                </Typography>
+                <InfoTip title={MAX_STAY_DESCRIPTION} />
+              </Box>
               <Typography
                 sx={{
                   fontFamily: tokens.fontDisplay,
@@ -747,9 +849,8 @@ export function ImpactPreview({
                 mt: "-4px",
               }}
             >
-              90 − {breakdown.previousDaysTotal} +{" "}
-              {breakdown.agingOutDuringTripTotal} − {breakdown.currentTripDays}{" "}
-              + {breakdown.agingOutOverMaxStayTotal} = {breakdown.daysRemaining}
+              {breakdown.remainingAfterTrip} + {breakdown.agingOutOverMaxStayTotal}{" "}
+              = {breakdown.remainingAfterTrip + breakdown.agingOutOverMaxStayTotal}
             </Typography>
           </Box>
         </Collapse>

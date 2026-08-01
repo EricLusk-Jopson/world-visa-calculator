@@ -86,7 +86,8 @@ import { IrelandSources } from '@/data/sources';
 
 const IRELAND_LIMIT: PerVisitLimit = {
   type: 'per_visit',
-  days: 90,
+  value: 90,
+  unit: 'days',
 };
 
 // ─── Shared note text ─────────────────────────────────────────────────────────
@@ -106,8 +107,8 @@ const SSVWP_NOTE =
   'Visa required. Exception: holders of a valid, unexpired short-stay UK visa ' +
   'may enter Ireland without a separate Irish visa under the Short Stay Visa ' +
   'Waiver Programme (SSVWP). The UK visa must remain valid for the intended ' +
-  'period of stay. Note: this is one-directional — an Irish visa does not ' +
-  'grant access to the UK under SSVWP.';
+  'period of stay. The scheme is one-directional: an Irish visa does not ' +
+  'grant access to the UK.';
 
 const TRANSIT_VISA_NOTE =
   'A valid Irish transit visa is required when passing through Ireland in ' +

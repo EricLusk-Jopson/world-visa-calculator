@@ -20,6 +20,8 @@ import { MobileTimelineView } from "./components/mobile/MobileTimelineView/Mobil
 import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripView";
 import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
 import { TripViewSlider } from "./components/mobile/TripViewSlider";
+import { TravelerViewSlider } from "./components/mobile/TravelerViewSlider";
+import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { AddTravelerDrawer } from "./components/mobile/AddTravelerDrawer";
 import { TripFormSlider } from "@/features/trips/components";
 import { UtilityDrawer } from "./components/mobile/UtilityDrawer";
@@ -70,6 +72,8 @@ export function CalculatorPage() {
   } | null>(null);
   const [utilityDrawerOpen, setUtilityDrawerOpen] = useState(false);
   const [addTravelerFromTripOpen, setAddTravelerFromTripOpen] = useState(false);
+  const [travelerViewId, setTravelerViewId] = useState<string | null>(null);
+  const [editTravelerId, setEditTravelerId] = useState<string | null>(null);
 
   const handleToggleTraveler = useCallback((id: string) => {
     setHiddenTravelerIds((prev) =>
@@ -358,9 +362,7 @@ export function CalculatorPage() {
                 travelers={travelers}
                 hiddenTravelerIds={hiddenTravelerIds}
                 onToggleTraveler={handleToggleTraveler}
-                onDeleteTraveler={handleDeleteTraveler}
-                onEditTraveler={handleTravelerEdit}
-                onAddTraveler={handleAddTraveler}
+                onOpenTraveler={setTravelerViewId}
               />
 
               {view === "timeline" ? (
@@ -438,16 +440,35 @@ export function CalculatorPage() {
       {isMobile ? (
         <AddTravelerDrawer
           open={
-            (modal.open && modal.kind === "traveler") || addTravelerFromTripOpen
+            (modal.open && modal.kind === "traveler") ||
+            addTravelerFromTripOpen ||
+            editTravelerId !== null
+          }
+          mode={editTravelerId !== null ? "edit" : "add"}
+          initialName={
+            editTravelerId !== null
+              ? (travelers.find((t) => t.id === editTravelerId)?.name ?? "")
+              : ""
+          }
+          initialPassportCode={
+            editTravelerId !== null
+              ? (travelers.find((t) => t.id === editTravelerId)?.passportCode ?? null)
+              : null
           }
           onClose={() => {
-            if (addTravelerFromTripOpen) setAddTravelerFromTripOpen(false);
+            if (editTravelerId !== null) setEditTravelerId(null);
+            else if (addTravelerFromTripOpen) setAddTravelerFromTripOpen(false);
             else setModal(CLOSED_MODAL);
           }}
           onAdd={
-            addTravelerFromTripOpen
-              ? handleTravelerSaveFromTrip
-              : handleTravelerSave
+            editTravelerId !== null
+              ? (name, code) => {
+                  handleTravelerEdit(editTravelerId, name, code);
+                  setEditTravelerId(null);
+                }
+              : addTravelerFromTripOpen
+                ? handleTravelerSaveFromTrip
+                : handleTravelerSave
           }
         />
       ) : (
@@ -507,6 +528,26 @@ export function CalculatorPage() {
         onDelete={handleDeleteTripDirect}
       />
 
+      {/* Traveler view (Surface 3) — full-screen frame per traveler */}
+      <TravelerViewSlider
+        open={travelerViewId !== null}
+        traveler={travelers.find((t) => t.id === travelerViewId) ?? null}
+        color={(() => {
+          const idx = travelers.findIndex((t) => t.id === travelerViewId);
+          return idx >= 0 ? getTravelerColor(idx) : tokens.textGhost;
+        })()}
+        onClose={() => setTravelerViewId(null)}
+        onEdit={() => {
+          if (travelerViewId) setEditTravelerId(travelerViewId);
+        }}
+        onDelete={() => {
+          if (travelerViewId) {
+            handleDeleteTraveler(travelerViewId);
+            setTravelerViewId(null);
+          }
+        }}
+      />
+
       {/* Utility drawer (Surface 5) — share / support / clear all */}
       <UtilityDrawer
         open={utilityDrawerOpen}
@@ -516,11 +557,16 @@ export function CalculatorPage() {
         travelerCount={travelers.length}
       />
 
-      {/* FAB — mobile only, fixed above safe area */}
-      {isMobile && travelers.length > 0 && (
+      {/* FAB — mobile only, fixed above safe area. With no travelers yet it
+          adds a traveler; otherwise it adds a trip. */}
+      {isMobile && (
         <Box
           component="button"
-          onClick={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
+          onClick={() =>
+            travelers.length === 0
+              ? handleAddTraveler()
+              : handleOpenAddTrip(travelers[0]?.id ?? "")
+          }
           sx={{
             position: "fixed",
             bottom: "calc(env(safe-area-inset-bottom) + 16px)",
@@ -544,7 +590,7 @@ export function CalculatorPage() {
           }}
         >
           <AddIcon sx={{ fontSize: "1rem" }} />
-          Add Trip
+          {travelers.length === 0 ? "Add Traveler" : "Add Trip"}
         </Box>
       )}
     </Box>

@@ -4,11 +4,15 @@ import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
 import { Button } from "@/components/ui/Button";
 import { VisaRegion } from "@/types";
 import type { Trip, Traveler } from "@/types";
-import { parseDate, today } from "@/features/calculator/utils/dates";
 import { TripFormCardName } from "./TripFormCardName";
 import { TripFormCardTravelers } from "./TripFormCardTravelers";
 import { TripFormCardDestination } from "./TripFormCardDestination";
 import { TripFormCardDates } from "./TripFormCardDates";
+import { TripSummaryRow } from "./TripSummaryRow";
+import { MobileTripDetailFrame } from "./MobileTripDetailFrame";
+import { computeTravelerEligibility } from "@/pages/CalculatorPage/components/trips/tripEligibility";
+import { computeTravelerDurations } from "@/pages/CalculatorPage/components/trips/tripDuration";
+import { blockedTripRanges, hasBlockingOverlap } from "@/features/calculator/utils/tripOverlap";
 
 export interface TripFormSliderProps {
   open: boolean;
@@ -34,12 +38,12 @@ export function TripFormSlider({
   onAddNewTraveler,
 }: TripFormSliderProps) {
   const [activeCard, setActiveCard] = useState<ActiveCard>(null);
+  const [detailOpen, setDetailOpen] = useState(false);
   const [name, setName] = useState("");
   const [travelerIds, setTravelerIds] = useState<string[]>([]);
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
-  const [ongoing, setOngoing] = useState(false);
 
   // Auto-select newly added traveler
   const prevTravelerCountRef = useRef(travelers.length);
@@ -64,39 +68,79 @@ export function TripFormSlider({
   useEffect(() => {
     if (!open) return;
     setActiveCard(null);
+    setDetailOpen(false);
     setTravelerIds(initialTravelerIds);
     if (mode === "edit" && initialTrip) {
       setName(initialTrip.destination ?? "");
       setEntryDate(initialTrip.entryDate);
       setExitDate(initialTrip.exitDate ?? "");
-      setOngoing(!initialTrip.exitDate);
       setRegion(initialTrip.region);
     } else {
       setName("");
       setEntryDate("");
       setExitDate("");
-      setOngoing(false);
       setRegion(VisaRegion.Schengen);
     }
   }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id, initialTrip);
+
   const canSave =
+    name.trim().length > 0 &&
     travelerIds.length > 0 &&
     !!entryDate &&
-    (ongoing || (!!exitDate && exitDate > entryDate));
+    !!exitDate &&
+    exitDate > entryDate &&
+    !hasBlockingOverlap(
+      travelers,
+      travelerIds,
+      entryDate,
+      exitDate || undefined,
+      initialTrip?.id,
+      initialTrip,
+    );
+
+  // ── Entry eligibility + stay duration summaries ──
+  const datesSet = !!entryDate && !!exitDate;
+
+  const eligibility =
+    region !== VisaRegion.Elsewhere
+      ? computeTravelerEligibility(region, travelers, travelerIds)
+      : [];
+  const eligOk = eligibility.filter((e) => e.ok).length;
+  // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
+  const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
+  const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
+
+  const durations = datesSet
+    ? computeTravelerDurations({
+        region,
+        travelers,
+        travelerIds,
+        entryDate,
+        exitDate,
+        destination: name,
+        excludeTripId: initialTrip?.id,
+      })
+    : [];
+  const durOk = durations.filter((d) => d.tracked && d.severity === "safe").length;
+  const durCaution = durations.filter((d) => d.tracked && d.severity === "caution").length;
+  // "danger" splits into close-to-limit (red clock) and actual overstay (red warning).
+  const durDanger = durations.filter((d) => d.tracked && d.severity === "danger" && !d.overstay).length;
+  const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
+  const durUnknown = durations.filter((d) => !d.tracked).length;
 
   const handleSave = useCallback(() => {
     if (!canSave) return;
-    const resolvedExit = ongoing ? undefined : exitDate || undefined;
     onSave(travelerIds, {
       id: initialTrip?.id ?? crypto.randomUUID(),
       entryDate,
-      exitDate: resolvedExit,
+      exitDate: exitDate || undefined,
       region,
       destination: name.trim() || undefined,
     });
     onClose();
-  }, [canSave, ongoing, exitDate, travelerIds, entryDate, region, name, initialTrip, onSave, onClose]);
+  }, [canSave, exitDate, travelerIds, entryDate, region, name, initialTrip, onSave, onClose]);
 
   const openCard = useCallback((card: ActiveCard) => setActiveCard(card), []);
   const closeCard = useCallback(() => setActiveCard(null), []);
@@ -159,25 +203,58 @@ export function TripFormSlider({
           expanded={activeCard === "destination"}
           onExpand={() => openCard("destination")}
           onCollapse={closeCard}
+          footer={
+            region !== VisaRegion.Elsewhere ? (
+              <TripSummaryRow
+                label="Entry Eligibility"
+                okCount={eligOk}
+                dangerCount={eligWarn}
+                unknownCount={eligUnknown}
+                placeholder="Select travelers"
+                disabled={eligibility.length === 0}
+                onClick={() => setDetailOpen(true)}
+              />
+            ) : undefined
+          }
         />
 
         <TripFormCardDates
           entryDate={entryDate}
           exitDate={exitDate}
-          ongoing={ongoing}
-          onEntryChange={(iso) => {
-            setEntryDate(iso);
-            // Clear ongoing when entry is removed or set to a future date.
-            if (!iso || parseDate(iso) > today()) setOngoing(false);
-          }}
+          onEntryChange={setEntryDate}
           onExitChange={setExitDate}
-          onOngoingChange={setOngoing}
-          onReset={() => { setEntryDate(""); setExitDate(""); setOngoing(false); }}
+          blockedRanges={blockedRanges}
+          onReset={() => { setEntryDate(""); setExitDate(""); }}
           expanded={activeCard === "dates"}
           onExpand={() => openCard("dates")}
           onCollapse={closeCard}
+          footer={
+            region !== VisaRegion.Elsewhere ? (
+              <TripSummaryRow
+                label="Stay Duration"
+                statusKind="duration"
+                okCount={durOk}
+                cautionCount={durCaution}
+                dangerCount={durDanger}
+                overstayCount={durOverstay}
+                unknownCount={durUnknown}
+                placeholder={!datesSet ? "Set dates" : ""}
+                disabled={!datesSet}
+                onClick={() => setDetailOpen(true)}
+              />
+            ) : undefined
+          }
         />
       </Box>
+
+      <MobileTripDetailFrame
+        open={detailOpen}
+        onClose={() => setDetailOpen(false)}
+        eligibility={eligibility}
+        durations={durations}
+        entryDate={entryDate}
+        exitDate={exitDate}
+      />
     </FullScreenSlider>
   );
 }

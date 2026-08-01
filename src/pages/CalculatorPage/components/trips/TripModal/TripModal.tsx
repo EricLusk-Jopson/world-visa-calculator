@@ -10,187 +10,41 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
-import Tooltip from "@mui/material/Tooltip";
-import Popover from "@mui/material/Popover";
-import IconButton from "@mui/material/IconButton";
-import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { parseISO } from "date-fns";
 import { tokens } from "@/styles/theme";
 import { VisaRegion } from "@/types";
-import type { Trip, Traveler, RuleNote } from "@/types";
-import { getSchengenRule } from "@/data/regions/schengen";
-import { getUKRule } from "@/data/regions/uk";
-import { getIrelandRule } from "@/data/regions/ireland";
+import type { Trip, Traveler } from "@/types";
+import { getPassportRule } from "@/data/regions";
 import { ValidationMessage } from "@/components/ui/ValidationMessage";
 import { Button } from "@/components/ui/Button";
 import { RegionSelector } from "@/components/ui/RegionSelector";
-import { OngoingToggle } from "@/components/ui/OngoingToggle";
-import { ImpactPreview } from "@/components/ui";
 import {
   parseDate,
   formatDate,
   addDays,
-  today as getToday,
+  differenceInCalendarDays,
 } from "@/features/calculator/utils/dates";
+import { blockedTripRanges, isDateBlocked } from "@/features/calculator/utils/tripOverlap";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
-import {
-  computeImpactBreakdown,
-  computeTravelerStatus,
-  getStatusVariant,
-} from "../../travelers/travelerStatus";
-import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
-import type { TravelerImpact } from "../../ImpactPreview/ImpactPreview";
 import { trackEvent } from "@/utils/analytics";
 import {
-  assessUKStay,
-  detectUKReentryRisk,
-} from "@/features/calculator/utils/uk";
-import type { UKStayAssessment, UKReentryRisk } from "@/features/calculator/utils/uk";
-import {
-  assessIrelandStay,
-  detectIrelandReentryRisk,
-} from "@/features/calculator/utils/ireland";
-import type {
-  IrelandStayAssessment,
-  IrelandReentryRisk,
-} from "@/features/calculator/utils/ireland";
-
-// ─── Generic visa info section ────────────────────────────────────────────────
-
-interface VisaInfoRow {
-  traveler: Traveler;
-  label: string;
-  labelColor: string;
-  borderColor: string;
-  notes?: RuleNote[];
-}
-
-function VisaInfoSection({
-  rows,
-  expanded,
-  onToggle,
-  greenCount,
-  warnCount,
-  unknownCount,
-  onSourceClick,
-}: {
-  rows: VisaInfoRow[];
-  expanded: boolean;
-  onToggle: () => void;
-  greenCount: number;
-  warnCount: number;
-  unknownCount: number;
-  onSourceClick: (anchor: HTMLElement, note: RuleNote) => void;
-}) {
-  return (
-    <Box
-      sx={{
-        border: `1px solid ${tokens.border}`,
-        borderRadius: "10px",
-        overflow: "hidden",
-        flexShrink: 0,
-      }}
-    >
-      {/* Header */}
-      <Box
-        onClick={onToggle}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          px: "12px",
-          py: "8px",
-          cursor: "pointer",
-          userSelect: "none",
-          borderBottom: expanded ? `1px solid ${tokens.border}` : "none",
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
-          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.68rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: tokens.textSoft }}>
-            Visa Status:
-          </Typography>
-          {greenCount > 0 && (
-            <Tooltip
-              title={`${greenCount} ${greenCount === 1 ? "traveler" : "travelers"} can enter without a visa`}
-              placement="top"
-              arrow
-              componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
-            >
-              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-                <CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.green }}>{greenCount}</Typography>
-              </Box>
-            </Tooltip>
-          )}
-          {warnCount > 0 && (
-            <Tooltip
-              title={`${warnCount} ${warnCount === 1 ? "traveler requires" : "travelers require"} a visa`}
-              placement="top"
-              arrow
-              componentsProps={{ tooltip: { sx: { fontFamily: tokens.fontBody, fontSize: "0.72rem", bgcolor: tokens.navy, "& .MuiTooltip-arrow": { color: tokens.navy } } } }}
-            >
-              <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-                <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.red }}>{warnCount}</Typography>
-              </Box>
-            </Tooltip>
-          )}
-          {greenCount === 0 && warnCount === 0 && unknownCount > 0 && (
-            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost, fontStyle: "italic" }}>
-              Set nationality to see entry requirements
-            </Typography>
-          )}
-        </Box>
-        {expanded ? (
-          <ExpandLessIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
-        ) : (
-          <ExpandMoreIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
-        )}
-      </Box>
-
-      {/* Body */}
-      {expanded && (
-        <Box sx={{ px: "12px", py: "10px", display: "flex", flexDirection: "column", gap: "8px" }}>
-          {rows.map(({ traveler, label, labelColor, borderColor, notes }) => (
-            <Box key={traveler.id} sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <Box sx={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.textSoft, flexShrink: 0 }}>
-                  {traveler.name}:
-                </Typography>
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: labelColor, fontWeight: 500 }}>
-                  {label}
-                </Typography>
-              </Box>
-              {notes?.map((note, i) => (
-                <Box key={i} sx={{ display: "flex", alignItems: "flex-start", gap: "4px", pl: "10px", borderLeft: `2px solid ${borderColor}` }}>
-                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.67rem", color: tokens.textSoft, lineHeight: 1.5, flex: 1 }}>
-                    {note.text}
-                  </Typography>
-                  {note.source && (
-                    <IconButton
-                      size="small"
-                      onClick={(e) => onSourceClick(e.currentTarget, note)}
-                      sx={{ p: "2px", flexShrink: 0, color: tokens.textGhost, "&:hover": { color: tokens.navy, bgcolor: "transparent" } }}
-                    >
-                      <InfoOutlineIcon sx={{ fontSize: "0.85rem" }} />
-                    </IconButton>
-                  )}
-                </Box>
-              ))}
-            </Box>
-          ))}
-        </Box>
-      )}
-    </Box>
-  );
-}
+  assessStay,
+  detectReentryRisk,
+  resolveStayLimits,
+  perVisitApproxDays,
+} from "@/features/calculator/utils/stayCalculator";
+import type { StayAssessment, ReentryRisk } from "@/features/calculator/utils/stayCalculator";
+import type { PerVisitLimit } from "@/types";
+import { getRegionDefinition } from "@/data/regions";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { EntryConstraintHint } from "./DurationPanel";
+import { computeTravelerDurations } from "../tripDuration";
+import { computeTravelerEligibility } from "../tripEligibility";
+import { TripSummaryRow } from "@/features/trips/components/TripSummaryRow";
+import { TripDetailStack } from "@/features/trips/components/TripDetailStack";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -211,7 +65,6 @@ function hasOverlap(
   trips: Trip[],
   entry: string,
   exit: string | null,
-  region: VisaRegion,
   excludeId?: string,
   excludeTrip?: Pick<Trip, "entryDate" | "exitDate" | "region">,
 ): string | null {
@@ -230,38 +83,19 @@ function hasOverlap(
       continue;
     }
 
-    if (t.region !== region) continue;
-
     const tEntry = parseDate(t.entryDate);
     const tExit = t.exitDate ? parseDate(t.exitDate) : new Date("2099-01-01");
 
-    if (nEntry < tExit && nExit > tEntry) {
+    // Trips may touch on a single day (an overland crossing to another region);
+    // an overlap of two or more days is a conflict, in any region.
+    const overlapStart = nEntry > tEntry ? nEntry : tEntry;
+    const overlapEnd = nExit < tExit ? nExit : tExit;
+    const overlapDays = differenceInCalendarDays(overlapEnd, overlapStart) + 1;
+    if (overlapDays >= 2) {
       return `Overlaps with "${t.destination || t.entryDate}".`;
     }
   }
   return null;
-}
-
-function fmtHintDate(iso: string): string {
-  const d = parseDate(iso);
-  return new Intl.DateTimeFormat("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  }).format(d);
-}
-
-/** Returns "🇺🇸 United States" style string for a given ISO Alpha-2 code */
-function countryDisplay(code: string): string {
-  const flag = Array.from(code.toUpperCase())
-    .map((c) => String.fromCodePoint(0x1f1e6 + c.charCodeAt(0) - 65))
-    .join("");
-  try {
-    const names = new Intl.DisplayNames(["en"], { type: "region" });
-    return `${flag} ${names.of(code) ?? code}`;
-  } catch {
-    return `${flag} ${code}`;
-  }
 }
 
 // ─── Form label ───────────────────────────────────────────────────────────────
@@ -318,6 +152,22 @@ const INPUT_ERROR_SX = {
   },
 } as const;
 
+// Amber-highlighted field — used to flag a caution-level overstay / re-entry risk.
+const INPUT_CAUTION_SX = {
+  "& .MuiOutlinedInput-root": {
+    ...INPUT_SX["& .MuiOutlinedInput-root"],
+    bgcolor: tokens.amberBg,
+    "& fieldset": { borderColor: tokens.amber, borderWidth: 1.5 },
+  },
+} as const;
+
+// Map a caution/danger variant to the matching field style (null = default).
+function fieldSxForVariant(variant: "caution" | "danger" | null) {
+  if (variant === "danger") return INPUT_ERROR_SX;
+  if (variant === "caution") return INPUT_CAUTION_SX;
+  return INPUT_SX;
+}
+
 const SELECT_BASE_SX = {
   fontFamily: tokens.fontBody,
   fontSize: "0.85rem",
@@ -362,21 +212,12 @@ export function TripModal({
   const [destination, setDestination] = useState("");
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
-  const [ongoing, setOngoing] = useState(false);
   const [region, setRegion] = useState<VisaRegion>(VisaRegion.Schengen);
   const [error, setError] = useState<string | null>(null);
   const [isEdit, setIsEdit] = useState(mode === "edit");
-  const [entryNoticeSectionExpanded, setEntryNoticeSectionExpanded] = useState(true);
-  const [sourcePopover, setSourcePopover] = useState<{
-    anchor: HTMLElement;
-    note: RuleNote;
-  } | null>(null);
+  const [detailOpen, setDetailOpen] = useState(false);
 
   const isMobile = useMediaQuery("(max-width:599.95px)");
-
-  const todayStr = formatDate(getToday());
-
-  const entryIsInFuture = Boolean(entryDate && entryDate > todayStr);
 
   useEffect(() => {
     if (!open) return;
@@ -384,17 +225,16 @@ export function TripModal({
     setIsEdit(mode === "edit");
     setTravelerIds(initialTravelerIds);
     setError(null);
+    setDetailOpen(false);
     if (mode === "edit" && initialTrip) {
       setDestination(initialTrip.destination ?? "");
       setEntryDate(initialTrip.entryDate);
       setExitDate(initialTrip.exitDate ?? "");
-      setOngoing(!initialTrip.exitDate);
       setRegion(initialTrip.region);
     } else {
       setDestination("");
       setEntryDate("");
       setExitDate("");
-      setOngoing(false);
       setRegion(VisaRegion.Schengen);
     }
   }, [open, mode, initialTrip, initialTravelerIds]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -403,7 +243,7 @@ export function TripModal({
   // Runs on every render so the Save button and inline message stay in sync
   // without waiting for the user to click Save.
 
-  const resolvedExit = ongoing ? undefined : exitDate || undefined;
+  const resolvedExit = exitDate || undefined;
 
   const overlapError: string | null = (() => {
     if (!open) return null;
@@ -417,7 +257,6 @@ export function TripModal({
         traveler.trips,
         entryDate,
         resolvedExit ?? null,
-        region,
         initialTrip?.id,
         initialTrip,
       );
@@ -427,12 +266,16 @@ export function TripModal({
     return conflicts.length > 0 ? conflicts.join("\n") : null;
   })();
 
+  // Interior days of the travelers' other trips — disabled in the date pickers.
+  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id, initialTrip);
+  const isDayBlocked = (date: Date) => isDateBlocked(date, blockedRanges);
+
   // ── Entry constraint hint ───────────────────────────────────────────────────
 
   let entryConstraint: { daysAvailable: number; latestExit: string } | null =
     null;
 
-  if (entryDate && region === VisaRegion.Schengen && !exitDate && !ongoing) {
+  if (entryDate && region === VisaRegion.Schengen && !exitDate) {
     let minDays = Infinity;
     let latestExit = "";
 
@@ -461,297 +304,130 @@ export function TripModal({
       entryConstraint = { daysAvailable: minDays, latestExit };
     }
   }
-  // ── Impact status ───────────────────────────────────────────────────────────
 
-  let impactStatus: ReturnType<typeof computeTravelerStatus> | null = null;
+  // ── Generic stay assessment (per_visit + rolling_window regions) ─────────────
 
-  if (entryDate && region === VisaRegion.Schengen) {
+  let stayAssessment: StayAssessment | null = null;
+  let reentryRisk: ReentryRisk | null = null;
+
+  if (
+    region !== VisaRegion.Schengen &&
+    region !== VisaRegion.Elsewhere &&
+    entryDate
+  ) {
+    const regionRule = getRegionDefinition(region)?.rule ?? null;
+    const checkDate = exitDate || undefined;
+
+    let worstAssessment: StayAssessment | null = null;
+    let worstRisk: ReentryRisk | null = null;
+
     for (const tid of travelerIds) {
-      const traveler = travelers.find((t) => t.id === tid);
-      if (!traveler) continue;
+      const t = travelers.find((x) => x.id === tid);
+      if (!t) continue;
 
-      const tempTrips = traveler.trips
-        .filter((t) => t.id !== initialTrip?.id)
-        .concat([
-          {
-            id: "__preview__",
-            entryDate,
-            exitDate: ongoing ? undefined : exitDate || undefined,
-            region: VisaRegion.Schengen,
-            destination,
-          },
-        ]);
+      // Limits come from the traveler's own passport entitlement (respecting
+      // per-passport allowances and units), falling back to the region default
+      // for travelers with no nationality set.
+      const rule = getPassportRule(region, t.passportCode);
+      const limits = resolveStayLimits(t.passportCode, rule, regionRule);
+      if (!limits) continue;
 
-      const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
-      const status = computeTravelerStatus(tempTraveler, refDate);
-
-      if (!impactStatus || status.daysRemaining < impactStatus.daysRemaining) {
-        impactStatus = status;
+      const tripHistory = t.trips.filter(
+        (tr) => tr.region === region && tr.id !== initialTrip?.id,
+      );
+      const assessment = assessStay(limits, tripHistory, entryDate, checkDate);
+      if (
+        assessment &&
+        (!worstAssessment || assessment.daysRemaining < worstAssessment.daysRemaining)
+      ) {
+        worstAssessment = assessment;
       }
-    }
-  }
 
-  const impactVariant = impactStatus
-    ? getStatusVariant(impactStatus.daysRemaining)
-    : ("neutral" as const);
-
-  // ── Per-traveler impacts ────────────────────────────────────────────────────
-
-  let travelerImpacts: TravelerImpact[] | undefined = undefined;
-
-  if (travelerIds.length > 1 && entryDate && region === VisaRegion.Schengen) {
-    travelerImpacts = travelerIds.flatMap((tid) => {
-      const traveler = travelers.find((t) => t.id === tid);
-      const travelerIndex = travelers.findIndex((t) => t.id === tid);
-      if (!traveler) return [];
-
-      const tempTrips = traveler.trips
-        .filter((t) => t.id !== initialTrip?.id)
-        .concat([
-          {
-            id: "__preview__",
-            entryDate,
-            exitDate: ongoing ? undefined : exitDate || undefined,
-            region: VisaRegion.Schengen,
-            destination,
-          },
-        ]);
-
-      const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
-      const status = computeTravelerStatus(tempTraveler, refDate);
-
-      return [
-        {
-          id: tid,
-          name: traveler.name,
-          color: getTravelerColor(travelerIndex),
-          daysRemaining: status.daysRemaining,
-          daysUsed: status.daysUsed,
-        },
-      ];
-    });
-  }
-
-  // ── Impact breakdown ────────────────────────────────────────────────────────
-
-  let impactBreakdown: ReturnType<typeof computeImpactBreakdown> | undefined =
-    undefined;
-
-  if (entryDate && region === VisaRegion.Schengen && (exitDate || ongoing)) {
-    let worstTraveler: Traveler | null = null;
-    let worstRemaining = Infinity;
-
-    for (const tid of travelerIds) {
-      const traveler = travelers.find((t) => t.id === tid);
-      if (!traveler) continue;
-
-      const tempTrips = traveler.trips
-        .filter((t) => t.id !== initialTrip?.id)
-        .concat([
-          {
-            id: "__preview__",
-            entryDate,
-            exitDate: ongoing ? undefined : exitDate || undefined,
-            region: VisaRegion.Schengen,
-            destination,
-          },
-        ]);
-
-      const tempTraveler = { ...traveler, trips: tempTrips };
-      const refDate = !ongoing && exitDate ? parseDate(exitDate) : new Date();
-      const status = computeTravelerStatus(tempTraveler, refDate);
-
-      if (status.daysRemaining < worstRemaining) {
-        worstRemaining = status.daysRemaining;
-        worstTraveler = traveler;
+      const perVisit = limits.find(
+        (l): l is PerVisitLimit => l.type === "per_visit",
+      );
+      if (perVisit) {
+        const completedTrips = t.trips.filter(
+          (tr) => tr.region === region && tr.exitDate && tr.id !== initialTrip?.id,
+        );
+        const risk = detectReentryRisk(
+          perVisitApproxDays(perVisit),
+          completedTrips,
+          entryDate,
+        );
+        if (risk && (!worstRisk || risk.variant === "danger")) worstRisk = risk;
       }
     }
 
-    if (worstTraveler) {
-      const historicalTrips = worstTraveler.trips.filter(
-        (t) => t.region === VisaRegion.Schengen && t.id !== initialTrip?.id,
-      );
-
-      impactBreakdown = computeImpactBreakdown(
-        entryDate,
-        ongoing ? undefined : exitDate || undefined,
-        historicalTrips,
-      );
-    }
+    stayAssessment = worstAssessment;
+    reentryRisk = worstRisk;
   }
 
-  const resolvedExitForPreview = ongoing ? undefined : exitDate || undefined;
+  // ── Per-traveler duration data (all regions) ────────────────────────────────
 
-  // ── Schengen entry notice data ──────────────────────────────────────────────
+  const durations = computeTravelerDurations({
+    region,
+    travelers,
+    travelerIds,
+    entryDate,
+    exitDate,
+    destination,
+    excludeTripId: initialTrip?.id,
+  });
 
-  const schengenTravelerData =
-    region === VisaRegion.Schengen
-      ? travelerIds.flatMap((tid) => {
-          const t = travelers.find((x) => x.id === tid);
-          if (!t) return [];
-          const rule = getSchengenRule(t.passportCode);
-          return [{ t, rule }];
-        })
+  // ── Per-traveler eligibility + summary counts (for the detail overlay) ──────
+
+  const eligibility =
+    region !== VisaRegion.Elsewhere
+      ? computeTravelerEligibility(region, travelers, travelerIds)
       : [];
+  const eligOk = eligibility.filter((e) => e.ok).length;
+  // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
+  const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
+  const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
 
-  const schengenSafeCount = schengenTravelerData.filter(
-    ({ t, rule }) =>
-      t.passportCode &&
-      (rule.access === "free_movement" || rule.access === "entitled"),
-  ).length;
+  const datesSet = !!entryDate && !!exitDate;
+  const durOk = durations.filter((d) => d.tracked && d.severity === "safe").length;
+  const durCaution = durations.filter((d) => d.tracked && d.severity === "caution").length;
+  // "danger" splits into close-to-limit (red clock) and actual overstay (red warning).
+  const durDanger = durations.filter((d) => d.tracked && d.severity === "danger" && !d.overstay).length;
+  const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
+  const durUnknown = durations.filter((d) => !d.tracked).length;
 
-  const schengenWarnCount = schengenTravelerData.filter(
-    ({ t, rule }) =>
-      t.passportCode &&
-      rule.access === "visa_required",
-  ).length;
+  // ── Date-field highlighting ─────────────────────────────────────────────────
+  // Exit date mirrors the duration assessment (overstay); entry date mirrors
+  // the re-entry risk. Both surface caution (amber) / danger (red) only.
 
-  const schengenUnknownCount = schengenTravelerData.filter(
-    ({ t }) => !t.passportCode,
-  ).length;
-
-  // Null passport = treated as visa-free (default permissive). Show ImpactPreview
-  // only when at least one traveler is not visa-required.
-  const hasVisaFreeTravelers = schengenSafeCount > 0 || schengenUnknownCount > 0;
-
-  // ── Visa info rows (generic, for all three regions) ─────────────────────────
-
-  const visaInfoRows: VisaInfoRow[] = (() => {
-    if (region === VisaRegion.Schengen) {
-      return schengenTravelerData.map(({ t, rule }) => {
-        const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
-        if (!t.passportCode)
-          return { traveler: t, label: "Set nationality to see entry requirements", labelColor: tokens.textGhost, borderColor: tokens.border, notes: undefined };
-        const { label, color } =
-          rule.access === "free_movement"
-            ? { label: `${nat}Free movement, no day limit`, color: tokens.green }
-            : rule.access === "entitled"
-              ? { label: rule.entitlements.some(e => e.preAuth?.type === 'ETIAS') ? `${nat}Visa-free entry -- ETIAS required from late 2026` : `${nat}Visa-free entry`, color: tokens.green }
-              : { label: `${nat}Schengen visa required`, color: tokens.red };
-        const borderColor = color === tokens.green ? tokens.greenBorder : tokens.redBorder;
-        return { traveler: t, label, labelColor: color, borderColor, notes: rule.notes };
-      });
-    }
-    if (region === VisaRegion.UnitedKingdom) {
-      return travelerIds.flatMap((tid) => {
-        const t = travelers.find((x) => x.id === tid);
-        if (!t) return [];
-        const rule = getUKRule(t.passportCode);
-        const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
-        const { label, color } = !t.passportCode
-          ? { label: "Set nationality to see entry requirements", color: tokens.textGhost }
-          : rule.access === "free_movement"
-            ? { label: `${nat}Free movement (Common Travel Area)`, color: tokens.green }
-            : rule.access === "entitled"
-              ? { label: rule.entitlements.some(e => e.preAuth?.type === 'ETA') ? `${nat}Visa-free -- ETA required, up to 6 months` : `${nat}Visa-free, up to 6 months`, color: tokens.green }
-              : rule.notes?.some(n => n.text.includes('DATV'))
-                ? { label: `${nat}Visitor visa required -- DATV for airside transit`, color: tokens.red }
-                : { label: `${nat}Visitor visa required`, color: tokens.red };
-        const borderColor = color === tokens.green ? tokens.greenBorder : tokens.redBorder;
-        return [{ traveler: t, label, labelColor: color, borderColor, notes: rule.notes }];
-      });
-    }
-    if (region === VisaRegion.Ireland) {
-      return travelerIds.flatMap((tid) => {
-        const t = travelers.find((x) => x.id === tid);
-        if (!t) return [];
-        const rule = getIrelandRule(t.passportCode);
-        const nat = t.passportCode ? `${countryDisplay(t.passportCode)} -- ` : "";
-        const { label, color } = !t.passportCode
-          ? { label: "Set nationality to see entry requirements", color: tokens.textGhost }
-          : rule.access === "free_movement"
-            ? { label: `${nat}Free movement, no day limit`, color: tokens.green }
-            : rule.access === "entitled"
-              ? { label: `${nat}Visa-free entry, up to 90 days per permission`, color: tokens.green }
-              : { label: `${nat}Ireland visa required`, color: tokens.red };
-        const borderColor = color === tokens.green ? tokens.greenBorder : tokens.redBorder;
-        return [{ traveler: t, label, labelColor: color, borderColor, notes: rule.notes }];
-      });
-    }
-    return [];
-  })();
-
-  const visaInfoGreenCount = visaInfoRows.filter((r) => r.labelColor === tokens.green).length;
-  const visaInfoWarnCount = visaInfoRows.filter((r) => r.labelColor === tokens.red || r.labelColor === tokens.amber).length;
-  const visaInfoUnknownCount = visaInfoRows.filter((r) => r.labelColor === tokens.textGhost).length;
-
-  // ── UK max-stay assessment ──────────────────────────────────────────────────
-
-  // Include visa_free AND unknown-passport travelers (mirrors Schengen's permissive
-  // default for unset nationality — no passport = assume visa-free entitlement).
-  const ukVisaFreeTravelers =
-    region === VisaRegion.UnitedKingdom
-      ? travelerIds.flatMap((tid) => {
-          const t = travelers.find((x) => x.id === tid);
-          if (!t) return [];
-          const rule = getUKRule(t.passportCode);
-          return rule.access === "entitled" || !t.passportCode ? [t] : [];
-        })
-      : [];
-
-  const ukMaxStay: UKStayAssessment | null =
-    entryDate && ukVisaFreeTravelers.length > 0
-      ? assessUKStay(entryDate, ongoing ? undefined : exitDate || undefined)
+  const worstTrackedVariant = durations
+    .filter((d) => d.tracked)
+    .reduce<"safe" | "caution" | "danger" | null>(
+      (w, d) =>
+        d.variant === "danger" || (d.variant === "caution" && w !== "danger")
+          ? d.variant
+          : w,
+      null,
+    );
+  const exitVariant: "caution" | "danger" | null =
+    worstTrackedVariant === "caution" || worstTrackedVariant === "danger"
+      ? worstTrackedVariant
       : null;
 
-  const ukReentryRisk: UKReentryRisk | null =
-    entryDate && ukVisaFreeTravelers.length > 0
-      ? (() => {
-          let worst: UKReentryRisk | null = null;
-          for (const t of ukVisaFreeTravelers) {
-            const ukTrips = t.trips.filter(
-              (tr) =>
-                tr.region === VisaRegion.UnitedKingdom &&
-                tr.exitDate &&
-                tr.id !== initialTrip?.id,
-            );
-            const risk = detectUKReentryRisk(ukTrips, entryDate);
-            if (risk && (!worst || risk.variant === "danger")) worst = risk;
-          }
-          return worst;
-        })()
+  const entryVariant: "caution" | "danger" | null =
+    reentryRisk &&
+    (reentryRisk.variant === "caution" || reentryRisk.variant === "danger")
+      ? reentryRisk.variant
       : null;
 
-  // ── Ireland max-stay assessment ─────────────────────────────────────────────
-
-  const irelandVisaFreeTravelers =
-    region === VisaRegion.Ireland
-      ? travelerIds.flatMap((tid) => {
-          const t = travelers.find((x) => x.id === tid);
-          if (!t) return [];
-          const rule = getIrelandRule(t.passportCode);
-          return rule.access === "entitled" || !t.passportCode ? [t] : [];
-        })
-      : [];
-
-  const irelandMaxStay: IrelandStayAssessment | null =
-    entryDate && irelandVisaFreeTravelers.length > 0
-      ? assessIrelandStay(entryDate, ongoing ? undefined : exitDate || undefined)
-      : null;
-
-  const irelandReentryRisk: IrelandReentryRisk | null =
-    entryDate && irelandVisaFreeTravelers.length > 0
-      ? (() => {
-          let worst: IrelandReentryRisk | null = null;
-          for (const t of irelandVisaFreeTravelers) {
-            const irelandTrips = t.trips.filter(
-              (tr) =>
-                tr.region === VisaRegion.Ireland &&
-                tr.exitDate &&
-                tr.id !== initialTrip?.id,
-            );
-            const risk = detectIrelandReentryRisk(irelandTrips, entryDate);
-            if (risk && (!worst || risk.variant === "danger")) worst = risk;
-          }
-          return worst;
-        })()
-      : null;
+  const entryFieldSx = fieldSxForVariant(entryVariant);
+  const exitFieldSx = fieldSxForVariant(exitVariant);
 
   // ── Validation & submit ─────────────────────────────────────────────────────
 
   function handleSave() {
+    if (!destination.trim()) {
+      setError("Please enter a trip name.");
+      return;
+    }
     if (travelerIds.length === 0) {
       setError("Please select at least one traveler.");
       return;
@@ -760,16 +436,30 @@ export function TripModal({
       setError("Please enter an entry date.");
       return;
     }
-    if (!ongoing && exitDate && exitDate < entryDate) {
+    if (!exitDate) {
+      setError("Please enter an exit date.");
+      return;
+    }
+    if (exitDate < entryDate) {
       setError("Exit date must be after entry date.");
       return;
     }
     // overlapError is already shown inline — guard here as a safety net
     if (overlapError) return;
 
-    if (impactStatus && impactStatus.daysRemaining < 0) {
+    const worstRemaining = durations
+      .filter((d) => d.tracked)
+      .reduce((min, d) => {
+        const dr =
+          d.rollingBreakdown?.daysRemaining ??
+          d.rollingStatus?.daysRemaining ??
+          d.assessment?.daysRemaining ??
+          0;
+        return Math.min(min, dr);
+      }, Infinity);
+    if (Number.isFinite(worstRemaining) && worstRemaining < 0) {
       trackEvent("overstay_warning_shown", {
-        days_over: Math.abs(impactStatus.daysRemaining),
+        days_over: Math.abs(worstRemaining),
       });
     }
 
@@ -810,12 +500,14 @@ export function TripModal({
           paper: {
             sx: isMobile
               ? {
+                  position: "relative",
                   display: "flex",
                   flexDirection: "column",
                   bgcolor: tokens.offWhite,
                   overflow: "hidden",
                 }
               : {
+                  position: "relative",
                   borderRadius: "20px",
                   width: 420,
                   maxWidth: "calc(100vw - 32px)",
@@ -1038,86 +730,6 @@ export function TripModal({
             />
           </Box>
 
-          {/* 2b/2c/2d · Nationality entry notice — generic for all regions */}
-          {visaInfoRows.length > 0 && (
-            <VisaInfoSection
-              rows={visaInfoRows}
-              expanded={entryNoticeSectionExpanded}
-              onToggle={() => setEntryNoticeSectionExpanded((v) => !v)}
-              greenCount={visaInfoGreenCount}
-              warnCount={visaInfoWarnCount}
-              unknownCount={visaInfoUnknownCount}
-              onSourceClick={(anchor, note) => setSourcePopover({ anchor, note })}
-            />
-          )}
-
-          {/* Source info popover */}
-          <Popover
-            open={Boolean(sourcePopover)}
-            anchorEl={sourcePopover?.anchor}
-            onClose={() => setSourcePopover(null)}
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            transformOrigin={{ vertical: "top", horizontal: "right" }}
-            slotProps={{
-              paper: {
-                sx: {
-                  borderRadius: "10px",
-                  p: "12px 14px",
-                  boxShadow: "0 4px 20px rgba(12,30,60,0.15)",
-                  maxWidth: 300,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "6px",
-                },
-              },
-            }}
-          >
-            {sourcePopover && sourcePopover.note.source && (
-              <>
-                <Box
-                  component="a"
-                  href={sourcePopover.note.source.directUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.72rem",
-                    color: tokens.navy,
-                    textDecoration: "none",
-                    "&:hover": { textDecoration: "underline" },
-                  }}
-                >
-                  Direct source ↗
-                </Box>
-                <Box
-                  component="a"
-                  href={sourcePopover.note.source.parentUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.72rem",
-                    color: tokens.navy,
-                    textDecoration: "none",
-                    "&:hover": { textDecoration: "underline" },
-                  }}
-                >
-                  Overview page ↗
-                </Box>
-                <Typography
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.67rem",
-                    color: tokens.textSoft,
-                    mt: "2px",
-                  }}
-                >
-                  Last verified: {sourcePopover.note.source.dateChecked}
-                </Typography>
-              </>
-            )}
-          </Popover>
-
           {/* 3 · Trip name */}
           <Box>
             <FormLabel>Trip name</FormLabel>
@@ -1145,17 +757,13 @@ export function TripModal({
             >
               <DatePicker
                 value={entryDate ? parseISO(entryDate) : null}
+                shouldDisableDate={isDayBlocked}
                 onChange={(date) => {
                   if (!date) return;
                   const iso = formatDate(date);
                   setEntryDate(iso);
-                  if (iso > todayStr && ongoing) {
-                    setOngoing(false);
-                  }
-                  if (!ongoing) {
-                    if (!exitDate || exitDate <= iso) {
-                      setExitDate(formatDate(addDays(date, 1)));
-                    }
+                  if (!exitDate || exitDate <= iso) {
+                    setExitDate(formatDate(addDays(date, 1)));
                   }
                   setError(null);
                 }}
@@ -1163,14 +771,18 @@ export function TripModal({
                   textField: {
                     size: "small",
                     placeholder: "Entry",
-                    sx: error && !entryDate ? INPUT_ERROR_SX : INPUT_SX,
+                    sx:
+                      error && !entryDate
+                        ? INPUT_ERROR_SX
+                        : entryFieldSx,
                   },
                 }}
               />
               <DatePicker
                 value={exitDate ? parseISO(exitDate) : null}
-                disabled={ongoing || !entryDate}
+                disabled={!entryDate}
                 minDate={entryDate ? parseISO(entryDate) : undefined}
+                shouldDisableDate={isDayBlocked}
                 onChange={(date) => {
                   if (!date) return;
                   setExitDate(formatDate(date));
@@ -1181,321 +793,56 @@ export function TripModal({
                     size: "small",
                     placeholder: "Exit",
                     sx: {
-                      ...(ongoing || !entryDate ? { opacity: 0.5 } : {}),
-                      ...INPUT_SX,
+                      ...(!entryDate ? { opacity: 0.5 } : {}),
+                      ...exitFieldSx,
                     },
                   },
                 }}
               />
             </Box>
-
-            <Tooltip
-              title={
-                entryIsInFuture
-                  ? "Ongoing trips require an entry date on or before today"
-                  : ""
-              }
-              placement="top"
-              arrow
-              disableHoverListener={!entryIsInFuture}
-              componentsProps={{
-                tooltip: {
-                  sx: {
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.72rem",
-                    bgcolor: tokens.navy,
-                    "& .MuiTooltip-arrow": { color: tokens.navy },
-                  },
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: "inline-block",
-                  pointerEvents: entryIsInFuture ? "none" : "auto",
-                  opacity: entryIsInFuture ? 0.4 : 1,
-                  transition: "opacity 0.15s",
-                }}
-              >
-                <OngoingToggle
-                  checked={ongoing}
-                  label={
-                    region === VisaRegion.Schengen ? "Currently inside Schengen (no exit yet)" :
-                    region === VisaRegion.UnitedKingdom ? "Currently in the UK (no exit yet)" :
-                    region === VisaRegion.Ireland ? "Currently in Ireland (no exit yet)" :
-                    "Currently travelling (no exit date yet)"
-                  }
-                  onChange={(v) => {
-                    setOngoing(v);
-                    if (v) setExitDate("");
-                    setError(null);
-                  }}
-                />
-              </Box>
-            </Tooltip>
           </Box>
 
-          {/* Entry constraint hint */}
+          {/* 5 · Duration & overstay analysis */}
           {entryConstraint && (
+            <EntryConstraintHint
+              entryConstraint={entryConstraint}
+              travelerCount={travelerIds.length}
+            />
+          )}
+
+          {/* 6 · Eligibility & duration — open the per-traveler detail overlay */}
+          {region !== VisaRegion.Elsewhere && (
             <Box
               sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                px: "12px",
-                py: "9px",
-                bgcolor: tokens.mist,
                 border: `1px solid ${tokens.border}`,
                 borderRadius: "10px",
+                overflow: "hidden",
+                "& > button:first-of-type": { borderTop: "none" },
               }}
             >
-              {entryConstraint.daysAvailable === 0 ? (
-                <Typography
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.75rem",
-                    color: tokens.red,
-                    fontWeight: 600,
-                  }}
-                >
-                  No days available — entry not possible on this date.
-                </Typography>
-              ) : (
-                <>
-                  <Typography
-                    sx={{
-                      fontFamily: tokens.fontBody,
-                      fontSize: "0.75rem",
-                      color: tokens.textSoft,
-                      fontWeight: 500,
-                    }}
-                  >
-                    {entryConstraint.daysAvailable === 1
-                      ? "1 day available"
-                      : `${entryConstraint.daysAvailable} days available`}
-                    {travelerIds.length > 1 && " (most constrained)"}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontFamily: tokens.fontBody,
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      color: tokens.navy,
-                      ml: "8px",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    Latest exit: {fmtHintDate(entryConstraint.latestExit)}
-                  </Typography>
-                </>
-              )}
-            </Box>
-          )}
-
-          {/* Impact preview */}
-          {region === VisaRegion.Schengen &&
-            entryDate &&
-            (exitDate || ongoing) &&
-            impactStatus &&
-            hasVisaFreeTravelers && (
-              <ImpactPreview
-                daysRemaining={impactStatus.daysRemaining}
-                daysUsed={impactStatus.daysUsed}
-                variant={impactVariant}
-                breakdown={impactBreakdown}
-                travelerImpacts={travelerImpacts}
-                currentTripEntry={entryDate}
-                currentTripExit={resolvedExitForPreview}
+              <TripSummaryRow
+                label="Entry Eligibility"
+                okCount={eligOk}
+                dangerCount={eligWarn}
+                unknownCount={eligUnknown}
+                placeholder="Select travelers"
+                disabled={eligibility.length === 0}
+                onClick={() => setDetailOpen(true)}
               />
-            )}
-
-          {/* Visa-required disclaimer — shown when no visa-free travelers are selected */}
-          {region === VisaRegion.Schengen &&
-            schengenWarnCount > 0 &&
-            !hasVisaFreeTravelers &&
-            entryDate &&
-            (exitDate || ongoing) && (
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.75rem",
-                  fontStyle: "italic",
-                  color: tokens.textGhost,
-                  px: "20px",
-                  pb: "12px",
-                }}
-              >
-                Day tracking isn't available yet for Schengen visa holders as allowances depend on the specific visa granted.
-              </Typography>
-            )}
-
-          {/* UK max-stay warning — same position as Schengen ImpactPreview */}
-          {ukMaxStay && (
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "6px",
-                px: "12px",
-                py: "9px",
-                bgcolor:
-                  ukMaxStay.variant === "danger"
-                    ? "rgba(220,38,38,0.06)"
-                    : ukMaxStay.variant === "caution"
-                      ? tokens.amberBg
-                      : tokens.mist,
-                border: `1px solid ${
-                  ukMaxStay.variant === "danger"
-                    ? tokens.red
-                    : ukMaxStay.variant === "caution"
-                      ? tokens.amberBorder
-                      : tokens.border
-                }`,
-                borderRadius: "10px",
-              }}
-            >
-              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, fontWeight: 500 }}>
-                  {ukMaxStay.variant === "danger" && ukMaxStay.daysRemaining < 0
-                    ? `Over the 6-month limit by ${Math.abs(ukMaxStay.daysRemaining)} day${Math.abs(ukMaxStay.daysRemaining) === 1 ? "" : "s"}`
-                    : `${ukMaxStay.tripDays} day${ukMaxStay.tripDays === 1 ? "" : "s"} of 6-month visit`}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    color: ukMaxStay.variant === "danger" ? tokens.red : ukMaxStay.variant === "caution" ? tokens.amberText : tokens.navy,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Latest exit: {fmtHintDate(ukMaxStay.maxExitDate)}
-                </Typography>
-              </Box>
-              {ukMaxStay.variant !== "safe" && (
-                <Box sx={{ display: "flex", alignItems: "flex-start", gap: "5px" }}>
-                  <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "1px", flexShrink: 0, color: ukMaxStay.variant === "danger" ? tokens.red : tokens.amberText }} />
-                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: ukMaxStay.variant === "danger" ? tokens.red : tokens.amberText, lineHeight: 1.4 }}>
-                    {ukMaxStay.variant === "danger"
-                      ? "This trip exceeds the 6-month visit limit. Border Force may deny entry or curtail leave."
-                      : "Approaching the 6-month visit limit. Leave time before the deadline."}
-                  </Typography>
-                </Box>
-              )}
+              <TripSummaryRow
+                label="Stay Duration"
+                statusKind="duration"
+                okCount={durOk}
+                cautionCount={durCaution}
+                dangerCount={durDanger}
+                overstayCount={durOverstay}
+                unknownCount={durUnknown}
+                placeholder={!datesSet ? "Set dates" : ""}
+                disabled={!datesSet}
+                onClick={() => setDetailOpen(true)}
+              />
             </Box>
           )}
-
-          {/* UK re-entry risk — below max-stay box */}
-          {ukReentryRisk && (() => {
-            const isRed = ukReentryRisk.variant === "danger";
-            const isAmber = ukReentryRisk.variant === "caution";
-            const bg = isRed ? "rgba(220,38,38,0.06)" : isAmber ? tokens.amberBg : tokens.greenBg;
-            const borderColor = isRed ? tokens.red : isAmber ? tokens.amberBorder : tokens.greenBorder;
-            const textColor = isRed ? tokens.red : isAmber ? tokens.amberText : tokens.greenText;
-            const heading = isRed
-              ? "Re-entry after a long UK stay — high scrutiny"
-              : isAmber
-                ? "Previous long UK stay on record"
-                : "Previous UK stay noted";
-            const body = isRed
-              ? `Your last UK trip lasted ${ukReentryRisk.lastTripDays} days, exiting only ${ukReentryRisk.daysSinceExit} days ago. Immediate re-entry after a near-maximum stay is likely to be refused under the genuine visitor test.`
-              : isAmber
-                ? `Your last UK trip lasted ${ukReentryRisk.lastTripDays} days. Border Force may scrutinise this entry — carry evidence of ties to your home country and clear reasons for returning.`
-                : `A previous UK trip of ${ukReentryRisk.lastTripDays} days is on record. This entry is unlikely to cause issues, but be ready to explain your travel pattern if asked.`;
-            return (
-              <Box sx={{ display: "flex", alignItems: "flex-start", gap: "6px", px: "12px", py: "9px", bgcolor: bg, border: `1px solid ${borderColor}`, borderRadius: "10px" }}>
-                <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "2px", flexShrink: 0, color: textColor }} />
-                <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: textColor }}>{heading}</Typography>
-                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft, lineHeight: 1.4 }}>{body}</Typography>
-                </Box>
-              </Box>
-            );
-          })()}
-
-          {/* Ireland max-stay warning — same position as Schengen ImpactPreview */}
-          {irelandMaxStay && (
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "6px",
-                px: "12px",
-                py: "9px",
-                bgcolor:
-                  irelandMaxStay.variant === "danger"
-                    ? "rgba(220,38,38,0.06)"
-                    : irelandMaxStay.variant === "caution"
-                      ? tokens.amberBg
-                      : tokens.mist,
-                border: `1px solid ${
-                  irelandMaxStay.variant === "danger"
-                    ? tokens.red
-                    : irelandMaxStay.variant === "caution"
-                      ? tokens.amberBorder
-                      : tokens.border
-                }`,
-                borderRadius: "10px",
-              }}
-            >
-              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, fontWeight: 500 }}>
-                  {irelandMaxStay.variant === "danger" && irelandMaxStay.daysRemaining < 0
-                    ? `Over the 90-day limit by ${Math.abs(irelandMaxStay.daysRemaining)} day${Math.abs(irelandMaxStay.daysRemaining) === 1 ? "" : "s"}`
-                    : `${irelandMaxStay.tripDays} day${irelandMaxStay.tripDays === 1 ? "" : "s"} of 90-day permission`}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    color: irelandMaxStay.variant === "danger" ? tokens.red : irelandMaxStay.variant === "caution" ? tokens.amberText : tokens.navy,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Latest exit: {fmtHintDate(irelandMaxStay.maxExitDate)}
-                </Typography>
-              </Box>
-              {irelandMaxStay.variant !== "safe" && (
-                <Box sx={{ display: "flex", alignItems: "flex-start", gap: "5px" }}>
-                  <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "1px", flexShrink: 0, color: irelandMaxStay.variant === "danger" ? tokens.red : tokens.amberText }} />
-                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: irelandMaxStay.variant === "danger" ? tokens.red : tokens.amberText, lineHeight: 1.4 }}>
-                    {irelandMaxStay.variant === "danger"
-                      ? "This trip exceeds the 90-day permission limit. You may be asked to leave."
-                      : "Approaching the 90-day permission limit. Plan an exit date before the deadline."}
-                  </Typography>
-                </Box>
-              )}
-            </Box>
-          )}
-
-          {/* Ireland re-entry risk — below max-stay box */}
-          {irelandReentryRisk && (() => {
-            const isRed = irelandReentryRisk.variant === "danger";
-            const isAmber = irelandReentryRisk.variant === "caution";
-            const bg = isRed ? "rgba(220,38,38,0.06)" : isAmber ? tokens.amberBg : tokens.greenBg;
-            const borderColor = isRed ? tokens.red : isAmber ? tokens.amberBorder : tokens.greenBorder;
-            const textColor = isRed ? tokens.red : isAmber ? tokens.amberText : tokens.greenText;
-            const heading = isRed
-              ? "Re-entry after a maximum-duration Ireland stay — entry may be refused"
-              : isAmber
-                ? "Previous long Ireland stay on record"
-                : "Previous Ireland stay noted";
-            const body = isRed
-              ? `Your last Ireland trip lasted ${irelandReentryRisk.lastTripDays} days, exiting only ${irelandReentryRisk.daysSinceExit} days ago. INIS has explicitly stated that immediate re-entry after a maximum-duration stay is not permitted.`
-              : isAmber
-                ? `Your last Ireland trip lasted ${irelandReentryRisk.lastTripDays} days. Officers may scrutinise this entry — carry evidence of your home ties and clear reasons for visiting.`
-                : `A previous Ireland trip of ${irelandReentryRisk.lastTripDays} days is on record. This entry is unlikely to cause issues, but be prepared to explain your travel pattern.`;
-            return (
-              <Box sx={{ display: "flex", alignItems: "flex-start", gap: "6px", px: "12px", py: "9px", bgcolor: bg, border: `1px solid ${borderColor}`, borderRadius: "10px" }}>
-                <WarningAmberIcon sx={{ fontSize: "0.85rem", mt: "2px", flexShrink: 0, color: textColor }} />
-                <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: textColor }}>{heading}</Typography>
-                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft, lineHeight: 1.4 }}>{body}</Typography>
-                </Box>
-              </Box>
-            );
-          })()}
         </Box>
 
         {/* ── Divider ── */}
@@ -1529,6 +876,91 @@ export function TripModal({
             {isSaveDisabled ? "Overlap detected" : "Save Trip"}
           </Button>
         </Box>
+
+        {/* ── Eligibility & Duration detail overlay ── */}
+        {/* Matches the modal's own chrome: same background, and the title sits
+            in the same place as the modal header (title left, control right). */}
+        {detailOpen && (
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 3,
+              bgcolor: tokens.white,
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+            }}
+          >
+            {/* Header — mirrors the modal header layout */}
+            <Box
+              sx={{
+                px: "20px",
+                pt: "18px",
+                pb: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexShrink: 0,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontDisplay,
+                  fontSize: "1.1rem",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  color: tokens.navy,
+                }}
+              >
+                Eligibility & Duration
+              </Typography>
+              <Box
+                component="button"
+                onClick={() => setDetailOpen(false)}
+                aria-label="Back to trip form"
+                sx={{
+                  width: 26,
+                  height: 26,
+                  border: "none",
+                  borderRadius: "5px",
+                  bgcolor: tokens.mist,
+                  color: tokens.textSoft,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 0.15s",
+                  "&:hover": { bgcolor: tokens.border, color: tokens.navy },
+                }}
+              >
+                <ArrowBackIosNewIcon sx={{ fontSize: "0.8rem" }} />
+              </Box>
+            </Box>
+
+            {/* Scrollable per-traveler detail */}
+            <Box
+              sx={{
+                flex: 1,
+                overflowY: "auto",
+                pl: "20px",
+                pr: "14px",
+                py: "16px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
+            >
+              <TripDetailStack
+                eligibility={eligibility}
+                durations={durations}
+                entryDate={entryDate}
+                exitDate={exitDate}
+                defaultOpen={false}
+              />
+            </Box>
+          </Box>
+        )}
       </Dialog>
     </LocalizationProvider>
   );

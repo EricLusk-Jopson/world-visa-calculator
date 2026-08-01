@@ -61,7 +61,8 @@ import { UKSources } from '@/data/sources';
 
 const UK_LIMIT: PerVisitLimit = {
   type: 'per_visit',
-  days: 180,
+  value: 6,
+  unit: 'months',
 };
 
 // ─── Pre-travel authorisation ─────────────────────────────────────────────────
@@ -90,9 +91,11 @@ const ETA_RULE: EntitledRule = {
 };
 
 const DATV_NOTE =
-  'A Direct Airside Transit Visa (DATV) is required to transit through a UK ' +
-  'airport without passing through immigration (airside only). This is separate ' +
-  'from the Standard Visitor Visa required for entry to the UK.';
+  'A Direct Airside Transit Visa (DATV) is separate from the visa needed to ' +
+  'enter the UK. It is required only to pass airside through a UK airport ' +
+  '(changing flights without passing through immigration) and does not by ' +
+  'itself grant entry. To enter the UK, the Standard Visitor Visa above is ' +
+  'still required.';
 
 /**
  * Visa required + DATV for airside transit.

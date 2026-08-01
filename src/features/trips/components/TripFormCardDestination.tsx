@@ -122,6 +122,7 @@ interface Props {
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
+  footer?: React.ReactNode;
 }
 
 const SUMMARY_SX = {
@@ -139,6 +140,7 @@ export function TripFormCardDestination({
   expanded,
   onExpand,
   onCollapse,
+  footer,
 }: Props) {
   const [pickerOpen, setPickerOpen] = useState(false);
 
@@ -163,6 +165,7 @@ export function TripFormCardDestination({
         onExpand={onExpand}
         onDone={onCollapse}
         onReset={onReset}
+        footer={footer}
       >
         <TextField
           placeholder="Search regions…"
@@ -217,8 +220,6 @@ export function TripFormCardDestination({
             </Box>
           ))}
         </Box>
-
-        {/* TODO: per-traveler entry eligibility rows — requires visa data layer */}
       </TripFormCard>
 
       <RegionPickerScreen
