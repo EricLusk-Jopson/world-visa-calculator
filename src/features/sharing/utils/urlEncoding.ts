@@ -409,13 +409,29 @@ export const encodeState = (state: ShareableState): string => {
   return new URLSearchParams(params).toString();
 };
 
+export interface BuildShareableUrlOptions {
+  /**
+   * Appends `nosave` to the URL. Links opened with this flag never overwrite
+   * whatever itinerary the recipient already has saved in their own browser —
+   * useful for links posted publicly (blog posts, forums, social media).
+   */
+  nosave?: boolean;
+}
+
 /**
  * Builds a full shareable URL from state using the current page origin + path.
  */
-export const buildShareableUrl = (state: ShareableState): string => {
+export const buildShareableUrl = (
+  state: ShareableState,
+  options?: BuildShareableUrlOptions,
+): string => {
   const qs = encodeState(state);
   const base = `${window.location.origin}${window.location.pathname}`;
-  return qs ? `${base}?${qs}` : base;
+  let url = qs ? `${base}?${qs}` : base;
+  if (options?.nosave) {
+    url += url.includes("?") ? "&nosave" : "?nosave";
+  }
+  return url;
 };
 
 export type DecodeResult =

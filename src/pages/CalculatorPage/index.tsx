@@ -25,6 +25,7 @@ import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { AddTravelerDrawer } from "./components/mobile/AddTravelerDrawer";
 import { TripFormSlider } from "@/features/trips/components";
 import { UtilityDrawer } from "./components/mobile/UtilityDrawer";
+import { ShareFrame } from "./components/mobile/ShareFrame";
 
 const MIN_LOAD_MS = 650;
 const FADE_MS = 300;
@@ -71,6 +72,7 @@ export function CalculatorPage() {
     trip: Trip;
   } | null>(null);
   const [utilityDrawerOpen, setUtilityDrawerOpen] = useState(false);
+  const [shareFrameOpen, setShareFrameOpen] = useState(false);
   const [addTravelerFromTripOpen, setAddTravelerFromTripOpen] = useState(false);
   const [travelerViewId, setTravelerViewId] = useState<string | null>(null);
   const [editTravelerId, setEditTravelerId] = useState<string | null>(null);
@@ -107,7 +109,7 @@ export function CalculatorPage() {
     [travelers],
   );
 
-  const { shareableUrl, copyShareableUrl } = useUrlSync({
+  const { shareableUrl, nosaveShareableUrl, copyShareableUrl } = useUrlSync({
     state: shareableState,
     onHydrate: (s) => setTravelers(s.travelers),
     onHydrated: () => setHydrationDone(true),
@@ -506,8 +508,19 @@ export function CalculatorPage() {
       <ShareModal
         open={shareModalOpen}
         shareableUrl={shareableUrl}
+        nosaveShareableUrl={nosaveShareableUrl}
         onCopy={copyShareableUrl}
         onClose={() => setShareModalOpen(false)}
+        travelerCount={travelers.length}
+      />
+
+      {/* Mobile share frame — full-screen, opened from the utility drawer */}
+      <ShareFrame
+        open={shareFrameOpen}
+        onClose={() => setShareFrameOpen(false)}
+        shareableUrl={shareableUrl}
+        nosaveShareableUrl={nosaveShareableUrl}
+        onCopy={copyShareableUrl}
         travelerCount={travelers.length}
       />
 
@@ -552,7 +565,7 @@ export function CalculatorPage() {
       <UtilityDrawer
         open={utilityDrawerOpen}
         onClose={() => setUtilityDrawerOpen(false)}
-        onShare={copyShareableUrl}
+        onShare={() => setShareFrameOpen(true)}
         onClearAll={handleClearAllTrips}
         travelerCount={travelers.length}
       />
