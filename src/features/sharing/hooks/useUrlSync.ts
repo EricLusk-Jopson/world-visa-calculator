@@ -81,13 +81,23 @@ export interface UseUrlSyncOptions {
   syncToUrl?: boolean;
 }
 
+export interface CopyShareableUrlOptions {
+  /** Copy the "no-save" variant — see `nosaveShareableUrl`. */
+  nosave?: boolean;
+}
+
 export interface UseUrlSyncReturn {
   /** Call this to copy the current shareable URL to the clipboard. */
-  copyShareableUrl: () => Promise<void>;
+  copyShareableUrl: (options?: CopyShareableUrlOptions) => Promise<void>;
   /** Clears all state from localStorage (but not URL). */
   clearSavedData: () => void;
   /** The current shareable URL as a string. */
   shareableUrl: string;
+  /**
+   * Same as `shareableUrl`, but flagged so opening it never overwrites the
+   * recipient's own saved itinerary in their browser.
+   */
+  nosaveShareableUrl: string;
 }
 
 export const useUrlSync = ({
@@ -156,9 +166,10 @@ export const useUrlSync = ({
   // ── Helpers ─────────────────────────────────────────────────────────────────
 
   const shareableUrl = buildShareableUrl(state);
+  const nosaveShareableUrl = buildShareableUrl(state, { nosave: true });
 
-  const copyShareableUrl = useCallback(async (): Promise<void> => {
-    const url = buildShareableUrl(state);
+  const copyShareableUrl = useCallback(async (options?: CopyShareableUrlOptions): Promise<void> => {
+    const url = buildShareableUrl(state, options);
     try {
       await navigator.clipboard.writeText(url);
     } catch {
@@ -182,5 +193,6 @@ export const useUrlSync = ({
     copyShareableUrl,
     clearSavedData,
     shareableUrl,
+    nosaveShareableUrl,
   };
 };
