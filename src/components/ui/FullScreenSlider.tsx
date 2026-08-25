@@ -23,6 +23,8 @@ interface FullScreenSliderProps {
   children: React.ReactNode;
   footer?: React.ReactNode;
   rightAction?: React.ReactNode;
+  /** Override the Dialog's stacking context — e.g. to render above a BottomDrawer (z-index 1400). */
+  zIndex?: number;
 }
 
 export function FullScreenSlider({
@@ -32,6 +34,7 @@ export function FullScreenSlider({
   children,
   footer,
   rightAction,
+  zIndex,
 }: FullScreenSliderProps) {
   return (
     <Dialog
@@ -39,6 +42,7 @@ export function FullScreenSlider({
       open={open}
       onClose={onClose}
       TransitionComponent={SlideTransition}
+      style={zIndex !== undefined ? { zIndex } : undefined}
       PaperProps={{
         sx: {
           bgcolor: tokens.offWhite,

@@ -4,11 +4,43 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { tokens } from "@/styles/theme";
 import { trackEvent } from "@/utils/analytics";
+import type { CopyShareableUrlOptions } from "@/features/sharing";
+
+type LinkType = "standard" | "nosave";
+
+const LINK_TYPE_WRAPPER_SX = {
+  display: "flex",
+  bgcolor: tokens.mist,
+  borderRadius: "9px",
+  p: "3px",
+  gap: "2px",
+} as const;
+
+const linkTypeButtonSx = (active: boolean) =>
+  ({
+    flex: 1,
+    px: "10px",
+    py: "6px",
+    border: "none",
+    borderRadius: "6px",
+    fontFamily: tokens.fontBody,
+    fontSize: "0.76rem",
+    fontWeight: 700,
+    cursor: "pointer",
+    transition: "all 0.15s",
+    bgcolor: active ? tokens.white : "transparent",
+    color: active ? tokens.navy : tokens.textSoft,
+    boxShadow: active
+      ? "0 1px 3px rgba(12,30,60,0.08), 0 1px 2px rgba(12,30,60,0.04)"
+      : "none",
+    "&:hover": active ? {} : { color: tokens.text },
+  }) as const;
 
 interface ShareModalProps {
   open: boolean;
   shareableUrl: string;
-  onCopy: () => Promise<void>;
+  nosaveShareableUrl: string;
+  onCopy: (options?: CopyShareableUrlOptions) => Promise<void>;
   onClose: () => void;
   travelerCount: number;
 }
@@ -16,18 +48,28 @@ interface ShareModalProps {
 export function ShareModal({
   open,
   shareableUrl,
+  nosaveShareableUrl,
   onCopy,
   onClose,
   travelerCount,
 }: ShareModalProps) {
   const [copied, setCopied] = useState(false);
+  const [linkType, setLinkType] = useState<LinkType>("standard");
+
+  const activeUrl = linkType === "nosave" ? nosaveShareableUrl : shareableUrl;
 
   const handleCopy = useCallback(async () => {
-    await onCopy();
-    trackEvent("link_copied");
+    const nosave = linkType === "nosave";
+    await onCopy({ nosave });
+    trackEvent("link_copied", { nosave });
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
-  }, [onCopy]);
+  }, [onCopy, linkType]);
+
+  const handleLinkTypeChange = useCallback((next: LinkType) => {
+    setLinkType(next);
+    setCopied(false);
+  }, []);
 
   const isEmpty = travelerCount === 0;
 
@@ -44,14 +86,17 @@ export function ShareModal({
     >
       <Box
         sx={{
-          width: 440,
-          maxWidth: "100%",
+          width: 560,
+          maxWidth: "calc(100vw - 32px)",
+          maxHeight: "88vh",
           bgcolor: tokens.white,
           borderRadius: "20px",
           boxShadow:
             "0 12px 40px rgba(12,30,60,0.13), 0 2px 6px rgba(12,30,60,0.06)",
           overflow: "hidden",
           outline: "none",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         {/* ── Header ── */}
@@ -64,6 +109,7 @@ export function ShareModal({
             alignItems: "center",
             justifyContent: "space-between",
             borderBottom: `1px solid ${tokens.border}`,
+            flexShrink: 0,
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -140,6 +186,9 @@ export function ShareModal({
             display: "flex",
             flexDirection: "column",
             gap: "14px",
+            flex: 1,
+            minHeight: 0,
+            overflowY: "auto",
           }}
         >
           {/* How it works */}
@@ -171,9 +220,8 @@ export function ShareModal({
                 lineHeight: 1.6,
               }}
             >
-              All traveler data is encoded directly into the URL — no account or
-              server needed. Anyone with the link can open the tracker and see
-              the same trips and statuses instantly.
+              All traveler data lives in the URL. No account or server needed,
+              and it updates automatically as you make changes.
             </Typography>
             <Typography
               sx={{
@@ -182,8 +230,60 @@ export function ShareModal({
                 lineHeight: 1.55,
               }}
             >
-              The link stays current as you make changes, so re-share any time
-              to send an updated snapshot.
+              Your own itinerary is saved only in <strong>this browser</strong>.
+              It won't appear on another browser or device, and clearing your
+              browser data clears it too.
+            </Typography>
+          </Box>
+
+          {/* Link type toggle */}
+          <Box sx={{ display: "flex", flexDirection: "column", gap: "7px" }}>
+            <Typography
+              sx={{
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: tokens.textSoft,
+              }}
+            >
+              Link type
+            </Typography>
+            <Box sx={LINK_TYPE_WRAPPER_SX}>
+              <Box
+                component="button"
+                onClick={() => handleLinkTypeChange("standard")}
+                sx={linkTypeButtonSx(linkType === "standard")}
+              >
+                Standard
+              </Box>
+              <Box
+                component="button"
+                onClick={() => handleLinkTypeChange("nosave")}
+                sx={linkTypeButtonSx(linkType === "nosave")}
+              >
+                No-save link
+              </Box>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "0.78rem",
+                color: tokens.textSoft,
+                lineHeight: 1.5,
+              }}
+            >
+              {linkType === "nosave" ? (
+                <>
+                  Won't overwrite anything the recipient has already saved.
+                  Use it for public posts, like a blog, forum, or social
+                  media.
+                </>
+              ) : (
+                <>
+                  Replaces any itinerary already saved in the recipient's
+                  browser.
+                </>
+              )}
             </Typography>
           </Box>
 
@@ -217,8 +317,8 @@ export function ShareModal({
                   lineHeight: 1.5,
                 }}
               >
-                No travelers added yet. Add a traveler and some trips — the link
-                will include everything automatically.
+                No travelers added yet. Add a traveler and some trips, and
+                the link will include them automatically.
               </Typography>
             </Box>
           )}
@@ -263,7 +363,7 @@ export function ShareModal({
                   userSelect: "all",
                 }}
               >
-                {shareableUrl}
+                {activeUrl}
               </Typography>
 
               <Box
@@ -375,7 +475,18 @@ export function ShareModal({
         </Box>
 
         {/* ── Footer ── */}
-        <Box sx={{ px: "20px", pb: "20px", pt: "4px", display: "flex", flexDirection: "column", gap: "8px" }}>
+        <Box
+          sx={{
+            px: "20px",
+            pb: "20px",
+            pt: "4px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "8px",
+            flexShrink: 0,
+            borderTop: `1px solid ${tokens.border}`,
+          }}
+        >
           {/* Ko-fi support CTA */}
           <Box
             component="a"
