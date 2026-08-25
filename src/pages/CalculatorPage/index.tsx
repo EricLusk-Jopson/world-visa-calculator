@@ -121,7 +121,10 @@ export function CalculatorPage() {
 
   const handleTravelerSave = useCallback((name: string, passportCode: string | null) => {
     setTravelers((prev) => {
-      trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+      trackEvent("traveler_added", {
+        total_travelers: prev.length + 1,
+        passport_code: passportCode ?? "none",
+      });
       return [...prev, makeTraveler(name, passportCode)];
     });
     setModal(CLOSED_MODAL);
@@ -131,7 +134,10 @@ export function CalculatorPage() {
   const handleTravelerSaveFromTrip = useCallback(
     (name: string, passportCode: string | null) => {
       setTravelers((prev) => {
-        trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+        trackEvent("traveler_added", {
+          total_travelers: prev.length + 1,
+          passport_code: passportCode ?? "none",
+        });
         return [...prev, makeTraveler(name, passportCode)];
       });
       setAddTravelerFromTripOpen(false);
@@ -141,6 +147,7 @@ export function CalculatorPage() {
 
   const handleTravelerEdit = useCallback(
     (travelerId: string, name: string, passportCode: string | null) => {
+      trackEvent("traveler_updated", { passport_code: passportCode ?? "none" });
       setTravelers((prev) =>
         prev.map((t) => (t.id === travelerId ? { ...t, name, passportCode } : t)),
       );
@@ -199,9 +206,10 @@ export function CalculatorPage() {
         trackEvent("trip_added", {
           traveler_count: travelers.length,
           is_ongoing: !trip.exitDate,
+          region: trip.region,
         });
       } else {
-        trackEvent("trip_edited");
+        trackEvent("trip_edited", { region: trip.region });
       }
       setTravelers((prev) =>
         prev.map((t) => {

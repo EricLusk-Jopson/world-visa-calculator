@@ -13,6 +13,14 @@ function isTrackingOptedOut(): boolean {
 
 const trackingOptedOut = isTrackingOptedOut();
 
+// Random per-page-load ID, kept in memory only (never persisted) so it can't link separate
+// visits together. Lets the sheet count distinct sessions per day without storing any
+// cross-visit identifier.
+const SESSION_ID =
+  typeof crypto !== "undefined" && crypto.randomUUID
+    ? crypto.randomUUID()
+    : Math.random().toString(36).slice(2);
+
 interface EventProperties {
   [key: string]: string | number | boolean | undefined;
 }
@@ -34,6 +42,7 @@ export function trackEvent(event: string, properties: EventProperties = {}): voi
         referrer: document.referrer,
         userAgent: navigator.userAgent,
         screenWidth: window.screen.width,
+        sessionId: SESSION_ID,
       }),
     });
   } catch {
