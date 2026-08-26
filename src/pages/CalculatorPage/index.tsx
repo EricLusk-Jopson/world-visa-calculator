@@ -5,6 +5,7 @@ import { keyframes } from "@mui/system";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AddIcon from "@mui/icons-material/Add";
 import type { Traveler, Trip, ShareableState } from "@/types";
+import { VISA_REGION_LABELS } from "@/types";
 import { tokens } from "@/styles/theme";
 import { useUrlSync } from "@/features/sharing";
 import {
@@ -205,11 +206,10 @@ export function CalculatorPage() {
       if (modal.mode === "add") {
         trackEvent("trip_added", {
           traveler_count: travelers.length,
-          is_ongoing: !trip.exitDate,
-          region: trip.region,
+          region: VISA_REGION_LABELS[trip.region],
         });
       } else {
-        trackEvent("trip_edited", { region: trip.region });
+        trackEvent("trip_edited", { region: VISA_REGION_LABELS[trip.region] });
       }
       setTravelers((prev) =>
         prev.map((t) => {

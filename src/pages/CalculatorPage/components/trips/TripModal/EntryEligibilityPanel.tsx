@@ -249,7 +249,7 @@ export function EntryEligibilityPanel({ travelers, travelerIds, region }: EntryE
               href={sourcePopover.note.source.directUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEvent("source_link_clicked", { link_type: "direct", region })}
+              onClick={() => trackEvent("source_link_clicked", { link_type: "direct", region: VISA_REGION_LABELS[region] })}
               sx={{
                 fontFamily: tokens.fontBody,
                 fontSize: "0.72rem",
@@ -265,7 +265,7 @@ export function EntryEligibilityPanel({ travelers, travelerIds, region }: EntryE
               href={sourcePopover.note.source.parentUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEvent("source_link_clicked", { link_type: "overview", region })}
+              onClick={() => trackEvent("source_link_clicked", { link_type: "overview", region: VISA_REGION_LABELS[region] })}
               sx={{
                 fontFamily: tokens.fontBody,
                 fontSize: "0.72rem",
