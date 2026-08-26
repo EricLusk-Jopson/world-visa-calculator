@@ -38,38 +38,38 @@ import LandingNav from "../../components/LandingNav.astro";
         mostly around Europe. Throughout our travels we would occasionally be
         forced to cross borders on different dates. Between work trips, family
         visits, medical appointments and the requirements of residency and
-        insurance policies, we often required slightly different itineraries.
-        It wasn't complicated, we were just two adults living normal, slightly
-        staggered lives abroad. Long-term travel simply comes with a few
-        complications.
+        insurance policies, we sometimes required slightly different itineraries.
+        It wasn't complicated. Long-term travel simply comes with a few
+        complications. We were just two adults living normal, slightly
+        staggered lives abroad.
       </p>
 
       <p>
-        To manage our overlapping itineraries, we required a tool that could
-        track our different histories within the Schengen Area, but this
-        raised a problem.
+        To manage our overlapping entries and exits, we needed a tool that could
+        track our different histories within the Schengen Area as part of the same itinerary. 
       </p>
 
       <p>
-        Every free Schengen calculator we tried broke the moment we tried to
-        use it for both of us, because none of them were built for multiple
-        people.
+        We found many free and accurate Schengen calculators online, 
+        but each one failed when we tried to use it for both of us together.
+        It quickly became clear that none of the existing tools were 
+        designed to track multiple travelers.
       </p>
 
       <h2>Why one traveler at a time doesn't work for couples</h2>
 
       <p>
-        The 90/180 rule tracks each person independently. Your travel
-        partner's remaining days have nothing to do with yours. If you left
-        Schengen last Tuesday and they're still there, you're on completely
-        different clocks, counting down from completely different dates.
+        The 90/180 rule tracks each person independently. In the eyes of the border authority, 
+        your travel partner's entry, exit and allowance have nothing to do with yours. You may have left
+        the Schengen Area last week but if your travel partner is still there, 
+        your remaining allowances are now misaligned and your future travel plans need to account for that. 
       </p>
 
       <p>
         That sounds obvious written out. It's much less obvious when you're
         standing in a Slovenian Airbnb in June trying to figure out if you can
         both make it to a housewarming party in Reykjavik in September. In
-        this scenario, it's very unhelpful when your Schengen calculator only
+        this circumstance, it's very unhelpful when your Schengen calculator only
         has room for one name.
       </p>
 
@@ -94,8 +94,13 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        After a few months, it's easy to forget about these differences, but
-        they add up.
+        After a few months of travel together, it's easy to forget about these discrepancies, but
+        they add up and they don't go away. In our case, a 10-day difference nearly went unnoticed,
+        forcing us to make a suprise two-week visit to Turkey to avoid illegally overstaying in Ljubljana.
+      </p>
+
+      <p>
+        Rearranging flights and making last-minute bookings is stressful. In fact, this was the experience that inspired me to create EuroVisaCalculator.
       </p>
 
       <p>
@@ -107,7 +112,7 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         <strong>Planning a reunion.</strong> You want to know: can we both be
-        in Schengen at the same time in November? If your travel dates have
+        in Schengen at the same time in the future? If your travel dates have
         differed at all in the last 180 days, it's not one calculation. Most
         tools don't make that comparison possible without a lot of manual
         cross-referencing.
@@ -116,34 +121,36 @@ import LandingNav from "../../components/LandingNav.astro";
       <h2>A practical solution</h2>
 
       <p>
-        Originally we built a spreadsheet to solve our problem, and from that
+        Originally I built a spreadsheet to solve our problem, and from that
         spreadsheet emerged the current application. It's a tool built around
-        the idea that a trip involves more than one person from the start.
+        the idea that a trip often involves more than one person, and should
+        accommodate everyone going.
       </p>
 
       <p>
         That's the whole premise behind <a href="/app">EuroVisaCalculator</a>.
         Each traveler is added separately, with their own trips and their own
-        entry and exit dates. Their allowances are all calculated
-        independently, but they are displayed together, accessible and
-        modifiable within the same application, all for free and without any
+        entry and exit dates. Their allowances are calculated
+        independently, but they are all displayed, accessed and
+        modified from the same screen--all for free and without any
         requirement to create an account.
       </p>
 
       <p>
-        Instead of requiring a user account, the site generates a shareable
-        link with everyone's data encoded in it, so you and your partner can
-        look at the exact same numbers without sending screenshots back and
-        forth. If you're the one who handles the planning, you can send that
-        link to your companions so all of you are looking at the same source
+        Since no user account is needed to use EuroVisaCalculator, 
+        you might wonder how to keep track of itineraries after closing or refreshing the web site.
+        Instead of a database, all travelers and trips are encoded right into the URL. 
+        The URL can be copied directly or through the 'Share' menu, which generates a shareable
+        link with everyone's data encoded in it. 
+        If you're the one who handles the planning, you can send that
+        link to your companions so all of you can see the same source
         of truth. Saving an itinerary is as simple as bookmarking the
         shareable link, or copying it to your notes.
       </p>
 
       <p>
         Unlike other apps, our multi-traveler support isn't a workaround
-        bolted onto a single-traveler tool. Multi-traveler support was the
-        reason the calculator got built in the first place. It is the whole
+        bolted onto a single-traveler tool. Multi-traveler support is the whole
         point of the site.
       </p>
 
@@ -160,7 +167,10 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         This app is useful for anyone wanting to visit Europe for a few
-        months at a time. It's useful for individuals and groups alike. This
+        months at a time, without needing to apply for a visa. It's also 
+        useful to check the entry requirements for different passport/destination combinations. 
+
+        <a href="/app">EuroVisaCalculator</a> is useful for individuals and groups alike. This
         could be friends backpacking across the continent, digital nomads
         who've recently met and want to travel together, couples on a
         long-term trip, large families, or groups of travelers coming from
@@ -168,12 +178,12 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        Another benefit to using <a href="/app">EuroVisaCalculator</a> is
+        Another major benefit to using <a href="/app">EuroVisaCalculator</a> is
         that we offer support for most passports. Unlike the free and
         official Schengen calculators, we make it clear when a passport is
         subject to additional entry requirements, visas, or restricted
-        duration limits. We aim to offer support for every passport on earth
-        and every destination in Europe. At the time of writing, we have
+        duration limits. We aim to offer support for every destination in Europe,
+        and every passport worldwide. At the time of writing, we have
         up-to-date entry information on destinations within Schengen, the UK,
         Ireland and Türkiye, and support travelers using nearly every
         passport on earth.
