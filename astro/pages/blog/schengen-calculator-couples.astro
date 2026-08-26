@@ -28,165 +28,259 @@ import LandingNav from "../../components/LandingNav.astro";
         How to Track Schengen Days When You and Your Partner Have Different Dates of Travel
       </h1>
 
-      <p class="article__meta">August 26, 2026 · 6 min read</p>
+      <p class="article__meta">August 26, 2026 · 8 min read</p>
     </header>
 
     <div class="article__body">
       <p>
-        The idea for EuroVisaCalculator originated from this exact question.
-        Between 2024 and 2026, my wife and I spent 20 months traveling abroad,
-        mostly around Europe. Throughout our travels we would occasionally be
-        forced to cross borders on different dates. Between work trips, family
-        visits, medical appointments and the requirements of residency and
-        insurance policies, we sometimes required slightly different itineraries.
-        It wasn't complicated. Long-term travel simply comes with a few
-        complications. We were just two adults living normal, slightly
-        staggered lives abroad.
+        You're ten days into a work trip your partner didn't join. When you
+        land back in Faro, you sit down to check how many Schengen days you
+        each have left, and realize you have no clean answer. You left on
+        different dates. You'll probably leave Europe on different dates
+        too. Every calculator you've tried assumes there's only one of you.
       </p>
 
       <p>
-        To manage our overlapping entries and exits, we needed a tool that could
-        track our different histories within the Schengen Area as part of the same itinerary. 
+        This is the exact problem that led me to build EuroVisaCalculator.
+        My wife and I spent 20 months traveling through Europe between 2024
+        and 2026, and more than once, staggered dates like this nearly
+        cost us.
       </p>
 
       <p>
-        We found many free and accurate Schengen calculators online, 
-        but each one failed when we tried to use it for both of us together.
-        It quickly became clear that none of the existing tools were 
-        designed to track multiple travelers.
+        <strong>This post is for you if:</strong> you're traveling with a
+        partner, family, or group whose entry and exit dates in the Schengen
+        Area don't always match, and you want a straightforward way to track
+        everyone's separate allowance in one place.
+      </p>
+
+      <p>
+        <strong>It's probably not necessary if:</strong> everyone in your
+        group enters and exits together, every time, with no exceptions. In
+        that case, one shared itinerary is enough, and any single-traveler
+        Schengen calculator will do the job.
+      </p>
+
+      <p>
+        We tried several free, accurate Schengen calculators before building
+        our own. Each one worked fine for a single traveler and broke the
+        moment we tried to use it for both of us. None of them were designed
+        to track more than one person.
       </p>
 
       <h2>Why one traveler at a time doesn't work for couples</h2>
 
       <p>
-        The 90/180 rule tracks each person independently. In the eyes of the border authority, 
-        your travel partner's entry, exit and allowance have nothing to do with yours. You may have left
-        the Schengen Area last week but if your travel partner is still there, 
-        your remaining allowances are now misaligned and your future travel plans need to account for that. 
+        The 90/180 rule tracks each person independently. In the eyes of the
+        border authority, your travel partner's entries, exits, and
+        remaining allowance have nothing to do with yours. If you left the
+        Schengen Area last week and your partner is still there, your
+        allowances are now misaligned, and any future travel plans need to
+        account for that gap.
       </p>
 
       <p>
-        That sounds obvious written out. It's much less obvious when you're
-        standing in a Slovenian Airbnb in June trying to figure out if you can
-        both make it to a housewarming party in Reykjavik in September. In
-        this circumstance, it's very unhelpful when your Schengen calculator only
-        has room for one name.
+        That's obvious written out. It's much less obvious mid-trip, when
+        you're trying to work out whether you can both be somewhere on the
+        same dates months from now, and your calculator only has room for
+        one name.
+      </p>
+
+      <h3>Different entry and exit dates</h3>
+
+      <p>
+        One partner leaves for a work trip, a family visit, or a flight home
+        several days before the other. From that point on, their two rolling
+        windows are no longer in sync. The one who exited earlier has more
+        days left when they return. The one who stayed has fewer.
       </p>
 
       <p>
-        Here's where missing multi-person support caused us problems with
-        existing calculators:
+        The same is true in reverse, when a partner arrives before the
+        other. They start using their allowance while their partner's
+        allowance sits untouched.
       </p>
 
-      <p>
-        <strong>Different entry/exit dates.</strong> One partner leaves for a
-        work trip, a family visit, or a flight home 10 days before the other.
-        From that point on, their two rolling windows are no longer in sync.
-        The one who exited earlier has more days left when they return. The
-        one who stayed has fewer.
-      </p>
+      <blockquote class="article__note">
+        <p class="article__note-label">From our trip</p>
+        <p>
+          I left for a work trip ten days before my wife. We both knew our
+          numbers wouldn't match anymore, and then we simply forgot about
+          it, the way small discrepancies get lost in the routine of
+          long-term travel. Months later, the gap had grown enough that we
+          were close to overstaying in Ljubljana. We ended up booking a
+          surprise two-week trip to Turkey just to reset the clock in time.
+          Rearranging flights on short notice, mid-trip, is exactly the kind
+          of stress a tool like this is supposed to prevent, and it's the
+          moment that convinced me to actually build one.
+        </p>
+      </blockquote>
+
+      <blockquote class="article__note">
+        <p class="article__note-label">From our trip</p>
+        <p>
+          A medical appointment got rescheduled and my wife ended up
+          entering Schengen several days ahead of me. It was a small
+          difference, but it meant her allowance started counting down
+          before mine did, and we had to remember to plan around that
+          offset for the rest of the trip.
+        </p>
+      </blockquote>
+
+      <h3>Side trips outside Schengen</h3>
 
       <p>
-        The same is true of a partner who arrives in Schengen before the
-        other. This happened to us as a result of a rescheduled medical
-        appointment. The one who arrives earlier begins to consume their
-        allowance while their partner's allowance is unaffected.
+        One of you steps outside Schengen for a few days while the other
+        stays put. The traveler who leaves has their clock pause. The one
+        who stays keeps using days. It doesn't take a major trip to trigger
+        this.
       </p>
 
-      <p>
-        After a few months of travel together, it's easy to forget about these discrepancies, but
-        they add up and they don't go away. In our case, a 10-day difference nearly went unnoticed,
-        forcing us to make a suprise two-week visit to Turkey to avoid illegally overstaying in Ljubljana.
-      </p>
+      <blockquote class="article__note">
+        <p class="article__note-label">From our trip</p>
+        <p>
+          The most minor version of this happened when I drove alone across
+          a border to return a rental car. A day trip, nothing more, but it
+          was still a day where our two Schengen clocks moved differently.
+        </p>
+      </blockquote>
+
+      <h3>Planning a reunion</h3>
 
       <p>
-        Rearranging flights and making last-minute bookings is stressful. In fact, this was the experience that inspired me to create EuroVisaCalculator.
+        You want to know whether everyone can be in the same place at the
+        same time, months from now. If travel dates have differed at all in
+        the last 180 days, that's not one calculation, it's several, checked
+        against each other. Most tools don't make that comparison possible
+        without a lot of manual cross-referencing.
       </p>
 
-      <p>
-        <strong>Side trips outside Schengen.</strong> You go to the UK for a
-        few days while your partner stays in Portugal. Your Schengen clock
-        pauses. Theirs keeps running. This happened to us on several
-        occasions, sometimes for something as minor as returning a rental car.
-      </p>
+      <blockquote class="article__note">
+        <p class="article__note-label">From our trip</p>
+        <p>
+          A friend invited us to a housewarming in Reykjavik in September.
+          Simple enough, except by then our travel dates had drifted apart
+          for months. Working out whether we could both make it meant
+          checking two separate rolling windows against one proposed date,
+          not one.
+        </p>
+      </blockquote>
 
-      <p>
-        <strong>Planning a reunion.</strong> You want to know: can we both be
-        in Schengen at the same time in the future? If your travel dates have
-        differed at all in the last 180 days, it's not one calculation. Most
-        tools don't make that comparison possible without a lot of manual
-        cross-referencing.
-      </p>
+      <blockquote class="article__note">
+        <p class="article__note-label">From our trip</p>
+        <p>
+          The bigger version of this came 14 months into our trip, when our
+          families invited us to spend Christmas together in the Azores.
+          Suddenly it wasn't just our two histories that mattered. My
+          parents' Schengen days, my wife's parents' Schengen days, and our
+          own all had to line up on the same window. We needed an entry date
+          that worked for four different travel histories at once, and left
+          everyone enough overlap to make the trip worthwhile. That's the
+          moment the problem stopped being a couples problem and became a
+          group problem.
+        </p>
+      </blockquote>
 
       <h2>A practical solution</h2>
 
       <p>
-        Originally I built a spreadsheet to solve our problem, and from that
-        spreadsheet emerged the current application. It's a tool built around
-        the idea that a trip often involves more than one person, and should
-        accommodate everyone going.
+        I originally built a spreadsheet to solve this for us. The current
+        application grew out of that spreadsheet, built around one idea from
+        the start: a trip usually involves more than one person, and a
+        Schengen tracker should be able to say so.
       </p>
 
       <p>
         That's the whole premise behind <a href="/app">EuroVisaCalculator</a>.
-        Each traveler is added separately, with their own trips and their own
-        entry and exit dates. Their allowances are calculated
-        independently, but they are all displayed, accessed and
-        modified from the same screen--all for free and without any
-        requirement to create an account.
+        Each traveler is added separately, with their own trips and their
+        own entry and exit dates. Every allowance is calculated
+        independently, but all of them are displayed, accessed, and edited
+        from the same screen, for free, with no account required.
       </p>
 
       <p>
-        Since no user account is needed to use EuroVisaCalculator, 
-        you might wonder how to keep track of itineraries after closing or refreshing the web site.
-        Instead of a database, all travelers and trips are encoded right into the URL. 
-        The URL can be copied directly or through the 'Share' menu, which generates a shareable
-        link with everyone's data encoded in it. 
-        If you're the one who handles the planning, you can send that
-        link to your companions so all of you can see the same source
-        of truth. Saving an itinerary is as simple as bookmarking the
-        shareable link, or copying it to your notes.
+        Since there's no account, your data lives in the URL itself, not in
+        a database. Copy the link, or use the Share menu, and everyone
+        you're traveling with is looking at the exact same numbers. Saving
+        an itinerary is as simple as bookmarking that link or pasting it
+        into your notes.
       </p>
 
       <p>
         Unlike other apps, our multi-traveler support isn't a workaround
-        bolted onto a single-traveler tool. Multi-traveler support is the whole
-        point of the site.
+        bolted onto a single-traveler tool. It's the whole point of the
+        site.
       </p>
 
       <h2>Who this solution supports</h2>
 
       <p>
         The primary goal of <a href="/app">EuroVisaCalculator</a> is to
-        support any group of long-term or frequent travelers visiting Europe.
-        In our blog posts, we place a lot of focus on the Schengen Area, but
-        this is only because it includes such a large proportion of European
-        countries. Other countries in Europe have their own tourism
-        visitation rules, and we support those too.
+        support any group of long-term or frequent travelers visiting
+        Europe. Our blog posts focus heavily on the Schengen Area because it
+        covers such a large share of the continent, but other European
+        countries have their own visitation rules, and we support those
+        too.
       </p>
 
       <p>
-        This app is useful for anyone wanting to visit Europe for a few
-        months at a time, without needing to apply for a visa. It's also 
-        useful to check the entry requirements for different passport/destination combinations. 
-
-        <a href="/app">EuroVisaCalculator</a> is useful for individuals and groups alike. This
-        could be friends backpacking across the continent, digital nomads
-        who've recently met and want to travel together, couples on a
-        long-term trip, large families, or groups of travelers coming from
-        different locations.
+        This app is useful for anyone visiting Europe for a few months at a
+        time without applying for a visa, and for checking entry
+        requirements across different passport and destination combinations.
+        It works equally well for individuals and groups: friends
+        backpacking together, digital nomads who've just met and want to
+        travel together, couples on a long-term trip, multi-generational
+        families like ours in the Azores, or any group arriving from
+        different starting points.
       </p>
 
       <p>
-        Another major benefit to using <a href="/app">EuroVisaCalculator</a> is
-        that we offer support for most passports. Unlike the free and
-        official Schengen calculators, we make it clear when a passport is
-        subject to additional entry requirements, visas, or restricted
-        duration limits. We aim to offer support for every destination in Europe,
-        and every passport worldwide. At the time of writing, we have
-        up-to-date entry information on destinations within Schengen, the UK,
-        Ireland and Türkiye, and support travelers using nearly every
-        passport on earth.
+        We also support most passports. Unlike many free, official Schengen
+        calculators, we flag when a passport is subject to additional entry
+        requirements, visas, or restricted duration limits. We're working
+        toward covering every passport on earth and every destination in
+        Europe. At the time of writing, we have up-to-date entry information
+        for Schengen, the UK, Ireland, and Türkiye, covering the great
+        majority of passports in active use today.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+
+      <h3>Do we need to be using the same device, or have accounts, to see each other's data?</h3>
+      <p>
+        No. EuroVisaCalculator doesn't use accounts. Everyone's trips are
+        encoded into a single shareable link. Whoever holds the link can
+        view and edit the same data, on any device.
+      </p>
+
+      <h3>What if we already have months of separate travel history before we start using the tool?</h3>
+      <p>
+        Add each past trip for each traveler as you remember it. The
+        calculator only needs accurate entry and exit dates within the
+        current 180-day window to give you a correct answer, so it's worth
+        going back at least six months.
+      </p>
+
+      <h3>Can I track more than two people, like a family or a group of friends?</h3>
+      <p>
+        Yes. There's no fixed limit on the number of travelers you can add.
+        The Azores example above involved four separate travel histories
+        tracked in the same itinerary.
+      </p>
+
+      <h3>Does this work for countries outside the Schengen Area?</h3>
+      <p>
+        We currently support the Schengen Area, the UK, Ireland, and
+        Türkiye, each with its own entry rules, and we're expanding
+        destination coverage over time.
+      </p>
+
+      <h3>What happens if we lose the link?</h3>
+      <p>
+        The calculator also keeps a local backup in your browser, so a
+        refresh won't erase your data. For safety, we'd still recommend
+        bookmarking the link or saving it somewhere you can find it later,
+        since the local backup is tied to that one browser.
       </p>
 
       <hr />
@@ -300,6 +394,31 @@ import LandingNav from "../../components/LandingNav.astro";
 
   .article__body a:hover {
     border-bottom-color: #00b96b;
+  }
+
+  .article__note {
+    margin: 0 0 1.5em;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid #00b96b;
+    background: #eff6f1;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .article__note p {
+    margin: 0;
+  }
+
+  .article__note p:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+
+  .article__note-label {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #00834e;
   }
 
   .article__back {
