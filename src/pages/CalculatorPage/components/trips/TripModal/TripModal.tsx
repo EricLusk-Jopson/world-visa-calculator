@@ -130,7 +130,9 @@ export function TripModal({
       ? computeTravelerEligibility(region, travelers, travelerIds)
       : [];
   const eligOk = eligibility.filter((e) => e.ok).length;
-  const eligWarn = eligibility.filter((e) => !e.ok).length;
+  // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
+  const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
+  const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
 
   const durations = datesSet
     ? computeTravelerDurations({
@@ -302,6 +304,7 @@ export function TripModal({
                 label="Entry Eligibility"
                 okCount={eligOk}
                 dangerCount={eligWarn}
+                unknownCount={eligUnknown}
                 placeholder="Select travelers"
                 disabled={eligibility.length === 0}
                 onClick={() => setEligOpen((v) => !v)}
@@ -356,28 +359,120 @@ export function TripModal({
       {/* ── Divider ── */}
       <Box sx={{ height: 1, bgcolor: tokens.border, flexShrink: 0 }} />
 
-      {/* ── Footer ── */}
-      <Box
-        sx={{
-          px: "20px",
-          py: "16px",
-          display: "flex",
-          gap: "7px",
-          flexShrink: 0,
-        }}
-      >
-        {isEdit && onDelete && (
-          <Button variant="danger" onClick={onDelete} sx={{ mr: "auto" }}>
-            Delete
+        {/* ── Footer ── */}
+        <Box
+          sx={{
+            px: "20px",
+            py: "16px",
+            paddingBottom: isMobile
+              ? "calc(env(safe-area-inset-bottom) + 16px)"
+              : "16px",
+            display: "flex",
+            gap: "7px",
+          }}
+        >
+          {isEdit && onDelete && (
+            <Button variant="danger" onClick={onDelete} sx={{ mr: "auto" }}>
+              Delete
+            </Button>
+          )}
+          <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
+            Cancel
           </Button>
+          <Button
+            onClick={handleSave}
+            disabled={isSaveDisabled}
+            sx={{ flex: 2 }}
+          >
+            {isSaveDisabled ? "Overlap detected" : "Save Trip"}
+          </Button>
+        </Box>
+
+        {/* ── Eligibility & Duration detail overlay ── */}
+        {/* Matches the modal's own chrome: same background, and the title sits
+            in the same place as the modal header (title left, control right). */}
+        {detailOpen && (
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 3,
+              bgcolor: tokens.white,
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+            }}
+          >
+            {/* Header — mirrors the modal header layout */}
+            <Box
+              sx={{
+                px: "20px",
+                pt: "18px",
+                pb: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexShrink: 0,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: tokens.fontDisplay,
+                  fontSize: "1.1rem",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  color: tokens.navy,
+                }}
+              >
+                Eligibility & Duration
+              </Typography>
+              <Box
+                component="button"
+                onClick={() => setDetailOpen(false)}
+                aria-label="Back to trip form"
+                sx={{
+                  width: 26,
+                  height: 26,
+                  border: "none",
+                  borderRadius: "5px",
+                  bgcolor: tokens.mist,
+                  color: tokens.textSoft,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 0.15s",
+                  "&:hover": { bgcolor: tokens.border, color: tokens.navy },
+                }}
+              >
+                <ArrowBackIosNewIcon sx={{ fontSize: "0.8rem" }} />
+              </Box>
+            </Box>
+
+            {/* Scrollable per-traveler detail */}
+            <Box
+              sx={{
+                flex: 1,
+                overflowY: "auto",
+                pl: "20px",
+                pr: "14px",
+                py: "16px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
+            >
+              <TripDetailStack
+                eligibility={eligibility}
+                durations={durations}
+                entryDate={entryDate}
+                exitDate={exitDate}
+                defaultOpen={false}
+              />
+            </Box>
+          </Box>
         )}
-        <Button variant="ghost" onClick={onClose} sx={{ flex: 1 }}>
-          Cancel
-        </Button>
-        <Button onClick={handleSave} disabled={!canSave} sx={{ flex: 2 }}>
-          Save Trip
-        </Button>
-      </Box>
-    </Dialog>
+      </Dialog>
+    </LocalizationProvider>
   );
 }

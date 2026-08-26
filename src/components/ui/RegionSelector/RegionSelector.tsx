@@ -19,6 +19,8 @@ interface RegionOpt {
   label: string;
   /** Empty string = no group header (Elsewhere); 'Europe' = divider + label */
   group: string;
+  /** Extra search terms (e.g. ASCII spellings of accented labels). */
+  keywords?: string;
 }
 
 interface CountryOpt {
@@ -98,6 +100,13 @@ const REGION_OPTIONS: RegionOpt[] = [
     region: VisaRegion.Ireland,
     label: "Ireland",
     group: "Europe",
+  },
+  {
+    kind: "region",
+    region: VisaRegion.Turkiye,
+    label: "Türkiye",
+    group: "Europe",
+    keywords: "turkiye turkey",
   },
 ];
 
@@ -225,7 +234,7 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
           const searchText =
             option.kind === "country"
               ? option.countryName.toLowerCase()
-              : option.label.toLowerCase();
+              : `${option.label} ${option.keywords ?? ""}`.toLowerCase();
           if (searchText.includes(input)) matches.push(option);
         }
         return matches;
