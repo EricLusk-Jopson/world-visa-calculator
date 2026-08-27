@@ -15,9 +15,11 @@ import { VisaRegion, type Traveler } from "@/types";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { DestinationSlider } from "@/components/ui/DestinationSlider";
 import {
+  categorizeAllDestinations,
   computeDestinationStatus,
-  rankDestinationCandidates,
-  type DestinationTier,
+  DESTINATION_CATEGORY_LABELS,
+  DESTINATION_CATEGORY_ORDER,
+  type DestinationCategory,
 } from "@/features/calculator/utils/destinationStatus";
 import { today } from "@/features/calculator/utils/dates";
 import { getCountryName } from "../travelers/NationalitySelector";
@@ -58,23 +60,20 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-const TIER_LABEL: Record<DestinationTier, string> = {
-  ongoing: "Ongoing",
-  upcoming: "Upcoming",
-  past: "Past",
-};
+// Current/Recent/Upcoming are what a traveler is most likely to act on right
+// now; Old/Never are reference material, tucked away by default.
+const CATEGORIES_EXPANDED_BY_DEFAULT: DestinationCategory[] = ["current", "recent", "upcoming"];
 
 // ─── Destination card ───────────────────────────────────────────────────────
 
 interface DestinationCardProps {
   traveler: Traveler;
   region: VisaRegion;
-  tier: DestinationTier;
   expanded: boolean;
   onToggle: () => void;
 }
 
-function DestinationCard({ traveler, region, tier, expanded, onToggle }: DestinationCardProps) {
+function DestinationCard({ traveler, region, expanded, onToggle }: DestinationCardProps) {
   const status = computeDestinationStatus(traveler, region);
 
   return (
@@ -116,19 +115,20 @@ function DestinationCard({ traveler, region, tier, expanded, onToggle }: Destina
           >
             {status.regionName}
           </Typography>
-          <Typography
-            sx={{
-              fontFamily: tokens.fontBody,
-              fontSize: "0.68rem",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.06em",
-              color: tokens.textGhost,
-            }}
-          >
-            {TIER_LABEL[tier]}
-            {status.summaryLine ? ` · ${status.summaryLine}` : ""}
-          </Typography>
+          {status.summaryLine && (
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                color: tokens.textGhost,
+              }}
+            >
+              {status.summaryLine}
+            </Typography>
+          )}
         </Box>
         {expanded ? (
           <ExpandLessIcon sx={{ fontSize: "1.1rem", color: tokens.textGhost, flexShrink: 0 }} />
@@ -184,6 +184,82 @@ function DestinationCard({ traveler, region, tier, expanded, onToggle }: Destina
   );
 }
 
+// ─── Destination section (category group) ──────────────────────────────────
+
+interface DestinationSectionProps {
+  category: DestinationCategory;
+  regions: VisaRegion[];
+  expanded: boolean;
+  onToggleSection: () => void;
+  expandedRegions: Set<VisaRegion>;
+  onToggleRegion: (region: VisaRegion) => void;
+  traveler: Traveler;
+}
+
+function DestinationSection({
+  category,
+  regions,
+  expanded,
+  onToggleSection,
+  expandedRegions,
+  onToggleRegion,
+  traveler,
+}: DestinationSectionProps) {
+  return (
+    <Box>
+      <Box
+        component="button"
+        onClick={onToggleSection}
+        aria-expanded={expanded}
+        sx={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          border: "none",
+          bgcolor: "transparent",
+          cursor: "pointer",
+          py: "4px",
+          "&:active": { opacity: 0.7 },
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.65rem",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: tokens.textGhost,
+            flex: 1,
+            textAlign: "left",
+          }}
+        >
+          {DESTINATION_CATEGORY_LABELS[category]}
+        </Typography>
+        {expanded ? (
+          <ExpandLessIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
+        ) : (
+          <ExpandMoreIcon sx={{ fontSize: "1rem", color: tokens.textGhost }} />
+        )}
+      </Box>
+      <Collapse in={expanded}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", pt: "8px" }}>
+          {regions.map((region) => (
+            <DestinationCard
+              key={region}
+              traveler={traveler}
+              region={region}
+              expanded={expandedRegions.has(region)}
+              onToggle={() => onToggleRegion(region)}
+            />
+          ))}
+        </Box>
+      </Collapse>
+    </Box>
+  );
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function TravelerViewSlider({
@@ -198,18 +274,29 @@ export function TravelerViewSlider({
   // Independently expandable — a Set, not a single region, so opening one
   // card never forces the others shut (they aren't an accordion).
   const [expandedRegions, setExpandedRegions] = useState<Set<VisaRegion>>(new Set());
+  // Section-level collapse — persists across traveler switches; only the
+  // per-card expand state below is reset per traveler.
+  const [expandedSections, setExpandedSections] = useState<Set<DestinationCategory>>(
+    () => new Set(CATEGORIES_EXPANDED_BY_DEFAULT),
+  );
 
   useEffect(() => {
     if (!open || !traveler) return;
-    const candidates = rankDestinationCandidates(traveler);
-    setExpandedRegions(candidates[0] ? new Set([candidates[0].region]) : new Set());
+    const current = categorizeAllDestinations(traveler).filter((d) => d.category === "current");
+    setExpandedRegions(new Set(current.map((d) => d.region)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [traveler?.id, open]);
 
   if (!traveler) return null;
 
   const tripCount = traveler.trips.length;
-  const candidates = rankDestinationCandidates(traveler);
+  const categorized = categorizeAllDestinations(traveler);
+  const byCategory = new Map<DestinationCategory, VisaRegion[]>();
+  for (const { region, category } of categorized) {
+    const list = byCategory.get(category);
+    if (list) list.push(region);
+    else byCategory.set(category, [region]);
+  }
 
   // ── Footer ────────────────────────────────────────────────────────────────
   const footer = (
@@ -339,34 +426,29 @@ export function TravelerViewSlider({
             </Typography>
           </Box>
 
-          {/* ── Destinations — one collapsible card per trip in the last year ─ */}
+          {/* ── Destinations — grouped by temporal relevance ──────────────── */}
           <Box>
             <SectionHeading>Destinations</SectionHeading>
-            {candidates.length === 0 ? (
-              <Box
-                sx={{
-                  bgcolor: tokens.white,
-                  borderRadius: "12px",
-                  p: "16px",
-                  border: `1px solid ${tokens.border}`,
-                }}
-              >
-                <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.82rem", color: tokens.textSoft, lineHeight: 1.5 }}>
-                  {tripCount === 0
-                    ? "Add a trip to start tracking this traveler's allowances."
-                    : "No trips in the last year to show here."}
-                </Typography>
-              </Box>
-            ) : (
-              <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                {candidates.map(({ region, tier }) => (
-                  <DestinationCard
-                    key={region}
-                    traveler={traveler}
-                    region={region}
-                    tier={tier}
-                    expanded={expandedRegions.has(region)}
-                    onToggle={() =>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+              {DESTINATION_CATEGORY_ORDER.map((category) => {
+                const regions = byCategory.get(category);
+                if (!regions || regions.length === 0) return null;
+                return (
+                  <DestinationSection
+                    key={category}
+                    category={category}
+                    regions={regions}
+                    expanded={expandedSections.has(category)}
+                    onToggleSection={() =>
+                      setExpandedSections((cur) => {
+                        const next = new Set(cur);
+                        if (next.has(category)) next.delete(category);
+                        else next.add(category);
+                        return next;
+                      })
+                    }
+                    expandedRegions={expandedRegions}
+                    onToggleRegion={(region) =>
                       setExpandedRegions((cur) => {
                         const next = new Set(cur);
                         if (next.has(region)) next.delete(region);
@@ -374,10 +456,11 @@ export function TravelerViewSlider({
                         return next;
                       })
                     }
+                    traveler={traveler}
                   />
-                ))}
-              </Box>
-            )}
+                );
+              })}
+            </Box>
           </Box>
         </Box>
       </FullScreenSlider>

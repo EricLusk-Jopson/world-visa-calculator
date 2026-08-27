@@ -176,21 +176,129 @@ export function determineActiveRegion(
 
 /**
  * Resolves which region the desktop header should display: the traveler's
- * explicit override when it's still present in the lookback window, otherwise
- * falls back to the computed active region.
+ * explicit override when it's a trackable region, otherwise falls back to
+ * the computed active region. The override is no longer required to have
+ * trip history — the destination select lets a traveler preview any region
+ * the app tracks, visited or not.
  */
 export function resolveDisplayRegion(
   traveler: Traveler,
   refDate: Date = today(),
   lookbackDays: number = DESTINATION_LOOKBACK_DAYS,
 ): VisaRegion {
-  if (traveler.targetRegion !== undefined && traveler.targetRegion !== null) {
-    const candidates = rankDestinationCandidates(traveler, refDate, lookbackDays);
-    if (candidates.some((c) => c.region === traveler.targetRegion)) {
-      return traveler.targetRegion;
-    }
+  if (
+    traveler.targetRegion !== undefined &&
+    traveler.targetRegion !== null &&
+    isTrackableRegion(traveler.targetRegion)
+  ) {
+    return traveler.targetRegion;
   }
   return determineActiveRegion(traveler, refDate, lookbackDays);
+}
+
+// ─── Full-region categorization (desktop select + mobile destination list) ────
+
+export type DestinationCategory = "current" | "recent" | "upcoming" | "old" | "never";
+
+export const DESTINATION_CATEGORY_ORDER: DestinationCategory[] = [
+  "current",
+  "recent",
+  "upcoming",
+  "old",
+  "never",
+];
+
+export const DESTINATION_CATEGORY_LABELS: Record<DestinationCategory, string> = {
+  current: "Current trip",
+  recent: "Recently visited",
+  upcoming: "Upcoming",
+  old: "Old trip",
+  never: "Never visited",
+};
+
+/** Every region the app can track an allowance for — excludes the untracked "Elsewhere" bucket. */
+export function getAllTrackableRegions(): VisaRegion[] {
+  return (Object.values(VisaRegion) as VisaRegion[]).filter(isTrackableRegion);
+}
+
+export interface CategorizedDestination {
+  region: VisaRegion;
+  category: DestinationCategory;
+}
+
+/**
+ * Categorizes EVERY trackable region for a traveler by temporal relevance —
+ * not just the ones with trips in the lookback window. Priority order is
+ * current > recently visited > upcoming > old > never; a region matches
+ * exactly one category, the first that applies (e.g. a region with both an
+ * old trip and an upcoming one is "upcoming", never "old").
+ *
+ * Within "recent" and "upcoming", entries are ordered by proximity to today
+ * (most recent / soonest first). "old" and "never" are ordered alphabetically
+ * by region name. Used to group and order both the desktop destination
+ * select and the mobile destination list identically.
+ */
+export function categorizeAllDestinations(
+  traveler: Traveler,
+  refDate: Date = today(),
+  lookbackDays: number = DESTINATION_LOOKBACK_DAYS,
+): CategorizedDestination[] {
+  const refStr = formatDate(refDate);
+
+  const scored = getAllTrackableRegions().map((region) => {
+    const trips = traveler.trips.filter((t) => t.region === region);
+
+    if (trips.length === 0) {
+      return { region, category: "never" as DestinationCategory, sortValue: 0 };
+    }
+
+    const current = trips.find((t) => isTripCurrent(t, refStr));
+    if (current) {
+      return {
+        region,
+        category: "current" as DestinationCategory,
+        sortValue: parseDate(current.entryDate).getTime(),
+      };
+    }
+
+    // Every non-current trip is either finished (has an exitDate < today) or
+    // hasn't started yet (entryDate > today) — isTripCurrent covers every
+    // other case, so this partition is exhaustive.
+    const finished = trips
+      .filter((t) => t.exitDate !== undefined && t.exitDate < refStr)
+      .sort((a, b) => (a.exitDate! > b.exitDate! ? -1 : 1)); // most recent exit first
+    const mostRecent = finished[0];
+    const ageDays = mostRecent
+      ? differenceInCalendarDays(refDate, parseDate(mostRecent.exitDate!))
+      : Infinity;
+
+    if (mostRecent && ageDays <= lookbackDays) {
+      return { region, category: "recent" as DestinationCategory, sortValue: ageDays };
+    }
+
+    const future = trips
+      .filter((t) => t.entryDate > refStr)
+      .sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1)); // soonest first
+    const soonest = future[0];
+    if (soonest) {
+      const daysAway = differenceInCalendarDays(parseDate(soonest.entryDate), refDate);
+      return { region, category: "upcoming" as DestinationCategory, sortValue: daysAway };
+    }
+
+    return { region, category: "old" as DestinationCategory, sortValue: 0 };
+  });
+
+  scored.sort((a, b) => {
+    const catDiff =
+      DESTINATION_CATEGORY_ORDER.indexOf(a.category) - DESTINATION_CATEGORY_ORDER.indexOf(b.category);
+    if (catDiff !== 0) return catDiff;
+    if (a.category === "old" || a.category === "never") {
+      return VISA_REGION_LABELS[a.region].localeCompare(VISA_REGION_LABELS[b.region]);
+    }
+    return a.sortValue - b.sortValue;
+  });
+
+  return scored.map(({ region, category }) => ({ region, category }));
 }
 
 // ─── Status computation ───────────────────────────────────────────────────────

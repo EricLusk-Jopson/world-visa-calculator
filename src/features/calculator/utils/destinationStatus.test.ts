@@ -10,6 +10,8 @@ import {
   resolveDisplayRegion,
   computeDestinationStatus,
   isWithinLookback,
+  categorizeAllDestinations,
+  getAllTrackableRegions,
 } from "./destinationStatus";
 import { VisaRegion, type Traveler, type Trip } from "@/types";
 import { addDays, addMonths, differenceInCalendarDays, formatDate, parseDate } from "./dates";
@@ -98,10 +100,18 @@ describe("resolveDisplayRegion", () => {
     expect(resolveDisplayRegion(trav, REF)).toBe(VisaRegion.UnitedKingdom);
   });
 
-  it("falls back to the active region when the override drops out of the lookback window", () => {
+  it("honours an override even with no trip history there — any trackable region is previewable", () => {
     const trav = traveler(
       [trip("ongoing", VisaRegion.Schengen, iso(REF, -5))],
       { targetRegion: VisaRegion.Ireland }, // no Ireland trips at all
+    );
+    expect(resolveDisplayRegion(trav, REF)).toBe(VisaRegion.Ireland);
+  });
+
+  it("falls back to the active region for a non-trackable override (e.g. stale Elsewhere data)", () => {
+    const trav = traveler(
+      [trip("ongoing", VisaRegion.Schengen, iso(REF, -5))],
+      { targetRegion: VisaRegion.Elsewhere },
     );
     expect(resolveDisplayRegion(trav, REF)).toBe(VisaRegion.Schengen);
   });
@@ -207,6 +217,83 @@ describe("pickActiveTrip — fully-dated current trips", () => {
     const candidates = rankDestinationCandidates(trav, REF);
     expect(candidates[0].tier).toBe("ongoing");
     expect(determineActiveRegion(trav, REF)).toBe(VisaRegion.UnitedKingdom);
+  });
+});
+
+describe("categorizeAllDestinations", () => {
+  it("includes every trackable region even with zero trips, as 'never', alphabetically", () => {
+    const trav = traveler([]);
+    const result = categorizeAllDestinations(trav, REF);
+    expect(result).toHaveLength(getAllTrackableRegions().length);
+    expect(result.every((d) => d.category === "never")).toBe(true);
+    expect(result.map((d) => d.region)).toEqual([
+      VisaRegion.Ireland,
+      VisaRegion.Schengen,
+      VisaRegion.Turkiye,
+      VisaRegion.UnitedKingdom,
+    ]);
+  });
+
+  it("categorizes a fully-dated trip spanning today as 'current'", () => {
+    const trav = traveler([trip("uk", VisaRegion.UnitedKingdom, iso(REF, -5), iso(REF, 20))]);
+    const result = categorizeAllDestinations(trav, REF);
+    expect(result.find((d) => d.region === VisaRegion.UnitedKingdom)?.category).toBe("current");
+  });
+
+  it("puts a trip finished within the lookback window in 'recent', beyond it in 'old'", () => {
+    const recentTrav = traveler([
+      trip("a", VisaRegion.Ireland, iso(REF, -100), iso(REF, -90)), // 90 days ago
+    ]);
+    expect(
+      categorizeAllDestinations(recentTrav, REF).find((d) => d.region === VisaRegion.Ireland)
+        ?.category,
+    ).toBe("recent");
+
+    const oldTrav = traveler([
+      trip("a", VisaRegion.Ireland, iso(REF, -500), iso(REF, -480)), // way beyond 365-day lookback
+    ]);
+    expect(
+      categorizeAllDestinations(oldTrav, REF).find((d) => d.region === VisaRegion.Ireland)
+        ?.category,
+    ).toBe("old");
+  });
+
+  it("orders 'recent' by increasing age (most recently ended first)", () => {
+    const trav = traveler([
+      trip("older", VisaRegion.Ireland, iso(REF, -200), iso(REF, -190)),
+      trip("newer", VisaRegion.UnitedKingdom, iso(REF, -50), iso(REF, -40)),
+    ]);
+    const recent = categorizeAllDestinations(trav, REF).filter((d) => d.category === "recent");
+    expect(recent.map((d) => d.region)).toEqual([VisaRegion.UnitedKingdom, VisaRegion.Ireland]);
+  });
+
+  it("orders 'upcoming' by soonest entry first", () => {
+    const trav = traveler([
+      trip("later", VisaRegion.Ireland, iso(REF, 60)),
+      trip("sooner", VisaRegion.UnitedKingdom, iso(REF, 10)),
+    ]);
+    const upcoming = categorizeAllDestinations(trav, REF).filter((d) => d.category === "upcoming");
+    expect(upcoming.map((d) => d.region)).toEqual([VisaRegion.UnitedKingdom, VisaRegion.Ireland]);
+  });
+
+  it("prefers 'recent' over 'upcoming' when a region has both (first-match priority)", () => {
+    const trav = traveler([
+      trip("past", VisaRegion.Ireland, iso(REF, -30), iso(REF, -20)), // recent
+      trip("future", VisaRegion.Ireland, iso(REF, 30)), // also upcoming
+    ]);
+    expect(
+      categorizeAllDestinations(trav, REF).find((d) => d.region === VisaRegion.Ireland)?.category,
+    ).toBe("recent");
+  });
+
+  it("prefers 'upcoming' over 'old' when a region has both", () => {
+    const trav = traveler([
+      trip("past", VisaRegion.Ireland, iso(REF, -500), iso(REF, -480)), // old
+      trip("future", VisaRegion.Ireland, iso(REF, 30)), // upcoming
+    ]);
+    expect(
+      categorizeAllDestinations(trav, REF).find((d) => d.region === VisaRegion.Ireland)?.category,
+    ).toBe("upcoming");
   });
 });
 

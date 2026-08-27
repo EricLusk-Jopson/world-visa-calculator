@@ -41,6 +41,8 @@ interface StatusBadgeProps {
   label: string;
   /** When provided, an info icon is rendered inside the chip and a Tooltip wraps it. */
   tooltip?: string;
+  /** Set false to omit the leading colour dot — for compact contexts like option rows. Defaults to true. */
+  dot?: boolean;
   sx?: object;
 }
 
@@ -48,11 +50,12 @@ export function StatusBadge({
   variant,
   label,
   tooltip,
+  dot: showDot = true,
   sx = {},
 }: StatusBadgeProps) {
   const cfg = VARIANT_CONFIG[variant];
 
-  const dot = (
+  const dot = showDot ? (
     <Box
       component="span"
       sx={{
@@ -65,7 +68,7 @@ export function StatusBadge({
         "&.MuiChip-icon": { ml: "8px", mr: 0 },
       }}
     />
-  );
+  ) : undefined;
 
   // When a tooltip is provided the label becomes a flex row: text + info icon.
   const labelNode = tooltip ? (

@@ -17,7 +17,6 @@ import { DestinationSelect } from "../DestinationSelect";
 import {
   computeDestinationStatus,
   determineActiveRegion,
-  rankDestinationCandidates,
   resolveDisplayRegion,
 } from "@/features/calculator/utils/destinationStatus";
 
@@ -102,7 +101,6 @@ export function TravelerColumnHeader({
   const handleCancelDelete = () => setConfirmingDelete(false);
 
   const previewTraveler: Traveler = { ...traveler, passportCode: editCode };
-  const hasDestinationCandidates = rankDestinationCandidates(previewTraveler).length > 0;
   const editStatus = computeDestinationStatus(previewTraveler, editTargetRegion);
 
   const handleSaveEdit = () => {
@@ -610,30 +608,28 @@ export function TravelerColumnHeader({
           </Box>
 
           {/* Target destination field */}
-          {hasDestinationCandidates && (
-            <Box>
-              <Typography
-                component="label"
-                sx={{
-                  display: "block",
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.68rem",
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                  color: tokens.textSoft,
-                  mb: "5px",
-                }}
-              >
-                Destination
-              </Typography>
-              <DestinationSelect
-                traveler={previewTraveler}
-                value={editTargetRegion}
-                onChange={setEditTargetRegion}
-              />
-            </Box>
-          )}
+          <Box>
+            <Typography
+              component="label"
+              sx={{
+                display: "block",
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: tokens.textSoft,
+                mb: "5px",
+              }}
+            >
+              Allowance preview
+            </Typography>
+            <DestinationSelect
+              traveler={previewTraveler}
+              value={editTargetRegion}
+              onChange={setEditTargetRegion}
+            />
+          </Box>
 
           {/* Informational note for non-visa-free passports */}
           {editCode && !editStatus.eligible && (
