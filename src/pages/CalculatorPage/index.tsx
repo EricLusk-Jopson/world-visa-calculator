@@ -10,15 +10,14 @@ import { tokens } from "@/styles/theme";
 import { useUrlSync } from "@/features/sharing";
 import {
   CalculatorNav,
-  CardsView,
   TimelineView,
   TravelerModal,
   TripModal,
+  ClearAllModal,
 } from "./components";
 import { ShareModal } from "./components/ShareModal";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { MobileTimelineView } from "./components/mobile/MobileTimelineView/MobileTimelineView";
-import { MobileTripsView } from "./components/mobile/MobileTripView/MobileTripView";
 import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
 import { TripViewSlider } from "./components/mobile/TripViewSlider";
 import { TravelerViewSlider } from "./components/mobile/TravelerViewSlider";
@@ -27,6 +26,7 @@ import { AddTravelerDrawer } from "./components/mobile/AddTravelerDrawer";
 import { TripFormSlider } from "@/features/trips/components";
 import { UtilityDrawer } from "./components/mobile/UtilityDrawer";
 import { ShareFrame } from "./components/mobile/ShareFrame";
+import { ClearAllDrawer } from "./components/mobile/ClearAllDrawer";
 
 const MIN_LOAD_MS = 650;
 const FADE_MS = 300;
@@ -34,7 +34,6 @@ const FADE_MS = 300;
 const fadeIn = keyframes`from { opacity: 0; } to { opacity: 1; }`;
 const fadeOut = keyframes`from { opacity: 1; } to { opacity: 0; }`;
 
-type CalcView = "timeline" | "cards";
 type LoadPhase = "loading" | "fading" | "ready";
 
 interface ModalState {
@@ -61,11 +60,11 @@ function makeTraveler(name: string, passportCode: string | null = null): Travele
 export function CalculatorPage() {
   const isMobile = useMediaQuery("(max-width:599.95px)");
 
-  const [view, setView] = useState<CalcView>("timeline");
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
+  const [clearAllConfirmOpen, setClearAllConfirmOpen] = useState(false);
 
   // Mobile surface state
   const [tripView, setTripView] = useState<{
@@ -352,13 +351,11 @@ export function CalculatorPage() {
       }}
     >
       <CalculatorNav
-        view={view}
-        onViewChange={setView}
         onAddTraveler={handleAddTraveler}
         onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
         travelerCount={travelers.length}
         onShare={() => setShareModalOpen(true)}
-        onClearAll={handleClearAllTrips}
+        onClearAll={() => setClearAllConfirmOpen(true)}
         onOpenUtility={() => setUtilityDrawerOpen(true)}
       />
 
@@ -389,25 +386,15 @@ export function CalculatorPage() {
                 onOpenTraveler={setTravelerViewId}
               />
 
-              {view === "timeline" ? (
-                <MobileTimelineView
-                  travelers={travelers}
-                  hiddenTravelerIds={hiddenTravelerIds}
-                  onEditTrip={(ids, trip) => setTripView({ travelerIds: ids, trip })}
-                  onAddTraveler={handleAddTraveler}
-                />
-              ) : (
-                <MobileTripsView
-                  travelers={travelers}
-                  hiddenTravelerIds={hiddenTravelerIds}
-                  onEditTrip={(ids, trip) => setTripView({ travelerIds: ids, trip })}
-                  onAddTraveler={handleAddTraveler}
-                  onAddTrip={() => handleOpenAddTrip(travelers[0]?.id ?? "")}
-                />
-              )}
+              <MobileTimelineView
+                travelers={travelers}
+                hiddenTravelerIds={hiddenTravelerIds}
+                onEditTrip={(ids, trip) => setTripView({ travelerIds: ids, trip })}
+                onAddTraveler={handleAddTraveler}
+              />
             </Box>
 
-            {/* ── Desktop layout (sm+) — unchanged ──────────────────────── */}
+            {/* ── Desktop layout (sm+) ─────────────────────────────────────── */}
             <Box
               sx={{
                 display: { xs: "none", sm: "flex" },
@@ -416,24 +403,14 @@ export function CalculatorPage() {
                 overflow: "hidden",
               }}
             >
-              {view === "timeline" ? (
-                <TimelineView
-                  travelers={travelers}
-                  onAddTrip={handleOpenAddTrip}
-                  onEditTrip={handleOpenEditTrip}
-                  onDeleteTraveler={handleDeleteTraveler}
-                  onAddTraveler={handleAddTraveler}
-                  onEdit={handleTravelerEdit}
-                />
-              ) : (
-                <CardsView
-                  travelers={travelers}
-                  onAddTrip={handleOpenAddTrip}
-                  onEditTrip={handleOpenEditTrip}
-                  onDeleteTraveler={handleDeleteTraveler}
-                  onEdit={handleTravelerEdit}
-                />
-              )}
+              <TimelineView
+                travelers={travelers}
+                onAddTrip={handleOpenAddTrip}
+                onEditTrip={handleOpenEditTrip}
+                onDeleteTraveler={handleDeleteTraveler}
+                onAddTraveler={handleAddTraveler}
+                onEdit={handleTravelerEdit}
+              />
             </Box>
           </Box>
         )}
@@ -588,9 +565,26 @@ export function CalculatorPage() {
         open={utilityDrawerOpen}
         onClose={() => setUtilityDrawerOpen(false)}
         onShare={() => setShareFrameOpen(true)}
-        onClearAll={handleClearAllTrips}
+        onClearAll={() => setClearAllConfirmOpen(true)}
         travelerCount={travelers.length}
       />
+
+      {/* Clear all confirmation — modal on desktop, slide-up drawer on mobile */}
+      {isMobile ? (
+        <ClearAllDrawer
+          open={clearAllConfirmOpen}
+          onClose={() => setClearAllConfirmOpen(false)}
+          onConfirm={handleClearAllTrips}
+          travelerCount={travelers.length}
+        />
+      ) : (
+        <ClearAllModal
+          open={clearAllConfirmOpen}
+          onClose={() => setClearAllConfirmOpen(false)}
+          onConfirm={handleClearAllTrips}
+          travelerCount={travelers.length}
+        />
+      )}
 
       {/* FAB — mobile only, fixed above safe area. With no travelers yet it
           adds a traveler; otherwise it adds a trip. */}

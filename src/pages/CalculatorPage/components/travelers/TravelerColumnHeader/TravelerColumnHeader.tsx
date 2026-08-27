@@ -27,15 +27,6 @@ interface TravelerColumnHeaderProps {
    * this once (via resolveDisplayRegion) so every consumer of the traveler
    * agrees on which destination is showing. */
   region: VisaRegion;
-  /**
-   * When true the header uses a two-row layout:
-   *   Row A -- traveler name (flex:1) + delete button (always opposite the name)
-   *   Row B -- status chips
-   *
-   * This flag comes from CardsView and is the same for every column, so the
-   * transition always fires simultaneously across all headers.
-   */
-  compact?: boolean;
   onDelete: () => void;
   /** Called when the user saves changes from the edit modal. */
   onEdit: (
@@ -62,7 +53,6 @@ function countryFlag(code: string): string {
 export function TravelerColumnHeader({
   traveler,
   region,
-  compact = false,
   onDelete,
   onEdit,
   sx = {},
@@ -215,11 +205,7 @@ export function TravelerColumnHeader({
           {traveler.name}
         </Typography>
 
-        {/*
-         * Normal mode: badges between name and action buttons on the same row.
-         * Compact mode: badges are rendered separately below.
-         */}
-        {!compact && badgesRow}
+        {badgesRow}
 
         {menuButton}
       </Box>
@@ -271,128 +257,66 @@ export function TravelerColumnHeader({
         </MenuItem>
       </Menu>
 
-      {/*
-       * ── Badges row (compact mode only, Row B) ─────────────────────────────
-       */}
-      {compact && badgesRow && (
-        <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          {badgesRow}
-        </Box>
-      )}
-
       {/* ── Allowance tracker or disclaimer ────────────────────────────────── */}
       {showTracker ? (
         <>
-          {compact ? (
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-              <MobileAwareTooltip
-                title={region === VisaRegion.Schengen ? <SchengenTooltipContent /> : status.note}
-                placement="bottom"
-                arrow
-                enterDelay={300}
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      fontFamily: tokens.fontBody,
-                      fontSize: "0.72rem",
-                      fontWeight: 500,
-                      bgcolor: tokens.navy,
-                      "& .MuiTooltip-arrow": { color: tokens.navy },
-                      maxWidth: 320,
-                    },
-                  },
-                }}
-              >
-                <Typography
-                  component="span"
-                  sx={{
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              gap: "6px",
+            }}
+          >
+            <MobileAwareTooltip
+              title={region === VisaRegion.Schengen ? <SchengenTooltipContent /> : status.note}
+              placement="bottom"
+              arrow
+              enterDelay={300}
+              componentsProps={{
+                tooltip: {
+                  sx: {
                     fontFamily: tokens.fontBody,
-                    fontSize: "0.62rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: tokens.textGhost,
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "3px",
-                    cursor: "default",
-                  }}
-                >
-                  {status.regionName}
-                  <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6 }} />
-                </Typography>
-              </MobileAwareTooltip>
+                    fontSize: "0.72rem",
+                    fontWeight: 500,
+                    bgcolor: tokens.navy,
+                    "& .MuiTooltip-arrow": { color: tokens.navy },
+                    maxWidth: 320,
+                  },
+                },
+              }}
+            >
               <Typography
+                component="span"
                 sx={{
                   fontFamily: tokens.fontBody,
                   fontSize: "0.62rem",
-                  fontWeight: 500,
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
                   color: tokens.textGhost,
-                  lineHeight: 1.35,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "3px",
+                  cursor: "default",
                 }}
               >
-                {status.summaryLine}
+                {status.regionName}
+                <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6 }} />
               </Typography>
-            </Box>
-          ) : (
-            <Box
+            </MobileAwareTooltip>
+            <Typography
               sx={{
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                gap: "6px",
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 600,
+                color: tokens.textSoft,
+                whiteSpace: "nowrap",
               }}
             >
-              <MobileAwareTooltip
-                title={region === VisaRegion.Schengen ? <SchengenTooltipContent /> : status.note}
-                placement="bottom"
-                arrow
-                enterDelay={300}
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      fontFamily: tokens.fontBody,
-                      fontSize: "0.72rem",
-                      fontWeight: 500,
-                      bgcolor: tokens.navy,
-                      "& .MuiTooltip-arrow": { color: tokens.navy },
-                      maxWidth: 320,
-                    },
-                  },
-                }}
-              >
-                <Typography
-                  component="span"
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.62rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: tokens.textGhost,
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "3px",
-                    cursor: "default",
-                  }}
-                >
-                  {status.regionName}
-                  <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6 }} />
-                </Typography>
-              </MobileAwareTooltip>
-              <Typography
-                sx={{
-                  fontFamily: tokens.fontBody,
-                  fontSize: "0.68rem",
-                  fontWeight: 600,
-                  color: tokens.textSoft,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {status.summaryLine}
-              </Typography>
-            </Box>
-          )}
+              {status.summaryLine}
+            </Typography>
+          </Box>
 
           <DestinationSlider fillPct={status.fillPct} variant={status.variant} size="sm" />
         </>
