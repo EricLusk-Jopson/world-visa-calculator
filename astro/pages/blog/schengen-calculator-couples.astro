@@ -47,7 +47,6 @@ import LandingNav from "../../components/LandingNav.astro";
 
     <div class="article__body">
       <p>
-        The idea for EuroVisaCalculator originated from this exact question.
         Between 2024 and 2026, my wife and I spent 20 months traveling
         abroad, mostly around Europe. Throughout our travels we would
         occasionally be forced to cross borders on different dates. Between
@@ -74,7 +73,7 @@ import LandingNav from "../../components/LandingNav.astro";
       <h2>Why one traveler at a time doesn't work for couples</h2>
 
       <p>
-        The 90/180 rule tracks each person independently. In the eyes of the
+        The Schengen Area's 90/180 rule tracks each person independently. In the eyes of the
         border authority, your travel partner's entries, exits, and
         remaining allowance have nothing to do with yours. If you left the
         Schengen Area last week and your partner is still there, your
@@ -85,8 +84,8 @@ import LandingNav from "../../components/LandingNav.astro";
       <p>
         That's obvious written out. It's much less obvious mid-trip, when
         you're trying to work out whether you can both be somewhere on the
-        same dates months from now, and your calculator only has room for
-        one name.
+        same dates months from now, especially if your calculator has room for
+        only one name.
       </p>
 
       <h3>Different entry and exit dates</h3>
@@ -106,25 +105,21 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <blockquote>
         <p>
-          <strong>From our trip:</strong> I left for a work trip ten days
-          before my wife. We both knew our numbers wouldn't match anymore,
-          and then we simply forgot about it, the way small discrepancies
-          get lost in the routine of long-term travel. Months later, the gap
-          had grown enough that we were close to overstaying in Ljubljana.
-          We ended up booking a surprise two-week trip to Turkey just to
-          reset the clock in time. Rearranging flights on short notice,
-          mid-trip, is exactly the kind of stress a tool like this is
-          supposed to prevent, and it's the moment that convinced me to
-          actually build one.
+          <strong>From our trip:</strong> To accommodate a work trip, 
+          I left for home ten days before my wife. 
+          We both knew our numbers wouldn't match anymore, 
+          but over time we simply forgot about it. Months later, 
+          we ended up booking a sudden two-week trip to Turkey to
+          avoid her illegally overstaying in Slovenia.
         </p>
       </blockquote>
 
       <blockquote>
         <p>
-          <strong>From our trip:</strong> A medical appointment got
-          rescheduled and my wife ended up entering Schengen several days
-          ahead of me. It was a small difference, but it meant her allowance
-          started counting down before mine did, and we had to remember to
+          <strong>From our trip:</strong> During a vist back home, a medical appointment got
+          rescheduled and I ended up entering returning to Europe several days
+          ahead of my wife. It was a small difference, but it meant my allowance
+          started counting down before hers did, and we had to remember to
           plan around that offset for the rest of the trip.
         </p>
       </blockquote>
@@ -143,7 +138,7 @@ import LandingNav from "../../components/LandingNav.astro";
           <strong>From our trip:</strong> The most minor version of this
           happened when I drove alone across a border to return a rental
           car. A day trip, nothing more, but it was still a day where our
-          two Schengen clocks moved differently.
+          two Schengen diverged.
         </p>
       </blockquote>
 
@@ -160,24 +155,20 @@ import LandingNav from "../../components/LandingNav.astro";
       <blockquote>
         <p>
           <strong>From our trip:</strong> A friend invited us to a
-          housewarming in Reykjavik in September. Simple enough, except by
-          then our travel dates had drifted apart for months. Working out
+          housewarming in Reykjavik in September. Simple enough, but working out
           whether we could both make it meant checking two separate rolling
-          windows against one proposed date, not one.
+          windows against one proposed trip.
         </p>
       </blockquote>
 
       <blockquote>
         <p>
           <strong>From our trip:</strong> The bigger version of this came 14
-          months into our trip, when our families invited us to spend
+          months into our trip, when family invited us to spend
           Christmas together in the Azores. Suddenly it wasn't just our two
-          histories that mattered. My parents' Schengen days, my wife's
-          parents' Schengen days, and our own all had to line up on the same
-          window. We needed an entry date that worked for four different
-          travel histories at once, and left everyone enough overlap to make
-          the trip worthwhile. That's the moment the problem stopped being a
-          couples problem and became a group problem.
+          histories that mattered. We needed an entry date that worked for four different
+          travel histories at once, with enough overlap to make
+          the trip worthwhile.
         </p>
       </blockquote>
 
@@ -185,31 +176,27 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         I originally built a spreadsheet to solve this for us. The current
-        application grew out of that spreadsheet, built around one idea from
-        the start: a trip usually involves more than one person, and a
-        Schengen tracker should be able to say so.
+        application grew out of that spreadsheet, designed around the idea 
+        that a trip usually involves more than one person.
+        Unlike some other apps, our multi-traveler support isn't a workaround
+        bolted onto a single-traveler tool. It's the whole point of the
+        site.
       </p>
 
       <p>
-        That's the whole premise behind <a href="/app">EuroVisaCalculator</a>.
-        Each traveler is added separately, with their own trips and their
+        In <a href="/app">EuroVisaCalculator</a>, each traveler is 
+        added separately, with their own trips and their
         own entry and exit dates. Every allowance is calculated
         independently, but all of them are displayed, accessed, and edited
         from the same screen, for free, with no account required.
       </p>
 
       <p>
-        Since there's no account, your data lives in the URL itself, not in
+        Since there's no account, itineraries live in the URL itself, not in
         a database. Copy the link, or use the Share menu, and everyone
-        you're traveling with is looking at the exact same numbers. Saving
+        you're traveling with is looking at the exact same information. Saving
         an itinerary is as simple as bookmarking that link or pasting it
         into your notes.
-      </p>
-
-      <p>
-        Unlike other apps, our multi-traveler support isn't a workaround
-        bolted onto a single-traveler tool. It's the whole point of the
-        site.
       </p>
 
       <h2>Who this solution supports</h2>
@@ -224,8 +211,8 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        This app is useful for anyone visiting Europe for a few months at a
-        time without applying for a visa, and for checking entry
+        This app is useful for anyone hoping to visit Europe for a few months 
+        or more, without applying for a visa, and for checking entry
         requirements across different passport and destination combinations.
         It works equally well for individuals and groups: friends
         backpacking together, digital nomads who've just met and want to
@@ -235,13 +222,13 @@ import LandingNav from "../../components/LandingNav.astro";
       </p>
 
       <p>
-        We also support most passports. Unlike many free, official Schengen
+        We also support most passports. Unlike other free or official Schengen
         calculators, we flag when a passport is subject to additional entry
         requirements, visas, or restricted duration limits. We're working
         toward covering every passport on earth and every destination in
         Europe. At the time of writing, we have up-to-date entry information
-        for Schengen, the UK, Ireland, and Türkiye, covering the great
-        majority of passports in active use today.
+        for Schengen, the UK, Ireland, and Türkiye, and cover the
+        majority of passports in active use worldwide.
       </p>
 
       <h2>Frequently asked questions</h2>
@@ -250,15 +237,16 @@ import LandingNav from "../../components/LandingNav.astro";
       <p>
         No. EuroVisaCalculator doesn't use accounts. Everyone's trips are
         encoded into a single shareable link. Whoever holds the link can
-        view and edit the same data, on any device.
+        view and edit the same data, on any device. Modifications to an itinerary
+        change the link, so a work in progress needs to be saved after new changes.
       </p>
 
       <h3>What if we already have months of separate travel history before we start using the tool?</h3>
       <p>
-        Add each past trip for each traveler as you remember it. The
+        Add each past trip for each traveler as you remember it. For Schengen, the
         calculator only needs accurate entry and exit dates within the
         current 180-day window to give you a correct answer, so it's worth
-        going back at least six months.
+        going back about six months.
       </p>
 
       <h3>Can I track more than two people, like a family or a group of friends?</h3>
@@ -272,7 +260,7 @@ import LandingNav from "../../components/LandingNav.astro";
       <p>
         We currently support the Schengen Area, the UK, Ireland, and
         Türkiye, each with its own entry rules, and we're expanding
-        destination coverage over time.
+        destination coverage over time to include all of Europe and its neighbours.
       </p>
 
       <h3>What happens if we lose the link?</h3>
@@ -280,7 +268,8 @@ import LandingNav from "../../components/LandingNav.astro";
         The calculator also keeps a local backup in your browser, so a
         refresh won't erase your data. For safety, we'd still recommend
         bookmarking the link or saving it somewhere you can find it later,
-        since the local backup is tied to that one browser.
+        since the local backup is tied to that one browser/device and can be 
+        erased by clearing cookies or recent browser history.
       </p>
 
       <hr />
