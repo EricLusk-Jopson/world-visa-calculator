@@ -205,7 +205,7 @@ export function CalculatorPage() {
     (travelerIds: string[], trip: Trip) => {
       if (modal.mode === "add") {
         trackEvent("trip_added", {
-          traveler_count: travelers.length,
+          traveler_count: travelerIds.length,
           region: VISA_REGION_LABELS[trip.region],
         });
       } else {
@@ -261,7 +261,7 @@ export function CalculatorPage() {
       );
       setModal(CLOSED_MODAL);
     },
-    [modal.trip, modal.travelerIds, modal.mode, travelers.length],
+    [modal.trip, modal.travelerIds, modal.mode],
   );
 
   /** Deletes the trip from every traveler in modal.travelerIds */
