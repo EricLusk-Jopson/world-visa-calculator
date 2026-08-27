@@ -30,6 +30,18 @@ import LandingNav from "../../components/LandingNav.astro";
       </h1>
 
       <p class="article__meta">April 7, 2026 · 5 min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you've run the same
+        travel dates through more than one Schengen calculator and gotten
+        different answers, and you want to know which one to trust and why
+        they disagree.
+        <br/>
+        <br/>
+        <strong>It's probably not necessary if:</strong> you've only used
+        one calculator and have no reason to doubt the result, or you're
+        checking a single short trip well under 90 days.
+      </p>
     </header>
 
     <div class="article__body">
@@ -82,6 +94,15 @@ import LandingNav from "../../components/LandingNav.astro";
         <a href="/app">EuroVisaCalculator</a> comes in. It follows the same
         methodology as the EU calculator, and you can run your dates through
         both to verify results. If they ever disagree, we want to know.
+      </p>
+
+      <p>
+        Traveling with a partner adds another wrinkle: the official tool only
+        tracks one person at a time.{" "}
+        <a href="/blog/schengen-calculator-couples"
+          >Here's how to track two different sets of entry and exit dates
+          together</a
+        >, without cross-referencing two separate calculators by hand.
       </p>
 
       <p>
@@ -320,7 +341,23 @@ import LandingNav from "../../components/LandingNav.astro";
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 0.82rem;
     color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+  .article__audience {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
     margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
   }
 
   .article__body {

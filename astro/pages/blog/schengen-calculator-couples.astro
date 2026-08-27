@@ -1,0 +1,438 @@
+---
+/**
+ * Blog post: How to Track Schengen Days When You and Your Partner Have Different Dates
+ * URL: /blog/schengen-calculator-couples
+ *
+ * Static Astro page, rendered to plain HTML at build time.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
+---
+
+<BaseLayout
+  title="How to Track Schengen Days When You and Your Partner Have Different Travel Dates"
+  description="Most Schengen calculators assume one traveler. Here's how to track two people with different entry and exit dates, and why it matters more than you think."
+  canonicalUrl="https://eurovisacalculator.com/blog/schengen-calculator-couples"
+>
+  <LandingNav />
+
+  <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
+    <header class="article__header">
+      <p class="article__tag">Blog</p>
+
+      <h1 class="article__title">
+        How to Track Schengen Days When You and Your Partner Have Different Dates of Travel
+      </h1>
+
+      <p class="article__meta">August 26, 2026 · 8 min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you're a couple, family,
+        or group of travelers with different travel histories, entry and
+        exit dates, or passports, and you want to coordinate everyone's
+        Schengen allowance in one place. That includes frequent and
+        long-term travelers juggling more than one set of dates at once.
+        <br/>
+        <br/>
+        <strong>It's probably not necessary if:</strong> everyone in your
+        group enters and exits together, every time, and holds the same
+        passport. In that case, one shared itinerary is enough, and any
+        single-traveler Schengen calculator will do the job.
+      </p>
+    </header>
+
+    <div class="article__body">
+      <p>
+        Between 2024 and 2026, my wife and I spent 20 months traveling
+        abroad, mostly around Europe. Throughout our travels we would
+        occasionally be forced to cross borders on different dates. Between
+        work trips, family visits, medical appointments and the
+        requirements of residency and insurance policies, we sometimes
+        required slightly different itineraries. It wasn't complicated,
+        just two adults living normal, slightly staggered lives abroad.
+        Long-term travel simply comes with a few quirks like that.
+      </p>
+
+      <p>
+        To manage our overlapping entries and exits, we needed a tool that
+        could track our different histories within the Schengen Area as
+        part of the same itinerary.
+      </p>
+
+      <p>
+        We found many free and accurate Schengen calculators online, but
+        each one failed when we tried to use it for both of us together. It
+        quickly became clear that none of the existing tools were designed
+        to track multiple travelers.
+      </p>
+
+      <h2>Why one traveler at a time doesn't work for couples</h2>
+
+      <p>
+        The Schengen Area's 90/180 rule tracks each person independently. In the eyes of the
+        border authority, your travel partner's entries, exits, and
+        remaining allowance have nothing to do with yours. If you left the
+        Schengen Area last week and your partner is still there, your
+        allowances are now misaligned, and any future travel plans need to
+        account for that gap.
+      </p>
+
+      <p>
+        That's obvious written out. It's much less obvious mid-trip, when
+        you're trying to work out whether you can both be somewhere on the
+        same dates months from now, especially if your calculator has room for
+        only one name.
+      </p>
+
+      <h3>Different entry and exit dates</h3>
+
+      <p>
+        One partner leaves for a work trip, a family visit, or a flight home
+        several days before the other. From that point on, their two rolling
+        windows are no longer in sync. The one who exited earlier has more
+        days left when they return. The one who stayed has fewer.
+      </p>
+
+      <p>
+        The same is true in reverse, when a partner arrives before the
+        other. They start using their allowance while their partner's
+        allowance sits untouched.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>From our trip:</strong> To accommodate a work trip, 
+          I left for home ten days before my wife. 
+          We both knew our numbers wouldn't match anymore, 
+          but over time we simply forgot about it. Months later, 
+          we ended up booking a sudden two-week trip to Turkey to
+          avoid her illegally overstaying in Slovenia.
+        </p>
+      </blockquote>
+
+      <blockquote>
+        <p>
+          <strong>From our trip:</strong> During a visit back home, a medical appointment got
+          rescheduled and I ended up returning to Europe several days
+          ahead of my wife. It was a small difference, but it meant my allowances
+          started counting down before hers did, and we had to remember to
+          plan around that offset for the rest of the trip.
+        </p>
+      </blockquote>
+
+      <h3>Side trips outside Schengen</h3>
+
+      <p>
+        One of you steps outside Schengen for a few days while the other
+        stays put. The traveler who leaves has their clock pause. The one
+        who stays keeps using days. It doesn't take a major trip to trigger
+        this.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>From our trip:</strong> The most minor version of this
+          happened when I drove alone across a border to return a rental
+          car. A single night's travel, nothing more, but it was still a day where our
+          two Schengen allowances diverged.
+        </p>
+      </blockquote>
+
+      <h3>Planning a reunion</h3>
+
+      <p>
+        You want to know whether everyone can be in the same place at the
+        same time, months from now. If travel dates have differed at all in
+        the last 180 days, that's not one calculation, it's several, checked
+        against each other. Most tools don't make that comparison possible
+        without a lot of manual cross-referencing.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>From our trip:</strong> A friend invited us to a
+          housewarming in Reykjavik in September. Simple enough, but working out
+          whether we could both make it meant checking two separate rolling
+          windows against one proposed trip.
+        </p>
+      </blockquote>
+
+      <blockquote>
+        <p>
+          <strong>From our trip:</strong> The bigger version of this came 14
+          months into our trip, when family invited us to spend
+          Christmas together in the Azores. Suddenly it wasn't just our two
+          histories that mattered. We needed an entry date that worked for four different
+          travel histories at once, with enough overlap to make
+          the trip worthwhile.
+        </p>
+      </blockquote>
+
+      <h2>A practical solution</h2>
+
+      <p>
+        I originally built a spreadsheet to solve this for us. The current
+        application grew out of that spreadsheet, designed around the idea 
+        that a trip usually involves more than one person.
+        Unlike some other apps, our multi-traveler support isn't a workaround
+        bolted onto a single-traveler tool. It's the whole point of the
+        site.
+      </p>
+
+      <p>
+        In <a href="/app">EuroVisaCalculator</a>, each traveler is 
+        added separately, with their own trips and their
+        own entry and exit dates. Every allowance is calculated
+        independently, but all of them are displayed, accessed, and edited
+        from the same screen, for free, with no account required.
+      </p>
+
+      <p>
+        Since there's no account, itineraries live in the URL itself, not in
+        a database. Copy the link, or use the Share menu, and everyone
+        you're traveling with is looking at the exact same information. Saving
+        an itinerary is as simple as bookmarking that link or pasting it
+        into your notes.
+      </p>
+
+      <h2>Who this solution supports</h2>
+
+      <p>
+        The primary goal of <a href="/app">EuroVisaCalculator</a> is to
+        support any group of long-term or frequent travelers visiting
+        Europe. Our blog posts focus heavily on the Schengen Area because it
+        covers such a large share of the continent, but other European
+        countries have their own visitation rules, and we support those
+        too.
+      </p>
+
+      <p>
+        This app is useful for anyone hoping to visit Europe for a few months 
+        or more, without applying for a visa, and for checking entry
+        requirements across different passport and destination combinations.
+        It works equally well for individuals and groups: friends
+        backpacking together, digital nomads who've just met and want to
+        travel together, couples on a long-term trip, multi-generational
+        families like ours in the Azores, or any group arriving from
+        different starting points.
+      </p>
+
+      <p>
+        We also support most passports. Unlike other free or official Schengen
+        calculators, we flag when a passport is subject to additional entry
+        requirements, visas, or restricted duration limits. We're working
+        toward covering every passport on earth and every destination in
+        Europe. At the time of writing, we have up-to-date entry information
+        for Schengen, the UK, Ireland, and Türkiye, and cover the
+        majority of passports in active use worldwide.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+
+      <h3>Do we need to be using the same device, or have accounts, to see each other's data?</h3>
+      <p>
+        No. EuroVisaCalculator doesn't use accounts. Everyone's trips are
+        encoded into a single shareable link. Whoever holds the link can
+        view and edit the data, on any device. Modifications to an itinerary
+        change the link, so a work in progress link needs to be saved after new changes.
+      </p>
+
+      <h3>What if we already have months of separate travel history before we start using the tool?</h3>
+      <p>
+        Add each past trip for each traveler as you remember it. For Schengen, the
+        calculator only needs accurate entry and exit dates within the
+        current 180-day window to give you a correct answer, so it's worth
+        going back about six months.
+      </p>
+
+      <h3>Can I track more than two people, like a family or a group of friends?</h3>
+      <p>
+        Yes. There's no fixed limit on the number of travelers you can add.
+        The Azores example above involved four separate travel histories
+        tracked in the same itinerary.
+      </p>
+
+      <h3>Does this work for countries outside the Schengen Area?</h3>
+      <p>
+        We currently support the Schengen Area, the UK, Ireland, and
+        Türkiye, each with its own entry rules, and we're expanding
+        destination coverage over time to include all of Europe and its neighbours.
+      </p>
+
+      <h3>What happens if we lose the link?</h3>
+      <p>
+        The calculator also keeps a local backup in your browser, so a
+        refresh won't erase your data. For safety, we'd still recommend
+        bookmarking the link or saving it somewhere you can find it later,
+        since the local backup is tied to that one browser/device and can be 
+        erased by clearing cookies or recent browser history.
+      </p>
+
+      <hr />
+
+      <p>
+        If you're not sure how the 90/180 rule works in the first place,{" "}
+        <a href="/blog/the-schengen-90-180-rolling-window"
+          >our full explainer on the rolling window</a
+        > covers it without the myths. And if your dates differ by only a day
+        or two, it's worth checking{" "}
+        <a href="/blog/does-your-entry-day-count-as-a-schengen-day"
+          >how entry and exit days get counted</a
+        >, since that detail changes the math more than people expect.
+      </p>
+    </div>
+
+    <div class="article__back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    min-height: 100vh;
+    background: #f7f5f1;
+    padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .article__header {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .article__tag {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 14px;
+  }
+
+  .article__title {
+    font-family: "Fraunces", serif;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .article__meta {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.82rem;
+    color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+  .article__audience {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
+  }
+
+  .article__body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article__body p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+  }
+
+  .article__body h2 {
+    font-family: "Fraunces", serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article__body h3 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0c1e3c;
+    margin: 1.75rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article__body hr {
+    border: none;
+    border-top: 1px solid #e0dbd3;
+    margin: 2.5rem 0;
+  }
+
+  .article__body a {
+    color: #00b96b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s;
+  }
+
+  .article__body a:hover {
+    border-bottom-color: #00b96b;
+  }
+
+  .article__body blockquote {
+    margin: 1.5rem 0;
+    padding: 14px 18px;
+    background: #f0f4f8;
+    border-left: 3px solid #b8c8d8;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .article__body blockquote p {
+    margin: 0;
+    font-size: 0.93rem;
+    color: #3d4f65;
+    line-height: 1.7;
+  }
+
+  .article__back {
+    max-width: 680px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #e0dbd3;
+  }
+
+  .article__back-link {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #5a6a82;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .article__back-link:hover {
+    color: #0c1e3c;
+  }
+</style>
