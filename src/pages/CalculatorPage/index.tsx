@@ -308,6 +308,10 @@ export function CalculatorPage() {
     setTravelers((prev) => prev.map((t) => ({ ...t, trips: [] })));
   }, []);
 
+  const handleClearAllTravelers = useCallback(() => {
+    setTravelers([]);
+  }, []);
+
   /** Deletes a trip directly (used from TripViewSlider, no modal state required). */
   const handleDeleteTripDirect = useCallback(
     (travelerIds: string[], trip: Trip) => {
@@ -574,14 +578,16 @@ export function CalculatorPage() {
         <ClearAllDrawer
           open={clearAllConfirmOpen}
           onClose={() => setClearAllConfirmOpen(false)}
-          onConfirm={handleClearAllTrips}
+          onClearTrips={handleClearAllTrips}
+          onClearTravelers={handleClearAllTravelers}
           travelerCount={travelers.length}
         />
       ) : (
         <ClearAllModal
           open={clearAllConfirmOpen}
           onClose={() => setClearAllConfirmOpen(false)}
-          onConfirm={handleClearAllTrips}
+          onClearTrips={handleClearAllTrips}
+          onClearTravelers={handleClearAllTravelers}
           travelerCount={travelers.length}
         />
       )}
