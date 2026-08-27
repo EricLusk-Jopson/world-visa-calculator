@@ -5,6 +5,7 @@ import { keyframes } from "@mui/system";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AddIcon from "@mui/icons-material/Add";
 import type { Traveler, Trip, ShareableState } from "@/types";
+import { VISA_REGION_LABELS } from "@/types";
 import { tokens } from "@/styles/theme";
 import { useUrlSync } from "@/features/sharing";
 import {
@@ -123,7 +124,10 @@ export function CalculatorPage() {
 
   const handleTravelerSave = useCallback((name: string, passportCode: string | null) => {
     setTravelers((prev) => {
-      trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+      trackEvent("traveler_added", {
+        total_travelers: prev.length + 1,
+        passport_code: passportCode ?? "none",
+      });
       return [...prev, makeTraveler(name, passportCode)];
     });
     setModal(CLOSED_MODAL);
@@ -133,7 +137,10 @@ export function CalculatorPage() {
   const handleTravelerSaveFromTrip = useCallback(
     (name: string, passportCode: string | null) => {
       setTravelers((prev) => {
-        trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+        trackEvent("traveler_added", {
+          total_travelers: prev.length + 1,
+          passport_code: passportCode ?? "none",
+        });
         return [...prev, makeTraveler(name, passportCode)];
       });
       setAddTravelerFromTripOpen(false);
@@ -143,6 +150,7 @@ export function CalculatorPage() {
 
   const handleTravelerEdit = useCallback(
     (travelerId: string, name: string, passportCode: string | null) => {
+      trackEvent("traveler_updated", { passport_code: passportCode ?? "none" });
       setTravelers((prev) =>
         prev.map((t) => (t.id === travelerId ? { ...t, name, passportCode } : t)),
       );
@@ -199,11 +207,11 @@ export function CalculatorPage() {
     (travelerIds: string[], trip: Trip) => {
       if (modal.mode === "add") {
         trackEvent("trip_added", {
-          traveler_count: travelers.length,
-          is_ongoing: !trip.exitDate,
+          traveler_count: travelerIds.length,
+          region: VISA_REGION_LABELS[trip.region],
         });
       } else {
-        trackEvent("trip_edited");
+        trackEvent("trip_edited", { region: VISA_REGION_LABELS[trip.region] });
       }
       setTravelers((prev) =>
         prev.map((t) => {
@@ -255,7 +263,7 @@ export function CalculatorPage() {
       );
       setModal(CLOSED_MODAL);
     },
-    [modal.trip, modal.travelerIds, modal.mode, travelers.length],
+    [modal.trip, modal.travelerIds, modal.mode],
   );
 
   /** Deletes the trip from every traveler in modal.travelerIds */
