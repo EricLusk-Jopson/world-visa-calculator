@@ -5,7 +5,7 @@ import { keyframes } from "@mui/system";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AddIcon from "@mui/icons-material/Add";
 import type { Traveler, Trip, ShareableState } from "@/types";
-import { VisaRegion } from "@/types";
+import { VisaRegion, VISA_REGION_LABELS } from "@/types";
 import { tokens } from "@/styles/theme";
 import { useUrlSync } from "@/features/sharing";
 import {
@@ -26,6 +26,7 @@ import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { AddTravelerDrawer } from "./components/mobile/AddTravelerDrawer";
 import { TripFormSlider } from "@/features/trips/components";
 import { UtilityDrawer } from "./components/mobile/UtilityDrawer";
+import { ShareFrame } from "./components/mobile/ShareFrame";
 
 const MIN_LOAD_MS = 650;
 const FADE_MS = 300;
@@ -72,6 +73,7 @@ export function CalculatorPage() {
     trip: Trip;
   } | null>(null);
   const [utilityDrawerOpen, setUtilityDrawerOpen] = useState(false);
+  const [shareFrameOpen, setShareFrameOpen] = useState(false);
   const [addTravelerFromTripOpen, setAddTravelerFromTripOpen] = useState(false);
   const [travelerViewId, setTravelerViewId] = useState<string | null>(null);
   const [editTravelerId, setEditTravelerId] = useState<string | null>(null);
@@ -108,7 +110,7 @@ export function CalculatorPage() {
     [travelers],
   );
 
-  const { shareableUrl, copyShareableUrl } = useUrlSync({
+  const { shareableUrl, nosaveShareableUrl, copyShareableUrl } = useUrlSync({
     state: shareableState,
     onHydrate: (s) => setTravelers(s.travelers),
     onHydrated: () => setHydrationDone(true),
@@ -122,7 +124,10 @@ export function CalculatorPage() {
 
   const handleTravelerSave = useCallback((name: string, passportCode: string | null) => {
     setTravelers((prev) => {
-      trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+      trackEvent("traveler_added", {
+        total_travelers: prev.length + 1,
+        passport_code: passportCode ?? "none",
+      });
       return [...prev, makeTraveler(name, passportCode)];
     });
     setModal(CLOSED_MODAL);
@@ -132,7 +137,10 @@ export function CalculatorPage() {
   const handleTravelerSaveFromTrip = useCallback(
     (name: string, passportCode: string | null) => {
       setTravelers((prev) => {
-        trackEvent("traveler_added", { total_travelers: prev.length + 1 });
+        trackEvent("traveler_added", {
+          total_travelers: prev.length + 1,
+          passport_code: passportCode ?? "none",
+        });
         return [...prev, makeTraveler(name, passportCode)];
       });
       setAddTravelerFromTripOpen(false);
@@ -147,6 +155,7 @@ export function CalculatorPage() {
       passportCode: string | null,
       targetRegion?: VisaRegion | null,
     ) => {
+      trackEvent("traveler_updated", { passport_code: passportCode ?? "none" });
       setTravelers((prev) =>
         prev.map((t) =>
           t.id === travelerId
@@ -212,11 +221,11 @@ export function CalculatorPage() {
     (travelerIds: string[], trip: Trip) => {
       if (modal.mode === "add") {
         trackEvent("trip_added", {
-          traveler_count: travelers.length,
-          is_ongoing: !trip.exitDate,
+          traveler_count: travelerIds.length,
+          region: VISA_REGION_LABELS[trip.region],
         });
       } else {
-        trackEvent("trip_edited");
+        trackEvent("trip_edited", { region: VISA_REGION_LABELS[trip.region] });
       }
       setTravelers((prev) =>
         prev.map((t) => {
@@ -268,7 +277,7 @@ export function CalculatorPage() {
       );
       setModal(CLOSED_MODAL);
     },
-    [modal.trip, modal.travelerIds, modal.mode, travelers.length],
+    [modal.trip, modal.travelerIds, modal.mode],
   );
 
   /** Deletes the trip from every traveler in modal.travelerIds */
@@ -521,8 +530,19 @@ export function CalculatorPage() {
       <ShareModal
         open={shareModalOpen}
         shareableUrl={shareableUrl}
+        nosaveShareableUrl={nosaveShareableUrl}
         onCopy={copyShareableUrl}
         onClose={() => setShareModalOpen(false)}
+        travelerCount={travelers.length}
+      />
+
+      {/* Mobile share frame — full-screen, opened from the utility drawer */}
+      <ShareFrame
+        open={shareFrameOpen}
+        onClose={() => setShareFrameOpen(false)}
+        shareableUrl={shareableUrl}
+        nosaveShareableUrl={nosaveShareableUrl}
+        onCopy={copyShareableUrl}
         travelerCount={travelers.length}
       />
 
@@ -567,7 +587,7 @@ export function CalculatorPage() {
       <UtilityDrawer
         open={utilityDrawerOpen}
         onClose={() => setUtilityDrawerOpen(false)}
-        onShare={copyShareableUrl}
+        onShare={() => setShareFrameOpen(true)}
         onClearAll={handleClearAllTrips}
         travelerCount={travelers.length}
       />

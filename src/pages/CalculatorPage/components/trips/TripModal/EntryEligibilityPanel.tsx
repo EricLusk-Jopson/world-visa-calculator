@@ -13,6 +13,7 @@ import { tokens } from "@/styles/theme";
 import { VisaRegion, VISA_REGION_LABELS } from "@/types";
 import type { Traveler, RuleNote, PassportRule } from "@/types";
 import { getPassportRule } from "@/data/regions";
+import { trackEvent } from "@/utils/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -248,6 +249,7 @@ export function EntryEligibilityPanel({ travelers, travelerIds, region }: EntryE
               href={sourcePopover.note.source.directUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("source_link_clicked", { link_type: "direct", region: VISA_REGION_LABELS[region] })}
               sx={{
                 fontFamily: tokens.fontBody,
                 fontSize: "0.72rem",
@@ -263,6 +265,7 @@ export function EntryEligibilityPanel({ travelers, travelerIds, region }: EntryE
               href={sourcePopover.note.source.parentUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("source_link_clicked", { link_type: "overview", region: VISA_REGION_LABELS[region] })}
               sx={{
                 fontFamily: tokens.fontBody,
                 fontSize: "0.72rem",
