@@ -195,12 +195,14 @@ export function TravelerViewSlider({
   onDelete,
 }: TravelerViewSliderProps) {
   const [confirmDelete, setConfirmDelete] = useState(false);
-  const [expandedRegion, setExpandedRegion] = useState<VisaRegion | null>(null);
+  // Independently expandable — a Set, not a single region, so opening one
+  // card never forces the others shut (they aren't an accordion).
+  const [expandedRegions, setExpandedRegions] = useState<Set<VisaRegion>>(new Set());
 
   useEffect(() => {
     if (!open || !traveler) return;
     const candidates = rankDestinationCandidates(traveler);
-    setExpandedRegion(candidates[0]?.region ?? null);
+    setExpandedRegions(candidates[0] ? new Set([candidates[0].region]) : new Set());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [traveler?.id, open]);
 
@@ -363,9 +365,14 @@ export function TravelerViewSlider({
                     traveler={traveler}
                     region={region}
                     tier={tier}
-                    expanded={expandedRegion === region}
+                    expanded={expandedRegions.has(region)}
                     onToggle={() =>
-                      setExpandedRegion((cur) => (cur === region ? null : region))
+                      setExpandedRegions((cur) => {
+                        const next = new Set(cur);
+                        if (next.has(region)) next.delete(region);
+                        else next.add(region);
+                        return next;
+                      })
                     }
                   />
                 ))}
