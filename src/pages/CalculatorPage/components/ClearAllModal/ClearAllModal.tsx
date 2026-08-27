@@ -1,16 +1,21 @@
+import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import GroupRemoveIcon from "@mui/icons-material/GroupRemove";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import CheckIcon from "@mui/icons-material/Check";
 import { tokens } from "@/styles/theme";
 import { Button } from "@/components/ui/Button";
+import { trackEvent } from "@/utils/analytics";
 
 interface ClearAllModalProps {
   open: boolean;
   onClose: () => void;
   onClearTrips: () => void;
   onClearTravelers: () => void;
+  onCopyLink: () => Promise<void>;
   travelerCount: number;
 }
 
@@ -89,16 +94,61 @@ function ClearOption({
   );
 }
 
+function CopyLinkButton({ onCopy }: { onCopy: () => Promise<void> }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleClick() {
+    await onCopy();
+    trackEvent("link_copied", { nosave: false });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
+  }
+
+  return (
+    <Box
+      component="button"
+      onClick={handleClick}
+      sx={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "8px",
+        py: "10px",
+        border: `1px solid ${copied ? tokens.green : tokens.border}`,
+        borderRadius: "10px",
+        bgcolor: copied ? tokens.greenBg : tokens.mist,
+        color: copied ? tokens.greenText : tokens.navy,
+        fontFamily: tokens.fontBody,
+        fontSize: "0.82rem",
+        fontWeight: 600,
+        cursor: "pointer",
+        transition: "all 0.15s",
+        "&:hover": { bgcolor: copied ? tokens.greenBg : tokens.border },
+      }}
+    >
+      {copied ? (
+        <CheckIcon sx={{ fontSize: "0.95rem" }} />
+      ) : (
+        <IosShareIcon sx={{ fontSize: "0.95rem" }} />
+      )}
+      {copied ? "Link copied" : "Copy current link"}
+    </Box>
+  );
+}
+
 /**
  * Desktop confirmation modal for the "Clear All" nav action. Offers two
- * destructive options: clear every trip (travelers are kept), or clear
- * every traveler along with their trips.
+ * destructive options — clear every trip (travelers are kept), or clear
+ * every traveler along with their trips — plus a quick way to save the
+ * current itinerary as a link before either one is used.
  */
 export function ClearAllModal({
   open,
   onClose,
   onClearTrips,
   onClearTravelers,
+  onCopyLink,
   travelerCount,
 }: ClearAllModalProps) {
   function handleClearTrips() {
@@ -205,6 +255,10 @@ export function ClearAllModal({
           description="Removes every traveler along with all of their trips."
           onClick={handleClearTravelers}
         />
+
+        <Box sx={{ pt: "6px" }}>
+          <CopyLinkButton onCopy={onCopyLink} />
+        </Box>
       </Box>
 
       {/* Divider */}

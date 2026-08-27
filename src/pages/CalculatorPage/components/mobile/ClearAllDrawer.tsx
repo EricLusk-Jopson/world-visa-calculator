@@ -1,16 +1,24 @@
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import GroupRemoveIcon from "@mui/icons-material/GroupRemove";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import CheckIcon from "@mui/icons-material/Check";
 import { alpha } from "@mui/material/styles";
 import { tokens } from "@/styles/theme";
 import { BottomDrawer } from "@/components/ui/BottomDrawer";
+import { trackEvent } from "@/utils/analytics";
+
+const ICON_COLUMN_WIDTH = 20;
+const ICON_TITLE_GAP = 10;
 
 interface ClearAllDrawerProps {
   open: boolean;
   onClose: () => void;
   onClearTrips: () => void;
   onClearTravelers: () => void;
+  onCopyLink: () => Promise<void>;
   travelerCount: number;
 }
 
@@ -31,8 +39,8 @@ function ClearOptionRow({
       onClick={onClick}
       sx={{
         display: "flex",
-        alignItems: "flex-start",
-        gap: "12px",
+        flexDirection: "column",
+        gap: "3px",
         width: "100%",
         textAlign: "left",
         py: "13px",
@@ -44,10 +52,19 @@ function ClearOptionRow({
         "&:active": { bgcolor: alpha(tokens.red, 0.04) },
       }}
     >
-      <Box sx={{ color: tokens.red, display: "flex", flexShrink: 0, mt: "1px" }}>
-        {icon}
-      </Box>
-      <Box>
+      <Box sx={{ display: "flex", alignItems: "center", gap: `${ICON_TITLE_GAP}px` }}>
+        <Box
+          sx={{
+            width: ICON_COLUMN_WIDTH,
+            color: tokens.red,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+          }}
+        >
+          {icon}
+        </Box>
         <Typography
           sx={{
             fontFamily: tokens.fontBody,
@@ -58,32 +75,77 @@ function ClearOptionRow({
         >
           {title}
         </Typography>
-        <Typography
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.76rem",
-            color: tokens.textSoft,
-            lineHeight: 1.45,
-            mt: "2px",
-          }}
-        >
-          {description}
-        </Typography>
       </Box>
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.76rem",
+          color: tokens.textSoft,
+          lineHeight: 1.45,
+          pl: `${ICON_COLUMN_WIDTH + ICON_TITLE_GAP}px`,
+        }}
+      >
+        {description}
+      </Typography>
+    </Box>
+  );
+}
+
+function CopyLinkButton({ onCopy }: { onCopy: () => Promise<void> }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleClick() {
+    await onCopy();
+    trackEvent("link_copied", { nosave: false });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
+  }
+
+  return (
+    <Box
+      component="button"
+      onClick={handleClick}
+      sx={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "8px",
+        py: "11px",
+        border: `1px solid ${copied ? tokens.green : tokens.border}`,
+        borderRadius: "10px",
+        bgcolor: copied ? tokens.greenBg : tokens.mist,
+        color: copied ? tokens.greenText : tokens.navy,
+        fontFamily: tokens.fontBody,
+        fontSize: "0.85rem",
+        fontWeight: 600,
+        cursor: "pointer",
+        transition: "all 0.15s",
+        "&:active": { bgcolor: copied ? tokens.greenBg : tokens.border },
+      }}
+    >
+      {copied ? (
+        <CheckIcon sx={{ fontSize: "1rem" }} />
+      ) : (
+        <IosShareIcon sx={{ fontSize: "1rem" }} />
+      )}
+      {copied ? "Link copied" : "Copy current link"}
     </Box>
   );
 }
 
 /**
  * Mobile confirmation drawer for the "Clear data" utility action. Offers
- * two destructive options: clear every trip (travelers are kept), or clear
- * every traveler along with their trips.
+ * two destructive options — clear every trip (travelers are kept), or clear
+ * every traveler along with their trips — plus a quick way to save the
+ * current itinerary as a link before either one is used.
  */
 export function ClearAllDrawer({
   open,
   onClose,
   onClearTrips,
   onClearTravelers,
+  onCopyLink,
   travelerCount,
 }: ClearAllDrawerProps) {
   function handleClearTrips() {
@@ -110,7 +172,7 @@ export function ClearAllDrawer({
         Choose what to remove. This can't be undone.
       </Typography>
 
-      <Box sx={{ pb: "8px" }}>
+      <Box sx={{ pb: "4px" }}>
         <ClearOptionRow
           icon={<DeleteOutlineIcon sx={{ fontSize: "1.1rem" }} />}
           title="Clear all trips"
@@ -125,7 +187,11 @@ export function ClearAllDrawer({
         />
       </Box>
 
-      <Box sx={{ px: "20px", pb: "8px" }}>
+      <Box sx={{ px: "20px", pt: "16px", pb: "12px" }}>
+        <CopyLinkButton onCopy={onCopyLink} />
+      </Box>
+
+      <Box sx={{ px: "20px", pt: "12px", pb: "8px", borderTop: `1px solid ${tokens.border}` }}>
         <Box
           component="button"
           onClick={onClose}

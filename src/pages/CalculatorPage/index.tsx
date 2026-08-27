@@ -580,6 +580,7 @@ export function CalculatorPage() {
           onClose={() => setClearAllConfirmOpen(false)}
           onClearTrips={handleClearAllTrips}
           onClearTravelers={handleClearAllTravelers}
+          onCopyLink={() => copyShareableUrl()}
           travelerCount={travelers.length}
         />
       ) : (
@@ -588,6 +589,7 @@ export function CalculatorPage() {
           onClose={() => setClearAllConfirmOpen(false)}
           onClearTrips={handleClearAllTrips}
           onClearTravelers={handleClearAllTravelers}
+          onCopyLink={() => copyShareableUrl()}
           travelerCount={travelers.length}
         />
       )}
