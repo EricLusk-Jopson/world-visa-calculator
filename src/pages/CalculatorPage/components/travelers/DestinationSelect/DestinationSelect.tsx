@@ -72,8 +72,12 @@ export function DestinationSelect({
         !computeDestinationStatus(traveler, option.region, refDate).eligible
       }
       renderGroup={(params) => (
-        <Box key={params.key}>
-          <Divider sx={{ mx: "10px", my: "3px" }} />
+        // Divider is unconditional in markup — hidden above whichever group
+        // renders first via a structural CSS selector (see slotProps.paper
+        // below) rather than JS state, so it stays correct as search
+        // filtering changes which group ends up first.
+        <Box key={params.key} className="destination-group">
+          <Divider className="destination-group-divider" sx={{ mx: "10px", my: "3px" }} />
           <Typography
             sx={{
               px: "14px",
@@ -172,6 +176,10 @@ export function DestinationSelect({
               px: "12px !important",
               py: "7px !important",
               minHeight: "unset !important",
+            },
+            // No rule belongs above the very first group in the list.
+            "& .destination-group:first-of-type .destination-group-divider": {
+              display: "none",
             },
           },
         },
