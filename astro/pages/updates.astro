@@ -12,6 +12,12 @@ const roadmapCountries = [
   "Georgia", "Armenia", "Azerbaijan", "Morocco", "Algeria", "Tunisia", "Egypt",
 ];
 
+const qcPipelineNotes = [
+  "Scheduled jobs check every government source link cited in the app for breakage and content drift on a recurring basis.",
+  "Changes that look impactful (stay limits, eligibility, entry conditions) are flagged for manual review before the ruleset is updated.",
+  "Every government source link in the app will get an inline “Report an issue” form, so users can flag broken links or outdated information directly.",
+];
+
 const changelog = [
   {
     range: "August 14 – 27, 2026",
@@ -117,17 +123,33 @@ const tagLabel: Record<string, string> = {
 
       <section class="section">
         <h2 class="section__title">Roadmap</h2>
-        <p class="section__body">
-          We're currently expanding destination support to cover all of Europe
-          and its neighbouring nations. Each new destination gets its own entry
-          rules and stay-limit tracking, powered by the same per-destination
-          status engine already driving Schengen, UK, Ireland, and Türkiye.
-        </p>
+        <p class="section__body">Two workstreams are currently in progress:</p>
+
         <div class="roadmap-card">
           <p class="roadmap-card__label">In progress — full European &amp; neighbouring coverage</p>
+          <p class="roadmap-card__desc">
+            Expanding destination support to cover all of Europe and its
+            neighbouring nations. Each new destination gets its own entry
+            rules and stay-limit tracking, powered by the same per-destination
+            status engine already driving Schengen, UK, Ireland, and Türkiye.
+          </p>
           <ul class="roadmap-card__list">
             {roadmapCountries.map((country) => (
               <li>{country}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="roadmap-card">
+          <p class="roadmap-card__label">In progress — data QC &amp; error-reporting pipeline</p>
+          <p class="roadmap-card__desc">
+            Building an automated pipeline to keep passport/destination rules
+            accurate as government sources change, backed by a way for users
+            to flag problems directly:
+          </p>
+          <ul class="roadmap-card__notes">
+            {qcPipelineNotes.map((note) => (
+              <li>{note}</li>
             ))}
           </ul>
         </div>
@@ -217,6 +239,10 @@ const tagLabel: Record<string, string> = {
     padding: 24px 28px;
   }
 
+  .roadmap-card + .roadmap-card {
+    margin-top: 16px;
+  }
+
   .roadmap-card__label {
     font-family: var(--font-body);
     font-size: 0.75rem;
@@ -224,6 +250,14 @@ const tagLabel: Record<string, string> = {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-green-text);
+    margin: 0 0 12px;
+  }
+
+  .roadmap-card__desc {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-text-soft);
     margin: 0 0 16px;
   }
 
@@ -243,6 +277,18 @@ const tagLabel: Record<string, string> = {
     .roadmap-card__list {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+  }
+
+  .roadmap-card__notes {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-text);
   }
 
   /* ── Changelog ───────────────────────────────────────────────────────── */
