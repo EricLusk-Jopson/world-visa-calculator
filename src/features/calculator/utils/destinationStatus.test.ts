@@ -3,7 +3,7 @@
  * Uses a Canadian passport ("CA") — entitled in every tracked region.
  */
 
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, afterEach, vi } from "vitest";
 import {
   rankDestinationCandidates,
   determineActiveRegion,
@@ -184,6 +184,48 @@ describe("computeDestinationStatus — per_visit (UK / Ireland)", () => {
     expect(status.variant).toBe("safe");
     expect(status.secondChip).toBeNull();
     expect(status.fillPct).toBe(0);
+  });
+
+  it("treats a fully-dated trip that spans today as current, not full availability (regression)", () => {
+    // Entry and exit both on file, today falls in between — this is exactly
+    // as "there right now" as an open-ended trip with no exit date yet.
+    const trav = traveler([
+      trip("uk", VisaRegion.UnitedKingdom, iso(REF, -5), iso(REF, 20)),
+    ]);
+    const status = computeDestinationStatus(trav, VisaRegion.UnitedKingdom, REF);
+    expect(status.summaryLine).not.toMatch(/not there today/i);
+    expect(status.summaryLine).toMatch(/^Day 6 of/); // 6 days elapsed (entry..today inclusive)
+    expect(status.fillPct).toBeGreaterThan(0);
+  });
+});
+
+describe("pickActiveTrip — fully-dated current trips", () => {
+  it("classifies a trip with both dates set that spans today as 'ongoing', not 'past'", () => {
+    const trav = traveler([
+      trip("uk", VisaRegion.UnitedKingdom, iso(REF, -5), iso(REF, 20)),
+    ]);
+    const candidates = rankDestinationCandidates(trav, REF);
+    expect(candidates[0].tier).toBe("ongoing");
+    expect(determineActiveRegion(trav, REF)).toBe(VisaRegion.UnitedKingdom);
+  });
+});
+
+describe("date formatting — timezone safety (regression)", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
+  it("doesn't shift the displayed date in a timezone behind UTC", () => {
+    // A date-only ISO string must render as the SAME calendar day regardless
+    // of the runtime's timezone. Parsing it with the native `new Date(iso)`
+    // constructor reads it as UTC midnight, which then displays a day early
+    // anywhere west of UTC (e.g. the Americas) — exactly the bug reported.
+    vi.stubEnv("TZ", "America/Los_Angeles");
+    const trav = traveler([trip("uk", VisaRegion.UnitedKingdom, "2026-08-05", "2026-09-30")]);
+    const refDate = parseDate("2026-08-26");
+    const status = computeDestinationStatus(trav, VisaRegion.UnitedKingdom, refDate);
+    expect(status.summaryLine).toContain("26 Aug 2026");
+    expect(status.summaryLine).not.toContain("25 Aug 2026");
   });
 });
 

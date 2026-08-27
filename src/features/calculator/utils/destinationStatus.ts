@@ -71,6 +71,18 @@ function isTrackableRegion(region: VisaRegion): boolean {
   return getRegionDefinition(region) !== null;
 }
 
+/**
+ * True when `refDateStr` falls within the trip's span — the traveler is
+ * physically there right now. Covers both a genuinely open-ended trip (no
+ * exit date recorded yet) AND a fully-dated trip that simply happens to
+ * cover today — the latter is just as "current" and must not be mistaken
+ * for a finished (past) trip.
+ */
+function isTripCurrent(trip: Trip, refDateStr: string): boolean {
+  if (trip.entryDate > refDateStr) return false;
+  return !trip.exitDate || trip.exitDate >= refDateStr;
+}
+
 // ─── Active-trip tiering ──────────────────────────────────────────────────────
 
 export type DestinationTier = "ongoing" | "upcoming" | "past";
@@ -87,7 +99,7 @@ export function pickActiveTrip(
   const refStr = formatDate(refDate);
   const sorted = [...trips].sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1));
 
-  const ongoing = sorted.find((t) => !t.exitDate && t.entryDate <= refStr);
+  const ongoing = sorted.find((t) => isTripCurrent(t, refStr));
   if (ongoing) return { trip: ongoing, tier: "ongoing" };
 
   const upcoming = sorted.find((t) => t.entryDate > refStr);
@@ -208,7 +220,11 @@ export interface DestinationStatus {
 }
 
 function fmtWindowDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-GB", {
+  // parseDate (date-fns parseISO) reads a date-only string as LOCAL midnight.
+  // The native `new Date(iso)` constructor reads it as UTC midnight instead,
+  // which .toLocaleDateString() then renders back in the browser's local
+  // timezone — silently shifting the date by a day for anyone west of UTC.
+  return parseDate(iso).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -348,8 +364,9 @@ export function computeDestinationStatus(
 
     // Allowances only make sense in the context of a trip happening right now.
     // A trip that's finished or hasn't started yet doesn't reflect the
-    // traveler's current allowance — only an ongoing trip does.
-    const ongoingTrip = regionTrips.find((t) => !t.exitDate && t.entryDate <= refDateStr);
+    // traveler's current allowance — only a trip covering today does,
+    // whether or not it already has a planned exit date on file.
+    const ongoingTrip = regionTrips.find((t) => isTripCurrent(t, refDateStr));
 
     if (!ongoingTrip) {
       return {
