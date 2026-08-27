@@ -302,6 +302,58 @@ describe("encodeState / decodeState — v2", () => {
   });
 });
 
+// ─── Target region overrides (d=) ──────────────────────────────────────────────
+
+describe("encodeState / decodeState — target region overrides", () => {
+  it("omits d= when no traveler has an override", () => {
+    const state: ShareableState = {
+      travelers: [traveler("Emma", [trip("2024-01-01", "2024-03-31")])],
+    };
+    expect(encodeState(state)).not.toContain("d=");
+  });
+
+  it("round-trips a single traveler's override", () => {
+    const state: ShareableState = {
+      travelers: [
+        {
+          ...traveler("Emma", [
+            trip("2024-01-01", "2024-03-31", VisaRegion.Schengen),
+            trip("2024-06-01", "2024-06-10", VisaRegion.UnitedKingdom),
+          ]),
+          targetRegion: VisaRegion.UnitedKingdom,
+        },
+      ],
+    };
+    const encoded = encodeState(state);
+    expect(encoded).toContain("d=");
+    const result = decodeState(encoded);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].targetRegion).toBe(VisaRegion.UnitedKingdom);
+  });
+
+  it("preserves per-traveler null overrides alongside a set one", () => {
+    const state: ShareableState = {
+      travelers: [
+        { ...traveler("Emma", [trip("2024-01-01", "2024-03-31")]), targetRegion: VisaRegion.Ireland },
+        traveler("Liam", [trip("2024-01-15", "2024-04-15")]),
+      ],
+    };
+    const result = decodeState(encodeState(state));
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].targetRegion).toBe(VisaRegion.Ireland);
+    expect(result.state.travelers[1].targetRegion).toBeNull();
+  });
+
+  it("decodes gracefully when d= contains a malformed entry", () => {
+    const result = decodeState("v=2&n=Emma&t=6zi7au:0:1&d=zz");
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.travelers[0].targetRegion).toBeNull();
+  });
+});
+
 // ─── v1 backward compatibility ────────────────────────────────────────────────
 
 describe("decodeState — v1 legacy", () => {

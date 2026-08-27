@@ -5,11 +5,15 @@
  *
  * FORMAT v2  (current — written by encodeState)
  * ──────────────────────────────────────────────
- * ?v=2&n=<names>&t=<tripBlock>,<tripBlock>,…
+ * ?v=2&n=<names>&t=<tripBlock>,<tripBlock>,…[&p=<passportCodes>][&d=<targetRegions>]
  *
  *   n  — comma-separated traveler names (alphabetical chars only, so commas
  *         are safe as separators)
  *   t  — comma-separated trip blocks, sorted by entry date
+ *   d  — comma-separated per-traveler target-region overrides (same index
+ *         order as n/p), VisaRegion digit or "" = no override (auto-resolve
+ *         to the active-trip destination). Only emitted when at least one
+ *         traveler has an explicit override, mirroring p= below.
  *
  * tripBlock fields (colon-separated):
  *   [0]  DATES     — 6-char (entry+exit concatenated) or 3-char (entry only)
@@ -61,6 +65,7 @@ const PARAM_VERSION = "v";
 const PARAM_NAMES = "n";
 const PARAM_TRIPS = "t"; // used by both v1 (traveler blocks) and v2 (trip segments)
 const PARAM_PASSPORTS = "p"; // v2 only: comma-separated ISO Alpha-2 codes, "" = null
+const PARAM_TARGETS = "d"; // v2 only: comma-separated target-region overrides, "" = none
 
 const V1_DELIM = {
   traveler: "|",
@@ -270,12 +275,14 @@ const expandSharedSegments = (
   names: string[],
   segments: SharedTripSegment[],
   passportCodes: (string | null)[] = [],
+  targetRegions: (VisaRegion | null)[] = [],
 ): Traveler[] => {
   const travelers: Traveler[] = names.map((name, idx) => ({
     id: nanoid(),
     name,
     passportCode: passportCodes[idx] ?? null,
     trips: [] as Trip[],
+    targetRegion: targetRegions[idx] ?? null,
   }));
 
   segments.forEach((seg) => {
@@ -406,6 +413,21 @@ export const encodeState = (state: ShareableState): string => {
       .join(V2_DELIM.name);
   }
 
+  // Only include d= when at least one traveler has an explicit target-region
+  // override — same "omit when all-default" rule as p= above.
+  const hasTargets = state.travelers.some(
+    (t) => t.targetRegion !== null && t.targetRegion !== undefined,
+  );
+  if (hasTargets) {
+    params[PARAM_TARGETS] = state.travelers
+      .map((t) =>
+        t.targetRegion !== null && t.targetRegion !== undefined
+          ? encodeRegion(t.targetRegion)
+          : "",
+      )
+      .join(V2_DELIM.name);
+  }
+
   return new URLSearchParams(params).toString();
 };
 
@@ -516,7 +538,25 @@ export const decodeState = (input: string): DecodeResult => {
             .map((code) => (code.length === 2 ? code.toUpperCase() : null))
         : [];
 
-      const travelers = expandSharedSegments(names, segments, passportCodes);
+      // Decode target-region overrides — absent param means all null (auto-resolve)
+      const targetsParam = params.get(PARAM_TARGETS);
+      const targetRegions: (VisaRegion | null)[] = targetsParam
+        ? targetsParam.split(V2_DELIM.name).map((raw) => {
+            if (raw === "") return null;
+            try {
+              return decodeRegion(raw);
+            } catch {
+              return null;
+            }
+          })
+        : [];
+
+      const travelers = expandSharedSegments(
+        names,
+        segments,
+        passportCodes,
+        targetRegions,
+      );
       return { ok: true, state: { travelers } };
     }
 

@@ -1,0 +1,1 @@
+export { DestinationSlider } from "./DestinationSlider";

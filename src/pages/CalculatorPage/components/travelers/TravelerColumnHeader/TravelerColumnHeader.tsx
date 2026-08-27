@@ -7,26 +7,26 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { tokens } from "@/styles/theme";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import type { Traveler } from "@/types";
-import type { TravelerStatus } from "../travelerStatus";
+import { DestinationSlider } from "@/components/ui/DestinationSlider";
+import { VisaRegion, type Traveler } from "@/types";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import {
-  AVAILABLE_DAYS_DESCRIPTION,
-  MAX_STAY_DESCRIPTION,
-} from "@/features/calculator/utils/schengen";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
-import { getSchengenRule } from "@/data/regions/schengen";
 import { NationalitySelector } from "../NationalitySelector";
+import { DestinationSelect } from "../DestinationSelect";
+import {
+  computeDestinationStatus,
+  determineActiveRegion,
+  resolveDisplayRegion,
+} from "@/features/calculator/utils/destinationStatus";
 
 interface TravelerColumnHeaderProps {
   traveler: Traveler;
-  status: TravelerStatus;
-  /**
-   * Longest single trip startable today, accounting for historical days aging
-   * out of the window. Distinct from status.daysRemaining.
-   */
-  maxStay: number;
+  /** The resolved destination to display — traveler.targetRegion when still
+   * valid, otherwise the computed active-trip destination. Parents resolve
+   * this once (via resolveDisplayRegion) so every consumer of the traveler
+   * agrees on which destination is showing. */
+  region: VisaRegion;
   /**
    * When true the header uses a two-row layout:
    *   Row A -- traveler name (flex:1) + delete button (always opposite the name)
@@ -38,23 +38,15 @@ interface TravelerColumnHeaderProps {
   compact?: boolean;
   onDelete: () => void;
   /** Called when the user saves changes from the edit modal. */
-  onEdit: (name: string, passportCode: string | null) => void;
+  onEdit: (
+    name: string,
+    passportCode: string | null,
+    targetRegion: VisaRegion | null,
+  ) => void;
   sx?: object;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function fmtWindowDate(iso: string): string {
-  try {
-    return new Date(iso).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-  } catch {
-    return iso;
-  }
-}
 
 /** Converts an ISO Alpha-2 country code to its flag emoji. */
 function countryFlag(code: string): string {
@@ -69,8 +61,7 @@ function countryFlag(code: string): string {
 
 export function TravelerColumnHeader({
   traveler,
-  status,
-  maxStay,
+  region,
   compact = false,
   onDelete,
   onEdit,
@@ -84,29 +75,20 @@ export function TravelerColumnHeader({
   // Pending edit values — reset each time the modal opens
   const [editName, setEditName] = useState(traveler.name);
   const [editCode, setEditCode] = useState<string | null>(traveler.passportCode);
+  const [editTargetRegion, setEditTargetRegion] = useState<VisaRegion>(region);
 
   useEffect(() => {
     if (editModalOpen) {
       setEditName(traveler.name);
       setEditCode(traveler.passportCode);
+      setEditTargetRegion(resolveDisplayRegion(traveler));
     }
-  }, [editModalOpen, traveler.name, traveler.passportCode]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editModalOpen]);
 
-  const { daysUsed, daysRemaining, variant } = status;
+  const status = computeDestinationStatus(traveler, region);
   const tripCount = traveler.trips?.length ?? 0;
-  const fillPct = Math.min(100, (daysUsed / 90) * 100);
-
-  const rule = getSchengenRule(traveler.passportCode);
-  const hasNationality = traveler.passportCode !== null;
-  const isVisaRequired = hasNationality && rule.access === 'visa_required';
-  const showCalculator = !isVisaRequired;
-
-  const barColor =
-    variant === "safe"
-      ? tokens.green
-      : variant === "caution"
-        ? tokens.amber
-        : tokens.red;
+  const showTracker = status.availableChip !== null;
 
   const handleDeleteClick = () => {
     if (tripCount === 0) onDelete();
@@ -117,6 +99,17 @@ export function TravelerColumnHeader({
     onDelete();
   };
   const handleCancelDelete = () => setConfirmingDelete(false);
+
+  const previewTraveler: Traveler = { ...traveler, passportCode: editCode };
+  const editStatus = computeDestinationStatus(previewTraveler, editTargetRegion);
+
+  const handleSaveEdit = () => {
+    if (!editName.trim()) return;
+    const defaultRegion = determineActiveRegion(previewTraveler);
+    const targetRegionToSave = editTargetRegion === defaultRegion ? null : editTargetRegion;
+    onEdit(editName.trim(), editCode, targetRegionToSave);
+    setEditModalOpen(false);
+  };
 
   // ── Overflow menu ────────────────────────────────────────────────────────
 
@@ -151,6 +144,25 @@ export function TravelerColumnHeader({
     </Box>
   );
 
+  const badgesRow = showTracker && (
+    <>
+      {status.availableChip && (
+        <StatusBadge
+          variant={status.availableChip.variant}
+          label={status.availableChip.label}
+          tooltip={status.availableChip.tooltip}
+        />
+      )}
+      {status.secondChip && (
+        <StatusBadge
+          variant={status.secondChip.variant}
+          label={status.secondChip.label}
+          tooltip={status.secondChip.tooltip}
+        />
+      )}
+    </>
+  );
+
   return (
     <Box
       onMouseEnter={() => setHovered(true)}
@@ -175,13 +187,13 @@ export function TravelerColumnHeader({
        * (normal mode), overflow menu button (hover-only).
        */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0 }}>
-        {hasNationality && (
+        {traveler.passportCode && (
           <Typography
             component="span"
             sx={{ fontSize: "0.9rem", lineHeight: 1, flexShrink: 0 }}
             aria-hidden="true"
           >
-            {countryFlag(traveler.passportCode!)}
+            {countryFlag(traveler.passportCode)}
           </Typography>
         )}
 
@@ -207,20 +219,7 @@ export function TravelerColumnHeader({
          * Normal mode: badges between name and action buttons on the same row.
          * Compact mode: badges are rendered separately below.
          */}
-        {!compact && showCalculator && (
-          <>
-            <StatusBadge
-              variant={variant}
-              label={`${daysRemaining}d avail`}
-              tooltip={AVAILABLE_DAYS_DESCRIPTION}
-            />
-            <StatusBadge
-              variant={maxStay > daysRemaining ? "safe" : variant}
-              label={`${maxStay}d max`}
-              tooltip={MAX_STAY_DESCRIPTION}
-            />
-          </>
-        )}
+        {!compact && badgesRow}
 
         {menuButton}
       </Box>
@@ -275,28 +274,19 @@ export function TravelerColumnHeader({
       {/*
        * ── Badges row (compact mode only, Row B) ─────────────────────────────
        */}
-      {compact && showCalculator && (
+      {compact && badgesRow && (
         <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <StatusBadge
-            variant={variant}
-            label={`${daysRemaining}d avail`}
-            tooltip={AVAILABLE_DAYS_DESCRIPTION}
-          />
-          <StatusBadge
-            variant={maxStay > daysRemaining ? "safe" : variant}
-            label={`${maxStay}d max`}
-            tooltip={MAX_STAY_DESCRIPTION}
-          />
+          {badgesRow}
         </Box>
       )}
 
-      {/* ── Schengen bar or no-nationality prompt ──────────────────────────── */}
-      {showCalculator ? (
+      {/* ── Allowance tracker or disclaimer ────────────────────────────────── */}
+      {showTracker ? (
         <>
           {compact ? (
             <Box sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
               <MobileAwareTooltip
-                title={<SchengenTooltipContent />}
+                title={region === VisaRegion.Schengen ? <SchengenTooltipContent /> : status.note}
                 placement="bottom"
                 arrow
                 enterDelay={300}
@@ -328,7 +318,7 @@ export function TravelerColumnHeader({
                     cursor: "default",
                   }}
                 >
-                  Schengen
+                  {status.regionName}
                   <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6 }} />
                 </Typography>
               </MobileAwareTooltip>
@@ -341,7 +331,7 @@ export function TravelerColumnHeader({
                   lineHeight: 1.35,
                 }}
               >
-                {daysUsed}/90 used since {fmtWindowDate(status.windowStart)}
+                {status.summaryLine}
               </Typography>
             </Box>
           ) : (
@@ -354,7 +344,7 @@ export function TravelerColumnHeader({
               }}
             >
               <MobileAwareTooltip
-                title={<SchengenTooltipContent />}
+                title={region === VisaRegion.Schengen ? <SchengenTooltipContent /> : status.note}
                 placement="bottom"
                 arrow
                 enterDelay={300}
@@ -386,7 +376,7 @@ export function TravelerColumnHeader({
                     cursor: "default",
                   }}
                 >
-                  Schengen
+                  {status.regionName}
                   <InfoOutlinedIcon sx={{ fontSize: "0.6rem", opacity: 0.6 }} />
                 </Typography>
               </MobileAwareTooltip>
@@ -399,32 +389,15 @@ export function TravelerColumnHeader({
                   whiteSpace: "nowrap",
                 }}
               >
-                {daysUsed}/90 used since {fmtWindowDate(status.windowStart)}
+                {status.summaryLine}
               </Typography>
             </Box>
           )}
 
-          <Box
-            sx={{
-              height: 3,
-              bgcolor: tokens.border,
-              borderRadius: "100px",
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              sx={{
-                height: "100%",
-                width: `${fillPct}%`,
-                bgcolor: barColor,
-                borderRadius: "100px",
-                transition: "width 0.4s cubic-bezier(0.16,1,0.3,1)",
-              }}
-            />
-          </Box>
+          <DestinationSlider fillPct={status.fillPct} variant={status.variant} size="sm" />
         </>
       ) : (
-        /* Visa-required nationality — disclaimer in place of the tracker */
+        /* No calculable tracker for this destination/passport combination. */
         <Typography
           sx={{
             fontFamily: tokens.fontBody,
@@ -433,7 +406,7 @@ export function TravelerColumnHeader({
             color: tokens.textGhost,
           }}
         >
-          Day tracking not yet supported for passports requiring Schengen visas.
+          {status.note}
         </Typography>
       )}
 
@@ -508,7 +481,7 @@ export function TravelerColumnHeader({
         </Box>
       )}
 
-      {/* ── Edit traveler modal (name + nationality) ──────────────────────── */}
+      {/* ── Edit traveler modal (name + nationality + destination) ────────── */}
       <Dialog
         open={editModalOpen}
         onClose={() => setEditModalOpen(false)}
@@ -634,18 +607,36 @@ export function TravelerColumnHeader({
             />
           </Box>
 
+          {/* Target destination field */}
+          <Box>
+            <Typography
+              component="label"
+              sx={{
+                display: "block",
+                fontFamily: tokens.fontBody,
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: tokens.textSoft,
+                mb: "5px",
+              }}
+            >
+              Allowance preview
+            </Typography>
+            <DestinationSelect
+              traveler={previewTraveler}
+              value={editTargetRegion}
+              onChange={setEditTargetRegion}
+            />
+          </Box>
+
           {/* Informational note for non-visa-free passports */}
-          {editCode && (() => {
-            const r = getSchengenRule(editCode);
-            if (r.access === 'entitled') return null;
-            return (
-              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost }}>
-                {r.access === 'free_movement'
-                  ? 'EU/EEA/Swiss passports have free movement — no 90-day limit applies.'
-                  : 'A Schengen visa is required for this passport.'}
-              </Typography>
-            );
-          })()}
+          {editCode && !editStatus.eligible && (
+            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost }}>
+              {editStatus.note}
+            </Typography>
+          )}
         </Box>
 
         {/* Footer */}
@@ -674,11 +665,7 @@ export function TravelerColumnHeader({
           <Box
             component="button"
             disabled={!editName.trim()}
-            onClick={() => {
-              if (!editName.trim()) return;
-              onEdit(editName.trim(), editCode);
-              setEditModalOpen(false);
-            }}
+            onClick={handleSaveEdit}
             sx={{
               flex: 2,
               border: "none",

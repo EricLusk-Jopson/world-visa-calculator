@@ -8,13 +8,13 @@ import { getIrelandRule } from "@/data/regions/ireland";
 
 import { TravelerColumnHeader } from "../../travelers/TravelerColumnHeader";
 import { TripListCard } from "../../trips/TripListCard";
-import { computeTravelerStatus } from "../../travelers/travelerStatus";
 import { computeOverstayTripIds } from "../../trips/tripDuration";
 import {
   calculateMaxStay,
   calculateEarliestEntry,
 } from "@/features/calculator/utils/schengen";
 import { assessRegionTripStay } from "@/features/calculator/utils/stayCalculator";
+import { resolveDisplayRegion } from "@/features/calculator/utils/destinationStatus";
 import {
   parseDate,
   formatDate,
@@ -39,6 +39,7 @@ interface TravelerCardsColumnProps {
     travelerId: string,
     name: string,
     passportCode: string | null,
+    targetRegion: VisaRegion | null,
   ) => void;
 }
 
@@ -56,7 +57,7 @@ export function TravelerCardsColumn({
   onDeleteTraveler,
   onEdit,
 }: TravelerCardsColumnProps) {
-  const status = computeTravelerStatus(traveler);
+  const displayRegion = resolveDisplayRegion(traveler);
 
   const sortedTrips = [...traveler.trips].sort(
     (a, b) => new Date(a.entryDate).getTime() - new Date(b.entryDate).getTime(),
@@ -67,10 +68,6 @@ export function TravelerCardsColumn({
   );
 
   const todayStr = formatDate(new Date());
-  const headerMaxStayResult = calculateMaxStay(todayStr, schengenTrips);
-  const headerMaxStay = headerMaxStayResult.canEnter
-    ? headerMaxStayResult.maxDays
-    : 0;
 
   // Overstay detection — computed once for the column, passed per card.
   const overstayTripIds = computeOverstayTripIds(traveler);
@@ -112,11 +109,12 @@ export function TravelerCardsColumn({
       >
         <TravelerColumnHeader
           traveler={traveler}
-          status={status}
-          maxStay={headerMaxStay}
+          region={displayRegion}
           compact={compact}
           onDelete={() => onDeleteTraveler(traveler.id)}
-          onEdit={(name, code) => onEdit(traveler.id, name, code)}
+          onEdit={(name, code, targetRegion) =>
+            onEdit(traveler.id, name, code, targetRegion)
+          }
         />
       </Box>
 
