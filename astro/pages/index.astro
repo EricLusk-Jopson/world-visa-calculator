@@ -5,8 +5,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
 ---
 
 <BaseLayout
-  title="EuroVisaCalculator — Schengen 90/180 Day Tracker"
-  description="Track your Schengen visa allowance across multiple travelers. Free, no account required. Official EU rolling-window algorithm."
+  title="EuroVisaCalculator: Schengen, UK, Ireland & Türkiye Visa Tracker"
+  description="Check visa-free entry and track day allowances across Schengen, the UK, Ireland, and Türkiye, for any passport and every traveler in your group. Free, no account required."
 >
   <LandingNav />
 
@@ -17,19 +17,26 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       <!-- Eyebrow badge -->
       <div class="eyebrow">
         <span class="eyebrow__dot"></span>
-        Free · No account · No signup · Works instantly
+        Free · Private · No account required · Works instantly
       </div>
 
       <!-- Heading -->
       <h1 class="hero__h1">
-        Know exactly how long you can <em>stay in Europe.</em>
+        Travel Europe indefinitely, <em>without the overstay risk.</em>
       </h1>
 
       <!-- Sub-copy -->
       <p class="hero__sub">
-        Track your 90-day Schengen allowance across multiple travelers. Add
-        trips, see remaining days, and plan without guessing.
+        Check visa and entry requirements for Schengen, the UK, Ireland, and
+        Türkiye, for any passport and any traveler. Add trips, see remaining
+        days, and plan without guessing.
       </p>
+
+      <!-- Mobile-only CTA — the interactive calculator demo is hidden on
+           mobile, so this replaces it as the primary call to action. -->
+      <a href="/app" class="btn-green hero__mobile-cta">
+        Open the calculator →
+      </a>
 
       <!-- Proof items -->
       <div class="proof-items">
@@ -37,7 +44,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <path d="M8 1L9.8 5.8L15 6.2L11.2 9.6L12.4 15L8 12.4L3.6 15L4.8 9.6L1 6.2L6.2 5.8L8 1Z" />
           </svg>
-          Official EU rolling-window algorithm
+          Official Schengen rolling-window algorithm
         </span>
         <span class="proof-item">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -64,7 +71,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M8 2l1.5 4.5H14l-3.75 2.75L11.5 14 8 11.25 4.5 14l1.25-4.75L2 6.5h4.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
           </svg>
-          No signup — use it immediately
+          Entry rules for 198 passports
         </span>
       </div>
     </div>
@@ -79,20 +86,20 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   <section class="trust-strip" aria-label="Key statistics">
     <div class="trust-strip__grid">
       <div class="trust-stat">
-        <span class="trust-stat__num">90</span>
-        <span class="trust-stat__label">days allowed<br />in any 180-day window</span>
+        <span class="trust-stat__num">4</span>
+        <span class="trust-stat__label">official rule systems<br />one calculator</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-stat__num">32</span>
+        <span class="trust-stat__label">European destinations<br />Schengen, UK, Ireland &amp; Türkiye</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-stat__num">198</span>
+        <span class="trust-stat__label">passports<br />with entry rules covered</span>
       </div>
       <div class="trust-stat">
         <span class="trust-stat__num">0</span>
         <span class="trust-stat__label">bytes of your data<br />sent to any server</span>
-      </div>
-      <div class="trust-stat">
-        <span class="trust-stat__num">29</span>
-        <span class="trust-stat__label">Schengen countries<br />using the same rule</span>
-      </div>
-      <div class="trust-stat">
-        <span class="trust-stat__num">0</span>
-        <span class="trust-stat__label">accounts required<br />to get started</span>
       </div>
     </div>
   </section>
@@ -120,7 +127,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             </svg>
           </div>
           <h3 class="step-card__title">Add your travelers</h3>
-          <p class="step-card__desc">Enter names for everyone you want to track: yourself, a partner, family members. Each person gets their own column.</p>
+          <p class="step-card__desc">Enter names for everyone you want to track: yourself, a partner, family, or a group of friends.</p>
         </div>
         <!-- Step 02 -->
         <div class="step-card step-card--border-left">
@@ -132,8 +139,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
               <path d="M7 2v4M13 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3 class="step-card__title">Log entry &amp; exit dates</h3>
-          <p class="step-card__desc">Add each Schengen trip with entry and exit dates. Mark ongoing trips with no exit date yet. Planned future trips show up too.</p>
+          <h3 class="step-card__title">Add Your Trips</h3>
+          <p class="step-card__desc">Add each trip to the destination it belongs to, with an entry and exit date. Planned future trips show up too.</p>
         </div>
         <!-- Step 03 -->
         <div class="step-card step-card--border-left">
@@ -144,8 +151,22 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
               <path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3 class="step-card__title">See remaining days instantly</h3>
-          <p class="step-card__desc">Color-coded statuses update live. Green means safe, yellow means caution, red means at risk. Share the link with your travel partner.</p>
+          <h3 class="step-card__title">Check Your Compliance</h3>
+          <p class="step-card__desc">See visa eligibility, duration limits, and overstay risk for every traveler, updated instantly as you add trips.</p>
+        </div>
+        <!-- Step 04 -->
+        <div class="step-card step-card--border-left">
+          <span class="step-card__num">04</span>
+          <div class="step-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="15" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="5" cy="10" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="15" cy="15" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.8 9l6.4-3M6.8 11l6.4 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-card__title">Share Your Results</h3>
+          <p class="step-card__desc">Copy the link and send it to everyone you're traveling with. They'll see exactly what you see, with no login required.</p>
         </div>
       </div>
     </div>
@@ -158,14 +179,16 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       <div class="features__left">
         <p class="section-tag section-tag--light">Features</p>
         <h2 class="section-heading section-heading--light">
-          Built for people with<br />
-          <em>complex travel patterns.</em>
+          Built for long-term,<br />
+          frequent, and <em>social travelers.</em>
         </h2>
         <p class="section-sub section-sub--light">
-          Most Schengen calculators only handle a single traveler on a single
-          trip. We built this because we needed something better.
+          Most travel calculators only handle a single traveler, on a single
+          trip, to a single country, with no way to check whether your
+          passport even qualifies for visa-free entry. We built this for
+          real, long-term, multi-country travel.
         </p>
-        <a href="/app" class="btn-green" style="margin-top:36px;display:inline-flex;">
+        <a href="/app" class="btn-green" style="margin-top:36px;">
           Try it free →
         </a>
       </div>
@@ -180,8 +203,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             </svg>
           </div>
           <div>
-            <p class="feature-item__title">Official rolling-window algorithm</p>
-            <p class="feature-item__desc">We implement the exact EU calculation: any 180-day lookback window, counting both entry and exit days. Verified against the official EU calculator.</p>
+            <p class="feature-item__title">Official rules for every destination</p>
+            <p class="feature-item__desc">Schengen and Türkiye share the same 90/180 rolling-window rule, which we implement exactly: any 180-day lookback, counting both entry and exit days, verified against the official EU calculator. The UK and Ireland each have their own official entry rules, which we support too.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -195,7 +218,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           </div>
           <div>
             <p class="feature-item__title">Multiple travelers, one dashboard</p>
-            <p class="feature-item__desc">Track couples, families, or groups with different schedules in a single shared view. Columns per traveler, shareable via URL.</p>
+            <p class="feature-item__desc">Track couples, families, or groups of travelers from different countries of origin, each with their own schedule, in a single shared view. Shareable via URL.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -213,12 +236,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         <div class="feature-item">
           <div class="feature-item__icon">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M3 15l4-4 3 3 5-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="4" y="2" width="10" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/>
+              <circle cx="9" cy="7" r="1.8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M6.5 12h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
             </svg>
           </div>
           <div>
-            <p class="feature-item__title">Date picker with live feedback</p>
-            <p class="feature-item__desc">Calendar cells are color-coded as you pick dates: green for safe, yellow for caution, red for overstay. No surprises after you click confirm.</p>
+            <p class="feature-item__title">Visa &amp; entry requirements, per passport</p>
+            <p class="feature-item__desc">Every traveler's passport is checked against each destination's rules: visa requirements, pre-travel authorizations like ETIAS or an ETA, and maximum stay lengths. Restrictions are flagged before you book, not after.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -228,8 +253,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             </svg>
           </div>
           <div>
-            <p class="feature-item__title">Trip validation &amp; overstay warnings</p>
-            <p class="feature-item__desc">Alerts fire before you save a trip that would push you over the limit. Overlapping dates are caught automatically.</p>
+            <p class="feature-item__title">Live validation &amp; overstay warnings</p>
+            <p class="feature-item__desc">Calendar cells are color-coded as you pick dates: green for safe, yellow for caution, red for over the limit. Alerts fire before you save a trip that would push you over the limit, so there are no surprises after you click confirm.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -241,7 +266,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           </div>
           <div>
             <p class="feature-item__title">Completely private, no backend</p>
-            <p class="feature-item__desc">Your trips are saved in your browser's local storage and encoded in the URL. No account needed and no server ever sees your travel history. Works offline once the app is loaded. Share the link and your travel partner sees exactly what you see.</p>
+            <p class="feature-item__desc">Your trips are saved in your browser's local storage and encoded in the URL. No account needed and no server ever sees your travel history. Works offline once the app is loaded. Share the link and everyone you're traveling with sees exactly what you see.</p>
           </div>
         </div>
       </div>
@@ -253,7 +278,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     <div class="rules__inner">
       <!-- Left: text -->
       <div class="rules__text">
-        <p class="section-tag">The 90/180 Rule</p>
+        <p class="section-tag">Schengen's 90/180 Rule</p>
         <h2 class="section-heading">
           It's not "90 days<br />
           then leave for 90." <em>It's more complex.</em>
@@ -261,14 +286,18 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         <p class="section-sub">
           The rule applies to a <strong>rolling 180-day window</strong>, not
           fixed half-years. At any given moment, look back 180 days. If you've
-          spent 90 or more days in Schengen during that window, you're non-compliant.
+          spent 90 or more days inside during that window, you're non-compliant.
+          It's not unique to Schengen, either. Türkiye uses the identical
+          90/180 rolling window, so the same logic applies there too.
         </p>
         <p class="rules__body">
           This means days "roll off" your count as time passes, which can free
-          up allowance much earlier than most travelers expect, but also requires multiple calculations and means
-          miscalculations happen easily.
+          up allowance much earlier than most travelers expect, but also requires multiple calculations, and
+          miscalculations happen easily, in Schengen or Türkiye alike. Read our
+          <a href="/blog/the-schengen-90-180-rolling-window">full guide to the 90/180 rolling window</a>
+          for a walkthrough of real scenarios.
         </p>
-        <a href="/app" class="btn-green" style="margin-top:32px;display:inline-flex;">
+        <a href="/app" class="btn-green" style="margin-top:32px;">
           Calculate my days →
         </a>
       </div>
@@ -314,7 +343,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         <!-- Rule pills -->
         <div class="rule-pills">
           <span class="rule-pill">Rolling 180-day window</span>
-          <span class="rule-pill">29 Schengen countries</span>
+          <span class="rule-pill">Used by Schengen &amp; Türkiye</span>
           <span class="rule-pill">Entry + exit days count</span>
           <span class="rule-pill">No fixed reset date</span>
         </div>
@@ -330,16 +359,16 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         Start tracking <em>in seconds.</em>
       </h2>
       <p class="cta-band__sub">
-        Free, no account required. Your trip data is stored in your browser —
+        Free, no account required. Your trip data is stored in your browser,
         never on our servers. Add travelers, enter your trips, and share
-        a link with your travel partner immediately.
+        a link with everyone you're traveling with, immediately.
       </p>
       <div class="cta-band__actions">
         <a href="/app" class="btn-green">
           Open the calculator →
         </a>
-        <a href="#how" class="btn-ghost">
-          How does it work?
+        <a href="/blog" class="btn-ghost">
+          Read our guides →
         </a>
       </div>
     </div>
@@ -349,8 +378,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__top">
-        <span class="footer__brand">EuroVisaCalculator</span>
-        <div class="footer__actions">
+        <div class="footer__identity">
+          <span class="footer__brand">EuroVisaCalculator</span>
           <a
             href="https://ko-fi.com/ericluskjopson"
             class="footer__kofi"
@@ -360,21 +389,21 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
             </svg>
-            Support this project
+            Support This Project
           </a>
-          <nav class="footer__links" aria-label="Footer navigation">
-            <a href="/privacy" class="footer__link">Privacy</a>
-            <a href="/updates" class="footer__link">Updates</a>
-            <a href="/blog" class="footer__link">Blog</a>
-            <a href="#how" class="footer__link">How it works</a>
-            <a href="/app" class="footer__link">Calculator</a>
-          </nav>
         </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="/privacy" class="footer__link">Privacy</a>
+          <a href="/updates" class="footer__link">Updates</a>
+          <a href="/blog" class="footer__link">Blog</a>
+          <a href="#how" class="footer__link">How it works</a>
+          <a href="/app" class="footer__link">Calculator</a>
+        </nav>
       </div>
       <p class="footer__disclaimer">
-        For informational use only. Always verify with official EU sources before
-        making travel decisions.
-        Not legal advice. Schengen rules apply to all non-EU/EEA nationals.
+        For informational use only. Always verify with official government sources
+        before making travel decisions.
+        Not legal advice. Entry and visa rules vary by nationality and destination.
       </p>
     </div>
   </footer>
@@ -412,6 +441,15 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     }
   }
 
+  /* Center the hero content (title, description, CTA, proof items) as a
+     block on mobile. Desktop keeps the left-aligned layout. */
+  @media (max-width: 899px) {
+    .hero__left {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
   /* ── Right column ──────────────────────────────────────────────────────── */
   .hero__right {
     background: var(--color-white);
@@ -428,6 +466,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       border-top: none;
       border-left: 1px solid var(--color-border);
       padding: 80px 60px;
+    }
+  }
+
+  /* The interactive calculator demo is desktop-only — on mobile it's
+     replaced by .hero__mobile-cta below the hero copy. */
+  @media (max-width: 899px) {
+    .hero__right {
+      display: none;
     }
   }
 
@@ -448,6 +494,37 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     width: fit-content;
     border: 1px solid var(--color-green-border);
     animation: fadeUp 0.5s 0.1s both ease-out;
+  }
+
+  /* Eyebrow is desktop-only — it wraps awkwardly at narrow widths and the
+     new mobile CTA button below covers the same "free / private / no
+     account" messaging via the CTA band further down the page. */
+  @media (max-width: 899px) {
+    .eyebrow {
+      display: none;
+    }
+  }
+
+  /* ── Mobile-only hero CTA ───────────────────────────────────────────────── */
+  /* Double class for specificity: must beat .btn-green's own unconditional
+     `display: inline-flex`, which is declared later in this stylesheet. */
+  .hero__mobile-cta.btn-green {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px 32px;
+    font-size: 1.05rem;
+    animation: fadeUp 0.6s 0.35s both ease-out;
+  }
+
+  @media (min-width: 900px) {
+    /* Double class for specificity: must beat .btn-green's own unconditional
+       `display: inline-flex`, which is declared later in this stylesheet. */
+    .hero__mobile-cta.btn-green {
+      display: none;
+    }
   }
 
   .eyebrow__dot {
@@ -493,6 +570,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     gap: 24px;
     flex-wrap: wrap;
     animation: fadeUp 0.6s 0.4s both ease-out;
+  }
+
+  /* Centering the box (.hero__left) doesn't center the wrapped items
+     inside this flex row — that needs its own justify-content. */
+  @media (max-width: 899px) {
+    .proof-items {
+      justify-content: center;
+    }
   }
 
   .proof-item {
@@ -649,7 +734,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
 
   .steps-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     margin-top: 60px;
     border-radius: 16px;
     overflow: hidden;
@@ -658,9 +743,9 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     background: var(--color-border);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     .steps-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -668,6 +753,12 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     background: var(--color-white);
     padding: 40px 36px;
     transition: background 0.2s;
+  }
+
+  @media (min-width: 1000px) {
+    .step-card {
+      padding: 32px 28px;
+    }
   }
 
   .step-card:hover { background: #FAFBFD; }
@@ -720,6 +811,54 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     color: var(--color-text-soft);
     line-height: 1.7;
     margin: 0;
+  }
+
+  /* Smaller, denser step cards on mobile: the step number is dropped
+     entirely, the icon and title share a row, and the description wraps
+     to its own line below — so all four cards fit two-up with much less
+     height than the stacked desktop layout. */
+  @media (max-width: 639px) {
+    .steps-grid {
+      margin-top: 32px;
+    }
+
+    .step-card__num {
+      display: none;
+    }
+
+    .step-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 10px;
+      padding: 16px 16px;
+    }
+
+    .step-card__icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .step-card__icon svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .step-card__title {
+      flex: 1;
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    .step-card__desc {
+      flex-basis: 100%;
+      margin-top: 8px;
+      font-size: 0.76rem;
+      line-height: 1.5;
+    }
   }
 
   /* ── Features ───────────────────────────────────────────────────────────── */
@@ -832,6 +971,20 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   .btn-green:hover {
     background: #00A05C;
     box-shadow: 0 6px 24px rgba(0, 185, 107, 0.35);
+  }
+
+  /* Every CTA button (.btn-green and .btn-ghost, wherever they appear)
+     sizes to fit its own text and centers itself on mobile. Desktop is
+     untouched. */
+  @media (max-width: 639px) {
+    .btn-green,
+    .btn-ghost {
+      display: flex;
+      width: fit-content;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   /* ── Rules explainer ────────────────────────────────────────────────────── */
@@ -1054,6 +1207,12 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     flex-wrap: wrap;
   }
 
+  @media (max-width: 639px) {
+    .cta-band__actions {
+      flex-direction: column;
+    }
+  }
+
   .btn-ghost {
     display: inline-flex;
     align-items: center;
@@ -1118,11 +1277,22 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     flex-shrink: 0;
   }
 
-  .footer__actions {
+  /* Always a row (wrapping only if it truly doesn't fit) so the brand name
+     and support link stay horizontally aligned regardless of .footer__top's
+     own column/row breakpoint. */
+  .footer__identity {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
+  }
+
+  /* Push brand and support to opposite edges in the mobile footer. */
+  @media (max-width: 639px) {
+    .footer__identity {
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 
   .footer__disclaimer {
