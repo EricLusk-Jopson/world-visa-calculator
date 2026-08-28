@@ -144,7 +144,7 @@ export function UtilityDrawer({
         />
         <UtilityRow
           icon={<DeleteOutlineIcon sx={{ fontSize: "1.15rem" }} />}
-          label="Clear all trips"
+          label="Clear data"
           onClick={handleClearAll}
           color={tokens.red}
           disabled={travelerCount === 0}
