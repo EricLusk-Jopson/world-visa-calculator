@@ -5,8 +5,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
 ---
 
 <BaseLayout
-  title="EuroVisaCalculator — Schengen, UK, Ireland & Türkiye Visa Tracker"
-  description="Check visa-free entry and track day allowances across Schengen, the UK, Ireland, and Türkiye — for any passport, and every traveler in your group. Free, no account required."
+  title="EuroVisaCalculator: Schengen, UK, Ireland & Türkiye Visa Tracker"
+  description="Check visa-free entry and track day allowances across Schengen, the UK, Ireland, and Türkiye, for any passport and every traveler in your group. Free, no account required."
 >
   <LandingNav />
 
@@ -17,19 +17,19 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       <!-- Eyebrow badge -->
       <div class="eyebrow">
         <span class="eyebrow__dot"></span>
-        Free · No account required · Works instantly
+        Free · Private · No account required · Works instantly
       </div>
 
       <!-- Heading -->
       <h1 class="hero__h1">
-        Know exactly how long you can <em>stay in Europe.</em>
+        Travel Europe indefinitely, <em>without the overstay risk.</em>
       </h1>
 
       <!-- Sub-copy -->
       <p class="hero__sub">
         Check visa and entry requirements for Schengen, the UK, Ireland, and
-        Türkiye — any passport, any traveler. Add trips, see remaining days,
-        and plan without guessing.
+        Türkiye, for any passport and any traveler. Add trips, see remaining
+        days, and plan without guessing.
       </p>
 
       <!-- Proof items -->
@@ -38,7 +38,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <path d="M8 1L9.8 5.8L15 6.2L11.2 9.6L12.4 15L8 12.4L3.6 15L4.8 9.6L1 6.2L6.2 5.8L8 1Z" />
           </svg>
-          Official EU rolling-window algorithm
+          Official Schengen rolling-window algorithm
         </span>
         <span class="proof-item">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -80,8 +80,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   <section class="trust-strip" aria-label="Key statistics">
     <div class="trust-strip__grid">
       <div class="trust-stat">
-        <span class="trust-stat__num">90</span>
-        <span class="trust-stat__label">days allowed<br />in any 180-day window</span>
+        <span class="trust-stat__num">4</span>
+        <span class="trust-stat__label">official rule systems<br />one calculator</span>
       </div>
       <div class="trust-stat">
         <span class="trust-stat__num">32</span>
@@ -121,7 +121,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             </svg>
           </div>
           <h3 class="step-card__title">Add your travelers</h3>
-          <p class="step-card__desc">Enter names for everyone you want to track: yourself, a partner, family, or a group of friends. Each person gets their own column.</p>
+          <p class="step-card__desc">Enter names for everyone you want to track: yourself, a partner, family, or a group of friends.</p>
         </div>
         <!-- Step 02 -->
         <div class="step-card step-card--border-left">
@@ -133,8 +133,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
               <path d="M7 2v4M13 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3 class="step-card__title">Log entry &amp; exit dates</h3>
-          <p class="step-card__desc">Add each trip with entry and exit dates, for any destination we cover. Mark ongoing trips with no exit date yet. Planned future trips show up too.</p>
+          <h3 class="step-card__title">Add Your Trips</h3>
+          <p class="step-card__desc">Add each trip to the destination it belongs to, with an entry and exit date. Planned future trips show up too.</p>
         </div>
         <!-- Step 03 -->
         <div class="step-card step-card--border-left">
@@ -145,8 +145,22 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
               <path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3 class="step-card__title">See remaining days instantly</h3>
-          <p class="step-card__desc">Color-coded statuses update live. Green means safe, yellow means caution, red means at risk. Share the link with everyone you're traveling with.</p>
+          <h3 class="step-card__title">Check Your Compliance</h3>
+          <p class="step-card__desc">See visa eligibility, duration limits, and overstay risk for every traveler, updated instantly as you add trips. Green means safe, yellow means caution, red means at risk.</p>
+        </div>
+        <!-- Step 04 -->
+        <div class="step-card step-card--border-left">
+          <span class="step-card__num">04</span>
+          <div class="step-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="15" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="5" cy="10" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="15" cy="15" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.8 9l6.4-3M6.8 11l6.4 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-card__title">Share Your Results</h3>
+          <p class="step-card__desc">Copy the link and send it to everyone you're traveling with. They'll see exactly what you see, with no login required.</p>
         </div>
       </div>
     </div>
@@ -159,13 +173,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
       <div class="features__left">
         <p class="section-tag section-tag--light">Features</p>
         <h2 class="section-heading section-heading--light">
-          Built for people with<br />
-          <em>complex travel patterns.</em>
+          Built for long-term,<br />
+          frequent, and <em>social travelers.</em>
         </h2>
         <p class="section-sub section-sub--light">
           Most travel calculators only handle a single traveler, on a single
-          trip, to a single country. We built this because we needed
-          something better.
+          trip, to a single country, with no way to check whether your
+          passport even qualifies for visa-free entry. We built this for
+          real, long-term, multi-country travel.
         </p>
         <a href="/app" class="btn-green" style="margin-top:36px;display:inline-flex;">
           Try it free →
@@ -182,8 +197,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             </svg>
           </div>
           <div>
-            <p class="feature-item__title">Official rolling-window algorithm</p>
-            <p class="feature-item__desc">We implement the official 90/180 rolling-window rule used by Schengen and Türkiye: any 180-day lookback, counting both entry and exit days. Verified against the official EU calculator.</p>
+            <p class="feature-item__title">Official rules for every destination</p>
+            <p class="feature-item__desc">Schengen and Türkiye share the same 90/180 rolling-window rule, which we implement exactly: any 180-day lookback, counting both entry and exit days, verified against the official EU calculator. The UK and Ireland each have their own official entry rules, which we support too.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -197,7 +212,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           </div>
           <div>
             <p class="feature-item__title">Multiple travelers, one dashboard</p>
-            <p class="feature-item__desc">Track couples, families, or groups with different schedules in a single shared view. Columns per traveler, shareable via URL.</p>
+            <p class="feature-item__desc">Track couples, families, or groups of travelers from different countries of origin, each with their own schedule, in a single shared view. Shareable via URL.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -222,7 +237,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           </div>
           <div>
             <p class="feature-item__title">Visa &amp; entry requirements, per passport</p>
-            <p class="feature-item__desc">Every traveler's passport is checked against each destination's rules — visa requirements, pre-travel authorizations like ETIAS or an ETA, and maximum stay lengths — flagged before you book, not after.</p>
+            <p class="feature-item__desc">Every traveler's passport is checked against each destination's rules: visa requirements, pre-travel authorizations like ETIAS or an ETA, and maximum stay lengths. Restrictions are flagged before you book, not after.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -233,7 +248,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           </div>
           <div>
             <p class="feature-item__title">Live validation &amp; overstay warnings</p>
-            <p class="feature-item__desc">Calendar cells are color-coded as you pick dates: green for safe, yellow for caution, red for over the limit. Alerts fire before you save a trip that would push you over — no surprises after you click confirm.</p>
+            <p class="feature-item__desc">Calendar cells are color-coded as you pick dates: green for safe, yellow for caution, red for over the limit. Alerts fire before you save a trip that would push you over the limit, so there are no surprises after you click confirm.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -257,7 +272,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     <div class="rules__inner">
       <!-- Left: text -->
       <div class="rules__text">
-        <p class="section-tag">The 90/180 Rule</p>
+        <p class="section-tag">Schengen's 90/180 Rule</p>
         <h2 class="section-heading">
           It's not "90 days<br />
           then leave for 90." <em>It's more complex.</em>
@@ -266,13 +281,15 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           The rule applies to a <strong>rolling 180-day window</strong>, not
           fixed half-years. At any given moment, look back 180 days. If you've
           spent 90 or more days inside during that window, you're non-compliant.
-          It's not unique to Schengen, either — Türkiye uses the identical
+          It's not unique to Schengen, either. Türkiye uses the identical
           90/180 rolling window, so the same logic applies there too.
         </p>
         <p class="rules__body">
           This means days "roll off" your count as time passes, which can free
-          up allowance much earlier than most travelers expect, but also requires multiple calculations and means
-          miscalculations happen easily, in Schengen or Türkiye alike.
+          up allowance much earlier than most travelers expect, but also requires multiple calculations, and
+          miscalculations happen easily, in Schengen or Türkiye alike. Read our
+          <a href="/blog/the-schengen-90-180-rolling-window">full guide to the 90/180 rolling window</a>
+          for a walkthrough of real scenarios.
         </p>
         <a href="/app" class="btn-green" style="margin-top:32px;display:inline-flex;">
           Calculate my days →
@@ -336,7 +353,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         Start tracking <em>in seconds.</em>
       </h2>
       <p class="cta-band__sub">
-        Free, no account required. Your trip data is stored in your browser —
+        Free, no account required. Your trip data is stored in your browser,
         never on our servers. Add travelers, enter your trips, and share
         a link with everyone you're traveling with, immediately.
       </p>
@@ -344,7 +361,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         <a href="/app" class="btn-green">
           Open the calculator →
         </a>
-        <a href="#how" class="btn-ghost">
+        <a href="/blog" class="btn-ghost">
           How does it work?
         </a>
       </div>
@@ -663,9 +680,15 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     background: var(--color-border);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     .steps-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .steps-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -673,6 +696,12 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     background: var(--color-white);
     padding: 40px 36px;
     transition: background 0.2s;
+  }
+
+  @media (min-width: 1000px) {
+    .step-card {
+      padding: 32px 28px;
+    }
   }
 
   .step-card:hover { background: #FAFBFD; }
