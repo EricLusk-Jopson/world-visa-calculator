@@ -32,6 +32,12 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         days, and plan without guessing.
       </p>
 
+      <!-- Mobile-only CTA — the interactive calculator demo is hidden on
+           mobile, so this replaces it as the primary call to action. -->
+      <a href="/app" class="btn-green hero__mobile-cta">
+        Open the calculator →
+      </a>
+
       <!-- Proof items -->
       <div class="proof-items">
         <span class="proof-item">
@@ -146,7 +152,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             </svg>
           </div>
           <h3 class="step-card__title">Check Your Compliance</h3>
-          <p class="step-card__desc">See visa eligibility, duration limits, and overstay risk for every traveler, updated instantly as you add trips. Green means safe, yellow means caution, red means at risk.</p>
+          <p class="step-card__desc">See visa eligibility, duration limits, and overstay risk for every traveler, updated instantly as you add trips.</p>
         </div>
         <!-- Step 04 -->
         <div class="step-card step-card--border-left">
@@ -182,7 +188,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           passport even qualifies for visa-free entry. We built this for
           real, long-term, multi-country travel.
         </p>
-        <a href="/app" class="btn-green" style="margin-top:36px;display:inline-flex;">
+        <a href="/app" class="btn-green" style="margin-top:36px;">
           Try it free →
         </a>
       </div>
@@ -291,7 +297,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           <a href="/blog/the-schengen-90-180-rolling-window">full guide to the 90/180 rolling window</a>
           for a walkthrough of real scenarios.
         </p>
-        <a href="/app" class="btn-green" style="margin-top:32px;display:inline-flex;">
+        <a href="/app" class="btn-green" style="margin-top:32px;">
           Calculate my days →
         </a>
       </div>
@@ -362,7 +368,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           Open the calculator →
         </a>
         <a href="/blog" class="btn-ghost">
-          How does it work?
+          Read our guides →
         </a>
       </div>
     </div>
@@ -453,6 +459,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     }
   }
 
+  /* The interactive calculator demo is desktop-only — on mobile it's
+     replaced by .hero__mobile-cta below the hero copy. */
+  @media (max-width: 899px) {
+    .hero__right {
+      display: none;
+    }
+  }
+
   /* ── Eyebrow badge ──────────────────────────────────────────────────────── */
   .eyebrow {
     display: inline-flex;
@@ -470,6 +484,36 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     width: fit-content;
     border: 1px solid var(--color-green-border);
     animation: fadeUp 0.5s 0.1s both ease-out;
+  }
+
+  /* Eyebrow is desktop-only — it wraps awkwardly at narrow widths and the
+     new mobile CTA button below covers the same "free / private / no
+     account" messaging via the CTA band further down the page. */
+  @media (max-width: 899px) {
+    .eyebrow {
+      display: none;
+    }
+  }
+
+  /* ── Mobile-only hero CTA ───────────────────────────────────────────────── */
+  /* Double class for specificity: must beat .btn-green's own unconditional
+     `display: inline-flex`, which is declared later in this stylesheet. */
+  .hero__mobile-cta.btn-green {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 360px;
+    padding: 16px 32px;
+    font-size: 1.05rem;
+    animation: fadeUp 0.6s 0.35s both ease-out;
+  }
+
+  @media (min-width: 900px) {
+    /* Double class for specificity: must beat .btn-green's own unconditional
+       `display: inline-flex`, which is declared later in this stylesheet. */
+    .hero__mobile-cta.btn-green {
+      display: none;
+    }
   }
 
   .eyebrow__dot {
@@ -756,6 +800,45 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     margin: 0;
   }
 
+  /* Smaller step cards on mobile (single-column state) so all four fit on
+     screen with less scrolling. */
+  @media (max-width: 639px) {
+    .steps-grid {
+      margin-top: 32px;
+    }
+
+    .step-card {
+      padding: 22px 20px;
+    }
+
+    .step-card__num {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+    }
+
+    .step-card__icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      margin-bottom: 12px;
+    }
+
+    .step-card__icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .step-card__title {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .step-card__desc {
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+  }
+
   /* ── Features ───────────────────────────────────────────────────────────── */
   .features {
     background: var(--color-navy);
@@ -866,6 +949,20 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   .btn-green:hover {
     background: #00A05C;
     box-shadow: 0 6px 24px rgba(0, 185, 107, 0.35);
+  }
+
+  /* Every CTA button (.btn-green and .btn-ghost, wherever they appear) goes
+     near-full-width and centers itself on mobile. Desktop is untouched. */
+  @media (max-width: 639px) {
+    .btn-green,
+    .btn-ghost {
+      display: flex;
+      width: 100%;
+      max-width: 360px;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   /* ── Rules explainer ────────────────────────────────────────────────────── */
@@ -1086,6 +1183,12 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 639px) {
+    .cta-band__actions {
+      flex-direction: column;
+    }
   }
 
   .btn-ghost {
