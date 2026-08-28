@@ -44,7 +44,7 @@ type CalcResult = {
 };
 
 const DEFAULT_NOTE =
-  "The 90/180 rule counts days in any rolling 180-day window — not a fixed calendar period.";
+  "The 90/180 rule counts days in any rolling 180-day window, not a fixed calendar period.";
 
 function computeResult(
   name: string,
@@ -116,7 +116,7 @@ function computeResult(
     variant: "danger",
     days: 0,
     label: `${displayName === "You" ? "Your" : displayName + "'s"} remaining days`,
-    sublabel: `${used} of 90 days used — must leave now`,
+    sublabel: `${used} of 90 days used · must leave now`,
     windowNote,
   };
 }
@@ -425,7 +425,7 @@ export function HeroCalculatorCard({
           </svg>
           {hasInput
             ? "Track multiple travelers & full history"
-            : "Track all travelers — free"}
+            : "Track all travelers, free"}
         </Link>
 
         {/* Secondary note */}
