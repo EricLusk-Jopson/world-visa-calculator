@@ -9,15 +9,21 @@
  *
  * Browser support (as of 2025): Chrome 115+, Firefox 110+, Safari 18+.
  * Older browsers fall back to the lighter semi-transparent state permanently.
+ *
+ * The mobile menu (below 900px) is a classic checkbox-hack dropdown: a
+ * visually-hidden checkbox drives every open/close state via CSS sibling
+ * selectors, so it works with JavaScript disabled and needs no island.
  */
 ---
 
 <nav class="landing-nav" aria-label="Main navigation">
+  <input type="checkbox" id="nav-toggle" class="landing-nav__toggle-input" />
+
   <div class="landing-nav__inner">
     <!-- Logo -->
     <a href="/" class="landing-nav__logo">
-      <img src="/geo-trans.svg" alt="" width="32" height="32" />
-      EuroVisaCalculator
+      <img src="/geo-trans.svg" alt="EuroVisaCalculator" width="32" height="32" />
+      <span class="landing-nav__logo-text" aria-hidden="true">EuroVisaCalculator</span>
     </a>
 
     <!-- All nav items in one row: section links + action CTAs -->
@@ -28,7 +34,7 @@
       <a href="/#rules" class="landing-nav__link">The 90/180 Rule</a>
       <a href="/blog" class="landing-nav__link">Blog</a>
 
-      <!-- Action CTAs — hidden below 550px -->
+      <!-- Action CTAs — hidden below 900px (the mobile menu covers these) -->
       <a
         href="https://ko-fi.com/ericluskjopson"
         class="landing-nav__kofi"
@@ -45,6 +51,32 @@
         class="landing-nav__cta"
       >Open calculator →</a>
     </div>
+
+    <!-- Mobile menu toggle — hamburger / close icon, hidden at 900px+ -->
+    <label for="nav-toggle" class="landing-nav__toggle" aria-label="Open menu">
+      <svg class="landing-nav__toggle-icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <svg class="landing-nav__toggle-icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </label>
+  </div>
+
+  <!-- Tapping outside the panel closes it -->
+  <label for="nav-toggle" class="landing-nav__backdrop" aria-hidden="true"></label>
+
+  <!-- Mobile menu panel -->
+  <div class="landing-nav__mobile-menu">
+    <a href="/app" class="landing-nav__mobile-link">Calculator</a>
+    <a href="/blog" class="landing-nav__mobile-link">Blog</a>
+    <a
+      href="https://ko-fi.com/ericluskjopson"
+      class="landing-nav__mobile-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Support</a>
+    <a href="/updates" class="landing-nav__mobile-link">Changelog</a>
   </div>
 </nav>
 
@@ -80,6 +112,15 @@
     animation: nav-scrolled linear both;
     animation-timeline: scroll(root);
     animation-range: 0px 24px;
+  }
+
+  /* ── Mobile menu toggle checkbox — visually hidden but focusable ───────── */
+  .landing-nav__toggle-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
   }
 
   /* ── Inner layout ───────────────────────────────────────────────────────── */
@@ -121,6 +162,14 @@
     flex-shrink: 0;
   }
 
+  /* Wordmark is desktop-only — mobile keeps just the mark to make room for
+     the menu toggle. */
+  @media (max-width: 899px) {
+    .landing-nav__logo-text {
+      display: none;
+    }
+  }
+
   /* ── Links row — always flex, items selectively hidden ──────────────────── */
   .landing-nav__links {
     display: flex;
@@ -149,7 +198,7 @@
     }
   }
 
-  /* ── Ko-fi support link: hide below 550px ───────────────────────────────── */
+  /* ── Ko-fi support link: hide below 900px (mobile menu covers it) ───────── */
   .landing-nav__kofi {
     display: none;
     align-items: center;
@@ -164,13 +213,13 @@
 
   .landing-nav__kofi:hover { opacity: 0.8; }
 
-  @media (min-width: 550px) {
+  @media (min-width: 900px) {
     .landing-nav__kofi {
       display: inline-flex;
     }
   }
 
-  /* ── CTA pill: hide below 550px ────────────────────────────────────────── */
+  /* ── CTA pill: hide below 900px (mobile menu covers it) ─────────────────── */
   .landing-nav__cta {
     display: none;
     font-family: var(--font-body);
@@ -188,9 +237,121 @@
     background: var(--color-navy-mid);
   }
 
-  @media (min-width: 550px) {
+  @media (min-width: 900px) {
     .landing-nav__cta {
       display: block;
     }
+  }
+
+  /* ── Mobile menu toggle button (hamburger / close) ───────────────────────── */
+  .landing-nav__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    color: var(--color-navy);
+    cursor: pointer;
+    transition: background 0.18s;
+  }
+
+  .landing-nav__toggle:hover {
+    background: rgba(12, 30, 60, 0.06);
+  }
+
+  .landing-nav__toggle-icon-close {
+    display: none;
+  }
+
+  /* Swap hamburger for close icon while the menu is open. */
+  .landing-nav__toggle-input:checked ~ .landing-nav__inner .landing-nav__toggle-icon-open {
+    display: none;
+  }
+
+  .landing-nav__toggle-input:checked ~ .landing-nav__inner .landing-nav__toggle-icon-close {
+    display: block;
+  }
+
+  /* Visible focus ring for keyboard users tabbing to the hidden checkbox. */
+  .landing-nav__toggle-input:focus-visible ~ .landing-nav__inner .landing-nav__toggle {
+    outline: 2px solid var(--color-green);
+    outline-offset: 2px;
+  }
+
+  @media (min-width: 900px) {
+    .landing-nav__toggle {
+      display: none;
+    }
+  }
+
+  /* ── Mobile menu backdrop ─────────────────────────────────────────────────── */
+  .landing-nav__backdrop {
+    position: fixed;
+    inset: 64px 0 0 0;
+    background: rgba(12, 30, 60, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .landing-nav__toggle-input:checked ~ .landing-nav__backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (min-width: 900px) {
+    .landing-nav__backdrop {
+      display: none;
+    }
+  }
+
+  /* ── Mobile menu panel ────────────────────────────────────────────────────── */
+  .landing-nav__mobile-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 12px 24px rgba(12, 30, 60, 0.08);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .landing-nav__toggle-input:checked ~ .landing-nav__mobile-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (min-width: 900px) {
+    .landing-nav__mobile-menu {
+      display: none;
+    }
+  }
+
+  .landing-nav__mobile-link {
+    padding: 14px 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-mist);
+  }
+
+  .landing-nav__mobile-link:last-child {
+    border-bottom: none;
+  }
+
+  .landing-nav__mobile-link:hover {
+    color: var(--color-green);
   }
 </style>
