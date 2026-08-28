@@ -378,8 +378,8 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__top">
-        <span class="footer__brand">EuroVisaCalculator</span>
-        <div class="footer__actions">
+        <div class="footer__identity">
+          <span class="footer__brand">EuroVisaCalculator</span>
           <a
             href="https://ko-fi.com/ericluskjopson"
             class="footer__kofi"
@@ -389,16 +389,16 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
             </svg>
-            Support this project
+            Support This Project
           </a>
-          <nav class="footer__links" aria-label="Footer navigation">
-            <a href="/privacy" class="footer__link">Privacy</a>
-            <a href="/updates" class="footer__link">Updates</a>
-            <a href="/blog" class="footer__link">Blog</a>
-            <a href="#how" class="footer__link">How it works</a>
-            <a href="/app" class="footer__link">Calculator</a>
-          </nav>
         </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="/privacy" class="footer__link">Privacy</a>
+          <a href="/updates" class="footer__link">Updates</a>
+          <a href="/blog" class="footer__link">Blog</a>
+          <a href="#how" class="footer__link">How it works</a>
+          <a href="/app" class="footer__link">Calculator</a>
+        </nav>
       </div>
       <p class="footer__disclaimer">
         For informational use only. Always verify with official government sources
@@ -512,7 +512,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 360px;
+    max-width: 40%;
     padding: 16px 32px;
     font-size: 1.05rem;
     animation: fadeUp 0.6s 0.35s both ease-out;
@@ -979,7 +979,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     .btn-ghost {
       display: flex;
       width: 100%;
-      max-width: 360px;
+      max-width: 40%;
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
@@ -1276,10 +1276,13 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     flex-shrink: 0;
   }
 
-  .footer__actions {
+  /* Always a row (wrapping only if it truly doesn't fit) so the brand name
+     and support link stay horizontally aligned regardless of .footer__top's
+     own column/row breakpoint. */
+  .footer__identity {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
   }
 
