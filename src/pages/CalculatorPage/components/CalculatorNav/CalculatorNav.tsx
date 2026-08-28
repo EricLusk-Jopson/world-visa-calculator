@@ -12,15 +12,10 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import { tokens } from "@/styles/theme";
 import { NavButton } from "./NavButton";
-import { trackEvent } from "@/utils/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type CalcView = "timeline" | "cards";
-
 interface CalculatorNavProps {
-  view: CalcView;
-  onViewChange: (v: CalcView) => void;
   onAddTraveler: () => void;
   onAddTrip: () => void;
   travelerCount: number;
@@ -55,38 +50,6 @@ const LOGO_TEXT_SX = {
   color: tokens.white,
   letterSpacing: "-0.01em",
 } as const;
-
-const VIEW_TOGGLE_WRAPPER_SX = {
-  display: "flex",
-  bgcolor: alpha(tokens.white, 0.08),
-  borderRadius: "7px",
-  p: "3px",
-  gap: "2px",
-  position: "absolute",
-  left: "50%",
-  transform: "translateX(-50%)",
-} as const;
-
-const viewToggleButtonSx = (active: boolean) =>
-  ({
-    px: "14px",
-    py: "5px",
-    border: "none",
-    borderRadius: "5px",
-    fontFamily: tokens.fontBody,
-    fontSize: "0.72rem",
-    fontWeight: 600,
-    letterSpacing: "0.02em",
-    cursor: "pointer",
-    transition: "all 0.15s",
-    textTransform: "capitalize",
-    bgcolor: active ? alpha(tokens.white, 0.14) : "transparent",
-    color: active ? tokens.white : alpha(tokens.white, 0.4),
-    "&:hover": {
-      bgcolor: active ? alpha(tokens.white, 0.14) : alpha(tokens.white, 0.07),
-      color: tokens.white,
-    },
-  }) as const;
 
 const MENU_ITEM_SX = {
   fontFamily: tokens.fontBody,
@@ -150,8 +113,6 @@ function KofiLink() {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function CalculatorNav({
-  view,
-  onViewChange,
   onAddTraveler,
   onAddTrip,
   travelerCount,
@@ -240,20 +201,6 @@ export function CalculatorNav({
         {isMedium && (
           <Typography sx={LOGO_TEXT_SX}>EuroVisaCalculator</Typography>
         )}
-      </Box>
-
-      {/* ── View toggle — always centred, always visible ───────────────────── */}
-      <Box sx={VIEW_TOGGLE_WRAPPER_SX}>
-        {(["timeline", "cards"] as const).map((v) => (
-          <Box
-            key={v}
-            component="button"
-            onClick={() => { onViewChange(v); trackEvent("view_toggled", { view_type: v }); }}
-            sx={viewToggleButtonSx(view === v)}
-          >
-            {v}
-          </Box>
-        ))}
       </Box>
 
       {/* ── Right side ────────────────────────────────────────────────────── */}
