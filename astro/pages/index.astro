@@ -1287,6 +1287,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     gap: 16px;
   }
 
+  /* Push brand and support to opposite edges in the mobile footer. */
+  @media (max-width: 639px) {
+    .footer__identity {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
   .footer__disclaimer {
     font-family: var(--font-body);
     font-size: 0.75rem;
