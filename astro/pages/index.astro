@@ -440,6 +440,15 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     }
   }
 
+  /* Center the hero content (title, description, CTA, proof items) as a
+     block on mobile. Desktop keeps the left-aligned layout. */
+  @media (max-width: 899px) {
+    .hero__left {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
   /* ── Right column ──────────────────────────────────────────────────────── */
   .hero__right {
     background: var(--color-white);
@@ -559,6 +568,14 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     gap: 24px;
     flex-wrap: wrap;
     animation: fadeUp 0.6s 0.4s both ease-out;
+  }
+
+  /* Centering the box (.hero__left) doesn't center the wrapped items
+     inside this flex row — that needs its own justify-content. */
+  @media (max-width: 899px) {
+    .proof-items {
+      justify-content: center;
+    }
   }
 
   .proof-item {
@@ -715,19 +732,13 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
 
   .steps-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     margin-top: 60px;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid var(--color-border);
     gap: 2px;
     background: var(--color-border);
-  }
-
-  @media (min-width: 640px) {
-    .steps-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   @media (min-width: 1000px) {
@@ -800,42 +811,51 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     margin: 0;
   }
 
-  /* Smaller step cards on mobile (single-column state) so all four fit on
-     screen with less scrolling. */
+  /* Smaller, denser step cards on mobile: the step number is dropped
+     entirely, the icon and title share a row, and the description wraps
+     to its own line below — so all four cards fit two-up with much less
+     height than the stacked desktop layout. */
   @media (max-width: 639px) {
     .steps-grid {
       margin-top: 32px;
     }
 
-    .step-card {
-      padding: 22px 20px;
+    .step-card__num {
+      display: none;
     }
 
-    .step-card__num {
-      font-size: 1.9rem;
-      margin-bottom: 8px;
+    .step-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 10px;
+      padding: 16px 16px;
     }
 
     .step-card__icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      margin-bottom: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      margin-bottom: 0;
+      flex-shrink: 0;
     }
 
     .step-card__icon svg {
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
     }
 
     .step-card__title {
-      font-size: 1.05rem;
-      margin-bottom: 6px;
+      flex: 1;
+      font-size: 0.92rem;
+      margin: 0;
     }
 
     .step-card__desc {
-      font-size: 0.82rem;
-      line-height: 1.55;
+      flex-basis: 100%;
+      margin-top: 8px;
+      font-size: 0.76rem;
+      line-height: 1.5;
     }
   }
 
