@@ -1,0 +1,367 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LandingNav from "../components/LandingNav.astro";
+
+/**
+ * Changelog entries, most recent first. Each `changes` array holds
+ * { tag: "feature" | "improvement" | "fix", text: string }.
+ */
+const roadmapCountries = [
+  "Cyprus", "Albania", "Montenegro", "North Macedonia", "Kosovo",
+  "Bosnia and Herzegovina", "Serbia", "Ukraine", "Moldova", "Belarus",
+  "Georgia", "Armenia", "Azerbaijan", "Morocco", "Algeria", "Tunisia", "Egypt",
+];
+
+const qcPipelineNotes = [
+  "Scheduled jobs check every government source link cited in the app for breakage and content drift on a recurring basis.",
+  "Changes that look impactful (stay limits, eligibility, entry conditions) are flagged for manual review before the ruleset is updated.",
+  "Every government source link in the app will get an inline “Report an issue” form, so users can flag broken links or outdated information directly.",
+];
+
+const changelog = [
+  {
+    range: "August 14 – 27, 2026",
+    changes: [
+      { tag: "feature", text: "Added a generic per-destination status engine that unifies day-tracking (sliders, chips, notes) across Schengen, UK, Ireland, and Türkiye — with a per-traveler destination override." },
+      { tag: "improvement", text: "Added “no-save” shareable links, so a link posted publicly (blogs, forums, social) won't overwrite a reader's own saved trips." },
+      { tag: "improvement", text: "Added session IDs to anonymous usage analytics for more accurate tracking." },
+      { tag: "improvement", text: "Published a new blog post on tracking Schengen days for couples." },
+    ],
+  },
+  {
+    range: "July 31 – August 13, 2026",
+    changes: [
+      { tag: "feature", text: "Introduced a centralized passport-rule data layer that unifies Schengen, UK, Ireland, and Türkiye visa-rule lookups behind a single function." },
+      { tag: "improvement", text: "Desktop trip modal now shows each traveler's eligibility and remaining duration in an overlay matching the modal's design." },
+      { tag: "improvement", text: "Added Türkiye to the desktop region selector." },
+      { tag: "improvement", text: "Redesigned the mobile Trip Detail view around traveler cards, with “Entry” and “Duration” status groups." },
+      { tag: "improvement", text: "Capped the mobile traveler list at half-screen with scroll, and removed passport flags from traveler rows." },
+      { tag: "fix", text: "Reclassified nine Türkiye nationalities from a fixed 6-month window to the standard 90/180 rolling window for consistency with the rest of the ruleset." },
+    ],
+  },
+  {
+    range: "July 17 – 30, 2026",
+    changes: [],
+  },
+  {
+    range: "July 3 – 16, 2026",
+    changes: [],
+  },
+  {
+    range: "June 19 – July 2, 2026",
+    changes: [
+      { tag: "feature", text: "UK and Ireland now warn as you approach or exceed max-stay limits, and flag re-entry patterns that risk extra scrutiny." },
+      { tag: "feature", text: "Added Türkiye as a fourth trackable region; rebuilt the visa-rule engine to support per-visit, rolling-window, fixed-window, and calendar-period stay limits across 195+ nationalities." },
+      { tag: "feature", text: "Shipped a fully mobile-optimized UI: a slide-in trip detail panel, an add-traveler drawer, and a utility drawer for touch devices." },
+      { tag: "improvement", text: "Published a new blog post explaining the 90/180 rolling window." },
+    ],
+  },
+  {
+    range: "June 5 – 18, 2026",
+    changes: [],
+  },
+  {
+    range: "May 22 – June 4, 2026",
+    changes: [
+      { tag: "feature", text: "Added the UK and Ireland as trackable destinations, each with their own entry rules (ETA/DATV for the UK; visa-free/BIVS/SSVWP for Ireland) shown in the trip modal." },
+      { tag: "improvement", text: "Added a Schengen-member tooltip across the UI." },
+      { tag: "improvement", text: "Added tooltips and highlighting for the current/next trip on trip cards." },
+      { tag: "improvement", text: "The “Currently in …” label now reflects the correct region (Ireland, UK, or Schengen)." },
+      { tag: "improvement", text: "Removed inaccurate ETA cost information from UK guidance." },
+      { tag: "fix", text: "Fixed trip card chip wrapping and text overflow." },
+    ],
+  },
+  {
+    range: "May 8 – 21, 2026",
+    changes: [
+      { tag: "improvement", text: "Published a new blog post on whether your entry and exit days count toward your Schengen allowance." },
+      { tag: "improvement", text: "Added a “no-save” URL parameter for blog example links, so readers exploring an example don't overwrite their own trip data." },
+    ],
+  },
+  {
+    range: "April 24 – May 7, 2026",
+    changes: [],
+  },
+  {
+    range: "April 10 – 23, 2026",
+    changes: [
+      { tag: "fix", text: "Hid day-tracking for passport holders who require a Schengen visa, since the 90/180 counter doesn't apply to them." },
+    ],
+  },
+  {
+    range: "March 27 – April 9, 2026",
+    changes: [
+      { tag: "feature", text: "Launched passport-aware Schengen guidance: a nationality selector (195+ countries) that automatically shows free movement, visa-free, visa-required, or suspended status, plus ETIAS notices where relevant." },
+      { tag: "improvement", text: "Rebuilt the site on Astro with a new design system, hero calculator, and pure-CSS nav." },
+      { tag: "improvement", text: "Added the Privacy Policy page and a buffer-day disclaimer." },
+      { tag: "improvement", text: "Added a Ko-fi support link and anonymous usage analytics." },
+      { tag: "improvement", text: "Published our first blog post." },
+      { tag: "improvement", text: "Corrected the Schengen member count from 26 to 29." },
+      { tag: "improvement", text: "Added aging-out indicators for past trips on the timeline." },
+      { tag: "fix", text: "Fixed mobile timeline markers and tooltips." },
+    ],
+  },
+];
+
+const tagLabel: Record<string, string> = {
+  feature: "Feature",
+  improvement: "Improvement",
+  fix: "Fix",
+};
+---
+
+<BaseLayout
+  title="Updates — EuroVisaCalculator"
+  description="What's next for EuroVisaCalculator, and a changelog of everything shipped since launch."
+  canonicalUrl="https://eurovisacalculator.com/updates"
+>
+  <LandingNav />
+  <div class="page">
+    <div class="page__inner">
+      <h1 class="page__title">Updates</h1>
+      <p class="page__date">Tracking changes since launch — March 26, 2026</p>
+
+      <section class="section">
+        <h2 class="section__title">Roadmap</h2>
+        <p class="section__body">Two workstreams are currently in progress:</p>
+
+        <div class="roadmap-card">
+          <p class="roadmap-card__label">In progress — full European &amp; neighbouring coverage</p>
+          <p class="roadmap-card__desc">
+            Expanding destination support to cover all of Europe and its
+            neighbouring nations. Each new destination gets its own entry
+            rules and stay-limit tracking, powered by the same per-destination
+            status engine already driving Schengen, UK, Ireland, and Türkiye.
+          </p>
+          <ul class="roadmap-card__list">
+            {roadmapCountries.map((country) => (
+              <li>{country}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="roadmap-card">
+          <p class="roadmap-card__label">In progress — data QC &amp; error-reporting pipeline</p>
+          <p class="roadmap-card__desc">
+            Building an automated pipeline to keep passport/destination rules
+            accurate as government sources change, backed by a way for users
+            to flag problems directly:
+          </p>
+          <ul class="roadmap-card__notes">
+            {qcPipelineNotes.map((note) => (
+              <li>{note}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Changelog</h2>
+        <div class="changelog">
+          {changelog.map((entry) => (
+            <div class="changelog-entry">
+              <p class="changelog-entry__range">{entry.range}</p>
+              {entry.changes.length === 0 ? (
+                <p class="changelog-entry__empty">No changes shipped this period.</p>
+              ) : (
+                <ul class="changelog-entry__list">
+                  {entry.changes.map((change) => (
+                    <li class="changelog-entry__item">
+                      <span class={`tag tag--${change.tag}`}>{tagLabel[change.tag]}</span>
+                      <span>{change.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    background: var(--color-off-white);
+    padding: 128px 24px 96px;
+  }
+
+  .page__inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .page__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+
+  .page__date {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text-ghost);
+    margin: 0 0 48px;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section__title {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .section__body {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-soft);
+    margin: 0 0 20px;
+  }
+
+  /* ── Roadmap ─────────────────────────────────────────────────────────── */
+  .roadmap-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 24px 28px;
+  }
+
+  .roadmap-card + .roadmap-card {
+    margin-top: 16px;
+  }
+
+  .roadmap-card__label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-green-text);
+    margin: 0 0 12px;
+  }
+
+  .roadmap-card__desc {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-text-soft);
+    margin: 0 0 16px;
+  }
+
+  .roadmap-card__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--color-text);
+  }
+
+  @media (min-width: 480px) {
+    .roadmap-card__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .roadmap-card__notes {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  /* ── Changelog ───────────────────────────────────────────────────────── */
+  .changelog-entry {
+    padding: 20px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .changelog-entry:last-child {
+    padding-bottom: 0;
+  }
+
+  .changelog-entry__range {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 12px;
+  }
+
+  .changelog-entry__empty {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-ghost);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .changelog-entry__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .changelog-entry__item {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-text-soft);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .tag {
+    flex-shrink: 0;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 6px;
+    line-height: 1.6;
+  }
+
+  .tag--feature {
+    background: var(--color-green-bg);
+    color: var(--color-green-text);
+    border: 1px solid var(--color-green-border);
+  }
+
+  .tag--improvement {
+    background: var(--color-mist);
+    color: var(--color-navy-mid);
+    border: 1px solid var(--color-border);
+  }
+
+  .tag--fix {
+    background: var(--color-amber-bg);
+    color: var(--color-amber-text);
+    border: 1px solid var(--color-amber-border);
+  }
+</style>
