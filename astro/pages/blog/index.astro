@@ -10,7 +10,7 @@ import LandingNav from "../../components/LandingNav.astro";
 ---
 
 <BaseLayout
-  title="Blog — EuroVisaCalculator"
+  title="Blog: EuroVisaCalculator"
   description="Guides and articles about Schengen visa rules, the 90/180 rule explained, and travel compliance tips."
   canonicalUrl="https://eurovisacalculator.com/blog"
 >
@@ -195,7 +195,9 @@ import LandingNav from "../../components/LandingNav.astro";
   }
 
   .blog__cta {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
     padding: 12px 28px;
     background: #00b96b;
     color: #fff;
