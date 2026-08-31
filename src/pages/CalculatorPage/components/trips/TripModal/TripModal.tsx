@@ -379,9 +379,13 @@ export function TripModal({
 
   const eligibility =
     region !== VisaRegion.Elsewhere
-      ? computeTravelerEligibility(region, travelers, travelerIds)
+      ? computeTravelerEligibility(region, travelers, travelerIds, entryDate || undefined)
       : [];
-  const eligOk = eligibility.filter((e) => e.ok).length;
+  // A temporary (date_range) entitlement currently in effect gets its own
+  // amber bucket — technically "ok", but worth flagging as temporary rather
+  // than folding into the plain green count.
+  const eligOk = eligibility.filter((e) => e.ok && !e.temporalException?.active).length;
+  const eligTemporary = eligibility.filter((e) => e.temporalException?.active).length;
   // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
   const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
   const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
@@ -823,6 +827,7 @@ export function TripModal({
               <TripSummaryRow
                 label="Entry Eligibility"
                 okCount={eligOk}
+                cautionCount={eligTemporary}
                 dangerCount={eligWarn}
                 unknownCount={eligUnknown}
                 placeholder="Select travelers"

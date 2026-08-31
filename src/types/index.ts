@@ -32,6 +32,7 @@ export const VisaRegion = {
   Ireland: 2,
   UnitedKingdom: 3,
   Turkiye: 4,
+  Montenegro: 5,
 } as const;
 
 export type VisaRegion = (typeof VisaRegion)[keyof typeof VisaRegion];
@@ -42,6 +43,7 @@ export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
   [VisaRegion.Ireland]: 'Ireland',
   [VisaRegion.UnitedKingdom]: 'United Kingdom',
   [VisaRegion.Turkiye]: 'Türkiye',
+  [VisaRegion.Montenegro]: 'Montenegro',
 };
 
 // ─── Core Domain Types ────────────────────────────────────────────────────────
@@ -271,6 +273,26 @@ export interface PassportIdentifierCondition {
   description: string;
 }
 
+/**
+ * Entitlement is valid only for entries falling within this date range.
+ *
+ * Evaluated against the trip's entry date, not "today" — a user checking
+ * eligibility for a June trip in March should see a seasonal entitlement
+ * apply even though the calculator is being used outside the window.
+ *
+ * Unlike every other EntitlementCondition, this requires no traveller
+ * self-report — it is computable automatically from trip data alone, and
+ * is the one condition type actually evaluated to select between OR'd
+ * entitlements (see selectEntitlement() in stayCalculator.ts). The other
+ * condition types remain display-only today.
+ */
+export interface DateRangeCondition {
+  readonly type: 'date_range';
+  validFrom: string;   // ISO date, YYYY-MM-DD
+  validUntil: string;  // ISO date, YYYY-MM-DD
+  description: string;
+}
+
 export type EntitlementCondition =
   | HoldsVisaForCondition
   | AgeRangeCondition
@@ -278,7 +300,8 @@ export type EntitlementCondition =
   | BiometricPassportCondition
   | EntryPortCondition
   | CarrierCondition
-  | PassportIdentifierCondition;
+  | PassportIdentifierCondition
+  | DateRangeCondition;
 
 // ─── Stay entitlement ─────────────────────────────────────────────────────────
 
@@ -375,7 +398,28 @@ export interface OfficerDiscretionRule {
   notes?: RuleNote[];
 }
 
-export type RegionRule = RollingWindowRule | PerVisitRule | OfficerDiscretionRule;
+/**
+ * Fixed window anchored to the date of first entry into the destination,
+ * at the region level. Distinct from rolling_window: the window resets on
+ * each fresh entry (one that falls windowDays or more after the current
+ * anchor) rather than continuously sliding. See FixedWindowFromEntryLimit
+ * for the equivalent per-passport StayLimit shape.
+ * Example: Montenegro (90 days within 180 days of first entry).
+ */
+export interface FixedWindowFromEntryRule {
+  readonly type: 'fixed_window_from_entry';
+  allowanceDays: number;
+  windowDays: number;
+  entryCountsAsDay: boolean;
+  exitCountsAsDay: boolean;
+  notes?: RuleNote[];
+}
+
+export type RegionRule =
+  | RollingWindowRule
+  | PerVisitRule
+  | OfficerDiscretionRule
+  | FixedWindowFromEntryRule;
 
 // ─── Region definition ────────────────────────────────────────────────────────
 
@@ -419,6 +463,14 @@ export function isPerVisit(rule: RegionRule): rule is PerVisitRule {
 
 export function isOfficerDiscretion(rule: RegionRule): rule is OfficerDiscretionRule {
   return rule.type === 'officer_discretion';
+}
+
+export function isFixedWindowFromEntry(rule: RegionRule): rule is FixedWindowFromEntryRule {
+  return rule.type === 'fixed_window_from_entry';
+}
+
+export function isDateRangeCondition(condition: EntitlementCondition): condition is DateRangeCondition {
+  return condition.type === 'date_range';
 }
 
 // ─── Sharing ──────────────────────────────────────────────────────────────────

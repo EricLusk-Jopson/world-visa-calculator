@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
@@ -92,6 +93,17 @@ function TravelerCard({
             // Nationality not set — unknown eligibility, not a failure.
             <HelpOutlineIcon
               sx={{ fontSize: "1.1rem", color: tokens.textGhost }}
+            />
+          ) : e.temporalException ? (
+            // A date_range-gated entitlement is in play — either currently
+            // overriding the base rule (amber: good for now, but temporary)
+            // or currently dormant while the base rule applies (red: no
+            // access today, though a seasonal exception exists — see notes).
+            <AccessTimeIcon
+              sx={{
+                fontSize: "1.1rem",
+                color: e.temporalException.active ? tokens.amber : tokens.red,
+              }}
             />
           ) : e.ok ? (
             <CheckCircleOutlineIcon

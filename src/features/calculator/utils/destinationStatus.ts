@@ -21,6 +21,7 @@ import {
   resolveStayLimits,
   perVisitApproxDays,
   perVisitLimitLabel,
+  computeFixedWindowStatus,
   type StayVariant,
 } from "./stayCalculator";
 import {
@@ -309,7 +310,11 @@ export interface DestinationChipData {
   tooltip?: string;
 }
 
-export type DestinationRuleKind = "rolling_window" | "per_visit" | "officer_discretion";
+export type DestinationRuleKind =
+  | "rolling_window"
+  | "per_visit"
+  | "officer_discretion"
+  | "fixed_window_from_entry";
 
 export interface DestinationStatus {
   region: VisaRegion;
@@ -535,6 +540,38 @@ export function computeDestinationStatus(
       note:
         stayTooltip ??
         `${limitLabel} allowance per visit for ${regionName}, resetting on each departure and re-entry.`,
+    };
+  }
+
+  if (regionRule.type === "fixed_window_from_entry") {
+    const config = { days: regionRule.allowanceDays, windowDays: regionRule.windowDays };
+    const status = computeFixedWindowStatus(config, regionTrips, refDateStr);
+    const variant = getStatusVariant(status.daysRemaining);
+    const todayFmt = fmtWindowDate(refDateStr);
+    const fillPct = Math.min(100, (status.daysUsed / config.days) * 100);
+
+    return {
+      region,
+      regionName,
+      ruleKind: "fixed_window_from_entry",
+      eligible: true,
+      fillPct,
+      variant,
+      availableChip: {
+        label: `${status.daysRemaining}d avail`,
+        variant,
+        tooltip: `Your balance today, ${todayFmt}, within the current ${config.windowDays}-day window (${fmtWindowDate(status.windowStart)}–${fmtWindowDate(status.windowEnd)}).`,
+      },
+      secondChip: {
+        label: `${status.maxStay}d max`,
+        variant: status.maxStay > status.daysRemaining ? "safe" : variant,
+        tooltip: `The longest stay you could start today, ${todayFmt}, in ${regionName}, bounded by the window's end (${fmtWindowDate(status.windowEnd)}).`,
+      },
+      summaryLine: `As of today, ${todayFmt}: ${status.daysUsed}/${config.days} used`,
+      note:
+        status.daysUsed > 0
+          ? `${config.days}-day allowance within a ${config.windowDays}-day window anchored to first entry. As of today, ${todayFmt}, the current window started ${fmtWindowDate(status.windowStart)}.`
+          : `No ${regionName} days used in the current window as of today, ${todayFmt}.`,
     };
   }
 

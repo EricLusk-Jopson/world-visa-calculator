@@ -18,9 +18,11 @@ import type {
   StayUnit,
   RegionRule,
   PassportRule,
+  EntitledRule,
+  StayEntitlement,
   Trip,
 } from "@/types";
-import { VisaRegion } from "@/types";
+import { VisaRegion, isDateRangeCondition } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import {
   parseDate,
@@ -127,14 +129,74 @@ export function regionRuleToLimits(
     return [{ type: "per_visit", value: rule.allowanceDays, unit: "days" }];
   if (rule.type === "rolling_window")
     return [{ type: "rolling_window", days: rule.allowanceDays, windowDays: rule.windowDays }];
+  if (rule.type === "fixed_window_from_entry")
+    return [{ type: "fixed_window_from_entry", days: rule.allowanceDays, windowDays: rule.windowDays }];
+  return null;
+}
+
+// ─── Entitlement selection ─────────────────────────────────────────────────────
+
+export interface EntitlementSelection {
+  selected: StayEntitlement;
+  /** True when `selected` isn't the rule's unconditional/first-listed entitlement. */
+  isOverride: boolean;
+  /** The entitlement that would apply outside the active date_range — for display. */
+  baseEntitlement?: StayEntitlement;
+}
+
+/**
+ * Select which of an EntitledRule's (possibly several, OR'd) entitlements
+ * applies for a trip entering on `entryDate`.
+ *
+ * Only `date_range` conditions are evaluated here — it's the one condition
+ * type that's mechanically computable from the trip alone (no traveller
+ * self-report needed). Every other condition type is treated as passing,
+ * matching prior behavior (conditions were previously never evaluated at
+ * all; this narrows that gap to just date_range, not closes it entirely).
+ *
+ * Returns null when no entitlement's date_range conditions match — the
+ * caller should fall back to visa_required (e.g. a seasonal-only waiver
+ * outside its window, with no unconditional fallback entitlement).
+ */
+export function selectEntitlement(
+  rule: EntitledRule,
+  entryDate: string,
+): EntitlementSelection | null {
+  const entry = parseDate(entryDate);
+
+  const matches = (entitlement: StayEntitlement): boolean =>
+    (entitlement.conditions ?? [])
+      .filter(isDateRangeCondition)
+      .every((c) => entry >= parseDate(c.validFrom) && entry <= parseDate(c.validUntil));
+
+  const baseEntitlement = rule.entitlements.find(
+    (e) => !(e.conditions ?? []).some(isDateRangeCondition),
+  );
+
+  for (const entitlement of rule.entitlements) {
+    if (matches(entitlement)) {
+      const isOverride = (entitlement.conditions ?? []).some(isDateRangeCondition);
+      return {
+        selected: entitlement,
+        isOverride,
+        ...(isOverride && baseEntitlement && baseEntitlement !== entitlement
+          ? { baseEntitlement }
+          : {}),
+      };
+    }
+  }
+
   return null;
 }
 
 /**
- * Resolve the stay limits that apply to a traveler for a region.
+ * Resolve the stay limits that apply to a traveler for a region on a given
+ * entry date.
  *
- * - entitled passport → the first entitlement's own limits (respects
- *   per-passport allowances and their units).
+ * - entitled passport → the selected entitlement's own limits (respects
+ *   per-passport allowances, their units, and any active date_range
+ *   condition). Falls back to null (visa_required-equivalent, no calculable
+ *   limit) when no entitlement's date_range condition matches.
  * - no passport set → the region's default rule limits (permissive default,
  *   mirroring how eligibility is treated elsewhere).
  * - free_movement / visa_required → null (no calculable per-visit cap).
@@ -143,8 +205,12 @@ export function resolveStayLimits(
   passportCode: string | null,
   rule: PassportRule,
   regionRule: RegionRule | null,
+  entryDate?: string,
 ): [StayLimit, ...StayLimit[]] | null {
-  if (rule.access === "entitled") return rule.entitlements[0].limits;
+  if (rule.access === "entitled") {
+    if (!entryDate) return rule.entitlements[0].limits;
+    return selectEntitlement(rule, entryDate)?.selected.limits ?? null;
+  }
   if (!passportCode && regionRule) return regionRuleToLimits(regionRule);
   return null;
 }
@@ -235,7 +301,7 @@ function minDate(a: Date, b: Date): Date {
  * Within [windowStart, windowEnd], total presence must not exceed `days`. Unlike
  * a rolling window, days do not age out during the trip — the window is fixed.
  */
-function assessBudgetWindow(
+export function assessBudgetWindow(
   limitType: StayLimit["type"],
   days: number,
   windowStart: Date,
@@ -348,6 +414,68 @@ function assessCalendarPeriod(
   );
 }
 
+export interface FixedWindowStatus {
+  windowStart: string;
+  windowEnd: string;
+  /** Days used within the current window, up to and including refDate. */
+  daysUsed: number;
+  daysRemaining: number;
+  /** Longest new stay startable on refDate, 0 if none. */
+  maxStay: number;
+  canEnter: boolean;
+}
+
+/**
+ * Fixed-window-from-entry status "as of" a reference date, independent of
+ * whether a trip is ongoing on that date — mirrors
+ * createRollingWindowCalculator's getDaysUsedOnDate/calculateMaxStay pair,
+ * but for the non-rolling, entry-anchored window (e.g. Montenegro's 90 days
+ * within 180 days of first entry). Used by destinationStatus.ts for the
+ * region-level allowance chip.
+ */
+export function computeFixedWindowStatus(
+  limit: { days: number; windowDays: number },
+  regionTrips: Trip[],
+  refDate: string,
+): FixedWindowStatus {
+  const entries = regionTrips
+    .filter((t) => t.entryDate < refDate)
+    .map((t) => t.entryDate)
+    .concat(refDate)
+    .sort();
+
+  let anchor = entries[0];
+  for (const e of entries) {
+    if (differenceInCalendarDays(parseDate(e), parseDate(anchor)) >= limit.windowDays) {
+      anchor = e;
+    }
+  }
+
+  const windowStart = parseDate(anchor);
+  const windowEnd = addDays(windowStart, limit.windowDays - 1);
+  const ref = parseDate(refDate);
+
+  const daysUsed = regionTrips.reduce((sum, t) => {
+    const tEntry = parseDate(t.entryDate);
+    const tExit = t.exitDate ? parseDate(t.exitDate) : ref;
+    return sum + countDaysInWindow(tEntry, tExit, windowStart, minDate(windowEnd, ref));
+  }, 0);
+
+  const daysRemaining = Math.max(0, limit.days - daysUsed);
+  const canEnter = daysRemaining > 0 && ref <= windowEnd;
+  const maxExit = minDate(addDays(ref, daysRemaining - 1), windowEnd);
+  const maxStay = canEnter ? differenceInCalendarDays(maxExit, ref) + 1 : 0;
+
+  return {
+    windowStart: formatDate(windowStart),
+    windowEnd: formatDate(windowEnd),
+    daysUsed,
+    daysRemaining,
+    maxStay,
+    canEnter,
+  };
+}
+
 // ─── Public API ───────────────────────────────────────────────────────────────
 
 /**
@@ -441,7 +569,7 @@ export function assessRegionTripStay(
 
   const rule = getPassportRule(region, passportCode);
   const regionRule = getRegionDefinition(region)?.rule ?? null;
-  const limits = resolveStayLimits(passportCode, rule, regionRule);
+  const limits = resolveStayLimits(passportCode, rule, regionRule, trip.entryDate);
   if (!limits) return null;
 
   const history = travelerTrips.filter(

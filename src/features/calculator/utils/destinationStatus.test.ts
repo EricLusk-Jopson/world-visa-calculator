@@ -141,6 +141,53 @@ describe("computeDestinationStatus — rolling_window (Schengen)", () => {
   });
 });
 
+describe("computeDestinationStatus — fixed_window_from_entry (Montenegro)", () => {
+  it("computes days used/remaining and a max-stay chip, anchored to the earliest entry in the current window", () => {
+    // Same shape as the rolling_window test above: a single 21-day trip,
+    // well within the 90-day budget and nowhere near the 180-day window edge
+    // — so the numbers land the same even though the window doesn't roll.
+    const trav = traveler([
+      trip("a", VisaRegion.Montenegro, iso(REF, -30), iso(REF, -10)), // 21 days
+    ]);
+    const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
+    expect(status.eligible).toBe(true);
+    expect(status.ruleKind).toBe("fixed_window_from_entry");
+    expect(status.availableChip?.label).toBe("69d avail"); // 90 - 21
+    expect(status.secondChip?.label).toBe("69d max"); // window end is far off, no truncation
+    expect(status.fillPct).toBeCloseTo((21 / 90) * 100, 5);
+  });
+
+  it("does not let a later trip reset the budget within the same 180-day window", () => {
+    // First entry 100 days ago anchors the window; a second, more recent
+    // 10-day trip does not start a fresh window (100 < 180), so both trips'
+    // days draw from the same 90-day budget.
+    const trav = traveler([
+      trip("first", VisaRegion.Montenegro, iso(REF, -100), iso(REF, -90)), // 11 days
+      trip("second", VisaRegion.Montenegro, iso(REF, -9), iso(REF, -1)), // 9 days
+    ]);
+    const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
+    expect(status.availableChip?.label).toBe("70d avail"); // 90 - (11 + 9)
+  });
+
+  it("resets the window once a gap of at least 180 days passes", () => {
+    const trav = traveler([
+      trip("stale", VisaRegion.Montenegro, iso(REF, -300), iso(REF, -290)), // >180 days ago
+    ]);
+    const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
+    expect(status.availableChip?.label).toBe("90d avail"); // stale trip aged out of the window
+  });
+
+  it("marks visa-required passports ineligible with no chips", () => {
+    const trav = traveler([trip("a", VisaRegion.Montenegro, iso(REF, -5))], {
+      passportCode: "AF", // visa-required for Montenegro
+    });
+    const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
+    expect(status.eligible).toBe(false);
+    expect(status.availableChip).toBeNull();
+    expect(status.secondChip).toBeNull();
+  });
+});
+
 describe("computeDestinationStatus — per_visit (UK / Ireland)", () => {
   it("uses calendar months for the UK's 6-month limit, not a flat 180 days (regression)", () => {
     // Entering 1 Jul, the real limit is addMonths(entry, 6) = 1 Jan — 184
@@ -228,6 +275,7 @@ describe("categorizeAllDestinations", () => {
     expect(result.every((d) => d.category === "never")).toBe(true);
     expect(result.map((d) => d.region)).toEqual([
       VisaRegion.Ireland,
+      VisaRegion.Montenegro,
       VisaRegion.Schengen,
       VisaRegion.Turkiye,
       VisaRegion.UnitedKingdom,

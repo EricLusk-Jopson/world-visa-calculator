@@ -20,9 +20,10 @@ import {
   resolveStayLimits,
   perVisitApproxDays,
   assessRegionTripStay,
+  selectEntitlement,
 } from "./stayCalculator";
 import { getPassportRule } from "@/data/regions";
-import { VisaRegion, type Trip, type StayLimit } from "@/types";
+import { VisaRegion, type Trip, type StayLimit, type EntitledRule } from "@/types";
 import { addDays, addMonths, formatDate, parseDate } from "./dates";
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -196,6 +197,87 @@ describe("assessStay — calendar_period (90 per calendar year)", () => {
     const entry = parseDate("2026-08-01");
     const r = assessStay(limits, [prior], "2026-08-01", iso(entry, 9));
     expect(r!.daysRemaining).toBe(80); // full 90 budget, 10-day trip → 80 left
+  });
+});
+
+// ─── selectEntitlement (date_range-gated entitlement selection) ──────────────
+
+describe("selectEntitlement", () => {
+  it("matches a plain unconditional entitlement with isOverride: false", () => {
+    const rule: EntitledRule = {
+      access: "entitled",
+      entitlements: [{ limits: [{ type: "per_visit", value: 90, unit: "days" }] }],
+    };
+    const selection = selectEntitlement(rule, "2026-06-01");
+    expect(selection).not.toBeNull();
+    expect(selection!.isOverride).toBe(false);
+    expect(selection!.baseEntitlement).toBeUndefined();
+  });
+
+  it("selects a seasonal entitlement inside its window and surfaces the unconditional fallback as baseEntitlement", () => {
+    const seasonal: EntitledRule = {
+      access: "entitled",
+      entitlements: [
+        {
+          conditions: [{
+            type: "date_range",
+            validFrom: "2026-05-01",
+            validUntil: "2026-10-01",
+            description: "Seasonal waiver",
+          }],
+          limits: [{ type: "per_visit", value: 30, unit: "days" }],
+        },
+        { limits: [{ type: "per_visit", value: 90, unit: "days" }] }, // unconditional fallback
+      ],
+    };
+
+    const inSeason = selectEntitlement(seasonal, "2026-06-15");
+    expect(inSeason).not.toBeNull();
+    expect(inSeason!.isOverride).toBe(true);
+    expect(inSeason!.baseEntitlement).toBe(seasonal.entitlements[1]);
+    expect((inSeason!.selected.limits[0] as { value: number }).value).toBe(30);
+
+    // Outside the window, the unconditional fallback matches directly —
+    // no override, since the fallback itself carries no date_range condition.
+    const outOfSeason = selectEntitlement(seasonal, "2026-12-01");
+    expect(outOfSeason).not.toBeNull();
+    expect(outOfSeason!.isOverride).toBe(false);
+    expect((outOfSeason!.selected.limits[0] as { value: number }).value).toBe(90);
+  });
+
+  it("returns null when no entitlement's date_range matches and there is no unconditional fallback", () => {
+    const seasonalOnly: EntitledRule = {
+      access: "entitled",
+      entitlements: [{
+        conditions: [{
+          type: "date_range",
+          validFrom: "2026-05-01",
+          validUntil: "2026-10-01",
+          description: "Seasonal waiver",
+        }],
+        limits: [{ type: "per_visit", value: 30, unit: "days" }],
+      }],
+    };
+    expect(selectEntitlement(seasonalOnly, "2026-12-01")).toBeNull();
+  });
+
+  it("treats validFrom/validUntil as inclusive boundaries", () => {
+    const rule: EntitledRule = {
+      access: "entitled",
+      entitlements: [{
+        conditions: [{
+          type: "date_range",
+          validFrom: "2026-05-01",
+          validUntil: "2026-10-01",
+          description: "Seasonal waiver",
+        }],
+        limits: [{ type: "per_visit", value: 30, unit: "days" }],
+      }],
+    };
+    expect(selectEntitlement(rule, "2026-05-01")).not.toBeNull();
+    expect(selectEntitlement(rule, "2026-10-01")).not.toBeNull();
+    expect(selectEntitlement(rule, "2026-04-30")).toBeNull();
+    expect(selectEntitlement(rule, "2026-10-02")).toBeNull();
   });
 });
 

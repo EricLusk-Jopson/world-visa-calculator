@@ -43,6 +43,7 @@ function getRegionLabel(region: VisaRegion): string {
     case VisaRegion.UnitedKingdom: return "United Kingdom";
     case VisaRegion.Ireland: return "Ireland";
     case VisaRegion.Turkiye: return "Türkiye";
+    case VisaRegion.Montenegro: return "Montenegro";
     default: return "Elsewhere";
   }
 }
@@ -128,6 +129,7 @@ export function TripViewSlider({
     trip.region,
     travelers,
     travelerIds,
+    trip.entryDate,
   );
   const durations = computeTravelerDurations({
     region: trip.region,

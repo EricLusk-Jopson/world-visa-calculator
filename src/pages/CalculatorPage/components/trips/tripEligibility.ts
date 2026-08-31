@@ -7,7 +7,7 @@
  * surfacing per traveler.
  */
 
-import { VisaRegion, VISA_REGION_LABELS } from "@/types";
+import { VisaRegion, VISA_REGION_LABELS, isDateRangeCondition } from "@/types";
 import type {
   Traveler,
   PassportRule,
@@ -15,16 +15,36 @@ import type {
   StayLimit,
   StayEntitlement,
   EntitlementCondition,
+  DateRangeCondition,
   RuleNote,
 } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
+import { selectEntitlement } from "@/features/calculator/utils/stayCalculator";
 
 export interface EligibilityNote {
   /** Category label, e.g. "Pre-authorisation", "Condition", "Note". */
   label: string;
   text: string;
   source?: RuleNote["source"];
+}
+
+/**
+ * Present whenever this passport rule has a date_range-gated entitlement for
+ * the destination — whether it's currently the one applying (`active: true`,
+ * e.g. Kazakhstan mid-season) or currently dormant while the base rule
+ * applies instead (`active: false`, e.g. Kazakhstan outside the seasonal
+ * window — base is visa_required, but the exception is still worth showing).
+ * `other*` always describes the side NOT already reflected in the top-level
+ * `access`/`accessLabel`/`ruleTexts` fields, so the UI can show both sides
+ * without duplicating whichever one is already "live".
+ */
+export interface TemporalException {
+  active: boolean;
+  /** Human-readable date range, e.g. "1 May – 1 Oct 2026". */
+  dateRangeText: string;
+  otherAccessLabel: string;
+  otherRuleTexts: string[];
 }
 
 export interface TravelerEligibility {
@@ -42,6 +62,8 @@ export interface TravelerEligibility {
   ruleTexts: string[];
   preAuthName?: string;
   notes: EligibilityNote[];
+  /** Set when this rule has a temporary (date_range-gated) entitlement relevant to the trip's entry date. */
+  temporalException?: TemporalException;
 }
 
 // ─── Text helpers ─────────────────────────────────────────────────────────────
@@ -77,6 +99,8 @@ function regionRuleText(rule: RegionRule): string {
       return `${rule.allowanceDays} days in any ${rule.windowDays}-day period`;
     case "per_visit":
       return `Up to ${rule.allowanceDays} days per visit`;
+    case "fixed_window_from_entry":
+      return `${rule.allowanceDays} days within ${rule.windowDays} days of first entry`;
     case "officer_discretion":
       return rule.informationalDays
         ? `Typically up to ${rule.informationalDays} days (officer discretion)`
@@ -90,6 +114,7 @@ function conditionText(condition: EntitlementCondition): string {
     case "age_range":
     case "carrier":
     case "passport_identifier":
+    case "date_range":
       return condition.description;
     case "purpose":
       return `Permitted purposes: ${condition.allowed.join(", ")}`;
@@ -100,9 +125,77 @@ function conditionText(condition: EntitlementCondition): string {
   }
 }
 
-/** The first entitlement is the primary case; its limits/conditions/preAuth drive the card. */
-function primaryEntitlement(rule: PassportRule): StayEntitlement | undefined {
-  return rule.access === "entitled" ? rule.entitlements[0] : undefined;
+function dateRangeConditionOf(entitlement: StayEntitlement): DateRangeCondition | undefined {
+  return entitlement.conditions?.find(isDateRangeCondition);
+}
+
+interface EffectiveEligibility {
+  /** The rule actually in effect for this entry date — may differ from the raw PassportRule when a date_range entitlement doesn't match today. */
+  effectiveRule: PassportRule;
+  entitlement?: StayEntitlement;
+  temporalException?: TemporalException;
+}
+
+/**
+ * Resolves what a passport rule actually grants for a trip entering on
+ * `entryDate`, evaluating date_range conditions via selectEntitlement()
+ * rather than always taking entitlements[0]. When no entryDate is known yet
+ * (dates not set in the trip form), falls back to the first entitlement —
+ * matching the old, date-blind behavior — since there's nothing to evaluate.
+ */
+function resolveEffectiveEligibility(
+  rule: PassportRule,
+  entryDate?: string,
+): EffectiveEligibility {
+  if (rule.access !== "entitled" || !entryDate) {
+    return { effectiveRule: rule, entitlement: rule.access === "entitled" ? rule.entitlements[0] : undefined };
+  }
+
+  const dateGated = rule.entitlements.filter(
+    (e) => e.conditions?.some(isDateRangeCondition),
+  );
+
+  const selection = selectEntitlement(rule, entryDate);
+
+  if (selection) {
+    if (!selection.isOverride) {
+      // Ordinary match — no temporal exception in play.
+      return { effectiveRule: rule, entitlement: selection.selected };
+    }
+
+    // The date_range entitlement is the one currently applying — surface
+    // what would apply instead outside its window.
+    const base = selection.baseEntitlement;
+    const condition = dateRangeConditionOf(selection.selected);
+    return {
+      effectiveRule: rule,
+      entitlement: selection.selected,
+      temporalException: {
+        active: true,
+        dateRangeText: condition?.description ?? "",
+        otherAccessLabel: base ? "No Visa Required" : "Visa Required",
+        otherRuleTexts: base ? base.limits.map(limitText) : [],
+      },
+    };
+  }
+
+  // No entitlement's date_range matches today — the effective access for
+  // this trip is visa_required, even though the raw rule is "entitled".
+  const example = dateGated[0];
+  const condition = example && dateRangeConditionOf(example);
+  return {
+    effectiveRule: { access: "visa_required" },
+    entitlement: undefined,
+    temporalException:
+      example && condition
+        ? {
+            active: false,
+            dateRangeText: condition.description,
+            otherAccessLabel: "No Visa Required",
+            otherRuleTexts: dateGated.flatMap((e) => e.limits.map(limitText)),
+          }
+        : undefined,
+  };
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
@@ -111,6 +204,7 @@ export function computeTravelerEligibility(
   region: VisaRegion,
   travelers: Traveler[],
   travelerIds: string[],
+  entryDate?: string,
 ): TravelerEligibility[] {
   const regionLabel = VISA_REGION_LABELS[region];
   const regionDef = getRegionDefinition(region);
@@ -139,7 +233,9 @@ export function computeTravelerEligibility(
       ];
     }
 
-    const rule = getPassportRule(region, traveler.passportCode);
+    const rawRule = getPassportRule(region, traveler.passportCode);
+    const { effectiveRule: rule, entitlement, temporalException } =
+      resolveEffectiveEligibility(rawRule, entryDate);
     const notes: EligibilityNote[] = [];
 
     const accessLabel =
@@ -166,13 +262,32 @@ export function computeTravelerEligibility(
 
     // Admittance rule text: prefer the traveler's own entitlement limits,
     // otherwise fall back to the region rule.
-    const entitlement = primaryEntitlement(rule);
     const ruleTexts: string[] =
       entitlement != null
         ? entitlement.limits.map(limitText)
         : regionRule && rule.access !== "visa_required"
           ? [regionRuleText(regionRule)]
           : [];
+
+    // Temporal exception — always carries a note, per design: a seasonal
+    // waiver's existence (active or not) should never be silent.
+    if (temporalException) {
+      notes.push({
+        label: temporalException.active ? "Temporary waiver" : "Seasonal exception",
+        text: temporalException.active
+          ? `A temporary waiver is currently in effect (${temporalException.dateRangeText}). ` +
+            `Outside this window: ${temporalException.otherAccessLabel}` +
+            (temporalException.otherRuleTexts.length
+              ? ` — ${temporalException.otherRuleTexts.join(", ")}.`
+              : ".")
+          : `A seasonal exception applies ${temporalException.dateRangeText}: ` +
+            `${temporalException.otherAccessLabel}` +
+            (temporalException.otherRuleTexts.length
+              ? ` — ${temporalException.otherRuleTexts.join(", ")}`
+              : "") +
+            ` during that window. Outside it, the rule above applies.`,
+      });
+    }
 
     // Pre-auth
     let preAuthName: string | undefined;
@@ -214,6 +329,7 @@ export function computeTravelerEligibility(
         ruleTexts,
         preAuthName,
         notes,
+        temporalException,
       },
     ];
   });
