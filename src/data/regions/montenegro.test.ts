@@ -3,17 +3,17 @@ import { getMontenegroRule, MONTENEGRO } from './montenegro';
 import { selectEntitlement, resolveStayLimits } from '@/features/calculator/utils/stayCalculator';
 import {
   isEntitled,
-  type FixedWindowFromEntryLimit,
+  type RollingWindowLimit,
   type PerVisitLimit,
 } from '@/types';
 
 describe('getMontenegroRule', () => {
-  it('returns entitled with a 90-day fixed_window_from_entry limit for a standard nationality (US)', () => {
+  it('returns entitled with a 90-day rolling_window limit for a standard nationality (US)', () => {
     const rule = getMontenegroRule('US');
     expect(rule.access).toBe('entitled');
     if (rule.access !== 'entitled') return;
-    const limit = rule.entitlements[0].limits[0] as FixedWindowFromEntryLimit;
-    expect(limit.type).toBe('fixed_window_from_entry');
+    const limit = rule.entitlements[0].limits[0] as RollingWindowLimit;
+    expect(limit.type).toBe('rolling_window');
     expect(limit.days).toBe(90);
     expect(limit.windowDays).toBe(180);
   });

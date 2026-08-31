@@ -20,17 +20,23 @@
  * confidence for those.
  *
  * KNOWN GAPS AND FLAGGED ASSUMPTIONS (see individual entry comments for detail):
- *   - The core "up to 90 days" rule is encoded as fixed_window_from_entry(90, 180)
- *     per an explicit decision — the source text never states this mechanic
- *     explicitly (it just says "up to 90 days"); this is the accepted
- *     interpretation, not independently re-derived from primary Montenegrin law.
- *     This is a genuine reset-on-entry mechanic, unlike Türkiye's superficially
- *     similar "within 180 days from first entry" MFA phrasing — turkiye.ts
- *     deliberately classifies that as a plain 90/180 rolling window instead (see
- *     entitled90FromEntryPhrasing() there), since Law No. 6458 Art. 11(1) caps
- *     every Turkish exemption at 90-in-180 regardless of wording. Montenegro has
- *     no such statutory override, so the "from first entry" reset is taken at
- *     face value here.
+ *   - The core "up to 90 days" rule is encoded as rolling_window(90, 180) — the
+ *     source text never states the window mechanic explicitly (it just says
+ *     "up to 90 days"), and an earlier version of this file took the "within
+ *     180 days from first entry" phrasing at face value as a genuine
+ *     reset-on-entry (fixed_window_from_entry) mechanic. That was reverted: a
+ *     fixed window anchored to first entry, reset by any gap of windowDays or
+ *     more, permits a traveler to stay up to 180 of 182 consecutive days by
+ *     timing re-entry just before the anchor rolls — an edge case the source
+ *     text does not remotely intend and Montenegro has no statutory language
+ *     confirming. Absent that confirmation, rolling_window is the safe default,
+ *     consistent with how turkiye.ts already treats the same "from first entry"
+ *     wording (see entitled90FromEntryPhrasing() there — Law No. 6458 Art.
+ *     11(1) caps every Turkish exemption at 90-in-180 regardless of wording).
+ *     fixed_window_from_entry remains supported by the type system and
+ *     calculator for a future region where a primary source (treaty text or
+ *     consular confirmation) explicitly confirms genuine reset behavior; none
+ *     are currently classified as such, Montenegro included.
  *   - 4 countries (DZ, CV, MZ, PK) have NO visa-regime section published on the
  *     source at all — a genuine content gap, defaulted to visa_required.
  *   - 3 countries (AM, EG, UZ) have a seasonal waiver on the source that had
@@ -71,14 +77,15 @@ import { MontenegroSources } from '@/data/sources';
 // ─── Region-level stay limit ──────────────────────────────────────────────────
 
 /**
- * 90 days measured from date of first entry, within a 180-day outer bound —
- * NOT a Schengen-style continuously rolling window, and NOT a simple per-visit
- * reset. See file header for the caveat that this shape is an accepted
- * interpretation of "up to 90 days" language that does not itself state the
- * window mechanic.
+ * 90 days in any 180-day rolling window — the same shape as Schengen and
+ * Türkiye's standard allowance. See file header: the source's "up to 90
+ * days" wording doesn't itself state a mechanic, and a fixed,
+ * reset-on-entry window was deliberately rejected as unsafe (it would let a
+ * traveler stay up to 180 of 182 consecutive days by timing re-entry against
+ * the anchor). Rolling window is the conservative default.
  */
-const MONTENEGRO_LIMIT: import('@/types').FixedWindowFromEntryLimit = {
-  type: 'fixed_window_from_entry',
+const MONTENEGRO_LIMIT: import('@/types').RollingWindowLimit = {
+  type: 'rolling_window',
   days: 90,
   windowDays: 180,
 };
@@ -88,8 +95,8 @@ const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
 // ─── Entitlement helper ────────────────────────────────────────────────────────
 
 /**
- * Standard Montenegro entitled rule — 90 days, fixed_window_from_entry(90,180),
- * no pre-travel authorisation (Montenegro has no ETA/e-Visa scheme referenced
+ * Standard Montenegro entitled rule — 90 days, rolling_window(90,180), no
+ * pre-travel authorisation (Montenegro has no ETA/e-Visa scheme referenced
  * anywhere in the source data).
  *
  * Every call cites its own country's source page, even when there is nothing
@@ -127,7 +134,7 @@ export const MONTENEGRO: RegionDefinition = {
   name: 'Montenegro',
   memberStates: ['ME'],
   rule: {
-    type: 'fixed_window_from_entry',
+    type: 'rolling_window',
     allowanceDays: 90,
     windowDays: 180,
     entryCountsAsDay: true,
@@ -138,7 +145,7 @@ export const MONTENEGRO: RegionDefinition = {
   defaultRule: VISA_REQUIRED,
   passportRules: {
 
-    // ── Entitled — 90 days, fixed window from first entry (180-day outer bound) ──
+    // ── Entitled — 90 days in any 180-day rolling window ──────────────────────
     // Standard case: passport-based entry only.
     'AG': entitled(MontenegroSources.AG), // Antigua and Barbuda
     'AR': entitled(MontenegroSources.AR), // Argentina

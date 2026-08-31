@@ -141,40 +141,22 @@ describe("computeDestinationStatus — rolling_window (Schengen)", () => {
   });
 });
 
-describe("computeDestinationStatus — fixed_window_from_entry (Montenegro)", () => {
-  it("computes days used/remaining and a max-stay chip, anchored to the earliest entry in the current window", () => {
-    // Same shape as the rolling_window test above: a single 21-day trip,
-    // well within the 90-day budget and nowhere near the 180-day window edge
-    // — so the numbers land the same even though the window doesn't roll.
+describe("computeDestinationStatus — rolling_window (Montenegro)", () => {
+  // Montenegro uses the same rolling_window shape as Schengen (90/180) —
+  // deliberately, not fixed_window_from_entry: a fixed window anchored to
+  // first entry and reset by any windowDays-or-more gap would let a
+  // traveler stay up to 180 of 182 consecutive days by timing re-entry
+  // against the anchor, which the source's "up to 90 days" wording never
+  // intends. This is a light regression check that the wiring landed
+  // correctly; the generic rolling_window mechanic is already covered above.
+  it("computes days used/remaining like any other rolling_window region", () => {
     const trav = traveler([
       trip("a", VisaRegion.Montenegro, iso(REF, -30), iso(REF, -10)), // 21 days
     ]);
     const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
     expect(status.eligible).toBe(true);
-    expect(status.ruleKind).toBe("fixed_window_from_entry");
+    expect(status.ruleKind).toBe("rolling_window");
     expect(status.availableChip?.label).toBe("69d avail"); // 90 - 21
-    expect(status.secondChip?.label).toBe("69d max"); // window end is far off, no truncation
-    expect(status.fillPct).toBeCloseTo((21 / 90) * 100, 5);
-  });
-
-  it("does not let a later trip reset the budget within the same 180-day window", () => {
-    // First entry 100 days ago anchors the window; a second, more recent
-    // 10-day trip does not start a fresh window (100 < 180), so both trips'
-    // days draw from the same 90-day budget.
-    const trav = traveler([
-      trip("first", VisaRegion.Montenegro, iso(REF, -100), iso(REF, -90)), // 11 days
-      trip("second", VisaRegion.Montenegro, iso(REF, -9), iso(REF, -1)), // 9 days
-    ]);
-    const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
-    expect(status.availableChip?.label).toBe("70d avail"); // 90 - (11 + 9)
-  });
-
-  it("resets the window once a gap of at least 180 days passes", () => {
-    const trav = traveler([
-      trip("stale", VisaRegion.Montenegro, iso(REF, -300), iso(REF, -290)), // >180 days ago
-    ]);
-    const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
-    expect(status.availableChip?.label).toBe("90d avail"); // stale trip aged out of the window
   });
 
   it("marks visa-required passports ineligible with no chips", () => {

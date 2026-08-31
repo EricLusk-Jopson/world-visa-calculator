@@ -21,6 +21,7 @@ import {
   perVisitApproxDays,
   assessRegionTripStay,
   selectEntitlement,
+  computeFixedWindowStatus,
 } from "./stayCalculator";
 import { getPassportRule } from "@/data/regions";
 import { VisaRegion, type Trip, type StayLimit, type EntitledRule } from "@/types";
@@ -140,7 +141,18 @@ describe("assessStay — Ireland per_visit (90 days)", () => {
   });
 });
 
-// ─── Fixed window from first entry (Türkiye — Albania et al.) ─────────────────
+// ─── Fixed window from first entry ─────────────────────────────────────────────
+//
+// Reserved infrastructure: no active region currently uses this shape.
+// Türkiye's superficially similar "from first entry" MFA wording is
+// deliberately classified as rolling_window instead (Law No. 6458 Art.
+// 11(1) caps every exemption at 90-in-180 regardless of wording), and an
+// earlier version of montenegro.ts used fixed_window_from_entry but was
+// reverted to rolling_window — a fixed window anchored to first entry and
+// reset by any windowDays-or-more gap permits up to 180 of 182 consecutive
+// days by timing re-entry against the anchor, which no source we've
+// encountered actually intends. Kept and tested here for a future region
+// where a primary source explicitly confirms genuine reset behavior.
 
 describe("assessStay — fixed_window_from_entry (90 in 180 from entry)", () => {
   const limits: [StayLimit] = [
@@ -173,6 +185,37 @@ describe("assessStay — fixed_window_from_entry (90 in 180 from entry)", () => 
     const prior = completedTrip(VisaRegion.Turkiye, "2026-01-01", "2026-03-01");
     const r = assessStay(limits, [prior], "2026-08-01", iso(anchor, 30));
     expect(r!.daysRemaining).toBe(59);
+  });
+});
+
+describe("computeFixedWindowStatus (region-level status card math)", () => {
+  const config = { days: 90, windowDays: 180 };
+
+  it("computes days used/remaining and a max-stay figure with a single trip in the window", () => {
+    const ref = "2026-06-15";
+    const trips = [completedTrip(VisaRegion.Turkiye, iso(parseDate(ref), -30), iso(parseDate(ref), -10))]; // 21 days
+    const status = computeFixedWindowStatus(config, trips, ref);
+    expect(status.daysUsed).toBe(21);
+    expect(status.daysRemaining).toBe(69);
+    expect(status.maxStay).toBe(69); // window end is far off, no truncation
+    expect(status.canEnter).toBe(true);
+  });
+
+  it("does not let a later trip reset the budget within the same 180-day window", () => {
+    const ref = "2026-06-15";
+    const trips = [
+      completedTrip(VisaRegion.Turkiye, iso(parseDate(ref), -100), iso(parseDate(ref), -90)), // 11 days
+      completedTrip(VisaRegion.Turkiye, iso(parseDate(ref), -9), iso(parseDate(ref), -1)), // 9 days
+    ];
+    const status = computeFixedWindowStatus(config, trips, ref);
+    expect(status.daysRemaining).toBe(70); // 90 - (11 + 9)
+  });
+
+  it("resets the window once a gap of at least windowDays passes", () => {
+    const ref = "2026-06-15";
+    const trips = [completedTrip(VisaRegion.Turkiye, iso(parseDate(ref), -300), iso(parseDate(ref), -290))]; // stale
+    const status = computeFixedWindowStatus(config, trips, ref);
+    expect(status.daysRemaining).toBe(90); // stale trip aged out of the window
   });
 });
 
