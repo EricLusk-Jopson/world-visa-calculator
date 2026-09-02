@@ -33,6 +33,7 @@ export const VisaRegion = {
   UnitedKingdom: 3,
   Turkiye: 4,
   Montenegro: 5,
+  Serbia: 6,
 } as const;
 
 export type VisaRegion = (typeof VisaRegion)[keyof typeof VisaRegion];
@@ -44,6 +45,7 @@ export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
   [VisaRegion.UnitedKingdom]: 'United Kingdom',
   [VisaRegion.Turkiye]: 'Türkiye',
   [VisaRegion.Montenegro]: 'Montenegro',
+  [VisaRegion.Serbia]: 'Serbia',
 };
 
 // ─── Core Domain Types ────────────────────────────────────────────────────────

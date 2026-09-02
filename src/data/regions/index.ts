@@ -5,12 +5,14 @@ import { UNITED_KINGDOM, getUKRule } from './uk';
 import { IRELAND, getIrelandRule } from './ireland';
 import { TURKIYE, getTurkiyeRule } from './turkiye';
 import { MONTENEGRO, getMontenegroRule } from './montenegro';
+import { SERBIA, getSerbiaRule } from './serbia';
 
 export { SCHENGEN, getSchengenRule };
 export { UNITED_KINGDOM, getUKRule };
 export { IRELAND, getIrelandRule };
 export { TURKIYE, getTurkiyeRule };
 export { MONTENEGRO, getMontenegroRule };
+export { SERBIA, getSerbiaRule };
 
 const VISA_REQUIRED_DEFAULT: PassportRule = { access: 'visa_required' };
 
@@ -24,6 +26,7 @@ export function getPassportRule(
     case VisaRegion.Ireland:       return getIrelandRule(passportCode);
     case VisaRegion.Turkiye:       return getTurkiyeRule(passportCode);
     case VisaRegion.Montenegro:    return getMontenegroRule(passportCode);
+    case VisaRegion.Serbia:        return getSerbiaRule(passportCode);
     default:                       return VISA_REQUIRED_DEFAULT;
   }
 }
@@ -35,6 +38,7 @@ export function getRegionDefinition(region: VisaRegion): RegionDefinition | null
     case VisaRegion.Ireland:       return IRELAND;
     case VisaRegion.Turkiye:       return TURKIYE;
     case VisaRegion.Montenegro:    return MONTENEGRO;
+    case VisaRegion.Serbia:        return SERBIA;
     default:                       return null;
   }
 }
