@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -29,7 +29,7 @@
  * The PDF property in SchengenSources (atvSpecific) is higher breakage risk —
  * DG HOME rotates document URLs. The parentUrl is the stable fallback.
  *
- * Last updated: 2026-08-30
+ * Last updated: 2026-08-31
  */
 
 import type { SourceDoc } from '@/types';
@@ -1275,4 +1275,1003 @@ export const MontenegroSources = {
     parentUrl: 'https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro',
     dateChecked: '2026-08-30',
   } satisfies SourceDoc, // Zimbabwe
+} as const;
+
+// ─── Serbia ───────────────────────────────────────────────
+
+/**
+ * Republic of Serbia — Ministry of Foreign Affairs.
+ * "Visa regime" — one dedicated page per nationality under this index.
+ * Verified live 2026-08-31 (full scrape of 194 country pages).
+ * Hong Kong SAR and Macao SAR (HK, MO) have no dedicated page of their own —
+ * their figures come from sub-rows on China's (CN) page, so their SourceDoc
+ * entries below point at the same CN URL. Taiwan (TW) has no page in the
+ * scrape at all — its SourceDoc points at the index page only, as a fallback.
+ */
+export const SerbiaSources = {
+  AF: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/avganistan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Afghanistan
+  AL: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/albanija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Albania
+  DZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/alzir',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Algeria
+  AD: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/andora',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Andorra
+  AO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/angola',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Angola
+  AG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Antigua and Barbuda
+  AR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Argentina
+  AM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Armenia
+  AU: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/australija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Australia
+  AT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Austria
+  AZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/azerbejdzan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Azerbaijan
+  BS: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahami',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Bahamas
+  BH: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Bahrain
+  BD: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Bangladesh
+  BB: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/barbados',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Barbados
+  BY: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belorusija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Belarus
+  BE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Belgium
+  BZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Belize
+  BJ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Benin
+  BT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/butan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Bhutan
+  BO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bolivija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Bolivia
+  BA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bosna-i-hercegovina',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Bosnia and Herzegovina
+  BW: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bocvana',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Botswana
+  BR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brazil',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Brazil
+  BN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brunej-darusalam',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Brunei Darussalam
+  BG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bugarska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Bulgaria
+  BF: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Burkina Faso
+  BI: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burundi',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Burundi
+  CV: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kabo-verde',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Cabo Verde
+  KH: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kambodza',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Cambodia
+  CM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kamerun',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Cameroon
+  CA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kanada',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Canada
+  CF: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/centralnoafricka-republika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Central African Republic
+  TD: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cad',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Chad
+  CL: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cile',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Chile
+  CN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // China
+  CO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kolumbija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Colombia
+  CD: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-demokratska-republika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Congo, Democratic Republic
+  CG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-republika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Congo, Republic
+  CR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kostarika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Costa Rica
+  CI: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kot-d-ivoar',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Cote d’Ivoire
+  HR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/hrvatska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Croatia
+  CU: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuba',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Cuba
+  CY: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Cyprus
+  CZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ceska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Czech Republic
+  DK: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/danska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Denmark
+  DJ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dzibuti',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Djibouti
+  DM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Dominica
+  DO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Dominican Republic
+  EC: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvador',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Ecuador
+  EG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/egipat',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Egypt
+  SV: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // El Salvador
+  GQ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvatorijalna-gvineja',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Equatorial Guinea
+  ER: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/eritreja',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Eritrea
+  EE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/estonija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Estonia
+  SZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Eswatini
+  ET: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/etiopija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Ethiopia
+  FJ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Fiji
+  FI: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Finland
+  FR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/francuska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // France
+  GA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gabon',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Gabon
+  GM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gambija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Gambia
+  GE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gruzija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Georgia
+  DE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nemacka',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Germany
+  GH: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gana',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Ghana
+  GR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grcka',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Greece
+  GD: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grenada',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Grenada
+  GT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvatemala',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Guatemala
+  GN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-republika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Guinea
+  GW: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-bisao',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Guinea-Bissau
+  GY: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvajana',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Guyana
+  HT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/haiti',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Haiti
+  VA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-stolica',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Holy See
+  HN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/honduras',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Honduras
+  HU: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Hungary
+  IS: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Iceland
+  IN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // India
+  ID: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Indonesia
+  IR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Iran
+  IQ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Iraq
+  IE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Ireland
+  IL: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/izrael',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Israel
+  IT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/italija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Italy
+  JM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jamajka',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Jamaica
+  JP: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/japan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Japan
+  JO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jordan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Jordan
+  KZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kazahstan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Kazakhstan
+  KE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kenija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Kenya
+  KI: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Kiribati
+  KP: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Korea, DPR
+  KR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Korea, Republic
+  KW: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Kuwait
+  KG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kirgiska-republika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Kyrgyzstan, Republic
+  LA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Laos
+  LV: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/letonija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Latvia
+  LB: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liban',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Lebanon
+  LS: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lesoto',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Lesotho
+  LR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liberija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Liberia
+  LY: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Libya
+  LI: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lihtenstajn',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Liechtenstein
+  LT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/litvanija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Lithuania
+  LU: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/luksemburg',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Luxembourg
+  MG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Madagascar
+  MW: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malavi',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Malawi
+  MY: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malezija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Malaysia
+  MV: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Maldives
+  ML: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mali',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Mali
+  MT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malta',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Malta
+  MH: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/marshall-islands',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Marshall Islands
+  MR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritania',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Mauritania
+  MU: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritius',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Mauritius
+  MX: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/meksiko',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Mexico
+  FM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/micronesia',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Micronesia
+  MD: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/moldavija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Moldova
+  MC: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/monako',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Monaco
+  MN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mongolija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Mongolia
+  ME: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/crna-gora',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Montenegro
+  MA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maroko',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Morocco
+  MZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mozambik',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Mozambique
+  MM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mjanmar',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Myanmar
+  NA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/namibija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Namibia
+  NR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nauru',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Nauru
+  NP: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nepal',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Nepal
+  NL: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/holandija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Netherlands
+  NZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/novi-zeland',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // New Zealand
+  NI: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nikaragva',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Nicaragua
+  NE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/niger',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Niger
+  NG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nigerija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Nigeria
+  MK: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/severna-makedonija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // North Macedonia
+  NO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/norveska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Norway
+  OM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/oman',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Oman
+  PK: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/pakistan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Pakistan
+  PW: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palau',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Palau
+  PS: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palestina',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Palestine
+  PA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/panama',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Panama
+  PG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/papua-nova-gvineja',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Papua New Guinea
+  PY: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Paraguay
+  PE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/peru',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Peru
+  PH: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Philippines
+  PL: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Poland
+  PT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Portugal
+  QA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/katar',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Qatar
+  RO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Romania
+  RU: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruska-federacija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Russia
+  RW: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruanda',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Rwanda
+  KN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sent-kits-i-nevis',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Saint Kitts and Nevis
+  LC: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-lucija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Saint Lucia
+  VC: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveti-vinsent-i-grenadini',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Saint Vincent and the Grenadines
+  WS: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/samoa',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Samoa
+  SM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/san-marino',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // San Marino
+  ST: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sao-tome-i-prinsipe',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Sao Tome and Principe
+  SA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/saudijska-arabija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Saudi Arabia
+  SN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/senegal',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Senegal
+  SC: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sejseli',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Seychelles
+  SL: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sijera-leone',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Sierra Leone
+  SG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/singapur',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Singapore
+  SK: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovacka',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Slovakia
+  SI: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovenija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Slovenia
+  SB: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/solomonova-ostrva',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Solomon Islands
+  SO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/somalija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Somalia
+  ZA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzna-afrika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // South Africa
+  SS: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzni-sudan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // South Sudan
+  ES: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/spanija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Spain
+  LK: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Sri Lanka
+  SD: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Sudan
+  SR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/surinam',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Suriname
+  SE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Sweden
+  CH: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Switzerland
+  SY: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Syria, Arab Republic
+  TJ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tadzikistan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Tajikistan
+  TZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tanzanija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Tanzania
+  TH: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tajland',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Thailand
+  TL: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/istocni-timor',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Timor-Leste
+  TG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Togo
+  TO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Tonga
+  TT: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/trinidad-i-tobago',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Trinidad and Tobago
+  TN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tunis',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Tunisia
+  TR: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Turkiye
+  TM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Turkmenistan
+  TV: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Tuvalu
+  UG: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Uganda
+  UA: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Ukraine
+  KM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Union of the Comoros
+  AE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // United Arab Emirates
+  GB: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // United Kingdom
+  US: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // United States
+  UY: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Uruguay
+  UZ: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Uzbekistan
+  VU: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Vanuatu
+  VE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Venezuela
+  VN: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vijetnam',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Vietnam
+  YE: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jemen',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Yemen
+  ZM: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zambija',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Zambia
+  ZW: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zimbabve',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Zimbabwe
+  HK: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Hong Kong SAR — sub-row on China's page, no dedicated page
+  MO: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Macao SAR — sub-row on China's page, no dedicated page
+  TW: {
+    directUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
+    dateChecked: '2026-08-31',
+  } satisfies SourceDoc, // Taiwan — no dedicated page in the scrape; index page fallback
 } as const;
