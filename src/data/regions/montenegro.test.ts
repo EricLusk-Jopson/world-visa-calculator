@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getMontenegroRule, MONTENEGRO } from './montenegro';
+import { MontenegroSources } from '@/data/sources';
 import { selectEntitlement, resolveStayLimits } from '@/features/calculator/utils/stayCalculator';
 import {
   isEntitled,
@@ -16,6 +17,31 @@ describe('getMontenegroRule', () => {
     expect(limit.type).toBe('rolling_window');
     expect(limit.days).toBe(90);
     expect(limit.windowDays).toBe(180);
+  });
+
+  it('cites its source via the entitlement.source field, not a "here\'s the source" note (US)', () => {
+    const rule = getMontenegroRule('US');
+    expect(rule.access).toBe('entitled');
+    if (rule.access !== 'entitled') return;
+    expect(rule.entitlements[0].source).toEqual(MontenegroSources.US);
+    const notes = rule.entitlements[0].notes ?? [];
+    expect(notes.some((n) => n.text.startsWith('Source:'))).toBe(false);
+  });
+
+  it('cites its source via the rule.source field for a plain visa-required nationality (AF), with no boilerplate note', () => {
+    const rule = getMontenegroRule('AF');
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.source).toEqual(MontenegroSources.AF);
+    expect(rule.notes ?? []).toHaveLength(0);
+  });
+
+  it('a special-case visa-required nationality (DZ, true content gap) keeps its substantive note in addition to rule.source', () => {
+    const rule = getMontenegroRule('DZ');
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.source).toEqual(MontenegroSources.DZ);
+    expect(rule.notes?.[0]?.text).toContain('No country-specific visa-regime information');
   });
 
   it('returns entitled with an ID-card note for an EU nationality (DE)', () => {

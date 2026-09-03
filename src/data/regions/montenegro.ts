@@ -60,6 +60,13 @@
  *     are encoded as StayEntitlement.notes, not formal EntitlementConditions,
  *     per an explicit decision — the app does not need to validate document
  *     type or tour-package specifics.
+ *   - Every entitlement/rule cites its country's source page via the `source`
+ *     field (StayEntitlement.source / VisaRequiredRule.source), which the UI
+ *     attaches directly to the stay-rule/access summary as a link. `notes` is
+ *     reserved for commentary that says something beyond "here's the source"
+ *     (an alternate entry method, a condition's nuance, a caveat) — a bare
+ *     citation is never restated as a note, since that would just duplicate
+ *     the source link with no added information.
  *
  * Last verified: 2026-08-30
  */
@@ -99,9 +106,14 @@ const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
  * pre-travel authorisation (Montenegro has no ETA/e-Visa scheme referenced
  * anywhere in the source data).
  *
- * Every call cites its own country's source page, even when there is nothing
- * else to say — every PassportRule in this file should be traceable back to
- * its specific gov.me page, not just the region-level parentUrl.
+ * Every call cites its own country's source page via `source`, which the UI
+ * attaches directly to the stay-rule summary as a link — every PassportRule
+ * in this file should be traceable back to its specific gov.me page, not
+ * just the region-level parentUrl. This is deliberately NOT done via a note:
+ * a note whose only content is "here's where this came from" duplicates the
+ * source link with no added information, so `notes` is reserved for
+ * commentary that says something beyond citation (e.g. the ID-card
+ * alternate-entry note below).
  *
  * Note placement convention (matches schengen.ts): entitlementNotes go on
  * StayEntitlement.notes (context for this specific entitlement — e.g. the
@@ -111,18 +123,16 @@ const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
  * one exception and is written out by hand rather than via this helper.
  *
  * @param source        This country's MontenegroSources entry.
- * @param extraNotes    Additional notes appended after the base citation
- *                       (e.g. the ID-card alternate-entry note).
+ * @param extraNotes    Substantive notes beyond the citation (e.g. the
+ *                       ID-card alternate-entry note).
  */
 function entitled(source: SourceDoc, extraNotes: RuleNote[] = []): EntitledRule {
   return {
     access: 'entitled',
     entitlements: [{
       limits: [MONTENEGRO_LIMIT],
-      notes: [
-        { text: 'Source: Montenegro Ministry of Foreign Affairs, diplomatic-missions page for this country.', source },
-        ...extraNotes,
-      ],
+      source,
+      ...(extraNotes.length > 0 && { notes: extraNotes }),
     }],
   };
 }
@@ -248,6 +258,7 @@ export const MONTENEGRO: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
+        source: MontenegroSources.PE,
         notes: [{ text: 'Entry is based on a bilateral international agreement on mutual travel, not the standard visa-waiver basis — 30 days (not 90), with a valid travel document.', source: MontenegroSources.PE }],
       }],
     }, // Peru — distinct bilateral-agreement basis, not the standard 90-day rule
@@ -263,6 +274,7 @@ export const MONTENEGRO: RegionDefinition = {
           description: 'Temporary waiver, active until 31 October 2026 (no stated start date — see note)',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
+        source: MontenegroSources.BY,
       }],
       notes: [{ text: 'Source states only an end date ("until October 31, 2026"), never a start date — validFrom below is a placeholder set to the date we verified this page, not a confirmed scheme start. TODO: verify true start date. No fallback rule is stated on the source outside this window; implicit visa_required fallback applies.', source: MontenegroSources.BY }],
     }, // Belarus
@@ -277,6 +289,7 @@ export const MONTENEGRO: RegionDefinition = {
             description: 'Organized tourist group waiver, active until 31 October 2026 (no stated start date — see note)',
           }],
           limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
+          source: MontenegroSources.CN,
           notes: [{ text: 'Organized tourist group only: must enter/stay/leave together, direct charter flight, proof of paid tour arrangement and guaranteed return required.', source: MontenegroSources.CN }],
         },
         {
@@ -287,6 +300,7 @@ export const MONTENEGRO: RegionDefinition = {
             description: 'Business passport waiver, active until 31 October 2026 (no stated start date — see note)',
           }],
           limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
+          source: MontenegroSources.CN,
           notes: [{ text: 'Business passport holders only: requires an invitation letter per the short-stay (C visa) regulations.', source: MontenegroSources.CN }],
         },
       ],
@@ -305,6 +319,7 @@ export const MONTENEGRO: RegionDefinition = {
           description: 'Seasonal visa waiver, 1 May – 1 October 2026',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
+        source: MontenegroSources.KZ,
       }],
       // No unconditional fallback entitlement — outside the window, no entitlement
       // matches and evaluation correctly falls through to visa_required.
@@ -320,6 +335,7 @@ export const MONTENEGRO: RegionDefinition = {
           description: 'Temporary waiver, active until 31 October 2026 (no stated start date — see note)',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
+        source: MontenegroSources.RU,
       }],
       notes: [{ text: 'Source states only an end date ("until October 31, 2026"), never a start date — validFrom below is a placeholder set to the date we verified this page, not a confirmed scheme start. TODO: verify true start date. No fallback rule is stated on the source outside this window; implicit visa_required fallback applies.', source: MontenegroSources.RU }],
     }, // Russian Federation
@@ -333,6 +349,7 @@ export const MONTENEGRO: RegionDefinition = {
           description: 'Temporary waiver, active until 31 October 2026 (no stated start date — see note)',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
+        source: MontenegroSources.SA,
       }],
       notes: [{ text: 'Source states only an end date ("until October 31, 2026"), never a start date — validFrom below is a placeholder set to the date we verified this page, not a confirmed scheme start. TODO: verify true start date. No fallback rule is stated on the source outside this window; implicit visa_required fallback applies.', source: MontenegroSources.SA }],
     }, // Saudi Arabia
@@ -346,118 +363,119 @@ export const MONTENEGRO: RegionDefinition = {
           description: 'Temporary waiver, active until 31 October 2026 (no stated start date — see note)',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
+        source: MontenegroSources.TR,
       }],
       notes: [{ text: 'Source states only an end date ("until October 31, 2026"), never a start date — validFrom below is a placeholder set to the date we verified this page, not a confirmed scheme start. TODO: verify true start date. No fallback rule is stated on the source outside this window; implicit visa_required fallback applies.', source: MontenegroSources.TR }],
     }, // Turkey
 
     // ── Visa required ───────────────────────────────────────────────────────────
-    'AF': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Afghanistan require a visa to enter.', source: MontenegroSources.AF }] }, // Afghanistan
-    'AO': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Angola require a visa to enter.', source: MontenegroSources.AO }] }, // Angola
-    'AU': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Australia require a visa to enter.', source: MontenegroSources.AU }] }, // Australia
-    'AZ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Azerbaijan require a visa to enter.', source: MontenegroSources.AZ }] }, // Azerbaijan
-    'BH': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Bahrain require a visa to enter.', source: MontenegroSources.BH }] }, // Bahrain
-    'BD': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Bangladesh require a visa to enter.', source: MontenegroSources.BD }] }, // Bangladesh
-    'BZ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Belize require a visa to enter.', source: MontenegroSources.BZ }] }, // Belize
-    'BJ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Benin require a visa to enter.', source: MontenegroSources.BJ }] }, // Benin
-    'BT': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Bhutan require a visa to enter.', source: MontenegroSources.BT }] }, // Bhutan
-    'BO': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Bolivia require a visa to enter.', source: MontenegroSources.BO }] }, // Bolivia
-    'BW': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Botswana require a visa to enter.', source: MontenegroSources.BW }] }, // Botswana
-    'BF': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Burkina Faso require a visa to enter.', source: MontenegroSources.BF }] }, // Burkina Faso
-    'BI': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Burundi require a visa to enter.', source: MontenegroSources.BI }] }, // Burundi
-    'KH': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Cambodia require a visa to enter.', source: MontenegroSources.KH }] }, // Cambodia
-    'CM': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Cameroon require a visa to enter.', source: MontenegroSources.CM }] }, // Cameroon
-    'CF': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Central African Republic require a visa to enter.', source: MontenegroSources.CF }] }, // Central African Republic
-    'TD': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Chad require a visa to enter.', source: MontenegroSources.TD }] }, // Chad
-    'CD': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Congo, Democratic Republic of the require a visa to enter.', source: MontenegroSources.CD }] }, // Congo, Democratic Republic of the
-    'CG': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Congo, Republic require a visa to enter.', source: MontenegroSources.CG }] }, // Congo, Republic
-    'CU': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Cuba require a visa to enter.', source: MontenegroSources.CU }] }, // Cuba
-    'DJ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Djibouti require a visa to enter.', source: MontenegroSources.DJ }] }, // Djibouti
-    'DO': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Dominican Republic require a visa to enter.', source: MontenegroSources.DO }] }, // Dominican Republic
-    'EC': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Ecuador require a visa to enter.', source: MontenegroSources.EC }] }, // Ecuador
-    'GQ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Equatorial Guinea require a visa to enter.', source: MontenegroSources.GQ }] }, // Equatorial Guinea
-    'ER': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Eritrea require a visa to enter.', source: MontenegroSources.ER }] }, // Eritrea
-    'ET': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Ethiopia require a visa to enter.', source: MontenegroSources.ET }] }, // Ethiopia
-    'FJ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Fiji require a visa to enter.', source: MontenegroSources.FJ }] }, // Fiji
-    'GA': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Gabon require a visa to enter.', source: MontenegroSources.GA }] }, // Gabon
-    'GM': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Gambia require a visa to enter.', source: MontenegroSources.GM }] }, // Gambia
-    'GH': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Ghana require a visa to enter.', source: MontenegroSources.GH }] }, // Ghana
-    'GN': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Guinea require a visa to enter.', source: MontenegroSources.GN }] }, // Guinea
-    'GW': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Guinea-Bissau require a visa to enter.', source: MontenegroSources.GW }] }, // Guinea-Bissau
-    'GY': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Guyana require a visa to enter.', source: MontenegroSources.GY }] }, // Guyana
-    'HT': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Haiti require a visa to enter.', source: MontenegroSources.HT }] }, // Haiti
-    'IN': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of India require a visa to enter.', source: MontenegroSources.IN }] }, // India
-    'ID': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Indonesia require a visa to enter.', source: MontenegroSources.ID }] }, // Indonesia
-    'IR': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Iran require a visa to enter.', source: MontenegroSources.IR }] }, // Iran
-    'IQ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Iraq require a visa to enter.', source: MontenegroSources.IQ }] }, // Iraq
-    'CI': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Ivory Coast (Côte d\'Ivoire) require a visa to enter.', source: MontenegroSources.CI }] }, // Ivory Coast (Côte d'Ivoire)
-    'JM': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Jamaica require a visa to enter.', source: MontenegroSources.JM }] }, // Jamaica
-    'JO': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Jordan require a visa to enter.', source: MontenegroSources.JO }] }, // Jordan
-    'KE': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Kenya require a visa to enter.', source: MontenegroSources.KE }] }, // Kenya
-    'KP': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Korea, Democratic People\'s Republic of (North Korea) require a visa to enter.', source: MontenegroSources.KP }] }, // Korea, Democratic People's Republic of (North Korea)
-    'KW': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Kuwait require a visa to enter.', source: MontenegroSources.KW }] }, // Kuwait
-    'KG': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Kyrgyzstan require a visa to enter.', source: MontenegroSources.KG }] }, // Kyrgyzstan
-    'LA': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Laos require a visa to enter.', source: MontenegroSources.LA }] }, // Laos
-    'LB': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Lebanon require a visa to enter.', source: MontenegroSources.LB }] }, // Lebanon
-    'LS': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Lesotho require a visa to enter.', source: MontenegroSources.LS }] }, // Lesotho
-    'LY': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Libya require a visa to enter.', source: MontenegroSources.LY }] }, // Libya
-    'MG': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Madagascar require a visa to enter.', source: MontenegroSources.MG }] }, // Madagascar
-    'MW': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Malawi require a visa to enter.', source: MontenegroSources.MW }] }, // Malawi
-    'MV': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Maldives require a visa to enter.', source: MontenegroSources.MV }] }, // Maldives
-    'ML': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Mali require a visa to enter.', source: MontenegroSources.ML }] }, // Mali
-    'MR': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Mauritania require a visa to enter.', source: MontenegroSources.MR }] }, // Mauritania
-    'MN': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Mongolia require a visa to enter.', source: MontenegroSources.MN }] }, // Mongolia
-    'MA': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Morocco require a visa to enter.', source: MontenegroSources.MA }] }, // Morocco
-    'MM': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Myanmar require a visa to enter.', source: MontenegroSources.MM }] }, // Myanmar
-    'NA': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Namibia require a visa to enter.', source: MontenegroSources.NA }] }, // Namibia
-    'NP': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Nepal require a visa to enter.', source: MontenegroSources.NP }] }, // Nepal
-    'NE': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Niger require a visa to enter.', source: MontenegroSources.NE }] }, // Niger
-    'NG': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Nigeria require a visa to enter.', source: MontenegroSources.NG }] }, // Nigeria
-    'OM': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Oman require a visa to enter.', source: MontenegroSources.OM }] }, // Oman
-    'PS': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Palestine require a visa to enter.', source: MontenegroSources.PS }] }, // Palestine
-    'PG': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Papua New Guinea require a visa to enter.', source: MontenegroSources.PG }] }, // Papua New Guinea
-    'PH': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Philippines require a visa to enter.', source: MontenegroSources.PH }] }, // Philippines
-    'QA': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Qatar require a visa to enter.', source: MontenegroSources.QA }] }, // Qatar
-    'RW': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Rwanda require a visa to enter.', source: MontenegroSources.RW }] }, // Rwanda
-    'ST': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Sao Tome and Principe require a visa to enter.', source: MontenegroSources.ST }] }, // Sao Tome and Principe
-    'SN': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Senegal require a visa to enter.', source: MontenegroSources.SN }] }, // Senegal
-    'SL': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Sierra Leone require a visa to enter.', source: MontenegroSources.SL }] }, // Sierra Leone
-    'SO': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Somalia require a visa to enter.', source: MontenegroSources.SO }] }, // Somalia
-    'ZA': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of South Africa require a visa to enter.', source: MontenegroSources.ZA }] }, // South Africa
-    'LK': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Sri Lanka require a visa to enter.', source: MontenegroSources.LK }] }, // Sri Lanka
-    'SD': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Sudan require a visa to enter.', source: MontenegroSources.SD }] }, // Sudan
-    'SR': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Suriname require a visa to enter.', source: MontenegroSources.SR }] }, // Suriname
-    'SZ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Swaziland (Eswatini) require a visa to enter.', source: MontenegroSources.SZ }] }, // Swaziland (Eswatini)
-    'SY': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Syria require a visa to enter.', source: MontenegroSources.SY }] }, // Syria
-    'TJ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Tajikistan require a visa to enter.', source: MontenegroSources.TJ }] }, // Tajikistan
-    'TZ': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Tanzania require a visa to enter.', source: MontenegroSources.TZ }] }, // Tanzania
-    'TH': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Thailand require a visa to enter.', source: MontenegroSources.TH }] }, // Thailand
-    'TG': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Togo require a visa to enter.', source: MontenegroSources.TG }] }, // Togo
-    'TN': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Tunisia require a visa to enter.', source: MontenegroSources.TN }] }, // Tunisia
-    'TM': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Turkmenistan require a visa to enter.', source: MontenegroSources.TM }] }, // Turkmenistan
-    'UG': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Uganda require a visa to enter.', source: MontenegroSources.UG }] }, // Uganda
-    'KM': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Union of the Comoros and Swaziland in Eswatini require a visa to enter.', source: MontenegroSources.KM }] }, // Union of the Comoros and Swaziland in Eswatini
-    'VU': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Vanuatu require a visa to enter.', source: MontenegroSources.VU }] }, // Vanuatu
-    'VN': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Vietnam require a visa to enter.', source: MontenegroSources.VN }] }, // Vietnam
-    'YE': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Yemen require a visa to enter.', source: MontenegroSources.YE }] }, // Yemen
-    'ZM': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Zambia require a visa to enter.', source: MontenegroSources.ZM }] }, // Zambia
-    'ZW': { access: 'visa_required', notes: [{ text: 'Montenegro\'s diplomatic-missions site states nationals of Zimbabwe require a visa to enter.', source: MontenegroSources.ZW }] }, // Zimbabwe
+    'AF': { access: 'visa_required', source: MontenegroSources.AF }, // Afghanistan
+    'AO': { access: 'visa_required', source: MontenegroSources.AO }, // Angola
+    'AU': { access: 'visa_required', source: MontenegroSources.AU }, // Australia
+    'AZ': { access: 'visa_required', source: MontenegroSources.AZ }, // Azerbaijan
+    'BH': { access: 'visa_required', source: MontenegroSources.BH }, // Bahrain
+    'BD': { access: 'visa_required', source: MontenegroSources.BD }, // Bangladesh
+    'BZ': { access: 'visa_required', source: MontenegroSources.BZ }, // Belize
+    'BJ': { access: 'visa_required', source: MontenegroSources.BJ }, // Benin
+    'BT': { access: 'visa_required', source: MontenegroSources.BT }, // Bhutan
+    'BO': { access: 'visa_required', source: MontenegroSources.BO }, // Bolivia
+    'BW': { access: 'visa_required', source: MontenegroSources.BW }, // Botswana
+    'BF': { access: 'visa_required', source: MontenegroSources.BF }, // Burkina Faso
+    'BI': { access: 'visa_required', source: MontenegroSources.BI }, // Burundi
+    'KH': { access: 'visa_required', source: MontenegroSources.KH }, // Cambodia
+    'CM': { access: 'visa_required', source: MontenegroSources.CM }, // Cameroon
+    'CF': { access: 'visa_required', source: MontenegroSources.CF }, // Central African Republic
+    'TD': { access: 'visa_required', source: MontenegroSources.TD }, // Chad
+    'CD': { access: 'visa_required', source: MontenegroSources.CD }, // Congo, Democratic Republic of the
+    'CG': { access: 'visa_required', source: MontenegroSources.CG }, // Congo, Republic
+    'CU': { access: 'visa_required', source: MontenegroSources.CU }, // Cuba
+    'DJ': { access: 'visa_required', source: MontenegroSources.DJ }, // Djibouti
+    'DO': { access: 'visa_required', source: MontenegroSources.DO }, // Dominican Republic
+    'EC': { access: 'visa_required', source: MontenegroSources.EC }, // Ecuador
+    'GQ': { access: 'visa_required', source: MontenegroSources.GQ }, // Equatorial Guinea
+    'ER': { access: 'visa_required', source: MontenegroSources.ER }, // Eritrea
+    'ET': { access: 'visa_required', source: MontenegroSources.ET }, // Ethiopia
+    'FJ': { access: 'visa_required', source: MontenegroSources.FJ }, // Fiji
+    'GA': { access: 'visa_required', source: MontenegroSources.GA }, // Gabon
+    'GM': { access: 'visa_required', source: MontenegroSources.GM }, // Gambia
+    'GH': { access: 'visa_required', source: MontenegroSources.GH }, // Ghana
+    'GN': { access: 'visa_required', source: MontenegroSources.GN }, // Guinea
+    'GW': { access: 'visa_required', source: MontenegroSources.GW }, // Guinea-Bissau
+    'GY': { access: 'visa_required', source: MontenegroSources.GY }, // Guyana
+    'HT': { access: 'visa_required', source: MontenegroSources.HT }, // Haiti
+    'IN': { access: 'visa_required', source: MontenegroSources.IN }, // India
+    'ID': { access: 'visa_required', source: MontenegroSources.ID }, // Indonesia
+    'IR': { access: 'visa_required', source: MontenegroSources.IR }, // Iran
+    'IQ': { access: 'visa_required', source: MontenegroSources.IQ }, // Iraq
+    'CI': { access: 'visa_required', source: MontenegroSources.CI }, // Ivory Coast (Côte d'Ivoire)
+    'JM': { access: 'visa_required', source: MontenegroSources.JM }, // Jamaica
+    'JO': { access: 'visa_required', source: MontenegroSources.JO }, // Jordan
+    'KE': { access: 'visa_required', source: MontenegroSources.KE }, // Kenya
+    'KP': { access: 'visa_required', source: MontenegroSources.KP }, // Korea, Democratic People's Republic of (North Korea)
+    'KW': { access: 'visa_required', source: MontenegroSources.KW }, // Kuwait
+    'KG': { access: 'visa_required', source: MontenegroSources.KG }, // Kyrgyzstan
+    'LA': { access: 'visa_required', source: MontenegroSources.LA }, // Laos
+    'LB': { access: 'visa_required', source: MontenegroSources.LB }, // Lebanon
+    'LS': { access: 'visa_required', source: MontenegroSources.LS }, // Lesotho
+    'LY': { access: 'visa_required', source: MontenegroSources.LY }, // Libya
+    'MG': { access: 'visa_required', source: MontenegroSources.MG }, // Madagascar
+    'MW': { access: 'visa_required', source: MontenegroSources.MW }, // Malawi
+    'MV': { access: 'visa_required', source: MontenegroSources.MV }, // Maldives
+    'ML': { access: 'visa_required', source: MontenegroSources.ML }, // Mali
+    'MR': { access: 'visa_required', source: MontenegroSources.MR }, // Mauritania
+    'MN': { access: 'visa_required', source: MontenegroSources.MN }, // Mongolia
+    'MA': { access: 'visa_required', source: MontenegroSources.MA }, // Morocco
+    'MM': { access: 'visa_required', source: MontenegroSources.MM }, // Myanmar
+    'NA': { access: 'visa_required', source: MontenegroSources.NA }, // Namibia
+    'NP': { access: 'visa_required', source: MontenegroSources.NP }, // Nepal
+    'NE': { access: 'visa_required', source: MontenegroSources.NE }, // Niger
+    'NG': { access: 'visa_required', source: MontenegroSources.NG }, // Nigeria
+    'OM': { access: 'visa_required', source: MontenegroSources.OM }, // Oman
+    'PS': { access: 'visa_required', source: MontenegroSources.PS }, // Palestine
+    'PG': { access: 'visa_required', source: MontenegroSources.PG }, // Papua New Guinea
+    'PH': { access: 'visa_required', source: MontenegroSources.PH }, // Philippines
+    'QA': { access: 'visa_required', source: MontenegroSources.QA }, // Qatar
+    'RW': { access: 'visa_required', source: MontenegroSources.RW }, // Rwanda
+    'ST': { access: 'visa_required', source: MontenegroSources.ST }, // Sao Tome and Principe
+    'SN': { access: 'visa_required', source: MontenegroSources.SN }, // Senegal
+    'SL': { access: 'visa_required', source: MontenegroSources.SL }, // Sierra Leone
+    'SO': { access: 'visa_required', source: MontenegroSources.SO }, // Somalia
+    'ZA': { access: 'visa_required', source: MontenegroSources.ZA }, // South Africa
+    'LK': { access: 'visa_required', source: MontenegroSources.LK }, // Sri Lanka
+    'SD': { access: 'visa_required', source: MontenegroSources.SD }, // Sudan
+    'SR': { access: 'visa_required', source: MontenegroSources.SR }, // Suriname
+    'SZ': { access: 'visa_required', source: MontenegroSources.SZ }, // Swaziland (Eswatini)
+    'SY': { access: 'visa_required', source: MontenegroSources.SY }, // Syria
+    'TJ': { access: 'visa_required', source: MontenegroSources.TJ }, // Tajikistan
+    'TZ': { access: 'visa_required', source: MontenegroSources.TZ }, // Tanzania
+    'TH': { access: 'visa_required', source: MontenegroSources.TH }, // Thailand
+    'TG': { access: 'visa_required', source: MontenegroSources.TG }, // Togo
+    'TN': { access: 'visa_required', source: MontenegroSources.TN }, // Tunisia
+    'TM': { access: 'visa_required', source: MontenegroSources.TM }, // Turkmenistan
+    'UG': { access: 'visa_required', source: MontenegroSources.UG }, // Uganda
+    'KM': { access: 'visa_required', source: MontenegroSources.KM }, // Union of the Comoros and Swaziland in Eswatini
+    'VU': { access: 'visa_required', source: MontenegroSources.VU }, // Vanuatu
+    'VN': { access: 'visa_required', source: MontenegroSources.VN }, // Vietnam
+    'YE': { access: 'visa_required', source: MontenegroSources.YE }, // Yemen
+    'ZM': { access: 'visa_required', source: MontenegroSources.ZM }, // Zambia
+    'ZW': { access: 'visa_required', source: MontenegroSources.ZW }, // Zimbabwe
 
     // ── Visa required — source describes a now-lapsed seasonal scheme (see notes) ──
-    'AM': { access: 'visa_required', notes: [{ text: 'Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro\'s own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it.', source: MontenegroSources.AM }] }, // Armenia — lapsed seasonal scheme deliberately dropped, see note
-    'EG': { access: 'visa_required', notes: [{ text: 'Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro\'s own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it.', source: MontenegroSources.EG }] }, // Egypt — lapsed seasonal scheme deliberately dropped, see note
-    'UZ': { access: 'visa_required', notes: [{ text: 'Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro\'s own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it.', source: MontenegroSources.UZ }] }, // Uzbekistan — lapsed seasonal scheme deliberately dropped, see note
+    'AM': { access: 'visa_required', source: MontenegroSources.AM, notes: [{ text: 'Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro\'s own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it.', source: MontenegroSources.AM }] }, // Armenia — lapsed seasonal scheme deliberately dropped, see note
+    'EG': { access: 'visa_required', source: MontenegroSources.EG, notes: [{ text: 'Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro\'s own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it.', source: MontenegroSources.EG }] }, // Egypt — lapsed seasonal scheme deliberately dropped, see note
+    'UZ': { access: 'visa_required', source: MontenegroSources.UZ, notes: [{ text: 'Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro\'s own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it.', source: MontenegroSources.UZ }] }, // Uzbekistan — lapsed seasonal scheme deliberately dropped, see note
 
     // ── Visa required — source page is untranslated (not in English) ──────────────
-    'LR': { access: 'visa_required', notes: [{ text: 'Source page for Liberia is published only in Montenegrin, not English (unlike most other entries on this site). Content translates to: nationals of Liberia require a visa to enter Montenegro, obtainable from Montenegrin diplomatic/consular posts, or the nearest Serbian diplomatic/consular post if none is reachable. TODO: confirm translation before relying on this for user-facing copy.', source: MontenegroSources.LR }] }, // Liberia — SOURCE TEXT NOT IN ENGLISH
+    'LR': { access: 'visa_required', source: MontenegroSources.LR, notes: [{ text: 'Source page for Liberia is published only in Montenegrin, not English (unlike most other entries on this site). Content translates to: nationals of Liberia require a visa to enter Montenegro, obtainable from Montenegrin diplomatic/consular posts, or the nearest Serbian diplomatic/consular post if none is reachable. TODO: confirm translation before relying on this for user-facing copy.', source: MontenegroSources.LR }] }, // Liberia — SOURCE TEXT NOT IN ENGLISH
 
     // ── Visa required — TRUE CONTENT GAP: no rule published on source at all ───────
     // (Confirmed structurally: page has no Visa regime section; the generic
     // Schengen/US/UK/Ireland-visa-holder banner shown here also appears identically
     // on all other 195 pages and is not specific to these countries.)
-    'DZ': { access: 'visa_required', notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Algeria. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Algeria; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.DZ }] }, // Algeria — TODO: verify, no rule published on source
-    'CV': { access: 'visa_required', notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Cabo Verde. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Cabo Verde; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.CV }] }, // Cabo Verde — TODO: verify, no rule published on source
-    'MZ': { access: 'visa_required', notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Mozambique. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Mozambique; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.MZ }] }, // Mozambique — TODO: verify, no rule published on source
-    'PK': { access: 'visa_required', notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Pakistan. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Pakistan; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.PK }] }, // Pakistan — TODO: verify, no rule published on source
+    'DZ': { access: 'visa_required', source: MontenegroSources.DZ, notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Algeria. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Algeria; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.DZ }] }, // Algeria — TODO: verify, no rule published on source
+    'CV': { access: 'visa_required', source: MontenegroSources.CV, notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Cabo Verde. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Cabo Verde; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.CV }] }, // Cabo Verde — TODO: verify, no rule published on source
+    'MZ': { access: 'visa_required', source: MontenegroSources.MZ, notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Mozambique. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Mozambique; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.MZ }] }, // Mozambique — TODO: verify, no rule published on source
+    'PK': { access: 'visa_required', source: MontenegroSources.PK, notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Pakistan. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Pakistan; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.PK }] }, // Pakistan — TODO: verify, no rule published on source
   },
 };
 

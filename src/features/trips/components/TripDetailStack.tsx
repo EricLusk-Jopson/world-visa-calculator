@@ -141,11 +141,13 @@ function TravelerCard({
                 label="Access"
                 value={e.accessLabel}
                 valueColor={accessColor}
+                source={e.ruleTexts.length === 0 ? e.ruleSource : undefined}
               />
               {e.ruleTexts.length > 0 && (
                 <InfoRow
                   label={e.ruleTexts.length > 1 ? "Rules" : "Rule"}
                   value={e.ruleTexts.join(" · ")}
+                  source={e.ruleSource}
                 />
               )}
             </Box>

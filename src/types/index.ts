@@ -325,6 +325,15 @@ export interface StayEntitlement {
   conditions?: EntitlementCondition[];
   /** Pre-travel authorisation required before this entitlement is usable. */
   preAuth?: PreTravelAuth;
+  /**
+   * The authoritative citation for this entitlement — surfaced in the UI as a
+   * link attached directly to the stay-rule summary, not as a note. Use this
+   * (rather than a `notes` entry whose only content is "here's the source")
+   * whenever there's nothing substantive to say beyond where the rule came
+   * from; reserve `notes` for commentary that adds real information (an
+   * alternate entry method, a condition's nuance, a caveat).
+   */
+  source?: SourceDoc;
   notes?: RuleNote[];
 }
 
@@ -342,6 +351,8 @@ export interface FreeMovementRule {
  */
 export interface VisaRequiredRule {
   readonly access: 'visa_required';
+  /** The authoritative citation for this determination — see StayEntitlement.source. */
+  source?: SourceDoc;
   notes?: RuleNote[];
 }
 

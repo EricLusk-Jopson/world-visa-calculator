@@ -17,6 +17,7 @@ import type {
   EntitlementCondition,
   DateRangeCondition,
   RuleNote,
+  SourceDoc,
 } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
@@ -61,6 +62,15 @@ export interface TravelerEligibility {
   /** Admittance rule text(s), e.g. "Up to 6 months per visit". */
   ruleTexts: string[];
   preAuthName?: string;
+  /**
+   * The citation for the rule currently in effect — surfaced in the UI as a
+   * link on the Rule/Access summary row, not as a note (see
+   * StayEntitlement.source). Falls back to the raw passport rule's own
+   * citation (rather than the region's generic overview page) even when the
+   * effective rule for this trip is a synthesized visa_required fallback —
+   * see resolveEffectiveEligibility.
+   */
+  ruleSource?: SourceDoc;
   notes: EligibilityNote[];
   /** Set when this rule has a temporary (date_range-gated) entitlement relevant to the trip's entry date. */
   temporalException?: TemporalException;
@@ -198,6 +208,22 @@ function resolveEffectiveEligibility(
   };
 }
 
+/**
+ * The citation carried by a raw (un-evaluated) PassportRule — its first
+ * entitlement's source when entitled, or the rule's own source when
+ * visa_required. Used as the fallback citation when the trip's entry date
+ * falls outside every date_range-gated entitlement's window: the effective
+ * rule for the trip is a synthesized visa_required with no source of its
+ * own (see resolveEffectiveEligibility), but the country the traveller
+ * actually holds a passport for still has a specific source page worth
+ * linking to — the region's generic overview page is not a substitute.
+ */
+function rawRuleSource(rule: PassportRule): SourceDoc | undefined {
+  if (rule.access === "visa_required") return rule.source;
+  if (rule.access === "entitled") return rule.entitlements[0]?.source;
+  return undefined;
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 export function computeTravelerEligibility(
@@ -246,13 +272,22 @@ export function computeTravelerEligibility(
           : "No Visa Required";
     const ok = rule.access !== "visa_required";
 
-    // Any visa-required status carries a source link to the region's official
-    // entry-requirements page.
+    // The rule currently in effect for this trip cites its own source when
+    // it has one (an entitlement, or a visa_required rule with a specific
+    // source page). A date_range fallback to visa_required has no source of
+    // its own (it's synthesized, not the raw rule) — fall back to the raw
+    // rule's citation so the link still points at this country's page
+    // rather than nothing at all.
+    const ruleSource: SourceDoc | undefined = entitlement?.source ?? rawRuleSource(rawRule);
+
+    // Any visa-required status carries a source link to the country's own
+    // entry-requirements page when known, otherwise the region's generic
+    // overview page.
     if (rule.access === "visa_required" && regionDef) {
       notes.push({
         label: "Visa required",
         text: `A visa must be obtained in advance before travelling to ${regionLabel}.`,
-        source: {
+        source: ruleSource ?? {
           directUrl: regionDef.sourceUrl,
           parentUrl: regionDef.sourceUrl,
           dateChecked: regionDef.lastVerified,
@@ -328,6 +363,7 @@ export function computeTravelerEligibility(
         ok,
         ruleTexts,
         preAuthName,
+        ruleSource,
         notes,
         temporalException,
       },
