@@ -305,7 +305,10 @@ export function computeTravelerEligibility(
           : [];
 
     // Temporal exception — always carries a note, per design: a seasonal
-    // waiver's existence (active or not) should never be silent.
+    // waiver's existence (active or not) should never be silent. Cites the
+    // same source as the Rule/Access row (ruleSource) — the condition's own
+    // description already states the date range in full, so this doesn't
+    // repeat "no stated start date" or point readers at a separate note.
     if (temporalException) {
       notes.push({
         label: temporalException.active ? "Temporary waiver" : "Seasonal exception",
@@ -321,6 +324,7 @@ export function computeTravelerEligibility(
               ? ` — ${temporalException.otherRuleTexts.join(", ")}`
               : "") +
             ` during that window. Outside it, the rule above applies.`,
+        source: ruleSource,
       });
     }
 
@@ -337,8 +341,12 @@ export function computeTravelerEligibility(
       }
     }
 
-    // Conditions
+    // Conditions — date_range is excluded: it's already fully covered by the
+    // temporalException note above (same date range, plus what applies on
+    // the other side of the window), so a separate "Condition" block would
+    // just repeat it.
     for (const c of entitlement?.conditions ?? []) {
+      if (c.type === "date_range") continue;
       notes.push({ label: "Condition", text: conditionText(c) });
     }
 

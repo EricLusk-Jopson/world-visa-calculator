@@ -80,6 +80,20 @@ describe('getMontenegroRule', () => {
   });
 });
 
+describe('Montenegro temporary waivers (BY, RU, SA, TR) — no redundant TODO note or dangling parenthetical', () => {
+  it.each(['BY', 'RU', 'SA', 'TR'])('%s has no rule-level notes and a clean date_range description', (code) => {
+    const rule = getMontenegroRule(code);
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    expect(rule.notes ?? []).toHaveLength(0);
+    const condition = rule.entitlements[0].conditions?.[0];
+    expect(condition?.type).toBe('date_range');
+    if (condition?.type !== 'date_range') return;
+    expect(condition.description).not.toContain('no stated start date');
+    expect(condition.description).not.toContain('see note');
+  });
+});
+
 describe('Montenegro seasonal waiver (Kazakhstan, date_range condition)', () => {
   const rule = getMontenegroRule('KZ');
 

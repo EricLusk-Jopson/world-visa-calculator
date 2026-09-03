@@ -48,3 +48,29 @@ describe('computeTravelerEligibility — source citation on the effective rule',
     expect(e.ruleSource?.directUrl).toBe(MontenegroSources.KZ.directUrl);
   });
 });
+
+describe('computeTravelerEligibility — date_range temporal exception notes', () => {
+  it('does not duplicate the date_range condition as a separate "Condition" note (Turkey, waiver active)', () => {
+    const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('TR')], ['t1'], '2026-09-15');
+    expect(e.access).toBe('entitled');
+    expect(e.temporalException?.active).toBe(true);
+    expect(e.notes.some((n) => n.label === 'Condition')).toBe(false);
+    const waiverNote = e.notes.find((n) => n.label === 'Temporary waiver');
+    expect(waiverNote).toBeDefined();
+    expect(waiverNote?.text).not.toContain('no stated start date');
+  });
+
+  it('the "Temporary waiver" note cites Turkey\'s specific source page', () => {
+    const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('TR')], ['t1'], '2026-09-15');
+    const waiverNote = e.notes.find((n) => n.label === 'Temporary waiver');
+    expect(waiverNote?.source?.directUrl).toBe(MontenegroSources.TR.directUrl);
+  });
+
+  it('the "Seasonal exception" note (waiver dormant) also cites the specific source page, with no "Condition" duplicate', () => {
+    const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('TR')], ['t1'], '2026-06-01');
+    expect(e.access).toBe('visa_required');
+    expect(e.notes.some((n) => n.label === 'Condition')).toBe(false);
+    const exceptionNote = e.notes.find((n) => n.label === 'Seasonal exception');
+    expect(exceptionNote?.source?.directUrl).toBe(MontenegroSources.TR.directUrl);
+  });
+});

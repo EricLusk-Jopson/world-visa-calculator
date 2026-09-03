@@ -43,11 +43,15 @@
  *     already lapsed (ended Oct 2025) as of the date this file was generated —
  *     deliberately NOT encoded as active. TODO: re-check for a renewed window.
  *   - 6 countries (BY, RU, SA, TR, CN, KZ) have date-bounded waivers using the
- *     DateRangeCondition (see @/types). For 5 of them the source states only an
- *     end date, never a start date — validFrom is a placeholder (see notes on
- *     each entry). These are evaluated against the trip's entry date by
- *     selectEntitlement() in stayCalculator.ts — outside the window, the rule
- *     falls back to visa_required (surfaced to the UI as a temporalException).
+ *     DateRangeCondition (see @/types). For 5 of them (all but KZ) the source
+ *     states only an end date, never a start date — validFrom on those is a
+ *     placeholder set to the date this file was verified, not a confirmed
+ *     scheme start; TODO: verify the true start date. These are evaluated
+ *     against the trip's entry date by selectEntitlement() in
+ *     stayCalculator.ts — outside the window, the rule falls back to
+ *     visa_required (surfaced to the UI as a temporalException, which the UI
+ *     renders directly from the condition + entitlement source — no per-entry
+ *     note restates it).
  *   - Liberia (LR)'s source page is published only in Montenegrin, not English.
  *   - Holy See entry (VA) covers only the Holy See; the source bundles it with
  *     the "Sovereign Military Order of Malta" in the page title, but the page's
@@ -271,12 +275,11 @@ export const MONTENEGRO: RegionDefinition = {
           type: 'date_range',
           validFrom: '2026-08-30',
           validUntil: '2026-10-31',
-          description: 'Temporary waiver, active until 31 October 2026 (no stated start date — see note)',
+          description: 'Temporary waiver, active until 31 October 2026',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.BY,
       }],
-      notes: [{ text: 'Source states only an end date ("until October 31, 2026"), never a start date — validFrom below is a placeholder set to the date we verified this page, not a confirmed scheme start. TODO: verify true start date. No fallback rule is stated on the source outside this window; implicit visa_required fallback applies.', source: MontenegroSources.BY }],
     }, // Belarus
     'CN': {
       access: 'entitled',
@@ -286,7 +289,7 @@ export const MONTENEGRO: RegionDefinition = {
             type: 'date_range',
             validFrom: '2026-08-30',
             validUntil: '2026-10-31',
-            description: 'Organized tourist group waiver, active until 31 October 2026 (no stated start date — see note)',
+            description: 'Organized tourist group waiver, active until 31 October 2026',
           }],
           limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
           source: MontenegroSources.CN,
@@ -297,7 +300,7 @@ export const MONTENEGRO: RegionDefinition = {
             type: 'date_range',
             validFrom: '2026-08-30',
             validUntil: '2026-10-31',
-            description: 'Business passport waiver, active until 31 October 2026 (no stated start date — see note)',
+            description: 'Business passport waiver, active until 31 October 2026',
           }],
           limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
           source: MontenegroSources.CN,
@@ -306,7 +309,6 @@ export const MONTENEGRO: RegionDefinition = {
       ],
       notes: [
         { text: 'Outside these windows, nationals require a visa; issued by Montenegrin diplomatic/consular missions.', source: MontenegroSources.CN },
-        { text: 'Both date_range entitlements above have a validFrom of the date we verified this page; the source states only an end date ("until October 31, 2026"), never a start date. TODO: verify true start date.' },
       ],
     }, // China
     'KZ': {
@@ -332,12 +334,11 @@ export const MONTENEGRO: RegionDefinition = {
           type: 'date_range',
           validFrom: '2026-08-30',
           validUntil: '2026-10-31',
-          description: 'Temporary waiver, active until 31 October 2026 (no stated start date — see note)',
+          description: 'Temporary waiver, active until 31 October 2026',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.RU,
       }],
-      notes: [{ text: 'Source states only an end date ("until October 31, 2026"), never a start date — validFrom below is a placeholder set to the date we verified this page, not a confirmed scheme start. TODO: verify true start date. No fallback rule is stated on the source outside this window; implicit visa_required fallback applies.', source: MontenegroSources.RU }],
     }, // Russian Federation
     'SA': {
       access: 'entitled',
@@ -346,12 +347,11 @@ export const MONTENEGRO: RegionDefinition = {
           type: 'date_range',
           validFrom: '2026-08-30',
           validUntil: '2026-10-31',
-          description: 'Temporary waiver, active until 31 October 2026 (no stated start date — see note)',
+          description: 'Temporary waiver, active until 31 October 2026',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.SA,
       }],
-      notes: [{ text: 'Source states only an end date ("until October 31, 2026"), never a start date — validFrom below is a placeholder set to the date we verified this page, not a confirmed scheme start. TODO: verify true start date. No fallback rule is stated on the source outside this window; implicit visa_required fallback applies.', source: MontenegroSources.SA }],
     }, // Saudi Arabia
     'TR': {
       access: 'entitled',
@@ -360,12 +360,11 @@ export const MONTENEGRO: RegionDefinition = {
           type: 'date_range',
           validFrom: '2026-08-30',
           validUntil: '2026-10-31',
-          description: 'Temporary waiver, active until 31 October 2026 (no stated start date — see note)',
+          description: 'Temporary waiver, active until 31 October 2026',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.TR,
       }],
-      notes: [{ text: 'Source states only an end date ("until October 31, 2026"), never a start date — validFrom below is a placeholder set to the date we verified this page, not a confirmed scheme start. TODO: verify true start date. No fallback rule is stated on the source outside this window; implicit visa_required fallback applies.', source: MontenegroSources.TR }],
     }, // Turkey
 
     // ── Visa required ───────────────────────────────────────────────────────────
