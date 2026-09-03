@@ -42,16 +42,28 @@
  *   - 3 countries (AM, EG, UZ) have a seasonal waiver on the source that had
  *     already lapsed (ended Oct 2025) as of the date this file was generated —
  *     deliberately NOT encoded as active. TODO: re-check for a renewed window.
- *   - 6 countries (BY, RU, SA, TR, CN, KZ) have date-bounded waivers using the
- *     DateRangeCondition (see @/types). For 5 of them (all but KZ) the source
- *     states only an end date, never a start date — validFrom on those is a
- *     placeholder set to the date this file was verified, not a confirmed
- *     scheme start; TODO: verify the true start date. These are evaluated
- *     against the trip's entry date by selectEntitlement() in
- *     stayCalculator.ts — outside the window, the rule falls back to
- *     visa_required (surfaced to the UI as a temporalException, which the UI
- *     renders directly from the condition + entitlement source — no per-entry
- *     note restates it).
+ *   - 6 countries (BY, RU, SA, TR, CN, KZ) have date-bounded waivers, recorded
+ *     as StayEntitlement.temporalWindows (see @/types) — an ordered,
+ *     append-only array of TemporalWindow, nested apart from `conditions`
+ *     rather than a flat condition type. For 5 of them (all but KZ) the
+ *     source states only an end date, never a start date; per explicit
+ *     product decision, `validFrom` is left UNSET on those rather than
+ *     guessed — an unset validFrom means "since forever" (or, once a second
+ *     window is appended for a later renewal, "since the day after the
+ *     previous window ended"), never "since whenever we happened to check
+ *     the source." A prior version of this file used the verification date
+ *     as a validFrom placeholder; that was wrong (it made trips dated before
+ *     the placeholder incorrectly evaluate as visa_required) and has been
+ *     removed. As Montenegro announces further renewals, append a new
+ *     TemporalWindow to the relevant entitlement's array with its own
+ *     `validUntil`/`description`/`source` and `validFrom` left unset — do
+ *     not edit or remove earlier windows, so historic itineraries keep
+ *     evaluating against the rules that were actually in effect at the time.
+ *     These are evaluated against the trip's entry date by
+ *     selectEntitlement() in stayCalculator.ts — outside every window on
+ *     record, the rule falls back to visa_required (surfaced to the UI as
+ *     the trip's relevant temporal windows, computed directly from the data
+ *     — no per-entry note restates it).
  *   - Liberia (LR)'s source page is published only in Montenegrin, not English.
  *   - Holy See entry (VA) covers only the Holy See; the source bundles it with
  *     the "Sovereign Military Order of Malta" in the page title, but the page's
@@ -267,15 +279,20 @@ export const MONTENEGRO: RegionDefinition = {
       }],
     }, // Peru — distinct bilateral-agreement basis, not the standard 90-day rule
 
-    // ── Entitled — time-bounded seasonal/temporary waivers (date_range condition) ──
+    // ── Entitled — time-bounded seasonal/temporary waivers (temporalWindows) ──────
+    // validFrom is deliberately unset on every window below except KZ's first —
+    // the source never states a start date for the others, and an unset
+    // validFrom means "since forever" (see effectiveWindowRange() in
+    // stayCalculator.ts), not "since whenever this file was checked." As each
+    // country's waiver is renewed, append a new window here (validUntil +
+    // description + source, validFrom left unset) rather than editing the one
+    // it replaces.
     'BY': {
       access: 'entitled',
       entitlements: [{
-        conditions: [{
-          type: 'date_range',
-          validFrom: '2026-08-30',
+        temporalWindows: [{
           validUntil: '2026-10-31',
-          description: 'Temporary waiver, active until 31 October 2026',
+          description: 'Temporary waiver',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.BY,
@@ -285,22 +302,18 @@ export const MONTENEGRO: RegionDefinition = {
       access: 'entitled',
       entitlements: [
         {
-          conditions: [{
-            type: 'date_range',
-            validFrom: '2026-08-30',
+          temporalWindows: [{
             validUntil: '2026-10-31',
-            description: 'Organized tourist group waiver, active until 31 October 2026',
+            description: 'Organized tourist group waiver',
           }],
           limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
           source: MontenegroSources.CN,
           notes: [{ text: 'Organized tourist group only: must enter/stay/leave together, direct charter flight, proof of paid tour arrangement and guaranteed return required.', source: MontenegroSources.CN }],
         },
         {
-          conditions: [{
-            type: 'date_range',
-            validFrom: '2026-08-30',
+          temporalWindows: [{
             validUntil: '2026-10-31',
-            description: 'Business passport waiver, active until 31 October 2026',
+            description: 'Business passport waiver',
           }],
           limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
           source: MontenegroSources.CN,
@@ -314,27 +327,25 @@ export const MONTENEGRO: RegionDefinition = {
     'KZ': {
       access: 'entitled',
       entitlements: [{
-        conditions: [{
-          type: 'date_range',
+        temporalWindows: [{
           validFrom: '2026-05-01',
           validUntil: '2026-10-01',
-          description: 'Seasonal visa waiver, 1 May – 1 October 2026',
+          description: 'Seasonal visa waiver',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.KZ,
       }],
-      // No unconditional fallback entitlement — outside the window, no entitlement
-      // matches and evaluation correctly falls through to visa_required.
+      // No unconditional fallback entitlement — outside every window on record,
+      // no entitlement matches and evaluation correctly falls through to
+      // visa_required.
       notes: [{ text: 'Outside the seasonal waiver, nationals require a visa in advance from a Montenegrin diplomatic/consular post, or the Embassy of Bulgaria in Kazakhstan if none is reachable.', source: MontenegroSources.KZ }],
     }, // Kazakhstan
     'RU': {
       access: 'entitled',
       entitlements: [{
-        conditions: [{
-          type: 'date_range',
-          validFrom: '2026-08-30',
+        temporalWindows: [{
           validUntil: '2026-10-31',
-          description: 'Temporary waiver, active until 31 October 2026',
+          description: 'Temporary waiver',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.RU,
@@ -343,11 +354,9 @@ export const MONTENEGRO: RegionDefinition = {
     'SA': {
       access: 'entitled',
       entitlements: [{
-        conditions: [{
-          type: 'date_range',
-          validFrom: '2026-08-30',
+        temporalWindows: [{
           validUntil: '2026-10-31',
-          description: 'Temporary waiver, active until 31 October 2026',
+          description: 'Temporary waiver',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.SA,
@@ -356,11 +365,9 @@ export const MONTENEGRO: RegionDefinition = {
     'TR': {
       access: 'entitled',
       entitlements: [{
-        conditions: [{
-          type: 'date_range',
-          validFrom: '2026-08-30',
+        temporalWindows: [{
           validUntil: '2026-10-31',
-          description: 'Temporary waiver, active until 31 October 2026',
+          description: 'Temporary waiver',
         }],
         limits: [{ type: 'per_visit', value: 30, unit: 'days' }],
         source: MontenegroSources.TR,

@@ -243,7 +243,7 @@ describe("assessStay — calendar_period (90 per calendar year)", () => {
   });
 });
 
-// ─── selectEntitlement (date_range-gated entitlement selection) ──────────────
+// ─── selectEntitlement (temporalWindows-gated entitlement selection) ─────────
 
 describe("selectEntitlement", () => {
   it("matches a plain unconditional entitlement with isOverride: false", () => {
@@ -262,8 +262,7 @@ describe("selectEntitlement", () => {
       access: "entitled",
       entitlements: [
         {
-          conditions: [{
-            type: "date_range",
+          temporalWindows: [{
             validFrom: "2026-05-01",
             validUntil: "2026-10-01",
             description: "Seasonal waiver",
@@ -278,22 +277,23 @@ describe("selectEntitlement", () => {
     expect(inSeason).not.toBeNull();
     expect(inSeason!.isOverride).toBe(true);
     expect(inSeason!.baseEntitlement).toBe(seasonal.entitlements[1]);
+    expect(inSeason!.activeWindow).toBe(seasonal.entitlements[0].temporalWindows![0]);
     expect((inSeason!.selected.limits[0] as { value: number }).value).toBe(30);
 
     // Outside the window, the unconditional fallback matches directly —
-    // no override, since the fallback itself carries no date_range condition.
+    // no override, since the fallback itself carries no temporalWindows.
     const outOfSeason = selectEntitlement(seasonal, "2026-12-01");
     expect(outOfSeason).not.toBeNull();
     expect(outOfSeason!.isOverride).toBe(false);
+    expect(outOfSeason!.activeWindow).toBeUndefined();
     expect((outOfSeason!.selected.limits[0] as { value: number }).value).toBe(90);
   });
 
-  it("returns null when no entitlement's date_range matches and there is no unconditional fallback", () => {
+  it("returns null when no entitlement's temporal window matches and there is no unconditional fallback", () => {
     const seasonalOnly: EntitledRule = {
       access: "entitled",
       entitlements: [{
-        conditions: [{
-          type: "date_range",
+        temporalWindows: [{
           validFrom: "2026-05-01",
           validUntil: "2026-10-01",
           description: "Seasonal waiver",
@@ -308,8 +308,7 @@ describe("selectEntitlement", () => {
     const rule: EntitledRule = {
       access: "entitled",
       entitlements: [{
-        conditions: [{
-          type: "date_range",
+        temporalWindows: [{
           validFrom: "2026-05-01",
           validUntil: "2026-10-01",
           description: "Seasonal waiver",
@@ -321,6 +320,47 @@ describe("selectEntitlement", () => {
     expect(selectEntitlement(rule, "2026-10-01")).not.toBeNull();
     expect(selectEntitlement(rule, "2026-04-30")).toBeNull();
     expect(selectEntitlement(rule, "2026-10-02")).toBeNull();
+  });
+
+  it("a window with no stated validFrom matches an entry date far in the past — the placeholder-date bug this replaces", () => {
+    // This is the literal regression test for the reported bug: Turkey's
+    // waiver source states only an end date, so validFrom must never be
+    // filled in with "today" or any other placeholder — a trip booked
+    // well before the window was even recorded should still resolve as
+    // entitled, since the waiver was almost certainly already in effect.
+    const rule: EntitledRule = {
+      access: "entitled",
+      entitlements: [{
+        temporalWindows: [{ validUntil: "2026-10-31", description: "Temporary waiver" }],
+        limits: [{ type: "per_visit", value: 30, unit: "days" }],
+      }],
+    };
+    const selection = selectEntitlement(rule, "2020-01-01");
+    expect(selection).not.toBeNull();
+    expect(selection!.isOverride).toBe(true);
+    expect(selection!.activeWindow?.validUntil).toBe("2026-10-31");
+  });
+
+  it("chains a second window (no stated validFrom) to start the day after the first window's validUntil", () => {
+    const rule: EntitledRule = {
+      access: "entitled",
+      entitlements: [{
+        temporalWindows: [
+          { validUntil: "2026-06-30", description: "First waiver" },
+          { validUntil: "2026-10-31", description: "Renewed waiver" }, // no validFrom — chains from above
+        ],
+        limits: [{ type: "per_visit", value: 30, unit: "days" }],
+      }],
+    };
+    // Well before the first window — still matches it (unbounded past).
+    expect(selectEntitlement(rule, "2020-01-01")!.activeWindow?.description).toBe("First waiver");
+    // On the boundary — 30 June still belongs to the first window...
+    expect(selectEntitlement(rule, "2026-06-30")!.activeWindow?.description).toBe("First waiver");
+    // ...and 1 July (the very next day) already belongs to the second, chained window.
+    expect(selectEntitlement(rule, "2026-07-01")!.activeWindow?.description).toBe("Renewed waiver");
+    expect(selectEntitlement(rule, "2026-10-31")!.activeWindow?.description).toBe("Renewed waiver");
+    // Past both windows entirely.
+    expect(selectEntitlement(rule, "2026-11-01")).toBeNull();
   });
 });
 

@@ -80,28 +80,40 @@ describe('getMontenegroRule', () => {
   });
 });
 
-describe('Montenegro temporary waivers (BY, RU, SA, TR) — no redundant TODO note or dangling parenthetical', () => {
-  it.each(['BY', 'RU', 'SA', 'TR'])('%s has no rule-level notes and a clean date_range description', (code) => {
+describe('Montenegro temporary waivers (BY, RU, SA, TR) — no placeholder validFrom, no redundant TODO note', () => {
+  it.each(['BY', 'RU', 'SA', 'TR'])('%s has no rule-level notes and an open (unset) validFrom', (code) => {
     const rule = getMontenegroRule(code);
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     expect(rule.notes ?? []).toHaveLength(0);
-    const condition = rule.entitlements[0].conditions?.[0];
-    expect(condition?.type).toBe('date_range');
-    if (condition?.type !== 'date_range') return;
-    expect(condition.description).not.toContain('no stated start date');
-    expect(condition.description).not.toContain('see note');
+    const window = rule.entitlements[0].temporalWindows?.[0];
+    expect(window).toBeDefined();
+    expect(window!.validFrom).toBeUndefined();
+    expect(window!.validUntil).toBe('2026-10-31');
+  });
+
+  it.each(['BY', 'RU', 'SA', 'TR'])('%s resolves as entitled for a trip well before the old placeholder date — the reported bug', (code) => {
+    // Regression test: this file used to fabricate validFrom as the date the
+    // page was verified (2026-08-30). A trip entering earlier than that
+    // incorrectly evaluated as visa_required. It no longer does.
+    const rule = getMontenegroRule(code);
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    const selection = selectEntitlement(rule, '2026-01-01');
+    expect(selection).not.toBeNull();
+    expect(selection!.isOverride).toBe(true);
   });
 });
 
-describe('Montenegro seasonal waiver (Kazakhstan, date_range condition)', () => {
+describe('Montenegro seasonal waiver (Kazakhstan, temporalWindows)', () => {
   const rule = getMontenegroRule('KZ');
 
-  it('is an entitled rule with a single date_range-gated entitlement, no unconditional fallback', () => {
+  it('is an entitled rule with a single temporally-gated entitlement, no unconditional fallback', () => {
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     expect(rule.entitlements).toHaveLength(1);
-    expect(rule.entitlements[0].conditions?.[0].type).toBe('date_range');
+    expect(rule.entitlements[0].temporalWindows).toHaveLength(1);
+    expect(rule.entitlements[0].temporalWindows![0].validFrom).toBe('2026-05-01');
   });
 
   it('selectEntitlement matches and flags an override for a trip entering mid-season (1 Jun 2026)', () => {

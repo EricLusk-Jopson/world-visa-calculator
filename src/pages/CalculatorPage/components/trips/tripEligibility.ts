@@ -7,7 +7,7 @@
  * surfacing per traveler.
  */
 
-import { VisaRegion, VISA_REGION_LABELS, isDateRangeCondition } from "@/types";
+import { VisaRegion, VISA_REGION_LABELS } from "@/types";
 import type {
   Traveler,
   PassportRule,
@@ -15,13 +15,14 @@ import type {
   StayLimit,
   StayEntitlement,
   EntitlementCondition,
-  DateRangeCondition,
+  TemporalWindow,
   RuleNote,
   SourceDoc,
 } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
-import { selectEntitlement } from "@/features/calculator/utils/stayCalculator";
+import { selectEntitlement, effectiveWindowRange } from "@/features/calculator/utils/stayCalculator";
+import { parseDate, addYears } from "@/features/calculator/utils/dates";
 
 export interface EligibilityNote {
   /** Category label, e.g. "Pre-authorisation", "Condition", "Note". */
@@ -31,21 +32,16 @@ export interface EligibilityNote {
 }
 
 /**
- * Present whenever this passport rule has a date_range-gated entitlement for
- * the destination — whether it's currently the one applying (`active: true`,
- * e.g. Kazakhstan mid-season) or currently dormant while the base rule
- * applies instead (`active: false`, e.g. Kazakhstan outside the seasonal
- * window — base is visa_required, but the exception is still worth showing).
- * `other*` always describes the side NOT already reflected in the top-level
- * `access`/`accessLabel`/`ruleTexts` fields, so the UI can show both sides
- * without duplicating whichever one is already "live".
+ * One TemporalWindow (from any of the passport rule's entitlements) worth
+ * showing for a specific trip — either the one actually governing the
+ * trip's entry date (`active: true`) or one nearby in time (within a year
+ * either side of the trip) shown for context, e.g. a waiver that just
+ * expired or one announced to start after this trip.
  */
-export interface TemporalException {
+export interface RelevantTemporalWindow {
+  window: TemporalWindow;
+  /** True if this window governs the trip's actual entry date. */
   active: boolean;
-  /** Human-readable date range, e.g. "1 May – 1 Oct 2026". */
-  dateRangeText: string;
-  otherAccessLabel: string;
-  otherRuleTexts: string[];
 }
 
 export interface TravelerEligibility {
@@ -72,8 +68,8 @@ export interface TravelerEligibility {
    */
   ruleSource?: SourceDoc;
   notes: EligibilityNote[];
-  /** Set when this rule has a temporary (date_range-gated) entitlement relevant to the trip's entry date. */
-  temporalException?: TemporalException;
+  /** Temporal windows (current, expired, or upcoming) relevant to this trip — empty when not applicable. */
+  temporalWindows: RelevantTemporalWindow[];
 }
 
 // ─── Text helpers ─────────────────────────────────────────────────────────────
@@ -124,7 +120,6 @@ function conditionText(condition: EntitlementCondition): string {
     case "age_range":
     case "carrier":
     case "passport_identifier":
-    case "date_range":
       return condition.description;
     case "purpose":
       return `Permitted purposes: ${condition.allowed.join(", ")}`;
@@ -135,23 +130,20 @@ function conditionText(condition: EntitlementCondition): string {
   }
 }
 
-function dateRangeConditionOf(entitlement: StayEntitlement): DateRangeCondition | undefined {
-  return entitlement.conditions?.find(isDateRangeCondition);
-}
-
 interface EffectiveEligibility {
-  /** The rule actually in effect for this entry date — may differ from the raw PassportRule when a date_range entitlement doesn't match today. */
+  /** The rule actually in effect for this entry date — may differ from the raw PassportRule when no temporal window covers it. */
   effectiveRule: PassportRule;
   entitlement?: StayEntitlement;
-  temporalException?: TemporalException;
+  /** The specific window that matched, when `entitlement.temporalWindows` is set. */
+  activeWindow?: TemporalWindow;
 }
 
 /**
  * Resolves what a passport rule actually grants for a trip entering on
- * `entryDate`, evaluating date_range conditions via selectEntitlement()
- * rather than always taking entitlements[0]. When no entryDate is known yet
- * (dates not set in the trip form), falls back to the first entitlement —
- * matching the old, date-blind behavior — since there's nothing to evaluate.
+ * `entryDate`, evaluating temporal windows via selectEntitlement() rather
+ * than always taking entitlements[0]. When no entryDate is known yet (dates
+ * not set in the trip form), falls back to the first entitlement — matching
+ * the old, date-blind behavior — since there's nothing to evaluate.
  */
 function resolveEffectiveEligibility(
   rule: PassportRule,
@@ -161,51 +153,74 @@ function resolveEffectiveEligibility(
     return { effectiveRule: rule, entitlement: rule.access === "entitled" ? rule.entitlements[0] : undefined };
   }
 
-  const dateGated = rule.entitlements.filter(
-    (e) => e.conditions?.some(isDateRangeCondition),
-  );
-
   const selection = selectEntitlement(rule, entryDate);
 
   if (selection) {
-    if (!selection.isOverride) {
-      // Ordinary match — no temporal exception in play.
-      return { effectiveRule: rule, entitlement: selection.selected };
-    }
-
-    // The date_range entitlement is the one currently applying — surface
-    // what would apply instead outside its window.
-    const base = selection.baseEntitlement;
-    const condition = dateRangeConditionOf(selection.selected);
-    return {
-      effectiveRule: rule,
-      entitlement: selection.selected,
-      temporalException: {
-        active: true,
-        dateRangeText: condition?.description ?? "",
-        otherAccessLabel: base ? "No Visa Required" : "Visa Required",
-        otherRuleTexts: base ? base.limits.map(limitText) : [],
-      },
-    };
+    return { effectiveRule: rule, entitlement: selection.selected, activeWindow: selection.activeWindow };
   }
 
-  // No entitlement's date_range matches today — the effective access for
-  // this trip is visa_required, even though the raw rule is "entitled".
-  const example = dateGated[0];
-  const condition = example && dateRangeConditionOf(example);
-  return {
-    effectiveRule: { access: "visa_required" },
-    entitlement: undefined,
-    temporalException:
-      example && condition
-        ? {
-            active: false,
-            dateRangeText: condition.description,
-            otherAccessLabel: "No Visa Required",
-            otherRuleTexts: dateGated.flatMap((e) => e.limits.map(limitText)),
-          }
-        : undefined,
-  };
+  // No entitlement's temporal windows contain this entry date — the
+  // effective access for this trip is visa_required, even though the raw
+  // rule is "entitled". Relevant windows (past/future) are still surfaced
+  // separately via relevantTemporalWindows(), not reconstructed here.
+  return { effectiveRule: { access: "visa_required" } };
+}
+
+/**
+ * Every TemporalWindow, across all of `rule`'s entitlements, worth showing
+ * for a trip entering `tripEntryDate` (and, when known, exiting
+ * `tripExitDate`) — the one that actually governs the trip's entry date
+ * (flagged `active`), plus any others overlapping a year either side of the
+ * trip, for context (an about-to-expire or freshly-announced waiver, say).
+ * `active` is keyed off the same selectEntitlement() decision that
+ * determines the trip's actual access, not recomputed independently, so
+ * only ever one window (at most) comes back active even when an
+ * entitlement's sibling windows would otherwise also technically contain
+ * the entry date.
+ */
+export function relevantTemporalWindows(
+  rule: PassportRule,
+  tripEntryDate: string,
+  tripExitDate?: string,
+): RelevantTemporalWindow[] {
+  if (rule.access !== "entitled") return [];
+
+  const entry = parseDate(tripEntryDate);
+  const rangeStart = addYears(entry, -1);
+  const rangeEnd = addYears(parseDate(tripExitDate || tripEntryDate), 1);
+  const selection = selectEntitlement(rule, tripEntryDate);
+
+  const results: RelevantTemporalWindow[] = [];
+  for (const entitlement of rule.entitlements) {
+    const windows = entitlement.temporalWindows;
+    if (!windows) continue;
+    windows.forEach((window, i) => {
+      const { start, end } = effectiveWindowRange(windows, i);
+      if (end < rangeStart || start > rangeEnd) return;
+      results.push({ window, active: window === selection?.activeWindow });
+    });
+  }
+
+  return results.sort((a, b) => a.window.validUntil.localeCompare(b.window.validUntil));
+}
+
+function fmtWindowDate(iso: string): string {
+  return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(parseDate(iso));
+}
+
+/** Display text for one relevant temporal window, framed relative to the trip's entry date. */
+function temporalWindowNote(rel: RelevantTemporalWindow, tripEntryDate: string): { label: string; text: string } {
+  const { window, active } = rel;
+  const dateSuffix = window.validFrom
+    ? `${fmtWindowDate(window.validFrom)} – ${fmtWindowDate(window.validUntil)}`
+    : `until ${fmtWindowDate(window.validUntil)}`;
+  if (active) {
+    return { label: "Temporary waiver", text: `${window.description} is currently in effect (${dateSuffix}).` };
+  }
+  const isPast = window.validUntil < tripEntryDate;
+  return isPast
+    ? { label: "Prior waiver period", text: `${window.description} was in effect (${dateSuffix}), before this trip.` }
+    : { label: "Upcoming waiver period", text: `${window.description} will be in effect (${dateSuffix}), after this trip.` };
 }
 
 /**
@@ -231,6 +246,7 @@ export function computeTravelerEligibility(
   travelers: Traveler[],
   travelerIds: string[],
   entryDate?: string,
+  exitDate?: string,
 ): TravelerEligibility[] {
   const regionLabel = VISA_REGION_LABELS[region];
   const regionDef = getRegionDefinition(region);
@@ -255,12 +271,13 @@ export function computeTravelerEligibility(
           ok: false,
           ruleTexts: [],
           notes: [],
+          temporalWindows: [],
         },
       ];
     }
 
     const rawRule = getPassportRule(region, traveler.passportCode);
-    const { effectiveRule: rule, entitlement, temporalException } =
+    const { effectiveRule: rule, entitlement, activeWindow } =
       resolveEffectiveEligibility(rawRule, entryDate);
     const notes: EligibilityNote[] = [];
 
@@ -272,13 +289,16 @@ export function computeTravelerEligibility(
           : "No Visa Required";
     const ok = rule.access !== "visa_required";
 
-    // The rule currently in effect for this trip cites its own source when
-    // it has one (an entitlement, or a visa_required rule with a specific
-    // source page). A date_range fallback to visa_required has no source of
-    // its own (it's synthesized, not the raw rule) — fall back to the raw
-    // rule's citation so the link still points at this country's page
-    // rather than nothing at all.
-    const ruleSource: SourceDoc | undefined = entitlement?.source ?? rawRuleSource(rawRule);
+    // The rule currently in effect for this trip cites its own source,
+    // preferring the specific temporal window's citation (a renewal can
+    // cite a different announcement than the entitlement's general source)
+    // over the entitlement's own, over the raw rule's. A trip that falls
+    // outside every temporal window has no source of its own (the
+    // visa_required fallback is synthesized, not the raw rule) — fall back
+    // to the raw rule's citation so the link still points at this
+    // country's page rather than nothing at all.
+    const ruleSource: SourceDoc | undefined =
+      activeWindow?.source ?? entitlement?.source ?? rawRuleSource(rawRule);
 
     // Any visa-required status carries a source link to the country's own
     // entry-requirements page when known, otherwise the region's generic
@@ -304,28 +324,15 @@ export function computeTravelerEligibility(
           ? [regionRuleText(regionRule)]
           : [];
 
-    // Temporal exception — always carries a note, per design: a seasonal
-    // waiver's existence (active or not) should never be silent. Cites the
-    // same source as the Rule/Access row (ruleSource) — the condition's own
-    // description already states the date range in full, so this doesn't
-    // repeat "no stated start date" or point readers at a separate note.
-    if (temporalException) {
-      notes.push({
-        label: temporalException.active ? "Temporary waiver" : "Seasonal exception",
-        text: temporalException.active
-          ? `A temporary waiver is currently in effect (${temporalException.dateRangeText}). ` +
-            `Outside this window: ${temporalException.otherAccessLabel}` +
-            (temporalException.otherRuleTexts.length
-              ? ` — ${temporalException.otherRuleTexts.join(", ")}.`
-              : ".")
-          : `A seasonal exception applies ${temporalException.dateRangeText}: ` +
-            `${temporalException.otherAccessLabel}` +
-            (temporalException.otherRuleTexts.length
-              ? ` — ${temporalException.otherRuleTexts.join(", ")}`
-              : "") +
-            ` during that window. Outside it, the rule above applies.`,
-        source: ruleSource,
-      });
+    // Temporal windows relevant to this trip (current, expired, or
+    // upcoming, within a year either side) — each renders as its own note,
+    // independently sourced. Only computed once dates are known; a note per
+    // window, per design: a waiver's existence near this trip should never
+    // be silent.
+    const temporalWindows = entryDate ? relevantTemporalWindows(rawRule, entryDate, exitDate) : [];
+    for (const rel of temporalWindows) {
+      const { label, text } = temporalWindowNote(rel, entryDate!);
+      notes.push({ label, text, source: rel.window.source ?? ruleSource });
     }
 
     // Pre-auth
@@ -341,12 +348,8 @@ export function computeTravelerEligibility(
       }
     }
 
-    // Conditions — date_range is excluded: it's already fully covered by the
-    // temporalException note above (same date range, plus what applies on
-    // the other side of the window), so a separate "Condition" block would
-    // just repeat it.
+    // Conditions
     for (const c of entitlement?.conditions ?? []) {
-      if (c.type === "date_range") continue;
       notes.push({ label: "Condition", text: conditionText(c) });
     }
 
@@ -373,7 +376,7 @@ export function computeTravelerEligibility(
         preAuthName,
         ruleSource,
         notes,
-        temporalException,
+        temporalWindows,
       },
     ];
   });

@@ -94,16 +94,15 @@ function TravelerCard({
             <HelpOutlineIcon
               sx={{ fontSize: "1.1rem", color: tokens.textGhost }}
             />
-          ) : e.temporalException ? (
-            // A date_range-gated entitlement is in play — either currently
-            // overriding the base rule (green: access is granted right now,
-            // the clock just signals it's time-limited) or currently dormant
-            // while the base rule applies (red: no access today, though a
-            // seasonal exception exists — see notes).
+          ) : e.temporalWindows.length > 0 ? (
+            // A temporal window is relevant to this trip — either currently
+            // governing it (green: access is granted right now, the clock
+            // just signals it's time-limited) or only a nearby one (red: no
+            // access today, though a waiver applies before/after — see notes).
             <AccessTimeIcon
               sx={{
                 fontSize: "1.1rem",
-                color: e.temporalException.active ? tokens.green : tokens.red,
+                color: e.temporalWindows.some((w) => w.active) ? tokens.green : tokens.red,
               }}
             />
           ) : e.ok ? (
