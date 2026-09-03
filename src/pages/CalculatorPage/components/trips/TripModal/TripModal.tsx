@@ -26,6 +26,7 @@ import {
   formatDate,
   addDays,
   differenceInCalendarDays,
+  countTripDays,
 } from "@/features/calculator/utils/dates";
 import { blockedTripRanges, isDateBlocked } from "@/features/calculator/utils/tripOverlap";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
@@ -750,7 +751,25 @@ export function TripModal({
 
           {/* 4 · Dates */}
           <Box>
-            <FormLabel>Dates</FormLabel>
+            <Box sx={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+              <FormLabel>Dates</FormLabel>
+              {entryDate && exitDate && (
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.68rem",
+                    fontWeight: 600,
+                    color: tokens.textSoft,
+                    mb: "5px",
+                  }}
+                >
+                  {(() => {
+                    const days = countTripDays(parseDate(entryDate), parseDate(exitDate));
+                    return `${days} day${days === 1 ? "" : "s"}`;
+                  })()}
+                </Typography>
+              )}
+            </Box>
             <Box
               sx={{
                 display: "grid",
@@ -827,7 +846,7 @@ export function TripModal({
               <TripSummaryRow
                 label="Entry Eligibility"
                 okCount={eligOk}
-                cautionCount={eligTemporary}
+                temporaryCount={eligTemporary}
                 dangerCount={eligWarn}
                 unknownCount={eligUnknown}
                 placeholder="Select travelers"

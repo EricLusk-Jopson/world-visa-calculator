@@ -212,7 +212,7 @@ export function TripFormSlider({
               <TripSummaryRow
                 label="Entry Eligibility"
                 okCount={eligOk}
-                cautionCount={eligTemporary}
+                temporaryCount={eligTemporary}
                 dangerCount={eligWarn}
                 unknownCount={eligUnknown}
                 placeholder="Select travelers"

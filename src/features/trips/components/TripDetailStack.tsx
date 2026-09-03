@@ -96,13 +96,14 @@ function TravelerCard({
             />
           ) : e.temporalException ? (
             // A date_range-gated entitlement is in play — either currently
-            // overriding the base rule (amber: good for now, but temporary)
-            // or currently dormant while the base rule applies (red: no
-            // access today, though a seasonal exception exists — see notes).
+            // overriding the base rule (green: access is granted right now,
+            // the clock just signals it's time-limited) or currently dormant
+            // while the base rule applies (red: no access today, though a
+            // seasonal exception exists — see notes).
             <AccessTimeIcon
               sx={{
                 fontSize: "1.1rem",
-                color: e.temporalException.active ? tokens.amber : tokens.red,
+                color: e.temporalException.active ? tokens.green : tokens.red,
               }}
             />
           ) : e.ok ? (

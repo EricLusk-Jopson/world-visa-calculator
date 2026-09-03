@@ -12,6 +12,13 @@ export interface TripSummaryRowProps {
   /** "eligibility" uses check/warning; "duration" uses clock/warning icons. */
   statusKind?: "eligibility" | "duration";
   okCount: number;
+  /**
+   * A temporal/seasonal exception is currently active — access is granted
+   * right now (green), with a clock rather than a check to signal it's
+   * time-limited. Distinct from cautionCount: this traveler is fine, not at
+   * risk of anything.
+   */
+  temporaryCount?: number;
   /** Approaching a limit (amber). */
   cautionCount?: number;
   /** Close to a limit / refused (red). For duration this is the red clock. */
@@ -46,6 +53,7 @@ export function TripSummaryRow({
   label,
   statusKind = "eligibility",
   okCount,
+  temporaryCount = 0,
   cautionCount = 0,
   dangerCount,
   overstayCount = 0,
@@ -56,6 +64,7 @@ export function TripSummaryRow({
 }: TripSummaryRowProps) {
   const empty =
     okCount === 0 &&
+    temporaryCount === 0 &&
     cautionCount === 0 &&
     dangerCount === 0 &&
     overstayCount === 0 &&
@@ -116,6 +125,13 @@ export function TripSummaryRow({
                     <CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />
                   )
                 }
+              />
+            )}
+            {temporaryCount > 0 && (
+              <Count
+                value={temporaryCount}
+                color={tokens.green}
+                icon={<DurationIcon state="safe" size="0.9rem" />}
               />
             )}
             {cautionCount > 0 && (
