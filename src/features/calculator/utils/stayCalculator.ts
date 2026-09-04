@@ -20,9 +20,10 @@ import type {
   PassportRule,
   EntitledRule,
   StayEntitlement,
+  TemporalWindow,
   Trip,
 } from "@/types";
-import { VisaRegion, isDateRangeCondition } from "@/types";
+import { VisaRegion } from "@/types";
 import { getPassportRule, getRegionDefinition } from "@/data/regions";
 import {
   parseDate,
@@ -134,29 +135,79 @@ export function regionRuleToLimits(
   return null;
 }
 
+// ─── Temporal windows ─────────────────────────────────────────────────────────
+
+/**
+ * "Very old" sentinel used as a TemporalWindow's effective start when the
+ * source never states one and it's the first window on record for that
+ * entitlement — see TemporalWindow in @/types. Deliberately far enough in
+ * the past that no realistic itinerary could predate it, so a window with
+ * no stated start behaves as "always has been in effect", never as
+ * "started whenever we happened to check the source" (that placeholder-date
+ * bug is exactly what this sentinel replaces).
+ */
+const UNKNOWN_START = parseDate("1900-01-01");
+
+/**
+ * The effective [start, end] range of `windows[index]`.
+ *
+ * `end` is always `validUntil`. `start` is `validFrom` when stated;
+ * otherwise it chains from the *previous* window in the array — the day
+ * after that window's `validUntil` — so appending a newly-announced
+ * renewal never requires editing earlier entries. The first window on
+ * record, if it has no stated `validFrom`, is treated as unbounded in the
+ * past (UNKNOWN_START), not "today".
+ */
+export function effectiveWindowRange(
+  windows: readonly TemporalWindow[],
+  index: number,
+): { start: Date; end: Date } {
+  const end = parseDate(windows[index].validUntil);
+  const start = windows[index].validFrom
+    ? parseDate(windows[index].validFrom)
+    : index > 0
+      ? addDays(parseDate(windows[index - 1].validUntil), 1)
+      : UNKNOWN_START;
+  return { start, end };
+}
+
+/** The TemporalWindow (if any) in `windows` whose effective range contains `date`. */
+function windowContaining(
+  windows: readonly TemporalWindow[],
+  date: Date,
+): TemporalWindow | undefined {
+  return windows.find((_, i) => {
+    const { start, end } = effectiveWindowRange(windows, i);
+    return date >= start && date <= end;
+  });
+}
+
 // ─── Entitlement selection ─────────────────────────────────────────────────────
 
 export interface EntitlementSelection {
   selected: StayEntitlement;
   /** True when `selected` isn't the rule's unconditional/first-listed entitlement. */
   isOverride: boolean;
-  /** The entitlement that would apply outside the active date_range — for display. */
+  /** The entitlement that would apply outside every temporal window on `selected` — for display. */
   baseEntitlement?: StayEntitlement;
+  /** The specific TemporalWindow that matched, when `selected.temporalWindows` is set. */
+  activeWindow?: TemporalWindow;
 }
 
 /**
  * Select which of an EntitledRule's (possibly several, OR'd) entitlements
  * applies for a trip entering on `entryDate`.
  *
- * Only `date_range` conditions are evaluated here — it's the one condition
- * type that's mechanically computable from the trip alone (no traveller
+ * Only `temporalWindows` are evaluated here — it's the one gating mechanism
+ * that's mechanically computable from the trip alone (no traveller
  * self-report needed). Every other condition type is treated as passing,
  * matching prior behavior (conditions were previously never evaluated at
- * all; this narrows that gap to just date_range, not closes it entirely).
+ * all; this narrows that gap to just temporal windows, not closes it
+ * entirely).
  *
- * Returns null when no entitlement's date_range conditions match — the
- * caller should fall back to visa_required (e.g. a seasonal-only waiver
- * outside its window, with no unconditional fallback entitlement).
+ * Returns null when no entitlement's temporal windows contain `entryDate` —
+ * the caller should fall back to visa_required (e.g. a seasonal-only waiver
+ * outside every window on record, with no unconditional fallback entitlement).
  */
 export function selectEntitlement(
   rule: EntitledRule,
@@ -164,24 +215,19 @@ export function selectEntitlement(
 ): EntitlementSelection | null {
   const entry = parseDate(entryDate);
 
-  const matches = (entitlement: StayEntitlement): boolean =>
-    (entitlement.conditions ?? [])
-      .filter(isDateRangeCondition)
-      .every((c) => entry >= parseDate(c.validFrom) && entry <= parseDate(c.validUntil));
-
-  const baseEntitlement = rule.entitlements.find(
-    (e) => !(e.conditions ?? []).some(isDateRangeCondition),
-  );
+  const baseEntitlement = rule.entitlements.find((e) => !e.temporalWindows);
 
   for (const entitlement of rule.entitlements) {
-    if (matches(entitlement)) {
-      const isOverride = (entitlement.conditions ?? []).some(isDateRangeCondition);
+    if (!entitlement.temporalWindows) {
+      return { selected: entitlement, isOverride: false };
+    }
+    const activeWindow = windowContaining(entitlement.temporalWindows, entry);
+    if (activeWindow) {
       return {
         selected: entitlement,
-        isOverride,
-        ...(isOverride && baseEntitlement && baseEntitlement !== entitlement
-          ? { baseEntitlement }
-          : {}),
+        isOverride: true,
+        activeWindow,
+        ...(baseEntitlement && baseEntitlement !== entitlement ? { baseEntitlement } : {}),
       };
     }
   }
@@ -194,9 +240,9 @@ export function selectEntitlement(
  * entry date.
  *
  * - entitled passport → the selected entitlement's own limits (respects
- *   per-passport allowances, their units, and any active date_range
- *   condition). Falls back to null (visa_required-equivalent, no calculable
- *   limit) when no entitlement's date_range condition matches.
+ *   per-passport allowances, their units, and any active temporal window).
+ *   Falls back to null (visa_required-equivalent, no calculable limit) when
+ *   no entitlement's temporal windows contain the entry date.
  * - no passport set → the region's default rule limits (permissive default,
  *   mirroring how eligibility is treated elsewhere).
  * - free_movement / visa_required → null (no calculable per-visit cap).

@@ -26,6 +26,7 @@ import {
   formatDate,
   addDays,
   differenceInCalendarDays,
+  countTripDays,
 } from "@/features/calculator/utils/dates";
 import { blockedTripRanges, isDateBlocked } from "@/features/calculator/utils/tripOverlap";
 import { calculateMaxStay } from "@/features/calculator/utils/schengen";
@@ -379,13 +380,13 @@ export function TripModal({
 
   const eligibility =
     region !== VisaRegion.Elsewhere
-      ? computeTravelerEligibility(region, travelers, travelerIds, entryDate || undefined)
+      ? computeTravelerEligibility(region, travelers, travelerIds, entryDate || undefined, exitDate || undefined)
       : [];
-  // A temporary (date_range) entitlement currently in effect gets its own
-  // amber bucket — technically "ok", but worth flagging as temporary rather
-  // than folding into the plain green count.
-  const eligOk = eligibility.filter((e) => e.ok && !e.temporalException?.active).length;
-  const eligTemporary = eligibility.filter((e) => e.temporalException?.active).length;
+  // A temporal window currently in effect gets its own green-clock bucket —
+  // technically "ok", but worth flagging as temporary rather than folding
+  // into the plain green count.
+  const eligOk = eligibility.filter((e) => e.ok && !e.temporalWindows.some((w) => w.active)).length;
+  const eligTemporary = eligibility.filter((e) => e.temporalWindows.some((w) => w.active)).length;
   // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
   const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
   const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
@@ -750,7 +751,25 @@ export function TripModal({
 
           {/* 4 · Dates */}
           <Box>
-            <FormLabel>Dates</FormLabel>
+            <Box sx={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+              <FormLabel>Dates</FormLabel>
+              {entryDate && exitDate && (
+                <Typography
+                  sx={{
+                    fontFamily: tokens.fontBody,
+                    fontSize: "0.68rem",
+                    fontWeight: 600,
+                    color: tokens.textSoft,
+                    mb: "5px",
+                  }}
+                >
+                  {(() => {
+                    const days = countTripDays(parseDate(entryDate), parseDate(exitDate));
+                    return `${days} day${days === 1 ? "" : "s"}`;
+                  })()}
+                </Typography>
+              )}
+            </Box>
             <Box
               sx={{
                 display: "grid",
@@ -827,7 +846,7 @@ export function TripModal({
               <TripSummaryRow
                 label="Entry Eligibility"
                 okCount={eligOk}
-                cautionCount={eligTemporary}
+                temporaryCount={eligTemporary}
                 dangerCount={eligWarn}
                 unknownCount={eligUnknown}
                 placeholder="Select travelers"
@@ -961,7 +980,7 @@ export function TripModal({
                 durations={durations}
                 entryDate={entryDate}
                 exitDate={exitDate}
-                defaultOpen={false}
+                defaultOpen={eligibility.length === 1}
               />
             </Box>
           </Box>

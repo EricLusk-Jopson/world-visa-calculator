@@ -94,15 +94,15 @@ function TravelerCard({
             <HelpOutlineIcon
               sx={{ fontSize: "1.1rem", color: tokens.textGhost }}
             />
-          ) : e.temporalException ? (
-            // A date_range-gated entitlement is in play — either currently
-            // overriding the base rule (amber: good for now, but temporary)
-            // or currently dormant while the base rule applies (red: no
-            // access today, though a seasonal exception exists — see notes).
+          ) : e.temporalWindows.length > 0 ? (
+            // A temporal window is relevant to this trip — either currently
+            // governing it (green: access is granted right now, the clock
+            // just signals it's time-limited) or only a nearby one (red: no
+            // access today, though a waiver applies before/after — see notes).
             <AccessTimeIcon
               sx={{
                 fontSize: "1.1rem",
-                color: e.temporalException.active ? tokens.amber : tokens.red,
+                color: e.temporalWindows.some((w) => w.active) ? tokens.green : tokens.red,
               }}
             />
           ) : e.ok ? (
@@ -141,11 +141,13 @@ function TravelerCard({
                 label="Access"
                 value={e.accessLabel}
                 valueColor={accessColor}
+                source={e.ruleTexts.length === 0 ? e.ruleSource : undefined}
               />
               {e.ruleTexts.length > 0 && (
                 <InfoRow
                   label={e.ruleTexts.length > 1 ? "Rules" : "Rule"}
                   value={e.ruleTexts.join(" · ")}
+                  source={e.ruleSource}
                 />
               )}
             </Box>

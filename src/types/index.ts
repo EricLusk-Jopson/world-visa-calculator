@@ -275,26 +275,6 @@ export interface PassportIdentifierCondition {
   description: string;
 }
 
-/**
- * Entitlement is valid only for entries falling within this date range.
- *
- * Evaluated against the trip's entry date, not "today" — a user checking
- * eligibility for a June trip in March should see a seasonal entitlement
- * apply even though the calculator is being used outside the window.
- *
- * Unlike every other EntitlementCondition, this requires no traveller
- * self-report — it is computable automatically from trip data alone, and
- * is the one condition type actually evaluated to select between OR'd
- * entitlements (see selectEntitlement() in stayCalculator.ts). The other
- * condition types remain display-only today.
- */
-export interface DateRangeCondition {
-  readonly type: 'date_range';
-  validFrom: string;   // ISO date, YYYY-MM-DD
-  validUntil: string;  // ISO date, YYYY-MM-DD
-  description: string;
-}
-
 export type EntitlementCondition =
   | HoldsVisaForCondition
   | AgeRangeCondition
@@ -302,8 +282,49 @@ export type EntitlementCondition =
   | BiometricPassportCondition
   | EntryPortCondition
   | CarrierCondition
-  | PassportIdentifierCondition
-  | DateRangeCondition;
+  | PassportIdentifierCondition;
+
+// ─── Temporal windows ─────────────────────────────────────────────────────────
+
+/**
+ * One dated period during which an entitlement's terms apply — the unit a
+ * temporal/seasonal waiver is recorded in. Entitlements that are only ever
+ * in force during specific windows carry an ordered array of these on
+ * `StayEntitlement.temporalWindows`, nested apart from `conditions` (which
+ * covers unrelated, non-temporal gating like purpose or passport type) —
+ * this is deliberately not just another EntitlementCondition variant, since
+ * it needs its own append-only history, not a single flat flag.
+ *
+ * Evaluated against the trip's entry date, not "today" — a user checking
+ * eligibility for a June trip in March should see a seasonal entitlement
+ * apply even though the calculator is being used outside the window.
+ *
+ * Append-only in practice: when a government announces a renewal, push a
+ * new TemporalWindow with `validUntil` set to the new end date and
+ * `validFrom` omitted — its effective start is computed at evaluation time
+ * as the day after the *previous* window's `validUntil` (see
+ * effectiveWindowRange() in stayCalculator.ts), so existing entries never
+ * need editing. Windows must be listed in chronological order.
+ */
+export interface TemporalWindow {
+  /**
+   * ISO date the window begins. Omit when the source never stated one (the
+   * common case) — the effective start is then either the day after the
+   * previous window in the array ends, or, for the first window on record,
+   * treated as unbounded in the past. Never fabricate a "today" placeholder
+   * here: a trip logged before the placeholder date would then incorrectly
+   * evaluate as visa_required even though the waiver was very likely
+   * already in effect — we just don't know exactly when it started.
+   */
+  validFrom?: string;   // ISO date, YYYY-MM-DD
+  /** ISO date the window ends (inclusive) — always the announced date. */
+  validUntil: string;   // ISO date, YYYY-MM-DD
+  /** Short human-readable label, e.g. "Temporary waiver" — dates are rendered separately by the UI, not embedded here. */
+  description: string;
+  /** Overrides the entitlement's own `source` for this specific window, when a renewal cites a different page/announcement. */
+  source?: SourceDoc;
+  notes?: RuleNote[];
+}
 
 // ─── Stay entitlement ─────────────────────────────────────────────────────────
 
@@ -325,8 +346,25 @@ export interface StayEntitlement {
    * this passport code who aren't matched by a prior conditional entitlement).
    */
   conditions?: EntitlementCondition[];
+  /**
+   * When present, this entitlement only applies during one of these dated
+   * windows — see TemporalWindow. Absent = always in force (subject to
+   * `conditions`, as usual). An entitlement with no unconditional fallback
+   * elsewhere in the rule falls through to visa_required outside every
+   * window on record.
+   */
+  temporalWindows?: [TemporalWindow, ...TemporalWindow[]];
   /** Pre-travel authorisation required before this entitlement is usable. */
   preAuth?: PreTravelAuth;
+  /**
+   * The authoritative citation for this entitlement — surfaced in the UI as a
+   * link attached directly to the stay-rule summary, not as a note. Use this
+   * (rather than a `notes` entry whose only content is "here's the source")
+   * whenever there's nothing substantive to say beyond where the rule came
+   * from; reserve `notes` for commentary that adds real information (an
+   * alternate entry method, a condition's nuance, a caveat).
+   */
+  source?: SourceDoc;
   notes?: RuleNote[];
 }
 
@@ -344,6 +382,8 @@ export interface FreeMovementRule {
  */
 export interface VisaRequiredRule {
   readonly access: 'visa_required';
+  /** The authoritative citation for this determination — see StayEntitlement.source. */
+  source?: SourceDoc;
   notes?: RuleNote[];
 }
 
@@ -469,10 +509,6 @@ export function isOfficerDiscretion(rule: RegionRule): rule is OfficerDiscretion
 
 export function isFixedWindowFromEntry(rule: RegionRule): rule is FixedWindowFromEntryRule {
   return rule.type === 'fixed_window_from_entry';
-}
-
-export function isDateRangeCondition(condition: EntitlementCondition): condition is DateRangeCondition {
-  return condition.type === 'date_range';
 }
 
 // ─── Sharing ──────────────────────────────────────────────────────────────────

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getMontenegroRule, MONTENEGRO } from './montenegro';
+import { MontenegroSources } from '@/data/sources';
 import { selectEntitlement, resolveStayLimits } from '@/features/calculator/utils/stayCalculator';
 import {
   isEntitled,
@@ -16,6 +17,31 @@ describe('getMontenegroRule', () => {
     expect(limit.type).toBe('rolling_window');
     expect(limit.days).toBe(90);
     expect(limit.windowDays).toBe(180);
+  });
+
+  it('cites its source via the entitlement.source field, not a "here\'s the source" note (US)', () => {
+    const rule = getMontenegroRule('US');
+    expect(rule.access).toBe('entitled');
+    if (rule.access !== 'entitled') return;
+    expect(rule.entitlements[0].source).toEqual(MontenegroSources.US);
+    const notes = rule.entitlements[0].notes ?? [];
+    expect(notes.some((n) => n.text.startsWith('Source:'))).toBe(false);
+  });
+
+  it('cites its source via the rule.source field for a plain visa-required nationality (AF), with no boilerplate note', () => {
+    const rule = getMontenegroRule('AF');
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.source).toEqual(MontenegroSources.AF);
+    expect(rule.notes ?? []).toHaveLength(0);
+  });
+
+  it('a special-case visa-required nationality (DZ, true content gap) keeps its substantive note in addition to rule.source', () => {
+    const rule = getMontenegroRule('DZ');
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.source).toEqual(MontenegroSources.DZ);
+    expect(rule.notes?.[0]?.text).toContain('No country-specific visa-regime information');
   });
 
   it('returns entitled with an ID-card note for an EU nationality (DE)', () => {
@@ -54,14 +80,40 @@ describe('getMontenegroRule', () => {
   });
 });
 
-describe('Montenegro seasonal waiver (Kazakhstan, date_range condition)', () => {
+describe('Montenegro temporary waivers (BY, RU, SA, TR) — no placeholder validFrom, no redundant TODO note', () => {
+  it.each(['BY', 'RU', 'SA', 'TR'])('%s has no rule-level notes and an open (unset) validFrom', (code) => {
+    const rule = getMontenegroRule(code);
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    expect(rule.notes ?? []).toHaveLength(0);
+    const window = rule.entitlements[0].temporalWindows?.[0];
+    expect(window).toBeDefined();
+    expect(window!.validFrom).toBeUndefined();
+    expect(window!.validUntil).toBe('2026-10-31');
+  });
+
+  it.each(['BY', 'RU', 'SA', 'TR'])('%s resolves as entitled for a trip well before the old placeholder date — the reported bug', (code) => {
+    // Regression test: this file used to fabricate validFrom as the date the
+    // page was verified (2026-08-30). A trip entering earlier than that
+    // incorrectly evaluated as visa_required. It no longer does.
+    const rule = getMontenegroRule(code);
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    const selection = selectEntitlement(rule, '2026-01-01');
+    expect(selection).not.toBeNull();
+    expect(selection!.isOverride).toBe(true);
+  });
+});
+
+describe('Montenegro seasonal waiver (Kazakhstan, temporalWindows)', () => {
   const rule = getMontenegroRule('KZ');
 
-  it('is an entitled rule with a single date_range-gated entitlement, no unconditional fallback', () => {
+  it('is an entitled rule with a single temporally-gated entitlement, no unconditional fallback', () => {
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     expect(rule.entitlements).toHaveLength(1);
-    expect(rule.entitlements[0].conditions?.[0].type).toBe('date_range');
+    expect(rule.entitlements[0].temporalWindows).toHaveLength(1);
+    expect(rule.entitlements[0].temporalWindows![0].validFrom).toBe('2026-05-01');
   });
 
   it('selectEntitlement matches and flags an override for a trip entering mid-season (1 Jun 2026)', () => {

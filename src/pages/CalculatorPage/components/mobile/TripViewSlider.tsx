@@ -131,6 +131,7 @@ export function TripViewSlider({
     travelers,
     travelerIds,
     trip.entryDate,
+    trip.exitDate,
   );
   const durations = computeTravelerDurations({
     region: trip.region,
@@ -315,13 +316,13 @@ export function TripViewSlider({
             )}
           </Box>
 
-          {/* ── Per-traveler cards (collapsed) ─────────────────────────────── */}
+          {/* ── Per-traveler cards (collapsed unless there's only one) ───────── */}
           <TripDetailStack
             eligibility={eligibility}
             durations={durations}
             entryDate={trip.entryDate}
             exitDate={trip.exitDate ?? ""}
-            defaultOpen={false}
+            defaultOpen={eligibility.length === 1}
           />
         </Box>
       </FullScreenSlider>
