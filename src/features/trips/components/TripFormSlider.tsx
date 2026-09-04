@@ -105,9 +105,13 @@ export function TripFormSlider({
 
   const eligibility =
     region !== VisaRegion.Elsewhere
-      ? computeTravelerEligibility(region, travelers, travelerIds)
+      ? computeTravelerEligibility(region, travelers, travelerIds, entryDate || undefined, exitDate || undefined)
       : [];
-  const eligOk = eligibility.filter((e) => e.ok).length;
+  // A temporal window currently in effect gets its own green-clock bucket —
+  // technically "ok", but worth flagging as temporary rather than folding
+  // into the plain green count.
+  const eligOk = eligibility.filter((e) => e.ok && !e.temporalWindows.some((w) => w.active)).length;
+  const eligTemporary = eligibility.filter((e) => e.temporalWindows.some((w) => w.active)).length;
   // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
   const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
   const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
@@ -208,6 +212,7 @@ export function TripFormSlider({
               <TripSummaryRow
                 label="Entry Eligibility"
                 okCount={eligOk}
+                temporaryCount={eligTemporary}
                 dangerCount={eligWarn}
                 unknownCount={eligUnknown}
                 placeholder="Select travelers"

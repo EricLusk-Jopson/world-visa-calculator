@@ -108,6 +108,12 @@ const REGION_OPTIONS: RegionOpt[] = [
     group: "Europe",
     keywords: "turkiye turkey",
   },
+  {
+    kind: "region",
+    region: VisaRegion.Montenegro,
+    label: "Montenegro",
+    group: "Europe",
+  },
 ];
 
 /**

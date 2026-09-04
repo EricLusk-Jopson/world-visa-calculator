@@ -1,12 +1,15 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { tokens } from "@/styles/theme";
 import { ImpactPreview } from "@/components/ui";
 import { type DurationState } from "@/components/ui/DurationIcon";
 import { parseDate } from "@/features/calculator/utils/dates";
 import type { EligibilityNote } from "@/pages/CalculatorPage/components/trips/tripEligibility";
 import type { TravelerDuration } from "@/pages/CalculatorPage/components/trips/tripDuration";
+import type { SourceDoc } from "@/types";
 
 /**
  * Shared presentational parts for the per-traveler eligibility + duration
@@ -79,10 +82,13 @@ export function InfoRow({
   label,
   value,
   valueColor,
+  source,
 }: {
   label: string;
   value: string;
   valueColor?: string;
+  /** When present, renders a small link icon that opens this row's citation. */
+  source?: SourceDoc;
 }) {
   return (
     <Box
@@ -104,17 +110,36 @@ export function InfoRow({
       >
         {label}
       </Typography>
-      <Typography
-        sx={{
-          fontFamily: tokens.fontBody,
-          fontSize: "0.8rem",
-          fontWeight: valueColor ? 600 : 400,
-          color: valueColor ?? tokens.text,
-          textAlign: "right",
-        }}
-      >
-        {value}
-      </Typography>
+      <Box sx={{ display: "flex", alignItems: "baseline", gap: "3px" }}>
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.8rem",
+            fontWeight: valueColor ? 600 : 400,
+            color: valueColor ?? tokens.text,
+            textAlign: "right",
+          }}
+        >
+          {value}
+        </Typography>
+        {source && (
+          <IconButton
+            component="a"
+            href={source.directUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="small"
+            aria-label="View source"
+            sx={{
+              p: "1px",
+              color: tokens.textGhost,
+              "&:hover": { color: tokens.navy, bgcolor: "transparent" },
+            }}
+          >
+            <OpenInNewIcon sx={{ fontSize: "0.72rem" }} />
+          </IconButton>
+        )}
+      </Box>
     </Box>
   );
 }

@@ -237,8 +237,16 @@ export function computeTravelerDurations(
       continue;
     }
 
-    const limits = resolveStayLimits(traveler.passportCode, rule, regionRule);
-    if (!limits) continue; // free-movement → no day limit
+    const limits = resolveStayLimits(traveler.passportCode, rule, regionRule, entryDate);
+    if (!limits) {
+      // entitled but no entitlement's date_range matches this entry date
+      // (e.g. a seasonal waiver outside its window) → effectively visa
+      // required for this trip, not a calculable day limit.
+      if (traveler.passportCode && rule.access === "entitled") {
+        result.push(untrackedEntry(tid, traveler.name, color));
+      }
+      continue; // free_movement → no day limit
+    }
 
     const perVisit = limits.find((l): l is PerVisitLimit => l.type === "per_visit");
 

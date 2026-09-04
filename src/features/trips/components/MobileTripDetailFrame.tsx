@@ -39,6 +39,7 @@ export function MobileTripDetailFrame({
           durations={durations}
           entryDate={entryDate}
           exitDate={exitDate}
+          defaultOpen={eligibility.length === 1}
         />
       </Box>
     </FullScreenSlider>

@@ -141,6 +141,35 @@ describe("computeDestinationStatus — rolling_window (Schengen)", () => {
   });
 });
 
+describe("computeDestinationStatus — rolling_window (Montenegro)", () => {
+  // Montenegro uses the same rolling_window shape as Schengen (90/180) —
+  // deliberately, not fixed_window_from_entry: a fixed window anchored to
+  // first entry and reset by any windowDays-or-more gap would let a
+  // traveler stay up to 180 of 182 consecutive days by timing re-entry
+  // against the anchor, which the source's "up to 90 days" wording never
+  // intends. This is a light regression check that the wiring landed
+  // correctly; the generic rolling_window mechanic is already covered above.
+  it("computes days used/remaining like any other rolling_window region", () => {
+    const trav = traveler([
+      trip("a", VisaRegion.Montenegro, iso(REF, -30), iso(REF, -10)), // 21 days
+    ]);
+    const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
+    expect(status.eligible).toBe(true);
+    expect(status.ruleKind).toBe("rolling_window");
+    expect(status.availableChip?.label).toBe("69d avail"); // 90 - 21
+  });
+
+  it("marks visa-required passports ineligible with no chips", () => {
+    const trav = traveler([trip("a", VisaRegion.Montenegro, iso(REF, -5))], {
+      passportCode: "AF", // visa-required for Montenegro
+    });
+    const status = computeDestinationStatus(trav, VisaRegion.Montenegro, REF);
+    expect(status.eligible).toBe(false);
+    expect(status.availableChip).toBeNull();
+    expect(status.secondChip).toBeNull();
+  });
+});
+
 describe("computeDestinationStatus — per_visit (UK / Ireland)", () => {
   it("uses calendar months for the UK's 6-month limit, not a flat 180 days (regression)", () => {
     // Entering 1 Jul, the real limit is addMonths(entry, 6) = 1 Jan — 184
@@ -228,6 +257,7 @@ describe("categorizeAllDestinations", () => {
     expect(result.every((d) => d.category === "never")).toBe(true);
     expect(result.map((d) => d.region)).toEqual([
       VisaRegion.Ireland,
+      VisaRegion.Montenegro,
       VisaRegion.Schengen,
       VisaRegion.Turkiye,
       VisaRegion.UnitedKingdom,

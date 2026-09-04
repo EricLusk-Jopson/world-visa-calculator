@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { tokens } from "@/styles/theme";
@@ -93,6 +94,17 @@ function TravelerCard({
             <HelpOutlineIcon
               sx={{ fontSize: "1.1rem", color: tokens.textGhost }}
             />
+          ) : e.temporalWindows.length > 0 ? (
+            // A temporal window is relevant to this trip — either currently
+            // governing it (green: access is granted right now, the clock
+            // just signals it's time-limited) or only a nearby one (red: no
+            // access today, though a waiver applies before/after — see notes).
+            <AccessTimeIcon
+              sx={{
+                fontSize: "1.1rem",
+                color: e.temporalWindows.some((w) => w.active) ? tokens.green : tokens.red,
+              }}
+            />
           ) : e.ok ? (
             <CheckCircleOutlineIcon
               sx={{ fontSize: "1.1rem", color: tokens.green }}
@@ -129,11 +141,13 @@ function TravelerCard({
                 label="Access"
                 value={e.accessLabel}
                 valueColor={accessColor}
+                source={e.ruleTexts.length === 0 ? e.ruleSource : undefined}
               />
               {e.ruleTexts.length > 0 && (
                 <InfoRow
                   label={e.ruleTexts.length > 1 ? "Rules" : "Rule"}
                   value={e.ruleTexts.join(" · ")}
+                  source={e.ruleSource}
                 />
               )}
             </Box>

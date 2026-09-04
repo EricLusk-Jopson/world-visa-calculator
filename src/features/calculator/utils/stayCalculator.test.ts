@@ -20,9 +20,11 @@ import {
   resolveStayLimits,
   perVisitApproxDays,
   assessRegionTripStay,
+  selectEntitlement,
+  computeFixedWindowStatus,
 } from "./stayCalculator";
 import { getPassportRule } from "@/data/regions";
-import { VisaRegion, type Trip, type StayLimit } from "@/types";
+import { VisaRegion, type Trip, type StayLimit, type EntitledRule } from "@/types";
 import { addDays, addMonths, formatDate, parseDate } from "./dates";
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -139,7 +141,18 @@ describe("assessStay — Ireland per_visit (90 days)", () => {
   });
 });
 
-// ─── Fixed window from first entry (Türkiye — Albania et al.) ─────────────────
+// ─── Fixed window from first entry ─────────────────────────────────────────────
+//
+// Reserved infrastructure: no active region currently uses this shape.
+// Türkiye's superficially similar "from first entry" MFA wording is
+// deliberately classified as rolling_window instead (Law No. 6458 Art.
+// 11(1) caps every exemption at 90-in-180 regardless of wording), and an
+// earlier version of montenegro.ts used fixed_window_from_entry but was
+// reverted to rolling_window — a fixed window anchored to first entry and
+// reset by any windowDays-or-more gap permits up to 180 of 182 consecutive
+// days by timing re-entry against the anchor, which no source we've
+// encountered actually intends. Kept and tested here for a future region
+// where a primary source explicitly confirms genuine reset behavior.
 
 describe("assessStay — fixed_window_from_entry (90 in 180 from entry)", () => {
   const limits: [StayLimit] = [
@@ -175,6 +188,37 @@ describe("assessStay — fixed_window_from_entry (90 in 180 from entry)", () => 
   });
 });
 
+describe("computeFixedWindowStatus (region-level status card math)", () => {
+  const config = { days: 90, windowDays: 180 };
+
+  it("computes days used/remaining and a max-stay figure with a single trip in the window", () => {
+    const ref = "2026-06-15";
+    const trips = [completedTrip(VisaRegion.Turkiye, iso(parseDate(ref), -30), iso(parseDate(ref), -10))]; // 21 days
+    const status = computeFixedWindowStatus(config, trips, ref);
+    expect(status.daysUsed).toBe(21);
+    expect(status.daysRemaining).toBe(69);
+    expect(status.maxStay).toBe(69); // window end is far off, no truncation
+    expect(status.canEnter).toBe(true);
+  });
+
+  it("does not let a later trip reset the budget within the same 180-day window", () => {
+    const ref = "2026-06-15";
+    const trips = [
+      completedTrip(VisaRegion.Turkiye, iso(parseDate(ref), -100), iso(parseDate(ref), -90)), // 11 days
+      completedTrip(VisaRegion.Turkiye, iso(parseDate(ref), -9), iso(parseDate(ref), -1)), // 9 days
+    ];
+    const status = computeFixedWindowStatus(config, trips, ref);
+    expect(status.daysRemaining).toBe(70); // 90 - (11 + 9)
+  });
+
+  it("resets the window once a gap of at least windowDays passes", () => {
+    const ref = "2026-06-15";
+    const trips = [completedTrip(VisaRegion.Turkiye, iso(parseDate(ref), -300), iso(parseDate(ref), -290))]; // stale
+    const status = computeFixedWindowStatus(config, trips, ref);
+    expect(status.daysRemaining).toBe(90); // stale trip aged out of the window
+  });
+});
+
 // ─── Calendar-period limit (Türkiye — Belarus: 90 per calendar year) ──────────
 
 describe("assessStay — calendar_period (90 per calendar year)", () => {
@@ -196,6 +240,127 @@ describe("assessStay — calendar_period (90 per calendar year)", () => {
     const entry = parseDate("2026-08-01");
     const r = assessStay(limits, [prior], "2026-08-01", iso(entry, 9));
     expect(r!.daysRemaining).toBe(80); // full 90 budget, 10-day trip → 80 left
+  });
+});
+
+// ─── selectEntitlement (temporalWindows-gated entitlement selection) ─────────
+
+describe("selectEntitlement", () => {
+  it("matches a plain unconditional entitlement with isOverride: false", () => {
+    const rule: EntitledRule = {
+      access: "entitled",
+      entitlements: [{ limits: [{ type: "per_visit", value: 90, unit: "days" }] }],
+    };
+    const selection = selectEntitlement(rule, "2026-06-01");
+    expect(selection).not.toBeNull();
+    expect(selection!.isOverride).toBe(false);
+    expect(selection!.baseEntitlement).toBeUndefined();
+  });
+
+  it("selects a seasonal entitlement inside its window and surfaces the unconditional fallback as baseEntitlement", () => {
+    const seasonal: EntitledRule = {
+      access: "entitled",
+      entitlements: [
+        {
+          temporalWindows: [{
+            validFrom: "2026-05-01",
+            validUntil: "2026-10-01",
+            description: "Seasonal waiver",
+          }],
+          limits: [{ type: "per_visit", value: 30, unit: "days" }],
+        },
+        { limits: [{ type: "per_visit", value: 90, unit: "days" }] }, // unconditional fallback
+      ],
+    };
+
+    const inSeason = selectEntitlement(seasonal, "2026-06-15");
+    expect(inSeason).not.toBeNull();
+    expect(inSeason!.isOverride).toBe(true);
+    expect(inSeason!.baseEntitlement).toBe(seasonal.entitlements[1]);
+    expect(inSeason!.activeWindow).toBe(seasonal.entitlements[0].temporalWindows![0]);
+    expect((inSeason!.selected.limits[0] as { value: number }).value).toBe(30);
+
+    // Outside the window, the unconditional fallback matches directly —
+    // no override, since the fallback itself carries no temporalWindows.
+    const outOfSeason = selectEntitlement(seasonal, "2026-12-01");
+    expect(outOfSeason).not.toBeNull();
+    expect(outOfSeason!.isOverride).toBe(false);
+    expect(outOfSeason!.activeWindow).toBeUndefined();
+    expect((outOfSeason!.selected.limits[0] as { value: number }).value).toBe(90);
+  });
+
+  it("returns null when no entitlement's temporal window matches and there is no unconditional fallback", () => {
+    const seasonalOnly: EntitledRule = {
+      access: "entitled",
+      entitlements: [{
+        temporalWindows: [{
+          validFrom: "2026-05-01",
+          validUntil: "2026-10-01",
+          description: "Seasonal waiver",
+        }],
+        limits: [{ type: "per_visit", value: 30, unit: "days" }],
+      }],
+    };
+    expect(selectEntitlement(seasonalOnly, "2026-12-01")).toBeNull();
+  });
+
+  it("treats validFrom/validUntil as inclusive boundaries", () => {
+    const rule: EntitledRule = {
+      access: "entitled",
+      entitlements: [{
+        temporalWindows: [{
+          validFrom: "2026-05-01",
+          validUntil: "2026-10-01",
+          description: "Seasonal waiver",
+        }],
+        limits: [{ type: "per_visit", value: 30, unit: "days" }],
+      }],
+    };
+    expect(selectEntitlement(rule, "2026-05-01")).not.toBeNull();
+    expect(selectEntitlement(rule, "2026-10-01")).not.toBeNull();
+    expect(selectEntitlement(rule, "2026-04-30")).toBeNull();
+    expect(selectEntitlement(rule, "2026-10-02")).toBeNull();
+  });
+
+  it("a window with no stated validFrom matches an entry date far in the past — the placeholder-date bug this replaces", () => {
+    // This is the literal regression test for the reported bug: Turkey's
+    // waiver source states only an end date, so validFrom must never be
+    // filled in with "today" or any other placeholder — a trip booked
+    // well before the window was even recorded should still resolve as
+    // entitled, since the waiver was almost certainly already in effect.
+    const rule: EntitledRule = {
+      access: "entitled",
+      entitlements: [{
+        temporalWindows: [{ validUntil: "2026-10-31", description: "Temporary waiver" }],
+        limits: [{ type: "per_visit", value: 30, unit: "days" }],
+      }],
+    };
+    const selection = selectEntitlement(rule, "2020-01-01");
+    expect(selection).not.toBeNull();
+    expect(selection!.isOverride).toBe(true);
+    expect(selection!.activeWindow?.validUntil).toBe("2026-10-31");
+  });
+
+  it("chains a second window (no stated validFrom) to start the day after the first window's validUntil", () => {
+    const rule: EntitledRule = {
+      access: "entitled",
+      entitlements: [{
+        temporalWindows: [
+          { validUntil: "2026-06-30", description: "First waiver" },
+          { validUntil: "2026-10-31", description: "Renewed waiver" }, // no validFrom — chains from above
+        ],
+        limits: [{ type: "per_visit", value: 30, unit: "days" }],
+      }],
+    };
+    // Well before the first window — still matches it (unbounded past).
+    expect(selectEntitlement(rule, "2020-01-01")!.activeWindow?.description).toBe("First waiver");
+    // On the boundary — 30 June still belongs to the first window...
+    expect(selectEntitlement(rule, "2026-06-30")!.activeWindow?.description).toBe("First waiver");
+    // ...and 1 July (the very next day) already belongs to the second, chained window.
+    expect(selectEntitlement(rule, "2026-07-01")!.activeWindow?.description).toBe("Renewed waiver");
+    expect(selectEntitlement(rule, "2026-10-31")!.activeWindow?.description).toBe("Renewed waiver");
+    // Past both windows entirely.
+    expect(selectEntitlement(rule, "2026-11-01")).toBeNull();
   });
 });
 
