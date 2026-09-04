@@ -46,6 +46,7 @@ function getRegionLabel(region: VisaRegion): string {
     case VisaRegion.Montenegro: return "Montenegro";
     case VisaRegion.Serbia: return "Serbia";
     case VisaRegion.Bosnia: return "Bosnia and Herzegovina";
+    case VisaRegion.Kosovo: return "Kosovo";
     default: return "Elsewhere";
   }
 }
