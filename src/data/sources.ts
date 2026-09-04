@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -3781,4 +3781,994 @@ export const KosovoSources = {
     parentUrl: 'https://ambasadat.net/visas/',
     dateChecked: '2026-09-04',
   } satisfies SourceDoc, // Samoa
+} as const;
+
+// ─── North Macedonia ──────────────────────────────────────────────────────────
+
+export const NorthMacedoniaSources = {
+  AD: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Andorra
+  AE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Arab Emirates
+  AF: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Afghanistan
+  AG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Antigua and Barbuda
+  AL: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Albania
+  AM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Armenia
+  AO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Angola
+  AR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Argentina
+  AT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Austria
+  AU: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Australia
+  AZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Azerbaijan
+  BA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bosnia and Hercegovina
+  BB: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Barbados
+  BD: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bangladesh
+  BE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belgium
+  BF: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Burkina Faso
+  BG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bulgaria
+  BH: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bahrain
+  BI: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Burundi
+  BJ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Benin
+  BN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Brunei Darussalam
+  BO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bolivia
+  BR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Brazil
+  BS: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bahamas
+  BT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bhutan
+  BW: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Botswana
+  BY: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belarus
+  BZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belize
+  CA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Canada
+  CD: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // DR of the Congo
+  CF: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Central African Republic
+  CG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Congo
+  CH: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Switzerland
+  CI: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Côte D'Ivoire
+  CL: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Chile
+  CM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cameroon
+  CN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // China
+  CO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Colombia
+  CR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Costa Rica
+  CU: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cuba
+  CV: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cabo Verde
+  CY: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cyprus
+  CZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Czechia
+  DE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Germany
+  DJ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Djibouti
+  DK: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Denmark
+  DM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Dominica
+  DO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Dominican Republic
+  DZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Algeria
+  EC: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ecuador
+  EE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Estonia
+  EG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Egypt
+  ER: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Eritrea
+  ES: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Spain
+  ET: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ethiopia
+  FI: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Finland
+  FJ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Fiji
+  FM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Micronesia - Federated States of
+  FR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // France
+  GA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Gabon
+  GB: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Kingdom
+  GD: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Grenada
+  GE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Georgia
+  GH: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ghana
+  GM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Gambia
+  GN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guinea
+  GQ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Equatorial Guinea
+  GR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Greece
+  GT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guatemala
+  GW: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guinea Bissau
+  GY: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guyana
+  HK: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Hong Kong (SAR)
+  HN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Honduras
+  HR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Croatia
+  HT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Haiti
+  HU: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Hungary
+  ID: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Indonesia
+  IE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ireland
+  IL: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Israel
+  IN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // India
+  IQ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iraq
+  IR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iran
+  IS: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iceland
+  IT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Italy
+  JM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Jamaica
+  JO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Jordan
+  JP: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Japan
+  KE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kenya
+  KG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kyrgyzstan
+  KH: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cambodia
+  KI: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kiribati
+  KM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Comoros
+  KN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Kitts and Nevis
+  KP: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // North Korea
+  KR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Republic of Korea
+  KW: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kuwait
+  KZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kazakhstan
+  LA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lao People’s Democratic Republic
+  LB: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lebanon
+  LC: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Lucia
+  LI: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Liechtenstein
+  LK: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sri Lanka
+  LR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Liberia
+  LS: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lesotho
+  LT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lithuania
+  LU: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Luxembourg
+  LV: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Latvia
+  LY: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Libya
+  MA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Morocco
+  MC: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Monaco
+  MD: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Moldova
+  ME: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Montenegro
+  MG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Madagascar
+  MH: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Marshall Islands
+  ML: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mali
+  MM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Myanmar
+  MN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mongolia
+  MO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Macao (SAR)
+  MR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mauritania
+  MT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malta
+  MU: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mauritius
+  MV: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Maldives
+  MW: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malawi
+  MX: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mexico
+  MY: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malaysia
+  MZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mozambique
+  NA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Namibia
+  NE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Niger
+  NG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nigeria
+  NI: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nicaragua
+  NL: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Netherlands
+  NO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Norway
+  NP: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nepal
+  NR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nauru
+  NZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // New Zealand
+  OM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Oman
+  PA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Panama
+  PE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Peru
+  PG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Papua New Guinea
+  PH: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Philippines
+  PK: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Pakistan
+  PL: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Poland
+  PT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Portugal
+  PW: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Palau
+  PY: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Paraguay
+  QA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Qatar
+  RO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Romania
+  RS: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Serbia
+  RU: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Russia
+  RW: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Rwanda
+  SA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saudi Arabia
+  SB: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Solomon Islands
+  SC: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Seychelles
+  SD: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sudan
+  SE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sweden
+  SG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Singapore
+  SI: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Slovenia
+  SK: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Slovakia
+  SL: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sierra Leone
+  SM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // San Marino
+  SN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Senegal
+  SO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Somalia
+  SR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Suriname
+  SS: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // South Sudan
+  ST: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sao Tome and Principe
+  SV: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // El Salvador
+  SY: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Syrian Arab Republic
+  SZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Eswatini
+  TD: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Chad
+  TG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Togo
+  TH: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Thailand
+  TJ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tajikistan
+  TL: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Timor-Leste
+  TM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Turkmenistan
+  TN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tunizi
+  TO: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tonga
+  TR: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Turkey
+  TT: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Trinidad and Tobago
+  TV: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tuvalu
+  TW: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Taiwan
+  TZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Republic of Tanzania
+  UA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ukraine
+  UG: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uganda
+  US: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // USA
+  UY: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uruguay
+  UZ: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uzbekistan
+  VA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vatican City
+  VC: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Vincent and the Grenadines
+  VE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Venezuela, Bolivarian Republic of
+  VN: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vietnam
+  VU: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vanuatu
+  WS: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Samoa
+  XK: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kosovo
+  YE: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Yemen
+  ZA: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // South Africa
+  ZM: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Zambia
+  ZW: {
+    directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Zimbabwe
 } as const;

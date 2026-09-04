@@ -260,6 +260,7 @@ describe("categorizeAllDestinations", () => {
       VisaRegion.Ireland,
       VisaRegion.Kosovo,
       VisaRegion.Montenegro,
+      VisaRegion.NorthMacedonia,
       VisaRegion.Schengen,
       VisaRegion.Serbia,
       VisaRegion.Turkiye,
