@@ -120,6 +120,12 @@ const REGION_OPTIONS: RegionOpt[] = [
     label: "Serbia",
     group: "Europe",
   },
+  {
+    kind: "region",
+    region: VisaRegion.Bosnia,
+    label: "Bosnia and Herzegovina",
+    group: "Europe",
+  },
 ];
 
 /**
