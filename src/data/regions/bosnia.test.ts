@@ -31,8 +31,8 @@ describe('getBosniaRule', () => {
     expect(rule.access).toBe('entitled');
     if (rule.access !== 'entitled') return;
     const source = rule.entitlements[0].source!;
-    expect(source.directUrl).toBe('https://www.mvp.gov.ba/en');
-    expect(source.parentUrl).toBe('https://www.mvp.gov.ba/en');
+    expect(source.directUrl).toBe('https://www.mvp.gov.ba/en/vize');
+    expect(source.parentUrl).toBe('https://www.mvp.gov.ba/en/vize');
   });
 
   it('falls back to defaultRule (visa_required) for an unknown code', () => {

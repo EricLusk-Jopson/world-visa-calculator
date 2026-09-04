@@ -5,7 +5,7 @@
  * passport/nationality.
  *
  * Source: Ministry of Foreign Affairs of Bosnia and Herzegovina — visa-regime
- *   pages under https://www.mvp.gov.ba/en
+ *   pages under https://www.mvp.gov.ba/en/vize
  * 194 dedicated per-nationality pages were scraped into a structured JSON
  * (name, url, officialName, bhTravelerRequirements, citizenExemptionStatements,
  * rawText, fetchedAt — all fetched 2026-09-04).
@@ -13,7 +13,7 @@
  * ── Source-link policy — deliberately different from montenegro.ts/serbia.ts ──
  *
  * Every entry below cites only the single parent index page
- * (https://www.mvp.gov.ba/en), never the per-country subpage URL the scrape
+ * (https://www.mvp.gov.ba/en/vize), never the per-country subpage URL the scrape
  * captured — per explicit instruction, this site's subpage links are
  * considered likely to break, so the stable parent link is used everywhere
  * (both `directUrl` and `parentUrl` on every BosniaSources entry are the same
@@ -167,7 +167,7 @@ export const BOSNIA: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-09-04',
-  sourceUrl: 'https://www.mvp.gov.ba/en',
+  sourceUrl: 'https://www.mvp.gov.ba/en/vize',
   defaultRule: VISA_REQUIRED,
   passportRules: {
 
