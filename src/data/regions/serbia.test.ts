@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getSerbiaRule, SERBIA } from './serbia';
+import { SerbiaSources } from '@/data/sources';
 import {
   isEntitled,
   type RollingWindowLimit,
@@ -15,6 +16,15 @@ describe('getSerbiaRule', () => {
     expect(limit.type).toBe('rolling_window');
     expect(limit.days).toBe(90);
     expect(limit.windowDays).toBe(180);
+  });
+
+  it('cites its source via the entitlement.source field, not a "here\'s the source" note (US)', () => {
+    const rule = getSerbiaRule('US');
+    expect(rule.access).toBe('entitled');
+    if (rule.access !== 'entitled') return;
+    expect(rule.entitlements[0].source).toEqual(SerbiaSources.US);
+    const notes = rule.entitlements[0].notes ?? [];
+    expect(notes.some((n) => n.text.startsWith('Source:'))).toBe(false);
   });
 
   it('returns entitled with an ID-card note for an EU nationality (DE)', () => {
