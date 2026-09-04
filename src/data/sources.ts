@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -3252,4 +3252,533 @@ export const BosniaSources = {
     parentUrl: 'https://www.mvp.gov.ba/en/vize',
     dateChecked: '2026-09-04',
   } satisfies SourceDoc, // Zimbabwe
+} as const;
+
+// ─── Kosovo ───────────────────────────────────────
+
+/**
+ * Government of Kosovo — Ministry of Foreign Affairs and Diaspora.
+ * "Visa regime for foreign citizens" — single index page listing all
+ * visa-exempt nationalities. No stable per-country subpages exist on this
+ * site (unlike Montenegro/Serbia), so every entry below cites the same
+ * single page for both directUrl and parentUrl — same policy as
+ * BosniaSources, adopted here for the same reason (only one page exists).
+ * Verified live 2026-09-04.
+ */
+export const KosovoSources = {
+  AD: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Andorra
+  AE: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Arab Emirates
+  AG: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Antigua and Barbuda
+  AL: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Albania
+  AR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Argentina
+  AT: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Austria
+  AU: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Australia
+  BB: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Barbados
+  BE: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belgium
+  BG: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bulgaria
+  BH: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bahrain
+  BN: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Brunei
+  BR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Brazil
+  BS: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bahamas
+  BW: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Botswana
+  BZ: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belize
+  CA: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Canada
+  CH: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Switzerland
+  CL: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Chile
+  CO: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Colombia
+  CR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Costa Rica
+  CY: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cyprus
+  CZ: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Czech Republic
+  DE: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Germany
+  DK: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Denmark
+  DM: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Dominica
+  EE: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Estonia
+  ES: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Spain
+  FI: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Finland
+  FJ: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Fiji
+  FM: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Micronesia
+  FR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // France
+  GB: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Kingdom
+  GD: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Grenada
+  GR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Greece
+  GT: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guatemala
+  GY: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guyana
+  HN: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Honduras
+  HR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Croatia
+  HU: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Hungary
+  IE: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ireland
+  IL: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Israel
+  IS: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iceland
+  IT: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Italy
+  JO: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Jordan
+  JP: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Japan
+  KI: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kiribati
+  KN: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Kitts and Nevis
+  KR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Korea (South)
+  KW: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kuwait
+  LC: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Lucia
+  LI: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Liechtenstein
+  LS: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lesotho
+  LT: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lithuania
+  LU: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Luxembourg
+  LV: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Latvia
+  MC: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Monaco
+  ME: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Montenegro
+  MH: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Marshall Islands
+  MK: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // North Macedonia
+  MT: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malta
+  MU: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mauritius
+  MV: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Maldives
+  MW: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malawi
+  MX: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mexico
+  MY: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malaysia
+  NA: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Namibia
+  NI: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nicaragua
+  NL: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Netherlands
+  NO: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Norway
+  NR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nauru
+  NZ: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // New Zealand
+  OM: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Oman
+  PA: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Panama
+  PG: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Papua New Guinea
+  PL: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Poland
+  PT: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Portugal
+  PW: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Palau
+  PY: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Paraguay
+  QA: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Qatar
+  RO: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Romania
+  RS: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Serbia
+  SA: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saudi Arabia
+  SB: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Solomon Islands
+  SC: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Seychelles
+  SE: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sweden
+  SK: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Slovakia
+  SM: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // San Marino
+  ST: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sao Tome and Principe
+  SV: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // El Salvador
+  SZ: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Eswatini
+  TL: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Timor-Leste
+  TO: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tonga
+  TR: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Turkey
+  TT: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Trinidad and Tobago
+  TV: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tuvalu
+  US: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United States
+  UY: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uruguay
+  VA: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vatican City
+  VC: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Vincent and the Grenadines
+  VE: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Venezuela
+  VU: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vanuatu
+  WS: {
+    directUrl: 'https://ambasadat.net/visas/',
+    parentUrl: 'https://ambasadat.net/visas/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Samoa
 } as const;
