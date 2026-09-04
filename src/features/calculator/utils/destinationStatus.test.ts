@@ -259,6 +259,7 @@ describe("categorizeAllDestinations", () => {
       VisaRegion.Ireland,
       VisaRegion.Montenegro,
       VisaRegion.Schengen,
+      VisaRegion.Serbia,
       VisaRegion.Turkiye,
       VisaRegion.UnitedKingdom,
     ]);

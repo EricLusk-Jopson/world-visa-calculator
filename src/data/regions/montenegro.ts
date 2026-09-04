@@ -175,6 +175,7 @@ export const MONTENEGRO: RegionDefinition = {
     // Standard case: passport-based entry only.
     'AG': entitled(MontenegroSources.AG), // Antigua and Barbuda
     'AR': entitled(MontenegroSources.AR), // Argentina
+    'AU': entitled(MontenegroSources.AU), // Australia
     'AW': entitled(MontenegroSources.AW), // Aruba
     'BS': entitled(MontenegroSources.BS), // Bahamas
     'BB': entitled(MontenegroSources.BB), // Barbados
@@ -377,7 +378,6 @@ export const MONTENEGRO: RegionDefinition = {
     // ── Visa required ───────────────────────────────────────────────────────────
     'AF': { access: 'visa_required', source: MontenegroSources.AF }, // Afghanistan
     'AO': { access: 'visa_required', source: MontenegroSources.AO }, // Angola
-    'AU': { access: 'visa_required', source: MontenegroSources.AU }, // Australia
     'AZ': { access: 'visa_required', source: MontenegroSources.AZ }, // Azerbaijan
     'BH': { access: 'visa_required', source: MontenegroSources.BH }, // Bahrain
     'BD': { access: 'visa_required', source: MontenegroSources.BD }, // Bangladesh
