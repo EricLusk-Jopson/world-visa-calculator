@@ -95,6 +95,7 @@ const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
 function visaRequired(source: SourceDoc, extraNotes: RuleNote[] = []): VisaRequiredRule {
   return {
     access: 'visa_required',
+    source,
     notes: [
       { text: "Serbia's Ministry of Foreign Affairs states this nationality requires a visa to enter.", source },
       ...extraNotes,
@@ -112,6 +113,7 @@ function entitledRolling(days: number, windowDays: number, source: SourceDoc, ex
     access: 'entitled',
     entitlements: [{
       limits: [{ type: 'rolling_window', days, windowDays }],
+      source,
       notes: [
         { text: 'Source: Republic of Serbia Ministry of Foreign Affairs, visa-regime page for this country.', source },
         ...extraNotes,
@@ -133,6 +135,7 @@ function entitledStacked(perVisitDays: number, source: SourceDoc, extraNotes: Ru
         { type: 'per_visit', value: perVisitDays, unit: 'days' },
         { type: 'rolling_window', days: 90, windowDays: 180 },
       ],
+      source,
       notes: [
         {
           text: `Source states only a ${perVisitDays}-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the ${perVisitDays}-day figure governs any single visit, the rolling window governs cumulative presence across visits.`,
@@ -380,6 +383,7 @@ export const SERBIA: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [{ type: 'rolling_window', days: 90, windowDays: 180 }],
+        source: SerbiaSources.MD,
         conditions: [{ type: 'biometric_passport' }],
         notes: [
           { text: 'Visa exemption applies to holders of biometric passports issued by Moldova in line with ICAO standards.', source: SerbiaSources.MD },

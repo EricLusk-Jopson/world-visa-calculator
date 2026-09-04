@@ -136,7 +136,7 @@ const OFFICIAL_PASSPORT_VISA_NOTE =
 // ─── Shared rule constants ────────────────────────────────────────────────────
 
 const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
-const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required', source: TurkiyeSources.mfaVisaInfo };
 
 // ─── Entitlement helpers ──────────────────────────────────────────────────────
 
@@ -155,6 +155,7 @@ function entitled90(
     access: 'entitled',
     entitlements: [{
       limits: [TR_ROLLING_90],
+      source: TurkiyeSources.mfaVisaInfo,
       ...(conditions?.length && { conditions }),
       ...(entitlementNotes?.length && { notes: entitlementNotes }),
     }],
@@ -188,6 +189,7 @@ function entitledEVisa90(
     entitlements: [{
       limits: [TR_ROLLING_90],
       preAuth: EVISA_90,
+      source: TurkiyeSources.mfaVisaInfo,
       conditions: [EVISA_PURPOSE],
       ...(entitlementNotes?.length && { notes: entitlementNotes }),
     }],
@@ -205,6 +207,7 @@ function entitledEVisa30(
     entitlements: [{
       limits: [TR_PER_VISIT_30],
       preAuth: EVISA_30,
+      source: TurkiyeSources.mfaVisaInfo,
       conditions: [EVISA_PURPOSE],
       ...(entitlementNotes?.length && { notes: entitlementNotes }),
     }],
@@ -222,6 +225,7 @@ function entitledEVisa30(
 function eVisaConditional(extraNotes?: RuleNote[]): VisaRequiredRule {
   return {
     access: 'visa_required',
+    source: TurkiyeSources.mfaVisaInfo,
     notes: [
       { text: CONDITIONAL_EVISA_NOTE, source: TurkiyeSources.eVisaEligible },
       ...(extraNotes ?? []),
@@ -230,7 +234,7 @@ function eVisaConditional(extraNotes?: RuleNote[]): VisaRequiredRule {
 }
 
 function visaRequired(notes: RuleNote[]): VisaRequiredRule {
-  return { access: 'visa_required', notes };
+  return { access: 'visa_required', source: TurkiyeSources.mfaVisaInfo, notes };
 }
 
 // ─── Main export ──────────────────────────────────────────────────────────────
@@ -388,6 +392,7 @@ export const TURKIYE: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [TR_ROLLING_60],
+        source: TurkiyeSources.mfaVisaInfo,
         notes: [{
           text: 'Ordinary passport holders are visa-free for up to 60 days. Service passport holders are visa-free for up to 30 days with a maximum of 90 days within any 180-day period. Diplomatic passport holders are visa-free for up to 90 days.',
           source: TurkiyeSources.mfaVisaInfo,
@@ -402,6 +407,7 @@ export const TURKIYE: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [TR_PER_VISIT_30, TR_ROLLING_90],
+        source: TurkiyeSources.mfaVisaInfo,
         notes: [{
           text: 'Each entry permits a stay of up to 30 days. The total number of days across multiple entries must not exceed 90 days in any 180-day period.',
           source: TurkiyeSources.mfaVisaInfo,
@@ -414,6 +420,7 @@ export const TURKIYE: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [TR_PER_VISIT_30, TR_CALENDAR_90],
+        source: TurkiyeSources.mfaVisaInfo,
         notes: [{
           text: 'Ordinary and official passport holders are visa-free for stays of up to 30 days per entry. The total stay must not exceed 90 days within any one calendar year. This is not a rolling 180-day window.',
           source: TurkiyeSources.mfaVisaInfo,
@@ -427,6 +434,7 @@ export const TURKIYE: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [TR_PER_VISIT_30],
+        source: TurkiyeSources.mfaVisaInfo,
         notes: [{ text: 'Applies to all passport types (diplomatic, official, ordinary). Stay not to exceed 30 days.', source: TurkiyeSources.mfaVisaInfo }],
       }],
     }, // Brunei
@@ -435,6 +443,7 @@ export const TURKIYE: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [TR_PER_VISIT_30],
+        source: TurkiyeSources.mfaVisaInfo,
         notes: [{ text: 'Applies to all passport types (ordinary and official). Stay not to exceed 30 days.', source: TurkiyeSources.mfaVisaInfo }],
       }],
     }, // Costa Rica
@@ -443,6 +452,7 @@ export const TURKIYE: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [TR_PER_VISIT_30],
+        source: TurkiyeSources.mfaVisaInfo,
         notes: [{ text: "Applies to holders of 'Região Administrativa Especial de Macau da República Popular da China' passports only. Stay not to exceed 30 days.", source: TurkiyeSources.mfaVisaInfo }],
       }],
     }, // Macau SAR
@@ -451,6 +461,7 @@ export const TURKIYE: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [TR_PER_VISIT_30],
+        source: TurkiyeSources.mfaVisaInfo,
         conditions: [TOURISTIC_PURPOSE],
         notes: [{ text: 'Visa exemption applies for touristic visits only. Stay not to exceed 30 days.', source: TurkiyeSources.mfaVisaInfo }],
       }],
@@ -460,6 +471,7 @@ export const TURKIYE: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [TR_PER_VISIT_30],
+        source: TurkiyeSources.mfaVisaInfo,
         notes: [{ text: 'Ordinary passport holders are visa-free for up to 30 days. Official passport holders are visa-free for up to 90 days.', source: TurkiyeSources.mfaVisaInfo }],
       }],
     }, // Thailand

@@ -1,8 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { computeTravelerEligibility, relevantTemporalWindows } from './tripEligibility';
-import { VisaRegion } from '@/types';
+import { VisaRegion, VISA_REGION_LABELS } from '@/types';
 import type { Traveler, EntitledRule } from '@/types';
 import { MontenegroSources } from '@/data/sources';
+import { getAllTrackableRegions } from '@/features/calculator/utils/destinationStatus';
+import { getRegionDefinition } from '@/data/regions';
 
 function traveler(passportCode: string): Traveler {
   return { id: 't1', name: 'Traveler', passportCode, trips: [] };
@@ -137,4 +139,47 @@ describe('relevantTemporalWindows — ±1 year relevance filter', () => {
   it('returns an empty list for a non-entitled rule', () => {
     expect(relevantTemporalWindows({ access: 'visa_required' }, '2026-06-01')).toEqual([]);
   });
+});
+
+/**
+ * Canonization guard: every trip, in every trackable region, must render a
+ * source link next to its rule summary — see tripEligibility.ts's
+ * `regionFallbackSource` and RegionDefinition.sourceUrl (mandatory on the
+ * type). This test is deliberately region-agnostic (it walks
+ * getAllTrackableRegions(), not a hardcoded list) so it automatically covers
+ * any region added after this one without needing an update — a future
+ * region file that forgets to wire up sourceUrl, or whose defaultRule/
+ * entries have no citation of their own, still can't ship without a link,
+ * because the fallback in computeTravelerEligibility guarantees one.
+ */
+describe('computeTravelerEligibility — every trackable region always cites a source (canonization guard)', () => {
+  const regions = getAllTrackableRegions();
+
+  it('covers at least the regions this app currently ships (sanity check on the region list itself)', () => {
+    expect(regions.length).toBeGreaterThanOrEqual(8);
+  });
+
+  it.each(regions.map((region) => ({ region, label: VISA_REGION_LABELS[region] })))(
+    '$label has a defined sourceUrl on its RegionDefinition',
+    ({ region }) => {
+      const def = getRegionDefinition(region);
+      expect(def).not.toBeNull();
+      expect(def!.sourceUrl).toBeTruthy();
+    },
+  );
+
+  for (const region of regions) {
+    const def = getRegionDefinition(region);
+    if (!def) continue;
+    const label = VISA_REGION_LABELS[region];
+    const codes = [...Object.keys(def.passportRules), 'ZZ_UNKNOWN_CODE'];
+
+    it(`${label}: every passport code (including one absent from passportRules) resolves a source link`, () => {
+      for (const code of codes) {
+        const [e] = computeTravelerEligibility(region, [traveler(code)], ['t1'], '2026-06-01');
+        expect(e.ruleSource, `${label} / ${code} has no ruleSource`).toBeDefined();
+        expect(e.ruleSource!.directUrl, `${label} / ${code} has an empty directUrl`).toBeTruthy();
+      }
+    });
+  }
 });

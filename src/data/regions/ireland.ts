@@ -118,20 +118,23 @@ const TRANSIT_VISA_NOTE =
 // ─── Shared rule constants ────────────────────────────────────────────────────
 
 const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
-const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required', source: IrelandSources.visaNationalityList };
 
 const VISA_REQUIRED_BIVS: VisaRequiredRule = {
   access: 'visa_required',
+  source: IrelandSources.visaNationalityList,
   notes: [{ text: BIVS_NOTE, source: IrelandSources.bivs }],
 };
 
 const VISA_REQUIRED_SSVWP: VisaRequiredRule = {
   access: 'visa_required',
+  source: IrelandSources.visaNationalityList,
   notes: [{ text: SSVWP_NOTE, source: IrelandSources.citizensInformation }],
 };
 
 const VISA_REQUIRED_TRANSIT: VisaRequiredRule = {
   access: 'visa_required',
+  source: IrelandSources.visaNationalityList,
   notes: [{ text: TRANSIT_VISA_NOTE, source: IrelandSources.citizensInformation }],
 };
 
@@ -151,6 +154,7 @@ function entitled(
     access: 'entitled',
     entitlements: [{
       limits: [IRELAND_LIMIT],
+      source: IrelandSources.visaNationalityList,
       ...(entitlementNotes !== undefined && entitlementNotes.length > 0 && { notes: entitlementNotes }),
     }],
     ...(ruleNotes !== undefined && ruleNotes.length > 0 && { notes: ruleNotes }),

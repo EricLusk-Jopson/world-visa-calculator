@@ -61,10 +61,15 @@ export interface TravelerEligibility {
   /**
    * The citation for the rule currently in effect — surfaced in the UI as a
    * link on the Rule/Access summary row, not as a note (see
-   * StayEntitlement.source). Falls back to the raw passport rule's own
-   * citation (rather than the region's generic overview page) even when the
-   * effective rule for this trip is a synthesized visa_required fallback —
-   * see resolveEffectiveEligibility.
+   * StayEntitlement.source). Prefers the most specific citation available
+   * (an active temporal window's own source, then the entitlement's, then
+   * the raw passport rule's — see resolveEffectiveEligibility), but is only
+   * ever `undefined` for an untracked region (no RegionDefinition, e.g.
+   * "Elsewhere"). For every trackable region this always resolves to at
+   * least that region's own `sourceUrl`, so every trip renders a source
+   * link next to its rule summary regardless of how complete a given
+   * region file's per-entry citations are — see the fallback chain around
+   * `regionFallbackSource` below.
    */
   ruleSource?: SourceDoc;
   notes: EligibilityNote[];
@@ -297,21 +302,34 @@ export function computeTravelerEligibility(
     // visa_required fallback is synthesized, not the raw rule) — fall back
     // to the raw rule's citation so the link still points at this
     // country's page rather than nothing at all.
+    //
+    // Every RegionDefinition carries a mandatory `sourceUrl` (the region's
+    // own canonical overview page), so when none of the above is set —
+    // whether because a rule genuinely has nothing more specific to cite
+    // (free_movement) or because a region file hasn't threaded a per-entry
+    // source through yet — that region-level URL is the final fallback.
+    // This is what guarantees every trip, in every region present and
+    // future, always renders a source link next to its rule summary: no
+    // region can ship without one, since sourceUrl is a required field.
+    const regionFallbackSource: SourceDoc | undefined = regionDef
+      ? {
+          directUrl: regionDef.sourceUrl,
+          parentUrl: regionDef.sourceUrl,
+          dateChecked: regionDef.lastVerified,
+        }
+      : undefined;
+
     const ruleSource: SourceDoc | undefined =
-      activeWindow?.source ?? entitlement?.source ?? rawRuleSource(rawRule);
+      activeWindow?.source ?? entitlement?.source ?? rawRuleSource(rawRule) ?? regionFallbackSource;
 
     // Any visa-required status carries a source link to the country's own
     // entry-requirements page when known, otherwise the region's generic
-    // overview page.
+    // overview page (already folded into ruleSource above).
     if (rule.access === "visa_required" && regionDef) {
       notes.push({
         label: "Visa required",
         text: `A visa must be obtained in advance before travelling to ${regionLabel}.`,
-        source: ruleSource ?? {
-          directUrl: regionDef.sourceUrl,
-          parentUrl: regionDef.sourceUrl,
-          dateChecked: regionDef.lastVerified,
-        },
+        source: ruleSource,
       });
     }
 
