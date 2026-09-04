@@ -17,6 +17,7 @@ const REGIONS = [
   { value: VisaRegion.Turkiye, label: VISA_REGION_LABELS[VisaRegion.Turkiye] },
   { value: VisaRegion.Montenegro, label: VISA_REGION_LABELS[VisaRegion.Montenegro] },
   { value: VisaRegion.Serbia, label: VISA_REGION_LABELS[VisaRegion.Serbia] },
+  { value: VisaRegion.Bosnia, label: VISA_REGION_LABELS[VisaRegion.Bosnia] },
   { value: VisaRegion.Elsewhere, label: VISA_REGION_LABELS[VisaRegion.Elsewhere] },
 ];
 

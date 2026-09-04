@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -29,7 +29,7 @@
  * The PDF property in SchengenSources (atvSpecific) is higher breakage risk —
  * DG HOME rotates document URLs. The parentUrl is the stable fallback.
  *
- * Last updated: 2026-08-31
+ * Last updated: 2026-09-04
  */
 
 import type { SourceDoc } from '@/types';
@@ -2274,4 +2274,982 @@ export const SerbiaSources = {
     parentUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
     dateChecked: '2026-08-31',
   } satisfies SourceDoc, // Taiwan — no dedicated page in the scrape; index page fallback
+} as const;
+
+export const BosniaSources = {
+  AD: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Andorra
+  AE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Arab Emirates
+  AF: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Afghanistan
+  AG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Antigua and Barbuda
+  AL: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Albania
+  AM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Armenia
+  AO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Angola
+  AR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Argentina
+  AT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Austria
+  AU: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Australia
+  AZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Azerbaijan
+  BB: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Barbados
+  BD: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bangladesh
+  BE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belgium
+  BF: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Burkina Faso
+  BG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bulgaria
+  BH: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bahrain
+  BI: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Burundi
+  BJ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Benin
+  BN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Brunei
+  BO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bolivia
+  BR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Brazil
+  BS: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bahamas
+  BT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bhutan
+  BW: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Botswana
+  BY: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belarus
+  BZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belize
+  CA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Canada
+  CD: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Congo (Democratic Republic)
+  CF: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Central African Republic
+  CG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Congo
+  CH: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Switzerland
+  CI: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cote d'Ivoire
+  CL: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Chile
+  CM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cameroon
+  CN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // China
+  CO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Colombia
+  CR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Costa Rica
+  CU: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cuba
+  CV: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cabo Verde
+  CY: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cyprus
+  CZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Czech Republic
+  DE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Germany
+  DJ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Djibouti
+  DK: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Denmark
+  DM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Dominica
+  DO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Dominican Republic
+  DZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Algeria
+  EC: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ecuador
+  EE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Estonia
+  EG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Egypt
+  ER: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Eritrea
+  ES: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Spain
+  ET: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ethiopia
+  FI: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Finland
+  FJ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Fiji
+  FM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Micronesia
+  FR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // France
+  GA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Gabon
+  GB: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Kingdom
+  GD: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Grenada
+  GE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Georgia
+  GH: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ghana
+  GM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Gambia
+  GN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guinea
+  GQ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Equatorial Guinea
+  GR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Greece
+  GT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guatemala
+  GW: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guinea-Bissau
+  GY: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guyana
+  HN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Honduras
+  HR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Croatia
+  HT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Haiti
+  HU: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Hungary
+  ID: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Indonesia
+  IE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ireland
+  IL: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Israel
+  IN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // India
+  IQ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iraq
+  IR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iran
+  IS: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iceland
+  IT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Italy
+  JM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Jamaica
+  JO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Jordan
+  JP: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Japan
+  KE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kenya
+  KG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kyrgyzstan
+  KH: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cambodia
+  KI: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kiribati
+  KM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Comoros
+  KN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Kitts and Nevis
+  KP: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Korea (North)
+  KR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Korea (South)
+  KW: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kuwait
+  KZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kazakhstan
+  LA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Laos
+  LB: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lebanon
+  LC: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Lucia
+  LI: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Liechtenstein
+  LK: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sri Lanka
+  LR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Liberia
+  LS: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lesotho
+  LT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lithuania
+  LU: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Luxembourg
+  LV: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Latvia
+  LY: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Libya
+  MA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Morocco
+  MC: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Monaco
+  MD: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Moldova
+  ME: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Montenegro
+  MG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Madagascar
+  MH: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Marshall Islands
+  MK: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // North Macedonia
+  ML: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mali
+  MM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Myanmar
+  MN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mongolia
+  MR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mauritania
+  MT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malta
+  MU: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mauritius
+  MV: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Maldives
+  MW: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malawi
+  MX: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mexico
+  MY: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malaysia
+  MZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mozambique
+  NA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Namibia
+  NE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Niger
+  NG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nigeria
+  NI: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nicaragua
+  NL: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Netherlands
+  NO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Norway
+  NP: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nepal
+  NR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nauru
+  NZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // New Zealand
+  OM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Oman
+  PA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Panama
+  PE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Peru
+  PG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Papua New Guinea
+  PH: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Philippines
+  PK: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Pakistan
+  PL: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Poland
+  PS: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Palestine
+  PT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Portugal
+  PW: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Palau
+  PY: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Paraguay
+  QA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Qatar
+  RO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Romania
+  RS: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Serbia
+  RU: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Russia
+  RW: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Rwanda
+  SA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saudi Arabia
+  SB: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Solomon Islands
+  SC: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Seychelles
+  SD: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sudan
+  SE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sweden
+  SG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Singapore
+  SI: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Slovenia
+  SK: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Slovakia
+  SL: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sierra Leone
+  SM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // San Marino
+  SN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Senegal
+  SO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Somalia
+  SR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Suriname
+  ST: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sao Tome and Principe
+  SV: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // El Salvador
+  SY: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Syria
+  SZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Eswatini
+  TD: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Chad
+  TG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Togo
+  TH: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Thailand
+  TJ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tajikistan
+  TL: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Timor-Leste
+  TM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Turkmenistan
+  TN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tunisia
+  TO: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tonga
+  TR: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Turkiye
+  TT: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Trinidad and Tobago
+  TV: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tuvalu
+  TW: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // TW
+  TZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tanzania
+  UA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ukraine
+  UG: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uganda
+  US: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United States
+  UY: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uruguay
+  UZ: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uzbekistan
+  VA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Holy See (Vatican)
+  VC: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Vincent and the Grenadines
+  VE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Venezuela
+  VN: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vietnam
+  VU: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vanuatu
+  WS: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Samoa
+  XK: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // XK
+  YE: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Yemen
+  ZA: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // South Africa
+  ZM: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Zambia
+  ZW: {
+    directUrl: 'https://www.mvp.gov.ba/en/vize',
+    parentUrl: 'https://www.mvp.gov.ba/en/vize',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Zimbabwe
 } as const;
