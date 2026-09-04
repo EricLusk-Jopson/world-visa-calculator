@@ -41,7 +41,7 @@ export const VisaRegion = {
 export type VisaRegion = (typeof VisaRegion)[keyof typeof VisaRegion];
 
 export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
-  [VisaRegion.Schengen]: 'Schengen Zone',
+  [VisaRegion.Schengen]: 'Schengen Area',
   [VisaRegion.Elsewhere]: 'Elsewhere',
   [VisaRegion.Ireland]: 'Ireland',
   [VisaRegion.UnitedKingdom]: 'United Kingdom',
@@ -51,6 +51,46 @@ export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
   [VisaRegion.Bosnia]: 'Bosnia and Herzegovina',
   [VisaRegion.Kosovo]: 'Kosovo',
 };
+
+/** Per-region metadata for destination pickers, beyond the label in VISA_REGION_LABELS. */
+export interface DestinationInfo {
+  region: VisaRegion;
+  /** UI grouping bucket for pickers that show a header divider, e.g. "Europe". */
+  group: string;
+  /** Extra search keywords beyond the label itself (e.g. ASCII spellings of accented labels). */
+  keywords?: string;
+}
+
+/**
+ * Every trackable destination region (i.e. every region with a
+ * RegionDefinition — see getRegionDefinition in @/data/regions), in
+ * canonical display order.
+ *
+ * This is the single place to register a new region's presence in
+ * destination pickers — RegionSelector, TripFormCardDestination, and
+ * TripViewSlider all derive their option lists and labels from this array
+ * plus VISA_REGION_LABELS, instead of each maintaining its own hardcoded
+ * list. Adding a region here (and to VISA_REGION_LABELS above) is
+ * sufficient to make it selectable everywhere; the corresponding
+ * getPassportRule()/getRegionDefinition() cases in @/data/regions/index.ts
+ * still need their own import and switch case, since those wire in the
+ * region's actual rule data, not just its display metadata.
+ *
+ * "Elsewhere" (the untracked fallback, with no RegionDefinition) is
+ * deliberately NOT included here — each consumer positions it explicitly,
+ * since its placement differs by picker (first in RegionSelector's
+ * dropdown, last in TripFormCardDestination's list).
+ */
+export const SUPPORTED_DESTINATIONS: DestinationInfo[] = [
+  { region: VisaRegion.Schengen, group: 'Europe' },
+  { region: VisaRegion.UnitedKingdom, group: 'Europe' },
+  { region: VisaRegion.Ireland, group: 'Europe' },
+  { region: VisaRegion.Turkiye, group: 'Europe', keywords: 'turkiye turkey' },
+  { region: VisaRegion.Montenegro, group: 'Europe' },
+  { region: VisaRegion.Serbia, group: 'Europe' },
+  { region: VisaRegion.Bosnia, group: 'Europe' },
+  { region: VisaRegion.Kosovo, group: 'Europe' },
+];
 
 // ─── Core Domain Types ────────────────────────────────────────────────────────
 
