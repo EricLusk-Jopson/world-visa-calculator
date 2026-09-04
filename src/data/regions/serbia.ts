@@ -88,18 +88,15 @@ const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
 // ─── Entitlement helpers ───────────────────────────────────────────────────────
 
 /**
- * visaRequired — cites this country's source page, even when there is nothing
- * else to say, so every entry in this file is traceable back to its specific
- * gov.rs page, not just the region-level parentUrl.
+ * visaRequired — cites this country's source page via `source`, surfaced by
+ * the UI as a link on the Access row — never restated as a "here's the
+ * source" note.
  */
 function visaRequired(source: SourceDoc, extraNotes: RuleNote[] = []): VisaRequiredRule {
   return {
     access: 'visa_required',
     source,
-    notes: [
-      { text: "Serbia's Ministry of Foreign Affairs states this nationality requires a visa to enter.", source },
-      ...extraNotes,
-    ],
+    ...(extraNotes.length > 0 && { notes: extraNotes }),
   };
 }
 
@@ -107,17 +104,19 @@ function idCardNote(source: SourceDoc): RuleNote {
   return { text: 'Nationals may also enter using a valid national ID card instead of a passport.', source };
 }
 
-/** Standard entitled rule — N days in any windowDays-day rolling window. */
+/**
+ * Standard entitled rule — N days in any windowDays-day rolling window.
+ *
+ * Cites SerbiaSources.<CODE> via `source` — surfaced by the UI as a link on
+ * the stay-rule summary, never restated as a "here's the source" note.
+ */
 function entitledRolling(days: number, windowDays: number, source: SourceDoc, extraNotes: RuleNote[] = []): EntitledRule {
   return {
     access: 'entitled',
     entitlements: [{
       limits: [{ type: 'rolling_window', days, windowDays }],
       source,
-      notes: [
-        { text: 'Source: Republic of Serbia Ministry of Foreign Affairs, visa-regime page for this country.', source },
-        ...extraNotes,
-      ],
+      ...(extraNotes.length > 0 && { notes: extraNotes }),
     }],
   };
 }
