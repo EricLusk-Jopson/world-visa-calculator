@@ -262,8 +262,9 @@ export const BOSNIA: RegionDefinition = {
     'WS': entitledRolling(BosniaSources.WS), // Samoa
 
     // ── Entitled — standard shape, source text has a notable quirk ────────────────
-    'BB': entitledRolling(BosniaSources.BB, [{ text: 'Source text names "Bahrein" rather than Barbados in the rule statement on this page — an apparent mix-up on the source\'s own site. Treated as Barbados\'s rule, matching this page\'s name/URL/slug, not the misprinted country name in the body text.', source: BosniaSources.BB }]), // Barbados
-    'BR': entitledRolling(BosniaSources.BR, [{ text: 'Source concatenates the reciprocal BH-to-Brazil statement and the actual Bosnia-inbound statement into a single run-on paragraph with no separator. The inbound clause ("...exempted from the obligation to obtain a visa for entry, exit, transit and stay...for a period not exceeding 90 days, provided that the total length of stay does not exceed 180 days per year, from the first entry") was extracted by hand; it is the standard 90-in-180 shape.', source: BosniaSources.BR }]), // Brazil
+    // (see file header for the full explanation of each quirk below)
+    'BB': entitledRolling(BosniaSources.BB), // Barbados — source page misprints "Bahrein" in the rule statement; treated as Barbados's rule, matching the page's own name/URL/slug
+    'BR': entitledRolling(BosniaSources.BR), // Brazil — source concatenates a reciprocal BH-to-Brazil statement with the actual Bosnia-inbound clause; the inbound clause (standard 90-in-180) was extracted by hand
     'DM': entitledRolling(BosniaSources.DM), // Dominica — source has a typo ("up to90) days"), otherwise the unambiguous standard shape
     'IE': entitledRolling(BosniaSources.IE), // Ireland
 
@@ -360,25 +361,25 @@ export const BOSNIA: RegionDefinition = {
     // ── Visa required — source's only exemption statement covers diplomatic/ ──────
     // official/service passports, never ordinary ones. Ordinary passport holders
     // default to visa_required (document-type nuance not modelled elsewhere either).
-    'EG': visaRequired(BosniaSources.EG, [{ text: 'Source states nationals of Egypt require visas; a separate exemption is stated only for diplomatic, official, and special passports, not ordinary ones.', source: BosniaSources.EG }]), // Egypt
-    'ID': visaRequired(BosniaSources.ID, [{ text: 'Source states nationals of Indonesia require visas; a separate exemption is stated only for diplomatic and official passports, not ordinary ones.', source: BosniaSources.ID }]), // Indonesia
-    'IL': visaRequired(BosniaSources.IL, [{ text: 'Source\'s only exemption statement for Israel covers diplomatic and official passports; no statement covers ordinary passports, which default to visa_required.', source: BosniaSources.IL }]), // Israel
-    'KZ': visaRequired(BosniaSources.KZ, [{ text: 'Source states nationals of Kazakhstan require visas; a separate exemption is stated only for diplomatic and official passports, not ordinary ones.', source: BosniaSources.KZ }]), // Kazakhstan
-    'MA': visaRequired(BosniaSources.MA, [{ text: 'Source states visas are required for regular passports; diplomatic, service, and special passports are exempt (not modelled — this app does not validate document type).', source: BosniaSources.MA }]), // Morocco
-    'TH': visaRequired(BosniaSources.TH, [{ text: 'Source states nationals of Thailand require visas; a separate exemption is stated only for diplomatic and official passports, not ordinary ones.', source: BosniaSources.TH }]), // Thailand
+    'EG': visaRequired(BosniaSources.EG, [{ text: 'Diplomatic, official, and special passports are exempt; this does not extend to ordinary passports.', source: BosniaSources.EG }]), // Egypt
+    'ID': visaRequired(BosniaSources.ID, [{ text: 'Diplomatic and official passports are exempt; this does not extend to ordinary passports.', source: BosniaSources.ID }]), // Indonesia
+    'IL': visaRequired(BosniaSources.IL, [{ text: 'Diplomatic and official passports are exempt; this does not extend to ordinary passports.', source: BosniaSources.IL }]), // Israel
+    'KZ': visaRequired(BosniaSources.KZ, [{ text: 'Diplomatic and official passports are exempt; this does not extend to ordinary passports.', source: BosniaSources.KZ }]), // Kazakhstan
+    'MA': visaRequired(BosniaSources.MA, [{ text: 'Diplomatic, service, and special passports are exempt; this does not extend to ordinary passports.', source: BosniaSources.MA }]), // Morocco
+    'TH': visaRequired(BosniaSources.TH, [{ text: 'Diplomatic and official passports are exempt; this does not extend to ordinary passports.', source: BosniaSources.TH }]), // Thailand
 
     // ── Visa required — narrower exemption than general entry ─────────────────────
-    'RU': visaRequired(BosniaSources.RU, [{ text: 'Source states only a transit-only exemption (up to 3 days, on the basis of a valid travel document) — not a general entry or tourism waiver, which remains visa_required.', source: BosniaSources.RU }]), // Russia
+    'RU': visaRequired(BosniaSources.RU, [{ text: 'Only a transit exemption is available (up to 3 days, with a valid travel document); general entry or tourism requires a visa.', source: BosniaSources.RU }]), // Russia
 
-    // ── Visa required — Maldives (empty citizenExemptionStatements, rawText fallback) ──
-    'MV': visaRequired(BosniaSources.MV, [{ text: 'citizenExemptionStatements was empty for this entry; rawText states "Citizens of the Republic of Maldives are required visas when entering, exiting..." — confirmed by explicit instruction. (bhTravelerRequirements on this page describes the reciprocal outbound direction — what BH passport holders need to visit the Maldives — not the rule modelled here.)', source: BosniaSources.MV }]), // Maldives
+    // ── Visa required — Maldives (empty citizenExemptionStatements, rawText fallback — see file header) ──
+    'MV': visaRequired(BosniaSources.MV), // Maldives — citizenExemptionStatements was empty; rawText confirms a visa is required to enter, exit, or transit
 
     // ── Visa required — Palestine (not in COUNTRIES, included per precedent) ──────
     'PS': visaRequired(BosniaSources.PS), // Palestine
 
-    // ── Visa required — true content gaps: absent from the source scrape entirely ──
-    'TW': visaRequired(BosniaSources.TW, [{ text: 'Taiwan has no dedicated page in the scraped dataset this file was generated from (unlike the other 194 nationalities). Defaulting to visa_required as the conservative assumption.' }]), // Taiwan — not present in the source scrape at all
-    'XK': visaRequired(BosniaSources.XK, [{ text: 'Kosovo has no dedicated page in the scraped dataset this file was generated from. Per explicit confirmation, Kosovo passport holders require a visa to enter or exit Bosnia and Herzegovina.' }]), // Kosovo — not present in the source scrape at all
+    // ── Visa required — true content gaps: absent from the source scrape entirely (see file header) ──
+    'TW': visaRequired(BosniaSources.TW), // Taiwan — no dedicated page in the scraped dataset; defaults to visa_required as the conservative assumption
+    'XK': visaRequired(BosniaSources.XK), // Kosovo — no dedicated page in the scraped dataset; confirmed Kosovo passport holders require a visa to enter or exit
 
     // ── Entitled — time-bounded seasonal waivers (temporalWindows, real dates) ────
     // Bahrain, Oman, and Saudi Arabia each have a genuine source-confirmed
@@ -398,7 +399,7 @@ export const BOSNIA: RegionDefinition = {
         }],
         limits: [{ type: 'per_visit', value: 90, unit: 'days' }],
         source: BosniaSources.BH,
-        notes: [{ text: 'Source states nationals of Bahrain generally require a visa; ordinary-passport holders are exempt only for the stated window. The source does not state a day-cap for the waiver itself — 90 days is assumed, matching the standard allowance used everywhere else on this site. Outside the window, the general visa requirement applies.', source: BosniaSources.BH }],
+        notes: [{ text: 'Exempt only during this window; a day cap for the waiver itself is not stated, so the standard 90-day allowance is assumed. Outside the window, a visa is required.', source: BosniaSources.BH }],
       }],
     }, // Bahrain
     'OM': {
@@ -412,7 +413,7 @@ export const BOSNIA: RegionDefinition = {
         }],
         limits: [{ type: 'per_visit', value: 90, unit: 'days' }],
         source: BosniaSources.OM,
-        notes: [{ text: 'Source states nationals of Oman generally require a visa; ordinary-passport holders are exempt only for the stated window. The source does not state a day-cap for the waiver itself — 90 days is assumed, matching the standard allowance used everywhere else on this site. Outside the window, the general visa requirement applies.', source: BosniaSources.OM }],
+        notes: [{ text: 'Exempt only during this window; a day cap for the waiver itself is not stated, so the standard 90-day allowance is assumed. Outside the window, a visa is required.', source: BosniaSources.OM }],
       }],
     }, // Oman
     'SA': {
@@ -426,17 +427,17 @@ export const BOSNIA: RegionDefinition = {
         }],
         limits: [{ type: 'per_visit', value: 90, unit: 'days' }],
         source: BosniaSources.SA,
-        notes: [{ text: 'Source states nationals of Saudi Arabia generally require a visa; ordinary-passport holders are exempt only for the stated window. The source does not state a day-cap for the waiver itself — 90 days is assumed, matching the standard allowance used everywhere else on this site. Outside the window, the general visa requirement applies.', source: BosniaSources.SA }],
+        notes: [{ text: 'Exempt only during this window; a day cap for the waiver itself is not stated, so the standard 90-day allowance is assumed. Outside the window, a visa is required.', source: BosniaSources.SA }],
       }],
     }, // Saudi Arabia
 
     // ── Entitled — distinct shape: 30 days within 2 months from first entry ───────
+    // (see file header for why this is encoded as rolling_window, not fixed_window_from_entry)
     'UA': {
       access: 'entitled',
       entitlements: [{
         limits: [{ type: 'rolling_window', days: 30, windowDays: 60 }],
         source: BosniaSources.UA,
-        notes: [{ text: 'Source states "up to 30 days...within two months from the date of the first entry" — a distinct, smaller allowance than the standard 90-in-180 shape used elsewhere. Encoded as a 30-day rolling window within a 60-day (2-month) period, same safe-default reasoning as the standard shape\'s "from first entry" wording.', source: BosniaSources.UA }],
       }],
     }, // Ukraine
 
