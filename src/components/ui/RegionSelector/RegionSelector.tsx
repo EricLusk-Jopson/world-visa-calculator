@@ -126,6 +126,12 @@ const REGION_OPTIONS: RegionOpt[] = [
     label: "Bosnia and Herzegovina",
     group: "Europe",
   },
+  {
+    kind: "region",
+    region: VisaRegion.Kosovo,
+    label: "Kosovo",
+    group: "Europe",
+  },
 ];
 
 /**

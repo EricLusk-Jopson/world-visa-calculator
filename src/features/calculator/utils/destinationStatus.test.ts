@@ -258,6 +258,7 @@ describe("categorizeAllDestinations", () => {
     expect(result.map((d) => d.region)).toEqual([
       VisaRegion.Bosnia,
       VisaRegion.Ireland,
+      VisaRegion.Kosovo,
       VisaRegion.Montenegro,
       VisaRegion.Schengen,
       VisaRegion.Serbia,
