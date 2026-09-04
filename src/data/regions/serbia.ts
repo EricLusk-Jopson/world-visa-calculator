@@ -106,16 +106,19 @@ function idCardNote(source: SourceDoc): RuleNote {
   return { text: 'Nationals may also enter using a valid national ID card instead of a passport.', source };
 }
 
-/** Standard entitled rule — N days in any windowDays-day rolling window. */
+/**
+ * Standard entitled rule — N days in any windowDays-day rolling window.
+ *
+ * Cites SerbiaSources.<CODE> via `source` — surfaced by the UI as a link on
+ * the stay-rule summary, never restated as a "here's the source" note.
+ */
 function entitledRolling(days: number, windowDays: number, source: SourceDoc, extraNotes: RuleNote[] = []): EntitledRule {
   return {
     access: 'entitled',
     entitlements: [{
       limits: [{ type: 'rolling_window', days, windowDays }],
-      notes: [
-        { text: 'Source: Republic of Serbia Ministry of Foreign Affairs, visa-regime page for this country.', source },
-        ...extraNotes,
-      ],
+      source,
+      ...(extraNotes.length > 0 && { notes: extraNotes }),
     }],
   };
 }
