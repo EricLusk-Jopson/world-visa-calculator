@@ -194,6 +194,7 @@ export function TripFormSlider({
             )
           }
           onAddNewTraveler={onAddNewTraveler}
+          onSelectAll={() => setTravelerIds(travelers.map((t) => t.id))}
           onReset={() => setTravelerIds([])}
           expanded={activeCard === "travelers"}
           onExpand={() => openCard("travelers")}
