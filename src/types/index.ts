@@ -37,6 +37,7 @@ export const VisaRegion = {
   Bosnia: 7,
   Kosovo: 8,
   NorthMacedonia: 9,
+  Albania: 10,
 } as const;
 
 export type VisaRegion = (typeof VisaRegion)[keyof typeof VisaRegion];
@@ -52,6 +53,7 @@ export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
   [VisaRegion.Bosnia]: 'Bosnia and Herzegovina',
   [VisaRegion.Kosovo]: 'Kosovo',
   [VisaRegion.NorthMacedonia]: 'North Macedonia',
+  [VisaRegion.Albania]: 'Albania',
 };
 
 /** Per-region metadata for destination pickers, beyond the label in VISA_REGION_LABELS. */
@@ -93,6 +95,7 @@ export const SUPPORTED_DESTINATIONS: DestinationInfo[] = [
   { region: VisaRegion.Bosnia, group: 'Europe' },
   { region: VisaRegion.Kosovo, group: 'Europe' },
   { region: VisaRegion.NorthMacedonia, group: 'Europe' },
+  { region: VisaRegion.Albania, group: 'Europe' },
 ];
 
 // ─── Core Domain Types ────────────────────────────────────────────────────────

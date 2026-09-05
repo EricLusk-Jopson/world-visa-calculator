@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -4769,6 +4769,841 @@ export const NorthMacedoniaSources = {
   ZW: {
     directUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
     parentUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Zimbabwe
+} as const;
+
+// ─── Albania ──────────────────────────────────────────────────────────────────
+
+export const AlbaniaSources = {
+  AD: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Andorra
+  AE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Arab Emirates
+  AF: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Afghanistan
+  AG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Antigua and Barbuda
+  AM: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Armenia
+  AO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Angola
+  AR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Argentina
+  AT: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Austria
+  AU: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Australia
+  AZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Azerbaijan
+  BA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bosnia and Herzegovina
+  BB: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Barbados
+  BD: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bangladesh
+  BE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belgium
+  BF: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Burkina Faso
+  BG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bulgaria
+  BH: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bahrain
+  BJ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Benin
+  BN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Brunei
+  BO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bolivia
+  BR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Brazil
+  BS: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Bahamas
+  BW: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Botswana
+  BY: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belarus
+  BZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Belize
+  CA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Canada
+  CG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Congo
+  CH: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Switzerland
+  CI: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cote d'Ivoire
+  CL: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Chile
+  CM: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cameroon
+  CN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // China
+  CO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Colombia
+  CR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Costa Rica
+  CU: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cuba
+  CY: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cyprus
+  CZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Czech Republic
+  DE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Germany
+  DK: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Denmark
+  DO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Dominican Republic
+  DZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Algeria
+  EC: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ecuador
+  EE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Estonia
+  EG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Egypt
+  ER: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Eritrea
+  ES: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Spain
+  ET: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ethiopia
+  FI: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Finland
+  FJ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Fiji
+  FR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // France
+  GA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Gabon
+  GB: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United Kingdom
+  GE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Georgia
+  GH: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ghana
+  GN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guinea
+  GR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Greece
+  GT: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guatemala
+  GY: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Guyana
+  HK: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Hong Kong (SAR)
+  HN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Honduras
+  HR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Croatia
+  HT: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Haiti
+  HU: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Hungary
+  ID: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Indonesia
+  IE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ireland
+  IL: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Israel
+  IN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // India
+  IQ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iraq
+  IR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iran
+  IS: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Iceland
+  IT: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Italy
+  JM: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Jamaica
+  JO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Jordan
+  JP: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Japan
+  KE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kenya
+  KG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kyrgyzstan
+  KH: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Cambodia
+  KN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saint Kitts and Nevis
+  KP: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Korea (North)
+  KR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Korea (South)
+  KW: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kuwait
+  KZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kazakhstan
+  LB: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lebanon
+  LI: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Liechtenstein
+  LK: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sri Lanka
+  LR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Liberia
+  LS: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lesotho
+  LT: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Lithuania
+  LU: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Luxembourg
+  LV: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Latvia
+  LY: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Libya
+  MA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Morocco
+  MC: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Monaco
+  MD: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Moldova
+  ME: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Montenegro
+  MG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Madagascar
+  MK: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // North Macedonia
+  ML: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mali
+  MN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mongolia
+  MO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Macao (SAR)
+  MR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mauritania
+  MT: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malta
+  MU: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mauritius
+  MV: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Maldives
+  MW: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malawi
+  MX: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mexico
+  MY: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Malaysia
+  MZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Mozambique
+  NA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Namibia
+  NG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nigeria
+  NI: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nicaragua
+  NL: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Netherlands
+  NO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Norway
+  NP: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Nepal
+  NZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // New Zealand
+  OM: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Oman
+  PA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Panama
+  PE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Peru
+  PH: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Philippines
+  PK: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Pakistan
+  PL: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Poland
+  PS: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Palestine
+  PT: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Portugal
+  PY: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Paraguay
+  QA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Qatar
+  RO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Romania
+  RS: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Serbia
+  RU: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Russia
+  RW: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Rwanda
+  SA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Saudi Arabia
+  SC: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Seychelles
+  SD: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sudan
+  SE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sweden
+  SG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Singapore
+  SI: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Slovenia
+  SK: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Slovakia
+  SL: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sierra Leone
+  SM: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // San Marino
+  SN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Senegal
+  SO: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Somalia
+  SR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Suriname
+  ST: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Sao Tome and Principe
+  SV: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // El Salvador
+  SY: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Syria
+  TG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Togo
+  TH: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Thailand
+  TJ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tajikistan
+  TM: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Turkmenistan
+  TN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tunisia
+  TR: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Turkey
+  TT: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Trinidad and Tobago
+  TW: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Taiwan
+  TZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Tanzania
+  UA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Ukraine
+  UG: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uganda
+  US: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // United States
+  UY: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uruguay
+  UZ: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Uzbekistan
+  VA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vatican City
+  VE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Venezuela
+  VN: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Vietnam
+  XK: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Kosovo
+  YE: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Yemen
+  ZA: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // South Africa
+  ZM: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
+    dateChecked: '2026-09-04',
+  } satisfies SourceDoc, // Zambia
+  ZW: {
+    directUrl: 'https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/',
+    parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
     dateChecked: '2026-09-04',
   } satisfies SourceDoc, // Zimbabwe
 } as const;

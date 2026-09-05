@@ -256,6 +256,7 @@ describe("categorizeAllDestinations", () => {
     expect(result).toHaveLength(getAllTrackableRegions().length);
     expect(result.every((d) => d.category === "never")).toBe(true);
     expect(result.map((d) => d.region)).toEqual([
+      VisaRegion.Albania,
       VisaRegion.Bosnia,
       VisaRegion.Ireland,
       VisaRegion.Kosovo,
