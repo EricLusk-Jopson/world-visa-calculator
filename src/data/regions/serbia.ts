@@ -88,17 +88,15 @@ const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
 // ─── Entitlement helpers ───────────────────────────────────────────────────────
 
 /**
- * visaRequired — cites this country's source page, even when there is nothing
- * else to say, so every entry in this file is traceable back to its specific
- * gov.rs page, not just the region-level parentUrl.
+ * visaRequired — cites this country's source page via `source`, surfaced by
+ * the UI as a link on the Access row — never restated as a "here's the
+ * source" note.
  */
 function visaRequired(source: SourceDoc, extraNotes: RuleNote[] = []): VisaRequiredRule {
   return {
     access: 'visa_required',
-    notes: [
-      { text: "Serbia's Ministry of Foreign Affairs states this nationality requires a visa to enter.", source },
-      ...extraNotes,
-    ],
+    source,
+    ...(extraNotes.length > 0 && { notes: extraNotes }),
   };
 }
 
@@ -136,6 +134,7 @@ function entitledStacked(perVisitDays: number, source: SourceDoc, extraNotes: Ru
         { type: 'per_visit', value: perVisitDays, unit: 'days' },
         { type: 'rolling_window', days: 90, windowDays: 180 },
       ],
+      source,
       notes: [
         {
           text: `Source states only a ${perVisitDays}-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the ${perVisitDays}-day figure governs any single visit, the rolling window governs cumulative presence across visits.`,
@@ -383,6 +382,7 @@ export const SERBIA: RegionDefinition = {
       access: 'entitled',
       entitlements: [{
         limits: [{ type: 'rolling_window', days: 90, windowDays: 180 }],
+        source: SerbiaSources.MD,
         conditions: [{ type: 'biometric_passport' }],
         notes: [
           { text: 'Visa exemption applies to holders of biometric passports issued by Moldova in line with ICAO standards.', source: SerbiaSources.MD },

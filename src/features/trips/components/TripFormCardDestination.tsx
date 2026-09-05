@@ -6,19 +6,17 @@ import Dialog from "@mui/material/Dialog";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import CheckIcon from "@mui/icons-material/Check";
-import { VisaRegion, VISA_REGION_LABELS } from "@/types";
+import { VisaRegion, VISA_REGION_LABELS, SUPPORTED_DESTINATIONS } from "@/types";
 import { tokens } from "@/styles/theme";
 import { TripFormCard } from "./TripFormCard";
 
+/**
+ * Derived from @/types's SUPPORTED_DESTINATIONS + VISA_REGION_LABELS — see
+ * that file to add a region here (and everywhere else it's selectable).
+ * "Elsewhere" is appended explicitly since it isn't a trackable destination.
+ */
 const REGIONS = [
-  { value: VisaRegion.Schengen, label: VISA_REGION_LABELS[VisaRegion.Schengen] },
-  { value: VisaRegion.UnitedKingdom, label: VISA_REGION_LABELS[VisaRegion.UnitedKingdom] },
-  { value: VisaRegion.Ireland, label: VISA_REGION_LABELS[VisaRegion.Ireland] },
-  { value: VisaRegion.Turkiye, label: VISA_REGION_LABELS[VisaRegion.Turkiye] },
-  { value: VisaRegion.Montenegro, label: VISA_REGION_LABELS[VisaRegion.Montenegro] },
-  { value: VisaRegion.Serbia, label: VISA_REGION_LABELS[VisaRegion.Serbia] },
-  { value: VisaRegion.Bosnia, label: VISA_REGION_LABELS[VisaRegion.Bosnia] },
-  { value: VisaRegion.Kosovo, label: VISA_REGION_LABELS[VisaRegion.Kosovo] },
+  ...SUPPORTED_DESTINATIONS.map((d) => ({ value: d.region, label: VISA_REGION_LABELS[d.region] })),
   { value: VisaRegion.Elsewhere, label: VISA_REGION_LABELS[VisaRegion.Elsewhere] },
 ];
 

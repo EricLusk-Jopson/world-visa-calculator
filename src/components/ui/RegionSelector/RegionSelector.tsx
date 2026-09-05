@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { tokens } from "@/styles/theme";
-import { VisaRegion } from "@/types";
+import { VisaRegion, VISA_REGION_LABELS, SUPPORTED_DESTINATIONS } from "@/types";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
 
@@ -74,64 +74,27 @@ const SCHENGEN_MEMBERS: Array<{ code: string; name: string }> = [
 /**
  * Region options in display order:
  *   1. Elsewhere  (group: '' — no header)
- *   2. Schengen Area, United Kingdom, Ireland  (group: 'Europe' — divider + label)
+ *   2. Every SUPPORTED_DESTINATIONS entry (group: 'Europe' — divider + label)
+ *
+ * Derived from @/types's SUPPORTED_DESTINATIONS + VISA_REGION_LABELS — see
+ * that file to add a region here (and everywhere else it's selectable).
  */
 const REGION_OPTIONS: RegionOpt[] = [
   {
     kind: "region",
     region: VisaRegion.Elsewhere,
-    label: "Elsewhere",
+    label: VISA_REGION_LABELS[VisaRegion.Elsewhere],
     group: "",
   },
-  {
-    kind: "region",
-    region: VisaRegion.Schengen,
-    label: "Schengen Area",
-    group: "Europe",
-  },
-  {
-    kind: "region",
-    region: VisaRegion.UnitedKingdom,
-    label: "United Kingdom",
-    group: "Europe",
-  },
-  {
-    kind: "region",
-    region: VisaRegion.Ireland,
-    label: "Ireland",
-    group: "Europe",
-  },
-  {
-    kind: "region",
-    region: VisaRegion.Turkiye,
-    label: "Türkiye",
-    group: "Europe",
-    keywords: "turkiye turkey",
-  },
-  {
-    kind: "region",
-    region: VisaRegion.Montenegro,
-    label: "Montenegro",
-    group: "Europe",
-  },
-  {
-    kind: "region",
-    region: VisaRegion.Serbia,
-    label: "Serbia",
-    group: "Europe",
-  },
-  {
-    kind: "region",
-    region: VisaRegion.Bosnia,
-    label: "Bosnia and Herzegovina",
-    group: "Europe",
-  },
-  {
-    kind: "region",
-    region: VisaRegion.Kosovo,
-    label: "Kosovo",
-    group: "Europe",
-  },
+  ...SUPPORTED_DESTINATIONS.map(
+    (d): RegionOpt => ({
+      kind: "region",
+      region: d.region,
+      label: VISA_REGION_LABELS[d.region],
+      group: d.group,
+      ...(d.keywords && { keywords: d.keywords }),
+    }),
+  ),
 ];
 
 /**
@@ -142,7 +105,7 @@ const COUNTRY_OPTIONS: CountryOpt[] = SCHENGEN_MEMBERS.map(
   ({ code, name }) => ({
     kind: "country" as const,
     region: VisaRegion.Schengen,
-    label: `${name} (Schengen Area)`,
+    label: `${name} (${VISA_REGION_LABELS[VisaRegion.Schengen]})`,
     countryName: name,
     countryCode: code,
     group: "Europe",
@@ -206,7 +169,8 @@ interface RegionSelectorProps {
  */
 export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps) {
   const selectedOption =
-    REGION_OPTIONS.find((o) => o.region === value) ?? REGION_OPTIONS[1];
+    REGION_OPTIONS.find((o) => o.region === value) ??
+    REGION_OPTIONS.find((o) => o.region === VisaRegion.Schengen)!;
   const isTouchDevice = useMediaQuery("(hover: none)");
 
   return (

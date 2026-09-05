@@ -51,6 +51,14 @@ describe('getSerbiaRule', () => {
     expect(rule.access).toBe('visa_required');
   });
 
+  it('cites its source via the rule.source field for a plain visa-required nationality (AF), with no boilerplate note', () => {
+    const rule = getSerbiaRule('AF');
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.source).toEqual(SerbiaSources.AF);
+    expect(rule.notes).toBeUndefined();
+  });
+
   it('returns visa_required with a gap note for a true content gap (Marshall Islands)', () => {
     const rule = getSerbiaRule('MH');
     expect(rule.access).toBe('visa_required');

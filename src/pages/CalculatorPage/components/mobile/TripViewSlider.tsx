@@ -11,7 +11,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { alpha } from "@mui/material/styles";
 import { format } from "date-fns";
 import { tokens } from "@/styles/theme";
-import { type Traveler, type Trip, VisaRegion } from "@/types";
+import { type Traveler, type Trip, VISA_REGION_LABELS } from "@/types";
 import {
   parseDate,
   countTripDays,
@@ -36,20 +36,6 @@ interface TripViewSliderProps {
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function getRegionLabel(region: VisaRegion): string {
-  switch (region) {
-    case VisaRegion.Schengen: return "Schengen";
-    case VisaRegion.UnitedKingdom: return "United Kingdom";
-    case VisaRegion.Ireland: return "Ireland";
-    case VisaRegion.Turkiye: return "Türkiye";
-    case VisaRegion.Montenegro: return "Montenegro";
-    case VisaRegion.Serbia: return "Serbia";
-    case VisaRegion.Bosnia: return "Bosnia and Herzegovina";
-    case VisaRegion.Kosovo: return "Kosovo";
-    default: return "Elsewhere";
-  }
-}
 
 /** Small uppercase label for a header status group ("Entry" / "Duration"). */
 function GroupLabel({ children }: { children: React.ReactNode }) {
@@ -117,7 +103,7 @@ export function TripViewSlider({
 
   if (!trip) return null;
 
-  const regionLabel = getRegionLabel(trip.region);
+  const regionLabel = VISA_REGION_LABELS[trip.region];
   const isOngoing = !trip.exitDate;
   const exitStr = trip.exitDate ?? todayISO();
   const entryObj = parseDate(trip.entryDate);

@@ -87,6 +87,7 @@ const ETA_RULE: EntitledRule = {
   entitlements: [{
     limits: [UK_LIMIT],
     preAuth: UK_ETA,
+    source: UKSources.etaNationalList,
   }],
 };
 
@@ -103,11 +104,13 @@ const DATV_NOTE =
  */
 const VISA_REQUIRED_DATV: VisaRequiredRule = {
   access: 'visa_required',
+  source: UKSources.visaNationalList,
   notes: [{ text: DATV_NOTE, source: UKSources.carriersList }],
 };
 
 const VISA_REQUIRED: VisaRequiredRule = {
   access: 'visa_required',
+  source: UKSources.visaNationalList,
 };
 
 // ─── Main export ──────────────────────────────────────────────────────────────
@@ -269,6 +272,7 @@ export const UNITED_KINGDOM: RegionDefinition = {
       entitlements: [{
         limits: [UK_LIMIT],
         preAuth: UK_ETA,
+        source: UKSources.etaNationalList,
         conditions: [{
           type: 'passport_identifier',
           description: 'Applies only to holders of passports issued by Taiwan which include a national identity card number.',
@@ -288,6 +292,7 @@ export const UNITED_KINGDOM: RegionDefinition = {
     // HK SAR and Macao SAR passport holders are in the ETA scheme (see above).
     'CN': {
       access: 'visa_required',
+      source: UKSources.visaNationalList,
       notes: [
         { text: DATV_NOTE, source: UKSources.carriersList },
         {
@@ -304,6 +309,7 @@ export const UNITED_KINGDOM: RegionDefinition = {
     // Non-biometric VE passport holders: visa required + DATV.
     'VE': {
       access: 'visa_required',
+      source: UKSources.visaNationalList,
       notes: [
         { text: DATV_NOTE, source: UKSources.carriersList },
         {

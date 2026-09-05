@@ -135,6 +135,7 @@ function entitled(
     entitlements: [{
       limits: [SCHENGEN_LIMIT],
       preAuth: ETIAS,
+      source: SchengenSources.visaList,
       ...(conditions !== undefined && { conditions }),
       ...(entitlementNotes !== undefined && entitlementNotes.length > 0 && { notes: entitlementNotes }),
     }],
@@ -148,14 +149,14 @@ function entitled(
 const ATV_COMMON_NOTE =
   'Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory.';
 
-const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required', source: SchengenSources.visaList };
 
 /**
  * Shared rule for the 12 Annex IV common-list ATV nationals.
  * All require an ATV to transit any Schengen airport airside.
  */
 const ATV_COMMON_RULE: VisaRequiredRule = {
-  access: 'visa_required',
+  access: 'visa_required', source: SchengenSources.visaList,
   notes: [{ text: ATV_COMMON_NOTE, source: SchengenSources.atvCommon }],
 };
 
@@ -319,10 +320,10 @@ export const SCHENGEN: RegionDefinition = {
     // AD, MC, SM, VA are exempt from ETIAS per current EU guidance.
     // No preAuth required.
 
-    'AD': { access: 'entitled', entitlements: [{ limits: [SCHENGEN_LIMIT] }] }, // Andorra
-    'MC': { access: 'entitled', entitlements: [{ limits: [SCHENGEN_LIMIT] }] }, // Monaco
-    'SM': { access: 'entitled', entitlements: [{ limits: [SCHENGEN_LIMIT] }] }, // San Marino
-    'VA': { access: 'entitled', entitlements: [{ limits: [SCHENGEN_LIMIT] }] }, // Holy See
+    'AD': { access: 'entitled', entitlements: [{ limits: [SCHENGEN_LIMIT], source: SchengenSources.visaList }] }, // Andorra
+    'MC': { access: 'entitled', entitlements: [{ limits: [SCHENGEN_LIMIT], source: SchengenSources.visaList }] }, // Monaco
+    'SM': { access: 'entitled', entitlements: [{ limits: [SCHENGEN_LIMIT], source: SchengenSources.visaList }] }, // San Marino
+    'VA': { access: 'entitled', entitlements: [{ limits: [SCHENGEN_LIMIT], source: SchengenSources.visaList }] }, // Holy See
 
     // ── Biometric passport required (Annex II footnotes 6 and 10) ─────────────
     // Exemption applies to holders of biometric passports only.
@@ -433,54 +434,54 @@ export const SCHENGEN: RegionDefinition = {
     // Cell-level footnotes are documented inline.
 
     // Algeria — CZ
-    'DZ': { access: 'visa_required', notes: atvNotes(['CZ']) },
+    'DZ': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ']) },
 
     // Angola — FR
-    'AO': { access: 'visa_required', notes: atvNotes(['FR']) },
+    'AO': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['FR']) },
 
     // Armenia — CZ, PL
-    'AM': { access: 'visa_required', notes: atvNotes(['CZ', 'PL']) },
+    'AM': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'PL']) },
 
     // Bolivia — FR
-    'BO': { access: 'visa_required', notes: atvNotes(['FR']) },
+    'BO': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['FR']) },
 
     // Burkina Faso — ES
-    'BF': { access: 'visa_required', notes: atvNotes(['ES']) },
+    'BF': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES']) },
 
     // Cameroon — EL, ES, FR, CY
-    'CM': { access: 'visa_required', notes: atvNotes(['EL', 'ES', 'FR', 'CY']) },
+    'CM': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['EL', 'ES', 'FR', 'CY']) },
 
     // Central African Republic — ES, FR, NL
-    'CF': { access: 'visa_required', notes: atvNotes(['ES', 'FR', 'NL']) },
+    'CF': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES', 'FR', 'NL']) },
 
     // Chad — CZ, ES, FR, NL
-    'TD': { access: 'visa_required', notes: atvNotes(['CZ', 'ES', 'FR', 'NL']) },
+    'TD': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'ES', 'FR', 'NL']) },
 
     // Congo (Republic of) — EL, ES, FR
-    'CG': { access: 'visa_required', notes: atvNotes(['EL', 'ES', 'FR']) },
+    'CG': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['EL', 'ES', 'FR']) },
 
     // Côte d'Ivoire — ES, FR
-    'CI': { access: 'visa_required', notes: atvNotes(['ES', 'FR']) },
+    'CI': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES', 'FR']) },
 
     // Cuba — CZ, DE, ES, FR, NL, PL, CH
-    'CU': { access: 'visa_required', notes: atvNotes(['CZ', 'DE', 'ES', 'FR', 'NL', 'PL', 'CH']) },
+    'CU': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'DE', 'ES', 'FR', 'NL', 'PL', 'CH']) },
 
     // Djibouti — ES
-    'DJ': { access: 'visa_required', notes: atvNotes(['ES']) },
+    'DJ': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES']) },
 
     // Dominican Republic — BE, FR
-    'DO': { access: 'visa_required', notes: atvNotes(['BE', 'FR']) },
+    'DO': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'FR']) },
 
     // Egypt — CZ, ES, PL, RO
-    'EG': { access: 'visa_required', notes: atvNotes(['CZ', 'ES', 'PL', 'RO']) },
+    'EG': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'ES', 'PL', 'RO']) },
 
     // Gambia — ES
-    'GM': { access: 'visa_required', notes: atvNotes(['ES']) },
+    'GM': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES']) },
 
     // Guinea — BE, ES, FR, NL, PT
     // Cell fn 6 on FR: ATV applies to both ordinary AND service passport holders.
     'GN': {
-      access: 'visa_required',
+      access: 'visa_required', source: SchengenSources.visaList,
       notes: atvNotes(
         ['BE', 'ES', 'FR', 'NL', 'PT'],
         'France: ATV applies to both ordinary and service passport holders (unlike most entries where France requires ATV for ordinary passports only).',
@@ -488,12 +489,12 @@ export const SCHENGEN: RegionDefinition = {
     },
 
     // Guinea-Bissau — BE, ES, NL
-    'GW': { access: 'visa_required', notes: atvNotes(['BE', 'ES', 'NL']) },
+    'GW': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'ES', 'NL']) },
 
     // Haiti — BE, ES, FR
     // Cell fn 8 on ES: ordinary passports issued from 1 September 2021 only.
     'HT': {
-      access: 'visa_required',
+      access: 'visa_required', source: SchengenSources.visaList,
       notes: atvNotes(
         ['BE', 'ES', 'FR'],
         undefined,
@@ -502,13 +503,13 @@ export const SCHENGEN: RegionDefinition = {
     },
 
     // India — CZ, DE, FR, RO
-    'IN': { access: 'visa_required', notes: atvNotes(['CZ', 'DE', 'FR', 'RO']) },
+    'IN': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'DE', 'FR', 'RO']) },
 
     // Jordan — DE
     // Cell fn 9 on DE: exempt if holder has valid AU/IL/NZ visa + onward ticket,
     // or returning to Jordan after authorised stay. Onward flight within 12 hours.
     'JO': {
-      access: 'visa_required',
+      access: 'visa_required', source: SchengenSources.visaList,
       notes: atvNotes(
         ['DE'],
         undefined,
@@ -520,36 +521,36 @@ export const SCHENGEN: RegionDefinition = {
     },
 
     // Kenya — ES
-    'KE': { access: 'visa_required', notes: atvNotes(['ES']) },
+    'KE': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES']) },
 
     // Lebanon — CZ, DE, RO
-    'LB': { access: 'visa_required', notes: atvNotes(['CZ', 'DE', 'RO']) },
+    'LB': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'DE', 'RO']) },
 
     // Liberia — ES
-    'LR': { access: 'visa_required', notes: atvNotes(['ES']) },
+    'LR': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES']) },
 
     // Libya — CZ
-    'LY': { access: 'visa_required', notes: atvNotes(['CZ']) },
+    'LY': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ']) },
 
     // Mali — CZ, DE, ES, FR
-    'ML': { access: 'visa_required', notes: atvNotes(['CZ', 'DE', 'ES', 'FR']) },
+    'ML': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'DE', 'ES', 'FR']) },
 
     // Mauritania — CZ, ES, FR, NL
-    'MR': { access: 'visa_required', notes: atvNotes(['CZ', 'ES', 'FR', 'NL']) },
+    'MR': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'ES', 'FR', 'NL']) },
 
     // Morocco — RO
-    'MA': { access: 'visa_required', notes: atvNotes(['RO']) },
+    'MA': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['RO']) },
 
     // Nepal — BE, ES, FR, NL, RO
-    'NP': { access: 'visa_required', notes: atvNotes(['BE', 'ES', 'FR', 'NL', 'RO']) },
+    'NP': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'ES', 'FR', 'NL', 'RO']) },
 
     // Niger — CZ
-    'NE': { access: 'visa_required', notes: atvNotes(['CZ']) },
+    'NE': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ']) },
 
     // Palestinians — BE, CZ, ES, FR, RO
     // Cell fn 14 on FR: applies to travel document for Palestinian refugees only.
     'PS': {
-      access: 'visa_required',
+      access: 'visa_required', source: SchengenSources.visaList,
       notes: atvNotes(
         ['BE', 'CZ', 'ES', 'FR', 'RO'],
         null, // suppress default FR note — fn 14 is more specific
@@ -560,7 +561,7 @@ export const SCHENGEN: RegionDefinition = {
     // Philippines — FR
     // Cell fn 10 on FR: sea crew with seafarer's identity document are exempt.
     'PH': {
-      access: 'visa_required',
+      access: 'visa_required', source: SchengenSources.visaList,
       notes: atvNotes(
         ['FR'],
         "France: ATV applies to holders of ordinary passports. Sea crew holding a valid seafarer's identity document issued under ILO Conventions No. 108 (1958) or No. 185 (2003) and the FAL Convention are exempt.",
@@ -571,7 +572,7 @@ export const SCHENGEN: RegionDefinition = {
     // Cell fn 11 on FR: applies only to nationals departing from airports in
     // Armenia, Azerbaijan, Georgia, Ukraine, Belarus, Moldova, Turkey, or Egypt.
     'RU': {
-      access: 'visa_required',
+      access: 'visa_required', source: SchengenSources.visaList,
       notes: atvNotes(
         ['CZ', 'ES', 'FR'],
         'France: ATV applies to ordinary passports only, and only for Russian nationals departing from airports in Armenia, Azerbaijan, Georgia, Ukraine, Belarus, Moldova, Turkey, or Egypt.',
@@ -579,33 +580,33 @@ export const SCHENGEN: RegionDefinition = {
     },
 
     // Senegal — ES, FR, IT, NL, PT
-    'SN': { access: 'visa_required', notes: atvNotes(['ES', 'FR', 'IT', 'NL', 'PT']) },
+    'SN': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES', 'FR', 'IT', 'NL', 'PT']) },
 
     // Sierra Leone — ES, FR, NL
-    'SL': { access: 'visa_required', notes: atvNotes(['ES', 'FR', 'NL']) },
+    'SL': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES', 'FR', 'NL']) },
 
     // South Sudan — BE, CZ, DE, FR, NL
-    'SS': { access: 'visa_required', notes: atvNotes(['BE', 'CZ', 'DE', 'FR', 'NL']) },
+    'SS': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'CZ', 'DE', 'FR', 'NL']) },
 
     // Sudan — BE, CZ, DE, EL, ES, FR, CY, NL
-    'SD': { access: 'visa_required', notes: atvNotes(['BE', 'CZ', 'DE', 'EL', 'ES', 'FR', 'CY', 'NL']) },
+    'SD': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'CZ', 'DE', 'EL', 'ES', 'FR', 'CY', 'NL']) },
 
     // Syria — BE, CZ, DK, DE, EL, ES, FR, IT, NL, AT, RO, NO, CH
-    'SY': { access: 'visa_required', notes: atvNotes(['BE', 'CZ', 'DK', 'DE', 'EL', 'ES', 'FR', 'IT', 'NL', 'AT', 'RO', 'NO', 'CH']) },
+    'SY': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'CZ', 'DK', 'DE', 'EL', 'ES', 'FR', 'IT', 'NL', 'AT', 'RO', 'NO', 'CH']) },
 
     // Tajikistan — BE, ES, IT, RO
-    'TJ': { access: 'visa_required', notes: atvNotes(['BE', 'ES', 'IT', 'RO']) },
+    'TJ': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'ES', 'IT', 'RO']) },
 
     // Togo — ES, FR
-    'TG': { access: 'visa_required', notes: atvNotes(['ES', 'FR']) },
+    'TG': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES', 'FR']) },
 
     // Tunisia — RO
-    'TN': { access: 'visa_required', notes: atvNotes(['RO']) },
+    'TN': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['RO']) },
 
     // Türkiye — BE, CZ, DE, ES, FR, CY, NL, NO, CH
     // Cell fn 12 on NL: seafarers with valid seafarer's identity document also exempt.
     'TR': {
-      access: 'visa_required',
+      access: 'visa_required', source: SchengenSources.visaList,
       notes: atvNotes(
         ['BE', 'CZ', 'DE', 'ES', 'FR', 'CY', 'NL', 'NO', 'CH'],
         undefined,
@@ -617,10 +618,10 @@ export const SCHENGEN: RegionDefinition = {
     },
 
     // Uzbekistan — BE, ES, FR, IT, PT, RO
-    'UZ': { access: 'visa_required', notes: atvNotes(['BE', 'ES', 'FR', 'IT', 'PT', 'RO']) },
+    'UZ': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'ES', 'FR', 'IT', 'PT', 'RO']) },
 
     // Yemen — BE, CZ, ES, NL, RO
-    'YE': { access: 'visa_required', notes: atvNotes(['BE', 'CZ', 'ES', 'NL', 'RO']) },
+    'YE': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['BE', 'CZ', 'ES', 'NL', 'RO']) },
 
   },
 };

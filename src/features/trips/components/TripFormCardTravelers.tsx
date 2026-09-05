@@ -10,6 +10,7 @@ interface Props {
   travelerIds: string[];
   onToggle: (id: string) => void;
   onAddNewTraveler: () => void;
+  onSelectAll: () => void;
   onReset: () => void;
   expanded: boolean;
   onExpand: () => void;
@@ -27,6 +28,7 @@ export function TripFormCardTravelers({
   travelerIds,
   onToggle,
   onAddNewTraveler,
+  onSelectAll,
   onReset,
   expanded,
   onExpand,
@@ -44,6 +46,26 @@ export function TripFormCardTravelers({
     </Typography>
   );
 
+  const allBtn = (
+    <Box
+      component="button"
+      onClick={onSelectAll}
+      sx={{
+        border: "none",
+        bgcolor: "transparent",
+        fontFamily: tokens.fontBody,
+        fontSize: "0.8rem",
+        fontWeight: 600,
+        cursor: "pointer",
+        px: "4px",
+        py: "2px",
+        color: tokens.textSoft,
+      }}
+    >
+      All
+    </Box>
+  );
+
   return (
     <TripFormCard
       label="Travelers"
@@ -52,6 +74,7 @@ export function TripFormCardTravelers({
       onExpand={onExpand}
       onDone={onCollapse}
       onReset={onReset}
+      headerExtra={allBtn}
     >
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
         {travelers.map((t) => {
