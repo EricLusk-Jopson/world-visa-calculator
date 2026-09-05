@@ -21,8 +21,8 @@ describe('getKosovoRule', () => {
     if (rule.access !== 'entitled') return;
     const note = rule.entitlements[0].notes?.[0];
     expect(note).toBeDefined();
-    expect(note!.text.toLowerCase()).toContain('confirmed correct');
-    expect(note!.text.toLowerCase()).toContain('not individually confirmed');
+    expect(note!.text.toLowerCase()).toContain('confirmed');
+    expect(note!.text.toLowerCase()).toContain('assumed');
   });
 
   it('cites only the single source page for both directUrl and parentUrl — the deliberate per-region source policy', () => {

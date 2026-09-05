@@ -65,7 +65,7 @@ const KOSOVO_LIMIT: import('@/types').RollingWindowLimit = {
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
 
 const DURATION_NOTE_TEXT =
-  'Kosovo\'s visa-exempt list (which nationalities may enter without a visa) is confirmed correct. The source does not state a per-country stay-duration limit — the standard 90-day-in-180-day allowance is applied uniformly to every nationality on this list as a safe assumption, not individually confirmed per country.';
+  'Visa-free status is confirmed. The source does not state a stay duration for this nationality, so the standard 90 days in 180 days is assumed.';
 
 // ─── Entitlement helper ─────────────────────────────────────────────────────
 

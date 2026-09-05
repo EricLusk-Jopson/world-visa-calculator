@@ -31,8 +31,8 @@ describe('getBosniaRule', () => {
     expect(rule.access).toBe('entitled');
     if (rule.access !== 'entitled') return;
     const source = rule.entitlements[0].source!;
-    expect(source.directUrl).toBe('https://www.mvp.gov.ba/en');
-    expect(source.parentUrl).toBe('https://www.mvp.gov.ba/en');
+    expect(source.directUrl).toBe('https://www.mvp.gov.ba/en/vize');
+    expect(source.parentUrl).toBe('https://www.mvp.gov.ba/en/vize');
   });
 
   it('falls back to defaultRule (visa_required) for an unknown code', () => {
@@ -76,28 +76,29 @@ describe('Bosnia — Ukraine (distinct 30-day / 2-month shape)', () => {
   });
 });
 
-describe('Bosnia — Maldives (empty citizenExemptionStatements, rawText/explicit-confirmation fallback)', () => {
-  it('is visa_required per explicit confirmation, with a note explaining the empty-statements fallback', () => {
+describe('Bosnia — Maldives (empty citizenExemptionStatements, rawText/explicit-confirmation fallback — see file header)', () => {
+  it('is visa_required per explicit confirmation, with no dev-only note shown to users', () => {
     const rule = getBosniaRule('MV');
     expect(rule.access).toBe('visa_required');
     if (rule.access !== 'visa_required') return;
-    expect(rule.notes?.[0]?.text).toContain('citizenExemptionStatements was empty');
+    expect(rule.source).toEqual(BosniaSources.MV);
+    expect(rule.notes).toBeUndefined();
   });
 });
 
-describe('Bosnia — Kosovo and Taiwan (true content gaps, absent from the source scrape)', () => {
-  it('Kosovo (XK) is visa_required per explicit confirmation', () => {
+describe('Bosnia — Kosovo and Taiwan (true content gaps, absent from the source scrape — see file header)', () => {
+  it('Kosovo (XK) is visa_required per explicit confirmation, with no dev-only note shown to users', () => {
     const rule = getBosniaRule('XK');
     expect(rule.access).toBe('visa_required');
     if (rule.access !== 'visa_required') return;
-    expect(rule.notes?.[0]?.text.toLowerCase()).toContain('kosovo');
+    expect(rule.notes).toBeUndefined();
   });
 
-  it('Taiwan (TW) is visa_required, matching the same gap convention used in montenegro.ts/serbia.ts', () => {
+  it('Taiwan (TW) is visa_required, matching the same gap convention used in montenegro.ts/serbia.ts, with no dev-only note shown to users', () => {
     const rule = getBosniaRule('TW');
     expect(rule.access).toBe('visa_required');
     if (rule.access !== 'visa_required') return;
-    expect(rule.notes?.[0]?.text.toLowerCase()).toContain('taiwan');
+    expect(rule.notes).toBeUndefined();
   });
 });
 
@@ -108,14 +109,14 @@ describe('Bosnia — Palestine (not in COUNTRIES, included per precedent)', () =
   });
 });
 
-describe('Bosnia — source-text quirks (Barbados name mix-up, Brazil concatenated statement)', () => {
-  it('Barbados (BB) is entitled with the standard shape, with a note about the source\'s "Bahrein" mix-up', () => {
+describe('Bosnia — source-text quirks (Barbados name mix-up, Brazil concatenated statement — see file header)', () => {
+  it('Barbados (BB) is entitled with the standard shape, with no dev-only note shown to users', () => {
     const rule = getBosniaRule('BB');
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     const limit = rule.entitlements[0].limits[0] as RollingWindowLimit;
     expect(limit.days).toBe(90);
-    expect(rule.entitlements[0].notes?.[0]?.text).toContain('Bahrein');
+    expect(rule.entitlements[0].notes).toBeUndefined();
   });
 
   it('Brazil (BR) is entitled with the standard shape, extracted from the concatenated source statement', () => {
@@ -165,5 +166,21 @@ describe('Bosnia seasonal waivers (Bahrain, Oman, Saudi Arabia — real, source-
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     expect(selectEntitlement(rule, '2026-01-01')).toBeNull();
+  });
+});
+
+describe('Bosnia — note wording never restates the source citation', () => {
+  it('no note text starts with "Source" — the citation is already a link on the rule row, not a claim in the note', () => {
+    for (const rule of Object.values(BOSNIA.passportRules)) {
+      const notes =
+        rule.access === 'entitled'
+          ? rule.entitlements.flatMap((e) => e.notes ?? [])
+          : rule.access === 'visa_required'
+            ? (rule.notes ?? [])
+            : [];
+      for (const note of notes) {
+        expect(note.text.toLowerCase().startsWith('source')).toBe(false);
+      }
+    }
   });
 });
