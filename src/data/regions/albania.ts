@@ -71,7 +71,7 @@ const ALBANIA_LIMIT: import('@/types').RollingWindowLimit = {
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
 
 const DURATION_NOTE_TEXT =
-  'Visa-free status is confirmed. The source does not state a stay duration for this nationality, so the standard 90 days in 180 days is assumed.';
+  'Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied.';
 
 // ─── Rule helpers ───────────────────────────────────────────────────────────
 

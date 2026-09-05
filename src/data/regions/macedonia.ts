@@ -71,7 +71,7 @@ const MACEDONIA_LIMIT: import('@/types').RollingWindowLimit = {
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
 
 const DURATION_NOTE_TEXT =
-  'North Macedonia\'s visa requirement for this nationality (needed or not needed) is confirmed correct. The source does not state a per-country stay-duration limit — the standard 90-day-in-180-day allowance is applied uniformly to every visa-exempt nationality as a safe assumption, not individually confirmed per country.';
+  'Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied.';
 
 // ─── Rule helpers ───────────────────────────────────────────────────────────
 
