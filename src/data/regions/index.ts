@@ -8,6 +8,7 @@ import { MONTENEGRO, getMontenegroRule } from './montenegro';
 import { SERBIA, getSerbiaRule } from './serbia';
 import { BOSNIA, getBosniaRule } from './bosnia';
 import { KOSOVO, getKosovoRule } from './kosovo';
+import { NORTH_MACEDONIA, getMacedoniaRule } from './macedonia';
 
 export { SCHENGEN, getSchengenRule };
 export { UNITED_KINGDOM, getUKRule };
@@ -17,6 +18,7 @@ export { MONTENEGRO, getMontenegroRule };
 export { SERBIA, getSerbiaRule };
 export { BOSNIA, getBosniaRule };
 export { KOSOVO, getKosovoRule };
+export { NORTH_MACEDONIA, getMacedoniaRule };
 
 const VISA_REQUIRED_DEFAULT: PassportRule = { access: 'visa_required' };
 
@@ -33,6 +35,7 @@ export function getPassportRule(
     case VisaRegion.Serbia:        return getSerbiaRule(passportCode);
     case VisaRegion.Bosnia:        return getBosniaRule(passportCode);
     case VisaRegion.Kosovo:        return getKosovoRule(passportCode);
+    case VisaRegion.NorthMacedonia: return getMacedoniaRule(passportCode);
     default:                       return VISA_REQUIRED_DEFAULT;
   }
 }
@@ -47,6 +50,7 @@ export function getRegionDefinition(region: VisaRegion): RegionDefinition | null
     case VisaRegion.Serbia:        return SERBIA;
     case VisaRegion.Bosnia:        return BOSNIA;
     case VisaRegion.Kosovo:        return KOSOVO;
+    case VisaRegion.NorthMacedonia: return NORTH_MACEDONIA;
     default:                       return null;
   }
 }
