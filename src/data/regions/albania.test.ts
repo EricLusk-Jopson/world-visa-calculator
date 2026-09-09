@@ -22,7 +22,7 @@ describe('getAlbaniaRule', () => {
     const note = rule.entitlements[0].notes?.[0];
     expect(note).toBeDefined();
     expect(note!.text.toLowerCase()).toContain('confirmed');
-    expect(note!.text.toLowerCase()).toContain('assumed');
+    expect(note!.text.toLowerCase()).toContain('widely-reported');
   });
 
   it('returns visa_required with a source citation for a plain required nationality (AF)', () => {
