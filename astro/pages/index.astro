@@ -204,7 +204,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           </div>
           <div>
             <p class="feature-item__title">Official rules for every destination</p>
-            <p class="feature-item__desc">Schengen and Türkiye share the same 90/180 rolling-window rule, which we implement exactly: any 180-day lookback, counting both entry and exit days, verified against the official EU calculator. The UK and Ireland each have their own official entry rules, which we support too.</p>
+            <p class="feature-item__desc">Schengen, Türkiye, and the Balkan and Mediterranean destinations we track all share the same 90/180 rolling-window rule, which we implement exactly: any 180-day lookback, counting both entry and exit days, verified against the official EU calculator. The UK and Ireland each use their own per-visit rules instead, which we support too.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -278,7 +278,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     <div class="rules__inner">
       <!-- Left: text -->
       <div class="rules__text">
-        <p class="section-tag">Schengen's 90/180 Rule</p>
+        <p class="section-tag">The 90/180 Rule</p>
         <h2 class="section-heading">
           It's not "90 days<br />
           then leave for 90." <em>It's more complex.</em>
@@ -287,16 +287,32 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           The rule applies to a <strong>rolling 180-day window</strong>, not
           fixed half-years. At any given moment, look back 180 days. If you've
           spent 90 or more days inside during that window, you're non-compliant.
-          It's not unique to Schengen, either. Türkiye uses the identical
-          90/180 rolling window, so the same logic applies there too.
+          It's far from unique to Schengen: Türkiye, Montenegro, Serbia, Bosnia
+          and Herzegovina, Kosovo, North Macedonia, Albania, and Cyprus all use
+          the identical 90/180 rolling window — but as eight fully independent
+          counts. Time spent in one has no effect on your allowance in another.
         </p>
         <p class="rules__body">
           This means days "roll off" your count as time passes, which can free
-          up allowance much earlier than most travelers expect, but also requires multiple calculations, and
-          miscalculations happen easily, in Schengen or Türkiye alike. Read our
+          up allowance much earlier than most travelers expect. But it also
+          means running the same calculation separately for every destination,
+          and miscalculations happen easily. Read our
           <a href="/blog/the-schengen-90-180-rolling-window">full guide to the 90/180 rolling window</a>
           for a walkthrough of real scenarios.
         </p>
+
+        <div class="rules__contrast">
+          <p class="rules__contrast-title">Not every destination works this way</p>
+          <div class="rules__contrast-row">
+            <span class="rules__contrast-flag">Ireland</span>
+            <span class="rules__contrast-text">Up to 90 days per visit — no rolling window. INIS is explicit that back-to-back maximum-length stays can be refused at the border; it's officer discretion, not a formula.</span>
+          </div>
+          <div class="rules__contrast-row">
+            <span class="rules__contrast-flag">United Kingdom</span>
+            <span class="rules__contrast-text">Up to 180 days per visit, no rolling window — the most permissive stay limit of any destination we track.</span>
+          </div>
+        </div>
+
         <a href="/app" class="btn-green" style="margin-top:32px;">
           Calculate my days →
         </a>
@@ -343,7 +359,7 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
         <!-- Rule pills -->
         <div class="rule-pills">
           <span class="rule-pill">Rolling 180-day window</span>
-          <span class="rule-pill">Used by Schengen &amp; Türkiye</span>
+          <span class="rule-pill">8 destinations, tracked separately</span>
           <span class="rule-pill">Entry + exit days count</span>
           <span class="rule-pill">No fixed reset date</span>
         </div>
@@ -1024,6 +1040,52 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     line-height: 1.7;
     max-width: 520px;
     margin: 8px 0 0;
+  }
+
+  .rules__contrast {
+    max-width: 520px;
+    margin: 24px 0 0;
+    padding: 18px 20px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-navy);
+    border-radius: 10px;
+  }
+
+  .rules__contrast-title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-navy-mid);
+    margin: 0 0 12px;
+  }
+
+  .rules__contrast-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .rules__contrast-row + .rules__contrast-row {
+    margin-top: 10px;
+  }
+
+  .rules__contrast-flag {
+    flex-shrink: 0;
+    width: 112px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .rules__contrast-text {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--color-text-soft);
   }
 
   /* ── Allowance demo card ────────────────────────────────────────────────── */
