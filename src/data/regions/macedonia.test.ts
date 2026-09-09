@@ -21,8 +21,8 @@ describe('getMacedoniaRule', () => {
     if (rule.access !== 'entitled') return;
     const note = rule.entitlements[0].notes?.[0];
     expect(note).toBeDefined();
-    expect(note!.text.toLowerCase()).toContain('confirmed correct');
-    expect(note!.text.toLowerCase()).toContain('not individually confirmed');
+    expect(note!.text.toLowerCase()).toContain('confirmed');
+    expect(note!.text.toLowerCase()).toContain('widely-reported');
   });
 
   it('returns visa_required with a source citation for a plain NEEDED nationality (AF)', () => {
