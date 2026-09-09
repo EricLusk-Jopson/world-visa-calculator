@@ -26,7 +26,7 @@ export const tokens = {
   redBg: "#FEF2F2",
   redBorder: "rgba(239,68,68,0.22)",
   redText: "#991B1B",
-  offWhite: "#FAF9F5",
+  offWhite: "#FCFBF9",
   mist: "#EDF0F5",
   white: "#FFFFFF",
   border: "#D5DCE8",
