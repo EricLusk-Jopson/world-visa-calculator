@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -5606,4 +5606,24 @@ export const AlbaniaSources = {
     parentUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
     dateChecked: '2026-09-04',
   } satisfies SourceDoc, // Zimbabwe
+} as const;
+
+// ─── Cyprus ───────────────────────────────────────────────────────────────────
+
+export const CyprusSources = {
+
+  /**
+   * EU Regulation (EU) 2018/1806 Annex I (visa-required) / Annex II
+   * (visa-exempt), as implemented by Cyprus for its own external border —
+   * Cyprus is an EU member state but not (yet) a Schengen-implementing
+   * state, so it applies this same EU-wide list independently rather than
+   * via Schengen's common visa. Primary citation is the EU Annex 1 PDF;
+   * gov.cy is the Cypriot government's own parent page on the same policy.
+   */
+  visaList: {
+    directUrl: 'https://home-affairs.ec.europa.eu/document/download/ebd6113d-4d14-4ac2-ac9b-47f2e7976515_en?filename=Annex%201_en.pdf',
+    parentUrl: 'https://www.gov.cy/en/information/visas/',
+    dateChecked: '2026-09-09',
+  } satisfies SourceDoc,
+
 } as const;
