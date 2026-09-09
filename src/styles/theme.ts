@@ -4,7 +4,7 @@ import { createTheme, alpha } from "@mui/material/styles";
  * ─── EUROVISACALCULATOR — MUI THEME ─────────────────────────────────────────
  *
  * All design tokens live here. Components consume them via the theme rather
- * than local CSS variables. The landing page uses Fraunces + Plus Jakarta Sans.
+ * than local CSS variables. The landing page uses Google Sans + Plus Jakarta Sans.
  * The calculator app can extend this theme with a different typography
  * override at its route root (e.g. Lora + Mulish) without touching components.
  * ─────────────────────────────────────────────────────────────────────────── */
@@ -26,14 +26,14 @@ export const tokens = {
   redBg: "#FEF2F2",
   redBorder: "rgba(239,68,68,0.22)",
   redText: "#991B1B",
-  offWhite: "#F7F5F1",
+  offWhite: "#FAF9F5",
   mist: "#EDF0F5",
   white: "#FFFFFF",
   border: "#D5DCE8",
   text: "#1A2B4A",
   textSoft: "#5A6A82",
   textGhost: "#A0AABB",
-  fontDisplay: "'Fraunces', Georgia, serif",
+  fontDisplay: "'Google Sans', system-ui, sans-serif",
   fontBody: "'Plus Jakarta Sans', system-ui, sans-serif",
 } as const;
 
@@ -82,7 +82,7 @@ const theme = createTheme({
   // ── Typography ──
   typography: {
     fontFamily: tokens.fontBody,
-    // Display / heading style — Fraunces
+    // Display / heading style — Google Sans
     h1: {
       fontFamily: tokens.fontDisplay,
       fontWeight: 400,
