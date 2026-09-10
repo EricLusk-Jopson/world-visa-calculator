@@ -32,8 +32,8 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
        share itineraries, and keep every traveler compliant across each destination.
       </p>
 
-      <!-- Mobile-only CTA the interactive map demo is hidden on
-           mobile, so this replaces it as the primary call to action. -->
+      <!-- Mobile-only CTA, a quick primary action above the map,
+           which now also appears on mobile/tablet below the proof items. -->
       <a href="/app" class="btn-green hero__mobile-cta">
         Open the calculator →
       </a>
@@ -864,14 +864,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
       border-top: none;
       border-left: 1px solid var(--color-border);
       padding: 80px 60px;
-    }
-  }
-
-  /* The interactive calculator demo is desktop-only on mobile it's
-     replaced by .hero__mobile-cta below the hero copy. */
-  @media (max-width: 899px) {
-    .hero__right {
-      display: none;
     }
   }
 
