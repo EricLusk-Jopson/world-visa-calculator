@@ -5,8 +5,8 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 ---
 
 <BaseLayout
-  title="EuroVisaCalculator: Travel Europe Visa-Free Without The Risk Of An Overstay."
-  description="Check visa-free entry and track day allowances across Europe for any passport and every traveler in your group. Free, no account required."
+  title="EuroVisaCalculator | Europe Stay Limits and Return Dates"
+  description="Check visa-free entry and stay allowances across Europe for any passport and every traveler in your group. Free, no account required."
 >
   <LandingNav />
 
@@ -27,51 +27,38 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 
       <!-- Sub-copy -->
       <p class="hero__sub">
-       Plan long-term European travel for any number of people, 
-       from any country without the math. Track allowances, 
-       share itineraries, and keep every traveler compliant across each destination.
+        Plan long-term European travel for yourself or a group, with entry
+        requirements and stay allowances matched to each traveler's
+        passport. Track your trips, plan return dates, and share an
+        itinerary without doing the math.
       </p>
 
-      <!-- Mobile-only CTA, a quick primary action above the map,
-           which now also appears on mobile/tablet below the proof items. -->
-      <a href="/app" class="btn-green hero__mobile-cta">
+      <!-- Primary hero CTA, visible at every viewport width. -->
+      <a href="/app" class="btn-green hero__cta">
         Open the calculator →
       </a>
 
       <!-- Proof items -->
       <div class="proof-items">
         <span class="proof-item">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <path d="M8 1L9.8 5.8L15 6.2L11.2 9.6L12.4 15L8 12.4L3.6 15L4.8 9.6L1 6.2L6.2 5.8L8 1Z" />
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 2l1.5 4.5H14l-3.75 2.75L11.5 14 8 11.25 4.5 14l1.25-4.75L2 6.5h4.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
           </svg>
-          Official Schengen rolling-window algorithm
+          Passport-specific entry requirements
         </span>
         <span class="proof-item">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M2 8C2 4.686 4.686 2 8 2s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6z" stroke="currentColor" stroke-width="1.5"/>
             <path d="M5.5 8l2 2L11 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          Multiple travelers, one view
+          Multiple travelers, one itinerary
         </span>
         <span class="proof-item">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M8 2v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             <path d="M2 8C2 4.686 4.686 2 8 2s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6z" stroke="currentColor" stroke-width="1.5"/>
           </svg>
-          URL-shareable results
-        </span>
-        <span class="proof-item">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <rect x="4" y="7" width="8" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Your data never leaves your device
-        </span>
-        <span class="proof-item">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M8 2l1.5 4.5H14l-3.75 2.75L11.5 14 8 11.25 4.5 14l1.25-4.75L2 6.5h4.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-          </svg>
-          Entry rules for 198 passports
+          Stay and return-date calculations
         </span>
       </div>
     </div>
@@ -82,117 +69,19 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     </div>
   </section>
 
-  <!-- ── FEATURES ─────────────────────────────────────────────────────────── -->
-  <section id="features" class="features">
-    <div class="features__inner">
-      <!-- Left column -->
-      <div class="features__left">
-        <p class="section-tag section-tag--light">Features</p>
-        <h2 class="section-heading section-heading--light">
-          Built for long-term,<br />
-          frequent, and <em>social travelers.</em>
-        </h2>
-        <p class="section-sub section-sub--light">
-          Most Schengen calculators handle a single traveler, on a single
-          trip, to a single region with no way to check whether your
-          passport even qualifies for visa-free entry. We built EuroVisaCalculator for
-          real, long-term, multi-country travel with other travelers.
-        </p>
-        <a href="/app" class="btn-green" style="margin-top:36px;">
-          Try it free →
-        </a>
-      </div>
-
-      <!-- Right column feature list -->
-      <div class="features__right">
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M2 9C2 5.134 5.134 2 9 2s7 3.134 7 7-3.134 7-7 7-7-3.134-7-7z" stroke="currentColor" stroke-width="1.4"/>
-              <path d="M5.5 9l2.5 2.5L13 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <p class="feature-item__title">Official rules for every destination</p>
-            <p class="feature-item__desc">Most destinations in Europe follow a 90/180 rolling-window rule, which we implement exactly, according to the official documentation.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <rect x="2" y="2" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-              <rect x="10" y="2" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-              <rect x="2" y="10" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-              <rect x="10" y="10" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-            </svg>
-          </div>
-          <div>
-            <p class="feature-item__title">Multiple travelers, one dashboard</p>
-            <p class="feature-item__desc">Track couples, families, or friends, each with their own schedule, in a single shared view. Shareable via URL.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M9 2v4M9 12v4M2 9h4M12 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              <circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.4"/>
-            </svg>
-          </div>
-          <div>
-            <p class="feature-item__title">Earliest return date calculator</p>
-            <p class="feature-item__desc">After leaving, see the earliest date you can return for a given number of days. Stops you booking flights that will get rejected at the border.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <rect x="4" y="2" width="10" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/>
-              <circle cx="9" cy="7" r="1.8" stroke="currentColor" stroke-width="1.4"/>
-              <path d="M6.5 12h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <p class="feature-item__title">Visa &amp; entry requirements, per passport</p>
-            <p class="feature-item__desc">Check visa requirements, pre-travel authorizations and maximum stay lengths for your passport. All supported destinations feature links to their government's official visa regimes.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M2 9.5l5-5 3 4 3-3 3 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <p class="feature-item__title">Live validation &amp; overstay warnings</p>
-            <p class="feature-item__desc">Automated compliance checks for each traveler added to a trip.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <rect x="4" y="8" width="10" height="8" rx="2" stroke="currentColor" stroke-width="1.4"/>
-              <path d="M6.5 8V6a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <p class="feature-item__title">Completely private, no backend</p>
-            <p class="feature-item__desc">Trips are saved in your browser and encoded in the URL. No account needed and no server ever stores your data.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── HOW IT WORKS ─────────────────────────────────────────────────────── -->
+  <!-- Moved ahead of Benefits: once a visitor knows the map covers them,
+       the next question is what to enter and what they get back. Dark
+       theme swapped in from the section that used to hold this slot. -->
   <section id="how" class="how">
     <div class="how__inner">
-      <p class="section-tag">How it works</p>
-      <h2 class="section-heading">
-        Simple enough to use<br />
-        in <em>thirty seconds.</em>
+      <p class="section-tag section-tag--light">How it works</p>
+      <h2 class="section-heading section-heading--light">
+        Add your trips.<br />
+        <em>See where you stand.</em>
       </h2>
-      <p class="section-sub">
-        No spreadsheets. No manual math. Just add your trips and get a clear answer.
+      <p class="section-sub section-sub--light">
+        No spreadsheets. No manual math.
       </p>
 
       <div class="steps-grid">
@@ -205,8 +94,8 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
               <path d="M4 17c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3 class="step-card__title">Add your travelers</h3>
-          <p class="step-card__desc">Enter names for everyone you want to track: yourself, a partner, family, or a group of friends.</p>
+          <h3 class="step-card__title">Add yourself and your passport</h3>
+          <p class="step-card__desc">Choose your passport and add any travel companions whose allowances you want to track.</p>
         </div>
         <!-- Step 02 -->
         <div class="step-card step-card--border-left">
@@ -218,8 +107,8 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
               <path d="M7 2v4M13 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3 class="step-card__title">Add Your Trips</h3>
-          <p class="step-card__desc">Add each trip to the destination it belongs to, with an entry and exit date. Planned future trips show up too.</p>
+          <h3 class="step-card__title">Enter past and planned trips</h3>
+          <p class="step-card__desc">Add destinations and entry and exit dates so your travel history can be included.</p>
         </div>
         <!-- Step 03 -->
         <div class="step-card step-card--border-left">
@@ -230,22 +119,78 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
               <path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3 class="step-card__title">Check Your Compliance</h3>
-          <p class="step-card__desc">See visa eligibility, duration limits, and overstay risk for every traveler, updated instantly as you add trips.</p>
+          <h3 class="step-card__title">Check how your plans fit</h3>
+          <p class="step-card__desc">See entry requirements, stay allowances, and warnings for each traveler as you build the itinerary.</p>
         </div>
-        <!-- Step 04 -->
-        <div class="step-card step-card--border-left">
-          <span class="step-card__num">04</span>
-          <div class="step-card__icon">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <circle cx="15" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="5" cy="10" r="2" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="15" cy="15" r="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M6.8 9l6.4-3M6.8 11l6.4 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </div>
+
+      <p class="how__share-note">Traveling together? Share your itinerary with a link. No account required.</p>
+    </div>
+  </section>
+
+  <!-- ── BENEFITS ─────────────────────────────────────────────────────────── -->
+  <!-- Formerly "Features": moved behind How it works, and its theme
+       lightened to match the slot it now occupies. Trimmed from six
+       equally-weighted capabilities to three outcome-led ones; the
+       official-rules claim and the privacy claim moved out to the trust
+       section and the final CTA, respectively, where they're substantiated
+       rather than just asserted. -->
+  <section id="features" class="features">
+    <div class="features__inner">
+      <!-- Left column -->
+      <div class="features__left">
+        <p class="section-tag">Benefits</p>
+        <h2 class="section-heading">
+          Different passports.<br />
+          Different limits. <em>One plan.</em>
+        </h2>
+        <p class="section-sub">
+          A shared itinerary does not mean everyone has the same entry
+          requirements or travel history. Keep the relevant checks together
+          while planning across supported destinations.
+        </p>
+      </div>
+
+      <!-- Right column benefit list -->
+      <div class="features__right">
+        <div class="feature-item">
+          <div class="feature-item__icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <rect x="4" y="2" width="10" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/>
+              <circle cx="9" cy="7" r="1.8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M6.5 12h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3 class="step-card__title">Share Your Results</h3>
-          <p class="step-card__desc">Copy the link and send it to everyone you're traveling with. They'll see exactly what you see, with no login required.</p>
+          <div>
+            <p class="feature-item__title">Check the requirements for your passport</p>
+            <p class="feature-item__desc">See visa requirements, pre-travel authorizations, and stay limits for each traveler's passport and supported destination.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item__icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M9 2v4M9 12v4M2 9h4M12 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.4"/>
+            </svg>
+          </div>
+          <div>
+            <p class="feature-item__title">Choose dates that fit your allowance</p>
+            <p class="feature-item__desc">Check proposed trips against your travel history, identify potential overstays, and find a return date that fits the length of your next visit.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item__icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="10" y="2" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="2" y="10" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="10" y="10" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+            </svg>
+          </div>
+          <div>
+            <p class="feature-item__title">Plan together without treating everyone the same</p>
+            <p class="feature-item__desc">Keep travelers with different passports and schedules in one itinerary, then share the plan with a link.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -258,26 +203,33 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
       <div class="rules__text">
         <p class="section-tag">The 90/180 Rule</p>
         <h2 class="section-heading section-heading--light">
-          The 90/180 Rule <em>Is Not Just Schengen.</em>
+          See why <em>your allowance changes.</em>
         </h2>
         <p class="section-sub section-sub--light">
-          The 90/180 is most often mentioned in reference to the Schengen
-          Area, but it's far from unique to Schengen. In fact, the rule is
-          enforced across most European countries, even outside the Schengen
-          block, so it's worth understanding.
+          For a traveler subject to Schengen's 90/180 rule, the calculation
+          looks back from each day of the stay. The total must not exceed
+          90 days within that moving 180-day period. As time passes, older
+          travel days stop counting.
         </p>
         <p class="rules__body">
-          The rule applies to a rolling 180-day window. At any given moment,
-          look back 180 days. If you've spent 90 or more days inside during
-          that window, you've overstayed. As time passes, old trips begin to
-          fall outside of the window and no longer count against your
-          allowance.
+          That is why checking a proposed return means checking your travel
+          history, not just counting the days in your next trip.
         </p>
         <p class="rules__body">
-          To better understand the rule, read our
-          <a href="/blog/the-schengen-90-180-rolling-window">full guide to the 90/180 rolling window</a>
-          for a walkthrough of real scenarios.
+          Other supported destinations have their own rules and allowances,
+          which the app tracks separately.
         </p>
+        <p class="rules__body">
+          Move the date to see which travel days still count.
+        </p>
+        <div class="rules__actions">
+          <a href="/app" class="btn-green">
+            Open the calculator →
+          </a>
+          <a href="/blog/the-schengen-90-180-rolling-window" class="rules__guide-link">
+            Read the full guide →
+          </a>
+        </div>
       </div>
 
       <!-- Right: interactive demo draggable rolling-window explainer, same
@@ -291,7 +243,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
       >
         <figure class="explainer-timeline">
           <figcaption>
-            <span>Travel timeline</span>
+            <span>Example: two Schengen trips</span>
             <span class="explainer-timeline-key"><i aria-hidden="true"></i>Counted days</span>
           </figcaption>
           <div
@@ -403,7 +355,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
             <dd><strong data-used="true">80</strong></dd>
           </div>
           <div>
-            <dt>Remaining allowance</dt>
+            <dt>Unused in this window</dt>
             <dd><strong data-remaining="true">10</strong><span> days</span></dd>
           </div>
         </dl>
@@ -445,27 +397,16 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     <div class="risk__inner">
       <p class="section-tag">Why Accuracy Matters</p>
       <h2 class="section-heading">
-        Get the math wrong,<br />
-        and <em>you've overstayed.</em>
+        Your dates deserve<br />
+        <em>more than a confident answer.</em>
       </h2>
       <p class="section-sub">
-        A single miscalculation can push you past your allowance without
-        anyone noticing until it's too late and the consequences don't end
-        when the trip does.
+        Knowing the rule is not the same as checking an itinerary. Your
+        dates need to be calculated against the relevant limits, not
+        estimated or assumed.
       </p>
 
       <div class="risk-grid">
-        <div class="risk-card">
-          <div class="risk-card__icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M9 2.5L16.5 15.5H1.5L9 2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M9 7v3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              <circle cx="9" cy="13" r="0.9" fill="currentColor"/>
-            </svg>
-          </div>
-          <h3 class="risk-card__title">Overstaying has real consequences</h3>
-          <p class="risk-card__desc">Even a single extra day can mean fines, an automatic entry ban lasting months or years, and a flag on your record that follows you to every Schengen border, not just the one where it happened.</p>
-        </div>
         <div class="risk-card">
           <div class="risk-card__icon">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -473,8 +414,8 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
               <circle cx="9" cy="9" r="2.4" stroke="currentColor" stroke-width="1.4"/>
             </svg>
           </div>
-          <h3 class="risk-card__title">EES is closing the gap</h3>
-          <p class="risk-card__desc">The EU's incoming Entry/Exit System replaces manual passport stamps with automated, biometric logging of every entry and exit. Once it's fully rolled out, there's no more benefit of the doubt: every day is recorded, and overstays are flagged automatically.</p>
+          <h3 class="risk-card__title">EES records the dates</h3>
+          <p class="risk-card__desc">EES digitally records entries and exits for covered short-stay travelers and helps authorities identify overstays. Depending on the circumstances, exceeding an authorized stay can lead to fines or future entry restrictions. Check your dates before they become your travel record.</p>
         </div>
         <div class="risk-card">
           <div class="risk-card__icon">
@@ -484,14 +425,21 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
               <circle cx="8.5" cy="11.8" r="0.9" fill="currentColor"/>
             </svg>
           </div>
-          <h3 class="risk-card__title">AI doesn't calculate this, it guesses</h3>
-          <p class="risk-card__desc">Ask a chatbot when you can return, how long you must wait before a 30-day trip, or by what date you need to leave, and it will confidently answer, often incorrectly. These are rolling-window calculations over a real itinerary. General-purpose AI doesn't run that algorithm; it predicts plausible-sounding text, not verified compliance math.</p>
+          <h3 class="risk-card__title">A confident answer is not a checked itinerary</h3>
+          <p class="risk-card__desc">A chatbot can give a plausible, confident answer that is wrong. For a departure or return date, reassurance is not enough: use a calculation you can inspect against your actual travel history. You do not need to calculate the dates yourself, or decide how to ask for the calculation.</p>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card__icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M2 9C2 5.134 5.134 2 9 2s7 3.134 7 7-3.134 7-7 7-7-3.134-7-7z" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M5.5 9l2.5 2.5L13 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="risk-card__title">Your itinerary, checked against the rules</h3>
+          <p class="risk-card__desc">EuroVisaCalculator applies stay-limit calculations to the dates you enter and checks each traveler against the relevant destination rules. Review the result alongside the official source guidance, then adjust your plans with the calculation in view.</p>
+          <a href="/blog/why-schengen-calculators-give-different-results" class="risk-card__link">How the calculations are checked →</a>
         </div>
       </div>
-
-      <a href="/app" class="btn-green" style="margin-top:40px;">
-        Calculate your real dates →
-      </a>
     </div>
   </section>
 
@@ -500,19 +448,19 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     <div class="cta-band__inner">
       <h2 class="cta-band__heading">
         Stop guessing.<br />
-        Start tracking <em>in seconds.</em>
+        Start <em>with your dates.</em>
       </h2>
       <p class="cta-band__sub">
-        Free, no account required. Your trip data is stored in your browser,
-        never on our servers. Add travelers, enter your trips, and share
-        a link with everyone you're traveling with, immediately.
+        Add your passport and travel history, then see how your next trip
+        fits your allowance.
+      </p>
+      <p class="cta-band__reassurance">
+        Free. No account required. Stored in your browser, shareable when
+        you choose.
       </p>
       <div class="cta-band__actions">
         <a href="/app" class="btn-green">
           Open the calculator →
-        </a>
-        <a href="/blog" class="btn-ghost">
-          Read our guides →
         </a>
       </div>
     </div>
@@ -887,7 +835,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
   }
 
   /* Eyebrow is desktop-only it wraps awkwardly at narrow widths and the
-     new mobile CTA button below covers the same "free / private / no
+     hero CTA button below covers the same "free / private / no
      account" messaging via the CTA band further down the page. */
   @media (max-width: 899px) {
     .eyebrow {
@@ -895,25 +843,25 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     }
   }
 
-  /* ── Mobile-only hero CTA ───────────────────────────────────────────────── */
+  /* ── Hero CTA ───────────────────────────────────────────────────────────── */
   /* Double class for specificity: must beat .btn-green's own unconditional
-     `display: inline-flex`, which is declared later in this stylesheet. */
-  .hero__mobile-cta.btn-green {
+     `display: inline-flex`, which is declared later in this stylesheet.
+     Visible at every width now the visitor shouldn't have to interact with
+     the map before opening the app; centered to match the centered hero
+     copy on mobile, left-aligned to match it on desktop. */
+  .hero__cta.btn-green {
     display: flex;
     justify-content: center;
     width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
     padding: 16px 32px;
     font-size: 1.05rem;
     animation: fadeUp 0.6s 0.35s both ease-out;
   }
 
-  @media (min-width: 900px) {
-    /* Double class for specificity: must beat .btn-green's own unconditional
-       `display: inline-flex`, which is declared later in this stylesheet. */
-    .hero__mobile-cta.btn-green {
-      display: none;
+  @media (max-width: 899px) {
+    .hero__cta.btn-green {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
@@ -1107,8 +1055,26 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
   .section-sub--light { color: rgba(255, 255, 255, 0.6); }
 
   /* ── How it works ───────────────────────────────────────────────────────── */
+  /* Dark theme, swapped in from the section that used to occupy this slot,
+     so the page keeps alternating light/dark down the page after the
+     reorder. */
   .how {
+    background: var(--color-navy);
     padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 185, 107, 0.08) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   @media (min-width: 768px) {
@@ -1120,11 +1086,20 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
   .how__inner {
     max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+  }
+
+  .how__share-note {
+    margin: 24px 0 0;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
   }
 
   .steps-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     margin-top: 60px;
     border-radius: 16px;
     overflow: hidden;
@@ -1133,9 +1108,9 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     background: var(--color-border);
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 768px) {
     .steps-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -1251,24 +1226,14 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     }
   }
 
-  /* ── Features ───────────────────────────────────────────────────────────── */
+  /* ── Benefits ───────────────────────────────────────────────────────────── */
+  /* Light theme, swapped in from the section that used to occupy this slot
+     ("How it works" took the dark treatment this section used to have),
+     so the page keeps alternating light/dark down the page after the
+     reorder. */
   .features {
-    background: var(--color-navy);
+    background: var(--color-off-white);
     padding: 60px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .features::before {
-    content: "";
-    position: absolute;
-    top: -80px;
-    right: -80px;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 185, 107, 0.08) 0%, transparent 70%);
-    pointer-events: none;
   }
 
   @media (min-width: 768px) {
@@ -1284,7 +1249,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     grid-template-columns: 1fr;
     gap: 48px;
     align-items: start;
-    position: relative;
   }
 
   @media (min-width: 768px) {
@@ -1316,8 +1280,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
   .feature-item__icon {
     width: 40px;
     height: 40px;
-    background: rgba(0, 185, 107, 0.12);
-    border: 1px solid rgba(0, 185, 107, 0.2);
+    background: var(--color-green-bg);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -1331,14 +1294,14 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     font-size: 1rem;
     font-weight: 400;
     font-style: italic;
-    color: var(--color-white);
+    color: var(--color-navy);
     margin: 0 0 4px;
   }
 
   .feature-item__desc {
     font-family: var(--font-body);
     font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-soft);
     line-height: 1.6;
     margin: 0;
   }
@@ -1363,12 +1326,10 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     box-shadow: 0 6px 24px rgba(0, 185, 107, 0.35);
   }
 
-  /* Every CTA button (.btn-green and .btn-ghost, wherever they appear)
-     sizes to fit its own text and centers itself on mobile. Desktop is
-     untouched. */
+  /* Every CTA button (.btn-green, wherever it appears) sizes to fit its
+     own text and centers itself on mobile. Desktop is untouched. */
   @media (max-width: 639px) {
-    .btn-green,
-    .btn-ghost {
+    .btn-green {
       display: flex;
       width: fit-content;
       justify-content: center;
@@ -1431,6 +1392,26 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 
   .rules__body a {
     color: var(--color-green);
+  }
+
+  .rules__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .rules__guide-link {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-green);
+    text-decoration: none;
+  }
+
+  .rules__guide-link:hover {
+    text-decoration: underline;
   }
 
   /* ── Overstay risk ──────────────────────────────────────────────────────── */
@@ -1501,6 +1482,20 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     margin: 0;
   }
 
+  .risk-card__link {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-green);
+    text-decoration: none;
+  }
+
+  .risk-card__link:hover {
+    text-decoration: underline;
+  }
+
   /* ── CTA band ───────────────────────────────────────────────────────────── */
   .cta-band {
     background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-mid) 100%);
@@ -1554,6 +1549,14 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.6);
     line-height: 1.7;
+    margin: 0 0 12px;
+  }
+
+  .cta-band__reassurance {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
     margin: 0 0 36px;
   }
 
@@ -1569,26 +1572,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     .cta-band__actions {
       flex-direction: column;
     }
-  }
-
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    padding: 14px 32px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.8);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 500;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-  }
-
-  .btn-ghost:hover {
-    background: rgba(255, 255, 255, 0.14);
-    color: var(--color-white);
   }
 
   /* ── Footer ─────────────────────────────────────────────────────────────── */
