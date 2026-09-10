@@ -5,8 +5,8 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 ---
 
 <BaseLayout
-  title="EuroVisaCalculator: Schengen, UK, Ireland & Türkiye Visa Tracker"
-  description="Check visa-free entry and track day allowances across Schengen, the UK, Ireland, and Türkiye, for any passport and every traveler in your group. Free, no account required."
+  title="EuroVisaCalculator: Travel Europe Visa-Free Without The Risk Of An Overstay."
+  description="Check visa-free entry and track day allowances across Europe for any passport and every traveler in your group. Free, no account required."
 >
   <LandingNav />
 
@@ -17,7 +17,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
       <!-- Eyebrow badge -->
       <div class="eyebrow">
         <span class="eyebrow__dot"></span>
-        Free · Private · No account required · Works instantly
+        Free · Private · No account required
       </div>
 
       <!-- Heading -->
@@ -32,7 +32,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         days, and plan without guessing.
       </p>
 
-      <!-- Mobile-only CTA — the interactive calculator demo is hidden on
+      <!-- Mobile-only CTA — the interactive map demo is hidden on
            mobile, so this replaces it as the primary call to action. -->
       <a href="/app" class="btn-green hero__mobile-cta">
         Open the calculator →
@@ -93,10 +93,10 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
           frequent, and <em>social travelers.</em>
         </h2>
         <p class="section-sub section-sub--light">
-          Most travel calculators only handle a single traveler, on a single
-          trip, to a single country, with no way to check whether your
-          passport even qualifies for visa-free entry. We built this for
-          real, long-term, multi-country travel.
+          Most Schengen calculators handle a single traveler, on a single
+          trip, to a single region with no way to check whether your
+          passport even qualifies for visa-free entry. We built EuroVisaCalculator for
+          real, long-term, multi-country travel with other travelers.
         </p>
         <a href="/app" class="btn-green" style="margin-top:36px;">
           Try it free →
@@ -114,7 +114,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
           </div>
           <div>
             <p class="feature-item__title">Official rules for every destination</p>
-            <p class="feature-item__desc">Schengen, Türkiye, and the Balkan and Mediterranean destinations we track all share the same 90/180 rolling-window rule, which we implement exactly: any 180-day lookback, counting both entry and exit days, verified against the official EU calculator. The UK and Ireland each use their own per-visit rules instead, which we support too.</p>
+            <p class="feature-item__desc">Most destinations in Europe follow a 90/180 rolling-window rule, which we implement exactly, according to the official documentation.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -128,7 +128,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
           </div>
           <div>
             <p class="feature-item__title">Multiple travelers, one dashboard</p>
-            <p class="feature-item__desc">Track couples, families, or groups of travelers from different countries of origin, each with their own schedule, in a single shared view. Shareable via URL.</p>
+            <p class="feature-item__desc">Track couples, families, or friends, each with their own schedule, in a single shared view. Shareable via URL.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -153,7 +153,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
           </div>
           <div>
             <p class="feature-item__title">Visa &amp; entry requirements, per passport</p>
-            <p class="feature-item__desc">Every traveler's passport is checked against each destination's rules: visa requirements, pre-travel authorizations like ETIAS or an ETA, and maximum stay lengths. Restrictions are flagged before you book, not after.</p>
+            <p class="feature-item__desc">Check visa requirements, pre-travel authorizations and maximum stay lengths for your passport. All supported destinations feature links to their government's official visa regimes.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -164,7 +164,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
           </div>
           <div>
             <p class="feature-item__title">Live validation &amp; overstay warnings</p>
-            <p class="feature-item__desc">Calendar cells are color-coded as you pick dates: green for safe, yellow for caution, red for over the limit. Alerts fire before you save a trip that would push you over the limit, so there are no surprises after you click confirm.</p>
+            <p class="feature-item__desc">Automated compliance checks for each traveler added to a trip.</p>
           </div>
         </div>
         <div class="feature-item">
@@ -176,7 +176,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
           </div>
           <div>
             <p class="feature-item__title">Completely private, no backend</p>
-            <p class="feature-item__desc">Your trips are saved in your browser's local storage and encoded in the URL. No account needed and no server ever sees your travel history. Works offline once the app is loaded. Share the link and everyone you're traveling with sees exactly what you see.</p>
+            <p class="feature-item__desc">Trips are saved in your browser and encoded in the URL. No account needed and no server ever stores your data.</p>
           </div>
         </div>
       </div>
@@ -251,28 +251,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     </div>
   </section>
 
-  <!-- ── TRUST STRIP ──────────────────────────────────────────────────────── -->
-  <section class="trust-strip" aria-label="Key statistics">
-    <div class="trust-strip__grid">
-      <div class="trust-stat">
-        <span class="trust-stat__num">4</span>
-        <span class="trust-stat__label">official rule systems<br />one calculator</span>
-      </div>
-      <div class="trust-stat">
-        <span class="trust-stat__num">39</span>
-        <span class="trust-stat__label">European destinations<br />and counting</span>
-      </div>
-      <div class="trust-stat">
-        <span class="trust-stat__num">198</span>
-        <span class="trust-stat__label">passports<br />with entry rules covered</span>
-      </div>
-      <div class="trust-stat">
-        <span class="trust-stat__num">0</span>
-        <span class="trust-stat__label">bytes of your data<br />sent to any server</span>
-      </div>
-    </div>
-  </section>
-
   <!-- ── RULES EXPLAINER ──────────────────────────────────────────────────── -->
   <section id="rules" class="rules">
     <div class="rules__inner">
@@ -311,11 +289,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         class="schengen-explorer"
         data-config='{"trips":[{"label":"Trip 1","start":"2025-03-01","end":"2025-05-29","startDay":20148,"endDay":20237},{"label":"Trip 2","start":"2025-09-07","end":"2025-12-05","startDay":20338,"endDay":20427}],"timelineStart":19953,"timelineEnd":20622,"min":20132,"max":20621,"initial":20338}'
       >
-        <div class="explainer-heading">
-          <span class="explainer-eyebrow">Try the rolling window</span>
-          <h3>Two trips. One day count.</h3>
-          <p>Each trip lasts 90 days. Only the days inside the shaded window count.</p>
-        </div>
         <figure class="explainer-timeline">
           <figcaption>
             <span>Travel timeline</span>
@@ -429,11 +402,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
             </span>
             <input type="range" min="20132" max="20621" step="1" value="20338" aria-label="Window end date" aria-valuetext="7 Sept 2025" />
           </label>
-          <div class="explainer-snaps" role="group" aria-label="Jump to a key moment">
-            <button type="button" data-snap="2025-05-29" title="Trip 1 ends: 29 May 2025" aria-pressed="false">Trip 1 ends</button>
-            <button type="button" data-snap="2025-09-07" title="Trip 2 starts: 7 Sept 2025" aria-pressed="true">Trip 2 starts</button>
-            <button type="button" data-snap="2025-11-25" title="Trip 1 clears: 25 Nov 2025" aria-pressed="false">Trip 1 clears</button>
-          </div>
         </div>
         <noscript><p class="explainer-nojs">Showing 7 Sept 2025. Enable JavaScript to move the window.</p></noscript>
         <dl class="explainer-stats">

@@ -13,26 +13,33 @@ import "./EuropeCoverageIsland.css";
 
 const regions = europeMap.regions;
 const byId = new Map(regions.map((region) => [region.id, region]));
-const schengenCodes = new Set(europeCoverage.schengen.map((country) => country.code));
-const supportedCount = europeCoverage.schengen.length + europeCoverage.supported.length;
+const schengenCodes = new Set(
+  europeCoverage.schengen.map((country) => country.code),
+);
+const supportedCount =
+  europeCoverage.schengen.length + europeCoverage.supported.length;
 
 // Rules are presentation data only. Sharing a rule definition never pools
 // allowances across countries; only Schengen is one compliance region.
 const stayRules = new Map(Object.entries(europeCoverage.stayRules));
 const ruleByRegion = new Map<string, StayRule | undefined>([
   ["schengen", stayRules.get(europeCoverage.schengenStayRule)],
-  ...europeCoverage.supported.map(
-    (country): [string, StayRule | undefined] => [country.code, stayRules.get(country.stayRule)],
-  ),
+  ...europeCoverage.supported.map((country): [string, StayRule | undefined] => [
+    country.code,
+    stayRules.get(country.stayRule),
+  ]),
 ]);
-const ruleTypeLabel = (rule: StayRule) => (rule.type === "rolling-window" ? "Rolling window" : "Per visit");
+const ruleTypeLabel = (rule: StayRule) =>
+  rule.type === "rolling-window" ? "Rolling window" : "Per visit";
 const ruleLabel = (rule: StayRule) =>
   "windowDays" in rule
     ? `${rule.maxStayDays} days in any ${rule.windowDays} days`
     : `${rule.maxStayDays} days per visit`;
 const ruleAccessibilityLabel = (regionId: string) => {
   const rule = ruleByRegion.get(regionId);
-  return rule ? `, visa-free rule overview: up to ${ruleLabel(rule)}, ${ruleTypeLabel(rule).toLowerCase()}` : "";
+  return rule
+    ? `, visa-free rule overview: up to ${ruleLabel(rule)}, ${ruleTypeLabel(rule).toLowerCase()}`
+    : "";
 };
 interface ViewState {
   zoom: number;
@@ -41,8 +48,10 @@ interface ViewState {
 }
 
 const initialView: ViewState = { zoom: 1, x: 0, y: 0 };
-const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
-const regionIdFor = (code: string) => (schengenCodes.has(code) ? "schengen" : code);
+const clamp = (value: number, min: number, max: number) =>
+  Math.max(min, Math.min(max, value));
+const regionIdFor = (code: string) =>
+  schengenCodes.has(code) ? "schengen" : code;
 const statusText = (status: EuropeMapRegion["status"]) =>
   status === "unsupported" ? "Not yet supported" : "Supported by the app";
 
@@ -75,7 +84,10 @@ interface DragState {
   moved: boolean;
 }
 
-export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandProps, EuropeCoverageIslandState> {
+export class EuropeCoverageIsland extends React.Component<
+  EuropeCoverageIslandProps,
+  EuropeCoverageIslandState
+> {
   state: EuropeCoverageIslandState = {
     ready: false,
     selectedCountry: "schengen",
@@ -92,20 +104,33 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
 
   private select = (countryCode: string) => {
     if (!byId.has(regionIdFor(countryCode))) return;
-    this.setState({ selectedCountry: countryCode, hoveredId: null, focusedId: null });
+    this.setState({
+      selectedCountry: countryCode,
+      hoveredId: null,
+      focusedId: null,
+    });
   };
 
   private pointFromEvent = (event: PointerEvent): [number, number] | null => {
     const matrix = this.svg?.getScreenCTM();
     if (!matrix) return null;
-    const point = new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix.inverse());
+    const point = new DOMPoint(event.clientX, event.clientY).matrixTransform(
+      matrix.inverse(),
+    );
     return [point.x, point.y];
   };
 
   private onPointerDown = (event: PointerEvent) => {
-    if (!event.isPrimary || event.button !== 0 || this.state.view.zoom <= 1) return;
+    if (!event.isPrimary || event.button !== 0 || this.state.view.zoom <= 1)
+      return;
     const start = this.pointFromEvent(event);
-    if (start) this.drag = { pointerId: event.pointerId, start, view: this.state.view, moved: false };
+    if (start)
+      this.drag = {
+        pointerId: event.pointerId,
+        start,
+        view: this.state.view,
+        moved: false,
+      };
   };
 
   private onPointerMove = (event: PointerEvent) => {
@@ -124,7 +149,11 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
     this.setState({
       dragging: true,
       hoveredId: null,
-      view: boundedView({ ...drag.view, x: drag.view.x + dx, y: drag.view.y + dy }),
+      view: boundedView({
+        ...drag.view,
+        x: drag.view.x + dx,
+        y: drag.view.y + dy,
+      }),
     });
   };
 
@@ -132,7 +161,8 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
     if (!this.drag || this.drag.pointerId !== event.pointerId) return;
     const moved = this.drag.moved;
     this.drag = null;
-    if (this.svg?.hasPointerCapture(event.pointerId)) this.svg.releasePointerCapture(event.pointerId);
+    if (this.svg?.hasPointerCapture(event.pointerId))
+      this.svg.releasePointerCapture(event.pointerId);
     this.suppressClick = moved && !cancelled;
     clearTimeout(this.suppressionTimer);
     // The click immediately following pointerup must not select a country.
@@ -143,7 +173,8 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
   };
 
   private onPointerUp = (event: PointerEvent) => this.finishDrag(event, false);
-  private onPointerCancel = (event: PointerEvent) => this.finishDrag(event, true);
+  private onPointerCancel = (event: PointerEvent) =>
+    this.finishDrag(event, true);
 
   private zoom = (factor: number) => {
     const center = this.activeRegion.center;
@@ -198,7 +229,11 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
     if (offset && this.state.view.zoom > 1) {
       event.preventDefault();
       this.setState(({ view }) => ({
-        view: boundedView({ ...view, x: view.x + offset[0], y: view.y + offset[1] }),
+        view: boundedView({
+          ...view,
+          x: view.x + offset[0],
+          y: view.y + offset[1],
+        }),
       }));
     }
   };
@@ -212,15 +247,19 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
       role="button"
       tabIndex={this.state.ready ? 0 : -1}
       aria-label={`${region.name}: ${statusText(region.status)}${
-        region.id === "schengen" ? `, ${europeCoverage.schengen.length} countries in one region` : ""
+        region.id === "schengen"
+          ? `, ${europeCoverage.schengen.length} countries in one region`
+          : ""
       }${ruleAccessibilityLabel(region.id)}`}
       aria-pressed={this.selectedId === region.id}
       aria-controls={`${this.props.id ?? "europe-coverage"}-detail`}
       onMouseEnter={() => {
-        if (this.state.ready && !this.state.dragging) this.setState({ hoveredId: region.id });
+        if (this.state.ready && !this.state.dragging)
+          this.setState({ hoveredId: region.id });
       }}
       onMouseLeave={() => {
-        if (this.state.hoveredId === region.id) this.setState({ hoveredId: null });
+        if (this.state.hoveredId === region.id)
+          this.setState({ hoveredId: null });
       }}
       onFocus={() => this.setState({ focusedId: region.id })}
       onBlur={() => this.setState({ focusedId: null })}
@@ -236,7 +275,12 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
       }}
     >
       {region.path && (
-        <path className="evc-map__shape" d={region.path} fillRule="evenodd" vectorEffect="non-scaling-stroke" />
+        <path
+          className="evc-map__shape"
+          d={region.path}
+          fillRule="evenodd"
+          vectorEffect="non-scaling-stroke"
+        />
       )}
       {region.markers.map((marker) => (
         <circle
@@ -253,7 +297,9 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
 
   componentDidMount() {
     this.svg?.addEventListener("pointerdown", this.onPointerDown);
-    this.svg?.addEventListener("pointermove", this.onPointerMove, { passive: false });
+    this.svg?.addEventListener("pointermove", this.onPointerMove, {
+      passive: false,
+    });
     this.svg?.addEventListener("pointerup", this.onPointerUp);
     this.svg?.addEventListener("pointercancel", this.onPointerCancel);
     this.setState({ ready: true }, () => {
@@ -297,19 +343,30 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
         <div className="evc-map__topbar">
           <div className="evc-map__legend" aria-label="Map legend">
             <span>
-              <i className="evc-map__swatch evc-map__swatch--schengen" aria-hidden="true" />
+              <i
+                className="evc-map__swatch evc-map__swatch--schengen"
+                aria-hidden="true"
+              />
               Schengen
             </span>
             <span>
-              <i className="evc-map__swatch evc-map__swatch--supported" aria-hidden="true" />
-              Also supported
+              <i
+                className="evc-map__swatch evc-map__swatch--supported"
+                aria-hidden="true"
+              />
+              Supported
             </span>
             <span>
-              <i className="evc-map__swatch evc-map__swatch--unsupported" aria-hidden="true" />
+              <i
+                className="evc-map__swatch evc-map__swatch--unsupported"
+                aria-hidden="true"
+              />
               Not yet supported
             </span>
           </div>
-          <span className="evc-map__total">{supportedCount} countries covered</span>
+          <span className="evc-map__total">
+            {supportedCount} countries covered
+          </span>
         </div>
 
         <div className="evc-map__canvas">
@@ -336,21 +393,44 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
           >
             <title id={`${id}-title`}>Europe app coverage map</title>
             <desc>
-              Schengen is a single selectable region. Supported non-Schengen countries use their own compliance
-              rules. Grey, hatched regions are not yet supported. Hover or focus a region to see its name and
+              Schengen is a single selectable region. Supported non-Schengen
+              countries use their own compliance rules. Grey, hatched regions
+              are not yet supported. Hover or focus a region to see its name and
               stay rule; click or press Enter to keep it selected.
             </desc>
             <defs>
-              <pattern id={`${id}-hatch`} width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+              <pattern
+                id={`${id}-hatch`}
+                width="8"
+                height="8"
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(35)"
+              >
                 <rect width="8" height="8" fill="#e1e6e9" />
-                <line x1="0" y1="0" x2="0" y2="8" stroke="#cbd3d9" strokeWidth="1.2" />
+                <line
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="8"
+                  stroke="#cbd3d9"
+                  strokeWidth="1.2"
+                />
               </pattern>
             </defs>
             <g transform={`translate(${view.x} ${view.y}) scale(${view.zoom})`}>
-              <path d={europeMap.contextPath} className="evc-map__context" fillRule="evenodd" aria-hidden="true" />
-              {regions.filter((item) => item.status !== "unsupported").map(this.renderRegion)}
+              <path
+                d={europeMap.contextPath}
+                className="evc-map__context"
+                fillRule="evenodd"
+                aria-hidden="true"
+              />
+              {regions
+                .filter((item) => item.status !== "unsupported")
+                .map(this.renderRegion)}
               <g style={{ fill: `url(#${id}-hatch)` }}>
-                {regions.filter((item) => item.status === "unsupported").map(this.renderRegion)}
+                {regions
+                  .filter((item) => item.status === "unsupported")
+                  .map(this.renderRegion)}
               </g>
               <g className="evc-map__labels" aria-hidden="true">
                 {europeMap.labels.map((label) => (
@@ -369,13 +449,29 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
             </g>
           </svg>
 
-          <div id={`${id}-detail`} className="evc-map__info" aria-live="polite" aria-atomic="true">
+          <div
+            id={`${id}-detail`}
+            className="evc-map__info"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             <p className="evc-map__info-name">{region.name}</p>
-            <p className="evc-map__info-rule">{stayRule ? ruleLabel(stayRule) : "Not yet supported"}</p>
+            <p className="evc-map__info-rule">
+              {stayRule ? ruleLabel(stayRule) : "Not yet supported"}
+            </p>
           </div>
 
-          <div className="evc-map__zoom" role="group" aria-label="Map zoom controls">
-            <button type="button" onClick={() => this.zoom(1.5)} disabled={!ready || view.zoom >= 4} aria-label="Zoom in">
+          <div
+            className="evc-map__zoom"
+            role="group"
+            aria-label="Map zoom controls"
+          >
+            <button
+              type="button"
+              onClick={() => this.zoom(1.5)}
+              disabled={!ready || view.zoom >= 4}
+              aria-label="Zoom in"
+            >
               +
             </button>
             <span aria-live="polite" aria-atomic="true">
@@ -400,8 +496,9 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
             </button>
           </div>
           <p className="evc-map__canvas-hint" id={`${id}-instructions`}>
-            {ready ? "Hover to explore. Click or tap to select." : "Interactive controls load when the map is visible."}
-            <span> Zoom, then drag to pan. With the map focused, use + / - to zoom, arrow keys to pan, and Home to reset.</span>
+            {ready
+              ? "Hover to explore. Click or tap to select."
+              : "Interactive controls load when the map is visible."}
           </p>
         </div>
       </div>
