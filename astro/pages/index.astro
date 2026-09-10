@@ -302,20 +302,180 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         </p>
       </div>
 
-      <!-- Right: interactive demo (same widget/scenario as the blog's "90 days out, 90 days back" example) -->
-      <div class="schengen-explorer" data-scenario="0">
-        <h3 class="sr-only">Interactive Schengen rolling window explorer — two 90-day trips</h3>
-        <div class="scenario-label"></div>
-        <div class="timeline-outer"><canvas height="200"></canvas></div>
-        <div class="controls">
-          <div class="ctrl-row">
-            <span class="ctrl-label">Window end date</span>
-            <input type="range" min="0" max="100" value="50" step="1" />
-            <span class="window-date-label"></span>
+      <!-- Right: interactive demo — draggable rolling-window explainer, same
+           two-trip scenario (Trip 1: Mar 1–May 29 2025, Trip 2: Sep 7–Dec 5
+           2025) as before, now with a draggable timeline, snap buttons, and
+           a full trips table. Progressively enhanced: the full server-
+           rendered timeline and trip table stay readable without JS. -->
+      <rolling-window-explainer
+        class="schengen-explorer"
+        data-config='{"trips":[{"label":"Trip 1","start":"2025-03-01","end":"2025-05-29","startDay":20148,"endDay":20237},{"label":"Trip 2","start":"2025-09-07","end":"2025-12-05","startDay":20338,"endDay":20427}],"timelineStart":19953,"timelineEnd":20622,"min":20132,"max":20621,"initial":20338}'
+      >
+        <div class="explainer-heading">
+          <span class="explainer-eyebrow">Try the rolling window</span>
+          <h3>Two trips. One day count.</h3>
+          <p>Each trip lasts 90 days. Only the days inside the shaded window count.</p>
+        </div>
+        <figure class="explainer-timeline">
+          <figcaption>
+            <span>Travel timeline</span>
+            <span class="explainer-timeline-key"><i aria-hidden="true"></i>Counted days</span>
+          </figcaption>
+          <div
+            class="explainer-plot"
+            data-plot="true"
+            role="img"
+            aria-label="Travel timeline. The 180-day window is 12 Mar 2025 to 7 Sept 2025. Trip 1: 79 of 90 days counted. Trip 2: 1 of 90 days counted."
+          >
+            <div class="explainer-window" data-window="true" style="left:30.79222720478326%;width:26.905829596412556%">
+              <span>180-day window</span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="false" data-month-day="19967" style="left:2.092675635276532%" title="1 Sept 2024" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Sept</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="true" data-month-day="19997" style="left:6.576980568011958%" title="1 Oct 2024" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Oct</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="false" data-month-day="20028" style="left:11.210762331838565%" title="1 Nov 2024" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Nov</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="false" data-month-day="20058" style="left:15.695067264573991%" title="1 Dec 2024" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Dec</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="true" data-month-day="20089" style="left:20.328849028400597%" title="1 Jan 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Jan</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="false" data-month-day="20120" style="left:24.962630792227205%" title="1 Feb 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Feb</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="false" data-month-day="20148" style="left:29.14798206278027%" title="1 Mar 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Mar</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="true" data-month-day="20179" style="left:33.78176382660688%" title="1 Apr 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Apr</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="false" data-month-day="20209" style="left:38.2660687593423%" title="1 May 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>May</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="false" data-month-day="20240" style="left:42.89985052316891%" title="1 Jun 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Jun</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="true" data-month-day="20270" style="left:47.384155455904335%" title="1 Jul 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Jul</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="false" data-month-day="20301" style="left:52.01793721973094%" title="1 Aug 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Aug</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="false" data-month-day="20332" style="left:56.65171898355755%" title="1 Sept 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Sept</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="true" data-month-day="20362" style="left:61.13602391629298%" title="1 Oct 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Oct</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="false" data-month-day="20393" style="left:65.76980568011957%" title="1 Nov 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Nov</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="false" data-month-day="20423" style="left:70.254110612855%" title="1 Dec 2025" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Dec</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="true" data-month-day="20454" style="left:74.88789237668162%" title="1 Jan 2026" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Jan</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="false" data-month-day="20485" style="left:79.52167414050822%" title="1 Feb 2026" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Feb</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="false" data-month-day="20513" style="left:83.70702541106128%" title="1 Mar 2026" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Mar</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="true" data-month-day="20544" style="left:88.34080717488789%" title="1 Apr 2026" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Apr</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="true" data-quarterly="false" data-month-day="20574" style="left:92.82511210762331%" title="1 May 2026" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>May</span></span>
+            </div>
+            <div class="explainer-tick" data-alternate="false" data-quarterly="false" data-month-day="20605" style="left:97.45889387144993%" title="1 Jun 2026" aria-hidden="true">
+              <span class="explainer-tick-label"><span>1</span> <span>Jun</span></span>
+            </div>
+            <div class="explainer-track" aria-hidden="true">
+              <div class="explainer-trip-bar" style="left:29.14798206278027%;width:13.452914798206278%">
+                <span class="explainer-trip-counted" data-bar="0" style="left:12.222222222222221%;width:87.77777777777777%"></span>
+                <span class="explainer-trip-bar-label"><span class="explainer-bar-name">Trip 1</span><span>90d</span></span>
+              </div>
+              <div class="explainer-trip-bar" style="left:57.54857997010463%;width:13.452914798206278%">
+                <span class="explainer-trip-counted" data-bar="1" style="left:0%;width:1.1111111111111112%"></span>
+                <span class="explainer-trip-bar-label"><span class="explainer-bar-name">Trip 2</span><span>90d</span></span>
+              </div>
+            </div>
+            <div class="explainer-cursor" data-cursor="true" style="left:57.69805680119581%" aria-hidden="true"><span></span></div>
+            <div class="explainer-years" aria-hidden="true">
+              <span style="left:0%;width:20.328849028400597%">2024</span>
+              <span style="left:20.328849028400597%;width:54.559043348281016%">2025</span>
+              <span style="left:74.88789237668162%;width:25.112107623318387%">2026</span>
+            </div>
+          </div>
+          <div class="explainer-window-dates">
+            <span>Window</span>
+            <strong>
+              <span data-window-start="true">12 Mar 2025</span> <span class="explainer-date-arrow" aria-hidden="true">→</span><span class="explainer-sr-only"> to </span>
+              <span data-window-end="true">7 Sept 2025</span>
+            </strong>
+          </div>
+        </figure>
+        <div class="explainer-controls" data-controls="true" hidden>
+          <label class="explainer-slider-label">
+            <span class="explainer-slider-heading">
+              <span>Move the date</span>
+              <output data-selected-date="true">7 Sept 2025</output>
+            </span>
+            <input type="range" min="20132" max="20621" step="1" value="20338" aria-label="Window end date" aria-valuetext="7 Sept 2025" />
+          </label>
+          <div class="explainer-snaps" role="group" aria-label="Jump to a key moment">
+            <button type="button" data-snap="2025-05-29" title="Trip 1 ends: 29 May 2025" aria-pressed="false">Trip 1 ends</button>
+            <button type="button" data-snap="2025-09-07" title="Trip 2 starts: 7 Sept 2025" aria-pressed="true">Trip 2 starts</button>
+            <button type="button" data-snap="2025-11-25" title="Trip 1 clears: 25 Nov 2025" aria-pressed="false">Trip 1 clears</button>
           </div>
         </div>
-        <div class="stats-wrap"><div class="stats-container"></div></div>
-      </div>
+        <noscript><p class="explainer-nojs">Showing 7 Sept 2025. Enable JavaScript to move the window.</p></noscript>
+        <dl class="explainer-stats">
+          <div>
+            <dt>Days in window</dt>
+            <dd><strong data-used="true">80</strong><span> / 90</span></dd>
+          </div>
+          <div>
+            <dt>Remaining allowance</dt>
+            <dd><strong data-remaining="true">10</strong><span> days</span></dd>
+          </div>
+        </dl>
+        <table class="explainer-trips">
+          <caption class="explainer-sr-only">Trip durations and the days counted in the selected window</caption>
+          <thead>
+            <tr>
+              <th scope="col">Your trips</th>
+              <th scope="col">Full trip</th>
+              <th scope="col">In window</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <span class="explainer-trip-name">Trip 1</span>
+                <span class="explainer-trip-dates">1 Mar – 29 May 2025</span>
+              </th>
+              <td>90<span> days</span></td>
+              <td><strong data-trip-count="0">79</strong> <span data-trip-unit="0">days</span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="explainer-trip-name">Trip 2</span>
+                <span class="explainer-trip-dates">7 Sept – 5 Dec 2025</span>
+              </th>
+              <td>90<span> days</span></td>
+              <td><strong data-trip-count="1">1</strong> <span data-trip-unit="1">day</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="explainer-sr-only" data-announcement="true" role="status" aria-live="polite" aria-atomic="true"></p>
+      </rolling-window-explainer>
     </div>
   </section>
 
@@ -433,386 +593,262 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 </BaseLayout>
 
 <!--
-  Interactive rolling-window demo for the 90/180 Rule section — the same
-  widget used in the blog post "The Schengen 90/180 Rolling Window",
-  scoped down to just the "90 days out, 90 days back" two-trip scenario
-  since this page only needs the one instance.
+  Interactive rolling-window demo for the 90/180 Rule section: a draggable
+  timeline (pointer + range input + snap buttons) built as a
+  <rolling-window-explainer> custom element, progressively enhanced — the
+  server-rendered timeline and trips table are fully readable without JS.
 -->
-<script>
-  (function () {
-    function d(y: number, m: number, day: number) { return new Date(y, m - 1, day); }
-    function addDays(dt: Date, n: number) { const r = new Date(dt); r.setDate(r.getDate() + n); return r; }
-    function diffDays(a: Date, b: Date) { return Math.round((b.getTime() - a.getTime()) / 86400000); }
-    function fmtDate(dt: Date) { return dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
-    function fmtShort(dt: Date) {
-      const M = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-      return M[dt.getMonth()] + " " + String(dt.getDate()).padStart(2, "0");
-    }
-
-    const PAD = 195;
-
-    interface Trip { start: Date; end: Date; label: string; color: string; person: string; showLabel?: boolean; }
-
-    interface Scenario {
-      id: string; label: string;
-      desc: string; trips: Trip[]; windowDefault: Date;
-    }
-
-    const SCENARIOS: Scenario[] = [
-      {
-        id: "s3", label: "90 days out, 90 days back",
-        desc: "Two 90-day trips to the Schengen Area: Mar 1–May 29, then Sep 7–Dec 5. <em>Drag the slider to move the 180-day window's end date. Days from either trip that fall inside the shaded band count toward the 90-day limit shown below.</em>",
-        trips: [
-          { start: d(2025, 3, 1), end: d(2025, 5, 29),  label: "Trip 1", color: "#378add", person: "p" },
-          { start: d(2025, 9, 7), end: d(2025, 12, 5),  label: "Trip 2", color: "#1d9e75", person: "p" },
-        ],
-        windowDefault: d(2025, 9, 7),
-      },
-    ];
-
-    function initExplorer(container: HTMLElement) {
-      const scenarioIdx = parseInt(container.dataset.scenario ?? "0") || 0;
-      const isDark = matchMedia("(prefers-color-scheme: dark)").matches;
-
-      const descEl      = container.querySelector<HTMLElement>(".scenario-label")!;
-      const canvas      = container.querySelector<HTMLCanvasElement>("canvas")!;
-      const slider      = container.querySelector<HTMLInputElement>("input[type=range]")!;
-      const dateLabelEl = container.querySelector<HTMLElement>(".window-date-label")!;
-      const statsEl     = container.querySelector<HTMLElement>(".stats-container")!;
-      const ctx         = canvas.getContext("2d")!;
-
-      const currentScenario: Scenario = SCENARIOS[scenarioIdx];
-      let TL_START: Date, TL_END: Date, TL_TOTAL: number;
-
-      function computeRange(trips: Trip[]) {
-        const mn = trips.reduce((a, t) => (t.start < a ? t.start : a), trips[0].start);
-        const mx = trips.reduce((a, t) => (t.end > a ? t.end : a), trips[0].end);
-        return { start: addDays(mn, -PAD), end: addDays(mx, PAD) };
-      }
-
-      function countAll(trips: Trip[], windowEnd: Date) {
-        const windowStart = addDays(windowEnd, -179);
-        let count = 0;
-        trips.forEach((t) => {
-          const os = t.start > windowStart ? t.start : windowStart;
-          const oe = t.end < windowEnd ? t.end : windowEnd;
-          if (oe >= os) count += diffDays(os, oe) + 1;
-        });
-        return count;
-      }
-
-      function renderStats(trips: Trip[], windowEnd: Date) {
-        const days = countAll(trips, windowEnd);
-        const remaining = Math.max(0, 90 - days);
-        statsEl.innerHTML = `
-          <div class="stats-single">
-            <div class="stat-card">
-              <div class="stat-label">Days in window</div>
-              <div class="stat-val ${days > 90 ? "danger" : days > 70 ? "warn" : "ok"}">${days}</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Remaining allowance</div>
-              <div class="stat-val ${remaining === 0 ? "danger" : remaining < 20 ? "warn" : "ok"}">${remaining}</div>
-            </div>
-          </div>`;
-      }
-
-      function drawTimeline(windowEnd: Date) {
-        const trips = currentScenario.trips;
-        const W = canvas.width;
-        const mL = 10, mR = 10, mTop = 28;
-        const tripH = 20, tripGap = 5;
-        const plotW = W - mL - mR;
-        const windowStart = addDays(windowEnd, -179);
-
-        const xOf = (dt: Date) => mL + (diffDays(TL_START, dt) / TL_TOTAL) * plotW;
-
-        const rowAssign = new Array(trips.length).fill(0);
-        const rowEnds: (Date | undefined)[] = [];
-        let numRows = 1;
-        trips.forEach((t, i) => {
-          let r = 0;
-          while (rowEnds[r] !== undefined && rowEnds[r]! >= t.start) r++;
-          rowAssign[i] = r;
-          rowEnds[r] = t.end;
-          if (r + 1 > numRows) numRows = r + 1;
-        });
-        const getTripRow = (_t: Trip, i: number) => rowAssign[i];
-
-        const totalTripH = numRows * tripH + (numRows - 1) * tripGap;
-        const tripAreaTop = mTop + 20;
-        const axisY = tripAreaTop + totalTripH + 16;
-        canvas.height = axisY + 22;
-
-        ctx.clearRect(0, 0, W, canvas.height);
-
-        const refOver = countAll(trips, windowEnd) > 90;
-
-        const x0w = Math.max(mL, xOf(windowStart));
-        const x1w = Math.min(W - mR, xOf(addDays(windowEnd, 1)));
-
-        // Window overlay
-        ctx.fillStyle = refOver
-          ? isDark ? "rgba(163,45,45,0.18)" : "rgba(240,149,149,0.15)"
-          : isDark ? "rgba(55,138,221,0.12)" : "rgba(55,138,221,0.08)";
-        ctx.fillRect(x0w, mTop - 4, x1w - x0w, axisY - (mTop - 4));
-        ctx.strokeStyle = refOver
-          ? isDark ? "rgba(240,149,149,0.5)" : "rgba(163,45,45,0.35)"
-          : isDark ? "rgba(55,138,221,0.4)"  : "rgba(55,138,221,0.35)";
-        ctx.lineWidth = 1;
-        ctx.strokeRect(x0w, mTop - 4, x1w - x0w, axisY - (mTop - 4));
-
-        // "180-day window" label centered just below the overlay's bottom border
-        const winMidX = Math.min(Math.max((x0w + x1w) / 2, mL + 60), W - mR - 60);
-        ctx.fillStyle = refOver
-          ? isDark ? "rgba(240,149,149,0.6)" : "rgba(163,45,45,0.45)"
-          : isDark ? "rgba(130,180,240,0.6)" : "rgba(55,138,221,0.45)";
-        ctx.font = "500 10px var(--font-sans,sans-serif)";
-        ctx.textAlign = "center";
-        ctx.fillText("180-day window", winMidX, axisY + 12);
-
-        // Axis
-        ctx.strokeStyle = isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.1)";
-        ctx.lineWidth = 0.5;
-        ctx.beginPath(); ctx.moveTo(mL, axisY); ctx.lineTo(W - mR, axisY); ctx.stroke();
-
-        // Month grid lines + labels
-        ctx.font = "11px var(--font-sans,sans-serif)";
-        ctx.textAlign = "center";
-        const cur = new Date(TL_START); cur.setDate(1);
-        while (cur <= TL_END) {
-          const x = xOf(cur);
-          if (x >= mL && x <= W - mR) {
-            ctx.strokeStyle = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)";
-            ctx.lineWidth = 0.5;
-            ctx.beginPath(); ctx.moveTo(x, mTop - 4); ctx.lineTo(x, axisY); ctx.stroke();
-            const lx = x + (plotW / TL_TOTAL) * 15;
-            if (lx < W - mR - 5) {
-              ctx.fillStyle = isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
-              ctx.fillText(cur.toLocaleDateString("en-GB", { month: "short" }), lx, axisY + 12);
-            }
-          }
-          cur.setMonth(cur.getMonth() + 1);
+<script type="module">
+  class RollingWindowExplainer extends HTMLElement {
+    dispose;
+    connectedCallback() {
+      if (this.dispose) return;
+      const controller = new AbortController();
+      const { signal } = controller;
+      let announcementTimer;
+      try {
+        const config = JSON.parse(this.dataset.config ?? 'null');
+        if (!config || !config.trips?.length || config.min > config.max) {
+          throw new Error('Invalid timeline configuration.');
         }
+        const query = (selector) => {
+          const node = this.querySelector(selector);
+          if (!node) throw new Error(`Missing timeline element: ${selector}`);
+          return node;
+        };
+        const slider = query('input[type="range"]');
+        const plot = query('[data-plot]');
+        const windowBand = query('[data-window]');
+        const cursor = query('[data-cursor]');
+        const live = query('[data-announcement]');
+        const buttons = Array.from(this.querySelectorAll('[data-snap]'));
+        const span = config.timelineEnd - config.timelineStart;
+        const dayMs = 86_400_000;
+        const dateOf = (iso) => Date.parse(`${iso}T00:00:00Z`) / dayMs;
+        const format = (day) =>
+          new Date(day * dayMs).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+            timeZone: 'UTC',
+          });
+        const percent = (day) => (100 * (day - config.timelineStart)) / span;
+        let pointer = null;
 
-        // Trip bars
-        trips.forEach((t, i) => {
-          const row = getTripRow(t, i);
-          const ty = tripAreaTop + row * (tripH + tripGap);
-          const x0 = xOf(t.start);
-          const x1 = xOf(addDays(t.end, 1));
-          const tw = Math.max(x1 - x0, 2);
+        const update = (rawValue, announce = true) => {
+          if (!Number.isFinite(rawValue)) return;
+          const selected = Math.max(config.min, Math.min(config.max, Math.round(rawValue)));
+          const start = selected - 179;
+          const counts = config.trips.map((trip, index) => {
+            const overlapStart = Math.max(start, trip.startDay);
+            const counted = Math.max(0, Math.min(selected, trip.endDay) - overlapStart + 1);
+            const duration = trip.endDay - trip.startDay + 1;
+            const bar = query(`[data-bar="${index}"]`);
+            bar.style.left = `${counted ? (100 * (overlapStart - trip.startDay)) / duration : 0}%`;
+            bar.style.width = `${(100 * counted) / duration}%`;
+            query(`[data-trip-count="${index}"]`).textContent = String(counted);
+            query(`[data-trip-unit="${index}"]`).textContent = counted === 1 ? 'day' : 'days';
+            return counted;
+          });
+          const used = counts.reduce((sum, count) => sum + count, 0);
+          const remaining = Math.max(0, 90 - used);
 
-          ctx.fillStyle = t.color;
-          ctx.beginPath(); (ctx as any).roundRect(x0, ty, tw, tripH, 4); ctx.fill();
+          slider.value = String(selected);
+          slider.setAttribute('aria-valuetext', format(selected));
+          query('[data-selected-date]').textContent = format(selected);
+          query('[data-window-start]').textContent = format(start);
+          query('[data-window-end]').textContent = format(selected);
+          query('[data-used]').textContent = String(used);
+          query('[data-remaining]').textContent = String(remaining);
+          this.dataset.status = used > 90 ? 'over' : used === 90 ? 'limit' : 'within';
+          windowBand.style.left = `${percent(start)}%`;
+          cursor.style.left = `${percent(selected + 1)}%`;
+          buttons.forEach((button) =>
+            button.setAttribute('aria-pressed', String(dateOf(button.dataset.snap) === selected)),
+          );
 
-          const os = t.start > windowStart ? t.start : windowStart;
-          const oe = t.end < windowEnd ? t.end : windowEnd;
-          if (oe >= os) {
-            const xa = xOf(os), xb = xOf(addDays(oe, 1));
-            ctx.fillStyle = "rgba(255,255,255,0.22)";
-            ctx.beginPath(); (ctx as any).roundRect(xa, ty, xb - xa, tripH, 4); ctx.fill();
+          const tripDescription = config.trips
+            .map((trip, i) => `${trip.label}: ${counts[i]} of ${trip.endDay - trip.startDay + 1} days counted.`)
+            .join(' ');
+          plot.setAttribute(
+            'aria-label',
+            `Travel timeline. The 180-day window is ${format(start)} to ${format(selected)}. ${tripDescription}`,
+          );
+          if (announce) {
+            clearTimeout(announcementTimer);
+            announcementTimer = setTimeout(() => {
+              live.textContent = `${format(selected)}. ${tripDescription} ${used} of 90 days used; ${remaining} days remaining in this window.`;
+            }, 180);
           }
+        };
 
-          if (tw > 44 && t.showLabel !== false) {
-            ctx.fillStyle = "rgba(255,255,255,0.92)";
-            ctx.font = "500 11px var(--font-sans,sans-serif)";
-            ctx.textAlign = "center";
-            ctx.fillText(t.label, x0 + tw / 2, ty + tripH / 2 + 4);
-          }
-        });
+        slider.addEventListener('input', () => update(Number(slider.value)), { signal });
+        buttons.forEach((button) =>
+          button.addEventListener('click', () => update(dateOf(button.dataset.snap)), { signal }),
+        );
 
-        // Window end dashed line
-        const xEnd = xOf(addDays(windowEnd, 1));
-        ctx.strokeStyle = isDark ? "rgba(212,83,126,0.85)" : "#d4537e";
-        ctx.lineWidth = 1.5;
-        ctx.setLineDash([4, 3]);
-        ctx.beginPath(); ctx.moveTo(xEnd, mTop - 4); ctx.lineTo(xEnd, axisY); ctx.stroke();
-        ctx.setLineDash([]);
+        // Pointer scrubbing is optional; the native range input supplies keyboard access.
+        const selectAt = (clientX) => {
+          const box = plot.getBoundingClientRect();
+          if (box.width > 0) update(config.timelineStart + ((clientX - box.left) / box.width) * span - 1);
+        };
+        plot.addEventListener(
+          'pointerdown',
+          (event) => {
+            if (!event.isPrimary || event.button !== 0) return;
+            pointer = event.pointerId;
+            plot.setPointerCapture(pointer);
+            selectAt(event.clientX);
+          },
+          { signal },
+        );
+        plot.addEventListener(
+          'pointermove',
+          (event) => {
+            if (event.pointerId === pointer) selectAt(event.clientX);
+          },
+          { signal },
+        );
+        const release = () => {
+          pointer = null;
+        };
+        plot.addEventListener('pointerup', release, { signal });
+        plot.addEventListener('pointercancel', release, { signal });
+        plot.addEventListener('lostpointercapture', release, { signal });
 
-        // Window end date above the dashed line
-        ctx.fillStyle = "#d4537e";
-        ctx.font = "500 10px var(--font-sans,sans-serif)";
-        ctx.textAlign = "center";
-        const endLx = Math.min(Math.max(xEnd, mL + 30), W - mR - 30);
-        ctx.fillText(fmtShort(windowEnd), endLx, mTop - 8);
-
-        // Window start date above the left edge of the window (only when visible)
-        const xWinStart = xOf(windowStart);
-        if (xWinStart > mL) {
-          ctx.fillStyle = isDark ? "rgba(100,160,230,0.8)" : "rgba(55,138,221,0.7)";
-          ctx.font = "500 10px var(--font-sans,sans-serif)";
-          ctx.textAlign = "left";
-          ctx.fillText(fmtShort(windowStart), xWinStart + 2, mTop - 8);
-        }
+        this.dispose = () => {
+          controller.abort();
+          clearTimeout(announcementTimer);
+        };
+        update(Number(slider.value), false);
+        query('[data-controls]').hidden = false;
+        this.dataset.ready = 'true';
+      } catch (error) {
+        controller.abort();
+        clearTimeout(announcementTimer);
+        console.error('The rolling-window example could not be initialized.', error);
+        // The complete server-rendered timeline and trip table remain readable.
       }
-
-      function init() {
-        descEl.innerHTML = currentScenario.desc;
-
-        const range = computeRange(currentScenario.trips);
-        TL_START = range.start; TL_END = range.end; TL_TOTAL = diffDays(TL_START, TL_END);
-        slider.min = "179"; slider.max = String(TL_TOTAL - 1);
-        const def = diffDays(TL_START, currentScenario.windowDefault);
-        slider.value = String(Math.min(Math.max(def, 179), TL_TOTAL - 1));
-
-        canvas.width = Math.max(520, container.clientWidth - 42);
-        const windowEnd = addDays(TL_START, parseInt(slider.value));
-        drawTimeline(windowEnd);
-        renderStats(currentScenario.trips, windowEnd);
-
-        dateLabelEl.textContent = fmtDate(windowEnd);
-      }
-
-      slider.addEventListener("input", () => {
-        const windowEnd = addDays(TL_START, parseInt(slider.value));
-        drawTimeline(windowEnd);
-        renderStats(currentScenario.trips, windowEnd);
-        dateLabelEl.textContent = fmtDate(windowEnd);
-      });
-
-      window.addEventListener("resize", () => {
-        canvas.width = Math.max(520, container.clientWidth - 42);
-        const windowEnd = addDays(TL_START, parseInt(slider.value));
-        drawTimeline(windowEnd);
-      });
-
-      init();
     }
-
-    document.querySelectorAll<HTMLElement>(".schengen-explorer[data-scenario]").forEach(initExplorer);
-  })();
+    disconnectedCallback() {
+      this.dispose?.();
+      this.dispose = undefined;
+    }
+  }
+  if (!customElements.get('rolling-window-explainer')) {
+    customElements.define('rolling-window-explainer', RollingWindowExplainer);
+  }
 </script>
 
 <style is:global>
   .schengen-explorer {
-    --color-background-primary: #ffffff;
-    --color-background-secondary: #f3f4f6;
-    --color-text-primary: #0c1e3c;
-    --color-text-secondary: #5a6a82;
-    --color-text-tertiary: #8fa0b4;
-    --color-border-primary: #c8c4bc;
-    --color-border-secondary: #e0dbd3;
-    --color-border-tertiary: #ede9e3;
-    --border-radius-md: 8px;
-    --font-sans: var(--font-body);
-    background: var(--color-background-primary);
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 12px;
-    padding: 20px 20px 16px;
+    /* Mapped to the app's real design tokens (falling back to the
+       component's own defaults if a token isn't in scope). */
+    --explainer-navy: var(--color-navy, #0c1e3c);
+    --explainer-muted: var(--color-text-soft, #53677e);
+    --explainer-green: var(--color-green-text, #007e55);
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    container-type: inline-size;
+    background: #fff;
+    border: 1px solid var(--color-border, #dce4e9);
+    border-radius: 16px;
+    padding: 22px 24px 18px;
     overflow: hidden;
+    color: var(--explainer-navy);
+    color-scheme: light;
+    font-family: var(--font-body, system-ui, sans-serif);
+    line-height: 1.45;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
   }
-
-  .schengen-explorer .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
   .schengen-explorer * { box-sizing: border-box; }
-
-  .schengen-explorer .scenario-label {
-    font-size: 13px;
-    color: var(--color-text-secondary);
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-    padding: 10px 14px;
-    border-radius: var(--border-radius-md);
-    border: 0.5px solid var(--color-border-tertiary);
-    background: var(--color-background-secondary);
-    font-family: var(--font-sans);
+  .schengen-explorer .explainer-eyebrow { display: block; margin-bottom: 5px; color: var(--explainer-green); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .schengen-explorer .explainer-heading h3 { font-family: var(--font-display, Georgia, serif); font-weight: 400; font-size: 23px; line-height: 1.2; color: var(--explainer-navy); margin: 0; }
+  .schengen-explorer .explainer-heading p { margin: 7px 0 0; color: var(--explainer-muted); font-size: 12px; line-height: 1.5; max-width: 420px; }
+  .schengen-explorer .explainer-timeline { margin: 20px 0 0; }
+  .schengen-explorer .explainer-timeline figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 11px; font-weight: 650; }
+  .schengen-explorer .explainer-timeline-key { display: flex; align-items: center; gap: 5px; color: var(--explainer-muted); font-weight: 400; font-size: 10px; }
+  .schengen-explorer .explainer-timeline-key i { width: 8px; height: 8px; border-radius: 2px; background: #84d4b0; border: 1px solid #69ae90; }
+  .schengen-explorer .explainer-plot { position: relative; height: 145px; margin: 12px 0 4px; user-select: none; }
+  .schengen-explorer[data-ready="true"] .explainer-plot { cursor: ew-resize; touch-action: none; }
+  .schengen-explorer .explainer-window { position: absolute; top: 0; height: 86px; border-left: 1px dashed #6faa91; border-right: 1px solid var(--explainer-green); background: #eff8f3; }
+  .schengen-explorer .explainer-window > span { position: absolute; top: 6px; left: 0; width: 100%; color: #35684e; font-size: 10px; font-weight: 600; text-align: center; white-space: nowrap; }
+  .schengen-explorer .explainer-tick { position: absolute; top: 29px; height: 57px; width: 1px; border-left: 1px dashed #d7e1e5; }
+  .schengen-explorer .explainer-tick-label { position: absolute; top: 63px; left: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; font-size: 9px; line-height: 1.25; white-space: nowrap; color: var(--explainer-muted); }
+  .schengen-explorer .explainer-years { position: absolute; top: 124px; left: 0; width: 100%; height: 18px; color: var(--explainer-muted); font-size: 9px; text-align: center; }
+  .schengen-explorer .explainer-years > span { position: absolute; top: 0; border-top: 1px solid #e3e9ed; padding-top: 3px; }
+  .schengen-explorer .explainer-years > span + span { border-left: 1px solid #e3e9ed; }
+  .schengen-explorer .explainer-track { position: absolute; top: 34px; height: 39px; width: 100%; background: linear-gradient(transparent 19px, #dce5e8 19px, #dce5e8 20px, transparent 20px); }
+  .schengen-explorer .explainer-trip-bar { position: absolute; height: 39px; border-radius: 5px; overflow: hidden; border: 1px solid #aebfc9; background: #e5ebef; }
+  .schengen-explorer .explainer-trip-counted { position: absolute; top: 0; bottom: 0; background: #84d4b0; }
+  .schengen-explorer .explainer-trip-bar-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; font-variant-numeric: tabular-nums; color: #13362f; font-size: 11px; font-weight: 700; line-height: 1.25; }
+  .schengen-explorer .explainer-bar-name { font-size: 10px; font-weight: 500; }
+  .schengen-explorer .explainer-cursor { position: absolute; top: 0; height: 86px; width: 1px; background: var(--explainer-green); }
+  .schengen-explorer .explainer-cursor > span { position: absolute; top: 80px; left: -4px; width: 9px; height: 9px; background: var(--explainer-green); border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px var(--explainer-green); }
+  .schengen-explorer .explainer-window-dates { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 3px 8px; padding: 8px 10px; border-radius: 7px; background: var(--color-mist, #f6f8fa); font-size: 11px; color: var(--explainer-muted); }
+  .schengen-explorer .explainer-window-dates strong { color: var(--explainer-navy); font-size: 11px; font-weight: 600; }
+  .schengen-explorer .explainer-date-arrow { padding: 0 5px; color: #6e8195; }
+  .schengen-explorer .explainer-controls { margin-top: 16px; }
+  .schengen-explorer .explainer-controls[hidden] { display: none !important; }
+  .schengen-explorer .explainer-slider-label { display: block; }
+  .schengen-explorer .explainer-slider-heading { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 600; }
+  .schengen-explorer .explainer-slider-heading output { color: var(--explainer-green); font-variant-numeric: tabular-nums; }
+  .schengen-explorer input[type="range"] { display: block; width: 100%; min-width: 0; margin: 1px 0 4px; height: 32px; accent-color: var(--explainer-green); cursor: ew-resize; }
+  .schengen-explorer .explainer-snaps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .schengen-explorer .explainer-snaps button { appearance: none; min-height: 38px; min-width: 0; border: 1px solid #cbdfd3; border-radius: 7px; padding: 7px 9px; color: #286348; background: #f5faf7; font: 600 11px/1.3 var(--font-body, system-ui, sans-serif); cursor: pointer; }
+  .schengen-explorer .explainer-snaps button:hover { border-color: var(--explainer-green); background: #eaf6ef; }
+  .schengen-explorer .explainer-snaps button[aria-pressed="true"] { color: #fff; background: var(--explainer-green); border-color: var(--explainer-green); }
+  .schengen-explorer button:focus-visible, .schengen-explorer input:focus-visible { outline: 3px solid var(--explainer-navy); outline-offset: 3px; }
+  .schengen-explorer .explainer-trips { width: 100%; border-collapse: collapse; margin: 19px 0 0; color: var(--explainer-navy); table-layout: fixed; font-variant-numeric: tabular-nums; }
+  .schengen-explorer .explainer-trips th, .schengen-explorer .explainer-trips td { border: 0; padding: 10px 0; text-align: right; font-size: 12px; background: transparent; }
+  .schengen-explorer .explainer-trips th:first-child { text-align: left; width: 52%; }
+  .schengen-explorer .explainer-trips thead th { padding: 0 0 7px; font-size: 10px; color: var(--explainer-muted); font-weight: 500; border-bottom: 1px solid #e3e9ed; }
+  .schengen-explorer .explainer-trips thead th:first-child { font-size: 12px; font-weight: 650; color: var(--explainer-navy); }
+  .schengen-explorer .explainer-trips tbody tr + tr > * { border-top: 1px solid #edf1f4; }
+  .schengen-explorer .explainer-trip-name { display: block; font-weight: 650; font-size: 12px; }
+  .schengen-explorer .explainer-trip-dates { display: block; margin-top: 2px; color: var(--explainer-muted); font-weight: 400; font-size: 11px; }
+  .schengen-explorer .explainer-trips td > span { font-size: 10px; color: var(--explainer-muted); }
+  .schengen-explorer .explainer-trips td strong { color: var(--explainer-green); font-weight: 700; font-size: 14px; }
+  .schengen-explorer .explainer-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 18px 0 0; }
+  .schengen-explorer .explainer-stats > div { min-width: 0; padding: 11px 13px; border: 1px solid #dce9e1; background: #f4f9f6; border-radius: 9px; }
+  .schengen-explorer .explainer-stats dt { color: var(--explainer-muted); font-size: 11px; }
+  .schengen-explorer .explainer-stats dd { margin: 3px 0 0; line-height: 1.05; }
+  .schengen-explorer .explainer-stats strong { font-family: var(--font-display, Georgia, serif); font-size: 31px; font-weight: 400; color: var(--explainer-navy); }
+  .schengen-explorer .explainer-stats dd span { font-size: 11px; color: var(--explainer-muted); }
+  .schengen-explorer .explainer-stats [data-remaining] { color: var(--explainer-green); }
+  .schengen-explorer[data-status="limit"] .explainer-stats [data-remaining] { color: var(--color-amber-text, #996414); }
+  .schengen-explorer[data-status="over"] .explainer-stats strong { color: var(--color-red-text, #a83232); }
+  .schengen-explorer[data-status="over"] .explainer-window { background: var(--color-red-bg, #fff3f3); }
+  .schengen-explorer .explainer-nojs { color: var(--explainer-muted); font-size: 11px; }
+  .schengen-explorer .explainer-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  /* Thin out labels, not grid lines, on narrow cards. */
+  @container (max-width: 519px) {
+    .schengen-explorer .explainer-tick[data-alternate="false"] > .explainer-tick-label { display: none; }
   }
-
-  .schengen-explorer .scenario-label strong {
-    color: var(--color-text-primary);
-    font-weight: 500;
+  @container (max-width: 319px) {
+    .schengen-explorer .explainer-tick[data-quarterly="false"] > .explainer-tick-label { display: none; }
+    .schengen-explorer .explainer-tick[data-quarterly="true"] > .explainer-tick-label { display: flex; }
   }
-
-  .schengen-explorer .scenario-label em {
-    color: var(--color-text-tertiary);
-    font-style: italic;
-    font-size: 12px;
+  @container (max-width: 430px) {
+    .schengen-explorer .explainer-heading h3 { font-size: 21px; }
+    .schengen-explorer .explainer-window > span { font-size: 9px; }
+    .schengen-explorer .explainer-trip-dates { font-size: 10px; }
+    .schengen-explorer .explainer-snaps button { padding: 7px 4px; font-size: 10px; }
+    .schengen-explorer .explainer-trips th:first-child { width: 50%; }
+    .schengen-explorer .explainer-date-arrow { padding: 0 2px; }
+    .schengen-explorer .explainer-stats > div { padding: 10px; }
   }
-
-  .schengen-explorer .timeline-outer {
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
+  @media (max-width: 639px) {
+    .schengen-explorer { padding: 19px 16px 16px; }
   }
-
-  .schengen-explorer canvas { display: block; }
-
-  .schengen-explorer .controls {
-    margin-top: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .schengen-explorer .ctrl-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .schengen-explorer .ctrl-label {
-    font-size: 13px;
-    color: var(--color-text-secondary);
-    min-width: 110px;
-    font-family: var(--font-sans);
-  }
-
-  .schengen-explorer input[type="range"] { flex: 1; }
-
-  .schengen-explorer .window-date-label {
-    font-size: 13px;
-    font-weight: 500;
-    min-width: 90px;
-    color: var(--color-text-primary);
-    font-family: var(--font-sans);
-  }
-
-  .schengen-explorer .stats-wrap { margin-top: 1.25rem; }
-
-  .schengen-explorer .stats-single {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .schengen-explorer .stat-card {
-    background: var(--color-background-secondary);
-    border-radius: var(--border-radius-md);
-    padding: 12px 14px;
-  }
-
-  .schengen-explorer .stat-label {
-    font-size: 12px;
-    color: var(--color-text-secondary);
-    margin-bottom: 4px;
-    font-family: var(--font-sans);
-  }
-
-  .schengen-explorer .stat-val {
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--color-text-primary);
-    font-family: var(--font-sans);
-  }
-
-  .schengen-explorer .stat-val.warn   { color: #ba7517; }
-  .schengen-explorer .stat-val.danger { color: #a32d2d; }
-  .schengen-explorer .stat-val.ok     { color: #3b6d11; }
-
-  .schengen-explorer .stat-sublabel {
-    font-size: 11px;
-    color: var(--color-text-tertiary);
-    margin-top: 2px;
+  @media (forced-colors: active) {
+    .schengen-explorer .explainer-trip-counted { forced-color-adjust: none; background: Highlight; }
+    .schengen-explorer .explainer-trip-bar { border: 1px solid CanvasText; }
+    .schengen-explorer .explainer-window { border: 1px dashed CanvasText; }
+    .schengen-explorer .explainer-cursor { background: CanvasText; }
+    .schengen-explorer .explainer-snaps button[aria-pressed="true"] { outline: 2px solid Highlight; }
   }
 </style>
 
