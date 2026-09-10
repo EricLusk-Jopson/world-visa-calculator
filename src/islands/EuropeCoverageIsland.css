@@ -1,5 +1,12 @@
 /* Namespaced: Astro's scoped page CSS does not reach into a React island. */
 .evc-map {
+  /* `container-type: inline-size` applies size containment, so the box can
+     no longer size itself from its children — it needs an explicit width
+     from its own layout context. Without this, a centered flex/grid parent
+     (like the hero's right column) collapses it to near-zero width. */
+  width: 100%;
+  container-type: inline-size;
+  container-name: evc-map;
   --evc-navy: var(--color-navy, #0c1e3c);
   --evc-soft: var(--color-text-soft, #596779);
   --evc-border: var(--color-border, #dce3e8);
@@ -109,13 +116,17 @@
 .evc-map__country-rules dd { margin: 0; color: var(--evc-soft); font-size: 0.73rem; line-height: 1.55; }
 .evc-map__country-rules dd > span { display: inline-block; color: #216346; font-size: 0.63rem; font-weight: 600; margin-left: 6px; }
 
-@media (max-width: 1000px) {
+/* Sized to the widget's own rendered width (container queries), not the
+   viewport — it's embedded in the hero's ~50%-width column, where a
+   viewport breakpoint would fire too late and squeeze the two-column
+   layout into a sliver instead of stacking it. */
+@container evc-map (max-width: 1000px) {
   .evc-map__layout { grid-template-columns: minmax(0, 1fr) 270px; }
   .evc-map__sidebar { padding: 22px; }
   .evc-map__topbar { padding: 18px 22px; }
   .evc-map__legend { gap: 10px 14px; }
 }
-@media (max-width: 800px) {
+@container evc-map (max-width: 800px) {
   .evc-map__layout { grid-template-columns: 1fr; }
   .evc-map__canvas { min-height: 0; }
   .evc-map__sidebar { border-left: 0; border-top: 1px solid var(--evc-border); }
@@ -123,8 +134,13 @@
   .evc-map__total { margin-left: auto; }
   .evc-map__canvas-hint > span { font-size: 0.68rem; }
 }
+/* A container can't query itself, so the one self-targeting tweak here
+   (the outer corner radius) stays a plain viewport media query — purely
+   cosmetic, so it's fine if it doesn't perfectly track container width. */
 @media (max-width: 480px) {
   .evc-map { border-radius: 14px; }
+}
+@container evc-map (max-width: 480px) {
   .evc-map__topbar { padding: 16px; gap: 10px; }
   .evc-map__legend { gap: 8px 12px; }
   .evc-map__legend > span { font-size: 0.62rem; gap: 5px; }
