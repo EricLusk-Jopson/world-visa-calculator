@@ -12,7 +12,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 
   <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
   <section class="hero">
-    <!-- Left column — static copy -->
+    <!-- Left column static copy -->
     <div class="hero__left">
       <!-- Eyebrow badge -->
       <div class="eyebrow">
@@ -32,7 +32,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         days, and plan without guessing.
       </p>
 
-      <!-- Mobile-only CTA — the interactive map demo is hidden on
+      <!-- Mobile-only CTA the interactive map demo is hidden on
            mobile, so this replaces it as the primary call to action. -->
       <a href="/app" class="btn-green hero__mobile-cta">
         Open the calculator →
@@ -76,7 +76,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
       </div>
     </div>
 
-    <!-- Right column — interactive coverage map -->
+    <!-- Right column interactive coverage map -->
     <div class="hero__right">
       <EuropeCoverageIsland client:visible />
     </div>
@@ -103,7 +103,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         </a>
       </div>
 
-      <!-- Right column — feature list -->
+      <!-- Right column feature list -->
       <div class="features__right">
         <div class="feature-item">
           <div class="feature-item__icon">
@@ -258,7 +258,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
       <div class="rules__text">
         <p class="section-tag">The 90/180 Rule</p>
         <h2 class="section-heading section-heading--light">
-          90/180 <em>Is Not Just Schengen.</em>
+          The 90/180 Rule <em>Is Not Just Schengen.</em>
         </h2>
         <p class="section-sub section-sub--light">
           The 90/180 is most often mentioned in reference to the Schengen
@@ -280,7 +280,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         </p>
       </div>
 
-      <!-- Right: interactive demo — draggable rolling-window explainer, same
+      <!-- Right: interactive demo draggable rolling-window explainer, same
            two-trip scenario (Trip 1: Mar 1–May 29 2025, Trip 2: Sep 7–Dec 5
            2025) as before, now with a draggable timeline, snap buttons, and
            a full trips table. Progressively enhanced: the full server-
@@ -400,7 +400,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         <dl class="explainer-stats">
           <div>
             <dt>Days in window</dt>
-            <dd><strong data-used="true">80</strong><span> / 90</span></dd>
+            <dd><strong data-used="true">80</strong></dd>
           </div>
           <div>
             <dt>Remaining allowance</dt>
@@ -450,7 +450,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
       </h2>
       <p class="section-sub">
         A single miscalculation can push you past your allowance without
-        anyone noticing until it's too late — and the consequences don't end
+        anyone noticing until it's too late and the consequences don't end
         when the trip does.
       </p>
 
@@ -556,7 +556,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 <!--
   Interactive rolling-window demo for the 90/180 Rule section: a draggable
   timeline (pointer + range input + snap buttons) built as a
-  <rolling-window-explainer> custom element, progressively enhanced — the
+  <rolling-window-explainer> custom element, progressively enhanced  the
   server-rendered timeline and trips table are fully readable without JS.
 -->
 <script type="module">
@@ -867,7 +867,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     }
   }
 
-  /* The interactive calculator demo is desktop-only — on mobile it's
+  /* The interactive calculator demo is desktop-only on mobile it's
      replaced by .hero__mobile-cta below the hero copy. */
   @media (max-width: 899px) {
     .hero__right {
@@ -894,7 +894,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     animation: fadeUp 0.5s 0.1s both ease-out;
   }
 
-  /* Eyebrow is desktop-only — it wraps awkwardly at narrow widths and the
+  /* Eyebrow is desktop-only it wraps awkwardly at narrow widths and the
      new mobile CTA button below covers the same "free / private / no
      account" messaging via the CTA band further down the page. */
   @media (max-width: 899px) {
@@ -971,7 +971,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
   }
 
   /* Centering the box (.hero__left) doesn't center the wrapped items
-     inside this flex row — that needs its own justify-content. */
+     inside this flex row that needs its own justify-content. */
   @media (max-width: 899px) {
     .proof-items {
       justify-content: center;
@@ -1213,7 +1213,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 
   /* Smaller, denser step cards on mobile: the step number is dropped
      entirely, the icon and title share a row, and the description wraps
-     to its own line below — so all four cards fit two-up with much less
+     to its own line below so all four cards fit two-up with much less
      height than the stacked desktop layout. */
   @media (max-width: 639px) {
     .steps-grid {
