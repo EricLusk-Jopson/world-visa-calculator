@@ -386,13 +386,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
               <span style="left:74.88789237668162%;width:25.112107623318387%">2026</span>
             </div>
           </div>
-          <div class="explainer-window-dates">
-            <span>Window</span>
-            <strong>
-              <span data-window-start="true">12 Mar 2025</span> <span class="explainer-date-arrow" aria-hidden="true">→</span><span class="explainer-sr-only"> to </span>
-              <span data-window-end="true">7 Sept 2025</span>
-            </strong>
-          </div>
         </figure>
         <div class="explainer-controls" data-controls="true" hidden>
           <label class="explainer-slider-label">
@@ -624,8 +617,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
           slider.value = String(selected);
           slider.setAttribute('aria-valuetext', format(selected));
           query('[data-selected-date]').textContent = format(selected);
-          query('[data-window-start]').textContent = format(start);
-          query('[data-window-end]').textContent = format(selected);
           query('[data-used]').textContent = String(used);
           query('[data-remaining]').textContent = String(remaining);
           this.dataset.status = used > 90 ? 'over' : used === 90 ? 'limit' : 'within';
@@ -755,9 +746,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
   .schengen-explorer .explainer-bar-name { font-size: 10px; font-weight: 500; }
   .schengen-explorer .explainer-cursor { position: absolute; top: 0; height: 86px; width: 1px; background: var(--explainer-green); }
   .schengen-explorer .explainer-cursor > span { position: absolute; top: 80px; left: -4px; width: 9px; height: 9px; background: var(--explainer-green); border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px var(--explainer-green); }
-  .schengen-explorer .explainer-window-dates { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 3px 8px; padding: 8px 10px; border-radius: 7px; background: var(--color-mist, #f6f8fa); font-size: 11px; color: var(--explainer-muted); }
-  .schengen-explorer .explainer-window-dates strong { color: var(--explainer-navy); font-size: 11px; font-weight: 600; }
-  .schengen-explorer .explainer-date-arrow { padding: 0 5px; color: #6e8195; }
   .schengen-explorer .explainer-controls { margin-top: 16px; }
   .schengen-explorer .explainer-controls[hidden] { display: none !important; }
   .schengen-explorer .explainer-slider-label { display: block; }
@@ -805,7 +793,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     .schengen-explorer .explainer-trip-dates { font-size: 10px; }
     .schengen-explorer .explainer-snaps button { padding: 7px 4px; font-size: 10px; }
     .schengen-explorer .explainer-trips th:first-child { width: 50%; }
-    .schengen-explorer .explainer-date-arrow { padding: 0 2px; }
     .schengen-explorer .explainer-stats > div { padding: 10px; }
   }
   @media (max-width: 639px) {
