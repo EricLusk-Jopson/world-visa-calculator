@@ -990,7 +990,7 @@ By running this calculation across every
     --color-border-secondary: #e0dbd3;
     --color-border-tertiary: #ede9e3;
     --border-radius-md: 8px;
-    --font-sans: "Plus Jakarta Sans", sans-serif;
+    --font-sans: var(--font-body);
     background: var(--color-background-primary);
     border: 1px solid var(--color-border-secondary);
     border-radius: 12px;
@@ -1138,7 +1138,7 @@ By running this calculation across every
   }
 
   .article__tag {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -1148,7 +1148,7 @@ By running this calculation across every
   }
 
   .article__title {
-    font-family: "Fraunces", serif;
+    font-family: var(--font-display);
     font-size: clamp(1.75rem, 4vw, 2.25rem);
     font-weight: 400;
     line-height: 1.2;
@@ -1158,14 +1158,14 @@ By running this calculation across every
   }
 
   .article__meta {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.82rem;
     color: #8fa0b4;
     margin: 0 0 20px;
   }
 
   .article__audience {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.9rem;
     line-height: 1.6;
     color: #3d4f65;
@@ -1194,7 +1194,7 @@ By running this calculation across every
   }
 
   .article__toc-title {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -1206,7 +1206,7 @@ By running this calculation across every
   .article__toc ol {
     margin: 0;
     padding-left: 1.2rem;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
   }
 
   .article__toc li {
@@ -1228,7 +1228,7 @@ By running this calculation across every
   }
 
   .article__body p {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.8;
     color: #3d4f65;
@@ -1236,7 +1236,7 @@ By running this calculation across every
   }
 
   .article__body h2 {
-    font-family: "Fraunces", serif;
+    font-family: var(--font-display);
     font-size: 1.35rem;
     font-weight: 400;
     color: #0c1e3c;
@@ -1246,7 +1246,7 @@ By running this calculation across every
   }
 
   .article__body h3 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.95rem;
     font-weight: 700;
     color: #0c1e3c;
@@ -1294,7 +1294,7 @@ By running this calculation across every
   }
 
   .article__back-link {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 500;
     color: #5a6a82;

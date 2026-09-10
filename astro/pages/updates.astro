@@ -7,9 +7,23 @@ import LandingNav from "../components/LandingNav.astro";
  * { tag: "feature" | "improvement" | "fix", text: string }.
  */
 const roadmapCountries = [
-  "Cyprus", "Albania", "Montenegro", "North Macedonia", "Kosovo",
-  "Bosnia and Herzegovina", "Serbia", "Ukraine", "Moldova", "Belarus",
-  "Georgia", "Armenia", "Azerbaijan", "Morocco", "Algeria", "Tunisia", "Egypt",
+  { name: "Cyprus", done: true },
+  { name: "Albania", done: true },
+  { name: "Montenegro", done: true },
+  { name: "North Macedonia", done: true },
+  { name: "Kosovo", done: true },
+  { name: "Bosnia and Herzegovina", done: true },
+  { name: "Serbia", done: true },
+  { name: "Ukraine", done: false },
+  { name: "Moldova", done: false },
+  { name: "Belarus", done: false },
+  { name: "Georgia", done: false },
+  { name: "Armenia", done: false },
+  { name: "Azerbaijan", done: false },
+  { name: "Morocco", done: false },
+  { name: "Algeria", done: false },
+  { name: "Tunisia", done: false },
+  { name: "Egypt", done: false },
 ];
 
 const qcPipelineNotes = [
@@ -19,6 +33,15 @@ const qcPipelineNotes = [
 ];
 
 const changelog = [
+  {
+    range: "August 28 – September 10, 2026",
+    changes: [
+      { tag: "feature", text: "Added Montenegro, Serbia, Bosnia and Herzegovina, Kosovo, North Macedonia, Albania, and Cyprus as trackable destinations, each with passport-aware entry rules and stay-limit tracking." },
+      { tag: "improvement", text: "Consolidated the destination-region list into a single source of truth, with every region citing its government source directly on the rule summary." },
+      { tag: "improvement", text: "Added an “All” button to the mobile trip form's Travelers card." },
+      { tag: "improvement", text: "Published a new blog post on when your Schengen allowance resets." },
+    ],
+  },
   {
     range: "August 14 – 27, 2026",
     changes: [
@@ -135,7 +158,10 @@ const tagLabel: Record<string, string> = {
           </p>
           <ul class="roadmap-card__list">
             {roadmapCountries.map((country) => (
-              <li>{country}</li>
+              <li class={country.done ? "is-done" : ""}>
+                {country.name}
+                {country.done && <span class="roadmap-card__check" aria-hidden="true">✓</span>}
+              </li>
             ))}
           </ul>
         </div>
@@ -279,6 +305,16 @@ const tagLabel: Record<string, string> = {
     }
   }
 
+  .roadmap-card__list li.is-done {
+    color: var(--color-text-ghost);
+  }
+
+  .roadmap-card__check {
+    margin-left: 4px;
+    color: var(--color-green-text);
+    font-weight: 700;
+  }
+
   .roadmap-card__notes {
     margin: 0;
     padding-left: 20px;
@@ -331,13 +367,13 @@ const tagLabel: Record<string, string> = {
     font-size: 0.88rem;
     line-height: 1.6;
     color: var(--color-text-soft);
-    display: flex;
+    display: grid;
+    grid-template-columns: 100px 1fr;
     align-items: baseline;
-    gap: 10px;
+    column-gap: 10px;
   }
 
   .tag {
-    flex-shrink: 0;
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.03em;
@@ -345,6 +381,7 @@ const tagLabel: Record<string, string> = {
     padding: 2px 8px;
     border-radius: 6px;
     line-height: 1.6;
+    text-align: center;
   }
 
   .tag--feature {

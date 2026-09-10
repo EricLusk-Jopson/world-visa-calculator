@@ -1,0 +1,136 @@
+/* Namespaced: Astro's scoped page CSS does not reach into a React island. */
+.evc-map {
+  /* Explicit width so it reliably fills its parent (e.g. the hero's
+     centered flex column) rather than relying on content-based sizing. */
+  width: 100%;
+  --evc-navy: var(--color-navy, #0c1e3c);
+  --evc-soft: var(--color-text-soft, #596779);
+  --evc-border: var(--color-border, #dce3e8);
+  --evc-green: #087c53;
+  --evc-schengen: #24a77a;
+  --evc-schengen-active: #078357;
+  --evc-supported: #b9e2d1;
+  --evc-supported-active: #79c4a4;
+  color: var(--evc-navy);
+  font-family: var(--font-body, system-ui, sans-serif);
+  border: 1px solid var(--evc-border);
+  border-radius: 20px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(12, 30, 60, 0.055);
+  text-align: left;
+}
+.evc-map *, .evc-map *::before, .evc-map *::after { box-sizing: border-box; }
+.evc-map button, .evc-map select { font: inherit; }
+.evc-map button { cursor: pointer; }
+.evc-map button:disabled { cursor: default; opacity: 0.45; }
+.evc-map a:focus-visible, .evc-map button:focus-visible, .evc-map select:focus-visible,
+.evc-map summary:focus-visible { outline: 3px solid var(--evc-navy); outline-offset: 3px; }
+.evc-map__topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--evc-border);
+}
+.evc-map__legend { display: flex; flex-wrap: wrap; gap: 12px 22px; }
+.evc-map__legend > span { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 600; }
+.evc-map__swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
+.evc-map__swatch--schengen { background: var(--evc-schengen); }
+.evc-map__swatch--supported { background: var(--evc-supported); border: 1px solid #6eb697; }
+.evc-map__swatch--unsupported { background: repeating-linear-gradient(125deg, #e1e6e9 0 3px, #cbd3d9 3px 4px); border: 1px solid #bcc7cf; }
+.evc-map__total { color: var(--evc-green); font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.evc-map__canvas { display: flex; flex-direction: column; position: relative; background: #f2f6f7; }
+.evc-map__svg { display: block; width: 100%; height: auto; margin: auto 0; overflow: hidden; touch-action: pan-y pinch-zoom; }
+.evc-map__svg:focus-visible { outline: 3px solid var(--evc-navy); outline-offset: -4px; }
+.evc-map__svg[data-zoomed] { cursor: grab; touch-action: none; }
+.evc-map__svg[data-dragging], .evc-map__svg[data-dragging] .evc-map__region { cursor: grabbing; }
+.evc-map__context { fill: #e7ecee; stroke: #f2f6f7; stroke-width: 0.5; pointer-events: none; }
+.evc-map__region { cursor: pointer; outline: none; }
+.evc-map__shape { stroke: #f2f6f7; stroke-width: 0.9; stroke-linejoin: round; transition: fill 140ms ease, stroke 140ms ease; }
+.evc-map__region--schengen { fill: var(--evc-schengen); }
+.evc-map__region--supported { fill: var(--evc-supported); }
+.evc-map__region--unsupported { /* Inherits its instance-specific hatch URL. */ }
+.evc-map__region--schengen[data-active] { fill: var(--evc-schengen-active); }
+.evc-map__region--supported[data-active] { fill: var(--evc-supported-active); }
+.evc-map__region--unsupported[data-active] { fill: #c2ccd4; }
+.evc-map__region[data-active] .evc-map__shape { stroke: #336251; stroke-width: 1.5; }
+.evc-map__region--unsupported[data-active] .evc-map__shape { stroke: #62778b; }
+.evc-map__region:focus-visible .evc-map__shape { stroke: var(--evc-navy); stroke-width: 2.8; }
+.evc-map__marker { stroke-width: 1.1; }
+.evc-map__labels { pointer-events: none; user-select: none; }
+.evc-map__label { font-family: var(--font-body, system-ui, sans-serif); font-size: 14px; font-weight: 600; fill: #435967; }
+.evc-map__label--small { font-size: 12px; }
+.evc-map__label--region { font-size: 15px; letter-spacing: 2.5px; font-weight: 700; fill: #fff; }
+.evc-map__label--sea { font-size: 13px; font-style: italic; font-weight: 400; fill: #657e8a; letter-spacing: 1px; }
+.evc-map__label[data-schengen]:not(.evc-map__label--region) { fill: #194e3d; paint-order: stroke; stroke: #f2f6f7; stroke-width: 2.8; stroke-linejoin: round; }
+
+/* Small floating info card — name + stay rule of the hovered/selected
+   region. Sits where the zoom controls used to (top right); zoom moved
+   to the opposite corner so the two never collide. */
+.evc-map__info {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  max-width: 200px;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #dce3e8;
+  border-radius: 10px;
+  box-shadow: 0 3px 14px rgba(12, 30, 60, 0.07);
+  pointer-events: none;
+}
+.evc-map__info-name {
+  margin: 0 0 2px;
+  color: var(--evc-navy);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.evc-map__info-rule {
+  margin: 0;
+  color: var(--evc-green);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Zoom controls — small and tucked in the opposite (bottom-right) corner
+   from the info card, out of the way of the map content. */
+.evc-map__zoom {
+  position: absolute; right: 14px; bottom: 14px; display: flex; align-items: center;
+  background: #fff; border: 1px solid #dce3e8; border-radius: 8px; box-shadow: 0 3px 14px rgba(12,30,60,0.07);
+}
+.evc-map__zoom button { min-width: 26px; min-height: 28px; background: transparent; color: var(--evc-navy); border: 0; border-radius: 6px; font-size: 0.85rem; }
+.evc-map__zoom button:hover:not(:disabled) { background: #eef6f2; }
+.evc-map__zoom > span { width: 28px; text-align: center; font-size: 0.58rem; font-variant-numeric: tabular-nums; color: var(--evc-soft); }
+.evc-map__zoom .evc-map__reset { border-left: 1px solid #e7ecee; font-size: 0.58rem; padding: 0 7px; border-radius: 0 6px 6px 0; }
+
+.evc-map__canvas-hint { margin: 0; padding: 14px 20px; font-size: 0.68rem; line-height: 1.6; color: #506372; background: #edf2f4; }
+.evc-map__canvas-hint > span { display: block; color: #657481; font-size: 0.64rem; }
+.evc-map[data-ready="false"] .evc-map__region { cursor: default; }
+
+@media (max-width: 480px) {
+  .evc-map { border-radius: 14px; }
+  .evc-map__topbar { padding: 16px; gap: 10px; }
+  .evc-map__legend { gap: 8px 12px; }
+  .evc-map__legend > span { font-size: 0.62rem; gap: 5px; }
+  .evc-map__total { margin-left: 0; font-size: 0.68rem; }
+  .evc-map__info { top: 10px; right: 10px; max-width: 150px; padding: 8px 10px; }
+  .evc-map__info-name { font-size: 0.82rem; }
+  .evc-map__info-rule { font-size: 0.66rem; }
+  .evc-map__zoom { right: 10px; bottom: 10px; }
+  .evc-map__canvas-hint { padding: 12px 16px; }
+  .evc-map__canvas-hint > span { font-size: 0.63rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .evc-map *, .evc-map *::before, .evc-map *::after { transition: none !important; }
+}
+@media (forced-colors: active) {
+  .evc-map__shape { forced-color-adjust: none; }
+  .evc-map__region:focus-visible .evc-map__shape { stroke: Highlight; }
+}
