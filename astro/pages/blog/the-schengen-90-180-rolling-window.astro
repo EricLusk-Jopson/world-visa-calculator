@@ -837,6 +837,7 @@ By running this calculation across every
       const descEl        = container.querySelector<HTMLElement>(".scenario-label")!;
       const titleEl       = container.querySelector<HTMLElement>(".explainer-timeline-title")!;
       const keyEl         = container.querySelector<HTMLElement>(".explainer-timeline-key")!;
+      const timelineOuter = container.querySelector<HTMLElement>(".timeline-outer")!;
       const canvas        = container.querySelector<HTMLCanvasElement>("canvas")!;
       const slider        = container.querySelector<HTMLInputElement>("input[type=range]")!;
       const dateLabelEl   = container.querySelector<HTMLElement>(".window-date-label")!;
@@ -844,6 +845,13 @@ By running this calculation across every
       const tripsTableEl  = container.querySelector<HTMLTableElement>(".explainer-trips")!;
       const tripsBodyEl   = container.querySelector<HTMLElement>(".explainer-trips tbody")!;
       const ctx           = canvas.getContext("2d")!;
+
+      // The canvas fills its card exactly (no forced minimum width), so the
+      // timeline fits phone screens without horizontal scrolling, matching
+      // the index page's percentage-based version.
+      function fitCanvasWidth() {
+        canvas.width = Math.max(240, Math.round(timelineOuter.clientWidth));
+      }
 
       const currentScenario: Scenario = SCENARIOS[scenarioIdx];
       let TL_START: Date, TL_END: Date, TL_TOTAL: number;
@@ -928,8 +936,11 @@ By running this calculation across every
         const trips = sc.trips;
         const isQuad = sc.mode === "quad";
         const W = canvas.width;
-        const mL = isQuad ? 68 : 10, mR = 10, mTop = 28;
-        const tripH = 20, tripGap = 5;
+        const narrow = W < 380, veryNarrow = W < 300;
+        const quadLabelFont = narrow ? "500 9px var(--font-sans,sans-serif)" : "500 11px var(--font-sans,sans-serif)";
+        const mL = isQuad ? (veryNarrow ? 38 : narrow ? 46 : 68) : (narrow ? 6 : 10);
+        const mR = narrow ? 6 : 10, mTop = 28;
+        const tripH = narrow ? 16 : 20, tripGap = narrow ? 4 : 5;
         const plotW = W - mL - mR;
         const windowStart = addDays(windowEnd, -179);
 
@@ -963,12 +974,12 @@ By running this calculation across every
         ctx.clearRect(0, 0, W, canvas.height);
 
         if (isQuad) {
-          ctx.font = "500 11px var(--font-sans,sans-serif)";
+          ctx.font = quadLabelFont;
           ctx.textAlign = "right";
           PERSONS.forEach((p) => {
             const ty = tripAreaTop + p.row * (tripH + tripGap);
             ctx.fillStyle = p.color;
-            ctx.fillText(p.label, mL - 6, ty + tripH / 2 + 4);
+            ctx.fillText(p.label, mL - (veryNarrow ? 4 : 6), ty + tripH / 2 + (narrow ? 3 : 4));
           });
         }
 
@@ -999,10 +1010,17 @@ By running this calculation across every
         ctx.lineWidth = 0.5;
         ctx.beginPath(); ctx.moveTo(mL, axisY); ctx.lineTo(W - mR, axisY); ctx.stroke();
 
-        // Month grid lines + labels
-        ctx.font = "11px var(--font-sans,sans-serif)";
+        // Month grid lines + labels. Grid lines are drawn for every month;
+        // labels thin out on narrow canvases (by pixel density, not a fixed
+        // breakpoint, since scenarios span very different date ranges) so
+        // they never overlap, mirroring how the index page thins its ticks.
+        const totalMonths = Math.max(1, Math.round(TL_TOTAL / 30.44));
+        const pxPerMonth = plotW / totalMonths;
+        const labelStep = pxPerMonth < 20 ? 3 : pxPerMonth < 34 ? 2 : 1;
+        ctx.font = narrow ? "9px var(--font-sans,sans-serif)" : "11px var(--font-sans,sans-serif)";
         ctx.textAlign = "center";
         const cur = new Date(TL_START); cur.setDate(1);
+        let monthIndex = 0;
         while (cur <= TL_END) {
           const x = xOf(cur);
           if (x >= mL && x <= W - mR) {
@@ -1010,12 +1028,13 @@ By running this calculation across every
             ctx.lineWidth = 0.5;
             ctx.beginPath(); ctx.moveTo(x, mTop - 4); ctx.lineTo(x, axisY); ctx.stroke();
             const lx = x + (plotW / TL_TOTAL) * 15;
-            if (lx < W - mR - 5) {
+            if (lx < W - mR - 5 && monthIndex % labelStep === 0) {
               ctx.fillStyle = "rgba(0,0,0,0.4)";
               ctx.fillText(cur.toLocaleDateString("en-GB", { month: "short" }), lx, axisY + 12);
             }
           }
           cur.setMonth(cur.getMonth() + 1);
+          monthIndex++;
         }
 
         // Trip bars: single-traveler scenarios use the index page's motif
@@ -1044,11 +1063,11 @@ By running this calculation across every
             ctx.beginPath(); (ctx as any).roundRect(xa, ty, xb - xa, tripH, 4); ctx.fill();
           }
 
-          if (tw > 44 && t.showLabel !== false) {
+          if (tw > (narrow ? 32 : 44) && t.showLabel !== false) {
             ctx.fillStyle = isQuad ? "rgba(255,255,255,0.92)" : "rgba(12,30,60,0.82)";
-            ctx.font = "500 11px var(--font-sans,sans-serif)";
+            ctx.font = narrow ? "500 10px var(--font-sans,sans-serif)" : "500 11px var(--font-sans,sans-serif)";
             ctx.textAlign = "center";
-            ctx.fillText(t.label, x0 + tw / 2, ty + tripH / 2 + 4);
+            ctx.fillText(t.label, x0 + tw / 2, ty + tripH / 2 + (narrow ? 3 : 4));
           }
         });
 
@@ -1110,7 +1129,7 @@ By running this calculation across every
         const def = diffDays(TL_START, currentScenario.windowDefault);
         slider.value = String(Math.min(Math.max(def, 179), TL_TOTAL - 1));
 
-        canvas.width = Math.max(520, container.clientWidth - 42);
+        fitCanvasWidth();
         renderAll(addDays(TL_START, parseInt(slider.value)));
       }
 
@@ -1119,7 +1138,7 @@ By running this calculation across every
       });
 
       window.addEventListener("resize", () => {
-        canvas.width = Math.max(520, container.clientWidth - 42);
+        fitCanvasWidth();
         const windowEnd = addDays(TL_START, parseInt(slider.value));
         drawTimeline(windowEnd);
       });
