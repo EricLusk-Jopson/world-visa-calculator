@@ -34,14 +34,6 @@ const ruleAccessibilityLabel = (regionId: string) => {
   const rule = ruleByRegion.get(regionId);
   return rule ? `, visa-free rule overview: up to ${ruleLabel(rule)}, ${ruleTypeLabel(rule).toLowerCase()}` : "";
 };
-/** The article/name form used mid-sentence, e.g. "the Schengen area". */
-const destinationName = (region: EuropeMapRegion) =>
-  region.id === "schengen" ? "the Schengen area" : region.name === "United Kingdom" ? "the United Kingdom" : region.name;
-const ruleSentenceFragment = (rule: StayRule) =>
-  "windowDays" in rule
-    ? `a ${rule.maxStayDays}-day limit within any ${rule.windowDays}-day period`
-    : `a ${rule.maxStayDays}-day limit per visit`;
-
 interface ViewState {
   zoom: number;
   x: number;
@@ -65,7 +57,6 @@ function boundedView(view: ViewState): ViewState {
 
 interface EuropeCoverageIslandProps {
   id?: string;
-  calculatorHref?: string;
 }
 
 interface EuropeCoverageIslandState {
@@ -299,8 +290,6 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
     const id = this.props.id ?? "europe-coverage";
     const region = this.activeRegion;
     const stayRule = ruleByRegion.get(region.id);
-    const isSupported = region.status !== "unsupported";
-    const isPreview = this.activeId !== this.selectedId;
     const { view, ready } = this.state;
 
     return (
@@ -323,195 +312,97 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
           <span className="evc-map__total">{supportedCount} countries covered</span>
         </div>
 
-        <div className="evc-map__layout">
-          <div className="evc-map__canvas">
-            <svg
-              ref={(element) => {
-                this.svg = element;
-              }}
-              viewBox={`0 0 ${europeMap.width} ${europeMap.height}`}
-              className="evc-map__svg"
-              data-zoomed={view.zoom > 1 || undefined}
-              data-dragging={this.state.dragging || undefined}
-              role="group"
-              tabIndex={ready ? 0 : -1}
-              aria-labelledby={`${id}-title`}
-              aria-describedby={`${id}-instructions`}
-              onKeyDown={this.onMapKeyDown}
-              onMouseLeave={() => this.setState({ hoveredId: null })}
-              onClickCapture={(event) => {
-                if (this.suppressClick) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }
-              }}
-            >
-              <title id={`${id}-title`}>Europe app coverage map</title>
-              <desc>
-                Schengen is a single selectable region. Supported non-Schengen countries use their own compliance
-                rules. Grey, hatched regions are not yet supported. Use the country picker as an alternative.
-              </desc>
-              <defs>
-                <pattern id={`${id}-hatch`} width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
-                  <rect width="8" height="8" fill="#e1e6e9" />
-                  <line x1="0" y1="0" x2="0" y2="8" stroke="#cbd3d9" strokeWidth="1.2" />
-                </pattern>
-              </defs>
-              <g transform={`translate(${view.x} ${view.y}) scale(${view.zoom})`}>
-                <path d={europeMap.contextPath} className="evc-map__context" fillRule="evenodd" aria-hidden="true" />
-                {regions.filter((item) => item.status !== "unsupported").map(this.renderRegion)}
-                <g style={{ fill: `url(#${id}-hatch)` }}>
-                  {regions.filter((item) => item.status === "unsupported").map(this.renderRegion)}
-                </g>
-                <g className="evc-map__labels" aria-hidden="true">
-                  {europeMap.labels.map((label) => (
-                    <text
-                      key={label.text}
-                      x={label.point[0]}
-                      y={label.point[1]}
-                      textAnchor="middle"
-                      className={`evc-map__label evc-map__label--${label.kind}`}
-                      data-schengen={label.regionId === "schengen" || undefined}
-                    >
-                      {label.text}
-                    </text>
-                  ))}
-                </g>
+        <div className="evc-map__canvas">
+          <svg
+            ref={(element) => {
+              this.svg = element;
+            }}
+            viewBox={`0 0 ${europeMap.width} ${europeMap.height}`}
+            className="evc-map__svg"
+            data-zoomed={view.zoom > 1 || undefined}
+            data-dragging={this.state.dragging || undefined}
+            role="group"
+            tabIndex={ready ? 0 : -1}
+            aria-labelledby={`${id}-title`}
+            aria-describedby={`${id}-instructions`}
+            onKeyDown={this.onMapKeyDown}
+            onMouseLeave={() => this.setState({ hoveredId: null })}
+            onClickCapture={(event) => {
+              if (this.suppressClick) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+            }}
+          >
+            <title id={`${id}-title`}>Europe app coverage map</title>
+            <desc>
+              Schengen is a single selectable region. Supported non-Schengen countries use their own compliance
+              rules. Grey, hatched regions are not yet supported. Hover or focus a region to see its name and
+              stay rule; click or press Enter to keep it selected.
+            </desc>
+            <defs>
+              <pattern id={`${id}-hatch`} width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+                <rect width="8" height="8" fill="#e1e6e9" />
+                <line x1="0" y1="0" x2="0" y2="8" stroke="#cbd3d9" strokeWidth="1.2" />
+              </pattern>
+            </defs>
+            <g transform={`translate(${view.x} ${view.y}) scale(${view.zoom})`}>
+              <path d={europeMap.contextPath} className="evc-map__context" fillRule="evenodd" aria-hidden="true" />
+              {regions.filter((item) => item.status !== "unsupported").map(this.renderRegion)}
+              <g style={{ fill: `url(#${id}-hatch)` }}>
+                {regions.filter((item) => item.status === "unsupported").map(this.renderRegion)}
               </g>
-            </svg>
-            <div className="evc-map__zoom" role="group" aria-label="Map zoom controls">
-              <button type="button" onClick={() => this.zoom(1.5)} disabled={!ready || view.zoom >= 4} aria-label="Zoom in">
-                +
-              </button>
-              <span aria-live="polite" aria-atomic="true">
-                {Math.round(view.zoom * 100)}%
-              </span>
-              <button
-                type="button"
-                onClick={() => this.zoom(1 / 1.5)}
-                disabled={!ready || view.zoom <= 1}
-                aria-label="Zoom out"
-              >
-                &minus;
-              </button>
-              <button
-                type="button"
-                className="evc-map__reset"
-                onClick={this.resetView}
-                disabled={!ready || view.zoom === 1}
-                aria-label="Reset map view"
-              >
-                Reset
-              </button>
-            </div>
-            <p className="evc-map__canvas-hint" id={`${id}-instructions`}>
-              {ready ? "Hover to explore. Click or tap to select." : "Interactive controls load when the map is visible."}
-              <span> Zoom, then drag to pan. With the map focused, use + / - to zoom, arrow keys to pan, and Home to reset.</span>
-            </p>
+              <g className="evc-map__labels" aria-hidden="true">
+                {europeMap.labels.map((label) => (
+                  <text
+                    key={label.text}
+                    x={label.point[0]}
+                    y={label.point[1]}
+                    textAnchor="middle"
+                    className={`evc-map__label evc-map__label--${label.kind}`}
+                    data-schengen={label.regionId === "schengen" || undefined}
+                  >
+                    {label.text}
+                  </text>
+                ))}
+              </g>
+            </g>
+          </svg>
+
+          <div id={`${id}-detail`} className="evc-map__info" aria-live="polite" aria-atomic="true">
+            <p className="evc-map__info-name">{region.name}</p>
+            <p className="evc-map__info-rule">{stayRule ? ruleLabel(stayRule) : "Not yet supported"}</p>
           </div>
 
-          <aside className="evc-map__sidebar" aria-label="Explore coverage">
-            <div className="evc-map__picker">
-              <label htmlFor={`${id}-country`}>Find a country</label>
-              <select
-                id={`${id}-country`}
-                value={this.state.selectedCountry}
-                disabled={!ready}
-                onChange={(event) => this.select(event.target.value)}
-              >
-                <option value="schengen">Schengen area ({europeCoverage.schengen.length} countries)</option>
-                <optgroup label="Schengen - supported as one region">
-                  {europeCoverage.schengen.map((country) => (
-                    <option key={country.code} value={country.code}>
-                      {country.name}
-                    </option>
-                  ))}
-                </optgroup>
-                <optgroup label="Also supported">
-                  {europeCoverage.supported.map((country) => (
-                    <option key={country.code} value={country.code}>
-                      {country.name}
-                    </option>
-                  ))}
-                </optgroup>
-                <optgroup label="Not yet supported">
-                  {europeCoverage.unsupported.map((country) => (
-                    <option key={country.code} value={country.code}>
-                      {country.name}
-                    </option>
-                  ))}
-                </optgroup>
-              </select>
-            </div>
-
-            <div id={`${id}-detail`} className="evc-map__detail" data-status={region.status}>
-              <p className="evc-map__eyebrow">{isPreview ? "Preview - select to keep" : "Selected destination"}</p>
-              <div aria-live="polite" aria-atomic="true">
-                <h3>{region.name}</h3>
-                <p className={`evc-map__status evc-map__status--${isSupported ? "yes" : "no"}`}>
-                  <span aria-hidden="true">{isSupported ? "✓" : "—"}</span> {statusText(region.status)}
-                </p>
-                {stayRule && (
-                  <p className="evc-map__rule-sentence">
-                    Travelers entitled to visa-free entry to {destinationName(region)} are subject to{" "}
-                    {ruleSentenceFragment(stayRule)}.
-                  </p>
-                )}
-              </div>
-              {isSupported ? (
-                <a href={this.props.calculatorHref ?? "/app"} className="evc-map__cta">
-                  Open the calculator <span aria-hidden="true">&rarr;</span>
-                </a>
-              ) : (
-                <p className="evc-map__unavailable-note">Explore a green region to find a supported destination.</p>
-              )}
-            </div>
-          </aside>
-        </div>
-
-        <div className="evc-map__bottom">
-          <details className="evc-map__full-list">
-            <summary>
-              View all countries and stay rules <span aria-hidden="true">+</span>
-            </summary>
-            <div className="evc-map__list-grid">
-              <div>
-                <h4>Schengen &middot; {europeCoverage.schengen.length} countries</h4>
-                <p className="evc-map__list-rule">
-                  Up to {ruleLabel(stayRules.get(europeCoverage.schengenStayRule)!)} &middot; Rolling window &middot;
-                  One shared allowance.
-                </p>
-                <p>{europeCoverage.schengen.map((country) => country.name).join(", ")}.</p>
-              </div>
-              <div>
-                <h4>Also supported &middot; {europeCoverage.supported.length} countries</h4>
-                <p>These countries are not Schengen members and use their own compliance rules.</p>
-                <dl className="evc-map__country-rules">
-                  {europeCoverage.supported.map((country) => {
-                    const rule = ruleByRegion.get(country.code)!;
-                    return (
-                      <div key={country.code}>
-                        <dt>{country.name}</dt>
-                        <dd>
-                          Up to {ruleLabel(rule)} <span>{ruleTypeLabel(rule)}</span>
-                        </dd>
-                      </div>
-                    );
-                  })}
-                </dl>
-                <h4>Not yet supported</h4>
-                <p>{europeCoverage.unsupported.map((country) => country.name).join(", ")}.</p>
-              </div>
-            </div>
-          </details>
-          <p className="evc-map__rule-disclaimer">{europeCoverage.stayRuleDisclaimer}</p>
-          <div className="evc-map__fine-print">
-            <p>
-              This map shows app support, not visa eligibility. Small states may be shown as dots; overseas
-              territories are not shown. Cyprus is grouped visually; entry rules can differ across the island.
-            </p>
-            <p>Map: Natural Earth. Boundaries are illustrative.</p>
+          <div className="evc-map__zoom" role="group" aria-label="Map zoom controls">
+            <button type="button" onClick={() => this.zoom(1.5)} disabled={!ready || view.zoom >= 4} aria-label="Zoom in">
+              +
+            </button>
+            <span aria-live="polite" aria-atomic="true">
+              {Math.round(view.zoom * 100)}%
+            </span>
+            <button
+              type="button"
+              onClick={() => this.zoom(1 / 1.5)}
+              disabled={!ready || view.zoom <= 1}
+              aria-label="Zoom out"
+            >
+              &minus;
+            </button>
+            <button
+              type="button"
+              className="evc-map__reset"
+              onClick={this.resetView}
+              disabled={!ready || view.zoom === 1}
+              aria-label="Reset map view"
+            >
+              Reset
+            </button>
           </div>
+          <p className="evc-map__canvas-hint" id={`${id}-instructions`}>
+            {ready ? "Hover to explore. Click or tap to select." : "Interactive controls load when the map is visible."}
+            <span> Zoom, then drag to pan. With the map focused, use + / - to zoom, arrow keys to pan, and Home to reset.</span>
+          </p>
         </div>
       </div>
     );
