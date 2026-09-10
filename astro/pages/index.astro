@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LandingNav from "../components/LandingNav.astro";
 import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
+import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 ---
 
 <BaseLayout
@@ -363,6 +364,24 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
           <span class="rule-pill">Entry + exit days count</span>
           <span class="rule-pill">No fixed reset date</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EUROPE COVERAGE MAP ──────────────────────────────────────────────── -->
+  <section id="coverage" class="coverage">
+    <div class="coverage__inner">
+      <p class="section-tag">Where it works</p>
+      <h2 class="section-heading">
+        Europe, <em>at a glance.</em>
+      </h2>
+      <p class="section-sub">
+        Explore all 39 supported countries. Schengen is one shared travel
+        area; non-Schengen countries use their own compliance rules. Select
+        a destination to see its visa-free stay rule.
+      </p>
+      <div class="coverage__map">
+        <EuropeCoverageIsland client:visible calculatorHref="/app" />
       </div>
     </div>
   </section>
@@ -1203,6 +1222,26 @@ import { HeroCalculatorIsland } from "@/islands/HeroCalculatorIsland";
     background: var(--color-mist);
     padding: 3px 10px;
     border-radius: 100px;
+  }
+
+  /* ── Europe coverage map ────────────────────────────────────────────────── */
+  .coverage {
+    padding: 60px 24px;
+  }
+
+  @media (min-width: 768px) {
+    .coverage {
+      padding: 100px 80px;
+    }
+  }
+
+  .coverage__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .coverage__map {
+    margin-top: 40px;
   }
 
   /* ── CTA band ───────────────────────────────────────────────────────────── */
