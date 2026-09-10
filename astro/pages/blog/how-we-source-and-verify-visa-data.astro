@@ -1,0 +1,333 @@
+---
+/**
+ * Blog post: How We Source and Verify Our Visa Data
+ * URL: /blog/how-we-source-and-verify-visa-data
+ *
+ * Static Astro page, rendered to plain HTML at build time.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
+---
+
+<BaseLayout
+  title="How We Source and Verify Our Visa Data"
+  description="Every stay-limit rule in EuroVisaCalculator traces back to a specific government regulation. Here's how we source that data, verify it, and track regime changes."
+  canonicalUrl="https://eurovisacalculator.com/blog/how-we-source-and-verify-visa-data"
+>
+  <LandingNav />
+
+  <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
+    <header class="article__header">
+      <p class="article__tag">Blog</p>
+
+      <h1 class="article__title">
+        How We Source and Verify Our Visa Data
+      </h1>
+
+      <p class="article__meta">September 10, 2026 · 4 min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you want to know where
+        our stay-limit rules come from and why you can rely on them for
+        planning real travel.
+        <br/>
+        <br/>
+        <strong>It's probably not necessary if:</strong> you're only
+        looking for today's calculation and don't need to see the sourcing
+        behind it.
+      </p>
+    </header>
+
+    <div class="article__body">
+      <p>
+        Every stay-limit calculation on EuroVisaCalculator traces back to a
+        specific government publication. Not a summarized version of one,
+        not a third-party aggregator, and not a chatbot's best guess. Here
+        is how we source that data and how we keep it accurate as visa
+        regimes change.
+      </p>
+
+      <hr />
+
+      <h2>We cite the government source for every rule, not a paraphrase of it</h2>
+
+      <p>
+        Each destination in EuroVisaCalculator — Schengen, the UK, Ireland,
+        Türkiye, Cyprus, and the Western Balkans — is backed by a dedicated
+        data file that references the exact regulation, statutory
+        instrument, or official guidance page it comes from. Every passport
+        rule in the app carries a citation to that source, so the number
+        you see traces back to a specific legal text, not an internal
+        assumption.
+      </p>
+
+      <p>
+        For the Schengen Area, two regulations work together. The <a
+          href="https://eur-lex.europa.eu/eli/reg/2016/399/2025-10-12/eng"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Schengen Borders Code (Regulation (EU) 2016/399)</a
+        > sets the conditions of entry for third-country nationals and
+        defines the 90-days-in-any-180-day-period limit itself. This is the
+        legal basis for the rolling-window calculation at the center of the
+        app. Alongside it, <a
+          href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Regulation (EU) 2018/1806</a
+        >, Annexes I and II, sets out which nationalities require a visa
+        and which travel visa-free. That regulation is the source for
+        every passport's baseline access category.
+      </p>
+
+      <p>
+        Where a nationality's access depends on an airport transit visa, we
+        cite the Schengen Visa Code (Regulation (EC) 810/2009) Annex IV
+        common list, plus the Visa Code Handbook Annex 7B for the
+        additional, member-state-specific requirements that individual
+        countries impose beyond the common EU list.
+      </p>
+
+      <p>
+        The same approach carries through outside Schengen. The UK's
+        Standard Visitor route and Electronic Travel Authorisation
+        requirements are sourced from GOV.UK and the Immigration Rules'
+        Appendix Visitor Visa National List and Appendix ETA National List.
+        Ireland's non-visa-required nationality table comes from the Irish
+        Naturalisation and Immigration Service. Türkiye's rules, including
+        several nationality-specific exceptions to the standard 90/180
+        window, are sourced from Türkiye's e-Visa system and its published
+        bilateral arrangements. Montenegro, Serbia, Bosnia and Herzegovina,
+        Kosovo, North Macedonia, and Albania each cite their own national
+        visa legislation. Cyprus, an EU member outside the Schengen
+        border-free area, is governed by the same Regulation 2018/1806 as
+        Schengen, so its rules cite that regulation directly rather than a
+        separate national source.
+      </p>
+
+      <hr />
+
+      <h2>Sources are checked, not just linked once and forgotten</h2>
+
+      <p>
+        A link alone doesn't tell you whether the underlying rule is still
+        accurate. Alongside every citation, we track the date each source
+        was last confirmed current — not just that the URL loaded, but
+        that the content was re-read and still matches what the app
+        calculates. When a rule changes, that date is what tells us a
+        citation needs a second look, not just a broken link checker.
+      </p>
+
+      <p>
+        We also keep a stable "parent" policy-page link alongside every
+        direct document citation, since government sites reorganize and
+        PDFs move. If a direct document link ever breaks, we can fall back
+        to the parent page rather than lose the reference entirely.
+      </p>
+
+      <hr />
+
+      <h2>We watch for regime changes, not just at launch</h2>
+
+      <p>
+        Visa regimes change. A country adjusts a reciprocal exemption, the
+        EU updates Annex I or Annex II, a nationality is added to an
+        airport transit list, or ETIAS shifts from planned to mandatory. We
+        revisit our sources on an ongoing basis, and when a change affects
+        an existing rule, we update it and republish.
+      </p>
+
+      <p>
+        We've written about the mechanics of the underlying rules in more
+        detail elsewhere, and comparing those posts against the government
+        texts we cite is one way to check our work yourself:
+      </p>
+
+      <p>
+        <a href="/blog/the-schengen-90-180-rolling-window"
+          >The Schengen 90/180 Rolling Window, Explained Visually</a
+        > — how the rolling window itself works, walked through five
+        scenarios.
+        <br/>
+        <a href="/blog/does-your-entry-day-count-as-a-schengen-day"
+          >Does Your Entry Day Count as a Schengen Day?</a
+        > — why border days count as full days under the official rule.
+        <br/>
+        <a href="/blog/when-does-schengen-reset"
+          >When Does Your Schengen Allowance Reset?</a
+        > — why the 180-day window doesn't reset like a calendar.
+      </p>
+
+      <hr />
+
+      <h2>Why this matters more than a confident-sounding answer</h2>
+
+      <p>
+        We've also written about <a href="/blog/why-schengen-calculators-give-different-results"
+          >why Schengen calculators give different results</a
+        >. A plausible number is not the same as a verified one, and a
+        calculator that can't show you where its underlying rule comes from
+        can't be checked against anything. That is also why an AI chatbot
+        is not a substitute for this: it can generate a confident answer,
+        but it cannot cite the regulation it came from.
+      </p>
+
+      <hr />
+
+      <h2>If something looks off</h2>
+
+      <p>
+        If you ever run your dates and get a result that doesn't match what
+        you find in the source we've cited, or a rule that seems out of
+        date, cross-check it against that source, or against the <a
+          href="https://ec.europa.eu/assets/home/visa-calculator/calculator.htm"
+          target="_blank"
+          rel="noopener noreferrer"
+          >official EU calculator</a
+        >. If they ever disagree, we want to know.
+      </p>
+
+      <p>
+        <a href="/app">Run your dates through EuroVisaCalculator →</a>
+      </p>
+    </div>
+
+    <div class="article__back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    min-height: 100vh;
+    background: #f7f5f1;
+    padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .article__header {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .article__tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 14px;
+  }
+
+  .article__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .article__meta {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+  .article__audience {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
+  }
+
+  .article__body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article__body p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+  }
+
+  .article__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article__body h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0c1e3c;
+    margin: 1.75rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article__body hr {
+    border: none;
+    border-top: 1px solid #e0dbd3;
+    margin: 2.5rem 0;
+  }
+
+  .article__body a {
+    color: #00b96b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s;
+  }
+
+  .article__body a:hover {
+    border-bottom-color: #00b96b;
+  }
+
+  .article__back {
+    max-width: 680px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #e0dbd3;
+  }
+
+  .article__back-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #5a6a82;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .article__back-link:hover {
+    color: #0c1e3c;
+  }
+</style>
