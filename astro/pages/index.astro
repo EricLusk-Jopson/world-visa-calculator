@@ -326,51 +326,19 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         </p>
       </div>
 
-      <!-- Right: demo card -->
-      <div class="allowance-card">
-        <!-- Card header — mimics browser chrome -->
-        <div class="allowance-card__header">
-          <span class="traffic-dot traffic-dot--red"></span>
-          <span class="traffic-dot traffic-dot--amber"></span>
-          <span class="traffic-dot traffic-dot--green"></span>
-          <span class="allowance-card__label">Traveler status · today</span>
-        </div>
-
-        <!-- Allowance bars -->
-        <div class="allowance-bars">
-          <!-- Emma — safe (43/90, 47 remaining) -->
-          <div class="allowance-row">
-            <span class="allowance-name">Emma</span>
-            <div class="allowance-track" role="progressbar" aria-valuenow="43" aria-valuemax="90" aria-label="Emma: 43 of 90 days used">
-              <div class="allowance-fill allowance-fill--safe" style="width:43%"></div>
-            </div>
-            <span class="allowance-badge allowance-badge--safe">47 days left</span>
-          </div>
-          <!-- Liam — caution (76/90, 14 remaining) -->
-          <div class="allowance-row">
-            <span class="allowance-name">Liam</span>
-            <div class="allowance-track" role="progressbar" aria-valuenow="76" aria-valuemax="90" aria-label="Liam: 76 of 90 days used">
-              <div class="allowance-fill allowance-fill--caution" style="width:76%"></div>
-            </div>
-            <span class="allowance-badge allowance-badge--caution">14 days left</span>
-          </div>
-          <!-- Sofia — danger (88/90, 2 remaining) -->
-          <div class="allowance-row">
-            <span class="allowance-name">Sofia</span>
-            <div class="allowance-track" role="progressbar" aria-valuenow="88" aria-valuemax="90" aria-label="Sofia: 88 of 90 days used">
-              <div class="allowance-fill allowance-fill--danger" style="width:88%"></div>
-            </div>
-            <span class="allowance-badge allowance-badge--danger">2 days left</span>
+      <!-- Right: interactive demo (same widget as the blog's "Ilker and friends" scenario) -->
+      <div class="schengen-explorer" data-scenario="0">
+        <h3 class="sr-only">Interactive Schengen rolling window explorer — four friends' return trips</h3>
+        <div class="scenario-label"></div>
+        <div class="timeline-outer"><canvas height="200"></canvas></div>
+        <div class="controls">
+          <div class="ctrl-row">
+            <span class="ctrl-label">Window end date</span>
+            <input type="range" min="0" max="100" value="50" step="1" />
+            <span class="window-date-label"></span>
           </div>
         </div>
-
-        <!-- Rule pills -->
-        <div class="rule-pills">
-          <span class="rule-pill">Rolling 180-day window</span>
-          <span class="rule-pill">8 destinations, tracked separately</span>
-          <span class="rule-pill">Entry + exit days count</span>
-          <span class="rule-pill">No fixed reset date</span>
-        </div>
+        <div class="stats-wrap"><div class="stats-container"></div></div>
       </div>
     </div>
   </section>
@@ -432,6 +400,406 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     </div>
   </footer>
 </BaseLayout>
+
+<!--
+  Interactive rolling-window demo for the 90/180 Rule section — the same
+  "Four friends" (Anna, Marcus, Ilker, Olivia) scenario and widget used in
+  the blog post "The Schengen 90/180 Rolling Window", scoped down to just
+  that one scenario since this page only needs the one instance.
+-->
+<script>
+  (function () {
+    function d(y: number, m: number, day: number) { return new Date(y, m - 1, day); }
+    function addDays(dt: Date, n: number) { const r = new Date(dt); r.setDate(r.getDate() + n); return r; }
+    function diffDays(a: Date, b: Date) { return Math.round((b.getTime() - a.getTime()) / 86400000); }
+    function fmtDate(dt: Date) { return dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
+    function fmtShort(dt: Date) {
+      const M = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      return M[dt.getMonth()] + " " + String(dt.getDate()).padStart(2, "0");
+    }
+
+    const PAD = 195;
+
+    const PERSONS = [
+      { key: "anna",   label: "Anna",   color: "#c46e1a", row: 0 },
+      { key: "marcus", label: "Marcus", color: "#1d9e75", row: 1 },
+      { key: "ilker",  label: "Ilker",  color: "#2e86c1", row: 2 },
+      { key: "olivia", label: "Olivia", color: "#7b52c9", row: 3 },
+    ] as const;
+    type PersonKey = typeof PERSONS[number]["key"];
+    const PERSON_MAP = Object.fromEntries(PERSONS.map((p) => [p.key, p])) as Record<PersonKey, typeof PERSONS[number]>;
+
+    interface Trip { start: Date; end: Date; label: string; color: string; person: string; showLabel?: boolean; }
+
+    const makeGroupTrips = (): Trip[] =>
+      PERSONS.map((p) => ({ start: d(2025, 2, 1), end: d(2025, 3, 22), label: "Group trip", color: "#378add", person: p.key }));
+
+    const RETURN_TRIPS: Trip[] = [
+      { start: d(2025, 5, 3),  end: d(2025, 6, 11),  label: "Anna",   color: "#c46e1a", person: "anna"   },
+      { start: d(2025, 7, 15), end: d(2025, 10, 12), label: "Marcus", color: "#1d9e75", person: "marcus" },
+      { start: d(2025, 8, 1),  end: d(2025, 10, 29), label: "Ilker",  color: "#2e86c1", person: "ilker"  },
+      { start: d(2025, 9, 19), end: d(2025, 12, 17), label: "Olivia", color: "#7b52c9", person: "olivia" },
+    ];
+
+    const COMBINED_TRIPS: Trip[] = [...makeGroupTrips(), ...RETURN_TRIPS];
+
+    interface Scenario {
+      id: string; label: string; mode: "single" | "quad";
+      desc: string; trips: Trip[]; windowDefault: Date;
+    }
+
+    const SCENARIOS: Scenario[] = [
+      {
+        id: "s5", label: "Four friends, same trip", mode: "quad",
+        desc: "All four friends took the same group trip (Feb 1–Mar 22, 50 days), then each returned to the Schengen Area at a different point in the year. <em>Drag the window across the year to compare all four at once.</em>",
+        trips: COMBINED_TRIPS,
+        windowDefault: d(2025, 7, 15),
+      },
+    ];
+
+    function initExplorer(container: HTMLElement) {
+      const scenarioIdx = parseInt(container.dataset.scenario ?? "0") || 0;
+      const isDark = matchMedia("(prefers-color-scheme: dark)").matches;
+
+      const descEl      = container.querySelector<HTMLElement>(".scenario-label")!;
+      const canvas      = container.querySelector<HTMLCanvasElement>("canvas")!;
+      const slider      = container.querySelector<HTMLInputElement>("input[type=range]")!;
+      const dateLabelEl = container.querySelector<HTMLElement>(".window-date-label")!;
+      const statsEl     = container.querySelector<HTMLElement>(".stats-container")!;
+      const ctx         = canvas.getContext("2d")!;
+
+      const currentScenario: Scenario = SCENARIOS[scenarioIdx];
+      let TL_START: Date, TL_END: Date, TL_TOTAL: number;
+
+      function computeRange(trips: Trip[]) {
+        const mn = trips.reduce((a, t) => (t.start < a ? t.start : a), trips[0].start);
+        const mx = trips.reduce((a, t) => (t.end > a ? t.end : a), trips[0].end);
+        return { start: addDays(mn, -PAD), end: addDays(mx, PAD) };
+      }
+
+      function countForPerson(trips: Trip[], windowEnd: Date, personKey: string) {
+        const windowStart = addDays(windowEnd, -179);
+        let count = 0;
+        trips.filter((t) => t.person === personKey).forEach((t) => {
+          const os = t.start > windowStart ? t.start : windowStart;
+          const oe = t.end < windowEnd ? t.end : windowEnd;
+          if (oe >= os) count += diffDays(os, oe) + 1;
+        });
+        return count;
+      }
+
+      function renderStatsQuad(trips: Trip[], windowEnd: Date) {
+        const cards = PERSONS.map((p) => {
+          const days = countForPerson(trips, windowEnd, p.key);
+          const remaining = Math.max(0, 90 - days);
+          return `<div class="stat-card" style="border-left-color:${p.color}">
+            <div class="stat-label" style="color:${p.color};font-weight:500;">${p.label}</div>
+            <div class="stat-val ${days > 90 ? "danger" : days > 70 ? "warn" : "ok"}">${days} <span style="font-size:12px;font-weight:400;color:var(--color-text-secondary)">/ 90</span></div>
+            <div class="stat-sublabel">${remaining === 0 ? "No allowance left" : `${remaining} days left`}</div>
+          </div>`;
+        }).join("");
+        statsEl.innerHTML = `<div class="stats-quad">${cards}</div>`;
+      }
+
+      function drawTimeline(windowEnd: Date) {
+        const sc = currentScenario;
+        const trips = sc.trips;
+        const W = canvas.width;
+        const mL = 68, mR = 10, mTop = 28;
+        const tripH = 20, tripGap = 5;
+        const plotW = W - mL - mR;
+        const windowStart = addDays(windowEnd, -179);
+
+        const xOf = (dt: Date) => mL + (diffDays(TL_START, dt) / TL_TOTAL) * plotW;
+
+        const numRows = PERSONS.length;
+        const getTripRow = (t: Trip) => PERSON_MAP[t.person as PersonKey]?.row ?? 0;
+
+        const totalTripH = numRows * tripH + (numRows - 1) * tripGap;
+        const tripAreaTop = mTop + 20;
+        const axisY = tripAreaTop + totalTripH + 16;
+        canvas.height = axisY + 22;
+
+        ctx.clearRect(0, 0, W, canvas.height);
+
+        ctx.font = "500 11px var(--font-sans,sans-serif)";
+        ctx.textAlign = "right";
+        PERSONS.forEach((p) => {
+          const ty = tripAreaTop + p.row * (tripH + tripGap);
+          ctx.fillStyle = p.color;
+          ctx.fillText(p.label, mL - 6, ty + tripH / 2 + 4);
+        });
+
+        const refOver = PERSONS.some((p) => countForPerson(trips, windowEnd, p.key) > 90);
+
+        const x0w = Math.max(mL, xOf(windowStart));
+        const x1w = Math.min(W - mR, xOf(addDays(windowEnd, 1)));
+
+        // Window overlay
+        ctx.fillStyle = refOver
+          ? isDark ? "rgba(163,45,45,0.18)" : "rgba(240,149,149,0.15)"
+          : isDark ? "rgba(55,138,221,0.12)" : "rgba(55,138,221,0.08)";
+        ctx.fillRect(x0w, mTop - 4, x1w - x0w, axisY - (mTop - 4));
+        ctx.strokeStyle = refOver
+          ? isDark ? "rgba(240,149,149,0.5)" : "rgba(163,45,45,0.35)"
+          : isDark ? "rgba(55,138,221,0.4)"  : "rgba(55,138,221,0.35)";
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x0w, mTop - 4, x1w - x0w, axisY - (mTop - 4));
+
+        // "180-day window" label centered just below the overlay's bottom border
+        const winMidX = Math.min(Math.max((x0w + x1w) / 2, mL + 60), W - mR - 60);
+        ctx.fillStyle = refOver
+          ? isDark ? "rgba(240,149,149,0.6)" : "rgba(163,45,45,0.45)"
+          : isDark ? "rgba(130,180,240,0.6)" : "rgba(55,138,221,0.45)";
+        ctx.font = "500 10px var(--font-sans,sans-serif)";
+        ctx.textAlign = "center";
+        ctx.fillText("180-day window", winMidX, axisY + 12);
+
+        // Axis
+        ctx.strokeStyle = isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.1)";
+        ctx.lineWidth = 0.5;
+        ctx.beginPath(); ctx.moveTo(mL, axisY); ctx.lineTo(W - mR, axisY); ctx.stroke();
+
+        // Month grid lines + labels
+        ctx.font = "11px var(--font-sans,sans-serif)";
+        ctx.textAlign = "center";
+        const cur = new Date(TL_START); cur.setDate(1);
+        while (cur <= TL_END) {
+          const x = xOf(cur);
+          if (x >= mL && x <= W - mR) {
+            ctx.strokeStyle = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)";
+            ctx.lineWidth = 0.5;
+            ctx.beginPath(); ctx.moveTo(x, mTop - 4); ctx.lineTo(x, axisY); ctx.stroke();
+            const lx = x + (plotW / TL_TOTAL) * 15;
+            if (lx < W - mR - 5) {
+              ctx.fillStyle = isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
+              ctx.fillText(cur.toLocaleDateString("en-GB", { month: "short" }), lx, axisY + 12);
+            }
+          }
+          cur.setMonth(cur.getMonth() + 1);
+        }
+
+        // Trip bars
+        trips.forEach((t) => {
+          const row = getTripRow(t);
+          const ty = tripAreaTop + row * (tripH + tripGap);
+          const x0 = xOf(t.start);
+          const x1 = xOf(addDays(t.end, 1));
+          const tw = Math.max(x1 - x0, 2);
+
+          ctx.fillStyle = t.color;
+          ctx.beginPath(); (ctx as any).roundRect(x0, ty, tw, tripH, 4); ctx.fill();
+
+          const os = t.start > windowStart ? t.start : windowStart;
+          const oe = t.end < windowEnd ? t.end : windowEnd;
+          if (oe >= os) {
+            const xa = xOf(os), xb = xOf(addDays(oe, 1));
+            ctx.fillStyle = "rgba(255,255,255,0.22)";
+            ctx.beginPath(); (ctx as any).roundRect(xa, ty, xb - xa, tripH, 4); ctx.fill();
+          }
+
+          if (tw > 44 && t.showLabel !== false) {
+            ctx.fillStyle = "rgba(255,255,255,0.92)";
+            ctx.font = "500 11px var(--font-sans,sans-serif)";
+            ctx.textAlign = "center";
+            ctx.fillText(t.label, x0 + tw / 2, ty + tripH / 2 + 4);
+          }
+        });
+
+        // Window end dashed line
+        const xEnd = xOf(addDays(windowEnd, 1));
+        ctx.strokeStyle = isDark ? "rgba(212,83,126,0.85)" : "#d4537e";
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(xEnd, mTop - 4); ctx.lineTo(xEnd, axisY); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Window end date above the dashed line
+        ctx.fillStyle = "#d4537e";
+        ctx.font = "500 10px var(--font-sans,sans-serif)";
+        ctx.textAlign = "center";
+        const endLx = Math.min(Math.max(xEnd, mL + 30), W - mR - 30);
+        ctx.fillText(fmtShort(windowEnd), endLx, mTop - 8);
+
+        // Window start date above the left edge of the window (only when visible)
+        const xWinStart = xOf(windowStart);
+        if (xWinStart > mL) {
+          ctx.fillStyle = isDark ? "rgba(100,160,230,0.8)" : "rgba(55,138,221,0.7)";
+          ctx.font = "500 10px var(--font-sans,sans-serif)";
+          ctx.textAlign = "left";
+          ctx.fillText(fmtShort(windowStart), xWinStart + 2, mTop - 8);
+        }
+      }
+
+      function init() {
+        descEl.innerHTML = currentScenario.desc;
+
+        const range = computeRange(currentScenario.trips);
+        TL_START = range.start; TL_END = range.end; TL_TOTAL = diffDays(TL_START, TL_END);
+        slider.min = "179"; slider.max = String(TL_TOTAL - 1);
+        const def = diffDays(TL_START, currentScenario.windowDefault);
+        slider.value = String(Math.min(Math.max(def, 179), TL_TOTAL - 1));
+
+        canvas.width = Math.max(520, container.clientWidth - 42);
+        const windowEnd = addDays(TL_START, parseInt(slider.value));
+        drawTimeline(windowEnd);
+        renderStatsQuad(currentScenario.trips, windowEnd);
+
+        dateLabelEl.textContent = fmtDate(windowEnd);
+      }
+
+      slider.addEventListener("input", () => {
+        const windowEnd = addDays(TL_START, parseInt(slider.value));
+        drawTimeline(windowEnd);
+        renderStatsQuad(currentScenario.trips, windowEnd);
+        dateLabelEl.textContent = fmtDate(windowEnd);
+      });
+
+      window.addEventListener("resize", () => {
+        canvas.width = Math.max(520, container.clientWidth - 42);
+        const windowEnd = addDays(TL_START, parseInt(slider.value));
+        drawTimeline(windowEnd);
+      });
+
+      init();
+    }
+
+    document.querySelectorAll<HTMLElement>(".schengen-explorer[data-scenario]").forEach(initExplorer);
+  })();
+</script>
+
+<style is:global>
+  .schengen-explorer {
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f3f4f6;
+    --color-text-primary: #0c1e3c;
+    --color-text-secondary: #5a6a82;
+    --color-text-tertiary: #8fa0b4;
+    --color-border-primary: #c8c4bc;
+    --color-border-secondary: #e0dbd3;
+    --color-border-tertiary: #ede9e3;
+    --border-radius-md: 8px;
+    --font-sans: var(--font-body);
+    background: var(--color-background-primary);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 12px;
+    padding: 20px 20px 16px;
+    overflow: hidden;
+  }
+
+  .schengen-explorer .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .schengen-explorer * { box-sizing: border-box; }
+
+  .schengen-explorer .scenario-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    padding: 10px 14px;
+    border-radius: var(--border-radius-md);
+    border: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-secondary);
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer .scenario-label strong {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  .schengen-explorer .scenario-label em {
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  .schengen-explorer .timeline-outer {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .schengen-explorer canvas { display: block; }
+
+  .schengen-explorer .controls {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .schengen-explorer .ctrl-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .schengen-explorer .ctrl-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    min-width: 110px;
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer input[type="range"] { flex: 1; }
+
+  .schengen-explorer .window-date-label {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 90px;
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer .stats-wrap { margin-top: 1.25rem; }
+
+  .schengen-explorer .stats-quad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .schengen-explorer .stat-card {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 12px 14px;
+    border-left: 3px solid transparent;
+  }
+
+  .schengen-explorer .stat-label {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer .stat-val {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+  }
+
+  .schengen-explorer .stat-val.warn   { color: #ba7517; }
+  .schengen-explorer .stat-val.danger { color: #a32d2d; }
+  .schengen-explorer .stat-val.ok     { color: #3b6d11; }
+
+  .schengen-explorer .stat-sublabel {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    margin-top: 2px;
+  }
+</style>
 
 <style>
   /* ── Hero layout ────────────────────────────────────────────────────────── */
@@ -1065,123 +1433,6 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 
   .rules__body a {
     color: var(--color-green);
-  }
-
-  /* ── Allowance demo card ────────────────────────────────────────────────── */
-  .allowance-card {
-    background: var(--color-white);
-    border-radius: 16px;
-    border: 1px solid var(--color-border);
-    overflow: hidden;
-    box-shadow: 0 2px 24px rgba(12, 30, 60, 0.06);
-  }
-
-  .allowance-card__header {
-    background: var(--color-navy);
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .traffic-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .traffic-dot--red   { background: var(--color-red); }
-  .traffic-dot--amber { background: var(--color-amber); }
-  .traffic-dot--green { background: var(--color-green); }
-
-  .allowance-card__label {
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.6);
-    margin-left: 6px;
-  }
-
-  .allowance-bars {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .allowance-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .allowance-name {
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--color-text-soft);
-    width: 60px;
-    flex-shrink: 0;
-  }
-
-  .allowance-track {
-    flex: 1;
-    height: 28px;
-    background: var(--color-mist);
-    border-radius: 6px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .allowance-fill {
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    left: 5%;
-    border-radius: 4px;
-    /* width set inline as % of track; actual fill = value * 0.9 to stay within inset */
-    transform: scaleX(0.9);
-    transform-origin: left;
-  }
-
-  .allowance-fill--safe   { background: var(--color-green);  opacity: 0.75; }
-  .allowance-fill--caution { background: var(--color-amber); opacity: 0.85; }
-  .allowance-fill--danger  { background: var(--color-red);   opacity: 0.85; }
-
-  .allowance-badge {
-    font-family: var(--font-body);
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 100px;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
-  .allowance-badge--safe    { background: var(--color-green-bg);  color: var(--color-green-text); }
-  .allowance-badge--caution { background: var(--color-amber-bg);  color: var(--color-amber-text); }
-  .allowance-badge--danger  { background: var(--color-red-bg);    color: var(--color-red-text); }
-
-  /* ── Rule pills ─────────────────────────────────────────────────────────── */
-  .rule-pills {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    padding: 12px 20px 20px;
-    border-top: 1px solid var(--color-mist);
-  }
-
-  .rule-pill {
-    font-family: var(--font-body);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-green-text);
-    background: var(--color-mist);
-    padding: 3px 10px;
-    border-radius: 100px;
   }
 
   /* ── Europe coverage map ────────────────────────────────────────────────── */
