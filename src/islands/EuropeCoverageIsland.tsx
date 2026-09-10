@@ -1,6 +1,6 @@
 import React from "react";
 import { europeCoverage } from "@/data/europe-coverage";
-import type { StayRule, StayRuleNote } from "@/data/europe-coverage";
+import type { StayRule } from "@/data/europe-coverage";
 import { europeMap } from "@/data/europe-map";
 import type { EuropeMapRegion } from "@/data/europe-map";
 import "./EuropeCoverageIsland.css";
@@ -25,8 +25,6 @@ const ruleByRegion = new Map<string, StayRule | undefined>([
     (country): [string, StayRule | undefined] => [country.code, stayRules.get(country.stayRule)],
   ),
 ]);
-const ruleNotes = new Map<string, StayRuleNote>(Object.entries(europeCoverage.stayRuleNotes));
-
 const ruleTypeLabel = (rule: StayRule) => (rule.type === "rolling-window" ? "Rolling window" : "Per visit");
 const ruleLabel = (rule: StayRule) =>
   "windowDays" in rule
@@ -36,6 +34,13 @@ const ruleAccessibilityLabel = (regionId: string) => {
   const rule = ruleByRegion.get(regionId);
   return rule ? `, visa-free rule overview: up to ${ruleLabel(rule)}, ${ruleTypeLabel(rule).toLowerCase()}` : "";
 };
+/** The article/name form used mid-sentence, e.g. "the Schengen area". */
+const destinationName = (region: EuropeMapRegion) =>
+  region.id === "schengen" ? "the Schengen area" : region.name === "United Kingdom" ? "the United Kingdom" : region.name;
+const ruleSentenceFragment = (rule: StayRule) =>
+  "windowDays" in rule
+    ? `a ${rule.maxStayDays}-day limit within any ${rule.windowDays}-day period`
+    : `a ${rule.maxStayDays}-day limit per visit`;
 
 interface ViewState {
   zoom: number;
@@ -293,9 +298,7 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
   render() {
     const id = this.props.id ?? "europe-coverage";
     const region = this.activeRegion;
-    const isSchengen = region.id === "schengen";
     const stayRule = ruleByRegion.get(region.id);
-    const ruleNote = ruleNotes.get(region.id);
     const isSupported = region.status !== "unsupported";
     const isPreview = this.activeId !== this.selectedId;
     const { view, ready } = this.state;
@@ -449,33 +452,9 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
                   <span aria-hidden="true">{isSupported ? "✓" : "—"}</span> {statusText(region.status)}
                 </p>
                 {stayRule && (
-                  <div className="evc-map__rule" data-rule-type={stayRule.type} aria-label="Visa-free stay rule overview">
-                    <p className="evc-map__rule-kicker">Visa-free stay rule</p>
-                    <p className="evc-map__rule-value">
-                      <span>Up to</span> {stayRule.maxStayDays} days
-                    </p>
-                    <p className="evc-map__rule-period">
-                      {"windowDays" in stayRule ? `in any ${stayRule.windowDays}-day period` : "per visit"}
-                    </p>
-                    <div className="evc-map__rule-meta">
-                      <span className="evc-map__rule-type">{ruleTypeLabel(stayRule)}</span>
-                      <span>{isSchengen ? "One shared allowance" : "Own country allowance"}</span>
-                    </div>
-                  </div>
-                )}
-                <p className="evc-map__description">
-                  {isSchengen
-                    ? `${europeCoverage.schengen.length} countries, one shared travel area and stay allowance. Time in any member country counts toward the same rolling window.`
-                    : isSupported
-                      ? `${region.name === "United Kingdom" ? "The United Kingdom" : region.name} is not a Schengen member and uses its own compliance rules. Its stay allowance is tracked independently of Schengen and other countries.`
-                      : `${region.name} is not yet supported by the calculator. It is shown for geographic context, not as an available destination.`}
-                </p>
-                {ruleNote && (
-                  <p className="evc-map__rule-note">
-                    {ruleNote.text}{" "}
-                    <a href={ruleNote.sourceUrl} target="_blank" rel="noopener noreferrer">
-                      {ruleNote.sourceLabel}
-                    </a>
+                  <p className="evc-map__rule-sentence">
+                    Travelers entitled to visa-free entry to {destinationName(region)} are subject to{" "}
+                    {ruleSentenceFragment(stayRule)}.
                   </p>
                 )}
               </div>
@@ -486,25 +465,6 @@ export class EuropeCoverageIsland extends React.Component<EuropeCoverageIslandPr
               ) : (
                 <p className="evc-map__unavailable-note">Explore a green region to find a supported destination.</p>
               )}
-            </div>
-
-            <div className="evc-map__other">
-              <h4>Beyond Schengen</h4>
-              <p>Supported non-Schengen countries, each with its own compliance rules.</p>
-              <div className="evc-map__chips">
-                {europeCoverage.supported.map((country) => (
-                  <button
-                    type="button"
-                    key={country.code}
-                    onClick={() => this.select(country.code)}
-                    disabled={!ready}
-                    aria-pressed={this.selectedId === country.code}
-                    aria-label={`Select ${country.name}${ruleAccessibilityLabel(country.code)}`}
-                  >
-                    {country.code === "GB" ? "UK" : country.code === "BA" ? "Bosnia & Herzegovina" : country.name}
-                  </button>
-                ))}
-              </div>
             </div>
           </aside>
         </div>
