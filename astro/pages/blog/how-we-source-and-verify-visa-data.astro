@@ -53,16 +53,14 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <hr />
 
-      <h2>We cite the government source for every rule, not a paraphrase of it</h2>
+      <h2>We cite official government sources for every rule</h2>
 
       <p>
-        Each destination in EuroVisaCalculator — Schengen, the UK, Ireland,
-        Türkiye, Cyprus, and the Western Balkans — is backed by a dedicated
+        Each destination in EuroVisaCalculator is backed by a dedicated
         data file that references the exact regulation, statutory
         instrument, or official guidance page it comes from. Every passport
-        rule in the app carries a citation to that source, so the number
-        you see traces back to a specific legal text, not an internal
-        assumption.
+        rule in the app carries a citation to that source, so the results
+        you see trace back to a specific legal text or official Ministry of Foreign Affairs webpage.
       </p>
 
       <p>
@@ -86,8 +84,12 @@ import LandingNav from "../../components/LandingNav.astro";
 
       <p>
         Where a nationality's access depends on an airport transit visa, we
-        cite the Schengen Visa Code (Regulation (EC) 810/2009) Annex IV
-        common list, plus the Visa Code Handbook Annex 7B for the
+        cite the Schengen Visa Code <a
+          href="https://eur-lex.europa.eu/eli/reg/2009/810/oj/eng"
+          target="_blank"
+          rel="noopener noreferrer"
+          > (Regulation (EC) 810/2009) Annex IV common list<
+        /a>, plus the Visa Code Handbook Annex 7B for the
         additional, member-state-specific requirements that individual
         countries impose beyond the common EU list.
       </p>
@@ -109,17 +111,23 @@ import LandingNav from "../../components/LandingNav.astro";
         separate national source.
       </p>
 
+      <p>
+        Sometimes information on who is permitted visa-free entry to a jurisdiction is not colocated
+        with information on the duration limits afforded to visitors with visa-free eligibility.
+        In certain cases, official sources for such stay length limits are unavailable, so we may default
+        to using widely-reported information from other sources. In such cases, we make it very clear when
+        no official source is available for citation.
+      </p>
+
       <hr />
 
-      <h2>Sources are checked, not just linked once and forgotten</h2>
+      <h2>Sources are checked regularly</h2>
 
       <p>
         A link alone doesn't tell you whether the underlying rule is still
         accurate. Alongside every citation, we track the date each source
-        was last confirmed current — not just that the URL loaded, but
-        that the content was re-read and still matches what the app
-        calculates. When a rule changes, that date is what tells us a
-        citation needs a second look, not just a broken link checker.
+        was last confirmed current. When a rule changes, that date is what tells us a
+        citation needs a second look.
       </p>
 
       <p>
@@ -139,6 +147,16 @@ import LandingNav from "../../components/LandingNav.astro";
         airport transit list, or ETIAS shifts from planned to mandatory. We
         revisit our sources on an ongoing basis, and when a change affects
         an existing rule, we update it and republish.
+      </p>
+
+      <p>
+        Whether automated or manually, all sources are regularly confirmed to be accurate,
+        and all candidates for change are reported and eventually approved by a human.
+        While our checks are frequent, policy changes in a nation's visa regime 
+        can occur without warning. EuroVisaCalculator is inherently reactive to
+        these changes and can sometimes be out of date, if a new accuracy check
+        has not yet been issued. For this reason, we recommend users follow our citations
+        links to confirm the official documentation themselves.
       </p>
 
       <p>
