@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LandingNav from "../components/LandingNav.astro";
+import Footer from "../components/Footer.astro";
 import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
 ---
 
@@ -417,7 +418,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
           </div>
           <h3 class="risk-card__title">Your itinerary, checked against the rules</h3>
           <p class="risk-card__desc">EuroVisaCalculator applies stay-limit calculations to the dates you enter and checks each traveler against the relevant destination rules. Review the result alongside the official source guidance, then adjust your plans with the calculation in view.</p>
-          <a href="/blog/why-schengen-calculators-give-different-results" class="risk-card__link">How the calculations are checked →</a>
+          <a href="/blog/how-we-source-and-verify-visa-data" class="risk-card__link">How the calculations are checked →</a>
         </div>
       </div>
     </div>
@@ -446,39 +447,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     </div>
   </section>
 
-  <!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__top">
-        <div class="footer__identity">
-          <span class="footer__brand">EuroVisaCalculator</span>
-          <a
-            href="https://ko-fi.com/ericluskjopson"
-            class="footer__kofi"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
-            </svg>
-            Support This Project
-          </a>
-        </div>
-        <nav class="footer__links" aria-label="Footer navigation">
-          <a href="/privacy" class="footer__link">Privacy</a>
-          <a href="/updates" class="footer__link">Updates</a>
-          <a href="/blog" class="footer__link">Blog</a>
-          <a href="#how" class="footer__link">How it works</a>
-          <a href="/app" class="footer__link">Calculator</a>
-        </nav>
-      </div>
-      <p class="footer__disclaimer">
-        For informational use only. Always verify with official government sources
-        before making travel decisions.
-        Not legal advice. Entry and visa rules vary by nationality and destination.
-      </p>
-    </div>
-  </footer>
+  <Footer />
 </BaseLayout>
 
 <!--
@@ -1528,112 +1497,4 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     }
   }
 
-  /* ── Footer ─────────────────────────────────────────────────────────────── */
-  .footer {
-    background: var(--color-navy);
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-    padding: 40px 24px;
-  }
-
-  @media (min-width: 768px) {
-    .footer {
-      padding: 40px 80px;
-    }
-  }
-
-  .footer__inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .footer__top {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  @media (min-width: 640px) {
-    .footer__top {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-    }
-  }
-
-  .footer__brand {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.7);
-    flex-shrink: 0;
-  }
-
-  /* Always a row (wrapping only if it truly doesn't fit) so the brand name
-     and support link stay horizontally aligned regardless of .footer__top's
-     own column/row breakpoint. */
-  .footer__identity {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  /* Push brand and support to opposite edges in the mobile footer. */
-  @media (max-width: 639px) {
-    .footer__identity {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }
-
-  .footer__disclaimer {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.3);
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  .footer__links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .footer__kofi {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #FF5E5B;
-    text-decoration: none;
-    padding: 6px 14px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 94, 91, 0.35);
-    background: rgba(255, 94, 91, 0.08);
-    transition: background 0.18s, border-color 0.18s;
-  }
-
-  .footer__kofi:hover {
-    background: rgba(255, 94, 91, 0.16);
-    border-color: rgba(255, 94, 91, 0.6);
-  }
-
-  .footer__link {
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.4);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer__link:hover {
-    color: rgba(255, 255, 255, 0.8);
-  }
 </style>

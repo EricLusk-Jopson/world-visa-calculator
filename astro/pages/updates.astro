@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LandingNav from "../components/LandingNav.astro";
+import Footer from "../components/Footer.astro";
 
 /**
  * Changelog entries, most recent first. Each `changes` array holds
@@ -206,6 +207,8 @@ const tagLabel: Record<string, string> = {
 
     </div>
   </div>
+
+  <Footer />
 </BaseLayout>
 
 <style>

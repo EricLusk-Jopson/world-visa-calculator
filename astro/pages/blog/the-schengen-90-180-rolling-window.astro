@@ -6,6 +6,7 @@
  */
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import LandingNav from "../../components/LandingNav.astro";
+import Footer from "../../components/Footer.astro";
 ---
 
 <BaseLayout
@@ -735,6 +736,8 @@ By running this calculation across every
       <a href="/blog" class="article__back-link">← Back to blog</a>
     </div>
   </article>
+
+  <Footer />
 </BaseLayout>
 
 <script>
@@ -1397,7 +1400,7 @@ By running this calculation across every
 <style>
   .article {
     min-height: 100vh;
-    background: #f7f5f1;
+    background: var(--color-off-white);
     padding: 128px 24px 96px;
   }
 
