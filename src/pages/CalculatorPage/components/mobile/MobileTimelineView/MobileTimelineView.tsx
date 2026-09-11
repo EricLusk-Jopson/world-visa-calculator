@@ -463,9 +463,9 @@ function MobileTimelineTripCard({
               fontFamily: trip.destination
                 ? tokens.fontBody
                 : tokens.fontBody,
-              fontSize: "0.76rem",
+              fontSize: "0.75rem",
               fontStyle: "normal",
-              fontWeight: trip.destination ? 450 : 500,
+              fontWeight: trip.destination ? 430 : 500,
               color: destinationColor,
               lineHeight: 1.2,
               overflow: "hidden",
