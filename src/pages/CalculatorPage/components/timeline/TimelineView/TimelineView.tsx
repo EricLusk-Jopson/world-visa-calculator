@@ -17,6 +17,7 @@ import {
   COLUMN_HEADER_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
 import { today as getToday } from "@/features/calculator/utils/dates";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 interface TimelineViewProps {
   travelers: Traveler[];
@@ -42,6 +43,11 @@ export function TimelineView({
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasScrolledRef = useRef(false);
+  const { width } = useWindowDimensions();
+  const maxColumnWidth = Math.max(
+    COLUMN_MIN_WIDTH,
+    (width - SIDEBAR_WIDTH * 2) / travelers.length,
+  );
 
   const timelineStart = useMemo(
     () => computeTimelineStart(travelers),
@@ -101,7 +107,15 @@ export function TimelineView({
             width: "100%",
           }}
         >
-          <Box sx={{ ...sidebarSx, alignSelf: "stretch" }} />
+          <Box
+            sx={{
+              ...sidebarSx,
+              alignSelf: "stretch",
+              position: "sticky",
+              left: 0,
+              zIndex: 5,
+            }}
+          />
 
           {travelers.map((traveler) => {
             const displayRegion = resolveDisplayRegion(traveler);
@@ -111,6 +125,7 @@ export function TimelineView({
                 key={traveler.id}
                 sx={{
                   minWidth: COLUMN_MIN_WIDTH,
+                  maxWidth: maxColumnWidth,
                   flex: 1,
                   p: "12px",
                   borderRight: `1px solid ${tokens.border}`,
@@ -124,6 +139,7 @@ export function TimelineView({
                   onEdit={(name, code, targetRegion) =>
                     onEdit(traveler.id, name, code, targetRegion)
                   }
+                  width={maxColumnWidth}
                   sx={{ width: "100%" }}
                 />
               </Box>
@@ -148,6 +164,7 @@ export function TimelineView({
               timelineEnd={timelineEnd}
               onAddTrip={onAddTrip}
               onEditTrip={onEditTrip}
+              width={maxColumnWidth}
             />
           ))}
 

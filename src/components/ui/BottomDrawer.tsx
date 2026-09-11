@@ -10,7 +10,12 @@ interface BottomDrawerProps {
   children: React.ReactNode;
 }
 
-export function BottomDrawer({ open, onClose, title, children }: BottomDrawerProps) {
+export function BottomDrawer({
+  open,
+  onClose,
+  title,
+  children,
+}: BottomDrawerProps) {
   return (
     <SwipeableDrawer
       anchor="bottom"
@@ -28,17 +33,31 @@ export function BottomDrawer({ open, onClose, title, children }: BottomDrawerPro
         },
       }}
     >
-      <Box sx={{ display: "flex", justifyContent: "center", pt: "12px", pb: "4px" }}>
-        <Box sx={{ width: 40, height: 4, borderRadius: "2px", bgcolor: tokens.border }} />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          pt: "12px",
+          pb: "4px",
+        }}
+      >
+        <Box
+          sx={{
+            width: 40,
+            height: 4,
+            borderRadius: "2px",
+            bgcolor: tokens.border,
+          }}
+        />
       </Box>
 
       {title && (
         <Typography
           sx={{
             fontFamily: tokens.fontBody,
-            fontSize: "1.15rem",
+            fontSize: "1.12rem",
             fontStyle: "italic",
-            fontWeight: 400,
+            fontWeight: 430,
             color: tokens.navy,
             px: "20px",
             pt: "4px",

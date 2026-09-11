@@ -76,7 +76,7 @@ export function FullScreenSlider({
             fontFamily: tokens.fontBody,
             fontSize: "1rem",
             fontStyle: "italic",
-            fontWeight: 400,
+            fontWeight: 430,
             color: tokens.white,
             flex: 1,
           }}
@@ -87,7 +87,14 @@ export function FullScreenSlider({
       </Box>
 
       {/* Scrollable content */}
-      <Box sx={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{
+          flex: 1,
+          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         {children}
       </Box>
 

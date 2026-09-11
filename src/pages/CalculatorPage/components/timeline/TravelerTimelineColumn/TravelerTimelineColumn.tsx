@@ -46,6 +46,7 @@ interface TravelerTimelineColumnProps {
   traveler: Traveler;
   timelineStart: Date;
   timelineEnd: Date;
+  width: number;
   onAddTrip: (travelerId: string) => void;
   onEditTrip: (travelerId: string, trip: Trip) => void;
 }
@@ -301,6 +302,7 @@ export function TravelerTimelineColumn({
   timelineStart,
   timelineEnd,
   onEditTrip,
+  width,
 }: TravelerTimelineColumnProps) {
   const columnRef = useRef<HTMLDivElement>(null);
   const [columnWidth, setColumnWidth] = useState(COLUMN_MIN_WIDTH);
@@ -443,6 +445,7 @@ export function TravelerTimelineColumn({
         position: "relative",
         zIndex: 1,
         minWidth: COLUMN_MIN_WIDTH,
+        maxWidth: width,
         flex: 1,
         height: Math.max(
           totalHeight,

@@ -80,8 +80,8 @@ function TravelerCard({
         <Typography
           sx={{
             fontFamily: tokens.fontBody,
-            fontSize: "1rem",
-            fontStyle: "italic",
+            fontSize: "0.95rem",
+            fontWeight: 430,
             color: tokens.navy,
             flex: 1,
           }}
@@ -102,7 +102,9 @@ function TravelerCard({
             <AccessTimeIcon
               sx={{
                 fontSize: "1.1rem",
-                color: e.temporalWindows.some((w) => w.active) ? tokens.green : tokens.red,
+                color: e.temporalWindows.some((w) => w.active)
+                  ? tokens.green
+                  : tokens.red,
               }}
             />
           ) : e.ok ? (
@@ -115,9 +117,13 @@ function TravelerCard({
           <DurationIcon state={durState} />
         </Box>
         {open ? (
-          <ExpandLessIcon sx={{ fontSize: "1.2rem", color: tokens.textGhost }} />
+          <ExpandLessIcon
+            sx={{ fontSize: "1.2rem", color: tokens.textGhost }}
+          />
         ) : (
-          <ExpandMoreIcon sx={{ fontSize: "1.2rem", color: tokens.textGhost }} />
+          <ExpandMoreIcon
+            sx={{ fontSize: "1.2rem", color: tokens.textGhost }}
+          />
         )}
       </Box>
 
@@ -152,7 +158,9 @@ function TravelerCard({
               )}
             </Box>
             {e.notes.length > 0 && (
-              <Box sx={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "6px" }}
+              >
                 {e.notes.map((n, i) => (
                   <NoteBlock key={i} note={n} />
                 ))}
@@ -186,7 +194,11 @@ function TravelerCard({
                 </Typography>
               )}
             </Box>
-            <DurationSection dur={dur} entryDate={entryDate} exitDate={exitDate} />
+            <DurationSection
+              dur={dur}
+              entryDate={entryDate}
+              exitDate={exitDate}
+            />
           </Box>
         </Box>
       )}

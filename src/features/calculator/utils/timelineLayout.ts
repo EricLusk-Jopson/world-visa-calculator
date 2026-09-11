@@ -83,7 +83,7 @@ const EARLY_TRIP_BUFFER = 14;
 const LATE_TRIP_BUFFER = 21;
 
 export const SIDEBAR_WIDTH = 64;
-export const COLUMN_MIN_WIDTH = 280;
+export const COLUMN_MIN_WIDTH = 380;
 
 // ─── Dynamic timeline bounds ──────────────────────────────────────────────────
 

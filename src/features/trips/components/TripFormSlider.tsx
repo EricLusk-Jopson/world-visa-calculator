@@ -12,7 +12,10 @@ import { TripSummaryRow } from "./TripSummaryRow";
 import { MobileTripDetailFrame } from "./MobileTripDetailFrame";
 import { computeTravelerEligibility } from "@/pages/CalculatorPage/components/trips/tripEligibility";
 import { computeTravelerDurations } from "@/pages/CalculatorPage/components/trips/tripDuration";
-import { blockedTripRanges, hasBlockingOverlap } from "@/features/calculator/utils/tripOverlap";
+import {
+  blockedTripRanges,
+  hasBlockingOverlap,
+} from "@/features/calculator/utils/tripOverlap";
 
 export interface TripFormSliderProps {
   open: boolean;
@@ -83,7 +86,12 @@ export function TripFormSlider({
     }
   }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id, initialTrip);
+  const blockedRanges = blockedTripRanges(
+    travelers,
+    travelerIds,
+    initialTrip?.id,
+    initialTrip,
+  );
 
   const canSave =
     name.trim().length > 0 &&
@@ -105,15 +113,27 @@ export function TripFormSlider({
 
   const eligibility =
     region !== VisaRegion.Elsewhere
-      ? computeTravelerEligibility(region, travelers, travelerIds, entryDate || undefined, exitDate || undefined)
+      ? computeTravelerEligibility(
+          region,
+          travelers,
+          travelerIds,
+          entryDate || undefined,
+          exitDate || undefined,
+        )
       : [];
   // A temporal window currently in effect gets its own green-clock bucket —
   // technically "ok", but worth flagging as temporary rather than folding
   // into the plain green count.
-  const eligOk = eligibility.filter((e) => e.ok && !e.temporalWindows.some((w) => w.active)).length;
-  const eligTemporary = eligibility.filter((e) => e.temporalWindows.some((w) => w.active)).length;
+  const eligOk = eligibility.filter(
+    (e) => e.ok && !e.temporalWindows.some((w) => w.active),
+  ).length;
+  const eligTemporary = eligibility.filter((e) =>
+    e.temporalWindows.some((w) => w.active),
+  ).length;
   // No-passport travelers are "unknown" (grey), not a visa-required failure (red).
-  const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
+  const eligWarn = eligibility.filter(
+    (e) => !e.ok && e.access !== "unknown",
+  ).length;
   const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
 
   const durations = datesSet
@@ -127,10 +147,16 @@ export function TripFormSlider({
         excludeTripId: initialTrip?.id,
       })
     : [];
-  const durOk = durations.filter((d) => d.tracked && d.severity === "safe").length;
-  const durCaution = durations.filter((d) => d.tracked && d.severity === "caution").length;
+  const durOk = durations.filter(
+    (d) => d.tracked && d.severity === "safe",
+  ).length;
+  const durCaution = durations.filter(
+    (d) => d.tracked && d.severity === "caution",
+  ).length;
   // "danger" splits into close-to-limit (red clock) and actual overstay (red warning).
-  const durDanger = durations.filter((d) => d.tracked && d.severity === "danger" && !d.overstay).length;
+  const durDanger = durations.filter(
+    (d) => d.tracked && d.severity === "danger" && !d.overstay,
+  ).length;
   const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
   const durUnknown = durations.filter((d) => !d.tracked).length;
 
@@ -144,7 +170,17 @@ export function TripFormSlider({
       destination: name.trim() || undefined,
     });
     onClose();
-  }, [canSave, exitDate, travelerIds, entryDate, region, name, initialTrip, onSave, onClose]);
+  }, [
+    canSave,
+    exitDate,
+    travelerIds,
+    entryDate,
+    region,
+    name,
+    initialTrip,
+    onSave,
+    onClose,
+  ]);
 
   const openCard = useCallback((card: ActiveCard) => setActiveCard(card), []);
   const closeCard = useCallback(() => setActiveCard(null), []);
@@ -164,7 +200,7 @@ export function TripFormSlider({
     <FullScreenSlider
       open={open}
       onClose={onClose}
-      title={mode === "edit" ? "Edit trip" : "Add a trip"}
+      title={mode === "edit" ? "Edit Trip" : "Add Trip"}
       footer={footer}
     >
       <Box
@@ -230,7 +266,10 @@ export function TripFormSlider({
           onEntryChange={setEntryDate}
           onExitChange={setExitDate}
           blockedRanges={blockedRanges}
-          onReset={() => { setEntryDate(""); setExitDate(""); }}
+          onReset={() => {
+            setEntryDate("");
+            setExitDate("");
+          }}
           expanded={activeCard === "dates"}
           onExpand={() => openCard("dates")}
           onCollapse={closeCard}
