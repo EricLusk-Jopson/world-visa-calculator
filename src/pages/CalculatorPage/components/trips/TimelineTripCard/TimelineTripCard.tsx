@@ -554,9 +554,9 @@ export function TimelineTripCard({
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
-              fontSize: "0.8rem",
+              fontSize: "0.76rem",
               fontStyle: "italic",
-              fontWeight: 400,
+              fontWeight: 450,
               color: destinationColor,
               lineHeight: 1.2,
               overflow: "hidden",
