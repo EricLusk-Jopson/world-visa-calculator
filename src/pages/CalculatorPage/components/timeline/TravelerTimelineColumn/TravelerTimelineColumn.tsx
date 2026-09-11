@@ -438,8 +438,6 @@ export function TravelerTimelineColumn({
 
   const BASE_Z = 4;
 
-  console.log("width:", width);
-
   return (
     <Box
       ref={columnRef}

@@ -44,8 +44,7 @@ export function TimelineView({
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasScrolledRef = useRef(false);
   const { width } = useWindowDimensions();
-  // eslint-disable-next-line prefer-const
-  let maxColumnWidth = Math.max(
+  const maxColumnWidth = Math.max(
     COLUMN_MIN_WIDTH,
     (width - SIDEBAR_WIDTH * 2) / travelers.length,
   );
@@ -118,6 +117,7 @@ export function TimelineView({
                 key={traveler.id}
                 sx={{
                   minWidth: COLUMN_MIN_WIDTH,
+                  maxWidth: maxColumnWidth,
                   flex: 1,
                   p: "12px",
                   borderRight: `1px solid ${tokens.border}`,
