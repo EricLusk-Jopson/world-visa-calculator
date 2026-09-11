@@ -553,10 +553,10 @@ export function TimelineTripCard({
         >
           <Typography
             sx={{
-              fontFamily: tokens.fontDisplay,
-              fontSize: "0.8rem",
-              fontStyle: "italic",
-              fontWeight: 400,
+              fontFamily: tokens.fontBody,
+              fontSize: "0.76rem",
+              fontStyle: "normal",
+              fontWeight: 450,
               color: destinationColor,
               lineHeight: 1.2,
               overflow: "hidden",

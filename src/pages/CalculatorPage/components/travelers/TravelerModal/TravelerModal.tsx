@@ -77,7 +77,7 @@ export function TravelerModal({ open, onClose, onAdd }: TravelerModalProps) {
       >
         <Typography
           sx={{
-            fontFamily: tokens.fontDisplay,
+            fontFamily: tokens.fontBody,
             fontSize: "1.1rem",
             fontStyle: "italic",
             fontWeight: 400,

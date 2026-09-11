@@ -189,7 +189,7 @@ export function TravelerColumnHeader({
 
         <Typography
           sx={{
-            fontFamily: tokens.fontDisplay,
+            fontFamily: tokens.fontBody,
             fontSize: "1.05rem",
             fontStyle: "italic",
             fontWeight: 400,
@@ -432,7 +432,7 @@ export function TravelerColumnHeader({
         >
           <Typography
             sx={{
-              fontFamily: tokens.fontDisplay,
+              fontFamily: tokens.fontBody,
               fontSize: "1.1rem",
               fontStyle: "italic",
               fontWeight: 400,

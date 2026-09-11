@@ -218,7 +218,7 @@ export function TripViewSlider({
             <Box sx={{ display: "flex", flexDirection: "column", gap: "3px" }}>
               <Typography
                 sx={{
-                  fontFamily: tokens.fontDisplay,
+                  fontFamily: tokens.fontBody,
                   fontSize: "1.5rem",
                   fontStyle: "italic",
                   fontWeight: 400,
@@ -331,7 +331,7 @@ export function TripViewSlider({
       >
         <DialogTitle
           sx={{
-            fontFamily: tokens.fontDisplay,
+            fontFamily: tokens.fontBody,
             fontSize: "1.05rem",
             fontStyle: "italic",
             fontWeight: 400,

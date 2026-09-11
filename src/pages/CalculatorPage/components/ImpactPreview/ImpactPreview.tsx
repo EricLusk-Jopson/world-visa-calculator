@@ -220,7 +220,7 @@ function SectionRow({
       </Typography>
       <Typography
         sx={{
-          fontFamily: tokens.fontDisplay,
+          fontFamily: tokens.fontBody,
           fontSize: "0.85rem",
           fontWeight: 600,
           fontStyle: "italic",
@@ -262,7 +262,7 @@ function TripRow({
         {name && (
           <Typography
             sx={{
-              fontFamily: tokens.fontDisplay,
+              fontFamily: tokens.fontBody,
               fontSize: "0.78rem",
               fontStyle: "italic",
               fontWeight: 400,
@@ -338,7 +338,7 @@ function TravelerImpactRow({ impact }: { impact: TravelerImpact }) {
       />
       <Typography
         sx={{
-          fontFamily: tokens.fontDisplay,
+          fontFamily: tokens.fontBody,
           fontSize: "0.85rem",
           fontStyle: "italic",
           fontWeight: 400,
@@ -565,7 +565,7 @@ export function ImpactPreview({
           >
             <Typography
               sx={{
-                fontFamily: tokens.fontDisplay,
+                fontFamily: tokens.fontBody,
                 fontSize: "2rem",
                 fontWeight: 600,
                 lineHeight: 1,
@@ -738,7 +738,7 @@ export function ImpactPreview({
               </Box>
               <Typography
                 sx={{
-                  fontFamily: tokens.fontDisplay,
+                  fontFamily: tokens.fontBody,
                   fontSize: "0.9rem",
                   fontWeight: 600,
                   fontStyle: "italic",
@@ -829,7 +829,7 @@ export function ImpactPreview({
               </Box>
               <Typography
                 sx={{
-                  fontFamily: tokens.fontDisplay,
+                  fontFamily: tokens.fontBody,
                   fontSize: "1rem",
                   fontWeight: 600,
                   fontStyle: "italic",
