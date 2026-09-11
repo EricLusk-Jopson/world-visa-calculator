@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LandingNav from "../components/LandingNav.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout
@@ -104,12 +105,14 @@ import LandingNav from "../components/LandingNav.astro";
 
     </div>
   </div>
+
+  <Footer />
 </BaseLayout>
 
 <style>
   .page {
     min-height: 100vh;
-    background: #FCFBF9;
+    background: var(--color-off-white);
     padding: 128px 24px 96px;
   }
 
