@@ -95,9 +95,13 @@ export function TravelerFilterBar({
         </Box>
 
         {open ? (
-          <ExpandLessIcon sx={{ fontSize: "0.9rem", color: tokens.textGhost }} />
+          <ExpandLessIcon
+            sx={{ fontSize: "0.9rem", color: tokens.textGhost }}
+          />
         ) : (
-          <ExpandMoreIcon sx={{ fontSize: "0.9rem", color: tokens.textGhost }} />
+          <ExpandMoreIcon
+            sx={{ fontSize: "0.9rem", color: tokens.textGhost }}
+          />
         )}
       </Box>
 
@@ -105,110 +109,118 @@ export function TravelerFilterBar({
       {/* Cap the expanded list at ~half the screen and scroll beyond that. */}
       <Collapse in={open}>
         <Box sx={{ maxHeight: "50vh", overflowY: "auto" }}>
-        {travelers.map((traveler, i) => {
-          const color = getTravelerColor(i);
-          const hidden = hiddenTravelerIds.includes(traveler.id);
+          {travelers.map((traveler, i) => {
+            const color = getTravelerColor(i);
+            const hidden = hiddenTravelerIds.includes(traveler.id);
 
-          return (
-            <Box
-              key={traveler.id}
-              role="button"
-              tabIndex={0}
-              onClick={() => onOpenTraveler(traveler.id)}
-              aria-label={`Open ${traveler.name}`}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "9px",
-                px: "14px",
-                py: "11px",
-                borderTop: `1px solid ${tokens.border}`,
-                opacity: hidden ? 0.5 : 1,
-                transition: "opacity 0.15s",
-                cursor: "pointer",
-                "&:active": { bgcolor: alpha(tokens.navy, 0.04) },
-              }}
-            >
-              {/* Colour dot */}
+            return (
               <Box
-                sx={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  bgcolor: hidden ? tokens.border : color,
-                  flexShrink: 0,
-                }}
-              />
-
-              {/* Name + nationality */}
-              <Box sx={{ minWidth: 0, flex: 1 }}>
-                <Typography
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "1.05rem",
-                    fontStyle: "italic",
-                    fontWeight: 400,
-                    color: hidden ? tokens.textGhost : tokens.navy,
-                    lineHeight: 1.15,
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {traveler.name}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: tokens.fontBody,
-                    fontSize: "0.68rem",
-                    color: tokens.textGhost,
-                    lineHeight: 1.3,
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {traveler.passportCode
-                    ? getCountryName(traveler.passportCode)
-                    : "Nationality not set"}
-                </Typography>
-              </Box>
-
-              {/* Visibility toggle — stops the row's open-frame click */}
-              <Box
-                component="button"
-                onClick={(e: React.MouseEvent) => {
-                  e.stopPropagation();
-                  onToggleTraveler(traveler.id);
-                }}
-                aria-label={`${hidden ? "Show" : "Hide"} ${traveler.name}`}
+                key={traveler.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => onOpenTraveler(traveler.id)}
+                aria-label={`Open ${traveler.name}`}
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  width: 32,
-                  height: 32,
-                  border: "none",
-                  borderRadius: "6px",
-                  bgcolor: "transparent",
+                  gap: "9px",
+                  px: "14px",
+                  py: "11px",
+                  borderTop: `1px solid ${tokens.border}`,
+                  opacity: hidden ? 0.5 : 1,
+                  transition: "opacity 0.15s",
                   cursor: "pointer",
-                  flexShrink: 0,
-                  color: hidden ? tokens.textGhost : tokens.textSoft,
-                  "&:active": { bgcolor: alpha(tokens.navy, 0.06), color: tokens.navy },
+                  "&:active": { bgcolor: alpha(tokens.navy, 0.04) },
                 }}
               >
-                {hidden ? (
-                  <VisibilityOffIcon sx={{ fontSize: "1.05rem" }} />
-                ) : (
-                  <VisibilityIcon sx={{ fontSize: "1.05rem" }} />
-                )}
-              </Box>
+                {/* Colour dot */}
+                <Box
+                  sx={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    bgcolor: hidden ? tokens.border : color,
+                    flexShrink: 0,
+                  }}
+                />
 
-              {/* Carat — affordance for opening the traveler frame */}
-              <ChevronRightIcon sx={{ fontSize: "1.3rem", color: tokens.textGhost, flexShrink: 0 }} />
-            </Box>
-          );
-        })}
+                {/* Name + nationality */}
+                <Box sx={{ minWidth: 0, flex: 1 }}>
+                  <Typography
+                    sx={{
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.9rem",
+                      fontWeight: 430,
+                      color: hidden ? tokens.textGhost : tokens.navy,
+                      lineHeight: 1.15,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {traveler.name}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.68rem",
+                      color: tokens.textGhost,
+                      lineHeight: 1.3,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {traveler.passportCode
+                      ? getCountryName(traveler.passportCode)
+                      : "Nationality not set"}
+                  </Typography>
+                </Box>
+
+                {/* Visibility toggle — stops the row's open-frame click */}
+                <Box
+                  component="button"
+                  onClick={(e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    onToggleTraveler(traveler.id);
+                  }}
+                  aria-label={`${hidden ? "Show" : "Hide"} ${traveler.name}`}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 32,
+                    height: 32,
+                    border: "none",
+                    borderRadius: "6px",
+                    bgcolor: "transparent",
+                    cursor: "pointer",
+                    flexShrink: 0,
+                    color: hidden ? tokens.textGhost : tokens.textSoft,
+                    "&:active": {
+                      bgcolor: alpha(tokens.navy, 0.06),
+                      color: tokens.navy,
+                    },
+                  }}
+                >
+                  {hidden ? (
+                    <VisibilityOffIcon sx={{ fontSize: "1.05rem" }} />
+                  ) : (
+                    <VisibilityIcon sx={{ fontSize: "1.05rem" }} />
+                  )}
+                </Box>
+
+                {/* Carat — affordance for opening the traveler frame */}
+                <ChevronRightIcon
+                  sx={{
+                    fontSize: "1.3rem",
+                    color: tokens.textGhost,
+                    flexShrink: 0,
+                  }}
+                />
+              </Box>
+            );
+          })}
         </Box>
       </Collapse>
     </Box>

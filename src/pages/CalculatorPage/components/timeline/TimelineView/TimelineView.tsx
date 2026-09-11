@@ -17,6 +17,7 @@ import {
   COLUMN_HEADER_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
 import { today as getToday } from "@/features/calculator/utils/dates";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 interface TimelineViewProps {
   travelers: Traveler[];
@@ -42,6 +43,12 @@ export function TimelineView({
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasScrolledRef = useRef(false);
+  const { width } = useWindowDimensions();
+  // eslint-disable-next-line prefer-const
+  let maxColumnWidth = Math.max(
+    COLUMN_MIN_WIDTH,
+    (width - SIDEBAR_WIDTH * 2) / travelers.length,
+  );
 
   const timelineStart = useMemo(
     () => computeTimelineStart(travelers),
@@ -124,6 +131,7 @@ export function TimelineView({
                   onEdit={(name, code, targetRegion) =>
                     onEdit(traveler.id, name, code, targetRegion)
                   }
+                  width={maxColumnWidth}
                   sx={{ width: "100%" }}
                 />
               </Box>
@@ -148,6 +156,7 @@ export function TimelineView({
               timelineEnd={timelineEnd}
               onAddTrip={onAddTrip}
               onEditTrip={onEditTrip}
+              width={maxColumnWidth}
             />
           ))}
 

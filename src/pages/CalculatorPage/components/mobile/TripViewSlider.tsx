@@ -138,12 +138,20 @@ export function TripViewSlider({
 
   // Aggregate status for the header summary strip.
   const eligOk = eligibility.filter((e) => e.ok).length;
-  const eligWarn = eligibility.filter((e) => !e.ok && e.access !== "unknown").length;
+  const eligWarn = eligibility.filter(
+    (e) => !e.ok && e.access !== "unknown",
+  ).length;
   const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
 
-  const durOk = durations.filter((d) => d.tracked && d.severity === "safe").length;
-  const durCaution = durations.filter((d) => d.tracked && d.severity === "caution").length;
-  const durDanger = durations.filter((d) => d.tracked && d.severity === "danger" && !d.overstay).length;
+  const durOk = durations.filter(
+    (d) => d.tracked && d.severity === "safe",
+  ).length;
+  const durCaution = durations.filter(
+    (d) => d.tracked && d.severity === "caution",
+  ).length;
+  const durDanger = durations.filter(
+    (d) => d.tracked && d.severity === "danger" && !d.overstay,
+  ).length;
   const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
   const durUnknown = durations.filter((d) => !d.tracked).length;
 
@@ -219,9 +227,8 @@ export function TripViewSlider({
               <Typography
                 sx={{
                   fontFamily: tokens.fontBody,
-                  fontSize: "1.5rem",
-                  fontStyle: "italic",
-                  fontWeight: 400,
+                  fontSize: "1.12rem",
+                  fontWeight: 430,
                   color: tokens.navy,
                   lineHeight: 1.15,
                 }}
@@ -250,53 +257,94 @@ export function TripViewSlider({
                 }}
               >
                 {hasElig && (
-                  <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <Box
+                    sx={{ display: "flex", alignItems: "center", gap: "6px" }}
+                  >
                     <GroupLabel>Entry</GroupLabel>
                     {eligOk > 0 && (
                       <IconCount
                         count={eligOk}
                         color={tokens.green}
-                        icon={<CheckCircleOutlineIcon sx={{ fontSize: "1.05rem", color: tokens.green }} />}
+                        icon={
+                          <CheckCircleOutlineIcon
+                            sx={{ fontSize: "1.05rem", color: tokens.green }}
+                          />
+                        }
                       />
                     )}
                     {eligWarn > 0 && (
                       <IconCount
                         count={eligWarn}
                         color={tokens.red}
-                        icon={<WarningAmberIcon sx={{ fontSize: "1.05rem", color: tokens.red }} />}
+                        icon={
+                          <WarningAmberIcon
+                            sx={{ fontSize: "1.05rem", color: tokens.red }}
+                          />
+                        }
                       />
                     )}
                     {eligUnknown > 0 && (
                       <IconCount
                         count={eligUnknown}
                         color={tokens.textGhost}
-                        icon={<HelpOutlineIcon sx={{ fontSize: "1.05rem", color: tokens.textGhost }} />}
+                        icon={
+                          <HelpOutlineIcon
+                            sx={{
+                              fontSize: "1.05rem",
+                              color: tokens.textGhost,
+                            }}
+                          />
+                        }
                       />
                     )}
                   </Box>
                 )}
 
                 {hasElig && hasDur && (
-                  <Box sx={{ width: "1px", height: 16, bgcolor: tokens.border }} />
+                  <Box
+                    sx={{ width: "1px", height: 16, bgcolor: tokens.border }}
+                  />
                 )}
 
                 {hasDur && (
-                  <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <Box
+                    sx={{ display: "flex", alignItems: "center", gap: "6px" }}
+                  >
                     <GroupLabel>Duration</GroupLabel>
                     {durOk > 0 && (
-                      <IconCount count={durOk} color={tokens.green} icon={<DurationIcon state="safe" size="1.05rem" />} />
+                      <IconCount
+                        count={durOk}
+                        color={tokens.green}
+                        icon={<DurationIcon state="safe" size="1.05rem" />}
+                      />
                     )}
                     {durCaution > 0 && (
-                      <IconCount count={durCaution} color={tokens.amberText} icon={<DurationIcon state="caution" size="1.05rem" />} />
+                      <IconCount
+                        count={durCaution}
+                        color={tokens.amberText}
+                        icon={<DurationIcon state="caution" size="1.05rem" />}
+                      />
                     )}
                     {durDanger > 0 && (
-                      <IconCount count={durDanger} color={tokens.red} icon={<DurationIcon state="danger" size="1.05rem" />} />
+                      <IconCount
+                        count={durDanger}
+                        color={tokens.red}
+                        icon={<DurationIcon state="danger" size="1.05rem" />}
+                      />
                     )}
                     {durOverstay > 0 && (
-                      <IconCount count={durOverstay} color={tokens.red} icon={<DurationIcon state="overstay" size="1.05rem" />} />
+                      <IconCount
+                        count={durOverstay}
+                        color={tokens.red}
+                        icon={<DurationIcon state="overstay" size="1.05rem" />}
+                      />
                     )}
                     {durUnknown > 0 && (
-                      <IconCount count={durUnknown} color={tokens.textGhost} icon={<DurationIcon state="untracked" size="1.05rem" />} />
+                      <IconCount
+                        count={durUnknown}
+                        color={tokens.textGhost}
+                        icon={<DurationIcon state="untracked" size="1.05rem" />}
+                      />
                     )}
                   </Box>
                 )}

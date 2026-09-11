@@ -62,7 +62,11 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 // Current/Recent/Upcoming are what a traveler is most likely to act on right
 // now; Old/Never are reference material, tucked away by default.
-const CATEGORIES_EXPANDED_BY_DEFAULT: DestinationCategory[] = ["current", "recent", "upcoming"];
+const CATEGORIES_EXPANDED_BY_DEFAULT: DestinationCategory[] = [
+  "current",
+  "recent",
+  "upcoming",
+];
 
 // ─── Destination card ───────────────────────────────────────────────────────
 
@@ -73,7 +77,12 @@ interface DestinationCardProps {
   onToggle: () => void;
 }
 
-function DestinationCard({ traveler, region, expanded, onToggle }: DestinationCardProps) {
+function DestinationCard({
+  traveler,
+  region,
+  expanded,
+  onToggle,
+}: DestinationCardProps) {
   const status = computeDestinationStatus(traveler, region);
 
   return (
@@ -131,9 +140,13 @@ function DestinationCard({ traveler, region, expanded, onToggle }: DestinationCa
           )}
         </Box>
         {expanded ? (
-          <ExpandLessIcon sx={{ fontSize: "1.1rem", color: tokens.textGhost, flexShrink: 0 }} />
+          <ExpandLessIcon
+            sx={{ fontSize: "1.1rem", color: tokens.textGhost, flexShrink: 0 }}
+          />
         ) : (
-          <ExpandMoreIcon sx={{ fontSize: "1.1rem", color: tokens.textGhost, flexShrink: 0 }} />
+          <ExpandMoreIcon
+            sx={{ fontSize: "1.1rem", color: tokens.textGhost, flexShrink: 0 }}
+          />
         )}
       </Box>
 
@@ -163,7 +176,11 @@ function DestinationCard({ traveler, region, expanded, onToggle }: DestinationCa
                   />
                 )}
               </Box>
-              <DestinationSlider fillPct={status.fillPct} variant={status.variant} size="lg" />
+              <DestinationSlider
+                fillPct={status.fillPct}
+                variant={status.variant}
+                size="lg"
+              />
             </>
           ) : null}
 
@@ -244,7 +261,14 @@ function DestinationSection({
         )}
       </Box>
       <Collapse in={expanded}>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", pt: "8px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "8px",
+            pt: "8px",
+          }}
+        >
           {regions.map((region) => (
             <DestinationCard
               key={region}
@@ -273,16 +297,20 @@ export function TravelerViewSlider({
   const [confirmDelete, setConfirmDelete] = useState(false);
   // Independently expandable — a Set, not a single region, so opening one
   // card never forces the others shut (they aren't an accordion).
-  const [expandedRegions, setExpandedRegions] = useState<Set<VisaRegion>>(new Set());
+  const [expandedRegions, setExpandedRegions] = useState<Set<VisaRegion>>(
+    new Set(),
+  );
   // Section-level collapse — persists across traveler switches; only the
   // per-card expand state below is reset per traveler.
-  const [expandedSections, setExpandedSections] = useState<Set<DestinationCategory>>(
-    () => new Set(CATEGORIES_EXPANDED_BY_DEFAULT),
-  );
+  const [expandedSections, setExpandedSections] = useState<
+    Set<DestinationCategory>
+  >(() => new Set(CATEGORIES_EXPANDED_BY_DEFAULT));
 
   useEffect(() => {
     if (!open || !traveler) return;
-    const current = categorizeAllDestinations(traveler).filter((d) => d.category === "current");
+    const current = categorizeAllDestinations(traveler).filter(
+      (d) => d.category === "current",
+    );
     setExpandedRegions(new Set(current.map((d) => d.region)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [traveler?.id, open]);
@@ -373,9 +401,8 @@ export function TravelerViewSlider({
               <Typography
                 sx={{
                   fontFamily: tokens.fontBody,
-                  fontSize: "1.5rem",
-                  fontStyle: "italic",
-                  fontWeight: 400,
+                  fontSize: "1.12rem",
+                  fontWeight: 430,
                   color: tokens.navy,
                   lineHeight: 1.15,
                 }}
@@ -388,7 +415,9 @@ export function TravelerViewSlider({
                 fontFamily: tokens.fontBody,
                 fontSize: "0.85rem",
                 fontWeight: 500,
-                color: traveler.passportCode ? tokens.textSoft : tokens.textGhost,
+                color: traveler.passportCode
+                  ? tokens.textSoft
+                  : tokens.textGhost,
                 pl: "20px",
               }}
             >
@@ -414,15 +443,31 @@ export function TravelerViewSlider({
               borderRadius: "10px",
             }}
           >
-            <InfoOutlinedIcon sx={{ fontSize: "1rem", color: tokens.textSoft, mt: "1px", flexShrink: 0 }} />
-            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, lineHeight: 1.45 }}>
-              <Box component="span" sx={{ fontWeight: 700, color: tokens.navy }}>
+            <InfoOutlinedIcon
+              sx={{
+                fontSize: "1rem",
+                color: tokens.textSoft,
+                mt: "1px",
+                flexShrink: 0,
+              }}
+            />
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.75rem",
+                color: tokens.textSoft,
+                lineHeight: 1.45,
+              }}
+            >
+              <Box
+                component="span"
+                sx={{ fontWeight: 700, color: tokens.navy }}
+              >
                 Today, {fmtToday()}.
               </Box>{" "}
-              Allowances below reflect right now. Rolling-window destinations
-              (Schengen, Türkiye) always show today&apos;s balance; per-visit
-              destinations (UK, Ireland) show the current trip only — if
-              there&apos;s no trip there today, the full allowance is available.
+              Allowances below reflect today's status. Rolling-window
+              destinations (Schengen, Türkiye) always show today&apos;s balance;
+              per-visit destinations (UK, Ireland) show the current trip only.
             </Typography>
           </Box>
 

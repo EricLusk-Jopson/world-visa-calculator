@@ -34,6 +34,7 @@ interface TravelerColumnHeaderProps {
     passportCode: string | null,
     targetRegion: VisaRegion | null,
   ) => void;
+  width: number;
   sx?: object;
 }
 
@@ -55,6 +56,7 @@ export function TravelerColumnHeader({
   region,
   onDelete,
   onEdit,
+  width,
   sx = {},
 }: TravelerColumnHeaderProps) {
   const [hovered, setHovered] = useState(false);
@@ -64,7 +66,9 @@ export function TravelerColumnHeader({
 
   // Pending edit values — reset each time the modal opens
   const [editName, setEditName] = useState(traveler.name);
-  const [editCode, setEditCode] = useState<string | null>(traveler.passportCode);
+  const [editCode, setEditCode] = useState<string | null>(
+    traveler.passportCode,
+  );
   const [editTargetRegion, setEditTargetRegion] = useState<VisaRegion>(region);
 
   useEffect(() => {
@@ -91,12 +95,16 @@ export function TravelerColumnHeader({
   const handleCancelDelete = () => setConfirmingDelete(false);
 
   const previewTraveler: Traveler = { ...traveler, passportCode: editCode };
-  const editStatus = computeDestinationStatus(previewTraveler, editTargetRegion);
+  const editStatus = computeDestinationStatus(
+    previewTraveler,
+    editTargetRegion,
+  );
 
   const handleSaveEdit = () => {
     if (!editName.trim()) return;
     const defaultRegion = determineActiveRegion(previewTraveler);
-    const targetRegionToSave = editTargetRegion === defaultRegion ? null : editTargetRegion;
+    const targetRegionToSave =
+      editTargetRegion === defaultRegion ? null : editTargetRegion;
     onEdit(editName.trim(), editCode, targetRegionToSave);
     setEditModalOpen(false);
   };
@@ -108,7 +116,9 @@ export function TravelerColumnHeader({
   const menuButton = (
     <Box
       component="button"
-      onClick={(e: React.MouseEvent<HTMLElement>) => setMenuAnchor(e.currentTarget)}
+      onClick={(e: React.MouseEvent<HTMLElement>) =>
+        setMenuAnchor(e.currentTarget)
+      }
       aria-label={`Options for ${traveler.name}`}
       sx={{
         flexShrink: 0,
@@ -167,6 +177,7 @@ export function TravelerColumnHeader({
         gap: "8px",
         position: "relative",
         zIndex: 4,
+        maxWidth: width,
         ...sx,
       }}
     >
@@ -176,7 +187,9 @@ export function TravelerColumnHeader({
        * Flag emoji (when nationality set), traveler name, optional badges
        * (normal mode), overflow menu button (hover-only).
        */}
-      <Box sx={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0 }}>
+      <Box
+        sx={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0 }}
+      >
         {traveler.passportCode && (
           <Typography
             component="span"
@@ -190,9 +203,8 @@ export function TravelerColumnHeader({
         <Typography
           sx={{
             fontFamily: tokens.fontBody,
-            fontSize: "1.05rem",
-            fontStyle: "italic",
-            fontWeight: 400,
+            fontSize: "0.95rem",
+            fontWeight: 430,
             color: tokens.navy,
             lineHeight: 1,
             flex: 1,
@@ -230,7 +242,10 @@ export function TravelerColumnHeader({
         }}
       >
         <MenuItem
-          onClick={() => { closeMenu(); setEditModalOpen(true); }}
+          onClick={() => {
+            closeMenu();
+            setEditModalOpen(true);
+          }}
           sx={{
             fontFamily: tokens.fontBody,
             fontSize: "0.82rem",
@@ -243,7 +258,10 @@ export function TravelerColumnHeader({
           Edit traveler
         </MenuItem>
         <MenuItem
-          onClick={() => { closeMenu(); handleDeleteClick(); }}
+          onClick={() => {
+            closeMenu();
+            handleDeleteClick();
+          }}
           sx={{
             fontFamily: tokens.fontBody,
             fontSize: "0.82rem",
@@ -269,7 +287,13 @@ export function TravelerColumnHeader({
             }}
           >
             <MobileAwareTooltip
-              title={region === VisaRegion.Schengen ? <SchengenTooltipContent /> : status.note}
+              title={
+                region === VisaRegion.Schengen ? (
+                  <SchengenTooltipContent />
+                ) : (
+                  status.note
+                )
+              }
               placement="bottom"
               arrow
               enterDelay={300}
@@ -318,7 +342,11 @@ export function TravelerColumnHeader({
             </Typography>
           </Box>
 
-          <DestinationSlider fillPct={status.fillPct} variant={status.variant} size="sm" />
+          <DestinationSlider
+            fillPct={status.fillPct}
+            variant={status.variant}
+            size="sm"
+          />
         </>
       ) : (
         /* No calculable tracker for this destination/passport combination. */
@@ -465,7 +493,16 @@ export function TravelerColumnHeader({
         </Box>
 
         {/* Body */}
-        <Box sx={{ px: "20px", pt: "14px", pb: "16px", display: "flex", flexDirection: "column", gap: "12px" }}>
+        <Box
+          sx={{
+            px: "20px",
+            pt: "14px",
+            pb: "16px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+          }}
+        >
           {/* Name field */}
           <Box>
             <Typography
@@ -495,9 +532,15 @@ export function TravelerColumnHeader({
                   fontSize: "0.85rem",
                   bgcolor: tokens.mist,
                   borderRadius: "10px",
-                  "& fieldset": { borderColor: tokens.border, borderWidth: 1.5 },
+                  "& fieldset": {
+                    borderColor: tokens.border,
+                    borderWidth: 1.5,
+                  },
                   "&:hover fieldset": { borderColor: tokens.navy },
-                  "&.Mui-focused fieldset": { borderColor: tokens.navy, borderWidth: 1.5 },
+                  "&.Mui-focused fieldset": {
+                    borderColor: tokens.navy,
+                    borderWidth: 1.5,
+                  },
                 },
                 "& .MuiOutlinedInput-input": {
                   py: "9px",
@@ -557,7 +600,13 @@ export function TravelerColumnHeader({
 
           {/* Informational note for non-visa-free passports */}
           {editCode && !editStatus.eligible && (
-            <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textGhost }}>
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.72rem",
+                color: tokens.textGhost,
+              }}
+            >
               {editStatus.note}
             </Typography>
           )}
