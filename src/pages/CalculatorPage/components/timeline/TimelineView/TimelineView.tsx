@@ -113,7 +113,7 @@ export function TimelineView({
               alignSelf: "stretch",
               position: "sticky",
               left: 0,
-              zIndex: 1,
+              zIndex: 5,
             }}
           />
 
