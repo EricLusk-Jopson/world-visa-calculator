@@ -203,7 +203,7 @@ export function ClearAllModal({
           </Box>
           <Typography
             sx={{
-              fontFamily: tokens.fontDisplay,
+              fontFamily: tokens.fontBody,
               fontSize: "1.1rem",
               fontStyle: "italic",
               fontWeight: 400,

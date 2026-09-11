@@ -48,7 +48,7 @@ function PassportPickerScreen({
         <IconButton onClick={onClose} size="small" sx={{ color: tokens.white, p: "8px" }}>
           <ArrowBackIosNewIcon sx={{ fontSize: "1rem" }} />
         </IconButton>
-        <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "1rem", fontStyle: "italic", fontWeight: 400, color: tokens.white }}>
+        <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "1rem", fontStyle: "italic", fontWeight: 400, color: tokens.white }}>
           Passport
         </Typography>
       </Box>

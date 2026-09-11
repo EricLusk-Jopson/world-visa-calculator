@@ -461,7 +461,7 @@ function MobileTimelineTripCard({
           <Typography
             sx={{
               fontFamily: trip.destination
-                ? tokens.fontDisplay
+                ? tokens.fontBody
                 : tokens.fontBody,
               fontSize: "0.72rem",
               fontStyle: trip.destination ? "italic" : "normal",

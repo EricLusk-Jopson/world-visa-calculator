@@ -44,7 +44,7 @@ const NAV_SX = {
 } as const;
 
 const LOGO_TEXT_SX = {
-  fontFamily: tokens.fontDisplay,
+  fontFamily: tokens.fontBody,
   fontSize: "0.95rem",
   fontWeight: 600,
   color: tokens.white,

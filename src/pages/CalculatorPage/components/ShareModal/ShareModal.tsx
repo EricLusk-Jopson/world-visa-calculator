@@ -143,7 +143,7 @@ export function ShareModal({
             </Box>
             <Typography
               sx={{
-                fontFamily: tokens.fontDisplay,
+                fontFamily: tokens.fontBody,
                 fontSize: "1.05rem",
                 fontStyle: "italic",
                 fontWeight: 400,

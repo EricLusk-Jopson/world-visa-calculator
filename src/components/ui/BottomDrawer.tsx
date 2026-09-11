@@ -35,7 +35,7 @@ export function BottomDrawer({ open, onClose, title, children }: BottomDrawerPro
       {title && (
         <Typography
           sx={{
-            fontFamily: tokens.fontDisplay,
+            fontFamily: tokens.fontBody,
             fontSize: "1.15rem",
             fontStyle: "italic",
             fontWeight: 400,

@@ -144,7 +144,7 @@ export function TravelerFilterBar({
               <Box sx={{ minWidth: 0, flex: 1 }}>
                 <Typography
                   sx={{
-                    fontFamily: tokens.fontDisplay,
+                    fontFamily: tokens.fontBody,
                     fontSize: "1.05rem",
                     fontStyle: "italic",
                     fontWeight: 400,

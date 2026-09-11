@@ -105,7 +105,7 @@ function DestinationCard({ traveler, region, expanded, onToggle }: DestinationCa
         <Box sx={{ flex: 1, minWidth: 0 }}>
           <Typography
             sx={{
-              fontFamily: tokens.fontDisplay,
+              fontFamily: tokens.fontBody,
               fontSize: "1rem",
               fontStyle: "italic",
               fontWeight: 400,
@@ -372,7 +372,7 @@ export function TravelerViewSlider({
               />
               <Typography
                 sx={{
-                  fontFamily: tokens.fontDisplay,
+                  fontFamily: tokens.fontBody,
                   fontSize: "1.5rem",
                   fontStyle: "italic",
                   fontWeight: 400,
@@ -481,7 +481,7 @@ export function TravelerViewSlider({
       >
         <DialogTitle
           sx={{
-            fontFamily: tokens.fontDisplay,
+            fontFamily: tokens.fontBody,
             fontSize: "1.05rem",
             fontStyle: "italic",
             fontWeight: 400,

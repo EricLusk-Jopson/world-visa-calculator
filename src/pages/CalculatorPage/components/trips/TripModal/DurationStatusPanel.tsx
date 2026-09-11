@@ -33,7 +33,7 @@ function UntrackedRow({ duration }: { duration: TravelerDuration }) {
     <Box sx={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
       <HelpOutlineIcon sx={{ fontSize: "1rem", color: tokens.textGhost, mt: "1px", flexShrink: 0 }} />
       <Box sx={{ display: "flex", flexDirection: "column", gap: "1px", minWidth: 0 }}>
-        <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "0.85rem", fontStyle: "italic", color: tokens.navy }}>
+        <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.85rem", fontStyle: "italic", color: tokens.navy }}>
           {duration.name}
         </Typography>
         <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.68rem", color: tokens.textSoft, lineHeight: 1.4 }}>
@@ -53,7 +53,7 @@ function DurationBarRow({ duration }: { duration: TravelerDuration }) {
       />
       <Typography
         sx={{
-          fontFamily: tokens.fontDisplay,
+          fontFamily: tokens.fontBody,
           fontSize: "0.85rem",
           fontStyle: "italic",
           fontWeight: 400,

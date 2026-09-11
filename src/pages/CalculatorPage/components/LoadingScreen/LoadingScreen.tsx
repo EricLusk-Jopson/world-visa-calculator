@@ -53,7 +53,7 @@ export function LoadingScreen() {
           <Box
             component="span"
             sx={{
-              fontFamily: tokens.fontDisplay,
+              fontFamily: tokens.fontBody,
               fontSize: "1.15rem",
               fontStyle: "italic",
               fontWeight: 500,

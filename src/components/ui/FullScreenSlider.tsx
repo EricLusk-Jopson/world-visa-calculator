@@ -73,7 +73,7 @@ export function FullScreenSlider({
         </IconButton>
         <Typography
           sx={{
-            fontFamily: tokens.fontDisplay,
+            fontFamily: tokens.fontBody,
             fontSize: "1rem",
             fontStyle: "italic",
             fontWeight: 400,
