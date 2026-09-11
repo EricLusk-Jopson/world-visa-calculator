@@ -41,7 +41,6 @@ export function DateSidebar({ timelineStart, timelineEnd }: DateSidebarProps) {
         flexShrink: 0,
         bgcolor: tokens.offWhite,
         borderRight: `1px solid ${tokens.border}`,
-        background: `linear-gradient(to right, ${tokens.offWhite} 80%, transparent)`,
         pointerEvents: "none",
       }}
     >

@@ -107,7 +107,15 @@ export function TimelineView({
             width: "100%",
           }}
         >
-          <Box sx={{ ...sidebarSx, alignSelf: "stretch" }} />
+          <Box
+            sx={{
+              ...sidebarSx,
+              alignSelf: "stretch",
+              position: "sticky",
+              left: 0,
+              zIndex: 1,
+            }}
+          />
 
           {travelers.map((traveler) => {
             const displayRegion = resolveDisplayRegion(traveler);
