@@ -90,7 +90,7 @@ const COUNTRY_OPTIONS: CountryOpt[] = [
     ({ code, name }): CountryOpt => ({
       kind: "country",
       region: VisaRegion.Schengen,
-      label: `${name} (de facto Schengen member)`,
+      label: `${name} (de facto Schengen Area)`,
       countryName: name,
       countryCode: code,
       group: "Europe",
@@ -281,7 +281,7 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
                       ml: "5px",
                     }}
                   >
-                    {option.deFacto ? "(de facto Schengen member)" : "(Schengen Area)"}
+                    {option.deFacto ? "(de facto Schengen Area)" : "(Schengen Area)"}
                   </Typography>
                 </>
               ) : (

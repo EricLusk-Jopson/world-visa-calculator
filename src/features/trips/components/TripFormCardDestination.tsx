@@ -162,7 +162,7 @@ function RegionPickerScreen({
                 component="span"
                 sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", color: tokens.textGhost }}
               >
-                {c.deFacto ? "(de facto Schengen member)" : "(Schengen Area)"}
+                {c.deFacto ? "(de facto Schengen Area)" : "(Schengen Area)"}
               </Typography>
             </span>
           </Box>
