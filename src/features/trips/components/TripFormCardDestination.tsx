@@ -20,6 +20,21 @@ const REGIONS = [
   { value: VisaRegion.Elsewhere, label: VISA_REGION_LABELS[VisaRegion.Elsewhere] },
 ];
 
+/**
+ * De facto Schengen members — not formal member states, but stays there count
+ * against the same 90/180-day Schengen allowance. Searchable in the region
+ * picker (below) alongside the top-level regions, each mapping back to
+ * VisaRegion.Schengen when selected. Not shown in the always-visible list —
+ * only surfaced when the user searches by name.
+ */
+const SCHENGEN_DE_FACTO_TERRITORIES: Array<{ code: string; label: string }> = [
+  { code: "AD", label: "Andorra" },
+  { code: "GI", label: "Gibraltar" },
+  { code: "MC", label: "Monaco" },
+  { code: "SM", label: "San Marino" },
+  { code: "VA", label: "Vatican City" },
+];
+
 function RegionPickerScreen({
   open,
   value,
@@ -35,6 +50,13 @@ function RegionPickerScreen({
   useEffect(() => {
     if (open) setQuery("");
   }, [open]);
+
+  const filteredTerritories = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return q
+      ? SCHENGEN_DE_FACTO_TERRITORIES.filter((t) => t.label.toLowerCase().includes(q))
+      : [];
+  }, [query]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -110,6 +132,41 @@ function RegionPickerScreen({
             {r.value === value && (
               <CheckIcon sx={{ fontSize: "1rem", color: tokens.green }} />
             )}
+          </Box>
+        ))}
+        {filteredTerritories.map((t) => (
+          <Box
+            key={t.code}
+            component="button"
+            onClick={() => onSelect(VisaRegion.Schengen)}
+            sx={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              px: "20px",
+              py: "18px",
+              bgcolor: "transparent",
+              border: "none",
+              borderBottom: `1px solid ${tokens.border}`,
+              textAlign: "left",
+              cursor: "pointer",
+              fontFamily: tokens.fontBody,
+              fontSize: "1rem",
+              fontWeight: 400,
+              color: tokens.text,
+              "&:active": { bgcolor: tokens.mist },
+            }}
+          >
+            <span>
+              {t.label}{" "}
+              <Typography
+                component="span"
+                sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", color: tokens.textGhost }}
+              >
+                (de facto Schengen member)
+              </Typography>
+            </span>
           </Box>
         ))}
       </Box>

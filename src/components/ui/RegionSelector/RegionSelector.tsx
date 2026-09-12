@@ -32,6 +32,9 @@ interface CountryOpt {
   countryName: string;
   countryCode: string;
   group: string;
+  /** De facto Schengen members (Andorra, Gibraltar, Monaco, San Marino, Vatican
+   *  City) aren't formal member states — shown with different suffix text. */
+  deFacto?: boolean;
 }
 
 type SelectorOption = RegionOpt | CountryOpt;
@@ -72,6 +75,19 @@ const SCHENGEN_MEMBERS: Array<{ code: string; name: string }> = [
 ];
 
 /**
+ * De facto Schengen members — not formal member states, but stays there count
+ * against the same 90/180-day Schengen allowance. Searchable alongside the
+ * member states above, with distinct suffix text (see COUNTRY_OPTIONS).
+ */
+const SCHENGEN_DE_FACTO_MEMBERS: Array<{ code: string; name: string }> = [
+  { code: "AD", name: "Andorra" },
+  { code: "GI", name: "Gibraltar" },
+  { code: "MC", name: "Monaco" },
+  { code: "SM", name: "San Marino" },
+  { code: "VA", name: "Vatican City" },
+];
+
+/**
  * Region options in display order:
  *   1. Elsewhere  (group: '' — no header)
  *   2. Every SUPPORTED_DESTINATIONS entry (group: 'Europe' — divider + label)
@@ -101,16 +117,29 @@ const REGION_OPTIONS: RegionOpt[] = [
  * Individual Schengen country options — only shown when the user types a search
  * query. Each maps back to VisaRegion.Schengen when selected.
  */
-const COUNTRY_OPTIONS: CountryOpt[] = SCHENGEN_MEMBERS.map(
-  ({ code, name }) => ({
-    kind: "country" as const,
-    region: VisaRegion.Schengen,
-    label: `${name} (${VISA_REGION_LABELS[VisaRegion.Schengen]})`,
-    countryName: name,
-    countryCode: code,
-    group: "Europe",
-  }),
-);
+const COUNTRY_OPTIONS: CountryOpt[] = [
+  ...SCHENGEN_MEMBERS.map(
+    ({ code, name }): CountryOpt => ({
+      kind: "country",
+      region: VisaRegion.Schengen,
+      label: `${name} (${VISA_REGION_LABELS[VisaRegion.Schengen]})`,
+      countryName: name,
+      countryCode: code,
+      group: "Europe",
+    }),
+  ),
+  ...SCHENGEN_DE_FACTO_MEMBERS.map(
+    ({ code, name }): CountryOpt => ({
+      kind: "country",
+      region: VisaRegion.Schengen,
+      label: `${name} (de facto Schengen member)`,
+      countryName: name,
+      countryCode: code,
+      group: "Europe",
+      deFacto: true,
+    }),
+  ),
+];
 
 const ALL_OPTIONS: SelectorOption[] = [...REGION_OPTIONS, ...COUNTRY_OPTIONS];
 
@@ -294,7 +323,7 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
                       ml: "5px",
                     }}
                   >
-                    (Schengen Area)
+                    {option.deFacto ? "(de facto Schengen member)" : "(Schengen Area)"}
                   </Typography>
                 </>
               ) : (
