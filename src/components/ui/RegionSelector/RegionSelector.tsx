@@ -10,6 +10,7 @@ import { tokens } from "@/styles/theme";
 import { VisaRegion, VISA_REGION_LABELS, SUPPORTED_DESTINATIONS } from "@/types";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
+import { SCHENGEN_MEMBERS, SCHENGEN_DE_FACTO_MEMBERS } from "@/data/schengenSearchEntries";
 
 // ─── Option types ─────────────────────────────────────────────────────────────
 
@@ -40,52 +41,9 @@ interface CountryOpt {
 type SelectorOption = RegionOpt | CountryOpt;
 
 // ─── Static data ──────────────────────────────────────────────────────────────
-
-/** Schengen member states — sourced from SCHENGEN.memberStates in schengen.ts */
-const SCHENGEN_MEMBERS: Array<{ code: string; name: string }> = [
-  { code: "AT", name: "Austria" },
-  { code: "BE", name: "Belgium" },
-  { code: "BG", name: "Bulgaria" },
-  { code: "HR", name: "Croatia" },
-  { code: "CZ", name: "Czechia" },
-  { code: "DK", name: "Denmark" },
-  { code: "EE", name: "Estonia" },
-  { code: "FI", name: "Finland" },
-  { code: "FR", name: "France" },
-  { code: "DE", name: "Germany" },
-  { code: "GR", name: "Greece" },
-  { code: "HU", name: "Hungary" },
-  { code: "IS", name: "Iceland" },
-  { code: "IT", name: "Italy" },
-  { code: "LV", name: "Latvia" },
-  { code: "LI", name: "Liechtenstein" },
-  { code: "LT", name: "Lithuania" },
-  { code: "LU", name: "Luxembourg" },
-  { code: "MT", name: "Malta" },
-  { code: "NL", name: "Netherlands" },
-  { code: "NO", name: "Norway" },
-  { code: "PL", name: "Poland" },
-  { code: "PT", name: "Portugal" },
-  { code: "RO", name: "Romania" },
-  { code: "SK", name: "Slovakia" },
-  { code: "SI", name: "Slovenia" },
-  { code: "ES", name: "Spain" },
-  { code: "SE", name: "Sweden" },
-  { code: "CH", name: "Switzerland" },
-];
-
-/**
- * De facto Schengen members — not formal member states, but stays there count
- * against the same 90/180-day Schengen allowance. Searchable alongside the
- * member states above, with distinct suffix text (see COUNTRY_OPTIONS).
- */
-const SCHENGEN_DE_FACTO_MEMBERS: Array<{ code: string; name: string }> = [
-  { code: "AD", name: "Andorra" },
-  { code: "GI", name: "Gibraltar" },
-  { code: "MC", name: "Monaco" },
-  { code: "SM", name: "San Marino" },
-  { code: "VA", name: "Vatican City" },
-];
+// SCHENGEN_MEMBERS / SCHENGEN_DE_FACTO_MEMBERS come from
+// @/data/schengenSearchEntries, shared with TripFormCardDestination's mobile
+// picker so both stay in sync.
 
 /**
  * Region options in display order:

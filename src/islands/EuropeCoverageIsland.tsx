@@ -47,19 +47,19 @@ const ruleLabel = (rule: StayRule): string => {
     case "per-visit":
       return `${rule.maxStayDays} days per visit`;
     case "schengen-de-facto":
-      return "Same Schengen limits applied de facto";
+      return "Same Schengen limit, de facto";
   }
 };
 /** Visual rule display — italicizes "de facto" for the de-facto-member rule. */
 const ruleDisplay = (rule: StayRule): React.ReactNode =>
   rule.type === "schengen-de-facto"
-    ? <>Same Schengen limits applied <em>de facto</em></>
+    ? <>Same Schengen limit, <em>de facto</em></>
     : ruleLabel(rule);
 const ruleAccessibilityLabel = (regionId: string) => {
   const rule = ruleByRegion.get(regionId);
   if (!rule) return "";
   return rule.type === "schengen-de-facto"
-    ? ", visa-free rule overview: same Schengen limits applied de facto"
+    ? ", visa-free rule overview: same Schengen limit, de facto"
     : `, visa-free rule overview: up to ${ruleLabel(rule)}, ${ruleTypeLabel(rule).toLowerCase()}`;
 };
 interface ViewState {

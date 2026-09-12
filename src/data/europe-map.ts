@@ -320,14 +320,14 @@ export const europeMap: EuropeMapData = {
         {
           "name": "Gibraltar",
           "point": [
-            140.3,
-            718.6
+            154,
+            707
           ]
         }
       ],
       "center": [
-        140.3,
-        718.6
+        154,
+        707
       ]
     },
     {
