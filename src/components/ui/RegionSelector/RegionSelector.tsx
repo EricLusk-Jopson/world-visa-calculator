@@ -10,6 +10,7 @@ import { tokens } from "@/styles/theme";
 import { VisaRegion, VISA_REGION_LABELS, SUPPORTED_DESTINATIONS } from "@/types";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import { SchengenTooltipContent } from "@/components/ui/SchengenTooltipContent";
+import { SCHENGEN_MEMBERS, SCHENGEN_DE_FACTO_MEMBERS } from "@/data/schengenSearchEntries";
 
 // ─── Option types ─────────────────────────────────────────────────────────────
 
@@ -32,44 +33,17 @@ interface CountryOpt {
   countryName: string;
   countryCode: string;
   group: string;
+  /** De facto Schengen members (Andorra, Gibraltar, Monaco, San Marino, Vatican
+   *  City) aren't formal member states — shown with different suffix text. */
+  deFacto?: boolean;
 }
 
 type SelectorOption = RegionOpt | CountryOpt;
 
 // ─── Static data ──────────────────────────────────────────────────────────────
-
-/** Schengen member states — sourced from SCHENGEN.memberStates in schengen.ts */
-const SCHENGEN_MEMBERS: Array<{ code: string; name: string }> = [
-  { code: "AT", name: "Austria" },
-  { code: "BE", name: "Belgium" },
-  { code: "BG", name: "Bulgaria" },
-  { code: "HR", name: "Croatia" },
-  { code: "CZ", name: "Czechia" },
-  { code: "DK", name: "Denmark" },
-  { code: "EE", name: "Estonia" },
-  { code: "FI", name: "Finland" },
-  { code: "FR", name: "France" },
-  { code: "DE", name: "Germany" },
-  { code: "GR", name: "Greece" },
-  { code: "HU", name: "Hungary" },
-  { code: "IS", name: "Iceland" },
-  { code: "IT", name: "Italy" },
-  { code: "LV", name: "Latvia" },
-  { code: "LI", name: "Liechtenstein" },
-  { code: "LT", name: "Lithuania" },
-  { code: "LU", name: "Luxembourg" },
-  { code: "MT", name: "Malta" },
-  { code: "NL", name: "Netherlands" },
-  { code: "NO", name: "Norway" },
-  { code: "PL", name: "Poland" },
-  { code: "PT", name: "Portugal" },
-  { code: "RO", name: "Romania" },
-  { code: "SK", name: "Slovakia" },
-  { code: "SI", name: "Slovenia" },
-  { code: "ES", name: "Spain" },
-  { code: "SE", name: "Sweden" },
-  { code: "CH", name: "Switzerland" },
-];
+// SCHENGEN_MEMBERS / SCHENGEN_DE_FACTO_MEMBERS come from
+// @/data/schengenSearchEntries, shared with TripFormCardDestination's mobile
+// picker so both stay in sync.
 
 /**
  * Region options in display order:
@@ -101,16 +75,29 @@ const REGION_OPTIONS: RegionOpt[] = [
  * Individual Schengen country options — only shown when the user types a search
  * query. Each maps back to VisaRegion.Schengen when selected.
  */
-const COUNTRY_OPTIONS: CountryOpt[] = SCHENGEN_MEMBERS.map(
-  ({ code, name }) => ({
-    kind: "country" as const,
-    region: VisaRegion.Schengen,
-    label: `${name} (${VISA_REGION_LABELS[VisaRegion.Schengen]})`,
-    countryName: name,
-    countryCode: code,
-    group: "Europe",
-  }),
-);
+const COUNTRY_OPTIONS: CountryOpt[] = [
+  ...SCHENGEN_MEMBERS.map(
+    ({ code, name }): CountryOpt => ({
+      kind: "country",
+      region: VisaRegion.Schengen,
+      label: `${name} (${VISA_REGION_LABELS[VisaRegion.Schengen]})`,
+      countryName: name,
+      countryCode: code,
+      group: "Europe",
+    }),
+  ),
+  ...SCHENGEN_DE_FACTO_MEMBERS.map(
+    ({ code, name }): CountryOpt => ({
+      kind: "country",
+      region: VisaRegion.Schengen,
+      label: `${name} (de facto Schengen Area)`,
+      countryName: name,
+      countryCode: code,
+      group: "Europe",
+      deFacto: true,
+    }),
+  ),
+];
 
 const ALL_OPTIONS: SelectorOption[] = [...REGION_OPTIONS, ...COUNTRY_OPTIONS];
 
@@ -294,7 +281,7 @@ export function RegionSelector({ value, onChange, sx = {} }: RegionSelectorProps
                       ml: "5px",
                     }}
                   >
-                    (Schengen Area)
+                    {option.deFacto ? "(de facto Schengen Area)" : "(Schengen Area)"}
                   </Typography>
                 </>
               ) : (
