@@ -49,11 +49,37 @@ export interface StayAssessment {
   daysAllowed: number;
   /** Human adjective form of the allowance, e.g. "6-month", "90-day". */
   limitLabel: string;
+  /** Length of this specific trip alone (entry through checkDate/exit, inclusive). */
   tripDays: number;
+  /**
+   * Cumulative days counted toward `daysAllowed`, including this trip. Equals
+   * `tripDays` for per_visit/rolling_window (the constraint is this visit
+   * alone); for calendar_period/fixed_window_from_entry it also includes
+   * every other trip already counted within the same budget window — this is
+   * the figure to show as "X of Y used", never `tripDays` for those types.
+   */
+  daysUsed: number;
   /** Days between checkDate and maxExitDate. Negative = over the limit. */
   daysRemaining: number;
   maxExitDate: string;
   variant: StayVariant;
+  /**
+   * Present only for calendar_period / fixed_window_from_entry: every trip
+   * (including this one) that counts toward `daysUsed` within the current
+   * budget window, for a "show the calculation" breakdown UI.
+   */
+  contributions?: BudgetWindowContribution[];
+}
+
+/** One trip's contribution to a calendar_period / fixed_window_from_entry budget. */
+export interface BudgetWindowContribution {
+  tripId: string;
+  entryDate: string;
+  /** Undefined for an ongoing trip (no exit date recorded yet). */
+  exitDate?: string;
+  /** Days this trip contributes within the budget window (may be clipped to the window). */
+  days: number;
+  isCurrentTrip: boolean;
 }
 
 export interface ReentryRisk {
@@ -285,6 +311,7 @@ function assessPerVisit(
     daysAllowed,
     limitLabel: `${limit.value}-${UNIT_SINGULAR[limit.unit]}`,
     tripDays,
+    daysUsed: tripDays,
     daysRemaining,
     maxExitDate: formatDate(maxExit),
     variant,
@@ -311,6 +338,7 @@ function assessRollingWindow(
       daysAllowed: limit.days,
       limitLabel,
       tripDays: 0,
+      daysUsed: 0,
       daysRemaining: 0,
       maxExitDate: entryDate,
       variant: "danger",
@@ -332,6 +360,7 @@ function assessRollingWindow(
     daysAllowed: limit.days,
     limitLabel,
     tripDays,
+    daysUsed: tripDays,
     daysRemaining,
     maxExitDate: maxStay.maxExitDate!,
     variant,
@@ -360,21 +389,41 @@ export function assessBudgetWindow(
   const check = checkDate ? parseDate(checkDate) : today();
   const priorCutoff = addDays(entry, -1);
 
-  // Days already spent inside the window by completed trips, before this entry.
+  // Days already spent inside the window by completed trips, before this entry
+  // — also recorded per-trip as `contributions` so the UI can show the sum.
   let usedBefore = 0;
+  const contributions: BudgetWindowContribution[] = [];
   for (const t of historicalTrips) {
     const tEntry = parseDate(t.entryDate);
     const tExit = t.exitDate ? parseDate(t.exitDate) : check;
-    usedBefore += countDaysInWindow(
+    const daysInWindow = countDaysInWindow(
       tEntry,
       tExit,
       windowStart,
       minDate(windowEnd, priorCutoff),
     );
+    if (daysInWindow > 0) {
+      contributions.push({
+        tripId: t.id,
+        entryDate: t.entryDate,
+        exitDate: t.exitDate,
+        days: daysInWindow,
+        isCurrentTrip: false,
+      });
+    }
+    usedBefore += daysInWindow;
   }
 
   const remainingBudget = Math.max(0, days - usedBefore);
   const tripDays = countTripDays(entry, check);
+  const daysUsed = usedBefore + tripDays;
+  contributions.push({
+    tripId: "__current__",
+    entryDate,
+    exitDate: checkDate,
+    days: tripDays,
+    isCurrentTrip: true,
+  });
 
   // Max exit is bounded by the remaining budget and the window's end.
   const budgetExit = addDays(entry, remainingBudget - 1);
@@ -383,7 +432,7 @@ export function assessBudgetWindow(
 
   let variant: StayVariant;
   if (remainingBudget <= 0 || daysRemaining < 0) variant = "danger";
-  else if (tripDays >= cautionThreshold(days)) variant = "caution";
+  else if (daysUsed >= cautionThreshold(days)) variant = "caution";
   else variant = "safe";
 
   return {
@@ -391,9 +440,11 @@ export function assessBudgetWindow(
     daysAllowed: days,
     limitLabel: `${days}-day`,
     tripDays,
+    daysUsed,
     daysRemaining,
     maxExitDate: formatDate(maxExit),
     variant,
+    contributions,
   };
 }
 

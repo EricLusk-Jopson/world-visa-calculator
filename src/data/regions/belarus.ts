@@ -71,9 +71,6 @@
  *
  * ── Other data notes ─────────────────────────────────────────────────────────
  *
- * - Latvia's entry includes "non-citizens of Latvia"; Estonia's includes
- *   "stateless persons permanently residing in Estonia" — both source
- *   footnotes, carried as an extra note on those two entries.
  * - Land-border entry may be possible for some European/bilateral-agreement
  *   nationals per the source, but the airport list is cited exclusively
  *   because it is the stable, easily-verified subset (explicit product
@@ -138,6 +135,11 @@ function airportOnly(extraNotes: RuleNote[] = []): EntitledRule {
  * point, `days` per visit (30 or 90), usable multiple times, through
  * 2026-12-31. Falls back to the airport-only rule automatically once the
  * window lapses (see file header for why this ordering is load-bearing).
+ *
+ * The per-visit override does NOT lift the underlying 90-day-per-calendar-
+ * year ceiling — the source states the any-border allowance as an easier way
+ * to use each individual visit, not a separate, larger yearly budget, so
+ * BY_CALENDAR_90 is stacked here exactly as it is in airportEntitlement().
  */
 function europeOverride(days: 30 | 90, extraNotes: RuleNote[] = []): EntitledRule {
   return {
@@ -149,11 +151,11 @@ function europeOverride(days: 30 | 90, extraNotes: RuleNote[] = []): EntitledRul
           description: 'Visa-free entry through any border crossing point',
           source: BelarusSources.europe,
         }],
-        limits: [{ type: 'per_visit', value: days, unit: 'days' }],
+        limits: [{ type: 'per_visit', value: days, unit: 'days' }, BY_CALENDAR_90],
         source: BelarusSources.europe,
         notes: [
           {
-            text: `Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to ${days} days each, through 31 December 2026.`,
+            text: `Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to ${days} days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus.`,
             source: BelarusSources.europe,
           },
           ...extraNotes,

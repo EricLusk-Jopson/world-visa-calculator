@@ -100,7 +100,7 @@ function limitText(limit: StayLimit): string {
     case "fixed_window_from_entry":
       return `${limit.days} days within ${limit.windowDays} days of first entry`;
     case "calendar_period":
-      return `${limit.days} days per ${limit.periodDays}-day period`;
+      return `${limit.days} days per calendar year`;
   }
 }
 
