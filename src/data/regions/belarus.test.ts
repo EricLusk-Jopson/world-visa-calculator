@@ -25,8 +25,8 @@ describe('getBelarusRule', () => {
 });
 
 describe('Belarus — member state completeness', () => {
-  it('does not include a self-referential entry for Belarus (BY)', () => {
-    expect(BELARUS.passportRules['BY']).toBeUndefined();
+  it('encodes Belarus (BY) itself as free_movement, not visa_required', () => {
+    expect(BELARUS.passportRules['BY']).toEqual({ access: 'free_movement' });
   });
 });
 

@@ -78,8 +78,8 @@
  *   nationals per the source, but the airport list is cited exclusively
  *   because it is the stable, easily-verified subset (explicit product
  *   decision) — noted on every airport-based entitlement rather than modeled.
- * - Belarus's own member state (BY) is intentionally not included as a
- *   passport-rule entry, matching every other region file in this codebase.
+ * - Belarus's own member state (BY) is encoded as free_movement — a
+ *   Belarusian national needs no visa to enter Belarus.
  *
  * Last verified: 2026-09-12
  */
@@ -89,11 +89,14 @@ import type {
   PassportRule,
   EntitledRule,
   VisaRequiredRule,
+  FreeMovementRule,
   RuleNote,
   PerVisitLimit,
   CalendarPeriodLimit,
 } from '@/types';
 import { BelarusSources } from '@/data/sources';
+
+const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 // ─── Stay limits ──────────────────────────────────────────────────────────────
 
@@ -210,6 +213,8 @@ export const BELARUS: RegionDefinition = {
   defaultRule: VISA_REQUIRED,
   passportRules: {
 
+    // ── Belarusian citizens ─────────────────────────────────────────────────
+    'BY': FREE_MOVEMENT,
 
     // ── European any-border override — temporal window through 2026-12-31 ────
     // (falls back automatically to the airport-only rule below once the window

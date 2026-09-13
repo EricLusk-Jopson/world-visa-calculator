@@ -92,6 +92,7 @@ import type {
   PassportRule,
   EntitledRule,
   VisaRequiredRule,
+  FreeMovementRule,
   RuleNote,
   SourceDoc,
 } from '@/types';
@@ -114,6 +115,7 @@ const MONTENEGRO_LIMIT: import('@/types').RollingWindowLimit = {
 };
 
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 // ─── Entitlement helper ────────────────────────────────────────────────────────
 
@@ -170,6 +172,9 @@ export const MONTENEGRO: RegionDefinition = {
   sourceUrl: 'https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro',
   defaultRule: VISA_REQUIRED,
   passportRules: {
+
+    // ── Montenegrin citizens ───────────────────────────────────────────────────
+    'ME': FREE_MOVEMENT,
 
     // ── Entitled — 90 days in any 180-day rolling window ──────────────────────
     // Standard case: passport-based entry only.

@@ -7,6 +7,12 @@ import {
   type RollingWindowLimit,
 } from '@/types';
 
+describe('Bosnia — member state completeness', () => {
+  it('encodes Bosnia and Herzegovina (BA) itself as free_movement, not visa_required', () => {
+    expect(BOSNIA.passportRules['BA']).toEqual({ access: 'free_movement' });
+  });
+});
+
 describe('getBosniaRule', () => {
   it('returns entitled with a 90-day rolling_window limit for a standard nationality (DE)', () => {
     const rule = getBosniaRule('DE');

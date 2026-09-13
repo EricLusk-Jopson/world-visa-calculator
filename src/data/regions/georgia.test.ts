@@ -24,8 +24,8 @@ describe('getGeorgiaRule', () => {
 });
 
 describe('Georgia — member state completeness', () => {
-  it('does not include a self-referential entry for Georgia (GE)', () => {
-    expect(GEORGIA.passportRules['GE']).toBeUndefined();
+  it('encodes Georgia (GE) itself as free_movement, not visa_required', () => {
+    expect(GEORGIA.passportRules['GE']).toEqual({ access: 'free_movement' });
   });
 });
 

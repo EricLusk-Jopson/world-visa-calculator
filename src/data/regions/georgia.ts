@@ -70,8 +70,8 @@
  * - "United Kingdom of Great Britain and Northern Ireland" and "United
  *   States of America" map to GB and US respectively.
  *
- * Georgia's own member state (GE) is intentionally not included as a
- * passport-rule entry, matching every other region file in this codebase.
+ * Georgia's own member state (GE) is encoded as free_movement — a Georgian
+ * national needs no visa to enter Georgia.
  *
  * Last verified: 2026-09-13
  */
@@ -81,10 +81,13 @@ import type {
   PassportRule,
   EntitledRule,
   VisaRequiredRule,
+  FreeMovementRule,
   PerVisitLimit,
   RollingWindowLimit,
 } from '@/types';
 import { GeorgiaSources } from '@/data/sources';
+
+const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 // ─── Region-level stay limits ─────────────────────────────────────────────────
 
@@ -156,6 +159,9 @@ export const GEORGIA: RegionDefinition = {
   sourceUrl: GeorgiaSources.visaList.parentUrl,
   defaultRule: VISA_REQUIRED,
   passportRules: {
+
+    // ── Georgian citizens ───────────────────────────────────────────────────
+    'GE': FREE_MOVEMENT,
 
     'AD': entitledFull1(), // Andorra
     'AE': entitledFull1(), // United Arab Emirates
