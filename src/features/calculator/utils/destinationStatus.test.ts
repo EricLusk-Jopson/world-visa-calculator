@@ -260,6 +260,7 @@ describe("categorizeAllDestinations", () => {
       VisaRegion.Belarus,
       VisaRegion.Bosnia,
       VisaRegion.Cyprus,
+      VisaRegion.Georgia,
       VisaRegion.Ireland,
       VisaRegion.Kosovo,
       VisaRegion.Montenegro,
