@@ -269,6 +269,18 @@ export const europeCoverage: EuropeCoverageData = {
       "stayRule": "rolling90In180"
     },
     {
+      "code": "BY",
+      "name": "Belarus",
+      "source": "Belarus",
+      "stayRule": "perVisit30"
+    },
+    {
+      "code": "GE",
+      "name": "Georgia",
+      "source": "Georgia",
+      "stayRule": "perVisit365"
+    },
+    {
       "code": "AD",
       "name": "Andorra",
       "source": "Andorra",
@@ -331,16 +343,6 @@ export const europeCoverage: EuropeCoverageData = {
       "source": "Azerbaijan"
     },
     {
-      "code": "BY",
-      "name": "Belarus",
-      "source": "Belarus"
-    },
-    {
-      "code": "GE",
-      "name": "Georgia",
-      "source": "Georgia"
-    },
-    {
       "code": "KZ",
       "name": "Kazakhstan",
       "source": "Kazakhstan"
@@ -390,6 +392,14 @@ export const europeCoverage: EuropeCoverageData = {
     "perVisit180": {
       "type": "per-visit",
       "maxStayDays": 180
+    },
+    "perVisit30": {
+      "type": "per-visit",
+      "maxStayDays": 30
+    },
+    "perVisit365": {
+      "type": "per-visit",
+      "maxStayDays": 365
     },
     "schengenDeFacto": {
       "type": "schengen-de-facto"

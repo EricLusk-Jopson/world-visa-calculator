@@ -44,7 +44,7 @@ function describePassportRule(
   regionLabel: string,
 ): { label: string; color: string } {
   if (rule.access === "free_movement")
-    return { label: "Free movement — no day limit", color: tokens.green };
+    return { label: "Free movement", color: tokens.green };
   if (rule.access === "visa_required")
     return { label: `${regionLabel} visa required`, color: tokens.red };
   // entitled — preAuth.name is the human-readable auth name from source data

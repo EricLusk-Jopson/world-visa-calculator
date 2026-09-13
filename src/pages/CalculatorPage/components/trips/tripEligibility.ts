@@ -288,7 +288,7 @@ export function computeTravelerEligibility(
 
     const accessLabel =
       rule.access === "free_movement"
-        ? "Free movement — no day limit"
+        ? "Free movement"
         : rule.access === "visa_required"
           ? "Visa Required"
           : "No Visa Required";
@@ -334,13 +334,19 @@ export function computeTravelerEligibility(
     }
 
     // Admittance rule text: prefer the traveler's own entitlement limits,
-    // otherwise fall back to the region rule.
+    // otherwise fall back to the region rule. free_movement never gets a
+    // computed day-limit rule — there is no evaluation to run for a
+    // traveler in their own country (or, an EU citizen inside the bloc) —
+    // so it always reads literally "Free movement", matching the Access
+    // row, rather than leaking the region's generic day-limit rule text.
     const ruleTexts: string[] =
-      entitlement != null
-        ? entitlement.limits.map(limitText)
-        : regionRule && rule.access !== "visa_required"
-          ? [regionRuleText(regionRule)]
-          : [];
+      rule.access === "free_movement"
+        ? ["Free movement"]
+        : entitlement != null
+          ? entitlement.limits.map(limitText)
+          : regionRule && rule.access !== "visa_required"
+            ? [regionRuleText(regionRule)]
+            : [];
 
     // Temporal windows relevant to this trip (current, expired, or
     // upcoming, within a year either side) — each renders as its own note,
