@@ -104,7 +104,7 @@ const BY_CALENDAR_90: CalendarPeriodLimit = { type: 'calendar_period', days: 90,
 
 const AIRPORT_NOTES: RuleNote[] = [
   {
-    text: 'Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements not modeled here — the airport list is cited because it is the more stable, easily verified subset; check the Belarus MFA website for current land-border arrangements.',
+    text: 'Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements.',
     source: BelarusSources.airport,
   },
   {
@@ -112,16 +112,6 @@ const AIRPORT_NOTES: RuleNote[] = [
     source: BelarusSources.airport,
   },
 ];
-
-const LV_NON_CITIZEN_NOTE: RuleNote = {
-  text: 'Includes persons with the status of non-citizen of Latvia.',
-  source: BelarusSources.europe,
-};
-
-const EE_STATELESS_NOTE: RuleNote = {
-  text: 'Includes stateless persons permanently residing in Estonia.',
-  source: BelarusSources.europe,
-};
 
 // ─── Rule helpers ───────────────────────────────────────────────────────────
 
@@ -225,7 +215,7 @@ export const BELARUS: RegionDefinition = {
     'CZ': europeOverride(30), // Czechia
     'DE': europeOverride(30), // Germany
     'DK': europeOverride(30), // Denmark
-    'EE': europeOverride(30, [EE_STATELESS_NOTE]), // Estonia
+    'EE': europeOverride(30), // Estonia
     'ES': europeOverride(30), // Spain
     'FI': europeOverride(30), // Finland
     'FR': europeOverride(30), // France
@@ -239,7 +229,7 @@ export const BELARUS: RegionDefinition = {
     'LI': europeOverride(30), // Liechtenstein
     'LT': europeOverride(90), // Lithuania
     'LU': europeOverride(30), // Luxembourg
-    'LV': europeOverride(90, [LV_NON_CITIZEN_NOTE]), // Latvia
+    'LV': europeOverride(90), // Latvia
     'MC': europeOverride(30), // Monaco
     'MK': europeOverride(30), // North Macedonia
     'MT': europeOverride(30), // Malta
