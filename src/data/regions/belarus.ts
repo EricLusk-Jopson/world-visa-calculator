@@ -71,9 +71,6 @@
  *
  * ── Other data notes ─────────────────────────────────────────────────────────
  *
- * - Latvia's entry includes "non-citizens of Latvia"; Estonia's includes
- *   "stateless persons permanently residing in Estonia" — both source
- *   footnotes, carried as an extra note on those two entries.
  * - Land-border entry may be possible for some European/bilateral-agreement
  *   nationals per the source, but the airport list is cited exclusively
  *   because it is the stable, easily-verified subset (explicit product
@@ -107,7 +104,7 @@ const BY_CALENDAR_90: CalendarPeriodLimit = { type: 'calendar_period', days: 90,
 
 const AIRPORT_NOTES: RuleNote[] = [
   {
-    text: 'Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements not modeled here — the airport list is cited because it is the more stable, easily verified subset; check the Belarus MFA website for current land-border arrangements.',
+    text: 'Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements.',
     source: BelarusSources.airport,
   },
   {
@@ -115,16 +112,6 @@ const AIRPORT_NOTES: RuleNote[] = [
     source: BelarusSources.airport,
   },
 ];
-
-const LV_NON_CITIZEN_NOTE: RuleNote = {
-  text: 'Includes persons with the status of non-citizen of Latvia.',
-  source: BelarusSources.europe,
-};
-
-const EE_STATELESS_NOTE: RuleNote = {
-  text: 'Includes stateless persons permanently residing in Estonia.',
-  source: BelarusSources.europe,
-};
 
 // ─── Rule helpers ───────────────────────────────────────────────────────────
 
@@ -151,6 +138,11 @@ function airportOnly(extraNotes: RuleNote[] = []): EntitledRule {
  * point, `days` per visit (30 or 90), usable multiple times, through
  * 2026-12-31. Falls back to the airport-only rule automatically once the
  * window lapses (see file header for why this ordering is load-bearing).
+ *
+ * The per-visit override does NOT lift the underlying 90-day-per-calendar-
+ * year ceiling — the source states the any-border allowance as an easier way
+ * to use each individual visit, not a separate, larger yearly budget, so
+ * BY_CALENDAR_90 is stacked here exactly as it is in airportEntitlement().
  */
 function europeOverride(days: 30 | 90, extraNotes: RuleNote[] = []): EntitledRule {
   return {
@@ -162,11 +154,11 @@ function europeOverride(days: 30 | 90, extraNotes: RuleNote[] = []): EntitledRul
           description: 'Visa-free entry through any border crossing point',
           source: BelarusSources.europe,
         }],
-        limits: [{ type: 'per_visit', value: days, unit: 'days' }],
+        limits: [{ type: 'per_visit', value: days, unit: 'days' }, BY_CALENDAR_90],
         source: BelarusSources.europe,
         notes: [
           {
-            text: `Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to ${days} days each, through 31 December 2026.`,
+            text: `Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to ${days} days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus.`,
             source: BelarusSources.europe,
           },
           ...extraNotes,
@@ -230,7 +222,7 @@ export const BELARUS: RegionDefinition = {
     'CZ': europeOverride(30), // Czechia
     'DE': europeOverride(30), // Germany
     'DK': europeOverride(30), // Denmark
-    'EE': europeOverride(30, [EE_STATELESS_NOTE]), // Estonia
+    'EE': europeOverride(30), // Estonia
     'ES': europeOverride(30), // Spain
     'FI': europeOverride(30), // Finland
     'FR': europeOverride(30), // France
@@ -244,7 +236,7 @@ export const BELARUS: RegionDefinition = {
     'LI': europeOverride(30), // Liechtenstein
     'LT': europeOverride(90), // Lithuania
     'LU': europeOverride(30), // Luxembourg
-    'LV': europeOverride(90, [LV_NON_CITIZEN_NOTE]), // Latvia
+    'LV': europeOverride(90), // Latvia
     'MC': europeOverride(30), // Monaco
     'MK': europeOverride(30), // North Macedonia
     'MT': europeOverride(30), // Malta

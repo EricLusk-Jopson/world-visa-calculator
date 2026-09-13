@@ -64,22 +64,27 @@ describe('Belarus — European any-border override (temporal window through 2026
     expect(limit.value).toBe(90);
   });
 
-  it('Latvia (LV) carries the non-citizen inclusion note on the override entitlement', () => {
-    const rule = getBelarusRule('LV');
+  it('the active override still stacks the 90-day-per-calendar-year cap (does not lift it)', () => {
+    const rule = getBelarusRule('DE');
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     const selection = selectEntitlement(rule, '2026-10-01');
-    const notes = selection!.selected.notes ?? [];
-    expect(notes.some((n) => n.text.toLowerCase().includes('non-citizen'))).toBe(true);
+    expect(selection!.isOverride).toBe(true);
+    const limits = selection!.selected.limits;
+    expect(limits.some((l) => l.type === 'per_visit' && l.value === 30)).toBe(true);
+    const calendarLimit = limits.find((l): l is CalendarPeriodLimit => l.type === 'calendar_period');
+    expect(calendarLimit).toBeDefined();
+    expect(calendarLimit!.days).toBe(90);
+    expect(calendarLimit!.periodDays).toBe(365);
   });
 
-  it('Estonia (EE) carries the stateless-persons inclusion note on the override entitlement', () => {
-    const rule = getBelarusRule('EE');
+  it('Poland (90-day override) also stacks the same 90-day-per-calendar-year cap', () => {
+    const rule = getBelarusRule('PL');
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     const selection = selectEntitlement(rule, '2026-10-01');
-    const notes = selection!.selected.notes ?? [];
-    expect(notes.some((n) => n.text.toLowerCase().includes('stateless'))).toBe(true);
+    const limits = selection!.selected.limits;
+    expect(limits.some((l) => l.type === 'calendar_period')).toBe(true);
   });
 });
 
@@ -127,6 +132,76 @@ describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar 
     // fresh 30-day allowance — calendar_period is the worse constraint.
     expect(result!.limitType).toBe('calendar_period');
     expect(result!.daysRemaining).toBe(15);
+  });
+
+  it('reports cumulative days used across the whole calendar year, not just this trip', () => {
+    const rule = getBelarusRule('CA');
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    const limits = rule.entitlements[0].limits;
+
+    // Three prior trips totaling 90 days already used in 2026; a 4th,
+    // 5-day trip should report 95 of 90 used (not 5 of 90) and carry a
+    // breakdown of every contributing trip.
+    const priorTrips = [
+      { id: 'a', region: 0, entryDate: '2026-01-01', exitDate: '2026-01-30' }, // 30 days
+      { id: 'b', region: 0, entryDate: '2026-03-01', exitDate: '2026-03-30' }, // 30 days
+      { id: 'c', region: 0, entryDate: '2026-05-01', exitDate: '2026-05-30' }, // 30 days
+    ];
+    const result = assessStay(limits, priorTrips as never, '2026-07-01', '2026-07-05');
+    expect(result).not.toBeNull();
+    expect(result!.limitType).toBe('calendar_period');
+    expect(result!.tripDays).toBe(5);
+    expect(result!.daysUsed).toBe(95);
+    expect(result!.daysAllowed).toBe(90);
+    expect(result!.variant).toBe('danger');
+    expect(result!.daysRemaining).toBeLessThan(0);
+    expect(result!.contributions).toHaveLength(4);
+    expect(result!.contributions!.filter((c) => c.isCurrentTrip)).toHaveLength(1);
+    expect(result!.contributions!.reduce((sum, c) => sum + c.days, 0)).toBe(95);
+    // The 90-day budget was already exhausted by the three prior trips
+    // before this 4th trip's entry date — it cannot be started at all, so
+    // there is no valid "latest exit" date (see canEnter: false below).
+    expect(result!.canEnter).toBe(false);
+  });
+
+  it('canEnter is false when the budget is already exhausted before entry — no valid exit date exists', () => {
+    const rule = getBelarusRule('CA');
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    const limits = rule.entitlements[0].limits;
+
+    // Exactly 90 days already used (three 30-day trips) before this 4th
+    // trip even begins — the trip cannot be started under any circumstance.
+    const priorTrips = [
+      { id: 'a', region: 0, entryDate: '2026-01-01', exitDate: '2026-01-30' },
+      { id: 'b', region: 0, entryDate: '2026-03-01', exitDate: '2026-03-30' },
+      { id: 'c', region: 0, entryDate: '2026-05-01', exitDate: '2026-05-30' },
+    ];
+    const result = assessStay(limits, priorTrips as never, '2026-07-01', '2026-07-01');
+    expect(result).not.toBeNull();
+    expect(result!.canEnter).toBe(false);
+  });
+
+  it('canEnter is true when the budget still has room at entry, even if this trip alone would exceed it', () => {
+    const rule = getBelarusRule('CA');
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    // Isolate the calendar_period limit alone — Belarus also stacks a
+    // 30-day per_visit cap that would otherwise dominate a 95-day trip and
+    // mask what calendar_period's own canEnter/maxExitDate resolve to.
+    const calendarLimit = rule.entitlements[0].limits.find(
+      (l): l is CalendarPeriodLimit => l.type === 'calendar_period',
+    )!;
+
+    // No prior trips this year — the traveler can legitimately start a trip
+    // on 1 Jan, even though a 95-day stay would exceed the 90-day budget
+    // partway through. The limit is hit DURING this trip, not before it, so
+    // a real "latest exit" date exists and canEnter must be true.
+    const result = assessStay([calendarLimit], [] as never, '2026-01-01', '2026-04-05');
+    expect(result).not.toBeNull();
+    expect(result!.canEnter).toBe(true);
+    expect(result!.maxExitDate).toBe('2026-03-31');
   });
 });
 

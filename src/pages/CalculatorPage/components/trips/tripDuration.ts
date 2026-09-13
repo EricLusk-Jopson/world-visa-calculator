@@ -283,7 +283,7 @@ export function computeTravelerDurations(
       reentry = detectReentryRisk(perVisitApproxDays(perVisit), completed, entryDate);
     }
 
-    const fillPct = Math.min(100, (assessment.tripDays / assessment.daysAllowed) * 100);
+    const fillPct = Math.min(100, (assessment.daysUsed / assessment.daysAllowed) * 100);
     const severity = worseVariant(assessment.variant, reentry?.variant);
 
     result.push({
