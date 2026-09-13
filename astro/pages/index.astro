@@ -214,13 +214,13 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
       </div>
 
       <!-- Right: interactive demo draggable rolling-window explainer, same
-           two-trip scenario (Trip 1: Mar 1–May 29 2025, Trip 2: Sep 7–Dec 5
+           two-trip scenario (Trip 1: Mar 1–May 29 2025, Trip 2: Sep 18–Dec 16
            2025) as before, now with a draggable timeline, snap buttons, and
            a full trips table. Progressively enhanced: the full server-
            rendered timeline and trip table stay readable without JS. -->
       <rolling-window-explainer
         class="schengen-explorer"
-        data-config='{"trips":[{"label":"Trip 1","start":"2025-03-01","end":"2025-05-29","startDay":20148,"endDay":20237},{"label":"Trip 2","start":"2025-09-07","end":"2025-12-05","startDay":20338,"endDay":20427}],"timelineStart":19953,"timelineEnd":20622,"min":20132,"max":20621,"initial":20338}'
+        data-config='{"trips":[{"label":"Trip 1","start":"2025-03-01","end":"2025-05-29","startDay":20148,"endDay":20237},{"label":"Trip 2","start":"2025-09-18","end":"2025-12-16","startDay":20349,"endDay":20438}],"timelineStart":19953,"timelineEnd":20622,"min":20132,"max":20621,"initial":20338}'
       >
         <figure class="explainer-timeline">
           <figcaption>
@@ -231,7 +231,7 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
             class="explainer-plot"
             data-plot="true"
             role="img"
-            aria-label="Travel timeline. The 180-day window is 12 Mar 2025 to 7 Sept 2025. Trip 1: 79 of 90 days counted. Trip 2: 1 of 90 days counted."
+            aria-label="Travel timeline. The 180-day window is 12 Mar 2025 to 7 Sept 2025. Trip 1: 79 of 90 days counted. Trip 2: 0 of 90 days counted."
           >
             <div class="explainer-window" data-window="true" style="left:30.79222720478326%;width:26.905829596412556%">
               <span>180-day window</span>
@@ -307,8 +307,8 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
                 <span class="explainer-trip-counted" data-bar="0" style="left:12.222222222222221%;width:87.77777777777777%"></span>
                 <span class="explainer-trip-bar-label"><span class="explainer-bar-name">Trip 1</span><span>90d</span></span>
               </div>
-              <div class="explainer-trip-bar" style="left:57.54857997010463%;width:13.452914798206278%">
-                <span class="explainer-trip-counted" data-bar="1" style="left:0%;width:1.1111111111111112%"></span>
+              <div class="explainer-trip-bar" style="left:59.19282511210762%;width:13.452914798206278%">
+                <span class="explainer-trip-counted" data-bar="1" style="left:0%;width:0%"></span>
                 <span class="explainer-trip-bar-label"><span class="explainer-bar-name">Trip 2</span><span>90d</span></span>
               </div>
             </div>
@@ -333,11 +333,11 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
         <dl class="explainer-stats">
           <div>
             <dt>Days in window</dt>
-            <dd><strong data-used="true">80</strong></dd>
+            <dd><strong data-used="true">79</strong></dd>
           </div>
           <div>
             <dt>Unused in this window</dt>
-            <dd><strong data-remaining="true">10</strong><span> days</span></dd>
+            <dd><strong data-remaining="true">11</strong><span> days</span></dd>
           </div>
         </dl>
         <table class="explainer-trips">
@@ -361,10 +361,10 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
             <tr>
               <th scope="row">
                 <span class="explainer-trip-name">Trip 2</span>
-                <span class="explainer-trip-dates">7 Sept – 5 Dec 2025</span>
+                <span class="explainer-trip-dates">18 Sept – 16 Dec 2025</span>
               </th>
               <td>90<span> days</span></td>
-              <td><strong data-trip-count="1">1</strong> <span data-trip-unit="1">day</span></td>
+              <td><strong data-trip-count="1">0</strong> <span data-trip-unit="1">days</span></td>
             </tr>
           </tbody>
         </table>

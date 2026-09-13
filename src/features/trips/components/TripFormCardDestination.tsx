@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import CheckIcon from "@mui/icons-material/Check";
 import { VisaRegion, VISA_REGION_LABELS, SUPPORTED_DESTINATIONS } from "@/types";
+import { SCHENGEN_MEMBERS, SCHENGEN_DE_FACTO_MEMBERS } from "@/data/schengenSearchEntries";
 import { tokens } from "@/styles/theme";
 import { TripFormCard } from "./TripFormCard";
 
@@ -18,6 +19,18 @@ import { TripFormCard } from "./TripFormCard";
 const REGIONS = [
   ...SUPPORTED_DESTINATIONS.map((d) => ({ value: d.region, label: VISA_REGION_LABELS[d.region] })),
   { value: VisaRegion.Elsewhere, label: VISA_REGION_LABELS[VisaRegion.Elsewhere] },
+];
+
+/**
+ * Individual Schengen countries and de facto members — searchable in the
+ * region picker (below) alongside the top-level regions, each mapping back
+ * to VisaRegion.Schengen when selected. Not shown in the always-visible
+ * list — only surfaced when the user searches by name (mirrors
+ * RegionSelector's COUNTRY_OPTIONS for the desktop trip modal).
+ */
+const SCHENGEN_COUNTRY_OPTIONS: Array<{ code: string; label: string; deFacto?: boolean }> = [
+  ...SCHENGEN_MEMBERS.map(({ code, name }) => ({ code, label: name })),
+  ...SCHENGEN_DE_FACTO_MEMBERS.map(({ code, name }) => ({ code, label: name, deFacto: true })),
 ];
 
 function RegionPickerScreen({
@@ -35,6 +48,13 @@ function RegionPickerScreen({
   useEffect(() => {
     if (open) setQuery("");
   }, [open]);
+
+  const filteredCountries = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return q
+      ? SCHENGEN_COUNTRY_OPTIONS.filter((c) => c.label.toLowerCase().includes(q))
+      : [];
+  }, [query]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -110,6 +130,41 @@ function RegionPickerScreen({
             {r.value === value && (
               <CheckIcon sx={{ fontSize: "1rem", color: tokens.green }} />
             )}
+          </Box>
+        ))}
+        {filteredCountries.map((c) => (
+          <Box
+            key={c.code}
+            component="button"
+            onClick={() => onSelect(VisaRegion.Schengen)}
+            sx={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              px: "20px",
+              py: "18px",
+              bgcolor: "transparent",
+              border: "none",
+              borderBottom: `1px solid ${tokens.border}`,
+              textAlign: "left",
+              cursor: "pointer",
+              fontFamily: tokens.fontBody,
+              fontSize: "1rem",
+              fontWeight: 400,
+              color: tokens.text,
+              "&:active": { bgcolor: tokens.mist },
+            }}
+          >
+            <span>
+              {c.label}{" "}
+              <Typography
+                component="span"
+                sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", color: tokens.textGhost }}
+              >
+                {c.deFacto ? "(de facto Schengen Area)" : "(Schengen Area)"}
+              </Typography>
+            </span>
           </Box>
         ))}
       </Box>

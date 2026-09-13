@@ -23,7 +23,8 @@ export interface SupportedCountry extends CoverageCountry {
 
 export type StayRule =
   | { type: "rolling-window"; maxStayDays: number; windowDays: number }
-  | { type: "per-visit"; maxStayDays: number };
+  | { type: "per-visit"; maxStayDays: number }
+  | { type: "schengen-de-facto" };
 
 export interface StayRuleNote {
   text: string;
@@ -266,9 +267,7 @@ export const europeCoverage: EuropeCoverageData = {
       "name": "T\u00fcrkiye",
       "source": "Turkey",
       "stayRule": "rolling90In180"
-    }
-  ],
-  "unsupported": [
+    },
     {
       "code": "AD",
       "name": "Andorra",
@@ -276,8 +275,51 @@ export const europeCoverage: EuropeCoverageData = {
       "marker": [
         1.52,
         42.51
-      ]
+      ],
+      "stayRule": "schengenDeFacto"
     },
+    {
+      "code": "GI",
+      "name": "Gibraltar",
+      "source": "Gibraltar",
+      "marker": [
+        -5.35,
+        36.14
+      ],
+      "stayRule": "schengenDeFacto"
+    },
+    {
+      "code": "MC",
+      "name": "Monaco",
+      "source": "Monaco",
+      "marker": [
+        7.42,
+        43.73
+      ],
+      "stayRule": "schengenDeFacto"
+    },
+    {
+      "code": "SM",
+      "name": "San Marino",
+      "source": "San Marino",
+      "marker": [
+        12.46,
+        43.94
+      ],
+      "stayRule": "schengenDeFacto"
+    },
+    {
+      "code": "VA",
+      "name": "Vatican City",
+      "source": "Vatican",
+      "marker": [
+        12.45,
+        41.9
+      ],
+      "stayRule": "schengenDeFacto"
+    }
+  ],
+  "unsupported": [
     {
       "code": "AM",
       "name": "Armenia",
@@ -309,41 +351,14 @@ export const europeCoverage: EuropeCoverageData = {
       "source": "Moldova"
     },
     {
-      "code": "MC",
-      "name": "Monaco",
-      "source": "Monaco",
-      "marker": [
-        7.42,
-        43.73
-      ]
-    },
-    {
       "code": "RU",
       "name": "Russia",
       "source": "Russia"
     },
     {
-      "code": "SM",
-      "name": "San Marino",
-      "source": "San Marino",
-      "marker": [
-        12.46,
-        43.94
-      ]
-    },
-    {
       "code": "UA",
       "name": "Ukraine",
       "source": "Ukraine"
-    },
-    {
-      "code": "VA",
-      "name": "Vatican City",
-      "source": "Vatican",
-      "marker": [
-        12.45,
-        41.9
-      ]
     }
   ],
   "aliases": {
@@ -357,7 +372,8 @@ export const europeCoverage: EuropeCoverageData = {
     "XK is an application identifier for Kosovo, not an ISO-assigned code.",
     "Small states absent from the source geometry use point markers, not invented borders.",
     "Northern Cyprus is combined with Cyprus for this illustrative coverage map; this does not assert identical entry or travel rules.",
-    "A shared rule type does not imply a shared allowance. Only Schengen members share one regional count; each supported non-Schengen country uses its own compliance rules."
+    "A shared rule type does not imply a shared allowance. Only Schengen members share one regional count; each supported non-Schengen country uses its own compliance rules.",
+    "Andorra, Gibraltar, Monaco, San Marino, and Vatican City are not formal Schengen Area member states, but are treated as de facto members for stay-limit purposes: time spent there counts against the same 90/180-day Schengen allowance."
   ],
   "stayRuleBasis": "Product-specified visa-free rule summaries, not passport-specific entitlements.",
   "schengenStayRule": "rolling90In180",
@@ -374,6 +390,9 @@ export const europeCoverage: EuropeCoverageData = {
     "perVisit180": {
       "type": "per-visit",
       "maxStayDays": 180
+    },
+    "schengenDeFacto": {
+      "type": "schengen-de-facto"
     }
   },
   "stayRuleDisclaimer": "Rule summaries show the app\u2019s visa-free stay model for eligible travelers, not a personal entitlement. Your passport and entry permission may give you a different allowance. Check your passport in the calculator and verify official entry requirements before travel.",

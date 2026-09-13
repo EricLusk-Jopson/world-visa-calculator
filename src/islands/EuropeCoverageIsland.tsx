@@ -29,17 +29,38 @@ const ruleByRegion = new Map<string, StayRule | undefined>([
     stayRules.get(country.stayRule),
   ]),
 ]);
-const ruleTypeLabel = (rule: StayRule) =>
-  rule.type === "rolling-window" ? "Rolling window" : "Per visit";
-const ruleLabel = (rule: StayRule) =>
-  "windowDays" in rule
-    ? `${rule.maxStayDays} days in any ${rule.windowDays} days`
-    : `${rule.maxStayDays} days per visit`;
+const ruleTypeLabel = (rule: StayRule) => {
+  switch (rule.type) {
+    case "rolling-window":
+      return "Rolling window";
+    case "per-visit":
+      return "Per visit";
+    case "schengen-de-facto":
+      return "De facto Schengen member";
+  }
+};
+/** Plain-text rule summary — used for the accessible label and as a fallback. */
+const ruleLabel = (rule: StayRule): string => {
+  switch (rule.type) {
+    case "rolling-window":
+      return `${rule.maxStayDays} days in any ${rule.windowDays} days`;
+    case "per-visit":
+      return `${rule.maxStayDays} days per visit`;
+    case "schengen-de-facto":
+      return "Same Schengen limit, de facto";
+  }
+};
+/** Visual rule display — italicizes "de facto" for the de-facto-member rule. */
+const ruleDisplay = (rule: StayRule): React.ReactNode =>
+  rule.type === "schengen-de-facto"
+    ? <>Same Schengen limit, <em>de facto</em></>
+    : ruleLabel(rule);
 const ruleAccessibilityLabel = (regionId: string) => {
   const rule = ruleByRegion.get(regionId);
-  return rule
-    ? `, visa-free rule overview: up to ${ruleLabel(rule)}, ${ruleTypeLabel(rule).toLowerCase()}`
-    : "";
+  if (!rule) return "";
+  return rule.type === "schengen-de-facto"
+    ? ", visa-free rule overview: same Schengen limit, de facto"
+    : `, visa-free rule overview: up to ${ruleLabel(rule)}, ${ruleTypeLabel(rule).toLowerCase()}`;
 };
 interface ViewState {
   zoom: number;
@@ -457,7 +478,7 @@ export class EuropeCoverageIsland extends React.Component<
           >
             <p className="evc-map__info-name">{region.name}</p>
             <p className="evc-map__info-rule">
-              {stayRule ? ruleLabel(stayRule) : "Not yet supported"}
+              {stayRule ? ruleDisplay(stayRule) : "Not yet supported"}
             </p>
           </div>
 
