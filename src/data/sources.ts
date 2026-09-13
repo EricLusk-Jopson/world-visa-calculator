@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -5624,6 +5624,47 @@ export const CyprusSources = {
     directUrl: 'https://home-affairs.ec.europa.eu/document/download/ebd6113d-4d14-4ac2-ac9b-47f2e7976515_en?filename=Annex%201_en.pdf',
     parentUrl: 'https://www.gov.cy/en/information/visas/',
     dateChecked: '2026-09-09',
+  } satisfies SourceDoc,
+
+} as const;
+
+// ─── Belarus ──────────────────────────────────────────────────────────────────
+
+export const BelarusSources = {
+
+  /**
+   * General visa-regime page — nationalities requiring a Belarusian visa.
+   * Cited as the default/fallback rule's source (see belarus.ts).
+   */
+  general: {
+    directUrl: 'https://mfa.gov.by/en/visa/general/',
+    parentUrl: 'https://mfa.gov.by/en/visa/general/',
+    dateChecked: '2026-09-12',
+  } satisfies SourceDoc,
+
+  /**
+   * "Visa-free entry through any border" list for 38 European countries —
+   * a temporary (through 31 December 2026) any-border override, better
+   * than the airport-only fallback below. Most get 30 days per visit;
+   * Poland, Latvia, and Lithuania get 90.
+   */
+  europe: {
+    directUrl: 'https://mfa.gov.by/en/visa/freemove/europe/',
+    parentUrl: 'https://mfa.gov.by/en/visa/freemove/',
+    dateChecked: '2026-09-12',
+  } satisfies SourceDoc,
+
+  /**
+   * Airport-only visa-free list — the stable, always-applicable fallback
+   * (30 days per visit, six named airports only, max 90 days per calendar
+   * year). Some entries there require another jurisdiction's visa to
+   * actually use the exemption; those are modeled as visa_required instead
+   * (see belarus.ts header for the product decision).
+   */
+  airport: {
+    directUrl: 'https://mfa.gov.by/en/visa/freemove/airport/',
+    parentUrl: 'https://mfa.gov.by/en/visa/freemove/',
+    dateChecked: '2026-09-12',
   } satisfies SourceDoc,
 
 } as const;
