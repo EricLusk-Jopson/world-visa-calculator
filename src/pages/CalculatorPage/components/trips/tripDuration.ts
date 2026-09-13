@@ -212,6 +212,17 @@ export function computeTravelerDurations(
     if (!traveler) continue;
     const color = getTravelerColor(travelers.findIndex((t) => t.id === tid));
 
+    // free_movement (a traveler's own country, or an EU/EEA citizen inside
+    // the bloc) has no day limit at all — never compute or show a stay
+    // breakdown for it, in any region, including Schengen's own rolling
+    // 90/180 special-case below (an EU citizen isn't subject to it).
+    if (
+      traveler.passportCode &&
+      getPassportRule(region, traveler.passportCode).access === "free_movement"
+    ) {
+      continue;
+    }
+
     // Schengen — rolling 90/180. Visa-required holders are untracked.
     if (region === VisaRegion.Schengen) {
       if (
