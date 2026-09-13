@@ -30,10 +30,9 @@
  * not as an individually-confirmed figure per nationality — every entitled
  * entry below carries a note saying so explicitly.
  *
- * Kosovo's own member state (XK) is intentionally not included as a
- * passport-rule entry, matching every other region file this session
- * (Montenegro/Serbia/Bosnia never encode a rule for their own member
- * state's passport either).
+ * Kosovo's own member state (XK) is encoded as free_movement — a Kosovan
+ * national needs no visa to enter Kosovo, and prior region files that fell
+ * through to defaultRule (visa_required) for their own passport were wrong.
  *
  * Last verified: 2026-09-04
  */
@@ -43,6 +42,7 @@ import type {
   PassportRule,
   EntitledRule,
   VisaRequiredRule,
+  FreeMovementRule,
   SourceDoc,
 } from '@/types';
 import { KosovoSources } from '@/data/sources';
@@ -63,6 +63,7 @@ const KOSOVO_LIMIT: import('@/types').RollingWindowLimit = {
 };
 
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 const DURATION_NOTE_TEXT =
   'Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied.';
@@ -105,6 +106,9 @@ export const KOSOVO: RegionDefinition = {
   sourceUrl: 'https://ambasadat.net/visas/',
   defaultRule: VISA_REQUIRED,
   passportRules: {
+
+    // ── Kosovan citizens ────────────────────────────────────────────────────
+    'XK': FREE_MOVEMENT,
 
     // ── Entitled — 90 days in any 180-day rolling window (confirmed list, ────────
     // duration figure applied uniformly per the file header) ─────────────────────

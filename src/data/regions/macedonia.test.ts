@@ -55,8 +55,8 @@ describe('getMacedoniaRule', () => {
 });
 
 describe('North Macedonia — member state completeness', () => {
-  it('does not include a self-referential entry for North Macedonia (MK)', () => {
-    expect(NORTH_MACEDONIA.passportRules['MK']).toBeUndefined();
+  it('encodes North Macedonia (MK) itself as free_movement, not visa_required', () => {
+    expect(NORTH_MACEDONIA.passportRules['MK']).toEqual({ access: 'free_movement' });
   });
 });
 

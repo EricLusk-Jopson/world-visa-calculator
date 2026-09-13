@@ -257,8 +257,10 @@ describe("categorizeAllDestinations", () => {
     expect(result.every((d) => d.category === "never")).toBe(true);
     expect(result.map((d) => d.region)).toEqual([
       VisaRegion.Albania,
+      VisaRegion.Belarus,
       VisaRegion.Bosnia,
       VisaRegion.Cyprus,
+      VisaRegion.Georgia,
       VisaRegion.Ireland,
       VisaRegion.Kosovo,
       VisaRegion.Montenegro,

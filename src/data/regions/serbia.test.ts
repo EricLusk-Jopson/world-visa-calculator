@@ -7,6 +7,12 @@ import {
   type PerVisitLimit,
 } from '@/types';
 
+describe('Serbia — member state completeness', () => {
+  it('encodes Serbia (RS) itself as free_movement, not visa_required', () => {
+    expect(SERBIA.passportRules['RS']).toEqual({ access: 'free_movement' });
+  });
+});
+
 describe('getSerbiaRule', () => {
   it('returns entitled with a 90-day rolling_window limit for a standard nationality (US)', () => {
     const rule = getSerbiaRule('US');
