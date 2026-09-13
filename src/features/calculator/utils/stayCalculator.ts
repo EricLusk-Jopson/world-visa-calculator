@@ -64,6 +64,15 @@ export interface StayAssessment {
   maxExitDate: string;
   variant: StayVariant;
   /**
+   * False when the budget was already fully used up before this trip's
+   * entry date — the trip cannot be started at all (a calendar_period /
+   * fixed_window_from_entry case). When false, `maxExitDate` carries no
+   * meaning (there is no valid exit date for a stay that can't begin) and
+   * must not be displayed; `daysRemaining` still correctly reflects how far
+   * over the limit this trip would push things.
+   */
+  canEnter: boolean;
+  /**
    * Present only for calendar_period / fixed_window_from_entry: every trip
    * (including this one) that counts toward `daysUsed` within the current
    * budget window, for a "show the calculation" breakdown UI.
@@ -315,6 +324,7 @@ function assessPerVisit(
     daysRemaining,
     maxExitDate: formatDate(maxExit),
     variant,
+    canEnter: true,
   };
 }
 
@@ -342,6 +352,7 @@ function assessRollingWindow(
       daysRemaining: 0,
       maxExitDate: entryDate,
       variant: "danger",
+      canEnter: false,
     };
   }
 
@@ -364,6 +375,7 @@ function assessRollingWindow(
     daysRemaining,
     maxExitDate: maxStay.maxExitDate!,
     variant,
+    canEnter: true,
   };
 }
 
@@ -442,8 +454,13 @@ export function assessBudgetWindow(
     tripDays,
     daysUsed,
     daysRemaining,
+    // Meaningless when the budget was already used up before this trip even
+    // started — the trip cannot begin, so there is no valid exit date to
+    // compute. Left populated (never read) rather than made optional, since
+    // canEnter is what actually gates whether the UI may display it.
     maxExitDate: formatDate(maxExit),
     variant,
+    canEnter: remainingBudget > 0,
     contributions,
   };
 }

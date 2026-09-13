@@ -434,7 +434,7 @@ export function DurationSection({
             label={a.daysRemaining >= 0 ? "Days remaining" : "Over by"}
             value={`${Math.abs(a.daysRemaining)}d`}
           />
-          <EqRow label="Latest exit" value={fmtDate(a.maxExitDate)} />
+          {a.canEnter && <EqRow label="Latest exit" value={fmtDate(a.maxExitDate)} />}
         </Box>
       )}
       {a && a.contributions && <BudgetWindowBreakdown assessment={a} />}
@@ -443,9 +443,11 @@ export function DurationSection({
           variant={a.variant}
           text={
             a.contributions
-              ? a.variant === "danger"
-                ? `This trip brings the total to ${a.daysUsed} of ${a.daysAllowed} allowed days in ${budgetWindowPeriod(a.limitType, entryDate)}, counting every trip in that period. Authorities may require you to leave or deny entry.`
-                : `Approaching the ${a.daysAllowed}-day limit — ${a.daysUsed} of ${a.daysAllowed} days used across every trip in ${budgetWindowPeriod(a.limitType, entryDate)}.`
+              ? !a.canEnter
+                ? `The ${a.daysAllowed}-day limit for ${budgetWindowPeriod(a.limitType, entryDate)} was already reached before this trip could begin — entry is not possible until it resets.`
+                : a.variant === "danger"
+                  ? `This trip brings the total to ${a.daysUsed} of ${a.daysAllowed} allowed days in ${budgetWindowPeriod(a.limitType, entryDate)}, counting every trip in that period. Authorities may require you to leave or deny entry.`
+                  : `Approaching the ${a.daysAllowed}-day limit — ${a.daysUsed} of ${a.daysAllowed} days used across every trip in ${budgetWindowPeriod(a.limitType, entryDate)}.`
               : a.variant === "danger"
                 ? `This trip exceeds the ${a.limitLabel} limit. Authorities may require you to leave or deny entry.`
                 : `Approaching the ${a.limitLabel} limit. Plan an exit before the deadline.`

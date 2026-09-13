@@ -159,6 +159,49 @@ describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar 
     expect(result!.contributions).toHaveLength(4);
     expect(result!.contributions!.filter((c) => c.isCurrentTrip)).toHaveLength(1);
     expect(result!.contributions!.reduce((sum, c) => sum + c.days, 0)).toBe(95);
+    // The 90-day budget was already exhausted by the three prior trips
+    // before this 4th trip's entry date — it cannot be started at all, so
+    // there is no valid "latest exit" date (see canEnter: false below).
+    expect(result!.canEnter).toBe(false);
+  });
+
+  it('canEnter is false when the budget is already exhausted before entry — no valid exit date exists', () => {
+    const rule = getBelarusRule('CA');
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    const limits = rule.entitlements[0].limits;
+
+    // Exactly 90 days already used (three 30-day trips) before this 4th
+    // trip even begins — the trip cannot be started under any circumstance.
+    const priorTrips = [
+      { id: 'a', region: 0, entryDate: '2026-01-01', exitDate: '2026-01-30' },
+      { id: 'b', region: 0, entryDate: '2026-03-01', exitDate: '2026-03-30' },
+      { id: 'c', region: 0, entryDate: '2026-05-01', exitDate: '2026-05-30' },
+    ];
+    const result = assessStay(limits, priorTrips as never, '2026-07-01', '2026-07-01');
+    expect(result).not.toBeNull();
+    expect(result!.canEnter).toBe(false);
+  });
+
+  it('canEnter is true when the budget still has room at entry, even if this trip alone would exceed it', () => {
+    const rule = getBelarusRule('CA');
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    // Isolate the calendar_period limit alone — Belarus also stacks a
+    // 30-day per_visit cap that would otherwise dominate a 95-day trip and
+    // mask what calendar_period's own canEnter/maxExitDate resolve to.
+    const calendarLimit = rule.entitlements[0].limits.find(
+      (l): l is CalendarPeriodLimit => l.type === 'calendar_period',
+    )!;
+
+    // No prior trips this year — the traveler can legitimately start a trip
+    // on 1 Jan, even though a 95-day stay would exceed the 90-day budget
+    // partway through. The limit is hit DURING this trip, not before it, so
+    // a real "latest exit" date exists and canEnter must be true.
+    const result = assessStay([calendarLimit], [] as never, '2026-01-01', '2026-04-05');
+    expect(result).not.toBeNull();
+    expect(result!.canEnter).toBe(true);
+    expect(result!.maxExitDate).toBe('2026-03-31');
   });
 });
 
