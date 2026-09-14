@@ -27,6 +27,8 @@ export interface TripSummaryRowProps {
   overstayCount?: number;
   /** Visa-required / untracked travelers (grey). */
   unknownCount?: number;
+  /** Free movement — a national of the destination, or an EU/EEA citizen inside the bloc (green home icon). Duration rows only. */
+  homeCount?: number;
   /** Muted placeholder shown when there are no counts (e.g. dates not set). */
   placeholder?: string;
   disabled?: boolean;
@@ -58,6 +60,7 @@ export function TripSummaryRow({
   dangerCount,
   overstayCount = 0,
   unknownCount = 0,
+  homeCount = 0,
   placeholder,
   disabled,
   onClick,
@@ -68,7 +71,8 @@ export function TripSummaryRow({
     cautionCount === 0 &&
     dangerCount === 0 &&
     overstayCount === 0 &&
-    unknownCount === 0;
+    unknownCount === 0 &&
+    homeCount === 0;
   const isDuration = statusKind === "duration";
   return (
     <Box
@@ -166,6 +170,13 @@ export function TripSummaryRow({
                 value={unknownCount}
                 color={tokens.textGhost}
                 icon={<HelpOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.textGhost }} />}
+              />
+            )}
+            {homeCount > 0 && (
+              <Count
+                value={homeCount}
+                color={tokens.green}
+                icon={<DurationIcon state="home" size="0.9rem" />}
               />
             )}
           </Box>

@@ -56,8 +56,8 @@ describe('getAlbaniaRule', () => {
 });
 
 describe('Albania — member state completeness', () => {
-  it('does not include a self-referential entry for Albania (AL)', () => {
-    expect(ALBANIA.passportRules['AL']).toBeUndefined();
+  it('encodes Albania (AL) itself as free_movement, not visa_required', () => {
+    expect(ALBANIA.passportRules['AL']).toEqual({ access: 'free_movement' });
   });
 });
 

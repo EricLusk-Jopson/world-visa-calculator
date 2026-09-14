@@ -397,7 +397,8 @@ export function TripModal({
   // "danger" splits into close-to-limit (red clock) and actual overstay (red warning).
   const durDanger = durations.filter((d) => d.tracked && d.severity === "danger" && !d.overstay).length;
   const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
-  const durUnknown = durations.filter((d) => !d.tracked).length;
+  const durHome = durations.filter((d) => d.freeMovement).length;
+  const durUnknown = durations.filter((d) => !d.tracked && !d.freeMovement).length;
 
   // ── Date-field highlighting ─────────────────────────────────────────────────
   // Exit date mirrors the duration assessment (overstay); entry date mirrors
@@ -861,6 +862,7 @@ export function TripModal({
                 dangerCount={durDanger}
                 overstayCount={durOverstay}
                 unknownCount={durUnknown}
+                homeCount={durHome}
                 placeholder={!datesSet ? "Set dates" : ""}
                 disabled={!datesSet}
                 onClick={() => setDetailOpen(true)}

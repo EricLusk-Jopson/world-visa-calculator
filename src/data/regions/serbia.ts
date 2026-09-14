@@ -78,12 +78,14 @@ import type {
   PassportRule,
   EntitledRule,
   VisaRequiredRule,
+  FreeMovementRule,
   RuleNote,
   SourceDoc,
 } from '@/types';
 import { SerbiaSources } from '@/data/sources';
 
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 // ─── Entitlement helpers ───────────────────────────────────────────────────────
 
@@ -163,6 +165,9 @@ export const SERBIA: RegionDefinition = {
   sourceUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
   defaultRule: VISA_REQUIRED,
   passportRules: {
+    // ── Serbian citizens ───────────────────────────────────────────────────
+    'RS': FREE_MOVEMENT,
+
     // ── Visa required ──────────────────────────────────────────────────────
     'AF': visaRequired(SerbiaSources.AF), // Afghanistan
     'AO': visaRequired(SerbiaSources.AO), // Angola

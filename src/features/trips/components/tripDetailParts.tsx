@@ -57,11 +57,13 @@ export function overstayDays(dur?: TravelerDuration): number {
 export function durStateFor(dur: TravelerDuration | undefined): DurationState {
   return !dur
     ? "pending"
-    : !dur.tracked
-      ? "untracked"
-      : dur.overstay
-        ? "overstay"
-        : dur.severity;
+    : dur.freeMovement
+      ? "home"
+      : !dur.tracked
+        ? "untracked"
+        : dur.overstay
+          ? "overstay"
+          : dur.severity;
 }
 
 export function SectionLabel({ children }: { children: React.ReactNode }) {

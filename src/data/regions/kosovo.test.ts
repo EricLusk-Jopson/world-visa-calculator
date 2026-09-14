@@ -54,12 +54,12 @@ describe('getKosovoRule', () => {
 });
 
 describe('Kosovo — member state and list completeness', () => {
-  it('does not include a self-referential entry for Kosovo (XK)', () => {
-    expect(KOSOVO.passportRules['XK']).toBeUndefined();
+  it('encodes Kosovo (XK) itself as free_movement, not visa_required', () => {
+    expect(KOSOVO.passportRules['XK']).toEqual({ access: 'free_movement' });
   });
 
-  it('has exactly 103 entitled nationalities on the confirmed exempt list', () => {
-    expect(Object.keys(KOSOVO.passportRules)).toHaveLength(103);
+  it('has exactly 103 entitled nationalities on the confirmed exempt list, plus Kosovo itself', () => {
+    expect(Object.keys(KOSOVO.passportRules)).toHaveLength(104);
   });
 
   it.each(['GB', 'JP', 'RS', 'ME', 'BA'])('%s (regional neighbor / notable entry) is entitled', (code) => {

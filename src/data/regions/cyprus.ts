@@ -49,8 +49,9 @@
  *   `VU` entry here either, same visa_required-via-fallback outcome on both
  *   regions.
  *
- * Cyprus's own member state (CY) is intentionally not included as a
- * passport-rule entry, matching every other region file in this codebase.
+ * Cyprus's own member state (CY) is encoded as free_movement — a Cypriot
+ * national needs no visa to enter Cyprus (and, as an EU citizen, already has
+ * free movement in the bloc for any other reason).
  *
  * Last verified: 2026-09-09
  */
@@ -178,7 +179,10 @@ export const CYPRUS: RegionDefinition = {
   defaultRule: VISA_REQUIRED,
   passportRules: {
 
-    // ── EU member states (excluding Cyprus itself) — free movement ───────────
+    // ── Cypriot citizens ───────────────────────────────────────────────────
+    'CY': { access: 'free_movement' },
+
+    // ── EU member states — free movement ──────────────────────────────────────
     'AT': { access: 'free_movement' }, // Austria
     'BE': { access: 'free_movement' }, // Belgium
     'BG': { access: 'free_movement' }, // Bulgaria

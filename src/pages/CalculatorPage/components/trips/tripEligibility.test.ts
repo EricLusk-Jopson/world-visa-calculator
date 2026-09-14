@@ -183,3 +183,23 @@ describe('computeTravelerEligibility — every trackable region always cites a s
     });
   }
 });
+
+describe('computeTravelerEligibility — free_movement has no computed day-limit rule', () => {
+  it('reports a bare "Free movement" access label, not the old "— no day limit" suffix (GE → Georgia)', () => {
+    const [e] = computeTravelerEligibility(VisaRegion.Georgia, [traveler('GE')], ['t1'], '2026-06-01');
+    expect(e.access).toBe('free_movement');
+    expect(e.accessLabel).toBe('Free movement');
+  });
+
+  it('never leaks the region\'s generic day-limit rule text onto the Rule row (GE → Georgia, would otherwise show "365 days")', () => {
+    const [e] = computeTravelerEligibility(VisaRegion.Georgia, [traveler('GE')], ['t1'], '2026-06-01');
+    expect(e.ruleTexts).toEqual(['Free movement']);
+  });
+
+  it('same for Belarus (BY → Belarus, would otherwise show "30 days per visit")', () => {
+    const [e] = computeTravelerEligibility(VisaRegion.Belarus, [traveler('BY')], ['t1'], '2026-06-01');
+    expect(e.access).toBe('free_movement');
+    expect(e.accessLabel).toBe('Free movement');
+    expect(e.ruleTexts).toEqual(['Free movement']);
+  });
+});

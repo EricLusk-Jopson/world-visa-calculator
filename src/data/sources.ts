@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources, GeorgiaSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources, GeorgiaSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -5665,6 +5665,28 @@ export const BelarusSources = {
     directUrl: 'https://mfa.gov.by/en/visa/freemove/airport/',
     parentUrl: 'https://mfa.gov.by/en/visa/freemove/',
     dateChecked: '2026-09-12',
+  } satisfies SourceDoc,
+
+} as const;
+
+// ─── Georgia ──────────────────────────────────────────────────────────────────
+
+export const GeorgiaSources = {
+
+  /**
+   * Direct per-country visa-free duration list. The parent "entering
+   * Georgia" overview page is cited as `parentUrl`. The underlying
+   * legislation ("On Approval of the List of Countries Whose Citizens May
+   * Enter Georgia without a Visa", matsne.gov.ge/en/document/view/2867361)
+   * and the consulate's own list of qualifying citizens/stateless persons
+   * (geoconsul.gov.ge/en/HtmlPage/html/View?id=25) are cited as code
+   * comments in georgia.ts rather than as SourceDoc citations, per explicit
+   * instruction.
+   */
+  visaList: {
+    directUrl: 'https://geoconsul.gov.ge/en/entering-georgia-visa',
+    parentUrl: 'https://geoconsul.gov.ge/en/entering-georgia',
+    dateChecked: '2026-09-13',
   } satisfies SourceDoc,
 
 } as const;

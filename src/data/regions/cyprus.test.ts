@@ -44,8 +44,8 @@ describe('getCyprusRule', () => {
 });
 
 describe('Cyprus — member state completeness', () => {
-  it('does not include a self-referential entry for Cyprus (CY)', () => {
-    expect(CYPRUS.passportRules['CY']).toBeUndefined();
+  it('encodes Cyprus (CY) itself as free_movement, not visa_required', () => {
+    expect(CYPRUS.passportRules['CY']).toEqual({ access: 'free_movement' });
   });
 });
 

@@ -102,6 +102,7 @@ import type {
   PassportRule,
   EntitledRule,
   VisaRequiredRule,
+  FreeMovementRule,
   RuleNote,
   SourceDoc,
 } from '@/types';
@@ -122,6 +123,7 @@ const BOSNIA_LIMIT: import('@/types').RollingWindowLimit = {
 };
 
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 // ─── Entitlement helpers ────────────────────────────────────────────────────────
 
@@ -170,6 +172,9 @@ export const BOSNIA: RegionDefinition = {
   sourceUrl: 'https://www.mvp.gov.ba/en/vize',
   defaultRule: VISA_REQUIRED,
   passportRules: {
+
+    // ── Bosnian citizens ────────────────────────────────────────────────────
+    'BA': FREE_MOVEMENT,
 
     // ── Entitled — 90 days in any 180-day rolling window (standard case) ─────────
     'AD': entitledRolling(BosniaSources.AD), // Andorra

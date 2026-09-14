@@ -72,6 +72,14 @@ export interface TravelerDuration {
   chipLabel: string;
   /** True when this traveler has a stay overstay or re-entry concern. */
   hasIssue: boolean;
+  /**
+   * True for free_movement — a national of the destination, or an EU/EEA
+   * citizen inside the bloc. No day limit applies at all, which is distinct
+   * from `!tracked`'s other case (visa-required, genuinely no data): the
+   * icon layer shows a green home icon for this, never the grey "unknown"
+   * question mark.
+   */
+  freeMovement?: boolean;
   // ── Rolling-window detail (Schengen, Türkiye, …) ──
   rollingStatus?: RollingStatus;
   rollingBreakdown?: ImpactBreakdown;
@@ -87,6 +95,28 @@ function untrackedEntry(id: string, name: string, color: string): TravelerDurati
     color,
     tracked: false,
     note: VISA_REQUIRED_DURATION_NOTE,
+    variant: "safe",
+    severity: "safe",
+    overstay: false,
+    fillPct: 0,
+    chipLabel: "",
+    hasIssue: false,
+  };
+}
+
+/**
+ * free_movement — no day limit to track at all (not "no data yet"). Kept
+ * distinct from untrackedEntry() so the icon layer can render a green home
+ * icon instead of the grey "unknown" question mark.
+ */
+function freeMovementEntry(id: string, name: string, color: string): TravelerDuration {
+  return {
+    id,
+    name,
+    color,
+    tracked: false,
+    freeMovement: true,
+    note: "Free movement — no day limit applies.",
     variant: "safe",
     severity: "safe",
     overstay: false,
@@ -211,6 +241,20 @@ export function computeTravelerDurations(
     const traveler = travelers.find((t) => t.id === tid);
     if (!traveler) continue;
     const color = getTravelerColor(travelers.findIndex((t) => t.id === tid));
+
+    // free_movement (a traveler's own country, or an EU/EEA citizen inside
+    // the bloc) has no day limit at all — never compute or show a stay
+    // breakdown for it, in any region, including Schengen's own rolling
+    // 90/180 special-case below (an EU citizen isn't subject to it). Pushed
+    // as its own entry (not skipped) so the icon layer can render a
+    // dedicated green home icon rather than treating it as "no data yet".
+    if (
+      traveler.passportCode &&
+      getPassportRule(region, traveler.passportCode).access === "free_movement"
+    ) {
+      result.push(freeMovementEntry(tid, traveler.name, color));
+      continue;
+    }
 
     // Schengen — rolling 90/180. Visa-required holders are untracked.
     if (region === VisaRegion.Schengen) {

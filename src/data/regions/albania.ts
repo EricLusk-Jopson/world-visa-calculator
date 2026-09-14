@@ -39,8 +39,8 @@
  *   Sudan (SS) entry in the source, so SS is a true content gap defaulting
  *   to visa_required, matching the Taiwan/Kosovo-in-Bosnia precedent.
  *
- * Albania's own member state (AL) is intentionally not included as a
- * passport-rule entry, matching every other region file in this codebase.
+ * Albania's own member state (AL) is encoded as free_movement — an Albanian
+ * national needs no visa to enter Albania.
  *
  * Last verified: 2026-09-04
  */
@@ -50,6 +50,7 @@ import type {
   PassportRule,
   EntitledRule,
   VisaRequiredRule,
+  FreeMovementRule,
   SourceDoc,
 } from '@/types';
 import { AlbaniaSources } from '@/data/sources';
@@ -69,6 +70,7 @@ const ALBANIA_LIMIT: import('@/types').RollingWindowLimit = {
 };
 
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 const DURATION_NOTE_TEXT =
   'Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied.';
@@ -118,6 +120,9 @@ export const ALBANIA: RegionDefinition = {
   sourceUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
   defaultRule: VISA_REQUIRED,
   passportRules: {
+
+    // ── Albanian citizens ───────────────────────────────────────────────────
+    'AL': FREE_MOVEMENT,
 
     'AD': entitledRolling(AlbaniaSources.AD), // Andorra
     'AE': entitledRolling(AlbaniaSources.AE), // United Arab Emirates

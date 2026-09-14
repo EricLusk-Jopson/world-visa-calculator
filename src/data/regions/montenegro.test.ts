@@ -8,6 +8,12 @@ import {
   type PerVisitLimit,
 } from '@/types';
 
+describe('Montenegro — member state completeness', () => {
+  it('encodes Montenegro (ME) itself as free_movement, not visa_required', () => {
+    expect(MONTENEGRO.passportRules['ME']).toEqual({ access: 'free_movement' });
+  });
+});
+
 describe('getMontenegroRule', () => {
   it('returns entitled with a 90-day rolling_window limit for a standard nationality (US)', () => {
     const rule = getMontenegroRule('US');

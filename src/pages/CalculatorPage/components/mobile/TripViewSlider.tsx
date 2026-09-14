@@ -153,10 +153,11 @@ export function TripViewSlider({
     (d) => d.tracked && d.severity === "danger" && !d.overstay,
   ).length;
   const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
-  const durUnknown = durations.filter((d) => !d.tracked).length;
+  const durHome = durations.filter((d) => d.freeMovement).length;
+  const durUnknown = durations.filter((d) => !d.tracked && !d.freeMovement).length;
 
   const hasElig = eligOk + eligWarn + eligUnknown > 0;
-  const hasDur = durOk + durCaution + durDanger + durOverstay + durUnknown > 0;
+  const hasDur = durOk + durCaution + durDanger + durOverstay + durUnknown + durHome > 0;
 
   // ── Footer ────────────────────────────────────────────────────────────────
 
@@ -344,6 +345,13 @@ export function TripViewSlider({
                         count={durUnknown}
                         color={tokens.textGhost}
                         icon={<DurationIcon state="untracked" size="1.05rem" />}
+                      />
+                    )}
+                    {durHome > 0 && (
+                      <IconCount
+                        count={durHome}
+                        color={tokens.green}
+                        icon={<DurationIcon state="home" size="1.05rem" />}
                       />
                     )}
                   </Box>

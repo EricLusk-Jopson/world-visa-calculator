@@ -39,8 +39,8 @@
  *   to visa_required as the conservative assumption, matching the
  *   Taiwan/Kosovo true-gap precedent in bosnia.ts.
  *
- * North Macedonia's own member state (MK) is intentionally not included as
- * a passport-rule entry, matching every other region file in this codebase.
+ * North Macedonia's own member state (MK) is encoded as free_movement — a
+ * North Macedonian national needs no visa to enter North Macedonia.
  *
  * Last verified: 2026-09-04
  */
@@ -50,6 +50,7 @@ import type {
   PassportRule,
   EntitledRule,
   VisaRequiredRule,
+  FreeMovementRule,
   SourceDoc,
 } from '@/types';
 import { NorthMacedoniaSources } from '@/data/sources';
@@ -69,6 +70,7 @@ const MACEDONIA_LIMIT: import('@/types').RollingWindowLimit = {
 };
 
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required' };
+const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 const DURATION_NOTE_TEXT =
   'Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied.';
@@ -118,6 +120,9 @@ export const NORTH_MACEDONIA: RegionDefinition = {
   sourceUrl: 'https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza',
   defaultRule: VISA_REQUIRED,
   passportRules: {
+
+    // ── North Macedonian citizens ──────────────────────────────────────────
+    'MK': FREE_MOVEMENT,
 
     'AD': entitledRolling(NorthMacedoniaSources.AD), // Andorra
     'AE': entitledRolling(NorthMacedoniaSources.AE), // United Arab Emirates
