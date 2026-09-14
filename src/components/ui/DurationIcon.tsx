@@ -1,6 +1,7 @@
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import HomeIcon from "@mui/icons-material/Home";
 import { tokens } from "@/styles/theme";
 
 /**
@@ -11,6 +12,9 @@ import { tokens } from "@/styles/theme";
  *   overstay  — over the limit / refused (red warning)
  *   untracked — visa-required, no automatic tracking (grey question)
  *   pending   — no trip dates yet (muted clock)
+ *   home      — free movement: a national of the destination (or an EU/EEA
+ *               citizen inside the bloc) — no day limit applies at all,
+ *               never a "no data yet" or "unknown" state (green home icon)
  */
 export type DurationState =
   | "safe"
@@ -18,11 +22,13 @@ export type DurationState =
   | "danger"
   | "overstay"
   | "untracked"
-  | "pending";
+  | "pending"
+  | "home";
 
 export function durationColor(state: DurationState): string {
   switch (state) {
     case "safe":
+    case "home":
       return tokens.green;
     case "caution":
       return tokens.amber;
@@ -43,6 +49,8 @@ export function DurationIcon({
   size?: string | number;
 }) {
   const color = durationColor(state);
+  if (state === "home")
+    return <HomeIcon sx={{ fontSize: size, color }} />;
   if (state === "untracked")
     return <HelpOutlineIcon sx={{ fontSize: size, color }} />;
   if (state === "overstay")

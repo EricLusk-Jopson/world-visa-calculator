@@ -158,7 +158,8 @@ export function TripFormSlider({
     (d) => d.tracked && d.severity === "danger" && !d.overstay,
   ).length;
   const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
-  const durUnknown = durations.filter((d) => !d.tracked).length;
+  const durHome = durations.filter((d) => d.freeMovement).length;
+  const durUnknown = durations.filter((d) => !d.tracked && !d.freeMovement).length;
 
   const handleSave = useCallback(() => {
     if (!canSave) return;
@@ -283,6 +284,7 @@ export function TripFormSlider({
                 dangerCount={durDanger}
                 overstayCount={durOverstay}
                 unknownCount={durUnknown}
+                homeCount={durHome}
                 placeholder={!datesSet ? "Set dates" : ""}
                 disabled={!datesSet}
                 onClick={() => setDetailOpen(true)}
