@@ -11,9 +11,9 @@
  *
  * ── Cron job usage ────────────────────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources, GeorgiaSources } from '@/data/sources';
+ * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources, GeorgiaSources, ArmeniaSources } from '@/data/sources';
  *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources, GeorgiaSources };
+ * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources, GeorgiaSources, ArmeniaSources };
  * for (const [regionName, sources] of Object.entries(allRegions)) {
  *   for (const [sourceName, doc] of Object.entries(sources)) {
  *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
@@ -5687,6 +5687,36 @@ export const GeorgiaSources = {
     directUrl: 'https://geoconsul.gov.ge/en/entering-georgia-visa',
     parentUrl: 'https://geoconsul.gov.ge/en/entering-georgia',
     dateChecked: '2026-09-13',
+  } satisfies SourceDoc,
+
+} as const;
+
+// ─── Armenia ──────────────────────────────────────────────────────────────────
+
+export const ArmeniaSources = {
+
+  /**
+   * List of countries whose citizens with all types of passports are
+   * unilaterally exempt from Armenia's visa requirement — 180 days within
+   * any 365-day period. Cited as the source for both the 45-country
+   * unilateral list and the default/fallback rule (see armenia.ts).
+   */
+  visaFreeList: {
+    directUrl: 'https://www.mfa.am/en/visafreelist',
+    parentUrl: 'https://www.mfa.am/en/visa/',
+    dateChecked: '2026-09-14',
+  } satisfies SourceDoc,
+
+  /**
+   * Bilateral/multilateral visa-free agreements list. Only rows marked
+   * "All types of passports" are modeled (diplomatic/service/official-only
+   * rows grant nothing to an ordinary passport and are excluded — see
+   * armenia.ts header).
+   */
+  bilateralList: {
+    directUrl: 'https://www.mfa.am/en/whoneedvisa',
+    parentUrl: 'https://www.mfa.am/en/visa/',
+    dateChecked: '2026-09-14',
   } satisfies SourceDoc,
 
 } as const;

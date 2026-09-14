@@ -41,6 +41,7 @@ export const VisaRegion = {
   Cyprus: 11,
   Belarus: 12,
   Georgia: 13,
+  Armenia: 14,
 } as const;
 
 export type VisaRegion = (typeof VisaRegion)[keyof typeof VisaRegion];
@@ -60,6 +61,7 @@ export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
   [VisaRegion.Cyprus]: 'Cyprus',
   [VisaRegion.Belarus]: 'Belarus',
   [VisaRegion.Georgia]: 'Georgia',
+  [VisaRegion.Armenia]: 'Armenia',
 };
 
 /** Per-region metadata for destination pickers, beyond the label in VISA_REGION_LABELS. */
@@ -105,6 +107,7 @@ export const SUPPORTED_DESTINATIONS: DestinationInfo[] = [
   { region: VisaRegion.Cyprus, group: 'Europe' },
   { region: VisaRegion.Belarus, group: 'Europe' },
   { region: VisaRegion.Georgia, group: 'Europe' },
+  { region: VisaRegion.Armenia, group: 'Europe' },
 ];
 
 // ─── Core Domain Types ────────────────────────────────────────────────────────
