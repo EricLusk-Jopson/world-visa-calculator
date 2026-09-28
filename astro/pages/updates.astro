@@ -15,10 +15,10 @@ const roadmapCountries = [
   { name: "Kosovo", done: true },
   { name: "Bosnia and Herzegovina", done: true },
   { name: "Serbia", done: true },
+  { name: "Belarus", done: true },
+  { name: "Georgia", done: true },
   { name: "Ukraine", done: false },
   { name: "Moldova", done: false },
-  { name: "Belarus", done: false },
-  { name: "Georgia", done: false },
   { name: "Armenia", done: false },
   { name: "Azerbaijan", done: false },
   { name: "Morocco", done: false },
@@ -34,6 +34,17 @@ const qcPipelineNotes = [
 ];
 
 const changelog = [
+  {
+    range: "September 11 – 24, 2026",
+    changes: [
+      { tag: "feature", text: "Added Belarus and Georgia as trackable destinations — Belarus with a temporary any-border override through the end of 2026 that falls back to airport-only access, Georgia with up to a full year of visa-free stay for most nationalities." },
+      { tag: "feature", text: "Added the five de facto Schengen members — Andorra, Gibraltar, Monaco, San Marino, and Vatican City — tracked under the same 90/180 rule as formal member states." },
+      { tag: "improvement", text: "Published a new blog post on where our visa data comes from and how it's kept current, and repointed the homepage's “Why Accuracy Matters” link to it." },
+      { tag: "improvement", text: "Restyled the 90/180 rolling-window blog post's interactive panels to match the homepage's explainer card." },
+      { tag: "improvement", text: "Refined trip card title typography and added responsive column widths to the desktop timeline." },
+      { tag: "fix", text: "Fixed calculator app headings silently falling back to the system font instead of the site's Plus Jakarta Sans typeface." },
+    ],
+  },
   {
     range: "August 28 – September 10, 2026",
     changes: [
