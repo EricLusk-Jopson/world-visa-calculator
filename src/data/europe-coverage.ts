@@ -281,6 +281,12 @@ export const europeCoverage: EuropeCoverageData = {
       "stayRule": "perVisit365"
     },
     {
+      "code": "AM",
+      "name": "Armenia",
+      "source": "Armenia",
+      "stayRule": "rolling180In365"
+    },
+    {
       "code": "AD",
       "name": "Andorra",
       "source": "Andorra",
@@ -384,6 +390,11 @@ export const europeCoverage: EuropeCoverageData = {
       "type": "rolling-window",
       "maxStayDays": 90,
       "windowDays": 180
+    },
+    "rolling180In365": {
+      "type": "rolling-window",
+      "maxStayDays": 180,
+      "windowDays": 365
     },
     "perVisit90": {
       "type": "per-visit",
