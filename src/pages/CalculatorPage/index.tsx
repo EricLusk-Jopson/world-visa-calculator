@@ -191,18 +191,10 @@ export function CalculatorPage() {
     });
   }, []);
 
-  /** Desktop: single-traveler edit (one column = one person) */
-  const handleOpenEditTrip = useCallback((travelerId: string, trip: Trip) => {
-    setModal({
-      open: true,
-      kind: "trip",
-      mode: "edit",
-      travelerIds: [travelerId],
-      trip,
-    });
-  }, []);
-
-  /** Mobile: multi-traveler edit (merged card may represent several people) */
+  /**
+   * Multi-traveler edit: a shared trip (merged card on mobile, linked cards
+   * across columns on desktop) may represent several people.
+   */
   const handleOpenEditTripForMany = useCallback(
     (travelerIds: string[], trip: Trip) => {
       setModal({
@@ -410,7 +402,7 @@ export function CalculatorPage() {
               <TimelineView
                 travelers={travelers}
                 onAddTrip={handleOpenAddTrip}
-                onEditTrip={handleOpenEditTrip}
+                onEditTrip={handleOpenEditTripForMany}
                 onDeleteTraveler={handleDeleteTraveler}
                 onAddTraveler={handleAddTraveler}
                 onEdit={handleTravelerEdit}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, useState } from "react";
 import Box from "@mui/material/Box";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 
@@ -18,11 +18,13 @@ import {
 } from "@/features/calculator/utils/timelineLayout";
 import { today as getToday } from "@/features/calculator/utils/dates";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { tripGroupKey } from "../../trips/tripHelpers";
 
 interface TimelineViewProps {
   travelers: Traveler[];
   onAddTrip: (travelerId: string) => void;
-  onEditTrip: (travelerId: string, trip: Trip) => void;
+  /** Opens a trip for every traveler sharing it (same name, dates, region). */
+  onEditTrip: (travelerIds: string[], trip: Trip) => void;
   onDeleteTraveler: (travelerId: string) => void;
   onAddTraveler: () => void;
   onEdit: (
@@ -42,6 +44,7 @@ export function TimelineView({
   onEdit,
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [hoveredTripKey, setHoveredTripKey] = useState<string | null>(null);
   const hasScrolledRef = useRef(false);
   const { width } = useWindowDimensions();
   const maxColumnWidth = Math.max(
@@ -71,6 +74,15 @@ export function TimelineView({
     scrollRef.current.scrollTop = Math.max(0, scrollTop);
     hasScrolledRef.current = true;
   }, [timelineStart]);
+
+  /** Opens the trip with every traveler who holds a copy of it. */
+  const handleEditTrip = (trip: Trip) => {
+    const key = tripGroupKey(trip);
+    const travelerIds = travelers
+      .filter((t) => t.trips.some((x) => tripGroupKey(x) === key))
+      .map((t) => t.id);
+    onEditTrip(travelerIds, trip);
+  };
 
   if (travelers.length === 0) {
     return <AddTravelerGhost onAddTraveler={onAddTraveler} />;
@@ -163,7 +175,9 @@ export function TimelineView({
               timelineStart={timelineStart}
               timelineEnd={timelineEnd}
               onAddTrip={onAddTrip}
-              onEditTrip={onEditTrip}
+              onEditTrip={handleEditTrip}
+              hoveredTripKey={hoveredTripKey}
+              onHoverTrip={setHoveredTripKey}
               width={maxColumnWidth}
             />
           ))}
