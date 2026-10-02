@@ -61,3 +61,18 @@ export function isTripPlanned(trip: Trip): boolean {
 export function isTripOngoing(trip: Trip): boolean {
   return !trip.exitDate;
 }
+
+// ─── Shared-trip grouping ─────────────────────────────────────────────────────
+
+/**
+ * Identity of a trip shared across travelers. Each traveler holds their own
+ * copy (with its own id), so copies are grouped by name, dates and region.
+ */
+export function tripGroupKey(trip: Trip): string {
+  return [
+    trip.region,
+    trip.destination ?? "",
+    trip.entryDate,
+    trip.exitDate ?? "",
+  ].join("|");
+}

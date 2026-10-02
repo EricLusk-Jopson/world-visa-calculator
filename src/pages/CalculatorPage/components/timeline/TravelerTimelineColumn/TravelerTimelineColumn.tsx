@@ -37,6 +37,7 @@ import {
   AGING_MARKER_EXPLANATION,
 } from "@/features/calculator/utils/schengen";
 import { computeOverstayTripIds } from "../../trips/tripDuration";
+import { tripGroupKey } from "../../trips/tripHelpers";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { getUKRule } from "@/data/regions/uk";
 import { getIrelandRule } from "@/data/regions/ireland";
@@ -48,7 +49,10 @@ interface TravelerTimelineColumnProps {
   timelineEnd: Date;
   width: number;
   onAddTrip: (travelerId: string) => void;
-  onEditTrip: (travelerId: string, trip: Trip) => void;
+  onEditTrip: (trip: Trip) => void;
+  /** Group key of the shared trip currently hovered in any column. */
+  hoveredTripKey: string | null;
+  onHoverTrip: (key: string | null) => void;
 }
 
 // ─── Return marker visual ─────────────────────────────────────────────────────
@@ -302,6 +306,8 @@ export function TravelerTimelineColumn({
   timelineStart,
   timelineEnd,
   onEditTrip,
+  hoveredTripKey,
+  onHoverTrip,
   width,
 }: TravelerTimelineColumnProps) {
   const columnRef = useRef<HTMLDivElement>(null);
@@ -570,6 +576,8 @@ export function TravelerTimelineColumn({
               ) ?? undefined)
             : undefined;
 
+        const groupKey = tripGroupKey(trip);
+
         return (
           <TimelineTripCard
             key={trip.id}
@@ -592,7 +600,13 @@ export function TravelerTimelineColumn({
             }
             ukStayInfo={ukStayInfo}
             irelandStayInfo={irelandStayInfo}
-            onEdit={() => onEditTrip(traveler.id, trip)}
+            hovered={hoveredTripKey === groupKey}
+            onHoverChange={(h) =>
+              h
+                ? onHoverTrip(groupKey)
+                : hoveredTripKey === groupKey && onHoverTrip(null)
+            }
+            onEdit={() => onEditTrip(trip)}
           />
         );
       })}

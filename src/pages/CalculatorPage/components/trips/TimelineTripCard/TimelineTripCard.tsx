@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -192,6 +192,12 @@ interface TimelineTripCardProps {
   ukStayInfo?: PerVisitStayInfo;
   /** Stay assessment for Ireland per-visit trips. */
   irelandStayInfo?: PerVisitStayInfo;
+  /**
+   * Hover state, controlled by the timeline so every traveler's copy of a
+   * shared trip highlights together.
+   */
+  hovered: boolean;
+  onHoverChange: (hovered: boolean) => void;
   onEdit: () => void;
 }
 
@@ -215,10 +221,10 @@ export function TimelineTripCard({
   irelandPassportRule,
   ukStayInfo,
   irelandStayInfo,
+  hovered,
+  onHoverChange,
   onEdit,
 }: TimelineTripCardProps) {
-  const [hovered, setHovered] = useState(false);
-
   const badgeRowRef = useRef<HTMLDivElement>(null);
 
   const isPlanned = isTripPlanned(trip);
@@ -485,8 +491,8 @@ export function TimelineTripCard({
     <Box
       title={tooltipText}
       onClick={onEdit}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => onHoverChange(true)}
+      onMouseLeave={() => onHoverChange(false)}
       sx={{
         position: "absolute",
         left: cardLeft,
