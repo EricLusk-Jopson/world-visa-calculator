@@ -1,0 +1,1022 @@
+---
+/**
+ * Blog post: AI Chatbots Get Schengen Calculations Wrong
+ * URL: /blog/ai-chatbots-get-schengen-calculations-wrong
+ * Static Astro page, rendered to plain HTML at build time.
+ *
+ * TEMPLATE NOTES (delete before publishing):
+ * - This is post #7 from the content master doc, expanded from "ChatGPT"
+ *   to "Claude / ChatGPT / Gemini" per current scope.
+ * - Every table cell under "Official EU Calculator", "EuroVisaCalculator",
+ *   and each model column is a BLANK data-entry cell — that's the actual
+ *   experiment. Fill them in as you run each prompt.
+ * - The model roster (below) reflects each vendor's current lineup as of
+ *   this draft. Model names churn every few weeks — re-check the current
+ *   lineup for each vendor immediately before you start testing, and
+ *   update the table headers + vendor key to match.
+ * - Blog links below to Posts 1–4, 8, 9 use slugs guessed from their
+ *   titles per the content master doc's naming convention. Verify/fix
+ *   each href against the actual published slug before publishing.
+ * - Testing protocol: use a fresh/incognito or temporary chat for every
+ *   single cell, with no memory, custom instructions, or web/code tools
+ *   enabled (see Methodology). Mixing that up quietly invalidates the
+ *   comparison.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="AI Chatbots Get Schengen Calculations Wrong"
+  description="We asked Claude, ChatGPT, and Gemini the exact same Schengen 90/180 questions travelers ask every day — using real, worked scenarios. Here's how they did against the official EU calculator and EuroVisaCalculator."
+  canonicalUrl="https://eurovisacalculator.com/blog/ai-chatbots-get-schengen-calculations-wrong"
+>
+  <LandingNav />
+
+  <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
+    <header class="article__header">
+      <p class="article__tag">Blog</p>
+
+      <h1 class="article__title">
+        We Asked Claude, ChatGPT, and Gemini These Four Schengen Questions.
+        Here's How They Did.
+      </h1>
+
+      <p class="article__meta">[Date] · [Read time] min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you've ever typed your
+        travel dates into an AI chatbot instead of a calculator, or you're
+        wondering whether it's safe to.
+        <br />
+        <br />
+        <strong>It's probably not necessary if:</strong> you already know
+        never to trust an LLM with date arithmetic and just want a
+        calculator — in that case, <a href="/app">skip straight to the
+        tool</a>.
+      </p>
+    </header>
+
+    <div class="article__body">
+
+      <p>
+        You're planning a return trip to Europe. You already have a rough
+        sense of your dates, so instead of opening a calculator, you just
+        ask whatever chatbot is already open in another tab: "Can I fly
+        back into the Schengen Area on this date and stay for three
+        weeks?" It answers instantly, confidently, in a full sentence. It
+        sounds right. It also might be wrong — and unlike a calculator that
+        shows its work, there's nothing to check it against except your own
+        arithmetic, which is exactly what you were trying to avoid doing in
+        the first place.
+      </p>
+
+      <p>
+        We wanted to know how wrong, how often, and in which specific ways.
+        So we took the worked scenarios from
+        <a href="/blog/the-schengen-90-180-rolling-window">our rolling-window
+        explainer</a> — real dates, real people, some of them intentionally
+        tricky — and put the same four questions to every current Claude,
+        ChatGPT, and Gemini model. This post is the methodology, the exact
+        prompts (copy-pasteable, so you can reproduce or extend this
+        yourself), and the results grid for each question.
+      </p>
+
+      <nav class="article__toc" aria-label="Table of contents">
+        <p class="article__toc-title">On this page</p>
+        <ol>
+          <li><a href="#why-this-happens">Why chatbots struggle with this</a></li>
+          <li><a href="#methodology">Methodology</a></li>
+          <li><a href="#scenarios">The three scenarios</a></li>
+          <li><a href="#q1">Question 1 — "When is [Person] allowed back?"</a></li>
+          <li><a href="#q2">Question 2 — "From what date can [Person] return for [T] days?"</a></li>
+          <li><a href="#q3">Question 3 — "On what date must [Person] exit?"</a></li>
+          <li><a href="#q4">Question 4 — "Can [Person] re-enter on [D] for [T] days?"</a></li>
+          <li><a href="#bonus-prompts">Bonus prompts worth trying</a></li>
+          <li><a href="#why-it-matters">Why this matters</a></li>
+          <li><a href="#why-evc">Why use a dedicated calculator at all</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="why-this-happens">Why chatbots struggle with this</h2>
+
+      <p>
+        None of this is a knock on any specific model. It's structural.
+        General-purpose chatbots generate the next plausible token — they
+        don't run arithmetic on a date object the way a calculator does.
+        Adding and subtracting days across month boundaries, leap years,
+        and a <em>rolling</em> 180-day lookback window (not a fixed period —
+        see <a href="/blog/the-schengen-90-180-rolling-window">our explainer
+        on that</a>) is exactly the kind of multi-step, exact, cumulative
+        counting task language models are least reliable at, even when the
+        prose surrounding the answer sounds completely authoritative. A
+        wrong date delivered with full confidence is arguably worse than no
+        answer at all, because it doesn't invite you to double check it.
+      </p>
+
+      <h2 id="methodology">Methodology</h2>
+
+      <p>
+        <strong>Models tested.</strong> Three models per vendor, spanning
+        their fast/default, deep-reasoning, and top-tier tiers, so this
+        isn't just testing one configuration per company.
+      </p>
+
+      <div class="table-wrap">
+        <table class="model-roster">
+          <thead>
+            <tr>
+              <th class="vendor-anthropic" scope="col">Anthropic (Claude)</th>
+              <th class="vendor-openai" scope="col">OpenAI (ChatGPT)</th>
+              <th class="vendor-google" scope="col">Google (Gemini)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Claude Haiku 4.5 <span class="tier">(fast)</span></td>
+              <td>GPT-5.5 Instant <span class="tier">(fast)</span></td>
+              <td>Gemini 3.5 Flash <span class="tier">(fast)</span></td>
+            </tr>
+            <tr>
+              <td>Claude Sonnet 5 <span class="tier">(default)</span></td>
+              <td>GPT-5.5 Thinking <span class="tier">(reasoning)</span></td>
+              <td>Gemini 3.1 Pro <span class="tier">(default)</span></td>
+            </tr>
+            <tr>
+              <td>Claude Opus 5 <span class="tier">(top tier)</span></td>
+              <td>GPT-5.5 Pro <span class="tier">(top tier)</span></td>
+              <td>Gemini 3.1 Deep Think <span class="tier">(top tier)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        <strong>Rules, for every single prompt:</strong>
+      </p>
+      <ul>
+        <li>Fresh chat (incognito/temporary where available) — no memory, no chat history, no custom/system instructions.</li>
+        <li>Web search, code execution, and any "agent" or "tool use" mode turned off. We're testing the model's own reasoning, not its ability to open a calculator on our behalf — <a href="/blog/chatgpt-schengen-calculator-wrong">a distinct failure mode we've written about separately</a>.</li>
+        <li>One shot: the exact prompt below, sent once, no follow-up clarification or "are you sure?" nudging.</li>
+        <li>The prompt is pasted exactly as written, including the trip history, so nothing depends on the model "remembering" earlier context.</li>
+      </ul>
+
+      <p>
+        <strong>Grading legend</strong> — use this when filling in the grids
+        below:
+      </p>
+
+      <div class="table-wrap">
+        <table class="legend-table">
+          <tbody>
+            <tr><td class="legend-mark">✅</td><td>Correct — exact date/answer matches the ground truth.</td></tr>
+            <tr><td class="legend-mark">🟡</td><td>Close — off by 1–3 days, or the right idea buried in a hedge.</td></tr>
+            <tr><td class="legend-mark">❌</td><td>Wrong — off by more than 3 days, or the wrong direction entirely.</td></tr>
+            <tr><td class="legend-mark">🚫</td><td>Punted — told you to "check a calculator" or asked a clarifying question instead of answering.</td></tr>
+            <tr><td class="legend-mark">🧩</td><td>Invented a rule — e.g. asserted a fixed reset or a mandatory 90-day exit, a myth <a href="/blog/the-schengen-90-180-rolling-window#bad-advice">we debunk here</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="scenarios">The three scenarios</h2>
+
+      <p>
+        All three are pulled directly from
+        <a href="/blog/the-schengen-90-180-rolling-window">the rolling-window
+        explainer</a>, so several of the "correct" answers are already
+        published and linkable — useful both as an answer key and as
+        something you can point a skeptical reader to.
+      </p>
+
+      <h3>Scenario A — Patricia (single trip)</h3>
+      <p>
+        Patricia holds a passport with the standard 90-day, visa-free
+        Schengen allowance. Her only Schengen Area travel: entered
+        <strong>March 1, 2025</strong>, exited <strong>May 29, 2025</strong>
+        — one continuous 90-day trip, no other history before or since.
+      </p>
+
+      <h3>Scenario B — The group trip (Anna, Marcus, Ilker, Olivia)</h3>
+      <p>
+        Four friends, all holding passports with the standard 90-day
+        allowance, traveled together: entered <strong>February 1, 2025</strong>,
+        exited <strong>March 22, 2025</strong> — 50 days, no other history.
+        Afterward, each plans to return independently.
+      </p>
+
+      <h3>Scenario C — Jordan (a real multi-trip year)</h3>
+      <p>
+        Jordan holds a passport with the standard 90-day allowance and has
+        six separate Schengen Area trips on record:
+      </p>
+      <ul>
+        <li>Trip 1: Mar 14–21, 2025</li>
+        <li>Trip 2: Apr 18 – Jul 2, 2025</li>
+        <li>Trip 3: Sep 19–26, 2025</li>
+        <li>Trip 4: Nov 27 – Dec 30, 2025</li>
+        <li>Trip 5: Apr 12–17, 2026</li>
+        <li>Trip 6: Apr 23 – May 10, 2026</li>
+      </ul>
+      <p>
+        This is the densest scenario and the one where we don't have a
+        pre-published answer key — run it through
+        <a href="/app">EuroVisaCalculator</a> and the official EU calculator
+        yourself to get the reference values for the grid.
+      </p>
+
+      <hr />
+
+      <!-- ================= QUESTION 1 ================= -->
+      <h2 id="q1">Question 1 — "When is [Person] allowed back?"</h2>
+
+      <p>
+        This is the question people actually type into a search bar or a
+        chatbot after a trip ends: <em>my Schengen days are used up — when
+        can I go again?</em> It's also the question the "90 days in, 90 days
+        out" myth answers wrong, so it's a direct test of whether a model
+        has internalized the rolling window or is quietly reciting the myth
+        we <a href="/blog/the-schengen-90-180-rolling-window#bad-advice">list
+        out here</a>. We're asking specifically for the date a <em>full</em>
+        90-day allowance is restored, not just the date any allowance
+        reappears (that's Question 2).
+      </p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Patricia (Scenario A)</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on March 1, 2025 and exited on May 29, 2025. She has had no other Schengen Area travel before or after this trip.
+
+Under the Schengen 90/180-day rule, what is the earliest date on which Patricia could begin a brand-new 90-day stay in the Schengen Area, using her full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Published answer: August 28, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-2">see the worked example</a>.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — the group trip (Scenario B)</summary>
+        <pre class="prompt-text">Four friends — Anna, Marcus, Ilker, and Olivia — all hold passports that allow 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. All four traveled together on a single trip: entered February 1, 2025, exited March 22, 2025 (50 days). None of them have any other Schengen Area travel history before or after this trip.
+
+Under the Schengen 90/180-day rule, what is the earliest date on which any of them could begin a brand-new 90-day stay in the Schengen Area, using their full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Published answer: September 19, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Jordan (Scenario C)</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+
+As of December 31, 2025, what is the earliest date on which Jordan could begin a brand-new 90-day stay in the Schengen Area, using a full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">No published answer — run this through EuroVisaCalculator and the official EU calculator first to fill in the reference columns below.</p>
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Scenario</th>
+              <th class="vendor-reference" scope="col">Official EU Calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
+              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Patricia — after 90/90 trip</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Group trip — full clear</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan — as of Dec 31, 2025</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <!-- ================= QUESTION 2 ================= -->
+      <h2 id="q2">Question 2 — "From what date can [Person] return for a trip of length [T]?"</h2>
+
+      <p>
+        This is the planning question — someone who already knows roughly
+        how long they want their next trip to be and is trying to figure
+        out when they can book it. It's harder than Question 1 because the
+        correct date usually isn't "wait until everything clears" — it's
+        the earliest point where <em>enough</em> allowance exists for a
+        trip of that specific length, which can be well before the full
+        90 days are back. This is exactly the situation Anna is in in
+        <a href="/blog/the-schengen-90-180-rolling-window#case-3">Case 3 of
+        our explainer</a>.
+      </p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Patricia, 30-day trip (Scenario A)</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on March 1, 2025 and exited on May 29, 2025. She has had no other Schengen Area travel before or after this trip.
+
+What is the earliest date on which Patricia could enter the Schengen Area for a new trip lasting exactly 30 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+
+      <details class="prompt-box">
+        <summary>Prompt — Anna, 60-day trip (Scenario B)</summary>
+        <pre class="prompt-text">Anna holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on February 1, 2025 and exited on March 22, 2025 (50 days). She has had no other Schengen Area travel before or after this trip.
+
+What is the earliest date on which Anna could enter the Schengen Area for a new trip lasting exactly 60 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+
+      <details class="prompt-box">
+        <summary>Prompt — Marcus, 90-day trip (Scenario B)</summary>
+        <pre class="prompt-text">Marcus holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. His entire Schengen Area travel history is a single trip: he entered on February 1, 2025 and exited on March 22, 2025 (50 days). He has had no other Schengen Area travel before or after this trip.
+
+What is the earliest date on which Marcus could enter the Schengen Area for a new trip lasting the full 90 days, without overstaying his 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Published answer: August 1, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Marcus's worked example</a>. Note that his remaining allowance doesn't visibly grow for the first 50 days of this new trip — that's expected, not a bug, and worth watching for in the models' explanations, not just their final date.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Jordan, 21-day trip (Scenario C)</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+
+What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 21 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Scenario</th>
+              <th class="vendor-reference" scope="col">Official EU Calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
+              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Patricia — 30-day trip</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Anna — 60-day trip</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Marcus — 90-day trip</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan — 21-day trip</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <!-- ================= QUESTION 3 ================= -->
+      <h2 id="q3">Question 3 — "On what date must [Person] exit?"</h2>
+
+      <p>
+        The mirror image of Question 2: dates are already booked for an
+        entry, and the question is how long the trip can safely run. This
+        is the question with the highest real-world stakes, since getting
+        it wrong in the optimistic direction is exactly how someone ends up
+        overstaying — see
+        <a href="/blog/schengen-overstay-consequences">what actually happens
+        if that occurs</a>. It also depends on getting
+        <a href="/blog/does-your-entry-day-count-as-a-schengen-day">entry-day
+        counting</a> right, which is a second, independent place for a model
+        to be off by one.
+      </p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Patricia entering Mar 1 (Scenario A)</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. She has no Schengen Area travel history before this trip.
+
+If Patricia enters the Schengen Area on March 1, 2025, what is the last date she is allowed to still be present in the Schengen Area before she must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning, including whether entry and exit days themselves count toward the 90 days.</pre>
+      </details>
+
+      <details class="prompt-box">
+        <summary>Prompt — Anna entering May 3 (Scenario B)</summary>
+        <pre class="prompt-text">Anna holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her only prior Schengen Area travel: entered February 1, 2025, exited March 22, 2025 (50 days). No other history.
+
+If Anna enters the Schengen Area again on May 3, 2025, what is the last date she is allowed to still be present in the Schengen Area before she must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Published answer: June 11, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Anna's worked example</a>. She's capped well below 90 days because her earlier trip is still fully inside the window.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Marcus entering Jul 15 (Scenario B)</summary>
+        <pre class="prompt-text">Marcus holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. His only prior Schengen Area travel: entered February 1, 2025, exited March 22, 2025 (50 days). No other history.
+
+If Marcus enters the Schengen Area again on July 15, 2025, what is the last date he is allowed to still be present in the Schengen Area before he must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Published answer: October 12, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Marcus's worked example</a>. This is the hardest of the four: his earlier trip ages out of the window <em>during</em> this stay, so his true maximum is much longer than his remaining allowance on July 15 alone suggests.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Jordan entering Apr 23, 2026 (Scenario C)</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's Schengen Area travel history prior to this trip is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+- Trip 5: April 12–17, 2026
+
+If Jordan enters the Schengen Area again on April 23, 2026, what is the last date Jordan is allowed to still be present before having to exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Scenario</th>
+              <th class="vendor-reference" scope="col">Official EU Calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
+              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Patricia — enters Mar 1</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Anna — enters May 3</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Marcus — enters Jul 15</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan — enters Apr 23, 2026</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <!-- ================= QUESTION 4 ================= -->
+      <h2 id="q4">Question 4 — "Can [Person] re-enter on [D] for [T] days?"</h2>
+
+      <p>
+        This is the yes/no version — the question someone asks right
+        before clicking "book" on a flight. It's the most common real-world
+        phrasing, and it's the one where a model can fail silently: a
+        wrong "yes" looks identical to a right one until you're standing
+        at the border. We've deliberately included two rows here that are
+        designed to trip up a model that's just pattern-matching
+        ("90 days, sounds fine") rather than actually computing the
+        window.
+      </p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Patricia, Aug 28 for 90 days (Scenario A)</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on March 1, 2025 and exited on May 29, 2025. No other history.
+
+Can Patricia enter the Schengen Area on August 28, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Published answer: Yes — <a href="/blog/the-schengen-90-180-rolling-window#permanent-90th-day">see the "permanent 90th day" discussion</a>. This is the tightest possible legal case — no buffer at all.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Patricia, Aug 20 for 90 days (Scenario A, trap)</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on March 1, 2025 and exited on May 29, 2025. No other history.
+
+Can Patricia enter the Schengen Area on August 20, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Eight days too early — this should come back <strong>no</strong>. A model that got the Aug 28 case right by rote (rather than by actually computing the window) may still get this one wrong.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Ilker, Aug 1 for 90 days (Scenario B)</summary>
+        <pre class="prompt-text">Ilker holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. His only prior Schengen Area travel: entered February 1, 2025, exited March 22, 2025 (50 days). No other history.
+
+Can Ilker enter the Schengen Area on August 1, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Published answer: Yes — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Ilker's worked example</a>.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Anna, May 3 for 50 days (Scenario B, trap)</summary>
+        <pre class="prompt-text">Anna holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her only prior Schengen Area travel: entered February 1, 2025, exited March 22, 2025 (50 days). No other history.
+
+Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">This should come back <strong>no</strong> — Anna is capped at 40 days on that date (<a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>), ten short of the 50 asked about. A very plausible real mistake, since 40 and 50 both round to "about a month and a half."</p>
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Scenario</th>
+              <th class="vendor-reference" scope="col">Official EU Calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
+              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Patricia — Aug 28, 90d</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Patricia — Aug 20, 90d (trap)</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Ilker — Aug 1, 90d</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Anna — May 3, 50d (trap)</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <h2 id="bonus-prompts">Bonus prompts worth trying</h2>
+
+      <p>
+        A few more questions we considered but kept out of the main grid —
+        either because they're diagnostic rather than a clean right/wrong
+        check, or because they test something adjacent worth its own
+        section:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Quick-status framing:</strong> "As of [date], how many
+          Schengen days does [Person] have remaining?" — probably the single
+          most common real phrasing; useful as a sanity check that ties
+          back into every other answer.
+        </li>
+        <li>
+          <strong>The conceptual trap:</strong> "Marcus enters the Schengen
+          Area on July 15, 2025 with 40 days of allowance remaining. Two
+          weeks into his stay, his remaining allowance hasn't changed. Is
+          that a bug?" A model that says yes has failed to understand
+          <a href="/blog/the-schengen-90-180-rolling-window#case-3">the
+          aging-out mechanism</a>, not just failed at arithmetic — worth its
+          own comparison table if this post does well.
+        </li>
+        <li>
+          <strong>Adjudicating disagreement:</strong> "Two calculators gave
+          me different answers for the same dates: Calculator A says 12
+          days remaining, Calculator B says 7. Which is more likely to be
+          correct and why?" — a direct test of whether the model can reason
+          about <em>why</em> tools disagree, tying into
+          <a href="/blog/why-schengen-calculators-give-different-results">our
+          first post in this series</a>, rather than just picking one at
+          random.
+        </li>
+        <li>
+          <strong>Deliberately underspecified:</strong> Ask any of the four
+          core questions but omit whether entry/exit days count, to see
+          which models ask a clarifying question versus silently assume
+          an answer — the assumption itself is worth recording, since
+          <a href="/blog/does-your-entry-day-count-as-a-schengen-day">it's
+          the single biggest source of off-by-one errors</a>.
+        </li>
+      </ul>
+
+      <h2 id="why-it-matters">Why this matters</h2>
+
+      <p>
+        A wrong answer from a chatbot doesn't come with a caveat, a
+        confidence interval, or a link to its sources — it comes as a
+        sentence that sounds exactly as certain as a right one. For
+        anything else, that's a minor inconvenience. For this specific
+        question, being off by even one day in the optimistic direction is
+        the difference between a normal trip and an overstay, and
+        <a href="/blog/schengen-overstay-consequences">the consequences of
+        an overstay</a> range from an awkward conversation to an entry ban
+        that follows you into future visa applications. It also shapes what
+        happens at the border itself:
+        <a href="/blog/why-border-control-gave-you-a-different-number">when
+        an officer's number disagrees with yours</a>, having gotten your
+        number from a tool that can show its work is a meaningfully
+        different position to argue from than having gotten it from a
+        chatbot that can't.
+      </p>
+
+      <h2 id="why-evc">Why use a dedicated calculator at all</h2>
+
+      <p>
+        If a chatbot can't be trusted with this, neither can mental math —
+        so the honest recommendation is a purpose-built tool, not "just be
+        more careful." The official EU calculator is a fine baseline and
+        we cross-check against it directly. Where
+        <a href="/app">EuroVisaCalculator</a> goes further:
+      </p>
+
+      <ul>
+        <li><strong>Coverage beyond Schengen.</strong> We track 47 European countries and territories, not just the Schengen Area — useful the moment a trip includes the UK, Ireland, or a bilateral-agreement country.</li>
+        <li><strong>Multi-person by default.</strong> Every scenario in this post involves more than one traveler with different dates — <a href="/blog/schengen-calculator-couples">exactly the case most calculators, official or AI, aren't built to handle</a>.</li>
+        <li><strong>No account required.</strong> Your data persists via URL and local storage, not a login — the same link you'd paste into a chatbot prompt instead works as a saved, shareable calculation.</li>
+        <li><strong>Shows its work.</strong> Every day counted toward your allowance is visible on the timeline, not just a final number — which is the entire property this post found chatbots missing.</li>
+      </ul>
+
+      <p>
+        <a href="/app">Try EuroVisaCalculator with your own dates</a> —
+        or, if you want to see the exact mechanics one more time before you
+        do, <a href="/blog/the-schengen-90-180-rolling-window">the rolling
+        window post</a> these scenarios came from.
+      </p>
+
+    </div>
+
+    <div class="article__back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+  </article>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .article {
+    min-height: 100vh;
+    background: var(--color-off-white);
+    padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .article__header {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .article__tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 14px;
+  }
+
+  .article__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .article__meta {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+  .article__audience {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
+  }
+
+  .article__body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article__toc {
+    background: #eef1ea;
+    border: 1px solid #e0dbd3;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 0 0 2rem;
+  }
+
+  .article__toc-title {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a6a82;
+    margin: 0 0 10px;
+  }
+
+  .article__toc ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-family: var(--font-body);
+  }
+
+  .article__toc li {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #3d4f65;
+  }
+
+  .article__toc a {
+    color: #0c1e3c;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s, color 0.18s;
+  }
+
+  .article__toc a:hover {
+    color: #00b96b;
+    border-bottom-color: #00b96b;
+  }
+
+  .article__body p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+  }
+
+  .article__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article__body h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0c1e3c;
+    margin: 1.75rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article__body hr {
+    border: none;
+    border-top: 1px solid #e0dbd3;
+    margin: 2.5rem 0;
+  }
+
+  .article__body a {
+    color: #00b96b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s;
+  }
+
+  .article__body a:hover {
+    border-bottom-color: #00b96b;
+  }
+
+  .article__body blockquote {
+    margin: 1.5rem 0;
+    padding: 14px 18px;
+    background: #f0f4f8;
+    border-left: 3px solid #b8c8d8;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .article__body blockquote p {
+    margin: 0;
+    font-size: 0.93rem;
+    color: #3d4f65;
+    line-height: 1.7;
+  }
+
+  .article__back {
+    max-width: 680px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #e0dbd3;
+  }
+
+  .article__back-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #5a6a82;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .article__back-link:hover {
+    color: #0c1e3c;
+  }
+
+  .article__body ul {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+    padding-left: 1.4rem;
+  }
+
+  .article__body li {
+    margin-bottom: 0.4em;
+  }
+
+  /* Post-specific: results grids, model roster, legend, prompt boxes. */
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.25rem 0 1.75rem;
+    border-radius: 10px;
+    border: 1px solid #e0dbd3;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+  }
+
+  .model-roster td,
+  .model-roster th {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #edf1f4;
+  }
+
+  .model-roster .tier {
+    display: block;
+    font-size: 0.72rem;
+    color: #8fa0b4;
+  }
+
+  .legend-table td {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    color: #3d4f65;
+    border-bottom: 1px solid #edf1f4;
+  }
+
+  .legend-mark {
+    text-align: center;
+    width: 40px;
+    font-size: 1rem;
+  }
+
+  .qa-table {
+    min-width: 920px;
+  }
+
+  .qa-table th,
+  .qa-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #edf1f4;
+    border-right: 1px solid #edf1f4;
+    white-space: nowrap;
+    vertical-align: top;
+  }
+
+  .qa-table thead th {
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .qa-table td {
+    min-width: 110px;
+    height: 40px;
+  }
+
+  .row-head {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 1;
+    font-weight: 600;
+    color: #0c1e3c;
+    white-space: normal;
+    min-width: 190px;
+  }
+
+  thead .row-head {
+    background: #f7f8f6;
+    z-index: 2;
+  }
+
+  /* Vendor umbrella colours */
+  .vendor-anthropic { background: #fdece2; color: #9c3f16; }
+  .vendor-openai    { background: #e3f3ea; color: #0e6b4c; }
+  .vendor-google    { background: #e7eefc; color: #1a44b8; }
+  .vendor-reference { background: #eef1ea; color: #0c1e3c; }
+
+  .model-roster thead th {
+    padding: 10px 14px;
+  }
+
+  .article__body .known-answer {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: #5a6a82;
+    margin: -0.75rem 0 1.75rem;
+  }
+
+  .prompt-box {
+    margin: 1rem 0;
+    border: 1px solid #d5dce8;
+    border-radius: 10px;
+    background: #f7f9fb;
+    overflow: hidden;
+  }
+
+  .prompt-box summary {
+    cursor: pointer;
+    padding: 10px 16px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0c1e3c;
+    list-style: none;
+  }
+
+  .prompt-box summary::-webkit-details-marker { display: none; }
+
+  .prompt-box summary::before {
+    content: "▸ ";
+    color: #00b96b;
+  }
+
+  .prompt-box[open] summary::before {
+    content: "▾ ";
+  }
+
+  .prompt-text {
+    margin: 0;
+    padding: 14px 16px 16px;
+    border-top: 1px solid #e3e9ed;
+    background: #fff;
+    font-family: var(--font-mono, ui-monospace, "SF Mono", Menlo, monospace);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #1c2b3d;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+</style>
