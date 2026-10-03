@@ -122,7 +122,8 @@ import Footer from "../../components/Footer.astro";
       <h2 id="methodology">Methodology</h2>
 
       <p>
-        <strong>Models tested.</strong> Three models per vendor, so this
+        <strong>Models tested.</strong> Three models per vendor, spanning
+        their fast/default, deep-reasoning, and top-tier tiers, so this
         isn't just testing one configuration per company.
       </p>
 
@@ -137,19 +138,19 @@ import Footer from "../../components/Footer.astro";
           </thead>
           <tbody>
             <tr>
-              <td>Claude Haiku 4.5</td>
-              <td>GPT-5.5 Medium</td>
-              <td>Gemini 2.5 Flash</td>
+              <td>Claude Haiku 4.5 <span class="tier">(fast)</span></td>
+              <td>GPT-5.5 Instant <span class="tier">(fast)</span></td>
+              <td>Gemini 3.5 Flash <span class="tier">(fast)</span></td>
             </tr>
             <tr>
-              <td>Claude Sonnet 5.5</td>
-              <td>GPT-5.6 Medium</td>
-              <td>Gemini 3.8 Flash</td>
+              <td>Claude Sonnet 5 <span class="tier">(default)</span></td>
+              <td>GPT-5.5 Thinking <span class="tier">(reasoning)</span></td>
+              <td>Gemini 3.1 Pro <span class="tier">(default)</span></td>
             </tr>
             <tr>
-              <td>Claude Opus 5.5</td>
-              <td>GPT-6 Astra</td>
-              <td>Gemini 3.1 Pro</td>
+              <td>Claude Opus 5 <span class="tier">(top tier)</span></td>
+              <td>GPT-5.5 Pro <span class="tier">(top tier)</span></td>
+              <td>Gemini 3.1 Deep Think <span class="tier">(top tier)</span></td>
             </tr>
           </tbody>
         </table>
@@ -259,7 +260,7 @@ Under the Schengen 90/180-day rule, what is the earliest date on which Patricia 
 
 Under the Schengen 90/180-day rule, what is the earliest date on which any of them could begin a brand-new 90-day stay in the Schengen Area, using their full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Both calculators: June 21, 2025. (September 19 is when the trip fully clears the window, which is later than needed for a full 90-day stay; <a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>.)</p>
+      <p class="known-answer">Published answer: September 19, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>.</p>
 
       <details class="prompt-box">
         <summary>Prompt — Jordan (Scenario C)</summary>
@@ -271,7 +272,7 @@ Under the Schengen 90/180-day rule, what is the earliest date on which any of th
 
 As of December 31, 2025, what is the earliest date on which Jordan could begin a brand-new 90-day stay in the Schengen Area, using a full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Both calculators: March 31, 2026.</p>
+      <p class="known-answer">No published answer — run this through EuroVisaCalculator and the official EU calculator first to fill in the reference columns below.</p>
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -281,28 +282,28 @@ As of December 31, 2025, what is the earliest date on which Jordan could begin a
               <th class="vendor-reference" scope="col">Official EU Calculator</th>
               <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
               <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Opus 5.5</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Medium</th>
-              <th class="vendor-openai" scope="col">GPT-5.6 Medium</th>
-              <th class="vendor-openai" scope="col">GPT-6 Astra</th>
-              <th class="vendor-google" scope="col">Gemini 2.5 Flash</th>
-              <th class="vendor-google" scope="col">Gemini 3.8 Flash</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
+              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
               <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — after 90/90 trip</th>
-              <td>Aug 28</td><td>Aug 28</td><td>Nov 26 ❌</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td><td>Aug 26 → Aug 28 🟡</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
-              <th class="row-head" scope="row">Group trip — full 90 days</th>
-              <td>Jun 21</td><td>Jun 21</td><td>Sep 21 ❌</td><td>Jun 21 ✅</td><td>Jun 21 ✅</td><td>Jun 20 🟡</td><td>Jun 21 ✅</td><td>Jun 21 ✅</td><td>Aug 20 ❌</td><td>Jun 21 ✅</td><td>Jun 21 ✅</td>
+              <th class="row-head" scope="row">Group trip — full clear</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — as of Dec 31, 2025</th>
-              <td>Mar 31, 2026</td><td>Mar 31, 2026</td><td>Jun 29 ❌</td><td>Mar 31 ✅</td><td>Mar 31 ✅</td><td>Mar 31 ✅</td><td>Mar 31 ✅</td><td>Mar 31 ✅</td><td>Jun 1 → Jun 29 ❌</td><td>Mar 31 ✅</td><td>Mar 31 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
           </tbody>
         </table>
@@ -331,7 +332,6 @@ As of December 31, 2025, what is the earliest date on which Jordan could begin a
 
 What is the earliest date on which Patricia could enter the Schengen Area for a new trip lasting exactly 30 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Both calculators: August 28, 2025.</p>
 
       <details class="prompt-box">
         <summary>Prompt — Anna, 60-day trip (Scenario B)</summary>
@@ -339,8 +339,14 @@ What is the earliest date on which Patricia could enter the Schengen Area for a 
 
 What is the earliest date on which Anna could enter the Schengen Area for a new trip lasting exactly 60 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Both calculators: June 21, 2025.</p>
 
+      <details class="prompt-box">
+        <summary>Prompt — Marcus, 90-day trip (Scenario B)</summary>
+        <pre class="prompt-text">Marcus holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. His entire Schengen Area travel history is a single trip: he entered on February 1, 2025 and exited on March 22, 2025 (50 days). He has had no other Schengen Area travel before or after this trip.
+
+What is the earliest date on which Marcus could enter the Schengen Area for a new trip lasting the full 90 days, without overstaying his 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Published answer: August 1, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Marcus's worked example</a>. Note that his remaining allowance doesn't visibly grow for the first 50 days of this new trip — that's expected, not a bug, and worth watching for in the models' explanations, not just their final date.</p>
 
       <details class="prompt-box">
         <summary>Prompt — Jordan, 21-day trip (Scenario C)</summary>
@@ -352,19 +358,6 @@ What is the earliest date on which Anna could enter the Schengen Area for a new 
 
 What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 21 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Both calculators: December 31, 2025.</p>
-
-      <details class="prompt-box">
-        <summary>Prompt — Jordan, 50-day trip (Scenario C)</summary>
-        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
-- Trip 1: March 14–21, 2025
-- Trip 2: April 18 – July 2, 2025
-- Trip 3: September 19–26, 2025
-- Trip 4: November 27 – December 30, 2025
-
-What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 50 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
-      </details>
-      <p class="known-answer">Both calculators: January 29, 2026.</p>
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -374,32 +367,32 @@ What is the earliest date after December 30, 2025 on which Jordan could enter th
               <th class="vendor-reference" scope="col">Official EU Calculator</th>
               <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
               <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Opus 5.5</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Medium</th>
-              <th class="vendor-openai" scope="col">GPT-5.6 Medium</th>
-              <th class="vendor-openai" scope="col">GPT-6 Astra</th>
-              <th class="vendor-google" scope="col">Gemini 2.5 Flash</th>
-              <th class="vendor-google" scope="col">Gemini 3.8 Flash</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
+              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
               <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — 30-day trip</th>
-              <td>Aug 28</td><td>Aug 28</td><td>Aug 30 🟡</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td><td>Jul 1 → Sep 27 ❌</td><td>Aug 28 ✅</td><td>Aug 28 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — 60-day trip</th>
-              <td>Jun 21</td><td>Jun 21</td><td>Jun 29 ❌</td><td>Jun 21 ✅</td><td>Jun 21 ✅</td><td>Jun 21 ✅</td><td>Jun 21 ✅</td><td>Jun 21 ✅</td><td>Jul 1 ❌</td><td>Jun 21 ✅</td><td>Jun 21 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Marcus — 90-day trip</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — 21-day trip</th>
-              <td>Dec 31</td><td>Dec 31</td><td>Dec 31 ✅</td><td>Dec 31 ✅</td><td>Dec 31 ✅</td><td>Dec 31 ✅</td><td>Dec 31 ✅</td><td>Dec 31 ✅</td><td>May 2 → Dec 31 🟡</td><td>Dec 31 ✅</td><td>Dec 31 ✅</td>
-            </tr>
-            <tr>
-              <th class="row-head" scope="row">Jordan — 50-day trip</th>
-              <td>Jan 29, 2026</td><td>Jan 29, 2026</td><td>Jan 29 ✅</td><td>Jan 29 ✅</td><td>Jan 29 ✅</td><td>Jan 29 ✅</td><td>Jan 29 ✅</td><td>Jan 29 ✅</td><td>Apr 28 → Mar 26 ❌</td><td>Jan 29 ✅</td><td>Jan 29 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
           </tbody>
         </table>
@@ -466,32 +459,32 @@ If Jordan enters the Schengen Area again on April 23, 2026, what is the last dat
               <th class="vendor-reference" scope="col">Official EU Calculator</th>
               <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
               <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Opus 5.5</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Medium</th>
-              <th class="vendor-openai" scope="col">GPT-5.6 Medium</th>
-              <th class="vendor-openai" scope="col">GPT-6 Astra</th>
-              <th class="vendor-google" scope="col">Gemini 2.5 Flash</th>
-              <th class="vendor-google" scope="col">Gemini 3.8 Flash</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
+              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
               <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — enters Mar 1</th>
-              <td></td><td></td><td>May 29 ✅</td><td>May 29 ✅</td><td>May 29 ✅</td><td>May 29 ✅</td><td>May 29 ✅</td><td>May 29 ✅</td><td>May 29 ✅</td><td>May 29 ✅</td><td>May 29 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — enters May 3</th>
-              <td></td><td></td><td>Jun 11 ✅</td><td>Jun 11 ✅</td><td>Jun 11 ✅</td><td>Jun 11 ✅</td><td>Jun 11 ✅</td><td>Jun 11 ✅</td><td>Jun 22 → Jun 11 🟡</td><td>Jun 11 ✅</td><td>Jun 11 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Marcus — enters Jul 15</th>
-              <td></td><td></td><td>Oct 12 ✅</td><td>Oct 12 ✅</td><td>Oct 12 ✅</td><td>Oct 12 ✅</td><td>Oct 12 ✅</td><td>Oct 12 ✅</td><td>Sep 12, no final answer ❌</td><td>Oct 12 ✅</td><td>Oct 12 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — enters Apr 23, 2026</th>
-              <td></td><td></td><td>Jul 15 ✅</td><td>Jul 15 ✅</td><td>Jul 15 ✅</td><td>Jul 15 ✅</td><td>Jul 15 ✅</td><td>Jul 15 ✅</td><td>Jun 11 ❌</td><td>Jul 15 ✅</td><td>Jul 15 ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
           </tbody>
         </table>
@@ -553,24 +546,24 @@ Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without ove
               <th class="vendor-reference" scope="col">Official EU Calculator</th>
               <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
               <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Opus 5.5</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Medium</th>
-              <th class="vendor-openai" scope="col">GPT-5.6 Medium</th>
-              <th class="vendor-openai" scope="col">GPT-6 Astra</th>
-              <th class="vendor-google" scope="col">Gemini 2.5 Flash</th>
-              <th class="vendor-google" scope="col">Gemini 3.8 Flash</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
+              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
+              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
               <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
+              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — Aug 28, 90d</th>
-              <td></td><td></td><td>No ❌</td><td>Yes ✅</td><td>Yes ✅</td><td>Yes ✅</td><td>Yes ✅</td><td>Yes ✅</td><td>No ❌</td><td>Yes ✅</td><td>Yes ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Patricia — Aug 20, 90d (trap)</th>
-              <td></td><td></td><td>No ✅</td><td>No ✅</td><td>No ✅</td><td>No ✅</td><td>No ✅</td><td>No ✅</td><td>No ✅</td><td>No ✅</td><td>No ✅</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Ilker — Aug 1, 90d</th>
