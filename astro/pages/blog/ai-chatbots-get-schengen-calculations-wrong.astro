@@ -1,6 +1,6 @@
 ---
 /**
- * Blog post: AI Chatbots Get Schengen Calculations Wrong
+ * Blog post: Can You Trust an AI Chatbot With Schengen Math?
  * URL: /blog/ai-chatbots-get-schengen-calculations-wrong
  * Static Astro page, rendered to plain HTML at build time.
  *
@@ -65,7 +65,7 @@ const cells = (id: string) => {
 ---
 
 <BaseLayout
-  title="AI Chatbots Get Schengen Calculations Wrong"
+  title="Can You Trust an AI Chatbot With Schengen Math?"
   description="We asked the free versions of Claude, ChatGPT, and Gemini the exact same Schengen 90/180 questions travelers ask every day — using real, worked scenarios. Here's how they did against the official EU calculator and EuroVisaCalculator."
   canonicalUrl="https://eurovisacalculator.com/blog/ai-chatbots-get-schengen-calculations-wrong"
 >
@@ -129,7 +129,8 @@ const cells = (id: string) => {
       <nav class="article__toc" aria-label="Table of contents">
         <p class="article__toc-title">On this page</p>
         <ol>
-          <li><a href="#why-this-happens">Why chatbots struggle with this</a></li>
+          <li><a href="#results">Results at a glance</a></li>
+          <li><a href="#why-this-happens">Why a wrong answer is easy to believe</a></li>
           <li><a href="#methodology">Methodology</a></li>
           <li><a href="#scenarios">The three scenarios</a></li>
           <li><a href="#q1">Question 1 — "When is [Person] allowed back?"</a></li>
@@ -139,25 +140,66 @@ const cells = (id: string) => {
           <li><a href="#q5">Question 5 — Coordinating trips</a></li>
           <li><a href="#bonus-prompts">Bonus prompts worth trying</a></li>
           <li><a href="#why-it-matters">Why this matters</a></li>
-          <li><a href="#why-evc">Why use a dedicated calculator at all</a></li>
+          <li><a href="#why-evc">Why we still built a calculator</a></li>
         </ol>
       </nav>
 
-      <h2 id="why-this-happens">Why chatbots struggle with this</h2>
+      <h2 id="results">Results at a glance</h2>
 
       <p>
-        None of this is a knock on any specific model. It's structural.
-        Unless a chatbot decides to run code, it generates the next
-        plausible token — it doesn't run arithmetic on a date object the
-        way a calculator does.
-        Adding and subtracting days across month boundaries, leap years,
-        and a <em>rolling</em> 180-day lookback window (not a fixed period —
-        see <a href="/blog/the-schengen-90-180-rolling-window">our explainer
-        on that</a>) is exactly the kind of multi-step, exact, cumulative
-        counting task language models are least reliable at, even when the
-        prose surrounding the answer sounds completely authoritative. A
-        wrong date delivered with full confidence is arguably worse than no
-        answer at all, because it doesn't invite you to double check it.
+        Each chatbot got 19 prompts across the five questions, for 57
+        answers in total. Here's how many each one got right:
+      </p>
+
+      <div class="table-wrap">
+        <table class="scoreboard">
+          <thead>
+            <tr>
+              <th scope="col">Free default model</th>
+              <th scope="col">✅ Correct</th>
+              <th scope="col">🟡 Close</th>
+              <th scope="col">❌ Wrong</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th class="vendor-anthropic" scope="row">Claude Sonnet 5.6</th><td>19</td><td>0</td><td>0</td></tr>
+            <tr><th class="vendor-openai" scope="row">ChatGPT 5.6 Luna</th><td>12</td><td>1</td><td>6</td></tr>
+            <tr><th class="vendor-google" scope="row">Gemini 3.6 Flash</th><td>6</td><td>3</td><td>10</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul>
+        <li><strong>Claude got every question right,</strong> including the multi-traveler planning questions. If you're going to ask a free chatbot about your Schengen days, our results point to Claude.</li>
+        <li><strong>20 of the 57 answers weren't fully right.</strong> 16 were wrong outright, and 4 were close or only reached the right date after first giving a wrong one.</li>
+        <li><strong>The wrong answers sounded just as sure as the right ones.</strong> Nothing in the tone of an answer told you which kind you were reading.</li>
+        <li><strong>Models are improving quickly.</strong> These results are a snapshot of October 2026, and the paid models we tried already did much better (see <a href="#methodology">Methodology</a>).</li>
+      </ul>
+
+      <h2 id="why-this-happens">Why a wrong answer is easy to believe</h2>
+
+      <p>
+        This isn't a knock on any specific model, and the best of them are
+        getting this right. The problem is what happens when one doesn't.
+        A chatbot's wrong date arrives in the same confident, well-written
+        paragraph as a right one, often with plausible-looking working
+        attached. Checking it means redoing the arithmetic yourself: days
+        across month boundaries, both entry and exit days counted, and a
+        <em>rolling</em> 180-day window (not a fixed period — see
+        <a href="/blog/the-schengen-90-180-rolling-window">our explainer
+        on that</a>). That's exactly the work you were trying to avoid by
+        asking. So in practice, most people don't check, and a wrong answer
+        delivered with full confidence gets treated as fact.
+      </p>
+
+      <p>
+        The wrong answers went both ways. Several assumed you have to wait
+        for an old trip to clear the window completely before starting a
+        new 90-day stay, which sounds cautious but pushed return dates
+        back by up to three months. Others erred the dangerous way: Gemini
+        told Anna she could stay until July 31, seven weeks past her real
+        limit of June 11, and ChatGPT gave her one day too many. Either
+        mistake is easy to believe when it's explained this confidently.
       </p>
 
       <h2 id="methodology">Methodology</h2>
@@ -197,7 +239,8 @@ const cells = (id: string) => {
           questions accurately. This experiment deliberately leaves them
           out: it assumes you aren't a paying subscriber to any of these
           services, and so only have access to each platform's default
-          model.
+          model. Models are improving quickly, so expect these results to
+          shift.
         </p>
       </aside>
 
@@ -794,27 +837,30 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
         that follows you into future visa applications. It also shapes what
         happens at the border itself:
         <a href="/blog/why-border-control-gave-you-a-different-number">when
-        an officer's number disagrees with yours</a>, having gotten your
-        number from a tool that can show its work is a meaningfully
-        different position to argue from than having gotten it from a
-        chatbot that can't.
+        an officer's number disagrees with yours</a>, being able to show a
+        day-by-day timeline is a meaningfully different position to argue
+        from than scrolling back through a chat.
       </p>
 
-      <h2 id="why-evc">Why use a dedicated calculator at all</h2>
+      <h2 id="why-evc">Why we still built a calculator</h2>
 
       <p>
-        If a chatbot can't be trusted with this, neither can mental math —
-        so the honest recommendation is a purpose-built tool, not "just be
-        more careful." The official EU calculator is a fine baseline and
-        we cross-check against it directly. Where
-        <a href="/app">EuroVisaCalculator</a> goes further:
+        Even when a chatbot gets the date exactly right, the answer is a
+        paragraph in one person's chat. You can't easily share it with the
+        people you're traveling with, see everyone's days side by side, or
+        update the plan when a flight moves without asking all over again.
+        The official EU calculator is always accurate, and it's the
+        reference we check every answer against. But it works out one
+        traveler at a time, and it couldn't answer our two hardest planning
+        questions at all. <a href="/app">EuroVisaCalculator</a> is built to
+        make planning trips easier, for everyone on the trip:
       </p>
 
       <ul>
+        <li><strong>One shared plan.</strong> Your trips are saved in the link, with no account required, so everyone you send it to sees the same itinerary.</li>
+        <li><strong>Multi-person by default.</strong> Every scenario in this post involves more than one traveler with different dates — <a href="/blog/schengen-calculator-couples">exactly the case a chat thread or a single-traveler calculator isn't built for</a>.</li>
+        <li><strong>See every day, not just a final date.</strong> Each day counted toward your allowance is visible on the timeline, so you can check the answer rather than take it on trust.</li>
         <li><strong>Coverage beyond Schengen.</strong> We track 47 European countries and territories, not just the Schengen Area — useful the moment a trip includes the UK, Ireland, or a bilateral-agreement country.</li>
-        <li><strong>Multi-person by default.</strong> Every scenario in this post involves more than one traveler with different dates — <a href="/blog/schengen-calculator-couples">exactly the case most calculators, official or AI, aren't built to handle</a>.</li>
-        <li><strong>No account required.</strong> Your data persists via URL and local storage, not a login — the same link you'd paste into a chatbot prompt instead works as a saved, shareable calculation.</li>
-        <li><strong>Shows its work.</strong> Every day counted toward your allowance is visible on the timeline, not just a final number — which is the entire property this post found chatbots missing.</li>
       </ul>
 
       <p>
@@ -1073,6 +1119,25 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
     display: block;
     font-size: 0.72rem;
     color: #8fa0b4;
+  }
+
+  .scoreboard th,
+  .scoreboard td {
+    padding: 9px 14px;
+    text-align: left;
+    border-bottom: 1px solid #edf1f4;
+  }
+
+  .scoreboard thead th {
+    font-size: 0.75rem;
+    font-weight: 650;
+    background: #f7f8f6;
+    color: #0c1e3c;
+  }
+
+  .scoreboard td {
+    font-weight: 600;
+    color: #0c1e3c;
   }
 
   .legend-table td {
