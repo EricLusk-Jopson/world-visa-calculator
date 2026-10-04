@@ -7,9 +7,9 @@
  * TEMPLATE NOTES (delete before publishing):
  * - This is post #7 from the content master doc, expanded from "ChatGPT"
  *   to "Claude / ChatGPT / Gemini" per current scope.
- * - Every table cell under "Official EU Calculator", "EuroVisaCalculator",
- *   and each model column is a BLANK data-entry cell — that's the actual
- *   experiment. Fill them in as you run each prompt.
+ * - Results live in `results` below: each grid cell and each "See how
+ *   each chatbot answered" panel is generated from it. The chatbots'
+ *   verbatim answers are markdown files in astro/data/chatbot-responses/.
  * - Models are each platform's default free-tier model as of the test
  *   date (Claude Sonnet 5.6, ChatGPT 5.6 Luna, Gemini 3.6 Flash). If a
  *   vendor changes its default before publishing, re-run and update the
@@ -25,6 +25,43 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import LandingNav from "../../components/LandingNav.astro";
 import Footer from "../../components/Footer.astro";
+import ChatbotAnswers from "../../components/ChatbotAnswers.astro";
+
+// Per prompt: the two calculator answers, then each chatbot's answer and
+// grade (see the grading legend). 🔍 = searched the web or ran code.
+const results: Record<string, any> = {
+  "q1-1": { ref: ["Aug 28, 2025", "Aug 28, 2025"], claude: ["Aug 28", "✅"], chatgpt: ["Aug 28", "✅"], gemini: ["Nov 25", "❌"] },
+  "q1-2": { ref: ["Jun 21, 2025", "Jun 21, 2025"], claude: ["Jun 21", "✅"], chatgpt: ["Sep 18", "❌"], gemini: ["Sep 18", "❌"] },
+  "q1-3": { ref: ["Mar 31, 2026", "Mar 31, 2026"], claude: ["Mar 31", "✅"], chatgpt: ["Jun 28", "❌ 🔍"], gemini: ["Jun 29, then Mar 31", "🟡"] },
+  "q2-1": { ref: ["Aug 28, 2025", "Aug 28, 2025"], claude: ["Aug 28", "✅"], chatgpt: ["Sep 27", "❌"], gemini: ["Aug 24, then Aug 28", "🟡"] },
+  "q2-2": { ref: ["Jun 21, 2025", "Jun 21, 2025"], claude: ["Jun 21", "✅"], chatgpt: ["Jun 21", "✅"], gemini: ["Jul 21", "❌"] },
+  "q2-3": { ref: ["Dec 31, 2025", "Dec 31, 2025"], claude: ["Dec 31", "✅"], chatgpt: ["Dec 31", "✅"], gemini: ["Dec 31", "✅ 🔍"] },
+  "q2-4": { ref: ["Jan 29, 2026", "Jan 29, 2026"], claude: ["Jan 29", "✅"], chatgpt: ["Jan 29", "✅"], gemini: ["May 26", "❌"] },
+  "q3-1": { ref: ["May 29, 2025", "May 29, 2025"], claude: ["May 29", "✅"], chatgpt: ["May 29", "✅ 🔍"], gemini: ["May 29", "✅"] },
+  "q3-2": { ref: ["Jun 11, 2025", "Jun 11, 2025"], claude: ["Jun 11", "✅"], chatgpt: ["Jun 12", "🟡"], gemini: ["Jul 31", "❌"] },
+  "q3-3": { ref: ["Oct 12, 2025", "Oct 12, 2025"], claude: ["Oct 12", "✅"], chatgpt: ["Oct 12", "✅"], gemini: ["Oct 22", "❌ 🔍"] },
+  "q3-4": { ref: ["Jul 15, 2026", "Jul 15, 2026"], claude: ["Jul 15", "✅"], chatgpt: ["Jul 15", "✅ 🔍"], gemini: ["Jul 15", "✅"] },
+  "q4-1": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["No", "❌"] },
+  "q4-2": { ref: ["No", "No"], claude: ["No", "✅"], chatgpt: ["No", "✅"], gemini: ["No", "✅"] },
+  "q4-3": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["Yes", "✅"] },
+  "q4-4": { ref: ["No", "No"], claude: ["No", "✅"], chatgpt: ["No", "✅"], gemini: ["No", "✅"] },
+  "q4-5": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["No, then Yes", "🟡"] },
+  "q5-1": { ref: ["Jul 31, 2025*", "Jul 31, 2025*"], claude: ["Aug 1", "✅"], chatgpt: ["Aug 1", "✅"], gemini: ["Sep 2", "❌"] },
+  "q5-2": { ref: ["N/A", "Anna & Olivia must change"], claude: ["All four right", "✅"], chatgpt: ["All four right", "✅ 🔍"], gemini: ["Wrong on Marcus & Ilker", "❌"] },
+  "q5-3": { ref: ["N/A", "Oct 2, 2025"], claude: ["Oct 2", "✅"], chatgpt: ["Oct 2", "✅ 🔍"], gemini: ["Oct 10", "❌"] },
+};
+
+// One grid row's cells: two calculator answers, then each chatbot's answer
+// linking to its full response below the prompt.
+const esc = (text: string) => text.replace(/&/g, "&amp;");
+const cells = (id: string) => {
+  const r = results[id];
+  const model = (key: string) => {
+    const [answer, grade] = r[key];
+    return `<td><a href="#ans-${id}-${key}">${esc(answer)} ${grade}</a></td>`;
+  };
+  return `<td>${esc(r.ref[0])}</td><td>${esc(r.ref[1])}</td>` + ["claude", "chatgpt", "gemini"].map(model).join("");
+};
 ---
 
 <BaseLayout
@@ -85,7 +122,8 @@ import Footer from "../../components/Footer.astro";
         Claude, ChatGPT, and Gemini, the ones you get without a
         subscription. This post is the methodology, the exact
         prompts (copy-pasteable, so you can reproduce or extend this
-        yourself), and the results grid for each question.
+        yourself), the results grid for each question, and every chatbot's
+        full answer, word for word.
       </p>
 
       <nav class="article__toc" aria-label="Table of contents">
@@ -262,6 +300,7 @@ import Footer from "../../components/Footer.astro";
 Under the Schengen 90/180-day rule, what is the earliest date on which Patricia could begin a brand-new 90-day stay in the Schengen Area, using her full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Published answer: August 28, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-2">see the worked example</a>.</p>
+      <ChatbotAnswers id="q1-1" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — the group trip (Scenario B)</summary>
@@ -270,6 +309,7 @@ Under the Schengen 90/180-day rule, what is the earliest date on which Patricia 
 Under the Schengen 90/180-day rule, what is the earliest date on which any of them could begin a brand-new 90-day stay in the Schengen Area, using their full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Both calculators: June 21, 2025. (September 19 is when the trip fully clears the window, which is later than a full 90-day stay needs; <a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>.)</p>
+      <ChatbotAnswers id="q1-2" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Jordan (Scenario C)</summary>
@@ -282,6 +322,7 @@ Under the Schengen 90/180-day rule, what is the earliest date on which any of th
 As of December 31, 2025, what is the earliest date on which Jordan could begin a brand-new 90-day stay in the Schengen Area, using a full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Both calculators: March 31, 2026.</p>
+      <ChatbotAnswers id="q1-3" results={results} />
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -298,15 +339,15 @@ As of December 31, 2025, what is the earliest date on which Jordan could begin a
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — after 90/90 trip</th>
-              <td>Aug 28, 2025</td><td>Aug 28, 2025</td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q1-1")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Group trip — full 90 days</th>
-              <td>Jun 21, 2025</td><td>Jun 21, 2025</td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q1-2")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — as of Dec 31, 2025</th>
-              <td>Mar 31, 2026</td><td>Mar 31, 2026</td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q1-3")} />
             </tr>
           </tbody>
         </table>
@@ -336,6 +377,7 @@ As of December 31, 2025, what is the earliest date on which Jordan could begin a
 What is the earliest date on which Patricia could enter the Schengen Area for a new trip lasting exactly 30 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Both calculators: August 28, 2025.</p>
+      <ChatbotAnswers id="q2-1" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Anna, 60-day trip (Scenario B)</summary>
@@ -344,6 +386,7 @@ What is the earliest date on which Patricia could enter the Schengen Area for a 
 What is the earliest date on which Anna could enter the Schengen Area for a new trip lasting exactly 60 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Both calculators: June 21, 2025.</p>
+      <ChatbotAnswers id="q2-2" results={results} />
 
 
       <details class="prompt-box">
@@ -357,6 +400,7 @@ What is the earliest date on which Anna could enter the Schengen Area for a new 
 What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 21 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Both calculators: December 31, 2025.</p>
+      <ChatbotAnswers id="q2-3" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Jordan, 50-day trip (Scenario C)</summary>
@@ -369,6 +413,7 @@ What is the earliest date after December 30, 2025 on which Jordan could enter th
 What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 50 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Both calculators: January 29, 2026.</p>
+      <ChatbotAnswers id="q2-4" results={results} />
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -385,19 +430,19 @@ What is the earliest date after December 30, 2025 on which Jordan could enter th
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — 30-day trip</th>
-              <td>Aug 28, 2025</td><td>Aug 28, 2025</td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q2-1")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — 60-day trip</th>
-              <td>Jun 21, 2025</td><td>Jun 21, 2025</td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q2-2")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — 21-day trip</th>
-              <td>Dec 31, 2025</td><td>Dec 31, 2025</td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q2-3")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — 50-day trip</th>
-              <td>Jan 29, 2026</td><td>Jan 29, 2026</td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q2-4")} />
             </tr>
           </tbody>
         </table>
@@ -427,6 +472,8 @@ What is the earliest date after December 30, 2025 on which Jordan could enter th
 
 If Patricia enters the Schengen Area on March 1, 2025, what is the last date she is allowed to still be present in the Schengen Area before she must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning, including whether entry and exit days themselves count toward the 90 days.</pre>
       </details>
+      <p class="known-answer">Both calculators: May 29, 2025.</p>
+      <ChatbotAnswers id="q3-1" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Anna entering May 3 (Scenario B)</summary>
@@ -435,6 +482,7 @@ If Patricia enters the Schengen Area on March 1, 2025, what is the last date she
 If Anna enters the Schengen Area again on May 3, 2025, what is the last date she is allowed to still be present in the Schengen Area before she must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Published answer: June 11, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Anna's worked example</a>. She's capped well below 90 days because her earlier trip is still fully inside the window.</p>
+      <ChatbotAnswers id="q3-2" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Marcus entering Jul 15 (Scenario B)</summary>
@@ -443,6 +491,7 @@ If Anna enters the Schengen Area again on May 3, 2025, what is the last date she
 If Marcus enters the Schengen Area again on July 15, 2025, what is the last date he is allowed to still be present in the Schengen Area before he must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Published answer: October 12, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Marcus's worked example</a>. This is the hardest of the four: his earlier trip ages out of the window <em>during</em> this stay, so his true maximum is much longer than his remaining allowance on July 15 alone suggests.</p>
+      <ChatbotAnswers id="q3-3" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Jordan back with his bike, Apr 23, 2026 (Scenario C)</summary>
@@ -456,7 +505,8 @@ If Marcus enters the Schengen Area again on July 15, 2025, what is the last date
 
 Jordan left his bike in England with a friend in November and plans to go pick it up to do some cycling in Europe in the spring. His bike needs some repair, during which time he wants to visit Malta for a cheap trip. If Jordan enters the Schengen Area on April 12, 2026 and stays for 6 days, then flies to England to pick up his bike and re-enters the Schengen Area to start cycling on April 23rd, 2026. What is the last date Jordan is allowed to still be present before having to exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Our check: July 15, 2026 — confirm with both calculators. The six days from April 12 are Trip 5, so they count once, and the days in England don't count at all. Trip 4 ages out of the window during the stay, but Trip 5 doesn't, which caps the new stay at 84 days.</p>
+      <p class="known-answer">Both calculators: July 15, 2026. The six days from April 12 are Trip 5, so they count once, and the days in England don't count at all. Trip 4 ages out of the window during the stay, but Trip 5 doesn't, which caps the new stay at 84 days.</p>
+      <ChatbotAnswers id="q3-4" results={results} />
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -473,19 +523,19 @@ Jordan left his bike in England with a friend in November and plans to go pick i
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — enters Mar 1</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q3-1")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — enters May 3</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q3-2")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Marcus — enters Jul 15</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q3-3")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — back with bike Apr 23, 2026</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q3-4")} />
             </tr>
           </tbody>
         </table>
@@ -514,6 +564,7 @@ Jordan left his bike in England with a friend in November and plans to go pick i
 Can Patricia enter the Schengen Area on August 28, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Published answer: Yes — <a href="/blog/the-schengen-90-180-rolling-window#permanent-90th-day">see the "permanent 90th day" discussion</a>. This is the tightest possible legal case — no buffer at all.</p>
+      <ChatbotAnswers id="q4-1" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Patricia, Aug 20 for 90 days (Scenario A, trap)</summary>
@@ -522,6 +573,7 @@ Can Patricia enter the Schengen Area on August 28, 2025 and stay for a full 90 d
 Can Patricia enter the Schengen Area on August 20, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Eight days too early — this should come back <strong>no</strong>. A model that got the Aug 28 case right by rote (rather than by actually computing the window) may still get this one wrong.</p>
+      <ChatbotAnswers id="q4-2" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Ilker, Aug 1 for 90 days (Scenario B)</summary>
@@ -530,6 +582,7 @@ Can Patricia enter the Schengen Area on August 20, 2025 and stay for a full 90 d
 Can Ilker enter the Schengen Area on August 1, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">Published answer: Yes — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Ilker's worked example</a>.</p>
+      <ChatbotAnswers id="q4-3" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Anna, May 3 for 50 days (Scenario B, trap)</summary>
@@ -538,6 +591,7 @@ Can Ilker enter the Schengen Area on August 1, 2025 and stay for a full 90 days 
 Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">This should come back <strong>no</strong> — Anna is capped at 40 days on that date (<a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>), ten short of the 50 asked about. A very plausible real mistake, since 40 and 50 both round to "about a month and a half."</p>
+      <ChatbotAnswers id="q4-4" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Jordan, Jun 1, 2026 for 60 days (Scenario C, trap)</summary>
@@ -552,6 +606,7 @@ Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without ove
 Can Jordan enter the Schengen Area on June 1, 2026 and stay for 60 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
       </details>
       <p class="known-answer">This should come back <strong>yes</strong>, the opposite trap from Anna's. On June 1, Jordan has only 39 days of allowance left, so a model that just subtracts used days from 90 will say no. But the rest of Trip 4 ages out of the window during the stay, which lets Jordan stay through August 5 (66 days).</p>
+      <ChatbotAnswers id="q4-5" results={results} />
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -568,23 +623,23 @@ Can Jordan enter the Schengen Area on June 1, 2026 and stay for 60 days without 
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — Aug 28, 90d</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q4-1")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Patricia — Aug 20, 90d (trap)</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q4-2")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Ilker — Aug 1, 90d</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q4-3")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — May 3, 50d (trap)</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q4-4")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — Jun 1, 2026, 60d (trap)</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q4-5")} />
             </tr>
           </tbody>
         </table>
@@ -616,7 +671,8 @@ None of them has any other Schengen Area travel.
 
 Anna wants to fly back and spend a 7-day trip with Marcus and Ilker while both of them are still there. What is the earliest date the three of them could start that week together, without Anna overstaying the 90/180 rule at any point? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Our check: August 1, 2025 — confirm with both calculators. Anna hits exactly 90 days on June 11, but her February days start aging out on July 31, and from then she gets one day back for every day she stays. She could return on July 31, so the limit is Ilker's arrival on August 1. A model that applies "90 days in, 90 days out" will push Anna to around September 10.</p>
+      <p class="known-answer">Correct answer: August 1, 2025. *Both calculators answer July 31, which is when Anna herself can return; the three can't start together until Ilker arrives on August 1. Anna hits exactly 90 days on June 11, but her February days start aging out on July 31, and from then she gets one day back for every day she stays. She could return on July 31, so the limit is Ilker's arrival on August 1. A model that applies "90 days in, 90 days out" will push Anna to around September 10.</p>
+      <ChatbotAnswers id="q5-1" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — the group joins Jordan in September (Scenarios B and C)</summary>
@@ -628,7 +684,8 @@ Anna wants to fly back and spend a 7-day trip with Marcus and Ilker while both o
 
 Their friend Jordan will be in the Schengen Area from September 19 to 26, 2025, and all four want to spend that whole week with him. Can each of them join without breaking the 90/180 rule? For anyone who can't simply add that week, keep the start date of their booked trip and give the latest date they could end it instead. Give specific dates and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Our check (confirm with both calculators): Marcus and Ilker can join with no changes, because they're already there that week and it's inside their booked trips. Anna can join, but her winter trip must end by January 4, 2026, six days early: she had only two spare days, and the September week stays in her window all winter. Olivia can join by arriving on September 19, but she must then leave by December 17, 2025, eight days early. Count a model as correct only if it gets all four right.</p>
+      <p class="known-answer">EuroVisaCalculator agrees; the official EU calculator couldn't answer this one. Marcus and Ilker can join with no changes, because they're already there that week and it's inside their booked trips. Anna can join, but her winter trip must end by January 4, 2026, six days early: she had only two spare days, and the September week stays in her window all winter. Olivia can join by arriving on September 19, but she must then leave by December 17, 2025, eight days early. Count a model as correct only if it gets all four right.</p>
+      <ChatbotAnswers id="q5-2" results={results} />
 
       <details class="prompt-box">
         <summary>Prompt — Jordan extends Trip 3 because of the weather (Scenario C)</summary>
@@ -644,7 +701,8 @@ Jordan has also booked these future trips:
 
 Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3. What is the latest date he can leave without overstaying the 90/180 rule, and without making any of his booked future trips non-compliant? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Our check: October 2, 2025, six extra days — confirm with both calculators. The limit comes from the past, not the future: Trip 2's 76 days are still in the window, so on October 2 the window holds exactly 90. Staying until then doesn't affect any of the booked future trips. A model that only checks the future trips will let him stay far too long.</p>
+      <p class="known-answer">EuroVisaCalculator: October 2, 2025, six extra days; the official EU calculator couldn't answer this one. The limit comes from the past, not the future: Trip 2's 76 days are still in the window, so on October 2 the window holds exactly 90. Staying until then doesn't affect any of the booked future trips. A model that only checks the future trips will let him stay far too long.</p>
+      <ChatbotAnswers id="q5-3" results={results} />
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -661,15 +719,15 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
           <tbody>
             <tr>
               <th class="row-head" scope="row">Anna, Marcus &amp; Ilker — first week together</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q5-1")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Group + Jordan, Sep 19–26</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q5-2")} />
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — extend Trip 3</th>
-              <td></td><td></td><td></td><td></td><td></td>
+              <Fragment set:html={cells("q5-3")} />
             </tr>
           </tbody>
         </table>
@@ -775,6 +833,19 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
 
   <Footer />
 </BaseLayout>
+
+<script>
+  // Grid cells link to an answer inside collapsed <details>; open it (and
+  // its parent panel) before scrolling there.
+  function openAnswer() {
+    const el = location.hash && document.getElementById(location.hash.slice(1));
+    if (!el) return;
+    for (let d = el.closest("details"); d; d = d.parentElement?.closest("details") ?? null) d.open = true;
+    el.scrollIntoView({ block: "start" });
+  }
+  window.addEventListener("hashchange", openAnswer);
+  openAnswer();
+</script>
 
 <style>
   .article {
@@ -1041,6 +1112,17 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
   .qa-table td {
     min-width: 110px;
     height: 40px;
+  }
+
+  .qa-table :global(td a) {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted #8fa0b4;
+  }
+
+  .qa-table :global(td a:hover) {
+    color: #00b96b;
+    border-bottom-color: #00b96b;
   }
 
   .row-head {

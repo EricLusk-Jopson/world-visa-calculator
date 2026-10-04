@@ -1,0 +1,181 @@
+---
+/**
+ * Collapsible panel showing each chatbot's verbatim answer to one prompt
+ * in the AI chatbot blog post. Answers live as markdown files in
+ * astro/data/chatbot-responses/<id>-<model>.md and are rendered at build
+ * time, so the panel ships no client JavaScript.
+ */
+interface Props {
+  id: string;
+  results: Record<string, Record<string, [string, string]>>;
+}
+
+const { id, results } = Astro.props;
+
+const files = import.meta.glob("../data/chatbot-responses/*.md", { eager: true }) as Record<
+  string,
+  { Content: any }
+>;
+
+const MODELS = [
+  { key: "claude", label: "Claude Sonnet 5.6", vendor: "anthropic" },
+  { key: "chatgpt", label: "ChatGPT 5.6 Luna", vendor: "openai" },
+  { key: "gemini", label: "Gemini 3.6 Flash", vendor: "google" },
+];
+
+const answers = MODELS.map((m) => {
+  const file = files[`../data/chatbot-responses/${id}-${m.key}.md`];
+  if (!file) throw new Error(`Missing chatbot response: ${id}-${m.key}.md`);
+  const [answer, grade] = results[id][m.key];
+  return { ...m, Content: file.Content, answer, grade };
+});
+---
+
+<details class="answers">
+  <summary class="answers__toggle">See how each chatbot answered</summary>
+  {
+    answers.map(({ key, label, vendor, Content, answer, grade }) => (
+      <details class="answer" id={`ans-${id}-${key}`}>
+        <summary class="answer__head">
+          <span class={`answer__model answer__model--${vendor}`}>{label}</span>
+          <span class="answer__verdict">
+            {answer} {grade}
+          </span>
+        </summary>
+        <div class="answer__body">
+          <Content />
+        </div>
+      </details>
+    ))
+  }
+</details>
+
+<style>
+  .answers {
+    margin: -0.75rem 0 1.75rem;
+    font-family: var(--font-body);
+  }
+
+  .answers__toggle {
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #00b96b;
+    list-style: none;
+    padding: 4px 0;
+  }
+
+  .answers__toggle::-webkit-details-marker,
+  .answer__head::-webkit-details-marker {
+    display: none;
+  }
+
+  .answers__toggle::before {
+    content: "▸ ";
+  }
+
+  .answers[open] > .answers__toggle::before {
+    content: "▾ ";
+  }
+
+  .answer {
+    scroll-margin-top: 96px;
+    margin: 8px 0;
+    border: 1px solid #e0dbd3;
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .answer__head {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 12px;
+    padding: 10px 14px;
+  }
+
+  .answer__model {
+    font-size: 0.78rem;
+    font-weight: 650;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .answer__model--anthropic { background: #fdece2; color: #9c3f16; }
+  .answer__model--openai    { background: #e3f3ea; color: #0e6b4c; }
+  .answer__model--google    { background: #e7eefc; color: #1a44b8; }
+
+  .answer__verdict {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0c1e3c;
+  }
+
+  .answer__body {
+    border-top: 1px solid #edf1f4;
+    padding: 12px 16px 14px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #3d4f65;
+    overflow-wrap: anywhere;
+  }
+
+  .answer__body :global(p),
+  .answer__body :global(ul),
+  .answer__body :global(ol) {
+    margin: 0 0 0.8em;
+  }
+
+  .answer__body :global(ul),
+  .answer__body :global(ol) {
+    padding-left: 1.3rem;
+  }
+
+  .answer__body :global(li) {
+    margin-bottom: 0.25em;
+  }
+
+  .answer__body :global(strong) {
+    color: #0c1e3c;
+  }
+
+  .answer__body :global(a) {
+    color: #00b96b;
+  }
+
+  .answer__body :global(hr) {
+    border: none;
+    border-top: 1px solid #edf1f4;
+    margin: 1em 0;
+  }
+
+  .answer__body :global(pre) {
+    overflow-x: auto;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    margin: 0 0 0.8em;
+  }
+
+  .answer__body :global(table) {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 0 0 0.8em;
+    font-size: 0.8rem;
+  }
+
+  .answer__body :global(th),
+  .answer__body :global(td) {
+    border: 1px solid #edf1f4;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+    min-width: 90px;
+  }
+</style>
