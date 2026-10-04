@@ -43,7 +43,7 @@ import Footer from "../../components/Footer.astro";
       <p class="article__tag">Blog</p>
 
       <h1 class="article__title">
-        We Asked Claude, ChatGPT, and Gemini These Four Schengen Questions.
+        We Asked Claude, ChatGPT, and Gemini These Five Schengen Questions.
         Here's How They Did.
       </h1>
 
@@ -81,7 +81,7 @@ import Footer from "../../components/Footer.astro";
         So we took the worked scenarios from
         <a href="/blog/the-schengen-90-180-rolling-window">our rolling-window
         explainer</a> — real dates, real people, some of them intentionally
-        tricky — and put the same four questions to the free versions of
+        tricky — and put the same five questions to the free versions of
         Claude, ChatGPT, and Gemini, the ones you get without a
         subscription. This post is the methodology, the exact
         prompts (copy-pasteable, so you can reproduce or extend this
@@ -98,6 +98,7 @@ import Footer from "../../components/Footer.astro";
           <li><a href="#q2">Question 2 — "From what date can [Person] return for [T] days?"</a></li>
           <li><a href="#q3">Question 3 — "On what date must [Person] exit?"</a></li>
           <li><a href="#q4">Question 4 — "Can [Person] re-enter on [D] for [T] days?"</a></li>
+          <li><a href="#q5">Question 5 — Coordinating trips</a></li>
           <li><a href="#bonus-prompts">Bonus prompts worth trying</a></li>
           <li><a href="#why-it-matters">Why this matters</a></li>
           <li><a href="#why-evc">Why use a dedicated calculator at all</a></li>
@@ -591,6 +592,91 @@ Can Jordan enter the Schengen Area on June 1, 2026 and stay for 60 days without 
 
       <hr />
 
+      <!-- ================= QUESTION 5 ================= -->
+      <h2 id="q5">Question 5 — Coordinating trips</h2>
+
+      <p>
+        Real travel plans rarely involve one person and one trip. Friends
+        try to line up a week together, someone wants to join a friend
+        who's already there, and weather moves a flight. Each of these
+        questions means tracking several trips, and sometimes several
+        people, at once. That's where a single wrong assumption about the
+        window quietly breaks a plan that looked fine. These prompts are
+        harder, and each one has a tempting shortcut that gives the wrong
+        answer.
+      </p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Anna, Marcus, and Ilker meet up for a week (Scenario B)</summary>
+        <pre class="prompt-text">Anna, Marcus, and Ilker all hold passports that allow 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. In 2025 they took a trip together, entering the Schengen Area on February 1 and exiting on March 22. Since then:
+- Anna returned on her own from May 3 to June 11, 2025.
+- Marcus is in the Schengen Area from July 15 to October 12, 2025.
+- Ilker is in the Schengen Area from August 1 to October 29, 2025.
+None of them has any other Schengen Area travel.
+
+Anna wants to fly back and spend a 7-day trip with Marcus and Ilker while both of them are still there. What is the earliest date the three of them could start that week together, without Anna overstaying the 90/180 rule at any point? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Our check: August 1, 2025 — confirm with both calculators. Anna hits exactly 90 days on June 11, but her February days start aging out on July 31, and from then she gets one day back for every day she stays. She could return on July 31, so the limit is Ilker's arrival on August 1. A model that applies "90 days in, 90 days out" will push Anna to around September 10.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — the group joins Jordan in September (Scenarios B and C)</summary>
+        <pre class="prompt-text">Four friends — Anna, Marcus, Ilker, and Olivia — all hold passports that allow 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. In 2025 they traveled together, entering the Schengen Area on February 1 and exiting on March 22. Their other Schengen Area travel, already taken or booked, is:
+- Anna: May 3 – June 11, 2025, and a winter trip from October 15, 2025 to January 10, 2026.
+- Marcus: July 15 – October 12, 2025.
+- Ilker: August 1 – October 29, 2025.
+- Olivia: September 27 – December 25, 2025.
+
+Their friend Jordan will be in the Schengen Area from September 19 to 26, 2025, and all four want to spend that whole week with him. Can each of them join without breaking the 90/180 rule? For anyone who can't simply add that week, keep the start date of their booked trip and give the latest date they could end it instead. Give specific dates and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Our check (confirm with both calculators): Marcus and Ilker can join with no changes, because they're already there that week and it's inside their booked trips. Anna can join, but her winter trip must end by January 4, 2026, six days early: she had only two spare days, and the September week stays in her window all winter. Olivia can join by arriving on September 19, but she must then leave by December 17, 2025, eight days early. Count a model as correct only if it gets all four right.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Jordan extends Trip 3 because of the weather (Scenario C)</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's Schengen Area travel so far is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: in the Schengen Area since September 19, 2025, booked to leave on September 26
+
+Jordan has also booked these future trips:
+- Trip 4: November 27 – December 30, 2025
+- Trip 5: April 12–17, 2026
+- Trip 6: April 23 – May 10, 2026
+
+Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3. What is the latest date he can leave without overstaying the 90/180 rule, and without making any of his booked future trips non-compliant? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Our check: October 2, 2025, six extra days — confirm with both calculators. The limit comes from the past, not the future: Trip 2's 76 days are still in the window, so on October 2 the window holds exactly 90. Staying until then doesn't affect any of the booked future trips. A model that only checks the future trips will let him stay far too long.</p>
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Scenario</th>
+              <th class="vendor-reference" scope="col">Official EU Calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.6</th>
+              <th class="vendor-openai" scope="col">ChatGPT 5.6 Luna</th>
+              <th class="vendor-google" scope="col">Gemini 3.6 Flash</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Anna, Marcus &amp; Ilker — first week together</th>
+              <td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Group + Jordan, Sep 19–26</th>
+              <td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan — extend Trip 3</th>
+              <td></td><td></td><td></td><td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
       <h2 id="bonus-prompts">Bonus prompts worth trying</h2>
 
       <p>
@@ -627,7 +713,7 @@ Can Jordan enter the Schengen Area on June 1, 2026 and stay for 60 days without 
           random.
         </li>
         <li>
-          <strong>Deliberately underspecified:</strong> Ask any of the four
+          <strong>Deliberately underspecified:</strong> Ask any of the five
           core questions but omit whether entry/exit days count, to see
           which models ask a clarifying question versus silently assume
           an answer — the assumption itself is worth recording, since
