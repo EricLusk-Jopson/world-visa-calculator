@@ -99,10 +99,13 @@ const cells = (id: string) => {
         During the initial development of EuroVisaCalculator, we found AI chatbots could not be relied upon for rolling window math. 
         This is one of the main reasons why EuroVisaCalculator is AI free: 
         too often Claude or ChatGPT would provide the wrong answer to a simple question.
-        The state of AI tooling has improved greatly since our initial development, so on October 1st, 2026 we returned to our chatbots. 
+      </p>
+      <p>
+        The state of AI tooling, however, has improved greatly since our initial development, 
+        so on October 1st, 2026 we revisited chatbots to measure their improvement for ourselves. 
         In this experiment, we asked the free versions of Claude, ChatGPT, and Gemini 19 real
-        questions about the Schengen 90/180 rule. 
-        Then we confirmed every answer against the official EU calculator and EuroVisaCalculator, which operate on a purely mathematical calculation.
+        questions about the Schengen 90/180 rule, then confirmed each answer against the official 
+        EU calculator and EuroVisaCalculator, both of which operate on a purely mathematical calculation.
       </p>
 
       <nav class="article__toc" aria-label="Table of contents">
@@ -629,14 +632,18 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
 
       <hr />
 
-      <h2 id="why-evc">Why we still built a calculator</h2>
+      <h2 id="why-evc">Why not just use Claude?</h2>
 
       <p>
-        Even a correct chatbot answer is a paragraph in one person's chat.
-        You can't share it with your travel group, see everyone's days side
-        by side, or update it when plans change. The official EU calculator
-        is always accurate, but it handles one traveler at a time and
-        couldn't answer our two hardest questions.
+        Ultimately, even a correct chatbot answer is a paragraph in one person's chat. 
+        Over time it gets lost and you can't share it with your travel group, see everyone's days side
+        by side, or update it when plans change. Meanwhile, the official EU calculator
+        is always accurate, but it handles one traveler at a time,
+        can't answer complicated scheduling questions and does not support other countries outside the Schengen area.
+      </p>
+
+      <p>
+        By comparison, <a href="/app">EuroVisaCalculator</a> is built to be shared, supports the entire continent and is meant for multiple travelers.
       </p>
 
       <ul>
