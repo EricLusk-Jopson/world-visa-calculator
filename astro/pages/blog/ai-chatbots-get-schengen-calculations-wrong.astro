@@ -29,25 +29,25 @@ import ChatbotAnswers from "../../components/ChatbotAnswers.astro";
 // Per prompt: the two calculator answers, then each chatbot's answer and
 // grade (see the grading legend). 🔍 = searched the web or ran code.
 const results: Record<string, any> = {
-  "q1-1": { ref: ["Aug 28, 2025", "Aug 28, 2025"], claude: ["Aug 28", "✅"], chatgpt: ["Aug 28", "✅"], gemini: ["Nov 25", "❌"] },
-  "q1-2": { ref: ["Jun 21, 2025", "Jun 21, 2025"], claude: ["Jun 21", "✅"], chatgpt: ["Sep 18", "❌"], gemini: ["Sep 18", "❌"] },
-  "q1-3": { ref: ["Mar 31, 2026", "Mar 31, 2026"], claude: ["Mar 31", "✅"], chatgpt: ["Jun 28", "❌ 🔍"], gemini: ["Jun 29, then Mar 31", "🟡"] },
-  "q2-1": { ref: ["Aug 28, 2025", "Aug 28, 2025"], claude: ["Aug 28", "✅"], chatgpt: ["Sep 27", "❌"], gemini: ["Aug 24, then Aug 28", "🟡"] },
-  "q2-2": { ref: ["Jun 21, 2025", "Jun 21, 2025"], claude: ["Jun 21", "✅"], chatgpt: ["Jun 21", "✅"], gemini: ["Jul 21", "❌"] },
-  "q2-3": { ref: ["Dec 31, 2025", "Dec 31, 2025"], claude: ["Dec 31", "✅"], chatgpt: ["Dec 31", "✅"], gemini: ["Dec 31", "✅ 🔍"] },
-  "q2-4": { ref: ["Jan 29, 2026", "Jan 29, 2026"], claude: ["Jan 29", "✅"], chatgpt: ["Jan 29", "✅"], gemini: ["May 26", "❌"] },
-  "q3-1": { ref: ["May 29, 2025", "May 29, 2025"], claude: ["May 29", "✅"], chatgpt: ["May 29", "✅ 🔍"], gemini: ["May 29", "✅"] },
-  "q3-2": { ref: ["Jun 11, 2025", "Jun 11, 2025"], claude: ["Jun 11", "✅"], chatgpt: ["Jun 12", "🟡"], gemini: ["Jul 31", "❌"] },
-  "q3-3": { ref: ["Oct 12, 2025", "Oct 12, 2025"], claude: ["Oct 12", "✅"], chatgpt: ["Oct 12", "✅"], gemini: ["Oct 22", "❌ 🔍"] },
-  "q3-4": { ref: ["Jul 15, 2026", "Jul 15, 2026"], claude: ["Jul 15", "✅"], chatgpt: ["Jul 15", "✅ 🔍"], gemini: ["Jul 15", "✅"] },
+  "q1-1": { ref: ["Aug 28", "Aug 28"], claude: ["Aug 28", "✅"], chatgpt: ["Aug 28", "✅"], gemini: ["Nov 25", "❌"] },
+  "q1-2": { ref: ["Jun 21", "Jun 21"], claude: ["Jun 21", "✅"], chatgpt: ["Sep 18", "❌"], gemini: ["Sep 18", "❌"] },
+  "q1-3": { ref: ["Mar 31", "Mar 31"], claude: ["Mar 31", "✅"], chatgpt: ["Jun 28", "❌ 🔍"], gemini: ["Jun 29, then Mar 31", "🟡"] },
+  "q2-1": { ref: ["Aug 28", "Aug 28"], claude: ["Aug 28", "✅"], chatgpt: ["Sep 27", "❌"], gemini: ["Aug 24, then Aug 28", "🟡"] },
+  "q2-2": { ref: ["Jun 21", "Jun 21"], claude: ["Jun 21", "✅"], chatgpt: ["Jun 21", "✅"], gemini: ["Jul 21", "❌"] },
+  "q2-3": { ref: ["Dec 31", "Dec 31"], claude: ["Dec 31", "✅"], chatgpt: ["Dec 31", "✅"], gemini: ["Dec 31", "✅ 🔍"] },
+  "q2-4": { ref: ["Jan 29", "Jan 29"], claude: ["Jan 29", "✅"], chatgpt: ["Jan 29", "✅"], gemini: ["May 26", "❌"] },
+  "q3-1": { ref: ["May 29", "May 29"], claude: ["May 29", "✅"], chatgpt: ["May 29", "✅ 🔍"], gemini: ["May 29", "✅"] },
+  "q3-2": { ref: ["Jun 11", "Jun 11"], claude: ["Jun 11", "✅"], chatgpt: ["Jun 12", "🟡"], gemini: ["Jul 31", "❌"] },
+  "q3-3": { ref: ["Oct 12", "Oct 12"], claude: ["Oct 12", "✅"], chatgpt: ["Oct 12", "✅"], gemini: ["Oct 22", "❌ 🔍"] },
+  "q3-4": { ref: ["Jul 15", "Jul 15"], claude: ["Jul 15", "✅"], chatgpt: ["Jul 15", "✅ 🔍"], gemini: ["Jul 15", "✅"] },
   "q4-1": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["No", "❌"] },
   "q4-2": { ref: ["No", "No"], claude: ["No", "✅"], chatgpt: ["No", "✅"], gemini: ["No", "✅"] },
   "q4-3": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["Yes", "✅"] },
   "q4-4": { ref: ["No", "No"], claude: ["No", "✅"], chatgpt: ["No", "✅"], gemini: ["No", "✅"] },
   "q4-5": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["No, then Yes", "🟡"] },
-  "q5-1": { ref: ["Jul 31, 2025*", "Jul 31, 2025*"], claude: ["Aug 1", "✅"], chatgpt: ["Aug 1", "✅"], gemini: ["Sep 2", "❌"] },
+  "q5-1": { ref: ["Jul 31*", "Jul 31*"], claude: ["Aug 1", "✅"], chatgpt: ["Aug 1", "✅"], gemini: ["Sep 2", "❌"] },
   "q5-2": { ref: ["N/A", "Anna & Olivia must change"], claude: ["All four right", "✅"], chatgpt: ["All four right", "✅ 🔍"], gemini: ["Wrong on Marcus & Ilker", "❌"] },
-  "q5-3": { ref: ["N/A", "Oct 2, 2025"], claude: ["Oct 2", "✅"], chatgpt: ["Oct 2", "✅ 🔍"], gemini: ["Oct 10", "❌"] },
+  "q5-3": { ref: ["N/A", "Oct 2"], claude: ["Oct 2", "✅"], chatgpt: ["Oct 2", "✅ 🔍"], gemini: ["Oct 10", "❌"] },
 };
 
 // One grid row's cells: two calculator answers, then each chatbot's answer
