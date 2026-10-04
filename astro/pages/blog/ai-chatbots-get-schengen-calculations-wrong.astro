@@ -498,10 +498,10 @@ If Jordan enters the Schengen Area again on April 23, 2026, what is the last dat
         before clicking "book" on a flight. It's the most common real-world
         phrasing, and it's the one where a model can fail silently: a
         wrong "yes" looks identical to a right one until you're standing
-        at the border. We've deliberately included two rows here that are
+        at the border. We've deliberately included three rows here that are
         designed to trip up a model that's just pattern-matching
-        ("90 days, sounds fine") rather than actually computing the
-        window.
+        ("90 days, sounds fine," or "90 minus what's used") rather than
+        actually computing the window.
       </p>
 
       <details class="prompt-box">
@@ -536,6 +536,20 @@ Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without ove
       </details>
       <p class="known-answer">This should come back <strong>no</strong> — Anna is capped at 40 days on that date (<a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>), ten short of the 50 asked about. A very plausible real mistake, since 40 and 50 both round to "about a month and a half."</p>
 
+      <details class="prompt-box">
+        <summary>Prompt — Jordan, Jun 1, 2026 for 60 days (Scenario C, trap)</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+- Trip 5: April 12–17, 2026
+- Trip 6: April 23 – May 10, 2026
+
+Can Jordan enter the Schengen Area on June 1, 2026 and stay for 60 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">This should come back <strong>yes</strong>, the opposite trap from Anna's. On June 1, Jordan has only 39 days of allowance left, so a model that just subtracts used days from 90 will say no. But the rest of Trip 4 ages out of the window during the stay, which lets Jordan stay through August 5 (66 days).</p>
+
       <div class="table-wrap">
         <table class="qa-table">
           <thead>
@@ -563,6 +577,10 @@ Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without ove
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — May 3, 50d (trap)</th>
+              <td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan — Jun 1, 2026, 60d (trap)</th>
               <td></td><td></td><td></td><td></td><td></td>
             </tr>
           </tbody>
