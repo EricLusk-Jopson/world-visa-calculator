@@ -10,17 +10,17 @@
  * - Every table cell under "Official EU Calculator", "EuroVisaCalculator",
  *   and each model column is a BLANK data-entry cell — that's the actual
  *   experiment. Fill them in as you run each prompt.
- * - The model roster (below) reflects each vendor's current lineup as of
- *   this draft. Model names churn every few weeks — re-check the current
- *   lineup for each vendor immediately before you start testing, and
- *   update the table headers + vendor key to match.
+ * - Models are each platform's default free-tier model as of the test
+ *   date (Claude Sonnet 5.6, ChatGPT 5.6 Luna, Gemini 3.6 Flash). If a
+ *   vendor changes its default before publishing, re-run and update the
+ *   headers to match.
  * - Blog links below to Posts 1–4, 8, 9 use slugs guessed from their
  *   titles per the content master doc's naming convention. Verify/fix
  *   each href against the actual published slug before publishing.
- * - Testing protocol: use a fresh/incognito or temporary chat for every
- *   single cell, with no memory, custom instructions, or web/code tools
- *   enabled (see Methodology). Mixing that up quietly invalidates the
- *   comparison.
+ * - Testing protocol: new Google account on each free tier, default model
+ *   and default settings, a temporary chat per cell, conversation cleared
+ *   and browser refreshed between prompts (see Methodology). Mark any
+ *   answer where the chatbot searched the web or ran code with 🔍.
  */
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import LandingNav from "../../components/LandingNav.astro";
@@ -29,7 +29,7 @@ import Footer from "../../components/Footer.astro";
 
 <BaseLayout
   title="AI Chatbots Get Schengen Calculations Wrong"
-  description="We asked Claude, ChatGPT, and Gemini the exact same Schengen 90/180 questions travelers ask every day — using real, worked scenarios. Here's how they did against the official EU calculator and EuroVisaCalculator."
+  description="We asked the free versions of Claude, ChatGPT, and Gemini the exact same Schengen 90/180 questions travelers ask every day — using real, worked scenarios. Here's how they did against the official EU calculator and EuroVisaCalculator."
   canonicalUrl="https://eurovisacalculator.com/blog/ai-chatbots-get-schengen-calculations-wrong"
 >
   <LandingNav />
@@ -81,8 +81,9 @@ import Footer from "../../components/Footer.astro";
         So we took the worked scenarios from
         <a href="/blog/the-schengen-90-180-rolling-window">our rolling-window
         explainer</a> — real dates, real people, some of them intentionally
-        tricky — and put the same four questions to every current Claude,
-        ChatGPT, and Gemini model. This post is the methodology, the exact
+        tricky — and put the same four questions to the free versions of
+        Claude, ChatGPT, and Gemini, the ones you get without a
+        subscription. This post is the methodology, the exact
         prompts (copy-pasteable, so you can reproduce or extend this
         yourself), and the results grid for each question.
       </p>
@@ -107,8 +108,9 @@ import Footer from "../../components/Footer.astro";
 
       <p>
         None of this is a knock on any specific model. It's structural.
-        General-purpose chatbots generate the next plausible token — they
-        don't run arithmetic on a date object the way a calculator does.
+        Unless a chatbot decides to run code, it generates the next
+        plausible token — it doesn't run arithmetic on a date object the
+        way a calculator does.
         Adding and subtracting days across month boundaries, leap years,
         and a <em>rolling</em> 180-day lookback window (not a fixed period —
         see <a href="/blog/the-schengen-90-180-rolling-window">our explainer
@@ -122,9 +124,11 @@ import Footer from "../../components/Footer.astro";
       <h2 id="methodology">Methodology</h2>
 
       <p>
-        <strong>Models tested.</strong> Three models per vendor, spanning
-        their fast/default, deep-reasoning, and top-tier tiers, so this
-        isn't just testing one configuration per company.
+        <strong>Who we're simulating.</strong> A traveler who doesn't pay
+        for any AI subscription and just opens the free version of
+        whichever chatbot they already use. So that's exactly what we
+        tested: a brand-new Google account, signed in to the free tier of
+        each service, using the model each one serves by default.
       </p>
 
       <div class="table-wrap">
@@ -138,30 +142,33 @@ import Footer from "../../components/Footer.astro";
           </thead>
           <tbody>
             <tr>
-              <td>Claude Haiku 4.5 <span class="tier">(fast)</span></td>
-              <td>GPT-5.5 Instant <span class="tier">(fast)</span></td>
-              <td>Gemini 3.5 Flash <span class="tier">(fast)</span></td>
-            </tr>
-            <tr>
-              <td>Claude Sonnet 5 <span class="tier">(default)</span></td>
-              <td>GPT-5.5 Thinking <span class="tier">(reasoning)</span></td>
-              <td>Gemini 3.1 Pro <span class="tier">(default)</span></td>
-            </tr>
-            <tr>
-              <td>Claude Opus 5 <span class="tier">(top tier)</span></td>
-              <td>GPT-5.5 Pro <span class="tier">(top tier)</span></td>
-              <td>Gemini 3.1 Deep Think <span class="tier">(top tier)</span></td>
+              <td>Claude Sonnet 5.6 <span class="tier">(free tier default)</span></td>
+              <td>ChatGPT 5.6 Luna <span class="tier">(free tier default)</span></td>
+              <td>Gemini 3.6 Flash <span class="tier">(free tier default)</span></td>
             </tr>
           </tbody>
         </table>
       </div>
 
+      <aside class="callout">
+        <p>
+          <strong>What about paid models?</strong> As of October 1, 2026,
+          the top models available through our paid subscriptions to
+          Claude, ChatGPT, and Gemini answered the majority of these
+          questions accurately. This experiment deliberately leaves them
+          out: it assumes you aren't a paying subscriber to any of these
+          services, and so only have access to each platform's default
+          model.
+        </p>
+      </aside>
+
       <p>
         <strong>Rules, for every single prompt:</strong>
       </p>
       <ul>
-        <li>Fresh chat (incognito/temporary where available) — no memory, no chat history, no custom/system instructions.</li>
-        <li>Web search, code execution, and any "agent" or "tool use" mode turned off. We're testing the model's own reasoning, not its ability to open a calculator on our behalf — <a href="/blog/chatgpt-schengen-calculator-wrong">a distinct failure mode we've written about separately</a>.</li>
+        <li>A new account with no paid plan, no custom instructions, and no saved memory.</li>
+        <li>Each platform's default model and default settings, exactly as a new free user gets them. If a chatbot chose to search the web or run code on its own, we let it — that's what a real user would get — and marked it in the grid.</li>
+        <li>A temporary chat for every prompt, with the conversation cleared and the browser refreshed in between, so no answer could see another.</li>
         <li>One shot: the exact prompt below, sent once, no follow-up clarification or "are you sure?" nudging.</li>
         <li>The prompt is pasted exactly as written, including the trip history, so nothing depends on the model "remembering" earlier context.</li>
       </ul>
@@ -178,6 +185,7 @@ import Footer from "../../components/Footer.astro";
             <tr><td class="legend-mark">🟡</td><td>Close — off by 1–3 days, or the right idea buried in a hedge.</td></tr>
             <tr><td class="legend-mark">❌</td><td>Wrong — off by more than 3 days, or the wrong direction entirely.</td></tr>
             <tr><td class="legend-mark">🚫</td><td>Punted — told you to "check a calculator" or asked a clarifying question instead of answering.</td></tr>
+            <tr><td class="legend-mark">🔍</td><td>Searched the web or ran code to get there (shown alongside the grade).</td></tr>
             <tr><td class="legend-mark">🧩</td><td>Invented a rule — e.g. asserted a fixed reset or a mandatory 90-day exit, a myth <a href="/blog/the-schengen-90-180-rolling-window#bad-advice">we debunk here</a>.</td></tr>
           </tbody>
         </table>
@@ -260,7 +268,7 @@ Under the Schengen 90/180-day rule, what is the earliest date on which Patricia 
 
 Under the Schengen 90/180-day rule, what is the earliest date on which any of them could begin a brand-new 90-day stay in the Schengen Area, using their full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">Published answer: September 19, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>.</p>
+      <p class="known-answer">Both calculators: June 21, 2025. (September 19 is when the trip fully clears the window, which is later than a full 90-day stay needs; <a href="/blog/the-schengen-90-180-rolling-window#case-3">see the worked example</a>.)</p>
 
       <details class="prompt-box">
         <summary>Prompt — Jordan (Scenario C)</summary>
@@ -272,7 +280,7 @@ Under the Schengen 90/180-day rule, what is the earliest date on which any of th
 
 As of December 31, 2025, what is the earliest date on which Jordan could begin a brand-new 90-day stay in the Schengen Area, using a full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
       </details>
-      <p class="known-answer">No published answer — run this through EuroVisaCalculator and the official EU calculator first to fill in the reference columns below.</p>
+      <p class="known-answer">Both calculators: March 31, 2026.</p>
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -281,29 +289,23 @@ As of December 31, 2025, what is the earliest date on which Jordan could begin a
               <th class="row-head" scope="col">Scenario</th>
               <th class="vendor-reference" scope="col">Official EU Calculator</th>
               <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
-              <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
-              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
-              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
-              <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
-              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.6</th>
+              <th class="vendor-openai" scope="col">ChatGPT 5.6 Luna</th>
+              <th class="vendor-google" scope="col">Gemini 3.6 Flash</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — after 90/90 trip</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td>Aug 28, 2025</td><td>Aug 28, 2025</td><td></td><td></td><td></td>
             </tr>
             <tr>
-              <th class="row-head" scope="row">Group trip — full clear</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <th class="row-head" scope="row">Group trip — full 90 days</th>
+              <td>Jun 21, 2025</td><td>Jun 21, 2025</td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — as of Dec 31, 2025</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td>Mar 31, 2026</td><td>Mar 31, 2026</td><td></td><td></td><td></td>
             </tr>
           </tbody>
         </table>
@@ -332,6 +334,7 @@ As of December 31, 2025, what is the earliest date on which Jordan could begin a
 
 What is the earliest date on which Patricia could enter the Schengen Area for a new trip lasting exactly 30 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
+      <p class="known-answer">Both calculators: August 28, 2025.</p>
 
       <details class="prompt-box">
         <summary>Prompt — Anna, 60-day trip (Scenario B)</summary>
@@ -339,14 +342,8 @@ What is the earliest date on which Patricia could enter the Schengen Area for a 
 
 What is the earliest date on which Anna could enter the Schengen Area for a new trip lasting exactly 60 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
+      <p class="known-answer">Both calculators: June 21, 2025.</p>
 
-      <details class="prompt-box">
-        <summary>Prompt — Marcus, 90-day trip (Scenario B)</summary>
-        <pre class="prompt-text">Marcus holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. His entire Schengen Area travel history is a single trip: he entered on February 1, 2025 and exited on March 22, 2025 (50 days). He has had no other Schengen Area travel before or after this trip.
-
-What is the earliest date on which Marcus could enter the Schengen Area for a new trip lasting the full 90 days, without overstaying his 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
-      </details>
-      <p class="known-answer">Published answer: August 1, 2025 — <a href="/blog/the-schengen-90-180-rolling-window#case-3">see Marcus's worked example</a>. Note that his remaining allowance doesn't visibly grow for the first 50 days of this new trip — that's expected, not a bug, and worth watching for in the models' explanations, not just their final date.</p>
 
       <details class="prompt-box">
         <summary>Prompt — Jordan, 21-day trip (Scenario C)</summary>
@@ -358,6 +355,19 @@ What is the earliest date on which Marcus could enter the Schengen Area for a ne
 
 What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 21 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
       </details>
+      <p class="known-answer">Both calculators: December 31, 2025.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt — Jordan, 50-day trip (Scenario C)</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+
+What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 50 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Both calculators: January 29, 2026.</p>
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -366,33 +376,27 @@ What is the earliest date after December 30, 2025 on which Jordan could enter th
               <th class="row-head" scope="col">Scenario</th>
               <th class="vendor-reference" scope="col">Official EU Calculator</th>
               <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
-              <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
-              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
-              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
-              <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
-              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.6</th>
+              <th class="vendor-openai" scope="col">ChatGPT 5.6 Luna</th>
+              <th class="vendor-google" scope="col">Gemini 3.6 Flash</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — 30-day trip</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td>Aug 28, 2025</td><td>Aug 28, 2025</td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — 60-day trip</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th class="row-head" scope="row">Marcus — 90-day trip</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td>Jun 21, 2025</td><td>Jun 21, 2025</td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — 21-day trip</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td>Dec 31, 2025</td><td>Dec 31, 2025</td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan — 50-day trip</th>
+              <td>Jan 29, 2026</td><td>Jan 29, 2026</td><td></td><td></td><td></td>
             </tr>
           </tbody>
         </table>
@@ -458,33 +462,27 @@ If Jordan enters the Schengen Area again on April 23, 2026, what is the last dat
               <th class="row-head" scope="col">Scenario</th>
               <th class="vendor-reference" scope="col">Official EU Calculator</th>
               <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
-              <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
-              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
-              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
-              <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
-              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.6</th>
+              <th class="vendor-openai" scope="col">ChatGPT 5.6 Luna</th>
+              <th class="vendor-google" scope="col">Gemini 3.6 Flash</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — enters Mar 1</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — enters May 3</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Marcus — enters Jul 15</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Jordan — enters Apr 23, 2026</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td>
             </tr>
           </tbody>
         </table>
@@ -545,33 +543,27 @@ Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without ove
               <th class="row-head" scope="col">Scenario</th>
               <th class="vendor-reference" scope="col">Official EU Calculator</th>
               <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
-              <th class="vendor-anthropic" scope="col">Claude Haiku 4.5</th>
-              <th class="vendor-anthropic" scope="col">Claude Sonnet 5</th>
-              <th class="vendor-anthropic" scope="col">Claude Opus 5</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Instant</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Thinking</th>
-              <th class="vendor-openai" scope="col">GPT-5.5 Pro</th>
-              <th class="vendor-google" scope="col">Gemini 3.5 Flash</th>
-              <th class="vendor-google" scope="col">Gemini 3.1 Pro</th>
-              <th class="vendor-google" scope="col">Gemini 3.1 Deep Think</th>
+              <th class="vendor-anthropic" scope="col">Claude Sonnet 5.6</th>
+              <th class="vendor-openai" scope="col">ChatGPT 5.6 Luna</th>
+              <th class="vendor-google" scope="col">Gemini 3.6 Flash</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="row-head" scope="row">Patricia — Aug 28, 90d</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Patricia — Aug 20, 90d (trap)</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Ilker — Aug 1, 90d</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
               <th class="row-head" scope="row">Anna — May 3, 50d (trap)</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td>
             </tr>
           </tbody>
         </table>
@@ -920,7 +912,7 @@ Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without ove
   }
 
   .qa-table {
-    min-width: 920px;
+    min-width: 560px;
   }
 
   .qa-table th,
@@ -969,6 +961,20 @@ Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without ove
 
   .model-roster thead th {
     padding: 10px 14px;
+  }
+
+  .callout {
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 1.25rem 0 1.75rem;
+  }
+
+  .article__body .callout p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin: 0;
   }
 
   .article__body .known-answer {
