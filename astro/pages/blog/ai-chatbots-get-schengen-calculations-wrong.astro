@@ -96,9 +96,13 @@ const cells = (id: string) => {
     <div class="article__body">
 
       <p>
-        We asked the free versions of Claude, ChatGPT, and Gemini 19 real
-        questions about the Schengen 90/180 rule, and checked every answer
-        against the official EU calculator and EuroVisaCalculator.
+        During the initial development of EuroVisaCalculator, we found AI chatbots could not be relied upon for rolling window math. 
+        This is one of the main reasons why EuroVisaCalculator is AI free: 
+        too often Claude or ChatGPT would provide the wrong answer to a simple question.
+        The state of AI tooling has improved greatly since our initial development, so on October 1st, 2026 we returned to our chatbots. 
+        In this experiment, we asked the free versions of Claude, ChatGPT, and Gemini 19 real
+        questions about the Schengen 90/180 rule. 
+        Then we confirmed every answer against the official EU calculator and EuroVisaCalculator, which operate on a purely mathematical calculation.
       </p>
 
       <nav class="article__toc" aria-label="Table of contents">
@@ -120,8 +124,9 @@ const cells = (id: string) => {
       <h2 id="results">The short answer</h2>
 
       <p>
-        It depends on the chatbot. Claude got all 19 right. ChatGPT and
-        Gemini got 20 of their 38 answers wrong or only partly right.
+        At the current state of these companies' free tiers. it depends entirely on the chatbot. 
+        Claude got all 19 right. 
+        ChatGPT and Gemini got 20 of their 38 answers wrong or only partly right.
       </p>
 
       <div class="table-wrap">
@@ -151,7 +156,7 @@ const cells = (id: string) => {
       <h2 id="why-this-happens">Why a wrong answer is easy to believe</h2>
 
       <p>
-        The wrong answers were just as confident and well written as the
+        The biggest problem with AI chatbots is that their wrong answers are just as confident and well written as the
         right ones, often with plausible working. Checking one means
         redoing the math yourself: counting both entry and exit days, and
         tracking a <a href="/blog/the-schengen-90-180-rolling-window">rolling 180-day window</a>. That's the work
@@ -159,8 +164,9 @@ const cells = (id: string) => {
       </p>
 
       <p>
-        The mistakes went both ways. Some made travelers wait up to three
-        months longer than necessary. Others allowed an overstay: Gemini
+        When calculating overstay limits, there are two possible types of mistake: harmless, and dangerous.
+        In this experiment, the mistakes on display went both ways. Some wrong answers advised travelers wait up to three
+        months longer than necessary before traveling. Others allowed an overstay: Gemini
         told Anna she could stay until July 31, seven weeks past her real
         limit of June 11. <a href="/blog/schengen-overstay-consequences">An
         overstay</a> can lead to an entry ban.
