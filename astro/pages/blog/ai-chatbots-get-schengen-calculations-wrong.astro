@@ -81,6 +81,16 @@ const cells = (id: string) => {
       <h1 class="article__title">Can You Trust an AI Chatbot With Schengen Math?</h1>
 
       <p class="article__meta">[Date] · [Read time] min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you've asked, or are
+        thinking of asking, an AI chatbot about your Schengen days.
+        <br />
+        <br />
+        <strong>It's probably not necessary if:</strong> you just want an
+        answer for your own dates. In that case,
+        <a href="/app">go straight to the calculator</a>.
+      </p>
     </header>
 
     <div class="article__body">
@@ -700,6 +710,22 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
   }
 
 
+
+  .article__audience {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
+  }
 
   .article__body {
     max-width: 680px;
