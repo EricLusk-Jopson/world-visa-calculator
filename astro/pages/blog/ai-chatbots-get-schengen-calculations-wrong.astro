@@ -48,6 +48,7 @@ const results: Record<string, any> = {
   "q5-1": { ref: ["Jul 31*", "Jul 31*"], claude: ["Aug 1", "✅"], chatgpt: ["Aug 1", "✅"], gemini: ["Sep 2", "❌"] },
   "q5-2": { ref: ["N/A", "Anna & Olivia must change"], claude: ["All four right", "✅"], chatgpt: ["All four right", "✅ 🔍"], gemini: ["Wrong on Marcus & Ilker", "❌"] },
   "q5-3": { ref: ["N/A", "Oct 2"], claude: ["Oct 2", "✅"], chatgpt: ["Oct 2", "✅ 🔍"], gemini: ["Oct 10", "❌"] },
+  "q5-4": { ref: ["", ""], claude: ["Mar 18", "✅"], chatgpt: ["Mar 18", "✅"], gemini: ["May 26", "❌"] },
 };
 
 // One grid row's cells: two calculator answers, then each chatbot's answer
@@ -65,7 +66,7 @@ const cells = (id: string) => {
 
 <BaseLayout
   title="Can You Trust an AI Chatbot With Schengen Math?"
-  description="We asked the free versions of Claude, ChatGPT, and Gemini 19 real Schengen 90/180 questions. Claude got all 19 right. The other two got 20 of their 38 answers wrong or only partly right."
+  description="We asked the free versions of Claude, ChatGPT, and Gemini 20 real Schengen 90/180 questions. Claude got all 20 right. The other two got 21 of their 40 answers wrong or only partly right."
   canonicalUrl="https://eurovisacalculator.com/blog/ai-chatbots-get-schengen-calculations-wrong"
 >
   <LandingNav />
@@ -103,7 +104,7 @@ const cells = (id: string) => {
       <p>
         The state of AI tooling, however, has improved greatly since our initial development, 
         so on October 1st, 2026 we revisited chatbots to see if they'd improved. 
-        In this experiment, we asked the free versions of Claude, ChatGPT, and Gemini 19 real
+        In this experiment, we asked the free versions of Claude, ChatGPT, and Gemini 20 real
         questions about the Schengen 90/180 rule, then confirmed each answer against the official 
         EU calculator and EuroVisaCalculator, both of which use a purely mathematical calculation.
       </p>
@@ -128,8 +129,8 @@ const cells = (id: string) => {
 
       <p>
         Based on these companies' current free tiers, it depends entirely on the chatbot. 
-        Claude got all 19 right. 
-        ChatGPT and Gemini got 20 of their 38 answers wrong or only partly right.
+        Claude got all 20 right. 
+        ChatGPT and Gemini got 21 of their 40 answers wrong or only partly right.
       </p>
 
       <div class="table-wrap">
@@ -143,9 +144,9 @@ const cells = (id: string) => {
             </tr>
           </thead>
           <tbody>
-            <tr><th class="vendor-anthropic" scope="row">Claude Sonnet 5.6</th><td>19</td><td>0</td><td>0</td></tr>
-            <tr><th class="vendor-openai" scope="row">ChatGPT 5.6 Luna</th><td>12</td><td>1</td><td>6</td></tr>
-            <tr><th class="vendor-google" scope="row">Gemini 3.6 Flash</th><td>6</td><td>3</td><td>10</td></tr>
+            <tr><th class="vendor-anthropic" scope="row">Claude Sonnet 5.6</th><td>20</td><td>0</td><td>0</td></tr>
+            <tr><th class="vendor-openai" scope="row">ChatGPT 5.6 Luna</th><td>13</td><td>1</td><td>6</td></tr>
+            <tr><th class="vendor-google" scope="row">Gemini 3.6 Flash</th><td>6</td><td>3</td><td>11</td></tr>
           </tbody>
         </table>
       </div>
@@ -600,6 +601,24 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
       </details>
       <p class="known-answer">Answer: October 2, 2025. Trip 2 is still in the window, leaving 14 days for Trip 3. The EU calculator can't check this one.</p>
       <ChatbotAnswers id="q5-3" results={results} />
+      <details class="prompt-box">
+        <summary>Prompt: Olivia and Jordan plan a trip together</summary>
+        <pre class="prompt-text">Olivia and Jordan both hold passports that allow 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Their complete Schengen Area travel histories are:
+
+Olivia:
+- February 1 – March 22, 2025
+- September 19 – December 17, 2025
+
+Jordan:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+
+They want to take a 14-day trip together in 2026. What is the earliest date they could both enter the Schengen Area for that trip, without either of them overstaying the 90/180 rule at any point? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: March 18, 2026. Olivia used a full 90 days ending December 17, so she can't return until September 19 leaves the window. Jordan could go any time.</p>
+      <ChatbotAnswers id="q5-4" results={results} />
 
       <div class="table-wrap">
         <table class="qa-table">
@@ -625,6 +644,10 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
             <tr>
               <th class="row-head" scope="row">Jordan extends Trip 3</th>
               <Fragment set:html={cells("q5-3")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Olivia and Jordan</th>
+              <Fragment set:html={cells("q5-4")} />
             </tr>
           </tbody>
         </table>
