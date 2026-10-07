@@ -1,7 +1,7 @@
 ---
 /**
  * Blog post: Can You Trust an AI Chatbot With Schengen Math?
- * URL: /blog/ai-chatbots-get-schengen-calculations-wrong
+ * URL: /blog/can-you-trust-ai-chatbots-with-schengen-math
  * Static Astro page, rendered to plain HTML at build time.
  *
  * TEMPLATE NOTES (delete before publishing):
@@ -14,8 +14,6 @@
  *   date (Claude Sonnet 5.6, ChatGPT 5.6 Luna, Gemini 3.6 Flash). If a
  *   vendor changes its default before publishing, re-run and update the
  *   headers to match.
- * - /blog/schengen-overstay-consequences doesn't exist yet. Publish it or
- *   remove the link before publishing this post.
  * - Testing protocol: new Google account on each free tier, default model
  *   and default settings, a temporary chat per cell, conversation cleared
  *   and browser refreshed between prompts (see How we tested). Mark any
@@ -67,7 +65,7 @@ const cells = (id: string) => {
 <BaseLayout
   title="Can You Trust an AI Chatbot With Schengen Math?"
   description="We asked the free versions of Claude, ChatGPT, and Gemini 20 real Schengen 90/180 questions. Claude got all 20 right. The other two got 21 of their 40 answers wrong or only partly right."
-  canonicalUrl="https://eurovisacalculator.com/blog/ai-chatbots-get-schengen-calculations-wrong"
+  canonicalUrl="https://eurovisacalculator.com/blog/can-you-trust-ai-chatbots-with-schengen-math"
 >
   <LandingNav />
 
@@ -172,8 +170,7 @@ const cells = (id: string) => {
         In this experiment, the mistakes on display went both ways. Some wrong answers advised travelers to wait up to three
         months longer than necessary before traveling. Others allowed an overstay: Gemini
         told Anna she could stay until July 31, seven weeks past her real
-        limit of June 11. <a href="/blog/schengen-overstay-consequences">An
-        overstay</a> can lead to an entry ban.
+        limit of June 11. An overstay can lead to an entry ban.
       </p>
 
       <h2 id="methodology">How we tested</h2>
