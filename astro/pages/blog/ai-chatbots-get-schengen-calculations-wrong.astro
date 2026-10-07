@@ -84,7 +84,7 @@ const cells = (id: string) => {
 
       <p class="article__audience">
         <strong>This post is for you if:</strong> you've asked, or are
-        thinking of asking, an AI chatbot about your Schengen days.
+        thinking of asking, an AI chatbot about your time in the Schengen Area.
         <br />
         <br />
         <strong>It's probably not necessary if:</strong> you just want an
@@ -97,15 +97,15 @@ const cells = (id: string) => {
 
       <p>
         During the initial development of EuroVisaCalculator, we found AI chatbots could not be relied upon for rolling window math. 
-        This is one of the main reasons why EuroVisaCalculator is AI free: 
+        This is one of the main reasons why EuroVisaCalculator is AI-free: 
         too often Claude or ChatGPT would provide the wrong answer to a simple question.
       </p>
       <p>
         The state of AI tooling, however, has improved greatly since our initial development, 
-        so on October 1st, 2026 we revisited chatbots to measure their improvement for ourselves. 
+        so on October 1st, 2026 we revisited chatbots to see if they'd improved. 
         In this experiment, we asked the free versions of Claude, ChatGPT, and Gemini 19 real
         questions about the Schengen 90/180 rule, then confirmed each answer against the official 
-        EU calculator and EuroVisaCalculator, both of which operate on a purely mathematical calculation.
+        EU calculator and EuroVisaCalculator, both of which use a purely mathematical calculation.
       </p>
 
       <nav class="article__toc" aria-label="Table of contents">
@@ -120,14 +120,14 @@ const cells = (id: string) => {
           <li><a href="#q3">Question 3: When do I have to leave?</a></li>
           <li><a href="#q4">Question 4: Can I make this trip?</a></li>
           <li><a href="#q5">Question 5: Coordinating trips</a></li>
-          <li><a href="#why-evc">Why we still built a calculator</a></li>
+          <li><a href="#why-evc">Why not just use Claude?</a></li>
         </ol>
       </nav>
 
       <h2 id="results">The short answer</h2>
 
       <p>
-        At the current state of these companies' free tiers. it depends entirely on the chatbot. 
+        Based on these companies' current free tiers, it depends entirely on the chatbot. 
         Claude got all 19 right. 
         ChatGPT and Gemini got 20 of their 38 answers wrong or only partly right.
       </p>
@@ -167,8 +167,8 @@ const cells = (id: string) => {
       </p>
 
       <p>
-        When calculating overstay limits, there are two possible types of mistake: harmless, and dangerous.
-        In this experiment, the mistakes on display went both ways. Some wrong answers advised travelers wait up to three
+        When calculating overstay limits, there are two possible types of mistake: overly cautious and dangerous.
+        In this experiment, the mistakes on display went both ways. Some wrong answers advised travelers to wait up to three
         months longer than necessary before traveling. Others allowed an overstay: Gemini
         told Anna she could stay until July 31, seven weeks past her real
         limit of June 11. <a href="/blog/schengen-overstay-consequences">An
@@ -639,11 +639,11 @@ Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3
         Over time it gets lost and you can't share it with your travel group, see everyone's days side
         by side, or update it when plans change. Meanwhile, the official EU calculator
         is always accurate, but it handles one traveler at a time,
-        can't answer complicated scheduling questions and does not support other countries outside the Schengen area.
+        can't answer complicated scheduling questions, and does not support other countries outside the Schengen Area.
       </p>
 
       <p>
-        By comparison, <a href="/app">EuroVisaCalculator</a> is built to be shared, supports the entire continent and is meant for multiple travelers.
+        By comparison, <a href="/app">EuroVisaCalculator</a> is built to be shared, supports the entire continent, and is meant for multiple travelers.
       </p>
 
       <ul>
