@@ -52,7 +52,7 @@
  *   SSVWP note not applied to Ukraine. Monitor for changes.
  *
  * TRANSIT VISAS
- *   Nationals of 25 countries require a valid Irish transit visa when passing
+ *   Nationals of 28 countries require a valid Irish transit visa when passing
  *   through Ireland in transit. A transit visa does not permit entry.
  *
  * NO ETA / ETIAS
@@ -61,7 +61,10 @@
  *
  * ── Data source ───────────────────────────────────────────────────────────────
  *   passportRules derived from the INIS visa/non-visa required nationality
- *   table (Ninja Table ID 19077, extracted 2026-05-27).
+ *   table (Ninja Table ID 19077, extracted 2026-05-27), plus the Immigration
+ *   Act 2004 (Visas) (Amendment) (No. 2) Order 2026 (in operation 15 June
+ *   2026): Nicaragua, Saint Kitts and Nevis and Saint Lucia moved from
+ *   visa-free to visa-required with a transit visa.
  *   Free movement, BIVS, SSVWP, and transit annotations use sources in
  *   IrelandSources (@/data/sources).
  *
@@ -263,11 +266,8 @@ export const IRELAND: RegionDefinition = {
     'GT': entitled(), // Guatemala
     'GY': entitled(), // Guyana
     'MX': entitled(), // Mexico
-    'NI': entitled(), // Nicaragua
     'PA': entitled(), // Panama
     'PY': entitled(), // Paraguay
-    'KN': entitled(), // Saint Kitts and Nevis
-    'LC': entitled(), // Saint Lucia
     'VC': entitled(), // Saint Vincent and the Grenadines
     'US': entitled(), // United States
     'UY': entitled(), // Uruguay
@@ -366,6 +366,13 @@ export const IRELAND: RegionDefinition = {
     'LK': VISA_REQUIRED_TRANSIT, // Sri Lanka
     'TT': VISA_REQUIRED_TRANSIT, // Trinidad and Tobago
     'VU': VISA_REQUIRED_TRANSIT, // Vanuatu
+
+    // Moved from Schedule 1 (visa-free) to Schedule 5 (transit visa) of
+    // S.I. No. 473 of 2014 by the Immigration Act 2004 (Visas) (Amendment)
+    // (No. 2) Order 2026, in operation from 15 June 2026.
+    'NI': VISA_REQUIRED_TRANSIT, // Nicaragua
+    'KN': VISA_REQUIRED_TRANSIT, // Saint Kitts and Nevis
+    'LC': VISA_REQUIRED_TRANSIT, // Saint Lucia
 
     // ── Visa required — no additional scheme ──────────────────────────────
     'DZ': VISA_REQUIRED, // Algeria
