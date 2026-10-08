@@ -196,7 +196,7 @@ export const IrelandSources = {
       "https://www.irishimmigration.ie/visa-non-visa-required-nationalities/",
     parentUrl: "https://www.irishimmigration.ie/coming-to-visit-ireland/",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -208,7 +208,7 @@ export const IrelandSources = {
       "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-am-an-eu-eea-swiss-national/",
     parentUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -220,7 +220,7 @@ export const IrelandSources = {
       "https://www.irishimmigration.ie/coming-to-visit-ireland/common-travel-area/",
     parentUrl: "https://www.irishimmigration.ie/coming-to-visit-ireland/",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -234,7 +234,7 @@ export const IrelandSources = {
       "https://www.irishimmigration.ie/coming-to-visit-ireland/british-irish-visa-scheme/",
     parentUrl: "https://www.irishimmigration.ie/coming-to-visit-ireland/",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -248,7 +248,7 @@ export const IrelandSources = {
     parentUrl:
       "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -260,7 +260,7 @@ export const IrelandSources = {
     directUrl: "https://www.irishstatutebook.ie/eli/2014/si/473/made/en/print",
     parentUrl: "https://www.irishstatutebook.ie/eli/2014/si/473",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 } as const;
 
@@ -276,7 +276,7 @@ export const TurkiyeSources = {
     directUrl: "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
     parentUrl: "https://www.mfa.gov.tr/consular-info.en.mfa",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -295,14 +295,14 @@ export const TurkiyeSources = {
     directUrl: "https://www.evisa.gov.tr/en/",
     parentUrl: "https://www.evisa.gov.tr",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   eVisaEligible: {
     directUrl: "https://www.evisa.gov.tr/en/info/who-is-eligible-for-e-visa/",
     parentUrl: "https://www.evisa.gov.tr",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 } as const;
 
@@ -331,7 +331,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Afghanistan
   AL: {
     directUrl:
@@ -339,7 +339,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Albania
   DZ: {
     directUrl:
@@ -347,7 +347,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Algeria
   AD: {
     directUrl:
@@ -355,7 +355,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Andorra
   AO: {
     directUrl:
@@ -363,7 +363,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Angola
   AG: {
     directUrl:
@@ -371,7 +371,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Antigua and Barbuda
   AR: {
     directUrl:
@@ -379,7 +379,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Argentina
   AM: {
     directUrl:
@@ -387,7 +387,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Armenia
   AW: {
     directUrl:
@@ -395,7 +395,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Aruba
   AU: {
     directUrl:
@@ -403,7 +403,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Australia
   AT: {
     directUrl:
@@ -411,7 +411,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Austria
   AZ: {
     directUrl:
@@ -419,7 +419,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Azerbaijan
   BS: {
     directUrl:
@@ -427,7 +427,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahamas
   BH: {
     directUrl:
@@ -435,7 +435,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahrain
   BD: {
     directUrl:
@@ -443,7 +443,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bangladesh
   BB: {
     directUrl:
@@ -451,7 +451,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Barbados
   BY: {
     directUrl:
@@ -459,7 +459,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belarus
   BE: {
     directUrl:
@@ -467,7 +467,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belgium
   BZ: {
     directUrl:
@@ -475,7 +475,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belize
   BJ: {
     directUrl:
@@ -483,7 +483,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Benin
   BT: {
     directUrl:
@@ -491,7 +491,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bhutan
   BO: {
     directUrl:
@@ -499,7 +499,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bolivia
   BA: {
     directUrl:
@@ -507,7 +507,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BW: {
     directUrl:
@@ -515,7 +515,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Botswana
   BR: {
     directUrl:
@@ -523,7 +523,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brazil
   BN: {
     directUrl:
@@ -531,7 +531,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brunei
   BG: {
     directUrl:
@@ -539,7 +539,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bulgaria
   BF: {
     directUrl:
@@ -547,7 +547,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burkina Faso
   BI: {
     directUrl:
@@ -555,7 +555,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burundi
   CV: {
     directUrl:
@@ -563,7 +563,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cabo Verde
   KH: {
     directUrl:
@@ -571,7 +571,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cambodia
   CM: {
     directUrl:
@@ -579,7 +579,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cameroon
   CA: {
     directUrl:
@@ -587,7 +587,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Canada
   KY: {
     directUrl:
@@ -595,7 +595,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cayman Islands
   CF: {
     directUrl:
@@ -603,7 +603,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Central African Republic
   TD: {
     directUrl:
@@ -611,7 +611,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chad
   CL: {
     directUrl:
@@ -619,7 +619,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chile
   CN: {
     directUrl:
@@ -627,7 +627,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // China
   CO: {
     directUrl:
@@ -635,7 +635,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Colombia
   CD: {
     directUrl:
@@ -643,7 +643,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Congo, Democratic Republic of the
   CG: {
     directUrl:
@@ -651,7 +651,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Congo, Republic
   CR: {
     directUrl:
@@ -659,7 +659,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Costa Rica
   HR: {
     directUrl:
@@ -667,7 +667,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Croatia
   CU: {
     directUrl:
@@ -675,7 +675,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cuba
   CY: {
     directUrl:
@@ -683,7 +683,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cyprus
   CZ: {
     directUrl:
@@ -691,7 +691,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Czech Republic
   DK: {
     directUrl:
@@ -699,7 +699,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Denmark
   DJ: {
     directUrl:
@@ -707,7 +707,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Djibouti
   DM: {
     directUrl:
@@ -715,7 +715,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominica
   DO: {
     directUrl:
@@ -723,7 +723,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominican Republic
   EC: {
     directUrl:
@@ -731,7 +731,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ecuador
   EG: {
     directUrl:
@@ -739,7 +739,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Egypt
   SV: {
     directUrl:
@@ -747,7 +747,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // El Salvador
   GQ: {
     directUrl:
@@ -755,7 +755,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Equatorial Guinea
   ER: {
     directUrl:
@@ -763,7 +763,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eritrea
   EE: {
     directUrl:
@@ -771,7 +771,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Estonia
   ET: {
     directUrl:
@@ -779,7 +779,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ethiopia
   FJ: {
     directUrl:
@@ -787,7 +787,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Fiji
   FI: {
     directUrl:
@@ -795,7 +795,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Finland
   FR: {
     directUrl:
@@ -803,7 +803,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // France
   GA: {
     directUrl:
@@ -811,7 +811,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gabon
   GM: {
     directUrl:
@@ -819,7 +819,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gambia
   GE: {
     directUrl:
@@ -827,7 +827,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Georgia
   DE: {
     directUrl:
@@ -835,7 +835,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Germany
   GH: {
     directUrl:
@@ -843,7 +843,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ghana
   GR: {
     directUrl:
@@ -851,7 +851,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Greece
   GD: {
     directUrl:
@@ -859,7 +859,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Grenada
   GT: {
     directUrl:
@@ -867,7 +867,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guatemala
   GN: {
     directUrl:
@@ -875,7 +875,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea
   GW: {
     directUrl:
@@ -883,7 +883,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea-Bissau
   GY: {
     directUrl:
@@ -891,7 +891,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guyana
   HT: {
     directUrl:
@@ -899,7 +899,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Haiti
   VA: {
     directUrl:
@@ -907,7 +907,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Holy See and Sovereign Military Order of Malta
   HN: {
     directUrl:
@@ -915,7 +915,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Honduras
   HU: {
     directUrl:
@@ -923,7 +923,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hungary
   IS: {
     directUrl:
@@ -931,7 +931,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iceland
   IN: {
     directUrl:
@@ -939,7 +939,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // India
   ID: {
     directUrl:
@@ -947,7 +947,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Indonesia
   IR: {
     directUrl:
@@ -955,7 +955,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iran
   IQ: {
     directUrl:
@@ -963,7 +963,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iraq
   IE: {
     directUrl:
@@ -971,7 +971,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ireland
   IL: {
     directUrl:
@@ -979,7 +979,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Israel
   IT: {
     directUrl:
@@ -987,7 +987,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Italy
   CI: {
     directUrl:
@@ -995,7 +995,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ivory Coast (Côte d'Ivoire)
   JM: {
     directUrl:
@@ -1003,7 +1003,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jamaica
   JP: {
     directUrl:
@@ -1011,7 +1011,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Japan
   JO: {
     directUrl:
@@ -1019,7 +1019,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jordan
   KZ: {
     directUrl:
@@ -1027,7 +1027,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kazakhstan
   KE: {
     directUrl:
@@ -1035,7 +1035,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kenya
   KI: {
     directUrl:
@@ -1043,7 +1043,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kiribati
   KP: {
     directUrl:
@@ -1051,7 +1051,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea, Democratic People's Republic of (North Korea)
   KR: {
     directUrl:
@@ -1059,7 +1059,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea, Republic of (South Korea)
   XK: {
     directUrl:
@@ -1067,7 +1067,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kosovo
   KW: {
     directUrl:
@@ -1075,7 +1075,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kuwait
   KG: {
     directUrl:
@@ -1083,7 +1083,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kyrgyzstan
   LA: {
     directUrl:
@@ -1091,7 +1091,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Laos
   LV: {
     directUrl:
@@ -1099,7 +1099,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Latvia
   LB: {
     directUrl:
@@ -1107,7 +1107,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lebanon
   LS: {
     directUrl:
@@ -1115,7 +1115,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lesotho
   LR: {
     directUrl:
@@ -1123,7 +1123,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liberia
   LY: {
     directUrl:
@@ -1131,7 +1131,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Libya
   LI: {
     directUrl:
@@ -1139,7 +1139,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liechtenstein
   LT: {
     directUrl:
@@ -1147,7 +1147,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lithuania
   LU: {
     directUrl:
@@ -1155,7 +1155,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Luxembourg
   MG: {
     directUrl:
@@ -1163,7 +1163,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Madagascar
   MW: {
     directUrl:
@@ -1171,7 +1171,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malawi
   MY: {
     directUrl:
@@ -1179,7 +1179,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malaysia
   MV: {
     directUrl:
@@ -1187,7 +1187,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Maldives
   ML: {
     directUrl:
@@ -1195,7 +1195,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mali
   MT: {
     directUrl:
@@ -1203,7 +1203,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malta
   MH: {
     directUrl:
@@ -1211,7 +1211,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Marshall Islands
   MR: {
     directUrl:
@@ -1219,7 +1219,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritania
   MU: {
     directUrl:
@@ -1227,7 +1227,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritius
   MX: {
     directUrl:
@@ -1235,7 +1235,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mexico
   FM: {
     directUrl:
@@ -1243,7 +1243,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Micronesia
   MD: {
     directUrl:
@@ -1251,7 +1251,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Moldova
   MC: {
     directUrl:
@@ -1259,7 +1259,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Monaco
   MN: {
     directUrl:
@@ -1267,7 +1267,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mongolia
   MA: {
     directUrl:
@@ -1275,7 +1275,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Morocco
   MZ: {
     directUrl:
@@ -1283,7 +1283,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mozambique
   MM: {
     directUrl:
@@ -1291,7 +1291,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Myanmar
   NA: {
     directUrl:
@@ -1299,7 +1299,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Namibia
   NR: {
     directUrl:
@@ -1307,7 +1307,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nauru
   NP: {
     directUrl:
@@ -1315,7 +1315,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nepal
   NL: {
     directUrl:
@@ -1323,7 +1323,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Netherlands
   NZ: {
     directUrl:
@@ -1331,7 +1331,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // New Zealand
   NI: {
     directUrl:
@@ -1339,7 +1339,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nicaragua
   NE: {
     directUrl:
@@ -1347,7 +1347,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Niger
   NG: {
     directUrl:
@@ -1355,7 +1355,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nigeria
   MK: {
     directUrl:
@@ -1363,7 +1363,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // North Macedonia
   NO: {
     directUrl:
@@ -1371,7 +1371,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Norway
   OM: {
     directUrl:
@@ -1379,7 +1379,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Oman
   PK: {
     directUrl:
@@ -1387,7 +1387,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Pakistan
   PW: {
     directUrl:
@@ -1395,7 +1395,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palau
   PS: {
     directUrl:
@@ -1403,7 +1403,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palestine
   PA: {
     directUrl:
@@ -1411,7 +1411,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Panama
   PG: {
     directUrl:
@@ -1419,7 +1419,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Papua New Guinea
   PY: {
     directUrl:
@@ -1427,7 +1427,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Paraguay
   PE: {
     directUrl:
@@ -1435,7 +1435,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Peru
   PH: {
     directUrl:
@@ -1443,7 +1443,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Philippines
   PL: {
     directUrl:
@@ -1451,7 +1451,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Poland
   PT: {
     directUrl:
@@ -1459,7 +1459,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Portugal
   QA: {
     directUrl:
@@ -1467,7 +1467,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Qatar
   RO: {
     directUrl:
@@ -1475,7 +1475,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Romania
   RU: {
     directUrl:
@@ -1483,7 +1483,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Russian Federation
   RW: {
     directUrl:
@@ -1491,7 +1491,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Rwanda
   KN: {
     directUrl:
@@ -1499,7 +1499,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Kitts and Nevis
   LC: {
     directUrl:
@@ -1507,7 +1507,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Lucia
   VC: {
     directUrl:
@@ -1515,7 +1515,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   WS: {
     directUrl:
@@ -1523,7 +1523,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Samoa
   SM: {
     directUrl:
@@ -1531,7 +1531,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // San Marino
   ST: {
     directUrl:
@@ -1539,7 +1539,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sao Tome and Principe
   SA: {
     directUrl:
@@ -1547,7 +1547,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saudi Arabia
   SN: {
     directUrl:
@@ -1555,7 +1555,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Senegal
   RS: {
     directUrl:
@@ -1563,7 +1563,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Serbia
   SC: {
     directUrl:
@@ -1571,7 +1571,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Seychelles
   SL: {
     directUrl:
@@ -1579,7 +1579,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sierra Leone
   SG: {
     directUrl:
@@ -1587,7 +1587,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Singapore
   SK: {
     directUrl:
@@ -1595,7 +1595,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovakia
   SI: {
     directUrl:
@@ -1603,7 +1603,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovenia
   SB: {
     directUrl:
@@ -1611,7 +1611,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Solomon Islands
   SO: {
     directUrl:
@@ -1619,7 +1619,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Somalia
   ZA: {
     directUrl:
@@ -1627,7 +1627,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // South Africa
   ES: {
     directUrl:
@@ -1635,7 +1635,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Spain
   LK: {
     directUrl:
@@ -1643,7 +1643,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sri Lanka
   SD: {
     directUrl:
@@ -1651,7 +1651,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sudan
   SR: {
     directUrl:
@@ -1659,7 +1659,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Suriname
   SZ: {
     directUrl:
@@ -1667,7 +1667,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Swaziland (Eswatini)
   SE: {
     directUrl:
@@ -1675,7 +1675,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sweden
   CH: {
     directUrl:
@@ -1683,7 +1683,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Switzerland
   SY: {
     directUrl:
@@ -1691,7 +1691,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Syria
   TJ: {
     directUrl:
@@ -1699,7 +1699,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tajikistan
   TZ: {
     directUrl:
@@ -1707,7 +1707,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tanzania
   TH: {
     directUrl:
@@ -1715,7 +1715,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Thailand
   TL: {
     directUrl:
@@ -1723,7 +1723,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Timor-Leste
   TG: {
     directUrl:
@@ -1731,7 +1731,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Togo
   TO: {
     directUrl:
@@ -1739,7 +1739,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tonga
   TT: {
     directUrl:
@@ -1747,7 +1747,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Trinidad and Tobago
   TN: {
     directUrl:
@@ -1755,7 +1755,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tunisia
   TR: {
     directUrl:
@@ -1763,7 +1763,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkey
   TM: {
     directUrl:
@@ -1771,7 +1771,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkmenistan
   TV: {
     directUrl:
@@ -1779,7 +1779,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tuvalu
   UG: {
     directUrl:
@@ -1787,7 +1787,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uganda
   UA: {
     directUrl:
@@ -1795,7 +1795,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ukraine
   KM: {
     directUrl:
@@ -1803,7 +1803,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Union of the Comoros and Swaziland in Eswatini
   AE: {
     directUrl:
@@ -1811,7 +1811,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Arab Emirates
   GB: {
     directUrl:
@@ -1819,7 +1819,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Kingdom of Great Britain and Northern Ireland
   US: {
     directUrl:
@@ -1827,7 +1827,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United States of America
   UY: {
     directUrl:
@@ -1835,7 +1835,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uruguay
   UZ: {
     directUrl:
@@ -1843,7 +1843,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uzbekistan
   VU: {
     directUrl:
@@ -1851,7 +1851,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vanuatu
   VE: {
     directUrl:
@@ -1859,7 +1859,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Venezuela
   VN: {
     directUrl:
@@ -1867,7 +1867,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vietnam
   YE: {
     directUrl:
@@ -1875,7 +1875,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Yemen
   ZM: {
     directUrl:
@@ -1883,7 +1883,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zambia
   ZW: {
     directUrl:
@@ -1891,7 +1891,7 @@ export const MontenegroSources = {
     parentUrl:
       "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
     dateChecked: "2026-08-30",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zimbabwe
 } as const;
 
@@ -1912,1341 +1912,1341 @@ export const SerbiaSources = {
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/avganistan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Afghanistan
   AL: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/albanija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Albania
   DZ: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/alzir",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Algeria
   AD: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/andora",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Andorra
   AO: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/angola",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Angola
   AG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Antigua and Barbuda
   AR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Argentina
   AM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Armenia
   AU: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/australija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Australia
   AT: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Austria
   AZ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/azerbejdzan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Azerbaijan
   BS: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahami",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahamas
   BH: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahrain
   BD: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bangladesh
   BB: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/barbados",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Barbados
   BY: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belorusija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belarus
   BE: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belgium
   BZ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belize
   BJ: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Benin
   BT: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/butan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bhutan
   BO: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bolivija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bolivia
   BA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bosna-i-hercegovina",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BW: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bocvana",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Botswana
   BR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brazil",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brazil
   BN: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brunej-darusalam",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brunei Darussalam
   BG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bugarska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bulgaria
   BF: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burkina Faso
   BI: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burundi",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burundi
   CV: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kabo-verde",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cabo Verde
   KH: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kambodza",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cambodia
   CM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kamerun",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cameroon
   CA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kanada",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Canada
   CF: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/centralnoafricka-republika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Central African Republic
   TD: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cad",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chad
   CL: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cile",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chile
   CN: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // China
   CO: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kolumbija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Colombia
   CD: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-demokratska-republika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Congo, Democratic Republic
   CG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-republika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Congo, Republic
   CR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kostarika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Costa Rica
   CI: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kot-d-ivoar",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cote d’Ivoire
   HR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/hrvatska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Croatia
   CU: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuba",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cuba
   CY: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cyprus
   CZ: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ceska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Czech Republic
   DK: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/danska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Denmark
   DJ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dzibuti",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Djibouti
   DM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominica
   DO: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominican Republic
   EC: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvador",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ecuador
   EG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/egipat",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Egypt
   SV: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // El Salvador
   GQ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvatorijalna-gvineja",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Equatorial Guinea
   ER: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/eritreja",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eritrea
   EE: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/estonija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Estonia
   SZ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eswatini
   ET: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/etiopija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ethiopia
   FJ: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Fiji
   FI: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Finland
   FR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/francuska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // France
   GA: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gabon",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gabon
   GM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gambija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gambia
   GE: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gruzija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Georgia
   DE: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nemacka",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Germany
   GH: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gana",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ghana
   GR: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grcka",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Greece
   GD: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grenada",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Grenada
   GT: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvatemala",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guatemala
   GN: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-republika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea
   GW: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-bisao",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea-Bissau
   GY: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvajana",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guyana
   HT: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/haiti",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Haiti
   VA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-stolica",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Holy See
   HN: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/honduras",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Honduras
   HU: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hungary
   IS: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iceland
   IN: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // India
   ID: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Indonesia
   IR: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iran
   IQ: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iraq
   IE: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ireland
   IL: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/izrael",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Israel
   IT: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/italija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Italy
   JM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jamajka",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jamaica
   JP: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/japan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Japan
   JO: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jordan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jordan
   KZ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kazahstan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kazakhstan
   KE: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kenija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kenya
   KI: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kiribati
   KP: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea, DPR
   KR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea, Republic
   KW: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kuwait
   KG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kirgiska-republika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kyrgyzstan, Republic
   LA: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Laos
   LV: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/letonija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Latvia
   LB: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liban",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lebanon
   LS: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lesoto",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lesotho
   LR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liberija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liberia
   LY: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Libya
   LI: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lihtenstajn",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liechtenstein
   LT: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/litvanija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lithuania
   LU: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/luksemburg",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Luxembourg
   MG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Madagascar
   MW: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malavi",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malawi
   MY: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malezija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malaysia
   MV: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Maldives
   ML: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mali",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mali
   MT: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malta",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malta
   MH: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/marshall-islands",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Marshall Islands
   MR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritania",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritania
   MU: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritius",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritius
   MX: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/meksiko",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mexico
   FM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/micronesia",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Micronesia
   MD: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/moldavija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Moldova
   MC: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/monako",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Monaco
   MN: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mongolija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mongolia
   ME: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/crna-gora",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Montenegro
   MA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maroko",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Morocco
   MZ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mozambik",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mozambique
   MM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mjanmar",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Myanmar
   NA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/namibija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Namibia
   NR: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nauru",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nauru
   NP: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nepal",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nepal
   NL: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/holandija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Netherlands
   NZ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/novi-zeland",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // New Zealand
   NI: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nikaragva",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nicaragua
   NE: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/niger",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Niger
   NG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nigerija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nigeria
   MK: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/severna-makedonija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // North Macedonia
   NO: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/norveska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Norway
   OM: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/oman",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Oman
   PK: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/pakistan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Pakistan
   PW: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palau",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palau
   PS: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palestina",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palestine
   PA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/panama",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Panama
   PG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/papua-nova-gvineja",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Papua New Guinea
   PY: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Paraguay
   PE: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/peru",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Peru
   PH: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Philippines
   PL: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Poland
   PT: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Portugal
   QA: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/katar",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Qatar
   RO: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Romania
   RU: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruska-federacija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Russia
   RW: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruanda",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Rwanda
   KN: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sent-kits-i-nevis",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Kitts and Nevis
   LC: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-lucija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Lucia
   VC: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveti-vinsent-i-grenadini",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   WS: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/samoa",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Samoa
   SM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/san-marino",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // San Marino
   ST: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sao-tome-i-prinsipe",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sao Tome and Principe
   SA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/saudijska-arabija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saudi Arabia
   SN: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/senegal",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Senegal
   SC: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sejseli",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Seychelles
   SL: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sijera-leone",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sierra Leone
   SG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/singapur",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Singapore
   SK: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovacka",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovakia
   SI: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovenija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovenia
   SB: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/solomonova-ostrva",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Solomon Islands
   SO: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/somalija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Somalia
   ZA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzna-afrika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // South Africa
   SS: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzni-sudan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // South Sudan
   ES: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/spanija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Spain
   LK: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sri Lanka
   SD: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sudan
   SR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/surinam",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Suriname
   SE: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sweden
   CH: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Switzerland
   SY: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Syria, Arab Republic
   TJ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tadzikistan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tajikistan
   TZ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tanzanija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tanzania
   TH: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tajland",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Thailand
   TL: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/istocni-timor",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Timor-Leste
   TG: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Togo
   TO: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tonga
   TT: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/trinidad-i-tobago",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Trinidad and Tobago
   TN: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tunis",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tunisia
   TR: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkiye
   TM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkmenistan
   TV: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tuvalu
   UG: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uganda
   UA: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ukraine
   KM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Union of the Comoros
   AE: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Arab Emirates
   GB: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Kingdom
   US: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United States
   UY: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uruguay
   UZ: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uzbekistan
   VU: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vanuatu
   VE: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Venezuela
   VN: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vijetnam",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vietnam
   YE: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jemen",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Yemen
   ZM: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zambija",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zambia
   ZW: {
     directUrl:
       "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zimbabve",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zimbabwe
   HK: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hong Kong SAR — sub-row on China's page, no dedicated page
   MO: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Macao SAR — sub-row on China's page, no dedicated page
   TW: {
     directUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     parentUrl: "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
     dateChecked: "2026-08-31",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Taiwan — no dedicated page in the scrape; index page fallback
 } as const;
 
@@ -3255,1171 +3255,1171 @@ export const BosniaSources = {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Andorra
   AE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Afghanistan
   AG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Antigua and Barbuda
   AL: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Albania
   AM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Armenia
   AO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Angola
   AR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Argentina
   AT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Austria
   AU: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Australia
   AZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Azerbaijan
   BB: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Barbados
   BD: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bangladesh
   BE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belgium
   BF: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burkina Faso
   BG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bulgaria
   BH: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahrain
   BI: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burundi
   BJ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Benin
   BN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brunei
   BO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bolivia
   BR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brazil
   BS: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahamas
   BT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bhutan
   BW: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Botswana
   BY: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belarus
   BZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belize
   CA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Canada
   CD: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Congo (Democratic Republic)
   CF: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Central African Republic
   CG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Congo
   CH: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Switzerland
   CI: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cote d'Ivoire
   CL: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chile
   CM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cameroon
   CN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // China
   CO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Colombia
   CR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Costa Rica
   CU: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cuba
   CV: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cabo Verde
   CY: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cyprus
   CZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Czech Republic
   DE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Germany
   DJ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Djibouti
   DK: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Denmark
   DM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominica
   DO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Algeria
   EC: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ecuador
   EE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Estonia
   EG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Egypt
   ER: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eritrea
   ES: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Spain
   ET: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ethiopia
   FI: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Finland
   FJ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Fiji
   FM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Micronesia
   FR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // France
   GA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gabon
   GB: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Kingdom
   GD: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Grenada
   GE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Georgia
   GH: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ghana
   GM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gambia
   GN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea
   GQ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Equatorial Guinea
   GR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Greece
   GT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guatemala
   GW: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea-Bissau
   GY: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guyana
   HN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Honduras
   HR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Croatia
   HT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Haiti
   HU: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hungary
   ID: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Indonesia
   IE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ireland
   IL: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Israel
   IN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // India
   IQ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iraq
   IR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iran
   IS: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iceland
   IT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Italy
   JM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jamaica
   JO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jordan
   JP: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Japan
   KE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kenya
   KG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cambodia
   KI: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kiribati
   KM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Comoros
   KN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea (North)
   KR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea (South)
   KW: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kuwait
   KZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kazakhstan
   LA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Laos
   LB: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lebanon
   LC: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Lucia
   LI: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liechtenstein
   LK: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sri Lanka
   LR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liberia
   LS: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lesotho
   LT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lithuania
   LU: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Luxembourg
   LV: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Latvia
   LY: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Libya
   MA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Morocco
   MC: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Monaco
   MD: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Moldova
   ME: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Montenegro
   MG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Madagascar
   MH: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Marshall Islands
   MK: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // North Macedonia
   ML: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mali
   MM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Myanmar
   MN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mongolia
   MR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritania
   MT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malta
   MU: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritius
   MV: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Maldives
   MW: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malawi
   MX: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mexico
   MY: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malaysia
   MZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mozambique
   NA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Namibia
   NE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Niger
   NG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nigeria
   NI: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nicaragua
   NL: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Netherlands
   NO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Norway
   NP: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nepal
   NR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nauru
   NZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // New Zealand
   OM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Oman
   PA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Panama
   PE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Peru
   PG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Papua New Guinea
   PH: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Philippines
   PK: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Pakistan
   PL: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Poland
   PS: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palestine
   PT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Portugal
   PW: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palau
   PY: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Paraguay
   QA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Qatar
   RO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Romania
   RS: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Serbia
   RU: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Russia
   RW: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Rwanda
   SA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saudi Arabia
   SB: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Solomon Islands
   SC: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Seychelles
   SD: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sudan
   SE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sweden
   SG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Singapore
   SI: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovenia
   SK: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovakia
   SL: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sierra Leone
   SM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // San Marino
   SN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Senegal
   SO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Somalia
   SR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Suriname
   ST: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // El Salvador
   SY: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Syria
   SZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eswatini
   TD: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chad
   TG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Togo
   TH: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Thailand
   TJ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tajikistan
   TL: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Timor-Leste
   TM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkmenistan
   TN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tunisia
   TO: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tonga
   TR: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkiye
   TT: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Trinidad and Tobago
   TV: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tuvalu
   TW: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // TW
   TZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tanzania
   UA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ukraine
   UG: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uganda
   US: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United States
   UY: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uruguay
   UZ: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uzbekistan
   VA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Holy See (Vatican)
   VC: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   VE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Venezuela
   VN: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vietnam
   VU: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vanuatu
   WS: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Samoa
   XK: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // XK
   YE: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Yemen
   ZA: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // South Africa
   ZM: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zambia
   ZW: {
     directUrl: "https://www.mvp.gov.ba/en/vize",
     parentUrl: "https://www.mvp.gov.ba/en/vize",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zimbabwe
 } as const;
 
@@ -4439,619 +4439,619 @@ export const KosovoSources = {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Andorra
   AE: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Arab Emirates
   AG: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Antigua and Barbuda
   AL: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Albania
   AR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Argentina
   AT: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Austria
   AU: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Australia
   BB: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Barbados
   BE: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belgium
   BG: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bulgaria
   BH: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahrain
   BN: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brunei
   BR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brazil
   BS: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahamas
   BW: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Botswana
   BZ: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belize
   CA: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Canada
   CH: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Switzerland
   CL: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chile
   CO: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Colombia
   CR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Costa Rica
   CY: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cyprus
   CZ: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Czech Republic
   DE: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Germany
   DK: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Denmark
   DM: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominica
   EE: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Estonia
   ES: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Spain
   FI: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Finland
   FJ: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Fiji
   FM: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Micronesia
   FR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // France
   GB: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Kingdom
   GD: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Grenada
   GR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Greece
   GT: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guatemala
   GY: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guyana
   HN: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Honduras
   HR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Croatia
   HU: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hungary
   IE: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ireland
   IL: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Israel
   IS: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iceland
   IT: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Italy
   JO: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jordan
   JP: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Japan
   KI: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kiribati
   KN: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea (South)
   KW: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kuwait
   LC: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Lucia
   LI: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liechtenstein
   LS: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lesotho
   LT: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lithuania
   LU: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Luxembourg
   LV: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Latvia
   MC: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Monaco
   ME: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Montenegro
   MH: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Marshall Islands
   MK: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // North Macedonia
   MT: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malta
   MU: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritius
   MV: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Maldives
   MW: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malawi
   MX: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mexico
   MY: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malaysia
   NA: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Namibia
   NI: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nicaragua
   NL: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Netherlands
   NO: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Norway
   NR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nauru
   NZ: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // New Zealand
   OM: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Oman
   PA: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Panama
   PG: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Papua New Guinea
   PL: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Poland
   PT: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Portugal
   PW: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palau
   PY: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Paraguay
   QA: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Qatar
   RO: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Romania
   RS: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Serbia
   SA: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saudi Arabia
   SB: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Solomon Islands
   SC: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Seychelles
   SE: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sweden
   SK: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovakia
   SM: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // San Marino
   ST: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // El Salvador
   SZ: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eswatini
   TL: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Timor-Leste
   TO: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tonga
   TR: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkey
   TT: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Trinidad and Tobago
   TV: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tuvalu
   US: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United States
   UY: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uruguay
   VA: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vatican City
   VC: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   VE: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Venezuela
   VU: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vanuatu
   WS: {
     directUrl: "https://ambasadat.net/visas/",
     parentUrl: "https://ambasadat.net/visas/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Samoa
 } as const;
 
@@ -5064,7 +5064,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Andorra
   AE: {
     directUrl:
@@ -5072,7 +5072,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
     directUrl:
@@ -5080,7 +5080,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Afghanistan
   AG: {
     directUrl:
@@ -5088,7 +5088,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Antigua and Barbuda
   AL: {
     directUrl:
@@ -5096,7 +5096,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Albania
   AM: {
     directUrl:
@@ -5104,7 +5104,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Armenia
   AO: {
     directUrl:
@@ -5112,7 +5112,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Angola
   AR: {
     directUrl:
@@ -5120,7 +5120,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Argentina
   AT: {
     directUrl:
@@ -5128,7 +5128,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Austria
   AU: {
     directUrl:
@@ -5136,7 +5136,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Australia
   AZ: {
     directUrl:
@@ -5144,7 +5144,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Azerbaijan
   BA: {
     directUrl:
@@ -5152,7 +5152,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bosnia and Hercegovina
   BB: {
     directUrl:
@@ -5160,7 +5160,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Barbados
   BD: {
     directUrl:
@@ -5168,7 +5168,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bangladesh
   BE: {
     directUrl:
@@ -5176,7 +5176,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belgium
   BF: {
     directUrl:
@@ -5184,7 +5184,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burkina Faso
   BG: {
     directUrl:
@@ -5192,7 +5192,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bulgaria
   BH: {
     directUrl:
@@ -5200,7 +5200,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahrain
   BI: {
     directUrl:
@@ -5208,7 +5208,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burundi
   BJ: {
     directUrl:
@@ -5216,7 +5216,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Benin
   BN: {
     directUrl:
@@ -5224,7 +5224,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brunei Darussalam
   BO: {
     directUrl:
@@ -5232,7 +5232,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bolivia
   BR: {
     directUrl:
@@ -5240,7 +5240,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brazil
   BS: {
     directUrl:
@@ -5248,7 +5248,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahamas
   BT: {
     directUrl:
@@ -5256,7 +5256,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bhutan
   BW: {
     directUrl:
@@ -5264,7 +5264,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Botswana
   BY: {
     directUrl:
@@ -5272,7 +5272,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belarus
   BZ: {
     directUrl:
@@ -5280,7 +5280,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belize
   CA: {
     directUrl:
@@ -5288,7 +5288,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Canada
   CD: {
     directUrl:
@@ -5296,7 +5296,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // DR of the Congo
   CF: {
     directUrl:
@@ -5304,7 +5304,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Central African Republic
   CG: {
     directUrl:
@@ -5312,7 +5312,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Congo
   CH: {
     directUrl:
@@ -5320,7 +5320,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Switzerland
   CI: {
     directUrl:
@@ -5328,7 +5328,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Côte D'Ivoire
   CL: {
     directUrl:
@@ -5336,7 +5336,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chile
   CM: {
     directUrl:
@@ -5344,7 +5344,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cameroon
   CN: {
     directUrl:
@@ -5352,7 +5352,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // China
   CO: {
     directUrl:
@@ -5360,7 +5360,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Colombia
   CR: {
     directUrl:
@@ -5368,7 +5368,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Costa Rica
   CU: {
     directUrl:
@@ -5376,7 +5376,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cuba
   CV: {
     directUrl:
@@ -5384,7 +5384,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cabo Verde
   CY: {
     directUrl:
@@ -5392,7 +5392,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cyprus
   CZ: {
     directUrl:
@@ -5400,7 +5400,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Czechia
   DE: {
     directUrl:
@@ -5408,7 +5408,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Germany
   DJ: {
     directUrl:
@@ -5416,7 +5416,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Djibouti
   DK: {
     directUrl:
@@ -5424,7 +5424,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Denmark
   DM: {
     directUrl:
@@ -5432,7 +5432,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominica
   DO: {
     directUrl:
@@ -5440,7 +5440,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
     directUrl:
@@ -5448,7 +5448,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Algeria
   EC: {
     directUrl:
@@ -5456,7 +5456,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ecuador
   EE: {
     directUrl:
@@ -5464,7 +5464,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Estonia
   EG: {
     directUrl:
@@ -5472,7 +5472,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Egypt
   ER: {
     directUrl:
@@ -5480,7 +5480,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eritrea
   ES: {
     directUrl:
@@ -5488,7 +5488,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Spain
   ET: {
     directUrl:
@@ -5496,7 +5496,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ethiopia
   FI: {
     directUrl:
@@ -5504,7 +5504,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Finland
   FJ: {
     directUrl:
@@ -5512,7 +5512,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Fiji
   FM: {
     directUrl:
@@ -5520,7 +5520,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Micronesia - Federated States of
   FR: {
     directUrl:
@@ -5528,7 +5528,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // France
   GA: {
     directUrl:
@@ -5536,7 +5536,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gabon
   GB: {
     directUrl:
@@ -5544,7 +5544,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Kingdom
   GD: {
     directUrl:
@@ -5552,7 +5552,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Grenada
   GE: {
     directUrl:
@@ -5560,7 +5560,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Georgia
   GH: {
     directUrl:
@@ -5568,7 +5568,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ghana
   GM: {
     directUrl:
@@ -5576,7 +5576,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gambia
   GN: {
     directUrl:
@@ -5584,7 +5584,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea
   GQ: {
     directUrl:
@@ -5592,7 +5592,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Equatorial Guinea
   GR: {
     directUrl:
@@ -5600,7 +5600,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Greece
   GT: {
     directUrl:
@@ -5608,7 +5608,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guatemala
   GW: {
     directUrl:
@@ -5616,7 +5616,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea Bissau
   GY: {
     directUrl:
@@ -5624,7 +5624,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guyana
   HK: {
     directUrl:
@@ -5632,7 +5632,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hong Kong (SAR)
   HN: {
     directUrl:
@@ -5640,7 +5640,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Honduras
   HR: {
     directUrl:
@@ -5648,7 +5648,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Croatia
   HT: {
     directUrl:
@@ -5656,7 +5656,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Haiti
   HU: {
     directUrl:
@@ -5664,7 +5664,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hungary
   ID: {
     directUrl:
@@ -5672,7 +5672,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Indonesia
   IE: {
     directUrl:
@@ -5680,7 +5680,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ireland
   IL: {
     directUrl:
@@ -5688,7 +5688,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Israel
   IN: {
     directUrl:
@@ -5696,7 +5696,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // India
   IQ: {
     directUrl:
@@ -5704,7 +5704,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iraq
   IR: {
     directUrl:
@@ -5712,7 +5712,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iran
   IS: {
     directUrl:
@@ -5720,7 +5720,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iceland
   IT: {
     directUrl:
@@ -5728,7 +5728,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Italy
   JM: {
     directUrl:
@@ -5736,7 +5736,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jamaica
   JO: {
     directUrl:
@@ -5744,7 +5744,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jordan
   JP: {
     directUrl:
@@ -5752,7 +5752,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Japan
   KE: {
     directUrl:
@@ -5760,7 +5760,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kenya
   KG: {
     directUrl:
@@ -5768,7 +5768,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
     directUrl:
@@ -5776,7 +5776,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cambodia
   KI: {
     directUrl:
@@ -5784,7 +5784,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kiribati
   KM: {
     directUrl:
@@ -5792,7 +5792,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Comoros
   KN: {
     directUrl:
@@ -5800,7 +5800,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
     directUrl:
@@ -5808,7 +5808,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // North Korea
   KR: {
     directUrl:
@@ -5816,7 +5816,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Republic of Korea
   KW: {
     directUrl:
@@ -5824,7 +5824,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kuwait
   KZ: {
     directUrl:
@@ -5832,7 +5832,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kazakhstan
   LA: {
     directUrl:
@@ -5840,7 +5840,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lao People’s Democratic Republic
   LB: {
     directUrl:
@@ -5848,7 +5848,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lebanon
   LC: {
     directUrl:
@@ -5856,7 +5856,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Lucia
   LI: {
     directUrl:
@@ -5864,7 +5864,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liechtenstein
   LK: {
     directUrl:
@@ -5872,7 +5872,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sri Lanka
   LR: {
     directUrl:
@@ -5880,7 +5880,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liberia
   LS: {
     directUrl:
@@ -5888,7 +5888,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lesotho
   LT: {
     directUrl:
@@ -5896,7 +5896,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lithuania
   LU: {
     directUrl:
@@ -5904,7 +5904,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Luxembourg
   LV: {
     directUrl:
@@ -5912,7 +5912,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Latvia
   LY: {
     directUrl:
@@ -5920,7 +5920,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Libya
   MA: {
     directUrl:
@@ -5928,7 +5928,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Morocco
   MC: {
     directUrl:
@@ -5936,7 +5936,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Monaco
   MD: {
     directUrl:
@@ -5944,7 +5944,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Moldova
   ME: {
     directUrl:
@@ -5952,7 +5952,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Montenegro
   MG: {
     directUrl:
@@ -5960,7 +5960,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Madagascar
   MH: {
     directUrl:
@@ -5968,7 +5968,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Marshall Islands
   ML: {
     directUrl:
@@ -5976,7 +5976,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mali
   MM: {
     directUrl:
@@ -5984,7 +5984,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Myanmar
   MN: {
     directUrl:
@@ -5992,7 +5992,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mongolia
   MO: {
     directUrl:
@@ -6000,7 +6000,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Macao (SAR)
   MR: {
     directUrl:
@@ -6008,7 +6008,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritania
   MT: {
     directUrl:
@@ -6016,7 +6016,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malta
   MU: {
     directUrl:
@@ -6024,7 +6024,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritius
   MV: {
     directUrl:
@@ -6032,7 +6032,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Maldives
   MW: {
     directUrl:
@@ -6040,7 +6040,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malawi
   MX: {
     directUrl:
@@ -6048,7 +6048,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mexico
   MY: {
     directUrl:
@@ -6056,7 +6056,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malaysia
   MZ: {
     directUrl:
@@ -6064,7 +6064,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mozambique
   NA: {
     directUrl:
@@ -6072,7 +6072,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Namibia
   NE: {
     directUrl:
@@ -6080,7 +6080,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Niger
   NG: {
     directUrl:
@@ -6088,7 +6088,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nigeria
   NI: {
     directUrl:
@@ -6096,7 +6096,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nicaragua
   NL: {
     directUrl:
@@ -6104,7 +6104,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Netherlands
   NO: {
     directUrl:
@@ -6112,7 +6112,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Norway
   NP: {
     directUrl:
@@ -6120,7 +6120,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nepal
   NR: {
     directUrl:
@@ -6128,7 +6128,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nauru
   NZ: {
     directUrl:
@@ -6136,7 +6136,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // New Zealand
   OM: {
     directUrl:
@@ -6144,7 +6144,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Oman
   PA: {
     directUrl:
@@ -6152,7 +6152,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Panama
   PE: {
     directUrl:
@@ -6160,7 +6160,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Peru
   PG: {
     directUrl:
@@ -6168,7 +6168,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Papua New Guinea
   PH: {
     directUrl:
@@ -6176,7 +6176,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Philippines
   PK: {
     directUrl:
@@ -6184,7 +6184,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Pakistan
   PL: {
     directUrl:
@@ -6192,7 +6192,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Poland
   PT: {
     directUrl:
@@ -6200,7 +6200,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Portugal
   PW: {
     directUrl:
@@ -6208,7 +6208,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palau
   PY: {
     directUrl:
@@ -6216,7 +6216,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Paraguay
   QA: {
     directUrl:
@@ -6224,7 +6224,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Qatar
   RO: {
     directUrl:
@@ -6232,7 +6232,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Romania
   RS: {
     directUrl:
@@ -6240,7 +6240,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Serbia
   RU: {
     directUrl:
@@ -6248,7 +6248,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Russia
   RW: {
     directUrl:
@@ -6256,7 +6256,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Rwanda
   SA: {
     directUrl:
@@ -6264,7 +6264,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saudi Arabia
   SB: {
     directUrl:
@@ -6272,7 +6272,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Solomon Islands
   SC: {
     directUrl:
@@ -6280,7 +6280,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Seychelles
   SD: {
     directUrl:
@@ -6288,7 +6288,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sudan
   SE: {
     directUrl:
@@ -6296,7 +6296,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sweden
   SG: {
     directUrl:
@@ -6304,7 +6304,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Singapore
   SI: {
     directUrl:
@@ -6312,7 +6312,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovenia
   SK: {
     directUrl:
@@ -6320,7 +6320,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovakia
   SL: {
     directUrl:
@@ -6328,7 +6328,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sierra Leone
   SM: {
     directUrl:
@@ -6336,7 +6336,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // San Marino
   SN: {
     directUrl:
@@ -6344,7 +6344,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Senegal
   SO: {
     directUrl:
@@ -6352,7 +6352,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Somalia
   SR: {
     directUrl:
@@ -6360,7 +6360,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Suriname
   SS: {
     directUrl:
@@ -6368,7 +6368,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // South Sudan
   ST: {
     directUrl:
@@ -6376,7 +6376,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
     directUrl:
@@ -6384,7 +6384,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // El Salvador
   SY: {
     directUrl:
@@ -6392,7 +6392,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Syrian Arab Republic
   SZ: {
     directUrl:
@@ -6400,7 +6400,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eswatini
   TD: {
     directUrl:
@@ -6408,7 +6408,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chad
   TG: {
     directUrl:
@@ -6416,7 +6416,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Togo
   TH: {
     directUrl:
@@ -6424,7 +6424,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Thailand
   TJ: {
     directUrl:
@@ -6432,7 +6432,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tajikistan
   TL: {
     directUrl:
@@ -6440,7 +6440,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Timor-Leste
   TM: {
     directUrl:
@@ -6448,7 +6448,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkmenistan
   TN: {
     directUrl:
@@ -6456,7 +6456,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tunizi
   TO: {
     directUrl:
@@ -6464,7 +6464,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tonga
   TR: {
     directUrl:
@@ -6472,7 +6472,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkey
   TT: {
     directUrl:
@@ -6480,7 +6480,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Trinidad and Tobago
   TV: {
     directUrl:
@@ -6488,7 +6488,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tuvalu
   TW: {
     directUrl:
@@ -6496,7 +6496,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Taiwan
   TZ: {
     directUrl:
@@ -6504,7 +6504,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Republic of Tanzania
   UA: {
     directUrl:
@@ -6512,7 +6512,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ukraine
   UG: {
     directUrl:
@@ -6520,7 +6520,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uganda
   US: {
     directUrl:
@@ -6528,7 +6528,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // USA
   UY: {
     directUrl:
@@ -6536,7 +6536,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uruguay
   UZ: {
     directUrl:
@@ -6544,7 +6544,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uzbekistan
   VA: {
     directUrl:
@@ -6552,7 +6552,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vatican City
   VC: {
     directUrl:
@@ -6560,7 +6560,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   VE: {
     directUrl:
@@ -6568,7 +6568,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Venezuela, Bolivarian Republic of
   VN: {
     directUrl:
@@ -6576,7 +6576,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vietnam
   VU: {
     directUrl:
@@ -6584,7 +6584,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vanuatu
   WS: {
     directUrl:
@@ -6592,7 +6592,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Samoa
   XK: {
     directUrl:
@@ -6600,7 +6600,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kosovo
   YE: {
     directUrl:
@@ -6608,7 +6608,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Yemen
   ZA: {
     directUrl:
@@ -6616,7 +6616,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // South Africa
   ZM: {
     directUrl:
@@ -6624,7 +6624,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zambia
   ZW: {
     directUrl:
@@ -6632,7 +6632,7 @@ export const NorthMacedoniaSources = {
     parentUrl:
       "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zimbabwe
 } as const;
 
@@ -6644,1162 +6644,1162 @@ export const AlbaniaSources = {
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Andorra
   AE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Afghanistan
   AG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Antigua and Barbuda
   AM: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Armenia
   AO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Angola
   AR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Argentina
   AT: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Austria
   AU: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Australia
   AZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Azerbaijan
   BA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BB: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Barbados
   BD: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bangladesh
   BE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belgium
   BF: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Burkina Faso
   BG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bulgaria
   BH: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahrain
   BJ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Benin
   BN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brunei
   BO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bolivia
   BR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Brazil
   BS: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Bahamas
   BW: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Botswana
   BY: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belarus
   BZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Belize
   CA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Canada
   CG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Congo
   CH: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Switzerland
   CI: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cote d'Ivoire
   CL: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Chile
   CM: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cameroon
   CN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // China
   CO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Colombia
   CR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Costa Rica
   CU: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cuba
   CY: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cyprus
   CZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Czech Republic
   DE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Germany
   DK: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Denmark
   DO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Algeria
   EC: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ecuador
   EE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Estonia
   EG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Egypt
   ER: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Eritrea
   ES: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Spain
   ET: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ethiopia
   FI: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Finland
   FJ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Fiji
   FR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // France
   GA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Gabon
   GB: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United Kingdom
   GE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Georgia
   GH: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ghana
   GN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guinea
   GR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Greece
   GT: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guatemala
   GY: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Guyana
   HK: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hong Kong (SAR)
   HN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Honduras
   HR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Croatia
   HT: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Haiti
   HU: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Hungary
   ID: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Indonesia
   IE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ireland
   IL: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Israel
   IN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // India
   IQ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iraq
   IR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iran
   IS: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Iceland
   IT: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Italy
   JM: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jamaica
   JO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Jordan
   JP: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Japan
   KE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kenya
   KG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Cambodia
   KN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea (North)
   KR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Korea (South)
   KW: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kuwait
   KZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kazakhstan
   LB: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lebanon
   LI: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liechtenstein
   LK: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sri Lanka
   LR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Liberia
   LS: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lesotho
   LT: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Lithuania
   LU: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Luxembourg
   LV: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Latvia
   LY: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Libya
   MA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Morocco
   MC: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Monaco
   MD: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Moldova
   ME: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Montenegro
   MG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Madagascar
   MK: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // North Macedonia
   ML: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mali
   MN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mongolia
   MO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Macao (SAR)
   MR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritania
   MT: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malta
   MU: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mauritius
   MV: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Maldives
   MW: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malawi
   MX: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mexico
   MY: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Malaysia
   MZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Mozambique
   NA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Namibia
   NG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nigeria
   NI: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nicaragua
   NL: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Netherlands
   NO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Norway
   NP: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Nepal
   NZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // New Zealand
   OM: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Oman
   PA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Panama
   PE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Peru
   PH: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Philippines
   PK: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Pakistan
   PL: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Poland
   PS: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Palestine
   PT: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Portugal
   PY: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Paraguay
   QA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Qatar
   RO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Romania
   RS: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Serbia
   RU: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Russia
   RW: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Rwanda
   SA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Saudi Arabia
   SC: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Seychelles
   SD: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sudan
   SE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sweden
   SG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Singapore
   SI: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovenia
   SK: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Slovakia
   SL: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sierra Leone
   SM: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // San Marino
   SN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Senegal
   SO: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Somalia
   SR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Suriname
   ST: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // El Salvador
   SY: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Syria
   TG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Togo
   TH: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Thailand
   TJ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tajikistan
   TM: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkmenistan
   TN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tunisia
   TR: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Turkey
   TT: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Trinidad and Tobago
   TW: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Taiwan
   TZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Tanzania
   UA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Ukraine
   UG: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uganda
   US: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // United States
   UY: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uruguay
   UZ: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Uzbekistan
   VA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vatican City
   VE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Venezuela
   VN: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Vietnam
   XK: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Kosovo
   YE: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Yemen
   ZA: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // South Africa
   ZM: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zambia
   ZW: {
     directUrl:
       "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
     parentUrl: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
     dateChecked: "2026-09-04",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc, // Zimbabwe
 } as const;
 
@@ -7819,7 +7819,7 @@ export const CyprusSources = {
       "https://home-affairs.ec.europa.eu/document/download/ebd6113d-4d14-4ac2-ac9b-47f2e7976515_en?filename=Annex%201_en.pdf",
     parentUrl: "https://www.gov.cy/en/information/visas/",
     dateChecked: "2026-09-09",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 } as const;
 
@@ -7834,7 +7834,7 @@ export const BelarusSources = {
     directUrl: "https://mfa.gov.by/en/visa/general/",
     parentUrl: "https://mfa.gov.by/en/visa/general/",
     dateChecked: "2026-09-12",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -7847,7 +7847,7 @@ export const BelarusSources = {
     directUrl: "https://mfa.gov.by/en/visa/freemove/europe/",
     parentUrl: "https://mfa.gov.by/en/visa/freemove/",
     dateChecked: "2026-09-12",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -7861,7 +7861,7 @@ export const BelarusSources = {
     directUrl: "https://mfa.gov.by/en/visa/freemove/airport/",
     parentUrl: "https://mfa.gov.by/en/visa/freemove/",
     dateChecked: "2026-09-12",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 } as const;
 
@@ -7882,7 +7882,7 @@ export const GeorgiaSources = {
     directUrl: "https://geoconsul.gov.ge/en/entering-georgia-visa",
     parentUrl: "https://geoconsul.gov.ge/en/entering-georgia",
     dateChecked: "2026-09-13",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 } as const;
 
@@ -7899,7 +7899,7 @@ export const ArmeniaSources = {
     directUrl: "https://www.mfa.am/en/visafreelist",
     parentUrl: "https://www.mfa.am/en/visa/",
     dateChecked: "2026-09-14",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 
   /**
@@ -7912,6 +7912,6 @@ export const ArmeniaSources = {
     directUrl: "https://www.mfa.am/en/whoneedvisa",
     parentUrl: "https://www.mfa.am/en/visa/",
     dateChecked: "2026-09-14",
-    parseForRules: true,
+    parseForRules: false,
   } satisfies SourceDoc,
 } as const;

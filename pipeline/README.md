@@ -94,10 +94,14 @@ sync. A new region exported from `sources.ts` must also be added to
 
 ## What's flagged `parseForRules`
 
-The flag lives on `SourceDoc` in the app (`src/types/index.ts`) and is
-currently `true` on most entries. On the first real run, every flagged URL
-reports **first run (baseline captured)**. Diffs start from the second run,
-once that baseline PR is merged.
+The flag lives on `SourceDoc` in the app (`src/types/index.ts`). Content
+diffing currently covers **Schengen and UK only**: 9 entries, 9 URLs. UK
+`standardVisitor` stays off because it is guidance, not a statutory rule.
+Every other region is link-health only. Turn a source on once its page
+structure has been checked.
+
+On the first real run, every flagged URL reports **first run (baseline
+captured)**. Diffs start from the second run, once that baseline PR is merged.
 
 Expect some noise on that second run. Only the GOV.UK pages have been
 verified to expose a stable `#content` region. Other sites may carry
