@@ -120,10 +120,13 @@ deliberately cautious:
 - **Error detail:** errors carry the underlying cause, e.g.
   `fetch failed (ECONNRESET)` or `fetch failed (UND_ERR_CONNECT_TIMEOUT)`,
   not just `fetch failed`.
-- **Blocked:** an HTTP 202 with no page is reported `blocked`, not `live`.
-  That's how bot-protection challenges answer, though some sites in a
+- **Blocked:** an HTTP 403, or a 202 with no page, is reported `blocked`,
+  not `broken` or `live`. Public government pages answering 403 are refusing
+  automated clients (e.g. citizensinformation.ie from GitHub's runners), and
+  202 is how bot-protection challenges answer, though some sites in a
   degraded mode do the same. The link probably works for people, but we
-  couldn't confirm it.
+  couldn't confirm it; the reason names the server when it says (e.g.
+  Cloudflare).
 - **Site outages:** a redirect to a known outage page is reported `broken`,
   with the outage as the reason. While EUR-Lex is "temporarily not fully
   available" it sends every visitor to its Official Journal homepage
