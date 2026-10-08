@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T04:33:26.855Z",
+  "generatedAt": "2026-10-08T04:47:19.440Z",
   "regions": [
     {
       "region": "Schengen",
@@ -114,8 +114,9 @@
       "ruleChecks": [
         {
           "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "visaList"
           ],
@@ -123,8 +124,9 @@
         },
         {
           "url": "https://publications.europa.eu/resource/celex/02009R0810-20200202",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "atvCommon"
           ],
@@ -498,8 +500,9 @@
       "ruleChecks": [
         {
           "url": "https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "statutoryInstrument"
           ],
@@ -528,7 +531,7 @@
     "blockedLinks": 0,
     "sourcesChecked": 9,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 3,
+    "sourcesFirstRun": 0,
     "sourcesFetchError": 0
   }
 }
