@@ -30,6 +30,26 @@ function normalizeUrl(url: string): string {
   }
 }
 
+/**
+ * Redirect targets that mean "you were turned away", not "the page moved".
+ * EUR-Lex sends non-browser clients to its Official Journal homepage,
+ * keeping the requested ?uri= in the query string.
+ */
+const BLOCK_LANDINGS: { host: string; path: RegExp; reason: string }[] = [
+  { host: 'eur-lex.europa.eu', path: /^\/TodayOJ\//, reason: 'redirected to the Official Journal homepage (EUR-Lex bot protection)' },
+];
+
+function blockedReason(httpStatus: number, finalUrl: string): string | undefined {
+  // A 2xx with no content is how WAF JavaScript challenges answer (AWS WAF uses 202).
+  if (httpStatus === 202) return 'HTTP 202, likely a bot-protection challenge';
+  try {
+    const u = new URL(finalUrl);
+    return BLOCK_LANDINGS.find((b) => b.host === u.host && b.path.test(u.pathname))?.reason;
+  } catch {
+    return undefined;
+  }
+}
+
 function isRetryable(outcome: FetchOutcome): boolean {
   if (outcome.httpStatus === undefined) return true; // network error / timeout
   return outcome.httpStatus === 429 || outcome.httpStatus >= 500;
@@ -59,6 +79,11 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
     if (!res.ok) {
       await res.body?.cancel();
       return { status: 'broken', httpStatus: res.status, finalUrl, contentType };
+    }
+    const blocked = blockedReason(res.status, finalUrl);
+    if (blocked) {
+      await res.body?.cancel();
+      return { status: 'blocked', httpStatus: res.status, finalUrl, contentType, error: blocked };
     }
     const body = wantBody ? Buffer.from(await res.arrayBuffer()) : undefined;
     if (!wantBody) await res.body?.cancel();

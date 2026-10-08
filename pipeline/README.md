@@ -119,6 +119,13 @@ deliberately cautious:
 - **Error detail:** errors carry the underlying cause, e.g.
   `fetch failed (ECONNRESET)` or `fetch failed (UND_ERR_CONNECT_TIMEOUT)`,
   not just `fetch failed`.
+- **Blocked:** some sites answer automated clients with a bot-protection
+  response instead of the page. An HTTP 202 (a WAF JavaScript challenge), or
+  a redirect to a known "turned away" page such as EUR-Lex's `/TodayOJ/`
+  homepage, is reported as `blocked`, not `live` or `redirected`. The link
+  probably works for people, but we couldn't confirm it, and its content is
+  never diffed or saved as a baseline. Add new "turned away" pages to
+  `BLOCK_LANDINGS` in `src/fetchPage.ts`.
 - **Empty pages:** a parsed page with no extractable text (a bot-check
   interstitial or script-rendered shell) is reported as a fetch error. It is
   never saved as the baseline.

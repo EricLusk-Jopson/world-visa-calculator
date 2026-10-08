@@ -76,18 +76,19 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
 
   // Recheck pass: a slow or dropped connection mid-sweep shouldn't be
   // reported as a dead link. Every failure is retried once more, one request
-  // at a time, and only reported broken if it fails again.
-  const failed = urls.filter((url) => outcomeByUrl.get(url)!.status === 'broken');
+  // at a time, and only reported broken if it fails again. Blocked responses
+  // get the same second chance — a challenge can be rate-based.
+  const failed = urls.filter((url) => ['broken', 'blocked'].includes(outcomeByUrl.get(url)!.status));
   if (failed.length > 0) {
     log(`Rechecking ${failed.length} failed URL${failed.length === 1 ? '' : 's'} one at a time...`);
     let recovered = 0;
     for (const url of failed) {
       await new Promise((r) => setTimeout(r, recheckDelayMs));
       const retry = await fetchPage(url, parseUrls.has(url));
-      if (retry.status !== 'broken') recovered++;
+      if (retry.status === 'live' || retry.status === 'redirected') recovered++;
       outcomeByUrl.set(url, retry);
     }
-    log(`  ${recovered} recovered, ${failed.length - recovered} still broken`);
+    log(`  ${recovered} recovered, ${failed.length - recovered} still failing`);
   }
 
   // Content diff once per URL, shared by every region/key that cites it.

@@ -21,7 +21,13 @@ export type SourceField = 'directUrl' | 'parentUrl';
 /** One place a URL is cited from in sources.ts. */
 export type UrlUsage = { key: string; field: SourceField };
 
-export type LinkHealthStatus = 'live' | 'redirected' | 'broken';
+/**
+ * `blocked`: the server answered, but with a bot-protection response instead
+ * of the page (e.g. HTTP 202 challenge, or EUR-Lex's redirect to its
+ * Official Journal homepage). The link likely works in a browser; we just
+ * can't see it, so it is neither confirmed live nor broken.
+ */
+export type LinkHealthStatus = 'live' | 'redirected' | 'blocked' | 'broken';
 
 /**
  * Health of one unique URL within a region. Many SourceDoc entries can share

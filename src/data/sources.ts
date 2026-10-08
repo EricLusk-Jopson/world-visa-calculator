@@ -85,7 +85,7 @@ export const SchengenSources = {
     directUrl: "https://travel-europe.europa.eu/en/etias",
     parentUrl: "https://travel-europe.europa.eu/pub",
     dateChecked: "2026-05-27",
-    parseForRules: true,
+    parseForRules: false, // page is rendered client-side; plain fetches get no text
   } satisfies SourceDoc,
 } as const;
 

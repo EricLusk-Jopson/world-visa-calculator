@@ -24,6 +24,7 @@ const needsReviewLink = (l: LinkHealthResult) => l.status !== "live";
 const statusLabel: Record<string, string> = {
   live: "Live",
   redirected: "Redirected",
+  blocked: "Blocked",
   broken: "Broken",
   unchanged: "Unchanged",
   "text-changed": "Text changed",
@@ -36,6 +37,7 @@ const statusTone: Record<string, "ok" | "warn" | "bad" | "info"> = {
   live: "ok",
   unchanged: "ok",
   redirected: "warn",
+  blocked: "warn",
   "text-changed": "warn",
   "links-changed": "warn",
   "both-changed": "warn",
@@ -70,6 +72,7 @@ const tiles = s
       { label: "Links checked", value: s.totalLinksChecked, tone: "neutral" },
       { label: "Broken", value: s.brokenLinks, tone: s.brokenLinks ? "bad" : "neutral" },
       { label: "Redirected", value: s.redirectedLinks, tone: s.redirectedLinks ? "warn" : "neutral" },
+      { label: "Blocked", value: s.blockedLinks ?? 0, tone: s.blockedLinks ? "warn" : "neutral" },
       { label: "Sources diffed", value: s.sourcesChecked, tone: "neutral" },
       { label: "Changed", value: s.sourcesChanged, tone: s.sourcesChanged ? "warn" : "neutral" },
       { label: "Fetch errors", value: s.sourcesFetchError, tone: s.sourcesFetchError ? "bad" : "neutral" },
@@ -137,7 +140,7 @@ const generated = report
           <section class="section">
             <h2 class="section__title">Needs review</h2>
             {regionsWithFindings.length === 0 ? (
-              <p class="section__body">No broken links, redirects, content changes or fetch errors.</p>
+              <p class="section__body">No broken, redirected or blocked links, content changes or fetch errors.</p>
             ) : (
               regionsWithFindings.map((r) => (
                 <div class="card">

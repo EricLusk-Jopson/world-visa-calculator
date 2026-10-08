@@ -13,6 +13,8 @@ export type ReportSummary = {
   totalLinksChecked: number;
   brokenLinks: number;
   redirectedLinks: number;
+  /** Bot-protection responses: the link may work for people, but we can't verify it. Absent in older reports. */
+  blockedLinks?: number;
   /** Unique URLs parsed for content. */
   sourcesChecked: number;
   sourcesChanged: number;
@@ -36,7 +38,7 @@ export function isChanged(status: RuleCheckStatus): boolean {
 
 export function hasFindings(report: Report): boolean {
   const s = report.summary;
-  return s.brokenLinks > 0 || s.redirectedLinks > 0 || s.sourcesChanged > 0 || s.sourcesFetchError > 0;
+  return s.brokenLinks > 0 || s.redirectedLinks > 0 || (s.blockedLinks ?? 0) > 0 || s.sourcesChanged > 0 || s.sourcesFetchError > 0;
 }
 
 export function buildReport(
@@ -60,6 +62,7 @@ export function buildReport(
       totalLinksChecked: linkStatus.size,
       brokenLinks: countLinks('broken'),
       redirectedLinks: countLinks('redirected'),
+      blockedLinks: countLinks('blocked'),
       sourcesChecked: ruleStatus.size,
       sourcesChanged: countRules(isChanged),
       sourcesFirstRun: countRules((s) => s === 'first-run'),
@@ -72,6 +75,7 @@ export function statusBadge(status: LinkHealthStatus | RuleCheckStatus): string 
   switch (status) {
     case 'live': return '✅ live';
     case 'redirected': return '↪️ redirected';
+    case 'blocked': return '🚫 blocked';
     case 'broken': return '🔴 broken';
     case 'unchanged': return '✅ unchanged';
     case 'text-changed': return '✏️ text changed';
@@ -140,6 +144,7 @@ function renderSummary(lines: string[], report: Report): void {
   lines.push(`| Unique links checked | ${s.totalLinksChecked} |`);
   lines.push(`| 🔴 Broken | ${s.brokenLinks} |`);
   lines.push(`| ↪️ Redirected | ${s.redirectedLinks} |`);
+  lines.push(`| 🚫 Blocked (bot protection) | ${s.blockedLinks ?? 0} |`);
   lines.push(`| Content sources diffed (\`parseForRules\`) | ${s.sourcesChecked} |`);
   lines.push(`| ✏️ Changed since last baseline | ${s.sourcesChanged} |`);
   lines.push(`| 🆕 First run (no baseline yet) | ${s.sourcesFirstRun} |`);
@@ -223,7 +228,7 @@ export function renderPrBody(report: Report, options: { reportPath: string; page
   renderSummary(lines, report);
 
   if (!hasFindings(report)) {
-    lines.push('No broken links, redirects, content changes or fetch errors.');
+    lines.push('No broken, redirected or blocked links, content changes or fetch errors.');
     return lines.join('\n');
   }
 
