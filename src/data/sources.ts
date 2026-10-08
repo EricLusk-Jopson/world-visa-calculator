@@ -269,14 +269,11 @@ export const IrelandSources = {
         "https://www.irishimmigration.ie/visa-non-visa-required-nationalities/",
       type: "direct",
       // The table on this page is filled in by an AJAX call, so a plain
-      // fetch can't see it; the ISD's other nationalities page is diffed.
+      // fetch can't see it. (The ISD's other nationalities page,
+      // /immigration-service-delivery-visa-and-non-visa-required-nationalities/,
+      // is password-protected, so it can't stand in.) Needs the AJAX data
+      // URL as a machine alternate to be diffed.
       checkDiff: false,
-      alternate: {
-        url:
-          "https://www.irishimmigration.ie/immigration-service-delivery-visa-and-non-visa-required-nationalities/",
-        type: "machine",
-        checkDiff: true,
-      },
     },
     parent: {
       url: "https://www.irishimmigration.ie/coming-to-visit-ireland/",
