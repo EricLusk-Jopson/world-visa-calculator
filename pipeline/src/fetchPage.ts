@@ -15,10 +15,18 @@ export type FetchOutcome = {
   body?: Buffer;
 };
 
-/** fetch() never sends the #fragment, so res.url never has one — don't call that a redirect. */
-function withoutHash(url: string): string {
-  const i = url.indexOf('#');
-  return i === -1 ? url : url.slice(0, i);
+/**
+ * fetch() normalizes the URL it reports (drops the #fragment, adds "/" to a
+ * bare origin), so compare normalized forms — neither is a real redirect.
+ */
+function normalizeUrl(url: string): string {
+  try {
+    const u = new URL(url);
+    u.hash = '';
+    return u.href;
+  } catch {
+    return url;
+  }
 }
 
 function isRetryable(outcome: FetchOutcome): boolean {
@@ -42,7 +50,7 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
     }
     const body = wantBody ? Buffer.from(await res.arrayBuffer()) : undefined;
     if (!wantBody) await res.body?.cancel();
-    const status: LinkHealthStatus = withoutHash(finalUrl) !== withoutHash(url) ? 'redirected' : 'live';
+    const status: LinkHealthStatus = normalizeUrl(finalUrl) !== normalizeUrl(url) ? 'redirected' : 'live';
     return { status, httpStatus: res.status, finalUrl, contentType, body };
   } catch (err) {
     return { status: 'broken', error: err instanceof Error ? err.message : String(err) };

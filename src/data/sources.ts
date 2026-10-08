@@ -88,8 +88,8 @@ export const SchengenSources = {
    * is not applicable until ETIAS launches.
    */
   etias: {
-    directUrl: "https://travel-europe.europa.eu/etias_en",
-    parentUrl: "https://travel-europe.europa.eu",
+    directUrl: "https://travel-europe.europa.eu/en/etias",
+    parentUrl: "https://travel-europe.europa.eu/pub",
     dateChecked: "2026-05-27",
     parseForRules: true,
   } satisfies SourceDoc,
@@ -164,8 +164,7 @@ export const UKSources = {
    * PreTravelAuth constant in uk.ts.
    */
   etaApplication: {
-    directUrl:
-      "https://www.gov.uk/apply-for-an-electronic-travel-authorisation-eta",
+    directUrl: "https://www.gov.uk/eta/apply",
     parentUrl: "https://www.gov.uk/eta",
     dateChecked: "2026-04-14",
     parseForRules: true,
