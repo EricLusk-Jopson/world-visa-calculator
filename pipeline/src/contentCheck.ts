@@ -17,11 +17,51 @@ function isHtml(contentType: string): boolean {
 }
 
 /**
+ * Keys whose values change on every request without the content changing:
+ * Solr's response header (query time, echoed params) and per-document index
+ * versions. Dropped before diffing so they don't show up as monthly "changes".
+ */
+const VOLATILE_JSON_KEYS = new Set(['responseHeader', 'QTime', '_version_']);
+
+/** Sorts object keys and drops volatile ones, so equal data serializes equally. */
+function canonicalJson(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonicalJson);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.keys(value)
+        .filter((k) => !VOLATILE_JSON_KEYS.has(k))
+        .sort()
+        .map((k) => [k, canonicalJson((value as Record<string, unknown>)[k])]),
+    );
+  }
+  return value;
+}
+
+/**
+ * Machine-readable alternates (e.g. a Solr search API) often answer JSON,
+ * sometimes labelled text/plain. Returns the parsed value, or undefined.
+ */
+function parseJson(body: Buffer, contentType: string): unknown {
+  if (!/json|javascript|text\/plain/i.test(contentType)) return undefined;
+  try {
+    return JSON.parse(body.toString('utf-8'));
+  } catch {
+    return undefined;
+  }
+}
+
+/**
  * Reduces a fetched page to what we diff: block-level text and outbound
- * links inside the main content region. Non-HTML bodies (PDFs) can't be
- * meaningfully text-diffed here, so they're tracked by content hash only.
+ * links inside the main content region. JSON is pretty-printed (sorted keys,
+ * volatile keys dropped) so it diffs line by line. Other non-HTML bodies
+ * (PDFs) can't be meaningfully text-diffed here, so they're tracked by
+ * content hash only.
  */
 export function extractSnapshot(body: Buffer, contentType: string, url: string): ContentSnapshot {
+  const json = parseJson(body, contentType);
+  if (json !== undefined) {
+    return { url, contentType, updatedAt: null, text: JSON.stringify(canonicalJson(json), null, 2), links: [] };
+  }
   if (!isHtml(contentType)) {
     const hash = createHash('sha256').update(body).digest('hex');
     return { url, contentType, updatedAt: null, text: `sha256:${hash}`, links: [] };

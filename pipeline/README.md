@@ -31,7 +31,11 @@ below.
      identical. A pure text diff would report nothing; this reports a
      `target-changed` link.
 
-   Non-HTML responses such as PDFs are tracked by SHA-256 hash only.
+   JSON responses (e.g. a search API used as a `machine` alternate, even
+   when served as `text/plain`) are pretty-printed with sorted keys and
+   diffed line by line. Keys that change on every request without the data
+   changing (`responseHeader`, `QTime`, `_version_`) are dropped first. Other
+   non-HTML responses such as PDFs are tracked by SHA-256 hash only.
    Snapshots are stored per URL in `data/snapshots/<host>/<hash>.json`.
 3. **Report.** One standardized report per run, broken down **by region,
    then by link**, with health results before diffing results. It is
