@@ -9,9 +9,9 @@ below.
 ## What it does, per run
 
 1. **Link health.** Every `directUrl` and `parentUrl` in the app's
-   `src/data/sources.ts`, across every region, is fetched and classified
-   `live` / `redirected` / `broken` (30s timeout, one retry on network
-   errors, 429 and 5xx). Each unique URL is fetched **once per run**,
+   `src/data/sources.ts`, in every region with `checkLinks: true`, is
+   fetched and classified `live` / `redirected` / `broken` (see "Fetching
+   and flaky connections" below). Each unique URL is fetched **once per run**,
    however many entries cite it. Bosnia, Kosovo, North Macedonia and Albania
    each point ~100–200 `SourceDoc` entries at a single page, so ~1,080
    entries come down to ~440 requests. The report lists each URL once, with
@@ -66,10 +66,15 @@ permissions → "Allow GitHub Actions to create and approve pull requests"**.
 cd pipeline
 npm install
 
-# Real run: fetches every sources.ts URL, updates data/snapshots/, writes reports/.
+# Real run over regions with checkLinks: true. Updates data/snapshots/ and writes reports/.
 # Needs open network egress to gov.uk, eur-lex.europa.eu, gov.me, etc.
-# Add `-- --fail-on-findings` to exit non-zero when anything needs review.
 npm run check
+
+# Every region, ignoring checkLinks (what the monthly schedule runs).
+npm run check -- --all
+
+# Exit non-zero when anything needs review (combines with --all).
+npm run check -- --fail-on-findings
 
 # Offline proof: serves fixtures/run1 then fixtures/run2 from a local server
 # and runs the same pipeline code against both, simulating "this month" vs
@@ -81,8 +86,42 @@ npm run typecheck
 
 The pipeline imports `src/data/sources.ts` directly, using the `@/` alias
 mapped in `tsconfig.json` and resolved by `tsx`. There is no copy to keep in
-sync. A new region exported from `sources.ts` must also be added to
-`ALL_REGIONS` in `src/checkAll.ts`.
+sync.
+
+## Choosing which regions run: `checkLinks`
+
+`SourceRegions`, at the bottom of `src/data/sources.ts`, lists every region
+with a `checkLinks` flag. A new region must be added there to be checked.
+`checkLinks: false` skips the region entirely: no link health and no
+content diffing. Skipped regions are named in the report.
+
+The flag exists so local runs can stay small while you iterate (a full sweep
+is ~440 URLs). Right now only Schengen and UK are on.
+
+- The **scheduled** monthly workflow always passes `--all`, so the flag never
+  silently drops a region from production monitoring.
+- A **manual** run (Actions → Source check → Run workflow) honours the flags
+  unless you tick **all_regions**.
+
+## Fetching and flaky connections
+
+A dropped connection shouldn't show up as a dead link, so fetching is
+deliberately cautious:
+
+- **Concurrency:** at most 8 requests in flight overall and 2 per host.
+  URLs are interleaved across hosts so Serbia's ~195 `mfa.gov.rs` pages
+  aren't fetched back to back.
+- **Timeouts and retries:** a 30s timeout per request. Network errors,
+  timeouts, 429 and 5xx are retried twice, after 2s and 6s.
+- **Recheck pass:** after the sweep, every URL that still failed is fetched
+  once more, one at a time with a 1s gap. It's reported `broken` only if it
+  fails again; a 404 is a 404 either way.
+- **Error detail:** errors carry the underlying cause, e.g.
+  `fetch failed (ECONNRESET)` or `fetch failed (UND_ERR_CONNECT_TIMEOUT)`,
+  not just `fetch failed`.
+- **Empty pages:** a parsed page with no extractable text (a bot-check
+  interstitial or script-rendered shell) is reported as a fetch error. It is
+  never saved as the baseline.
 
 `npm run demo` exercises every outcome end to end:
 

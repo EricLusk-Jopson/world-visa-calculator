@@ -3,7 +3,8 @@ import type { LinkHealthStatus } from './types';
 const USER_AGENT =
   'EuroVisaCalculator-SourceMonitor/1.0 (+https://eurovisacalculator.com; monthly source check)';
 const TIMEOUT_MS = 30_000;
-const RETRY_DELAY_MS = 3_000;
+/** Waits before each retry of a transient failure (network, timeout, 429, 5xx). */
+const RETRY_DELAYS_MS = [2_000, 6_000];
 
 export type FetchOutcome = {
   status: LinkHealthStatus;
@@ -34,6 +35,17 @@ function isRetryable(outcome: FetchOutcome): boolean {
   return outcome.httpStatus === 429 || outcome.httpStatus >= 500;
 }
 
+/**
+ * undici reports every network failure as "fetch failed"; the useful part
+ * (ECONNRESET, UND_ERR_CONNECT_TIMEOUT, ENOTFOUND, …) is on err.cause.
+ */
+function describeError(err: unknown): string {
+  if (!(err instanceof Error)) return String(err);
+  const cause = err.cause as { code?: string; message?: string } | undefined;
+  const detail = cause?.code ?? cause?.message;
+  return detail && !err.message.includes(detail) ? `${err.message} (${detail})` : err.message;
+}
+
 async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> {
   try {
     const res = await fetch(url, {
@@ -53,16 +65,38 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
     const status: LinkHealthStatus = normalizeUrl(finalUrl) !== normalizeUrl(url) ? 'redirected' : 'live';
     return { status, httpStatus: res.status, finalUrl, contentType, body };
   } catch (err) {
-    return { status: 'broken', error: err instanceof Error ? err.message : String(err) };
+    return { status: 'broken', error: describeError(err) };
   }
 }
 
-/** GET with a timeout and one retry for transient failures (network, 429, 5xx). */
+/** GET with a timeout, retrying transient failures (network, 429, 5xx) with backoff. */
 export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOutcome> {
-  const first = await fetchOnce(url, wantBody);
-  if (first.status !== 'broken' || !isRetryable(first)) return first;
-  await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
-  return fetchOnce(url, wantBody);
+  let outcome = await fetchOnce(url, wantBody);
+  for (const delay of RETRY_DELAYS_MS) {
+    if (outcome.status !== 'broken' || !isRetryable(outcome)) break;
+    await new Promise((r) => setTimeout(r, delay));
+    outcome = await fetchOnce(url, wantBody);
+  }
+  return outcome;
+}
+
+/** Returns a function that runs tasks with at most `limit` in flight. */
+export function createLimiter(limit: number): <T>(task: () => Promise<T>) => Promise<T> {
+  let active = 0;
+  const queue: (() => void)[] = [];
+  return async (task) => {
+    // A finishing task hands its slot straight to the next waiter, so a new
+    // caller can never slip in between and push `active` past the limit.
+    if (active >= limit) await new Promise<void>((resolve) => queue.push(resolve));
+    else active++;
+    try {
+      return await task();
+    } finally {
+      const next = queue.shift();
+      if (next) next();
+      else active--;
+    }
+  };
 }
 
 /** Runs `fn` over `items` with at most `limit` in flight, preserving order. */

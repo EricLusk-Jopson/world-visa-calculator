@@ -121,6 +121,11 @@ const generated = report
                 </div>
               ))}
             </div>
+            {report.skippedRegions && report.skippedRegions.length > 0 && (
+              <p class="section__note">
+                Not checked this run (<code>checkLinks: false</code>): {report.skippedRegions.join(", ")}.
+              </p>
+            )}
             {s && s.sourcesFirstRun > 0 && (
               <p class="section__note">
                 {s.sourcesFirstRun} source{s.sourcesFirstRun === 1 ? "" : "s"} had no previous snapshot; a baseline was

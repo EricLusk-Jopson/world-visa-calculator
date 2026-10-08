@@ -177,6 +177,20 @@ export interface SourceDoc {
 }
 
 /**
+ * One region's entry in the SourceRegions registry (@/data/sources), read by
+ * the source verification pipeline (pipeline/).
+ */
+export interface SourceRegion {
+  sources: Record<string, SourceDoc>;
+  /**
+   * Whether the pipeline checks this region at all (link health and, for
+   * parseForRules entries, content diffing). Set false to iterate on a
+   * subset of regions; `npm run check -- --all` overrides it.
+   */
+  checkLinks: boolean;
+}
+
+/**
  * An advisory note on a PassportRule or RegionRule.
  * source is optional to allow computed default notes that describe rule
  * mechanics rather than citing a specific document.

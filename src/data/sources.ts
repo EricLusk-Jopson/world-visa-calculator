@@ -9,17 +9,11 @@
  * reference properties by name — no URL string may appear inline in a region
  * file. When a URL changes, update it here; all region files pick it up.
  *
- * ── Cron job usage ────────────────────────────────────────────────────────────
+ * ── Source verification pipeline ──────────────────────────────────────────────
  *
- * import { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources, GeorgiaSources, ArmeniaSources } from '@/data/sources';
- *
- * const allRegions = { SchengenSources, UKSources, IrelandSources, TurkiyeSources, MontenegroSources, SerbiaSources, BosniaSources, KosovoSources, NorthMacedoniaSources, AlbaniaSources, CyprusSources, BelarusSources, GeorgiaSources, ArmeniaSources };
- * for (const [regionName, sources] of Object.entries(allRegions)) {
- *   for (const [sourceName, doc] of Object.entries(sources)) {
- *     await checkUrl(doc.directUrl,  `${regionName}.${sourceName}.directUrl`);
- *     await checkUrl(doc.parentUrl,  `${regionName}.${sourceName}.parentUrl`);
- *   }
- * }
+ * `SourceRegions` at the bottom of this file lists every region for the
+ * pipeline in pipeline/ (link health + content diffing). Each region has a
+ * `checkLinks` flag; each entry has `parseForRules`. See pipeline/README.md.
  *
  * ── Maintenance ───────────────────────────────────────────────────────────────
  *
@@ -32,7 +26,7 @@
  * Last updated: 2026-09-04
  */
 
-import type { SourceDoc } from "@/types";
+import type { SourceDoc, SourceRegion } from "@/types";
 
 // ─── Schengen ─────────────────────────────────────────────────────────────────
 
@@ -7914,3 +7908,31 @@ export const ArmeniaSources = {
     parseForRules: false,
   } satisfies SourceDoc,
 } as const;
+
+// ─── Region registry ──────────────────────────────────────────────────────────
+
+/**
+ * Every region's sources, as checked by the source verification pipeline
+ * (pipeline/). A region exported above must be listed here to be checked.
+ *
+ * `checkLinks: false` skips the region entirely — no link health, no content
+ * diffing — to keep local runs fast while iterating on a subset. Run
+ * `npm run check -- --all` in pipeline/ to check every region regardless;
+ * the scheduled monthly workflow always does.
+ */
+export const SourceRegions = {
+  Schengen: { sources: SchengenSources, checkLinks: true },
+  UK: { sources: UKSources, checkLinks: true },
+  Ireland: { sources: IrelandSources, checkLinks: false },
+  Turkiye: { sources: TurkiyeSources, checkLinks: false },
+  Montenegro: { sources: MontenegroSources, checkLinks: false },
+  Serbia: { sources: SerbiaSources, checkLinks: false },
+  Bosnia: { sources: BosniaSources, checkLinks: false },
+  Kosovo: { sources: KosovoSources, checkLinks: false },
+  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: false },
+  Albania: { sources: AlbaniaSources, checkLinks: false },
+  Cyprus: { sources: CyprusSources, checkLinks: false },
+  Belarus: { sources: BelarusSources, checkLinks: false },
+  Georgia: { sources: GeorgiaSources, checkLinks: false },
+  Armenia: { sources: ArmeniaSources, checkLinks: false },
+} satisfies Record<string, SourceRegion>;

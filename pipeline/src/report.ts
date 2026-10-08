@@ -23,6 +23,8 @@ export type ReportSummary = {
 export type Report = {
   generatedAt: string;
   regions: RegionReport[];
+  /** Regions left out of this run (`checkLinks: false`). Absent in older reports. */
+  skippedRegions?: string[];
   summary: ReportSummary;
 };
 
@@ -37,7 +39,10 @@ export function hasFindings(report: Report): boolean {
   return s.brokenLinks > 0 || s.redirectedLinks > 0 || s.sourcesChanged > 0 || s.sourcesFetchError > 0;
 }
 
-export function buildReport(regions: RegionReport[], generatedAt = new Date()): Report {
+export function buildReport(
+  regions: RegionReport[],
+  { skippedRegions = [], generatedAt = new Date() }: { skippedRegions?: string[]; generatedAt?: Date } = {},
+): Report {
   const linkStatus = new Map<string, LinkHealthStatus>();
   const ruleStatus = new Map<string, RuleCheckStatus>();
   for (const r of regions) {
@@ -50,6 +55,7 @@ export function buildReport(regions: RegionReport[], generatedAt = new Date()): 
   return {
     generatedAt: generatedAt.toISOString(),
     regions,
+    skippedRegions,
     summary: {
       totalLinksChecked: linkStatus.size,
       brokenLinks: countLinks('broken'),
@@ -139,6 +145,10 @@ function renderSummary(lines: string[], report: Report): void {
   lines.push(`| 🆕 First run (no baseline yet) | ${s.sourcesFirstRun} |`);
   lines.push(`| ⚠️ Fetch errors | ${s.sourcesFetchError} |`);
   lines.push('');
+  if (report.skippedRegions && report.skippedRegions.length > 0) {
+    lines.push(`Not checked this run (\`checkLinks: false\`): ${report.skippedRegions.join(', ')}.`);
+    lines.push('');
+  }
 }
 
 /**

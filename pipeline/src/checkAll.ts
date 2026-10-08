@@ -1,50 +1,35 @@
 import { join } from 'node:path';
-import {
-  SchengenSources,
-  UKSources,
-  IrelandSources,
-  TurkiyeSources,
-  MontenegroSources,
-  SerbiaSources,
-  BosniaSources,
-  KosovoSources,
-  NorthMacedoniaSources,
-  AlbaniaSources,
-  CyprusSources,
-  BelarusSources,
-  GeorgiaSources,
-  ArmeniaSources,
-} from '@/data/sources';
+import { SourceRegions } from '@/data/sources';
 import { runChecks, type RegionSources } from './runChecks';
 import { buildReport, hasFindings, writeReportFiles } from './report';
 
-// Reads the app's real sources.ts — adding a region there means adding it here.
-const ALL_REGIONS: RegionSources = {
-  Schengen: SchengenSources,
-  UK: UKSources,
-  Ireland: IrelandSources,
-  Turkiye: TurkiyeSources,
-  Montenegro: MontenegroSources,
-  Serbia: SerbiaSources,
-  Bosnia: BosniaSources,
-  Kosovo: KosovoSources,
-  NorthMacedonia: NorthMacedoniaSources,
-  Albania: AlbaniaSources,
-  Cyprus: CyprusSources,
-  Belarus: BelarusSources,
-  Georgia: GeorgiaSources,
-  Armenia: ArmeniaSources,
-};
-
 const PIPELINE_ROOT = join(import.meta.dirname, '..');
 
+/**
+ * Regions to check, from the SourceRegions registry in the app's sources.ts.
+ * `checkLinks: false` regions are skipped unless `--all` is passed.
+ */
+function selectRegions(all: boolean): { regions: RegionSources; skipped: string[] } {
+  const regions: RegionSources = {};
+  const skipped: string[] = [];
+  for (const [name, { sources, checkLinks }] of Object.entries(SourceRegions)) {
+    if (all || checkLinks) regions[name] = sources;
+    else skipped.push(name);
+  }
+  return { regions, skipped };
+}
+
 async function main() {
-  const regionReports = await runChecks(ALL_REGIONS, {
+  const { regions, skipped } = selectRegions(process.argv.includes('--all'));
+  console.log(`Checking: ${Object.keys(regions).join(', ') || '(none)'}`);
+  if (skipped.length > 0) console.log(`Skipping (checkLinks: false): ${skipped.join(', ')}`);
+
+  const regionReports = await runChecks(regions, {
     snapshotDir: join(PIPELINE_ROOT, 'data', 'snapshots'),
     log: console.log,
   });
 
-  const report = buildReport(regionReports);
+  const report = buildReport(regionReports, { skippedRegions: skipped });
   const { markdownPath, jsonPath, prBodyPath } = writeReportFiles(report, join(PIPELINE_ROOT, 'reports'), {
     reportPath: 'pipeline/reports/latest.md',
     pagePath: '/source-report',
