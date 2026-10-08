@@ -361,6 +361,14 @@ export const IrelandSources = {
    * Irish Statute Book — S.I. No. 473 of 2014.
    * The statutory instrument defining Ireland's visa category schedules
    * (Schedules 1–5). Legal ground truth underlying the INIS nationality table.
+   *
+   * The direct link is the Order as made in 2014; it is not consolidated, so
+   * amendments (e.g. the (No. 2) Order 2026 moving Nicaragua, Saint Kitts and
+   * Nevis and Saint Lucia to Schedule 5) never appear there. The parent is a
+   * title search that lists each "Immigration Act 2004 (Visas) (Amendment)"
+   * Order as it's made — that's what is diffed, so a new amendment shows up
+   * as an added link. (The INIS nationality table is filled in by an AJAX
+   * call, so it can't be diffed with a plain fetch.)
    */
   statutoryInstrument: {
     direct: {
@@ -369,9 +377,9 @@ export const IrelandSources = {
       checkDiff: false,
     },
     parent: {
-      url: "https://www.irishstatutebook.ie/eli/2014/si/473",
+      url: "https://www.irishstatutebook.ie/eli/ResultsTitle.html?q=Immigration+Act",
       type: "parent",
-      checkDiff: false,
+      checkDiff: true,
     },
     dateChecked: "2026-05-27",
   } satisfies SourceDoc,
