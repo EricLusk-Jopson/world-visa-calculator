@@ -59,8 +59,15 @@ function outageReason(finalUrl: string): string | undefined {
  * 202), but some sites in a degraded mode answer the same way, so it's
  * reported as blocked (unverified) rather than as either.
  */
-function blockedReason(httpStatus: number): string | undefined {
+function blockedReason(httpStatus: number, headers: Headers): string | undefined {
   if (httpStatus === 202) return 'HTTP 202 with no page: bot-protection challenge or site in degraded mode';
+  // A public government page answering 403 is refusing *us* (datacenter IP,
+  // non-browser client), not saying the page is gone — people can still open it.
+  if (httpStatus === 403) {
+    const server = headers.get('server');
+    const challenge = headers.get('cf-mitigated') === 'challenge' ? ', Cloudflare challenge' : '';
+    return `HTTP 403: site refused automated access${server ? ` (server: ${server}${challenge})` : ''}`;
+  }
   return undefined;
 }
 
@@ -96,6 +103,11 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
     });
     const finalUrl = res.url || url;
     const contentType = res.headers.get('content-type') ?? '';
+    const blocked = blockedReason(res.status, res.headers);
+    if (blocked) {
+      await res.body?.cancel();
+      return { status: 'blocked', httpStatus: res.status, finalUrl, contentType, error: blocked };
+    }
     if (!res.ok) {
       await res.body?.cancel();
       return { status: 'broken', httpStatus: res.status, finalUrl, contentType };
@@ -104,11 +116,6 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
     if (outage) {
       await res.body?.cancel();
       return { status: 'broken', httpStatus: res.status, finalUrl, contentType, error: outage };
-    }
-    const blocked = blockedReason(res.status);
-    if (blocked) {
-      await res.body?.cancel();
-      return { status: 'blocked', httpStatus: res.status, finalUrl, contentType, error: blocked };
     }
     const body = wantBody ? Buffer.from(await res.arrayBuffer()) : undefined;
     if (!wantBody) await res.body?.cancel();
