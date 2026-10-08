@@ -14992,7 +14992,7 @@ export const ArmeniaSources = {
 export const SourceRegions = {
   Schengen: { sources: SchengenSources, checkLinks: true },
   UK: { sources: UKSources, checkLinks: true },
-  Ireland: { sources: IrelandSources, checkLinks: false },
+  Ireland: { sources: IrelandSources, checkLinks: true },
   Turkiye: { sources: TurkiyeSources, checkLinks: false },
   Montenegro: { sources: MontenegroSources, checkLinks: false },
   Serbia: { sources: SerbiaSources, checkLinks: false },
