@@ -11,10 +11,13 @@ name: Source check
 on:
   # TEMPORARY: lets the workflow run before it exists on main (workflow_dispatch
   # only works for workflows on the default branch). Push runs honour each
-  # region's checkLinks flag, and the report PR targets this branch.
-  # Remove before merging to main.
+  # region's checkLinks flag, and the report PR targets the pushed branch.
+  # Covers this branch and its per-region sub-branches
+  # (feature/automated-quality-control-<region>). Remove before merging to main.
   push:
-    branches: [feature/automated-quality-control]
+    branches:
+      - feature/automated-quality-control
+      - feature/automated-quality-control-*
   schedule:
     - cron: "17 6 1 * *" # 06:17 UTC on the 1st of each month
   workflow_dispatch:
@@ -59,10 +62,24 @@ jobs:
         id: date
         run: echo "today=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
 
+      # Each per-region sub-branch gets its own report branch/PR, so runs on
+      # different branches don't overwrite each other's report.
+      - name: Pick report branch
+        id: report
+        env:
+          REF: ${{ github.ref_name }}
+        run: |
+          prefix="feature/automated-quality-control-"
+          if [[ "$REF" == "$prefix"* ]]; then
+            echo "branch=automation/source-check-${REF#"$prefix"}" >> "$GITHUB_OUTPUT"
+          else
+            echo "branch=automation/source-check" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Open or update PR
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: automation/source-check
+          branch: ${{ steps.report.outputs.branch }}
           delete-branch: true
           add-paths: |
             pipeline/reports/*.md
