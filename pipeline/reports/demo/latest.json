@@ -1,0 +1,174 @@
+{
+  "generatedAt": "2026-10-08T02:35:40.237Z",
+  "regions": [
+    {
+      "region": "Demo",
+      "linkHealth": [
+        {
+          "url": "http://127.0.0.1:47819/ruleList.html",
+          "usedBy": [
+            {
+              "key": "ruleList",
+              "field": "direct"
+            },
+            {
+              "key": "ruleList",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "http://127.0.0.1:47819/ruleList.html"
+        },
+        {
+          "url": "http://127.0.0.1:47819/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
+          "usedBy": [
+            {
+              "key": "docVault",
+              "field": "direct"
+            }
+          ],
+          "status": "broken",
+          "httpStatus": 404,
+          "finalUrl": "http://127.0.0.1:47819/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf"
+        },
+        {
+          "url": "http://127.0.0.1:47819/docVault.html",
+          "usedBy": [
+            {
+              "key": "docVault",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "http://127.0.0.1:47819/docVault.html"
+        },
+        {
+          "url": "http://127.0.0.1:47819/stable.html",
+          "usedBy": [
+            {
+              "key": "stable",
+              "field": "direct"
+            },
+            {
+              "key": "stable",
+              "field": "parent"
+            },
+            {
+              "key": "blockedWithAlternate",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "http://127.0.0.1:47819/stable.html"
+        },
+        {
+          "url": "http://127.0.0.1:47819/regulation-human.html",
+          "usedBy": [
+            {
+              "key": "blockedWithAlternate",
+              "field": "direct"
+            }
+          ],
+          "status": "blocked",
+          "httpStatus": 202,
+          "finalUrl": "http://127.0.0.1:47819/regulation-human.html",
+          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
+        },
+        {
+          "url": "http://127.0.0.1:47819/regulation.html",
+          "usedBy": [
+            {
+              "key": "blockedWithAlternate",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "http://127.0.0.1:47819/regulation.html"
+        },
+        {
+          "url": "http://127.0.0.1:47819/brokenInRun2.html",
+          "usedBy": [
+            {
+              "key": "brokenInRun2",
+              "field": "direct"
+            },
+            {
+              "key": "brokenInRun2",
+              "field": "parent"
+            }
+          ],
+          "status": "broken",
+          "httpStatus": 404,
+          "finalUrl": "http://127.0.0.1:47819/brokenInRun2.html"
+        }
+      ],
+      "ruleChecks": [
+        {
+          "url": "http://127.0.0.1:47819/ruleList.html",
+          "previousUpdatedAt": "2026-04-01T10:00:00Z",
+          "currentUpdatedAt": "2026-10-01T09:30:00Z",
+          "status": "text-changed",
+          "textDiffPreview": "+ Azerbaijan",
+          "keys": [
+            "ruleList"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "http://127.0.0.1:47819/docVault.html",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Annex 7b",
+              "previousHref": "http://127.0.0.1:47819/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
+              "currentHref": "http://127.0.0.1:47819/document/download/9f1c22a0-aaaa-4bbb-9ccc-123456789abc_en?filename=Annex%207b_en.pdf",
+              "kind": "target-changed"
+            }
+          ],
+          "keys": [
+            "docVault"
+          ],
+          "link": "parent"
+        },
+        {
+          "url": "http://127.0.0.1:47819/stable.html",
+          "previousUpdatedAt": "2026-04-01T10:00:00Z",
+          "currentUpdatedAt": "2026-04-01T10:00:00Z",
+          "status": "unchanged",
+          "keys": [
+            "stable"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "http://127.0.0.1:47819/regulation.html",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "text-changed",
+          "textDiffPreview": "+ Azerbaijan",
+          "keys": [
+            "blockedWithAlternate"
+          ],
+          "link": "direct.alternate"
+        }
+      ]
+    }
+  ],
+  "skippedRegions": [],
+  "summary": {
+    "totalLinksChecked": 7,
+    "brokenLinks": 2,
+    "redirectedLinks": 0,
+    "blockedLinks": 1,
+    "sourcesChecked": 4,
+    "sourcesChanged": 3,
+    "sourcesFirstRun": 0,
+    "sourcesFetchError": 0
+  }
+}

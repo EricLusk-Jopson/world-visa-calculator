@@ -175,7 +175,7 @@ export const CYPRUS: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-09-09',
-  sourceUrl: CyprusSources.visaList.parentUrl,
+  sourceUrl: CyprusSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
 

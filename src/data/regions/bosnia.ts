@@ -16,7 +16,7 @@
  * (https://www.mvp.gov.ba/en/vize), never the per-country subpage URL the scrape
  * captured — per explicit instruction, this site's subpage links are
  * considered likely to break, so the stable parent link is used everywhere
- * (both `directUrl` and `parentUrl` on every BosniaSources entry are the same
+ * (both the `direct` and `parent` links on every BosniaSources entry are the same
  * parent URL). This is a per-region policy choice; other regions still cite
  * per-country subpages where those are expected to be stable.
  *

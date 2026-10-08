@@ -47,21 +47,21 @@ export const VisaRegion = {
 export type VisaRegion = (typeof VisaRegion)[keyof typeof VisaRegion];
 
 export const VISA_REGION_LABELS: Record<VisaRegion, string> = {
-  [VisaRegion.Schengen]: 'Schengen Area',
-  [VisaRegion.Elsewhere]: 'Elsewhere',
-  [VisaRegion.Ireland]: 'Ireland',
-  [VisaRegion.UnitedKingdom]: 'United Kingdom',
-  [VisaRegion.Turkiye]: 'Türkiye',
-  [VisaRegion.Montenegro]: 'Montenegro',
-  [VisaRegion.Serbia]: 'Serbia',
-  [VisaRegion.Bosnia]: 'Bosnia and Herzegovina',
-  [VisaRegion.Kosovo]: 'Kosovo',
-  [VisaRegion.NorthMacedonia]: 'North Macedonia',
-  [VisaRegion.Albania]: 'Albania',
-  [VisaRegion.Cyprus]: 'Cyprus',
-  [VisaRegion.Belarus]: 'Belarus',
-  [VisaRegion.Georgia]: 'Georgia',
-  [VisaRegion.Armenia]: 'Armenia',
+  [VisaRegion.Schengen]: "Schengen Area",
+  [VisaRegion.Elsewhere]: "Elsewhere",
+  [VisaRegion.Ireland]: "Ireland",
+  [VisaRegion.UnitedKingdom]: "United Kingdom",
+  [VisaRegion.Turkiye]: "Türkiye",
+  [VisaRegion.Montenegro]: "Montenegro",
+  [VisaRegion.Serbia]: "Serbia",
+  [VisaRegion.Bosnia]: "Bosnia and Herzegovina",
+  [VisaRegion.Kosovo]: "Kosovo",
+  [VisaRegion.NorthMacedonia]: "North Macedonia",
+  [VisaRegion.Albania]: "Albania",
+  [VisaRegion.Cyprus]: "Cyprus",
+  [VisaRegion.Belarus]: "Belarus",
+  [VisaRegion.Georgia]: "Georgia",
+  [VisaRegion.Armenia]: "Armenia",
 };
 
 /** Per-region metadata for destination pickers, beyond the label in VISA_REGION_LABELS. */
@@ -94,20 +94,20 @@ export interface DestinationInfo {
  * dropdown, last in TripFormCardDestination's list).
  */
 export const SUPPORTED_DESTINATIONS: DestinationInfo[] = [
-  { region: VisaRegion.Schengen, group: 'Europe' },
-  { region: VisaRegion.UnitedKingdom, group: 'Europe' },
-  { region: VisaRegion.Ireland, group: 'Europe' },
-  { region: VisaRegion.Turkiye, group: 'Europe', keywords: 'turkiye turkey' },
-  { region: VisaRegion.Montenegro, group: 'Europe' },
-  { region: VisaRegion.Serbia, group: 'Europe' },
-  { region: VisaRegion.Bosnia, group: 'Europe' },
-  { region: VisaRegion.Kosovo, group: 'Europe' },
-  { region: VisaRegion.NorthMacedonia, group: 'Europe' },
-  { region: VisaRegion.Albania, group: 'Europe' },
-  { region: VisaRegion.Cyprus, group: 'Europe' },
-  { region: VisaRegion.Belarus, group: 'Europe' },
-  { region: VisaRegion.Georgia, group: 'Europe' },
-  { region: VisaRegion.Armenia, group: 'Europe' },
+  { region: VisaRegion.Schengen, group: "Europe" },
+  { region: VisaRegion.UnitedKingdom, group: "Europe" },
+  { region: VisaRegion.Ireland, group: "Europe" },
+  { region: VisaRegion.Turkiye, group: "Europe", keywords: "turkiye turkey" },
+  { region: VisaRegion.Montenegro, group: "Europe" },
+  { region: VisaRegion.Serbia, group: "Europe" },
+  { region: VisaRegion.Bosnia, group: "Europe" },
+  { region: VisaRegion.Kosovo, group: "Europe" },
+  { region: VisaRegion.NorthMacedonia, group: "Europe" },
+  { region: VisaRegion.Albania, group: "Europe" },
+  { region: VisaRegion.Cyprus, group: "Europe" },
+  { region: VisaRegion.Belarus, group: "Europe" },
+  { region: VisaRegion.Georgia, group: "Europe" },
+  { region: VisaRegion.Armenia, group: "Europe" },
 ];
 
 // ─── Core Domain Types ────────────────────────────────────────────────────────
@@ -115,8 +115,8 @@ export const SUPPORTED_DESTINATIONS: DestinationInfo[] = [
 export interface Trip {
   /** Unique ID — required for edit/delete targeting. */
   id: string;
-  entryDate: string;  // YYYY-MM-DD
-  exitDate?: string;  // YYYY-MM-DD; undefined = ongoing
+  entryDate: string; // YYYY-MM-DD
+  exitDate?: string; // YYYY-MM-DD; undefined = ongoing
   region: VisaRegion;
   /** Optional human label shown on trip cards (e.g. "Paris & Barcelona"). */
   destination?: string;
@@ -160,18 +160,62 @@ export interface EarliestEntryResult {
 // ─── Source documentation ─────────────────────────────────────────────────────
 
 /**
+ * The role a link plays for a source.
+ *  - 'direct'  — the specific regulation, annex, or document.
+ *  - 'parent'  — the overview page that links to it, for human navigation.
+ *  - 'machine' — a machine-readable copy of another link's content, used as
+ *                its `alternate` when the human page can't be fetched or
+ *                parsed by the source verification pipeline (e.g. EUR-Lex
+ *                bot protection, client-side rendered pages).
+ */
+export type SourceLinkType = "direct" | "parent" | "machine";
+
+/**
+ * One link cited by a SourceDoc. Every link is health-checked by the source
+ * verification pipeline (pipeline/); its content is also diffed run to run
+ * when `checkDiff` is true.
+ */
+export interface SourceLink {
+  url: string;
+  type: SourceLinkType;
+  /** Whether the pipeline diffs this link's content for rule changes. */
+  checkDiff: boolean;
+  /**
+   * Machine-readable fallback for this link's content (type 'machine'). It
+   * is health-checked alongside this link, and diffed when its own
+   * `checkDiff` is true — typically with `checkDiff: false` here, so the
+   * human page is only checked for reachability.
+   */
+  alternate?: SourceLink;
+}
+
+/**
  * Reference to an authoritative regulatory source.
  * Every RuleNote must carry one, unless the note describes rule mechanics
  * (not a specific legal instrument) in which case source may be omitted.
  * All SourceDoc instances live in @/data/sources — never inline in region files.
  */
 export interface SourceDoc {
-  /** Direct link to the specific regulation, annex, or document. */
-  directUrl: string;
+  /** The specific regulation, annex, or document. */
+  direct: SourceLink;
   /** Overview/parent page that links to the document — for human navigation. */
-  parentUrl: string;
+  parent: SourceLink;
   /** ISO date (YYYY-MM-DD) when content was last verified against the source. */
   dateChecked: string;
+}
+
+/**
+ * One region's entry in the SourceRegions registry (@/data/sources), read by
+ * the source verification pipeline (pipeline/).
+ */
+export interface SourceRegion {
+  sources: Record<string, SourceDoc>;
+  /**
+   * Whether the pipeline checks this region at all (link health and, for
+   * links with checkDiff, content diffing). Set false to iterate on a
+   * subset of regions; `npm run check -- --all` overrides it.
+   */
+  checkLinks: boolean;
 }
 
 /**
@@ -198,14 +242,14 @@ export interface RuleNote {
  *                          used for multi-year authorisation validity (e.g. a
  *                          2-year ETA).
  */
-export type StayUnit = 'days' | 'weeks' | 'months' | 'years';
+export type StayUnit = "days" | "weeks" | "months" | "years";
 
 /**
  * Per-visit limit. Resets on each departure and re-entry.
  * Examples: UK (6 months), Ireland (90 days), Türkiye e-visa entrants (30 days).
  */
 export interface PerVisitLimit {
-  readonly type: 'per_visit';
+  readonly type: "per_visit";
   /** Length of the allowance, expressed in `unit`. */
   value: number;
   unit: StayUnit;
@@ -217,7 +261,7 @@ export interface PerVisitLimit {
  * Examples: Schengen (90/180), Türkiye standard (90/180).
  */
 export interface RollingWindowLimit {
-  readonly type: 'rolling_window';
+  readonly type: "rolling_window";
   days: number;
   windowDays: number;
 }
@@ -229,7 +273,7 @@ export interface RollingWindowLimit {
  * Example: Türkiye — Albania, Jordan, Kosovo, etc. (90 days within 6 months).
  */
 export interface FixedWindowFromEntryLimit {
-  readonly type: 'fixed_window_from_entry';
+  readonly type: "fixed_window_from_entry";
   days: number;
   windowDays: number;
 }
@@ -240,7 +284,7 @@ export interface FixedWindowFromEntryLimit {
  * Example: Türkiye — Belarus (30 days per entry, 90 days per calendar year).
  */
 export interface CalendarPeriodLimit {
-  readonly type: 'calendar_period';
+  readonly type: "calendar_period";
   days: number;
   periodDays: number; // typically 365
 }
@@ -269,7 +313,7 @@ export interface PreTravelAuth {
    * BIVS            Ireland British-Irish Visa Scheme (requires BIVS-endorsed UK visa)
    * SSVWP           Ireland Short Stay Visa Waiver Programme (requires UK short-stay visa)
    */
-  type: 'ETA' | 'ETIAS' | 'e_visa' | 'e_visa_conditional' | 'BIVS' | 'SSVWP';
+  type: "ETA" | "ETIAS" | "e_visa" | "e_visa_conditional" | "BIVS" | "SSVWP";
   /** Display name for the UI. */
   name: string;
   /** Application URL. */
@@ -290,14 +334,14 @@ export interface PreTravelAuth {
 
 /** Traveller holds a valid visa or residence permit for listed destinations. */
 export interface HoldsVisaForCondition {
-  readonly type: 'holds_visa_for';
-  destinations: Array<string | 'schengen_member'>;
+  readonly type: "holds_visa_for";
+  destinations: Array<string | "schengen_member">;
   description: string;
 }
 
 /** Traveller is within a specific age bracket (bounds inclusive). */
 export interface AgeRangeCondition {
-  readonly type: 'age_range';
+  readonly type: "age_range";
   min?: number;
   max?: number;
   description: string;
@@ -305,24 +349,24 @@ export interface AgeRangeCondition {
 
 /** Entry is restricted to the listed purposes. */
 export interface PurposeCondition {
-  readonly type: 'purpose';
-  allowed: ReadonlyArray<'tourism' | 'commerce' | 'transit' | 'business'>;
+  readonly type: "purpose";
+  allowed: ReadonlyArray<"tourism" | "commerce" | "transit" | "business">;
 }
 
 /** Entitlement applies only to biometric passports issued to ICAO standards. */
 export interface BiometricPassportCondition {
-  readonly type: 'biometric_passport';
+  readonly type: "biometric_passport";
 }
 
 /** Entry under this entitlement is only permitted via the listed port types. */
 export interface EntryPortCondition {
-  readonly type: 'entry_port';
-  allowed: ReadonlyArray<'airport' | 'seaport' | 'land_border'>;
+  readonly type: "entry_port";
+  allowed: ReadonlyArray<"airport" | "seaport" | "land_border">;
 }
 
 /** Entry under this entitlement requires travel on the listed carriers. */
 export interface CarrierCondition {
-  readonly type: 'carrier';
+  readonly type: "carrier";
   airlines: string[];
   description: string;
 }
@@ -333,7 +377,7 @@ export interface CarrierCondition {
  * Taiwan passport with national ID card number).
  */
 export interface PassportIdentifierCondition {
-  readonly type: 'passport_identifier';
+  readonly type: "passport_identifier";
   description: string;
 }
 
@@ -378,9 +422,9 @@ export interface TemporalWindow {
    * evaluate as visa_required even though the waiver was very likely
    * already in effect — we just don't know exactly when it started.
    */
-  validFrom?: string;   // ISO date, YYYY-MM-DD
+  validFrom?: string; // ISO date, YYYY-MM-DD
   /** ISO date the window ends (inclusive) — always the announced date. */
-  validUntil: string;   // ISO date, YYYY-MM-DD
+  validUntil: string; // ISO date, YYYY-MM-DD
   /** Short human-readable label, e.g. "Temporary waiver" — dates are rendered separately by the UI, not embedded here. */
   description: string;
   /** Overrides the entitlement's own `source` for this specific window, when a renewal cites a different page/announcement. */
@@ -434,7 +478,7 @@ export interface StayEntitlement {
 
 /** Unrestricted entry. No visa, no time limit. EU treaty rights, CTA, etc. */
 export interface FreeMovementRule {
-  readonly access: 'free_movement';
+  readonly access: "free_movement";
   notes?: RuleNote[];
 }
 
@@ -443,7 +487,7 @@ export interface FreeMovementRule {
  * or immigration officer discretion at the border.
  */
 export interface VisaRequiredRule {
-  readonly access: 'visa_required';
+  readonly access: "visa_required";
   /** The authoritative citation for this determination — see StayEntitlement.source. */
   source?: SourceDoc;
   notes?: RuleNote[];
@@ -458,7 +502,7 @@ export interface VisaRequiredRule {
  * If no entitlement matches → implicit visa_required.
  */
 export interface EntitledRule {
-  readonly access: 'entitled';
+  readonly access: "entitled";
   entitlements: [StayEntitlement, ...StayEntitlement[]];
   notes?: RuleNote[];
 }
@@ -472,7 +516,7 @@ export type PassportRule = FreeMovementRule | VisaRequiredRule | EntitledRule;
  * Fully calculable from trip history.
  */
 export interface RollingWindowRule {
-  readonly type: 'rolling_window';
+  readonly type: "rolling_window";
   allowanceDays: number;
   windowDays: number;
   entryCountsAsDay: boolean;
@@ -485,7 +529,7 @@ export interface RollingWindowRule {
  * The per-visit cap is calculable; cumulative pattern is officer discretion.
  */
 export interface PerVisitRule {
-  readonly type: 'per_visit';
+  readonly type: "per_visit";
   allowanceDays: number;
   entryCountsAsDay: boolean;
   exitCountsAsDay: boolean;
@@ -497,7 +541,7 @@ export interface PerVisitRule {
  * informationalDays may be shown in UI for context but is not a guarantee.
  */
 export interface OfficerDiscretionRule {
-  readonly type: 'officer_discretion';
+  readonly type: "officer_discretion";
   informationalDays?: number;
   notes?: RuleNote[];
 }
@@ -511,7 +555,7 @@ export interface OfficerDiscretionRule {
  * Example: Montenegro (90 days within 180 days of first entry).
  */
 export interface FixedWindowFromEntryRule {
-  readonly type: 'fixed_window_from_entry';
+  readonly type: "fixed_window_from_entry";
   allowanceDays: number;
   windowDays: number;
   entryCountsAsDay: boolean;
@@ -546,31 +590,35 @@ export interface RegionDefinition {
 // ─── Type guards ──────────────────────────────────────────────────────────────
 
 export function isFreeMovement(rule: PassportRule): rule is FreeMovementRule {
-  return rule.access === 'free_movement';
+  return rule.access === "free_movement";
 }
 
 export function isVisaRequired(rule: PassportRule): rule is VisaRequiredRule {
-  return rule.access === 'visa_required';
+  return rule.access === "visa_required";
 }
 
 export function isEntitled(rule: PassportRule): rule is EntitledRule {
-  return rule.access === 'entitled';
+  return rule.access === "entitled";
 }
 
 export function isRollingWindow(rule: RegionRule): rule is RollingWindowRule {
-  return rule.type === 'rolling_window';
+  return rule.type === "rolling_window";
 }
 
 export function isPerVisit(rule: RegionRule): rule is PerVisitRule {
-  return rule.type === 'per_visit';
+  return rule.type === "per_visit";
 }
 
-export function isOfficerDiscretion(rule: RegionRule): rule is OfficerDiscretionRule {
-  return rule.type === 'officer_discretion';
+export function isOfficerDiscretion(
+  rule: RegionRule,
+): rule is OfficerDiscretionRule {
+  return rule.type === "officer_discretion";
 }
 
-export function isFixedWindowFromEntry(rule: RegionRule): rule is FixedWindowFromEntryRule {
-  return rule.type === 'fixed_window_from_entry';
+export function isFixedWindowFromEntry(
+  rule: RegionRule,
+): rule is FixedWindowFromEntryRule {
+  return rule.type === "fixed_window_from_entry";
 }
 
 // ─── Sharing ──────────────────────────────────────────────────────────────────

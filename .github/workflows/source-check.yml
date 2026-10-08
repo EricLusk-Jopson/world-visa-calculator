@@ -1,0 +1,85 @@
+name: Source check
+
+# Monthly link-health + content-diff run over src/data/sources.ts.
+# Commits the report and updated snapshots to a rolling branch and opens (or
+# updates) a PR whose body is the findings summary. The PR's Vercel preview
+# renders the full report at /source-report.
+#
+# Requires: Settings → Actions → General → "Allow GitHub Actions to create
+# and approve pull requests".
+
+on:
+  # No push trigger: runs come from the monthly schedule and manual dispatch,
+  # both of which only fire once this file is on the default branch. Until
+  # then, run `npm run check` in pipeline/ locally.
+  schedule:
+    - cron: "17 6 1 * *" # 06:17 UTC on the 1st of each month
+  workflow_dispatch:
+    inputs:
+      all_regions:
+        description: "Check every region, ignoring checkLinks: false in sources.ts"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: source-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: pipeline/package-lock.json
+
+      - run: npm ci
+
+      # Scheduled runs always sweep every region; manual runs honour each
+      # region's checkLinks flag unless "all_regions" is ticked.
+      - name: Run source check
+        run: npm run check -- ${{ (github.event_name == 'schedule' || inputs.all_regions) && '--all' || '' }}
+
+      - name: Set run date
+        id: date
+        run: echo "today=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      # Each per-region sub-branch gets its own report branch/PR, so runs on
+      # different branches don't overwrite each other's report.
+      - name: Pick report branch
+        id: report
+        env:
+          REF: ${{ github.ref_name }}
+        run: |
+          prefix="feature/automated-quality-control-"
+          if [[ "$REF" == "$prefix"* ]]; then
+            echo "branch=automation/source-check-${REF#"$prefix"}" >> "$GITHUB_OUTPUT"
+          else
+            echo "branch=automation/source-check" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open or update PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: ${{ steps.report.outputs.branch }}
+          delete-branch: true
+          add-paths: |
+            pipeline/reports/*.md
+            pipeline/reports/*.json
+            pipeline/data/snapshots/**
+          commit-message: "Source check report ${{ steps.date.outputs.today }}"
+          title: "Source check: ${{ steps.date.outputs.today }}"
+          body-path: pipeline/reports/pr-body.md
+          labels: source-check

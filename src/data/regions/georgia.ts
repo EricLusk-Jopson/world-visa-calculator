@@ -156,7 +156,7 @@ export const GEORGIA: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-09-13',
-  sourceUrl: GeorgiaSources.visaList.parentUrl,
+  sourceUrl: GeorgiaSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
 

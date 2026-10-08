@@ -1,0 +1,24 @@
+{
+  "name": "eurovisa-pipeline",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monthly source verification pipeline for EuroVisaCalculator: link health + content/link-target diffing over src/data/sources.ts, with a standardized by-region report.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "check": "tsx src/checkAll.ts",
+    "demo": "tsx src/demoRun.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "diff": "^9.0.0",
+    "tsx": "^4.23.15"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "~5.9.3"
+  }
+}
