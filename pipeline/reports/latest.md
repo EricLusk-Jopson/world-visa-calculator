@@ -1,6 +1,6 @@
 # Source Verification Report
 
-Generated: 2026-10-08T04:33:26.855Z
+Generated: 2026-10-08T04:34:00.130Z
 
 ## Summary
 
@@ -12,7 +12,7 @@ Generated: 2026-10-08T04:33:26.855Z
 | 🚫 Blocked (could not verify) | 0 |
 | Content sources diffed (`checkDiff`) | 9 |
 | ✏️ Changed since last baseline | 0 |
-| 🆕 First run (no baseline yet) | 3 |
+| 🆕 First run (no baseline yet) | 0 |
 | ⚠️ Fetch errors | 0 |
 
 Not checked this run (`checkLinks: false`): Turkiye, Montenegro, Serbia, Bosnia, Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Georgia, Armenia.
@@ -36,8 +36,8 @@ Not checked this run (`checkLinks: false`): Turkiye, Montenegro, Serbia, Bosnia,
 
 | Keys | Status | URL |
 |---|---|---|
-| visaList (direct.alternate) | 🆕 first run (baseline captured) | https://publications.europa.eu/resource/celex/02018R1806-20251230 |
-| atvCommon (direct.alternate) | 🆕 first run (baseline captured) | https://publications.europa.eu/resource/celex/02009R0810-20200202 |
+| visaList (direct.alternate) | ✅ unchanged | https://publications.europa.eu/resource/celex/02018R1806-20251230 |
+| atvCommon (direct.alternate) | ✅ unchanged | https://publications.europa.eu/resource/celex/02009R0810-20200202 |
 | atvSpecific | ✅ unchanged | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
 
 ## UK
@@ -91,4 +91,4 @@ Not checked this run (`checkLinks: false`): Turkiye, Montenegro, Serbia, Bosnia,
 
 | Keys | Status | URL |
 |---|---|---|
-| statutoryInstrument (parent.alternate) | 🆕 first run (baseline captured) | https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true |
+| statutoryInstrument (parent.alternate) | ✅ unchanged | https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true |
