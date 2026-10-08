@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T01:45:06.931Z",
+  "generatedAt": "2026-10-08T04:19:08.674Z",
   "regions": [
     {
       "region": "Schengen",
@@ -9,27 +9,40 @@
           "usedBy": [
             {
               "key": "visaList",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
-          "status": "redirected",
+          "status": "blocked",
+          "httpStatus": 202,
+          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
+          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
+        },
+        {
+          "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
+          "usedBy": [
+            {
+              "key": "visaList",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX%3A02018R1806-20251230"
+          "finalUrl": "http://publications.europa.eu/resource/cellar/ece43fab-0ca3-11f1-8870-01aa75ed71a1.0006.02/DOC_1"
         },
         {
           "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
           "usedBy": [
             {
               "key": "visaList",
-              "field": "parentUrl"
+              "field": "parent"
             },
             {
               "key": "atvCommon",
-              "field": "parentUrl"
+              "field": "parent"
             },
             {
               "key": "atvSpecific",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -41,19 +54,32 @@
           "usedBy": [
             {
               "key": "atvCommon",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
-          "status": "redirected",
+          "status": "blocked",
+          "httpStatus": 202,
+          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626",
+          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
+        },
+        {
+          "url": "https://publications.europa.eu/resource/celex/02009R0810-20200202",
+          "usedBy": [
+            {
+              "key": "atvCommon",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX:02009R0810-20200202&qid=1700746099626"
+          "finalUrl": "http://publications.europa.eu/resource/cellar/82b7a82d-473e-11ea-b81b-01aa75ed71a1.0006.03/DOC_4"
         },
         {
           "url": "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
           "usedBy": [
             {
               "key": "atvSpecific",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "live",
@@ -65,7 +91,7 @@
           "usedBy": [
             {
               "key": "etias",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "live",
@@ -77,7 +103,7 @@
           "usedBy": [
             {
               "key": "etias",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -87,36 +113,32 @@
       ],
       "ruleChecks": [
         {
-          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
+          "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
           "currentUpdatedAt": null,
           "status": "first-run",
           "keys": [
             "visaList"
-          ]
+          ],
+          "link": "direct.alternate"
         },
         {
-          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629",
+          "url": "https://publications.europa.eu/resource/celex/02009R0810-20200202",
           "currentUpdatedAt": null,
           "status": "first-run",
           "keys": [
             "atvCommon"
-          ]
+          ],
+          "link": "direct.alternate"
         },
         {
           "url": "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "atvSpecific"
-          ]
-        },
-        {
-          "url": "https://travel-europe.europa.eu/en/etias",
-          "status": "fetch-error",
-          "error": "no text extracted (bot-check or script-rendered page?)",
-          "keys": [
-            "etias"
-          ]
+          ],
+          "link": "direct"
         }
       ]
     },
@@ -128,7 +150,7 @@
           "usedBy": [
             {
               "key": "standardVisitor",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "live",
@@ -140,7 +162,7 @@
           "usedBy": [
             {
               "key": "standardVisitor",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -152,7 +174,7 @@
           "usedBy": [
             {
               "key": "visaNationalList",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "live",
@@ -164,7 +186,7 @@
           "usedBy": [
             {
               "key": "visaNationalList",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -176,7 +198,7 @@
           "usedBy": [
             {
               "key": "etaNationalList",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "live",
@@ -188,11 +210,11 @@
           "usedBy": [
             {
               "key": "etaNationalList",
-              "field": "parentUrl"
+              "field": "parent"
             },
             {
               "key": "etaApplication",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -204,7 +226,7 @@
           "usedBy": [
             {
               "key": "carriersList",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "live",
@@ -216,7 +238,7 @@
           "usedBy": [
             {
               "key": "carriersList",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -228,7 +250,7 @@
           "usedBy": [
             {
               "key": "etaApplication",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "live",
@@ -240,7 +262,7 @@
           "usedBy": [
             {
               "key": "ctaGuidance",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "live",
@@ -252,7 +274,7 @@
           "usedBy": [
             {
               "key": "ctaGuidance",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -263,49 +285,230 @@
       "ruleChecks": [
         {
           "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list",
+          "previousUpdatedAt": "2026-03-05T15:00:48+00:00",
           "currentUpdatedAt": "2026-03-05T15:00:48+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "visaNationalList"
-          ]
+          ],
+          "link": "direct"
         },
         {
           "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list",
+          "previousUpdatedAt": "2026-03-05T15:03:24+00:00",
           "currentUpdatedAt": "2026-03-05T15:03:24+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "etaNationalList"
-          ]
+          ],
+          "link": "direct"
         },
         {
           "url": "https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers",
+          "previousUpdatedAt": "2026-08-03T14:02:17+01:00",
           "currentUpdatedAt": "2026-08-03T14:02:17+01:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "carriersList"
-          ]
+          ],
+          "link": "direct"
         },
         {
           "url": "https://www.gov.uk/eta/apply",
+          "previousUpdatedAt": "2025-05-28T11:00:06+01:00",
           "currentUpdatedAt": "2025-05-28T11:00:06+01:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "etaApplication"
-          ]
+          ],
+          "link": "direct"
         },
         {
           "url": "https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance",
+          "previousUpdatedAt": "2026-01-01T00:01:08+00:00",
           "currentUpdatedAt": "2026-01-01T00:01:08+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ctaGuidance"
-          ]
+          ],
+          "link": "direct"
+        }
+      ]
+    },
+    {
+      "region": "Ireland",
+      "linkHealth": [
+        {
+          "url": "https://www.irishimmigration.ie/visa-non-visa-required-nationalities/",
+          "usedBy": [
+            {
+              "key": "visaNationalityList",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/visa-non-visa-required-nationalities/"
+        },
+        {
+          "url": "https://www.irishimmigration.ie/coming-to-visit-ireland/",
+          "usedBy": [
+            {
+              "key": "visaNationalityList",
+              "field": "parent"
+            },
+            {
+              "key": "ctaGuidance",
+              "field": "parent"
+            },
+            {
+              "key": "bivs",
+              "field": "parent"
+            },
+            {
+              "key": "ssvwp",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/coming-to-visit-ireland/"
+        },
+        {
+          "url": "https://www.irishimmigration.ie/at-the-border/entry-for-eu-eea-and-swiss-citizens/",
+          "usedBy": [
+            {
+              "key": "euFreeMovement",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/at-the-border/entry-for-eu-eea-and-swiss-citizens/"
+        },
+        {
+          "url": "https://www.irishimmigration.ie/coming-to-live-in-ireland/",
+          "usedBy": [
+            {
+              "key": "euFreeMovement",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/coming-to-live-in-ireland/"
+        },
+        {
+          "url": "https://www.irishimmigration.ie/at-the-border/common-travel-area/",
+          "usedBy": [
+            {
+              "key": "ctaGuidance",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/at-the-border/common-travel-area/"
+        },
+        {
+          "url": "https://www.irishimmigration.ie/coming-to-visit-ireland/british-irish-visa-scheme/",
+          "usedBy": [
+            {
+              "key": "bivs",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/coming-to-visit-ireland/british-irish-visa-scheme/"
+        },
+        {
+          "url": "https://www.irishimmigration.ie/coming-to-visit-ireland/short-stay-visa-waiver-programme/",
+          "usedBy": [
+            {
+              "key": "ssvwp",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/coming-to-visit-ireland/short-stay-visa-waiver-programme/"
+        },
+        {
+          "url": "https://www.irishimmigration.ie/at-the-border/transit-including-transfer-visa-advice/",
+          "usedBy": [
+            {
+              "key": "transitVisa",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/at-the-border/transit-including-transfer-visa-advice/"
+        },
+        {
+          "url": "https://www.irishimmigration.ie/at-the-border/",
+          "usedBy": [
+            {
+              "key": "transitVisa",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishimmigration.ie/at-the-border/"
+        },
+        {
+          "url": "https://www.irishstatutebook.ie/eli/2014/si/473/made/en/print",
+          "usedBy": [
+            {
+              "key": "statutoryInstrument",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishstatutebook.ie/eli/2014/si/473/made/en/print"
+        },
+        {
+          "url": "https://www.irishstatutebook.ie/eli/ResultsTitle.html?q=Immigration+Act",
+          "usedBy": [
+            {
+              "key": "statutoryInstrument",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishstatutebook.ie/eli/ResultsTitle.html?q=Immigration+Act"
+        },
+        {
+          "url": "https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true",
+          "usedBy": [
+            {
+              "key": "statutoryInstrument",
+              "field": "parent.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true"
+        }
+      ],
+      "ruleChecks": [
+        {
+          "url": "https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "statutoryInstrument"
+          ],
+          "link": "parent.alternate"
         }
       ]
     }
   ],
   "skippedRegions": [
-    "Ireland",
     "Turkiye",
     "Montenegro",
     "Serbia",
@@ -319,12 +522,13 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 17,
+    "totalLinksChecked": 31,
     "brokenLinks": 0,
-    "redirectedLinks": 2,
+    "redirectedLinks": 0,
+    "blockedLinks": 2,
     "sourcesChecked": 9,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 8,
-    "sourcesFetchError": 1
+    "sourcesFirstRun": 3,
+    "sourcesFetchError": 0
   }
 }
