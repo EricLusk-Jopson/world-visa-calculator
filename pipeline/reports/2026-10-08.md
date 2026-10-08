@@ -1,6 +1,6 @@
 # Source Verification Report
 
-Generated: 2026-10-08T01:45:06.931Z
+Generated: 2026-10-08T01:59:16.925Z
 
 ## Summary
 
@@ -11,7 +11,7 @@ Generated: 2026-10-08T01:45:06.931Z
 | ↪️ Redirected | 2 |
 | Content sources diffed (`parseForRules`) | 9 |
 | ✏️ Changed since last baseline | 0 |
-| 🆕 First run (no baseline yet) | 8 |
+| 🆕 First run (no baseline yet) | 0 |
 | ⚠️ Fetch errors | 1 |
 
 Not checked this run (`checkLinks: false`): Ireland, Turkiye, Montenegro, Serbia, Bosnia, Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Georgia, Armenia.
@@ -38,9 +38,9 @@ URL: https://travel-europe.europa.eu/en/etias
 
 | Keys | Status | URL |
 |---|---|---|
-| visaList | 🆕 first run (baseline captured) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230 |
-| atvCommon | 🆕 first run (baseline captured) | https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629 |
-| atvSpecific | 🆕 first run (baseline captured) | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
+| visaList | ✅ unchanged | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230 |
+| atvCommon | ✅ unchanged | https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629 |
+| atvSpecific | ✅ unchanged | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
 
 ## UK
 
@@ -64,8 +64,8 @@ URL: https://travel-europe.europa.eu/en/etias
 
 | Keys | Status | URL |
 |---|---|---|
-| visaNationalList | 🆕 first run (baseline captured) | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list |
-| etaNationalList | 🆕 first run (baseline captured) | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list |
-| carriersList | 🆕 first run (baseline captured) | https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers |
-| etaApplication | 🆕 first run (baseline captured) | https://www.gov.uk/eta/apply |
-| ctaGuidance | 🆕 first run (baseline captured) | https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance |
+| visaNationalList | ✅ unchanged | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list |
+| etaNationalList | ✅ unchanged | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list |
+| carriersList | ✅ unchanged | https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers |
+| etaApplication | ✅ unchanged | https://www.gov.uk/eta/apply |
+| ctaGuidance | ✅ unchanged | https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance |

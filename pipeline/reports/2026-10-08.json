@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T01:45:06.931Z",
+  "generatedAt": "2026-10-08T01:59:16.925Z",
   "regions": [
     {
       "region": "Schengen",
@@ -88,24 +88,27 @@
       "ruleChecks": [
         {
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "visaList"
           ]
         },
         {
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "atvCommon"
           ]
         },
         {
           "url": "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "atvSpecific"
           ]
@@ -263,40 +266,45 @@
       "ruleChecks": [
         {
           "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list",
+          "previousUpdatedAt": "2026-03-05T15:00:48+00:00",
           "currentUpdatedAt": "2026-03-05T15:00:48+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "visaNationalList"
           ]
         },
         {
           "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list",
+          "previousUpdatedAt": "2026-03-05T15:03:24+00:00",
           "currentUpdatedAt": "2026-03-05T15:03:24+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "etaNationalList"
           ]
         },
         {
           "url": "https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers",
+          "previousUpdatedAt": "2026-08-03T14:02:17+01:00",
           "currentUpdatedAt": "2026-08-03T14:02:17+01:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "carriersList"
           ]
         },
         {
           "url": "https://www.gov.uk/eta/apply",
+          "previousUpdatedAt": "2025-05-28T11:00:06+01:00",
           "currentUpdatedAt": "2025-05-28T11:00:06+01:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "etaApplication"
           ]
         },
         {
           "url": "https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance",
+          "previousUpdatedAt": "2026-01-01T00:01:08+00:00",
           "currentUpdatedAt": "2026-01-01T00:01:08+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ctaGuidance"
           ]
@@ -324,7 +332,7 @@
     "redirectedLinks": 2,
     "sourcesChecked": 9,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 8,
+    "sourcesFirstRun": 0,
     "sourcesFetchError": 1
   }
 }
