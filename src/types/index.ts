@@ -160,20 +160,48 @@ export interface EarliestEntryResult {
 // ─── Source documentation ─────────────────────────────────────────────────────
 
 /**
+ * The role a link plays for a source.
+ *  - 'direct'  — the specific regulation, annex, or document.
+ *  - 'parent'  — the overview page that links to it, for human navigation.
+ *  - 'machine' — a machine-readable copy of another link's content, used as
+ *                its `alternate` when the human page can't be fetched or
+ *                parsed by the source verification pipeline (e.g. EUR-Lex
+ *                bot protection, client-side rendered pages).
+ */
+export type SourceLinkType = "direct" | "parent" | "machine";
+
+/**
+ * One link cited by a SourceDoc. Every link is health-checked by the source
+ * verification pipeline (pipeline/); its content is also diffed run to run
+ * when `checkDiff` is true.
+ */
+export interface SourceLink {
+  url: string;
+  type: SourceLinkType;
+  /** Whether the pipeline diffs this link's content for rule changes. */
+  checkDiff: boolean;
+  /**
+   * Machine-readable fallback for this link's content (type 'machine'). It
+   * is health-checked alongside this link, and diffed when its own
+   * `checkDiff` is true — typically with `checkDiff: false` here, so the
+   * human page is only checked for reachability.
+   */
+  alternate?: SourceLink;
+}
+
+/**
  * Reference to an authoritative regulatory source.
  * Every RuleNote must carry one, unless the note describes rule mechanics
  * (not a specific legal instrument) in which case source may be omitted.
  * All SourceDoc instances live in @/data/sources — never inline in region files.
  */
 export interface SourceDoc {
-  /** Direct link to the specific regulation, annex, or document. */
-  directUrl: string;
+  /** The specific regulation, annex, or document. */
+  direct: SourceLink;
   /** Overview/parent page that links to the document — for human navigation. */
-  parentUrl: string;
+  parent: SourceLink;
   /** ISO date (YYYY-MM-DD) when content was last verified against the source. */
   dateChecked: string;
-  /** Whether the directUrl should be parsed for rules. */
-  parseForRules: boolean;
 }
 
 /**
@@ -184,7 +212,7 @@ export interface SourceRegion {
   sources: Record<string, SourceDoc>;
   /**
    * Whether the pipeline checks this region at all (link health and, for
-   * parseForRules entries, content diffing). Set false to iterate on a
+   * links with checkDiff, content diffing). Set false to iterate on a
    * subset of regions; `npm run check -- --all` overrides it.
    */
   checkLinks: boolean;

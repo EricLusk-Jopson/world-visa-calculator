@@ -66,7 +66,8 @@ const MAX_DIFF_PARTS = 20;
 const MAX_LINE_LENGTH = 200;
 
 function buildTextDiffPreview(previous: string, current: string): string | undefined {
-  const parts = diffLines(previous, current).filter((p) => p.added || p.removed);
+  // Trailing newline so an appended line doesn't also show the old last line as changed.
+  const parts = diffLines(previous + '\n', current + '\n').filter((p) => p.added || p.removed);
   if (parts.length === 0) return undefined;
   const lines = parts
     .slice(0, MAX_DIFF_PARTS)

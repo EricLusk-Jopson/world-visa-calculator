@@ -8,17 +8,18 @@ below.
 
 ## What it does, per run
 
-1. **Link health.** Every `directUrl` and `parentUrl` in the app's
-   `src/data/sources.ts`, in every region with `checkLinks: true`, is
-   fetched and classified `live` / `redirected` / `broken` (see "Fetching
+1. **Link health.** Every link in the app's `src/data/sources.ts` (each
+   entry's `direct` and `parent` link, plus any `alternate`), in every region
+   with `checkLinks: true`, is fetched and classified `live` / `redirected` /
+   `blocked` / `broken` (see "Fetching
    and flaky connections" below). Each unique URL is fetched **once per run**,
    however many entries cite it. Bosnia, Kosovo, North Macedonia and Albania
    each point ~100–200 `SourceDoc` entries at a single page, so ~1,080
    entries come down to ~440 requests. The report lists each URL once, with
    the keys that use it.
-2. **Content diffing.** This runs only for entries flagged `parseForRules: true`,
-   on the URL named by `parseField` (default `directUrl`). It reuses the
-   response body from the link-health fetch, so it adds no extra requests.
+2. **Content diffing.** This runs only for links with `checkDiff: true`. It
+   reuses the response body from the link-health fetch, so it adds no extra
+   requests.
    Two independent diffs run against the last committed snapshot:
    - **Text diff.** Block-level text (`li, p, h1-h4, td, th`) inside the
      page's main content region (`#content` → `main` → `body`), one line
@@ -133,50 +134,72 @@ deliberately cautious:
 `npm run demo` exercises every outcome end to end:
 
 - a genuine text change
-- a Schengen-style link-only rotation, parsed via `parseField: 'parentUrl'`,
-  where the old PDF `directUrl` also goes broken
+- a Schengen-style link-only rotation, found by diffing the `parent` page,
+  where the old PDF `direct` link also goes broken
+- a human page that answers with a bot-protection 202 (reported `blocked`)
+  while its machine-readable `alternate` is diffed
 - a source that doesn't change
 - a link-health-only source that goes dead between runs
 
-## What's flagged `parseForRules`
+## Source links: `direct`, `parent`, `alternate` and `checkDiff`
 
-The flag lives on `SourceDoc` in the app (`src/types/index.ts`). Content
-diffing currently covers **Schengen and UK only**: 9 entries, 9 URLs. UK
-`standardVisitor` stays off because it is guidance, not a statutory rule.
-Every other region is link-health only. Turn a source on once its page
-structure has been checked.
-
-On the first real run, every flagged URL reports **first run (baseline
-captured)**. Diffs start from the second run, once that baseline PR is merged.
-
-Expect some noise on that second run. Only the GOV.UK pages have been
-verified to expose a stable `#content` region. Other sites may carry
-dynamic text (dates, counters, session tokens) that shows up as a text
-change every month. When a source turns out to be noisy, either set it back
-to `parseForRules: false` or tighten `selectContentRoot` in
-`src/contentCheck.ts` for that host.
-
-### The Schengen doc-vault case specifically
-
-`src/types.ts` adds a pipeline-only `parseField?: 'directUrl' | 'parentUrl'` on top of the app's `SourceDoc`,
-defaulting to `directUrl`, for exactly this case: `SchengenSources.atvSpecific`'s
-`directUrl` **is** the PDF itself (expected to rotate on its own, not
-meaningful to diff), while `parentUrl` is the landing page whose "Annex 7b"
-link is what you'd actually want to watch. The diffing mechanism (link-target
-diff via anchor-text matching, as proven in the demo) is ready for this —
-it's just not turned on for Schengen yet. To enable it, add the field to the
-entry in `src/data/sources.ts` (and to `SourceDoc` in `src/types/index.ts`, or
-cast at the call site):
+Every `SourceDoc` in `src/data/sources.ts` has a `direct` and a `parent`
+link. Each link is a full object (`SourceLink` in `src/types/index.ts`):
 
 ```ts
-atvSpecific: {
-  directUrl: '...',
-  parentUrl: '...',
-  dateChecked: '...',
-  parseForRules: true,
-  parseField: 'parentUrl',
+visaList: {
+  direct: {
+    url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
+    type: "direct",
+    checkDiff: false,             // the human page is only health-checked…
+    alternate: {                  // …its machine-readable copy is diffed
+      url: "https://publications.europa.eu/resource/celex/02018R1806-20251230",
+      type: "machine",
+      checkDiff: true,
+    },
+  },
+  parent: {
+    url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+    type: "parent",
+    checkDiff: false,
+  },
+  dateChecked: "2026-04-08",
 } satisfies SourceDoc,
 ```
+
+- **`type`:** `direct` is the specific regulation or document, `parent` the
+  overview page for human navigation, and `machine` a machine-readable copy
+  used as an `alternate`.
+- **Health checks:** every link is checked, alternates included. Users
+  still need the human page to work even when we diff a machine copy.
+- **`checkDiff`:** set per link, so any link can be diffed. Diffing a
+  landing page instead of the document it links to (the doc-vault case) is
+  `checkDiff: true` on `parent`.
+- **`alternate`:** use one when the human page can't be fetched or parsed
+  automatically (bot protection, client-side rendering). Typically the
+  human link gets `checkDiff: false` and the alternate `checkDiff: true`.
+  The report shows which link was diffed, e.g. `visaList (direct.alternate)`.
+
+Right now content diffing covers **Schengen and UK `direct` links only**:
+8 URLs. UK `standardVisitor` (guidance, not a statutory rule) and Schengen
+`etias` (rendered client-side) are off. No alternates are set yet; the
+EUR-Lex example above is the intended use, pending a test that
+`publications.europa.eu` serves the regulation text to GitHub's runners.
+
+On the first run, every newly diffed URL reports **first run (baseline
+captured)**. Diffs start from the run after that baseline PR is merged.
+When a source turns out to be noisy, either set its `checkDiff` back to
+`false` or tighten `selectContentRoot` in `src/contentCheck.ts` for that
+host.
+
+### The Schengen doc-vault case
+
+`SchengenSources.atvSpecific`'s `direct` link **is** the Annex 7b PDF. It
+rotates on its own schedule and is only tracked by hash, while its `parent`
+is the landing page whose "Annex 7b" link is what you'd actually want to
+watch. The link-target diff (anchor-text matching, proven in the demo)
+catches a rotation there as a one-line `href` change. To switch over, set
+`checkDiff: false` on `direct` and `checkDiff: true` on `parent`.
 
 ## Known limitation: anchor-text link matching
 
@@ -194,8 +217,5 @@ knowing about before trusting this against a new source.
 - **Semantic/LLM classification** of whether a detected change is actually
   rule-relevant or just cosmetic. This is on hold per the agile scope cut;
   link health and diffing come first.
-- **Where the parse-eligibility config should live.** `parseForRules` sits on
-  the app's `SourceDoc` while `parseField` is pipeline-only; the split is not
-  settled yet.
 - **Per-host content selectors** for non-GOV.UK sources, to cut diff noise
   (see above).

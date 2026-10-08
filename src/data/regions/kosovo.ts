@@ -7,8 +7,8 @@
  *   https://ambasadat.net/visas/
  * This single page lists every visa-exempt nationality. Unlike Montenegro/
  * Serbia, and like Bosnia, there are no stable per-country subpages on this
- * site — every entry below cites the same single page for both `directUrl`
- * and `parentUrl` (same policy as BosniaSources, adopted here for the same
+ * site — every entry below cites the same single page for both the `direct`
+ * and `parent` links (same policy as BosniaSources, adopted here for the same
  * reason: only one page exists at all).
  *
  * ── Scope of the source list ────────────────────────────────────────────────

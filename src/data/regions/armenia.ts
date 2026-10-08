@@ -125,7 +125,7 @@ export const ARMENIA: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-09-14',
-  sourceUrl: ArmeniaSources.visaFreeList.parentUrl,
+  sourceUrl: ArmeniaSources.visaFreeList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
 

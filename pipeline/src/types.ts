@@ -1,25 +1,15 @@
-import type { SourceDoc } from '@/types';
+import type { SourceDoc, SourceLink } from '@/types';
+
+export type { SourceDoc, SourceLink };
 
 /**
- * The app's SourceDoc plus pipeline-only options. Kept here rather than on
- * the app type so the site's data layer doesn't carry pipeline config.
+ * Where a link sits on its SourceDoc: 'direct', 'parent', or an alternate
+ * of either ('direct.alternate', 'parent.alternate').
  */
-export type PipelineSourceDoc = SourceDoc & {
-  /**
-   * Which field actually carries the parseable rule content, when it isn't
-   * directUrl. Needed for "document vault" sources (e.g. Schengen's PDF
-   * Annex 7b): the directUrl is the document itself and rotates on its own
-   * schedule, so the thing worth diffing is the *landing page* (parentUrl)
-   * that links to it — a rotation shows up there as a one-line href change
-   * on an otherwise-unchanged page. Defaults to 'directUrl'.
-   */
-  parseField?: 'directUrl' | 'parentUrl';
-};
-
-export type SourceField = 'directUrl' | 'parentUrl';
+export type LinkPath = string;
 
 /** One place a URL is cited from in sources.ts. */
-export type UrlUsage = { key: string; field: SourceField };
+export type UrlUsage = { key: string; field: LinkPath };
 
 /**
  * `blocked`: the server answered, but with a bot-protection response instead
@@ -72,11 +62,13 @@ export type LinkChange = {
   kind: 'added' | 'removed' | 'target-changed';
 };
 
-/** Content diff for one unique parsed URL within a region. */
+/** Content diff for one unique checkDiff URL within a region. */
 export type RuleCheckResult = {
   url: string;
   /** SourceDoc keys whose rule content lives at this URL. */
   keys: string[];
+  /** Which link on those entries was diffed, e.g. 'direct' or 'direct.alternate'. Absent in older reports. */
+  link?: LinkPath;
   status: RuleCheckStatus;
   previousUpdatedAt?: string | null;
   currentUpdatedAt?: string | null;

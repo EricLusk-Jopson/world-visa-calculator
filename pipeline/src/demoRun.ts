@@ -7,9 +7,13 @@
  * Demonstrates, end to end:
  *  - first-run baseline capture
  *  - text-content change detection (ruleList: a country added to a list)
- *  - the Schengen "document vault" case (docVault: parsed via parentUrl;
- *    page text identical, but the "Annex 7b" link now targets a new PDF —
- *    reported as a link-target change, and the old PDF directUrl as broken)
+ *  - the Schengen "document vault" case (docVault: the parent page is
+ *    diffed; page text identical, but the "Annex 7b" link now targets a new
+ *    PDF — reported as a link-target change, and the old PDF direct link as
+ *    broken)
+ *  - a machine-readable alternate (blockedWithAlternate: the human page
+ *    answers with a bot-protection 202 and is reported blocked, while its
+ *    machine alternate is diffed and shows the text change)
  *  - a source that genuinely doesn't change (stable)
  *  - a link-health-only source going dead between runs (brokenInRun2)
  *  - the standardized report, written to reports/demo/ as markdown + JSON
@@ -20,7 +24,7 @@ import { createServer, type Server } from 'node:http';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import type { PipelineSourceDoc } from './types';
+import type { SourceDoc, SourceLink } from './types';
 import { runChecks } from './runChecks';
 import { buildReport, writeReportFiles, type RegionReport } from './report';
 
@@ -39,6 +43,12 @@ let activeRun: 'run1' | 'run2' = 'run1';
 function startServer(): Promise<Server> {
   const server = createServer(async (req, res) => {
     const urlPath = (req.url ?? '/').split('?')[0];
+
+    if (urlPath === '/regulation-human.html') {
+      res.writeHead(202, { 'Content-Type': 'text/html' });
+      res.end('');
+      return;
+    }
 
     if (urlPath === '/brokenInRun2.html') {
       if (activeRun === 'run2') {
@@ -76,33 +86,39 @@ function startServer(): Promise<Server> {
   return new Promise((resolve) => server.listen(PORT, '127.0.0.1', () => resolve(server)));
 }
 
-function demoSources(): Record<string, PipelineSourceDoc> {
+function link(url: string, type: SourceLink['type'], checkDiff: boolean, alternate?: SourceLink): SourceLink {
+  return { url, type, checkDiff, ...(alternate ? { alternate } : {}) };
+}
+
+function demoSources(): Record<string, SourceDoc> {
   const base = `http://127.0.0.1:${PORT}`;
   return {
     ruleList: {
-      directUrl: `${base}/ruleList.html`,
-      parentUrl: `${base}/ruleList.html`,
+      direct: link(`${base}/ruleList.html`, 'direct', true),
+      parent: link(`${base}/ruleList.html`, 'parent', false),
       dateChecked: '2026-10-05',
-      parseForRules: true,
     },
     docVault: {
-      directUrl: `${base}/document/download/${PDF_IDS.run1}?filename=Annex%207b_en.pdf`,
-      parentUrl: `${base}/docVault.html`,
+      // The PDF itself rotates; the landing page that links to it is what's diffed.
+      direct: link(`${base}/document/download/${PDF_IDS.run1}?filename=Annex%207b_en.pdf`, 'direct', false),
+      parent: link(`${base}/docVault.html`, 'parent', true),
       dateChecked: '2026-10-05',
-      parseForRules: true,
-      parseField: 'parentUrl',
     },
     stable: {
-      directUrl: `${base}/stable.html`,
-      parentUrl: `${base}/stable.html`,
+      direct: link(`${base}/stable.html`, 'direct', true),
+      parent: link(`${base}/stable.html`, 'parent', false),
       dateChecked: '2026-10-05',
-      parseForRules: true,
+    },
+    blockedWithAlternate: {
+      // Human page is health-checked only; its machine-readable copy is diffed.
+      direct: link(`${base}/regulation-human.html`, 'direct', false, link(`${base}/regulation.html`, 'machine', true)),
+      parent: link(`${base}/stable.html`, 'parent', false),
+      dateChecked: '2026-10-05',
     },
     brokenInRun2: {
-      directUrl: `${base}/brokenInRun2.html`,
-      parentUrl: `${base}/brokenInRun2.html`,
+      direct: link(`${base}/brokenInRun2.html`, 'direct', false),
+      parent: link(`${base}/brokenInRun2.html`, 'parent', false),
       dateChecked: '2026-10-05',
-      parseForRules: false,
     },
   };
 }
@@ -146,7 +162,8 @@ async function main() {
 
     console.log('\nExpected outcome:');
     console.log('  ruleList      -> text-changed   (Azerbaijan added to the list)');
-    console.log('  docVault      -> links-changed  (Annex 7b href rotated, page text identical), old PDF directUrl broken');
+    console.log('  docVault      -> links-changed  (Annex 7b href rotated, page text identical), old PDF direct link broken');
+    console.log('  blockedWithAlternate -> human page blocked (202); machine alternate text-changed (Azerbaijan added)');
     console.log('  stable        -> unchanged');
     console.log('  brokenInRun2  -> broken on run 2 (link-health only, not parsed for rules)');
   } finally {

@@ -56,6 +56,8 @@ function diffLineClass(line: string): string {
   if (line.startsWith("- ")) return "diff__del";
   return "diff__meta";
 }
+const ruleKeys = (c: RuleCheckResult) =>
+  formatKeys(c.keys) + (c.link && c.link !== "direct" ? ` (${c.link})` : "");
 const usageKeys = (l: LinkHealthResult) =>
   formatKeys(l.usedBy.map((u) => (l.usedBy.every((x) => x.field === u.field) ? u.key : `${u.key}.${u.field}`)));
 
@@ -165,7 +167,7 @@ const generated = report
                     <div class="finding">
                       <div class="finding__head">
                         <span class={`pill pill--${statusTone[c.status]}`}>{statusLabel[c.status]}</span>
-                        <span class="finding__keys">{formatKeys(c.keys)}</span>
+                        <span class="finding__keys">{ruleKeys(c)}</span>
                       </div>
                       <a class="url" href={c.url} rel="noopener noreferrer" target="_blank">{c.url}</a>
                       {c.error && <p class="finding__detail">{c.error}</p>}
@@ -235,7 +237,7 @@ const generated = report
 
                 <h4 class="region__sub">Content diffing</h4>
                 {r.ruleChecks.length === 0 ? (
-                  <p class="section__note">No sources in this region are flagged <code>parseForRules</code>.</p>
+                  <p class="section__note">No links in this region have <code>checkDiff</code> on.</p>
                 ) : (
                   <div class="table-wrap">
                     <table class="table">
@@ -243,7 +245,7 @@ const generated = report
                       <tbody>
                         {r.ruleChecks.map((c) => (
                           <tr>
-                            <td>{formatKeys(c.keys)}</td>
+                            <td>{ruleKeys(c)}</td>
                             <td><span class={`pill pill--${statusTone[c.status]}`}>{statusLabel[c.status]}</span></td>
                             <td class="url">{c.url}</td>
                           </tr>

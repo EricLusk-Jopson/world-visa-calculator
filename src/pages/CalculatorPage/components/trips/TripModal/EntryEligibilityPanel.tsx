@@ -246,7 +246,7 @@ export function EntryEligibilityPanel({ travelers, travelerIds, region }: EntryE
           <>
             <Box
               component="a"
-              href={sourcePopover.note.source.directUrl}
+              href={sourcePopover.note.source.direct.url}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("source_link_clicked", { link_type: "direct", region: VISA_REGION_LABELS[region] })}
@@ -262,7 +262,7 @@ export function EntryEligibilityPanel({ travelers, travelerIds, region }: EntryE
             </Box>
             <Box
               component="a"
-              href={sourcePopover.note.source.parentUrl}
+              href={sourcePopover.note.source.parent.url}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("source_link_clicked", { link_type: "overview", region: VISA_REGION_LABELS[region] })}

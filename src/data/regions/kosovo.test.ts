@@ -25,13 +25,13 @@ describe('getKosovoRule', () => {
     expect(note!.text.toLowerCase()).toContain('widely-reported');
   });
 
-  it('cites only the single source page for both directUrl and parentUrl — the deliberate per-region source policy', () => {
+  it('cites only the single source page for both the direct and parent links — the deliberate per-region source policy', () => {
     const rule = getKosovoRule('DE');
     expect(rule.access).toBe('entitled');
     if (rule.access !== 'entitled') return;
     const source = rule.entitlements[0].source!;
-    expect(source.directUrl).toBe('https://ambasadat.net/visas/');
-    expect(source.parentUrl).toBe('https://ambasadat.net/visas/');
+    expect(source.direct.url).toBe('https://ambasadat.net/visas/');
+    expect(source.parent.url).toBe('https://ambasadat.net/visas/');
   });
 
   it('returns visa_required (defaultRule) for a nationality not on the exempt list (AF)', () => {

@@ -184,7 +184,7 @@ export const IRELAND: RegionDefinition = {
   },
 
   lastVerified: '2026-05-27',
-  sourceUrl: IrelandSources.visaNationalityList.parentUrl,
+  sourceUrl: IrelandSources.visaNationalityList.parent.url,
   defaultRule: VISA_REQUIRED,
 
   passportRules: {

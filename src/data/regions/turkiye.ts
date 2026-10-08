@@ -83,7 +83,7 @@ const TR_CALENDAR_90: CalendarPeriodLimit = { type: 'calendar_period', days: 90,
 const EVISA_90: PreTravelAuth = {
   type: 'e_visa',
   name: 'Türkiye e-Visa (90 days, multiple entry)',
-  applicationUrl: TurkiyeSources.eVisaApplication.directUrl,
+  applicationUrl: TurkiyeSources.eVisaApplication.direct.url,
   authValidityDays: null, // trip-specific, not multi-year
   multiEntry: true,
 };
@@ -92,7 +92,7 @@ const EVISA_90: PreTravelAuth = {
 const EVISA_30: PreTravelAuth = {
   type: 'e_visa',
   name: 'Türkiye e-Visa (30 days, single entry)',
-  applicationUrl: TurkiyeSources.eVisaApplication.directUrl,
+  applicationUrl: TurkiyeSources.eVisaApplication.direct.url,
   authValidityDays: null,
   multiEntry: false,
 };
@@ -262,7 +262,7 @@ export const TURKIYE: RegionDefinition = {
   },
 
   lastVerified: '2026-05-27',
-  sourceUrl: TurkiyeSources.mfaVisaInfo.directUrl,
+  sourceUrl: TurkiyeSources.mfaVisaInfo.direct.url,
   defaultRule: VISA_REQUIRED,
 
   passportRules: {

@@ -2,9 +2,21 @@ import { compareSnapshots, extractSnapshot } from './contentCheck';
 import { createLimiter, fetchPage, mapWithConcurrency, type FetchOutcome } from './fetchPage';
 import { readSnapshot, writeSnapshot } from './snapshotStore';
 import type { RegionReport } from './report';
-import type { LinkHealthResult, PipelineSourceDoc, RuleCheckResult, SourceField, UrlUsage } from './types';
+import type { LinkHealthResult, LinkPath, RuleCheckResult, SourceDoc, SourceLink, UrlUsage } from './types';
 
-export type RegionSources = Record<string, Record<string, PipelineSourceDoc>>;
+export type RegionSources = Record<string, Record<string, SourceDoc>>;
+
+/** Every link on a SourceDoc, alternates included, with its path. */
+function linksOf(doc: SourceDoc): { path: LinkPath; link: SourceLink }[] {
+  const out: { path: LinkPath; link: SourceLink }[] = [];
+  const walk = (path: LinkPath, link: SourceLink) => {
+    out.push({ path, link });
+    if (link.alternate) walk(`${path}.alternate`, link.alternate);
+  };
+  walk('direct', doc.direct);
+  walk('parent', doc.parent);
+  return out;
+}
 
 export type RunOptions = {
   snapshotDir: string;
@@ -23,41 +35,42 @@ export type RunOptions = {
  * Every unique URL across all regions is fetched exactly once — Bosnia,
  * Kosovo, North Macedonia and Albania each cite one page from ~100–200
  * entries, and Schengen/UK parent pages are shared across keys. When a URL
- * is also a parse target, the same response body feeds the content diff,
- * so a run makes one request per URL rather than one per field per key.
+ * is also a diff target (`checkDiff: true`), the same response body feeds
+ * the content diff, so a run makes one request per URL rather than one per
+ * link per key. Every link is health-checked, alternates included.
  */
 export async function runChecks(regions: RegionSources, options: RunOptions): Promise<RegionReport[]> {
   const { snapshotDir, concurrency = 8, perHostConcurrency = 2, recheckDelayMs = 1_000, log = () => {} } = options;
 
   // region -> url -> usages, preserving sources.ts order for the report.
   const healthUsages = new Map<string, Map<string, UrlUsage[]>>();
-  // region -> parse url -> keys
-  const parseKeys = new Map<string, Map<string, string[]>>();
+  // region -> diff url -> keys + which link path
+  const parseKeys = new Map<string, Map<string, { keys: string[]; link: LinkPath }>>();
   const parseUrls = new Set<string>();
   const allUrls = new Set<string>();
 
   for (const [region, sources] of Object.entries(regions)) {
     const byUrl = new Map<string, UrlUsage[]>();
-    const parseByUrl = new Map<string, string[]>();
+    const parseByUrl = new Map<string, { keys: string[]; link: LinkPath }>();
     for (const [key, doc] of Object.entries(sources)) {
-      for (const field of ['directUrl', 'parentUrl'] as const satisfies SourceField[]) {
-        const url = doc[field];
+      for (const { path, link } of linksOf(doc)) {
+        const { url } = link;
         if (!byUrl.has(url)) byUrl.set(url, []);
-        byUrl.get(url)!.push({ key, field });
+        byUrl.get(url)!.push({ key, field: path });
         allUrls.add(url);
-      }
-      if (doc.parseForRules) {
-        const url = doc[doc.parseField ?? 'directUrl'];
-        if (!parseByUrl.has(url)) parseByUrl.set(url, []);
-        parseByUrl.get(url)!.push(key);
-        parseUrls.add(url);
+        if (link.checkDiff) {
+          if (!parseByUrl.has(url)) parseByUrl.set(url, { keys: [], link: path });
+          const entry = parseByUrl.get(url)!;
+          if (!entry.keys.includes(key)) entry.keys.push(key);
+          parseUrls.add(url);
+        }
       }
     }
     healthUsages.set(region, byUrl);
     parseKeys.set(region, parseByUrl);
   }
 
-  log(`Fetching ${allUrls.size} unique URLs (${parseUrls.size} parsed for content)...`);
+  log(`Fetching ${allUrls.size} unique URLs (${parseUrls.size} diffed for content)...`);
   const urls = interleaveByHost([...allUrls]);
   const hostLimiters = new Map<string, ReturnType<typeof createLimiter>>();
   const limiterFor = (url: string) => {
@@ -126,9 +139,10 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
       const { status, httpStatus, finalUrl, error } = outcomeByUrl.get(url)!;
       return { url, usedBy, status, httpStatus, finalUrl, error };
     });
-    const ruleChecks: RuleCheckResult[] = [...parseKeys.get(region)!].map(([url, keys]) => ({
+    const ruleChecks: RuleCheckResult[] = [...parseKeys.get(region)!].map(([url, { keys, link }]) => ({
       ...ruleByUrl.get(url)!,
       keys,
+      link,
     }));
     reports.push({ region, linkHealth, ruleChecks });
   }

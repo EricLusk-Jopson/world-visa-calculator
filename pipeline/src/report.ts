@@ -93,6 +93,12 @@ export function formatKeys(keys: string[], max = 8): string {
   return `${unique.slice(0, max).join(', ')} … (+${unique.length - max} more)`;
 }
 
+/** Keys plus the diffed link when it isn't the plain direct link, e.g. "visaList (direct.alternate)". */
+export function formatRuleKeys(c: RuleCheckResult, max = 8): string {
+  const keys = formatKeys(c.keys, max);
+  return c.link && c.link !== 'direct' ? `${keys} (${c.link})` : keys;
+}
+
 function formatUsages(usedBy: UrlUsage[]): string {
   const fields = new Set(usedBy.map((u) => u.field));
   const suffix = fields.size === 1 ? ` (${[...fields][0]})` : '';
@@ -113,7 +119,7 @@ function linkHealthRow(regionLabel: string | null, l: LinkHealthResult): string 
 }
 
 function renderRuleDetail(lines: string[], c: RuleCheckResult, heading: string): void {
-  lines.push(`${heading} ${formatKeys(c.keys, 5)} — ${statusBadge(c.status)}`);
+  lines.push(`${heading} ${formatRuleKeys(c, 5)} — ${statusBadge(c.status)}`);
   lines.push('');
   lines.push(`URL: ${c.url}`);
   if (c.error) lines.push(`<br>Error: ${c.error}`);
@@ -145,7 +151,7 @@ function renderSummary(lines: string[], report: Report): void {
   lines.push(`| 🔴 Broken | ${s.brokenLinks} |`);
   lines.push(`| ↪️ Redirected | ${s.redirectedLinks} |`);
   lines.push(`| 🚫 Blocked (bot protection) | ${s.blockedLinks ?? 0} |`);
-  lines.push(`| Content sources diffed (\`parseForRules\`) | ${s.sourcesChecked} |`);
+  lines.push(`| Content sources diffed (\`checkDiff\`) | ${s.sourcesChecked} |`);
   lines.push(`| ✏️ Changed since last baseline | ${s.sourcesChanged} |`);
   lines.push(`| 🆕 First run (no baseline yet) | ${s.sourcesFirstRun} |`);
   lines.push(`| ⚠️ Fetch errors | ${s.sourcesFetchError} |`);
@@ -188,7 +194,7 @@ export function renderMarkdown(report: Report): string {
     lines.push('### Content diffing');
     lines.push('');
     if (regionReport.ruleChecks.length === 0) {
-      lines.push('_No sources in this region are flagged `parseForRules`._');
+      lines.push('_No links in this region have `checkDiff` on._');
       lines.push('');
     } else {
       const detailed = regionReport.ruleChecks.filter((c) => isChanged(c.status) || c.status === 'fetch-error');
@@ -197,7 +203,7 @@ export function renderMarkdown(report: Report): string {
       if (quiet.length > 0) {
         lines.push('| Keys | Status | URL |');
         lines.push('|---|---|---|');
-        for (const c of quiet) lines.push(`| ${cell(formatKeys(c.keys))} | ${statusBadge(c.status)} | ${cell(c.url)} |`);
+        for (const c of quiet) lines.push(`| ${cell(formatRuleKeys(c))} | ${statusBadge(c.status)} | ${cell(c.url)} |`);
         lines.push('');
       }
     }

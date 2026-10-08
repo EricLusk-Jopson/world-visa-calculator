@@ -70,7 +70,7 @@ const UK_LIMIT: PerVisitLimit = {
 const UK_ETA: PreTravelAuth = {
   type: 'ETA',
   name: 'UK Electronic Travel Authorisation',
-  applicationUrl: UKSources.etaApplication.directUrl,
+  applicationUrl: UKSources.etaApplication.direct.url,
   cost: { amount: 20, currency: 'GBP' },
   authValidityDays: 730, // 2 years or passport expiry, whichever sooner
   multiEntry: true,
@@ -137,7 +137,7 @@ export const UNITED_KINGDOM: RegionDefinition = {
   },
 
   lastVerified: '2026-04-14',
-  sourceUrl: UKSources.standardVisitor.directUrl,
+  sourceUrl: UKSources.standardVisitor.direct.url,
   defaultRule: VISA_REQUIRED,
 
   passportRules: {

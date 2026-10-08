@@ -313,8 +313,8 @@ export function computeTravelerEligibility(
     // region can ship without one, since sourceUrl is a required field.
     const regionFallbackSource: SourceDoc | undefined = regionDef
       ? {
-          directUrl: regionDef.sourceUrl,
-          parentUrl: regionDef.sourceUrl,
+          direct: { url: regionDef.sourceUrl, type: "direct", checkDiff: false },
+          parent: { url: regionDef.sourceUrl, type: "parent", checkDiff: false },
           dateChecked: regionDef.lastVerified,
         }
       : undefined;

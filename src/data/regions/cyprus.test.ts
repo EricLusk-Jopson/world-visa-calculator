@@ -168,8 +168,8 @@ describe('Cyprus — Vanuatu mirrors Schengen\'s current (fallback) behavior', (
 });
 
 describe('Cyprus — cites distinct primary/parent URLs', () => {
-  it('directUrl is the EU Annex 1 PDF, parentUrl is gov.cy', () => {
-    expect(CyprusSources.visaList.directUrl).toContain('home-affairs.ec.europa.eu');
-    expect(CyprusSources.visaList.parentUrl).toBe('https://www.gov.cy/en/information/visas/');
+  it('direct link is the EU Annex 1 PDF, parent link is gov.cy', () => {
+    expect(CyprusSources.visaList.direct.url).toContain('home-affairs.ec.europa.eu');
+    expect(CyprusSources.visaList.parent.url).toBe('https://www.gov.cy/en/information/visas/');
   });
 });

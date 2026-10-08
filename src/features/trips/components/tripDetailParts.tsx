@@ -130,7 +130,7 @@ export function InfoRow({
         {source && (
           <IconButton
             component="a"
-            href={source.directUrl}
+            href={source.direct.url}
             target="_blank"
             rel="noopener noreferrer"
             size="small"
@@ -176,7 +176,7 @@ export function NoteBlock({ note }: { note: EligibilityNote }) {
       {note.source && (
         <Box
           component="a"
-          href={note.source.directUrl}
+          href={note.source.direct.url}
           target="_blank"
           rel="noopener noreferrer"
           sx={{

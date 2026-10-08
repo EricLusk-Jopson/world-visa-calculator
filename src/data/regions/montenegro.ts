@@ -15,7 +15,7 @@
  * pages (not hand-transcribed), cross-validated against a second independent
  * extraction pass, then classified into rule shapes. Two live pages were
  * directly fetched to confirm the URL pattern and content accuracy (the index
- * page and Canada's page); the remaining 194 directUrls follow the confirmed
+ * page and Canada's page); the remaining 194 direct links follow the confirmed
  * pattern but were not each individually re-fetched — Tier 2, not Tier 1,
  * confidence for those.
  *
@@ -127,7 +127,7 @@ const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
  * Every call cites its own country's source page via `source`, which the UI
  * attaches directly to the stay-rule summary as a link — every PassportRule
  * in this file should be traceable back to its specific gov.me page, not
- * just the region-level parentUrl. This is deliberately NOT done via a note:
+ * just the region-level parent link. This is deliberately NOT done via a note:
  * a note whose only content is "here's where this came from" duplicates the
  * source link with no added information, so `notes` is reserved for
  * commentary that says something beyond citation (e.g. the ID-card
