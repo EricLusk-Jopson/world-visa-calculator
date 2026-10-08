@@ -31,23 +31,37 @@ function normalizeUrl(url: string): string {
 }
 
 /**
- * Redirect targets that mean "you were turned away", not "the page moved".
- * EUR-Lex sends non-browser clients to its Official Journal homepage,
- * keeping the requested ?uri= in the query string.
+ * Redirect targets that mean "this site is down", not "the page moved".
+ * While EUR-Lex is "temporarily not fully available" it sends every visitor,
+ * people included, to its Official Journal homepage (keeping the requested
+ * ?uri= in the query string). The link itself is right, but nobody can
+ * reach the document, so it's reported broken with the outage as the reason.
  */
-const BLOCK_LANDINGS: { host: string; path: RegExp; reason: string }[] = [
-  { host: 'eur-lex.europa.eu', path: /^\/TodayOJ\//, reason: 'redirected to the Official Journal homepage (EUR-Lex bot protection)' },
+const OUTAGE_LANDINGS: { host: string; path: RegExp; reason: string }[] = [
+  {
+    host: 'eur-lex.europa.eu',
+    path: /^\/TodayOJ\//,
+    reason: 'EUR-Lex temporarily unavailable: redirected to its Official Journal fallback page',
+  },
 ];
 
-function blockedReason(httpStatus: number, finalUrl: string): string | undefined {
-  // A 2xx with no content is how WAF JavaScript challenges answer (AWS WAF uses 202).
-  if (httpStatus === 202) return 'HTTP 202, likely a bot-protection challenge';
+function outageReason(finalUrl: string): string | undefined {
   try {
     const u = new URL(finalUrl);
-    return BLOCK_LANDINGS.find((b) => b.host === u.host && b.path.test(u.pathname))?.reason;
+    return OUTAGE_LANDINGS.find((o) => o.host === u.host && o.path.test(u.pathname))?.reason;
   } catch {
     return undefined;
   }
+}
+
+/**
+ * A 2xx with no page is how WAF JavaScript challenges answer (AWS WAF uses
+ * 202), but some sites in a degraded mode answer the same way, so it's
+ * reported as blocked (unverified) rather than as either.
+ */
+function blockedReason(httpStatus: number): string | undefined {
+  if (httpStatus === 202) return 'HTTP 202 with no page: bot-protection challenge or site in degraded mode';
+  return undefined;
 }
 
 function isRetryable(outcome: FetchOutcome): boolean {
@@ -80,7 +94,12 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
       await res.body?.cancel();
       return { status: 'broken', httpStatus: res.status, finalUrl, contentType };
     }
-    const blocked = blockedReason(res.status, finalUrl);
+    const outage = outageReason(finalUrl);
+    if (outage) {
+      await res.body?.cancel();
+      return { status: 'broken', httpStatus: res.status, finalUrl, contentType, error: outage };
+    }
+    const blocked = blockedReason(res.status);
     if (blocked) {
       await res.body?.cancel();
       return { status: 'blocked', httpStatus: res.status, finalUrl, contentType, error: blocked };

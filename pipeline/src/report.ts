@@ -150,7 +150,7 @@ function renderSummary(lines: string[], report: Report): void {
   lines.push(`| Unique links checked | ${s.totalLinksChecked} |`);
   lines.push(`| 🔴 Broken | ${s.brokenLinks} |`);
   lines.push(`| ↪️ Redirected | ${s.redirectedLinks} |`);
-  lines.push(`| 🚫 Blocked (bot protection) | ${s.blockedLinks ?? 0} |`);
+  lines.push(`| 🚫 Blocked (could not verify) | ${s.blockedLinks ?? 0} |`);
   lines.push(`| Content sources diffed (\`checkDiff\`) | ${s.sourcesChecked} |`);
   lines.push(`| ✏️ Changed since last baseline | ${s.sourcesChanged} |`);
   lines.push(`| 🆕 First run (no baseline yet) | ${s.sourcesFirstRun} |`);

@@ -1,6 +1,6 @@
 # Source Verification Report
 
-Generated: 2026-10-08T02:26:51.862Z
+Generated: 2026-10-08T02:35:40.237Z
 
 ## Summary
 
@@ -9,7 +9,7 @@ Generated: 2026-10-08T02:26:51.862Z
 | Unique links checked | 7 |
 | 🔴 Broken | 2 |
 | ↪️ Redirected | 0 |
-| 🚫 Blocked (bot protection) | 1 |
+| 🚫 Blocked (could not verify) | 1 |
 | Content sources diffed (`checkDiff`) | 4 |
 | ✏️ Changed since last baseline | 3 |
 | 🆕 First run (no baseline yet) | 0 |
@@ -25,7 +25,7 @@ Generated: 2026-10-08T02:26:51.862Z
 | docVault (direct) | 🔴 broken (404) | http://127.0.0.1:47819/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
 | docVault (parent) | ✅ live (200) | http://127.0.0.1:47819/docVault.html |
 | stable, blockedWithAlternate | ✅ live (200) | http://127.0.0.1:47819/stable.html |
-| blockedWithAlternate (direct) | 🚫 blocked (202) | http://127.0.0.1:47819/regulation-human.html<br>HTTP 202, likely a bot-protection challenge |
+| blockedWithAlternate (direct) | 🚫 blocked (202) | http://127.0.0.1:47819/regulation-human.html<br>HTTP 202 with no page: bot-protection challenge or site in degraded mode |
 | blockedWithAlternate (direct.alternate) | ✅ live (200) | http://127.0.0.1:47819/regulation.html |
 | brokenInRun2 | 🔴 broken (404) | http://127.0.0.1:47819/brokenInRun2.html |
 

@@ -12,10 +12,11 @@ export type LinkPath = string;
 export type UrlUsage = { key: string; field: LinkPath };
 
 /**
- * `blocked`: the server answered, but with a bot-protection response instead
- * of the page (e.g. HTTP 202 challenge, or EUR-Lex's redirect to its
- * Official Journal homepage). The link likely works in a browser; we just
- * can't see it, so it is neither confirmed live nor broken.
+ * `blocked`: the server answered without the page (an HTTP 202, which is
+ * how bot-protection challenges respond). The link may well work in a
+ * browser; we just couldn't see it, so it is neither confirmed live nor
+ * broken. A redirect to a known outage page (EUR-Lex's Official Journal
+ * fallback) is `broken` instead, since people can't reach the page either.
  */
 export type LinkHealthStatus = 'live' | 'redirected' | 'blocked' | 'broken';
 

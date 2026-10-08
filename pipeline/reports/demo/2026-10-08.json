@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T02:26:51.862Z",
+  "generatedAt": "2026-10-08T02:35:40.237Z",
   "regions": [
     {
       "region": "Demo",
@@ -75,7 +75,7 @@
           "status": "blocked",
           "httpStatus": 202,
           "finalUrl": "http://127.0.0.1:47819/regulation-human.html",
-          "error": "HTTP 202, likely a bot-protection challenge"
+          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
         },
         {
           "url": "http://127.0.0.1:47819/regulation.html",

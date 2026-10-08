@@ -120,13 +120,16 @@ deliberately cautious:
 - **Error detail:** errors carry the underlying cause, e.g.
   `fetch failed (ECONNRESET)` or `fetch failed (UND_ERR_CONNECT_TIMEOUT)`,
   not just `fetch failed`.
-- **Blocked:** some sites answer automated clients with a bot-protection
-  response instead of the page. An HTTP 202 (a WAF JavaScript challenge), or
-  a redirect to a known "turned away" page such as EUR-Lex's `/TodayOJ/`
-  homepage, is reported as `blocked`, not `live` or `redirected`. The link
-  probably works for people, but we couldn't confirm it, and its content is
-  never diffed or saved as a baseline. Add new "turned away" pages to
-  `BLOCK_LANDINGS` in `src/fetchPage.ts`.
+- **Blocked:** an HTTP 202 with no page is reported `blocked`, not `live`.
+  That's how bot-protection challenges answer, though some sites in a
+  degraded mode do the same. The link probably works for people, but we
+  couldn't confirm it.
+- **Site outages:** a redirect to a known outage page is reported `broken`,
+  with the outage as the reason. While EUR-Lex is "temporarily not fully
+  available" it sends every visitor to its Official Journal homepage
+  (`/TodayOJ/`), so people can't reach the regulation either. Add other
+  sites' outage pages to `OUTAGE_LANDINGS` in `src/fetchPage.ts`.
+- Neither kind of page is diffed or saved as a content baseline.
 - **Empty pages:** a parsed page with no extractable text (a bot-check
   interstitial or script-rendered shell) is reported as a fetch error. It is
   never saved as the baseline.
