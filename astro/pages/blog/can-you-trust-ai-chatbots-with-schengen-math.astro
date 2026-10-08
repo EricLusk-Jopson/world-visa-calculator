@@ -1,0 +1,1053 @@
+---
+/**
+ * Blog post: Can You Trust an AI Chatbot With Schengen Math?
+ * URL: /blog/can-you-trust-ai-chatbots-with-schengen-math
+ * Static Astro page, rendered to plain HTML at build time.
+ *
+ * Results live in `results` below and drive every grid cell and answer
+ * panel; the chatbots' verbatim replies are markdown files in
+ * astro/data/chatbot-responses/.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
+import Footer from "../../components/Footer.astro";
+import ChatbotAnswers from "../../components/ChatbotAnswers.astro";
+
+// Per prompt: the two calculator answers, then each chatbot's answer and
+// grade (see the grading legend). 🔍 = searched the web or ran code.
+const results: Record<string, any> = {
+  "q1-1": { ref: ["Aug 28", "Aug 28"], claude: ["Aug 28", "✅"], chatgpt: ["Aug 28", "✅"], gemini: ["Nov 25", "❌"] },
+  "q1-2": { ref: ["Jun 21", "Jun 21"], claude: ["Jun 21", "✅"], chatgpt: ["Sep 18", "❌"], gemini: ["Sep 18", "❌"] },
+  "q1-3": { ref: ["Mar 31", "Mar 31"], claude: ["Mar 31", "✅"], chatgpt: ["Jun 28", "❌ 🔍"], gemini: ["Jun 29, then Mar 31", "🟡"] },
+  "q2-1": { ref: ["Aug 28", "Aug 28"], claude: ["Aug 28", "✅"], chatgpt: ["Sep 27", "❌"], gemini: ["Aug 24, then Aug 28", "🟡"] },
+  "q2-2": { ref: ["Jun 21", "Jun 21"], claude: ["Jun 21", "✅"], chatgpt: ["Jun 21", "✅"], gemini: ["Jul 21", "❌"] },
+  "q2-3": { ref: ["Dec 31", "Dec 31"], claude: ["Dec 31", "✅"], chatgpt: ["Dec 31", "✅"], gemini: ["Dec 31", "✅ 🔍"] },
+  "q2-4": { ref: ["Jan 29", "Jan 29"], claude: ["Jan 29", "✅"], chatgpt: ["Jan 29", "✅"], gemini: ["May 26", "❌"] },
+  "q3-1": { ref: ["May 29", "May 29"], claude: ["May 29", "✅"], chatgpt: ["May 29", "✅ 🔍"], gemini: ["May 29", "✅"] },
+  "q3-2": { ref: ["Jun 11", "Jun 11"], claude: ["Jun 11", "✅"], chatgpt: ["Jun 12", "🟡"], gemini: ["Jul 31", "❌"] },
+  "q3-3": { ref: ["Oct 12", "Oct 12"], claude: ["Oct 12", "✅"], chatgpt: ["Oct 12", "✅"], gemini: ["Oct 22", "❌ 🔍"] },
+  "q3-4": { ref: ["Jul 15", "Jul 15"], claude: ["Jul 15", "✅"], chatgpt: ["Jul 15", "✅ 🔍"], gemini: ["Jul 15", "✅"] },
+  "q4-1": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["No", "❌"] },
+  "q4-2": { ref: ["No", "No"], claude: ["No", "✅"], chatgpt: ["No", "✅"], gemini: ["No", "✅"] },
+  "q4-3": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["Yes", "✅"] },
+  "q4-4": { ref: ["No", "No"], claude: ["No", "✅"], chatgpt: ["No", "✅"], gemini: ["No", "✅"] },
+  "q4-5": { ref: ["Yes", "Yes"], claude: ["Yes", "✅"], chatgpt: ["No", "❌"], gemini: ["No, then Yes", "🟡"] },
+  "q5-1": { ref: ["Jul 31*", "Jul 31*"], claude: ["Aug 1", "✅"], chatgpt: ["Aug 1", "✅"], gemini: ["Sep 2", "❌"] },
+  "q5-2": { ref: ["N/A", "Anna & Olivia must change"], claude: ["All four right", "✅"], chatgpt: ["All four right", "✅ 🔍"], gemini: ["Wrong on Marcus & Ilker", "❌"] },
+  "q5-3": { ref: ["N/A", "Oct 2"], claude: ["Oct 2", "✅"], chatgpt: ["Oct 2", "✅ 🔍"], gemini: ["Oct 10", "❌"] },
+  "q5-4": { ref: ["Mar 18", "Mar 18"], claude: ["Mar 18", "✅"], chatgpt: ["Mar 18", "✅"], gemini: ["May 26", "❌"] },
+};
+
+// One grid row's cells: two calculator answers, then each chatbot's answer
+// linking to its full response below the prompt.
+const esc = (text: string) => text.replace(/&/g, "&amp;");
+const cells = (id: string) => {
+  const r = results[id];
+  const model = (key: string) => {
+    const [answer, grade] = r[key];
+    return `<td><a href="#ans-${id}-${key}">${esc(answer)} ${grade}</a></td>`;
+  };
+  return `<td>${esc(r.ref[0])}</td><td>${esc(r.ref[1])}</td>` + ["claude", "chatgpt", "gemini"].map(model).join("");
+};
+---
+
+<BaseLayout
+  title="Can You Trust an AI Chatbot With Schengen Math?"
+  description="We asked the free versions of Claude, ChatGPT, and Gemini 20 real Schengen 90/180 questions. Claude got all 20 right. The other two got 21 of their 40 answers wrong or only partly right."
+  canonicalUrl="https://eurovisacalculator.com/blog/can-you-trust-ai-chatbots-with-schengen-math"
+>
+  <LandingNav />
+
+  <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
+    <header class="article__header">
+      <p class="article__tag">Blog</p>
+
+      <h1 class="article__title">Can You Trust an AI Chatbot With Schengen Math?</h1>
+
+      <p class="article__meta">October 7, 2026 · 6 min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you've asked, or are
+        thinking of asking, an AI chatbot about your time in the Schengen Area.
+        <br />
+        <br />
+        <strong>It's probably not necessary if:</strong> you just want an
+        answer for your own dates. In that case,
+        <a href="/app">go straight to the calculator</a>.
+      </p>
+    </header>
+
+    <div class="article__body">
+
+      <p>
+        During the initial development of EuroVisaCalculator, we found AI chatbots could not be relied upon for rolling window math. 
+        This is one of the main reasons why EuroVisaCalculator is AI-free: 
+        too often Claude or ChatGPT would provide the wrong answer to a simple question.
+      </p>
+      <p>
+        The state of AI tooling, however, has improved greatly since our initial development, 
+        so on October 1st, 2026 we revisited chatbots to see if they'd improved. 
+        In this experiment, we asked the free versions of Claude, ChatGPT, and Gemini 20 real
+        questions about the Schengen 90/180 rule, then confirmed each answer against the official 
+        EU calculator and EuroVisaCalculator, both of which use a purely mathematical calculation.
+      </p>
+
+      <nav class="article__toc" aria-label="Table of contents">
+        <p class="article__toc-title">On this page</p>
+        <ol>
+          <li><a href="#results">The short answer</a></li>
+          <li><a href="#why-this-happens">Why a wrong answer is easy to believe</a></li>
+          <li><a href="#methodology">How we tested</a></li>
+          <li><a href="#scenarios">The travelers</a></li>
+          <li><a href="#q1">Question 1: When can I return for a full 90 days?</a></li>
+          <li><a href="#q2">Question 2: When can I return for a shorter trip?</a></li>
+          <li><a href="#q3">Question 3: When do I have to leave?</a></li>
+          <li><a href="#q4">Question 4: Can I make this trip?</a></li>
+          <li><a href="#q5">Question 5: Coordinating trips</a></li>
+          <li><a href="#why-evc">If it's always right, then why not use Claude?</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="results">The short answer</h2>
+
+      <p>
+        Based on these companies' current free tiers, it depends entirely on the chatbot. 
+        Claude got all 20 right. 
+        ChatGPT and Gemini got 21 of their 40 answers wrong or only partly right.
+      </p>
+
+      <div class="table-wrap">
+        <table class="scoreboard">
+          <thead>
+            <tr>
+              <th scope="col">Model</th>
+              <th scope="col">✅ Correct</th>
+              <th scope="col">🟡 Close</th>
+              <th scope="col">❌ Wrong</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th class="vendor-anthropic" scope="row">Claude Sonnet 5.6</th><td>20</td><td>0</td><td>0</td></tr>
+            <tr><th class="vendor-openai" scope="row">ChatGPT 5.6 Luna</th><td>13</td><td>1</td><td>6</td></tr>
+            <tr><th class="vendor-google" scope="row">Gemini 3.6 Flash</th><td>6</td><td>3</td><td>11</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        These results are a snapshot from October 2026. Models are improving
+        quickly, and the paid versions we tried already answered most of
+        these questions correctly.
+      </p>
+
+      <h2 id="why-this-happens">Why a wrong answer is easy to believe</h2>
+
+      <p>
+        The biggest problem with AI chatbots is that their wrong answers are just as confident and well written as the
+        right ones, often with plausible explanations. Checking one means
+        redoing the math yourself: counting both entry and exit days, and
+        tracking a <a href="/blog/the-schengen-90-180-rolling-window">rolling 180-day window</a>. That's the work
+        you asked the chatbot to do, so most people won't check.
+      </p>
+
+      <p>
+        When calculating overstay limits, there are two possible types of mistake: cautious and dangerous.
+        In this experiment, the mistakes on display went both ways. Some wrong answers advised travelers to wait up to three
+        months longer than necessary before traveling. Others allowed an overstay: Gemini
+        told Anna she could stay until July 31, seven weeks past her real
+        limit of June 11. An overstay can lead to an entry ban.
+      </p>
+
+      <h2 id="methodology">How we tested</h2>
+
+      <p>
+        We tested what a traveler without an AI subscription gets: a new
+        Google account on the free tier of each service, using its default
+        model.
+      </p>
+
+      <ul>
+        <li>Each prompt was sent once, exactly as written below, in a new temporary chat.</li>
+        <li>No custom instructions, memory, or follow-up questions.</li>
+        <li>Default settings. If a chatbot chose to search the web or run code, we let it.</li>
+      </ul>
+
+      <div class="table-wrap">
+        <table class="legend-table">
+          <tbody>
+            <tr><td class="legend-mark">✅</td><td>Correct</td></tr>
+            <tr><td class="legend-mark">🟡</td><td>Off by 1 to 3 days, or correct only after a wrong answer</td></tr>
+            <tr><td class="legend-mark">❌</td><td>Wrong</td></tr>
+            <tr><td class="legend-mark">🔍</td><td>Searched the web or ran code</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="scenarios">The travelers</h2>
+
+      <p>
+        The travelers come from our <a href="/blog/the-schengen-90-180-rolling-window">rolling window
+        explainer</a>. All hold passports with the standard 90-day
+        visa-free allowance, and each prompt includes their full travel
+        history.
+      </p>
+
+      <h3>Patricia</h3>
+      <p>One 90-day trip, March 1 to May 29, 2025.</p>
+
+      <h3>Anna, Marcus, Ilker, and Olivia</h3>
+      <p>A 50-day trip together, February 1 to March 22, 2025. Each then plans their own return.</p>
+
+      <h3>Jordan</h3>
+      <ul>
+        <li>Trip 1: Mar 14–21, 2025</li>
+        <li>Trip 2: Apr 18 – Jul 2, 2025</li>
+        <li>Trip 3: Sep 19–26, 2025</li>
+        <li>Trip 4: Nov 27 – Dec 30, 2025</li>
+        <li>Trip 5: Apr 12–17, 2026</li>
+        <li>Trip 6: Apr 23 – May 10, 2026</li>
+      </ul>
+
+      <hr />
+
+      <h2 id="q1">Question 1: When can I return for a full 90 days?</h2>
+
+      <p>
+        The most common question after a trip. The usual mistake is waiting
+        for the old trip to clear the 180-day window completely.
+      </p>
+
+      <details class="prompt-box">
+        <summary>Prompt: Patricia</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on March 1, 2025 and exited on May 29, 2025. She has had no other Schengen Area travel before or after this trip.
+
+Under the Schengen 90/180-day rule, what is the earliest date on which Patricia could begin a brand-new 90-day stay in the Schengen Area, using her full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: August 28, 2025. <a href="/blog/the-schengen-90-180-rolling-window#case-2">Worked example</a>.</p>
+      <ChatbotAnswers id="q1-1" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Anna, Marcus, Ilker, and Olivia</summary>
+        <pre class="prompt-text">Four friends — Anna, Marcus, Ilker, and Olivia — all hold passports that allow 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. All four traveled together on a single trip: entered February 1, 2025, exited March 22, 2025 (50 days). None of them have any other Schengen Area travel history before or after this trip.
+
+Under the Schengen 90/180-day rule, what is the earliest date on which any of them could begin a brand-new 90-day stay in the Schengen Area, using their full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: June 21, 2025. Waiting for the trip to fully clear the window (September 18) is unnecessary.</p>
+      <ChatbotAnswers id="q1-2" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Jordan</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+
+As of December 31, 2025, what is the earliest date on which Jordan could begin a brand-new 90-day stay in the Schengen Area, using a full 90-day allowance? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: March 31, 2026.</p>
+      <ChatbotAnswers id="q1-3" results={results} />
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Prompt</th>
+              <th class="vendor-reference" scope="col">EU calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude</th>
+              <th class="vendor-openai" scope="col">ChatGPT</th>
+              <th class="vendor-google" scope="col">Gemini</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Patricia</th>
+              <Fragment set:html={cells("q1-1")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Group</th>
+              <Fragment set:html={cells("q1-2")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan</th>
+              <Fragment set:html={cells("q1-3")} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <h2 id="q2">Question 2: When can I return for a shorter trip?</h2>
+
+      <p>A shorter trip doesn't always mean an earlier start date.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt: Patricia, 30 days</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on March 1, 2025 and exited on May 29, 2025. She has had no other Schengen Area travel before or after this trip.
+
+What is the earliest date on which Patricia could enter the Schengen Area for a new trip lasting exactly 30 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: August 28, 2025, the same as for 90 days.</p>
+      <ChatbotAnswers id="q2-1" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Anna, 60 days</summary>
+        <pre class="prompt-text">Anna holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on February 1, 2025 and exited on March 22, 2025 (50 days). She has had no other Schengen Area travel before or after this trip.
+
+What is the earliest date on which Anna could enter the Schengen Area for a new trip lasting exactly 60 days, without overstaying her 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: June 21, 2025, the same as for 90 days.</p>
+      <ChatbotAnswers id="q2-2" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Jordan, 21 days</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+
+What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 21 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: December 31, 2025, the day after Trip 4.</p>
+      <ChatbotAnswers id="q2-3" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Jordan, 50 days</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+
+What is the earliest date after December 30, 2025 on which Jordan could enter the Schengen Area for a new trip lasting exactly 50 days, without overstaying the 90/180 allowance at any point during that trip? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: January 29, 2026.</p>
+      <ChatbotAnswers id="q2-4" results={results} />
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Prompt</th>
+              <th class="vendor-reference" scope="col">EU calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude</th>
+              <th class="vendor-openai" scope="col">ChatGPT</th>
+              <th class="vendor-google" scope="col">Gemini</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Patricia, 30 days</th>
+              <Fragment set:html={cells("q2-1")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Anna, 60 days</th>
+              <Fragment set:html={cells("q2-2")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan, 21 days</th>
+              <Fragment set:html={cells("q2-3")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan, 50 days</th>
+              <Fragment set:html={cells("q2-4")} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <h2 id="q3">Question 3: When do I have to leave?</h2>
+
+      <p>A wrong answer here can mean an overstay.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt: Patricia, from March 1</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. She has no Schengen Area travel history before this trip.
+
+If Patricia enters the Schengen Area on March 1, 2025, what is the last date she is allowed to still be present in the Schengen Area before she must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning, including whether entry and exit days themselves count toward the 90 days.</pre>
+      </details>
+      <p class="known-answer">Answer: May 29, 2025. <a href="/blog/does-your-entry-day-count-as-a-schengen-day">Entry and exit days both count</a>.</p>
+      <ChatbotAnswers id="q3-1" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Anna, from May 3</summary>
+        <pre class="prompt-text">Anna holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her only prior Schengen Area travel: entered February 1, 2025, exited March 22, 2025 (50 days). No other history.
+
+If Anna enters the Schengen Area again on May 3, 2025, what is the last date she is allowed to still be present in the Schengen Area before she must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: June 11, 2025. Her earlier trip stays in the window for the whole stay, capping her at 40 days.</p>
+      <ChatbotAnswers id="q3-2" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Marcus, from July 15</summary>
+        <pre class="prompt-text">Marcus holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. His only prior Schengen Area travel: entered February 1, 2025, exited March 22, 2025 (50 days). No other history.
+
+If Marcus enters the Schengen Area again on July 15, 2025, what is the last date he is allowed to still be present in the Schengen Area before he must exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: October 12, 2025, a full 90 days. His earlier trip leaves the window during the stay.</p>
+      <ChatbotAnswers id="q3-3" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Jordan, from April 23, 2026</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's Schengen Area travel history prior to this trip is:
+
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+- Trip 5: April 12–17, 2026
+
+Jordan left his bike in England with a friend in November and plans to go pick it up to do some cycling in Europe in the spring. His bike needs some repair, during which time he wants to visit Malta for a cheap trip. If Jordan enters the Schengen Area on April 12, 2026 and stays for 6 days, then flies to England to pick up his bike and re-enters the Schengen Area to start cycling on April 23rd, 2026. What is the last date Jordan is allowed to still be present before having to exit to stay compliant with the 90/180 rule? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: July 15, 2026. Days in England don't count, and the April 12 visit is Trip 5, so it counts once.</p>
+      <ChatbotAnswers id="q3-4" results={results} />
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Prompt</th>
+              <th class="vendor-reference" scope="col">EU calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude</th>
+              <th class="vendor-openai" scope="col">ChatGPT</th>
+              <th class="vendor-google" scope="col">Gemini</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Patricia, from Mar 1</th>
+              <Fragment set:html={cells("q3-1")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Anna, from May 3</th>
+              <Fragment set:html={cells("q3-2")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Marcus, from Jul 15</th>
+              <Fragment set:html={cells("q3-3")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan, from Apr 23</th>
+              <Fragment set:html={cells("q3-4")} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <h2 id="q4">Question 4: Can I make this trip?</h2>
+
+      <p>The yes or no question people ask right before booking.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt: Patricia, August 28 for 90 days</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on March 1, 2025 and exited on May 29, 2025. No other history.
+
+Can Patricia enter the Schengen Area on August 28, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: Yes, with no days to spare.</p>
+      <ChatbotAnswers id="q4-1" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Patricia, August 20 for 90 days</summary>
+        <pre class="prompt-text">Patricia holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her entire Schengen Area travel history is a single trip: she entered on March 1, 2025 and exited on May 29, 2025. No other history.
+
+Can Patricia enter the Schengen Area on August 20, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: No. Her whole earlier trip is still in the window on August 20.</p>
+      <ChatbotAnswers id="q4-2" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Ilker, August 1 for 90 days</summary>
+        <pre class="prompt-text">Ilker holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. His only prior Schengen Area travel: entered February 1, 2025, exited March 22, 2025 (50 days). No other history.
+
+Can Ilker enter the Schengen Area on August 1, 2025 and stay for a full 90 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: Yes.</p>
+      <ChatbotAnswers id="q4-3" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Anna, May 3 for 50 days</summary>
+        <pre class="prompt-text">Anna holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Her only prior Schengen Area travel: entered February 1, 2025, exited March 22, 2025 (50 days). No other history.
+
+Can Anna enter the Schengen Area on May 3, 2025 and stay for 50 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: No. She has 40 days available, not 50.</p>
+      <ChatbotAnswers id="q4-4" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Jordan, June 1, 2026 for 60 days</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's complete Schengen Area travel history is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+- Trip 5: April 12–17, 2026
+- Trip 6: April 23 – May 10, 2026
+
+Can Jordan enter the Schengen Area on June 1, 2026 and stay for 60 days without overstaying the 90/180 rule at any point? Answer yes or no first, then briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: Yes. Only 39 days are available on June 1, but Trip 4 leaves the window during the stay, allowing up to 66 days.</p>
+      <ChatbotAnswers id="q4-5" results={results} />
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Prompt</th>
+              <th class="vendor-reference" scope="col">EU calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude</th>
+              <th class="vendor-openai" scope="col">ChatGPT</th>
+              <th class="vendor-google" scope="col">Gemini</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Patricia, Aug 28</th>
+              <Fragment set:html={cells("q4-1")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Patricia, Aug 20</th>
+              <Fragment set:html={cells("q4-2")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Ilker, Aug 1</th>
+              <Fragment set:html={cells("q4-3")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Anna, May 3</th>
+              <Fragment set:html={cells("q4-4")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan, Jun 1</th>
+              <Fragment set:html={cells("q4-5")} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <h2 id="q5">Question 5: Coordinating trips</h2>
+
+      <p>Lining up trips with other people, or changing plans mid-trip.</p>
+
+      <details class="prompt-box">
+        <summary>Prompt: Anna joins Marcus and Ilker for a week</summary>
+        <pre class="prompt-text">Anna, Marcus, and Ilker all hold passports that allow 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. In 2025 they took a trip together, entering the Schengen Area on February 1 and exiting on March 22. Since then:
+- Anna returned on her own from May 3 to June 11, 2025.
+- Marcus is in the Schengen Area from July 15 to October 12, 2025.
+- Ilker is in the Schengen Area from August 1 to October 29, 2025.
+None of them has any other Schengen Area travel.
+
+Anna wants to fly back and spend a 7-day trip with Marcus and Ilker while both of them are still there. What is the earliest date the three of them could start that week together, without Anna overstaying the 90/180 rule at any point? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: August 1, 2025, when Ilker arrives. *Both calculators give July 31, the earliest Anna alone can return.</p>
+      <ChatbotAnswers id="q5-1" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: The group joins Jordan in September</summary>
+        <pre class="prompt-text">Four friends — Anna, Marcus, Ilker, and Olivia — all hold passports that allow 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. In 2025 they traveled together, entering the Schengen Area on February 1 and exiting on March 22. Their other Schengen Area travel, already taken or booked, is:
+- Anna: May 3 – June 11, 2025, and a winter trip from October 15, 2025 to January 10, 2026.
+- Marcus: July 15 – October 12, 2025.
+- Ilker: August 1 – October 29, 2025.
+- Olivia: September 27 – December 25, 2025.
+
+Their friend Jordan will be in the Schengen Area from September 19 to 26, 2025, and all four want to spend that whole week with him. Can each of them join without breaking the 90/180 rule? For anyone who can't simply add that week, keep the start date of their booked trip and give the latest date they could end it instead. Give specific dates and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: Marcus and Ilker need no changes. Anna's winter trip must end by January 4, 2026, and Olivia must leave by December 17, 2025. The EU calculator can't check this one.</p>
+      <ChatbotAnswers id="q5-2" results={results} />
+
+      <details class="prompt-box">
+        <summary>Prompt: Jordan extends Trip 3</summary>
+        <pre class="prompt-text">Jordan holds a passport that allows 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Jordan's Schengen Area travel so far is:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: in the Schengen Area since September 19, 2025, booked to leave on September 26
+
+Jordan has also booked these future trips:
+- Trip 4: November 27 – December 30, 2025
+- Trip 5: April 12–17, 2026
+- Trip 6: April 23 – May 10, 2026
+
+Bad weather has cancelled Jordan's flight, and he wants to stay longer on Trip 3. What is the latest date he can leave without overstaying the 90/180 rule, and without making any of his booked future trips non-compliant? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: October 2, 2025. Trip 2 is still in the window, leaving 14 days for Trip 3. The EU calculator can't check this one.</p>
+      <ChatbotAnswers id="q5-3" results={results} />
+      <details class="prompt-box">
+        <summary>Prompt: Olivia and Jordan plan a trip together</summary>
+        <pre class="prompt-text">Olivia and Jordan both hold passports that allow 90 days of visa-free travel in the Schengen Area within any rolling 180-day period. Their complete Schengen Area travel histories are:
+
+Olivia:
+- February 1 – March 22, 2025
+- September 19 – December 17, 2025
+
+Jordan:
+- Trip 1: March 14–21, 2025
+- Trip 2: April 18 – July 2, 2025
+- Trip 3: September 19–26, 2025
+- Trip 4: November 27 – December 30, 2025
+
+They want to take a 14-day trip together in 2026. What is the earliest date they could both enter the Schengen Area for that trip, without either of them overstaying the 90/180 rule at any point? Give a specific date and briefly explain your reasoning.</pre>
+      </details>
+      <p class="known-answer">Answer: March 18, 2026. Olivia used a full 90 days ending December 17, so she can't return until September 19 leaves the window. Jordan could go any time.</p>
+      <ChatbotAnswers id="q5-4" results={results} />
+
+      <div class="table-wrap">
+        <table class="qa-table">
+          <thead>
+            <tr>
+              <th class="row-head" scope="col">Prompt</th>
+              <th class="vendor-reference" scope="col">EU calculator</th>
+              <th class="vendor-reference" scope="col">EuroVisaCalculator</th>
+              <th class="vendor-anthropic" scope="col">Claude</th>
+              <th class="vendor-openai" scope="col">ChatGPT</th>
+              <th class="vendor-google" scope="col">Gemini</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="row-head" scope="row">Anna joins Marcus and Ilker</th>
+              <Fragment set:html={cells("q5-1")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Group joins Jordan</th>
+              <Fragment set:html={cells("q5-2")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Jordan extends Trip 3</th>
+              <Fragment set:html={cells("q5-3")} />
+            </tr>
+            <tr>
+              <th class="row-head" scope="row">Olivia and Jordan</th>
+              <Fragment set:html={cells("q5-4")} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+
+      <h2 id="why-evc">If it's always right, then why not use Claude?</h2>
+
+      <p>
+        Ultimately, even a correct chatbot answer is a paragraph in one person's chat. 
+        Over time it gets lost and you can't share it with your travel group, see everyone's days side
+        by side, or update it when plans change. Meanwhile, the official EU calculator
+        is always accurate, but it handles one traveler at a time,
+        can't answer complicated scheduling questions, and does not support other countries outside the Schengen Area.
+      </p>
+
+      <p>
+        By comparison, <a href="/app">EuroVisaCalculator</a> is built to be shared, supports the entire continent, and is meant for multiple travelers.
+      </p>
+
+      <ul>
+        <li><strong>One shared plan.</strong> Your trips are saved in the link, so anyone you send it to sees the same itinerary. No account needed.</li>
+        <li><strong>Every traveler at once.</strong> <a href="/blog/schengen-calculator-couples">See everyone's days side by side.</a></li>
+        <li><strong>Every day visible.</strong> The timeline shows each counted day, so you can check the result.</li>
+        <li><strong>Beyond Schengen.</strong> 47 European countries and territories, including the UK and Ireland.</li>
+      </ul>
+
+      <p><a href="/app">Try EuroVisaCalculator with your own dates</a>.</p>
+
+    </div>
+
+    <div class="article__back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+  </article>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Grid cells link to an answer inside collapsed <details>; open it (and
+  // its parent panel) before scrolling there.
+  function openAnswer() {
+    const el = location.hash && document.getElementById(location.hash.slice(1));
+    if (!el) return;
+    for (let d = el.closest("details"); d; d = d.parentElement?.closest("details") ?? null) d.open = true;
+    el.scrollIntoView({ block: "start" });
+  }
+  window.addEventListener("hashchange", openAnswer);
+  openAnswer();
+</script>
+
+<style>
+  .article {
+    min-height: 100vh;
+    background: var(--color-off-white);
+    padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .article__header {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .article__tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 14px;
+  }
+
+  .article__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .article__meta {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+
+
+  .article__audience {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
+  }
+
+  .article__body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article__toc {
+    background: #eef1ea;
+    border: 1px solid #e0dbd3;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 0 0 2rem;
+  }
+
+  .article__toc-title {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a6a82;
+    margin: 0 0 10px;
+  }
+
+  .article__toc ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-family: var(--font-body);
+  }
+
+  .article__toc li {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #3d4f65;
+  }
+
+  .article__toc a {
+    color: #0c1e3c;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s, color 0.18s;
+  }
+
+  .article__toc a:hover {
+    color: #00b96b;
+    border-bottom-color: #00b96b;
+  }
+
+  .article__body p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+  }
+
+  .article__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article__body h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0c1e3c;
+    margin: 1.75rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article__body hr {
+    border: none;
+    border-top: 1px solid #e0dbd3;
+    margin: 2.5rem 0;
+  }
+
+  .article__body a {
+    color: #00b96b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s;
+  }
+
+  .article__body a:hover {
+    border-bottom-color: #00b96b;
+  }
+
+  .article__body blockquote {
+    margin: 1.5rem 0;
+    padding: 14px 18px;
+    background: #f0f4f8;
+    border-left: 3px solid #b8c8d8;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .article__body blockquote p {
+    margin: 0;
+    font-size: 0.93rem;
+    color: #3d4f65;
+    line-height: 1.7;
+  }
+
+  .article__back {
+    max-width: 680px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #e0dbd3;
+  }
+
+  .article__back-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #5a6a82;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .article__back-link:hover {
+    color: #0c1e3c;
+  }
+
+  .article__body ul {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+    padding-left: 1.4rem;
+  }
+
+  .article__body li {
+    margin-bottom: 0.4em;
+  }
+
+  /* Post-specific: results grids, model roster, legend, prompt boxes. */
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.25rem 0 1.75rem;
+    border-radius: 10px;
+    border: 1px solid #e0dbd3;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+  }
+
+
+
+  .scoreboard th,
+  .scoreboard td {
+    padding: 9px 14px;
+    text-align: left;
+    border-bottom: 1px solid #edf1f4;
+  }
+
+  .scoreboard thead th {
+    font-size: 0.75rem;
+    font-weight: 650;
+    background: #f7f8f6;
+    color: #0c1e3c;
+  }
+
+  .scoreboard td {
+    font-weight: 600;
+    color: #0c1e3c;
+  }
+
+  .legend-table td {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    color: #3d4f65;
+    border-bottom: 1px solid #edf1f4;
+  }
+
+  .legend-mark {
+    text-align: center;
+    width: 40px;
+    font-size: 1rem;
+  }
+
+  .qa-table {
+    min-width: 560px;
+  }
+
+  /* Body cells are generated with set:html, so they need :global(). */
+  .qa-table th,
+  .qa-table :global(td) {
+    padding: 9px 12px;
+    border-bottom: 1px solid #edf1f4;
+    border-right: 1px solid #edf1f4;
+    white-space: nowrap;
+    vertical-align: top;
+  }
+
+  .qa-table thead th {
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .qa-table :global(td) {
+    min-width: 90px;
+    height: 40px;
+  }
+
+  .qa-table :global(td a) {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted #8fa0b4;
+  }
+
+  .qa-table :global(td a:hover) {
+    color: #00b96b;
+    border-bottom-color: #00b96b;
+  }
+
+  .row-head {
+    text-align: left;
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 1;
+    font-weight: 600;
+    color: #0c1e3c;
+    white-space: normal;
+    min-width: 150px;
+  }
+
+  thead .row-head {
+    background: #f7f8f6;
+    z-index: 2;
+  }
+
+  /* Vendor umbrella colours */
+  .vendor-anthropic { background: #fdece2; color: #9c3f16; }
+  .vendor-openai    { background: #e3f3ea; color: #0e6b4c; }
+  .vendor-google    { background: #e7eefc; color: #1a44b8; }
+  .vendor-reference { background: #eef1ea; color: #0c1e3c; }
+
+
+
+
+  .article__body .known-answer {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: #5a6a82;
+    margin: -0.75rem 0 1.75rem;
+  }
+
+  .prompt-box {
+    margin: 1rem 0;
+    border: 1px solid #d5dce8;
+    border-radius: 10px;
+    background: #f7f9fb;
+    overflow: hidden;
+  }
+
+  .prompt-box summary {
+    cursor: pointer;
+    padding: 10px 16px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0c1e3c;
+    list-style: none;
+  }
+
+  .prompt-box summary::-webkit-details-marker { display: none; }
+
+  .prompt-box summary::before {
+    content: "▸ ";
+    color: #00b96b;
+  }
+
+  .prompt-box[open] summary::before {
+    content: "▾ ";
+  }
+
+  .prompt-text {
+    margin: 0;
+    padding: 14px 16px 16px;
+    border-top: 1px solid #e3e9ed;
+    background: #fff;
+    font-family: var(--font-mono, ui-monospace, "SF Mono", Menlo, monospace);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #1c2b3d;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+</style>
