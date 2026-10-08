@@ -14,7 +14,7 @@ describe('getIrelandRule', () => {
     (code) => {
       const rule = getIrelandRule(code);
       expect(rule.access).toBe('visa_required');
-      expect(rule.notes?.map((n) => n.source)).toContainEqual(IrelandSources.citizensInformation);
+      expect(rule.notes?.map((n) => n.source)).toContainEqual(IrelandSources.transitVisa);
       expect(rule.notes?.[0].text).toMatch(/transit visa/);
     },
   );

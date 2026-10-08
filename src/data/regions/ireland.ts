@@ -132,13 +132,13 @@ const VISA_REQUIRED_BIVS: VisaRequiredRule = {
 const VISA_REQUIRED_SSVWP: VisaRequiredRule = {
   access: 'visa_required',
   source: IrelandSources.visaNationalityList,
-  notes: [{ text: SSVWP_NOTE, source: IrelandSources.citizensInformation }],
+  notes: [{ text: SSVWP_NOTE, source: IrelandSources.ssvwp }],
 };
 
 const VISA_REQUIRED_TRANSIT: VisaRequiredRule = {
   access: 'visa_required',
   source: IrelandSources.visaNationalityList,
-  notes: [{ text: TRANSIT_VISA_NOTE, source: IrelandSources.citizensInformation }],
+  notes: [{ text: TRANSIT_VISA_NOTE, source: IrelandSources.transitVisa }],
 };
 
 /**

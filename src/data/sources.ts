@@ -268,7 +268,15 @@ export const IrelandSources = {
       url:
         "https://www.irishimmigration.ie/visa-non-visa-required-nationalities/",
       type: "direct",
+      // The table on this page is filled in by an AJAX call, so a plain
+      // fetch can't see it; the ISD's other nationalities page is diffed.
       checkDiff: false,
+      alternate: {
+        url:
+          "https://www.irishimmigration.ie/immigration-service-delivery-visa-and-non-visa-required-nationalities/",
+        type: "machine",
+        checkDiff: true,
+      },
     },
     parent: {
       url: "https://www.irishimmigration.ie/coming-to-visit-ireland/",
@@ -337,24 +345,45 @@ export const IrelandSources = {
   } satisfies SourceDoc,
 
   /**
-   * citizensinformation.ie — Visa requirements for entering Ireland.
-   * Source for the Short Stay Visa Waiver Programme (SSVWP) country list
-   * and the Irish transit visa country list.
+   * ISD — Short Stay Visa Waiver Programme (SSVWP).
+   * Source for the SSVWP note: holders of a valid UK short-stay visa may
+   * enter Ireland without a separate Irish visa. Replaces citizensinformation.ie,
+   * which refuses automated clients (HTTP 403) so could never be verified.
    */
-  citizensInformation: {
+  ssvwp: {
     direct: {
       url:
-        "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/",
+        "https://www.irishimmigration.ie/coming-to-visit-ireland/short-stay-visa-waiver-programme/",
       type: "direct",
       checkDiff: false,
     },
     parent: {
-      url:
-        "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/",
+      url: "https://www.irishimmigration.ie/coming-to-visit-ireland/",
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-05-27",
+    dateChecked: "2026-10-08",
+  } satisfies SourceDoc,
+
+  /**
+   * ISD — Transit (including Transfer Visa) Advice.
+   * Source for the transit visa note: nationals listed in Schedule 5 of
+   * S.I. No. 473 of 2014 need an Irish transit visa to pass through an
+   * Irish port. Replaces citizensinformation.ie (see ssvwp).
+   */
+  transitVisa: {
+    direct: {
+      url:
+        "https://www.irishimmigration.ie/at-the-border/transit-including-transfer-visa-advice/",
+      type: "direct",
+      checkDiff: false,
+    },
+    parent: {
+      url: "https://www.irishimmigration.ie/at-the-border/",
+      type: "parent",
+      checkDiff: false,
+    },
+    dateChecked: "2026-10-08",
   } satisfies SourceDoc,
 
   /**
@@ -366,9 +395,8 @@ export const IrelandSources = {
    * amendments (e.g. the (No. 2) Order 2026 moving Nicaragua, Saint Kitts and
    * Nevis and Saint Lucia to Schedule 5) never appear there. The parent is a
    * title search that lists each "Immigration Act 2004 (Visas) (Amendment)"
-   * Order as it's made — that's what is diffed, so a new amendment shows up
-   * as an added link. (The INIS nationality table is filled in by an AJAX
-   * call, so it can't be diffed with a plain fetch.)
+   * Order as it's made, for people to follow. Its results load client-side,
+   * so the ISD's legislation and policy page is diffed in its place.
    */
   statutoryInstrument: {
     direct: {
@@ -379,7 +407,15 @@ export const IrelandSources = {
     parent: {
       url: "https://www.irishstatutebook.ie/eli/ResultsTitle.html?q=Immigration+Act",
       type: "parent",
-      checkDiff: true,
+      // The search results are loaded client-side (the fetched HTML is only
+      // page chrome), so this is health-checked and its alternate is diffed.
+      checkDiff: false,
+      alternate: {
+        url:
+          "https://www.irishimmigration.ie/immigration-legislation-and-policy-guidelines/",
+        type: "machine",
+        checkDiff: true,
+      },
     },
     dateChecked: "2026-05-27",
   } satisfies SourceDoc,
