@@ -64,7 +64,9 @@
  *   table (Ninja Table ID 19077, extracted 2026-05-27), plus the Immigration
  *   Act 2004 (Visas) (Amendment) (No. 2) Order 2026 (in operation 15 June
  *   2026): Nicaragua, Saint Kitts and Nevis and Saint Lucia moved from
- *   visa-free to visa-required with a transit visa.
+ *   visa-free to visa-required with a transit visa. Bahamas and Samoa
+ *   (Schedule 1, visa-free on INIS) were missing from the original
+ *   extraction and were added 2026-10-08.
  *   Free movement, BIVS, SSVWP, and transit annotations use sources in
  *   IrelandSources (@/data/sources).
  *
@@ -255,6 +257,7 @@ export const IRELAND: RegionDefinition = {
     // Americas
     'AG': entitled(), // Antigua and Barbuda
     'AR': entitled(), // Argentina
+    'BS': entitled(), // Bahamas
     'BB': entitled(), // Barbados
     'BZ': entitled(), // Belize
     'BR': entitled(), // Brazil
@@ -285,6 +288,7 @@ export const IRELAND: RegionDefinition = {
     'MY': entitled(), // Malaysia
     'MV': entitled(), // Maldives
     'NZ': entitled(), // New Zealand
+    'WS': entitled(), // Samoa
     'SB': entitled(), // Solomon Islands
     'SG': entitled(), // Singapore
     'TW': entitled(), // Taiwan Province of China

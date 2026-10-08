@@ -19,6 +19,10 @@ describe('getIrelandRule', () => {
     },
   );
 
+  it.each(['BS', 'WS'])('%s (Schedule 1) is visa-free', (code) => {
+    expect(getIrelandRule(code).access).toBe('entitled');
+  });
+
   it('keeps Saint Vincent and the Grenadines visa-free (not part of the 2026 amendment)', () => {
     expect(getIrelandRule('VC').access).toBe('entitled');
   });
