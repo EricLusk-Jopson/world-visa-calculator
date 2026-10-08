@@ -1,17 +1,17 @@
 # Source Verification Report
 
-Generated: 2026-10-08T00:51:04.626Z
+Generated: 2026-10-08T01:08:26.350Z
 
 ## Summary
 
 | | |
 |---|---|
 | Unique links checked | 440 |
-| 🔴 Broken | 47 |
-| ↪️ Redirected | 3 |
+| 🔴 Broken | 24 |
+| ↪️ Redirected | 5 |
 | Content sources diffed (`parseForRules`) | 9 |
-| ✏️ Changed since last baseline | 0 |
-| 🆕 First run (no baseline yet) | 8 |
+| ✏️ Changed since last baseline | 2 |
+| 🆕 First run (no baseline yet) | 0 |
 | ⚠️ Fetch errors | 1 |
 
 ## Schengen
@@ -20,21 +20,49 @@ Generated: 2026-10-08T00:51:04.626Z
 
 | Used by | Status | URL |
 |---|---|---|
-| visaList (directUrl) | ✅ live (202) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230 |
+| visaList (directUrl) | ↪️ redirected (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230<br>→ https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX%3A02018R1806-20251230 |
 | visaList, atvCommon, atvSpecific (parentUrl) | ✅ live (200) | https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en |
-| atvCommon (directUrl) | ✅ live (202) | https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629 |
+| atvCommon (directUrl) | ↪️ redirected (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629<br>→ https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX:02009R0810-20200202&qid=1700746099626 |
 | atvSpecific (directUrl) | ✅ live (200) | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
 | etias (directUrl) | ↪️ redirected (200) | https://travel-europe.europa.eu/etias_en<br>→ https://travel-europe.europa.eu/en/etias |
 | etias (parentUrl) | ↪️ redirected (200) | https://travel-europe.europa.eu<br>→ https://travel-europe.europa.eu/ |
 
 ### Content diffing
 
+#### visaList — ✏️🔗 text + link changed
+
+URL: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230
+
+```diff
++ official_journal
++ How to verify the authenticity of the Official Journal
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | How to verify the authenticity of the Official Journal | _(none)_ | https://checklex.publications.europa.eu/ |
+| added | Series L | _(none)_ | javascript:; |
+| added | Series C | _(none)_ | javascript:; |
+
+#### atvCommon — ✏️🔗 text + link changed
+
+URL: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629
+
+```diff
++ official_journal
++ How to verify the authenticity of the Official Journal
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | How to verify the authenticity of the Official Journal | _(none)_ | https://checklex.publications.europa.eu/ |
+| added | Series L | _(none)_ | javascript:; |
+| added | Series C | _(none)_ | javascript:; |
+
 | Keys | Status | URL |
 |---|---|---|
-| visaList | 🆕 first run (baseline captured) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230 |
-| atvCommon | 🆕 first run (baseline captured) | https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629 |
-| atvSpecific | 🆕 first run (baseline captured) | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
-| etias | 🆕 first run (baseline captured) | https://travel-europe.europa.eu/etias_en |
+| atvSpecific | ✅ unchanged | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
+| etias | ✅ unchanged | https://travel-europe.europa.eu/etias_en |
 
 ## UK
 
@@ -63,10 +91,10 @@ URL: https://www.gov.uk/apply-for-an-electronic-travel-authorisation-eta
 
 | Keys | Status | URL |
 |---|---|---|
-| visaNationalList | 🆕 first run (baseline captured) | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list |
-| etaNationalList | 🆕 first run (baseline captured) | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list |
-| carriersList | 🆕 first run (baseline captured) | https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers |
-| ctaGuidance | 🆕 first run (baseline captured) | https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance |
+| visaNationalList | ✅ unchanged | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list |
+| etaNationalList | ✅ unchanged | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list |
+| carriersList | ✅ unchanged | https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers |
+| ctaGuidance | ✅ unchanged | https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance |
 
 ## Ireland
 
@@ -181,8 +209,8 @@ _No sources in this region are flagged `parseForRules`._
 | GD (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada |
 | GT (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala |
 | GN (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea |
-| GW (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau |
-| GY (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana |
+| GW (directUrl) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau<br>fetch failed |
+| GY (directUrl) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana<br>fetch failed |
 | HT (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti |
 | VA (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta |
 | HN (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras |
@@ -197,11 +225,11 @@ _No sources in this region are flagged `parseForRules`._
 | IT (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy |
 | CI (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire |
 | JM (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica |
-| JP (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan |
+| JP (directUrl) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan<br>fetch failed |
 | JO (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan |
-| KZ (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan |
-| KE (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya |
-| KI (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati |
+| KZ (directUrl) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan<br>fetch failed |
+| KE (directUrl) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya<br>fetch failed |
+| KI (directUrl) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati<br>fetch failed |
 | KP (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea |
 | KR (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea |
 | XK (directUrl) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo |
@@ -325,20 +353,20 @@ _No sources in this region are flagged `parseForRules`._
 | DZ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/alzir |
 | AD (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/andora |
 | AO (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/angola |
-| AG (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda<br>fetch failed |
-| AR (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina<br>fetch failed |
-| AM (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija<br>fetch failed |
+| AG (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda |
+| AR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina |
+| AM (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija |
 | AU (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/australija |
-| AT (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija<br>fetch failed |
+| AT (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija |
 | AZ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/azerbejdzan |
 | BS (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahami |
-| BH (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein<br>fetch failed |
-| BD (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades<br>fetch failed |
+| BH (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein |
+| BD (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades |
 | BB (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/barbados |
 | BY (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belorusija |
-| BE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija |
-| BZ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize |
-| BJ (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin<br>fetch failed |
+| BE (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija<br>fetch failed |
+| BZ (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize<br>fetch failed |
+| BJ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin |
 | BT (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/butan |
 | BO (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bolivija |
 | BA (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bosna-i-hercegovina |
@@ -346,7 +374,7 @@ _No sources in this region are flagged `parseForRules`._
 | BR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brazil |
 | BN (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brunej-darusalam |
 | BG (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bugarska<br>fetch failed |
-| BF (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso<br>fetch failed |
+| BF (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso |
 | BI (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burundi |
 | CV (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kabo-verde |
 | KH (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kambodza |
@@ -363,22 +391,22 @@ _No sources in this region are flagged `parseForRules`._
 | CI (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kot-d-ivoar |
 | HR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/hrvatska |
 | CU (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuba |
-| CY (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar<br>fetch failed |
+| CY (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar |
 | CZ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ceska |
 | DK (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/danska |
 | DJ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dzibuti |
 | DM (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominika |
-| DO (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika<br>fetch failed |
+| DO (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika |
 | EC (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvador |
 | EG (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/egipat |
-| SV (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador<br>fetch failed |
+| SV (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador |
 | GQ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvatorijalna-gvineja |
 | ER (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/eritreja |
 | EE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/estonija |
-| SZ (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini<br>fetch failed |
+| SZ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini |
 | ET (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/etiopija |
-| FJ (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi<br>fetch failed |
-| FI (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska<br>fetch failed |
+| FJ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi |
+| FI (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska |
 | FR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/francuska |
 | GA (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gabon |
 | GM (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gambija |
@@ -394,12 +422,12 @@ _No sources in this region are flagged `parseForRules`._
 | HT (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/haiti |
 | VA (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-stolica |
 | HN (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/honduras |
-| HU (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska<br>fetch failed |
-| IS (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island<br>fetch failed |
-| IN (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija<br>fetch failed |
-| ID (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija<br>fetch failed |
-| IR (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran<br>fetch failed |
-| IQ (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak<br>fetch failed |
+| HU (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska |
+| IS (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island |
+| IN (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija |
+| ID (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija |
+| IR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran |
+| IQ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak |
 | IE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irska |
 | IL (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/izrael |
 | IT (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/italija |
@@ -408,17 +436,17 @@ _No sources in this region are flagged `parseForRules`._
 | JO (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jordan |
 | KZ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kazahstan |
 | KE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kenija |
-| KI (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati |
-| KP (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr |
-| KR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika |
-| KW (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt |
+| KI (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati<br>fetch failed |
+| KP (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr<br>fetch failed |
+| KR (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika<br>fetch failed |
+| KW (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt<br>fetch failed |
 | KG (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kirgiska-republika |
-| LA (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos<br>fetch failed |
+| LA (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos |
 | LV (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/letonija |
 | LB (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liban |
 | LS (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lesoto |
 | LR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liberija |
-| LY (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija<br>fetch failed |
+| LY (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija |
 | LI (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lihtenstajn |
 | LT (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/litvanija |
 | LU (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/luksemburg |
@@ -458,9 +486,9 @@ _No sources in this region are flagged `parseForRules`._
 | PG (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/papua-nova-gvineja |
 | PY (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj |
 | PE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/peru |
-| PH (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini<br>fetch failed |
-| PL (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska<br>fetch failed |
-| PT (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija<br>fetch failed |
+| PH (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini |
+| PL (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska |
+| PT (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija |
 | QA (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/katar |
 | RO (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija |
 | RU (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruska-federacija |
@@ -486,30 +514,30 @@ _No sources in this region are flagged `parseForRules`._
 | LK (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka |
 | SD (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan |
 | SR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/surinam |
-| SE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska |
-| CH (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska |
+| SE (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska<br>fetch failed |
+| CH (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska<br>fetch failed |
 | SY (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija |
 | TJ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tadzikistan |
 | TZ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tanzanija |
 | TH (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tajland |
 | TL (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/istocni-timor |
 | TG (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo |
-| TO (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga<br>fetch failed |
+| TO (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga |
 | TT (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/trinidad-i-tobago |
 | TN (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tunis |
-| TR (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska<br>fetch failed |
-| TM (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan<br>fetch failed |
+| TR (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska |
+| TM (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan |
 | TV (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu |
 | UG (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda |
-| UA (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina<br>fetch failed |
-| KM (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora<br>fetch failed |
-| AE (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati<br>fetch failed |
-| GB (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo<br>fetch failed |
-| US (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave<br>fetch failed |
-| UY (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj<br>fetch failed |
-| UZ (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika<br>fetch failed |
-| VU (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu<br>fetch failed |
-| VE (directUrl) | 🔴 broken | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela<br>fetch failed |
+| UA (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina |
+| KM (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora |
+| AE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati |
+| GB (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo |
+| US (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave |
+| UY (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj |
+| UZ (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika |
+| VU (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu |
+| VE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela |
 | VN (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vijetnam |
 | YE (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jemen |
 | ZM (directUrl) | ✅ live (200) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zambija |

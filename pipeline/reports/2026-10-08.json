@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T00:51:04.626Z",
+  "generatedAt": "2026-10-08T01:08:26.350Z",
   "regions": [
     {
       "region": "Schengen",
@@ -12,9 +12,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 202,
-          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230"
+          "status": "redirected",
+          "httpStatus": 200,
+          "finalUrl": "https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX%3A02018R1806-20251230"
         },
         {
           "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
@@ -44,9 +44,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 202,
-          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626"
+          "status": "redirected",
+          "httpStatus": 200,
+          "finalUrl": "https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX:02009R0810-20200202&qid=1700746099626"
         },
         {
           "url": "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
@@ -88,32 +88,72 @@
       "ruleChecks": [
         {
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "both-changed",
+          "textDiffPreview": "+ official_journal\n+ How to verify the authenticity of the Official Journal",
+          "linkChanges": [
+            {
+              "text": "How to verify the authenticity of the Official Journal",
+              "currentHref": "https://checklex.publications.europa.eu/",
+              "kind": "added"
+            },
+            {
+              "text": "Series L",
+              "currentHref": "javascript:;",
+              "kind": "added"
+            },
+            {
+              "text": "Series C",
+              "currentHref": "javascript:;",
+              "kind": "added"
+            }
+          ],
           "keys": [
             "visaList"
           ]
         },
         {
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "both-changed",
+          "textDiffPreview": "+ official_journal\n+ How to verify the authenticity of the Official Journal",
+          "linkChanges": [
+            {
+              "text": "How to verify the authenticity of the Official Journal",
+              "currentHref": "https://checklex.publications.europa.eu/",
+              "kind": "added"
+            },
+            {
+              "text": "Series L",
+              "currentHref": "javascript:;",
+              "kind": "added"
+            },
+            {
+              "text": "Series C",
+              "currentHref": "javascript:;",
+              "kind": "added"
+            }
+          ],
           "keys": [
             "atvCommon"
           ]
         },
         {
           "url": "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "atvSpecific"
           ]
         },
         {
           "url": "https://travel-europe.europa.eu/etias_en",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "etias"
           ]
@@ -263,24 +303,27 @@
       "ruleChecks": [
         {
           "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list",
+          "previousUpdatedAt": "2026-03-05T15:00:48+00:00",
           "currentUpdatedAt": "2026-03-05T15:00:48+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "visaNationalList"
           ]
         },
         {
           "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list",
+          "previousUpdatedAt": "2026-03-05T15:03:24+00:00",
           "currentUpdatedAt": "2026-03-05T15:03:24+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "etaNationalList"
           ]
         },
         {
           "url": "https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers",
+          "previousUpdatedAt": "2026-08-03T14:02:17+01:00",
           "currentUpdatedAt": "2026-08-03T14:02:17+01:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "carriersList"
           ]
@@ -295,8 +338,9 @@
         },
         {
           "url": "https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance",
+          "previousUpdatedAt": "2026-01-01T00:01:08+00:00",
           "currentUpdatedAt": "2026-01-01T00:01:08+00:00",
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ctaGuidance"
           ]
@@ -2135,9 +2179,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana",
@@ -2147,9 +2190,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti",
@@ -2327,9 +2369,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan",
@@ -2351,9 +2392,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya",
@@ -2363,9 +2403,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati",
@@ -2375,9 +2414,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea",
@@ -4525,8 +4563,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina",
@@ -4536,8 +4575,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija",
@@ -4547,8 +4587,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/australija",
@@ -4570,8 +4611,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/azerbejdzan",
@@ -4605,8 +4647,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades",
@@ -4616,8 +4659,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/barbados",
@@ -4651,9 +4695,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize",
@@ -4663,9 +4706,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin",
@@ -4675,8 +4717,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/butan",
@@ -4769,8 +4812,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burundi",
@@ -4980,8 +5024,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ceska",
@@ -5039,8 +5084,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvador",
@@ -5074,8 +5120,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvatorijalna-gvineja",
@@ -5121,8 +5168,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/etiopija",
@@ -5144,8 +5192,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska",
@@ -5155,8 +5204,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/francuska",
@@ -5346,8 +5396,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island",
@@ -5357,8 +5408,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija",
@@ -5368,8 +5420,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija",
@@ -5379,8 +5432,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran",
@@ -5390,8 +5444,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak",
@@ -5401,8 +5456,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irska",
@@ -5508,9 +5564,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr",
@@ -5520,9 +5575,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika",
@@ -5532,9 +5586,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt",
@@ -5544,9 +5597,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kirgiska-republika",
@@ -5568,8 +5620,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/letonija",
@@ -5627,8 +5680,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lihtenstajn",
@@ -6106,8 +6160,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska",
@@ -6117,8 +6172,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija",
@@ -6128,8 +6184,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/katar",
@@ -6439,9 +6496,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska",
@@ -6451,9 +6507,8 @@
               "field": "directUrl"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska"
+          "status": "broken",
+          "error": "fetch failed"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija",
@@ -6535,8 +6590,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/trinidad-i-tobago",
@@ -6570,8 +6626,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan",
@@ -6581,8 +6638,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu",
@@ -6616,8 +6674,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora",
@@ -6627,8 +6686,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati",
@@ -6638,8 +6698,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo",
@@ -6649,8 +6710,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave",
@@ -6660,8 +6722,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj",
@@ -6671,8 +6734,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika",
@@ -6682,8 +6746,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu",
@@ -6693,8 +6758,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela",
@@ -6704,8 +6770,9 @@
               "field": "directUrl"
             }
           ],
-          "status": "broken",
-          "error": "fetch failed"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela"
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vijetnam",
@@ -12280,11 +12347,11 @@
   ],
   "summary": {
     "totalLinksChecked": 440,
-    "brokenLinks": 47,
-    "redirectedLinks": 3,
+    "brokenLinks": 24,
+    "redirectedLinks": 5,
     "sourcesChecked": 9,
-    "sourcesChanged": 0,
-    "sourcesFirstRun": 8,
+    "sourcesChanged": 2,
+    "sourcesFirstRun": 0,
     "sourcesFetchError": 1
   }
 }

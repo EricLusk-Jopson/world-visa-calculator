@@ -1,7 +1,52 @@
 {
   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
-  "contentType": "text/html; charset=UTF-8",
+  "contentType": "text/html",
   "updatedAt": null,
-  "text": "",
-  "links": []
+  "text": "official_journal\nHow to verify the authenticity of the Official Journal",
+  "links": [
+    {
+      "text": "How to verify the authenticity of the Official Journal",
+      "href": "https://checklex.publications.europa.eu/"
+    },
+    {
+      "text": "Series L",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series C",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series L",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series C",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series L",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series C",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series L",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series C",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series L",
+      "href": "javascript:;"
+    },
+    {
+      "text": "Series C",
+      "href": "javascript:;"
+    }
+  ]
 }
