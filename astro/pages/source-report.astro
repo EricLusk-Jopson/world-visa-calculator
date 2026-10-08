@@ -1,0 +1,549 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LandingNav from "../components/LandingNav.astro";
+import Footer from "../components/Footer.astro";
+import type { Report } from "../../pipeline/src/report";
+import type { LinkHealthResult, RuleCheckResult } from "../../pipeline/src/types";
+
+/**
+ * Renders the source verification pipeline's latest report (pipeline/).
+ * Each pipeline run commits pipeline/reports/latest.json on its PR branch,
+ * so the PR's preview deployment shows that run's report here. Until the
+ * first real run lands, the committed offline demo report is shown instead.
+ */
+const latest = import.meta.glob<Report>("../../pipeline/reports/latest.json", { eager: true, import: "default" });
+const demo = import.meta.glob<Report>("../../pipeline/reports/demo/latest.json", { eager: true, import: "default" });
+const realReport = Object.values(latest)[0];
+const report: Report | undefined = realReport ?? Object.values(demo)[0];
+const isDemo = !realReport && report !== undefined;
+
+const CHANGED = new Set(["text-changed", "links-changed", "both-changed"]);
+const needsReviewRule = (c: RuleCheckResult) => CHANGED.has(c.status) || c.status === "fetch-error";
+const needsReviewLink = (l: LinkHealthResult) => l.status !== "live";
+
+const statusLabel: Record<string, string> = {
+  live: "Live",
+  redirected: "Redirected",
+  broken: "Broken",
+  unchanged: "Unchanged",
+  "text-changed": "Text changed",
+  "links-changed": "Link target changed",
+  "both-changed": "Text + links changed",
+  "first-run": "Baseline captured",
+  "fetch-error": "Fetch error",
+};
+const statusTone: Record<string, "ok" | "warn" | "bad" | "info"> = {
+  live: "ok",
+  unchanged: "ok",
+  redirected: "warn",
+  "text-changed": "warn",
+  "links-changed": "warn",
+  "both-changed": "warn",
+  broken: "bad",
+  "fetch-error": "bad",
+  "first-run": "info",
+};
+
+function formatKeys(keys: string[], max = 8): string {
+  const unique = [...new Set(keys)];
+  if (unique.length <= max) return unique.join(", ");
+  return `${unique.slice(0, max).join(", ")} … +${unique.length - max} more`;
+}
+function diffLineClass(line: string): string {
+  if (line.startsWith("+ ")) return "diff__add";
+  if (line.startsWith("- ")) return "diff__del";
+  return "diff__meta";
+}
+const usageKeys = (l: LinkHealthResult) =>
+  formatKeys(l.usedBy.map((u) => (l.usedBy.every((x) => x.field === u.field) ? u.key : `${u.key}.${u.field}`)));
+
+const regions = (report?.regions ?? []).map((r) => {
+  const linkFindings = r.linkHealth.filter(needsReviewLink);
+  const ruleFindings = r.ruleChecks.filter(needsReviewRule);
+  return { ...r, linkFindings, ruleFindings, findingCount: linkFindings.length + ruleFindings.length };
+});
+const regionsWithFindings = regions.filter((r) => r.findingCount > 0);
+
+const s = report?.summary;
+const tiles = s
+  ? [
+      { label: "Links checked", value: s.totalLinksChecked, tone: "neutral" },
+      { label: "Broken", value: s.brokenLinks, tone: s.brokenLinks ? "bad" : "neutral" },
+      { label: "Redirected", value: s.redirectedLinks, tone: s.redirectedLinks ? "warn" : "neutral" },
+      { label: "Sources diffed", value: s.sourcesChecked, tone: "neutral" },
+      { label: "Changed", value: s.sourcesChanged, tone: s.sourcesChanged ? "warn" : "neutral" },
+      { label: "Fetch errors", value: s.sourcesFetchError, tone: s.sourcesFetchError ? "bad" : "neutral" },
+    ]
+  : [];
+
+const generated = report
+  ? new Date(report.generatedAt).toLocaleString("en-GB", { dateStyle: "long", timeStyle: "short", timeZone: "UTC" }) + " UTC"
+  : "";
+---
+
+<BaseLayout
+  title="Source Report | EuroVisaCalculator"
+  description="Latest automated check of every government source the visa rules cite: link health and content changes since the last baseline."
+  canonicalUrl="https://eurovisacalculator.com/source-report"
+  noindex
+>
+  <LandingNav />
+  <div class="page">
+    <div class="page__inner">
+      <h1 class="page__title">Source verification report</h1>
+      {report ? (
+        <p class="page__date">Generated {generated}</p>
+      ) : (
+        <p class="page__date">No report yet</p>
+      )}
+
+      {isDemo && (
+        <p class="banner">
+          Showing the offline demo report (<code>npm run demo</code> in <code>pipeline/</code>). The first scheduled
+          run will replace it with results for the real sources.
+        </p>
+      )}
+
+      {!report && (
+        <p class="section__body">
+          Run <code>npm run check</code> in <code>pipeline/</code> to generate <code>reports/latest.json</code>.
+        </p>
+      )}
+
+      {report && (
+        <>
+          <section class="section">
+            <div class="tiles">
+              {tiles.map((t) => (
+                <div class={`tile tile--${t.tone}`}>
+                  <span class="tile__value">{t.value}</span>
+                  <span class="tile__label">{t.label}</span>
+                </div>
+              ))}
+            </div>
+            {s && s.sourcesFirstRun > 0 && (
+              <p class="section__note">
+                {s.sourcesFirstRun} source{s.sourcesFirstRun === 1 ? "" : "s"} had no previous snapshot; a baseline was
+                captured and will be diffed on the next run.
+              </p>
+            )}
+          </section>
+
+          <section class="section">
+            <h2 class="section__title">Needs review</h2>
+            {regionsWithFindings.length === 0 ? (
+              <p class="section__body">No broken links, redirects, content changes or fetch errors.</p>
+            ) : (
+              regionsWithFindings.map((r) => (
+                <div class="card">
+                  <h3 class="card__title">{r.region}</h3>
+
+                  {r.linkFindings.map((l) => (
+                    <div class="finding">
+                      <div class="finding__head">
+                        <span class={`pill pill--${statusTone[l.status]}`}>
+                          {statusLabel[l.status]}
+                          {l.httpStatus ? ` · ${l.httpStatus}` : ""}
+                        </span>
+                        <span class="finding__keys">{usageKeys(l)}</span>
+                      </div>
+                      <a class="url" href={l.url} rel="noopener noreferrer" target="_blank">{l.url}</a>
+                      {l.status === "redirected" && l.finalUrl && <p class="finding__detail">→ <span class="url">{l.finalUrl}</span></p>}
+                      {l.error && <p class="finding__detail">{l.error}</p>}
+                    </div>
+                  ))}
+
+                  {r.ruleFindings.map((c) => (
+                    <div class="finding">
+                      <div class="finding__head">
+                        <span class={`pill pill--${statusTone[c.status]}`}>{statusLabel[c.status]}</span>
+                        <span class="finding__keys">{formatKeys(c.keys)}</span>
+                      </div>
+                      <a class="url" href={c.url} rel="noopener noreferrer" target="_blank">{c.url}</a>
+                      {c.error && <p class="finding__detail">{c.error}</p>}
+                      {(c.previousUpdatedAt || c.currentUpdatedAt) && (
+                        <p class="finding__detail">
+                          Page last updated: <code>{c.previousUpdatedAt ?? "—"}</code> → <code>{c.currentUpdatedAt ?? "—"}</code>
+                        </p>
+                      )}
+                      {c.textDiffPreview && (
+                        <pre class="diff">{c.textDiffPreview.split("\n").map((line) => (
+                          <span class={diffLineClass(line)}>{line + "\n"}</span>
+                        ))}</pre>
+                      )}
+                      {c.linkChanges && c.linkChanges.length > 0 && (
+                        <div class="table-wrap">
+                          <table class="table">
+                            <thead>
+                              <tr><th>Change</th><th>Anchor text</th><th>Previous target</th><th>Current target</th></tr>
+                            </thead>
+                            <tbody>
+                              {c.linkChanges.map((lc) => (
+                                <tr>
+                                  <td>{lc.kind}</td>
+                                  <td>{lc.text}</td>
+                                  <td class="url">{lc.previousHref ?? "—"}</td>
+                                  <td class="url">{lc.currentHref ?? "—"}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))
+            )}
+          </section>
+
+          <section class="section">
+            <h2 class="section__title">All sources by region</h2>
+            {regions.map((r) => (
+              <details class="region" open={r.findingCount > 0 && regions.length <= 3}>
+                <summary class="region__summary">
+                  <span class="region__name">{r.region}</span>
+                  <span class="region__meta">
+                    {r.linkHealth.length} link{r.linkHealth.length === 1 ? "" : "s"} · {r.ruleChecks.length} diffed
+                    {r.findingCount > 0 && <span class="pill pill--warn">{r.findingCount} to review</span>}
+                  </span>
+                </summary>
+
+                <h4 class="region__sub">Link health</h4>
+                <div class="table-wrap">
+                  <table class="table">
+                    <thead><tr><th>Used by</th><th>Status</th><th>URL</th></tr></thead>
+                    <tbody>
+                      {r.linkHealth.map((l) => (
+                        <tr>
+                          <td>{usageKeys(l)}</td>
+                          <td><span class={`pill pill--${statusTone[l.status]}`}>{statusLabel[l.status]}{l.httpStatus ? ` · ${l.httpStatus}` : ""}</span></td>
+                          <td class="url">{l.url}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <h4 class="region__sub">Content diffing</h4>
+                {r.ruleChecks.length === 0 ? (
+                  <p class="section__note">No sources in this region are flagged <code>parseForRules</code>.</p>
+                ) : (
+                  <div class="table-wrap">
+                    <table class="table">
+                      <thead><tr><th>Keys</th><th>Status</th><th>URL</th></tr></thead>
+                      <tbody>
+                        {r.ruleChecks.map((c) => (
+                          <tr>
+                            <td>{formatKeys(c.keys)}</td>
+                            <td><span class={`pill pill--${statusTone[c.status]}`}>{statusLabel[c.status]}</span></td>
+                            <td class="url">{c.url}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </details>
+            ))}
+          </section>
+        </>
+      )}
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    background: var(--color-off-white);
+    padding: 128px 24px 96px;
+  }
+
+  .page__inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .page__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+
+  .page__date {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text-ghost);
+    margin: 0 0 32px;
+  }
+
+  .banner {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-amber-text);
+    background: var(--color-amber-bg);
+    border: 1px solid var(--color-amber-border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 0 0 32px;
+  }
+
+  code {
+    font-size: 0.85em;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section__title {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .section__body,
+  .section__note {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-soft);
+    margin: 0;
+  }
+
+  .section__note {
+    font-size: 0.82rem;
+    margin-top: 12px;
+  }
+
+  /* ── Summary tiles ───────────────────────────────────────────────────── */
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+  }
+
+  .tile {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tile__value {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tile__label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--color-text-soft);
+  }
+
+  .tile--bad { background: var(--color-red-bg); border-color: var(--color-red-border); }
+  .tile--bad .tile__value { color: var(--color-red-text); }
+  .tile--warn { background: var(--color-amber-bg); border-color: var(--color-amber-border); }
+  .tile--warn .tile__value { color: var(--color-amber-text); }
+
+  /* ── Findings ────────────────────────────────────────────────────────── */
+  .card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+
+  .card + .card {
+    margin-top: 16px;
+  }
+
+  .card__title {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 4px;
+  }
+
+  .finding {
+    padding: 14px 0;
+    border-top: 1px solid var(--color-mist);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text);
+  }
+
+  .finding:first-of-type {
+    border-top: none;
+  }
+
+  .finding__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .finding__keys {
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .finding__detail {
+    margin: 6px 0 0;
+    color: var(--color-text-soft);
+  }
+
+  .url {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.78rem;
+    color: var(--color-text-soft);
+    overflow-wrap: anywhere;
+  }
+
+  a.url:hover {
+    color: var(--color-navy);
+  }
+
+  .pill {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+
+  .pill--ok { color: var(--color-green-text); background: var(--color-green-bg); border-color: var(--color-green-border); }
+  .pill--warn { color: var(--color-amber-text); background: var(--color-amber-bg); border-color: var(--color-amber-border); }
+  .pill--bad { color: var(--color-red-text); background: var(--color-red-bg); border-color: var(--color-red-border); }
+  .pill--info { color: var(--color-navy-mid); background: var(--color-mist); border-color: var(--color-border); }
+
+  .diff {
+    margin: 10px 0 0;
+    padding: 12px 14px;
+    background: var(--color-off-white);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .diff__add { color: var(--color-green-text); }
+  .diff__del { color: var(--color-red-text); }
+  .diff__meta { color: var(--color-text-ghost); }
+
+  /* ── Tables ──────────────────────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 10px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text);
+  }
+
+  .table th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-text-soft);
+    padding: 6px 10px 6px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .table td {
+    padding: 8px 10px 8px 0;
+    border-bottom: 1px solid var(--color-mist);
+    vertical-align: top;
+  }
+
+  /* ── Regions ─────────────────────────────────────────────────────────── */
+  .region {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 0 20px;
+  }
+
+  .region + .region {
+    margin-top: 10px;
+  }
+
+  .region[open] {
+    padding-bottom: 16px;
+  }
+
+  .region__summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+
+  .region__name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .region__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--color-text-soft);
+  }
+
+  .region__sub {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+    margin: 14px 0 0;
+  }
+
+  @media (max-width: 600px) {
+    .page {
+      padding: 104px 16px 72px;
+    }
+    .card {
+      padding: 16px;
+    }
+    .region {
+      padding: 0 14px;
+    }
+  }
+</style>

@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-10-08T00:07:56.103Z",
+  "regions": [
+    {
+      "region": "Demo",
+      "linkHealth": [
+        {
+          "url": "http://127.0.0.1:47819/ruleList.html",
+          "usedBy": [
+            {
+              "key": "ruleList",
+              "field": "directUrl"
+            },
+            {
+              "key": "ruleList",
+              "field": "parentUrl"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "http://127.0.0.1:47819/ruleList.html"
+        },
+        {
+          "url": "http://127.0.0.1:47819/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
+          "usedBy": [
+            {
+              "key": "docVault",
+              "field": "directUrl"
+            }
+          ],
+          "status": "broken",
+          "httpStatus": 404,
+          "finalUrl": "http://127.0.0.1:47819/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf"
+        },
+        {
+          "url": "http://127.0.0.1:47819/docVault.html",
+          "usedBy": [
+            {
+              "key": "docVault",
+              "field": "parentUrl"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "http://127.0.0.1:47819/docVault.html"
+        },
+        {
+          "url": "http://127.0.0.1:47819/stable.html",
+          "usedBy": [
+            {
+              "key": "stable",
+              "field": "directUrl"
+            },
+            {
+              "key": "stable",
+              "field": "parentUrl"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "http://127.0.0.1:47819/stable.html"
+        },
+        {
+          "url": "http://127.0.0.1:47819/brokenInRun2.html",
+          "usedBy": [
+            {
+              "key": "brokenInRun2",
+              "field": "directUrl"
+            },
+            {
+              "key": "brokenInRun2",
+              "field": "parentUrl"
+            }
+          ],
+          "status": "broken",
+          "httpStatus": 404,
+          "finalUrl": "http://127.0.0.1:47819/brokenInRun2.html"
+        }
+      ],
+      "ruleChecks": [
+        {
+          "url": "http://127.0.0.1:47819/ruleList.html",
+          "previousUpdatedAt": "2026-04-01T10:00:00Z",
+          "currentUpdatedAt": "2026-10-01T09:30:00Z",
+          "status": "text-changed",
+          "textDiffPreview": "+ Azerbaijan",
+          "keys": [
+            "ruleList"
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:47819/docVault.html",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Annex 7b",
+              "previousHref": "http://127.0.0.1:47819/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
+              "currentHref": "http://127.0.0.1:47819/document/download/9f1c22a0-aaaa-4bbb-9ccc-123456789abc_en?filename=Annex%207b_en.pdf",
+              "kind": "target-changed"
+            }
+          ],
+          "keys": [
+            "docVault"
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:47819/stable.html",
+          "previousUpdatedAt": "2026-04-01T10:00:00Z",
+          "currentUpdatedAt": "2026-04-01T10:00:00Z",
+          "status": "unchanged",
+          "keys": [
+            "stable"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalLinksChecked": 5,
+    "brokenLinks": 2,
+    "redirectedLinks": 0,
+    "sourcesChecked": 3,
+    "sourcesChanged": 2,
+    "sourcesFirstRun": 0,
+    "sourcesFetchError": 0
+  }
+}
