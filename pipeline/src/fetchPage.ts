@@ -85,7 +85,13 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
     const res = await fetch(url, {
       method: 'GET',
       redirect: 'follow',
-      headers: { 'User-Agent': USER_AGENT, Accept: 'text/html,application/xhtml+xml,*/*;q=0.8' },
+      headers: {
+        'User-Agent': USER_AGENT,
+        Accept: 'text/html,application/xhtml+xml,*/*;q=0.8',
+        // Cellar (publications.europa.eu/resource/celex/…) picks the language
+        // version from this; without it a work URI may answer 300 Multiple Choices.
+        'Accept-Language': 'en',
+      },
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
     const finalUrl = res.url || url;

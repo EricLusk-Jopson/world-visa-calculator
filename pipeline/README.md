@@ -183,11 +183,22 @@ visaList: {
   human link gets `checkDiff: false` and the alternate `checkDiff: true`.
   The report shows which link was diffed, e.g. `visaList (direct.alternate)`.
 
-Right now content diffing covers **Schengen and UK `direct` links only**:
-8 URLs. UK `standardVisitor` (guidance, not a statutory rule) and Schengen
-`etias` (rendered client-side) are off. No alternates are set yet; the
-EUR-Lex example above is the intended use, pending a test that
-`publications.europa.eu` serves the regulation text to GitHub's runners.
+Right now content diffing covers **Schengen and UK only**: 8 URLs. UK
+`standardVisitor` (guidance, not a statutory rule) and Schengen `etias`
+(rendered client-side) are off. Schengen `visaList` and `atvCommon` diff
+their **Cellar** alternates rather than the EUR-Lex pages, which are only
+health-checked. Cellar is the Publications Office repository behind EUR-Lex,
+and it stayed up during an EUR-Lex outage:
+
+```
+https://publications.europa.eu/resource/celex/{CELEX}
+```
+
+A CELEX URI identifies the act; Cellar picks the format from the `Accept`
+header and the language from `Accept-Language` (the fetcher sends `en`), then
+redirects to the document. That redirect is expected, so a URL used only as
+a `machine` link is reported `live` when it redirects. Use the same pattern
+for any other EUR-Lex source.
 
 On the first run, every newly diffed URL reports **first run (baseline
 captured)**. Diffs start from the run after that baseline PR is merged.

@@ -48,6 +48,8 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
   const parseKeys = new Map<string, Map<string, { keys: string[]; link: LinkPath }>>();
   const parseUrls = new Set<string>();
   const allUrls = new Set<string>();
+  // URLs cited only as machine-readable links (e.g. Cellar CELEX URIs).
+  const machineOnly = new Map<string, boolean>();
 
   for (const [region, sources] of Object.entries(regions)) {
     const byUrl = new Map<string, UrlUsage[]>();
@@ -58,6 +60,7 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
         if (!byUrl.has(url)) byUrl.set(url, []);
         byUrl.get(url)!.push({ key, field: path });
         allUrls.add(url);
+        machineOnly.set(url, (machineOnly.get(url) ?? true) && link.type === 'machine');
         if (link.checkDiff) {
           if (!parseByUrl.has(url)) parseByUrl.set(url, { keys: [], link: path });
           const entry = parseByUrl.get(url)!;
@@ -137,7 +140,10 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
   for (const region of Object.keys(regions)) {
     const linkHealth: LinkHealthResult[] = [...healthUsages.get(region)!].map(([url, usedBy]) => {
       const { status, httpStatus, finalUrl, error } = outcomeByUrl.get(url)!;
-      return { url, usedBy, status, httpStatus, finalUrl, error };
+      // Machine identifiers resolve by redirect by design (a Cellar CELEX URI
+      // content-negotiates to a document URL), so that's not worth flagging.
+      const effective = status === 'redirected' && machineOnly.get(url) ? 'live' : status;
+      return { url, usedBy, status: effective, httpStatus, finalUrl, error };
     });
     const ruleChecks: RuleCheckResult[] = [...parseKeys.get(region)!].map(([url, { keys, link }]) => ({
       ...ruleByUrl.get(url)!,

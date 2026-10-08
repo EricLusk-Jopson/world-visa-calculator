@@ -41,7 +41,13 @@ export const SchengenSources = {
       url:
         "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
       type: "direct",
-      checkDiff: true,
+      checkDiff: false, // EUR-Lex page is health-checked; its Cellar copy is diffed
+      alternate: {
+        url:
+          "https://publications.europa.eu/resource/celex/02018R1806-20251230",
+        type: "machine",
+        checkDiff: true,
+      },
     },
     parent: {
       url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
@@ -61,7 +67,13 @@ export const SchengenSources = {
       url:
         "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629",
       type: "direct",
-      checkDiff: true,
+      checkDiff: false, // EUR-Lex page is health-checked; its Cellar copy is diffed
+      alternate: {
+        url:
+          "https://publications.europa.eu/resource/celex/02009R0810-20200202",
+        type: "machine",
+        checkDiff: true,
+      },
     },
     parent: {
       url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
