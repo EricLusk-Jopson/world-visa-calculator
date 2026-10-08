@@ -15035,7 +15035,7 @@ export const SourceRegions = {
   Schengen: { sources: SchengenSources, checkLinks: true },
   UK: { sources: UKSources, checkLinks: true },
   Ireland: { sources: IrelandSources, checkLinks: true },
-  Turkiye: { sources: TurkiyeSources, checkLinks: false },
+  Turkiye: { sources: TurkiyeSources, checkLinks: true },
   Montenegro: { sources: MontenegroSources, checkLinks: false },
   Serbia: { sources: SerbiaSources, checkLinks: false },
   Bosnia: { sources: BosniaSources, checkLinks: false },
