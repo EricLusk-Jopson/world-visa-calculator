@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T00:07:56.103Z",
+  "generatedAt": "2026-10-08T02:26:51.862Z",
   "regions": [
     {
       "region": "Demo",
@@ -9,11 +9,11 @@
           "usedBy": [
             {
               "key": "ruleList",
-              "field": "directUrl"
+              "field": "direct"
             },
             {
               "key": "ruleList",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -25,7 +25,7 @@
           "usedBy": [
             {
               "key": "docVault",
-              "field": "directUrl"
+              "field": "direct"
             }
           ],
           "status": "broken",
@@ -37,7 +37,7 @@
           "usedBy": [
             {
               "key": "docVault",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -49,11 +49,15 @@
           "usedBy": [
             {
               "key": "stable",
-              "field": "directUrl"
+              "field": "direct"
             },
             {
               "key": "stable",
-              "field": "parentUrl"
+              "field": "parent"
+            },
+            {
+              "key": "blockedWithAlternate",
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -61,15 +65,40 @@
           "finalUrl": "http://127.0.0.1:47819/stable.html"
         },
         {
+          "url": "http://127.0.0.1:47819/regulation-human.html",
+          "usedBy": [
+            {
+              "key": "blockedWithAlternate",
+              "field": "direct"
+            }
+          ],
+          "status": "blocked",
+          "httpStatus": 202,
+          "finalUrl": "http://127.0.0.1:47819/regulation-human.html",
+          "error": "HTTP 202, likely a bot-protection challenge"
+        },
+        {
+          "url": "http://127.0.0.1:47819/regulation.html",
+          "usedBy": [
+            {
+              "key": "blockedWithAlternate",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "http://127.0.0.1:47819/regulation.html"
+        },
+        {
           "url": "http://127.0.0.1:47819/brokenInRun2.html",
           "usedBy": [
             {
               "key": "brokenInRun2",
-              "field": "directUrl"
+              "field": "direct"
             },
             {
               "key": "brokenInRun2",
-              "field": "parentUrl"
+              "field": "parent"
             }
           ],
           "status": "broken",
@@ -86,7 +115,8 @@
           "textDiffPreview": "+ Azerbaijan",
           "keys": [
             "ruleList"
-          ]
+          ],
+          "link": "direct"
         },
         {
           "url": "http://127.0.0.1:47819/docVault.html",
@@ -103,7 +133,8 @@
           ],
           "keys": [
             "docVault"
-          ]
+          ],
+          "link": "parent"
         },
         {
           "url": "http://127.0.0.1:47819/stable.html",
@@ -112,17 +143,31 @@
           "status": "unchanged",
           "keys": [
             "stable"
-          ]
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "http://127.0.0.1:47819/regulation.html",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "text-changed",
+          "textDiffPreview": "+ Azerbaijan",
+          "keys": [
+            "blockedWithAlternate"
+          ],
+          "link": "direct.alternate"
         }
       ]
     }
   ],
+  "skippedRegions": [],
   "summary": {
-    "totalLinksChecked": 5,
+    "totalLinksChecked": 7,
     "brokenLinks": 2,
     "redirectedLinks": 0,
-    "sourcesChecked": 3,
-    "sourcesChanged": 2,
+    "blockedLinks": 1,
+    "sourcesChecked": 4,
+    "sourcesChanged": 3,
     "sourcesFirstRun": 0,
     "sourcesFetchError": 0
   }
