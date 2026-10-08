@@ -393,7 +393,7 @@ export const IrelandSources = {
    * Nevis and Saint Lucia to Schedule 5) never appear there. The parent is a
    * title search that lists each "Immigration Act 2004 (Visas) (Amendment)"
    * Order as it's made, for people to follow. Its results load client-side,
-   * so neither link is diffed yet.
+   * so the Solr search API behind it is diffed as its machine alternate.
    */
   statutoryInstrument: {
     direct: {
@@ -404,12 +404,17 @@ export const IrelandSources = {
     parent: {
       url: "https://www.irishstatutebook.ie/eli/ResultsTitle.html?q=Immigration+Act",
       type: "parent",
-      // The search results are loaded client-side (the fetched HTML is only
-      // page chrome), so this is health-checked only. Diffing it needs the
-      // results' AJAX data URL as a machine alternate. (The ISD's
-      // /immigration-legislation-and-policy-guidelines/ page was tried and
-      // doesn't list S.I. 473/2014 or its amendments.)
+      // The search page loads its results client-side (the fetched HTML is
+      // only page chrome), so it's health-checked and the Solr API it calls
+      // is diffed: newest first, so a new amendment Order lands at the top.
+      // omitHeader drops Solr's per-request timing; no json.wrf, so plain JSON.
       checkDiff: false,
+      alternate: {
+        url:
+          "https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true",
+        type: "machine",
+        checkDiff: true,
+      },
     },
     dateChecked: "2026-05-27",
   } satisfies SourceDoc,
