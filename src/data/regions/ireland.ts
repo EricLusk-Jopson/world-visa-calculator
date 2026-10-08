@@ -62,8 +62,8 @@
  * ── Data source ───────────────────────────────────────────────────────────────
  *   passportRules derived from the INIS visa/non-visa required nationality
  *   table (Ninja Table ID 19077, extracted 2026-05-27), plus the Immigration
- *   Act 2004 (Visas) (Amendment) (No. 2) Order 2026 (in operation 15 June
- *   2026): Nicaragua, Saint Kitts and Nevis and Saint Lucia moved from
+ *   Act 2004 (Visas) (Amendment) (No. 2) Order 2026 (S.I. No. 242 of 2026,
+ *   in operation 15 June 2026): Nicaragua, Saint Kitts and Nevis and Saint Lucia moved from
  *   visa-free to visa-required with a transit visa. Bahamas and Samoa
  *   (Schedule 1, visa-free on INIS) were missing from the original
  *   extraction and were added 2026-10-08.
@@ -373,7 +373,7 @@ export const IRELAND: RegionDefinition = {
 
     // Moved from Schedule 1 (visa-free) to Schedule 5 (transit visa) of
     // S.I. No. 473 of 2014 by the Immigration Act 2004 (Visas) (Amendment)
-    // (No. 2) Order 2026, in operation from 15 June 2026.
+    // (No. 2) Order 2026 (S.I. No. 242 of 2026), in operation from 15 June 2026.
     'NI': VISA_REQUIRED_TRANSIT, // Nicaragua
     'KN': VISA_REQUIRED_TRANSIT, // Saint Kitts and Nevis
     'LC': VISA_REQUIRED_TRANSIT, // Saint Lucia

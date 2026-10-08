@@ -7,8 +7,8 @@ describe('getIrelandRule', () => {
     expect(getIrelandRule('US').access).toBe('entitled');
   });
 
-  // Immigration Act 2004 (Visas) (Amendment) (No. 2) Order 2026, in operation
-  // 15 June 2026: removed from Schedule 1 and added to Schedule 5.
+  // Immigration Act 2004 (Visas) (Amendment) (No. 2) Order 2026 (S.I. No. 242
+  // of 2026), in operation 15 June 2026: removed from Schedule 1, added to Schedule 5.
   it.each(['NI', 'KN', 'LC'])(
     '%s is visa_required with a transit visa since the (No. 2) Order 2026',
     (code) => {
