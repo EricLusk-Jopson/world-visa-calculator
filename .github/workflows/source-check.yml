@@ -9,6 +9,12 @@ name: Source check
 # and approve pull requests".
 
 on:
+  # TEMPORARY: lets the workflow run before it exists on main (workflow_dispatch
+  # only works for workflows on the default branch). Push runs honour each
+  # region's checkLinks flag, and the report PR targets this branch.
+  # Remove before merging to main.
+  push:
+    branches: [feature/automated-quality-control]
   schedule:
     - cron: "17 6 1 * *" # 06:17 UTC on the 1st of each month
   workflow_dispatch:
