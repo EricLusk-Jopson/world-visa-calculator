@@ -303,8 +303,7 @@ export const IrelandSources = {
    */
   ctaGuidance: {
     direct: {
-      url:
-        "https://www.irishimmigration.ie/coming-to-visit-ireland/common-travel-area/",
+      url: "https://www.irishimmigration.ie/at-the-border/common-travel-area/",
       type: "direct",
       checkDiff: false,
     },
