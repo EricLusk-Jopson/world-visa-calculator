@@ -285,7 +285,7 @@ export const IrelandSources = {
   euFreeMovement: {
     direct: {
       url:
-        "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-am-an-eu-eea-swiss-national/",
+        "https://www.irishimmigration.ie/at-the-border/entry-for-eu-eea-and-swiss-citizens/",
       type: "direct",
       checkDiff: false,
     },
