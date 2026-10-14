@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T04:47:19.440Z",
+  "generatedAt": "2026-10-14T23:30:44.099Z",
   "regions": [
     {
       "region": "Schengen",
@@ -12,10 +12,10 @@
               "field": "direct"
             }
           ],
-          "status": "broken",
-          "httpStatus": 200,
-          "finalUrl": "https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX%3A02018R1806-20251230",
-          "error": "EUR-Lex temporarily unavailable: redirected to its Official Journal fallback page"
+          "status": "blocked",
+          "httpStatus": 202,
+          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
+          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
         },
         {
           "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
@@ -57,10 +57,10 @@
               "field": "direct"
             }
           ],
-          "status": "broken",
-          "httpStatus": 200,
-          "finalUrl": "https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX:02009R0810-20200202&qid=1700746099626",
-          "error": "EUR-Lex temporarily unavailable: redirected to its Official Journal fallback page"
+          "status": "blocked",
+          "httpStatus": 202,
+          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626",
+          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
         },
         {
           "url": "https://publications.europa.eu/resource/celex/02009R0810-20200202",
@@ -509,10 +509,79 @@
           "link": "parent.alternate"
         }
       ]
+    },
+    {
+      "region": "Turkiye",
+      "linkHealth": [
+        {
+          "url": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
+          "usedBy": [
+            {
+              "key": "mfaVisaInfo",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa"
+        },
+        {
+          "url": "https://www.mfa.gov.tr/consular-info.en.mfa",
+          "usedBy": [
+            {
+              "key": "mfaVisaInfo",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mfa.gov.tr/consular-info.en.mfa"
+        },
+        {
+          "url": "https://www.evisa.gov.tr/en/",
+          "usedBy": [
+            {
+              "key": "eVisaApplication",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.evisa.gov.tr/en/"
+        },
+        {
+          "url": "https://www.evisa.gov.tr",
+          "usedBy": [
+            {
+              "key": "eVisaApplication",
+              "field": "parent"
+            },
+            {
+              "key": "eVisaEligible",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.evisa.gov.tr/"
+        },
+        {
+          "url": "https://www.evisa.gov.tr/en/info/who-is-eligible-for-e-visa/",
+          "usedBy": [
+            {
+              "key": "eVisaEligible",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.evisa.gov.tr/en/info/who-is-eligible-for-e-visa/"
+        }
+      ],
+      "ruleChecks": []
     }
   ],
   "skippedRegions": [
-    "Turkiye",
     "Montenegro",
     "Serbia",
     "Bosnia",
@@ -525,10 +594,10 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 31,
-    "brokenLinks": 2,
+    "totalLinksChecked": 36,
+    "brokenLinks": 0,
     "redirectedLinks": 0,
-    "blockedLinks": 0,
+    "blockedLinks": 2,
     "sourcesChecked": 9,
     "sourcesChanged": 0,
     "sourcesFirstRun": 0,
