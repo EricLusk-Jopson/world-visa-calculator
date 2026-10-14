@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T23:30:44.099Z",
+  "generatedAt": "2026-10-14T23:56:38.241Z",
   "regions": [
     {
       "region": "Schengen",
@@ -538,44 +538,20 @@
           "finalUrl": "https://www.mfa.gov.tr/consular-info.en.mfa"
         },
         {
-          "url": "https://www.evisa.gov.tr/en/",
+          "url": "https://evisa.gov.tr/en",
           "usedBy": [
             {
               "key": "eVisaApplication",
               "field": "direct"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.evisa.gov.tr/en/"
-        },
-        {
-          "url": "https://www.evisa.gov.tr",
-          "usedBy": [
-            {
-              "key": "eVisaApplication",
-              "field": "parent"
             },
             {
-              "key": "eVisaEligible",
+              "key": "eVisaApplication",
               "field": "parent"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://www.evisa.gov.tr/"
-        },
-        {
-          "url": "https://www.evisa.gov.tr/en/info/who-is-eligible-for-e-visa/",
-          "usedBy": [
-            {
-              "key": "eVisaEligible",
-              "field": "direct"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.evisa.gov.tr/en/info/who-is-eligible-for-e-visa/"
+          "finalUrl": "https://evisa.gov.tr/en"
         }
       ],
       "ruleChecks": []
@@ -594,7 +570,7 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 36,
+    "totalLinksChecked": 34,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 2,

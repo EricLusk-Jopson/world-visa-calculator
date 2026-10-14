@@ -1,12 +1,12 @@
 # Source Verification Report
 
-Generated: 2026-10-14T23:30:44.099Z
+Generated: 2026-10-14T23:56:38.241Z
 
 ## Summary
 
 | | |
 |---|---|
-| Unique links checked | 36 |
+| Unique links checked | 34 |
 | 🔴 Broken | 0 |
 | ↪️ Redirected | 0 |
 | 🚫 Blocked (could not verify) | 2 |
@@ -101,9 +101,7 @@ Not checked this run (`checkLinks: false`): Montenegro, Serbia, Bosnia, Kosovo, 
 |---|---|---|
 | mfaVisaInfo (direct) | ✅ live (200) | https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa |
 | mfaVisaInfo (parent) | ✅ live (200) | https://www.mfa.gov.tr/consular-info.en.mfa |
-| eVisaApplication (direct) | ✅ live (200) | https://www.evisa.gov.tr/en/ |
-| eVisaApplication, eVisaEligible (parent) | ✅ live (200) | https://www.evisa.gov.tr |
-| eVisaEligible (direct) | ✅ live (200) | https://www.evisa.gov.tr/en/info/who-is-eligible-for-e-visa/ |
+| eVisaApplication | ✅ live (200) | https://evisa.gov.tr/en |
 
 ### Content diffing
 

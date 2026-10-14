@@ -227,7 +227,7 @@ function eVisaConditional(extraNotes?: RuleNote[]): VisaRequiredRule {
     access: 'visa_required',
     source: TurkiyeSources.mfaVisaInfo,
     notes: [
-      { text: CONDITIONAL_EVISA_NOTE, source: TurkiyeSources.eVisaEligible },
+      { text: CONDITIONAL_EVISA_NOTE, source: TurkiyeSources.mfaVisaInfo },
       ...(extraNotes ?? []),
     ],
   };

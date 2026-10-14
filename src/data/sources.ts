@@ -456,26 +456,12 @@ export const TurkiyeSources = {
    */
   eVisaApplication: {
     direct: {
-      url: "https://www.evisa.gov.tr/en/",
+      url: "https://evisa.gov.tr/en",
       type: "direct",
       checkDiff: false,
     },
     parent: {
-      url: "https://www.evisa.gov.tr",
-      type: "parent",
-      checkDiff: false,
-    },
-    dateChecked: "2026-05-27",
-  } satisfies SourceDoc,
-
-  eVisaEligible: {
-    direct: {
-      url: "https://www.evisa.gov.tr/en/info/who-is-eligible-for-e-visa/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.evisa.gov.tr",
+      url: "https://evisa.gov.tr/en",
       type: "parent",
       checkDiff: false,
     },
