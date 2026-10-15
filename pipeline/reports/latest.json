@@ -1,215 +1,74 @@
 {
-  "generatedAt": "2026-10-15T04:10:51.616Z",
+  "generatedAt": "2026-10-15T05:31:29.598Z",
   "regions": [
     {
-      "region": "Schengen",
+      "region": "Armenia",
       "linkHealth": [
         {
-          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
+          "url": "https://www.mfa.am/en/visafreelist",
           "usedBy": [
             {
-              "key": "visaList",
+              "key": "visaFreeList",
               "field": "direct"
-            }
-          ],
-          "status": "blocked",
-          "httpStatus": 202,
-          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
-          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
-        },
-        {
-          "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
-          "usedBy": [
-            {
-              "key": "visaList",
-              "field": "direct.alternate"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "http://publications.europa.eu/resource/cellar/ece43fab-0ca3-11f1-8870-01aa75ed71a1.0006.02/DOC_1"
+          "finalUrl": "https://www.mfa.am/en/visafreelist"
         },
         {
-          "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+          "url": "https://www.mfa.am/en/visa/",
           "usedBy": [
             {
-              "key": "visaList",
+              "key": "visaFreeList",
               "field": "parent"
             },
             {
-              "key": "atvCommon",
-              "field": "parent"
-            },
-            {
-              "key": "atvSpecific",
+              "key": "bilateralList",
               "field": "parent"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en"
+          "finalUrl": "https://www.mfa.am/en/visa/"
         },
         {
-          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629",
+          "url": "https://www.mfa.am/en/whoneedvisa",
           "usedBy": [
             {
-              "key": "atvCommon",
-              "field": "direct"
-            }
-          ],
-          "status": "blocked",
-          "httpStatus": 202,
-          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626",
-          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
-        },
-        {
-          "url": "https://publications.europa.eu/resource/celex/02009R0810-20200202",
-          "usedBy": [
-            {
-              "key": "atvCommon",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "http://publications.europa.eu/resource/cellar/82b7a82d-473e-11ea-b81b-01aa75ed71a1.0006.03/DOC_4"
-        },
-        {
-          "url": "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
-          "usedBy": [
-            {
-              "key": "atvSpecific",
+              "key": "bilateralList",
               "field": "direct"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf"
-        },
-        {
-          "url": "https://travel-europe.europa.eu/en/etias",
-          "usedBy": [
-            {
-              "key": "etias",
-              "field": "direct"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://travel-europe.europa.eu/en/etias"
-        },
-        {
-          "url": "https://travel-europe.europa.eu/pub",
-          "usedBy": [
-            {
-              "key": "etias",
-              "field": "parent"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://travel-europe.europa.eu/pub"
+          "finalUrl": "https://www.mfa.am/en/whoneedvisa"
         }
       ],
       "ruleChecks": [
         {
-          "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
-          "previousUpdatedAt": null,
+          "url": "https://www.mfa.am/en/visafreelist",
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "first-run",
           "keys": [
-            "visaList"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://publications.europa.eu/resource/celex/02009R0810-20200202",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "atvCommon"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "atvSpecific"
+            "visaFreeList"
           ],
           "link": "direct"
-        }
-      ]
-    },
-    {
-      "region": "Cyprus",
-      "linkHealth": [
-        {
-          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
-          "usedBy": [
-            {
-              "key": "visaList",
-              "field": "direct"
-            }
-          ],
-          "status": "blocked",
-          "httpStatus": 202,
-          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
-          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
         },
         {
-          "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
-          "usedBy": [
-            {
-              "key": "visaList",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "http://publications.europa.eu/resource/cellar/ece43fab-0ca3-11f1-8870-01aa75ed71a1.0006.02/DOC_1"
-        },
-        {
-          "url": "https://www.gov.cy/en/information/visas/",
-          "usedBy": [
-            {
-              "key": "visaList",
-              "field": "parent"
-            }
-          ],
-          "status": "blocked",
-          "httpStatus": 403,
-          "finalUrl": "https://www.gov.cy/en/information/visas/",
-          "error": "HTTP 403: site refused automated access"
-        }
-      ],
-      "ruleChecks": [
-        {
-          "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
-          "previousUpdatedAt": null,
+          "url": "https://www.mfa.am/en/whoneedvisa",
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "first-run",
           "keys": [
-            "visaList"
+            "bilateralList"
           ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://www.gov.cy/en/information/visas/",
-          "status": "fetch-error",
-          "error": "HTTP 403: site refused automated access",
-          "keys": [
-            "visaList"
-          ],
-          "link": "parent"
+          "link": "direct"
         }
       ]
     }
   ],
   "skippedRegions": [
+    "Schengen",
     "UK",
     "Ireland",
     "Turkiye",
@@ -219,18 +78,18 @@
     "Kosovo",
     "NorthMacedonia",
     "Albania",
+    "Cyprus",
     "Belarus",
-    "Georgia",
-    "Armenia"
+    "Georgia"
   ],
   "summary": {
-    "totalLinksChecked": 9,
+    "totalLinksChecked": 3,
     "brokenLinks": 0,
     "redirectedLinks": 0,
-    "blockedLinks": 3,
-    "sourcesChecked": 4,
+    "blockedLinks": 0,
+    "sourcesChecked": 2,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 0,
-    "sourcesFetchError": 1
+    "sourcesFirstRun": 2,
+    "sourcesFetchError": 0
   }
 }
