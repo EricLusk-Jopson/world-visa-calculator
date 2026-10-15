@@ -1,21 +1,21 @@
 # Source Verification Report
 
-Generated: 2026-10-08T04:47:19.440Z
+Generated: 2026-10-15T00:00:43.956Z
 
 ## Summary
 
 | | |
 |---|---|
-| Unique links checked | 31 |
-| 🔴 Broken | 2 |
+| Unique links checked | 34 |
+| 🔴 Broken | 0 |
 | ↪️ Redirected | 0 |
 | 🚫 Blocked (could not verify) | 0 |
-| Content sources diffed (`checkDiff`) | 9 |
+| Content sources diffed (`checkDiff`) | 11 |
 | ✏️ Changed since last baseline | 0 |
-| 🆕 First run (no baseline yet) | 0 |
+| 🆕 First run (no baseline yet) | 2 |
 | ⚠️ Fetch errors | 0 |
 
-Not checked this run (`checkLinks: false`): Turkiye, Montenegro, Serbia, Bosnia, Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Georgia, Armenia.
+Not checked this run (`checkLinks: false`): Montenegro, Serbia, Bosnia, Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Georgia, Armenia.
 
 ## Schengen
 
@@ -23,10 +23,10 @@ Not checked this run (`checkLinks: false`): Turkiye, Montenegro, Serbia, Bosnia,
 
 | Used by | Status | URL |
 |---|---|---|
-| visaList (direct) | 🔴 broken (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230<br>EUR-Lex temporarily unavailable: redirected to its Official Journal fallback page |
+| visaList (direct) | ✅ live (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230 |
 | visaList (direct.alternate) | ✅ live (200) | https://publications.europa.eu/resource/celex/02018R1806-20251230 |
 | visaList, atvCommon, atvSpecific (parent) | ✅ live (200) | https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en |
-| atvCommon (direct) | 🔴 broken (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629<br>EUR-Lex temporarily unavailable: redirected to its Official Journal fallback page |
+| atvCommon (direct) | ✅ live (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629 |
 | atvCommon (direct.alternate) | ✅ live (200) | https://publications.europa.eu/resource/celex/02009R0810-20200202 |
 | atvSpecific (direct) | ✅ live (200) | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
 | etias (direct) | ✅ live (200) | https://travel-europe.europa.eu/en/etias |
@@ -92,3 +92,20 @@ Not checked this run (`checkLinks: false`): Turkiye, Montenegro, Serbia, Bosnia,
 | Keys | Status | URL |
 |---|---|---|
 | statutoryInstrument (parent.alternate) | ✅ unchanged | https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true |
+
+## Turkiye
+
+### Link health
+
+| Used by | Status | URL |
+|---|---|---|
+| mfaVisaInfo (direct) | ✅ live (200) | https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa |
+| mfaVisaInfo (parent) | ✅ live (200) | https://www.mfa.gov.tr/consular-info.en.mfa |
+| eVisaApplication | ✅ live (200) | https://evisa.gov.tr/en |
+
+### Content diffing
+
+| Keys | Status | URL |
+|---|---|---|
+| mfaVisaInfo | 🆕 first run (baseline captured) | https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa |
+| mfaVisaInfo (parent) | 🆕 first run (baseline captured) | https://www.mfa.gov.tr/consular-info.en.mfa |

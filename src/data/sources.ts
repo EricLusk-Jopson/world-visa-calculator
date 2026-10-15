@@ -432,12 +432,12 @@ export const TurkiyeSources = {
     direct: {
       url: "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
     parent: {
       url: "https://www.mfa.gov.tr/consular-info.en.mfa",
       type: "parent",
-      checkDiff: false,
+      checkDiff: true,
     },
     dateChecked: "2026-05-27",
   } satisfies SourceDoc,
@@ -456,26 +456,12 @@ export const TurkiyeSources = {
    */
   eVisaApplication: {
     direct: {
-      url: "https://www.evisa.gov.tr/en/",
+      url: "https://evisa.gov.tr/en",
       type: "direct",
       checkDiff: false,
     },
     parent: {
-      url: "https://www.evisa.gov.tr",
-      type: "parent",
-      checkDiff: false,
-    },
-    dateChecked: "2026-05-27",
-  } satisfies SourceDoc,
-
-  eVisaEligible: {
-    direct: {
-      url: "https://www.evisa.gov.tr/en/info/who-is-eligible-for-e-visa/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.evisa.gov.tr",
+      url: "https://evisa.gov.tr/en",
       type: "parent",
       checkDiff: false,
     },
@@ -15035,7 +15021,7 @@ export const SourceRegions = {
   Schengen: { sources: SchengenSources, checkLinks: true },
   UK: { sources: UKSources, checkLinks: true },
   Ireland: { sources: IrelandSources, checkLinks: true },
-  Turkiye: { sources: TurkiyeSources, checkLinks: false },
+  Turkiye: { sources: TurkiyeSources, checkLinks: true },
   Montenegro: { sources: MontenegroSources, checkLinks: false },
   Serbia: { sources: SerbiaSources, checkLinks: false },
   Bosnia: { sources: BosniaSources, checkLinks: false },

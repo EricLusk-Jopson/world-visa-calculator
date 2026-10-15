@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T04:47:19.440Z",
+  "generatedAt": "2026-10-15T00:00:43.956Z",
   "regions": [
     {
       "region": "Schengen",
@@ -12,10 +12,9 @@
               "field": "direct"
             }
           ],
-          "status": "broken",
+          "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX%3A02018R1806-20251230",
-          "error": "EUR-Lex temporarily unavailable: redirected to its Official Journal fallback page"
+          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230"
         },
         {
           "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
@@ -57,10 +56,9 @@
               "field": "direct"
             }
           ],
-          "status": "broken",
+          "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://eur-lex.europa.eu/TodayOJ/index.html?uri=CELEX:02009R0810-20200202&qid=1700746099626",
-          "error": "EUR-Lex temporarily unavailable: redirected to its Official Journal fallback page"
+          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626"
         },
         {
           "url": "https://publications.europa.eu/resource/celex/02009R0810-20200202",
@@ -509,10 +507,74 @@
           "link": "parent.alternate"
         }
       ]
+    },
+    {
+      "region": "Turkiye",
+      "linkHealth": [
+        {
+          "url": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
+          "usedBy": [
+            {
+              "key": "mfaVisaInfo",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa"
+        },
+        {
+          "url": "https://www.mfa.gov.tr/consular-info.en.mfa",
+          "usedBy": [
+            {
+              "key": "mfaVisaInfo",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mfa.gov.tr/consular-info.en.mfa"
+        },
+        {
+          "url": "https://evisa.gov.tr/en",
+          "usedBy": [
+            {
+              "key": "eVisaApplication",
+              "field": "direct"
+            },
+            {
+              "key": "eVisaApplication",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://evisa.gov.tr/en"
+        }
+      ],
+      "ruleChecks": [
+        {
+          "url": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "mfaVisaInfo"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.mfa.gov.tr/consular-info.en.mfa",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "mfaVisaInfo"
+          ],
+          "link": "parent"
+        }
+      ]
     }
   ],
   "skippedRegions": [
-    "Turkiye",
     "Montenegro",
     "Serbia",
     "Bosnia",
@@ -525,13 +587,13 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 31,
-    "brokenLinks": 2,
+    "totalLinksChecked": 34,
+    "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 9,
+    "sourcesChecked": 11,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 0,
+    "sourcesFirstRun": 2,
     "sourcesFetchError": 0
   }
 }
