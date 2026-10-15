@@ -195,8 +195,11 @@ export interface SourceLink {
    * (see pipeline/src/resolvers/mvpGovBa.ts). 'mfa.gov.mk': the North
    * Macedonia MFA visa checker, a Livewire component the pipeline drives by
    * POSTing its country-button calls (see pipeline/src/resolvers/mfaGovMk.ts).
+   * 'punetejashtme.gov.al': the Albania MFA visa table, whose per-country
+   * rules sit in an inline script the pipeline parses (see
+   * pipeline/src/resolvers/punetejashtmeGovAl.ts).
    */
-  resolver?: "mvp.gov.ba" | "mfa.gov.mk";
+  resolver?: "mvp.gov.ba" | "mfa.gov.mk" | "punetejashtme.gov.al";
 }
 
 /**

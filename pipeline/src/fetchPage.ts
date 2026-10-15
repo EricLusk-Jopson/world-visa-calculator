@@ -1,4 +1,5 @@
 import { fetch as undiciFetch } from 'undici';
+import { fetchWithBrowser, incapsulaInterstitial } from './browserFetch';
 import { chainCompletingAgent, isIncompleteChainError } from './tlsChain';
 import type { LinkHealthStatus } from './types';
 
@@ -172,16 +173,35 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
       await res.body?.cancel();
       return { status: 'broken', httpStatus: res.status, finalUrl, contentType, error: outage };
     }
-    const body = wantBody ? Buffer.from(await res.arrayBuffer()) : undefined;
-    if (!wantBody) await res.body?.cancel();
+    // Imperva Incapsula answers a client it turns away with 200 and a short
+    // block or challenge page; its responses carry X-Iinfo, so only those
+    // (and bodies read anyway) are checked.
+    const imperva = res.headers.has('x-iinfo') || /imperva|incapsula/i.test(res.headers.get('x-cdn') ?? '');
+    const body = wantBody || imperva ? Buffer.from(await res.arrayBuffer()) : undefined;
+    if (!body) await res.body?.cancel();
+    const interstitial = body ? incapsulaInterstitial(body.toString('utf-8')) : undefined;
+    if (interstitial) {
+      return { status: 'blocked', httpStatus: res.status, finalUrl, contentType, error: `HTTP ${res.status} with an ${interstitial.detail}` };
+    }
     const status: LinkHealthStatus = normalizeUrl(finalUrl) !== normalizeUrl(url) ? 'redirected' : 'live';
-    return { status, httpStatus: res.status, finalUrl, contentType, body };
+    return { status, httpStatus: res.status, finalUrl, contentType, body: wantBody ? body : undefined };
   } catch (err) {
     return { status: 'broken', error: describeError(err) };
   }
 }
 
-/** GET with a timeout, retrying transient failures (network, 429, 5xx) with backoff. */
+/**
+ * Hosts whose bot protection turns away every plain HTTP client, so a
+ * blocked response is retried in headless Chromium (see browserFetch.ts).
+ * The Albania MFA site is behind Imperva Incapsula; its old Playwright
+ * scraper read it fine.
+ */
+export const BROWSER_FALLBACK_HOSTS = new Set(['punetejashtme.gov.al']);
+
+/**
+ * GET with a timeout, retrying transient failures (network, 429, 5xx) with
+ * backoff, and blocked responses from BROWSER_FALLBACK_HOSTS in a browser.
+ */
 export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOutcome> {
   let outcome = await fetchOnce(url, wantBody);
   for (const delay of RETRY_DELAYS_MS) {
@@ -189,7 +209,20 @@ export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOu
     await new Promise((r) => setTimeout(r, delay));
     outcome = await fetchOnce(url, wantBody);
   }
+  if (outcome.status === 'blocked' && BROWSER_FALLBACK_HOSTS.has(hostOf(url))) {
+    const viaBrowser = await fetchWithBrowser(url);
+    if (viaBrowser.status !== 'blocked' && viaBrowser.status !== 'broken') return viaBrowser;
+    return { ...viaBrowser, error: `${outcome.error}; ${viaBrowser.error ?? `headless browser: HTTP ${viaBrowser.httpStatus}`}` };
+  }
   return outcome;
+}
+
+function hostOf(url: string): string {
+  try {
+    return new URL(url).host;
+  } catch {
+    return '';
+  }
 }
 
 /** Returns a function that runs tasks with at most `limit` in flight. */
@@ -223,4 +256,22 @@ export async function mapWithConcurrency<T, R>(items: T[], limit: number, fn: (i
   }
   await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
   return results;
+}
+
+/**
+ * What came back instead of the expected page, for an error message: its
+ * size, type, final URL when redirected, and title or opening text, e.g.
+ * `2 KB text/html, title "Just a moment..."`.
+ */
+export function describeResponse(outcome: Pick<FetchOutcome, 'body' | 'contentType' | 'finalUrl'>, requestedUrl?: string): string {
+  const parts: string[] = [];
+  const body = outcome.body?.toString('utf-8') ?? '';
+  parts.push(`${body.length < 1024 ? `${body.length} bytes` : `${Math.round(body.length / 1024)} KB`} ${outcome.contentType || 'no content type'}`);
+  if (outcome.finalUrl && requestedUrl && outcome.finalUrl !== requestedUrl) parts.push(`from ${outcome.finalUrl}`);
+  const title = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(body)?.[1].replace(/\s+/g, ' ').trim();
+  const opening = body.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (title) parts.push(`title ${JSON.stringify(title.slice(0, 100))}`);
+  else if (opening) parts.push(`starting ${JSON.stringify(opening.slice(0, 100))}`);
+  else if (body) parts.push(`starting ${JSON.stringify(body.slice(0, 100))}`);
+  return parts.join(', ');
 }
