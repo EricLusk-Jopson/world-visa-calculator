@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import { extractSnapshot } from '../contentCheck';
-import type { FetchOutcome } from '../fetchPage';
+import { describeResponse, type FetchOutcome } from '../fetchPage';
 import type { ContentLink, ContentSnapshot } from '../types';
 import type { Discovery, Resolver } from './index';
 import { isoForName as standardIsoForName, normalizeName } from './mfaGovMk';
@@ -265,7 +265,7 @@ async function discover(fetch: (url: string) => Promise<FetchOutcome>): Promise<
   try {
     page = parseTablePage(outcome.body.toString('utf-8'));
   } catch (err) {
-    return failed((err as Error).message);
+    return failed(`${(err as Error).message}; got ${describeResponse(outcome, PAGE_URL)}`);
   }
   const discovery = buildDiscovery(page);
   const names = new Map(page.options.map((o) => [o.slug, o.name]));

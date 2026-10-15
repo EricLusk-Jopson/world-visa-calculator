@@ -77,7 +77,9 @@ function blockedReason(httpStatus: number, headers: Headers): string | undefined
  * Request headers for sites that need more than the defaults. The Bosnia and
  * Herzegovina MFA site sits behind a reverse proxy that turns away clients
  * that don't look like a browser, and its subpage API answers JSON. The North
- * Macedonia MFA site gets the same browser-style agent as a precaution.
+ * Macedonia MFA site gets the same browser-style agent as a precaution. The
+ * Albania MFA site answered the default agent with a 200 page holding no
+ * text and no visa table.
  */
 export const BROWSER_USER_AGENT =
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 ' + USER_AGENT;
@@ -85,6 +87,7 @@ export const BROWSER_USER_AGENT =
 const SITE_HEADERS: { host: string; path?: RegExp; headers: Record<string, string> }[] = [
   { host: 'www.mvp.gov.ba', headers: { 'User-Agent': BROWSER_USER_AGENT } },
   { host: 'mfa.gov.mk', headers: { 'User-Agent': BROWSER_USER_AGENT } },
+  { host: 'punetejashtme.gov.al', headers: { 'User-Agent': BROWSER_USER_AGENT } },
   { host: 'www.mvp.gov.ba', path: /^\/api\//, headers: { Accept: 'application/json' } },
 ];
 
@@ -223,4 +226,22 @@ export async function mapWithConcurrency<T, R>(items: T[], limit: number, fn: (i
   }
   await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
   return results;
+}
+
+/**
+ * What came back instead of the expected page, for an error message: its
+ * size, type, final URL when redirected, and title or opening text, e.g.
+ * `2 KB text/html, title "Just a moment..."`.
+ */
+export function describeResponse(outcome: Pick<FetchOutcome, 'body' | 'contentType' | 'finalUrl'>, requestedUrl?: string): string {
+  const parts: string[] = [];
+  const body = outcome.body?.toString('utf-8') ?? '';
+  parts.push(`${body.length < 1024 ? `${body.length} bytes` : `${Math.round(body.length / 1024)} KB`} ${outcome.contentType || 'no content type'}`);
+  if (outcome.finalUrl && requestedUrl && outcome.finalUrl !== requestedUrl) parts.push(`from ${outcome.finalUrl}`);
+  const title = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(body)?.[1].replace(/\s+/g, ' ').trim();
+  const opening = body.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (title) parts.push(`title ${JSON.stringify(title.slice(0, 100))}`);
+  else if (opening) parts.push(`starting ${JSON.stringify(opening.slice(0, 100))}`);
+  else if (body) parts.push(`starting ${JSON.stringify(body.slice(0, 100))}`);
+  return parts.join(', ');
 }

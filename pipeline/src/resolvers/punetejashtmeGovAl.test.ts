@@ -141,4 +141,14 @@ describe('runChecks with the punetejashtme.gov.al resolver', () => {
     assert.deepEqual(rows.map((c) => [c.url, c.status]), [[`${PAGE_URL}#countries`, 'fetch-error']]);
     assert.match(rows[0].error ?? '', /HTTP 403/);
   });
+
+  it('says what came back when the page has no table', async () => {
+    dir = mkdtempSync(join(tmpdir(), 'al-'));
+    const challenge = '<html><head><title>Just a moment...</title></head><body><script>challenge()</script></body></html>';
+    globalThis.fetch = (async () => new Response(challenge, { headers: { 'content-type': 'text/html' } })) as typeof fetch;
+    const [report] = await runChecks({ Albania: { CN: AlbaniaSources.CN } }, { snapshotDir: dir, recheckDelayMs: 0 });
+    const errors = report.ruleChecks.map((c) => c.error ?? '');
+    assert.ok(errors.some((e) => /no countryData script.*text\/html, title "Just a moment\.\.\."/.test(e)), errors.join('\n'));
+    assert.ok(errors.some((e) => /no text extracted.*title "Just a moment\.\.\."/.test(e)), errors.join('\n'));
+  });
 });

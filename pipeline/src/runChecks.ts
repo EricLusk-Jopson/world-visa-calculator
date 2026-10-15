@@ -1,5 +1,5 @@
 import { compareSnapshots, extractSnapshot } from './contentCheck';
-import { createLimiter, fetchPage, mapWithConcurrency, type FetchOutcome } from './fetchPage';
+import { createLimiter, describeResponse, fetchPage, mapWithConcurrency, type FetchOutcome } from './fetchPage';
 import { readSnapshot, writeSnapshot } from './snapshotStore';
 import { RESOLVERS, type Discovery, type ResolverId } from './resolvers';
 import type { RegionReport } from './report';
@@ -182,7 +182,11 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
     if (current.text === '') {
       // Bot-check interstitials and script-rendered shells parse to nothing;
       // saving one as the baseline would make next month's run "change".
-      ruleByUrl.set(url, { url, status: 'fetch-error', error: 'no text extracted (bot-check or script-rendered page?)' });
+      ruleByUrl.set(url, {
+        url,
+        status: 'fetch-error',
+        error: `no text extracted (bot-check or script-rendered page?); got ${describeResponse(outcome, url)}`,
+      });
       continue;
     }
     const previous = readSnapshot(snapshotDir, snapshotId);
