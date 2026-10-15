@@ -152,6 +152,33 @@ deliberately cautious:
 - a source that doesn't change
 - a link-health-only source that goes dead between runs
 
+**`mfa.gov.mk` (North Macedonia).** The MFA's "Do you need a visa?" page is a
+Laravel Livewire component with no per-country URLs. Each country button is
+`wire:click="changeHardcodedRecord(<id>)"`, and a country's rule only appears
+once that call is POSTed to `/livewire/update`. Every NorthMacedoniaSources
+entry cites the page as its human link, plus this `machine` alternate:
+
+```
+https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#{key}
+```
+
+`{key}` is `<region>/<button id>`, e.g. `africa/51` for Benin. The URL is
+only the page's name in the report; the resolver fetches it itself. Each run:
+
+1. GETs every region page (`?region=africa`, … read from the region buttons),
+   keeping the Laravel session cookies, and reads the component's
+   `wire:snapshot`, the CSRF token and the country buttons.
+2. Maps button names to nationality codes: Intl's English country names plus
+   `ALIASES` for the site's own spellings ("Tunizi", "DR of the Congo",
+   "Côte D 'Ivoire"). A name it can't place is reported as a note.
+3. Diffs the button list itself (`…#countries`): a country added, removed,
+   renamed or moved between regions, or given a new button id.
+4. POSTs each country's call against its region's original snapshot (signed
+   by the server, so reusable), one at a time 400 ms apart, and diffs the
+   rule panel from the response's `effects.html`, keyed by nationality code.
+
+A 419 from `/livewire/update` means the session or CSRF token was rejected.
+
 ### Incomplete certificate chains
 
 Some servers send their certificate without the intermediate CA that links

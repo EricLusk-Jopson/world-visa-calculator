@@ -1,6 +1,7 @@
 import type { SourceLink } from '@/types';
 import type { FetchOutcome } from '../fetchPage';
 import type { ContentSnapshot } from '../types';
+import { mfaGovMk } from './mfaGovMk';
 import { mvpGovBa } from './mvpGovBa';
 
 export type ResolverId = NonNullable<SourceLink['resolver']>;
@@ -22,6 +23,12 @@ export type Discovery = {
   /** Set when discovery failed; `fill` then comes from the previous run's listing. */
   error?: string;
   note?: string;
+  /**
+   * Fetches one key's page from its `{key}` value, for sites where that
+   * takes more than a GET of the filled URL (a POST with session cookies).
+   * The filled URL is then only the page's name in the report.
+   */
+  fetch?: (fill: string) => Promise<FetchOutcome>;
 };
 
 export interface Resolver {
@@ -40,4 +47,5 @@ export interface Resolver {
 
 export const RESOLVERS: Record<ResolverId, Resolver> = {
   'mvp.gov.ba': mvpGovBa,
+  'mfa.gov.mk': mfaGovMk,
 };

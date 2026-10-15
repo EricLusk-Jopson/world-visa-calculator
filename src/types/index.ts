@@ -192,9 +192,11 @@ export interface SourceLink {
    * fills per SourceDoc key before fetching, because the site's per-country
    * URLs are discovered at run time rather than fixed. 'mvp.gov.ba': the
    * Bosnia and Herzegovina MFA subpage API, keyed from its /en/vize index
-   * (see pipeline/src/resolvers/mvpGovBa.ts).
+   * (see pipeline/src/resolvers/mvpGovBa.ts). 'mfa.gov.mk': the North
+   * Macedonia MFA visa checker, a Livewire component the pipeline drives by
+   * POSTing its country-button calls (see pipeline/src/resolvers/mfaGovMk.ts).
    */
-  resolver?: "mvp.gov.ba";
+  resolver?: "mvp.gov.ba" | "mfa.gov.mk";
 }
 
 /**
