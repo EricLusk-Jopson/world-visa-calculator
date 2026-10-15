@@ -7359,17 +7359,27 @@ export const GeorgiaSources = {
    * List of Countries Whose Citizens May Enter Georgia without a Visa",
    * matsne.gov.ge/en/document/view/2867361) is cited as a code comment in
    * georgia.ts rather than as a SourceDoc citation, per explicit instruction.
+   *
+   * geoconsul.gov.ge pages are an empty shell that their scripts fill from
+   * the consulate's content API, so the page itself is only health-checked
+   * and the API's copy of it is diffed as the alternate. The overview page
+   * has no API copy wired up, so it is only health-checked.
    */
   visaList: {
     direct: {
       url: "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
       type: "direct",
-      checkDiff: true,
+      checkDiff: false,
+      alternate: {
+        url: "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25",
+        type: "machine",
+        checkDiff: true,
+      },
     },
     parent: {
       url: "https://geoconsul.gov.ge/en/entering-georgia",
       type: "parent",
-      checkDiff: true,
+      checkDiff: false,
     },
     dateChecked: "2026-09-13",
   } satisfies SourceDoc,

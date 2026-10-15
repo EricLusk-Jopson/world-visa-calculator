@@ -118,8 +118,46 @@ function parseJson(body: Buffer, contentType: string): unknown {
  * (PDFs) can't be meaningfully text-diffed here, so they're tracked by
  * content hash only.
  */
+/**
+ * APIs that answer a page's HTML wrapped in JSON. Their snapshot is the
+ * HTML's text and links (as for a page), plus the JSON's other short values
+ * (title, dates), instead of one long JSON line.
+ */
+const HTML_IN_JSON_HOSTS = new Set([
+  // The Georgia consulate's content API behind geoconsul.gov.ge's HtmlPage pages.
+  'gc-api.mfa.gov.ge',
+]);
+
+/** Values longer than this that aren't HTML (e.g. base64 images) are left out. */
+const MAX_PLAIN_VALUE_LENGTH = 300;
+
+function extractHtmlInJson(json: unknown, contentType: string, url: string): ContentSnapshot {
+  const html: string[] = [];
+  const values: string[] = [];
+  const walk = (value: unknown, path: string) => {
+    if (typeof value === 'string') {
+      if (/<[a-z][^>]*>/i.test(value)) html.push(value);
+      else if (value.trim() && value.length <= MAX_PLAIN_VALUE_LENGTH) values.push(`${path}: ${normalize(value)}`);
+    } else if (typeof value === 'number' || typeof value === 'boolean') {
+      values.push(`${path}: ${value}`);
+    } else if (Array.isArray(value)) {
+      value.forEach((v, i) => walk(v, `${path}[${i}]`));
+    } else if (value && typeof value === 'object') {
+      for (const key of Object.keys(value).sort()) walk((value as Record<string, unknown>)[key], path ? `${path}.${key}` : key);
+    }
+  };
+  walk(json, '');
+  const page = extractHtml(`<html><body>${html.join('\n')}</body></html>`, contentType, url);
+  return {
+    ...page,
+    text: [...values, page.text].filter(Boolean).join('\n'),
+    links: page.links.filter((l) => !l.href.startsWith('data:')),
+  };
+}
+
 export function extractSnapshot(body: Buffer, contentType: string, url: string): ContentSnapshot {
   const json = parseJson(body, contentType);
+  if (json !== undefined && HTML_IN_JSON_HOSTS.has(hostOf(url))) return extractHtmlInJson(json, contentType, url);
   if (json !== undefined) {
     return { url, contentType, updatedAt: null, text: JSON.stringify(canonicalJson(json), null, 2), links: [] };
   }

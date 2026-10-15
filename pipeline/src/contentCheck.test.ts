@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, it } from 'node:test';
 import { compareSnapshots, decodeHtml, extractSnapshot } from './contentCheck';
 import type { ContentSnapshot } from './types';
@@ -68,5 +70,35 @@ describe('extractSnapshot on mfa.gov.by', () => {
   it('reads valid UTF-8 as UTF-8 even when labelled windows-1251', () => {
     const body = Buffer.from('<p>Видео ’</p>', 'utf-8');
     assert.equal(decodeHtml(body, 'text/html; charset=windows-1251'), '<p>Видео ’</p>');
+  });
+});
+
+describe('extractSnapshot on gc-api.mfa.gov.ge', () => {
+  const url = 'https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25';
+  // Rows of the real 2026-10-15 response, flag images shortened.
+  const response = readFileSync(join(import.meta.dirname, '..', 'fixtures', 'geoconsul-gov-ge', 'custom-html-25.json'));
+
+  it('reads the HTML inside the JSON as text, leaving out the flag images', () => {
+    const snap = extractSnapshot(response, 'application/json; charset=utf-8', url);
+    const lines = snap.text.split('\n');
+    assert.deepEqual(lines.slice(0, 5), [
+      'developerMessage: Operation Completed',
+      'httpStatusCode: 200',
+      'success: true',
+      'title: უვიზოს პირველი გვერდი',
+      'userMessage: Operation Completed',
+    ]);
+    assert.ok(lines.includes('Albania'));
+    assert.ok(lines.includes('Full 2 (two) years'));
+    assert.ok(lines.includes('90 days in any 180 day period'));
+    assert.ok(lines.includes('Republic of North Macedonia Russia'));
+    assert.doesNotMatch(snap.text, /base64/);
+    assert.deepEqual(snap.links, []);
+  });
+
+  it('reports a changed stay as a text change', () => {
+    const before = extractSnapshot(response, 'application/json', url);
+    const after = extractSnapshot(Buffer.from(response.toString().replace('Full 2 (two) years', 'Full 1 (one) year')), 'application/json', url);
+    assert.equal(compareSnapshots(before, after).status, 'text-changed');
   });
 });

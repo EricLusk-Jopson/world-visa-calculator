@@ -78,7 +78,9 @@ function blockedReason(httpStatus: number, headers: Headers): string | undefined
  * Request headers for sites that need more than the defaults. The Bosnia and
  * Herzegovina MFA site sits behind a reverse proxy that turns away clients
  * that don't look like a browser, and its subpage API answers JSON. The North
- * Macedonia MFA site gets the same browser-style agent as a precaution.
+ * Macedonia MFA site gets the same browser-style agent as a precaution. The
+ * Georgia consulate's content API answers in the language its own site asks
+ * for (Georgian by default), so it is asked for English.
  */
 export const BROWSER_USER_AGENT =
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 ' + USER_AGENT;
@@ -87,6 +89,7 @@ const SITE_HEADERS: { host: string; path?: RegExp; headers: Record<string, strin
   { host: 'www.mvp.gov.ba', headers: { 'User-Agent': BROWSER_USER_AGENT } },
   { host: 'mfa.gov.mk', headers: { 'User-Agent': BROWSER_USER_AGENT } },
   { host: 'www.mvp.gov.ba', path: /^\/api\//, headers: { Accept: 'application/json' } },
+  { host: 'gc-api.mfa.gov.ge', headers: { Accept: 'application/json', 'Accept-Language': 'en' } },
 ];
 
 function siteHeaders(url: string): Record<string, string> {
@@ -199,19 +202,8 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
 export const BROWSER_FALLBACK_HOSTS = new Set(['punetejashtme.gov.al']);
 
 /**
- * Hosts whose pages are an empty shell until scripts fetch the content, so a
- * plain GET only ever sees the site's header and footer. When the body is
- * wanted for diffing, the page is rendered in headless Chromium instead (see
- * browserFetch.ts), waiting for the network to go quiet. Health-only checks
- * stay plain GETs. The Georgia consulate site (geoconsul.gov.ge) is one.
- */
-export const BROWSER_RENDER_HOSTS = new Set(['geoconsul.gov.ge', 'www.geoconsul.gov.ge']);
-
-/**
  * GET with a timeout, retrying transient failures (network, 429, 5xx) with
  * backoff, and blocked responses from BROWSER_FALLBACK_HOSTS in a browser.
- * Diffed pages on BROWSER_RENDER_HOSTS are fetched in a browser after the
- * plain GET succeeds.
  */
 export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOutcome> {
   let outcome = await fetchOnce(url, wantBody);
@@ -224,18 +216,6 @@ export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOu
     const viaBrowser = await fetchWithBrowser(url);
     if (viaBrowser.status !== 'blocked' && viaBrowser.status !== 'broken') return viaBrowser;
     return { ...viaBrowser, error: `${outcome.error}; ${viaBrowser.error ?? `headless browser: HTTP ${viaBrowser.httpStatus}`}` };
-  }
-  if (wantBody && (outcome.status === 'live' || outcome.status === 'redirected') && BROWSER_RENDER_HOSTS.has(hostOf(url))) {
-    const rendered = await fetchWithBrowser(url, { waitUntil: 'networkidle', userAgent: BROWSER_USER_AGENT });
-    if (rendered.status === 'live' || rendered.status === 'redirected') return { ...rendered, status: outcome.status };
-    // The link itself is fine (the plain GET says so), but its content can't
-    // be read: keep the GET's health and drop its empty shell, so the diff
-    // reports a fetch error instead of the content looking removed.
-    return {
-      ...outcome,
-      body: undefined,
-      error: `page needs rendering, and ${rendered.error ?? `the headless browser got HTTP ${rendered.httpStatus}`}`,
-    };
   }
   return outcome;
 }

@@ -49,12 +49,12 @@
  *   (the two countries' duration values were out of order relative to their
  *   names). Confirmed with the user: North Macedonia gets "90 days in any
  *   180 day period"; Russia gets "Full 1 (one) year".
- * - ~28 entries in the source carry an unexplained trailing asterisk (e.g.
- *   "Austria*", "United Kingdom of Great Britain and Northern Ireland*").
- *   Confirmed with the user that this is cosmetic and carries no
- *   substantive meaning for this data model — every asterisked entry is
- *   treated identically to its un-asterisked "Full 1 (one) year" peers, no
- *   note or condition attached.
+ * - ~28 entries in the source carry a trailing asterisk (e.g. "Austria*",
+ *   "United Kingdom of Great Britain and Northern Ireland*"). The page's
+ *   footnote says EU citizens may enter with an EU identity card as well as
+ *   a travel document. It doesn't change the stay, so every asterisked entry
+ *   is treated identically to its un-asterisked "Full 1 (one) year" peers,
+ *   no note or condition attached.
  * - Five "territory" rows in the source table have no ISO Alpha-2 code
  *   distinct from their parent country in COUNTRIES (NationalitySelector.tsx)
  *   and are therefore excluded outright, matching the Albania/Gibraltar

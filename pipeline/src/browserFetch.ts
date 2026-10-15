@@ -39,9 +39,6 @@ export function incapsulaInterstitial(html: string): { kind: 'block' | 'challeng
   return undefined;
 }
 
-/** How long a scripted page gets to finish its requests after load. */
-const NETWORK_IDLE_WAIT_MS = 15_000;
-
 /** How long a browser gets to clear a challenge before the page counts as blocked. */
 const CHALLENGE_WAIT_MS = 20_000;
 
@@ -63,26 +60,7 @@ async function launch(): Promise<Browser> {
   throw new Error(tried.join('; '));
 }
 
-export interface BrowserFetchOptions {
-  timeoutMs?: number;
-  /**
-   * When a load counts as done: 'load' for server-rendered pages,
-   * 'networkidle' for pages that fetch their content with scripts after load
-   * (waited for at most NETWORK_IDLE_WAIT_MS).
-   */
-  waitUntil?: 'load' | 'networkidle';
-  /** Replaces headless Chromium's own "HeadlessChrome" User-Agent. */
-  userAgent?: string;
-}
-
-/** The page's title and opening text, to say what came back instead of the page. */
-async function describePage(page: import('playwright').Page): Promise<string> {
-  const title = (await page.title().catch(() => '')).trim();
-  const text = ((await page.evaluate(() => document.body?.innerText ?? '').catch(() => '')) as string).replace(/\s+/g, ' ').trim();
-  return [title && `title "${title}"`, text && `text "${text.slice(0, 160)}"`].filter(Boolean).join(', ') || 'empty page';
-}
-
-async function load(url: string, { timeoutMs = 45_000, waitUntil = 'load', userAgent }: BrowserFetchOptions): Promise<FetchOutcome> {
+async function load(url: string, timeoutMs: number): Promise<FetchOutcome> {
   browser ??= launch();
   let b: Browser;
   try {
@@ -95,13 +73,10 @@ async function load(url: string, { timeoutMs = 45_000, waitUntil = 'load', userA
       : '`npm exec playwright install chromium` (it fetches the build this Playwright version expects)';
     return { status: 'blocked', error: `headless browser unavailable (${message}); run ${fix} in pipeline/, or install Chrome or Edge` };
   }
-  const context = await b.newContext({ locale: 'en-US', ...(userAgent ? { userAgent } : {}) });
+  const context = await b.newContext({ locale: 'en-US' });
   try {
     const page = await context.newPage();
     let res = await page.goto(url, { waitUntil: 'load', timeout: timeoutMs });
-    // Scripted content: give requests started after load time to finish. A
-    // site that never goes quiet (polling, analytics) is read as it stands.
-    if (waitUntil === 'networkidle') await page.waitForLoadState('networkidle', { timeout: NETWORK_IDLE_WAIT_MS }).catch(() => undefined);
     let html = await page.content();
     // A challenge's script sets a cookie and reloads; wait for the real page,
     // reloading once ourselves halfway through in case the script doesn't.
@@ -124,9 +99,7 @@ async function load(url: string, { timeoutMs = 45_000, waitUntil = 'load', userA
       const still = interstitial.kind === 'challenge' ? ` not cleared after ${CHALLENGE_WAIT_MS / 1000} s` : '';
       return { status: 'blocked', httpStatus, finalUrl: page.url(), contentType, error: `${interstitial.detail}${still} in a headless browser too` };
     }
-    if (!res || !res.ok()) {
-      return { status: 'broken', httpStatus, finalUrl: page.url(), contentType, error: `headless browser: HTTP ${httpStatus ?? 'no response'} (${await describePage(page)})` };
-    }
+    if (!res || !res.ok()) return { status: 'broken', httpStatus, finalUrl: page.url(), contentType };
     return { status: 'live', httpStatus, finalUrl: page.url(), contentType, body: Buffer.from(html) };
   } catch (err) {
     return { status: 'broken', error: `headless browser: ${(err as Error).message.split('\n')[0]}` };
@@ -135,8 +108,8 @@ async function load(url: string, { timeoutMs = 45_000, waitUntil = 'load', userA
   }
 }
 
-export function fetchWithBrowser(url: string, options: BrowserFetchOptions = {}): Promise<FetchOutcome> {
-  const run = queue.then(() => load(url, options));
+export function fetchWithBrowser(url: string, timeoutMs = 45_000): Promise<FetchOutcome> {
+  const run = queue.then(() => load(url, timeoutMs));
   queue = run.catch(() => undefined);
   return run;
 }
