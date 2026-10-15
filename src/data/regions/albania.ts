@@ -12,7 +12,8 @@
  * wide), but unlike those regions Albania's site itself distinguishes a
  * parent (regime overview) page from a direct (the actual per-country table)
  * page, so both fields are populated with their own distinct URL rather than
- * duplicating one URL into both fields.
+ * duplicating one URL into both fields. Both are defined once in sources.ts
+ * and diffed by the source check.
  *
  * ── Scope and shape of the source data ──────────────────────────────────────
  *

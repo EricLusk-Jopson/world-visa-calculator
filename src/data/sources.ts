@@ -6376,2329 +6376,853 @@ export const NorthMacedoniaSources = {
 
 // ─── Albania ──────────────────────────────────────────────────────────────────
 
+/**
+ * Albania's MFA publishes no per-country pages: every AlbaniaSources entry
+ * cites the same two pages, each defined once here and diffed once — the
+ * per-country table ("Information on the visa regime for foreign citizens")
+ * as `direct`, and the visa-regime overview it sits under as `parent`.
+ */
+const albaniaVisaTable = {
+  url: "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
+  type: "direct",
+  checkDiff: true,
+} as const satisfies SourceLink;
+
+const albaniaVisaRegime = {
+  url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
+  type: "parent",
+  checkDiff: true,
+} as const satisfies SourceLink;
+
 export const AlbaniaSources = {
   AD: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Andorra
   AE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Afghanistan
   AG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Antigua and Barbuda
   AM: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Armenia
   AO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Angola
   AR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Argentina
   AT: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Austria
   AU: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Australia
   AZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Azerbaijan
   BA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BB: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Barbados
   BD: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bangladesh
   BE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belgium
   BF: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Burkina Faso
   BG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bulgaria
   BH: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bahrain
   BJ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Benin
   BN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Brunei
   BO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bolivia
   BR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Brazil
   BS: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bahamas
   BW: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Botswana
   BY: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belarus
   BZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belize
   CA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Canada
   CG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Congo
   CH: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Switzerland
   CI: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cote d'Ivoire
   CL: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Chile
   CM: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cameroon
   CN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // China
   CO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Colombia
   CR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Costa Rica
   CU: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cuba
   CY: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cyprus
   CZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Czech Republic
   DE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Germany
   DK: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Denmark
   DO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Algeria
   EC: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ecuador
   EE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Estonia
   EG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Egypt
   ER: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Eritrea
   ES: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Spain
   ET: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ethiopia
   FI: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Finland
   FJ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Fiji
   FR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // France
   GA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Gabon
   GB: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United Kingdom
   GE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Georgia
   GH: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ghana
   GN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guinea
   GR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Greece
   GT: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guatemala
   GY: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guyana
   HK: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Hong Kong (SAR)
   HN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Honduras
   HR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Croatia
   HT: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Haiti
   HU: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Hungary
   ID: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Indonesia
   IE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ireland
   IL: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Israel
   IN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // India
   IQ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iraq
   IR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iran
   IS: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iceland
   IT: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Italy
   JM: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Jamaica
   JO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Jordan
   JP: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Japan
   KE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kenya
   KG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cambodia
   KN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Korea (North)
   KR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Korea (South)
   KW: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kuwait
   KZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kazakhstan
   LB: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lebanon
   LI: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Liechtenstein
   LK: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sri Lanka
   LR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Liberia
   LS: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lesotho
   LT: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lithuania
   LU: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Luxembourg
   LV: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Latvia
   LY: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Libya
   MA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Morocco
   MC: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Monaco
   MD: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Moldova
   ME: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Montenegro
   MG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Madagascar
   MK: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // North Macedonia
   ML: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mali
   MN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mongolia
   MO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Macao (SAR)
   MR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mauritania
   MT: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malta
   MU: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mauritius
   MV: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Maldives
   MW: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malawi
   MX: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mexico
   MY: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malaysia
   MZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mozambique
   NA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Namibia
   NG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nigeria
   NI: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nicaragua
   NL: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Netherlands
   NO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Norway
   NP: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nepal
   NZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // New Zealand
   OM: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Oman
   PA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Panama
   PE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Peru
   PH: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Philippines
   PK: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Pakistan
   PL: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Poland
   PS: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Palestine
   PT: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Portugal
   PY: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Paraguay
   QA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Qatar
   RO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Romania
   RS: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Serbia
   RU: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Russia
   RW: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Rwanda
   SA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saudi Arabia
   SC: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Seychelles
   SD: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sudan
   SE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sweden
   SG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Singapore
   SI: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Slovenia
   SK: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Slovakia
   SL: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sierra Leone
   SM: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // San Marino
   SN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Senegal
   SO: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Somalia
   SR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Suriname
   ST: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // El Salvador
   SY: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Syria
   TG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Togo
   TH: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Thailand
   TJ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tajikistan
   TM: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Turkmenistan
   TN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tunisia
   TR: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Turkey
   TT: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Trinidad and Tobago
   TW: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Taiwan
   TZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tanzania
   UA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ukraine
   UG: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uganda
   US: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United States
   UY: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uruguay
   UZ: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uzbekistan
   VA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Vatican City
   VE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Venezuela
   VN: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Vietnam
   XK: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kosovo
   YE: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Yemen
   ZA: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // South Africa
   ZM: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Zambia
   ZW: {
-    direct: {
-      url:
-        "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: albaniaVisaTable,
+    parent: albaniaVisaRegime,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Zimbabwe
 } as const;
@@ -8877,16 +7401,16 @@ export const ArmeniaSources = {
  * the scheduled monthly workflow always does.
  */
 export const SourceRegions = {
-  Schengen: { sources: SchengenSources, checkLinks: true },
-  UK: { sources: UKSources, checkLinks: true },
-  Ireland: { sources: IrelandSources, checkLinks: true },
-  Turkiye: { sources: TurkiyeSources, checkLinks: true },
-  Montenegro: { sources: MontenegroSources, checkLinks: true },
-  Serbia: { sources: SerbiaSources, checkLinks: true },
-  Bosnia: { sources: BosniaSources, checkLinks: true },
-  Kosovo: { sources: KosovoSources, checkLinks: true },
-  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: true },
-  Albania: { sources: AlbaniaSources, checkLinks: false },
+  Schengen: { sources: SchengenSources, checkLinks: false },
+  UK: { sources: UKSources, checkLinks: false },
+  Ireland: { sources: IrelandSources, checkLinks: false },
+  Turkiye: { sources: TurkiyeSources, checkLinks: false },
+  Montenegro: { sources: MontenegroSources, checkLinks: false },
+  Serbia: { sources: SerbiaSources, checkLinks: false },
+  Bosnia: { sources: BosniaSources, checkLinks: false },
+  Kosovo: { sources: KosovoSources, checkLinks: false },
+  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: false },
+  Albania: { sources: AlbaniaSources, checkLinks: true },
   Cyprus: { sources: CyprusSources, checkLinks: false },
   Belarus: { sources: BelarusSources, checkLinks: false },
   Georgia: { sources: GeorgiaSources, checkLinks: false },
