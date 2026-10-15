@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T05:19:20.955Z",
+  "generatedAt": "2026-10-15T05:22:55.489Z",
   "regions": [
     {
       "region": "Albania",
@@ -672,9 +672,10 @@
               "field": "direct"
             }
           ],
-          "status": "live",
+          "status": "blocked",
           "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/"
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
+          "error": "HTTP 200 with an Imperva Incapsula block page (incident 575000400788728958-1343777206895053365); Imperva Incapsula block page (incident 575000400788728958-1125350580563151410) in a headless browser too"
         },
         {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
@@ -1344,16 +1345,17 @@
               "field": "parent"
             }
           ],
-          "status": "live",
+          "status": "blocked",
           "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/"
+          "finalUrl": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
+          "error": "HTTP 200 with an Imperva Incapsula block page (incident 575000400788728958-1125356932819782194); Imperva Incapsula block page (incident 575000400788728958-1202494871873456691) in a headless browser too"
         }
       ],
       "ruleChecks": [
         {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
           "status": "fetch-error",
-          "error": "no text extracted (bot-check or script-rendered page?); got 212 bytes text/html, starting \"<html>\\r\\n<head>\\r\\n<META NAME=\\\"robots\\\" CONTENT=\\\"noindex,nofollow\\\">\\r\\n<script src=\\\"/_Incapsula_Resource?S\"",
+          "error": "HTTP 200 with an Imperva Incapsula block page (incident 575000400788728958-1125356932819782194); Imperva Incapsula block page (incident 575000400788728958-1202494871873456691) in a headless browser too",
           "keys": [
             "AD",
             "AE",
@@ -1527,7 +1529,7 @@
         {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries",
           "status": "fetch-error",
-          "error": "Could not read the country table: no countryData script on the page; got 212 bytes text/html, starting \"<html>\\r\\n<head>\\r\\n<META NAME=\\\"robots\\\" CONTENT=\\\"noindex,nofollow\\\">\\r\\n<script src=\\\"/_Incapsula_Resource?S\"",
+          "error": "Could not read the country table: HTTP 200 with an Imperva Incapsula JavaScript challenge; Imperva Incapsula block page (incident 575000400788728958-1125311277317425714) in a headless browser too",
           "keys": [
             "AD",
             "AE",
@@ -1720,7 +1722,7 @@
     "totalLinksChecked": 2,
     "brokenLinks": 0,
     "redirectedLinks": 0,
-    "blockedLinks": 0,
+    "blockedLinks": 2,
     "sourcesChecked": 2,
     "sourcesChanged": 0,
     "sourcesFirstRun": 0,
