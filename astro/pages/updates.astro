@@ -17,9 +17,9 @@ const roadmapCountries = [
   { name: "Serbia", done: true },
   { name: "Belarus", done: true },
   { name: "Georgia", done: true },
+  { name: "Armenia", done: true },
   { name: "Ukraine", done: false },
   { name: "Moldova", done: false },
-  { name: "Armenia", done: false },
   { name: "Azerbaijan", done: false },
   { name: "Morocco", done: false },
   { name: "Algeria", done: false },
@@ -34,6 +34,15 @@ const qcPipelineNotes = [
 ];
 
 const changelog = [
+  {
+    range: "September 25 to October 8, 2026",
+    changes: [
+      { tag: "feature", text: "Added Armenia as a trackable destination, covering both its unilateral visa free list and its bilateral visa free agreements under a shared 180 day in 365 rolling window." },
+      { tag: "improvement", text: "Shared trips (the same trip logged for multiple travelers) now highlight together across timeline columns on hover, and editing one updates all travelers at once." },
+      { tag: "improvement", text: "Published a new blog post testing how well Claude, ChatGPT, and Gemini handle Schengen 90/180 calculations against the official EU method." },
+      { tag: "improvement", text: "Added internal links from every blog post to the rolling window explainer." },
+    ],
+  },
   {
     range: "September 11 to 24, 2026",
     changes: [
