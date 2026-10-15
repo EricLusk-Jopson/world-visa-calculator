@@ -30,6 +30,26 @@ import type { SourceDoc, SourceLink, SourceRegion } from "@/types";
 
 // ─── Schengen ─────────────────────────────────────────────────────────────────
 
+/**
+ * EU Regulation 2018/1806 (consolidated to 2025-12-30) — the EU visa lists
+ * (Annex I visa-required, Annex II visa-free). Defined once and shared by
+ * SchengenSources.visaList and CyprusSources.visaList: Cyprus applies the
+ * same EU list at its own border. The pipeline fetches and diffs each unique
+ * URL once, so both regions report the same Cellar diff for no extra request.
+ */
+const euVisaListRegulation = {
+  url:
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
+  type: "direct",
+  checkDiff: false, // EUR-Lex page is health-checked; its Cellar copy is diffed
+  alternate: {
+    url:
+      "https://publications.europa.eu/resource/celex/02018R1806-20251230",
+    type: "machine",
+    checkDiff: true,
+  },
+} as const satisfies SourceLink;
+
 export const SchengenSources = {
   /**
    * EU Regulation 2018/1806 (consolidated to 2025-12-30).
@@ -37,18 +57,7 @@ export const SchengenSources = {
    * Primary source for all Schengen passport access categories and footnotes.
    */
   visaList: {
-    direct: {
-      url:
-        "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
-      type: "direct",
-      checkDiff: false, // EUR-Lex page is health-checked; its Cellar copy is diffed
-      alternate: {
-        url:
-          "https://publications.europa.eu/resource/celex/02018R1806-20251230",
-        type: "machine",
-        checkDiff: true,
-      },
-    },
+    direct: euVisaListRegulation,
     parent: {
       url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
       type: "parent",
@@ -8711,20 +8720,18 @@ export const CyprusSources = {
    * (visa-exempt), as implemented by Cyprus for its own external border —
    * Cyprus is an EU member state but not (yet) a Schengen-implementing
    * state, so it applies this same EU-wide list independently rather than
-   * via Schengen's common visa. Primary citation is the EU Annex 1 PDF;
-   * gov.cy is the Cypriot government's own parent page on the same policy.
+   * via Schengen's common visa. Primary citation is the Regulation itself,
+   * shared with SchengenSources.visaList (EUR-Lex page health-checked, its
+   * Cellar copy diffed). gov.cy is the Cypriot government's own page on the
+   * same policy. It refuses automated clients (HTTP 403), so it's only
+   * health-checked (reported "blocked"), not diffed.
    */
   visaList: {
-    direct: {
-      url:
-        "https://home-affairs.ec.europa.eu/document/download/ebd6113d-4d14-4ac2-ac9b-47f2e7976515_en?filename=Annex%201_en.pdf",
-      type: "direct",
-      checkDiff: false,
-    },
+    direct: euVisaListRegulation,
     parent: {
       url: "https://www.gov.cy/en/information/visas/",
       type: "parent",
-      checkDiff: false,
+      checkDiff: false, // HTTP 403 to automated clients; nothing to diff
     },
     dateChecked: "2026-09-09",
   } satisfies SourceDoc,
@@ -8887,7 +8894,7 @@ export const SourceRegions = {
   Kosovo: { sources: KosovoSources, checkLinks: true },
   NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: true },
   Albania: { sources: AlbaniaSources, checkLinks: false },
-  Cyprus: { sources: CyprusSources, checkLinks: false },
+  Cyprus: { sources: CyprusSources, checkLinks: true },
   Belarus: { sources: BelarusSources, checkLinks: false },
   Georgia: { sources: GeorgiaSources, checkLinks: false },
   Armenia: { sources: ArmeniaSources, checkLinks: false },
