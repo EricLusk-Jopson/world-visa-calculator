@@ -4314,2540 +4314,1000 @@ export const SerbiaSources = {
   } satisfies SourceDoc, // Taiwan — no dedicated page in the scrape; index page fallback
 } as const;
 
+/**
+ * Bosnia and Herzegovina cites one page for everything: the MFA "Vize" index,
+ * as both the direct and the parent link of every BosniaSources entry (the
+ * per-country subpages are deliberately not cited; see regions/bosnia.ts).
+ * Both links are defined once here and diffed; the pipeline fetches and diffs
+ * the URL once, so a nationality added, removed or renamed on the index shows
+ * up as a link change.
+ */
+const bosniaIndex = {
+  url: "https://www.mvp.gov.ba/en/vize",
+  type: "parent",
+  checkDiff: true,
+} as const satisfies SourceLink;
+
+const bosniaVisaPage = {
+  url: bosniaIndex.url,
+  type: "direct",
+  checkDiff: true,
+} as const satisfies SourceLink;
+
 export const BosniaSources = {
   AD: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Andorra
   AE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Afghanistan
   AG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Antigua and Barbuda
   AL: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Albania
   AM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Armenia
   AO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Angola
   AR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Argentina
   AT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Austria
   AU: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Australia
   AZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Azerbaijan
   BB: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Barbados
   BD: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bangladesh
   BE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belgium
   BF: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Burkina Faso
   BG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bulgaria
   BH: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bahrain
   BI: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Burundi
   BJ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Benin
   BN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Brunei
   BO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bolivia
   BR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Brazil
   BS: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bahamas
   BT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bhutan
   BW: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Botswana
   BY: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belarus
   BZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belize
   CA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Canada
   CD: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Congo (Democratic Republic)
   CF: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Central African Republic
   CG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Congo
   CH: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Switzerland
   CI: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cote d'Ivoire
   CL: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Chile
   CM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cameroon
   CN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // China
   CO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Colombia
   CR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Costa Rica
   CU: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cuba
   CV: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cabo Verde
   CY: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cyprus
   CZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Czech Republic
   DE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Germany
   DJ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Djibouti
   DK: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Denmark
   DM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Dominica
   DO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Algeria
   EC: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ecuador
   EE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Estonia
   EG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Egypt
   ER: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Eritrea
   ES: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Spain
   ET: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ethiopia
   FI: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Finland
   FJ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Fiji
   FM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Micronesia
   FR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // France
   GA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Gabon
   GB: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United Kingdom
   GD: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Grenada
   GE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Georgia
   GH: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ghana
   GM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Gambia
   GN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guinea
   GQ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Equatorial Guinea
   GR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Greece
   GT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guatemala
   GW: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guinea-Bissau
   GY: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guyana
   HN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Honduras
   HR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Croatia
   HT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Haiti
   HU: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Hungary
   ID: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Indonesia
   IE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ireland
   IL: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Israel
   IN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // India
   IQ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iraq
   IR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iran
   IS: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iceland
   IT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Italy
   JM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Jamaica
   JO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Jordan
   JP: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Japan
   KE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kenya
   KG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cambodia
   KI: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kiribati
   KM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Comoros
   KN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Korea (North)
   KR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Korea (South)
   KW: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kuwait
   KZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kazakhstan
   LA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Laos
   LB: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lebanon
   LC: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saint Lucia
   LI: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Liechtenstein
   LK: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sri Lanka
   LR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Liberia
   LS: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lesotho
   LT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lithuania
   LU: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Luxembourg
   LV: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Latvia
   LY: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Libya
   MA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Morocco
   MC: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Monaco
   MD: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Moldova
   ME: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Montenegro
   MG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Madagascar
   MH: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Marshall Islands
   MK: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // North Macedonia
   ML: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mali
   MM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Myanmar
   MN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mongolia
   MR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mauritania
   MT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malta
   MU: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mauritius
   MV: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Maldives
   MW: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malawi
   MX: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mexico
   MY: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malaysia
   MZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mozambique
   NA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Namibia
   NE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Niger
   NG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nigeria
   NI: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nicaragua
   NL: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Netherlands
   NO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Norway
   NP: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nepal
   NR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nauru
   NZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // New Zealand
   OM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Oman
   PA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Panama
   PE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Peru
   PG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Papua New Guinea
   PH: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Philippines
   PK: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Pakistan
   PL: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Poland
   PS: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Palestine
   PT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Portugal
   PW: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Palau
   PY: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Paraguay
   QA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Qatar
   RO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Romania
   RS: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Serbia
   RU: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Russia
   RW: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Rwanda
   SA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saudi Arabia
   SB: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Solomon Islands
   SC: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Seychelles
   SD: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sudan
   SE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sweden
   SG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Singapore
   SI: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Slovenia
   SK: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Slovakia
   SL: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sierra Leone
   SM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // San Marino
   SN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Senegal
   SO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Somalia
   SR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Suriname
   ST: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // El Salvador
   SY: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Syria
   SZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Eswatini
   TD: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Chad
   TG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Togo
   TH: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Thailand
   TJ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tajikistan
   TL: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Timor-Leste
   TM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Turkmenistan
   TN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tunisia
   TO: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tonga
   TR: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Turkiye
   TT: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Trinidad and Tobago
   TV: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tuvalu
   TW: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // TW
   TZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tanzania
   UA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ukraine
   UG: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uganda
   US: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United States
   UY: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uruguay
   UZ: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uzbekistan
   VA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Holy See (Vatican)
   VC: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   VE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Venezuela
   VN: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Vietnam
   VU: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Vanuatu
   WS: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Samoa
   XK: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // XK
   YE: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Yemen
   ZA: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // South Africa
   ZM: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Zambia
   ZW: {
-    direct: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://www.mvp.gov.ba/en/vize",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: bosniaVisaPage,
+    parent: bosniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Zimbabwe
 } as const;
@@ -13280,7 +11740,7 @@ export const SourceRegions = {
   Turkiye: { sources: TurkiyeSources, checkLinks: true },
   Montenegro: { sources: MontenegroSources, checkLinks: true },
   Serbia: { sources: SerbiaSources, checkLinks: true },
-  Bosnia: { sources: BosniaSources, checkLinks: false },
+  Bosnia: { sources: BosniaSources, checkLinks: true },
   Kosovo: { sources: KosovoSources, checkLinks: false },
   NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: false },
   Albania: { sources: AlbaniaSources, checkLinks: false },
