@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { after, before, describe, it } from 'node:test';
 import { fetch as undiciFetch } from 'undici';
-import { chainCompletingAgent, isIncompleteChainError } from './tlsChain';
+import { certificatesIn, chainCompletingAgent, isIncompleteChainError } from './tlsChain';
 
 function hasOpenssl(): boolean {
   try {
@@ -31,10 +31,11 @@ describe('chainCompletingAgent', { skip: !hasOpenssl() && 'openssl not installed
   let https: Server;
   let url: string;
   let rootPem: string;
+  let ssl: (...args: string[]) => Buffer;
 
   before(async () => {
     dir = mkdtempSync(join(tmpdir(), 'tls-chain-'));
-    const ssl = (...args: string[]) => execFileSync('openssl', args, { cwd: dir, stdio: 'pipe' });
+    ssl = (...args: string[]) => execFileSync('openssl', args, { cwd: dir, stdio: 'pipe' });
     const write = (name: string, text: string) => writeFileSync(join(dir, name), text);
 
     aia = createHttpServer((req, res) => {
@@ -77,15 +78,34 @@ describe('chainCompletingAgent', { skip: !hasOpenssl() && 'openssl not installed
   });
 
   it('completes the chain from the CA Issuers URL', async () => {
-    const dispatcher = await chainCompletingAgent(url, [rootPem]);
-    assert.ok(dispatcher);
+    const { agent: dispatcher, reason } = await chainCompletingAgent(url, [rootPem]);
+    assert.ok(dispatcher, reason);
     const res = await undiciFetch(url, { dispatcher });
     assert.equal(await res.text(), 'ok');
   });
 
+  it('reads certificates from a PKCS#7 bundle', () => {
+    ssl('crl2pkcs7', '-nocrl', '-certfile', 'int.pem', '-outform', 'DER', '-out', 'int.p7c');
+    const certs = certificatesIn(readFileSync(join(dir, 'int.p7c')));
+    assert.deepEqual(certs.map((c) => c.subject), ['CN=Test Intermediate CA']);
+  });
+
+  it('says why when the certificate has no CA Issuers URL', async () => {
+    ssl('x509', '-req', '-in', 'leaf.csr', '-CA', 'int.pem', '-CAkey', 'int.key', '-CAcreateserial', '-out', 'bare.pem', '-days', '2');
+    const bare = createHttpsServer({ key: readFileSync(join(dir, 'leaf.key')), cert: readFileSync(join(dir, 'bare.pem')) });
+    await new Promise<void>((r) => bare.listen(0, '127.0.0.1', r));
+    try {
+      const { agent, reason } = await chainCompletingAgent(`https://localhost:${(bare.address() as AddressInfo).port}/`, [rootPem]);
+      assert.equal(agent, undefined);
+      assert.match(reason ?? '', /no CA Issuers URL \(issuer: CN=Test Intermediate CA\)/);
+    } finally {
+      bare.close();
+    }
+  });
+
   it('still requires the chain to end at a trusted root', async () => {
-    const dispatcher = await chainCompletingAgent(url, []);
-    assert.ok(dispatcher);
+    const { agent: dispatcher, reason } = await chainCompletingAgent(url, []);
+    assert.ok(dispatcher, reason);
     await assert.rejects(undiciFetch(url, { dispatcher }));
   });
 });

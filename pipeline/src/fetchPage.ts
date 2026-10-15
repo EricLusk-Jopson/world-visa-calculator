@@ -130,9 +130,9 @@ async function request(url: string, init: RequestInit): Promise<Response> {
       incompleteChainHosts.add(host);
     }
   }
-  const dispatcher = await chainCompletingAgent(url);
+  const { agent: dispatcher, reason } = await chainCompletingAgent(url);
   if (!dispatcher) {
-    throw new Error('incomplete certificate chain, and its missing intermediate could not be downloaded', {
+    throw new Error(`incomplete certificate chain; could not fetch the missing intermediate: ${reason}`, {
       cause: { code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' },
     });
   }
