@@ -6378,14 +6378,28 @@ export const NorthMacedoniaSources = {
 
 /**
  * Albania's MFA publishes no per-country pages: every AlbaniaSources entry
- * cites the same two pages, each defined once here and diffed once — the
- * per-country table ("Information on the visa regime for foreign citizens")
- * as `direct`, and the visa-regime overview it sits under as `parent`.
+ * cites the same two pages, each defined once here — the per-country table
+ * ("Information on the visa regime for foreign citizens") as `direct`, and
+ * the visa-regime overview it sits under as `parent`, diffed as a page.
+ *
+ * The table page isn't diffed as a page: its rules are in an inline script
+ * (`countryData`) that fills the table when a country is picked. The
+ * pipeline parses that script on every run and diffs each country's entry
+ * through `albaniaVisaCheck`, with `{key}` filled with the country's slug on
+ * the page (pipeline/src/resolvers/punetejashtmeGovAl.ts).
  */
+const albaniaVisaCheck = {
+  url: "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#{key}",
+  type: "machine",
+  checkDiff: true,
+  resolver: "punetejashtme.gov.al",
+} as const satisfies SourceLink;
+
 const albaniaVisaTable = {
   url: "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
   type: "direct",
-  checkDiff: true,
+  checkDiff: false,
+  alternate: albaniaVisaCheck,
 } as const satisfies SourceLink;
 
 const albaniaVisaRegime = {

@@ -180,6 +180,31 @@ only the page's name in the report; the resolver fetches it itself. Each run:
 
 A 419 from `/livewire/update` means the session or CSRF token was rejected.
 
+**`punetejashtme.gov.al` (Albania).** The MFA's "Visa regime for foreign
+citizens" table is filled in by script: picking a country copies its entry
+from an inline `const countryData = { 'slug': {...}, … }` into the table, so
+every country's rule is in the page's HTML but not in its text. Every
+AlbaniaSources entry cites the page as its human link, plus this `machine`
+alternate:
+
+```
+https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#{key}
+```
+
+`{key}` is the country's slug on the page, e.g. `arabia-saudite`. Each run
+GETs the page once and:
+
+1. Parses `countryData` as data, never running it: only literals are
+   accepted, plus `currentLanguage === 'en' ? A : B`, read as A. Any other
+   syntax fails discovery with the line it stopped at.
+2. Maps slugs to nationality codes through the country selector's English
+   names (`<option value="kongo"> CONGO </option>`), with `ALIASES` for the
+   site's spellings ("R0MANIA", "SLLOVENIA", "PHILIPPINE").
+3. Diffs the country list (`…#countries`), then each country's entry as
+   labelled lines: the A/C and D visa status per passport type, fees,
+   application notes (e.g. a seasonal visa-free window), where to apply.
+   Keyed by nationality code; no further requests are made.
+
 ### Incomplete certificate chains
 
 Some servers send their certificate without the intermediate CA that links

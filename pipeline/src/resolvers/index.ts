@@ -3,6 +3,7 @@ import type { FetchOutcome } from '../fetchPage';
 import type { ContentSnapshot } from '../types';
 import { mfaGovMk } from './mfaGovMk';
 import { mvpGovBa } from './mvpGovBa';
+import { punetejashtmeGovAl } from './punetejashtmeGovAl';
 
 export type ResolverId = NonNullable<SourceLink['resolver']>;
 
@@ -48,4 +49,5 @@ export interface Resolver {
 export const RESOLVERS: Record<ResolverId, Resolver> = {
   'mvp.gov.ba': mvpGovBa,
   'mfa.gov.mk': mfaGovMk,
+  'punetejashtme.gov.al': punetejashtmeGovAl,
 };
