@@ -32,10 +32,11 @@ async function load(url: string, timeoutMs: number): Promise<FetchOutcome> {
     b = await browser;
   } catch (err) {
     browser = undefined;
-    return {
-      status: 'blocked',
-      error: `headless browser unavailable (${(err as Error).message.split('\n')[0]}); run \`npx playwright install chromium\` in pipeline/`,
-    };
+    const message = (err as Error).message.split('\n')[0];
+    const fix = /Cannot find (package|module) 'playwright'/.test(message)
+      ? '`npm install`, then `npx playwright install chromium`'
+      : '`npx playwright install chromium`';
+    return { status: 'blocked', error: `headless browser unavailable (${message}); run ${fix} in pipeline/` };
   }
   const context = await b.newContext({ locale: 'en-US' });
   try {
