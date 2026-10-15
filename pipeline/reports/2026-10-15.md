@@ -1,21 +1,21 @@
 # Source Verification Report
 
-Generated: 2026-10-15T01:41:06.380Z
+Generated: 2026-10-15T02:43:13.920Z
 
 ## Summary
 
 | | |
 |---|---|
-| Unique links checked | 426 |
-| 🔴 Broken | 0 |
+| Unique links checked | 427 |
+| 🔴 Broken | 1 |
 | ↪️ Redirected | 0 |
 | 🚫 Blocked (could not verify) | 0 |
-| Content sources diffed (`checkDiff`) | 403 |
-| ✏️ Changed since last baseline | 0 |
-| 🆕 First run (no baseline yet) | 195 |
-| ⚠️ Fetch errors | 0 |
+| Content sources diffed (`checkDiff`) | 598 |
+| ✏️ Changed since last baseline | 16 |
+| 🆕 First run (no baseline yet) | 0 |
+| ⚠️ Fetch errors | 195 |
 
-Not checked this run (`checkLinks: false`): Bosnia, Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Georgia, Armenia.
+Not checked this run (`checkLinks: false`): Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Georgia, Armenia.
 
 ## Schengen
 
@@ -720,200 +720,1346 @@ Not checked this run (`checkLinks: false`): Bosnia, Kosovo, NorthMacedonia, Alba
 
 ### Content diffing
 
+#### MG — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/madagascar | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/madagascar |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/madagaskar/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/madagaskar/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/madagascar | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/madagascar |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/madagaskar |
+
+#### MA — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maroko
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/morocco | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/morocco |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/maroko/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/maroko/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/morocco | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/morocco |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maroko | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/maroko |
+
+#### NI — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nikaragva
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/nicaragua | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/nicaragua |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/nikaragva/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/nikaragva/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/nicaragua | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/nicaragua |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nikaragva | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/nikaragva |
+
+#### PY — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/paraguay | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/paraguay |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/paragvaj/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/paragvaj/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/paraguay | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/paraguay |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/paragvaj |
+
+#### RO — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/romania | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/romania |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/rumunija/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/rumunija/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/romania | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/romania |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/rumunija |
+
+#### SC — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sejseli
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/seychelles | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/seychelles |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sejseli/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sejseli/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/seychelles | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/seychelles |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sejseli | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/sejseli |
+
+#### LK — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sri-lanka | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sri-lanka |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sri-lanka/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sri-lanka/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/sri-lanka | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/sri-lanka |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/sri-lanka |
+
+#### SD — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sudan | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sudan |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sudan/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sudan/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/sudan | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/sudan |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/sudan |
+
+#### SE — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sweden | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sweden |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/svedska/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/svedska/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/sweden | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/sweden |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/svedska |
+
+#### SY — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/syria-arab-republic | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/syria-arab-republic |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sirija/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sirija/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/syria-arab-republic | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/syria-arab-republic |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/sirija |
+
+#### TG — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/togo | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/togo |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/togo/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/togo/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/togo | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/togo |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/togo |
+
+#### TR — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/turkey | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/turkey |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/turska/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/turska/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/turkey | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/turkey |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/turska |
+
+#### TV — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/tuvalu | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/tuvalu |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/tuvalu/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/tuvalu/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/tuvalu | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/tuvalu |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/tuvalu |
+
+#### UG — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/uganda | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/uganda |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/uganda/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/uganda/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/uganda | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/uganda |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/uganda |
+
+#### AE — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/united-arab-emirates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/united-arab-emirates |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/ujedinjeni-arapski-emirati/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/ujedinjeni-arapski-emirati/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/united-arab-emirates | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/united-arab-emirates |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati |
+
+#### UY — 🔗 link target changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Bilateral relations | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/uruguay | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/uruguay |
+| target-changed | Embassies and consulates | https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/urugvaj/embassies-consulates | https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/urugvaj/embassies-consulates |
+| target-changed | Visas and Travel Advice | https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/uruguay | https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/uruguay |
+| target-changed | Visa regime for entering Serbia | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj | https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/urugvaj |
+
 | Keys | Status | URL |
 |---|---|---|
-| AF | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/avganistan |
-| AF, AL, DZ, AD, AO, AG, AR, AM … (+189 more) (parent) | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime |
-| AL | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/albanija |
-| DZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/alzir |
-| AD | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/andora |
-| AO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/angola |
-| AG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda |
-| AR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina |
-| AM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija |
-| AU | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/australija |
-| AT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija |
-| AZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/azerbejdzan |
-| BS | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahami |
-| BH | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein |
-| BD | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades |
-| BB | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/barbados |
-| BY | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belorusija |
-| BE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija |
-| BZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize |
-| BJ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin |
-| BT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/butan |
-| BO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bolivija |
-| BA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bosna-i-hercegovina |
-| BW | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bocvana |
-| BR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brazil |
-| BN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brunej-darusalam |
-| BG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bugarska |
-| BF | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso |
-| BI | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burundi |
-| CV | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kabo-verde |
-| KH | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kambodza |
-| CM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kamerun |
-| CA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kanada |
-| CF | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/centralnoafricka-republika |
-| TD | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cad |
-| CL | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cile |
-| CN, HK, MO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina |
-| CO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kolumbija |
-| CD | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-demokratska-republika |
-| CG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-republika |
-| CR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kostarika |
-| CI | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kot-d-ivoar |
-| HR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/hrvatska |
-| CU | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuba |
-| CY | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar |
-| CZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ceska |
-| DK | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/danska |
-| DJ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dzibuti |
-| DM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominika |
-| DO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika |
-| EC | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvador |
-| EG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/egipat |
-| SV | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador |
-| GQ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvatorijalna-gvineja |
-| ER | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/eritreja |
-| EE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/estonija |
-| SZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini |
-| ET | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/etiopija |
-| FJ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi |
-| FI | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska |
-| FR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/francuska |
-| GA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gabon |
-| GM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gambija |
-| GE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gruzija |
-| DE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nemacka |
-| GH | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gana |
-| GR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grcka |
-| GD | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grenada |
-| GT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvatemala |
-| GN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-republika |
-| GW | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-bisao |
-| GY | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvajana |
-| HT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/haiti |
-| VA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-stolica |
-| HN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/honduras |
-| HU | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska |
-| IS | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island |
-| IN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija |
-| ID | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija |
-| IR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran |
-| IQ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak |
-| IE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irska |
-| IL | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/izrael |
-| IT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/italija |
-| JM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jamajka |
-| JP | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/japan |
-| JO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jordan |
-| KZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kazahstan |
-| KE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kenija |
-| KI | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati |
-| KP | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr |
-| KR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika |
-| KW | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt |
-| KG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kirgiska-republika |
-| LA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos |
-| LV | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/letonija |
-| LB | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liban |
-| LS | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lesoto |
-| LR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liberija |
-| LY | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija |
-| LI | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lihtenstajn |
-| LT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/litvanija |
-| LU | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/luksemburg |
-| MG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar |
-| MW | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malavi |
-| MY | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malezija |
-| MV | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives |
-| ML | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mali |
-| MT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malta |
-| MH | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/marshall-islands |
-| MR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritania |
-| MU | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritius |
-| MX | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/meksiko |
-| FM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/micronesia |
-| MD | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/moldavija |
-| MC | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/monako |
-| MN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mongolija |
-| ME | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/crna-gora |
-| MA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maroko |
-| MZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mozambik |
-| MM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mjanmar |
-| NA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/namibija |
-| NR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nauru |
-| NP | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nepal |
-| NL | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/holandija |
-| NZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/novi-zeland |
-| NI | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nikaragva |
-| NE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/niger |
-| NG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nigerija |
-| MK | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/severna-makedonija |
-| NO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/norveska |
-| OM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/oman |
-| PK | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/pakistan |
-| PW | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palau |
-| PS | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palestina |
-| PA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/panama |
-| PG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/papua-nova-gvineja |
-| PY | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj |
-| PE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/peru |
-| PH | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini |
-| PL | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska |
-| PT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija |
-| QA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/katar |
-| RO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija |
-| RU | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruska-federacija |
-| RW | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruanda |
-| KN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sent-kits-i-nevis |
-| LC | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-lucija |
-| VC | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveti-vinsent-i-grenadini |
-| WS | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/samoa |
-| SM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/san-marino |
-| ST | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sao-tome-i-prinsipe |
-| SA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/saudijska-arabija |
-| SN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/senegal |
-| SC | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sejseli |
-| SL | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sijera-leone |
-| SG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/singapur |
-| SK | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovacka |
-| SI | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovenija |
-| SB | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/solomonova-ostrva |
-| SO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/somalija |
-| ZA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzna-afrika |
-| SS | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzni-sudan |
-| ES | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/spanija |
-| LK | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka |
-| SD | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan |
-| SR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/surinam |
-| SE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska |
-| CH | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska |
-| SY | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija |
-| TJ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tadzikistan |
-| TZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tanzanija |
-| TH | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tajland |
-| TL | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/istocni-timor |
-| TG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo |
-| TO | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga |
-| TT | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/trinidad-i-tobago |
-| TN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tunis |
-| TR | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska |
-| TM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan |
-| TV | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu |
-| UG | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda |
-| UA | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina |
-| KM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora |
-| AE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati |
-| GB | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo |
-| US | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave |
-| UY | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj |
-| UZ | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika |
-| VU | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu |
-| VE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela |
-| VN | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vijetnam |
-| YE | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jemen |
-| ZM | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zambija |
-| ZW | 🆕 first run (baseline captured) | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zimbabve |
+| AF | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/avganistan |
+| AF, AL, DZ, AD, AO, AG, AR, AM … (+189 more) (parent) | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime |
+| AL | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/albanija |
+| DZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/alzir |
+| AD | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/andora |
+| AO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/angola |
+| AG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda |
+| AR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina |
+| AM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija |
+| AU | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/australija |
+| AT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija |
+| AZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/azerbejdzan |
+| BS | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahami |
+| BH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein |
+| BD | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades |
+| BB | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/barbados |
+| BY | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belorusija |
+| BE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija |
+| BZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize |
+| BJ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin |
+| BT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/butan |
+| BO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bolivija |
+| BA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bosna-i-hercegovina |
+| BW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bocvana |
+| BR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brazil |
+| BN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brunej-darusalam |
+| BG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bugarska |
+| BF | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso |
+| BI | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burundi |
+| CV | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kabo-verde |
+| KH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kambodza |
+| CM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kamerun |
+| CA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kanada |
+| CF | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/centralnoafricka-republika |
+| TD | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cad |
+| CL | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cile |
+| CN, HK, MO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina |
+| CO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kolumbija |
+| CD | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-demokratska-republika |
+| CG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-republika |
+| CR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kostarika |
+| CI | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kot-d-ivoar |
+| HR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/hrvatska |
+| CU | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuba |
+| CY | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar |
+| CZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ceska |
+| DK | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/danska |
+| DJ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dzibuti |
+| DM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominika |
+| DO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika |
+| EC | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvador |
+| EG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/egipat |
+| SV | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador |
+| GQ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvatorijalna-gvineja |
+| ER | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/eritreja |
+| EE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/estonija |
+| SZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini |
+| ET | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/etiopija |
+| FJ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi |
+| FI | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska |
+| FR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/francuska |
+| GA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gabon |
+| GM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gambija |
+| GE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gruzija |
+| DE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nemacka |
+| GH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gana |
+| GR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grcka |
+| GD | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grenada |
+| GT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvatemala |
+| GN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-republika |
+| GW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-bisao |
+| GY | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvajana |
+| HT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/haiti |
+| VA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-stolica |
+| HN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/honduras |
+| HU | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska |
+| IS | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island |
+| IN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija |
+| ID | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija |
+| IR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran |
+| IQ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak |
+| IE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irska |
+| IL | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/izrael |
+| IT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/italija |
+| JM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jamajka |
+| JP | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/japan |
+| JO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jordan |
+| KZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kazahstan |
+| KE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kenija |
+| KI | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati |
+| KP | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr |
+| KR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika |
+| KW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt |
+| KG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kirgiska-republika |
+| LA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos |
+| LV | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/letonija |
+| LB | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liban |
+| LS | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lesoto |
+| LR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liberija |
+| LY | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija |
+| LI | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lihtenstajn |
+| LT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/litvanija |
+| LU | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/luksemburg |
+| MW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malavi |
+| MY | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malezija |
+| MV | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives |
+| ML | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mali |
+| MT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malta |
+| MH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/marshall-islands |
+| MR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritania |
+| MU | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritius |
+| MX | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/meksiko |
+| FM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/micronesia |
+| MD | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/moldavija |
+| MC | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/monako |
+| MN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mongolija |
+| ME | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/crna-gora |
+| MZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mozambik |
+| MM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mjanmar |
+| NA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/namibija |
+| NR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nauru |
+| NP | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nepal |
+| NL | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/holandija |
+| NZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/novi-zeland |
+| NE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/niger |
+| NG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nigerija |
+| MK | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/severna-makedonija |
+| NO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/norveska |
+| OM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/oman |
+| PK | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/pakistan |
+| PW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palau |
+| PS | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palestina |
+| PA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/panama |
+| PG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/papua-nova-gvineja |
+| PE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/peru |
+| PH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini |
+| PL | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska |
+| PT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija |
+| QA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/katar |
+| RU | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruska-federacija |
+| RW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruanda |
+| KN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sent-kits-i-nevis |
+| LC | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-lucija |
+| VC | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveti-vinsent-i-grenadini |
+| WS | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/samoa |
+| SM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/san-marino |
+| ST | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sao-tome-i-prinsipe |
+| SA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/saudijska-arabija |
+| SN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/senegal |
+| SL | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sijera-leone |
+| SG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/singapur |
+| SK | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovacka |
+| SI | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovenija |
+| SB | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/solomonova-ostrva |
+| SO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/somalija |
+| ZA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzna-afrika |
+| SS | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzni-sudan |
+| ES | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/spanija |
+| SR | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/surinam |
+| CH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska |
+| TJ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tadzikistan |
+| TZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tanzanija |
+| TH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tajland |
+| TL | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/istocni-timor |
+| TO | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga |
+| TT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/trinidad-i-tobago |
+| TN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tunis |
+| TM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan |
+| UA | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina |
+| KM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora |
+| GB | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo |
+| US | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave |
+| UZ | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika |
+| VU | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu |
+| VE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela |
+| VN | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vijetnam |
+| YE | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jemen |
+| ZM | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zambija |
+| ZW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zimbabve |
+
+## Bosnia
+
+### Link health
+
+| Used by | Status | URL |
+|---|---|---|
+| AD, AE, AF, AG, AL, AM, AO, AR … (+187 more) | 🔴 broken | https://www.mvp.gov.ba/en/vize<br>fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE) |
+
+### Content diffing
+
+#### AD, AE, AF, AG, AL … (+190 more) (parent) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize
+<br>Error: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AD, AE, AF, AG, AL … (+190 more) (direct.alternate (page list)) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#subpages
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+<br>Note: No previous list to fall back on
+
+#### AD (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AD
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AF (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AF
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AL (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AL
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AU (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AU
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### AZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#AZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BB (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BB
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BD (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BD
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BF (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BF
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BH (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BH
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BI (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BI
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BJ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BJ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BS (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BS
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BW (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BW
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BY (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BY
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### BZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#BZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CD (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CD
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CF (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CF
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CH (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CH
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CI (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CI
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CL (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CL
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CU (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CU
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CV (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CV
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CY (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CY
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### CZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#CZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### DE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#DE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### DJ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#DJ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### DK (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#DK
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### DM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#DM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### DO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#DO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### DZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#DZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### EC (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#EC
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### EE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#EE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### EG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#EG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ER (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ER
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ES (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ES
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ET (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ET
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### FI (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#FI
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### FJ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#FJ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### FM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#FM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### FR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#FR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GB (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GB
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GD (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GD
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GH (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GH
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GQ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GQ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GW (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GW
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### GY (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#GY
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### HN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#HN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### HR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#HR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### HT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#HT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### HU (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#HU
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ID (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ID
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### IE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#IE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### IL (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#IL
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### IN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#IN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### IQ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#IQ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### IR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#IR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### IS (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#IS
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### IT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#IT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### JM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#JM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### JO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#JO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### JP (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#JP
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KH (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KH
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KI (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KI
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KP (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KP
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KW (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KW
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### KZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#KZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LB (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LB
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LC (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LC
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LI (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LI
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LK (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LK
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LS (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LS
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LU (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LU
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LV (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LV
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### LY (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#LY
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MC (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MC
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MD (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MD
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ME (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ME
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MH (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MH
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MK (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MK
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ML (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ML
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MU (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MU
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MV (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MV
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MW (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MW
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MX (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MX
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MY (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MY
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### MZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#MZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NI (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NI
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NL (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NL
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NP (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NP
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### NZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#NZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### OM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#OM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PH (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PH
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PK (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PK
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PL (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PL
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PS (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PS
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PW (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PW
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### PY (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#PY
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### QA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#QA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### RO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#RO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### RS (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#RS
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### RU (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#RU
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### RW (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#RW
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SB (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SB
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SC (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SC
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SD (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SD
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SI (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SI
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SK (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SK
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SL (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SL
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ST (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ST
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SV (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SV
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SY (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SY
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### SZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#SZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TD (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TD
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TH (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TH
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TJ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TJ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TL (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TL
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TO (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TO
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TR (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TR
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TT (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TT
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TV (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TV
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### TZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#TZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### UA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#UA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### UG (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#UG
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### US (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#US
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### UY (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#UY
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### UZ (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#UZ
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### VA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#VA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### VC (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#VC
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### VE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#VE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### VN (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#VN
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### VU (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#VU
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### WS (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#WS
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### YE (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#YE
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ZA (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ZA
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ZM (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ZM
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+
+#### ZW (direct.alternate) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#ZW
+<br>Error: Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)

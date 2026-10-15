@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T01:41:06.380Z",
+  "generatedAt": "2026-10-15T02:43:13.920Z",
   "regions": [
     {
       "region": "Schengen",
@@ -9034,8 +9034,9 @@
       "ruleChecks": [
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/avganistan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AF"
           ],
@@ -9043,8 +9044,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AF",
             "AL",
@@ -9248,8 +9250,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/albanija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AL"
           ],
@@ -9257,8 +9260,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/alzir",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DZ"
           ],
@@ -9266,8 +9270,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/andora",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AD"
           ],
@@ -9275,8 +9280,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/angola",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AO"
           ],
@@ -9284,8 +9290,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AG"
           ],
@@ -9293,8 +9300,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AR"
           ],
@@ -9302,8 +9310,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AM"
           ],
@@ -9311,8 +9320,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/australija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AU"
           ],
@@ -9320,8 +9330,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AT"
           ],
@@ -9329,8 +9340,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/azerbejdzan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AZ"
           ],
@@ -9338,8 +9350,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahami",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BS"
           ],
@@ -9347,8 +9360,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BH"
           ],
@@ -9356,8 +9370,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BD"
           ],
@@ -9365,8 +9380,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/barbados",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BB"
           ],
@@ -9374,8 +9390,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belorusija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BY"
           ],
@@ -9383,8 +9400,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BE"
           ],
@@ -9392,8 +9410,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BZ"
           ],
@@ -9401,8 +9420,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BJ"
           ],
@@ -9410,8 +9430,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/butan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BT"
           ],
@@ -9419,8 +9440,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bolivija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BO"
           ],
@@ -9428,8 +9450,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bosna-i-hercegovina",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BA"
           ],
@@ -9437,8 +9460,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bocvana",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BW"
           ],
@@ -9446,8 +9470,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brazil",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BR"
           ],
@@ -9455,8 +9480,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brunej-darusalam",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BN"
           ],
@@ -9464,8 +9490,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bugarska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BG"
           ],
@@ -9473,8 +9500,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BF"
           ],
@@ -9482,8 +9510,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burundi",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BI"
           ],
@@ -9491,8 +9520,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kabo-verde",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CV"
           ],
@@ -9500,8 +9530,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kambodza",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KH"
           ],
@@ -9509,8 +9540,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kamerun",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CM"
           ],
@@ -9518,8 +9550,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kanada",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CA"
           ],
@@ -9527,8 +9560,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/centralnoafricka-republika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CF"
           ],
@@ -9536,8 +9570,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cad",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TD"
           ],
@@ -9545,8 +9580,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cile",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CL"
           ],
@@ -9554,8 +9590,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CN",
             "HK",
@@ -9565,8 +9602,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kolumbija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CO"
           ],
@@ -9574,8 +9612,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-demokratska-republika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CD"
           ],
@@ -9583,8 +9622,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-republika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CG"
           ],
@@ -9592,8 +9632,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kostarika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CR"
           ],
@@ -9601,8 +9642,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kot-d-ivoar",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CI"
           ],
@@ -9610,8 +9652,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/hrvatska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "HR"
           ],
@@ -9619,8 +9662,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuba",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CU"
           ],
@@ -9628,8 +9672,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CY"
           ],
@@ -9637,8 +9682,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ceska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CZ"
           ],
@@ -9646,8 +9692,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/danska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DK"
           ],
@@ -9655,8 +9702,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dzibuti",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DJ"
           ],
@@ -9664,8 +9712,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DM"
           ],
@@ -9673,8 +9722,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DO"
           ],
@@ -9682,8 +9732,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvador",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "EC"
           ],
@@ -9691,8 +9742,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/egipat",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "EG"
           ],
@@ -9700,8 +9752,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SV"
           ],
@@ -9709,8 +9762,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvatorijalna-gvineja",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GQ"
           ],
@@ -9718,8 +9772,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/eritreja",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ER"
           ],
@@ -9727,8 +9782,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/estonija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "EE"
           ],
@@ -9736,8 +9792,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SZ"
           ],
@@ -9745,8 +9802,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/etiopija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ET"
           ],
@@ -9754,8 +9812,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "FJ"
           ],
@@ -9763,8 +9822,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "FI"
           ],
@@ -9772,8 +9832,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/francuska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "FR"
           ],
@@ -9781,8 +9842,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gabon",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GA"
           ],
@@ -9790,8 +9852,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gambija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GM"
           ],
@@ -9799,8 +9862,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gruzija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GE"
           ],
@@ -9808,8 +9872,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nemacka",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DE"
           ],
@@ -9817,8 +9882,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gana",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GH"
           ],
@@ -9826,8 +9892,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grcka",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GR"
           ],
@@ -9835,8 +9902,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grenada",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GD"
           ],
@@ -9844,8 +9912,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvatemala",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GT"
           ],
@@ -9853,8 +9922,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-republika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GN"
           ],
@@ -9862,8 +9932,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-bisao",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GW"
           ],
@@ -9871,8 +9942,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvajana",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GY"
           ],
@@ -9880,8 +9952,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/haiti",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "HT"
           ],
@@ -9889,8 +9962,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-stolica",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "VA"
           ],
@@ -9898,8 +9972,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/honduras",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "HN"
           ],
@@ -9907,8 +9982,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "HU"
           ],
@@ -9916,8 +9992,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IS"
           ],
@@ -9925,8 +10002,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IN"
           ],
@@ -9934,8 +10012,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ID"
           ],
@@ -9943,8 +10022,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IR"
           ],
@@ -9952,8 +10032,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IQ"
           ],
@@ -9961,8 +10042,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IE"
           ],
@@ -9970,8 +10052,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/izrael",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IL"
           ],
@@ -9979,8 +10062,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/italija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IT"
           ],
@@ -9988,8 +10072,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jamajka",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "JM"
           ],
@@ -9997,8 +10082,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/japan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "JP"
           ],
@@ -10006,8 +10092,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jordan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "JO"
           ],
@@ -10015,8 +10102,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kazahstan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KZ"
           ],
@@ -10024,8 +10112,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kenija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KE"
           ],
@@ -10033,8 +10122,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KI"
           ],
@@ -10042,8 +10132,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KP"
           ],
@@ -10051,8 +10142,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KR"
           ],
@@ -10060,8 +10152,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KW"
           ],
@@ -10069,8 +10162,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kirgiska-republika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KG"
           ],
@@ -10078,8 +10172,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LA"
           ],
@@ -10087,8 +10182,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/letonija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LV"
           ],
@@ -10096,8 +10192,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liban",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LB"
           ],
@@ -10105,8 +10202,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lesoto",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LS"
           ],
@@ -10114,8 +10212,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liberija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LR"
           ],
@@ -10123,8 +10222,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LY"
           ],
@@ -10132,8 +10232,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lihtenstajn",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LI"
           ],
@@ -10141,8 +10242,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/litvanija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LT"
           ],
@@ -10150,8 +10252,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/luksemburg",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LU"
           ],
@@ -10159,8 +10262,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/madagascar",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/madagascar",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/madagaskar/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/madagaskar/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/madagascar",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/madagascar",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/madagaskar",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "MG"
           ],
@@ -10168,8 +10298,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malavi",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MW"
           ],
@@ -10177,8 +10308,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malezija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MY"
           ],
@@ -10186,8 +10318,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MV"
           ],
@@ -10195,8 +10328,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mali",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ML"
           ],
@@ -10204,8 +10338,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malta",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MT"
           ],
@@ -10213,8 +10348,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/marshall-islands",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MH"
           ],
@@ -10222,8 +10358,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritania",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MR"
           ],
@@ -10231,8 +10368,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritius",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MU"
           ],
@@ -10240,8 +10378,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/meksiko",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MX"
           ],
@@ -10249,8 +10388,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/micronesia",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "FM"
           ],
@@ -10258,8 +10398,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/moldavija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MD"
           ],
@@ -10267,8 +10408,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/monako",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MC"
           ],
@@ -10276,8 +10418,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mongolija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MN"
           ],
@@ -10285,8 +10428,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/crna-gora",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ME"
           ],
@@ -10294,8 +10438,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maroko",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/morocco",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/morocco",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/maroko/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/maroko/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/morocco",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/morocco",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maroko",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/maroko",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "MA"
           ],
@@ -10303,8 +10474,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mozambik",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MZ"
           ],
@@ -10312,8 +10484,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mjanmar",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MM"
           ],
@@ -10321,8 +10494,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/namibija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NA"
           ],
@@ -10330,8 +10504,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nauru",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NR"
           ],
@@ -10339,8 +10514,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nepal",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NP"
           ],
@@ -10348,8 +10524,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/holandija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NL"
           ],
@@ -10357,8 +10534,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/novi-zeland",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NZ"
           ],
@@ -10366,8 +10544,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nikaragva",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/nicaragua",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/nicaragua",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/nikaragva/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/nikaragva/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/nicaragua",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/nicaragua",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nikaragva",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/nikaragva",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "NI"
           ],
@@ -10375,8 +10580,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/niger",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NE"
           ],
@@ -10384,8 +10590,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nigerija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NG"
           ],
@@ -10393,8 +10600,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/severna-makedonija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MK"
           ],
@@ -10402,8 +10610,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/norveska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NO"
           ],
@@ -10411,8 +10620,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/oman",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "OM"
           ],
@@ -10420,8 +10630,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/pakistan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PK"
           ],
@@ -10429,8 +10640,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palau",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PW"
           ],
@@ -10438,8 +10650,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palestina",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PS"
           ],
@@ -10447,8 +10660,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/panama",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PA"
           ],
@@ -10456,8 +10670,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/papua-nova-gvineja",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PG"
           ],
@@ -10465,8 +10680,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/paraguay",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/paraguay",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/paragvaj/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/paragvaj/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/paraguay",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/paraguay",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/paragvaj",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "PY"
           ],
@@ -10474,8 +10716,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/peru",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PE"
           ],
@@ -10483,8 +10726,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PH"
           ],
@@ -10492,8 +10736,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PL"
           ],
@@ -10501,8 +10746,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PT"
           ],
@@ -10510,8 +10756,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/katar",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "QA"
           ],
@@ -10519,8 +10766,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/romania",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/romania",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/rumunija/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/rumunija/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/romania",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/romania",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/rumunija",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "RO"
           ],
@@ -10528,8 +10802,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruska-federacija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "RU"
           ],
@@ -10537,8 +10812,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruanda",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "RW"
           ],
@@ -10546,8 +10822,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sent-kits-i-nevis",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KN"
           ],
@@ -10555,8 +10832,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-lucija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LC"
           ],
@@ -10564,8 +10842,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveti-vinsent-i-grenadini",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "VC"
           ],
@@ -10573,8 +10852,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/samoa",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "WS"
           ],
@@ -10582,8 +10862,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/san-marino",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SM"
           ],
@@ -10591,8 +10872,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sao-tome-i-prinsipe",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ST"
           ],
@@ -10600,8 +10882,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/saudijska-arabija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SA"
           ],
@@ -10609,8 +10892,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/senegal",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SN"
           ],
@@ -10618,8 +10902,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sejseli",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/seychelles",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/seychelles",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sejseli/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sejseli/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/seychelles",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/seychelles",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sejseli",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/sejseli",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "SC"
           ],
@@ -10627,8 +10938,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sijera-leone",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SL"
           ],
@@ -10636,8 +10948,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/singapur",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SG"
           ],
@@ -10645,8 +10958,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovacka",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SK"
           ],
@@ -10654,8 +10968,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovenija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SI"
           ],
@@ -10663,8 +10978,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/solomonova-ostrva",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SB"
           ],
@@ -10672,8 +10988,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/somalija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SO"
           ],
@@ -10681,8 +10998,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzna-afrika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ZA"
           ],
@@ -10690,8 +11008,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzni-sudan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SS"
           ],
@@ -10699,8 +11018,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/spanija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ES"
           ],
@@ -10708,8 +11028,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sri-lanka",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sri-lanka",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sri-lanka/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sri-lanka/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/sri-lanka",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/sri-lanka",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/sri-lanka",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "LK"
           ],
@@ -10717,8 +11064,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sudan",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sudan",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sudan/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sudan/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/sudan",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/sudan",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/sudan",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "SD"
           ],
@@ -10726,8 +11100,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/surinam",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SR"
           ],
@@ -10735,8 +11110,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sweden",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sweden",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/svedska/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/svedska/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/sweden",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/sweden",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/svedska",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "SE"
           ],
@@ -10744,8 +11146,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CH"
           ],
@@ -10753,8 +11156,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/syria-arab-republic",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/syria-arab-republic",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/sirija/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/sirija/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/syria-arab-republic",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/syria-arab-republic",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/sirija",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "SY"
           ],
@@ -10762,8 +11192,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tadzikistan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TJ"
           ],
@@ -10771,8 +11202,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tanzanija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TZ"
           ],
@@ -10780,8 +11212,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tajland",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TH"
           ],
@@ -10789,8 +11222,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/istocni-timor",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TL"
           ],
@@ -10798,8 +11232,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/togo",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/togo",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/togo/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/togo/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/togo",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/togo",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/togo",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "TG"
           ],
@@ -10807,8 +11268,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TO"
           ],
@@ -10816,8 +11278,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/trinidad-i-tobago",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TT"
           ],
@@ -10825,8 +11288,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tunis",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TN"
           ],
@@ -10834,8 +11298,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/turkey",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/turkey",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/turska/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/turska/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/turkey",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/turkey",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/turska",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "TR"
           ],
@@ -10843,8 +11334,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TM"
           ],
@@ -10852,8 +11344,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/tuvalu",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/tuvalu",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/tuvalu/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/tuvalu/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/tuvalu",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/tuvalu",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/tuvalu",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "TV"
           ],
@@ -10861,8 +11380,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/uganda",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/uganda",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/uganda/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/uganda/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/uganda",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/uganda",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/uganda",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "UG"
           ],
@@ -10870,8 +11416,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "UA"
           ],
@@ -10879,8 +11426,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KM"
           ],
@@ -10888,8 +11436,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/united-arab-emirates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/united-arab-emirates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/ujedinjeni-arapski-emirati/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/ujedinjeni-arapski-emirati/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/united-arab-emirates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/united-arab-emirates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "AE"
           ],
@@ -10897,8 +11472,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GB"
           ],
@@ -10906,8 +11482,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "US"
           ],
@@ -10915,8 +11492,35 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Bilateral relations",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/uruguay",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/uruguay",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Embassies and consulates",
+              "previousHref": "https://mfa.gov.rs/en/foreign-policy/bilateral-cooperation/urugvaj/embassies-consulates",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/foreign-policy/bilateral-cooperation/urugvaj/embassies-consulates",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visas and Travel Advice",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-abroad/visas-and-states-travel-advisory/uruguay",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-abroad/visas-and-states-travel-advisory/uruguay",
+              "kind": "target-changed"
+            },
+            {
+              "text": "Visa regime for entering Serbia",
+              "previousHref": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj",
+              "currentHref": "https://mfa.gov.rs/index%2ephp/en/citizens/travel-serbia/visa-regime/urugvaj",
+              "kind": "target-changed"
+            }
+          ],
           "keys": [
             "UY"
           ],
@@ -10924,8 +11528,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "UZ"
           ],
@@ -10933,8 +11538,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "VU"
           ],
@@ -10942,8 +11548,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "VE"
           ],
@@ -10951,8 +11558,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vijetnam",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "VN"
           ],
@@ -10960,8 +11568,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jemen",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "YE"
           ],
@@ -10969,8 +11578,9 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zambija",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ZM"
           ],
@@ -10978,18 +11588,3736 @@
         },
         {
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zimbabve",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ZW"
           ],
           "link": "direct"
         }
       ]
+    },
+    {
+      "region": "Bosnia",
+      "linkHealth": [
+        {
+          "url": "https://www.mvp.gov.ba/en/vize",
+          "usedBy": [
+            {
+              "key": "AD",
+              "field": "direct"
+            },
+            {
+              "key": "AD",
+              "field": "parent"
+            },
+            {
+              "key": "AE",
+              "field": "direct"
+            },
+            {
+              "key": "AE",
+              "field": "parent"
+            },
+            {
+              "key": "AF",
+              "field": "direct"
+            },
+            {
+              "key": "AF",
+              "field": "parent"
+            },
+            {
+              "key": "AG",
+              "field": "direct"
+            },
+            {
+              "key": "AG",
+              "field": "parent"
+            },
+            {
+              "key": "AL",
+              "field": "direct"
+            },
+            {
+              "key": "AL",
+              "field": "parent"
+            },
+            {
+              "key": "AM",
+              "field": "direct"
+            },
+            {
+              "key": "AM",
+              "field": "parent"
+            },
+            {
+              "key": "AO",
+              "field": "direct"
+            },
+            {
+              "key": "AO",
+              "field": "parent"
+            },
+            {
+              "key": "AR",
+              "field": "direct"
+            },
+            {
+              "key": "AR",
+              "field": "parent"
+            },
+            {
+              "key": "AT",
+              "field": "direct"
+            },
+            {
+              "key": "AT",
+              "field": "parent"
+            },
+            {
+              "key": "AU",
+              "field": "direct"
+            },
+            {
+              "key": "AU",
+              "field": "parent"
+            },
+            {
+              "key": "AZ",
+              "field": "direct"
+            },
+            {
+              "key": "AZ",
+              "field": "parent"
+            },
+            {
+              "key": "BB",
+              "field": "direct"
+            },
+            {
+              "key": "BB",
+              "field": "parent"
+            },
+            {
+              "key": "BD",
+              "field": "direct"
+            },
+            {
+              "key": "BD",
+              "field": "parent"
+            },
+            {
+              "key": "BE",
+              "field": "direct"
+            },
+            {
+              "key": "BE",
+              "field": "parent"
+            },
+            {
+              "key": "BF",
+              "field": "direct"
+            },
+            {
+              "key": "BF",
+              "field": "parent"
+            },
+            {
+              "key": "BG",
+              "field": "direct"
+            },
+            {
+              "key": "BG",
+              "field": "parent"
+            },
+            {
+              "key": "BH",
+              "field": "direct"
+            },
+            {
+              "key": "BH",
+              "field": "parent"
+            },
+            {
+              "key": "BI",
+              "field": "direct"
+            },
+            {
+              "key": "BI",
+              "field": "parent"
+            },
+            {
+              "key": "BJ",
+              "field": "direct"
+            },
+            {
+              "key": "BJ",
+              "field": "parent"
+            },
+            {
+              "key": "BN",
+              "field": "direct"
+            },
+            {
+              "key": "BN",
+              "field": "parent"
+            },
+            {
+              "key": "BO",
+              "field": "direct"
+            },
+            {
+              "key": "BO",
+              "field": "parent"
+            },
+            {
+              "key": "BR",
+              "field": "direct"
+            },
+            {
+              "key": "BR",
+              "field": "parent"
+            },
+            {
+              "key": "BS",
+              "field": "direct"
+            },
+            {
+              "key": "BS",
+              "field": "parent"
+            },
+            {
+              "key": "BT",
+              "field": "direct"
+            },
+            {
+              "key": "BT",
+              "field": "parent"
+            },
+            {
+              "key": "BW",
+              "field": "direct"
+            },
+            {
+              "key": "BW",
+              "field": "parent"
+            },
+            {
+              "key": "BY",
+              "field": "direct"
+            },
+            {
+              "key": "BY",
+              "field": "parent"
+            },
+            {
+              "key": "BZ",
+              "field": "direct"
+            },
+            {
+              "key": "BZ",
+              "field": "parent"
+            },
+            {
+              "key": "CA",
+              "field": "direct"
+            },
+            {
+              "key": "CA",
+              "field": "parent"
+            },
+            {
+              "key": "CD",
+              "field": "direct"
+            },
+            {
+              "key": "CD",
+              "field": "parent"
+            },
+            {
+              "key": "CF",
+              "field": "direct"
+            },
+            {
+              "key": "CF",
+              "field": "parent"
+            },
+            {
+              "key": "CG",
+              "field": "direct"
+            },
+            {
+              "key": "CG",
+              "field": "parent"
+            },
+            {
+              "key": "CH",
+              "field": "direct"
+            },
+            {
+              "key": "CH",
+              "field": "parent"
+            },
+            {
+              "key": "CI",
+              "field": "direct"
+            },
+            {
+              "key": "CI",
+              "field": "parent"
+            },
+            {
+              "key": "CL",
+              "field": "direct"
+            },
+            {
+              "key": "CL",
+              "field": "parent"
+            },
+            {
+              "key": "CM",
+              "field": "direct"
+            },
+            {
+              "key": "CM",
+              "field": "parent"
+            },
+            {
+              "key": "CN",
+              "field": "direct"
+            },
+            {
+              "key": "CN",
+              "field": "parent"
+            },
+            {
+              "key": "CO",
+              "field": "direct"
+            },
+            {
+              "key": "CO",
+              "field": "parent"
+            },
+            {
+              "key": "CR",
+              "field": "direct"
+            },
+            {
+              "key": "CR",
+              "field": "parent"
+            },
+            {
+              "key": "CU",
+              "field": "direct"
+            },
+            {
+              "key": "CU",
+              "field": "parent"
+            },
+            {
+              "key": "CV",
+              "field": "direct"
+            },
+            {
+              "key": "CV",
+              "field": "parent"
+            },
+            {
+              "key": "CY",
+              "field": "direct"
+            },
+            {
+              "key": "CY",
+              "field": "parent"
+            },
+            {
+              "key": "CZ",
+              "field": "direct"
+            },
+            {
+              "key": "CZ",
+              "field": "parent"
+            },
+            {
+              "key": "DE",
+              "field": "direct"
+            },
+            {
+              "key": "DE",
+              "field": "parent"
+            },
+            {
+              "key": "DJ",
+              "field": "direct"
+            },
+            {
+              "key": "DJ",
+              "field": "parent"
+            },
+            {
+              "key": "DK",
+              "field": "direct"
+            },
+            {
+              "key": "DK",
+              "field": "parent"
+            },
+            {
+              "key": "DM",
+              "field": "direct"
+            },
+            {
+              "key": "DM",
+              "field": "parent"
+            },
+            {
+              "key": "DO",
+              "field": "direct"
+            },
+            {
+              "key": "DO",
+              "field": "parent"
+            },
+            {
+              "key": "DZ",
+              "field": "direct"
+            },
+            {
+              "key": "DZ",
+              "field": "parent"
+            },
+            {
+              "key": "EC",
+              "field": "direct"
+            },
+            {
+              "key": "EC",
+              "field": "parent"
+            },
+            {
+              "key": "EE",
+              "field": "direct"
+            },
+            {
+              "key": "EE",
+              "field": "parent"
+            },
+            {
+              "key": "EG",
+              "field": "direct"
+            },
+            {
+              "key": "EG",
+              "field": "parent"
+            },
+            {
+              "key": "ER",
+              "field": "direct"
+            },
+            {
+              "key": "ER",
+              "field": "parent"
+            },
+            {
+              "key": "ES",
+              "field": "direct"
+            },
+            {
+              "key": "ES",
+              "field": "parent"
+            },
+            {
+              "key": "ET",
+              "field": "direct"
+            },
+            {
+              "key": "ET",
+              "field": "parent"
+            },
+            {
+              "key": "FI",
+              "field": "direct"
+            },
+            {
+              "key": "FI",
+              "field": "parent"
+            },
+            {
+              "key": "FJ",
+              "field": "direct"
+            },
+            {
+              "key": "FJ",
+              "field": "parent"
+            },
+            {
+              "key": "FM",
+              "field": "direct"
+            },
+            {
+              "key": "FM",
+              "field": "parent"
+            },
+            {
+              "key": "FR",
+              "field": "direct"
+            },
+            {
+              "key": "FR",
+              "field": "parent"
+            },
+            {
+              "key": "GA",
+              "field": "direct"
+            },
+            {
+              "key": "GA",
+              "field": "parent"
+            },
+            {
+              "key": "GB",
+              "field": "direct"
+            },
+            {
+              "key": "GB",
+              "field": "parent"
+            },
+            {
+              "key": "GD",
+              "field": "direct"
+            },
+            {
+              "key": "GD",
+              "field": "parent"
+            },
+            {
+              "key": "GE",
+              "field": "direct"
+            },
+            {
+              "key": "GE",
+              "field": "parent"
+            },
+            {
+              "key": "GH",
+              "field": "direct"
+            },
+            {
+              "key": "GH",
+              "field": "parent"
+            },
+            {
+              "key": "GM",
+              "field": "direct"
+            },
+            {
+              "key": "GM",
+              "field": "parent"
+            },
+            {
+              "key": "GN",
+              "field": "direct"
+            },
+            {
+              "key": "GN",
+              "field": "parent"
+            },
+            {
+              "key": "GQ",
+              "field": "direct"
+            },
+            {
+              "key": "GQ",
+              "field": "parent"
+            },
+            {
+              "key": "GR",
+              "field": "direct"
+            },
+            {
+              "key": "GR",
+              "field": "parent"
+            },
+            {
+              "key": "GT",
+              "field": "direct"
+            },
+            {
+              "key": "GT",
+              "field": "parent"
+            },
+            {
+              "key": "GW",
+              "field": "direct"
+            },
+            {
+              "key": "GW",
+              "field": "parent"
+            },
+            {
+              "key": "GY",
+              "field": "direct"
+            },
+            {
+              "key": "GY",
+              "field": "parent"
+            },
+            {
+              "key": "HN",
+              "field": "direct"
+            },
+            {
+              "key": "HN",
+              "field": "parent"
+            },
+            {
+              "key": "HR",
+              "field": "direct"
+            },
+            {
+              "key": "HR",
+              "field": "parent"
+            },
+            {
+              "key": "HT",
+              "field": "direct"
+            },
+            {
+              "key": "HT",
+              "field": "parent"
+            },
+            {
+              "key": "HU",
+              "field": "direct"
+            },
+            {
+              "key": "HU",
+              "field": "parent"
+            },
+            {
+              "key": "ID",
+              "field": "direct"
+            },
+            {
+              "key": "ID",
+              "field": "parent"
+            },
+            {
+              "key": "IE",
+              "field": "direct"
+            },
+            {
+              "key": "IE",
+              "field": "parent"
+            },
+            {
+              "key": "IL",
+              "field": "direct"
+            },
+            {
+              "key": "IL",
+              "field": "parent"
+            },
+            {
+              "key": "IN",
+              "field": "direct"
+            },
+            {
+              "key": "IN",
+              "field": "parent"
+            },
+            {
+              "key": "IQ",
+              "field": "direct"
+            },
+            {
+              "key": "IQ",
+              "field": "parent"
+            },
+            {
+              "key": "IR",
+              "field": "direct"
+            },
+            {
+              "key": "IR",
+              "field": "parent"
+            },
+            {
+              "key": "IS",
+              "field": "direct"
+            },
+            {
+              "key": "IS",
+              "field": "parent"
+            },
+            {
+              "key": "IT",
+              "field": "direct"
+            },
+            {
+              "key": "IT",
+              "field": "parent"
+            },
+            {
+              "key": "JM",
+              "field": "direct"
+            },
+            {
+              "key": "JM",
+              "field": "parent"
+            },
+            {
+              "key": "JO",
+              "field": "direct"
+            },
+            {
+              "key": "JO",
+              "field": "parent"
+            },
+            {
+              "key": "JP",
+              "field": "direct"
+            },
+            {
+              "key": "JP",
+              "field": "parent"
+            },
+            {
+              "key": "KE",
+              "field": "direct"
+            },
+            {
+              "key": "KE",
+              "field": "parent"
+            },
+            {
+              "key": "KG",
+              "field": "direct"
+            },
+            {
+              "key": "KG",
+              "field": "parent"
+            },
+            {
+              "key": "KH",
+              "field": "direct"
+            },
+            {
+              "key": "KH",
+              "field": "parent"
+            },
+            {
+              "key": "KI",
+              "field": "direct"
+            },
+            {
+              "key": "KI",
+              "field": "parent"
+            },
+            {
+              "key": "KM",
+              "field": "direct"
+            },
+            {
+              "key": "KM",
+              "field": "parent"
+            },
+            {
+              "key": "KN",
+              "field": "direct"
+            },
+            {
+              "key": "KN",
+              "field": "parent"
+            },
+            {
+              "key": "KP",
+              "field": "direct"
+            },
+            {
+              "key": "KP",
+              "field": "parent"
+            },
+            {
+              "key": "KR",
+              "field": "direct"
+            },
+            {
+              "key": "KR",
+              "field": "parent"
+            },
+            {
+              "key": "KW",
+              "field": "direct"
+            },
+            {
+              "key": "KW",
+              "field": "parent"
+            },
+            {
+              "key": "KZ",
+              "field": "direct"
+            },
+            {
+              "key": "KZ",
+              "field": "parent"
+            },
+            {
+              "key": "LA",
+              "field": "direct"
+            },
+            {
+              "key": "LA",
+              "field": "parent"
+            },
+            {
+              "key": "LB",
+              "field": "direct"
+            },
+            {
+              "key": "LB",
+              "field": "parent"
+            },
+            {
+              "key": "LC",
+              "field": "direct"
+            },
+            {
+              "key": "LC",
+              "field": "parent"
+            },
+            {
+              "key": "LI",
+              "field": "direct"
+            },
+            {
+              "key": "LI",
+              "field": "parent"
+            },
+            {
+              "key": "LK",
+              "field": "direct"
+            },
+            {
+              "key": "LK",
+              "field": "parent"
+            },
+            {
+              "key": "LR",
+              "field": "direct"
+            },
+            {
+              "key": "LR",
+              "field": "parent"
+            },
+            {
+              "key": "LS",
+              "field": "direct"
+            },
+            {
+              "key": "LS",
+              "field": "parent"
+            },
+            {
+              "key": "LT",
+              "field": "direct"
+            },
+            {
+              "key": "LT",
+              "field": "parent"
+            },
+            {
+              "key": "LU",
+              "field": "direct"
+            },
+            {
+              "key": "LU",
+              "field": "parent"
+            },
+            {
+              "key": "LV",
+              "field": "direct"
+            },
+            {
+              "key": "LV",
+              "field": "parent"
+            },
+            {
+              "key": "LY",
+              "field": "direct"
+            },
+            {
+              "key": "LY",
+              "field": "parent"
+            },
+            {
+              "key": "MA",
+              "field": "direct"
+            },
+            {
+              "key": "MA",
+              "field": "parent"
+            },
+            {
+              "key": "MC",
+              "field": "direct"
+            },
+            {
+              "key": "MC",
+              "field": "parent"
+            },
+            {
+              "key": "MD",
+              "field": "direct"
+            },
+            {
+              "key": "MD",
+              "field": "parent"
+            },
+            {
+              "key": "ME",
+              "field": "direct"
+            },
+            {
+              "key": "ME",
+              "field": "parent"
+            },
+            {
+              "key": "MG",
+              "field": "direct"
+            },
+            {
+              "key": "MG",
+              "field": "parent"
+            },
+            {
+              "key": "MH",
+              "field": "direct"
+            },
+            {
+              "key": "MH",
+              "field": "parent"
+            },
+            {
+              "key": "MK",
+              "field": "direct"
+            },
+            {
+              "key": "MK",
+              "field": "parent"
+            },
+            {
+              "key": "ML",
+              "field": "direct"
+            },
+            {
+              "key": "ML",
+              "field": "parent"
+            },
+            {
+              "key": "MM",
+              "field": "direct"
+            },
+            {
+              "key": "MM",
+              "field": "parent"
+            },
+            {
+              "key": "MN",
+              "field": "direct"
+            },
+            {
+              "key": "MN",
+              "field": "parent"
+            },
+            {
+              "key": "MR",
+              "field": "direct"
+            },
+            {
+              "key": "MR",
+              "field": "parent"
+            },
+            {
+              "key": "MT",
+              "field": "direct"
+            },
+            {
+              "key": "MT",
+              "field": "parent"
+            },
+            {
+              "key": "MU",
+              "field": "direct"
+            },
+            {
+              "key": "MU",
+              "field": "parent"
+            },
+            {
+              "key": "MV",
+              "field": "direct"
+            },
+            {
+              "key": "MV",
+              "field": "parent"
+            },
+            {
+              "key": "MW",
+              "field": "direct"
+            },
+            {
+              "key": "MW",
+              "field": "parent"
+            },
+            {
+              "key": "MX",
+              "field": "direct"
+            },
+            {
+              "key": "MX",
+              "field": "parent"
+            },
+            {
+              "key": "MY",
+              "field": "direct"
+            },
+            {
+              "key": "MY",
+              "field": "parent"
+            },
+            {
+              "key": "MZ",
+              "field": "direct"
+            },
+            {
+              "key": "MZ",
+              "field": "parent"
+            },
+            {
+              "key": "NA",
+              "field": "direct"
+            },
+            {
+              "key": "NA",
+              "field": "parent"
+            },
+            {
+              "key": "NE",
+              "field": "direct"
+            },
+            {
+              "key": "NE",
+              "field": "parent"
+            },
+            {
+              "key": "NG",
+              "field": "direct"
+            },
+            {
+              "key": "NG",
+              "field": "parent"
+            },
+            {
+              "key": "NI",
+              "field": "direct"
+            },
+            {
+              "key": "NI",
+              "field": "parent"
+            },
+            {
+              "key": "NL",
+              "field": "direct"
+            },
+            {
+              "key": "NL",
+              "field": "parent"
+            },
+            {
+              "key": "NO",
+              "field": "direct"
+            },
+            {
+              "key": "NO",
+              "field": "parent"
+            },
+            {
+              "key": "NP",
+              "field": "direct"
+            },
+            {
+              "key": "NP",
+              "field": "parent"
+            },
+            {
+              "key": "NR",
+              "field": "direct"
+            },
+            {
+              "key": "NR",
+              "field": "parent"
+            },
+            {
+              "key": "NZ",
+              "field": "direct"
+            },
+            {
+              "key": "NZ",
+              "field": "parent"
+            },
+            {
+              "key": "OM",
+              "field": "direct"
+            },
+            {
+              "key": "OM",
+              "field": "parent"
+            },
+            {
+              "key": "PA",
+              "field": "direct"
+            },
+            {
+              "key": "PA",
+              "field": "parent"
+            },
+            {
+              "key": "PE",
+              "field": "direct"
+            },
+            {
+              "key": "PE",
+              "field": "parent"
+            },
+            {
+              "key": "PG",
+              "field": "direct"
+            },
+            {
+              "key": "PG",
+              "field": "parent"
+            },
+            {
+              "key": "PH",
+              "field": "direct"
+            },
+            {
+              "key": "PH",
+              "field": "parent"
+            },
+            {
+              "key": "PK",
+              "field": "direct"
+            },
+            {
+              "key": "PK",
+              "field": "parent"
+            },
+            {
+              "key": "PL",
+              "field": "direct"
+            },
+            {
+              "key": "PL",
+              "field": "parent"
+            },
+            {
+              "key": "PS",
+              "field": "direct"
+            },
+            {
+              "key": "PS",
+              "field": "parent"
+            },
+            {
+              "key": "PT",
+              "field": "direct"
+            },
+            {
+              "key": "PT",
+              "field": "parent"
+            },
+            {
+              "key": "PW",
+              "field": "direct"
+            },
+            {
+              "key": "PW",
+              "field": "parent"
+            },
+            {
+              "key": "PY",
+              "field": "direct"
+            },
+            {
+              "key": "PY",
+              "field": "parent"
+            },
+            {
+              "key": "QA",
+              "field": "direct"
+            },
+            {
+              "key": "QA",
+              "field": "parent"
+            },
+            {
+              "key": "RO",
+              "field": "direct"
+            },
+            {
+              "key": "RO",
+              "field": "parent"
+            },
+            {
+              "key": "RS",
+              "field": "direct"
+            },
+            {
+              "key": "RS",
+              "field": "parent"
+            },
+            {
+              "key": "RU",
+              "field": "direct"
+            },
+            {
+              "key": "RU",
+              "field": "parent"
+            },
+            {
+              "key": "RW",
+              "field": "direct"
+            },
+            {
+              "key": "RW",
+              "field": "parent"
+            },
+            {
+              "key": "SA",
+              "field": "direct"
+            },
+            {
+              "key": "SA",
+              "field": "parent"
+            },
+            {
+              "key": "SB",
+              "field": "direct"
+            },
+            {
+              "key": "SB",
+              "field": "parent"
+            },
+            {
+              "key": "SC",
+              "field": "direct"
+            },
+            {
+              "key": "SC",
+              "field": "parent"
+            },
+            {
+              "key": "SD",
+              "field": "direct"
+            },
+            {
+              "key": "SD",
+              "field": "parent"
+            },
+            {
+              "key": "SE",
+              "field": "direct"
+            },
+            {
+              "key": "SE",
+              "field": "parent"
+            },
+            {
+              "key": "SG",
+              "field": "direct"
+            },
+            {
+              "key": "SG",
+              "field": "parent"
+            },
+            {
+              "key": "SI",
+              "field": "direct"
+            },
+            {
+              "key": "SI",
+              "field": "parent"
+            },
+            {
+              "key": "SK",
+              "field": "direct"
+            },
+            {
+              "key": "SK",
+              "field": "parent"
+            },
+            {
+              "key": "SL",
+              "field": "direct"
+            },
+            {
+              "key": "SL",
+              "field": "parent"
+            },
+            {
+              "key": "SM",
+              "field": "direct"
+            },
+            {
+              "key": "SM",
+              "field": "parent"
+            },
+            {
+              "key": "SN",
+              "field": "direct"
+            },
+            {
+              "key": "SN",
+              "field": "parent"
+            },
+            {
+              "key": "SO",
+              "field": "direct"
+            },
+            {
+              "key": "SO",
+              "field": "parent"
+            },
+            {
+              "key": "SR",
+              "field": "direct"
+            },
+            {
+              "key": "SR",
+              "field": "parent"
+            },
+            {
+              "key": "ST",
+              "field": "direct"
+            },
+            {
+              "key": "ST",
+              "field": "parent"
+            },
+            {
+              "key": "SV",
+              "field": "direct"
+            },
+            {
+              "key": "SV",
+              "field": "parent"
+            },
+            {
+              "key": "SY",
+              "field": "direct"
+            },
+            {
+              "key": "SY",
+              "field": "parent"
+            },
+            {
+              "key": "SZ",
+              "field": "direct"
+            },
+            {
+              "key": "SZ",
+              "field": "parent"
+            },
+            {
+              "key": "TD",
+              "field": "direct"
+            },
+            {
+              "key": "TD",
+              "field": "parent"
+            },
+            {
+              "key": "TG",
+              "field": "direct"
+            },
+            {
+              "key": "TG",
+              "field": "parent"
+            },
+            {
+              "key": "TH",
+              "field": "direct"
+            },
+            {
+              "key": "TH",
+              "field": "parent"
+            },
+            {
+              "key": "TJ",
+              "field": "direct"
+            },
+            {
+              "key": "TJ",
+              "field": "parent"
+            },
+            {
+              "key": "TL",
+              "field": "direct"
+            },
+            {
+              "key": "TL",
+              "field": "parent"
+            },
+            {
+              "key": "TM",
+              "field": "direct"
+            },
+            {
+              "key": "TM",
+              "field": "parent"
+            },
+            {
+              "key": "TN",
+              "field": "direct"
+            },
+            {
+              "key": "TN",
+              "field": "parent"
+            },
+            {
+              "key": "TO",
+              "field": "direct"
+            },
+            {
+              "key": "TO",
+              "field": "parent"
+            },
+            {
+              "key": "TR",
+              "field": "direct"
+            },
+            {
+              "key": "TR",
+              "field": "parent"
+            },
+            {
+              "key": "TT",
+              "field": "direct"
+            },
+            {
+              "key": "TT",
+              "field": "parent"
+            },
+            {
+              "key": "TV",
+              "field": "direct"
+            },
+            {
+              "key": "TV",
+              "field": "parent"
+            },
+            {
+              "key": "TW",
+              "field": "direct"
+            },
+            {
+              "key": "TW",
+              "field": "parent"
+            },
+            {
+              "key": "TZ",
+              "field": "direct"
+            },
+            {
+              "key": "TZ",
+              "field": "parent"
+            },
+            {
+              "key": "UA",
+              "field": "direct"
+            },
+            {
+              "key": "UA",
+              "field": "parent"
+            },
+            {
+              "key": "UG",
+              "field": "direct"
+            },
+            {
+              "key": "UG",
+              "field": "parent"
+            },
+            {
+              "key": "US",
+              "field": "direct"
+            },
+            {
+              "key": "US",
+              "field": "parent"
+            },
+            {
+              "key": "UY",
+              "field": "direct"
+            },
+            {
+              "key": "UY",
+              "field": "parent"
+            },
+            {
+              "key": "UZ",
+              "field": "direct"
+            },
+            {
+              "key": "UZ",
+              "field": "parent"
+            },
+            {
+              "key": "VA",
+              "field": "direct"
+            },
+            {
+              "key": "VA",
+              "field": "parent"
+            },
+            {
+              "key": "VC",
+              "field": "direct"
+            },
+            {
+              "key": "VC",
+              "field": "parent"
+            },
+            {
+              "key": "VE",
+              "field": "direct"
+            },
+            {
+              "key": "VE",
+              "field": "parent"
+            },
+            {
+              "key": "VN",
+              "field": "direct"
+            },
+            {
+              "key": "VN",
+              "field": "parent"
+            },
+            {
+              "key": "VU",
+              "field": "direct"
+            },
+            {
+              "key": "VU",
+              "field": "parent"
+            },
+            {
+              "key": "WS",
+              "field": "direct"
+            },
+            {
+              "key": "WS",
+              "field": "parent"
+            },
+            {
+              "key": "XK",
+              "field": "direct"
+            },
+            {
+              "key": "XK",
+              "field": "parent"
+            },
+            {
+              "key": "YE",
+              "field": "direct"
+            },
+            {
+              "key": "YE",
+              "field": "parent"
+            },
+            {
+              "key": "ZA",
+              "field": "direct"
+            },
+            {
+              "key": "ZA",
+              "field": "parent"
+            },
+            {
+              "key": "ZM",
+              "field": "direct"
+            },
+            {
+              "key": "ZM",
+              "field": "parent"
+            },
+            {
+              "key": "ZW",
+              "field": "direct"
+            },
+            {
+              "key": "ZW",
+              "field": "parent"
+            }
+          ],
+          "status": "broken",
+          "error": "fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        }
+      ],
+      "ruleChecks": [
+        {
+          "url": "https://www.mvp.gov.ba/en/vize",
+          "status": "fetch-error",
+          "error": "fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)",
+          "keys": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AL",
+            "AM",
+            "AO",
+            "AR",
+            "AT",
+            "AU",
+            "AZ",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BN",
+            "BO",
+            "BR",
+            "BS",
+            "BT",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FM",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GH",
+            "GM",
+            "GN",
+            "GQ",
+            "GR",
+            "GT",
+            "GW",
+            "GY",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IN",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MR",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NE",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SI",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "ST",
+            "SV",
+            "SY",
+            "SZ",
+            "TD",
+            "TG",
+            "TH",
+            "TJ",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VN",
+            "VU",
+            "WS",
+            "XK",
+            "YE",
+            "ZA",
+            "ZM",
+            "ZW"
+          ],
+          "link": "parent"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#subpages",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)",
+          "note": "No previous list to fall back on",
+          "keys": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AL",
+            "AM",
+            "AO",
+            "AR",
+            "AT",
+            "AU",
+            "AZ",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BN",
+            "BO",
+            "BR",
+            "BS",
+            "BT",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FM",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GH",
+            "GM",
+            "GN",
+            "GQ",
+            "GR",
+            "GT",
+            "GW",
+            "GY",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IN",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MR",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NE",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SI",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "ST",
+            "SV",
+            "SY",
+            "SZ",
+            "TD",
+            "TG",
+            "TH",
+            "TJ",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VN",
+            "VU",
+            "WS",
+            "XK",
+            "YE",
+            "ZA",
+            "ZM",
+            "ZW"
+          ],
+          "link": "direct.alternate (page list)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AD",
+          "keys": [
+            "AD"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AE",
+          "keys": [
+            "AE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AF",
+          "keys": [
+            "AF"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AG",
+          "keys": [
+            "AG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AL",
+          "keys": [
+            "AL"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AM",
+          "keys": [
+            "AM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AO",
+          "keys": [
+            "AO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AR",
+          "keys": [
+            "AR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AT",
+          "keys": [
+            "AT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AU",
+          "keys": [
+            "AU"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#AZ",
+          "keys": [
+            "AZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BB",
+          "keys": [
+            "BB"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BD",
+          "keys": [
+            "BD"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BE",
+          "keys": [
+            "BE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BF",
+          "keys": [
+            "BF"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BG",
+          "keys": [
+            "BG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BH",
+          "keys": [
+            "BH"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BI",
+          "keys": [
+            "BI"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BJ",
+          "keys": [
+            "BJ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BN",
+          "keys": [
+            "BN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BO",
+          "keys": [
+            "BO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BR",
+          "keys": [
+            "BR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BS",
+          "keys": [
+            "BS"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BT",
+          "keys": [
+            "BT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BW",
+          "keys": [
+            "BW"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BY",
+          "keys": [
+            "BY"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#BZ",
+          "keys": [
+            "BZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CA",
+          "keys": [
+            "CA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CD",
+          "keys": [
+            "CD"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CF",
+          "keys": [
+            "CF"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CG",
+          "keys": [
+            "CG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CH",
+          "keys": [
+            "CH"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CI",
+          "keys": [
+            "CI"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CL",
+          "keys": [
+            "CL"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CM",
+          "keys": [
+            "CM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CN",
+          "keys": [
+            "CN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CO",
+          "keys": [
+            "CO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CR",
+          "keys": [
+            "CR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CU",
+          "keys": [
+            "CU"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CV",
+          "keys": [
+            "CV"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CY",
+          "keys": [
+            "CY"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#CZ",
+          "keys": [
+            "CZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#DE",
+          "keys": [
+            "DE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#DJ",
+          "keys": [
+            "DJ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#DK",
+          "keys": [
+            "DK"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#DM",
+          "keys": [
+            "DM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#DO",
+          "keys": [
+            "DO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#DZ",
+          "keys": [
+            "DZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#EC",
+          "keys": [
+            "EC"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#EE",
+          "keys": [
+            "EE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#EG",
+          "keys": [
+            "EG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ER",
+          "keys": [
+            "ER"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ES",
+          "keys": [
+            "ES"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ET",
+          "keys": [
+            "ET"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#FI",
+          "keys": [
+            "FI"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#FJ",
+          "keys": [
+            "FJ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#FM",
+          "keys": [
+            "FM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#FR",
+          "keys": [
+            "FR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GA",
+          "keys": [
+            "GA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GB",
+          "keys": [
+            "GB"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GD",
+          "keys": [
+            "GD"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GE",
+          "keys": [
+            "GE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GH",
+          "keys": [
+            "GH"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GM",
+          "keys": [
+            "GM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GN",
+          "keys": [
+            "GN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GQ",
+          "keys": [
+            "GQ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GR",
+          "keys": [
+            "GR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GT",
+          "keys": [
+            "GT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GW",
+          "keys": [
+            "GW"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#GY",
+          "keys": [
+            "GY"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#HN",
+          "keys": [
+            "HN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#HR",
+          "keys": [
+            "HR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#HT",
+          "keys": [
+            "HT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#HU",
+          "keys": [
+            "HU"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ID",
+          "keys": [
+            "ID"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#IE",
+          "keys": [
+            "IE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#IL",
+          "keys": [
+            "IL"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#IN",
+          "keys": [
+            "IN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#IQ",
+          "keys": [
+            "IQ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#IR",
+          "keys": [
+            "IR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#IS",
+          "keys": [
+            "IS"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#IT",
+          "keys": [
+            "IT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#JM",
+          "keys": [
+            "JM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#JO",
+          "keys": [
+            "JO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#JP",
+          "keys": [
+            "JP"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KE",
+          "keys": [
+            "KE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KG",
+          "keys": [
+            "KG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KH",
+          "keys": [
+            "KH"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KI",
+          "keys": [
+            "KI"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KM",
+          "keys": [
+            "KM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KN",
+          "keys": [
+            "KN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KP",
+          "keys": [
+            "KP"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KR",
+          "keys": [
+            "KR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KW",
+          "keys": [
+            "KW"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#KZ",
+          "keys": [
+            "KZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LA",
+          "keys": [
+            "LA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LB",
+          "keys": [
+            "LB"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LC",
+          "keys": [
+            "LC"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LI",
+          "keys": [
+            "LI"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LK",
+          "keys": [
+            "LK"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LR",
+          "keys": [
+            "LR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LS",
+          "keys": [
+            "LS"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LT",
+          "keys": [
+            "LT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LU",
+          "keys": [
+            "LU"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LV",
+          "keys": [
+            "LV"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#LY",
+          "keys": [
+            "LY"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MA",
+          "keys": [
+            "MA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MC",
+          "keys": [
+            "MC"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MD",
+          "keys": [
+            "MD"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ME",
+          "keys": [
+            "ME"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MG",
+          "keys": [
+            "MG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MH",
+          "keys": [
+            "MH"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MK",
+          "keys": [
+            "MK"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ML",
+          "keys": [
+            "ML"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MM",
+          "keys": [
+            "MM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MN",
+          "keys": [
+            "MN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MR",
+          "keys": [
+            "MR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MT",
+          "keys": [
+            "MT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MU",
+          "keys": [
+            "MU"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MV",
+          "keys": [
+            "MV"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MW",
+          "keys": [
+            "MW"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MX",
+          "keys": [
+            "MX"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MY",
+          "keys": [
+            "MY"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#MZ",
+          "keys": [
+            "MZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NA",
+          "keys": [
+            "NA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NE",
+          "keys": [
+            "NE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NG",
+          "keys": [
+            "NG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NI",
+          "keys": [
+            "NI"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NL",
+          "keys": [
+            "NL"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NO",
+          "keys": [
+            "NO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NP",
+          "keys": [
+            "NP"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NR",
+          "keys": [
+            "NR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#NZ",
+          "keys": [
+            "NZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#OM",
+          "keys": [
+            "OM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PA",
+          "keys": [
+            "PA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PE",
+          "keys": [
+            "PE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PG",
+          "keys": [
+            "PG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PH",
+          "keys": [
+            "PH"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PK",
+          "keys": [
+            "PK"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PL",
+          "keys": [
+            "PL"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PS",
+          "keys": [
+            "PS"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PT",
+          "keys": [
+            "PT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PW",
+          "keys": [
+            "PW"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#PY",
+          "keys": [
+            "PY"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#QA",
+          "keys": [
+            "QA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#RO",
+          "keys": [
+            "RO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#RS",
+          "keys": [
+            "RS"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#RU",
+          "keys": [
+            "RU"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#RW",
+          "keys": [
+            "RW"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SA",
+          "keys": [
+            "SA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SB",
+          "keys": [
+            "SB"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SC",
+          "keys": [
+            "SC"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SD",
+          "keys": [
+            "SD"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SE",
+          "keys": [
+            "SE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SG",
+          "keys": [
+            "SG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SI",
+          "keys": [
+            "SI"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SK",
+          "keys": [
+            "SK"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SL",
+          "keys": [
+            "SL"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SM",
+          "keys": [
+            "SM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SN",
+          "keys": [
+            "SN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SO",
+          "keys": [
+            "SO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SR",
+          "keys": [
+            "SR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ST",
+          "keys": [
+            "ST"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SV",
+          "keys": [
+            "SV"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SY",
+          "keys": [
+            "SY"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#SZ",
+          "keys": [
+            "SZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TD",
+          "keys": [
+            "TD"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TG",
+          "keys": [
+            "TG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TH",
+          "keys": [
+            "TH"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TJ",
+          "keys": [
+            "TJ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TL",
+          "keys": [
+            "TL"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TM",
+          "keys": [
+            "TM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TN",
+          "keys": [
+            "TN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TO",
+          "keys": [
+            "TO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TR",
+          "keys": [
+            "TR"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TT",
+          "keys": [
+            "TT"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TV",
+          "keys": [
+            "TV"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#TZ",
+          "keys": [
+            "TZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#UA",
+          "keys": [
+            "UA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#UG",
+          "keys": [
+            "UG"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#US",
+          "keys": [
+            "US"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#UY",
+          "keys": [
+            "UY"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#UZ",
+          "keys": [
+            "UZ"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#VA",
+          "keys": [
+            "VA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#VC",
+          "keys": [
+            "VC"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#VE",
+          "keys": [
+            "VE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#VN",
+          "keys": [
+            "VN"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#VU",
+          "keys": [
+            "VU"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#WS",
+          "keys": [
+            "WS"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#YE",
+          "keys": [
+            "YE"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ZA",
+          "keys": [
+            "ZA"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ZM",
+          "keys": [
+            "ZM"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/en/vize#ZW",
+          "keys": [
+            "ZW"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "Could not read the country list: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+        }
+      ]
     }
   ],
   "skippedRegions": [
-    "Bosnia",
     "Kosovo",
     "NorthMacedonia",
     "Albania",
@@ -10999,13 +15327,13 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 426,
-    "brokenLinks": 0,
+    "totalLinksChecked": 427,
+    "brokenLinks": 1,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 403,
-    "sourcesChanged": 0,
-    "sourcesFirstRun": 195,
-    "sourcesFetchError": 0
+    "sourcesChecked": 598,
+    "sourcesChanged": 16,
+    "sourcesFirstRun": 0,
+    "sourcesFetchError": 195
   }
 }
