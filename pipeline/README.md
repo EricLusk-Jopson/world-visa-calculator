@@ -208,7 +208,10 @@ GETs the page once and:
 
 The site is behind Imperva Incapsula, which answers the pipeline's HTTP
 client with a 200 block page ("Request unsuccessful. Incapsula incident ID
-…"), so it is fetched in a headless browser (below).
+…"), so it is fetched in a headless browser (below). As of 2026-10-15
+Incapsula turns that away too, so both Albania pages are reported 🚫
+blocked and are checked by hand; the parser is ready (and tested against a
+saved copy of the page) for when a run gets through.
 
 ### Sites that turn away plain HTTP clients
 
