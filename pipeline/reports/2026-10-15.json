@@ -1,53 +1,68 @@
 {
-  "generatedAt": "2026-10-15T05:39:11.629Z",
+  "generatedAt": "2026-10-15T05:31:29.598Z",
   "regions": [
     {
-      "region": "Georgia",
+      "region": "Armenia",
       "linkHealth": [
         {
-          "url": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
+          "url": "https://www.mfa.am/en/visafreelist",
           "usedBy": [
             {
-              "key": "visaList",
+              "key": "visaFreeList",
               "field": "direct"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25"
+          "finalUrl": "https://www.mfa.am/en/visafreelist"
         },
         {
-          "url": "https://geoconsul.gov.ge/en/entering-georgia",
+          "url": "https://www.mfa.am/en/visa/",
           "usedBy": [
             {
-              "key": "visaList",
+              "key": "visaFreeList",
+              "field": "parent"
+            },
+            {
+              "key": "bilateralList",
               "field": "parent"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://geoconsul.gov.ge/en/entering-georgia"
+          "finalUrl": "https://www.mfa.am/en/visa/"
+        },
+        {
+          "url": "https://www.mfa.am/en/whoneedvisa",
+          "usedBy": [
+            {
+              "key": "bilateralList",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mfa.am/en/whoneedvisa"
         }
       ],
       "ruleChecks": [
         {
-          "url": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
+          "url": "https://www.mfa.am/en/visafreelist",
           "currentUpdatedAt": null,
           "status": "first-run",
           "keys": [
-            "visaList"
+            "visaFreeList"
           ],
           "link": "direct"
         },
         {
-          "url": "https://geoconsul.gov.ge/en/entering-georgia",
-          "previousUpdatedAt": null,
+          "url": "https://www.mfa.am/en/whoneedvisa",
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "first-run",
           "keys": [
-            "visaList"
+            "bilateralList"
           ],
-          "link": "parent"
+          "link": "direct"
         }
       ]
     }
@@ -65,16 +80,16 @@
     "Albania",
     "Cyprus",
     "Belarus",
-    "Armenia"
+    "Georgia"
   ],
   "summary": {
-    "totalLinksChecked": 2,
+    "totalLinksChecked": 3,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
     "sourcesChecked": 2,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 1,
+    "sourcesFirstRun": 2,
     "sourcesFetchError": 0
   }
 }
