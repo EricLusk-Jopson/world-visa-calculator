@@ -11746,12 +11746,12 @@ export const ArmeniaSources = {
  * the scheduled monthly workflow always does.
  */
 export const SourceRegions = {
-  Schengen: { sources: SchengenSources, checkLinks: true },
-  UK: { sources: UKSources, checkLinks: true },
-  Ireland: { sources: IrelandSources, checkLinks: true },
-  Turkiye: { sources: TurkiyeSources, checkLinks: true },
-  Montenegro: { sources: MontenegroSources, checkLinks: true },
-  Serbia: { sources: SerbiaSources, checkLinks: true },
+  Schengen: { sources: SchengenSources, checkLinks: false },
+  UK: { sources: UKSources, checkLinks: false },
+  Ireland: { sources: IrelandSources, checkLinks: false },
+  Turkiye: { sources: TurkiyeSources, checkLinks: false },
+  Montenegro: { sources: MontenegroSources, checkLinks: false },
+  Serbia: { sources: SerbiaSources, checkLinks: false },
   Bosnia: { sources: BosniaSources, checkLinks: true },
   Kosovo: { sources: KosovoSources, checkLinks: false },
   NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: false },
