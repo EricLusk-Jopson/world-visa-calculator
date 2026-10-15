@@ -1,3 +1,5 @@
+import { fetch as undiciFetch } from 'undici';
+import { chainCompletingAgent, isIncompleteChainError } from './tlsChain';
 import type { LinkHealthStatus } from './types';
 
 const USER_AGENT =
@@ -71,6 +73,31 @@ function blockedReason(httpStatus: number, headers: Headers): string | undefined
   return undefined;
 }
 
+/**
+ * Request headers for sites that need more than the defaults. The Bosnia and
+ * Herzegovina MFA site sits behind a reverse proxy that turns away clients
+ * that don't look like a browser, and its subpage API answers JSON.
+ */
+const BROWSER_USER_AGENT =
+  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 ' + USER_AGENT;
+
+const SITE_HEADERS: { host: string; path?: RegExp; headers: Record<string, string> }[] = [
+  { host: 'www.mvp.gov.ba', headers: { 'User-Agent': BROWSER_USER_AGENT } },
+  { host: 'www.mvp.gov.ba', path: /^\/api\//, headers: { Accept: 'application/json' } },
+];
+
+function siteHeaders(url: string): Record<string, string> {
+  try {
+    const u = new URL(url);
+    return Object.assign(
+      {},
+      ...SITE_HEADERS.filter((s) => s.host === u.host && (!s.path || s.path.test(u.pathname))).map((s) => s.headers),
+    );
+  } catch {
+    return {};
+  }
+}
+
 function isRetryable(outcome: FetchOutcome): boolean {
   if (outcome.httpStatus === undefined) return true; // network error / timeout
   return outcome.httpStatus === 429 || outcome.httpStatus >= 500;
@@ -87,9 +114,34 @@ function describeError(err: unknown): string {
   return detail && !err.message.includes(detail) ? `${err.message} (${detail})` : err.message;
 }
 
+/**
+ * fetch(), retried with the server's missing intermediate certificates when
+ * it sent an incomplete chain (see tlsChain.ts).
+ */
+const incompleteChainHosts = new Set<string>();
+
+async function request(url: string, init: RequestInit): Promise<Response> {
+  const host = new URL(url).host;
+  if (!incompleteChainHosts.has(host)) {
+    try {
+      return await fetch(url, init);
+    } catch (err) {
+      if (!isIncompleteChainError(err)) throw err;
+      incompleteChainHosts.add(host);
+    }
+  }
+  const { agent: dispatcher, reason } = await chainCompletingAgent(url);
+  if (!dispatcher) {
+    throw new Error(`incomplete certificate chain; could not fetch the missing intermediate: ${reason}`, {
+      cause: { code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' },
+    });
+  }
+  return (await undiciFetch(url, { ...(init as object), dispatcher })) as unknown as Response;
+}
+
 async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> {
   try {
-    const res = await fetch(url, {
+    const res = await request(url, {
       method: 'GET',
       redirect: 'follow',
       headers: {
@@ -98,6 +150,7 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
         // Cellar (publications.europa.eu/resource/celex/…) picks the language
         // version from this; without it a work URI may answer 300 Multiple Choices.
         'Accept-Language': 'en',
+        ...siteHeaders(url),
       },
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });

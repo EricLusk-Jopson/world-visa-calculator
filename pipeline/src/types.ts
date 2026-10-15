@@ -75,4 +75,6 @@ export type RuleCheckResult = {
   textDiffPreview?: string;
   linkChanges?: LinkChange[];
   error?: string;
+  /** Context worth showing beside the status, e.g. names on a resolver's index that map to no nationality. */
+  note?: string;
 };
