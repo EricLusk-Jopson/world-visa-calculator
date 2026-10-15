@@ -5,18 +5,21 @@
  *
  * Sources:
  *   parent (overview): https://geoconsul.gov.ge/en/entering-georgia
- *   direct (per-country durations): https://geoconsul.gov.ge/en/entering-georgia-visa
- *   Both live in @/data/sources — GeorgiaSources.visaList.
- *
- * Per explicit instruction, two further references are cited here as plain
- * comments rather than as SourceDoc citations:
- *   - https://matsne.gov.ge/en/document/view/2867361?publication=0 — "On
- *     Approval of the List of Countries Whose Citizens May Enter Georgia
- *     without a Visa" (the underlying legislation).
- *   - https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25 — the
- *     consulate's own list of citizens and stateless persons permanently
+ *   direct (visa-free list): https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25
+ *     — the consulate's list of citizens and stateless persons permanently
  *     residing in the listed countries who may enter, stay in, or transit
  *     Georgia without a visa.
+ *   Both live in @/data/sources — GeorgiaSources.visaList.
+ *
+ * The rules below were transcribed from the per-country duration table at
+ * https://geoconsul.gov.ge/en/entering-georgia-visa, which the direct link
+ * replaced as the cited source on 2026-10-15.
+ *
+ * Per explicit instruction, the underlying legislation is cited here as a
+ * plain comment rather than as a SourceDoc citation:
+ *   - https://matsne.gov.ge/en/document/view/2867361?publication=0 — "On
+ *     Approval of the List of Countries Whose Citizens May Enter Georgia
+ *     without a Visa".
  *
  * Base/default rule is visa_required.
  *
