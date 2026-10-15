@@ -1,31 +1,691 @@
 {
-  "generatedAt": "2026-10-15T03:38:29.494Z",
+  "generatedAt": "2026-10-15T04:15:23.263Z",
   "regions": [
     {
-      "region": "NorthMacedonia",
+      "region": "Albania",
       "linkHealth": [
         {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
           "usedBy": [
             {
               "key": "AD",
               "field": "direct"
             },
             {
+              "key": "AE",
+              "field": "direct"
+            },
+            {
+              "key": "AF",
+              "field": "direct"
+            },
+            {
+              "key": "AG",
+              "field": "direct"
+            },
+            {
+              "key": "AM",
+              "field": "direct"
+            },
+            {
+              "key": "AO",
+              "field": "direct"
+            },
+            {
+              "key": "AR",
+              "field": "direct"
+            },
+            {
+              "key": "AT",
+              "field": "direct"
+            },
+            {
+              "key": "AU",
+              "field": "direct"
+            },
+            {
+              "key": "AZ",
+              "field": "direct"
+            },
+            {
+              "key": "BA",
+              "field": "direct"
+            },
+            {
+              "key": "BB",
+              "field": "direct"
+            },
+            {
+              "key": "BD",
+              "field": "direct"
+            },
+            {
+              "key": "BE",
+              "field": "direct"
+            },
+            {
+              "key": "BF",
+              "field": "direct"
+            },
+            {
+              "key": "BG",
+              "field": "direct"
+            },
+            {
+              "key": "BH",
+              "field": "direct"
+            },
+            {
+              "key": "BJ",
+              "field": "direct"
+            },
+            {
+              "key": "BN",
+              "field": "direct"
+            },
+            {
+              "key": "BO",
+              "field": "direct"
+            },
+            {
+              "key": "BR",
+              "field": "direct"
+            },
+            {
+              "key": "BS",
+              "field": "direct"
+            },
+            {
+              "key": "BW",
+              "field": "direct"
+            },
+            {
+              "key": "BY",
+              "field": "direct"
+            },
+            {
+              "key": "BZ",
+              "field": "direct"
+            },
+            {
+              "key": "CA",
+              "field": "direct"
+            },
+            {
+              "key": "CG",
+              "field": "direct"
+            },
+            {
+              "key": "CH",
+              "field": "direct"
+            },
+            {
+              "key": "CI",
+              "field": "direct"
+            },
+            {
+              "key": "CL",
+              "field": "direct"
+            },
+            {
+              "key": "CM",
+              "field": "direct"
+            },
+            {
+              "key": "CN",
+              "field": "direct"
+            },
+            {
+              "key": "CO",
+              "field": "direct"
+            },
+            {
+              "key": "CR",
+              "field": "direct"
+            },
+            {
+              "key": "CU",
+              "field": "direct"
+            },
+            {
+              "key": "CY",
+              "field": "direct"
+            },
+            {
+              "key": "CZ",
+              "field": "direct"
+            },
+            {
+              "key": "DE",
+              "field": "direct"
+            },
+            {
+              "key": "DK",
+              "field": "direct"
+            },
+            {
+              "key": "DO",
+              "field": "direct"
+            },
+            {
+              "key": "DZ",
+              "field": "direct"
+            },
+            {
+              "key": "EC",
+              "field": "direct"
+            },
+            {
+              "key": "EE",
+              "field": "direct"
+            },
+            {
+              "key": "EG",
+              "field": "direct"
+            },
+            {
+              "key": "ER",
+              "field": "direct"
+            },
+            {
+              "key": "ES",
+              "field": "direct"
+            },
+            {
+              "key": "ET",
+              "field": "direct"
+            },
+            {
+              "key": "FI",
+              "field": "direct"
+            },
+            {
+              "key": "FJ",
+              "field": "direct"
+            },
+            {
+              "key": "FR",
+              "field": "direct"
+            },
+            {
+              "key": "GA",
+              "field": "direct"
+            },
+            {
+              "key": "GB",
+              "field": "direct"
+            },
+            {
+              "key": "GE",
+              "field": "direct"
+            },
+            {
+              "key": "GH",
+              "field": "direct"
+            },
+            {
+              "key": "GN",
+              "field": "direct"
+            },
+            {
+              "key": "GR",
+              "field": "direct"
+            },
+            {
+              "key": "GT",
+              "field": "direct"
+            },
+            {
+              "key": "GY",
+              "field": "direct"
+            },
+            {
+              "key": "HK",
+              "field": "direct"
+            },
+            {
+              "key": "HN",
+              "field": "direct"
+            },
+            {
+              "key": "HR",
+              "field": "direct"
+            },
+            {
+              "key": "HT",
+              "field": "direct"
+            },
+            {
+              "key": "HU",
+              "field": "direct"
+            },
+            {
+              "key": "ID",
+              "field": "direct"
+            },
+            {
+              "key": "IE",
+              "field": "direct"
+            },
+            {
+              "key": "IL",
+              "field": "direct"
+            },
+            {
+              "key": "IN",
+              "field": "direct"
+            },
+            {
+              "key": "IQ",
+              "field": "direct"
+            },
+            {
+              "key": "IR",
+              "field": "direct"
+            },
+            {
+              "key": "IS",
+              "field": "direct"
+            },
+            {
+              "key": "IT",
+              "field": "direct"
+            },
+            {
+              "key": "JM",
+              "field": "direct"
+            },
+            {
+              "key": "JO",
+              "field": "direct"
+            },
+            {
+              "key": "JP",
+              "field": "direct"
+            },
+            {
+              "key": "KE",
+              "field": "direct"
+            },
+            {
+              "key": "KG",
+              "field": "direct"
+            },
+            {
+              "key": "KH",
+              "field": "direct"
+            },
+            {
+              "key": "KN",
+              "field": "direct"
+            },
+            {
+              "key": "KP",
+              "field": "direct"
+            },
+            {
+              "key": "KR",
+              "field": "direct"
+            },
+            {
+              "key": "KW",
+              "field": "direct"
+            },
+            {
+              "key": "KZ",
+              "field": "direct"
+            },
+            {
+              "key": "LB",
+              "field": "direct"
+            },
+            {
+              "key": "LI",
+              "field": "direct"
+            },
+            {
+              "key": "LK",
+              "field": "direct"
+            },
+            {
+              "key": "LR",
+              "field": "direct"
+            },
+            {
+              "key": "LS",
+              "field": "direct"
+            },
+            {
+              "key": "LT",
+              "field": "direct"
+            },
+            {
+              "key": "LU",
+              "field": "direct"
+            },
+            {
+              "key": "LV",
+              "field": "direct"
+            },
+            {
+              "key": "LY",
+              "field": "direct"
+            },
+            {
+              "key": "MA",
+              "field": "direct"
+            },
+            {
+              "key": "MC",
+              "field": "direct"
+            },
+            {
+              "key": "MD",
+              "field": "direct"
+            },
+            {
+              "key": "ME",
+              "field": "direct"
+            },
+            {
+              "key": "MG",
+              "field": "direct"
+            },
+            {
+              "key": "MK",
+              "field": "direct"
+            },
+            {
+              "key": "ML",
+              "field": "direct"
+            },
+            {
+              "key": "MN",
+              "field": "direct"
+            },
+            {
+              "key": "MO",
+              "field": "direct"
+            },
+            {
+              "key": "MR",
+              "field": "direct"
+            },
+            {
+              "key": "MT",
+              "field": "direct"
+            },
+            {
+              "key": "MU",
+              "field": "direct"
+            },
+            {
+              "key": "MV",
+              "field": "direct"
+            },
+            {
+              "key": "MW",
+              "field": "direct"
+            },
+            {
+              "key": "MX",
+              "field": "direct"
+            },
+            {
+              "key": "MY",
+              "field": "direct"
+            },
+            {
+              "key": "MZ",
+              "field": "direct"
+            },
+            {
+              "key": "NA",
+              "field": "direct"
+            },
+            {
+              "key": "NG",
+              "field": "direct"
+            },
+            {
+              "key": "NI",
+              "field": "direct"
+            },
+            {
+              "key": "NL",
+              "field": "direct"
+            },
+            {
+              "key": "NO",
+              "field": "direct"
+            },
+            {
+              "key": "NP",
+              "field": "direct"
+            },
+            {
+              "key": "NZ",
+              "field": "direct"
+            },
+            {
+              "key": "OM",
+              "field": "direct"
+            },
+            {
+              "key": "PA",
+              "field": "direct"
+            },
+            {
+              "key": "PE",
+              "field": "direct"
+            },
+            {
+              "key": "PH",
+              "field": "direct"
+            },
+            {
+              "key": "PK",
+              "field": "direct"
+            },
+            {
+              "key": "PL",
+              "field": "direct"
+            },
+            {
+              "key": "PS",
+              "field": "direct"
+            },
+            {
+              "key": "PT",
+              "field": "direct"
+            },
+            {
+              "key": "PY",
+              "field": "direct"
+            },
+            {
+              "key": "QA",
+              "field": "direct"
+            },
+            {
+              "key": "RO",
+              "field": "direct"
+            },
+            {
+              "key": "RS",
+              "field": "direct"
+            },
+            {
+              "key": "RU",
+              "field": "direct"
+            },
+            {
+              "key": "RW",
+              "field": "direct"
+            },
+            {
+              "key": "SA",
+              "field": "direct"
+            },
+            {
+              "key": "SC",
+              "field": "direct"
+            },
+            {
+              "key": "SD",
+              "field": "direct"
+            },
+            {
+              "key": "SE",
+              "field": "direct"
+            },
+            {
+              "key": "SG",
+              "field": "direct"
+            },
+            {
+              "key": "SI",
+              "field": "direct"
+            },
+            {
+              "key": "SK",
+              "field": "direct"
+            },
+            {
+              "key": "SL",
+              "field": "direct"
+            },
+            {
+              "key": "SM",
+              "field": "direct"
+            },
+            {
+              "key": "SN",
+              "field": "direct"
+            },
+            {
+              "key": "SO",
+              "field": "direct"
+            },
+            {
+              "key": "SR",
+              "field": "direct"
+            },
+            {
+              "key": "ST",
+              "field": "direct"
+            },
+            {
+              "key": "SV",
+              "field": "direct"
+            },
+            {
+              "key": "SY",
+              "field": "direct"
+            },
+            {
+              "key": "TG",
+              "field": "direct"
+            },
+            {
+              "key": "TH",
+              "field": "direct"
+            },
+            {
+              "key": "TJ",
+              "field": "direct"
+            },
+            {
+              "key": "TM",
+              "field": "direct"
+            },
+            {
+              "key": "TN",
+              "field": "direct"
+            },
+            {
+              "key": "TR",
+              "field": "direct"
+            },
+            {
+              "key": "TT",
+              "field": "direct"
+            },
+            {
+              "key": "TW",
+              "field": "direct"
+            },
+            {
+              "key": "TZ",
+              "field": "direct"
+            },
+            {
+              "key": "UA",
+              "field": "direct"
+            },
+            {
+              "key": "UG",
+              "field": "direct"
+            },
+            {
+              "key": "US",
+              "field": "direct"
+            },
+            {
+              "key": "UY",
+              "field": "direct"
+            },
+            {
+              "key": "UZ",
+              "field": "direct"
+            },
+            {
+              "key": "VA",
+              "field": "direct"
+            },
+            {
+              "key": "VE",
+              "field": "direct"
+            },
+            {
+              "key": "VN",
+              "field": "direct"
+            },
+            {
+              "key": "XK",
+              "field": "direct"
+            },
+            {
+              "key": "YE",
+              "field": "direct"
+            },
+            {
+              "key": "ZA",
+              "field": "direct"
+            },
+            {
+              "key": "ZM",
+              "field": "direct"
+            },
+            {
+              "key": "ZW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
+          "usedBy": [
+            {
               "key": "AD",
               "field": "parent"
             },
             {
               "key": "AE",
-              "field": "direct"
-            },
-            {
-              "key": "AE",
               "field": "parent"
-            },
-            {
-              "key": "AF",
-              "field": "direct"
             },
             {
               "key": "AF",
@@ -33,23 +693,7 @@
             },
             {
               "key": "AG",
-              "field": "direct"
-            },
-            {
-              "key": "AG",
               "field": "parent"
-            },
-            {
-              "key": "AL",
-              "field": "direct"
-            },
-            {
-              "key": "AL",
-              "field": "parent"
-            },
-            {
-              "key": "AM",
-              "field": "direct"
             },
             {
               "key": "AM",
@@ -57,15 +701,7 @@
             },
             {
               "key": "AO",
-              "field": "direct"
-            },
-            {
-              "key": "AO",
               "field": "parent"
-            },
-            {
-              "key": "AR",
-              "field": "direct"
             },
             {
               "key": "AR",
@@ -73,15 +709,7 @@
             },
             {
               "key": "AT",
-              "field": "direct"
-            },
-            {
-              "key": "AT",
               "field": "parent"
-            },
-            {
-              "key": "AU",
-              "field": "direct"
             },
             {
               "key": "AU",
@@ -89,15 +717,7 @@
             },
             {
               "key": "AZ",
-              "field": "direct"
-            },
-            {
-              "key": "AZ",
               "field": "parent"
-            },
-            {
-              "key": "BA",
-              "field": "direct"
             },
             {
               "key": "BA",
@@ -105,15 +725,7 @@
             },
             {
               "key": "BB",
-              "field": "direct"
-            },
-            {
-              "key": "BB",
               "field": "parent"
-            },
-            {
-              "key": "BD",
-              "field": "direct"
             },
             {
               "key": "BD",
@@ -121,15 +733,7 @@
             },
             {
               "key": "BE",
-              "field": "direct"
-            },
-            {
-              "key": "BE",
               "field": "parent"
-            },
-            {
-              "key": "BF",
-              "field": "direct"
             },
             {
               "key": "BF",
@@ -137,31 +741,11 @@
             },
             {
               "key": "BG",
-              "field": "direct"
-            },
-            {
-              "key": "BG",
               "field": "parent"
             },
             {
               "key": "BH",
-              "field": "direct"
-            },
-            {
-              "key": "BH",
               "field": "parent"
-            },
-            {
-              "key": "BI",
-              "field": "direct"
-            },
-            {
-              "key": "BI",
-              "field": "parent"
-            },
-            {
-              "key": "BJ",
-              "field": "direct"
             },
             {
               "key": "BJ",
@@ -169,15 +753,7 @@
             },
             {
               "key": "BN",
-              "field": "direct"
-            },
-            {
-              "key": "BN",
               "field": "parent"
-            },
-            {
-              "key": "BO",
-              "field": "direct"
             },
             {
               "key": "BO",
@@ -185,31 +761,11 @@
             },
             {
               "key": "BR",
-              "field": "direct"
-            },
-            {
-              "key": "BR",
               "field": "parent"
             },
             {
               "key": "BS",
-              "field": "direct"
-            },
-            {
-              "key": "BS",
               "field": "parent"
-            },
-            {
-              "key": "BT",
-              "field": "direct"
-            },
-            {
-              "key": "BT",
-              "field": "parent"
-            },
-            {
-              "key": "BW",
-              "field": "direct"
             },
             {
               "key": "BW",
@@ -217,15 +773,7 @@
             },
             {
               "key": "BY",
-              "field": "direct"
-            },
-            {
-              "key": "BY",
               "field": "parent"
-            },
-            {
-              "key": "BZ",
-              "field": "direct"
             },
             {
               "key": "BZ",
@@ -233,31 +781,7 @@
             },
             {
               "key": "CA",
-              "field": "direct"
-            },
-            {
-              "key": "CA",
               "field": "parent"
-            },
-            {
-              "key": "CD",
-              "field": "direct"
-            },
-            {
-              "key": "CD",
-              "field": "parent"
-            },
-            {
-              "key": "CF",
-              "field": "direct"
-            },
-            {
-              "key": "CF",
-              "field": "parent"
-            },
-            {
-              "key": "CG",
-              "field": "direct"
             },
             {
               "key": "CG",
@@ -265,15 +789,7 @@
             },
             {
               "key": "CH",
-              "field": "direct"
-            },
-            {
-              "key": "CH",
               "field": "parent"
-            },
-            {
-              "key": "CI",
-              "field": "direct"
             },
             {
               "key": "CI",
@@ -281,15 +797,7 @@
             },
             {
               "key": "CL",
-              "field": "direct"
-            },
-            {
-              "key": "CL",
               "field": "parent"
-            },
-            {
-              "key": "CM",
-              "field": "direct"
             },
             {
               "key": "CM",
@@ -297,15 +805,7 @@
             },
             {
               "key": "CN",
-              "field": "direct"
-            },
-            {
-              "key": "CN",
               "field": "parent"
-            },
-            {
-              "key": "CO",
-              "field": "direct"
             },
             {
               "key": "CO",
@@ -313,31 +813,11 @@
             },
             {
               "key": "CR",
-              "field": "direct"
-            },
-            {
-              "key": "CR",
               "field": "parent"
             },
             {
               "key": "CU",
-              "field": "direct"
-            },
-            {
-              "key": "CU",
               "field": "parent"
-            },
-            {
-              "key": "CV",
-              "field": "direct"
-            },
-            {
-              "key": "CV",
-              "field": "parent"
-            },
-            {
-              "key": "CY",
-              "field": "direct"
             },
             {
               "key": "CY",
@@ -345,47 +825,15 @@
             },
             {
               "key": "CZ",
-              "field": "direct"
-            },
-            {
-              "key": "CZ",
               "field": "parent"
             },
             {
               "key": "DE",
-              "field": "direct"
-            },
-            {
-              "key": "DE",
-              "field": "parent"
-            },
-            {
-              "key": "DJ",
-              "field": "direct"
-            },
-            {
-              "key": "DJ",
               "field": "parent"
             },
             {
               "key": "DK",
-              "field": "direct"
-            },
-            {
-              "key": "DK",
               "field": "parent"
-            },
-            {
-              "key": "DM",
-              "field": "direct"
-            },
-            {
-              "key": "DM",
-              "field": "parent"
-            },
-            {
-              "key": "DO",
-              "field": "direct"
             },
             {
               "key": "DO",
@@ -393,15 +841,7 @@
             },
             {
               "key": "DZ",
-              "field": "direct"
-            },
-            {
-              "key": "DZ",
               "field": "parent"
-            },
-            {
-              "key": "EC",
-              "field": "direct"
             },
             {
               "key": "EC",
@@ -409,15 +849,7 @@
             },
             {
               "key": "EE",
-              "field": "direct"
-            },
-            {
-              "key": "EE",
               "field": "parent"
-            },
-            {
-              "key": "EG",
-              "field": "direct"
             },
             {
               "key": "EG",
@@ -425,15 +857,7 @@
             },
             {
               "key": "ER",
-              "field": "direct"
-            },
-            {
-              "key": "ER",
               "field": "parent"
-            },
-            {
-              "key": "ES",
-              "field": "direct"
             },
             {
               "key": "ES",
@@ -441,15 +865,7 @@
             },
             {
               "key": "ET",
-              "field": "direct"
-            },
-            {
-              "key": "ET",
               "field": "parent"
-            },
-            {
-              "key": "FI",
-              "field": "direct"
             },
             {
               "key": "FI",
@@ -457,23 +873,7 @@
             },
             {
               "key": "FJ",
-              "field": "direct"
-            },
-            {
-              "key": "FJ",
               "field": "parent"
-            },
-            {
-              "key": "FM",
-              "field": "direct"
-            },
-            {
-              "key": "FM",
-              "field": "parent"
-            },
-            {
-              "key": "FR",
-              "field": "direct"
             },
             {
               "key": "FR",
@@ -481,31 +881,11 @@
             },
             {
               "key": "GA",
-              "field": "direct"
-            },
-            {
-              "key": "GA",
               "field": "parent"
             },
             {
               "key": "GB",
-              "field": "direct"
-            },
-            {
-              "key": "GB",
               "field": "parent"
-            },
-            {
-              "key": "GD",
-              "field": "direct"
-            },
-            {
-              "key": "GD",
-              "field": "parent"
-            },
-            {
-              "key": "GE",
-              "field": "direct"
             },
             {
               "key": "GE",
@@ -513,39 +893,11 @@
             },
             {
               "key": "GH",
-              "field": "direct"
-            },
-            {
-              "key": "GH",
-              "field": "parent"
-            },
-            {
-              "key": "GM",
-              "field": "direct"
-            },
-            {
-              "key": "GM",
               "field": "parent"
             },
             {
               "key": "GN",
-              "field": "direct"
-            },
-            {
-              "key": "GN",
               "field": "parent"
-            },
-            {
-              "key": "GQ",
-              "field": "direct"
-            },
-            {
-              "key": "GQ",
-              "field": "parent"
-            },
-            {
-              "key": "GR",
-              "field": "direct"
             },
             {
               "key": "GR",
@@ -553,23 +905,7 @@
             },
             {
               "key": "GT",
-              "field": "direct"
-            },
-            {
-              "key": "GT",
               "field": "parent"
-            },
-            {
-              "key": "GW",
-              "field": "direct"
-            },
-            {
-              "key": "GW",
-              "field": "parent"
-            },
-            {
-              "key": "GY",
-              "field": "direct"
             },
             {
               "key": "GY",
@@ -577,15 +913,7 @@
             },
             {
               "key": "HK",
-              "field": "direct"
-            },
-            {
-              "key": "HK",
               "field": "parent"
-            },
-            {
-              "key": "HN",
-              "field": "direct"
             },
             {
               "key": "HN",
@@ -593,15 +921,7 @@
             },
             {
               "key": "HR",
-              "field": "direct"
-            },
-            {
-              "key": "HR",
               "field": "parent"
-            },
-            {
-              "key": "HT",
-              "field": "direct"
             },
             {
               "key": "HT",
@@ -609,15 +929,7 @@
             },
             {
               "key": "HU",
-              "field": "direct"
-            },
-            {
-              "key": "HU",
               "field": "parent"
-            },
-            {
-              "key": "ID",
-              "field": "direct"
             },
             {
               "key": "ID",
@@ -625,15 +937,7 @@
             },
             {
               "key": "IE",
-              "field": "direct"
-            },
-            {
-              "key": "IE",
               "field": "parent"
-            },
-            {
-              "key": "IL",
-              "field": "direct"
             },
             {
               "key": "IL",
@@ -641,15 +945,7 @@
             },
             {
               "key": "IN",
-              "field": "direct"
-            },
-            {
-              "key": "IN",
               "field": "parent"
-            },
-            {
-              "key": "IQ",
-              "field": "direct"
             },
             {
               "key": "IQ",
@@ -657,15 +953,7 @@
             },
             {
               "key": "IR",
-              "field": "direct"
-            },
-            {
-              "key": "IR",
               "field": "parent"
-            },
-            {
-              "key": "IS",
-              "field": "direct"
             },
             {
               "key": "IS",
@@ -673,15 +961,7 @@
             },
             {
               "key": "IT",
-              "field": "direct"
-            },
-            {
-              "key": "IT",
               "field": "parent"
-            },
-            {
-              "key": "JM",
-              "field": "direct"
             },
             {
               "key": "JM",
@@ -689,15 +969,7 @@
             },
             {
               "key": "JO",
-              "field": "direct"
-            },
-            {
-              "key": "JO",
               "field": "parent"
-            },
-            {
-              "key": "JP",
-              "field": "direct"
             },
             {
               "key": "JP",
@@ -705,15 +977,7 @@
             },
             {
               "key": "KE",
-              "field": "direct"
-            },
-            {
-              "key": "KE",
               "field": "parent"
-            },
-            {
-              "key": "KG",
-              "field": "direct"
             },
             {
               "key": "KG",
@@ -721,31 +985,7 @@
             },
             {
               "key": "KH",
-              "field": "direct"
-            },
-            {
-              "key": "KH",
               "field": "parent"
-            },
-            {
-              "key": "KI",
-              "field": "direct"
-            },
-            {
-              "key": "KI",
-              "field": "parent"
-            },
-            {
-              "key": "KM",
-              "field": "direct"
-            },
-            {
-              "key": "KM",
-              "field": "parent"
-            },
-            {
-              "key": "KN",
-              "field": "direct"
             },
             {
               "key": "KN",
@@ -753,15 +993,7 @@
             },
             {
               "key": "KP",
-              "field": "direct"
-            },
-            {
-              "key": "KP",
               "field": "parent"
-            },
-            {
-              "key": "KR",
-              "field": "direct"
             },
             {
               "key": "KR",
@@ -769,47 +1001,15 @@
             },
             {
               "key": "KW",
-              "field": "direct"
-            },
-            {
-              "key": "KW",
               "field": "parent"
             },
             {
               "key": "KZ",
-              "field": "direct"
-            },
-            {
-              "key": "KZ",
-              "field": "parent"
-            },
-            {
-              "key": "LA",
-              "field": "direct"
-            },
-            {
-              "key": "LA",
               "field": "parent"
             },
             {
               "key": "LB",
-              "field": "direct"
-            },
-            {
-              "key": "LB",
               "field": "parent"
-            },
-            {
-              "key": "LC",
-              "field": "direct"
-            },
-            {
-              "key": "LC",
-              "field": "parent"
-            },
-            {
-              "key": "LI",
-              "field": "direct"
             },
             {
               "key": "LI",
@@ -817,15 +1017,7 @@
             },
             {
               "key": "LK",
-              "field": "direct"
-            },
-            {
-              "key": "LK",
               "field": "parent"
-            },
-            {
-              "key": "LR",
-              "field": "direct"
             },
             {
               "key": "LR",
@@ -833,15 +1025,7 @@
             },
             {
               "key": "LS",
-              "field": "direct"
-            },
-            {
-              "key": "LS",
               "field": "parent"
-            },
-            {
-              "key": "LT",
-              "field": "direct"
             },
             {
               "key": "LT",
@@ -849,15 +1033,7 @@
             },
             {
               "key": "LU",
-              "field": "direct"
-            },
-            {
-              "key": "LU",
               "field": "parent"
-            },
-            {
-              "key": "LV",
-              "field": "direct"
             },
             {
               "key": "LV",
@@ -865,15 +1041,7 @@
             },
             {
               "key": "LY",
-              "field": "direct"
-            },
-            {
-              "key": "LY",
               "field": "parent"
-            },
-            {
-              "key": "MA",
-              "field": "direct"
             },
             {
               "key": "MA",
@@ -881,15 +1049,7 @@
             },
             {
               "key": "MC",
-              "field": "direct"
-            },
-            {
-              "key": "MC",
               "field": "parent"
-            },
-            {
-              "key": "MD",
-              "field": "direct"
             },
             {
               "key": "MD",
@@ -897,47 +1057,19 @@
             },
             {
               "key": "ME",
-              "field": "direct"
-            },
-            {
-              "key": "ME",
               "field": "parent"
             },
             {
               "key": "MG",
-              "field": "direct"
-            },
-            {
-              "key": "MG",
               "field": "parent"
             },
             {
-              "key": "MH",
-              "field": "direct"
-            },
-            {
-              "key": "MH",
+              "key": "MK",
               "field": "parent"
             },
             {
               "key": "ML",
-              "field": "direct"
-            },
-            {
-              "key": "ML",
               "field": "parent"
-            },
-            {
-              "key": "MM",
-              "field": "direct"
-            },
-            {
-              "key": "MM",
-              "field": "parent"
-            },
-            {
-              "key": "MN",
-              "field": "direct"
             },
             {
               "key": "MN",
@@ -945,15 +1077,7 @@
             },
             {
               "key": "MO",
-              "field": "direct"
-            },
-            {
-              "key": "MO",
               "field": "parent"
-            },
-            {
-              "key": "MR",
-              "field": "direct"
             },
             {
               "key": "MR",
@@ -961,15 +1085,7 @@
             },
             {
               "key": "MT",
-              "field": "direct"
-            },
-            {
-              "key": "MT",
               "field": "parent"
-            },
-            {
-              "key": "MU",
-              "field": "direct"
             },
             {
               "key": "MU",
@@ -977,15 +1093,7 @@
             },
             {
               "key": "MV",
-              "field": "direct"
-            },
-            {
-              "key": "MV",
               "field": "parent"
-            },
-            {
-              "key": "MW",
-              "field": "direct"
             },
             {
               "key": "MW",
@@ -993,15 +1101,7 @@
             },
             {
               "key": "MX",
-              "field": "direct"
-            },
-            {
-              "key": "MX",
               "field": "parent"
-            },
-            {
-              "key": "MY",
-              "field": "direct"
             },
             {
               "key": "MY",
@@ -1009,31 +1109,11 @@
             },
             {
               "key": "MZ",
-              "field": "direct"
-            },
-            {
-              "key": "MZ",
               "field": "parent"
             },
             {
               "key": "NA",
-              "field": "direct"
-            },
-            {
-              "key": "NA",
               "field": "parent"
-            },
-            {
-              "key": "NE",
-              "field": "direct"
-            },
-            {
-              "key": "NE",
-              "field": "parent"
-            },
-            {
-              "key": "NG",
-              "field": "direct"
             },
             {
               "key": "NG",
@@ -1041,15 +1121,7 @@
             },
             {
               "key": "NI",
-              "field": "direct"
-            },
-            {
-              "key": "NI",
               "field": "parent"
-            },
-            {
-              "key": "NL",
-              "field": "direct"
             },
             {
               "key": "NL",
@@ -1057,31 +1129,11 @@
             },
             {
               "key": "NO",
-              "field": "direct"
-            },
-            {
-              "key": "NO",
               "field": "parent"
             },
             {
               "key": "NP",
-              "field": "direct"
-            },
-            {
-              "key": "NP",
               "field": "parent"
-            },
-            {
-              "key": "NR",
-              "field": "direct"
-            },
-            {
-              "key": "NR",
-              "field": "parent"
-            },
-            {
-              "key": "NZ",
-              "field": "direct"
             },
             {
               "key": "NZ",
@@ -1089,15 +1141,7 @@
             },
             {
               "key": "OM",
-              "field": "direct"
-            },
-            {
-              "key": "OM",
               "field": "parent"
-            },
-            {
-              "key": "PA",
-              "field": "direct"
             },
             {
               "key": "PA",
@@ -1105,23 +1149,7 @@
             },
             {
               "key": "PE",
-              "field": "direct"
-            },
-            {
-              "key": "PE",
               "field": "parent"
-            },
-            {
-              "key": "PG",
-              "field": "direct"
-            },
-            {
-              "key": "PG",
-              "field": "parent"
-            },
-            {
-              "key": "PH",
-              "field": "direct"
             },
             {
               "key": "PH",
@@ -1129,39 +1157,19 @@
             },
             {
               "key": "PK",
-              "field": "direct"
-            },
-            {
-              "key": "PK",
               "field": "parent"
             },
             {
               "key": "PL",
-              "field": "direct"
+              "field": "parent"
             },
             {
-              "key": "PL",
+              "key": "PS",
               "field": "parent"
             },
             {
               "key": "PT",
-              "field": "direct"
-            },
-            {
-              "key": "PT",
               "field": "parent"
-            },
-            {
-              "key": "PW",
-              "field": "direct"
-            },
-            {
-              "key": "PW",
-              "field": "parent"
-            },
-            {
-              "key": "PY",
-              "field": "direct"
             },
             {
               "key": "PY",
@@ -1169,15 +1177,7 @@
             },
             {
               "key": "QA",
-              "field": "direct"
-            },
-            {
-              "key": "QA",
               "field": "parent"
-            },
-            {
-              "key": "RO",
-              "field": "direct"
             },
             {
               "key": "RO",
@@ -1185,15 +1185,7 @@
             },
             {
               "key": "RS",
-              "field": "direct"
-            },
-            {
-              "key": "RS",
               "field": "parent"
-            },
-            {
-              "key": "RU",
-              "field": "direct"
             },
             {
               "key": "RU",
@@ -1201,31 +1193,11 @@
             },
             {
               "key": "RW",
-              "field": "direct"
-            },
-            {
-              "key": "RW",
               "field": "parent"
             },
             {
               "key": "SA",
-              "field": "direct"
-            },
-            {
-              "key": "SA",
               "field": "parent"
-            },
-            {
-              "key": "SB",
-              "field": "direct"
-            },
-            {
-              "key": "SB",
-              "field": "parent"
-            },
-            {
-              "key": "SC",
-              "field": "direct"
             },
             {
               "key": "SC",
@@ -1233,15 +1205,7 @@
             },
             {
               "key": "SD",
-              "field": "direct"
-            },
-            {
-              "key": "SD",
               "field": "parent"
-            },
-            {
-              "key": "SE",
-              "field": "direct"
             },
             {
               "key": "SE",
@@ -1249,15 +1213,7 @@
             },
             {
               "key": "SG",
-              "field": "direct"
-            },
-            {
-              "key": "SG",
               "field": "parent"
-            },
-            {
-              "key": "SI",
-              "field": "direct"
             },
             {
               "key": "SI",
@@ -1265,15 +1221,7 @@
             },
             {
               "key": "SK",
-              "field": "direct"
-            },
-            {
-              "key": "SK",
               "field": "parent"
-            },
-            {
-              "key": "SL",
-              "field": "direct"
             },
             {
               "key": "SL",
@@ -1281,15 +1229,7 @@
             },
             {
               "key": "SM",
-              "field": "direct"
-            },
-            {
-              "key": "SM",
               "field": "parent"
-            },
-            {
-              "key": "SN",
-              "field": "direct"
             },
             {
               "key": "SN",
@@ -1297,31 +1237,11 @@
             },
             {
               "key": "SO",
-              "field": "direct"
-            },
-            {
-              "key": "SO",
               "field": "parent"
             },
             {
               "key": "SR",
-              "field": "direct"
-            },
-            {
-              "key": "SR",
               "field": "parent"
-            },
-            {
-              "key": "SS",
-              "field": "direct"
-            },
-            {
-              "key": "SS",
-              "field": "parent"
-            },
-            {
-              "key": "ST",
-              "field": "direct"
             },
             {
               "key": "ST",
@@ -1329,39 +1249,11 @@
             },
             {
               "key": "SV",
-              "field": "direct"
-            },
-            {
-              "key": "SV",
               "field": "parent"
             },
             {
               "key": "SY",
-              "field": "direct"
-            },
-            {
-              "key": "SY",
               "field": "parent"
-            },
-            {
-              "key": "SZ",
-              "field": "direct"
-            },
-            {
-              "key": "SZ",
-              "field": "parent"
-            },
-            {
-              "key": "TD",
-              "field": "direct"
-            },
-            {
-              "key": "TD",
-              "field": "parent"
-            },
-            {
-              "key": "TG",
-              "field": "direct"
             },
             {
               "key": "TG",
@@ -1369,31 +1261,11 @@
             },
             {
               "key": "TH",
-              "field": "direct"
-            },
-            {
-              "key": "TH",
               "field": "parent"
             },
             {
               "key": "TJ",
-              "field": "direct"
-            },
-            {
-              "key": "TJ",
               "field": "parent"
-            },
-            {
-              "key": "TL",
-              "field": "direct"
-            },
-            {
-              "key": "TL",
-              "field": "parent"
-            },
-            {
-              "key": "TM",
-              "field": "direct"
             },
             {
               "key": "TM",
@@ -1401,23 +1273,7 @@
             },
             {
               "key": "TN",
-              "field": "direct"
-            },
-            {
-              "key": "TN",
               "field": "parent"
-            },
-            {
-              "key": "TO",
-              "field": "direct"
-            },
-            {
-              "key": "TO",
-              "field": "parent"
-            },
-            {
-              "key": "TR",
-              "field": "direct"
             },
             {
               "key": "TR",
@@ -1425,23 +1281,7 @@
             },
             {
               "key": "TT",
-              "field": "direct"
-            },
-            {
-              "key": "TT",
               "field": "parent"
-            },
-            {
-              "key": "TV",
-              "field": "direct"
-            },
-            {
-              "key": "TV",
-              "field": "parent"
-            },
-            {
-              "key": "TW",
-              "field": "direct"
             },
             {
               "key": "TW",
@@ -1449,15 +1289,7 @@
             },
             {
               "key": "TZ",
-              "field": "direct"
-            },
-            {
-              "key": "TZ",
               "field": "parent"
-            },
-            {
-              "key": "UA",
-              "field": "direct"
             },
             {
               "key": "UA",
@@ -1465,15 +1297,7 @@
             },
             {
               "key": "UG",
-              "field": "direct"
-            },
-            {
-              "key": "UG",
               "field": "parent"
-            },
-            {
-              "key": "US",
-              "field": "direct"
             },
             {
               "key": "US",
@@ -1481,15 +1305,7 @@
             },
             {
               "key": "UY",
-              "field": "direct"
-            },
-            {
-              "key": "UY",
               "field": "parent"
-            },
-            {
-              "key": "UZ",
-              "field": "direct"
             },
             {
               "key": "UZ",
@@ -1497,23 +1313,7 @@
             },
             {
               "key": "VA",
-              "field": "direct"
-            },
-            {
-              "key": "VA",
               "field": "parent"
-            },
-            {
-              "key": "VC",
-              "field": "direct"
-            },
-            {
-              "key": "VC",
-              "field": "parent"
-            },
-            {
-              "key": "VE",
-              "field": "direct"
             },
             {
               "key": "VE",
@@ -1521,31 +1321,7 @@
             },
             {
               "key": "VN",
-              "field": "direct"
-            },
-            {
-              "key": "VN",
               "field": "parent"
-            },
-            {
-              "key": "VU",
-              "field": "direct"
-            },
-            {
-              "key": "VU",
-              "field": "parent"
-            },
-            {
-              "key": "WS",
-              "field": "direct"
-            },
-            {
-              "key": "WS",
-              "field": "parent"
-            },
-            {
-              "key": "XK",
-              "field": "direct"
             },
             {
               "key": "XK",
@@ -1553,15 +1329,7 @@
             },
             {
               "key": "YE",
-              "field": "direct"
-            },
-            {
-              "key": "YE",
               "field": "parent"
-            },
-            {
-              "key": "ZA",
-              "field": "direct"
             },
             {
               "key": "ZA",
@@ -1569,15 +1337,7 @@
             },
             {
               "key": "ZM",
-              "field": "direct"
-            },
-            {
-              "key": "ZM",
               "field": "parent"
-            },
-            {
-              "key": "ZW",
-              "field": "direct"
             },
             {
               "key": "ZW",
@@ -1586,4305 +1346,19 @@
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1205",
-          "usedBy": [
-            {
-              "key": "AD",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/673",
-          "usedBy": [
-            {
-              "key": "AE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/606",
-          "usedBy": [
-            {
-              "key": "AF",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/732",
-          "usedBy": [
-            {
-              "key": "AG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/847",
-          "usedBy": [
-            {
-              "key": "AL",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1256",
-          "usedBy": [
-            {
-              "key": "AM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/50",
-          "usedBy": [
-            {
-              "key": "AO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/733",
-          "usedBy": [
-            {
-              "key": "AR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/846",
-          "usedBy": [
-            {
-              "key": "AT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/705",
-          "usedBy": [
-            {
-              "key": "AU",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/607",
-          "usedBy": [
-            {
-              "key": "AZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1214",
-          "usedBy": [
-            {
-              "key": "BA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734",
-          "usedBy": [
-            {
-              "key": "BB",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/608",
-          "usedBy": [
-            {
-              "key": "BD",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1209",
-          "usedBy": [
-            {
-              "key": "BE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/54",
-          "usedBy": [
-            {
-              "key": "BF",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1218",
-          "usedBy": [
-            {
-              "key": "BG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/609",
-          "usedBy": [
-            {
-              "key": "BH",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/61",
-          "usedBy": [
-            {
-              "key": "BI",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/51",
-          "usedBy": [
-            {
-              "key": "BJ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/610",
-          "usedBy": [
-            {
-              "key": "BN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/737",
-          "usedBy": [
-            {
-              "key": "BO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/738",
-          "usedBy": [
-            {
-              "key": "BR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/735",
-          "usedBy": [
-            {
-              "key": "BS",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/611",
-          "usedBy": [
-            {
-              "key": "BT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/52",
-          "usedBy": [
-            {
-              "key": "BW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1213",
-          "usedBy": [
-            {
-              "key": "BY",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/736",
-          "usedBy": [
-            {
-              "key": "BZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/724",
-          "usedBy": [
-            {
-              "key": "CA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/90",
-          "usedBy": [
-            {
-              "key": "CD",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/601",
-          "usedBy": [
-            {
-              "key": "CF",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/588",
-          "usedBy": [
-            {
-              "key": "CG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1356",
-          "usedBy": [
-            {
-              "key": "CH",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/53",
-          "usedBy": [
-            {
-              "key": "CI",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/764",
-          "usedBy": [
-            {
-              "key": "CL",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/570",
-          "usedBy": [
-            {
-              "key": "CM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/661",
-          "usedBy": [
-            {
-              "key": "CN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/748",
-          "usedBy": [
-            {
-              "key": "CO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/749",
-          "usedBy": [
-            {
-              "key": "CR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/750",
-          "usedBy": [
-            {
-              "key": "CU",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/566",
-          "usedBy": [
-            {
-              "key": "CV",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1275",
-          "usedBy": [
-            {
-              "key": "CY",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1355",
-          "usedBy": [
-            {
-              "key": "CZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1238",
-          "usedBy": [
-            {
-              "key": "DE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/604",
-          "usedBy": [
-            {
-              "key": "DJ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1254",
-          "usedBy": [
-            {
-              "key": "DK",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/742",
-          "usedBy": [
-            {
-              "key": "DM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/743",
-          "usedBy": [
-            {
-              "key": "DO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/49",
-          "usedBy": [
-            {
-              "key": "DZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/744",
-          "usedBy": [
-            {
-              "key": "EC",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1259",
-          "usedBy": [
-            {
-              "key": "EE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/91",
-          "usedBy": [
-            {
-              "key": "EG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/560",
-          "usedBy": [
-            {
-              "key": "ER",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1359",
-          "usedBy": [
-            {
-              "key": "ES",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/564",
-          "usedBy": [
-            {
-              "key": "ET",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1350",
-          "usedBy": [
-            {
-              "key": "FI",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/721",
-          "usedBy": [
-            {
-              "key": "FJ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/710",
-          "usedBy": [
-            {
-              "key": "FM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1351",
-          "usedBy": [
-            {
-              "key": "FR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/63",
-          "usedBy": [
-            {
-              "key": "GA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1229",
-          "usedBy": [
-            {
-              "key": "GB",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/741",
-          "usedBy": [
-            {
-              "key": "GD",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1240",
-          "usedBy": [
-            {
-              "key": "GE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/78",
-          "usedBy": [
-            {
-              "key": "GH",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/77",
-          "usedBy": [
-            {
-              "key": "GM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/89",
-          "usedBy": [
-            {
-              "key": "GN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/92",
-          "usedBy": [
-            {
-              "key": "GQ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1249",
-          "usedBy": [
-            {
-              "key": "GR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/740",
-          "usedBy": [
-            {
-              "key": "GT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/80",
-          "usedBy": [
-            {
-              "key": "GW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/79",
-          "usedBy": [
-            {
-              "key": "GY",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/763",
-          "usedBy": [
-            {
-              "key": "HN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1353",
-          "usedBy": [
-            {
-              "key": "HR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/762",
-          "usedBy": [
-            {
-              "key": "HT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1349",
-          "usedBy": [
-            {
-              "key": "HU",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/617",
-          "usedBy": [
-            {
-              "key": "ID",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1263",
-          "usedBy": [
-            {
-              "key": "IE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/615",
-          "usedBy": [
-            {
-              "key": "IL",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/616",
-          "usedBy": [
-            {
-              "key": "IN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/619",
-          "usedBy": [
-            {
-              "key": "IQ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/620",
-          "usedBy": [
-            {
-              "key": "IR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1266",
-          "usedBy": [
-            {
-              "key": "IS",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1273",
-          "usedBy": [
-            {
-              "key": "IT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/746",
-          "usedBy": [
-            {
-              "key": "JM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/627",
-          "usedBy": [
-            {
-              "key": "JO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/624",
-          "usedBy": [
-            {
-              "key": "JP",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/572",
-          "usedBy": [
-            {
-              "key": "KE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/638",
-          "usedBy": [
-            {
-              "key": "KG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/632",
-          "usedBy": [
-            {
-              "key": "KH",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/708",
-          "usedBy": [
-            {
-              "key": "KI",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/573",
-          "usedBy": [
-            {
-              "key": "KM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/755",
-          "usedBy": [
-            {
-              "key": "KN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/613",
-          "usedBy": [
-            {
-              "key": "KP",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/628",
-          "usedBy": [
-            {
-              "key": "KR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/640",
-          "usedBy": [
-            {
-              "key": "KW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/630",
-          "usedBy": [
-            {
-              "key": "KZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/641",
-          "usedBy": [
-            {
-              "key": "LA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/650",
-          "usedBy": [
-            {
-              "key": "LB",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/756",
-          "usedBy": [
-            {
-              "key": "LC",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1284",
-          "usedBy": [
-            {
-              "key": "LI",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/688",
-          "usedBy": [
-            {
-              "key": "LK",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/575",
-          "usedBy": [
-            {
-              "key": "LR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/574",
-          "usedBy": [
-            {
-              "key": "LS",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1282",
-          "usedBy": [
-            {
-              "key": "LT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1286",
-          "usedBy": [
-            {
-              "key": "LU",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1281",
-          "usedBy": [
-            {
-              "key": "LV",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/576",
-          "usedBy": [
-            {
-              "key": "LY",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/583",
-          "usedBy": [
-            {
-              "key": "MA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1290",
-          "usedBy": [
-            {
-              "key": "MC",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1289",
-          "usedBy": [
-            {
-              "key": "MD",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1354",
-          "usedBy": [
-            {
-              "key": "ME",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/580",
-          "usedBy": [
-            {
-              "key": "MG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/709",
-          "usedBy": [
-            {
-              "key": "MH",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/582",
-          "usedBy": [
-            {
-              "key": "ML",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/654",
-          "usedBy": [
-            {
-              "key": "MM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/655",
-          "usedBy": [
-            {
-              "key": "MN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/578",
-          "usedBy": [
-            {
-              "key": "MR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1287",
-          "usedBy": [
-            {
-              "key": "MT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/579",
-          "usedBy": [
-            {
-              "key": "MU",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/651",
-          "usedBy": [
-            {
-              "key": "MV",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/581",
-          "usedBy": [
-            {
-              "key": "MW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/727",
-          "usedBy": [
-            {
-              "key": "MX",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/653",
-          "usedBy": [
-            {
-              "key": "MY",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/584",
-          "usedBy": [
-            {
-              "key": "MZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/585",
-          "usedBy": [
-            {
-              "key": "NA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/586",
-          "usedBy": [
-            {
-              "key": "NE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/587",
-          "usedBy": [
-            {
-              "key": "NG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/728",
-          "usedBy": [
-            {
-              "key": "NI",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1352",
-          "usedBy": [
-            {
-              "key": "NL",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294",
-          "usedBy": [
-            {
-              "key": "NO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/656",
-          "usedBy": [
-            {
-              "key": "NP",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/711",
-          "usedBy": [
-            {
-              "key": "NR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/712",
-          "usedBy": [
-            {
-              "key": "NZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/674",
-          "usedBy": [
-            {
-              "key": "OM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/751",
-          "usedBy": [
-            {
-              "key": "PA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/754",
-          "usedBy": [
-            {
-              "key": "PE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/714",
-          "usedBy": [
-            {
-              "key": "PG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/687",
-          "usedBy": [
-            {
-              "key": "PH",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/675",
-          "usedBy": [
-            {
-              "key": "PK",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1299",
-          "usedBy": [
-            {
-              "key": "PL",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1302",
-          "usedBy": [
-            {
-              "key": "PT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/713",
-          "usedBy": [
-            {
-              "key": "PW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/753",
-          "usedBy": [
-            {
-              "key": "PY",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/636",
-          "usedBy": [
-            {
-              "key": "QA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1309",
-          "usedBy": [
-            {
-              "key": "RO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1333",
-          "usedBy": [
-            {
-              "key": "RS",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1313",
-          "usedBy": [
-            {
-              "key": "RU",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/589",
-          "usedBy": [
-            {
-              "key": "RW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/676",
-          "usedBy": [
-            {
-              "key": "SA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/717",
-          "usedBy": [
-            {
-              "key": "SB",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/591",
-          "usedBy": [
-            {
-              "key": "SC",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/596",
-          "usedBy": [
-            {
-              "key": "SD",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1357",
-          "usedBy": [
-            {
-              "key": "SE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/677",
-          "usedBy": [
-            {
-              "key": "SG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1323",
-          "usedBy": [
-            {
-              "key": "SI",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1319",
-          "usedBy": [
-            {
-              "key": "SK",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/594",
-          "usedBy": [
-            {
-              "key": "SL",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1314",
-          "usedBy": [
-            {
-              "key": "SM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/593",
-          "usedBy": [
-            {
-              "key": "SN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/595",
-          "usedBy": [
-            {
-              "key": "SO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/759",
-          "usedBy": [
-            {
-              "key": "SR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/568",
-          "usedBy": [
-            {
-              "key": "SS",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/590",
-          "usedBy": [
-            {
-              "key": "ST",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/745",
-          "usedBy": [
-            {
-              "key": "SV",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/678",
-          "usedBy": [
-            {
-              "key": "SY",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/562",
-          "usedBy": [
-            {
-              "key": "SZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/602",
-          "usedBy": [
-            {
-              "key": "TD",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/598",
-          "usedBy": [
-            {
-              "key": "TG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/682",
-          "usedBy": [
-            {
-              "key": "TH",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/683",
-          "usedBy": [
-            {
-              "key": "TJ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/622",
-          "usedBy": [
-            {
-              "key": "TL",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/684",
-          "usedBy": [
-            {
-              "key": "TM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/599",
-          "usedBy": [
-            {
-              "key": "TN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/718",
-          "usedBy": [
-            {
-              "key": "TO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1340",
-          "usedBy": [
-            {
-              "key": "TR",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/760",
-          "usedBy": [
-            {
-              "key": "TT",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/719",
-          "usedBy": [
-            {
-              "key": "TV",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/681",
-          "usedBy": [
-            {
-              "key": "TW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/597",
-          "usedBy": [
-            {
-              "key": "TZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1346",
-          "usedBy": [
-            {
-              "key": "UA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/600",
-          "usedBy": [
-            {
-              "key": "UG",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/731",
-          "usedBy": [
-            {
-              "key": "US",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761",
-          "usedBy": [
-            {
-              "key": "UY",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/685",
-          "usedBy": [
-            {
-              "key": "UZ",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1222",
-          "usedBy": [
-            {
-              "key": "VA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/757",
-          "usedBy": [
-            {
-              "key": "VC",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/739",
-          "usedBy": [
-            {
-              "key": "VE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/612",
-          "usedBy": [
-            {
-              "key": "VN",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/707",
-          "usedBy": [
-            {
-              "key": "VU",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/716",
-          "usedBy": [
-            {
-              "key": "WS",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1279",
-          "usedBy": [
-            {
-              "key": "XK",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/626",
-          "usedBy": [
-            {
-              "key": "YE",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/569",
-          "usedBy": [
-            {
-              "key": "ZA",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/565",
-          "usedBy": [
-            {
-              "key": "ZM",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/567",
-          "usedBy": [
-            {
-              "key": "ZW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.mk/livewire/update"
+          "finalUrl": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/"
         }
       ],
       "ruleChecks": [
         {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1205",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AD"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/673",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/606",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AF"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/732",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/847",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AL"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1256",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/50",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/733",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/846",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/705",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AU"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/607",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "AZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1214",
-          "currentUpdatedAt": null,
-          "status": "first-run",
-          "keys": [
-            "BA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BB"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/608",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BD"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1209",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/54",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BF"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1218",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/609",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BH"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/61",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BI"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/51",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BJ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/610",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/737",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/738",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/735",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BS"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/611",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/52",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1213",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BY"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/736",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "BZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/724",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/90",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CD"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/601",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CF"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/588",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1356",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CH"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/53",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CI"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/764",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CL"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/570",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/661",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/748",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/749",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/750",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CU"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/566",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CV"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1275",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CY"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1355",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "CZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1238",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "DE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/604",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "DJ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1254",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "DK"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/742",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "DM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/743",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "DO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/49",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "DZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/744",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "EC"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1259",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "EE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/91",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "EG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/560",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ER"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1359",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ES"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/564",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ET"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1350",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "FI"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/721",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "FJ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/710",
-          "currentUpdatedAt": null,
-          "status": "first-run",
-          "keys": [
-            "FM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1351",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "FR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/63",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1229",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GB"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/741",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GD"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1240",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/78",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GH"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/77",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/89",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/92",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GQ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1249",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/740",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/80",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/79",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "GY"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/763",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "HN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1353",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "HR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/762",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "HT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1349",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "HU"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/617",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ID"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1263",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "IE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/615",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "IL"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/616",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "IN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/619",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "IQ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/620",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "IR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1266",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "IS"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1273",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "IT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/746",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "JM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/627",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "JO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/624",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "JP"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/572",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/638",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/632",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KH"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/708",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KI"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/573",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/755",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/613",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KP"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/628",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/640",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/630",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "KZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/641",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/650",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LB"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/756",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LC"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1284",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LI"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/688",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LK"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/575",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/574",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LS"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1282",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1286",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LU"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1281",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LV"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/576",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "LY"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/583",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1290",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MC"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1289",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MD"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1354",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ME"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/580",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/709",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MH"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/582",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ML"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/654",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/655",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/578",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1287",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/579",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MU"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/651",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MV"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/581",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/727",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MX"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/653",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MY"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/584",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "MZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/585",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "NA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/586",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "NE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/587",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "NG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/728",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "NI"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1352",
-          "currentUpdatedAt": null,
-          "status": "first-run",
-          "keys": [
-            "NL"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "NO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/656",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "NP"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/711",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "NR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/712",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "NZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/674",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "OM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/751",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/754",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/714",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/687",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PH"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/675",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PK"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1299",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PL"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1302",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/713",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/753",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "PY"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/636",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "QA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1309",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "RO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1333",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "RS"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1313",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "RU"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/589",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "RW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/676",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/717",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SB"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/591",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SC"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/596",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SD"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1357",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/677",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1323",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SI"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1319",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SK"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/594",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SL"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1314",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/593",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/595",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/759",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/568",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SS"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/590",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ST"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/745",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SV"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/678",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SY"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/562",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "SZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/602",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TD"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/598",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/682",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TH"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/683",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TJ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/622",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TL"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/684",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/599",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/718",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TO"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1340",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TR"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/760",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TT"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/719",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TV"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/681",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/597",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "TZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1346",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "UA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/600",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "UG"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/731",
-          "currentUpdatedAt": null,
-          "status": "first-run",
-          "keys": [
-            "US"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "UY"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/685",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "UZ"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1222",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "VA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/757",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "VC"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/739",
-          "currentUpdatedAt": null,
-          "status": "first-run",
-          "keys": [
-            "VE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/612",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "VN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/707",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "VU"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/716",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "WS"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1279",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "XK"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/626",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "YE"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/569",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ZA"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/565",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ZM"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/567",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "ZW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#countries",
-          "status": "text-changed",
-          "textDiffPreview": "- Bosnia and Hercegovina → not recognized · europe\n+ Bosnia and Hercegovina → BA · europe\n- Kingdom of the Netherlands → not recognized · europe\n+ Kingdom of the Netherlands → NL · europe\n- Micronesia - Federated States of → not recognized · australia_and_oceania\n+ Micronesia - Federated States of → FM · australia_and_oceania\n- USA → not recognized · north_america\n+ USA → US · north_america\n- Venezuela, Bolivarian Republic of → not recognized · south_america\n+ Venezuela, Bolivarian Republic of → VE · south_america",
+          "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
+          "status": "fetch-error",
+          "error": "no text extracted (bot-check or script-rendered page?)",
           "keys": [
             "AD",
             "AE",
             "AF",
             "AG",
-            "AL",
             "AM",
             "AO",
             "AR",
@@ -5898,19 +1372,15 @@
             "BF",
             "BG",
             "BH",
-            "BI",
             "BJ",
             "BN",
             "BO",
             "BR",
             "BS",
-            "BT",
             "BW",
             "BY",
             "BZ",
             "CA",
-            "CD",
-            "CF",
             "CG",
             "CH",
             "CI",
@@ -5920,13 +1390,10 @@
             "CO",
             "CR",
             "CU",
-            "CV",
             "CY",
             "CZ",
             "DE",
-            "DJ",
             "DK",
-            "DM",
             "DO",
             "DZ",
             "EC",
@@ -5937,19 +1404,14 @@
             "ET",
             "FI",
             "FJ",
-            "FM",
             "FR",
             "GA",
             "GB",
-            "GD",
             "GE",
             "GH",
-            "GM",
             "GN",
-            "GQ",
             "GR",
             "GT",
-            "GW",
             "GY",
             "HK",
             "HN",
@@ -5970,16 +1432,12 @@
             "KE",
             "KG",
             "KH",
-            "KI",
-            "KM",
             "KN",
             "KP",
             "KR",
             "KW",
             "KZ",
-            "LA",
             "LB",
-            "LC",
             "LI",
             "LK",
             "LR",
@@ -5993,9 +1451,8 @@
             "MD",
             "ME",
             "MG",
-            "MH",
+            "MK",
             "ML",
-            "MM",
             "MN",
             "MO",
             "MR",
@@ -6007,23 +1464,20 @@
             "MY",
             "MZ",
             "NA",
-            "NE",
             "NG",
             "NI",
             "NL",
             "NO",
             "NP",
-            "NR",
             "NZ",
             "OM",
             "PA",
             "PE",
-            "PG",
             "PH",
             "PK",
             "PL",
+            "PS",
             "PT",
-            "PW",
             "PY",
             "QA",
             "RO",
@@ -6031,7 +1485,6 @@
             "RU",
             "RW",
             "SA",
-            "SB",
             "SC",
             "SD",
             "SE",
@@ -6043,22 +1496,16 @@
             "SN",
             "SO",
             "SR",
-            "SS",
             "ST",
             "SV",
             "SY",
-            "SZ",
-            "TD",
             "TG",
             "TH",
             "TJ",
-            "TL",
             "TM",
             "TN",
-            "TO",
             "TR",
             "TT",
-            "TV",
             "TW",
             "TZ",
             "UA",
@@ -6067,11 +1514,182 @@
             "UY",
             "UZ",
             "VA",
-            "VC",
             "VE",
             "VN",
-            "VU",
-            "WS",
+            "XK",
+            "YE",
+            "ZA",
+            "ZM",
+            "ZW"
+          ],
+          "link": "parent"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries",
+          "status": "fetch-error",
+          "error": "Could not read the country table: no countryData script on the page",
+          "keys": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AM",
+            "AO",
+            "AR",
+            "AT",
+            "AU",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BJ",
+            "BN",
+            "BO",
+            "BR",
+            "BS",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CG",
+            "CH",
+            "CI",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CY",
+            "CZ",
+            "DE",
+            "DK",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FR",
+            "GA",
+            "GB",
+            "GE",
+            "GH",
+            "GN",
+            "GR",
+            "GT",
+            "GY",
+            "HK",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IN",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KZ",
+            "LB",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MG",
+            "MK",
+            "ML",
+            "MN",
+            "MO",
+            "MR",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PH",
+            "PK",
+            "PL",
+            "PS",
+            "PT",
+            "PY",
+            "QA",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SI",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "ST",
+            "SV",
+            "SY",
+            "TG",
+            "TH",
+            "TJ",
+            "TM",
+            "TN",
+            "TR",
+            "TT",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VE",
+            "VN",
             "XK",
             "YE",
             "ZA",
@@ -6092,20 +1710,20 @@
     "Serbia",
     "Bosnia",
     "Kosovo",
-    "Albania",
+    "NorthMacedonia",
     "Cyprus",
     "Belarus",
     "Georgia",
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 196,
+    "totalLinksChecked": 2,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 196,
-    "sourcesChanged": 1,
-    "sourcesFirstRun": 5,
-    "sourcesFetchError": 0
+    "sourcesChecked": 2,
+    "sourcesChanged": 0,
+    "sourcesFirstRun": 0,
+    "sourcesFetchError": 2
   }
 }
