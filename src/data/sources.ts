@@ -8732,6 +8732,16 @@ export const CyprusSources = {
 
 // ─── Belarus ──────────────────────────────────────────────────────────────────
 
+/**
+ * The "visa-free entry" index, parent of both the European any-border list
+ * and the airport-only list. Defined once so it is fetched and diffed once.
+ */
+const belarusFreeMove = {
+  url: "https://mfa.gov.by/en/visa/freemove/",
+  type: "parent",
+  checkDiff: true,
+} as const satisfies SourceLink;
+
 export const BelarusSources = {
   /**
    * General visa-regime page — nationalities requiring a Belarusian visa.
@@ -8741,12 +8751,12 @@ export const BelarusSources = {
     direct: {
       url: "https://mfa.gov.by/en/visa/general/",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
     parent: {
       url: "https://mfa.gov.by/en/visa/general/",
       type: "parent",
-      checkDiff: false,
+      checkDiff: true,
     },
     dateChecked: "2026-09-12",
   } satisfies SourceDoc,
@@ -8761,13 +8771,9 @@ export const BelarusSources = {
     direct: {
       url: "https://mfa.gov.by/en/visa/freemove/europe/",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url: "https://mfa.gov.by/en/visa/freemove/",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: belarusFreeMove,
     dateChecked: "2026-09-12",
   } satisfies SourceDoc,
 
@@ -8782,13 +8788,9 @@ export const BelarusSources = {
     direct: {
       url: "https://mfa.gov.by/en/visa/freemove/airport/",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url: "https://mfa.gov.by/en/visa/freemove/",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: belarusFreeMove,
     dateChecked: "2026-09-12",
   } satisfies SourceDoc,
 } as const;
@@ -8877,18 +8879,18 @@ export const ArmeniaSources = {
  * the scheduled monthly workflow always does.
  */
 export const SourceRegions = {
-  Schengen: { sources: SchengenSources, checkLinks: true },
-  UK: { sources: UKSources, checkLinks: true },
-  Ireland: { sources: IrelandSources, checkLinks: true },
-  Turkiye: { sources: TurkiyeSources, checkLinks: true },
-  Montenegro: { sources: MontenegroSources, checkLinks: true },
-  Serbia: { sources: SerbiaSources, checkLinks: true },
-  Bosnia: { sources: BosniaSources, checkLinks: true },
-  Kosovo: { sources: KosovoSources, checkLinks: true },
-  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: true },
+  Schengen: { sources: SchengenSources, checkLinks: false },
+  UK: { sources: UKSources, checkLinks: false },
+  Ireland: { sources: IrelandSources, checkLinks: false },
+  Turkiye: { sources: TurkiyeSources, checkLinks: false },
+  Montenegro: { sources: MontenegroSources, checkLinks: false },
+  Serbia: { sources: SerbiaSources, checkLinks: false },
+  Bosnia: { sources: BosniaSources, checkLinks: false },
+  Kosovo: { sources: KosovoSources, checkLinks: false },
+  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: false },
   Albania: { sources: AlbaniaSources, checkLinks: false },
   Cyprus: { sources: CyprusSources, checkLinks: false },
-  Belarus: { sources: BelarusSources, checkLinks: false },
+  Belarus: { sources: BelarusSources, checkLinks: true },
   Georgia: { sources: GeorgiaSources, checkLinks: false },
   Armenia: { sources: ArmeniaSources, checkLinks: false },
 } satisfies Record<string, SourceRegion>;
