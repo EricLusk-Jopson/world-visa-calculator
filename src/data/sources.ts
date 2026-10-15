@@ -26,7 +26,7 @@
  * Last updated: 2026-09-04
  */
 
-import type { SourceDoc, SourceRegion } from "@/types";
+import type { SourceDoc, SourceLink, SourceRegion } from "@/types";
 
 // ─── Schengen ─────────────────────────────────────────────────────────────────
 
@@ -472,6 +472,18 @@ export const TurkiyeSources = {
 // ─── Montenegro ────────────────────────────────────
 
 /**
+ * The index of Montenegro's per-nationality visa pages — the parent of every
+ * MontenegroSources entry, defined once and shared. It's diffed so a page
+ * added, removed or renamed on the index shows up as a link change; the
+ * pipeline fetches and diffs each unique URL once, however many entries cite it.
+ */
+const montenegroIndex = {
+  url: "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
+  type: "parent",
+  checkDiff: true,
+} as const satisfies SourceLink;
+
+/**
  * Government of Montenegro — Ministry of Foreign Affairs.
  * "Embassies and consulates of Montenegro and visa regimes for foreign citizens".
  * One entry per nationality's dedicated page on this site, keyed by ISO Alpha-2
@@ -493,14 +505,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Afghanistan
   AL: {
@@ -508,14 +515,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Albania
   DZ: {
@@ -523,14 +525,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Algeria
   AD: {
@@ -538,14 +535,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Andorra
   AO: {
@@ -553,14 +545,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Angola
   AG: {
@@ -568,14 +555,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Antigua and Barbuda
   AR: {
@@ -583,14 +565,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Argentina
   AM: {
@@ -598,14 +575,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Armenia
   AW: {
@@ -613,14 +585,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Aruba
   AU: {
@@ -628,14 +595,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Australia
   AT: {
@@ -643,14 +605,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Austria
   AZ: {
@@ -658,14 +615,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Azerbaijan
   BS: {
@@ -673,14 +625,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Bahamas
   BH: {
@@ -688,14 +635,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Bahrain
   BD: {
@@ -703,14 +645,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Bangladesh
   BB: {
@@ -718,14 +655,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Barbados
   BY: {
@@ -733,14 +665,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Belarus
   BE: {
@@ -748,14 +675,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Belgium
   BZ: {
@@ -763,14 +685,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Belize
   BJ: {
@@ -778,14 +695,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Benin
   BT: {
@@ -793,14 +705,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Bhutan
   BO: {
@@ -808,14 +715,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Bolivia
   BA: {
@@ -823,14 +725,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BW: {
@@ -838,14 +735,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Botswana
   BR: {
@@ -853,14 +745,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Brazil
   BN: {
@@ -868,14 +755,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Brunei
   BG: {
@@ -883,14 +765,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Bulgaria
   BF: {
@@ -898,14 +775,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Burkina Faso
   BI: {
@@ -913,14 +785,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Burundi
   CV: {
@@ -928,14 +795,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Cabo Verde
   KH: {
@@ -943,14 +805,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Cambodia
   CM: {
@@ -958,14 +815,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Cameroon
   CA: {
@@ -973,14 +825,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Canada
   KY: {
@@ -988,14 +835,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Cayman Islands
   CF: {
@@ -1003,14 +845,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Central African Republic
   TD: {
@@ -1018,14 +855,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Chad
   CL: {
@@ -1033,14 +865,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Chile
   CN: {
@@ -1048,14 +875,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // China
   CO: {
@@ -1063,14 +885,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Colombia
   CD: {
@@ -1078,14 +895,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Congo, Democratic Republic of the
   CG: {
@@ -1093,14 +905,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Congo, Republic
   CR: {
@@ -1108,14 +915,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Costa Rica
   HR: {
@@ -1123,14 +925,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Croatia
   CU: {
@@ -1138,14 +935,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Cuba
   CY: {
@@ -1153,14 +945,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Cyprus
   CZ: {
@@ -1168,14 +955,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Czech Republic
   DK: {
@@ -1183,14 +965,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Denmark
   DJ: {
@@ -1198,14 +975,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Djibouti
   DM: {
@@ -1213,14 +985,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Dominica
   DO: {
@@ -1228,14 +995,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Dominican Republic
   EC: {
@@ -1243,14 +1005,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Ecuador
   EG: {
@@ -1258,14 +1015,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Egypt
   SV: {
@@ -1273,14 +1025,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // El Salvador
   GQ: {
@@ -1288,14 +1035,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Equatorial Guinea
   ER: {
@@ -1303,14 +1045,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Eritrea
   EE: {
@@ -1318,14 +1055,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Estonia
   ET: {
@@ -1333,14 +1065,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Ethiopia
   FJ: {
@@ -1348,14 +1075,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Fiji
   FI: {
@@ -1363,14 +1085,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Finland
   FR: {
@@ -1378,14 +1095,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // France
   GA: {
@@ -1393,14 +1105,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Gabon
   GM: {
@@ -1408,14 +1115,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Gambia
   GE: {
@@ -1423,14 +1125,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Georgia
   DE: {
@@ -1438,14 +1135,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Germany
   GH: {
@@ -1453,14 +1145,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Ghana
   GR: {
@@ -1468,14 +1155,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Greece
   GD: {
@@ -1483,14 +1165,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Grenada
   GT: {
@@ -1498,14 +1175,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Guatemala
   GN: {
@@ -1513,14 +1185,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Guinea
   GW: {
@@ -1528,14 +1195,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Guinea-Bissau
   GY: {
@@ -1543,14 +1205,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Guyana
   HT: {
@@ -1558,14 +1215,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Haiti
   VA: {
@@ -1573,14 +1225,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Holy See and Sovereign Military Order of Malta
   HN: {
@@ -1588,14 +1235,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Honduras
   HU: {
@@ -1603,14 +1245,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Hungary
   IS: {
@@ -1618,14 +1255,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Iceland
   IN: {
@@ -1633,14 +1265,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // India
   ID: {
@@ -1648,14 +1275,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Indonesia
   IR: {
@@ -1663,14 +1285,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Iran
   IQ: {
@@ -1678,14 +1295,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Iraq
   IE: {
@@ -1693,14 +1305,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Ireland
   IL: {
@@ -1708,14 +1315,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Israel
   IT: {
@@ -1723,14 +1325,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Italy
   CI: {
@@ -1738,14 +1335,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Ivory Coast (Côte d'Ivoire)
   JM: {
@@ -1753,14 +1345,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Jamaica
   JP: {
@@ -1768,14 +1355,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Japan
   JO: {
@@ -1783,14 +1365,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Jordan
   KZ: {
@@ -1798,14 +1375,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Kazakhstan
   KE: {
@@ -1813,14 +1385,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Kenya
   KI: {
@@ -1828,14 +1395,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Kiribati
   KP: {
@@ -1843,14 +1405,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Korea, Democratic People's Republic of (North Korea)
   KR: {
@@ -1858,14 +1415,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Korea, Republic of (South Korea)
   XK: {
@@ -1873,14 +1425,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Kosovo
   KW: {
@@ -1888,14 +1435,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Kuwait
   KG: {
@@ -1903,14 +1445,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Kyrgyzstan
   LA: {
@@ -1918,14 +1455,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Laos
   LV: {
@@ -1933,14 +1465,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Latvia
   LB: {
@@ -1948,14 +1475,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Lebanon
   LS: {
@@ -1963,14 +1485,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Lesotho
   LR: {
@@ -1978,14 +1495,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Liberia
   LY: {
@@ -1993,14 +1505,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Libya
   LI: {
@@ -2008,14 +1515,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Liechtenstein
   LT: {
@@ -2023,14 +1525,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Lithuania
   LU: {
@@ -2038,14 +1535,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Luxembourg
   MG: {
@@ -2053,14 +1545,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Madagascar
   MW: {
@@ -2068,14 +1555,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Malawi
   MY: {
@@ -2083,14 +1565,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Malaysia
   MV: {
@@ -2098,14 +1575,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Maldives
   ML: {
@@ -2113,14 +1585,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Mali
   MT: {
@@ -2128,14 +1595,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Malta
   MH: {
@@ -2143,14 +1605,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Marshall Islands
   MR: {
@@ -2158,14 +1615,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Mauritania
   MU: {
@@ -2173,14 +1625,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Mauritius
   MX: {
@@ -2188,14 +1635,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Mexico
   FM: {
@@ -2203,14 +1645,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Micronesia
   MD: {
@@ -2218,14 +1655,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Moldova
   MC: {
@@ -2233,14 +1665,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Monaco
   MN: {
@@ -2248,14 +1675,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Mongolia
   MA: {
@@ -2263,14 +1685,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Morocco
   MZ: {
@@ -2278,14 +1695,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Mozambique
   MM: {
@@ -2293,14 +1705,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Myanmar
   NA: {
@@ -2308,14 +1715,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Namibia
   NR: {
@@ -2323,14 +1725,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Nauru
   NP: {
@@ -2338,14 +1735,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Nepal
   NL: {
@@ -2353,14 +1745,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Netherlands
   NZ: {
@@ -2368,14 +1755,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // New Zealand
   NI: {
@@ -2383,14 +1765,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Nicaragua
   NE: {
@@ -2398,14 +1775,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Niger
   NG: {
@@ -2413,14 +1785,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Nigeria
   MK: {
@@ -2428,14 +1795,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // North Macedonia
   NO: {
@@ -2443,14 +1805,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Norway
   OM: {
@@ -2458,14 +1815,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Oman
   PK: {
@@ -2473,14 +1825,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Pakistan
   PW: {
@@ -2488,14 +1835,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Palau
   PS: {
@@ -2503,14 +1845,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Palestine
   PA: {
@@ -2518,14 +1855,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Panama
   PG: {
@@ -2533,14 +1865,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Papua New Guinea
   PY: {
@@ -2548,14 +1875,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Paraguay
   PE: {
@@ -2563,14 +1885,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Peru
   PH: {
@@ -2578,14 +1895,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Philippines
   PL: {
@@ -2593,14 +1905,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Poland
   PT: {
@@ -2608,14 +1915,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Portugal
   QA: {
@@ -2623,14 +1925,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Qatar
   RO: {
@@ -2638,14 +1935,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Romania
   RU: {
@@ -2653,14 +1945,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Russian Federation
   RW: {
@@ -2668,14 +1955,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Rwanda
   KN: {
@@ -2683,14 +1965,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   LC: {
@@ -2698,14 +1975,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Saint Lucia
   VC: {
@@ -2713,14 +1985,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   WS: {
@@ -2728,14 +1995,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Samoa
   SM: {
@@ -2743,14 +2005,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // San Marino
   ST: {
@@ -2758,14 +2015,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Sao Tome and Principe
   SA: {
@@ -2773,14 +2025,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Saudi Arabia
   SN: {
@@ -2788,14 +2035,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Senegal
   RS: {
@@ -2803,14 +2045,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Serbia
   SC: {
@@ -2818,14 +2055,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Seychelles
   SL: {
@@ -2833,14 +2065,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Sierra Leone
   SG: {
@@ -2848,14 +2075,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Singapore
   SK: {
@@ -2863,14 +2085,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Slovakia
   SI: {
@@ -2878,14 +2095,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Slovenia
   SB: {
@@ -2893,14 +2105,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Solomon Islands
   SO: {
@@ -2908,14 +2115,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Somalia
   ZA: {
@@ -2923,14 +2125,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // South Africa
   ES: {
@@ -2938,14 +2135,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Spain
   LK: {
@@ -2953,14 +2145,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Sri Lanka
   SD: {
@@ -2968,14 +2155,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Sudan
   SR: {
@@ -2983,14 +2165,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Suriname
   SZ: {
@@ -2998,14 +2175,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Swaziland (Eswatini)
   SE: {
@@ -3013,14 +2185,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Sweden
   CH: {
@@ -3028,14 +2195,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Switzerland
   SY: {
@@ -3043,14 +2205,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Syria
   TJ: {
@@ -3058,14 +2215,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Tajikistan
   TZ: {
@@ -3073,14 +2225,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Tanzania
   TH: {
@@ -3088,14 +2235,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Thailand
   TL: {
@@ -3103,14 +2245,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Timor-Leste
   TG: {
@@ -3118,14 +2255,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Togo
   TO: {
@@ -3133,14 +2265,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Tonga
   TT: {
@@ -3148,14 +2275,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Trinidad and Tobago
   TN: {
@@ -3163,14 +2285,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Tunisia
   TR: {
@@ -3178,14 +2295,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Turkey
   TM: {
@@ -3193,14 +2305,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Turkmenistan
   TV: {
@@ -3208,14 +2315,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Tuvalu
   UG: {
@@ -3223,14 +2325,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Uganda
   UA: {
@@ -3238,14 +2335,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Ukraine
   KM: {
@@ -3253,14 +2345,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Union of the Comoros and Swaziland in Eswatini
   AE: {
@@ -3268,14 +2355,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // United Arab Emirates
   GB: {
@@ -3283,14 +2365,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // United Kingdom of Great Britain and Northern Ireland
   US: {
@@ -3298,14 +2375,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // United States of America
   UY: {
@@ -3313,14 +2385,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Uruguay
   UZ: {
@@ -3328,14 +2395,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Uzbekistan
   VU: {
@@ -3343,14 +2405,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Vanuatu
   VE: {
@@ -3358,14 +2415,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Venezuela
   VN: {
@@ -3373,14 +2425,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Vietnam
   YE: {
@@ -3388,14 +2435,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Yemen
   ZM: {
@@ -3403,14 +2445,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Zambia
   ZW: {
@@ -3418,14 +2455,9 @@ export const MontenegroSources = {
       url:
         "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url:
-        "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: montenegroIndex,
     dateChecked: "2026-08-30",
   } satisfies SourceDoc, // Zimbabwe
 } as const;
