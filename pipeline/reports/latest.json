@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-10-15T06:48:59.483Z",
+  "regions": [
+    {
+      "region": "Georgia",
+      "linkHealth": [
+        {
+          "url": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
+          "usedBy": [
+            {
+              "key": "visaList",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25"
+        },
+        {
+          "url": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25",
+          "usedBy": [
+            {
+              "key": "visaList",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25"
+        },
+        {
+          "url": "https://geoconsul.gov.ge/en/entering-georgia",
+          "usedBy": [
+            {
+              "key": "visaList",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://geoconsul.gov.ge/en/entering-georgia"
+        }
+      ],
+      "ruleChecks": [
+        {
+          "url": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "visaList"
+          ],
+          "link": "direct.alternate"
+        }
+      ]
+    }
+  ],
+  "skippedRegions": [
+    "Schengen",
+    "UK",
+    "Ireland",
+    "Turkiye",
+    "Montenegro",
+    "Serbia",
+    "Bosnia",
+    "Kosovo",
+    "NorthMacedonia",
+    "Albania",
+    "Cyprus",
+    "Belarus",
+    "Armenia"
+  ],
+  "summary": {
+    "totalLinksChecked": 3,
+    "brokenLinks": 0,
+    "redirectedLinks": 0,
+    "blockedLinks": 0,
+    "sourcesChecked": 1,
+    "sourcesChanged": 0,
+    "sourcesFirstRun": 1,
+    "sourcesFetchError": 0
+  }
+}

@@ -44,7 +44,7 @@ const SCHENGEN_LIMIT: RollingWindowLimit = {
 const ETIAS: PreTravelAuth = {
   type: 'ETIAS',
   name: 'European Travel Information and Authorisation System',
-  applicationUrl: SchengenSources.etias.directUrl,
+  applicationUrl: SchengenSources.etias.direct.url,
   cost: { amount: 7, currency: 'EUR' },
   authValidityDays: 1095, // 3 years
   multiEntry: true,
@@ -235,7 +235,7 @@ export const SCHENGEN: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-04-08',
-  sourceUrl: SchengenSources.visaList.parentUrl,
+  sourceUrl: SchengenSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
 

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getCyprusRule, CYPRUS } from './cyprus';
-import { CyprusSources } from '@/data/sources';
+import { CyprusSources, SchengenSources } from '@/data/sources';
 import { isEntitled, type RollingWindowLimit } from '@/types';
 
 describe('getCyprusRule', () => {
@@ -168,8 +168,9 @@ describe('Cyprus — Vanuatu mirrors Schengen\'s current (fallback) behavior', (
 });
 
 describe('Cyprus — cites distinct primary/parent URLs', () => {
-  it('directUrl is the EU Annex 1 PDF, parentUrl is gov.cy', () => {
-    expect(CyprusSources.visaList.directUrl).toContain('home-affairs.ec.europa.eu');
-    expect(CyprusSources.visaList.parentUrl).toBe('https://www.gov.cy/en/information/visas/');
+  it('direct link is Schengen\'s Regulation 2018/1806 link (with its Cellar copy), parent link is gov.cy', () => {
+    expect(CyprusSources.visaList.direct).toBe(SchengenSources.visaList.direct);
+    expect(CyprusSources.visaList.direct.alternate?.checkDiff).toBe(true);
+    expect(CyprusSources.visaList.parent.url).toBe('https://www.gov.cy/en/information/visas/');
   });
 });

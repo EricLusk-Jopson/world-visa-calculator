@@ -32,13 +32,13 @@ describe('getBosniaRule', () => {
     expect(rule.source).toEqual(BosniaSources.AF);
   });
 
-  it('cites only the single parent index page for both directUrl and parentUrl — the deliberate per-region source policy', () => {
+  it('cites only the single parent index page for both the direct and parent links — the deliberate per-region source policy', () => {
     const rule = getBosniaRule('DE');
     expect(rule.access).toBe('entitled');
     if (rule.access !== 'entitled') return;
     const source = rule.entitlements[0].source!;
-    expect(source.directUrl).toBe('https://www.mvp.gov.ba/en/vize');
-    expect(source.parentUrl).toBe('https://www.mvp.gov.ba/en/vize');
+    expect(source.direct.url).toBe('https://www.mvp.gov.ba/en/vize');
+    expect(source.parent.url).toBe('https://www.mvp.gov.ba/en/vize');
   });
 
   it('falls back to defaultRule (visa_required) for an unknown code', () => {

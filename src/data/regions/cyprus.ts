@@ -4,8 +4,13 @@
  * Single source of truth for Cyprus's visa rules by passport/nationality.
  *
  * Sources:
- *   - EU Regulation (EU) 2018/1806 Annex I (visa-required) and Annex II (visa-free)
+ *   - EU Regulation (EU) 2018/1806 Annex I (visa-required) and Annex II (visa-free),
+ *     cited through the same link as SchengenSources.visaList
+ *   - gov.cy's visa page, as the parent
  *   All source URLs live in @/data/sources — CyprusSources.
+ *
+ * "The source PDF" below is the Commission's Annex 1 PDF of the same list,
+ * which this file was originally checked against.
  *
  * ── Why this file mirrors schengen.ts ───────────────────────────────────────
  *
@@ -175,7 +180,7 @@ export const CYPRUS: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-09-09',
-  sourceUrl: CyprusSources.visaList.parentUrl,
+  sourceUrl: CyprusSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
 

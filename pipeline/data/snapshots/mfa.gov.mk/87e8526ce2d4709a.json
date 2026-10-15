@@ -1,0 +1,788 @@
+{
+  "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
+  "contentType": "application/json",
+  "updatedAt": null,
+  "text": "Afghanistan → AF · asia\nAlbania → AL · europe\nAlgeria → DZ · africa\nAndorra → AD · europe\nAngola → AO · africa\nAntigua and Barbuda → AG · south_america\nArgentina → AR · south_america\nArmenia → AM · europe\nAustralia → AU · australia_and_oceania\nAustria → AT · europe\nAzerbaijan → AZ · asia\nBahamas → BS · south_america\nBahrain → BH · asia\nBangladesh → BD · asia\nBarbados → BB · south_america\nBelarus → BY · europe\nBelgium → BE · europe\nBelize → BZ · south_america\nBenin → BJ · africa\nBhutan → BT · asia\nBolivia → BO · south_america\nBosnia and Hercegovina → BA · europe\nBotswana → BW · africa\nBrazil → BR · south_america\nBrunei Darussalam → BN · asia\nBulgaria → BG · europe\nBurkina Faso → BF · africa\nBurundi → BI · africa\nCabo Verde → CV · africa\nCambodia → KH · asia\nCameroon → CM · africa\nCanada → CA · north_america\nCentral African Republic → CF · africa\nChad → TD · africa\nChile → CL · south_america\nChina → CN · asia\nColombia → CO · south_america\nComoros → KM · africa\nCongo → CG · africa\nCosta Rica → CR · south_america\nCôte D'Ivoire → CI · africa\nCroatia → HR · europe\nCuba → CU · south_america\nCyprus → CY · europe\nCzechia → CZ · europe\nDenmark → DK · europe\nDjibouti → DJ · africa\nDominica → DM · south_america\nDominican Republic → DO · south_america\nDR of the Congo → CD · africa\nEcuador → EC · south_america\nEgypt → EG · africa\nEl Salvador → SV · south_america\nEquatorial Guinea → GQ · africa\nEritrea → ER · africa\nEstonia → EE · europe\nEswatini → SZ · africa\nEthiopia → ET · africa\nFiji → FJ · australia_and_oceania\nFinland → FI · europe\nFrance → FR · europe\nGabon → GA · africa\nGambia → GM · africa\nGeorgia → GE · europe\nGermany → DE · europe\nGhana → GH · africa\nGreece → GR · europe\nGrenada → GD · south_america\nGuatemala → GT · south_america\nGuinea → GN · africa\nGuinea Bissau → GW · africa\nGuyana → GY · africa\nHaiti → HT · south_america\nHonduras → HN · south_america\nHungary → HU · europe\nIceland → IS · europe\nIndia → IN · asia\nIndonesia → ID · asia\nIran → IR · asia\nIraq → IQ · asia\nIreland → IE · europe\nIsrael → IL · asia\nItaly → IT · europe\nJamaica → JM · south_america\nJapan → JP · asia\nJordan → JO · asia\nKazakhstan → KZ · asia\nKenya → KE · africa\nKingdom of the Netherlands → NL · europe\nKiribati → KI · australia_and_oceania\nKosovo → XK · europe\nKuwait → KW · asia\nKyrgyzstan → KG · asia\nLao People’s Democratic Republic → LA · asia\nLatvia → LV · europe\nLebanon → LB · asia\nLesotho → LS · africa\nLiberia → LR · africa\nLibya → LY · africa\nLiechtenstein → LI · europe\nLithuania → LT · europe\nLuxembourg → LU · europe\nMadagascar → MG · africa\nMalawi → MW · africa\nMalaysia → MY · asia\nMaldives → MV · asia\nMali → ML · africa\nMalta → MT · europe\nMarshall Islands → MH · australia_and_oceania\nMauritania → MR · africa\nMauritius → MU · africa\nMexico → MX · north_america\nMicronesia - Federated States of → FM · australia_and_oceania\nMoldova → MD · europe\nMonaco → MC · europe\nMongolia → MN · asia\nMontenegro → ME · europe\nMorocco → MA · africa\nMozambique → MZ · africa\nMyanmar → MM · asia\nNamibia → NA · africa\nNauru → NR · australia_and_oceania\nNepal → NP · asia\nNew Zealand → NZ · australia_and_oceania\nNicaragua → NI · north_america\nNiger → NE · africa\nNigeria → NG · africa\nNorth Korea → KP · asia\nNorway → NO · europe\nOman → OM · asia\nPakistan → PK · asia\nPalau → PW · australia_and_oceania\nPanama → PA · south_america\nPapua New Guinea → PG · australia_and_oceania\nParaguay → PY · south_america\nPeru → PE · south_america\nPhilippines → PH · asia\nPoland → PL · europe\nPortugal → PT · europe\nQatar → QA · asia\nRepublic of Korea → KR · asia\nRomania → RO · europe\nRussia → RU · europe\nRwanda → RW · africa\nSaint Kitts and Nevis → KN · south_america\nSaint Lucia → LC · south_america\nSaint Vincent and the Grenadines → VC · south_america\nSamoa → WS · australia_and_oceania\nSan Marino → SM · europe\nSao Tome and Principe → ST · africa\nSaudi Arabia → SA · asia\nSenegal → SN · africa\nSerbia → RS · europe\nSeychelles → SC · africa\nSierra Leone → SL · africa\nSingapore → SG · asia\nSlovakia → SK · europe\nSlovenia → SI · europe\nSolomon Islands → SB · australia_and_oceania\nSomalia → SO · africa\nSouth Africa → ZA · africa\nSouth Sudan → SS · africa\nSpain → ES · europe\nSri Lanka → LK · asia\nSudan → SD · africa\nSuriname → SR · south_america\nSweden → SE · europe\nSwitzerland → CH · europe\nSyrian Arab Republic → SY · asia\nTaiwan → TW · asia\nTajikistan → TJ · asia\nThailand → TH · asia\nTimor-Leste → TL · asia\nTogo → TG · africa\nTonga → TO · australia_and_oceania\nTrinidad and Tobago → TT · south_america\nTunizi → TN · africa\nTurkey → TR · europe\nTurkmenistan → TM · asia\nTuvalu → TV · australia_and_oceania\nUganda → UG · africa\nUkraine → UA · europe\nUnited Arab Emirates → AE · asia\nUnited Kingdom → GB · europe\nUnited Republic of Tanzania → TZ · africa\nUruguay → UY · south_america\nUSA → US · north_america\nUzbekistan → UZ · asia\nVanuatu → VU · australia_and_oceania\nVatican City → VA · europe\nVenezuela, Bolivarian Republic of → VE · south_america\nVietnam → VN · asia\nYemen → YE · asia\nZambia → ZM · africa\nZimbabwe → ZW · africa",
+  "links": [
+    {
+      "text": "Afghanistan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/606"
+    },
+    {
+      "text": "Albania",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/847"
+    },
+    {
+      "text": "Algeria",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/49"
+    },
+    {
+      "text": "Andorra",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1205"
+    },
+    {
+      "text": "Angola",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/50"
+    },
+    {
+      "text": "Antigua and Barbuda",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/732"
+    },
+    {
+      "text": "Argentina",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/733"
+    },
+    {
+      "text": "Armenia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1256"
+    },
+    {
+      "text": "Australia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/705"
+    },
+    {
+      "text": "Austria",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/846"
+    },
+    {
+      "text": "Azerbaijan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/607"
+    },
+    {
+      "text": "Bahamas",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/735"
+    },
+    {
+      "text": "Bahrain",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/609"
+    },
+    {
+      "text": "Bangladesh",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/608"
+    },
+    {
+      "text": "Barbados",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734"
+    },
+    {
+      "text": "Belarus",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1213"
+    },
+    {
+      "text": "Belgium",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1209"
+    },
+    {
+      "text": "Belize",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/736"
+    },
+    {
+      "text": "Benin",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/51"
+    },
+    {
+      "text": "Bhutan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/611"
+    },
+    {
+      "text": "Bolivia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/737"
+    },
+    {
+      "text": "Bosnia and Hercegovina",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1214"
+    },
+    {
+      "text": "Botswana",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/52"
+    },
+    {
+      "text": "Brazil",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/738"
+    },
+    {
+      "text": "Brunei Darussalam",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/610"
+    },
+    {
+      "text": "Bulgaria",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1218"
+    },
+    {
+      "text": "Burkina Faso",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/54"
+    },
+    {
+      "text": "Burundi",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/61"
+    },
+    {
+      "text": "Cabo Verde",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/566"
+    },
+    {
+      "text": "Cambodia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/632"
+    },
+    {
+      "text": "Cameroon",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/570"
+    },
+    {
+      "text": "Canada",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/724"
+    },
+    {
+      "text": "Central African Republic",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/601"
+    },
+    {
+      "text": "Chad",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/602"
+    },
+    {
+      "text": "Chile",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/764"
+    },
+    {
+      "text": "China",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/661"
+    },
+    {
+      "text": "Colombia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/748"
+    },
+    {
+      "text": "Comoros",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/573"
+    },
+    {
+      "text": "Congo",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/588"
+    },
+    {
+      "text": "Costa Rica",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/749"
+    },
+    {
+      "text": "Côte D'Ivoire",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/53"
+    },
+    {
+      "text": "Croatia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1353"
+    },
+    {
+      "text": "Cuba",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/750"
+    },
+    {
+      "text": "Cyprus",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1275"
+    },
+    {
+      "text": "Czechia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1355"
+    },
+    {
+      "text": "Denmark",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1254"
+    },
+    {
+      "text": "Djibouti",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/604"
+    },
+    {
+      "text": "Dominica",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/742"
+    },
+    {
+      "text": "Dominican Republic",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/743"
+    },
+    {
+      "text": "DR of the Congo",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/90"
+    },
+    {
+      "text": "Ecuador",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/744"
+    },
+    {
+      "text": "Egypt",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/91"
+    },
+    {
+      "text": "El Salvador",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/745"
+    },
+    {
+      "text": "Equatorial Guinea",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/92"
+    },
+    {
+      "text": "Eritrea",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/560"
+    },
+    {
+      "text": "Estonia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1259"
+    },
+    {
+      "text": "Eswatini",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/562"
+    },
+    {
+      "text": "Ethiopia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/564"
+    },
+    {
+      "text": "Fiji",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/721"
+    },
+    {
+      "text": "Finland",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1350"
+    },
+    {
+      "text": "France",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1351"
+    },
+    {
+      "text": "Gabon",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/63"
+    },
+    {
+      "text": "Gambia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/77"
+    },
+    {
+      "text": "Georgia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1240"
+    },
+    {
+      "text": "Germany",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1238"
+    },
+    {
+      "text": "Ghana",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/78"
+    },
+    {
+      "text": "Greece",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1249"
+    },
+    {
+      "text": "Grenada",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/741"
+    },
+    {
+      "text": "Guatemala",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/740"
+    },
+    {
+      "text": "Guinea",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/89"
+    },
+    {
+      "text": "Guinea Bissau",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/80"
+    },
+    {
+      "text": "Guyana",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/79"
+    },
+    {
+      "text": "Haiti",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/762"
+    },
+    {
+      "text": "Honduras",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/763"
+    },
+    {
+      "text": "Hungary",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1349"
+    },
+    {
+      "text": "Iceland",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1266"
+    },
+    {
+      "text": "India",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/616"
+    },
+    {
+      "text": "Indonesia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/617"
+    },
+    {
+      "text": "Iran",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/620"
+    },
+    {
+      "text": "Iraq",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/619"
+    },
+    {
+      "text": "Ireland",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1263"
+    },
+    {
+      "text": "Israel",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/615"
+    },
+    {
+      "text": "Italy",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1273"
+    },
+    {
+      "text": "Jamaica",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/746"
+    },
+    {
+      "text": "Japan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/624"
+    },
+    {
+      "text": "Jordan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/627"
+    },
+    {
+      "text": "Kazakhstan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/630"
+    },
+    {
+      "text": "Kenya",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/572"
+    },
+    {
+      "text": "Kingdom of the Netherlands",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1352"
+    },
+    {
+      "text": "Kiribati",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/708"
+    },
+    {
+      "text": "Kosovo",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1279"
+    },
+    {
+      "text": "Kuwait",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/640"
+    },
+    {
+      "text": "Kyrgyzstan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/638"
+    },
+    {
+      "text": "Lao People’s Democratic Republic",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/641"
+    },
+    {
+      "text": "Latvia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1281"
+    },
+    {
+      "text": "Lebanon",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/650"
+    },
+    {
+      "text": "Lesotho",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/574"
+    },
+    {
+      "text": "Liberia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/575"
+    },
+    {
+      "text": "Libya",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/576"
+    },
+    {
+      "text": "Liechtenstein",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1284"
+    },
+    {
+      "text": "Lithuania",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1282"
+    },
+    {
+      "text": "Luxembourg",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1286"
+    },
+    {
+      "text": "Madagascar",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/580"
+    },
+    {
+      "text": "Malawi",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/581"
+    },
+    {
+      "text": "Malaysia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/653"
+    },
+    {
+      "text": "Maldives",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/651"
+    },
+    {
+      "text": "Mali",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/582"
+    },
+    {
+      "text": "Malta",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1287"
+    },
+    {
+      "text": "Marshall Islands",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/709"
+    },
+    {
+      "text": "Mauritania",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/578"
+    },
+    {
+      "text": "Mauritius",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/579"
+    },
+    {
+      "text": "Mexico",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/727"
+    },
+    {
+      "text": "Micronesia - Federated States of",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/710"
+    },
+    {
+      "text": "Moldova",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1289"
+    },
+    {
+      "text": "Monaco",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1290"
+    },
+    {
+      "text": "Mongolia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/655"
+    },
+    {
+      "text": "Montenegro",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1354"
+    },
+    {
+      "text": "Morocco",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/583"
+    },
+    {
+      "text": "Mozambique",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/584"
+    },
+    {
+      "text": "Myanmar",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/654"
+    },
+    {
+      "text": "Namibia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/585"
+    },
+    {
+      "text": "Nauru",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/711"
+    },
+    {
+      "text": "Nepal",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/656"
+    },
+    {
+      "text": "New Zealand",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/712"
+    },
+    {
+      "text": "Nicaragua",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/728"
+    },
+    {
+      "text": "Niger",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/586"
+    },
+    {
+      "text": "Nigeria",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/587"
+    },
+    {
+      "text": "North Korea",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/613"
+    },
+    {
+      "text": "Norway",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294"
+    },
+    {
+      "text": "Oman",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/674"
+    },
+    {
+      "text": "Pakistan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/675"
+    },
+    {
+      "text": "Palau",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/713"
+    },
+    {
+      "text": "Panama",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/751"
+    },
+    {
+      "text": "Papua New Guinea",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/714"
+    },
+    {
+      "text": "Paraguay",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/753"
+    },
+    {
+      "text": "Peru",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/754"
+    },
+    {
+      "text": "Philippines",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/687"
+    },
+    {
+      "text": "Poland",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1299"
+    },
+    {
+      "text": "Portugal",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1302"
+    },
+    {
+      "text": "Qatar",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/636"
+    },
+    {
+      "text": "Republic of Korea",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/628"
+    },
+    {
+      "text": "Romania",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1309"
+    },
+    {
+      "text": "Russia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1313"
+    },
+    {
+      "text": "Rwanda",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/589"
+    },
+    {
+      "text": "Saint Kitts and Nevis",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/755"
+    },
+    {
+      "text": "Saint Lucia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/756"
+    },
+    {
+      "text": "Saint Vincent and the Grenadines",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/757"
+    },
+    {
+      "text": "Samoa",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/716"
+    },
+    {
+      "text": "San Marino",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1314"
+    },
+    {
+      "text": "Sao Tome and Principe",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/590"
+    },
+    {
+      "text": "Saudi Arabia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/676"
+    },
+    {
+      "text": "Senegal",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/593"
+    },
+    {
+      "text": "Serbia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1333"
+    },
+    {
+      "text": "Seychelles",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/591"
+    },
+    {
+      "text": "Sierra Leone",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/594"
+    },
+    {
+      "text": "Singapore",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/677"
+    },
+    {
+      "text": "Slovakia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1319"
+    },
+    {
+      "text": "Slovenia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1323"
+    },
+    {
+      "text": "Solomon Islands",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/717"
+    },
+    {
+      "text": "Somalia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/595"
+    },
+    {
+      "text": "South Africa",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/569"
+    },
+    {
+      "text": "South Sudan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/568"
+    },
+    {
+      "text": "Spain",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1359"
+    },
+    {
+      "text": "Sri Lanka",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/688"
+    },
+    {
+      "text": "Sudan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/596"
+    },
+    {
+      "text": "Suriname",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/759"
+    },
+    {
+      "text": "Sweden",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1357"
+    },
+    {
+      "text": "Switzerland",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1356"
+    },
+    {
+      "text": "Syrian Arab Republic",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/678"
+    },
+    {
+      "text": "Taiwan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/681"
+    },
+    {
+      "text": "Tajikistan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/683"
+    },
+    {
+      "text": "Thailand",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/682"
+    },
+    {
+      "text": "Timor-Leste",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/622"
+    },
+    {
+      "text": "Togo",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/598"
+    },
+    {
+      "text": "Tonga",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/718"
+    },
+    {
+      "text": "Trinidad and Tobago",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/760"
+    },
+    {
+      "text": "Tunizi",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/599"
+    },
+    {
+      "text": "Turkey",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1340"
+    },
+    {
+      "text": "Turkmenistan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/684"
+    },
+    {
+      "text": "Tuvalu",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/719"
+    },
+    {
+      "text": "Uganda",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/600"
+    },
+    {
+      "text": "Ukraine",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1346"
+    },
+    {
+      "text": "United Arab Emirates",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/673"
+    },
+    {
+      "text": "United Kingdom",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1229"
+    },
+    {
+      "text": "United Republic of Tanzania",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/597"
+    },
+    {
+      "text": "Uruguay",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761"
+    },
+    {
+      "text": "USA",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/731"
+    },
+    {
+      "text": "Uzbekistan",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/685"
+    },
+    {
+      "text": "Vanuatu",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/707"
+    },
+    {
+      "text": "Vatican City",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1222"
+    },
+    {
+      "text": "Venezuela, Bolivarian Republic of",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/739"
+    },
+    {
+      "text": "Vietnam",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/612"
+    },
+    {
+      "text": "Yemen",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/626"
+    },
+    {
+      "text": "Zambia",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/565"
+    },
+    {
+      "text": "Zimbabwe",
+      "href": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/567"
+    }
+  ]
+}

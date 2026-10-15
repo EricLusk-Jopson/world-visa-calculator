@@ -1,0 +1,4 @@
+node_modules/
+dist/
+# Generated per run for the PR description; not part of the report history.
+reports/**/pr-body.md

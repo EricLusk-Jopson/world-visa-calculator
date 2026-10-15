@@ -1,0 +1,283 @@
+import { createHash } from 'node:crypto';
+import * as cheerio from 'cheerio';
+import { diffLines } from 'diff';
+import type { ContentLink, ContentSnapshot, LinkChange, RuleCheckStatus } from './types';
+
+/** Picks the first selector that actually matches content on the page. */
+function selectContentRoot($: cheerio.CheerioAPI) {
+  for (const selector of ['#content', 'main', 'body']) {
+    const el = $(selector);
+    if (el.length && el.text().trim().length > 0) return el;
+  }
+  return $('body');
+}
+
+/**
+ * Sites with no `#content` or `main` element, whose page body runs straight
+ * into site-wide chrome. Everything from the element whose whole text is
+ * `endBefore` onwards is dropped, so a new video or news item in the sidebar
+ * doesn't show as a change on every page. If the marker is missing, the page
+ * is kept whole, so the change still shows up in the diff.
+ */
+const SITE_CONTENT_END: { host: string; endBefore: string }[] = [
+  // mfa.gov.by: the sidebar (missions, videos, social media, contacts, links) and footer.
+  { host: 'mfa.gov.by', endBefore: 'Belarusian Diplomatic Missions abroad' },
+];
+
+const normalize = (s: string) => s.replace(/\s+/g, ' ').trim();
+
+/** Removes the marker element and everything after it in document order, within `root`. */
+function cutAtMarker($: cheerio.CheerioAPI, root: ReturnType<cheerio.CheerioAPI>, marker: string): void {
+  const matches = root.find('*').filter((_, el) => normalize($(el).text()) === marker);
+  // The innermost match: the one with no matching descendant.
+  const target = matches.filter((_, el) => $(el).find(matches).length === 0).first();
+  if (!target.length) return;
+  let node = target;
+  while (node.length && !root.is(node)) {
+    node.nextAll().remove();
+    node = node.parent();
+  }
+  target.remove();
+}
+
+function hostOf(url: string): string {
+  try {
+    return new URL(url).host;
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * Decodes an HTML body. Bytes that are valid UTF-8 are read as UTF-8, whatever
+ * the page declares; otherwise the charset from the Content-Type header or a
+ * `<meta>` tag is used (e.g. mfa.gov.by serves windows-1251).
+ */
+export function decodeHtml(body: Buffer, contentType: string): string {
+  try {
+    return new TextDecoder('utf-8', { fatal: true }).decode(body);
+  } catch {
+    // Not UTF-8: fall through to the declared charset.
+  }
+  const head = body.subarray(0, 4096).toString('latin1');
+  const declared =
+    /charset\s*=\s*["']?([\w-]+)/i.exec(contentType)?.[1] ??
+    /<meta[^>]+charset\s*=\s*["']?([\w-]+)/i.exec(head)?.[1];
+  if (declared) {
+    try {
+      return new TextDecoder(declared).decode(body);
+    } catch {
+      // Unknown label: fall back to lenient UTF-8.
+    }
+  }
+  return body.toString('utf-8');
+}
+
+function isHtml(contentType: string): boolean {
+  return contentType === '' || /html|xml/i.test(contentType);
+}
+
+/**
+ * Keys whose values change on every request without the content changing:
+ * Solr's response header (query time, echoed params) and per-document index
+ * versions. Dropped before diffing so they don't show up as "changes" every run.
+ */
+const VOLATILE_JSON_KEYS = new Set(['responseHeader', 'QTime', '_version_']);
+
+/** Sorts object keys and drops volatile ones, so equal data serializes equally. */
+function canonicalJson(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonicalJson);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.keys(value)
+        .filter((k) => !VOLATILE_JSON_KEYS.has(k))
+        .sort()
+        .map((k) => [k, canonicalJson((value as Record<string, unknown>)[k])]),
+    );
+  }
+  return value;
+}
+
+/**
+ * Machine-readable alternates (e.g. a Solr search API) often answer JSON,
+ * sometimes labelled text/plain. Returns the parsed value, or undefined.
+ */
+function parseJson(body: Buffer, contentType: string): unknown {
+  if (!/json|javascript|text\/plain/i.test(contentType)) return undefined;
+  try {
+    return JSON.parse(body.toString('utf-8'));
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Reduces a fetched page to what we diff: block-level text and outbound
+ * links inside the main content region. JSON is pretty-printed (sorted keys,
+ * volatile keys dropped) so it diffs line by line. Other non-HTML bodies
+ * (PDFs) can't be meaningfully text-diffed here, so they're tracked by
+ * content hash only.
+ */
+/**
+ * APIs that answer a page's HTML wrapped in JSON. Their snapshot is the
+ * HTML's text and links (as for a page), plus the JSON's other short values
+ * (title, dates), instead of one long JSON line.
+ */
+const HTML_IN_JSON_HOSTS = new Set([
+  // The Georgia consulate's content API behind geoconsul.gov.ge's HtmlPage pages.
+  'gc-api.mfa.gov.ge',
+]);
+
+/** Values longer than this that aren't HTML (e.g. base64 images) are left out. */
+const MAX_PLAIN_VALUE_LENGTH = 300;
+
+function extractHtmlInJson(json: unknown, contentType: string, url: string): ContentSnapshot {
+  const html: string[] = [];
+  const values: string[] = [];
+  const walk = (value: unknown, path: string) => {
+    if (typeof value === 'string') {
+      if (/<[a-z][^>]*>/i.test(value)) html.push(value);
+      else if (value.trim() && value.length <= MAX_PLAIN_VALUE_LENGTH) values.push(`${path}: ${normalize(value)}`);
+    } else if (typeof value === 'number' || typeof value === 'boolean') {
+      values.push(`${path}: ${value}`);
+    } else if (Array.isArray(value)) {
+      value.forEach((v, i) => walk(v, `${path}[${i}]`));
+    } else if (value && typeof value === 'object') {
+      for (const key of Object.keys(value).sort()) walk((value as Record<string, unknown>)[key], path ? `${path}.${key}` : key);
+    }
+  };
+  walk(json, '');
+  const page = extractHtml(`<html><body>${html.join('\n')}</body></html>`, contentType, url);
+  return {
+    ...page,
+    text: [...values, page.text].filter(Boolean).join('\n'),
+    links: page.links.filter((l) => !l.href.startsWith('data:')),
+  };
+}
+
+export function extractSnapshot(body: Buffer, contentType: string, url: string): ContentSnapshot {
+  const json = parseJson(body, contentType);
+  if (json !== undefined && HTML_IN_JSON_HOSTS.has(hostOf(url))) return extractHtmlInJson(json, contentType, url);
+  if (json !== undefined) {
+    return { url, contentType, updatedAt: null, text: JSON.stringify(canonicalJson(json), null, 2), links: [] };
+  }
+  if (!isHtml(contentType)) {
+    const hash = createHash('sha256').update(body).digest('hex');
+    return { url, contentType, updatedAt: null, text: `sha256:${hash}`, links: [] };
+  }
+
+  return extractHtml(decodeHtml(body, contentType), contentType, url);
+}
+
+/** Block-level text and outbound links of an HTML document or fragment. */
+export function extractHtml(html: string, contentType: string, url: string): ContentSnapshot {
+  const $ = cheerio.load(html);
+  const updatedAt =
+    $('meta[name="govuk:public-updated-at"]').attr('content') ??
+    $('meta[name="govuk:updated-at"]').attr('content') ??
+    null;
+
+  const root = selectContentRoot($);
+  const host = hostOf(url);
+  for (const { endBefore } of SITE_CONTENT_END.filter((s) => s.host === host)) cutAtMarker($, root, endBefore);
+
+  const text = root
+    .find('li, p, h1, h2, h3, h4, td, th')
+    .map((_, el) => $(el).text().replace(/\s+/g, ' ').trim())
+    .get()
+    .filter(Boolean)
+    .join('\n');
+
+  const links: ContentLink[] = root
+    .find('a[href]')
+    .map((_, el) => {
+      const href = $(el).attr('href') ?? '';
+      const resolved = (() => {
+        try {
+          return new URL(href, url).toString();
+        } catch {
+          return href;
+        }
+      })();
+      const linkText = $(el).text().replace(/\s+/g, ' ').trim();
+      return { text: linkText, href: resolved };
+    })
+    .get()
+    .filter((l) => l.text.length > 0 && l.href.length > 0);
+
+  return { url, contentType, updatedAt, text, links };
+}
+
+const MAX_DIFF_PARTS = 20;
+const MAX_LINE_LENGTH = 200;
+
+function buildTextDiffPreview(previous: string, current: string): string | undefined {
+  // Trailing newline so an appended line doesn't also show the old last line as changed.
+  const parts = diffLines(previous + '\n', current + '\n').filter((p) => p.added || p.removed);
+  if (parts.length === 0) return undefined;
+  const lines = parts
+    .slice(0, MAX_DIFF_PARTS)
+    .flatMap((p) => p.value.split('\n').filter(Boolean).map((line) => (p.added ? '+ ' : '- ') + line.slice(0, MAX_LINE_LENGTH)));
+  if (parts.length > MAX_DIFF_PARTS) lines.push(`… ${parts.length - MAX_DIFF_PARTS} more changed blocks not shown`);
+  return lines.join('\n');
+}
+
+/**
+ * Spellings of one target that a CMS emits interchangeably. mfa.gov.rs
+ * sometimes renders its links through the front controller
+ * (`/index%2ephp/en/…`) and sometimes not (`/en/…`).
+ */
+function canonicalHref(href: string): string {
+  return href.replace(/\/index(?:\.|%2e)php(?=\/|$)/i, '');
+}
+
+/**
+ * Diffs link targets by matching on anchor text. This is what catches a
+ * "document vault" rotation (Schengen's PDF Annex): the surrounding page
+ * text is byte-identical, but the link with the same visible text ("Annex
+ * 7b") now points at a new URL.
+ */
+function diffLinks(previous: ContentLink[], current: ContentLink[]): LinkChange[] {
+  const prevByText = new Map(previous.map((l) => [l.text, l.href]));
+  const currByText = new Map(current.map((l) => [l.text, l.href]));
+  const same = (a: string, b: string) => a === b || canonicalHref(a) === canonicalHref(b);
+  const changes: LinkChange[] = [];
+
+  for (const [text, currentHref] of currByText) {
+    const previousHref = prevByText.get(text);
+    if (previousHref === undefined) {
+      changes.push({ text, currentHref, kind: 'added' });
+    } else if (!same(previousHref, currentHref)) {
+      changes.push({ text, previousHref, currentHref, kind: 'target-changed' });
+    }
+  }
+  for (const [text, previousHref] of prevByText) {
+    if (!currByText.has(text)) {
+      changes.push({ text, previousHref, kind: 'removed' });
+    }
+  }
+  return changes;
+}
+
+export type SnapshotComparison = {
+  status: RuleCheckStatus;
+  textDiffPreview?: string;
+  linkChanges?: LinkChange[];
+};
+
+export function compareSnapshots(previous: ContentSnapshot | null, current: ContentSnapshot): SnapshotComparison {
+  if (!previous) return { status: 'first-run' };
+
+  const textDiffPreview = buildTextDiffPreview(previous.text, current.text);
+  const linkChanges = diffLinks(previous.links, current.links);
+
+  const textChanged = textDiffPreview !== undefined;
+  const linksChanged = linkChanges.length > 0;
+
+  let status: RuleCheckStatus = 'unchanged';
+  if (textChanged && linksChanged) status = 'both-changed';
+  else if (textChanged) status = 'text-changed';
+  else if (linksChanged) status = 'links-changed';
+
+  return { status, textDiffPreview, linkChanges: linksChanged ? linkChanges : undefined };
+}

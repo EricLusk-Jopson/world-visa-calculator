@@ -42,12 +42,20 @@ describe('getMontenegroRule', () => {
     expect(rule.notes ?? []).toHaveLength(0);
   });
 
-  it('a special-case visa-required nationality (DZ, true content gap) keeps its substantive note in addition to rule.source', () => {
+  it('a special-case visa-required nationality (CV, true content gap) keeps its substantive note in addition to rule.source', () => {
+    const rule = getMontenegroRule('CV');
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.source).toEqual(MontenegroSources.CV);
+    expect(rule.notes?.[0]?.text).toContain('No country-specific visa-regime information');
+  });
+
+  it('Algeria (DZ) is a plain visa-required rule now that its page publishes one', () => {
     const rule = getMontenegroRule('DZ');
     expect(rule.access).toBe('visa_required');
     if (rule.access !== 'visa_required') return;
     expect(rule.source).toEqual(MontenegroSources.DZ);
-    expect(rule.notes?.[0]?.text).toContain('No country-specific visa-regime information');
+    expect(rule.notes ?? []).toHaveLength(0);
   });
 
   it('returns entitled with an ID-card note for an EU nationality (DE)', () => {

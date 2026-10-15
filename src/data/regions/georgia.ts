@@ -5,18 +5,21 @@
  *
  * Sources:
  *   parent (overview): https://geoconsul.gov.ge/en/entering-georgia
- *   direct (per-country durations): https://geoconsul.gov.ge/en/entering-georgia-visa
- *   Both live in @/data/sources — GeorgiaSources.visaList.
- *
- * Per explicit instruction, two further references are cited here as plain
- * comments rather than as SourceDoc citations:
- *   - https://matsne.gov.ge/en/document/view/2867361?publication=0 — "On
- *     Approval of the List of Countries Whose Citizens May Enter Georgia
- *     without a Visa" (the underlying legislation).
- *   - https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25 — the
- *     consulate's own list of citizens and stateless persons permanently
+ *   direct (visa-free list): https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25
+ *     — the consulate's list of citizens and stateless persons permanently
  *     residing in the listed countries who may enter, stay in, or transit
  *     Georgia without a visa.
+ *   Both live in @/data/sources — GeorgiaSources.visaList.
+ *
+ * The rules below were transcribed from the per-country duration table at
+ * https://geoconsul.gov.ge/en/entering-georgia-visa, which the direct link
+ * replaced as the cited source on 2026-10-15.
+ *
+ * Per explicit instruction, the underlying legislation is cited here as a
+ * plain comment rather than as a SourceDoc citation:
+ *   - https://matsne.gov.ge/en/document/view/2867361?publication=0 — "On
+ *     Approval of the List of Countries Whose Citizens May Enter Georgia
+ *     without a Visa".
  *
  * Base/default rule is visa_required.
  *
@@ -46,12 +49,12 @@
  *   (the two countries' duration values were out of order relative to their
  *   names). Confirmed with the user: North Macedonia gets "90 days in any
  *   180 day period"; Russia gets "Full 1 (one) year".
- * - ~28 entries in the source carry an unexplained trailing asterisk (e.g.
- *   "Austria*", "United Kingdom of Great Britain and Northern Ireland*").
- *   Confirmed with the user that this is cosmetic and carries no
- *   substantive meaning for this data model — every asterisked entry is
- *   treated identically to its un-asterisked "Full 1 (one) year" peers, no
- *   note or condition attached.
+ * - ~28 entries in the source carry a trailing asterisk (e.g. "Austria*",
+ *   "United Kingdom of Great Britain and Northern Ireland*"). The page's
+ *   footnote says EU citizens may enter with an EU identity card as well as
+ *   a travel document. It doesn't change the stay, so every asterisked entry
+ *   is treated identically to its un-asterisked "Full 1 (one) year" peers,
+ *   no note or condition attached.
  * - Five "territory" rows in the source table have no ISO Alpha-2 code
  *   distinct from their parent country in COUNTRIES (NationalitySelector.tsx)
  *   and are therefore excluded outright, matching the Albania/Gibraltar
@@ -156,7 +159,7 @@ export const GEORGIA: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-09-13',
-  sourceUrl: GeorgiaSources.visaList.parentUrl,
+  sourceUrl: GeorgiaSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
 
