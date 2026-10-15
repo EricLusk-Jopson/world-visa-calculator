@@ -33,8 +33,7 @@ export type RunOptions = {
  * Runs link health + content diffing over every region in one pass.
  *
  * Every unique URL across all regions is fetched exactly once — Bosnia,
- * Kosovo, North Macedonia and Albania each cite one page from ~100–200
- * entries, and Schengen/UK parent pages are shared across keys. When a URL
+ * North Macedonia and Albania each cite one page from ~100–200 entries, and Schengen/UK parent pages are shared across keys. When a URL
  * is also a diff target (`checkDiff: true`), the same response body feeds
  * the content diff, so a run makes one request per URL rather than one per
  * link per key. Every link is health-checked, alternates included.
