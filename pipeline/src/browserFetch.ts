@@ -63,14 +63,26 @@ async function launch(): Promise<Browser> {
   throw new Error(tried.join('; '));
 }
 
-/**
- * `waitUntil` is when a load counts as done: 'load' for server-rendered pages,
- * 'networkidle' for pages that fetch their content with scripts after load
- * (waited for at most NETWORK_IDLE_WAIT_MS).
- */
-type WaitUntil = 'load' | 'networkidle';
+export interface BrowserFetchOptions {
+  timeoutMs?: number;
+  /**
+   * When a load counts as done: 'load' for server-rendered pages,
+   * 'networkidle' for pages that fetch their content with scripts after load
+   * (waited for at most NETWORK_IDLE_WAIT_MS).
+   */
+  waitUntil?: 'load' | 'networkidle';
+  /** Replaces headless Chromium's own "HeadlessChrome" User-Agent. */
+  userAgent?: string;
+}
 
-async function load(url: string, timeoutMs: number, waitUntil: WaitUntil): Promise<FetchOutcome> {
+/** The page's title and opening text, to say what came back instead of the page. */
+async function describePage(page: import('playwright').Page): Promise<string> {
+  const title = (await page.title().catch(() => '')).trim();
+  const text = ((await page.evaluate(() => document.body?.innerText ?? '').catch(() => '')) as string).replace(/\s+/g, ' ').trim();
+  return [title && `title "${title}"`, text && `text "${text.slice(0, 160)}"`].filter(Boolean).join(', ') || 'empty page';
+}
+
+async function load(url: string, { timeoutMs = 45_000, waitUntil = 'load', userAgent }: BrowserFetchOptions): Promise<FetchOutcome> {
   browser ??= launch();
   let b: Browser;
   try {
@@ -83,7 +95,7 @@ async function load(url: string, timeoutMs: number, waitUntil: WaitUntil): Promi
       : '`npm exec playwright install chromium` (it fetches the build this Playwright version expects)';
     return { status: 'blocked', error: `headless browser unavailable (${message}); run ${fix} in pipeline/, or install Chrome or Edge` };
   }
-  const context = await b.newContext({ locale: 'en-US' });
+  const context = await b.newContext({ locale: 'en-US', ...(userAgent ? { userAgent } : {}) });
   try {
     const page = await context.newPage();
     let res = await page.goto(url, { waitUntil: 'load', timeout: timeoutMs });
@@ -112,7 +124,9 @@ async function load(url: string, timeoutMs: number, waitUntil: WaitUntil): Promi
       const still = interstitial.kind === 'challenge' ? ` not cleared after ${CHALLENGE_WAIT_MS / 1000} s` : '';
       return { status: 'blocked', httpStatus, finalUrl: page.url(), contentType, error: `${interstitial.detail}${still} in a headless browser too` };
     }
-    if (!res || !res.ok()) return { status: 'broken', httpStatus, finalUrl: page.url(), contentType };
+    if (!res || !res.ok()) {
+      return { status: 'broken', httpStatus, finalUrl: page.url(), contentType, error: `headless browser: HTTP ${httpStatus ?? 'no response'} (${await describePage(page)})` };
+    }
     return { status: 'live', httpStatus, finalUrl: page.url(), contentType, body: Buffer.from(html) };
   } catch (err) {
     return { status: 'broken', error: `headless browser: ${(err as Error).message.split('\n')[0]}` };
@@ -121,8 +135,8 @@ async function load(url: string, timeoutMs: number, waitUntil: WaitUntil): Promi
   }
 }
 
-export function fetchWithBrowser(url: string, timeoutMs = 45_000, waitUntil: WaitUntil = 'load'): Promise<FetchOutcome> {
-  const run = queue.then(() => load(url, timeoutMs, waitUntil));
+export function fetchWithBrowser(url: string, options: BrowserFetchOptions = {}): Promise<FetchOutcome> {
+  const run = queue.then(() => load(url, options));
   queue = run.catch(() => undefined);
   return run;
 }

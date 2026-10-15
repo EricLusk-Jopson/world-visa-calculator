@@ -125,7 +125,13 @@ describe('Script-rendered pages', () => {
   before(async () => {
     server = createServer((req, res) => {
       res.setHeader('content-type', 'text/html');
-      if (req.url === '/api/page') setTimeout(() => res.end('<p>Visa-free countries: Andorra</p>'), 300);
+      const ua = req.headers['user-agent'] ?? '';
+      // Refuses headless Chromium's own User-Agent, and on /broken any browser
+      // (the pipeline's plain GET doesn't claim to be Chrome).
+      if (/HeadlessChrome/.test(ua) || (req.url?.startsWith('/broken') && /Chrome\//.test(ua))) {
+        res.statusCode = 500;
+        res.end('<html><head><title>Server Error</title></head><body><p>Runtime Error</p></body></html>');
+      } else if (req.url === '/api/page') setTimeout(() => res.end('<p>Visa-free countries: Andorra</p>'), 300);
       else res.end(SHELL);
     });
     await new Promise<void>((r) => server.listen(0, '127.0.0.1', r));
@@ -150,6 +156,16 @@ describe('Script-rendered pages', () => {
     const outcome = await fetchPage(url, true);
     assert.equal(outcome.status, 'live', outcome.error);
     assert.match(outcome.body?.toString() ?? '', /Visa-free countries: Andorra/);
+  });
+
+  it('keeps the link live but reports a fetch error when the browser is refused', async (t) => {
+    if (!(await canLaunchBrowser())) return t.skip('no Playwright Chromium installed');
+    BROWSER_RENDER_HOSTS.add(new URL(url).host);
+    const outcome = await fetchPage(url.replace('/en/', '/broken/'), true);
+    assert.equal(outcome.status, 'live');
+    assert.equal(outcome.httpStatus, 200);
+    assert.equal(outcome.body, undefined);
+    assert.match(outcome.error ?? '', /page needs rendering, and headless browser: HTTP 500 \(title "Server Error", text "Runtime Error"\)/);
   });
 
   it('keeps health-only checks on a render host as plain GETs', async () => {

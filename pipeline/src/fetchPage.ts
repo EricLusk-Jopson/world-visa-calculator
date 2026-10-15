@@ -226,11 +226,16 @@ export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOu
     return { ...viaBrowser, error: `${outcome.error}; ${viaBrowser.error ?? `headless browser: HTTP ${viaBrowser.httpStatus}`}` };
   }
   if (wantBody && (outcome.status === 'live' || outcome.status === 'redirected') && BROWSER_RENDER_HOSTS.has(hostOf(url))) {
-    // A failed render is reported, not papered over with the plain GET's
-    // empty shell, which would diff as if the content had been removed.
-    const rendered = await fetchWithBrowser(url, undefined, 'networkidle');
+    const rendered = await fetchWithBrowser(url, { waitUntil: 'networkidle', userAgent: BROWSER_USER_AGENT });
     if (rendered.status === 'live' || rendered.status === 'redirected') return { ...rendered, status: outcome.status };
-    return { ...rendered, error: `plain GET was ${outcome.status} (HTTP ${outcome.httpStatus}) but the page needs rendering: ${rendered.error ?? `headless browser: HTTP ${rendered.httpStatus}`}` };
+    // The link itself is fine (the plain GET says so), but its content can't
+    // be read: keep the GET's health and drop its empty shell, so the diff
+    // reports a fetch error instead of the content looking removed.
+    return {
+      ...outcome,
+      body: undefined,
+      error: `page needs rendering, and ${rendered.error ?? `the headless browser got HTTP ${rendered.httpStatus}`}`,
+    };
   }
   return outcome;
 }
