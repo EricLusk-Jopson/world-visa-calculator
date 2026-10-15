@@ -1,4 +1,5 @@
 import { compareSnapshots, extractSnapshot } from './contentCheck';
+import { closeBrowser } from './browserFetch';
 import { createLimiter, describeResponse, fetchPage, mapWithConcurrency, type FetchOutcome } from './fetchPage';
 import { readSnapshot, writeSnapshot } from './snapshotStore';
 import { RESOLVERS, type Discovery, type ResolverId } from './resolvers';
@@ -44,6 +45,14 @@ export type RunOptions = {
  * link per key. Every link is health-checked, alternates included.
  */
 export async function runChecks(regions: RegionSources, options: RunOptions): Promise<RegionReport[]> {
+  try {
+    return await check(regions, options);
+  } finally {
+    await closeBrowser(); // started only if a page needed one
+  }
+}
+
+async function check(regions: RegionSources, options: RunOptions): Promise<RegionReport[]> {
   const { snapshotDir, concurrency = 8, perHostConcurrency = 2, recheckDelayMs = 1_000, log = () => {} } = options;
 
   // Resolver links have no fixed URL: discover each key's URL first.

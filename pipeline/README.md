@@ -71,6 +71,7 @@ permissions → "Allow GitHub Actions to create and approve pull requests"**.
 ```bash
 cd pipeline
 npm install
+npx playwright install chromium   # once; for sites that turn away plain HTTP clients
 
 # Real run over regions with checkLinks: true. Updates data/snapshots/ and writes reports/.
 # Needs open network egress to gov.uk, eur-lex.europa.eu, gov.me, etc.
@@ -204,6 +205,22 @@ GETs the page once and:
    labelled lines: the A/C and D visa status per passport type, fees,
    application notes (e.g. a seasonal visa-free window), where to apply.
    Keyed by nationality code; no further requests are made.
+
+The site is behind Imperva Incapsula, which answers the pipeline's HTTP
+client with a 200 block page ("Request unsuccessful. Incapsula incident ID
+…"), so it is fetched in a headless browser (below).
+
+### Sites that turn away plain HTTP clients
+
+Some bot protection blocks any non-browser client, whatever its headers.
+The pipeline reports that as 🚫 blocked, including Imperva Incapsula's
+block page, which comes with a 200 status. For hosts in
+`BROWSER_FALLBACK_HOSTS` (`src/fetchPage.ts`), a blocked response is then
+retried once in headless Chromium through Playwright (`src/browserFetch.ts`),
+one page at a time. The page's HTML is read back from the DOM, so inline
+scripts such as Albania's `countryData` keep their source text. This needs
+`npx playwright install chromium` once. Without it, the page is reported
+blocked, with that hint.
 
 ### Incomplete certificate chains
 

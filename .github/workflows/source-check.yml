@@ -47,6 +47,10 @@ jobs:
 
       - run: npm ci
 
+      # Headless Chromium for sites that turn away plain HTTP clients
+      # (BROWSER_FALLBACK_HOSTS in src/fetchPage.ts).
+      - run: npx playwright install --with-deps chromium
+
       # Scheduled runs always sweep every region; manual runs honour each
       # region's checkLinks flag unless "all_regions" is ticked.
       - name: Run source check

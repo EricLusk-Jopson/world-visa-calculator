@@ -1,4 +1,5 @@
 import { fetch as undiciFetch } from 'undici';
+import { fetchWithBrowser, INCAPSULA_BLOCK } from './browserFetch';
 import { chainCompletingAgent, isIncompleteChainError } from './tlsChain';
 import type { LinkHealthStatus } from './types';
 
@@ -77,9 +78,7 @@ function blockedReason(httpStatus: number, headers: Headers): string | undefined
  * Request headers for sites that need more than the defaults. The Bosnia and
  * Herzegovina MFA site sits behind a reverse proxy that turns away clients
  * that don't look like a browser, and its subpage API answers JSON. The North
- * Macedonia MFA site gets the same browser-style agent as a precaution. The
- * Albania MFA site answered the default agent with a 200 page holding no
- * text and no visa table.
+ * Macedonia MFA site gets the same browser-style agent as a precaution.
  */
 export const BROWSER_USER_AGENT =
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 ' + USER_AGENT;
@@ -87,7 +86,6 @@ export const BROWSER_USER_AGENT =
 const SITE_HEADERS: { host: string; path?: RegExp; headers: Record<string, string> }[] = [
   { host: 'www.mvp.gov.ba', headers: { 'User-Agent': BROWSER_USER_AGENT } },
   { host: 'mfa.gov.mk', headers: { 'User-Agent': BROWSER_USER_AGENT } },
-  { host: 'punetejashtme.gov.al', headers: { 'User-Agent': BROWSER_USER_AGENT } },
   { host: 'www.mvp.gov.ba', path: /^\/api\//, headers: { Accept: 'application/json' } },
 ];
 
@@ -175,16 +173,34 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
       await res.body?.cancel();
       return { status: 'broken', httpStatus: res.status, finalUrl, contentType, error: outage };
     }
-    const body = wantBody ? Buffer.from(await res.arrayBuffer()) : undefined;
-    if (!wantBody) await res.body?.cancel();
+    // Imperva Incapsula answers a client it turns away with 200 and a short
+    // block page; its responses carry X-Iinfo, so only those are read here.
+    const imperva = res.headers.has('x-iinfo') || /imperva|incapsula/i.test(res.headers.get('x-cdn') ?? '');
+    const body = wantBody || imperva ? Buffer.from(await res.arrayBuffer()) : undefined;
+    if (!body) await res.body?.cancel();
+    const incident = body && body.length < 16_384 ? INCAPSULA_BLOCK.exec(body.toString('utf-8'))?.[1] : undefined;
+    if (incident) {
+      return { status: 'blocked', httpStatus: res.status, finalUrl, contentType, error: `HTTP ${res.status} with an Imperva Incapsula block page (incident ${incident})` };
+    }
     const status: LinkHealthStatus = normalizeUrl(finalUrl) !== normalizeUrl(url) ? 'redirected' : 'live';
-    return { status, httpStatus: res.status, finalUrl, contentType, body };
+    return { status, httpStatus: res.status, finalUrl, contentType, body: wantBody ? body : undefined };
   } catch (err) {
     return { status: 'broken', error: describeError(err) };
   }
 }
 
-/** GET with a timeout, retrying transient failures (network, 429, 5xx) with backoff. */
+/**
+ * Hosts whose bot protection turns away every plain HTTP client, so a
+ * blocked response is retried in headless Chromium (see browserFetch.ts).
+ * The Albania MFA site is behind Imperva Incapsula; its old Playwright
+ * scraper read it fine.
+ */
+export const BROWSER_FALLBACK_HOSTS = new Set(['punetejashtme.gov.al']);
+
+/**
+ * GET with a timeout, retrying transient failures (network, 429, 5xx) with
+ * backoff, and blocked responses from BROWSER_FALLBACK_HOSTS in a browser.
+ */
 export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOutcome> {
   let outcome = await fetchOnce(url, wantBody);
   for (const delay of RETRY_DELAYS_MS) {
@@ -192,7 +208,20 @@ export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOu
     await new Promise((r) => setTimeout(r, delay));
     outcome = await fetchOnce(url, wantBody);
   }
+  if (outcome.status === 'blocked' && BROWSER_FALLBACK_HOSTS.has(hostOf(url))) {
+    const viaBrowser = await fetchWithBrowser(url);
+    if (viaBrowser.status !== 'blocked' && viaBrowser.status !== 'broken') return viaBrowser;
+    return { ...viaBrowser, error: `${outcome.error}; ${viaBrowser.error ?? `headless browser: HTTP ${viaBrowser.httpStatus}`}` };
+  }
   return outcome;
+}
+
+function hostOf(url: string): string {
+  try {
+    return new URL(url).host;
+  } catch {
+    return '';
+  }
 }
 
 /** Returns a function that runs tasks with at most `limit` in flight. */
