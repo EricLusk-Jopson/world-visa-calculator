@@ -119,6 +119,12 @@ const ALIASES: Record<string, string | null> = {
   'Federated States of Micronesia': 'FM',
   'Saint Vincent and the Grenadines': 'VC',
   'Sao Tome and Principe': 'ST',
+  // Seen on the 2026-10-15 run:
+  'Micronesia - Federated States of': 'FM',
+  'Bosnia and Hercegovina': 'BA',
+  'Kingdom of the Netherlands': 'NL',
+  USA: 'US',
+  'Venezuela, Bolivarian Republic of': 'VE',
 };
 
 /** Codes Intl still names but that are retired or not countries ("Dahomey" → Benin, "UK", "EU"), skipped so they can't shadow the current code. */
@@ -268,6 +274,26 @@ async function discover(): Promise<Discovery> {
   return { fill, noPage: NO_PAGE, listing: listingSnapshot(buttons), indexUrl: PAGE_URL, note, fetch: call };
 }
 
+const CONTACT_HEADING = /^Competent DM\/CP of the Republic of North Macedonia/i;
+
+/**
+ * Drops the panel's embassy contact block ("Competent DM/CP of the Republic
+ * of North Macedonia", then phone, address, e-mail, opening hours and the
+ * head of mission) so a new ambassador or phone number isn't reported as a
+ * rule change. A "Notes:" section after it is kept.
+ */
+export function withoutContactBlock(snapshot: ContentSnapshot): ContentSnapshot {
+  const kept: string[] = [];
+  let inContacts = false;
+  for (const line of snapshot.text.split('\n')) {
+    if (CONTACT_HEADING.test(line)) inContacts = true;
+    else if (/^Notes:?/i.test(line)) inContacts = false;
+    if (!inContacts) kept.push(line);
+  }
+  const links = snapshot.links.filter((l) => !/^(mailto|tel):/i.test(l.href));
+  return { ...snapshot, text: kept.join('\n'), links };
+}
+
 /** The right-hand panel of the re-rendered component: the country's name and its visa rule. */
 function extract(body: Buffer, contentType: string, url: string): ContentSnapshot {
   let html: unknown;
@@ -281,7 +307,7 @@ function extract(body: Buffer, contentType: string, url: string): ContentSnapsho
   const panel = $('div.p-5').first().parent();
   if (panel.length === 0) return { url, contentType, updatedAt: null, text: '', links: [] };
   const snapshot = extractHtml(panel.html() ?? '', contentType, url);
-  return snapshot.text ? snapshot : { ...snapshot, text: panel.text().replace(/\s+/g, ' ').trim() };
+  return withoutContactBlock(snapshot.text ? snapshot : { ...snapshot, text: panel.text().replace(/\s+/g, ' ').trim() });
 }
 
 export const mfaGovMk: Resolver = {

@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { afterEach, before, describe, it } from 'node:test';
 import { NorthMacedoniaSources } from '@/data/sources';
 import { runChecks } from '../runChecks';
-import { buildFill, isoForName, mfaGovMk, mfaGovMkOptions, NO_PAGE, PAGE_URL, parseRegionPage } from './mfaGovMk';
+import { buildFill, isoForName, mfaGovMk, mfaGovMkOptions, NO_PAGE, PAGE_URL, parseRegionPage, withoutContactBlock } from './mfaGovMk';
 
 const FIXTURES = join(import.meta.dirname, '..', '..', 'fixtures', 'mfa-gov-mk');
 const AFRICA = readFileSync(join(FIXTURES, 'region-africa.html'), 'utf-8');
@@ -53,6 +53,13 @@ describe('name matching', () => {
     assert.deepEqual(wrong, []);
   });
 
+  it('maps the names the 2026-10-15 run could not place', () => {
+    assert.deepEqual(
+      ['Micronesia - Federated States of', 'Bosnia and Hercegovina', 'Kingdom of the Netherlands', 'USA', 'Venezuela, Bolivarian Republic of'].map(isoForName),
+      ['FM', 'BA', 'NL', 'US', 'VE'],
+    );
+  });
+
   it('notes names it cannot place instead of dropping them silently', () => {
     const { fill, note } = buildFill([
       { region: 'africa', record: 51, name: 'Benin' },
@@ -67,6 +74,27 @@ describe('extract', () => {
   it("keeps the rule panel from the update response's re-rendered HTML", () => {
     const snap = mfaGovMk.extract(BENIN, 'application/json', `${PAGE_URL}#africa/51`);
     assert.equal(snap.text, 'Benin\nVisa for foreign citizens:\nNeeded');
+  });
+});
+
+describe('withoutContactBlock', () => {
+  it('drops the embassy contacts but keeps the rule, its footnotes and any notes', () => {
+    const text = [
+      'India', 'Visa for foreign citizens:', 'Needed',
+      '*Holders of diplomatic passports do not require a visa for short stays.',
+      'Competent DM/CP of the Republic of North Macedonia',
+      'Phone: ++ 91 (11) 4614 2603', 'Address: B-1/1 GROUND FLOOR, VASANT VIHAR, NEW DELHI', 'Е-mail: delhi@mfa.gov.mk',
+      'Ambassador: Slobodan Uzunov', 'Notes:', 'Visa on arrival is not available.',
+    ].join('\n');
+    const snap = withoutContactBlock({
+      url: 'x', contentType: 'application/json', updatedAt: null, text,
+      links: [{ text: 'delhi@mfa.gov.mk', href: 'mailto:delhi@mfa.gov.mk' }, { text: 'eVisa', href: 'https://example.org/evisa' }],
+    });
+    assert.equal(
+      snap.text,
+      'India\nVisa for foreign citizens:\nNeeded\n*Holders of diplomatic passports do not require a visa for short stays.\nNotes:\nVisa on arrival is not available.',
+    );
+    assert.deepEqual(snap.links.map((l) => l.href), ['https://example.org/evisa']);
   });
 });
 
