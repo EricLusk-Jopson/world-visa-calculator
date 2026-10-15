@@ -432,12 +432,12 @@ export const TurkiyeSources = {
     direct: {
       url: "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
     parent: {
       url: "https://www.mfa.gov.tr/consular-info.en.mfa",
       type: "parent",
-      checkDiff: false,
+      checkDiff: true,
     },
     dateChecked: "2026-05-27",
   } satisfies SourceDoc,
