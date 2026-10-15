@@ -71,6 +71,7 @@ permissions → "Allow GitHub Actions to create and approve pull requests"**.
 ```bash
 cd pipeline
 npm install
+npm exec playwright install chromium   # once, from pipeline/; for sites that turn away plain HTTP clients
 
 # Real run over regions with checkLinks: true. Updates data/snapshots/ and writes reports/.
 # Needs open network egress to gov.uk, eur-lex.europa.eu, gov.me, etc.
@@ -179,6 +180,53 @@ only the page's name in the report; the resolver fetches it itself. Each run:
    rule panel from the response's `effects.html`, keyed by nationality code.
 
 A 419 from `/livewire/update` means the session or CSRF token was rejected.
+
+**`punetejashtme.gov.al` (Albania).** The MFA's "Visa regime for foreign
+citizens" table is filled in by script: picking a country copies its entry
+from an inline `const countryData = { 'slug': {...}, … }` into the table, so
+every country's rule is in the page's HTML but not in its text. Every
+AlbaniaSources entry cites the page as its human link, plus this `machine`
+alternate:
+
+```
+https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#{key}
+```
+
+`{key}` is the country's slug on the page, e.g. `arabia-saudite`. Each run
+GETs the page once and:
+
+1. Parses `countryData` as data, never running it: only literals are
+   accepted, plus `currentLanguage === 'en' ? A : B`, read as A. Any other
+   syntax fails discovery with the line it stopped at.
+2. Maps slugs to nationality codes through the country selector's English
+   names (`<option value="kongo"> CONGO </option>`), with `ALIASES` for the
+   site's spellings ("R0MANIA", "SLLOVENIA", "PHILIPPINE").
+3. Diffs the country list (`…#countries`), then each country's entry as
+   labelled lines: the A/C and D visa status per passport type, fees,
+   application notes (e.g. a seasonal visa-free window), where to apply.
+   Keyed by nationality code; no further requests are made.
+
+The site is behind Imperva Incapsula, which answers the pipeline's HTTP
+client with a 200 block page ("Request unsuccessful. Incapsula incident ID
+…"), so it is fetched in a headless browser (below). As of 2026-10-15
+Incapsula turns that away too, so both Albania pages are reported 🚫
+blocked and are checked by hand; the parser is ready (and tested against a
+saved copy of the page) for when a run gets through.
+
+### Sites that turn away plain HTTP clients
+
+Some bot protection blocks any non-browser client, whatever its headers.
+The pipeline reports that as 🚫 blocked, including Imperva Incapsula's
+block page and its JavaScript challenge (a near-empty page whose script sets
+a cookie and reloads), both of which come with a 200 status. For hosts in
+`BROWSER_FALLBACK_HOSTS` (`src/fetchPage.ts`), a blocked response is then
+retried once in headless Chromium through Playwright (`src/browserFetch.ts`),
+one page at a time, giving a challenge up to 20 s to reload into the page. The page's HTML is read back from the DOM, so inline
+scripts such as Albania's `countryData` keep their source text. It uses
+the Chromium build `npm exec playwright install chromium` fetches (run it in
+`pipeline/`, so the build matches the Playwright version installed there),
+else the machine's Chrome or Edge. With none of these, the page is reported
+blocked, with that hint.
 
 ### Incomplete certificate chains
 
