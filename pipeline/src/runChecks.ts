@@ -1,8 +1,9 @@
 import { compareSnapshots, extractSnapshot } from './contentCheck';
 import { createLimiter, fetchPage, mapWithConcurrency, type FetchOutcome } from './fetchPage';
 import { readSnapshot, writeSnapshot } from './snapshotStore';
+import { RESOLVERS, type Discovery, type ResolverId } from './resolvers';
 import type { RegionReport } from './report';
-import type { LinkHealthResult, LinkPath, RuleCheckResult, SourceDoc, SourceLink, UrlUsage } from './types';
+import type { ContentSnapshot, LinkHealthResult, LinkPath, RuleCheckResult, SourceDoc, SourceLink, UrlUsage } from './types';
 
 export type RegionSources = Record<string, Record<string, SourceDoc>>;
 
@@ -17,6 +18,9 @@ function linksOf(doc: SourceDoc): { path: LinkPath; link: SourceLink }[] {
   walk('parent', doc.parent);
   return out;
 }
+
+/** How a content diff reads and stores one URL, when not by the URL itself. */
+type DiffMeta = { snapshotId: string; extract: (body: Buffer, contentType: string, url: string) => ContentSnapshot };
 
 export type RunOptions = {
   snapshotDir: string;
@@ -42,6 +46,27 @@ export type RunOptions = {
 export async function runChecks(regions: RegionSources, options: RunOptions): Promise<RegionReport[]> {
   const { snapshotDir, concurrency = 8, perHostConcurrency = 2, recheckDelayMs = 1_000, log = () => {} } = options;
 
+  // Resolver links have no fixed URL: discover each key's URL first.
+  const discoveries = new Map<ResolverId, Discovery>();
+  for (const sources of Object.values(regions)) {
+    for (const doc of Object.values(sources)) {
+      for (const { link } of linksOf(doc)) {
+        if (!link.resolver || discoveries.has(link.resolver)) continue;
+        const resolver = RESOLVERS[link.resolver];
+        log(`Discovering ${link.resolver} pages...`);
+        const discovery = await resolver.discover((url) => fetchPage(url, true), readSnapshot(snapshotDir, resolver.listingId));
+        log(discovery.error ? `  ${discovery.error}` : `  ${discovery.fill.size} pages found`);
+        discoveries.set(link.resolver, discovery);
+      }
+    }
+  }
+  // Once per resolver, however many regions use it.
+  const listingResults = new Map([...discoveries].map(([id, d]) => [id, listingCheck(id, d, snapshotDir)]));
+  const diffMeta = new Map<string, DiffMeta>();
+  // region -> resolver results that aren't a fetched page: each resolver's
+  // discovered list, and keys it found no page for.
+  const resolverChecks = new Map<string, RuleCheckResult[]>();
+
   // region -> url -> usages, preserving sources.ts order for the report.
   const healthUsages = new Map<string, Map<string, UrlUsage[]>>();
   // region -> diff url -> keys + which link path
@@ -54,9 +79,33 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
   for (const [region, sources] of Object.entries(regions)) {
     const byUrl = new Map<string, UrlUsage[]>();
     const parseByUrl = new Map<string, { keys: string[]; link: LinkPath }>();
+    const extraChecks: RuleCheckResult[] = [];
+    const listingKeys = new Map<ResolverId, { keys: string[]; link: LinkPath }>();
     for (const [key, doc] of Object.entries(sources)) {
       for (const { path, link } of linksOf(doc)) {
-        const { url } = link;
+        let { url } = link;
+        if (link.resolver) {
+          const resolver = RESOLVERS[link.resolver];
+          const discovery = discoveries.get(link.resolver)!;
+          if (!listingKeys.has(link.resolver)) listingKeys.set(link.resolver, { keys: [], link: `${path} (page list)` });
+          listingKeys.get(link.resolver)!.keys.push(key);
+          const fill = discovery.fill.get(key);
+          if (fill === undefined) {
+            // When discovery failed, the page list's own result already says so once.
+            if (!discovery.error && !discovery.noPage.has(key)) {
+              extraChecks.push({
+                url: `${discovery.indexUrl}#${key}`,
+                keys: [key],
+                link: path,
+                status: 'fetch-error',
+                error: `No page for ${key} in ${discovery.indexUrl}'s country list`,
+              });
+            }
+            continue;
+          }
+          url = link.url.replace('{key}', fill);
+          diffMeta.set(url, { snapshotId: resolver.snapshotId(key), extract: resolver.extract });
+        }
         if (!byUrl.has(url)) byUrl.set(url, []);
         byUrl.get(url)!.push({ key, field: path });
         allUrls.add(url);
@@ -71,6 +120,10 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
     }
     healthUsages.set(region, byUrl);
     parseKeys.set(region, parseByUrl);
+    for (const [id, { keys, link }] of listingKeys) {
+      extraChecks.unshift({ ...listingResults.get(id)!, keys, link });
+    }
+    resolverChecks.set(region, extraChecks);
   }
 
   log(`Fetching ${allUrls.size} unique URLs (${parseUrls.size} diffed for content)...`);
@@ -119,15 +172,17 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
       });
       continue; // keep the previous snapshot as the baseline
     }
-    const current = extractSnapshot(outcome.body, outcome.contentType ?? '', url);
+    const meta = diffMeta.get(url);
+    const current = (meta?.extract ?? extractSnapshot)(outcome.body, outcome.contentType ?? '', url);
+    const snapshotId = meta?.snapshotId ?? url;
     if (current.text === '') {
       // Bot-check interstitials and script-rendered shells parse to nothing;
       // saving one as the baseline would make next month's run "change".
       ruleByUrl.set(url, { url, status: 'fetch-error', error: 'no text extracted (bot-check or script-rendered page?)' });
       continue;
     }
-    const previous = readSnapshot(snapshotDir, url);
-    writeSnapshot(snapshotDir, current);
+    const previous = readSnapshot(snapshotDir, snapshotId);
+    writeSnapshot(snapshotDir, current, snapshotId);
     ruleByUrl.set(url, {
       url,
       previousUpdatedAt: previous?.updatedAt,
@@ -150,9 +205,29 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
       keys,
       link,
     }));
+    ruleChecks.push(...resolverChecks.get(region)!);
     reports.push({ region, linkHealth, ruleChecks });
   }
   return reports;
+}
+
+/**
+ * A resolver's discovered page list, diffed like a page: a country added,
+ * removed or renamed changes its text, and a republished page (new slug)
+ * changes its link target. The baseline is only replaced when discovery
+ * succeeded.
+ */
+function listingCheck(id: ResolverId, discovery: Discovery, snapshotDir: string): Omit<RuleCheckResult, 'keys' | 'link'> {
+  const { listingId } = RESOLVERS[id];
+  let result: Omit<RuleCheckResult, 'keys' | 'link'>;
+  if (discovery.error) {
+    result = { url: listingId, status: 'fetch-error', error: discovery.error, note: discovery.note };
+  } else {
+    const previous = readSnapshot(snapshotDir, listingId);
+    writeSnapshot(snapshotDir, discovery.listing, listingId);
+    result = { url: listingId, note: discovery.note, ...compareSnapshots(previous, discovery.listing) };
+  }
+  return result;
 }
 
 function hostOf(url: string): string {

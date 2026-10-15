@@ -187,6 +187,14 @@ export interface SourceLink {
    * human page is only checked for reachability.
    */
   alternate?: SourceLink;
+  /**
+   * Pipeline-only. When set, `url` is a template whose `{key}` the pipeline
+   * fills per SourceDoc key before fetching, because the site's per-country
+   * URLs are discovered at run time rather than fixed. 'mvp.gov.ba': the
+   * Bosnia and Herzegovina MFA subpage API, keyed from its /en/vize index
+   * (see pipeline/src/resolvers/mvpGovBa.ts).
+   */
+  resolver?: "mvp.gov.ba";
 }
 
 /**

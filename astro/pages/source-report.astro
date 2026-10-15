@@ -171,6 +171,7 @@ const generated = report
                       </div>
                       <a class="url" href={c.url} rel="noopener noreferrer" target="_blank">{c.url}</a>
                       {c.error && <p class="finding__detail">{c.error}</p>}
+                      {c.note && <p class="finding__detail">{c.note}</p>}
                       {(c.previousUpdatedAt || c.currentUpdatedAt) && (
                         <p class="finding__detail">
                           Page last updated: <code>{c.previousUpdatedAt ?? "—"}</code> → <code>{c.currentUpdatedAt ?? "—"}</code>
@@ -247,7 +248,7 @@ const generated = report
                           <tr>
                             <td>{ruleKeys(c)}</td>
                             <td><span class={`pill pill--${statusTone[c.status]}`}>{statusLabel[c.status]}</span></td>
-                            <td class="url">{c.url}</td>
+                            <td><span class="url">{c.url}</span>{c.note && <p class="finding__detail">{c.note}</p>}</td>
                           </tr>
                         ))}
                       </tbody>

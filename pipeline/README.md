@@ -86,6 +86,7 @@ npm run check -- --fail-on-findings
 # "next month". Writes reports/demo/.
 npm run demo
 
+npm test        # unit tests (node:test via tsx); offline
 npm run typecheck
 ```
 
@@ -151,6 +152,17 @@ deliberately cautious:
 - a source that doesn't change
 - a link-health-only source that goes dead between runs
 
+### Incomplete certificate chains
+
+Some servers send their certificate without the intermediate CA that links
+it to a trusted root. www.mvp.gov.ba does this; Node then fails with
+`UNABLE_TO_VERIFY_LEAF_SIGNATURE`, though browsers open the site fine. On
+that error, `src/tlsChain.ts` does what browsers do. It downloads the missing
+intermediate from the certificate's "CA Issuers" URL and retries with it
+offered for chain building. Certificate verification stays on: the chain
+must still end at a trusted root. The host is remembered for the rest of the
+run.
+
 ## Source links: `direct`, `parent`, `alternate` and `checkDiff`
 
 Every `SourceDoc` in `src/data/sources.ts` has a `direct` and a `parent`
@@ -213,6 +225,47 @@ When a source turns out to be noisy, either set its `checkDiff` back to
 `false` or tighten `selectContentRoot` in `src/contentCheck.ts` for that
 host.
 
+### Resolver links: per-country URLs discovered at run time
+
+Some sites have no stable per-country URL to cite. A link with a `resolver`
+holds a URL template, and the pipeline fills its `{key}` for each SourceDoc
+key before fetching. Resolvers live in `src/resolvers/`.
+
+**`mvp.gov.ba` (Bosnia and Herzegovina).** Every BosniaSources entry cites the
+MFA's `/en/vize` index as its human page, plus this `machine` alternate:
+
+```
+https://www.mvp.gov.ba/api/subpage/{key}?domain=https://www.mvp.gov.ba
+```
+
+`{key}` is the slug the index's country selector opens for that nationality,
+e.g. `org_cmd57sdlc000nn43u2rk8pgsd_639142770283664500` for Canada. The slug
+ends in a .NET timestamp and changes when a page is republished, so each run:
+
+1. Fetches the index and reads the selector's `"subpages"` list from the
+   Next.js RSC payload (`self.__next_f.push` chunks). The selector's options
+   aren't in the server-rendered DOM.
+2. Maps each country name to a nationality code with `NAME_TO_ISO` in
+   `src/resolvers/mvpGovBa.ts`, which uses the site's own spellings ("Jemen",
+   "New Zeland"). A name missing from the table is reported as a note. A
+   BosniaSources key with no page is reported as a fetch error, except Taiwan
+   and Kosovo, which have no page by design (`NO_PAGE`).
+3. Diffs the list itself as `…/en/vize#subpages`. A country added, removed or
+   renamed changes its text. A republished page changes its slug, its
+   "page dated" (decoded from the slug) and its link target.
+4. Fetches every country's API URL and diffs the JSON's `title`, `content`
+   (as HTML text and links) and `attachedFiles`, but no layout fields. Each
+   country's snapshot is keyed by its nationality code, not by URL, so a
+   republished page diffs against its old content.
+
+Every country is fetched on every run, because a page can also be edited
+without getting a new slug. If the index can't be read, or lists fewer than
+150 countries (the page changed shape), the run uses the previous run's slugs
+and reports the list as a fetch error. The site's reverse proxy turns away
+non-browser clients, so `src/fetchPage.ts` sends a browser-style User-Agent
+(still naming the monitor) to `www.mvp.gov.ba`, and `Accept: application/json`
+to its API.
+
 ### The Schengen doc-vault case
 
 `SchengenSources.atvSpecific`'s `direct` link **is** the Annex 7b PDF. It
@@ -221,6 +274,11 @@ is the landing page whose "Annex 7b" link is what you'd actually want to
 watch. The link-target diff (anchor-text matching, proven in the demo)
 catches a rotation there as a one-line `href` change. To switch over, set
 `checkDiff: false` on `direct` and `checkDiff: true` on `parent`.
+
+Two spellings of the same target aren't counted as a link change:
+mfa.gov.rs sometimes writes its links through the front controller
+(`/index%2ephp/en/…`) and sometimes not (`/en/…`); see `canonicalHref` in
+`src/contentCheck.ts`.
 
 ## Known limitation: anchor-text link matching
 

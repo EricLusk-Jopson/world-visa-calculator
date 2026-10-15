@@ -67,7 +67,12 @@ export function extractSnapshot(body: Buffer, contentType: string, url: string):
     return { url, contentType, updatedAt: null, text: `sha256:${hash}`, links: [] };
   }
 
-  const $ = cheerio.load(body.toString('utf-8'));
+  return extractHtml(body.toString('utf-8'), contentType, url);
+}
+
+/** Block-level text and outbound links of an HTML document or fragment. */
+export function extractHtml(html: string, contentType: string, url: string): ContentSnapshot {
+  const $ = cheerio.load(html);
   const updatedAt =
     $('meta[name="govuk:public-updated-at"]').attr('content') ??
     $('meta[name="govuk:updated-at"]').attr('content') ??
@@ -117,6 +122,15 @@ function buildTextDiffPreview(previous: string, current: string): string | undef
 }
 
 /**
+ * Spellings of one target that a CMS emits interchangeably. mfa.gov.rs
+ * sometimes renders its links through the front controller
+ * (`/index%2ephp/en/…`) and sometimes not (`/en/…`).
+ */
+function canonicalHref(href: string): string {
+  return href.replace(/\/index(?:\.|%2e)php(?=\/|$)/i, '');
+}
+
+/**
  * Diffs link targets by matching on anchor text. This is what catches a
  * "document vault" rotation (Schengen's PDF Annex): the surrounding page
  * text is byte-identical, but the link with the same visible text ("Annex
@@ -125,13 +139,14 @@ function buildTextDiffPreview(previous: string, current: string): string | undef
 function diffLinks(previous: ContentLink[], current: ContentLink[]): LinkChange[] {
   const prevByText = new Map(previous.map((l) => [l.text, l.href]));
   const currByText = new Map(current.map((l) => [l.text, l.href]));
+  const same = (a: string, b: string) => a === b || canonicalHref(a) === canonicalHref(b);
   const changes: LinkChange[] = [];
 
   for (const [text, currentHref] of currByText) {
     const previousHref = prevByText.get(text);
     if (previousHref === undefined) {
       changes.push({ text, currentHref, kind: 'added' });
-    } else if (previousHref !== currentHref) {
+    } else if (!same(previousHref, currentHref)) {
       changes.push({ text, previousHref, currentHref, kind: 'target-changed' });
     }
   }
