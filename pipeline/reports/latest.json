@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T02:50:44.996Z",
+  "generatedAt": "2026-10-15T02:54:27.871Z",
   "regions": [
     {
       "region": "Bosnia",
@@ -1568,15 +1568,2341 @@
               "field": "parent"
             }
           ],
-          "status": "broken",
-          "error": "incomplete certificate chain, and its missing intermediate could not be downloaded (UNABLE_TO_VERIFY_LEAF_SIGNATURE)"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/en/vize"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887696763845615?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887696763845615?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639082935039597309?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AF",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639082935039597309?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883485721766851?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883485721766851?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638975086772324997?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638975086772324997?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883490864830189?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883490864830189?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883483322376278?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883483322376278?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883489528862441?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883489528862441?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883494519747547?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883494519747547?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883492938472699?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883492938472699?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639215238587178303?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "AZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639215238587178303?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883507939046759?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BB",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883507939046759?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883506189924384?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883506189924384?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883536294815767?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BF",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883536294815767?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883531345686936?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883531345686936?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185064814075651?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185064814075651?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884157155396026?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884157155396026?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883515632963414?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BJ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883515632963414?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883529158681974?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883529158681974?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883523347022014?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883523347022014?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883525257338153?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883525257338153?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883498293348199?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883498293348199?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884160756123854?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884160756123854?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883520143718021?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883520143718021?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883518204682391?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883518204682391?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883513405347440?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "BZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883513405347440?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639142770283664500?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639142770283664500?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884369511088311?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884369511088311?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884169152787484?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CF",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884169152787484?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884367826437010?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884367826437010?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887767276051162?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887767276051162?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887764636965387?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887764636965387?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884178457348609?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884178457348609?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884329323345782?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884329323345782?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639070873312244864?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639070873312244864?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884352312202636?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884352312202636?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884382864523921?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884382864523921?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884387960563482?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884387960563482?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884333783885384?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CV",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884333783885384?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887761830659875?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887761830659875?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884175022732022?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "CZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884175022732022?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886841972797592?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "DE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886841972797592?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884185717650158?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "DJ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884185717650158?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884180185942653?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "DK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884180185942653?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884181940437196?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "DM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884181940437196?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639270631536125313?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "DO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639270631536125313?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883477779561428?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "DZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883477779561428?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884189702021920?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "EC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884189702021920?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884194892215809?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "EE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884194892215809?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884187461477692?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "EG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884187461477692?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884193364545393?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ER",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884193364545393?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887766546369580?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ES",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887766546369580?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884196823698099?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ET",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884196823698099?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884209011970465?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "FI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884209011970465?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884198573678044?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "FJ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884198573678044?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886807618095453?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "FM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886807618095453?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884210587686035?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "FR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884210587686035?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884215601537853?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884215601537853?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887699851222851?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GB",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887699851222851?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884227119261135?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884227119261135?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639050098700037188?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639050098700037188?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884222893822711?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884222893822711?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884220101452501?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884220101452501?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884243178410635?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884243178410635?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884191568346394?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GQ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884191568346394?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884225425865092?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884225425865092?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884241100771286?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884241100771286?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884245917407137?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884245917407137?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884239301076290?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "GY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884239301076290?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884249342634255?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "HN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884249342634255?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "HR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "HT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "HU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ID",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222101785307612?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "IE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222101785307612?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884278175687728?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "IL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884278175687728?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884258079851240?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "IN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884258079851240?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884261321109778?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "IQ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884261321109778?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884263846591024?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "IR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884263846591024?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884268062797702?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "IS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884268062797702?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639052934024161722?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "IT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639052934024161722?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884279732005351?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "JM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884279732005351?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884323006117333?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "JO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884323006117333?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884281448963024?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "JP",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884281448963024?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884339232339776?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884339232339776?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639192719046689702?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639192719046689702?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884326932971788?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884326932971788?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884348914813577?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884348914813577?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884363320411741?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884363320411741?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887642372027446?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887642372027446?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884380932817298?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KP",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884380932817298?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884377463515717?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884377463515717?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884389952016419?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884389952016419?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "KZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884394476077743?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884394476077743?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884401279302512?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LB",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884401279302512?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887638262695280?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887638262695280?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886764098495916?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886764098495916?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638984683325583122?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638984683325583122?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886757866515854?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886757866515854?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884395989490587?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884395989490587?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886773596241280?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886773596241280?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886775887040221?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886775887040221?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884397584823001?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LV",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884397584823001?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "LY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095058957609028?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095058957609028?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886811835502138?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886811835502138?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886809407303595?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886809407303595?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884171543811588?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ME",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884171543811588?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886779452142327?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886779452142327?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887763447318561?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887763447318561?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886943611766628?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886943611766628?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886788905477378?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ML",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886788905477378?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886805390766070?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886805390766070?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886816519307372?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886816519307372?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886801411468085?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886801411468085?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886790875262202?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886790875262202?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886799536318171?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886799536318171?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886785438115703?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MV",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886785438115703?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886782876976987?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886782876976987?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886803354586371?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MX",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886803354586371?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886818369628359?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "MZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886818369628359?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886820238046507?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886820238046507?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886828918582708?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886828918582708?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886830490180024?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886830490180024?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886832228392162?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886832228392162?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886833951627127?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886833951627127?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886836641300367?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886836641300367?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886823957420798?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NP",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886823957420798?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886822225026447?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886822225026447?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886838870296633?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "NZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886838870296633?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185066739711338?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "OM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185066739711338?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886866933065444?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886866933065444?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886872946235717?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886872946235717?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886869350000895?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886869350000895?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884200287456758?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884200287456758?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886848770940073?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886848770940073?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886875439854778?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886875439854778?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886862192537901?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886862192537901?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886876828018609?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886876828018609?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886860157130340?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886860157130340?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886871360561368?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "PY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886871360561368?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884335408575316?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "QA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884335408575316?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887765301578339?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "RO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887765301578339?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886957200216716?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "RS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886957200216716?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "RU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886881501850591?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "RW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886881501850591?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886947930548716?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SB",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886947930548716?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886923986265456?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886923986265456?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886958663442235?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886958663442235?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887656343958811?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887656343958811?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886931428559182?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886931428559182?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886946546990155?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886946546990155?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886945200626735?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886945200626735?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886929960112837?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886929960112837?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886917376997574?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886917376997574?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886925649061933?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886925649061933?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886955464744931?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886955464744931?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886960016367417?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886960016367417?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886920749427651?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ST",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886920749427651?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886913958643786?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SV",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886913958643786?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639186724773168776?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639186724773168776?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887635390011080?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "SZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887635390011080?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884173378283774?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884173378283774?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887674979670103?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887674979670103?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887669211232611?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887669211232611?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887667130805381?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TJ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887667130805381?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887672988994968?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887672988994968?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887683211554076?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887683211554076?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887680483059548?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887680483059548?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887676915036431?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887676915036431?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222210020811154?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222210020811154?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887678960421691?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887678960421691?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887692943609910?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TV",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887692943609910?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887671107252880?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "TZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887671107252880?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887701192704273?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "UA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887701192704273?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887694985573146?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "UG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887694985573146?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886938490742978?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "US",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886938490742978?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887706303439718?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "UY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887706303439718?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095011690920878?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "UZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095011690920878?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887640244282053?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "VA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887640244282053?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887644954829796?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "VC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887644954829796?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887719301053920?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "VE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887719301053920?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887721108227241?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "VN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887721108227241?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887710471704837?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "VU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887710471704837?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886915955341340?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "WS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886915955341340?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884283537678976?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "YE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884283537678976?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884324922276004?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ZA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884324922276004?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887722359911561?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ZM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887722359911561?domain=https://www.mvp.gov.ba"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887723716813953?domain=https://www.mvp.gov.ba",
+          "usedBy": [
+            {
+              "key": "ZW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887723716813953?domain=https://www.mvp.gov.ba"
         }
       ],
       "ruleChecks": [
         {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
           "url": "https://www.mvp.gov.ba/en/vize",
-          "status": "fetch-error",
-          "error": "incomplete certificate chain, and its missing intermediate could not be downloaded (UNABLE_TO_VERIFY_LEAF_SIGNATURE)",
+          "currentUpdatedAt": null,
+          "status": "first-run",
           "keys": [
             "AD",
             "AE",
@@ -1777,10 +4103,1736 @@
           "link": "parent"
         },
         {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887696763845615?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639082935039597309?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AF"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883485721766851?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638975086772324997?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883490864830189?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883483322376278?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883489528862441?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883494519747547?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883492938472699?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639215238587178303?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883507939046759?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BB"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883506189924384?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883536294815767?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BF"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883531345686936?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185064814075651?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884157155396026?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883515632963414?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BJ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883529158681974?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883523347022014?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883525257338153?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883498293348199?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884160756123854?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883520143718021?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883518204682391?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883513405347440?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639142770283664500?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884369511088311?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884169152787484?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CF"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884367826437010?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887767276051162?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887764636965387?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884178457348609?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884329323345782?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639070873312244864?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884352312202636?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884382864523921?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884387960563482?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884333783885384?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CV"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887761830659875?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884175022732022?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886841972797592?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884185717650158?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DJ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884180185942653?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884181940437196?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639270631536125313?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883477779561428?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884189702021920?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "EC"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884194892215809?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "EE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884187461477692?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "EG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884193364545393?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ER"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887766546369580?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ES"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884196823698099?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ET"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884209011970465?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "FI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884198573678044?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "FJ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886807618095453?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "FM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884210587686035?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "FR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884215601537853?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887699851222851?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GB"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884227119261135?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639050098700037188?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884222893822711?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884220101452501?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884243178410635?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884191568346394?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GQ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884225425865092?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884241100771286?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884245917407137?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884239301076290?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884249342634255?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "HN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "HR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "HT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "HU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ID"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222101785307612?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884278175687728?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884258079851240?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884261321109778?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IQ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884263846591024?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884268062797702?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639052934024161722?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884279732005351?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "JM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884323006117333?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "JO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884281448963024?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "JP"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884339232339776?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639192719046689702?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884326932971788?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884348914813577?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884363320411741?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887642372027446?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884380932817298?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KP"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884377463515717?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884389952016419?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884394476077743?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884401279302512?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LB"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887638262695280?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LC"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886764098495916?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638984683325583122?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886757866515854?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884395989490587?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886773596241280?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886775887040221?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884397584823001?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LV"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095058957609028?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886811835502138?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MC"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886809407303595?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884171543811588?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ME"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886779452142327?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887763447318561?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886943611766628?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886788905477378?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ML"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886805390766070?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886816519307372?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886801411468085?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886790875262202?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886799536318171?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886785438115703?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MV"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886782876976987?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886803354586371?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MX"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886818369628359?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886820238046507?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886828918582708?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886830490180024?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886832228392162?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886833951627127?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886836641300367?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886823957420798?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NP"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886822225026447?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886838870296633?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185066739711338?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "OM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886866933065444?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886872946235717?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886869350000895?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884200287456758?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886848770940073?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886875439854778?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886862192537901?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886876828018609?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886860157130340?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886871360561368?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884335408575316?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "QA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887765301578339?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "RO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886957200216716?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "RS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "RU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886881501850591?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "RW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886947930548716?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SB"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886923986265456?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SC"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886958663442235?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887656343958811?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886931428559182?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886946546990155?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886945200626735?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886929960112837?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886917376997574?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886925649061933?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886955464744931?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886960016367417?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886920749427651?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ST"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886913958643786?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SV"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639186724773168776?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887635390011080?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884173378283774?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887674979670103?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887669211232611?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887667130805381?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TJ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887672988994968?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887683211554076?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887680483059548?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887676915036431?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222210020811154?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887678960421691?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887692943609910?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TV"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887671107252880?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887701192704273?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "UA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887694985573146?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "UG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886938490742978?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "US"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887706303439718?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "UY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095011690920878?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "UZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887640244282053?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887644954829796?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VC"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887719301053920?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887721108227241?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887710471704837?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886915955341340?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "WS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884283537678976?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "YE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884324922276004?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ZA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887722359911561?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ZM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887723716813953?domain=https://www.mvp.gov.ba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ZW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
           "url": "https://www.mvp.gov.ba/en/vize#subpages",
-          "status": "fetch-error",
-          "error": "Could not read the country list: incomplete certificate chain, and its missing intermediate could not be downloaded (UNABLE_TO_VERIFY_LEAF_SIGNATURE)",
-          "note": "No previous list to fall back on",
+          "status": "first-run",
           "keys": [
             "AD",
             "AE",
@@ -1999,13 +6051,13 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 1,
-    "brokenLinks": 1,
+    "totalLinksChecked": 194,
+    "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 2,
+    "sourcesChecked": 195,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 0,
-    "sourcesFetchError": 2
+    "sourcesFirstRun": 195,
+    "sourcesFetchError": 0
   }
 }
