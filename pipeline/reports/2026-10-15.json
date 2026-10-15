@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T00:00:43.956Z",
+  "generatedAt": "2026-10-15T00:13:46.831Z",
   "regions": [
     {
       "region": "Schengen",
@@ -555,8 +555,9 @@
       "ruleChecks": [
         {
           "url": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "mfaVisaInfo"
           ],
@@ -564,18 +565,5137 @@
         },
         {
           "url": "https://www.mfa.gov.tr/consular-info.en.mfa",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "mfaVisaInfo"
           ],
           "link": "parent"
         }
       ]
+    },
+    {
+      "region": "Montenegro",
+      "linkHealth": [
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan",
+          "usedBy": [
+            {
+              "key": "AF",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
+          "usedBy": [
+            {
+              "key": "AF",
+              "field": "parent"
+            },
+            {
+              "key": "AL",
+              "field": "parent"
+            },
+            {
+              "key": "DZ",
+              "field": "parent"
+            },
+            {
+              "key": "AD",
+              "field": "parent"
+            },
+            {
+              "key": "AO",
+              "field": "parent"
+            },
+            {
+              "key": "AG",
+              "field": "parent"
+            },
+            {
+              "key": "AR",
+              "field": "parent"
+            },
+            {
+              "key": "AM",
+              "field": "parent"
+            },
+            {
+              "key": "AW",
+              "field": "parent"
+            },
+            {
+              "key": "AU",
+              "field": "parent"
+            },
+            {
+              "key": "AT",
+              "field": "parent"
+            },
+            {
+              "key": "AZ",
+              "field": "parent"
+            },
+            {
+              "key": "BS",
+              "field": "parent"
+            },
+            {
+              "key": "BH",
+              "field": "parent"
+            },
+            {
+              "key": "BD",
+              "field": "parent"
+            },
+            {
+              "key": "BB",
+              "field": "parent"
+            },
+            {
+              "key": "BY",
+              "field": "parent"
+            },
+            {
+              "key": "BE",
+              "field": "parent"
+            },
+            {
+              "key": "BZ",
+              "field": "parent"
+            },
+            {
+              "key": "BJ",
+              "field": "parent"
+            },
+            {
+              "key": "BT",
+              "field": "parent"
+            },
+            {
+              "key": "BO",
+              "field": "parent"
+            },
+            {
+              "key": "BA",
+              "field": "parent"
+            },
+            {
+              "key": "BW",
+              "field": "parent"
+            },
+            {
+              "key": "BR",
+              "field": "parent"
+            },
+            {
+              "key": "BN",
+              "field": "parent"
+            },
+            {
+              "key": "BG",
+              "field": "parent"
+            },
+            {
+              "key": "BF",
+              "field": "parent"
+            },
+            {
+              "key": "BI",
+              "field": "parent"
+            },
+            {
+              "key": "CV",
+              "field": "parent"
+            },
+            {
+              "key": "KH",
+              "field": "parent"
+            },
+            {
+              "key": "CM",
+              "field": "parent"
+            },
+            {
+              "key": "CA",
+              "field": "parent"
+            },
+            {
+              "key": "KY",
+              "field": "parent"
+            },
+            {
+              "key": "CF",
+              "field": "parent"
+            },
+            {
+              "key": "TD",
+              "field": "parent"
+            },
+            {
+              "key": "CL",
+              "field": "parent"
+            },
+            {
+              "key": "CN",
+              "field": "parent"
+            },
+            {
+              "key": "CO",
+              "field": "parent"
+            },
+            {
+              "key": "CD",
+              "field": "parent"
+            },
+            {
+              "key": "CG",
+              "field": "parent"
+            },
+            {
+              "key": "CR",
+              "field": "parent"
+            },
+            {
+              "key": "HR",
+              "field": "parent"
+            },
+            {
+              "key": "CU",
+              "field": "parent"
+            },
+            {
+              "key": "CY",
+              "field": "parent"
+            },
+            {
+              "key": "CZ",
+              "field": "parent"
+            },
+            {
+              "key": "DK",
+              "field": "parent"
+            },
+            {
+              "key": "DJ",
+              "field": "parent"
+            },
+            {
+              "key": "DM",
+              "field": "parent"
+            },
+            {
+              "key": "DO",
+              "field": "parent"
+            },
+            {
+              "key": "EC",
+              "field": "parent"
+            },
+            {
+              "key": "EG",
+              "field": "parent"
+            },
+            {
+              "key": "SV",
+              "field": "parent"
+            },
+            {
+              "key": "GQ",
+              "field": "parent"
+            },
+            {
+              "key": "ER",
+              "field": "parent"
+            },
+            {
+              "key": "EE",
+              "field": "parent"
+            },
+            {
+              "key": "ET",
+              "field": "parent"
+            },
+            {
+              "key": "FJ",
+              "field": "parent"
+            },
+            {
+              "key": "FI",
+              "field": "parent"
+            },
+            {
+              "key": "FR",
+              "field": "parent"
+            },
+            {
+              "key": "GA",
+              "field": "parent"
+            },
+            {
+              "key": "GM",
+              "field": "parent"
+            },
+            {
+              "key": "GE",
+              "field": "parent"
+            },
+            {
+              "key": "DE",
+              "field": "parent"
+            },
+            {
+              "key": "GH",
+              "field": "parent"
+            },
+            {
+              "key": "GR",
+              "field": "parent"
+            },
+            {
+              "key": "GD",
+              "field": "parent"
+            },
+            {
+              "key": "GT",
+              "field": "parent"
+            },
+            {
+              "key": "GN",
+              "field": "parent"
+            },
+            {
+              "key": "GW",
+              "field": "parent"
+            },
+            {
+              "key": "GY",
+              "field": "parent"
+            },
+            {
+              "key": "HT",
+              "field": "parent"
+            },
+            {
+              "key": "VA",
+              "field": "parent"
+            },
+            {
+              "key": "HN",
+              "field": "parent"
+            },
+            {
+              "key": "HU",
+              "field": "parent"
+            },
+            {
+              "key": "IS",
+              "field": "parent"
+            },
+            {
+              "key": "IN",
+              "field": "parent"
+            },
+            {
+              "key": "ID",
+              "field": "parent"
+            },
+            {
+              "key": "IR",
+              "field": "parent"
+            },
+            {
+              "key": "IQ",
+              "field": "parent"
+            },
+            {
+              "key": "IE",
+              "field": "parent"
+            },
+            {
+              "key": "IL",
+              "field": "parent"
+            },
+            {
+              "key": "IT",
+              "field": "parent"
+            },
+            {
+              "key": "CI",
+              "field": "parent"
+            },
+            {
+              "key": "JM",
+              "field": "parent"
+            },
+            {
+              "key": "JP",
+              "field": "parent"
+            },
+            {
+              "key": "JO",
+              "field": "parent"
+            },
+            {
+              "key": "KZ",
+              "field": "parent"
+            },
+            {
+              "key": "KE",
+              "field": "parent"
+            },
+            {
+              "key": "KI",
+              "field": "parent"
+            },
+            {
+              "key": "KP",
+              "field": "parent"
+            },
+            {
+              "key": "KR",
+              "field": "parent"
+            },
+            {
+              "key": "XK",
+              "field": "parent"
+            },
+            {
+              "key": "KW",
+              "field": "parent"
+            },
+            {
+              "key": "KG",
+              "field": "parent"
+            },
+            {
+              "key": "LA",
+              "field": "parent"
+            },
+            {
+              "key": "LV",
+              "field": "parent"
+            },
+            {
+              "key": "LB",
+              "field": "parent"
+            },
+            {
+              "key": "LS",
+              "field": "parent"
+            },
+            {
+              "key": "LR",
+              "field": "parent"
+            },
+            {
+              "key": "LY",
+              "field": "parent"
+            },
+            {
+              "key": "LI",
+              "field": "parent"
+            },
+            {
+              "key": "LT",
+              "field": "parent"
+            },
+            {
+              "key": "LU",
+              "field": "parent"
+            },
+            {
+              "key": "MG",
+              "field": "parent"
+            },
+            {
+              "key": "MW",
+              "field": "parent"
+            },
+            {
+              "key": "MY",
+              "field": "parent"
+            },
+            {
+              "key": "MV",
+              "field": "parent"
+            },
+            {
+              "key": "ML",
+              "field": "parent"
+            },
+            {
+              "key": "MT",
+              "field": "parent"
+            },
+            {
+              "key": "MH",
+              "field": "parent"
+            },
+            {
+              "key": "MR",
+              "field": "parent"
+            },
+            {
+              "key": "MU",
+              "field": "parent"
+            },
+            {
+              "key": "MX",
+              "field": "parent"
+            },
+            {
+              "key": "FM",
+              "field": "parent"
+            },
+            {
+              "key": "MD",
+              "field": "parent"
+            },
+            {
+              "key": "MC",
+              "field": "parent"
+            },
+            {
+              "key": "MN",
+              "field": "parent"
+            },
+            {
+              "key": "MA",
+              "field": "parent"
+            },
+            {
+              "key": "MZ",
+              "field": "parent"
+            },
+            {
+              "key": "MM",
+              "field": "parent"
+            },
+            {
+              "key": "NA",
+              "field": "parent"
+            },
+            {
+              "key": "NR",
+              "field": "parent"
+            },
+            {
+              "key": "NP",
+              "field": "parent"
+            },
+            {
+              "key": "NL",
+              "field": "parent"
+            },
+            {
+              "key": "NZ",
+              "field": "parent"
+            },
+            {
+              "key": "NI",
+              "field": "parent"
+            },
+            {
+              "key": "NE",
+              "field": "parent"
+            },
+            {
+              "key": "NG",
+              "field": "parent"
+            },
+            {
+              "key": "MK",
+              "field": "parent"
+            },
+            {
+              "key": "NO",
+              "field": "parent"
+            },
+            {
+              "key": "OM",
+              "field": "parent"
+            },
+            {
+              "key": "PK",
+              "field": "parent"
+            },
+            {
+              "key": "PW",
+              "field": "parent"
+            },
+            {
+              "key": "PS",
+              "field": "parent"
+            },
+            {
+              "key": "PA",
+              "field": "parent"
+            },
+            {
+              "key": "PG",
+              "field": "parent"
+            },
+            {
+              "key": "PY",
+              "field": "parent"
+            },
+            {
+              "key": "PE",
+              "field": "parent"
+            },
+            {
+              "key": "PH",
+              "field": "parent"
+            },
+            {
+              "key": "PL",
+              "field": "parent"
+            },
+            {
+              "key": "PT",
+              "field": "parent"
+            },
+            {
+              "key": "QA",
+              "field": "parent"
+            },
+            {
+              "key": "RO",
+              "field": "parent"
+            },
+            {
+              "key": "RU",
+              "field": "parent"
+            },
+            {
+              "key": "RW",
+              "field": "parent"
+            },
+            {
+              "key": "KN",
+              "field": "parent"
+            },
+            {
+              "key": "LC",
+              "field": "parent"
+            },
+            {
+              "key": "VC",
+              "field": "parent"
+            },
+            {
+              "key": "WS",
+              "field": "parent"
+            },
+            {
+              "key": "SM",
+              "field": "parent"
+            },
+            {
+              "key": "ST",
+              "field": "parent"
+            },
+            {
+              "key": "SA",
+              "field": "parent"
+            },
+            {
+              "key": "SN",
+              "field": "parent"
+            },
+            {
+              "key": "RS",
+              "field": "parent"
+            },
+            {
+              "key": "SC",
+              "field": "parent"
+            },
+            {
+              "key": "SL",
+              "field": "parent"
+            },
+            {
+              "key": "SG",
+              "field": "parent"
+            },
+            {
+              "key": "SK",
+              "field": "parent"
+            },
+            {
+              "key": "SI",
+              "field": "parent"
+            },
+            {
+              "key": "SB",
+              "field": "parent"
+            },
+            {
+              "key": "SO",
+              "field": "parent"
+            },
+            {
+              "key": "ZA",
+              "field": "parent"
+            },
+            {
+              "key": "ES",
+              "field": "parent"
+            },
+            {
+              "key": "LK",
+              "field": "parent"
+            },
+            {
+              "key": "SD",
+              "field": "parent"
+            },
+            {
+              "key": "SR",
+              "field": "parent"
+            },
+            {
+              "key": "SZ",
+              "field": "parent"
+            },
+            {
+              "key": "SE",
+              "field": "parent"
+            },
+            {
+              "key": "CH",
+              "field": "parent"
+            },
+            {
+              "key": "SY",
+              "field": "parent"
+            },
+            {
+              "key": "TJ",
+              "field": "parent"
+            },
+            {
+              "key": "TZ",
+              "field": "parent"
+            },
+            {
+              "key": "TH",
+              "field": "parent"
+            },
+            {
+              "key": "TL",
+              "field": "parent"
+            },
+            {
+              "key": "TG",
+              "field": "parent"
+            },
+            {
+              "key": "TO",
+              "field": "parent"
+            },
+            {
+              "key": "TT",
+              "field": "parent"
+            },
+            {
+              "key": "TN",
+              "field": "parent"
+            },
+            {
+              "key": "TR",
+              "field": "parent"
+            },
+            {
+              "key": "TM",
+              "field": "parent"
+            },
+            {
+              "key": "TV",
+              "field": "parent"
+            },
+            {
+              "key": "UG",
+              "field": "parent"
+            },
+            {
+              "key": "UA",
+              "field": "parent"
+            },
+            {
+              "key": "KM",
+              "field": "parent"
+            },
+            {
+              "key": "AE",
+              "field": "parent"
+            },
+            {
+              "key": "GB",
+              "field": "parent"
+            },
+            {
+              "key": "US",
+              "field": "parent"
+            },
+            {
+              "key": "UY",
+              "field": "parent"
+            },
+            {
+              "key": "UZ",
+              "field": "parent"
+            },
+            {
+              "key": "VU",
+              "field": "parent"
+            },
+            {
+              "key": "VE",
+              "field": "parent"
+            },
+            {
+              "key": "VN",
+              "field": "parent"
+            },
+            {
+              "key": "YE",
+              "field": "parent"
+            },
+            {
+              "key": "ZM",
+              "field": "parent"
+            },
+            {
+              "key": "ZW",
+              "field": "parent"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania",
+          "usedBy": [
+            {
+              "key": "AL",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria",
+          "usedBy": [
+            {
+              "key": "DZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra",
+          "usedBy": [
+            {
+              "key": "AD",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola",
+          "usedBy": [
+            {
+              "key": "AO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda",
+          "usedBy": [
+            {
+              "key": "AG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina",
+          "usedBy": [
+            {
+              "key": "AR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia",
+          "usedBy": [
+            {
+              "key": "AM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba",
+          "usedBy": [
+            {
+              "key": "AW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia",
+          "usedBy": [
+            {
+              "key": "AU",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria",
+          "usedBy": [
+            {
+              "key": "AT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan",
+          "usedBy": [
+            {
+              "key": "AZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas",
+          "usedBy": [
+            {
+              "key": "BS",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain",
+          "usedBy": [
+            {
+              "key": "BH",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh",
+          "usedBy": [
+            {
+              "key": "BD",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados",
+          "usedBy": [
+            {
+              "key": "BB",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus",
+          "usedBy": [
+            {
+              "key": "BY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium",
+          "usedBy": [
+            {
+              "key": "BE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize",
+          "usedBy": [
+            {
+              "key": "BZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin",
+          "usedBy": [
+            {
+              "key": "BJ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan",
+          "usedBy": [
+            {
+              "key": "BT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia",
+          "usedBy": [
+            {
+              "key": "BO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina",
+          "usedBy": [
+            {
+              "key": "BA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana",
+          "usedBy": [
+            {
+              "key": "BW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil",
+          "usedBy": [
+            {
+              "key": "BR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei",
+          "usedBy": [
+            {
+              "key": "BN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria",
+          "usedBy": [
+            {
+              "key": "BG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso",
+          "usedBy": [
+            {
+              "key": "BF",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi",
+          "usedBy": [
+            {
+              "key": "BI",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde",
+          "usedBy": [
+            {
+              "key": "CV",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia",
+          "usedBy": [
+            {
+              "key": "KH",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon",
+          "usedBy": [
+            {
+              "key": "CM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada",
+          "usedBy": [
+            {
+              "key": "CA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands",
+          "usedBy": [
+            {
+              "key": "KY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic",
+          "usedBy": [
+            {
+              "key": "CF",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad",
+          "usedBy": [
+            {
+              "key": "TD",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile",
+          "usedBy": [
+            {
+              "key": "CL",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china",
+          "usedBy": [
+            {
+              "key": "CN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia",
+          "usedBy": [
+            {
+              "key": "CO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the",
+          "usedBy": [
+            {
+              "key": "CD",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic",
+          "usedBy": [
+            {
+              "key": "CG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica",
+          "usedBy": [
+            {
+              "key": "CR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia",
+          "usedBy": [
+            {
+              "key": "HR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba",
+          "usedBy": [
+            {
+              "key": "CU",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus",
+          "usedBy": [
+            {
+              "key": "CY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic",
+          "usedBy": [
+            {
+              "key": "CZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark",
+          "usedBy": [
+            {
+              "key": "DK",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti",
+          "usedBy": [
+            {
+              "key": "DJ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica",
+          "usedBy": [
+            {
+              "key": "DM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic",
+          "usedBy": [
+            {
+              "key": "DO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador",
+          "usedBy": [
+            {
+              "key": "EC",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt",
+          "usedBy": [
+            {
+              "key": "EG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador",
+          "usedBy": [
+            {
+              "key": "SV",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea",
+          "usedBy": [
+            {
+              "key": "GQ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea",
+          "usedBy": [
+            {
+              "key": "ER",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia",
+          "usedBy": [
+            {
+              "key": "EE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia",
+          "usedBy": [
+            {
+              "key": "ET",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji",
+          "usedBy": [
+            {
+              "key": "FJ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland",
+          "usedBy": [
+            {
+              "key": "FI",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france",
+          "usedBy": [
+            {
+              "key": "FR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon",
+          "usedBy": [
+            {
+              "key": "GA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia",
+          "usedBy": [
+            {
+              "key": "GM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia",
+          "usedBy": [
+            {
+              "key": "GE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany",
+          "usedBy": [
+            {
+              "key": "DE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana",
+          "usedBy": [
+            {
+              "key": "GH",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece",
+          "usedBy": [
+            {
+              "key": "GR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada",
+          "usedBy": [
+            {
+              "key": "GD",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala",
+          "usedBy": [
+            {
+              "key": "GT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea",
+          "usedBy": [
+            {
+              "key": "GN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau",
+          "usedBy": [
+            {
+              "key": "GW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana",
+          "usedBy": [
+            {
+              "key": "GY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti",
+          "usedBy": [
+            {
+              "key": "HT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta",
+          "usedBy": [
+            {
+              "key": "VA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras",
+          "usedBy": [
+            {
+              "key": "HN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary",
+          "usedBy": [
+            {
+              "key": "HU",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland",
+          "usedBy": [
+            {
+              "key": "IS",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india",
+          "usedBy": [
+            {
+              "key": "IN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia",
+          "usedBy": [
+            {
+              "key": "ID",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran",
+          "usedBy": [
+            {
+              "key": "IR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq",
+          "usedBy": [
+            {
+              "key": "IQ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland",
+          "usedBy": [
+            {
+              "key": "IE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel",
+          "usedBy": [
+            {
+              "key": "IL",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy",
+          "usedBy": [
+            {
+              "key": "IT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire",
+          "usedBy": [
+            {
+              "key": "CI",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica",
+          "usedBy": [
+            {
+              "key": "JM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan",
+          "usedBy": [
+            {
+              "key": "JP",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan",
+          "usedBy": [
+            {
+              "key": "JO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan",
+          "usedBy": [
+            {
+              "key": "KZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya",
+          "usedBy": [
+            {
+              "key": "KE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati",
+          "usedBy": [
+            {
+              "key": "KI",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea",
+          "usedBy": [
+            {
+              "key": "KP",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea",
+          "usedBy": [
+            {
+              "key": "KR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo",
+          "usedBy": [
+            {
+              "key": "XK",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait",
+          "usedBy": [
+            {
+              "key": "KW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan",
+          "usedBy": [
+            {
+              "key": "KG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos",
+          "usedBy": [
+            {
+              "key": "LA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia",
+          "usedBy": [
+            {
+              "key": "LV",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon",
+          "usedBy": [
+            {
+              "key": "LB",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho",
+          "usedBy": [
+            {
+              "key": "LS",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia",
+          "usedBy": [
+            {
+              "key": "LR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya",
+          "usedBy": [
+            {
+              "key": "LY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein",
+          "usedBy": [
+            {
+              "key": "LI",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania",
+          "usedBy": [
+            {
+              "key": "LT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg",
+          "usedBy": [
+            {
+              "key": "LU",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar",
+          "usedBy": [
+            {
+              "key": "MG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi",
+          "usedBy": [
+            {
+              "key": "MW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia",
+          "usedBy": [
+            {
+              "key": "MY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives",
+          "usedBy": [
+            {
+              "key": "MV",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali",
+          "usedBy": [
+            {
+              "key": "ML",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta",
+          "usedBy": [
+            {
+              "key": "MT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands",
+          "usedBy": [
+            {
+              "key": "MH",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania",
+          "usedBy": [
+            {
+              "key": "MR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius",
+          "usedBy": [
+            {
+              "key": "MU",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico",
+          "usedBy": [
+            {
+              "key": "MX",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia",
+          "usedBy": [
+            {
+              "key": "FM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova",
+          "usedBy": [
+            {
+              "key": "MD",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco",
+          "usedBy": [
+            {
+              "key": "MC",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia",
+          "usedBy": [
+            {
+              "key": "MN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco",
+          "usedBy": [
+            {
+              "key": "MA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique",
+          "usedBy": [
+            {
+              "key": "MZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar",
+          "usedBy": [
+            {
+              "key": "MM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia",
+          "usedBy": [
+            {
+              "key": "NA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru",
+          "usedBy": [
+            {
+              "key": "NR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal",
+          "usedBy": [
+            {
+              "key": "NP",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands",
+          "usedBy": [
+            {
+              "key": "NL",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand",
+          "usedBy": [
+            {
+              "key": "NZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua",
+          "usedBy": [
+            {
+              "key": "NI",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger",
+          "usedBy": [
+            {
+              "key": "NE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria",
+          "usedBy": [
+            {
+              "key": "NG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia",
+          "usedBy": [
+            {
+              "key": "MK",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway",
+          "usedBy": [
+            {
+              "key": "NO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman",
+          "usedBy": [
+            {
+              "key": "OM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan",
+          "usedBy": [
+            {
+              "key": "PK",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau",
+          "usedBy": [
+            {
+              "key": "PW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine",
+          "usedBy": [
+            {
+              "key": "PS",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama",
+          "usedBy": [
+            {
+              "key": "PA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea",
+          "usedBy": [
+            {
+              "key": "PG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay",
+          "usedBy": [
+            {
+              "key": "PY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru",
+          "usedBy": [
+            {
+              "key": "PE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines",
+          "usedBy": [
+            {
+              "key": "PH",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland",
+          "usedBy": [
+            {
+              "key": "PL",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal",
+          "usedBy": [
+            {
+              "key": "PT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar",
+          "usedBy": [
+            {
+              "key": "QA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania",
+          "usedBy": [
+            {
+              "key": "RO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation",
+          "usedBy": [
+            {
+              "key": "RU",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda",
+          "usedBy": [
+            {
+              "key": "RW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis",
+          "usedBy": [
+            {
+              "key": "KN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia",
+          "usedBy": [
+            {
+              "key": "LC",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines",
+          "usedBy": [
+            {
+              "key": "VC",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa",
+          "usedBy": [
+            {
+              "key": "WS",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino",
+          "usedBy": [
+            {
+              "key": "SM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2",
+          "usedBy": [
+            {
+              "key": "ST",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia",
+          "usedBy": [
+            {
+              "key": "SA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal",
+          "usedBy": [
+            {
+              "key": "SN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia",
+          "usedBy": [
+            {
+              "key": "RS",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles",
+          "usedBy": [
+            {
+              "key": "SC",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone",
+          "usedBy": [
+            {
+              "key": "SL",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore",
+          "usedBy": [
+            {
+              "key": "SG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia",
+          "usedBy": [
+            {
+              "key": "SK",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia",
+          "usedBy": [
+            {
+              "key": "SI",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands",
+          "usedBy": [
+            {
+              "key": "SB",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia",
+          "usedBy": [
+            {
+              "key": "SO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa",
+          "usedBy": [
+            {
+              "key": "ZA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain",
+          "usedBy": [
+            {
+              "key": "ES",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka",
+          "usedBy": [
+            {
+              "key": "LK",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan",
+          "usedBy": [
+            {
+              "key": "SD",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname",
+          "usedBy": [
+            {
+              "key": "SR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini",
+          "usedBy": [
+            {
+              "key": "SZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden",
+          "usedBy": [
+            {
+              "key": "SE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland",
+          "usedBy": [
+            {
+              "key": "CH",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria",
+          "usedBy": [
+            {
+              "key": "SY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan",
+          "usedBy": [
+            {
+              "key": "TJ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania",
+          "usedBy": [
+            {
+              "key": "TZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand",
+          "usedBy": [
+            {
+              "key": "TH",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste",
+          "usedBy": [
+            {
+              "key": "TL",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo",
+          "usedBy": [
+            {
+              "key": "TG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga",
+          "usedBy": [
+            {
+              "key": "TO",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago",
+          "usedBy": [
+            {
+              "key": "TT",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia",
+          "usedBy": [
+            {
+              "key": "TN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey",
+          "usedBy": [
+            {
+              "key": "TR",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan",
+          "usedBy": [
+            {
+              "key": "TM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu",
+          "usedBy": [
+            {
+              "key": "TV",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda",
+          "usedBy": [
+            {
+              "key": "UG",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine",
+          "usedBy": [
+            {
+              "key": "UA",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini",
+          "usedBy": [
+            {
+              "key": "KM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates",
+          "usedBy": [
+            {
+              "key": "AE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland",
+          "usedBy": [
+            {
+              "key": "GB",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america",
+          "usedBy": [
+            {
+              "key": "US",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay",
+          "usedBy": [
+            {
+              "key": "UY",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan",
+          "usedBy": [
+            {
+              "key": "UZ",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu",
+          "usedBy": [
+            {
+              "key": "VU",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela",
+          "usedBy": [
+            {
+              "key": "VE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam",
+          "usedBy": [
+            {
+              "key": "VN",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen",
+          "usedBy": [
+            {
+              "key": "YE",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia",
+          "usedBy": [
+            {
+              "key": "ZM",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe",
+          "usedBy": [
+            {
+              "key": "ZW",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe"
+        }
+      ],
+      "ruleChecks": [
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AF"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AF",
+            "AL",
+            "DZ",
+            "AD",
+            "AO",
+            "AG",
+            "AR",
+            "AM",
+            "AW",
+            "AU",
+            "AT",
+            "AZ",
+            "BS",
+            "BH",
+            "BD",
+            "BB",
+            "BY",
+            "BE",
+            "BZ",
+            "BJ",
+            "BT",
+            "BO",
+            "BA",
+            "BW",
+            "BR",
+            "BN",
+            "BG",
+            "BF",
+            "BI",
+            "CV",
+            "KH",
+            "CM",
+            "CA",
+            "KY",
+            "CF",
+            "TD",
+            "CL",
+            "CN",
+            "CO",
+            "CD",
+            "CG",
+            "CR",
+            "HR",
+            "CU",
+            "CY",
+            "CZ",
+            "DK",
+            "DJ",
+            "DM",
+            "DO",
+            "EC",
+            "EG",
+            "SV",
+            "GQ",
+            "ER",
+            "EE",
+            "ET",
+            "FJ",
+            "FI",
+            "FR",
+            "GA",
+            "GM",
+            "GE",
+            "DE",
+            "GH",
+            "GR",
+            "GD",
+            "GT",
+            "GN",
+            "GW",
+            "GY",
+            "HT",
+            "VA",
+            "HN",
+            "HU",
+            "IS",
+            "IN",
+            "ID",
+            "IR",
+            "IQ",
+            "IE",
+            "IL",
+            "IT",
+            "CI",
+            "JM",
+            "JP",
+            "JO",
+            "KZ",
+            "KE",
+            "KI",
+            "KP",
+            "KR",
+            "XK",
+            "KW",
+            "KG",
+            "LA",
+            "LV",
+            "LB",
+            "LS",
+            "LR",
+            "LY",
+            "LI",
+            "LT",
+            "LU",
+            "MG",
+            "MW",
+            "MY",
+            "MV",
+            "ML",
+            "MT",
+            "MH",
+            "MR",
+            "MU",
+            "MX",
+            "FM",
+            "MD",
+            "MC",
+            "MN",
+            "MA",
+            "MZ",
+            "MM",
+            "NA",
+            "NR",
+            "NP",
+            "NL",
+            "NZ",
+            "NI",
+            "NE",
+            "NG",
+            "MK",
+            "NO",
+            "OM",
+            "PK",
+            "PW",
+            "PS",
+            "PA",
+            "PG",
+            "PY",
+            "PE",
+            "PH",
+            "PL",
+            "PT",
+            "QA",
+            "RO",
+            "RU",
+            "RW",
+            "KN",
+            "LC",
+            "VC",
+            "WS",
+            "SM",
+            "ST",
+            "SA",
+            "SN",
+            "RS",
+            "SC",
+            "SL",
+            "SG",
+            "SK",
+            "SI",
+            "SB",
+            "SO",
+            "ZA",
+            "ES",
+            "LK",
+            "SD",
+            "SR",
+            "SZ",
+            "SE",
+            "CH",
+            "SY",
+            "TJ",
+            "TZ",
+            "TH",
+            "TL",
+            "TG",
+            "TO",
+            "TT",
+            "TN",
+            "TR",
+            "TM",
+            "TV",
+            "UG",
+            "UA",
+            "KM",
+            "AE",
+            "GB",
+            "US",
+            "UY",
+            "UZ",
+            "VU",
+            "VE",
+            "VN",
+            "YE",
+            "ZM",
+            "ZW"
+          ],
+          "link": "parent"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AL"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AD"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AW"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AU"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BS"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BH"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BD"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BB"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BJ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BW"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BF"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "BI"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CV"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KH"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CF"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TD"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CL"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CD"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "HR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CU"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DK"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DJ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "EC"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "EG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SV"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GQ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ER"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "EE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ET"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "FJ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "FI"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "FR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "DE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GH"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GD"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GW"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "HT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "HN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "HU"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IS"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ID"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IQ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IL"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "IT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CI"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "JM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "JP"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "JO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KI"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KP"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "XK"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KW"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LV"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LB"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LS"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LI"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LU"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MW"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MV"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ML"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MH"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MU"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MX"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "FM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MD"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MC"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NP"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NL"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NI"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "MK"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "NO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "OM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PK"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PW"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PS"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PH"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PL"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "PT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "QA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "RO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "RU"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "RW"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LC"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VC"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "WS"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ST"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "RS"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SC"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SL"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SK"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SI"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SB"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ZA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ES"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "LK"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SD"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "CH"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "SY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TJ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TH"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TL"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TO"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TT"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TR"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "TV"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "UG"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "UA"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "KM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "AE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "GB"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "US"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "UY"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "UZ"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VU"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "VN"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "YE"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ZM"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "ZW"
+          ],
+          "link": "direct"
+        }
+      ]
     }
   ],
   "skippedRegions": [
-    "Montenegro",
     "Serbia",
     "Bosnia",
     "Kosovo",
@@ -587,13 +5707,13 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 34,
+    "totalLinksChecked": 231,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 11,
+    "sourcesChecked": 208,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 2,
+    "sourcesFirstRun": 197,
     "sourcesFetchError": 0
   }
 }
