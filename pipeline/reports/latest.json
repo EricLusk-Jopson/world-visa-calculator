@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T23:56:38.241Z",
+  "generatedAt": "2026-10-15T00:00:43.956Z",
   "regions": [
     {
       "region": "Schengen",
@@ -12,10 +12,9 @@
               "field": "direct"
             }
           ],
-          "status": "blocked",
-          "httpStatus": 202,
-          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230",
-          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230"
         },
         {
           "url": "https://publications.europa.eu/resource/celex/02018R1806-20251230",
@@ -57,10 +56,9 @@
               "field": "direct"
             }
           ],
-          "status": "blocked",
-          "httpStatus": 202,
-          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626",
-          "error": "HTTP 202 with no page: bot-protection challenge or site in degraded mode"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626"
         },
         {
           "url": "https://publications.europa.eu/resource/celex/02009R0810-20200202",
@@ -554,7 +552,26 @@
           "finalUrl": "https://evisa.gov.tr/en"
         }
       ],
-      "ruleChecks": []
+      "ruleChecks": [
+        {
+          "url": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "mfaVisaInfo"
+          ],
+          "link": "direct"
+        },
+        {
+          "url": "https://www.mfa.gov.tr/consular-info.en.mfa",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "mfaVisaInfo"
+          ],
+          "link": "parent"
+        }
+      ]
     }
   ],
   "skippedRegions": [
@@ -573,10 +590,10 @@
     "totalLinksChecked": 34,
     "brokenLinks": 0,
     "redirectedLinks": 0,
-    "blockedLinks": 2,
-    "sourcesChecked": 9,
+    "blockedLinks": 0,
+    "sourcesChecked": 11,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 0,
+    "sourcesFirstRun": 2,
     "sourcesFetchError": 0
   }
 }
