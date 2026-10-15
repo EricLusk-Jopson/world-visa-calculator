@@ -1,6 +1,6 @@
 # Source Verification Report
 
-Generated: 2026-10-15T04:15:23.263Z
+Generated: 2026-10-15T04:21:37.092Z
 
 ## Summary
 
@@ -31,9 +31,9 @@ Not checked this run (`checkLinks: false`): Schengen, UK, Ireland, Turkiye, Mont
 #### AD, AE, AF, AG, AM … (+161 more) (parent) — ⚠️ fetch error
 
 URL: https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/
-<br>Error: no text extracted (bot-check or script-rendered page?)
+<br>Error: no text extracted (bot-check or script-rendered page?); got 851 bytes text/html, starting "Request unsuccessful. Incapsula incident ID: 1024000101839927124-1100419961886605998"
 
 #### AD, AE, AF, AG, AM … (+161 more) (direct.alternate (page list)) — ⚠️ fetch error
 
 URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries
-<br>Error: Could not read the country table: no countryData script on the page
+<br>Error: Could not read the country table: no countryData script on the page; got 850 bytes text/html, starting "Request unsuccessful. Incapsula incident ID: 1024000101839927124-1085105920985268911"

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T04:15:23.263Z",
+  "generatedAt": "2026-10-15T04:21:37.092Z",
   "regions": [
     {
       "region": "Albania",
@@ -1353,7 +1353,7 @@
         {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
           "status": "fetch-error",
-          "error": "no text extracted (bot-check or script-rendered page?)",
+          "error": "no text extracted (bot-check or script-rendered page?); got 851 bytes text/html, starting \"Request unsuccessful. Incapsula incident ID: 1024000101839927124-1100419961886605998\"",
           "keys": [
             "AD",
             "AE",
@@ -1527,7 +1527,7 @@
         {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries",
           "status": "fetch-error",
-          "error": "Could not read the country table: no countryData script on the page",
+          "error": "Could not read the country table: no countryData script on the page; got 850 bytes text/html, starting \"Request unsuccessful. Incapsula incident ID: 1024000101839927124-1085105920985268911\"",
           "keys": [
             "AD",
             "AE",
