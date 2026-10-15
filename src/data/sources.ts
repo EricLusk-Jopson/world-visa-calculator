@@ -8814,18 +8814,17 @@ export const BelarusSources = {
 
 export const GeorgiaSources = {
   /**
-   * Direct per-country visa-free duration list. The parent "entering
-   * Georgia" overview page is cited as `parent` link. The underlying
-   * legislation ("On Approval of the List of Countries Whose Citizens May
-   * Enter Georgia without a Visa", matsne.gov.ge/en/document/view/2867361)
-   * and the consulate's own list of qualifying citizens/stateless persons
-   * (geoconsul.gov.ge/en/HtmlPage/html/View?id=25) are cited as code
-   * comments in georgia.ts rather than as SourceDoc citations, per explicit
-   * instruction.
+   * Direct: the consulate's list of countries whose citizens, and stateless
+   * persons permanently residing there, may enter, stay in, or transit
+   * Georgia without a visa. The parent "entering Georgia" overview page is
+   * cited as `parent` link. The underlying legislation ("On Approval of the
+   * List of Countries Whose Citizens May Enter Georgia without a Visa",
+   * matsne.gov.ge/en/document/view/2867361) is cited as a code comment in
+   * georgia.ts rather than as a SourceDoc citation, per explicit instruction.
    */
   visaList: {
     direct: {
-      url: "https://geoconsul.gov.ge/en/entering-georgia-visa",
+      url: "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
       type: "direct",
       checkDiff: true,
     },
