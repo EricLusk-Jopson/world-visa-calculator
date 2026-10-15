@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T06:35:04.105Z",
+  "generatedAt": "2026-10-15T06:48:59.483Z",
   "regions": [
     {
       "region": "Georgia",
@@ -14,8 +14,19 @@
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
-          "error": "page needs rendering, and headless browser: HTTP 500 (title \"The URL you requested has been blocked\", text \"block Web Page Blocked! The page cannot be displayed. Please contact the administrator for additional information. URL: www.geoconsul.gov.ge/en/HtmlPage/html/Vi\")"
+          "finalUrl": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25"
+        },
+        {
+          "url": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25",
+          "usedBy": [
+            {
+              "key": "visaList",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25"
         },
         {
           "url": "https://geoconsul.gov.ge/en/entering-georgia",
@@ -27,28 +38,18 @@
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://geoconsul.gov.ge/en/entering-georgia",
-          "error": "page needs rendering, and headless browser: HTTP 500 (title \"The URL you requested has been blocked\", text \"block Web Page Blocked! The page cannot be displayed. Please contact the administrator for additional information. URL: geoconsul.gov.ge/en/entering-georgia Cli\")"
+          "finalUrl": "https://geoconsul.gov.ge/en/entering-georgia"
         }
       ],
       "ruleChecks": [
         {
-          "url": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
-          "status": "fetch-error",
-          "error": "page needs rendering, and headless browser: HTTP 500 (title \"The URL you requested has been blocked\", text \"block Web Page Blocked! The page cannot be displayed. Please contact the administrator for additional information. URL: www.geoconsul.gov.ge/en/HtmlPage/html/Vi\")",
+          "url": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25",
+          "currentUpdatedAt": null,
+          "status": "first-run",
           "keys": [
             "visaList"
           ],
-          "link": "direct"
-        },
-        {
-          "url": "https://geoconsul.gov.ge/en/entering-georgia",
-          "status": "fetch-error",
-          "error": "page needs rendering, and headless browser: HTTP 500 (title \"The URL you requested has been blocked\", text \"block Web Page Blocked! The page cannot be displayed. Please contact the administrator for additional information. URL: geoconsul.gov.ge/en/entering-georgia Cli\")",
-          "keys": [
-            "visaList"
-          ],
-          "link": "parent"
+          "link": "direct.alternate"
         }
       ]
     }
@@ -69,13 +70,13 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 2,
+    "totalLinksChecked": 3,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 2,
+    "sourcesChecked": 1,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 0,
-    "sourcesFetchError": 2
+    "sourcesFirstRun": 1,
+    "sourcesFetchError": 0
   }
 }
