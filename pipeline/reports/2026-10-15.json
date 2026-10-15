@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T04:21:37.092Z",
+  "generatedAt": "2026-10-15T04:27:49.086Z",
   "regions": [
     {
       "region": "Albania",
@@ -672,9 +672,8 @@
               "field": "direct"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/"
+          "status": "blocked",
+          "error": "HTTP 200 with an Imperva Incapsula block page (incident 1024000101839927124-1085583774751654575); headless browser unavailable (Cannot find package 'playwright' imported from C:\\Users\\EricLusk-Jopson\\Documents\\Projects\\world-visa-calculator\\world-visa-calculator\\pipeline\\src\\browserFetch.ts); run `npx playwright install chromium` in pipeline/"
         },
         {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
@@ -1344,16 +1343,15 @@
               "field": "parent"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/"
+          "status": "blocked",
+          "error": "HTTP 200 with an Imperva Incapsula block page (incident 1024000101839927124-1153709532388524722); headless browser unavailable (Cannot find package 'playwright' imported from C:\\Users\\EricLusk-Jopson\\Documents\\Projects\\world-visa-calculator\\world-visa-calculator\\pipeline\\src\\browserFetch.ts); run `npx playwright install chromium` in pipeline/"
         }
       ],
       "ruleChecks": [
         {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
           "status": "fetch-error",
-          "error": "no text extracted (bot-check or script-rendered page?); got 851 bytes text/html, starting \"Request unsuccessful. Incapsula incident ID: 1024000101839927124-1100419961886605998\"",
+          "error": "HTTP 200 with an Imperva Incapsula block page (incident 1024000101839927124-1153709532388524722); headless browser unavailable (Cannot find package 'playwright' imported from C:\\Users\\EricLusk-Jopson\\Documents\\Projects\\world-visa-calculator\\world-visa-calculator\\pipeline\\src\\browserFetch.ts); run `npx playwright install chromium` in pipeline/",
           "keys": [
             "AD",
             "AE",
@@ -1527,7 +1525,7 @@
         {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries",
           "status": "fetch-error",
-          "error": "Could not read the country table: no countryData script on the page; got 850 bytes text/html, starting \"Request unsuccessful. Incapsula incident ID: 1024000101839927124-1085105920985268911\"",
+          "error": "Could not read the country table: HTTP 200 with an Imperva Incapsula block page (incident 1024000101839927124-1186121846685172406); headless browser unavailable (Cannot find package 'playwright' imported from C:\\Users\\EricLusk-Jopson\\Documents\\Projects\\world-visa-calculator\\world-visa-calculator\\pipeline\\src\\browserFetch.ts); run `npx playwright install chromium` in pipeline/",
           "keys": [
             "AD",
             "AE",
@@ -1720,7 +1718,7 @@
     "totalLinksChecked": 2,
     "brokenLinks": 0,
     "redirectedLinks": 0,
-    "blockedLinks": 0,
+    "blockedLinks": 2,
     "sourcesChecked": 2,
     "sourcesChanged": 0,
     "sourcesFirstRun": 0,
