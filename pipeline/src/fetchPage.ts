@@ -78,7 +78,9 @@ function blockedReason(httpStatus: number, headers: Headers): string | undefined
  * Request headers for sites that need more than the defaults. The Bosnia and
  * Herzegovina MFA site sits behind a reverse proxy that turns away clients
  * that don't look like a browser, and its subpage API answers JSON. The North
- * Macedonia MFA site gets the same browser-style agent as a precaution.
+ * Macedonia MFA site gets the same browser-style agent as a precaution. The
+ * Georgia consulate's content API answers in the language its own site asks
+ * for (Georgian by default), so it is asked for English.
  */
 export const BROWSER_USER_AGENT =
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 ' + USER_AGENT;
@@ -87,6 +89,7 @@ const SITE_HEADERS: { host: string; path?: RegExp; headers: Record<string, strin
   { host: 'www.mvp.gov.ba', headers: { 'User-Agent': BROWSER_USER_AGENT } },
   { host: 'mfa.gov.mk', headers: { 'User-Agent': BROWSER_USER_AGENT } },
   { host: 'www.mvp.gov.ba', path: /^\/api\//, headers: { Accept: 'application/json' } },
+  { host: 'gc-api.mfa.gov.ge', headers: { Accept: 'application/json', 'Accept-Language': 'en' } },
 ];
 
 function siteHeaders(url: string): Record<string, string> {

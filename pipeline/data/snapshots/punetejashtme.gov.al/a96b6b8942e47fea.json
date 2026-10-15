@@ -1,0 +1,676 @@
+{
+  "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
+  "contentType": "application/json",
+  "updatedAt": null,
+  "text": "AFGHANISTAN → AF · afghanistan\nALGERIA → DZ · algjeria\nANDORRA → AD · andorra\nANGOLA → AO · angola\nANTIGUA AND BARBUDA → AG · antigua-dhe-barbuda\nARGENTINA → AR · argjentina\nARMENIA → AM · armenia\nAUSTRALIA → AU · australia\nAUSTRIA → AT · austria\nAZERBAIJAN → AZ · azerbajxhan\nBAHAMAS → BS · bahamas\nBAHRAIN → BH · bahrejn\nBANGLADESH → BD · bangladesh\nBARBADOS → BB · barbados\nBELARUS → BY · bjellorusi\nBELGIUM → BE · belgjika\nBELIZE → BZ · belize\nBENIN → BJ · benin\nBOLIVIA → BO · bolivia\nBOSNIA AND HERZEGOVINA → BA · bosnje-dhe-hercegovina\nBOTSWANA → BW · botsvana\nBRAZIL → BR · brazil\nBRUNEI → BN · brunei\nBULGARIA → BG · bullgaria\nBURKINA FASO → BF · burkina-faso\nCAMBODIA → KH · kamboxhia\nCAMEROON → CM · kamerun\nCANADA → CA · kanada\nCHILE → CL · kili\nCHINA → CN · kina\nCOLOMBIA → CO · kolumbia\nCONGO → CG · kongo\nCOSTA RICA → CR · kosta-rika\nCROATIA → HR · kroacia\nCUBA → CU · kuba\nCYPRUS → CY · qipro\nCZECH REPUBLIC → CZ · republika-ceke\nDENMARK → DK · danimarka\nDOMINICAN REPUBLIC → DO · republika-domenikane\nECUADOR → EC · ekuador\nEGYPT → EG · egjipt\nERITREA → ER · eritrea\nESTONIA → EE · estonia\nETHIOPIA → ET · etiopia\nFIJI → FJ · fixhi\nFINLAND → FI · finlanda\nFRANCE → FR · franca\nGABON → GA · gabon\nGEORGIA → GE · gjeorgjia\nGERMANY → DE · gjermania\nGHANA → GH · gana\nGIBRALTAR → no nationality code · gjibraltar\nGREECE → GR · greqia\nGUATEMALA → GT · guatemala\nGUINEA → GN · guinea\nGUYANA → GY · guajana\nHAITI → HT · haiti\nHONDURAS → HN · honduras\nHONG KONG (CHINA) → HK · hong-kong\nHUNGARY → HU · hungaria\nICELAND → IS · islanda\nINDIA → IN · indi\nINDONESIA → ID · indonezi\nIRAN → IR · iran\nIRAQ → IQ · irak\nIRELAND → IE · irlanda\nISRAEL → IL · izrael\nITALY → IT · itali\nIVORY COAST → CI · bregu-i-fildishte\nJAMAICA → JM · xhamajka\nJAPAN → JP · japoni\nJORDAN → JO · jordania\nKAZAKHSTAN → KZ · kazakistan\nKENYA → KE · kenia\nKOSOVO → XK · kosova\nKUWAIT → KW · kuvajt\nKYRGYZSTAN → KG · kirgistan\nLATVIA → LV · letonia\nLEBANON → LB · liban\nLESOTHO → LS · lesoto\nLIBERIA → LR · liberia\nLIBYA → LY · libia\nLIECHTENSTEIN → LI · lihteshtejn\nLITHUANIA → LT · lituania\nLUXEMBOURG → LU · luksemburg\nMACAU (CHINA) → MO · makao\nMADAGASCAR → MG · madagaskar\nMALAWI → MW · malavia\nMALAYSIA → MY · malajzia\nMALDIVES → MV · maldive\nMALI → ML · mali\nMALTA → MT · malta\nMAURITANIA → MR · mauritania\nMAURITIUS → MU · mauricius\nMEXICO → MX · meksika\nMOLDOVA → MD · moldavia\nMONACO → MC · monako\nMONGOLIA → MN · mongolia\nMONTENEGRO → ME · mali-zi\nMOROCCO → MA · marok\nMOZAMBIQUE → MZ · mozambik\nNAMIBIA → NA · namibia\nNEPAL → NP · nepali\nNETHERLANDS → NL · holanda\nNEW ZEALAND → NZ · zelanda-re\nNICARAGUA → NI · nikaragua\nNIGERIA → NG · nigeria\nNORTH KOREA → KP · korea-veriut\nNORTH MACEDONIA → MK · maqedonia-veriut\nNORWAY → NO · norvegjia\nOMAN → OM · oman\nPAKISTAN → PK · pakistan\nPALESTINE → PS · palestina\nPANAMA → PA · panama\nPARAGUAY → PY · paraguaj\nPERU → PE · peru\nPHILIPPINE → PH · filipine\nPOLAND → PL · polonia\nPORTUGAL → PT · portugali\nQATAR → QA · katar\nR0MANIA → RO · rumania\nRUSSIA → RU · rusia\nRWANDA → RW · ruanda\nSAINT KITTS AND NEVIS → KN · saint\nSALVADOR → SV · salvador\nSAN MARINO → SM · san-marino\nSAO TOME AND PRINCIPE → ST · principe\nSAUDI ARABIA → SA · arabia-saudite\nSENEGAL → SN · senegal\nSERBIA → RS · serbia\nSEYCHELLES → SC · sejshell\nSIERRA LEONE → SL · sierra-leone\nSINGAPORE → SG · singapor\nSLLOVENIA → SI · sllovenia\nSLOVAKIA → SK · sllovakia\nSOMALIA → SO · somalia\nSOUTH AFRICA → ZA · south-africa\nSOUTH KOREA → KR · korea-jugut\nSPAIN → ES · spanja\nSRI LANKA → LK · sri-lanka\nSUDAN → SD · sudan\nSURINAM → SR · surinam\nSWEDEN → SE · suedia\nSWITZERLAND → CH · zvicra\nSYRIA → SY · siria\nTAIWAN (CHINA) → TW · tajvan\nTAJIKISTAN → TJ · taxhikistan\nTANZANIA → TZ · tanzania\nTHAILAND → TH · tajlanda\nTOGO → TG · togo\nTRINIDAD AND TOBAGO → TT · trinidad-tobago\nTUNISIA → TN · tunizi\nTURKEY → TR · turqi\nTURKMENISTAN → TM · turkmenistan\nUGANDA → UG · uganda\nUKRAINE → UA · ukraina\nUNITED ARAB EMIRATES → AE · emiratet-bashkuara-arabe\nUNITED KINGDOM → GB · mbreteria-bashkuar\nUNITED STATES OF AMERICA → US · shba\nURUGUAY → UY · uruguaj\nUZBEKISTAN → UZ · uzbekistan\nVATICAN (HOLY SEAT) → VA · vatikan\nVENEZUELA → VE · venezuela\nVIETNAM → VN · vietnam\nYEMEN → YE · jemen\nZAMBIA → ZM · zambia\nZIMBABWE → ZW · zimbabve",
+  "links": [
+    {
+      "text": "AFGHANISTAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#afghanistan"
+    },
+    {
+      "text": "ALGERIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#algjeria"
+    },
+    {
+      "text": "ANDORRA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#andorra"
+    },
+    {
+      "text": "ANGOLA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#angola"
+    },
+    {
+      "text": "ANTIGUA AND BARBUDA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#antigua-dhe-barbuda"
+    },
+    {
+      "text": "ARGENTINA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#argjentina"
+    },
+    {
+      "text": "ARMENIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#armenia"
+    },
+    {
+      "text": "AUSTRALIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#australia"
+    },
+    {
+      "text": "AUSTRIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#austria"
+    },
+    {
+      "text": "AZERBAIJAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#azerbajxhan"
+    },
+    {
+      "text": "BAHAMAS",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahamas"
+    },
+    {
+      "text": "BAHRAIN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahrejn"
+    },
+    {
+      "text": "BANGLADESH",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bangladesh"
+    },
+    {
+      "text": "BARBADOS",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#barbados"
+    },
+    {
+      "text": "BELARUS",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bjellorusi"
+    },
+    {
+      "text": "BELGIUM",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belgjika"
+    },
+    {
+      "text": "BELIZE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belize"
+    },
+    {
+      "text": "BENIN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#benin"
+    },
+    {
+      "text": "BOLIVIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bolivia"
+    },
+    {
+      "text": "BOSNIA AND HERZEGOVINA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bosnje-dhe-hercegovina"
+    },
+    {
+      "text": "BOTSWANA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#botsvana"
+    },
+    {
+      "text": "BRAZIL",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brazil"
+    },
+    {
+      "text": "BRUNEI",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brunei"
+    },
+    {
+      "text": "BULGARIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bullgaria"
+    },
+    {
+      "text": "BURKINA FASO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#burkina-faso"
+    },
+    {
+      "text": "CAMBODIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamboxhia"
+    },
+    {
+      "text": "CAMEROON",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamerun"
+    },
+    {
+      "text": "CANADA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kanada"
+    },
+    {
+      "text": "CHILE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kili"
+    },
+    {
+      "text": "CHINA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kina"
+    },
+    {
+      "text": "COLOMBIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kolumbia"
+    },
+    {
+      "text": "CONGO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kongo"
+    },
+    {
+      "text": "COSTA RICA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosta-rika"
+    },
+    {
+      "text": "CROATIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kroacia"
+    },
+    {
+      "text": "CUBA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuba"
+    },
+    {
+      "text": "CYPRUS",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#qipro"
+    },
+    {
+      "text": "CZECH REPUBLIC",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-ceke"
+    },
+    {
+      "text": "DENMARK",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#danimarka"
+    },
+    {
+      "text": "DOMINICAN REPUBLIC",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-domenikane"
+    },
+    {
+      "text": "ECUADOR",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ekuador"
+    },
+    {
+      "text": "EGYPT",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#egjipt"
+    },
+    {
+      "text": "ERITREA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#eritrea"
+    },
+    {
+      "text": "ESTONIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#estonia"
+    },
+    {
+      "text": "ETHIOPIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#etiopia"
+    },
+    {
+      "text": "FIJI",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#fixhi"
+    },
+    {
+      "text": "FINLAND",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#finlanda"
+    },
+    {
+      "text": "FRANCE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#franca"
+    },
+    {
+      "text": "GABON",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gabon"
+    },
+    {
+      "text": "GEORGIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjeorgjia"
+    },
+    {
+      "text": "GERMANY",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjermania"
+    },
+    {
+      "text": "GHANA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gana"
+    },
+    {
+      "text": "GIBRALTAR",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjibraltar"
+    },
+    {
+      "text": "GREECE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#greqia"
+    },
+    {
+      "text": "GUATEMALA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guatemala"
+    },
+    {
+      "text": "GUINEA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guinea"
+    },
+    {
+      "text": "GUYANA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana"
+    },
+    {
+      "text": "HAITI",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#haiti"
+    },
+    {
+      "text": "HONDURAS",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras"
+    },
+    {
+      "text": "HONG KONG (CHINA)",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong"
+    },
+    {
+      "text": "HUNGARY",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hungaria"
+    },
+    {
+      "text": "ICELAND",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#islanda"
+    },
+    {
+      "text": "INDIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indi"
+    },
+    {
+      "text": "INDONESIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indonezi"
+    },
+    {
+      "text": "IRAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#iran"
+    },
+    {
+      "text": "IRAQ",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irak"
+    },
+    {
+      "text": "IRELAND",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irlanda"
+    },
+    {
+      "text": "ISRAEL",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#izrael"
+    },
+    {
+      "text": "ITALY",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#itali"
+    },
+    {
+      "text": "IVORY COAST",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bregu-i-fildishte"
+    },
+    {
+      "text": "JAMAICA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#xhamajka"
+    },
+    {
+      "text": "JAPAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#japoni"
+    },
+    {
+      "text": "JORDAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jordania"
+    },
+    {
+      "text": "KAZAKHSTAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kazakistan"
+    },
+    {
+      "text": "KENYA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kenia"
+    },
+    {
+      "text": "KOSOVO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosova"
+    },
+    {
+      "text": "KUWAIT",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuvajt"
+    },
+    {
+      "text": "KYRGYZSTAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kirgistan"
+    },
+    {
+      "text": "LATVIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#letonia"
+    },
+    {
+      "text": "LEBANON",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liban"
+    },
+    {
+      "text": "LESOTHO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lesoto"
+    },
+    {
+      "text": "LIBERIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liberia"
+    },
+    {
+      "text": "LIBYA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#libia"
+    },
+    {
+      "text": "LIECHTENSTEIN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lihteshtejn"
+    },
+    {
+      "text": "LITHUANIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lituania"
+    },
+    {
+      "text": "LUXEMBOURG",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#luksemburg"
+    },
+    {
+      "text": "MACAU (CHINA)",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao"
+    },
+    {
+      "text": "MADAGASCAR",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#madagaskar"
+    },
+    {
+      "text": "MALAWI",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malavia"
+    },
+    {
+      "text": "MALAYSIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malajzia"
+    },
+    {
+      "text": "MALDIVES",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maldive"
+    },
+    {
+      "text": "MALI",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali"
+    },
+    {
+      "text": "MALTA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malta"
+    },
+    {
+      "text": "MAURITANIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania"
+    },
+    {
+      "text": "MAURITIUS",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauricius"
+    },
+    {
+      "text": "MEXICO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#meksika"
+    },
+    {
+      "text": "MOLDOVA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#moldavia"
+    },
+    {
+      "text": "MONACO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#monako"
+    },
+    {
+      "text": "MONGOLIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia"
+    },
+    {
+      "text": "MONTENEGRO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali-zi"
+    },
+    {
+      "text": "MOROCCO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#marok"
+    },
+    {
+      "text": "MOZAMBIQUE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mozambik"
+    },
+    {
+      "text": "NAMIBIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#namibia"
+    },
+    {
+      "text": "NEPAL",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nepali"
+    },
+    {
+      "text": "NETHERLANDS",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#holanda"
+    },
+    {
+      "text": "NEW ZEALAND",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zelanda-re"
+    },
+    {
+      "text": "NICARAGUA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nikaragua"
+    },
+    {
+      "text": "NIGERIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nigeria"
+    },
+    {
+      "text": "NORTH KOREA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-veriut"
+    },
+    {
+      "text": "NORTH MACEDONIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maqedonia-veriut"
+    },
+    {
+      "text": "NORWAY",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#norvegjia"
+    },
+    {
+      "text": "OMAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#oman"
+    },
+    {
+      "text": "PAKISTAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#pakistan"
+    },
+    {
+      "text": "PALESTINE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#palestina"
+    },
+    {
+      "text": "PANAMA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#panama"
+    },
+    {
+      "text": "PARAGUAY",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#paraguaj"
+    },
+    {
+      "text": "PERU",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#peru"
+    },
+    {
+      "text": "PHILIPPINE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#filipine"
+    },
+    {
+      "text": "POLAND",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#polonia"
+    },
+    {
+      "text": "PORTUGAL",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#portugali"
+    },
+    {
+      "text": "QATAR",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#katar"
+    },
+    {
+      "text": "R0MANIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rumania"
+    },
+    {
+      "text": "RUSSIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rusia"
+    },
+    {
+      "text": "RWANDA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ruanda"
+    },
+    {
+      "text": "SAINT KITTS AND NEVIS",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#saint"
+    },
+    {
+      "text": "SALVADOR",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#salvador"
+    },
+    {
+      "text": "SAN MARINO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#san-marino"
+    },
+    {
+      "text": "SAO TOME AND PRINCIPE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#principe"
+    },
+    {
+      "text": "SAUDI ARABIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#arabia-saudite"
+    },
+    {
+      "text": "SENEGAL",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#senegal"
+    },
+    {
+      "text": "SERBIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#serbia"
+    },
+    {
+      "text": "SEYCHELLES",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sejshell"
+    },
+    {
+      "text": "SIERRA LEONE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sierra-leone"
+    },
+    {
+      "text": "SINGAPORE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#singapor"
+    },
+    {
+      "text": "SLLOVENIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovenia"
+    },
+    {
+      "text": "SLOVAKIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovakia"
+    },
+    {
+      "text": "SOMALIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#somalia"
+    },
+    {
+      "text": "SOUTH AFRICA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#south-africa"
+    },
+    {
+      "text": "SOUTH KOREA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-jugut"
+    },
+    {
+      "text": "SPAIN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#spanja"
+    },
+    {
+      "text": "SRI LANKA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sri-lanka"
+    },
+    {
+      "text": "SUDAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sudan"
+    },
+    {
+      "text": "SURINAM",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#surinam"
+    },
+    {
+      "text": "SWEDEN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#suedia"
+    },
+    {
+      "text": "SWITZERLAND",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zvicra"
+    },
+    {
+      "text": "SYRIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#siria"
+    },
+    {
+      "text": "TAIWAN (CHINA)",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan"
+    },
+    {
+      "text": "TAJIKISTAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#taxhikistan"
+    },
+    {
+      "text": "TANZANIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania"
+    },
+    {
+      "text": "THAILAND",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajlanda"
+    },
+    {
+      "text": "TOGO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#togo"
+    },
+    {
+      "text": "TRINIDAD AND TOBAGO",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago"
+    },
+    {
+      "text": "TUNISIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tunizi"
+    },
+    {
+      "text": "TURKEY",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turqi"
+    },
+    {
+      "text": "TURKMENISTAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turkmenistan"
+    },
+    {
+      "text": "UGANDA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uganda"
+    },
+    {
+      "text": "UKRAINE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ukraina"
+    },
+    {
+      "text": "UNITED ARAB EMIRATES",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#emiratet-bashkuara-arabe"
+    },
+    {
+      "text": "UNITED KINGDOM",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mbreteria-bashkuar"
+    },
+    {
+      "text": "UNITED STATES OF AMERICA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#shba"
+    },
+    {
+      "text": "URUGUAY",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uruguaj"
+    },
+    {
+      "text": "UZBEKISTAN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uzbekistan"
+    },
+    {
+      "text": "VATICAN (HOLY SEAT)",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vatikan"
+    },
+    {
+      "text": "VENEZUELA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#venezuela"
+    },
+    {
+      "text": "VIETNAM",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vietnam"
+    },
+    {
+      "text": "YEMEN",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jemen"
+    },
+    {
+      "text": "ZAMBIA",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zambia"
+    },
+    {
+      "text": "ZIMBABWE",
+      "href": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zimbabve"
+    }
+  ]
+}

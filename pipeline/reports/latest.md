@@ -1,6 +1,6 @@
 # Source Verification Report
 
-Generated: 2026-10-15T05:31:29.598Z
+Generated: 2026-10-15T06:48:59.483Z
 
 ## Summary
 
@@ -10,26 +10,25 @@ Generated: 2026-10-15T05:31:29.598Z
 | 🔴 Broken | 0 |
 | ↪️ Redirected | 0 |
 | 🚫 Blocked (could not verify) | 0 |
-| Content sources diffed (`checkDiff`) | 2 |
+| Content sources diffed (`checkDiff`) | 1 |
 | ✏️ Changed since last baseline | 0 |
-| 🆕 First run (no baseline yet) | 2 |
+| 🆕 First run (no baseline yet) | 1 |
 | ⚠️ Fetch errors | 0 |
 
-Not checked this run (`checkLinks: false`): Schengen, UK, Ireland, Turkiye, Montenegro, Serbia, Bosnia, Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Georgia.
+Not checked this run (`checkLinks: false`): Schengen, UK, Ireland, Turkiye, Montenegro, Serbia, Bosnia, Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Armenia.
 
-## Armenia
+## Georgia
 
 ### Link health
 
 | Used by | Status | URL |
 |---|---|---|
-| visaFreeList (direct) | ✅ live (200) | https://www.mfa.am/en/visafreelist |
-| visaFreeList, bilateralList (parent) | ✅ live (200) | https://www.mfa.am/en/visa/ |
-| bilateralList (direct) | ✅ live (200) | https://www.mfa.am/en/whoneedvisa |
+| visaList (direct) | ✅ live (200) | https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25 |
+| visaList (direct.alternate) | ✅ live (200) | https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25 |
+| visaList (parent) | ✅ live (200) | https://geoconsul.gov.ge/en/entering-georgia |
 
 ### Content diffing
 
 | Keys | Status | URL |
 |---|---|---|
-| visaFreeList | 🆕 first run (baseline captured) | https://www.mfa.am/en/visafreelist |
-| bilateralList | 🆕 first run (baseline captured) | https://www.mfa.am/en/whoneedvisa |
+| visaList (direct.alternate) | 🆕 first run (baseline captured) | https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25 |

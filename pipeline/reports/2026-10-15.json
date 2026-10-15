@@ -1,68 +1,55 @@
 {
-  "generatedAt": "2026-10-15T05:31:29.598Z",
+  "generatedAt": "2026-10-15T06:48:59.483Z",
   "regions": [
     {
-      "region": "Armenia",
+      "region": "Georgia",
       "linkHealth": [
         {
-          "url": "https://www.mfa.am/en/visafreelist",
+          "url": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
           "usedBy": [
             {
-              "key": "visaFreeList",
+              "key": "visaList",
               "field": "direct"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://www.mfa.am/en/visafreelist"
+          "finalUrl": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25"
         },
         {
-          "url": "https://www.mfa.am/en/visa/",
+          "url": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25",
           "usedBy": [
             {
-              "key": "visaFreeList",
-              "field": "parent"
-            },
+              "key": "visaList",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25"
+        },
+        {
+          "url": "https://geoconsul.gov.ge/en/entering-georgia",
+          "usedBy": [
             {
-              "key": "bilateralList",
+              "key": "visaList",
               "field": "parent"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://www.mfa.am/en/visa/"
-        },
-        {
-          "url": "https://www.mfa.am/en/whoneedvisa",
-          "usedBy": [
-            {
-              "key": "bilateralList",
-              "field": "direct"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://www.mfa.am/en/whoneedvisa"
+          "finalUrl": "https://geoconsul.gov.ge/en/entering-georgia"
         }
       ],
       "ruleChecks": [
         {
-          "url": "https://www.mfa.am/en/visafreelist",
+          "url": "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25",
           "currentUpdatedAt": null,
           "status": "first-run",
           "keys": [
-            "visaFreeList"
+            "visaList"
           ],
-          "link": "direct"
-        },
-        {
-          "url": "https://www.mfa.am/en/whoneedvisa",
-          "currentUpdatedAt": null,
-          "status": "first-run",
-          "keys": [
-            "bilateralList"
-          ],
-          "link": "direct"
+          "link": "direct.alternate"
         }
       ]
     }
@@ -80,16 +67,16 @@
     "Albania",
     "Cyprus",
     "Belarus",
-    "Georgia"
+    "Armenia"
   ],
   "summary": {
     "totalLinksChecked": 3,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 2,
+    "sourcesChecked": 1,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 2,
+    "sourcesFirstRun": 1,
     "sourcesFetchError": 0
   }
 }
