@@ -8733,30 +8733,32 @@ export const CyprusSources = {
 // ─── Belarus ──────────────────────────────────────────────────────────────────
 
 /**
- * The "visa-free entry" index, parent of both the European any-border list
- * and the airport-only list. Defined once so it is fetched and diffed once.
+ * The "visa-free travel" index, parent of both the European any-border list
+ * and the airport-only list. It is only a menu of subpages, so it is
+ * health-checked but not diffed.
  */
 const belarusFreeMove = {
   url: "https://mfa.gov.by/en/visa/freemove/",
   type: "parent",
-  checkDiff: true,
+  checkDiff: false,
 } as const satisfies SourceLink;
 
 export const BelarusSources = {
   /**
    * General visa-regime page — nationalities requiring a Belarusian visa.
-   * Cited as the default/fallback rule's source (see belarus.ts).
+   * Cited as the default/fallback rule's source (see belarus.ts). The page
+   * is only a menu of visa subpages, so it is health-checked but not diffed.
    */
   general: {
     direct: {
       url: "https://mfa.gov.by/en/visa/general/",
       type: "direct",
-      checkDiff: true,
+      checkDiff: false,
     },
     parent: {
       url: "https://mfa.gov.by/en/visa/general/",
       type: "parent",
-      checkDiff: true,
+      checkDiff: false,
     },
     dateChecked: "2026-09-12",
   } satisfies SourceDoc,
@@ -8782,13 +8784,19 @@ export const BelarusSources = {
    * (30 days per visit, six named airports only, max 90 days per calendar
    * year). Some entries there require another jurisdiction's visa to
    * actually use the exemption; those are modeled as visa_required instead
-   * (see belarus.ts header for the product decision).
+   * (see belarus.ts header for the product decision). The 76-country list
+   * itself is a PDF linked from the page, diffed as the alternate.
    */
   airport: {
     direct: {
       url: "https://mfa.gov.by/en/visa/freemove/airport/",
       type: "direct",
       checkDiff: true,
+      alternate: {
+        url: "https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf",
+        type: "machine",
+        checkDiff: true,
+      },
     },
     parent: belarusFreeMove,
     dateChecked: "2026-09-12",

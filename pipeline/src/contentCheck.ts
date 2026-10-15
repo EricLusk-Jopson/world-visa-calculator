@@ -12,6 +12,67 @@ function selectContentRoot($: cheerio.CheerioAPI) {
   return $('body');
 }
 
+/**
+ * Sites with no `#content` or `main` element, whose page body runs straight
+ * into site-wide chrome. Everything from the element whose whole text is
+ * `endBefore` onwards is dropped, so a new video or news item in the sidebar
+ * doesn't show as a change on every page. If the marker is missing, the page
+ * is kept whole, so the change still shows up in the diff.
+ */
+const SITE_CONTENT_END: { host: string; endBefore: string }[] = [
+  // mfa.gov.by: the sidebar (missions, videos, social media, contacts, links) and footer.
+  { host: 'mfa.gov.by', endBefore: 'Belarusian Diplomatic Missions abroad' },
+];
+
+const normalize = (s: string) => s.replace(/\s+/g, ' ').trim();
+
+/** Removes the marker element and everything after it in document order, within `root`. */
+function cutAtMarker($: cheerio.CheerioAPI, root: ReturnType<cheerio.CheerioAPI>, marker: string): void {
+  const matches = root.find('*').filter((_, el) => normalize($(el).text()) === marker);
+  // The innermost match: the one with no matching descendant.
+  const target = matches.filter((_, el) => $(el).find(matches).length === 0).first();
+  if (!target.length) return;
+  let node = target;
+  while (node.length && !root.is(node)) {
+    node.nextAll().remove();
+    node = node.parent();
+  }
+  target.remove();
+}
+
+function hostOf(url: string): string {
+  try {
+    return new URL(url).host;
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * Decodes an HTML body. Bytes that are valid UTF-8 are read as UTF-8, whatever
+ * the page declares; otherwise the charset from the Content-Type header or a
+ * `<meta>` tag is used (e.g. mfa.gov.by serves windows-1251).
+ */
+export function decodeHtml(body: Buffer, contentType: string): string {
+  try {
+    return new TextDecoder('utf-8', { fatal: true }).decode(body);
+  } catch {
+    // Not UTF-8: fall through to the declared charset.
+  }
+  const head = body.subarray(0, 4096).toString('latin1');
+  const declared =
+    /charset\s*=\s*["']?([\w-]+)/i.exec(contentType)?.[1] ??
+    /<meta[^>]+charset\s*=\s*["']?([\w-]+)/i.exec(head)?.[1];
+  if (declared) {
+    try {
+      return new TextDecoder(declared).decode(body);
+    } catch {
+      // Unknown label: fall back to lenient UTF-8.
+    }
+  }
+  return body.toString('utf-8');
+}
+
 function isHtml(contentType: string): boolean {
   return contentType === '' || /html|xml/i.test(contentType);
 }
@@ -67,7 +128,7 @@ export function extractSnapshot(body: Buffer, contentType: string, url: string):
     return { url, contentType, updatedAt: null, text: `sha256:${hash}`, links: [] };
   }
 
-  return extractHtml(body.toString('utf-8'), contentType, url);
+  return extractHtml(decodeHtml(body, contentType), contentType, url);
 }
 
 /** Block-level text and outbound links of an HTML document or fragment. */
@@ -79,6 +140,8 @@ export function extractHtml(html: string, contentType: string, url: string): Con
     null;
 
   const root = selectContentRoot($);
+  const host = hostOf(url);
+  for (const { endBefore } of SITE_CONTENT_END.filter((s) => s.host === host)) cutAtMarker($, root, endBefore);
 
   const text = root
     .find('li, p, h1, h2, h3, h4, td, th')
