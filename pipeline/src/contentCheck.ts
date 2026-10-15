@@ -67,7 +67,12 @@ export function extractSnapshot(body: Buffer, contentType: string, url: string):
     return { url, contentType, updatedAt: null, text: `sha256:${hash}`, links: [] };
   }
 
-  const $ = cheerio.load(body.toString('utf-8'));
+  return extractHtml(body.toString('utf-8'), contentType, url);
+}
+
+/** Block-level text and outbound links of an HTML document or fragment. */
+export function extractHtml(html: string, contentType: string, url: string): ContentSnapshot {
+  const $ = cheerio.load(html);
   const updatedAt =
     $('meta[name="govuk:public-updated-at"]').attr('content') ??
     $('meta[name="govuk:updated-at"]').attr('content') ??

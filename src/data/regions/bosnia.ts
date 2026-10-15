@@ -20,6 +20,11 @@
  * parent URL). This is a per-region policy choice; other regions still cite
  * per-country subpages where those are expected to be stable.
  *
+ * The source check still diffs each country's own page: the direct link's
+ * machine `alternate` is the site's subpage API, whose per-country slug the
+ * pipeline discovers from the index on every run (see the `mvp.gov.ba`
+ * resolver in pipeline/README.md).
+ *
  * ── Data provenance and known limitations ──────────────────────────────────────
  *
  * This file was generated from the full scrape (not hand-transcribed) via a

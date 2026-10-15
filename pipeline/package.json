@@ -10,7 +10,8 @@
   "scripts": {
     "check": "tsx src/checkAll.ts",
     "demo": "tsx src/demoRun.ts",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "tsx --test 'src/**/*.test.ts'"
   },
   "dependencies": {
     "cheerio": "^1.2.0",

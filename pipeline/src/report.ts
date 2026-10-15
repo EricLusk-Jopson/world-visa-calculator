@@ -123,6 +123,7 @@ function renderRuleDetail(lines: string[], c: RuleCheckResult, heading: string):
   lines.push('');
   lines.push(`URL: ${c.url}`);
   if (c.error) lines.push(`<br>Error: ${c.error}`);
+  if (c.note) lines.push(`<br>Note: ${c.note}`);
   if (c.previousUpdatedAt || c.currentUpdatedAt) {
     lines.push(`<br>Last-updated metadata: \`${c.previousUpdatedAt ?? '—'}\` → \`${c.currentUpdatedAt ?? '—'}\``);
   }
@@ -203,7 +204,9 @@ export function renderMarkdown(report: Report): string {
       if (quiet.length > 0) {
         lines.push('| Keys | Status | URL |');
         lines.push('|---|---|---|');
-        for (const c of quiet) lines.push(`| ${cell(formatRuleKeys(c))} | ${statusBadge(c.status)} | ${cell(c.url)} |`);
+        for (const c of quiet) {
+          lines.push(`| ${cell(formatRuleKeys(c))} | ${statusBadge(c.status)} | ${cell(c.url)}${c.note ? `<br>${cell(c.note)}` : ''} |`);
+        }
         lines.push('');
       }
     }

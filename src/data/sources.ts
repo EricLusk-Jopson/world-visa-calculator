@@ -4315,12 +4315,16 @@ export const SerbiaSources = {
 } as const;
 
 /**
- * Bosnia and Herzegovina cites one page for everything: the MFA "Vize" index,
- * as both the direct and the parent link of every BosniaSources entry (the
- * per-country subpages are deliberately not cited; see regions/bosnia.ts).
- * Both links are defined once here and diffed; the pipeline fetches and diffs
- * the URL once, so a nationality added, removed or renamed on the index shows
- * up as a link change.
+ * Bosnia and Herzegovina's MFA "Vize" index is the human-facing source for
+ * every BosniaSources entry, as both its direct and its parent link (the
+ * per-country pages' URLs are not stable enough to cite; see
+ * regions/bosnia.ts). The index is diffed once.
+ *
+ * Each country's actual rule text is diffed through `bosniaSubpageApi`, the
+ * site's JSON API for the page the index's country selector opens. Its URL is
+ * keyed by a timestamped slug that changes when the page is republished, so
+ * the pipeline resolves `{key}` per nationality from the index on every run
+ * (pipeline/src/resolvers/mvpGovBa.ts).
  */
 const bosniaIndex = {
   url: "https://www.mvp.gov.ba/en/vize",
@@ -4328,10 +4332,18 @@ const bosniaIndex = {
   checkDiff: true,
 } as const satisfies SourceLink;
 
+const bosniaSubpageApi = {
+  url: "https://www.mvp.gov.ba/api/subpage/{key}?domain=https://www.mvp.gov.ba",
+  type: "machine",
+  checkDiff: true,
+  resolver: "mvp.gov.ba",
+} as const satisfies SourceLink;
+
 const bosniaVisaPage = {
   url: bosniaIndex.url,
   type: "direct",
-  checkDiff: true,
+  checkDiff: false,
+  alternate: bosniaSubpageApi,
 } as const satisfies SourceLink;
 
 export const BosniaSources = {
