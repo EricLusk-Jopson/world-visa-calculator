@@ -20,9 +20,22 @@ let queue: Promise<unknown> = Promise.resolve();
 /** Matches Imperva Incapsula's block page ("Request unsuccessful. Incapsula incident ID: …"). */
 export const INCAPSULA_BLOCK = /Incapsula incident ID:?\s*([\d-]+)/i;
 
+/**
+ * Playwright's own Chromium build when it's installed, else the machine's
+ * Chrome or Edge (every Windows install has Edge), so a run works even when
+ * `playwright install` fetched a build for another Playwright version.
+ */
 async function launch(): Promise<Browser> {
   const { chromium } = await import('playwright');
-  return chromium.launch();
+  const tried: string[] = [];
+  for (const channel of [undefined, 'chrome', 'msedge']) {
+    try {
+      return await chromium.launch(channel ? { channel } : {});
+    } catch (err) {
+      tried.push(`${channel ?? 'Playwright Chromium'}: ${(err as Error).message.split('\n')[0]}`);
+    }
+  }
+  throw new Error(tried.join('; '));
 }
 
 async function load(url: string, timeoutMs: number): Promise<FetchOutcome> {
@@ -32,11 +45,11 @@ async function load(url: string, timeoutMs: number): Promise<FetchOutcome> {
     b = await browser;
   } catch (err) {
     browser = undefined;
-    const message = (err as Error).message.split('\n')[0];
+    const message = (err as Error).message;
     const fix = /Cannot find (package|module) 'playwright'/.test(message)
-      ? '`npm install`, then `npx playwright install chromium`'
-      : '`npx playwright install chromium`';
-    return { status: 'blocked', error: `headless browser unavailable (${message}); run ${fix} in pipeline/` };
+      ? '`npm install`, then `npm exec playwright install chromium`'
+      : '`npm exec playwright install chromium` (it fetches the build this Playwright version expects)';
+    return { status: 'blocked', error: `headless browser unavailable (${message}); run ${fix} in pipeline/, or install Chrome or Edge` };
   }
   const context = await b.newContext({ locale: 'en-US' });
   try {

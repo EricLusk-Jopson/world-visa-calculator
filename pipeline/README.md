@@ -71,7 +71,7 @@ permissions → "Allow GitHub Actions to create and approve pull requests"**.
 ```bash
 cd pipeline
 npm install
-npx playwright install chromium   # once; for sites that turn away plain HTTP clients
+npm exec playwright install chromium   # once, from pipeline/; for sites that turn away plain HTTP clients
 
 # Real run over regions with checkLinks: true. Updates data/snapshots/ and writes reports/.
 # Needs open network egress to gov.uk, eur-lex.europa.eu, gov.me, etc.
@@ -218,8 +218,10 @@ block page, which comes with a 200 status. For hosts in
 `BROWSER_FALLBACK_HOSTS` (`src/fetchPage.ts`), a blocked response is then
 retried once in headless Chromium through Playwright (`src/browserFetch.ts`),
 one page at a time. The page's HTML is read back from the DOM, so inline
-scripts such as Albania's `countryData` keep their source text. This needs
-`npx playwright install chromium` once. Without it, the page is reported
+scripts such as Albania's `countryData` keep their source text. It uses
+the Chromium build `npm exec playwright install chromium` fetches (run it in
+`pipeline/`, so the build matches the Playwright version installed there),
+else the machine's Chrome or Edge. With none of these, the page is reported
 blocked, with that hint.
 
 ### Incomplete certificate chains
