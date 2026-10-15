@@ -8885,7 +8885,7 @@ export const ArmeniaSources = {
  * the scheduled monthly workflow always does.
  */
 export const SourceRegions = {
-  Schengen: { sources: SchengenSources, checkLinks: false },
+  Schengen: { sources: SchengenSources, checkLinks: true },
   UK: { sources: UKSources, checkLinks: false },
   Ireland: { sources: IrelandSources, checkLinks: false },
   Turkiye: { sources: TurkiyeSources, checkLinks: false },
