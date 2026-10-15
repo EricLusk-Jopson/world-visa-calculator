@@ -39,6 +39,9 @@ export function incapsulaInterstitial(html: string): { kind: 'block' | 'challeng
   return undefined;
 }
 
+/** How long a scripted page gets to finish its requests after load. */
+const NETWORK_IDLE_WAIT_MS = 15_000;
+
 /** How long a browser gets to clear a challenge before the page counts as blocked. */
 const CHALLENGE_WAIT_MS = 20_000;
 
@@ -60,7 +63,14 @@ async function launch(): Promise<Browser> {
   throw new Error(tried.join('; '));
 }
 
-async function load(url: string, timeoutMs: number): Promise<FetchOutcome> {
+/**
+ * `waitUntil` is when a load counts as done: 'load' for server-rendered pages,
+ * 'networkidle' for pages that fetch their content with scripts after load
+ * (waited for at most NETWORK_IDLE_WAIT_MS).
+ */
+type WaitUntil = 'load' | 'networkidle';
+
+async function load(url: string, timeoutMs: number, waitUntil: WaitUntil): Promise<FetchOutcome> {
   browser ??= launch();
   let b: Browser;
   try {
@@ -77,6 +87,9 @@ async function load(url: string, timeoutMs: number): Promise<FetchOutcome> {
   try {
     const page = await context.newPage();
     let res = await page.goto(url, { waitUntil: 'load', timeout: timeoutMs });
+    // Scripted content: give requests started after load time to finish. A
+    // site that never goes quiet (polling, analytics) is read as it stands.
+    if (waitUntil === 'networkidle') await page.waitForLoadState('networkidle', { timeout: NETWORK_IDLE_WAIT_MS }).catch(() => undefined);
     let html = await page.content();
     // A challenge's script sets a cookie and reloads; wait for the real page,
     // reloading once ourselves halfway through in case the script doesn't.
@@ -108,8 +121,8 @@ async function load(url: string, timeoutMs: number): Promise<FetchOutcome> {
   }
 }
 
-export function fetchWithBrowser(url: string, timeoutMs = 45_000): Promise<FetchOutcome> {
-  const run = queue.then(() => load(url, timeoutMs));
+export function fetchWithBrowser(url: string, timeoutMs = 45_000, waitUntil: WaitUntil = 'load'): Promise<FetchOutcome> {
+  const run = queue.then(() => load(url, timeoutMs, waitUntil));
   queue = run.catch(() => undefined);
   return run;
 }

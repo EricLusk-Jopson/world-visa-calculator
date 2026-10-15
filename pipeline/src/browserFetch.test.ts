@@ -3,7 +3,7 @@ import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { after, before, describe, it } from 'node:test';
 import { closeBrowser } from './browserFetch';
-import { BROWSER_FALLBACK_HOSTS, fetchPage } from './fetchPage';
+import { BROWSER_FALLBACK_HOSTS, BROWSER_RENDER_HOSTS, fetchPage } from './fetchPage';
 
 async function canLaunchBrowser(): Promise<boolean> {
   try {
@@ -109,3 +109,53 @@ describe('Incapsula JavaScript challenge', () => {
   });
 });
 
+
+/**
+ * Like geoconsul.gov.ge: the server sends a shell, and a script fetches the
+ * content after load. A plain GET sees only the shell.
+ */
+describe('Script-rendered pages', () => {
+  let server: Server;
+  let url: string;
+  const SHELL =
+    '<html><body><header><p>Ministry Of Foreign Affairs</p></header><main id="app"></main>' +
+    '<script>setTimeout(() => fetch("/api/page").then((r) => r.text()).then((t) => { document.getElementById("app").innerHTML = t; }), 300);</script>' +
+    '</body></html>';
+
+  before(async () => {
+    server = createServer((req, res) => {
+      res.setHeader('content-type', 'text/html');
+      if (req.url === '/api/page') setTimeout(() => res.end('<p>Visa-free countries: Andorra</p>'), 300);
+      else res.end(SHELL);
+    });
+    await new Promise<void>((r) => server.listen(0, '127.0.0.1', r));
+    url = `http://127.0.0.1:${(server.address() as AddressInfo).port}/en/HtmlPage/html/View?id=25`;
+  });
+
+  after(async () => {
+    BROWSER_RENDER_HOSTS.delete(new URL(url).host);
+    await closeBrowser();
+    server.close();
+  });
+
+  it('gets only the shell from a plain GET', async () => {
+    const outcome = await fetchPage(url, true);
+    assert.equal(outcome.status, 'live');
+    assert.doesNotMatch(outcome.body?.toString() ?? '', /Andorra/);
+  });
+
+  it('renders the page in a browser on a render host when the body is wanted', async (t) => {
+    if (!(await canLaunchBrowser())) return t.skip('no Playwright Chromium installed');
+    BROWSER_RENDER_HOSTS.add(new URL(url).host);
+    const outcome = await fetchPage(url, true);
+    assert.equal(outcome.status, 'live', outcome.error);
+    assert.match(outcome.body?.toString() ?? '', /Visa-free countries: Andorra/);
+  });
+
+  it('keeps health-only checks on a render host as plain GETs', async () => {
+    BROWSER_RENDER_HOSTS.add(new URL(url).host);
+    const outcome = await fetchPage(url, false);
+    assert.equal(outcome.status, 'live');
+    assert.equal(outcome.body, undefined);
+  });
+});

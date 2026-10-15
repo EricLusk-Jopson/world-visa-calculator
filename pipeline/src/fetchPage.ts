@@ -199,8 +199,19 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
 export const BROWSER_FALLBACK_HOSTS = new Set(['punetejashtme.gov.al']);
 
 /**
+ * Hosts whose pages are an empty shell until scripts fetch the content, so a
+ * plain GET only ever sees the site's header and footer. When the body is
+ * wanted for diffing, the page is rendered in headless Chromium instead (see
+ * browserFetch.ts), waiting for the network to go quiet. Health-only checks
+ * stay plain GETs. The Georgia consulate site (geoconsul.gov.ge) is one.
+ */
+export const BROWSER_RENDER_HOSTS = new Set(['geoconsul.gov.ge', 'www.geoconsul.gov.ge']);
+
+/**
  * GET with a timeout, retrying transient failures (network, 429, 5xx) with
  * backoff, and blocked responses from BROWSER_FALLBACK_HOSTS in a browser.
+ * Diffed pages on BROWSER_RENDER_HOSTS are fetched in a browser after the
+ * plain GET succeeds.
  */
 export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOutcome> {
   let outcome = await fetchOnce(url, wantBody);
@@ -213,6 +224,13 @@ export async function fetchPage(url: string, wantBody: boolean): Promise<FetchOu
     const viaBrowser = await fetchWithBrowser(url);
     if (viaBrowser.status !== 'blocked' && viaBrowser.status !== 'broken') return viaBrowser;
     return { ...viaBrowser, error: `${outcome.error}; ${viaBrowser.error ?? `headless browser: HTTP ${viaBrowser.httpStatus}`}` };
+  }
+  if (wantBody && (outcome.status === 'live' || outcome.status === 'redirected') && BROWSER_RENDER_HOSTS.has(hostOf(url))) {
+    // A failed render is reported, not papered over with the plain GET's
+    // empty shell, which would diff as if the content had been removed.
+    const rendered = await fetchWithBrowser(url, undefined, 'networkidle');
+    if (rendered.status === 'live' || rendered.status === 'redirected') return { ...rendered, status: outcome.status };
+    return { ...rendered, error: `plain GET was ${outcome.status} (HTTP ${outcome.httpStatus}) but the page needs rendering: ${rendered.error ?? `headless browser: HTTP ${rendered.httpStatus}`}` };
   }
   return outcome;
 }
