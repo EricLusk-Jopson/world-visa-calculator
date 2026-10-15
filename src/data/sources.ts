@@ -5354,2566 +5354,1022 @@ export const KosovoSources = {
 
 // ─── North Macedonia ──────────────────────────────────────────────────────────
 
+/**
+ * North Macedonia's MFA "Do you need a visa?" page is the human-facing source
+ * for every NorthMacedoniaSources entry, as both its direct and its parent
+ * link: it has no per-country URLs. The page itself isn't diffed; its country
+ * list is, as part of the resolver below.
+ *
+ * Each country's rule is diffed through `macedoniaVisaCheck`: the page is a
+ * Livewire component, and a country's rule only appears when its button's
+ * call is POSTed to /livewire/update. The pipeline reads the buttons from
+ * each region's page and makes those calls itself on every run, so `{key}` is
+ * filled with "<region>/<button id>" (pipeline/src/resolvers/mfaGovMk.ts).
+ */
+const macedoniaIndex = {
+  url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
+  type: "parent",
+  checkDiff: false,
+} as const satisfies SourceLink;
+
+const macedoniaVisaCheck = {
+  url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#{key}",
+  type: "machine",
+  checkDiff: true,
+  resolver: "mfa.gov.mk",
+} as const satisfies SourceLink;
+
+const macedoniaVisaPage = {
+  url: macedoniaIndex.url,
+  type: "direct",
+  checkDiff: false,
+  alternate: macedoniaVisaCheck,
+} as const satisfies SourceLink;
+
 export const NorthMacedoniaSources = {
   AD: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Andorra
   AE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Afghanistan
   AG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Antigua and Barbuda
   AL: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Albania
   AM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Armenia
   AO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Angola
   AR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Argentina
   AT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Austria
   AU: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Australia
   AZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Azerbaijan
   BA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bosnia and Hercegovina
   BB: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Barbados
   BD: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bangladesh
   BE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belgium
   BF: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Burkina Faso
   BG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bulgaria
   BH: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bahrain
   BI: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Burundi
   BJ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Benin
   BN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Brunei Darussalam
   BO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bolivia
   BR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Brazil
   BS: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bahamas
   BT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Bhutan
   BW: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Botswana
   BY: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belarus
   BZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Belize
   CA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Canada
   CD: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // DR of the Congo
   CF: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Central African Republic
   CG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Congo
   CH: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Switzerland
   CI: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Côte D'Ivoire
   CL: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Chile
   CM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cameroon
   CN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // China
   CO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Colombia
   CR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Costa Rica
   CU: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cuba
   CV: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cabo Verde
   CY: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cyprus
   CZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Czechia
   DE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Germany
   DJ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Djibouti
   DK: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Denmark
   DM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Dominica
   DO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Algeria
   EC: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ecuador
   EE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Estonia
   EG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Egypt
   ER: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Eritrea
   ES: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Spain
   ET: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ethiopia
   FI: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Finland
   FJ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Fiji
   FM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Micronesia - Federated States of
   FR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // France
   GA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Gabon
   GB: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United Kingdom
   GD: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Grenada
   GE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Georgia
   GH: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ghana
   GM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Gambia
   GN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guinea
   GQ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Equatorial Guinea
   GR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Greece
   GT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guatemala
   GW: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guinea Bissau
   GY: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Guyana
   HK: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Hong Kong (SAR)
   HN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Honduras
   HR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Croatia
   HT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Haiti
   HU: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Hungary
   ID: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Indonesia
   IE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ireland
   IL: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Israel
   IN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // India
   IQ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iraq
   IR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iran
   IS: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Iceland
   IT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Italy
   JM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Jamaica
   JO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Jordan
   JP: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Japan
   KE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kenya
   KG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Cambodia
   KI: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kiribati
   KM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Comoros
   KN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // North Korea
   KR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Republic of Korea
   KW: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kuwait
   KZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kazakhstan
   LA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lao People’s Democratic Republic
   LB: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lebanon
   LC: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saint Lucia
   LI: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Liechtenstein
   LK: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sri Lanka
   LR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Liberia
   LS: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lesotho
   LT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Lithuania
   LU: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Luxembourg
   LV: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Latvia
   LY: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Libya
   MA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Morocco
   MC: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Monaco
   MD: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Moldova
   ME: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Montenegro
   MG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Madagascar
   MH: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Marshall Islands
   ML: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mali
   MM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Myanmar
   MN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mongolia
   MO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Macao (SAR)
   MR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mauritania
   MT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malta
   MU: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mauritius
   MV: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Maldives
   MW: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malawi
   MX: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mexico
   MY: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Malaysia
   MZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Mozambique
   NA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Namibia
   NE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Niger
   NG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nigeria
   NI: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nicaragua
   NL: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Netherlands
   NO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Norway
   NP: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nepal
   NR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Nauru
   NZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // New Zealand
   OM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Oman
   PA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Panama
   PE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Peru
   PG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Papua New Guinea
   PH: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Philippines
   PK: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Pakistan
   PL: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Poland
   PT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Portugal
   PW: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Palau
   PY: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Paraguay
   QA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Qatar
   RO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Romania
   RS: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Serbia
   RU: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Russia
   RW: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Rwanda
   SA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saudi Arabia
   SB: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Solomon Islands
   SC: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Seychelles
   SD: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sudan
   SE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sweden
   SG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Singapore
   SI: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Slovenia
   SK: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Slovakia
   SL: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sierra Leone
   SM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // San Marino
   SN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Senegal
   SO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Somalia
   SR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Suriname
   SS: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // South Sudan
   ST: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // El Salvador
   SY: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Syrian Arab Republic
   SZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Eswatini
   TD: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Chad
   TG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Togo
   TH: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Thailand
   TJ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tajikistan
   TL: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Timor-Leste
   TM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Turkmenistan
   TN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tunizi
   TO: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tonga
   TR: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Turkey
   TT: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Trinidad and Tobago
   TV: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Tuvalu
   TW: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Taiwan
   TZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // United Republic of Tanzania
   UA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Ukraine
   UG: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uganda
   US: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // USA
   UY: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uruguay
   UZ: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Uzbekistan
   VA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Vatican City
   VC: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   VE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Venezuela, Bolivarian Republic of
   VN: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Vietnam
   VU: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Vanuatu
   WS: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Samoa
   XK: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Kosovo
   YE: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Yemen
   ZA: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // South Africa
   ZM: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Zambia
   ZW: {
-    direct: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "direct",
-      checkDiff: false,
-    },
-    parent: {
-      url: "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza",
-      type: "parent",
-      checkDiff: false,
-    },
+    direct: macedoniaVisaPage,
+    parent: macedoniaIndex,
     dateChecked: "2026-09-04",
   } satisfies SourceDoc, // Zimbabwe
 } as const;
@@ -10429,7 +8885,7 @@ export const SourceRegions = {
   Serbia: { sources: SerbiaSources, checkLinks: true },
   Bosnia: { sources: BosniaSources, checkLinks: true },
   Kosovo: { sources: KosovoSources, checkLinks: true },
-  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: false },
+  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: true },
   Albania: { sources: AlbaniaSources, checkLinks: false },
   Cyprus: { sources: CyprusSources, checkLinks: false },
   Belarus: { sources: BelarusSources, checkLinks: false },

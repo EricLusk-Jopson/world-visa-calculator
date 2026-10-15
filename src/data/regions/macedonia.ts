@@ -7,7 +7,9 @@
  *   https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza
  * As with Bosnia/Kosovo, there are no stable per-country subpages on this site;
  * every entry below cites the same single page for both the `direct` and
- * `parent` links.
+ * `parent` links. The source check still diffs each country's own rule: the
+ * direct link's machine `alternate` makes the Livewire call behind that
+ * country's button (see the `mfa.gov.mk` resolver in pipeline/README.md).
  *
  * ── Scope and shape of the source data ──────────────────────────────────────
  *

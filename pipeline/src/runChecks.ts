@@ -63,6 +63,8 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
   // Once per resolver, however many regions use it.
   const listingResults = new Map([...discoveries].map(([id, d]) => [id, listingCheck(id, d, snapshotDir)]));
   const diffMeta = new Map<string, DiffMeta>();
+  // Resolver pages fetched some other way than a GET of their URL.
+  const customFetch = new Map<string, () => Promise<FetchOutcome>>();
   // region -> resolver results that aren't a fetched page: each resolver's
   // discovered list, and keys it found no page for.
   const resolverChecks = new Map<string, RuleCheckResult[]>();
@@ -105,6 +107,7 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
           }
           url = link.url.replace('{key}', fill);
           diffMeta.set(url, { snapshotId: resolver.snapshotId(key), extract: resolver.extract });
+          if (discovery.fetch) customFetch.set(url, () => discovery.fetch!(fill));
         }
         if (!byUrl.has(url)) byUrl.set(url, []);
         byUrl.get(url)!.push({ key, field: path });
@@ -134,9 +137,10 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
     if (!hostLimiters.has(host)) hostLimiters.set(host, createLimiter(perHostConcurrency));
     return hostLimiters.get(host)!;
   };
+  const fetchUrl = (url: string) => customFetch.get(url)?.() ?? fetchPage(url, parseUrls.has(url));
   let done = 0;
   const outcomes = await mapWithConcurrency(urls, concurrency, async (url) => {
-    const outcome = await limiterFor(url)(() => fetchPage(url, parseUrls.has(url)));
+    const outcome = await limiterFor(url)(() => fetchUrl(url));
     done++;
     if (done % 50 === 0 || done === urls.length) log(`  ${done}/${urls.length}`);
     return outcome;
@@ -153,7 +157,7 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
     let recovered = 0;
     for (const url of failed) {
       await new Promise((r) => setTimeout(r, recheckDelayMs));
-      const retry = await fetchPage(url, parseUrls.has(url));
+      const retry = await fetchUrl(url);
       if (retry.status === 'live' || retry.status === 'redirected') recovered++;
       outcomeByUrl.set(url, retry);
     }
