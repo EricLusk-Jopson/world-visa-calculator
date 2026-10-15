@@ -214,10 +214,11 @@ client with a 200 block page ("Request unsuccessful. Incapsula incident ID
 
 Some bot protection blocks any non-browser client, whatever its headers.
 The pipeline reports that as 🚫 blocked, including Imperva Incapsula's
-block page, which comes with a 200 status. For hosts in
+block page and its JavaScript challenge (a near-empty page whose script sets
+a cookie and reloads), both of which come with a 200 status. For hosts in
 `BROWSER_FALLBACK_HOSTS` (`src/fetchPage.ts`), a blocked response is then
 retried once in headless Chromium through Playwright (`src/browserFetch.ts`),
-one page at a time. The page's HTML is read back from the DOM, so inline
+one page at a time, giving a challenge up to 20 s to reload into the page. The page's HTML is read back from the DOM, so inline
 scripts such as Albania's `countryData` keep their source text. It uses
 the Chromium build `npm exec playwright install chromium` fetches (run it in
 `pipeline/`, so the build matches the Playwright version installed there),

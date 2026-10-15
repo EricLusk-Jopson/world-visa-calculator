@@ -1,5 +1,5 @@
 import { fetch as undiciFetch } from 'undici';
-import { fetchWithBrowser, INCAPSULA_BLOCK } from './browserFetch';
+import { fetchWithBrowser, incapsulaInterstitial } from './browserFetch';
 import { chainCompletingAgent, isIncompleteChainError } from './tlsChain';
 import type { LinkHealthStatus } from './types';
 
@@ -174,13 +174,14 @@ async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> 
       return { status: 'broken', httpStatus: res.status, finalUrl, contentType, error: outage };
     }
     // Imperva Incapsula answers a client it turns away with 200 and a short
-    // block page; its responses carry X-Iinfo, so only those are read here.
+    // block or challenge page; its responses carry X-Iinfo, so only those
+    // (and bodies read anyway) are checked.
     const imperva = res.headers.has('x-iinfo') || /imperva|incapsula/i.test(res.headers.get('x-cdn') ?? '');
     const body = wantBody || imperva ? Buffer.from(await res.arrayBuffer()) : undefined;
     if (!body) await res.body?.cancel();
-    const incident = body && body.length < 16_384 ? INCAPSULA_BLOCK.exec(body.toString('utf-8'))?.[1] : undefined;
-    if (incident) {
-      return { status: 'blocked', httpStatus: res.status, finalUrl, contentType, error: `HTTP ${res.status} with an Imperva Incapsula block page (incident ${incident})` };
+    const interstitial = body ? incapsulaInterstitial(body.toString('utf-8')) : undefined;
+    if (interstitial) {
+      return { status: 'blocked', httpStatus: res.status, finalUrl, contentType, error: `HTTP ${res.status} with an ${interstitial.detail}` };
     }
     const status: LinkHealthStatus = normalizeUrl(finalUrl) !== normalizeUrl(url) ? 'redirected' : 'live';
     return { status, httpStatus: res.status, finalUrl, contentType, body: wantBody ? body : undefined };
