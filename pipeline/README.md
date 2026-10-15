@@ -152,6 +152,17 @@ deliberately cautious:
 - a source that doesn't change
 - a link-health-only source that goes dead between runs
 
+### Incomplete certificate chains
+
+Some servers send their certificate without the intermediate CA that links
+it to a trusted root. www.mvp.gov.ba does this; Node then fails with
+`UNABLE_TO_VERIFY_LEAF_SIGNATURE`, though browsers open the site fine. On
+that error, `src/tlsChain.ts` does what browsers do. It downloads the missing
+intermediate from the certificate's "CA Issuers" URL and retries with it
+offered for chain building. Certificate verification stays on: the chain
+must still end at a trusted root. The host is remembered for the rest of the
+run.
+
 ## Source links: `direct`, `parent`, `alternate` and `checkDiff`
 
 Every `SourceDoc` in `src/data/sources.ts` has a `direct` and a `parent`
@@ -263,6 +274,11 @@ is the landing page whose "Annex 7b" link is what you'd actually want to
 watch. The link-target diff (anchor-text matching, proven in the demo)
 catches a rotation there as a one-line `href` change. To switch over, set
 `checkDiff: false` on `direct` and `checkDiff: true` on `parent`.
+
+Two spellings of the same target aren't counted as a link change:
+mfa.gov.rs sometimes writes its links through the front controller
+(`/index%2ephp/en/…`) and sometimes not (`/en/…`); see `canonicalHref` in
+`src/contentCheck.ts`.
 
 ## Known limitation: anchor-text link matching
 

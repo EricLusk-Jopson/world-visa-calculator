@@ -91,13 +91,14 @@ export async function runChecks(regions: RegionSources, options: RunOptions): Pr
           listingKeys.get(link.resolver)!.keys.push(key);
           const fill = discovery.fill.get(key);
           if (fill === undefined) {
-            if (!discovery.noPage.has(key)) {
+            // When discovery failed, the page list's own result already says so once.
+            if (!discovery.error && !discovery.noPage.has(key)) {
               extraChecks.push({
                 url: `${discovery.indexUrl}#${key}`,
                 keys: [key],
                 link: path,
                 status: 'fetch-error',
-                error: discovery.error ?? `No page for ${key} in ${discovery.indexUrl}'s country list`,
+                error: `No page for ${key} in ${discovery.indexUrl}'s country list`,
               });
             }
             continue;

@@ -1,3 +1,5 @@
+import { fetch as undiciFetch } from 'undici';
+import { chainCompletingAgent, isIncompleteChainError } from './tlsChain';
 import type { LinkHealthStatus } from './types';
 
 const USER_AGENT =
@@ -112,9 +114,34 @@ function describeError(err: unknown): string {
   return detail && !err.message.includes(detail) ? `${err.message} (${detail})` : err.message;
 }
 
+/**
+ * fetch(), retried with the server's missing intermediate certificates when
+ * it sent an incomplete chain (see tlsChain.ts).
+ */
+const incompleteChainHosts = new Set<string>();
+
+async function request(url: string, init: RequestInit): Promise<Response> {
+  const host = new URL(url).host;
+  if (!incompleteChainHosts.has(host)) {
+    try {
+      return await fetch(url, init);
+    } catch (err) {
+      if (!isIncompleteChainError(err)) throw err;
+      incompleteChainHosts.add(host);
+    }
+  }
+  const dispatcher = await chainCompletingAgent(url);
+  if (!dispatcher) {
+    throw new Error('incomplete certificate chain, and its missing intermediate could not be downloaded', {
+      cause: { code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' },
+    });
+  }
+  return (await undiciFetch(url, { ...(init as object), dispatcher })) as unknown as Response;
+}
+
 async function fetchOnce(url: string, wantBody: boolean): Promise<FetchOutcome> {
   try {
-    const res = await fetch(url, {
+    const res = await request(url, {
       method: 'GET',
       redirect: 'follow',
       headers: {

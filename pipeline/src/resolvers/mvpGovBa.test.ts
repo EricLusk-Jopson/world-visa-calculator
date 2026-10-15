@@ -168,6 +168,18 @@ describe('runChecks with the mvp.gov.ba resolver', () => {
     assert.equal(status(second, '#subpages'), 'both-changed');
   });
 
+  it('reports a failed index once, not once per country', async () => {
+    dir = mkdtempSync(join(tmpdir(), 'mvp-'));
+    globalThis.fetch = (async () => new Response('denied', { status: 403 })) as typeof fetch;
+    const [report] = await runChecks(
+      { Bosnia: { CA: BosniaSources.CA, SA: BosniaSources.SA } },
+      { snapshotDir: dir, recheckDelayMs: 0 },
+    );
+    const resolverRows = report.ruleChecks.filter((c) => c.url.startsWith(`${INDEX_URL}#`));
+    assert.deepEqual(resolverRows.map((c) => [c.url, c.status]), [[`${INDEX_URL}#subpages`, 'fetch-error']]);
+    assert.match(resolverRows[0].error ?? '', /HTTP 403/);
+  });
+
   it('reports a key with no page when the country drops off the index', async () => {
     dir = mkdtempSync(join(tmpdir(), 'mvp-'));
     serve(SUBPAGES.filter((s) => s.title !== 'Canada'), {});
