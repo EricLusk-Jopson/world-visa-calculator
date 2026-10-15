@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T04:19:51.181Z",
+  "generatedAt": "2026-10-15T04:54:15.713Z",
   "regions": [
     {
       "region": "Belarus",
@@ -59,45 +59,475 @@
           "status": "live",
           "httpStatus": 200,
           "finalUrl": "https://mfa.gov.by/en/visa/freemove/airport/"
+        },
+        {
+          "url": "https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf",
+          "usedBy": [
+            {
+              "key": "airport",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf"
         }
       ],
       "ruleChecks": [
         {
-          "url": "https://mfa.gov.by/en/visa/general/",
-          "currentUpdatedAt": null,
-          "status": "first-run",
-          "keys": [
-            "general"
-          ],
-          "link": "direct"
-        },
-        {
           "url": "https://mfa.gov.by/en/visa/freemove/europe/",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "both-changed",
+          "textDiffPreview": "- Belarusian Diplomatic Missions abroad\n- Video\n- ����������� �������� �.��������� �� �������� ������� ������ ������������ ��� // Statement by Minister M.Ryzhenkov at the open debate of the UN Security Council\n- Belarusian Vytsinanka has been inscribed on the UNESCO Representative List of Intangible Cultural Heritage\n- II Minsk International Conference on Eurasian Security\n- 2023 in the history of Belarusian diplomacy\n- High-level International Conference on Eurasian Security\n- Statement by Foreign Minister Vladimir Makei at the 77th session of the UN General Assembly (September, 2022)\n- Foreign Ministry on Social Media\n- Contacts\n- +375 17 327-29-22\n- +375 17 355-51-65\n- +375 17 215 86 45\n- Official Internet Resources\n- President of the Republic of Belarus\n- Ministry of Information of the Republic of Belarus\n- Council of Ministers of the Republic of Belarus\n- Council of the Republic\n- House of Representatives\n- National Agency of Investment and Privatization\n- National Center of Legislation and Legal Information\n- National Tourism Agency\n- Information export support website Export.by\n- Belarusian Universal Commodity Exchange\n- Belarusian Chamber of Commerce and Industry\n- Official website of the Republic od Belarus\n- Belarus TV\n- Radio Belarus International\n- Dipservice\n- Business network TradeBel\n- National Academy of Science of Belarus\n- Ministry of Education of the Republic of Belarus\n- Ministry of Natural Resources of the Republic of Belarus\n- Ministry of Health of the Republic of Belarus\n- Ministry of Economy of the Republic of Belarus",
+          "linkChanges": [
+            {
+              "text": "All Missions",
+              "previousHref": "https://mfa.gov.by/en/bilateral/belarus/",
+              "kind": "removed"
+            },
+            {
+              "text": "Foreign Diplomatic Missions in Belarus",
+              "previousHref": "https://mfa.gov.by/kcfinder/upload/files/SGP/DiplomaticHandbook_September26.pdf",
+              "kind": "removed"
+            },
+            {
+              "text": "Go to",
+              "previousHref": "https://azerbaijan.mfa.gov.by/ru/",
+              "kind": "removed"
+            },
+            {
+              "text": "Archive",
+              "previousHref": "https://mfa.gov.by/press/video/",
+              "kind": "removed"
+            },
+            {
+              "text": "����������� �������� �.��������� �� �������� ������� ������ ������������ ��� // Statement by Minister M.Ryzhenkov at the open debate of the UN Security Council",
+              "previousHref": "https://mfa.gov.by/en/press/video/eb6d81c428e1454c.html",
+              "kind": "removed"
+            },
+            {
+              "text": "Belarusian Vytsinanka has been inscribed on the UNESCO Representative List of Intangible Cultural Heritage",
+              "previousHref": "https://mfa.gov.by/en/press/video/ccdb5b7942d229cd.html",
+              "kind": "removed"
+            },
+            {
+              "text": "II Minsk International Conference on Eurasian Security",
+              "previousHref": "https://mfa.gov.by/en/press/video/c7ad429a41ab88b4.html",
+              "kind": "removed"
+            },
+            {
+              "text": "2023 in the history of Belarusian diplomacy",
+              "previousHref": "https://mfa.gov.by/en/press/video/a0e643fcc2b9fe9f.html",
+              "kind": "removed"
+            },
+            {
+              "text": "High-level International Conference on Eurasian Security",
+              "previousHref": "https://mfa.gov.by/en/press/video/dafbeca46a4a8ca8.html",
+              "kind": "removed"
+            },
+            {
+              "text": "Statement by Foreign Minister Vladimir Makei at the 77th session of the UN General Assembly (September, 2022)",
+              "previousHref": "https://mfa.gov.by/en/press/video/e7217c2af0410e89.html",
+              "kind": "removed"
+            },
+            {
+              "text": "Embassies",
+              "previousHref": "https://mfa.gov.by/en/press/socialmedia/",
+              "kind": "removed"
+            },
+            {
+              "text": "VK",
+              "previousHref": "https://vk.com/mfabelarus",
+              "kind": "removed"
+            },
+            {
+              "text": "Telegram",
+              "previousHref": "https://mfa.gov.by/",
+              "kind": "removed"
+            },
+            {
+              "text": "TikTok",
+              "previousHref": "https://www.tiktok.com/@mfabelarus",
+              "kind": "removed"
+            },
+            {
+              "text": "X",
+              "previousHref": "https://twitter.com/BelarusMFA",
+              "kind": "removed"
+            },
+            {
+              "text": "Facebook",
+              "previousHref": "https://www.facebook.com/belarusmfa/",
+              "kind": "removed"
+            },
+            {
+              "text": "Youtube",
+              "previousHref": "https://www.youtube.com/user/BelarusMFA?feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/YouTube/40x40_yt_white.png",
+              "kind": "removed"
+            },
+            {
+              "text": "Instagram",
+              "previousHref": "https://www.instagram.com/belarusmfa/",
+              "kind": "removed"
+            },
+            {
+              "text": "Minister's Office +375 17 327-29-22",
+              "previousHref": "tel:+375 17 327-29-22",
+              "kind": "removed"
+            },
+            {
+              "text": "Correspondence +375 17 355-51-65",
+              "previousHref": "tel:+375 17 355-51-65",
+              "kind": "removed"
+            },
+            {
+              "text": "Press Office +375 17 215 86 45",
+              "previousHref": "tel:+375 17 215 86 45",
+              "kind": "removed"
+            },
+            {
+              "text": "President of the Republic of Belarus www.president.gov.by",
+              "previousHref": "http://president.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Information of the Republic of Belarus www.mininform.gov.by",
+              "previousHref": "https://www.mininform.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Council of Ministers of the Republic of Belarus www.government.gov.by",
+              "previousHref": "http://government.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Council of the Republic www.sovrep.gov.by",
+              "previousHref": "http://www.sovrep.gov.by/index_eng.php/home.html",
+              "kind": "removed"
+            },
+            {
+              "text": "House of Representatives www.house.gov.by",
+              "previousHref": "http://www.house.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "National Agency of Investment and Privatization www.investinbelarus.by",
+              "previousHref": "http://www.investinbelarus.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "National Center of Legislation and Legal Information www.center.gov.by",
+              "previousHref": "https://center.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "National Tourism Agency www.belarustourism.by",
+              "previousHref": "https://www.belarustourism.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Information export support website Export.by www.export.by",
+              "previousHref": "http://www.export.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Belarusian Universal Commodity Exchange www.butb.by",
+              "previousHref": "http://www.butb.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Belarusian Chamber of Commerce and Industry www.cci.by",
+              "previousHref": "http://www.cci.by/en",
+              "kind": "removed"
+            },
+            {
+              "text": "Official website of the Republic od Belarus www.belarus.by",
+              "previousHref": "http://www.belarus.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Belarus TV www.news.by",
+              "previousHref": "https://news.by/eng",
+              "kind": "removed"
+            },
+            {
+              "text": "Radio Belarus International www.radiobelarus.by",
+              "previousHref": "http://www.radiobelarus.by/en",
+              "kind": "removed"
+            },
+            {
+              "text": "Dipservice www.dipservice.by",
+              "previousHref": "http://dipservice.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Business network TradeBel www.tradebel.com",
+              "previousHref": "http://tradebel.com/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "National Academy of Science of Belarus www.nasb.gov.by",
+              "previousHref": "http://nasb.gov.by/eng/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Education of the Republic of Belarus www.edu.gov.by",
+              "previousHref": "https://edu.gov.by/en-uk/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Natural Resources of the Republic of Belarus www.minpriroda.gov.by",
+              "previousHref": "http://minpriroda.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Health of the Republic of Belarus www.minzdrav.gov.by",
+              "previousHref": "http://minzdrav.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Economy of the Republic of Belarus www.economy.gov.by",
+              "previousHref": "https://www.economy.gov.by/en/",
+              "kind": "removed"
+            }
+          ],
           "keys": [
             "europe"
           ],
           "link": "direct"
         },
         {
-          "url": "https://mfa.gov.by/en/visa/freemove/",
-          "currentUpdatedAt": null,
-          "status": "first-run",
-          "keys": [
-            "europe",
-            "airport"
-          ],
-          "link": "parent"
-        },
-        {
           "url": "https://mfa.gov.by/en/visa/freemove/airport/",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "both-changed",
+          "textDiffPreview": "- Belarusian Diplomatic Missions abroad\n- Video\n- ����������� �������� �.��������� �� �������� ������� ������ ������������ ��� // Statement by Minister M.Ryzhenkov at the open debate of the UN Security Council\n- Belarusian Vytsinanka has been inscribed on the UNESCO Representative List of Intangible Cultural Heritage\n- II Minsk International Conference on Eurasian Security\n- 2023 in the history of Belarusian diplomacy\n- High-level International Conference on Eurasian Security\n- Statement by Foreign Minister Vladimir Makei at the 77th session of the UN General Assembly (September, 2022)\n- Foreign Ministry on Social Media\n- Contacts\n- +375 17 327-29-22\n- +375 17 355-51-65\n- +375 17 215 86 45\n- Official Internet Resources\n- President of the Republic of Belarus\n- Ministry of Information of the Republic of Belarus\n- Council of Ministers of the Republic of Belarus\n- Council of the Republic\n- House of Representatives\n- National Agency of Investment and Privatization\n- National Center of Legislation and Legal Information\n- National Tourism Agency\n- Information export support website Export.by\n- Belarusian Universal Commodity Exchange\n- Belarusian Chamber of Commerce and Industry\n- Official website of the Republic od Belarus\n- Belarus TV\n- Radio Belarus International\n- Dipservice\n- Business network TradeBel\n- National Academy of Science of Belarus\n- Ministry of Education of the Republic of Belarus\n- Ministry of Natural Resources of the Republic of Belarus\n- Ministry of Health of the Republic of Belarus\n- Ministry of Economy of the Republic of Belarus",
+          "linkChanges": [
+            {
+              "text": "All Missions",
+              "previousHref": "https://mfa.gov.by/en/bilateral/belarus/",
+              "kind": "removed"
+            },
+            {
+              "text": "Foreign Diplomatic Missions in Belarus",
+              "previousHref": "https://mfa.gov.by/kcfinder/upload/files/SGP/DiplomaticHandbook_September26.pdf",
+              "kind": "removed"
+            },
+            {
+              "text": "Go to",
+              "previousHref": "https://azerbaijan.mfa.gov.by/ru/",
+              "kind": "removed"
+            },
+            {
+              "text": "Archive",
+              "previousHref": "https://mfa.gov.by/press/video/",
+              "kind": "removed"
+            },
+            {
+              "text": "����������� �������� �.��������� �� �������� ������� ������ ������������ ��� // Statement by Minister M.Ryzhenkov at the open debate of the UN Security Council",
+              "previousHref": "https://mfa.gov.by/en/press/video/eb6d81c428e1454c.html",
+              "kind": "removed"
+            },
+            {
+              "text": "Belarusian Vytsinanka has been inscribed on the UNESCO Representative List of Intangible Cultural Heritage",
+              "previousHref": "https://mfa.gov.by/en/press/video/ccdb5b7942d229cd.html",
+              "kind": "removed"
+            },
+            {
+              "text": "II Minsk International Conference on Eurasian Security",
+              "previousHref": "https://mfa.gov.by/en/press/video/c7ad429a41ab88b4.html",
+              "kind": "removed"
+            },
+            {
+              "text": "2023 in the history of Belarusian diplomacy",
+              "previousHref": "https://mfa.gov.by/en/press/video/a0e643fcc2b9fe9f.html",
+              "kind": "removed"
+            },
+            {
+              "text": "High-level International Conference on Eurasian Security",
+              "previousHref": "https://mfa.gov.by/en/press/video/dafbeca46a4a8ca8.html",
+              "kind": "removed"
+            },
+            {
+              "text": "Statement by Foreign Minister Vladimir Makei at the 77th session of the UN General Assembly (September, 2022)",
+              "previousHref": "https://mfa.gov.by/en/press/video/e7217c2af0410e89.html",
+              "kind": "removed"
+            },
+            {
+              "text": "Embassies",
+              "previousHref": "https://mfa.gov.by/en/press/socialmedia/",
+              "kind": "removed"
+            },
+            {
+              "text": "VK",
+              "previousHref": "https://vk.com/mfabelarus",
+              "kind": "removed"
+            },
+            {
+              "text": "Telegram",
+              "previousHref": "https://mfa.gov.by/",
+              "kind": "removed"
+            },
+            {
+              "text": "TikTok",
+              "previousHref": "https://www.tiktok.com/@mfabelarus",
+              "kind": "removed"
+            },
+            {
+              "text": "X",
+              "previousHref": "https://twitter.com/BelarusMFA",
+              "kind": "removed"
+            },
+            {
+              "text": "Facebook",
+              "previousHref": "https://www.facebook.com/belarusmfa/",
+              "kind": "removed"
+            },
+            {
+              "text": "Youtube",
+              "previousHref": "https://www.youtube.com/user/BelarusMFA?feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/YouTube/40x40_yt_white.png",
+              "kind": "removed"
+            },
+            {
+              "text": "Instagram",
+              "previousHref": "https://www.instagram.com/belarusmfa/",
+              "kind": "removed"
+            },
+            {
+              "text": "Minister's Office +375 17 327-29-22",
+              "previousHref": "tel:+375 17 327-29-22",
+              "kind": "removed"
+            },
+            {
+              "text": "Correspondence +375 17 355-51-65",
+              "previousHref": "tel:+375 17 355-51-65",
+              "kind": "removed"
+            },
+            {
+              "text": "Press Office +375 17 215 86 45",
+              "previousHref": "tel:+375 17 215 86 45",
+              "kind": "removed"
+            },
+            {
+              "text": "President of the Republic of Belarus www.president.gov.by",
+              "previousHref": "http://president.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Information of the Republic of Belarus www.mininform.gov.by",
+              "previousHref": "https://www.mininform.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Council of Ministers of the Republic of Belarus www.government.gov.by",
+              "previousHref": "http://government.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Council of the Republic www.sovrep.gov.by",
+              "previousHref": "http://www.sovrep.gov.by/index_eng.php/home.html",
+              "kind": "removed"
+            },
+            {
+              "text": "House of Representatives www.house.gov.by",
+              "previousHref": "http://www.house.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "National Agency of Investment and Privatization www.investinbelarus.by",
+              "previousHref": "http://www.investinbelarus.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "National Center of Legislation and Legal Information www.center.gov.by",
+              "previousHref": "https://center.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "National Tourism Agency www.belarustourism.by",
+              "previousHref": "https://www.belarustourism.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Information export support website Export.by www.export.by",
+              "previousHref": "http://www.export.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Belarusian Universal Commodity Exchange www.butb.by",
+              "previousHref": "http://www.butb.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Belarusian Chamber of Commerce and Industry www.cci.by",
+              "previousHref": "http://www.cci.by/en",
+              "kind": "removed"
+            },
+            {
+              "text": "Official website of the Republic od Belarus www.belarus.by",
+              "previousHref": "http://www.belarus.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Belarus TV www.news.by",
+              "previousHref": "https://news.by/eng",
+              "kind": "removed"
+            },
+            {
+              "text": "Radio Belarus International www.radiobelarus.by",
+              "previousHref": "http://www.radiobelarus.by/en",
+              "kind": "removed"
+            },
+            {
+              "text": "Dipservice www.dipservice.by",
+              "previousHref": "http://dipservice.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Business network TradeBel www.tradebel.com",
+              "previousHref": "http://tradebel.com/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "National Academy of Science of Belarus www.nasb.gov.by",
+              "previousHref": "http://nasb.gov.by/eng/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Education of the Republic of Belarus www.edu.gov.by",
+              "previousHref": "https://edu.gov.by/en-uk/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Natural Resources of the Republic of Belarus www.minpriroda.gov.by",
+              "previousHref": "http://minpriroda.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Health of the Republic of Belarus www.minzdrav.gov.by",
+              "previousHref": "http://minzdrav.gov.by/en/",
+              "kind": "removed"
+            },
+            {
+              "text": "Ministry of Economy of the Republic of Belarus www.economy.gov.by",
+              "previousHref": "https://www.economy.gov.by/en/",
+              "kind": "removed"
+            }
+          ],
           "keys": [
             "airport"
           ],
           "link": "direct"
+        },
+        {
+          "url": "https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf",
+          "currentUpdatedAt": null,
+          "status": "first-run",
+          "keys": [
+            "airport"
+          ],
+          "link": "direct.alternate"
         }
       ]
     }
@@ -118,13 +548,13 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 4,
+    "totalLinksChecked": 5,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 4,
-    "sourcesChanged": 0,
-    "sourcesFirstRun": 4,
+    "sourcesChecked": 3,
+    "sourcesChanged": 2,
+    "sourcesFirstRun": 1,
     "sourcesFetchError": 0
   }
 }
