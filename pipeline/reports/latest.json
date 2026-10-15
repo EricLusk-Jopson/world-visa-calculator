@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T04:52:37.440Z",
+  "generatedAt": "2026-10-15T05:19:20.955Z",
   "regions": [
     {
       "region": "Albania",
@@ -672,8 +672,9 @@
               "field": "direct"
             }
           ],
-          "status": "blocked",
-          "error": "HTTP 200 with an Imperva Incapsula block page (incident 576000371124898531-1070651711032396146); headless browser unavailable (browserType.launch: Executable doesn't exist at C:\\Users\\EricLusk-Jopson\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1194\\chrome-win\\headless_shell.exe); run `npx playwright install chromium` in pipeline/"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/"
         },
         {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
@@ -1343,15 +1344,16 @@
               "field": "parent"
             }
           ],
-          "status": "blocked",
-          "error": "HTTP 200 with an Imperva Incapsula block page (incident 576000371124898531-669318293173045612); headless browser unavailable (browserType.launch: Executable doesn't exist at C:\\Users\\EricLusk-Jopson\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1194\\chrome-win\\headless_shell.exe); run `npx playwright install chromium` in pipeline/"
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/"
         }
       ],
       "ruleChecks": [
         {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
           "status": "fetch-error",
-          "error": "HTTP 200 with an Imperva Incapsula block page (incident 576000371124898531-669318293173045612); headless browser unavailable (browserType.launch: Executable doesn't exist at C:\\Users\\EricLusk-Jopson\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1194\\chrome-win\\headless_shell.exe); run `npx playwright install chromium` in pipeline/",
+          "error": "no text extracted (bot-check or script-rendered page?); got 212 bytes text/html, starting \"<html>\\r\\n<head>\\r\\n<META NAME=\\\"robots\\\" CONTENT=\\\"noindex,nofollow\\\">\\r\\n<script src=\\\"/_Incapsula_Resource?S\"",
           "keys": [
             "AD",
             "AE",
@@ -1525,7 +1527,7 @@
         {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries",
           "status": "fetch-error",
-          "error": "Could not read the country table: HTTP 200 with an Imperva Incapsula block page (incident 576000371124898531-878544146074175855); headless browser unavailable (browserType.launch: Executable doesn't exist at C:\\Users\\EricLusk-Jopson\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1194\\chrome-win\\headless_shell.exe); run `npx playwright install chromium` in pipeline/",
+          "error": "Could not read the country table: no countryData script on the page; got 212 bytes text/html, starting \"<html>\\r\\n<head>\\r\\n<META NAME=\\\"robots\\\" CONTENT=\\\"noindex,nofollow\\\">\\r\\n<script src=\\\"/_Incapsula_Resource?S\"",
           "keys": [
             "AD",
             "AE",
@@ -1718,7 +1720,7 @@
     "totalLinksChecked": 2,
     "brokenLinks": 0,
     "redirectedLinks": 0,
-    "blockedLinks": 2,
+    "blockedLinks": 0,
     "sourcesChecked": 2,
     "sourcesChanged": 0,
     "sourcesFirstRun": 0,

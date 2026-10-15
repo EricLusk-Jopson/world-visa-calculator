@@ -1,6 +1,6 @@
 # Source Verification Report
 
-Generated: 2026-10-15T04:52:37.440Z
+Generated: 2026-10-15T05:19:20.955Z
 
 ## Summary
 
@@ -9,7 +9,7 @@ Generated: 2026-10-15T04:52:37.440Z
 | Unique links checked | 2 |
 | 🔴 Broken | 0 |
 | ↪️ Redirected | 0 |
-| 🚫 Blocked (could not verify) | 2 |
+| 🚫 Blocked (could not verify) | 0 |
 | Content sources diffed (`checkDiff`) | 2 |
 | ✏️ Changed since last baseline | 0 |
 | 🆕 First run (no baseline yet) | 0 |
@@ -23,17 +23,17 @@ Not checked this run (`checkLinks: false`): Schengen, UK, Ireland, Turkiye, Mont
 
 | Used by | Status | URL |
 |---|---|---|
-| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (direct) | 🚫 blocked | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/<br>HTTP 200 with an Imperva Incapsula block page (incident 576000371124898531-1070651711032396146); headless browser unavailable (browserType.launch: Executable doesn't exist at C:\Users\EricLusk-Jopson\AppData\Local\ms-playwright\chromium_headless_shell-1194\chrome-win\headless_shell.exe); run `npx playwright install chromium` in pipeline/ |
-| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (parent) | 🚫 blocked | https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/<br>HTTP 200 with an Imperva Incapsula block page (incident 576000371124898531-669318293173045612); headless browser unavailable (browserType.launch: Executable doesn't exist at C:\Users\EricLusk-Jopson\AppData\Local\ms-playwright\chromium_headless_shell-1194\chrome-win\headless_shell.exe); run `npx playwright install chromium` in pipeline/ |
+| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (direct) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/ |
+| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (parent) | ✅ live (200) | https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/ |
 
 ### Content diffing
 
 #### AD, AE, AF, AG, AM … (+161 more) (parent) — ⚠️ fetch error
 
 URL: https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/
-<br>Error: HTTP 200 with an Imperva Incapsula block page (incident 576000371124898531-669318293173045612); headless browser unavailable (browserType.launch: Executable doesn't exist at C:\Users\EricLusk-Jopson\AppData\Local\ms-playwright\chromium_headless_shell-1194\chrome-win\headless_shell.exe); run `npx playwright install chromium` in pipeline/
+<br>Error: no text extracted (bot-check or script-rendered page?); got 212 bytes text/html, starting "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">\r\n<script src=\"/_Incapsula_Resource?S"
 
 #### AD, AE, AF, AG, AM … (+161 more) (direct.alternate (page list)) — ⚠️ fetch error
 
 URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries
-<br>Error: Could not read the country table: HTTP 200 with an Imperva Incapsula block page (incident 576000371124898531-878544146074175855); headless browser unavailable (browserType.launch: Executable doesn't exist at C:\Users\EricLusk-Jopson\AppData\Local\ms-playwright\chromium_headless_shell-1194\chrome-win\headless_shell.exe); run `npx playwright install chromium` in pipeline/
+<br>Error: Could not read the country table: no countryData script on the page; got 212 bytes text/html, starting "<html>\r\n<head>\r\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">\r\n<script src=\"/_Incapsula_Resource?S"
