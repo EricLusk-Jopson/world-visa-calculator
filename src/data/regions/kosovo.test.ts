@@ -12,7 +12,7 @@ describe('getKosovoRule', () => {
     expect(limit.type).toBe('rolling_window');
     expect(limit.days).toBe(90);
     expect(limit.windowDays).toBe(180);
-    expect(rule.entitlements[0].source).toEqual(KosovoSources.DE);
+    expect(rule.entitlements[0].source).toEqual(KosovoSources.visaExempt);
   });
 
   it('always attaches the duration-not-individually-confirmed note to an entitled entry', () => {

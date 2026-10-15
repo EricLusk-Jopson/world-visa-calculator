@@ -13,9 +13,10 @@ below.
    with `checkLinks: true`, is fetched and classified `live` / `redirected` /
    `blocked` / `broken` (see "Fetching
    and flaky connections" below). Each unique URL is fetched **once per run**,
-   however many entries cite it. Bosnia, Kosovo, North Macedonia and Albania
-   each point ~100–200 `SourceDoc` entries at a single page, so ~1,080
-   entries come down to ~440 requests. The report lists each URL once, with
+   however many entries cite it. Bosnia, North Macedonia and Albania each
+   point ~100–200 `SourceDoc` entries at a single page, so ~980 entries
+   come down to ~440 requests. (Kosovo's single page is one `visaExempt`
+   entry, shared by every Kosovo rule.) The report lists each URL once, with
    the keys that use it.
 2. **Content diffing.** This runs only for links with `checkDiff: true`. It
    reuses the response body from the link-health fetch, so it adds no extra
