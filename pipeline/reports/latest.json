@@ -1,108 +1,53 @@
 {
-  "generatedAt": "2026-10-15T04:59:21.669Z",
+  "generatedAt": "2026-10-15T05:39:11.629Z",
   "regions": [
     {
-      "region": "Belarus",
+      "region": "Georgia",
       "linkHealth": [
         {
-          "url": "https://mfa.gov.by/en/visa/general/",
+          "url": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
           "usedBy": [
             {
-              "key": "general",
-              "field": "direct"
-            },
-            {
-              "key": "general",
-              "field": "parent"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.by/en/visa/general/"
-        },
-        {
-          "url": "https://mfa.gov.by/en/visa/freemove/europe/",
-          "usedBy": [
-            {
-              "key": "europe",
+              "key": "visaList",
               "field": "direct"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.by/en/visa/freemove/europe/"
+          "finalUrl": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25"
         },
         {
-          "url": "https://mfa.gov.by/en/visa/freemove/",
+          "url": "https://geoconsul.gov.ge/en/entering-georgia",
           "usedBy": [
             {
-              "key": "europe",
-              "field": "parent"
-            },
-            {
-              "key": "airport",
+              "key": "visaList",
               "field": "parent"
             }
           ],
           "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.by/en/visa/freemove/"
-        },
-        {
-          "url": "https://mfa.gov.by/en/visa/freemove/airport/",
-          "usedBy": [
-            {
-              "key": "airport",
-              "field": "direct"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.by/en/visa/freemove/airport/"
-        },
-        {
-          "url": "https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf",
-          "usedBy": [
-            {
-              "key": "airport",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf"
+          "finalUrl": "https://geoconsul.gov.ge/en/entering-georgia"
         }
       ],
       "ruleChecks": [
         {
-          "url": "https://mfa.gov.by/en/visa/freemove/europe/",
-          "previousUpdatedAt": null,
+          "url": "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25",
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "first-run",
           "keys": [
-            "europe"
+            "visaList"
           ],
           "link": "direct"
         },
         {
-          "url": "https://mfa.gov.by/en/visa/freemove/airport/",
+          "url": "https://geoconsul.gov.ge/en/entering-georgia",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
           "status": "unchanged",
           "keys": [
-            "airport"
+            "visaList"
           ],
-          "link": "direct"
-        },
-        {
-          "url": "https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
-          "keys": [
-            "airport"
-          ],
-          "link": "direct.alternate"
+          "link": "parent"
         }
       ]
     }
@@ -119,17 +64,17 @@
     "NorthMacedonia",
     "Albania",
     "Cyprus",
-    "Georgia",
+    "Belarus",
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 5,
+    "totalLinksChecked": 2,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
-    "sourcesChecked": 3,
+    "sourcesChecked": 2,
     "sourcesChanged": 0,
-    "sourcesFirstRun": 0,
+    "sourcesFirstRun": 1,
     "sourcesFetchError": 0
   }
 }
