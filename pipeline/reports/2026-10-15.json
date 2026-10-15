@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T03:27:13.316Z",
+  "generatedAt": "2026-10-15T03:38:29.494Z",
   "regions": [
     {
       "region": "NorthMacedonia",
@@ -1721,6 +1721,18 @@
           "finalUrl": "https://mfa.gov.mk/livewire/update"
         },
         {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1214",
+          "usedBy": [
+            {
+              "key": "BA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.mk/livewire/update"
+        },
+        {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734",
           "usedBy": [
             {
@@ -2253,6 +2265,18 @@
           "usedBy": [
             {
               "key": "FJ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.mk/livewire/update"
+        },
+        {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/710",
+          "usedBy": [
+            {
+              "key": "FM",
               "field": "direct.alternate"
             }
           ],
@@ -3101,6 +3125,18 @@
           "finalUrl": "https://mfa.gov.mk/livewire/update"
         },
         {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1352",
+          "usedBy": [
+            {
+              "key": "NL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.mk/livewire/update"
+        },
+        {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294",
           "usedBy": [
             {
@@ -3725,6 +3761,18 @@
           "finalUrl": "https://mfa.gov.mk/livewire/update"
         },
         {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/731",
+          "usedBy": [
+            {
+              "key": "US",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.mk/livewire/update"
+        },
+        {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761",
           "usedBy": [
             {
@@ -3765,6 +3813,18 @@
           "usedBy": [
             {
               "key": "VC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://mfa.gov.mk/livewire/update"
+        },
+        {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/739",
+          "usedBy": [
+            {
+              "key": "VE",
               "field": "direct.alternate"
             }
           ],
@@ -3872,8 +3932,9 @@
       "ruleChecks": [
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1205",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AD"
           ],
@@ -3881,8 +3942,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/673",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AE"
           ],
@@ -3890,8 +3952,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/606",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AF"
           ],
@@ -3899,8 +3962,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/732",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AG"
           ],
@@ -3908,8 +3972,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/847",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AL"
           ],
@@ -3917,8 +3982,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1256",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AM"
           ],
@@ -3926,8 +3992,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/50",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AO"
           ],
@@ -3935,8 +4002,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/733",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AR"
           ],
@@ -3944,8 +4012,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/846",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AT"
           ],
@@ -3953,8 +4022,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/705",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AU"
           ],
@@ -3962,17 +4032,28 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/607",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "AZ"
           ],
           "link": "direct.alternate"
         },
         {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734",
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1214",
           "currentUpdatedAt": null,
           "status": "first-run",
+          "keys": [
+            "BA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
           "keys": [
             "BB"
           ],
@@ -3980,8 +4061,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/608",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BD"
           ],
@@ -3989,8 +4071,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1209",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BE"
           ],
@@ -3998,8 +4081,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/54",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BF"
           ],
@@ -4007,8 +4091,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1218",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BG"
           ],
@@ -4016,8 +4101,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/609",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BH"
           ],
@@ -4025,8 +4111,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/61",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BI"
           ],
@@ -4034,8 +4121,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/51",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BJ"
           ],
@@ -4043,8 +4131,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/610",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BN"
           ],
@@ -4052,8 +4141,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/737",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BO"
           ],
@@ -4061,8 +4151,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/738",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BR"
           ],
@@ -4070,8 +4161,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/735",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BS"
           ],
@@ -4079,8 +4171,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/611",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BT"
           ],
@@ -4088,8 +4181,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/52",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BW"
           ],
@@ -4097,8 +4191,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1213",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BY"
           ],
@@ -4106,8 +4201,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/736",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "BZ"
           ],
@@ -4115,8 +4211,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/724",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CA"
           ],
@@ -4124,8 +4221,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/90",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CD"
           ],
@@ -4133,8 +4231,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/601",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CF"
           ],
@@ -4142,8 +4241,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/588",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CG"
           ],
@@ -4151,8 +4251,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1356",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CH"
           ],
@@ -4160,8 +4261,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/53",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CI"
           ],
@@ -4169,8 +4271,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/764",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CL"
           ],
@@ -4178,8 +4281,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/570",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CM"
           ],
@@ -4187,8 +4291,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/661",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CN"
           ],
@@ -4196,8 +4301,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/748",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CO"
           ],
@@ -4205,8 +4311,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/749",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CR"
           ],
@@ -4214,8 +4321,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/750",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CU"
           ],
@@ -4223,8 +4331,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/566",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CV"
           ],
@@ -4232,8 +4341,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1275",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CY"
           ],
@@ -4241,8 +4351,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1355",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "CZ"
           ],
@@ -4250,8 +4361,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1238",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DE"
           ],
@@ -4259,8 +4371,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/604",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DJ"
           ],
@@ -4268,8 +4381,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1254",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DK"
           ],
@@ -4277,8 +4391,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/742",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DM"
           ],
@@ -4286,8 +4401,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/743",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DO"
           ],
@@ -4295,8 +4411,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/49",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "DZ"
           ],
@@ -4304,8 +4421,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/744",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "EC"
           ],
@@ -4313,8 +4431,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1259",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "EE"
           ],
@@ -4322,8 +4441,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/91",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "EG"
           ],
@@ -4331,8 +4451,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/560",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ER"
           ],
@@ -4340,8 +4461,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1359",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ES"
           ],
@@ -4349,8 +4471,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/564",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ET"
           ],
@@ -4358,8 +4481,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1350",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "FI"
           ],
@@ -4367,17 +4491,28 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/721",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "FJ"
           ],
           "link": "direct.alternate"
         },
         {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1351",
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/710",
           "currentUpdatedAt": null,
           "status": "first-run",
+          "keys": [
+            "FM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1351",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
           "keys": [
             "FR"
           ],
@@ -4385,8 +4520,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/63",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GA"
           ],
@@ -4394,8 +4530,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1229",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GB"
           ],
@@ -4403,8 +4540,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/741",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GD"
           ],
@@ -4412,8 +4550,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1240",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GE"
           ],
@@ -4421,8 +4560,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/78",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GH"
           ],
@@ -4430,8 +4570,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/77",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GM"
           ],
@@ -4439,8 +4580,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/89",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GN"
           ],
@@ -4448,8 +4590,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/92",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GQ"
           ],
@@ -4457,8 +4600,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1249",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GR"
           ],
@@ -4466,8 +4610,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/740",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GT"
           ],
@@ -4475,8 +4620,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/80",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GW"
           ],
@@ -4484,8 +4630,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/79",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "GY"
           ],
@@ -4493,8 +4640,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/763",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "HN"
           ],
@@ -4502,8 +4650,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1353",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "HR"
           ],
@@ -4511,8 +4660,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/762",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "HT"
           ],
@@ -4520,8 +4670,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1349",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "HU"
           ],
@@ -4529,8 +4680,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/617",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ID"
           ],
@@ -4538,8 +4690,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1263",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IE"
           ],
@@ -4547,8 +4700,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/615",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IL"
           ],
@@ -4556,8 +4710,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/616",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IN"
           ],
@@ -4565,8 +4720,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/619",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IQ"
           ],
@@ -4574,8 +4730,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/620",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IR"
           ],
@@ -4583,8 +4740,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1266",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IS"
           ],
@@ -4592,8 +4750,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1273",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "IT"
           ],
@@ -4601,8 +4760,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/746",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "JM"
           ],
@@ -4610,8 +4770,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/627",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "JO"
           ],
@@ -4619,8 +4780,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/624",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "JP"
           ],
@@ -4628,8 +4790,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/572",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KE"
           ],
@@ -4637,8 +4800,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/638",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KG"
           ],
@@ -4646,8 +4810,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/632",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KH"
           ],
@@ -4655,8 +4820,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/708",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KI"
           ],
@@ -4664,8 +4830,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/573",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KM"
           ],
@@ -4673,8 +4840,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/755",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KN"
           ],
@@ -4682,8 +4850,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/613",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KP"
           ],
@@ -4691,8 +4860,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/628",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KR"
           ],
@@ -4700,8 +4870,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/640",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KW"
           ],
@@ -4709,8 +4880,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/630",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "KZ"
           ],
@@ -4718,8 +4890,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/641",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LA"
           ],
@@ -4727,8 +4900,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/650",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LB"
           ],
@@ -4736,8 +4910,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/756",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LC"
           ],
@@ -4745,8 +4920,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1284",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LI"
           ],
@@ -4754,8 +4930,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/688",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LK"
           ],
@@ -4763,8 +4940,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/575",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LR"
           ],
@@ -4772,8 +4950,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/574",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LS"
           ],
@@ -4781,8 +4960,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1282",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LT"
           ],
@@ -4790,8 +4970,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1286",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LU"
           ],
@@ -4799,8 +4980,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1281",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LV"
           ],
@@ -4808,8 +4990,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/576",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "LY"
           ],
@@ -4817,8 +5000,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/583",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MA"
           ],
@@ -4826,8 +5010,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1290",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MC"
           ],
@@ -4835,8 +5020,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1289",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MD"
           ],
@@ -4844,8 +5030,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1354",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ME"
           ],
@@ -4853,8 +5040,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/580",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MG"
           ],
@@ -4862,8 +5050,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/709",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MH"
           ],
@@ -4871,8 +5060,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/582",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ML"
           ],
@@ -4880,8 +5070,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/654",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MM"
           ],
@@ -4889,8 +5080,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/655",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MN"
           ],
@@ -4898,8 +5090,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/578",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MR"
           ],
@@ -4907,8 +5100,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1287",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MT"
           ],
@@ -4916,8 +5110,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/579",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MU"
           ],
@@ -4925,8 +5120,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/651",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MV"
           ],
@@ -4934,8 +5130,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/581",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MW"
           ],
@@ -4943,8 +5140,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/727",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MX"
           ],
@@ -4952,8 +5150,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/653",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MY"
           ],
@@ -4961,8 +5160,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/584",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "MZ"
           ],
@@ -4970,8 +5170,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/585",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NA"
           ],
@@ -4979,8 +5180,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/586",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NE"
           ],
@@ -4988,8 +5190,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/587",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NG"
           ],
@@ -4997,17 +5200,28 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/728",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NI"
           ],
           "link": "direct.alternate"
         },
         {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294",
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1352",
           "currentUpdatedAt": null,
           "status": "first-run",
+          "keys": [
+            "NL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
           "keys": [
             "NO"
           ],
@@ -5015,8 +5229,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/656",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NP"
           ],
@@ -5024,8 +5239,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/711",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NR"
           ],
@@ -5033,8 +5249,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/712",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "NZ"
           ],
@@ -5042,8 +5259,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/674",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "OM"
           ],
@@ -5051,8 +5269,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/751",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PA"
           ],
@@ -5060,8 +5279,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/754",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PE"
           ],
@@ -5069,8 +5289,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/714",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PG"
           ],
@@ -5078,8 +5299,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/687",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PH"
           ],
@@ -5087,8 +5309,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/675",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PK"
           ],
@@ -5096,8 +5319,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1299",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PL"
           ],
@@ -5105,8 +5329,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1302",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PT"
           ],
@@ -5114,8 +5339,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/713",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PW"
           ],
@@ -5123,8 +5349,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/753",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "PY"
           ],
@@ -5132,8 +5359,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/636",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "QA"
           ],
@@ -5141,8 +5369,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1309",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "RO"
           ],
@@ -5150,8 +5379,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1333",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "RS"
           ],
@@ -5159,8 +5389,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1313",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "RU"
           ],
@@ -5168,8 +5399,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/589",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "RW"
           ],
@@ -5177,8 +5409,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/676",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SA"
           ],
@@ -5186,8 +5419,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/717",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SB"
           ],
@@ -5195,8 +5429,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/591",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SC"
           ],
@@ -5204,8 +5439,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/596",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SD"
           ],
@@ -5213,8 +5449,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1357",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SE"
           ],
@@ -5222,8 +5459,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/677",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SG"
           ],
@@ -5231,8 +5469,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1323",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SI"
           ],
@@ -5240,8 +5479,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1319",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SK"
           ],
@@ -5249,8 +5489,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/594",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SL"
           ],
@@ -5258,8 +5499,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1314",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SM"
           ],
@@ -5267,8 +5509,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/593",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SN"
           ],
@@ -5276,8 +5519,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/595",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SO"
           ],
@@ -5285,8 +5529,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/759",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SR"
           ],
@@ -5294,8 +5539,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/568",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SS"
           ],
@@ -5303,8 +5549,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/590",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ST"
           ],
@@ -5312,8 +5559,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/745",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SV"
           ],
@@ -5321,8 +5569,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/678",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SY"
           ],
@@ -5330,8 +5579,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/562",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "SZ"
           ],
@@ -5339,8 +5589,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/602",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TD"
           ],
@@ -5348,8 +5599,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/598",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TG"
           ],
@@ -5357,8 +5609,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/682",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TH"
           ],
@@ -5366,8 +5619,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/683",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TJ"
           ],
@@ -5375,8 +5629,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/622",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TL"
           ],
@@ -5384,8 +5639,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/684",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TM"
           ],
@@ -5393,8 +5649,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/599",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TN"
           ],
@@ -5402,8 +5659,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/718",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TO"
           ],
@@ -5411,8 +5669,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1340",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TR"
           ],
@@ -5420,8 +5679,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/760",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TT"
           ],
@@ -5429,8 +5689,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/719",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TV"
           ],
@@ -5438,8 +5699,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/681",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TW"
           ],
@@ -5447,8 +5709,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/597",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "TZ"
           ],
@@ -5456,8 +5719,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1346",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "UA"
           ],
@@ -5465,17 +5729,28 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/600",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "UG"
           ],
           "link": "direct.alternate"
         },
         {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761",
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/731",
           "currentUpdatedAt": null,
           "status": "first-run",
+          "keys": [
+            "US"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
           "keys": [
             "UY"
           ],
@@ -5483,8 +5758,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/685",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "UZ"
           ],
@@ -5492,8 +5768,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1222",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "VA"
           ],
@@ -5501,17 +5778,28 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/757",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "VC"
           ],
           "link": "direct.alternate"
         },
         {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/612",
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/739",
           "currentUpdatedAt": null,
           "status": "first-run",
+          "keys": [
+            "VE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/612",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
           "keys": [
             "VN"
           ],
@@ -5519,8 +5807,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/707",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "VU"
           ],
@@ -5528,8 +5817,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/716",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "WS"
           ],
@@ -5537,8 +5827,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1279",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "XK"
           ],
@@ -5546,8 +5837,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/626",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "YE"
           ],
@@ -5555,8 +5847,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/569",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ZA"
           ],
@@ -5564,8 +5857,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/565",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ZM"
           ],
@@ -5573,8 +5867,9 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/567",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "ZW"
           ],
@@ -5582,8 +5877,8 @@
         },
         {
           "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#countries",
-          "note": "Not recognized as a country (add to ALIASES in pipeline/src/resolvers/mfaGovMk.ts): Micronesia - Federated States of (australia_and_oceania), Bosnia and Hercegovina (europe), Kingdom of the Netherlands (europe), USA (north_america), Venezuela, Bolivarian Republic of (south_america)",
-          "status": "first-run",
+          "status": "text-changed",
+          "textDiffPreview": "- Bosnia and Hercegovina → not recognized · europe\n+ Bosnia and Hercegovina → BA · europe\n- Kingdom of the Netherlands → not recognized · europe\n+ Kingdom of the Netherlands → NL · europe\n- Micronesia - Federated States of → not recognized · australia_and_oceania\n+ Micronesia - Federated States of → FM · australia_and_oceania\n- USA → not recognized · north_america\n+ USA → US · north_america\n- Venezuela, Bolivarian Republic of → not recognized · south_america\n+ Venezuela, Bolivarian Republic of → VE · south_america",
           "keys": [
             "AD",
             "AE",
@@ -5784,51 +6079,6 @@
             "ZW"
           ],
           "link": "direct.alternate (page list)"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#BA",
-          "keys": [
-            "BA"
-          ],
-          "link": "direct.alternate",
-          "status": "fetch-error",
-          "error": "No page for BA in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#FM",
-          "keys": [
-            "FM"
-          ],
-          "link": "direct.alternate",
-          "status": "fetch-error",
-          "error": "No page for FM in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#NL",
-          "keys": [
-            "NL"
-          ],
-          "link": "direct.alternate",
-          "status": "fetch-error",
-          "error": "No page for NL in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#US",
-          "keys": [
-            "US"
-          ],
-          "link": "direct.alternate",
-          "status": "fetch-error",
-          "error": "No page for US in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list"
-        },
-        {
-          "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#VE",
-          "keys": [
-            "VE"
-          ],
-          "link": "direct.alternate",
-          "status": "fetch-error",
-          "error": "No page for VE in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list"
         }
       ]
     }
@@ -5849,13 +6099,13 @@
     "Armenia"
   ],
   "summary": {
-    "totalLinksChecked": 191,
+    "totalLinksChecked": 196,
     "brokenLinks": 0,
     "redirectedLinks": 0,
     "blockedLinks": 0,
     "sourcesChecked": 196,
-    "sourcesChanged": 0,
-    "sourcesFirstRun": 191,
-    "sourcesFetchError": 5
+    "sourcesChanged": 1,
+    "sourcesFirstRun": 5,
+    "sourcesFetchError": 0
   }
 }
