@@ -8830,24 +8830,32 @@ export const GeorgiaSources = {
 
 // ─── Armenia ──────────────────────────────────────────────────────────────────
 
+/**
+ * MFA "Visa" index — the parent of both ArmeniaSources entries, defined once
+ * and shared. Health-checked only: the two list pages below are what the
+ * rules are built from, and those are diffed.
+ */
+const armeniaVisaIndex = {
+  url: "https://www.mfa.am/en/visa/",
+  type: "parent",
+  checkDiff: false,
+} as const satisfies SourceLink;
+
 export const ArmeniaSources = {
   /**
    * List of countries whose citizens with all types of passports are
    * unilaterally exempt from Armenia's visa requirement — 180 days within
    * any 365-day period. Cited as the source for both the 45-country
    * unilateral list and the default/fallback rule (see armenia.ts).
+   * Diffed: a country added to or removed from the list is a text change.
    */
   visaFreeList: {
     direct: {
       url: "https://www.mfa.am/en/visafreelist",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url: "https://www.mfa.am/en/visa/",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: armeniaVisaIndex,
     dateChecked: "2026-09-14",
   } satisfies SourceDoc,
 
@@ -8855,19 +8863,15 @@ export const ArmeniaSources = {
    * Bilateral/multilateral visa-free agreements list. Only rows marked
    * "All types of passports" are modeled (diplomatic/service/official-only
    * rows grant nothing to an ordinary passport and are excluded — see
-   * armenia.ts header).
+   * armenia.ts header). Diffed, like visaFreeList.
    */
   bilateralList: {
     direct: {
       url: "https://www.mfa.am/en/whoneedvisa",
       type: "direct",
-      checkDiff: false,
+      checkDiff: true,
     },
-    parent: {
-      url: "https://www.mfa.am/en/visa/",
-      type: "parent",
-      checkDiff: false,
-    },
+    parent: armeniaVisaIndex,
     dateChecked: "2026-09-14",
   } satisfies SourceDoc,
 } as const;
@@ -8884,18 +8888,18 @@ export const ArmeniaSources = {
  * the scheduled monthly workflow always does.
  */
 export const SourceRegions = {
-  Schengen: { sources: SchengenSources, checkLinks: true },
-  UK: { sources: UKSources, checkLinks: true },
-  Ireland: { sources: IrelandSources, checkLinks: true },
-  Turkiye: { sources: TurkiyeSources, checkLinks: true },
-  Montenegro: { sources: MontenegroSources, checkLinks: true },
-  Serbia: { sources: SerbiaSources, checkLinks: true },
-  Bosnia: { sources: BosniaSources, checkLinks: true },
-  Kosovo: { sources: KosovoSources, checkLinks: true },
-  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: true },
+  Schengen: { sources: SchengenSources, checkLinks: false },
+  UK: { sources: UKSources, checkLinks: false },
+  Ireland: { sources: IrelandSources, checkLinks: false },
+  Turkiye: { sources: TurkiyeSources, checkLinks: false },
+  Montenegro: { sources: MontenegroSources, checkLinks: false },
+  Serbia: { sources: SerbiaSources, checkLinks: false },
+  Bosnia: { sources: BosniaSources, checkLinks: false },
+  Kosovo: { sources: KosovoSources, checkLinks: false },
+  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: false },
   Albania: { sources: AlbaniaSources, checkLinks: false },
-  Cyprus: { sources: CyprusSources, checkLinks: true },
+  Cyprus: { sources: CyprusSources, checkLinks: false },
   Belarus: { sources: BelarusSources, checkLinks: false },
   Georgia: { sources: GeorgiaSources, checkLinks: false },
-  Armenia: { sources: ArmeniaSources, checkLinks: false },
+  Armenia: { sources: ArmeniaSources, checkLinks: true },
 } satisfies Record<string, SourceRegion>;
