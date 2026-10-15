@@ -8723,16 +8723,15 @@ export const CyprusSources = {
    * via Schengen's common visa. Primary citation is the Regulation itself,
    * shared with SchengenSources.visaList (EUR-Lex page health-checked, its
    * Cellar copy diffed). gov.cy is the Cypriot government's own page on the
-   * same policy; it's diffed too, since Cyprus-specific changes (Schengen
-   * accession, national exemptions) would show up there, not in the
-   * Regulation.
+   * same policy. It refuses automated clients (HTTP 403), so it's only
+   * health-checked (reported "blocked"), not diffed.
    */
   visaList: {
     direct: euVisaListRegulation,
     parent: {
       url: "https://www.gov.cy/en/information/visas/",
       type: "parent",
-      checkDiff: true,
+      checkDiff: false, // HTTP 403 to automated clients; nothing to diff
     },
     dateChecked: "2026-09-09",
   } satisfies SourceDoc,
@@ -8886,14 +8885,14 @@ export const ArmeniaSources = {
  */
 export const SourceRegions = {
   Schengen: { sources: SchengenSources, checkLinks: true },
-  UK: { sources: UKSources, checkLinks: false },
-  Ireland: { sources: IrelandSources, checkLinks: false },
-  Turkiye: { sources: TurkiyeSources, checkLinks: false },
-  Montenegro: { sources: MontenegroSources, checkLinks: false },
-  Serbia: { sources: SerbiaSources, checkLinks: false },
-  Bosnia: { sources: BosniaSources, checkLinks: false },
-  Kosovo: { sources: KosovoSources, checkLinks: false },
-  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: false },
+  UK: { sources: UKSources, checkLinks: true },
+  Ireland: { sources: IrelandSources, checkLinks: true },
+  Turkiye: { sources: TurkiyeSources, checkLinks: true },
+  Montenegro: { sources: MontenegroSources, checkLinks: true },
+  Serbia: { sources: SerbiaSources, checkLinks: true },
+  Bosnia: { sources: BosniaSources, checkLinks: true },
+  Kosovo: { sources: KosovoSources, checkLinks: true },
+  NorthMacedonia: { sources: NorthMacedoniaSources, checkLinks: true },
   Albania: { sources: AlbaniaSources, checkLinks: false },
   Cyprus: { sources: CyprusSources, checkLinks: true },
   Belarus: { sources: BelarusSources, checkLinks: false },
