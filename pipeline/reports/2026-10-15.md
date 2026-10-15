@@ -1,419 +1,437 @@
 # Source Verification Report
 
-Generated: 2026-10-15T02:54:27.871Z
+Generated: 2026-10-15T03:27:13.316Z
 
 ## Summary
 
 | | |
 |---|---|
-| Unique links checked | 194 |
+| Unique links checked | 191 |
 | 🔴 Broken | 0 |
 | ↪️ Redirected | 0 |
 | 🚫 Blocked (could not verify) | 0 |
-| Content sources diffed (`checkDiff`) | 195 |
+| Content sources diffed (`checkDiff`) | 196 |
 | ✏️ Changed since last baseline | 0 |
-| 🆕 First run (no baseline yet) | 195 |
-| ⚠️ Fetch errors | 0 |
+| 🆕 First run (no baseline yet) | 191 |
+| ⚠️ Fetch errors | 5 |
 
-Not checked this run (`checkLinks: false`): Schengen, UK, Ireland, Turkiye, Montenegro, Serbia, Kosovo, NorthMacedonia, Albania, Cyprus, Belarus, Georgia, Armenia.
+Not checked this run (`checkLinks: false`): Schengen, UK, Ireland, Turkiye, Montenegro, Serbia, Bosnia, Kosovo, Albania, Cyprus, Belarus, Georgia, Armenia.
 
-## Bosnia
+## NorthMacedonia
 
 ### Link health
 
 | Used by | Status | URL |
 |---|---|---|
-| AD, AE, AF, AG, AL, AM, AO, AR … (+187 more) | ✅ live (200) | https://www.mvp.gov.ba/en/vize |
-| AD (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba |
-| AE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887696763845615?domain=https://www.mvp.gov.ba |
-| AF (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639082935039597309?domain=https://www.mvp.gov.ba |
-| AG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883485721766851?domain=https://www.mvp.gov.ba |
-| AL (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638975086772324997?domain=https://www.mvp.gov.ba |
-| AM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883490864830189?domain=https://www.mvp.gov.ba |
-| AO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883483322376278?domain=https://www.mvp.gov.ba |
-| AR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883489528862441?domain=https://www.mvp.gov.ba |
-| AT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883494519747547?domain=https://www.mvp.gov.ba |
-| AU (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883492938472699?domain=https://www.mvp.gov.ba |
-| AZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639215238587178303?domain=https://www.mvp.gov.ba |
-| BB (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883507939046759?domain=https://www.mvp.gov.ba |
-| BD (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883506189924384?domain=https://www.mvp.gov.ba |
-| BE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba |
-| BF (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883536294815767?domain=https://www.mvp.gov.ba |
-| BG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883531345686936?domain=https://www.mvp.gov.ba |
-| BH (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185064814075651?domain=https://www.mvp.gov.ba |
-| BI (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884157155396026?domain=https://www.mvp.gov.ba |
-| BJ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883515632963414?domain=https://www.mvp.gov.ba |
-| BN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883529158681974?domain=https://www.mvp.gov.ba |
-| BO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883523347022014?domain=https://www.mvp.gov.ba |
-| BR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883525257338153?domain=https://www.mvp.gov.ba |
-| BS (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883498293348199?domain=https://www.mvp.gov.ba |
-| BT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884160756123854?domain=https://www.mvp.gov.ba |
-| BW (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883520143718021?domain=https://www.mvp.gov.ba |
-| BY (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883518204682391?domain=https://www.mvp.gov.ba |
-| BZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883513405347440?domain=https://www.mvp.gov.ba |
-| CA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639142770283664500?domain=https://www.mvp.gov.ba |
-| CD (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884369511088311?domain=https://www.mvp.gov.ba |
-| CF (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884169152787484?domain=https://www.mvp.gov.ba |
-| CG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884367826437010?domain=https://www.mvp.gov.ba |
-| CH (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887767276051162?domain=https://www.mvp.gov.ba |
-| CI (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887764636965387?domain=https://www.mvp.gov.ba |
-| CL (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884178457348609?domain=https://www.mvp.gov.ba |
-| CM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884329323345782?domain=https://www.mvp.gov.ba |
-| CN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639070873312244864?domain=https://www.mvp.gov.ba |
-| CO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884352312202636?domain=https://www.mvp.gov.ba |
-| CR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884382864523921?domain=https://www.mvp.gov.ba |
-| CU (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884387960563482?domain=https://www.mvp.gov.ba |
-| CV (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884333783885384?domain=https://www.mvp.gov.ba |
-| CY (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887761830659875?domain=https://www.mvp.gov.ba |
-| CZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884175022732022?domain=https://www.mvp.gov.ba |
-| DE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886841972797592?domain=https://www.mvp.gov.ba |
-| DJ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884185717650158?domain=https://www.mvp.gov.ba |
-| DK (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884180185942653?domain=https://www.mvp.gov.ba |
-| DM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884181940437196?domain=https://www.mvp.gov.ba |
-| DO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639270631536125313?domain=https://www.mvp.gov.ba |
-| DZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883477779561428?domain=https://www.mvp.gov.ba |
-| EC (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884189702021920?domain=https://www.mvp.gov.ba |
-| EE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884194892215809?domain=https://www.mvp.gov.ba |
-| EG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884187461477692?domain=https://www.mvp.gov.ba |
-| ER (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884193364545393?domain=https://www.mvp.gov.ba |
-| ES (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887766546369580?domain=https://www.mvp.gov.ba |
-| ET (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884196823698099?domain=https://www.mvp.gov.ba |
-| FI (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884209011970465?domain=https://www.mvp.gov.ba |
-| FJ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884198573678044?domain=https://www.mvp.gov.ba |
-| FM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886807618095453?domain=https://www.mvp.gov.ba |
-| FR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884210587686035?domain=https://www.mvp.gov.ba |
-| GA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884215601537853?domain=https://www.mvp.gov.ba |
-| GB (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887699851222851?domain=https://www.mvp.gov.ba |
-| GD (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884227119261135?domain=https://www.mvp.gov.ba |
-| GE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639050098700037188?domain=https://www.mvp.gov.ba |
-| GH (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884222893822711?domain=https://www.mvp.gov.ba |
-| GM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884220101452501?domain=https://www.mvp.gov.ba |
-| GN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884243178410635?domain=https://www.mvp.gov.ba |
-| GQ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884191568346394?domain=https://www.mvp.gov.ba |
-| GR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884225425865092?domain=https://www.mvp.gov.ba |
-| GT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884241100771286?domain=https://www.mvp.gov.ba |
-| GW (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884245917407137?domain=https://www.mvp.gov.ba |
-| GY (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884239301076290?domain=https://www.mvp.gov.ba |
-| HN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884249342634255?domain=https://www.mvp.gov.ba |
-| HR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba |
-| HT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba |
-| HU (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba |
-| ID (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba |
-| IE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222101785307612?domain=https://www.mvp.gov.ba |
-| IL (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884278175687728?domain=https://www.mvp.gov.ba |
-| IN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884258079851240?domain=https://www.mvp.gov.ba |
-| IQ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884261321109778?domain=https://www.mvp.gov.ba |
-| IR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884263846591024?domain=https://www.mvp.gov.ba |
-| IS (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884268062797702?domain=https://www.mvp.gov.ba |
-| IT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639052934024161722?domain=https://www.mvp.gov.ba |
-| JM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884279732005351?domain=https://www.mvp.gov.ba |
-| JO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884323006117333?domain=https://www.mvp.gov.ba |
-| JP (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884281448963024?domain=https://www.mvp.gov.ba |
-| KE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884339232339776?domain=https://www.mvp.gov.ba |
-| KG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639192719046689702?domain=https://www.mvp.gov.ba |
-| KH (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884326932971788?domain=https://www.mvp.gov.ba |
-| KI (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884348914813577?domain=https://www.mvp.gov.ba |
-| KM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884363320411741?domain=https://www.mvp.gov.ba |
-| KN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887642372027446?domain=https://www.mvp.gov.ba |
-| KP (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884380932817298?domain=https://www.mvp.gov.ba |
-| KR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884377463515717?domain=https://www.mvp.gov.ba |
-| KW (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884389952016419?domain=https://www.mvp.gov.ba |
-| KZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba |
-| LA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884394476077743?domain=https://www.mvp.gov.ba |
-| LB (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884401279302512?domain=https://www.mvp.gov.ba |
-| LC (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887638262695280?domain=https://www.mvp.gov.ba |
-| LI (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886764098495916?domain=https://www.mvp.gov.ba |
-| LK (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638984683325583122?domain=https://www.mvp.gov.ba |
-| LR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886757866515854?domain=https://www.mvp.gov.ba |
-| LS (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884395989490587?domain=https://www.mvp.gov.ba |
-| LT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886773596241280?domain=https://www.mvp.gov.ba |
-| LU (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886775887040221?domain=https://www.mvp.gov.ba |
-| LV (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884397584823001?domain=https://www.mvp.gov.ba |
-| LY (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba |
-| MA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095058957609028?domain=https://www.mvp.gov.ba |
-| MC (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886811835502138?domain=https://www.mvp.gov.ba |
-| MD (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886809407303595?domain=https://www.mvp.gov.ba |
-| ME (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884171543811588?domain=https://www.mvp.gov.ba |
-| MG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886779452142327?domain=https://www.mvp.gov.ba |
-| MH (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887763447318561?domain=https://www.mvp.gov.ba |
-| MK (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886943611766628?domain=https://www.mvp.gov.ba |
-| ML (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886788905477378?domain=https://www.mvp.gov.ba |
-| MM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886805390766070?domain=https://www.mvp.gov.ba |
-| MN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886816519307372?domain=https://www.mvp.gov.ba |
-| MR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886801411468085?domain=https://www.mvp.gov.ba |
-| MT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886790875262202?domain=https://www.mvp.gov.ba |
-| MU (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886799536318171?domain=https://www.mvp.gov.ba |
-| MV (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886785438115703?domain=https://www.mvp.gov.ba |
-| MW (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886782876976987?domain=https://www.mvp.gov.ba |
-| MX (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886803354586371?domain=https://www.mvp.gov.ba |
-| MY (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba |
-| MZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886818369628359?domain=https://www.mvp.gov.ba |
-| NA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886820238046507?domain=https://www.mvp.gov.ba |
-| NE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886828918582708?domain=https://www.mvp.gov.ba |
-| NG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886830490180024?domain=https://www.mvp.gov.ba |
-| NI (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886832228392162?domain=https://www.mvp.gov.ba |
-| NL (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886833951627127?domain=https://www.mvp.gov.ba |
-| NO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886836641300367?domain=https://www.mvp.gov.ba |
-| NP (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886823957420798?domain=https://www.mvp.gov.ba |
-| NR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886822225026447?domain=https://www.mvp.gov.ba |
-| NZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886838870296633?domain=https://www.mvp.gov.ba |
-| OM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185066739711338?domain=https://www.mvp.gov.ba |
-| PA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886866933065444?domain=https://www.mvp.gov.ba |
-| PE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886872946235717?domain=https://www.mvp.gov.ba |
-| PG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886869350000895?domain=https://www.mvp.gov.ba |
-| PH (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884200287456758?domain=https://www.mvp.gov.ba |
-| PK (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886848770940073?domain=https://www.mvp.gov.ba |
-| PL (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886875439854778?domain=https://www.mvp.gov.ba |
-| PS (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886862192537901?domain=https://www.mvp.gov.ba |
-| PT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886876828018609?domain=https://www.mvp.gov.ba |
-| PW (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886860157130340?domain=https://www.mvp.gov.ba |
-| PY (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886871360561368?domain=https://www.mvp.gov.ba |
-| QA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884335408575316?domain=https://www.mvp.gov.ba |
-| RO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887765301578339?domain=https://www.mvp.gov.ba |
-| RS (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886957200216716?domain=https://www.mvp.gov.ba |
-| RU (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba |
-| RW (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886881501850591?domain=https://www.mvp.gov.ba |
-| SA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba |
-| SB (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886947930548716?domain=https://www.mvp.gov.ba |
-| SC (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886923986265456?domain=https://www.mvp.gov.ba |
-| SD (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886958663442235?domain=https://www.mvp.gov.ba |
-| SE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887656343958811?domain=https://www.mvp.gov.ba |
-| SG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886931428559182?domain=https://www.mvp.gov.ba |
-| SI (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886946546990155?domain=https://www.mvp.gov.ba |
-| SK (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886945200626735?domain=https://www.mvp.gov.ba |
-| SL (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886929960112837?domain=https://www.mvp.gov.ba |
-| SM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886917376997574?domain=https://www.mvp.gov.ba |
-| SN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886925649061933?domain=https://www.mvp.gov.ba |
-| SO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886955464744931?domain=https://www.mvp.gov.ba |
-| SR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886960016367417?domain=https://www.mvp.gov.ba |
-| ST (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886920749427651?domain=https://www.mvp.gov.ba |
-| SV (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886913958643786?domain=https://www.mvp.gov.ba |
-| SY (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639186724773168776?domain=https://www.mvp.gov.ba |
-| SZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887635390011080?domain=https://www.mvp.gov.ba |
-| TD (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884173378283774?domain=https://www.mvp.gov.ba |
-| TG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887674979670103?domain=https://www.mvp.gov.ba |
-| TH (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887669211232611?domain=https://www.mvp.gov.ba |
-| TJ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887667130805381?domain=https://www.mvp.gov.ba |
-| TL (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887672988994968?domain=https://www.mvp.gov.ba |
-| TM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887683211554076?domain=https://www.mvp.gov.ba |
-| TN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887680483059548?domain=https://www.mvp.gov.ba |
-| TO (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887676915036431?domain=https://www.mvp.gov.ba |
-| TR (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222210020811154?domain=https://www.mvp.gov.ba |
-| TT (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887678960421691?domain=https://www.mvp.gov.ba |
-| TV (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887692943609910?domain=https://www.mvp.gov.ba |
-| TZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887671107252880?domain=https://www.mvp.gov.ba |
-| UA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887701192704273?domain=https://www.mvp.gov.ba |
-| UG (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887694985573146?domain=https://www.mvp.gov.ba |
-| US (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886938490742978?domain=https://www.mvp.gov.ba |
-| UY (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887706303439718?domain=https://www.mvp.gov.ba |
-| UZ (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095011690920878?domain=https://www.mvp.gov.ba |
-| VA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887640244282053?domain=https://www.mvp.gov.ba |
-| VC (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887644954829796?domain=https://www.mvp.gov.ba |
-| VE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887719301053920?domain=https://www.mvp.gov.ba |
-| VN (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887721108227241?domain=https://www.mvp.gov.ba |
-| VU (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887710471704837?domain=https://www.mvp.gov.ba |
-| WS (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886915955341340?domain=https://www.mvp.gov.ba |
-| YE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884283537678976?domain=https://www.mvp.gov.ba |
-| ZA (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884324922276004?domain=https://www.mvp.gov.ba |
-| ZM (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887722359911561?domain=https://www.mvp.gov.ba |
-| ZW (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887723716813953?domain=https://www.mvp.gov.ba |
+| AD, AE, AF, AG, AL, AM, AO, AR … (+189 more) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza |
+| AD (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1205 |
+| AE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/673 |
+| AF (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/606 |
+| AG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/732 |
+| AL (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/847 |
+| AM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1256 |
+| AO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/50 |
+| AR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/733 |
+| AT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/846 |
+| AU (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/705 |
+| AZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/607 |
+| BB (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734 |
+| BD (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/608 |
+| BE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1209 |
+| BF (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/54 |
+| BG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1218 |
+| BH (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/609 |
+| BI (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/61 |
+| BJ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/51 |
+| BN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/610 |
+| BO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/737 |
+| BR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/738 |
+| BS (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/735 |
+| BT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/611 |
+| BW (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/52 |
+| BY (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1213 |
+| BZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/736 |
+| CA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/724 |
+| CD (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/90 |
+| CF (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/601 |
+| CG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/588 |
+| CH (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1356 |
+| CI (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/53 |
+| CL (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/764 |
+| CM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/570 |
+| CN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/661 |
+| CO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/748 |
+| CR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/749 |
+| CU (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/750 |
+| CV (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/566 |
+| CY (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1275 |
+| CZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1355 |
+| DE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1238 |
+| DJ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/604 |
+| DK (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1254 |
+| DM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/742 |
+| DO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/743 |
+| DZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/49 |
+| EC (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/744 |
+| EE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1259 |
+| EG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/91 |
+| ER (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/560 |
+| ES (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1359 |
+| ET (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/564 |
+| FI (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1350 |
+| FJ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/721 |
+| FR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1351 |
+| GA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/63 |
+| GB (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1229 |
+| GD (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/741 |
+| GE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1240 |
+| GH (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/78 |
+| GM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/77 |
+| GN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/89 |
+| GQ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/92 |
+| GR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1249 |
+| GT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/740 |
+| GW (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/80 |
+| GY (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/79 |
+| HN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/763 |
+| HR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1353 |
+| HT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/762 |
+| HU (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1349 |
+| ID (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/617 |
+| IE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1263 |
+| IL (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/615 |
+| IN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/616 |
+| IQ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/619 |
+| IR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/620 |
+| IS (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1266 |
+| IT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1273 |
+| JM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/746 |
+| JO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/627 |
+| JP (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/624 |
+| KE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/572 |
+| KG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/638 |
+| KH (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/632 |
+| KI (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/708 |
+| KM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/573 |
+| KN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/755 |
+| KP (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/613 |
+| KR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/628 |
+| KW (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/640 |
+| KZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/630 |
+| LA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/641 |
+| LB (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/650 |
+| LC (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/756 |
+| LI (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1284 |
+| LK (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/688 |
+| LR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/575 |
+| LS (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/574 |
+| LT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1282 |
+| LU (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1286 |
+| LV (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1281 |
+| LY (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/576 |
+| MA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/583 |
+| MC (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1290 |
+| MD (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1289 |
+| ME (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1354 |
+| MG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/580 |
+| MH (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/709 |
+| ML (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/582 |
+| MM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/654 |
+| MN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/655 |
+| MR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/578 |
+| MT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1287 |
+| MU (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/579 |
+| MV (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/651 |
+| MW (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/581 |
+| MX (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/727 |
+| MY (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/653 |
+| MZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/584 |
+| NA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/585 |
+| NE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/586 |
+| NG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/587 |
+| NI (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/728 |
+| NO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294 |
+| NP (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/656 |
+| NR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/711 |
+| NZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/712 |
+| OM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/674 |
+| PA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/751 |
+| PE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/754 |
+| PG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/714 |
+| PH (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/687 |
+| PK (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/675 |
+| PL (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1299 |
+| PT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1302 |
+| PW (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/713 |
+| PY (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/753 |
+| QA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/636 |
+| RO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1309 |
+| RS (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1333 |
+| RU (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1313 |
+| RW (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/589 |
+| SA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/676 |
+| SB (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/717 |
+| SC (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/591 |
+| SD (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/596 |
+| SE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1357 |
+| SG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/677 |
+| SI (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1323 |
+| SK (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1319 |
+| SL (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/594 |
+| SM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1314 |
+| SN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/593 |
+| SO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/595 |
+| SR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/759 |
+| SS (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/568 |
+| ST (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/590 |
+| SV (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/745 |
+| SY (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/678 |
+| SZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/562 |
+| TD (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/602 |
+| TG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/598 |
+| TH (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/682 |
+| TJ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/683 |
+| TL (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/622 |
+| TM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/684 |
+| TN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/599 |
+| TO (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/718 |
+| TR (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1340 |
+| TT (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/760 |
+| TV (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/719 |
+| TW (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/681 |
+| TZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/597 |
+| UA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1346 |
+| UG (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/600 |
+| UY (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761 |
+| UZ (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/685 |
+| VA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1222 |
+| VC (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/757 |
+| VN (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/612 |
+| VU (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/707 |
+| WS (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/716 |
+| XK (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1279 |
+| YE (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/626 |
+| ZA (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/569 |
+| ZM (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/565 |
+| ZW (direct.alternate) | ✅ live (200) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/567 |
 
 ### Content diffing
 
+#### BA (direct.alternate) — ⚠️ fetch error
+
+URL: https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#BA
+<br>Error: No page for BA in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list
+
+#### FM (direct.alternate) — ⚠️ fetch error
+
+URL: https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#FM
+<br>Error: No page for FM in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list
+
+#### NL (direct.alternate) — ⚠️ fetch error
+
+URL: https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#NL
+<br>Error: No page for NL in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list
+
+#### US (direct.alternate) — ⚠️ fetch error
+
+URL: https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#US
+<br>Error: No page for US in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list
+
+#### VE (direct.alternate) — ⚠️ fetch error
+
+URL: https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#VE
+<br>Error: No page for VE in https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza's country list
+
 | Keys | Status | URL |
 |---|---|---|
-| AD (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba |
-| AD, AE, AF, AG, AL, AM, AO, AR … (+187 more) (parent) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/en/vize |
-| AE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887696763845615?domain=https://www.mvp.gov.ba |
-| AF (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639082935039597309?domain=https://www.mvp.gov.ba |
-| AG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883485721766851?domain=https://www.mvp.gov.ba |
-| AL (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638975086772324997?domain=https://www.mvp.gov.ba |
-| AM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883490864830189?domain=https://www.mvp.gov.ba |
-| AO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883483322376278?domain=https://www.mvp.gov.ba |
-| AR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883489528862441?domain=https://www.mvp.gov.ba |
-| AT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883494519747547?domain=https://www.mvp.gov.ba |
-| AU (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883492938472699?domain=https://www.mvp.gov.ba |
-| AZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639215238587178303?domain=https://www.mvp.gov.ba |
-| BB (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883507939046759?domain=https://www.mvp.gov.ba |
-| BD (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883506189924384?domain=https://www.mvp.gov.ba |
-| BE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba |
-| BF (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883536294815767?domain=https://www.mvp.gov.ba |
-| BG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883531345686936?domain=https://www.mvp.gov.ba |
-| BH (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185064814075651?domain=https://www.mvp.gov.ba |
-| BI (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884157155396026?domain=https://www.mvp.gov.ba |
-| BJ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883515632963414?domain=https://www.mvp.gov.ba |
-| BN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883529158681974?domain=https://www.mvp.gov.ba |
-| BO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883523347022014?domain=https://www.mvp.gov.ba |
-| BR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883525257338153?domain=https://www.mvp.gov.ba |
-| BS (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883498293348199?domain=https://www.mvp.gov.ba |
-| BT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884160756123854?domain=https://www.mvp.gov.ba |
-| BW (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883520143718021?domain=https://www.mvp.gov.ba |
-| BY (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883518204682391?domain=https://www.mvp.gov.ba |
-| BZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883513405347440?domain=https://www.mvp.gov.ba |
-| CA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639142770283664500?domain=https://www.mvp.gov.ba |
-| CD (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884369511088311?domain=https://www.mvp.gov.ba |
-| CF (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884169152787484?domain=https://www.mvp.gov.ba |
-| CG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884367826437010?domain=https://www.mvp.gov.ba |
-| CH (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887767276051162?domain=https://www.mvp.gov.ba |
-| CI (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887764636965387?domain=https://www.mvp.gov.ba |
-| CL (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884178457348609?domain=https://www.mvp.gov.ba |
-| CM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884329323345782?domain=https://www.mvp.gov.ba |
-| CN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639070873312244864?domain=https://www.mvp.gov.ba |
-| CO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884352312202636?domain=https://www.mvp.gov.ba |
-| CR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884382864523921?domain=https://www.mvp.gov.ba |
-| CU (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884387960563482?domain=https://www.mvp.gov.ba |
-| CV (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884333783885384?domain=https://www.mvp.gov.ba |
-| CY (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887761830659875?domain=https://www.mvp.gov.ba |
-| CZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884175022732022?domain=https://www.mvp.gov.ba |
-| DE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886841972797592?domain=https://www.mvp.gov.ba |
-| DJ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884185717650158?domain=https://www.mvp.gov.ba |
-| DK (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884180185942653?domain=https://www.mvp.gov.ba |
-| DM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884181940437196?domain=https://www.mvp.gov.ba |
-| DO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639270631536125313?domain=https://www.mvp.gov.ba |
-| DZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883477779561428?domain=https://www.mvp.gov.ba |
-| EC (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884189702021920?domain=https://www.mvp.gov.ba |
-| EE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884194892215809?domain=https://www.mvp.gov.ba |
-| EG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884187461477692?domain=https://www.mvp.gov.ba |
-| ER (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884193364545393?domain=https://www.mvp.gov.ba |
-| ES (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887766546369580?domain=https://www.mvp.gov.ba |
-| ET (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884196823698099?domain=https://www.mvp.gov.ba |
-| FI (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884209011970465?domain=https://www.mvp.gov.ba |
-| FJ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884198573678044?domain=https://www.mvp.gov.ba |
-| FM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886807618095453?domain=https://www.mvp.gov.ba |
-| FR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884210587686035?domain=https://www.mvp.gov.ba |
-| GA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884215601537853?domain=https://www.mvp.gov.ba |
-| GB (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887699851222851?domain=https://www.mvp.gov.ba |
-| GD (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884227119261135?domain=https://www.mvp.gov.ba |
-| GE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639050098700037188?domain=https://www.mvp.gov.ba |
-| GH (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884222893822711?domain=https://www.mvp.gov.ba |
-| GM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884220101452501?domain=https://www.mvp.gov.ba |
-| GN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884243178410635?domain=https://www.mvp.gov.ba |
-| GQ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884191568346394?domain=https://www.mvp.gov.ba |
-| GR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884225425865092?domain=https://www.mvp.gov.ba |
-| GT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884241100771286?domain=https://www.mvp.gov.ba |
-| GW (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884245917407137?domain=https://www.mvp.gov.ba |
-| GY (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884239301076290?domain=https://www.mvp.gov.ba |
-| HN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884249342634255?domain=https://www.mvp.gov.ba |
-| HR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba |
-| HT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba |
-| HU (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba |
-| ID (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba |
-| IE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222101785307612?domain=https://www.mvp.gov.ba |
-| IL (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884278175687728?domain=https://www.mvp.gov.ba |
-| IN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884258079851240?domain=https://www.mvp.gov.ba |
-| IQ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884261321109778?domain=https://www.mvp.gov.ba |
-| IR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884263846591024?domain=https://www.mvp.gov.ba |
-| IS (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884268062797702?domain=https://www.mvp.gov.ba |
-| IT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639052934024161722?domain=https://www.mvp.gov.ba |
-| JM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884279732005351?domain=https://www.mvp.gov.ba |
-| JO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884323006117333?domain=https://www.mvp.gov.ba |
-| JP (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884281448963024?domain=https://www.mvp.gov.ba |
-| KE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884339232339776?domain=https://www.mvp.gov.ba |
-| KG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639192719046689702?domain=https://www.mvp.gov.ba |
-| KH (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884326932971788?domain=https://www.mvp.gov.ba |
-| KI (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884348914813577?domain=https://www.mvp.gov.ba |
-| KM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884363320411741?domain=https://www.mvp.gov.ba |
-| KN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887642372027446?domain=https://www.mvp.gov.ba |
-| KP (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884380932817298?domain=https://www.mvp.gov.ba |
-| KR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884377463515717?domain=https://www.mvp.gov.ba |
-| KW (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884389952016419?domain=https://www.mvp.gov.ba |
-| KZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba |
-| LA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884394476077743?domain=https://www.mvp.gov.ba |
-| LB (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884401279302512?domain=https://www.mvp.gov.ba |
-| LC (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887638262695280?domain=https://www.mvp.gov.ba |
-| LI (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886764098495916?domain=https://www.mvp.gov.ba |
-| LK (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638984683325583122?domain=https://www.mvp.gov.ba |
-| LR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886757866515854?domain=https://www.mvp.gov.ba |
-| LS (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884395989490587?domain=https://www.mvp.gov.ba |
-| LT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886773596241280?domain=https://www.mvp.gov.ba |
-| LU (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886775887040221?domain=https://www.mvp.gov.ba |
-| LV (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884397584823001?domain=https://www.mvp.gov.ba |
-| LY (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba |
-| MA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095058957609028?domain=https://www.mvp.gov.ba |
-| MC (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886811835502138?domain=https://www.mvp.gov.ba |
-| MD (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886809407303595?domain=https://www.mvp.gov.ba |
-| ME (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884171543811588?domain=https://www.mvp.gov.ba |
-| MG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886779452142327?domain=https://www.mvp.gov.ba |
-| MH (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887763447318561?domain=https://www.mvp.gov.ba |
-| MK (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886943611766628?domain=https://www.mvp.gov.ba |
-| ML (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886788905477378?domain=https://www.mvp.gov.ba |
-| MM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886805390766070?domain=https://www.mvp.gov.ba |
-| MN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886816519307372?domain=https://www.mvp.gov.ba |
-| MR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886801411468085?domain=https://www.mvp.gov.ba |
-| MT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886790875262202?domain=https://www.mvp.gov.ba |
-| MU (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886799536318171?domain=https://www.mvp.gov.ba |
-| MV (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886785438115703?domain=https://www.mvp.gov.ba |
-| MW (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886782876976987?domain=https://www.mvp.gov.ba |
-| MX (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886803354586371?domain=https://www.mvp.gov.ba |
-| MY (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba |
-| MZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886818369628359?domain=https://www.mvp.gov.ba |
-| NA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886820238046507?domain=https://www.mvp.gov.ba |
-| NE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886828918582708?domain=https://www.mvp.gov.ba |
-| NG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886830490180024?domain=https://www.mvp.gov.ba |
-| NI (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886832228392162?domain=https://www.mvp.gov.ba |
-| NL (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886833951627127?domain=https://www.mvp.gov.ba |
-| NO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886836641300367?domain=https://www.mvp.gov.ba |
-| NP (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886823957420798?domain=https://www.mvp.gov.ba |
-| NR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886822225026447?domain=https://www.mvp.gov.ba |
-| NZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886838870296633?domain=https://www.mvp.gov.ba |
-| OM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185066739711338?domain=https://www.mvp.gov.ba |
-| PA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886866933065444?domain=https://www.mvp.gov.ba |
-| PE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886872946235717?domain=https://www.mvp.gov.ba |
-| PG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886869350000895?domain=https://www.mvp.gov.ba |
-| PH (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884200287456758?domain=https://www.mvp.gov.ba |
-| PK (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886848770940073?domain=https://www.mvp.gov.ba |
-| PL (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886875439854778?domain=https://www.mvp.gov.ba |
-| PS (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886862192537901?domain=https://www.mvp.gov.ba |
-| PT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886876828018609?domain=https://www.mvp.gov.ba |
-| PW (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886860157130340?domain=https://www.mvp.gov.ba |
-| PY (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886871360561368?domain=https://www.mvp.gov.ba |
-| QA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884335408575316?domain=https://www.mvp.gov.ba |
-| RO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887765301578339?domain=https://www.mvp.gov.ba |
-| RS (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886957200216716?domain=https://www.mvp.gov.ba |
-| RU (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba |
-| RW (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886881501850591?domain=https://www.mvp.gov.ba |
-| SA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba |
-| SB (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886947930548716?domain=https://www.mvp.gov.ba |
-| SC (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886923986265456?domain=https://www.mvp.gov.ba |
-| SD (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886958663442235?domain=https://www.mvp.gov.ba |
-| SE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887656343958811?domain=https://www.mvp.gov.ba |
-| SG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886931428559182?domain=https://www.mvp.gov.ba |
-| SI (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886946546990155?domain=https://www.mvp.gov.ba |
-| SK (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886945200626735?domain=https://www.mvp.gov.ba |
-| SL (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886929960112837?domain=https://www.mvp.gov.ba |
-| SM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886917376997574?domain=https://www.mvp.gov.ba |
-| SN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886925649061933?domain=https://www.mvp.gov.ba |
-| SO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886955464744931?domain=https://www.mvp.gov.ba |
-| SR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886960016367417?domain=https://www.mvp.gov.ba |
-| ST (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886920749427651?domain=https://www.mvp.gov.ba |
-| SV (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886913958643786?domain=https://www.mvp.gov.ba |
-| SY (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639186724773168776?domain=https://www.mvp.gov.ba |
-| SZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887635390011080?domain=https://www.mvp.gov.ba |
-| TD (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884173378283774?domain=https://www.mvp.gov.ba |
-| TG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887674979670103?domain=https://www.mvp.gov.ba |
-| TH (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887669211232611?domain=https://www.mvp.gov.ba |
-| TJ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887667130805381?domain=https://www.mvp.gov.ba |
-| TL (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887672988994968?domain=https://www.mvp.gov.ba |
-| TM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887683211554076?domain=https://www.mvp.gov.ba |
-| TN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887680483059548?domain=https://www.mvp.gov.ba |
-| TO (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887676915036431?domain=https://www.mvp.gov.ba |
-| TR (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222210020811154?domain=https://www.mvp.gov.ba |
-| TT (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887678960421691?domain=https://www.mvp.gov.ba |
-| TV (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887692943609910?domain=https://www.mvp.gov.ba |
-| TZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887671107252880?domain=https://www.mvp.gov.ba |
-| UA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887701192704273?domain=https://www.mvp.gov.ba |
-| UG (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887694985573146?domain=https://www.mvp.gov.ba |
-| US (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886938490742978?domain=https://www.mvp.gov.ba |
-| UY (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887706303439718?domain=https://www.mvp.gov.ba |
-| UZ (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095011690920878?domain=https://www.mvp.gov.ba |
-| VA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887640244282053?domain=https://www.mvp.gov.ba |
-| VC (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887644954829796?domain=https://www.mvp.gov.ba |
-| VE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887719301053920?domain=https://www.mvp.gov.ba |
-| VN (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887721108227241?domain=https://www.mvp.gov.ba |
-| VU (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887710471704837?domain=https://www.mvp.gov.ba |
-| WS (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886915955341340?domain=https://www.mvp.gov.ba |
-| YE (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884283537678976?domain=https://www.mvp.gov.ba |
-| ZA (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884324922276004?domain=https://www.mvp.gov.ba |
-| ZM (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887722359911561?domain=https://www.mvp.gov.ba |
-| ZW (direct.alternate) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887723716813953?domain=https://www.mvp.gov.ba |
-| AD, AE, AF, AG, AL, AM, AO, AR … (+187 more) (direct.alternate (page list)) | 🆕 first run (baseline captured) | https://www.mvp.gov.ba/en/vize#subpages |
+| AD (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1205 |
+| AE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/673 |
+| AF (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/606 |
+| AG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/732 |
+| AL (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/847 |
+| AM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1256 |
+| AO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/50 |
+| AR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/733 |
+| AT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/846 |
+| AU (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/705 |
+| AZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/607 |
+| BB (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734 |
+| BD (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/608 |
+| BE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1209 |
+| BF (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/54 |
+| BG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1218 |
+| BH (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/609 |
+| BI (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/61 |
+| BJ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/51 |
+| BN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/610 |
+| BO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/737 |
+| BR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/738 |
+| BS (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/735 |
+| BT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/611 |
+| BW (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/52 |
+| BY (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1213 |
+| BZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/736 |
+| CA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/724 |
+| CD (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/90 |
+| CF (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/601 |
+| CG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/588 |
+| CH (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1356 |
+| CI (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/53 |
+| CL (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/764 |
+| CM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/570 |
+| CN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/661 |
+| CO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/748 |
+| CR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/749 |
+| CU (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/750 |
+| CV (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/566 |
+| CY (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1275 |
+| CZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1355 |
+| DE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1238 |
+| DJ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/604 |
+| DK (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1254 |
+| DM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/742 |
+| DO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/743 |
+| DZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/49 |
+| EC (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/744 |
+| EE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1259 |
+| EG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/91 |
+| ER (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/560 |
+| ES (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1359 |
+| ET (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/564 |
+| FI (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1350 |
+| FJ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/721 |
+| FR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1351 |
+| GA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/63 |
+| GB (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1229 |
+| GD (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/741 |
+| GE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1240 |
+| GH (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/78 |
+| GM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/77 |
+| GN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/89 |
+| GQ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/92 |
+| GR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1249 |
+| GT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/740 |
+| GW (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/80 |
+| GY (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/79 |
+| HN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/763 |
+| HR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1353 |
+| HT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/762 |
+| HU (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1349 |
+| ID (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/617 |
+| IE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1263 |
+| IL (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/615 |
+| IN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/616 |
+| IQ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/619 |
+| IR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/620 |
+| IS (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1266 |
+| IT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1273 |
+| JM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/746 |
+| JO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/627 |
+| JP (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/624 |
+| KE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/572 |
+| KG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/638 |
+| KH (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/632 |
+| KI (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/708 |
+| KM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/573 |
+| KN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/755 |
+| KP (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/613 |
+| KR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/628 |
+| KW (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/640 |
+| KZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/630 |
+| LA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/641 |
+| LB (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/650 |
+| LC (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/756 |
+| LI (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1284 |
+| LK (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/688 |
+| LR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/575 |
+| LS (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/574 |
+| LT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1282 |
+| LU (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1286 |
+| LV (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1281 |
+| LY (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/576 |
+| MA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/583 |
+| MC (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1290 |
+| MD (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1289 |
+| ME (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1354 |
+| MG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/580 |
+| MH (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/709 |
+| ML (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/582 |
+| MM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/654 |
+| MN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/655 |
+| MR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/578 |
+| MT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1287 |
+| MU (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/579 |
+| MV (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/651 |
+| MW (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/581 |
+| MX (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/727 |
+| MY (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/653 |
+| MZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/584 |
+| NA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/585 |
+| NE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/586 |
+| NG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/587 |
+| NI (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/728 |
+| NO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294 |
+| NP (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/656 |
+| NR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/711 |
+| NZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/712 |
+| OM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/674 |
+| PA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/751 |
+| PE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/754 |
+| PG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/714 |
+| PH (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/687 |
+| PK (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/675 |
+| PL (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1299 |
+| PT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1302 |
+| PW (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/713 |
+| PY (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/753 |
+| QA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/636 |
+| RO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1309 |
+| RS (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1333 |
+| RU (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1313 |
+| RW (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/589 |
+| SA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/676 |
+| SB (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/717 |
+| SC (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/591 |
+| SD (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/596 |
+| SE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1357 |
+| SG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/677 |
+| SI (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1323 |
+| SK (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1319 |
+| SL (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/594 |
+| SM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1314 |
+| SN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/593 |
+| SO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/595 |
+| SR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/759 |
+| SS (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/568 |
+| ST (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/590 |
+| SV (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/745 |
+| SY (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/678 |
+| SZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/562 |
+| TD (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/602 |
+| TG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/598 |
+| TH (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/682 |
+| TJ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/683 |
+| TL (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/622 |
+| TM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/684 |
+| TN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/599 |
+| TO (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/718 |
+| TR (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1340 |
+| TT (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/760 |
+| TV (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/719 |
+| TW (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/681 |
+| TZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/597 |
+| UA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1346 |
+| UG (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/600 |
+| UY (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761 |
+| UZ (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/685 |
+| VA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1222 |
+| VC (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/757 |
+| VN (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/612 |
+| VU (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/707 |
+| WS (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/716 |
+| XK (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1279 |
+| YE (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/626 |
+| ZA (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/569 |
+| ZM (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/565 |
+| ZW (direct.alternate) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/567 |
+| AD, AE, AF, AG, AL, AM, AO, AR … (+189 more) (direct.alternate (page list)) | 🆕 first run (baseline captured) | https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#countries<br>Not recognized as a country (add to ALIASES in pipeline/src/resolvers/mfaGovMk.ts): Micronesia - Federated States of (australia_and_oceania), Bosnia and Hercegovina (europe), Kingdom of the Netherlands (europe), USA (north_america), Venezuela, Bolivarian Republic of (south_america) |
