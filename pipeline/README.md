@@ -1,6 +1,6 @@
 # EuroVisaCalculator — source verification pipeline
 
-Monthly check that the external sources `sources.ts` points at are (a) still
+Biweekly check that the external sources `sources.ts` points at are (a) still
 live and (b) still say what the app assumes they say. Built in the agreed
 agile scope: **link health + diffing only, for now.** Semantic/LLM
 classification of *which* diffs are rule-relevant is on hold — see "Deferred"
@@ -46,7 +46,8 @@ below.
 
 ## How a run reaches review
 
-`.github/workflows/source-check.yml` runs `npm run check` monthly, and can
+`.github/workflows/source-check.yml` runs `npm run check` every two weeks, on the
+changelog's Friday-to-Thursday periods (the first Friday of each period), and can
 also be started manually from the Actions tab (**Run workflow**). It then
 commits `reports/` and `data/snapshots/` to the `automation/source-check`
 branch and opens a PR, or updates the existing one.
@@ -77,7 +78,7 @@ npm exec playwright install chromium   # once, from pipeline/; for sites that tu
 # Needs open network egress to gov.uk, eur-lex.europa.eu, gov.me, etc.
 npm run check
 
-# Every region, ignoring checkLinks (what the monthly schedule runs).
+# Every region, ignoring checkLinks (what the biweekly schedule runs).
 npm run check -- --all
 
 # Exit non-zero when anything needs review (combines with --all).
@@ -106,7 +107,7 @@ content diffing. Skipped regions are named in the report.
 The flag exists so local runs can stay small while you iterate (a full sweep
 is ~440 URLs). Right now only Schengen and UK are on.
 
-- The **scheduled** monthly workflow always passes `--all`, so the flag never
+- The **scheduled** biweekly workflow always passes `--all`, so the flag never
   silently drops a region from production monitoring.
 - A **manual** run (Actions → Source check → Run workflow) honours the flags
   unless you tick **all_regions**.

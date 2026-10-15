@@ -7432,7 +7432,7 @@ export const ArmeniaSources = {
  * `checkLinks: false` skips the region entirely — no link health, no content
  * diffing — to keep local runs fast while iterating on a subset. Run
  * `npm run check -- --all` in pipeline/ to check every region regardless;
- * the scheduled monthly workflow always does.
+ * the scheduled biweekly workflow always does.
  */
 export const SourceRegions = {
   Schengen: { sources: SchengenSources, checkLinks: true },

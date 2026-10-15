@@ -2,7 +2,7 @@
   "name": "eurovisa-pipeline",
   "private": true,
   "version": "1.0.0",
-  "description": "Monthly source verification pipeline for EuroVisaCalculator: link health + content/link-target diffing over src/data/sources.ts, with a standardized by-region report.",
+  "description": "Biweekly source verification pipeline for EuroVisaCalculator: link health + content/link-target diffing over src/data/sources.ts, with a standardized by-region report.",
   "type": "module",
   "engines": {
     "node": ">=20.11"

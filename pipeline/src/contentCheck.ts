@@ -80,7 +80,7 @@ function isHtml(contentType: string): boolean {
 /**
  * Keys whose values change on every request without the content changing:
  * Solr's response header (query time, echoed params) and per-document index
- * versions. Dropped before diffing so they don't show up as monthly "changes".
+ * versions. Dropped before diffing so they don't show up as "changes" every run.
  */
 const VOLATILE_JSON_KEYS = new Set(['responseHeader', 'QTime', '_version_']);
 
