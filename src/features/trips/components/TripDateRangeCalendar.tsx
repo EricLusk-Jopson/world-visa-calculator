@@ -18,8 +18,15 @@ interface Props {
   scrollToTodayRef?: React.MutableRefObject<(() => void) | null>;
 }
 
-const MONTHS_FORWARD = 24;
-const BASE_MONTHS_BACK = 120; // 10 years; extended dynamically by scrolling to top
+// A small initial window keeps first mount cheap; scrolling toward either
+// edge extends it. Total live months are capped so a long scroll session
+// doesn't grow the mounted DOM forever — growing past the cap trims the
+// opposite edge instead.
+const MONTHS_BACK_INITIAL = 6;
+const MONTHS_FORWARD_INITIAL = 12;
+const EXTEND_STEP = 12;
+const MAX_LIVE_MONTHS = 24;
+const MIN_EDGE_MONTHS = 4;
 
 const CALENDAR_SX = {
   maxHeight: "55dvh",
@@ -83,14 +90,15 @@ export function TripDateRangeCalendar({
   scrollToTodayRef,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const sentinelRef = useRef<HTMLDivElement>(null);
-  const [extraMonthsBack, setExtraMonthsBack] = useState(0);
+  const topSentinelRef = useRef<HTMLDivElement>(null);
+  const bottomSentinelRef = useRef<HTMLDivElement>(null);
+  const [monthsBack, setMonthsBack] = useState(MONTHS_BACK_INITIAL);
+  const [monthsForward, setMonthsForward] = useState(MONTHS_FORWARD_INITIAL);
   const savedScrollHeightRef = useRef(0);
 
-  const totalMonthsBack = BASE_MONTHS_BACK + extraMonthsBack;
+  const totalMonths = monthsBack + monthsForward;
   const now = new Date();
-  const startMonth = new Date(now.getFullYear(), now.getMonth() - totalMonthsBack, 1);
-  const totalMonths = totalMonthsBack + MONTHS_FORWARD;
+  const startMonth = new Date(now.getFullYear(), now.getMonth() - monthsBack, 1);
 
   // Build the scroll-to-today function using the current layout values.
   // Each month is assumed equal height; the ratio gives accurate positioning.
@@ -98,7 +106,7 @@ export function TripDateRangeCalendar({
     const el = containerRef.current;
     if (!el || el.scrollHeight === 0) return;
     const avgMonthPx = el.scrollHeight / totalMonths;
-    el.scrollTop = Math.max(0, avgMonthPx * totalMonthsBack - 40);
+    el.scrollTop = Math.max(0, avgMonthPx * monthsBack - 40);
   }
 
   // Keep the external ref in sync so Today button always calls the latest version.
@@ -111,30 +119,87 @@ export function TripDateRangeCalendar({
     requestAnimationFrame(doScrollToToday);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // When extra months are prepended, preserve relative scroll position.
+  // Growing (or trimming) the number of months *before* the current scroll
+  // position shifts everything below it down (or up); measure the height
+  // change and apply it to scrollTop so the visible content doesn't jump.
+  // Months *after* the scroll position never need this — appending or
+  // removing content below the fold doesn't move anything already on screen.
   useLayoutEffect(() => {
     const el = containerRef.current;
     if (!el || savedScrollHeightRef.current === 0) return;
     el.scrollTop += el.scrollHeight - savedScrollHeightRef.current;
     savedScrollHeightRef.current = 0;
-  }, [extraMonthsBack]);
+  }, [monthsBack]);
 
-  // Prepend 12 months when the user scrolls to the top sentinel.
+  // Extend the window when the user scrolls near the top sentinel, trimming
+  // the forward edge if that pushes the total past the cap. Trimming forward
+  // is scroll-neutral (see above), so it needs no compensation.
+  function growBack() {
+    const nextBack = monthsBack + EXTEND_STEP;
+    const overflow = nextBack + monthsForward - MAX_LIVE_MONTHS;
+    const nextForward =
+      overflow > 0
+        ? Math.max(MIN_EDGE_MONTHS, monthsForward - overflow)
+        : monthsForward;
+    const el = containerRef.current;
+    if (el) savedScrollHeightRef.current = el.scrollHeight;
+    setMonthsBack(nextBack);
+    if (nextForward !== monthsForward) setMonthsForward(nextForward);
+  }
+
+  // Extend the window when the user scrolls near the bottom sentinel,
+  // trimming the back edge if that pushes the total past the cap. Trimming
+  // the back edge shifts content, so it goes through the same
+  // scroll-compensation path as growBack.
+  function growForward() {
+    const nextForward = monthsForward + EXTEND_STEP;
+    const overflow = monthsBack + nextForward - MAX_LIVE_MONTHS;
+    if (overflow > 0 && monthsBack > MIN_EDGE_MONTHS) {
+      const nextBack = Math.max(MIN_EDGE_MONTHS, monthsBack - overflow);
+      const el = containerRef.current;
+      if (el) savedScrollHeightRef.current = el.scrollHeight;
+      setMonthsBack(nextBack);
+    }
+    setMonthsForward(nextForward);
+  }
+
+  // Keep these in sync every render (rather than recreating the observers
+  // below on every window-size change) so growBack/growForward always see
+  // the current monthsBack/monthsForward without any risk of an observer
+  // re-firing against a stale intersection state right after it reconnects.
+  const growBackRef = useRef(growBack);
+  const growForwardRef = useRef(growForward);
   useEffect(() => {
-    const sentinel = sentinelRef.current;
+    growBackRef.current = growBack;
+    growForwardRef.current = growForward;
+  });
+
+  // Extend the window when the user scrolls near either edge. The observers
+  // are created once and call through growBackRef/growForwardRef so they
+  // never need to be recreated as monthsBack/monthsForward change.
+  useEffect(() => {
     const container = containerRef.current;
-    if (!sentinel || !container) return;
-    const observer = new IntersectionObserver(
+    const topSentinel = topSentinelRef.current;
+    const bottomSentinel = bottomSentinelRef.current;
+    if (!container || !topSentinel || !bottomSentinel) return;
+    const topObserver = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          savedScrollHeightRef.current = container.scrollHeight;
-          setExtraMonthsBack((prev) => prev + 12);
-        }
+        if (entry.isIntersecting) growBackRef.current();
       },
       { root: container, threshold: 0.1 },
     );
-    observer.observe(sentinel);
-    return () => observer.disconnect();
+    const bottomObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) growForwardRef.current();
+      },
+      { root: container, threshold: 0.1 },
+    );
+    topObserver.observe(topSentinel);
+    bottomObserver.observe(bottomSentinel);
+    return () => {
+      topObserver.disconnect();
+      bottomObserver.disconnect();
+    };
   }, []);
 
   const entryDateObj = entryDate ? parseDate(entryDate) : undefined;
@@ -152,7 +217,7 @@ export function TripDateRangeCalendar({
 
   return (
     <Box ref={containerRef} sx={CALENDAR_SX}>
-      <Box ref={sentinelRef} sx={{ height: "1px" }} />
+      <Box ref={topSentinelRef} sx={{ height: "1px" }} />
       {/* TODO: add modifiers prop for green/yellow/red day shading */}
       <DayPicker
         mode="range"
@@ -167,6 +232,7 @@ export function TripDateRangeCalendar({
         numberOfMonths={totalMonths}
         hideNavigation
       />
+      <Box ref={bottomSentinelRef} sx={{ height: "1px" }} />
     </Box>
   );
 }
