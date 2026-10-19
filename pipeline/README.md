@@ -1,7 +1,8 @@
 # EuroVisaCalculator — source verification pipeline
 
 Biweekly check that the external sources `sources.ts` points at are (a) still
-live and (b) still say what the app assumes they say. Built in the agreed
+live and (b) still say what the app assumes they say. How to judge what a
+report flags for each source is in the playbooks in `docs/sources/`. Built in the agreed
 agile scope: **link health + diffing only, for now.** Semantic/LLM
 classification of *which* diffs are rule-relevant is on hold — see "Deferred"
 below.
@@ -279,11 +280,12 @@ visaList: {
   human link gets `checkDiff: false` and the alternate `checkDiff: true`.
   The report shows which link was diffed, e.g. `visaList (direct.alternate)`.
 
-Right now content diffing covers **Schengen and UK only**: 8 URLs. UK
-`standardVisitor` (guidance, not a statutory rule) and Schengen `etias`
-(rendered client-side) are off. Schengen `visaList` and `atvCommon` diff
-their **Cellar** alternates rather than the EUR-Lex pages, which are only
-health-checked. Cellar is the Publications Office repository behind EUR-Lex,
+Which links are diffed, and why, is documented per region in
+`docs/sources/` (the playbooks; `docs/sources/OVERVIEW.md` lists them all).
+For example, UK `standardVisitor` (guidance, not a statutory rule) and
+Schengen `etias` (rendered client-side) are health-checked only. Schengen
+`visaList` and `atvCommon` diff their **Cellar** alternates rather than the
+EUR-Lex pages, which are only health-checked. Cellar is the Publications Office repository behind EUR-Lex,
 and it stayed up during an EUR-Lex outage:
 
 ```
