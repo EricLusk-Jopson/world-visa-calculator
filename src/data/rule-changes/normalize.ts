@@ -14,6 +14,7 @@
 
 import type { PassportRule, RegionDefinition, SourceDoc, StayEntitlement, StayLimit } from "@/types";
 import { SourceRegions } from "@/data/sources";
+import { sourceRefOf } from "@/data/sourceIndex";
 import {
   ALBANIA,
   ARMENIA,
@@ -51,19 +52,10 @@ export const RULE_REGIONS: { def: RegionDefinition; sourceRegion: keyof typeof S
 
 type Json = null | boolean | number | string | Json[] | { [key: string]: Json };
 
-let sourceKeys: Map<SourceDoc, string> | undefined;
-
 /** "Montenegro.DZ" for MontenegroSources.DZ, by object identity. */
 export function sourceKeyOf(doc: SourceDoc): string | undefined {
-  if (!sourceKeys) {
-    sourceKeys = new Map();
-    for (const [region, { sources }] of Object.entries(SourceRegions)) {
-      for (const [key, d] of Object.entries(sources as Record<string, SourceDoc>)) {
-        if (!sourceKeys.has(d)) sourceKeys.set(d, `${region}.${key}`);
-      }
-    }
-  }
-  return sourceKeys.get(doc);
+  const ref = sourceRefOf(doc);
+  return ref && `${ref.region}.${ref.key}`;
 }
 
 const isSourceDoc = (v: object): v is SourceDoc => "direct" in v && "parent" in v && "dateChecked" in v;

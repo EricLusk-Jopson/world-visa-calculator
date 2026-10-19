@@ -83,12 +83,38 @@ export function unrecordedRegions(dir = STATE_DIR): string[] {
   );
 }
 
-/** The latest entry (by id) that changed each region, baseline and backfilled entries aside. */
-export function lastChangePerRegion(entries: RuleChangeEntry[]): Map<string, RuleChangeEntry> {
+/**
+ * The latest entry (by id) that changed each region. Backfilled entries count
+ * unless `recordedOnly` (for lastVerified, which predates the log).
+ */
+export function lastChangePerRegion(entries: RuleChangeEntry[], recordedOnly = false): Map<string, RuleChangeEntry> {
   const out = new Map<string, RuleChangeEntry>();
   for (const e of entries) {
-    if (e.baseline || e.backfilled) continue;
+    if (e.baseline || (recordedOnly && e.backfilled)) continue;
     for (const c of e.changes) out.set(c.region, e);
   }
   return out;
+}
+
+export const SUMMARY_PATH = join(RULE_CHANGES_DIR, "summary.json");
+
+/** What the app shows about the log, per SourceRegions key: the latest entry that changed it, and the baseline. */
+export type RuleChangeSummary = {
+  baseline?: { id: number; recorded: string };
+  bySourceRegion: Record<string, { id: number; recorded: string; title: string }>;
+};
+
+/** summary.json: small enough to ship to the browser, unlike the entries themselves. */
+export function summarizeLog(entries: RuleChangeEntry[]): RuleChangeSummary {
+  const baseline = entries.find((e) => e.baseline);
+  const bySourceRegion: RuleChangeSummary["bySourceRegion"] = {};
+  for (const [code, e] of lastChangePerRegion(entries)) {
+    const region = RULE_REGIONS.find((r) => r.def.code === code)?.sourceRegion;
+    if (region) bySourceRegion[region] = { id: e.id, recorded: e.recorded, title: e.title };
+  }
+  return { baseline: baseline && { id: baseline.id, recorded: baseline.recorded }, bySourceRegion };
+}
+
+export function writeSummary(entries: RuleChangeEntry[]): void {
+  writeFileSync(SUMMARY_PATH, `${JSON.stringify(summarizeLog(entries), null, 2)}\n`);
 }

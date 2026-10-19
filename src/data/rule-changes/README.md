@@ -54,7 +54,7 @@ The log is listed publicly under "Rule changes" on /updates.
 4. Bump `lastVerified` in the region file.
 5. Run `npm test` and commit everything together.
 
-`npm run rules:check` runs just the log's tests.
+`npm run rules:check` regenerates `summary.json` (the small digest the app reads to show "rules last changed") and runs the log's tests. `rules:new` updates it too.
 
 ## Entry format
 

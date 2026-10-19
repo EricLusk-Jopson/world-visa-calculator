@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { LinkHealthResult, LinkHealthStatus, RuleCheckResult, RuleCheckStatus, UrlUsage } from './types';
 
@@ -280,6 +280,27 @@ export function renderPrBody(report: Report, options: { reportPath: string; page
 
 export type WrittenReport = { markdownPath: string; jsonPath: string; prBodyPath: string };
 
+/** Per-URL link status, for the app's source popovers (the full report is too big to ship). */
+export type LinkStatusIndex = {
+  generatedAt: string;
+  urls: Record<string, { status: LinkHealthResult['status']; checkedAt: string }>;
+};
+
+/**
+ * Folds a report's link health into the previous index. URLs this run
+ * didn't check (regions with checkLinks: false) keep their last result and
+ * its date.
+ */
+export function updateLinkStatusIndex(previous: LinkStatusIndex | undefined, report: Report): LinkStatusIndex {
+  const checkedAt = report.generatedAt.slice(0, 10);
+  const urls = { ...(previous?.urls ?? {}) };
+  for (const region of report.regions) {
+    for (const l of region.linkHealth) urls[l.url] = { status: l.status, checkedAt };
+  }
+  const sorted = Object.fromEntries(Object.keys(urls).sort().map((u) => [u, urls[u]]));
+  return { generatedAt: report.generatedAt, urls: sorted };
+}
+
 /**
  * Writes a dated report and a stable "latest" copy, in markdown (human
  * review / PR diff) and JSON (rendered by the site's /source-report page),
@@ -298,6 +319,9 @@ export function writeReportFiles(report: Report, outDir: string, options: { repo
   writeFileSync(jsonPath, json, 'utf-8');
   writeFileSync(join(outDir, 'latest.md'), markdown, 'utf-8');
   writeFileSync(join(outDir, 'latest.json'), json, 'utf-8');
+  const statusPath = join(outDir, 'link-status.json');
+  const previous = existsSync(statusPath) ? (JSON.parse(readFileSync(statusPath, 'utf-8')) as LinkStatusIndex) : undefined;
+  writeFileSync(statusPath, JSON.stringify(updateLinkStatusIndex(previous, report), null, 1) + '\n', 'utf-8');
   writeFileSync(prBodyPath, renderPrBody(report, options), 'utf-8');
 
   return { markdownPath, jsonPath, prBodyPath };

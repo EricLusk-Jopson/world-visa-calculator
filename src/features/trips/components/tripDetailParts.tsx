@@ -1,12 +1,11 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { tokens } from "@/styles/theme";
 import { ImpactPreview } from "@/components/ui";
+import { SourceButton } from "@/components/ui/SourceButton";
 import { type DurationState } from "@/components/ui/DurationIcon";
 import { parseDate } from "@/features/calculator/utils/dates";
 import type { EligibilityNote } from "@/pages/CalculatorPage/components/trips/tripEligibility";
@@ -92,7 +91,7 @@ export function InfoRow({
   label: string;
   value: string;
   valueColor?: string;
-  /** When present, renders a small link icon that opens this row's citation. */
+  /** When present, renders a small button that opens this row's source details. */
   source?: SourceDoc;
 }) {
   return (
@@ -127,23 +126,7 @@ export function InfoRow({
         >
           {value}
         </Typography>
-        {source && (
-          <IconButton
-            component="a"
-            href={source.direct.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            size="small"
-            aria-label="View source"
-            sx={{
-              p: "1px",
-              color: tokens.textGhost,
-              "&:hover": { color: tokens.navy, bgcolor: "transparent" },
-            }}
-          >
-            <OpenInNewIcon sx={{ fontSize: "0.72rem" }} />
-          </IconButton>
-        )}
+        {source && <SourceButton source={source} />}
       </Box>
     </Box>
   );
@@ -173,23 +156,7 @@ export function NoteBlock({ note }: { note: EligibilityNote }) {
       >
         {note.text}
       </Typography>
-      {note.source && (
-        <Box
-          component="a"
-          href={note.source.direct.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{
-            fontFamily: tokens.fontBody,
-            fontSize: "0.7rem",
-            color: tokens.navy,
-            textDecoration: "none",
-            "&:hover": { textDecoration: "underline" },
-          }}
-        >
-          Source ↗
-        </Box>
-      )}
+      {note.source && <SourceButton source={note.source} variant="text" />}
     </Box>
   );
 }
