@@ -259,6 +259,13 @@ export function renderPrBody(report: Report, options: { reportPath: string; page
   if (problemRules.length > 0) {
     lines.push('## Content diffing findings');
     lines.push('');
+    if (problemRules.some(({ c }) => isChanged(c.status))) {
+      lines.push(
+        `Triage the changes before merging: \`/triage-report ${report.generatedAt.slice(0, 10)}\` in Claude Code classifies each one ` +
+          'against its source playbook (`docs/sources/`) and records the verdicts in `pipeline/triage/`.',
+      );
+      lines.push('');
+    }
     for (const { region, c } of problemRules) renderRuleDetail(lines, c, `### ${region} ·`);
   }
 

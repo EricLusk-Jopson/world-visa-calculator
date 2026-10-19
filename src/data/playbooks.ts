@@ -108,6 +108,21 @@ export function entryFor(links: PlaybookLink[], url: string): PlaybookLink | und
     .sort((a, b) => b.urlPrefix!.length - a.urlPrefix!.length)[0];
 }
 
+/**
+ * The entry for a URL as a source-check report names it. Resolver pages
+ * appear filled in (`…/api/subpage/<slug>`, `…#africa/51`) or as their
+ * country list (`…#countries`), so after entryFor this tries a template's
+ * text before `{key}`, then the URL without its fragment.
+ */
+export function entryForReportUrl(links: PlaybookLink[], url: string): PlaybookLink | undefined {
+  const direct = entryFor(links, url);
+  if (direct) return direct;
+  const template = links.find((l) => l.url?.includes("{key}") && url.startsWith(l.url.slice(0, l.url.indexOf("{key}"))));
+  if (template) return template;
+  const hash = url.indexOf("#");
+  return hash > 0 ? entryFor(links, url.slice(0, hash)) : undefined;
+}
+
 /** What sources.ts actually does with a set of cited links. */
 function actualMachineCheck(cited: CitedLink[]): PlaybookLink["machineCheck"] {
   const all = cited.flatMap((c) => c.links.map((l) => l.link));

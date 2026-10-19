@@ -29,14 +29,19 @@ behind those rules every two weeks.
 - **Changing a rule in a region file:** record it with `npm run rules:new`,
   fill in the entry's `TODO(entry)` sections and bump the region's
   `lastVerified`. The tests fail on an unrecorded or unfinished change.
-- **Triaging a source-check report** (`pipeline/reports/latest.md`): for each
-  flagged diff, read the link's playbook section first. Its "Real change vs
-  noise" part says how to classify it. Never change a rule from a diff alone:
-  confirm against the live source (the playbook's "Human" steps), and quote
-  the evidence.
+- **Triaging a source-check report** (`pipeline/reports/<date>.json`): use the
+  `/triage-report` skill. For each flagged diff, read the link's playbook
+  section first; its "Real change vs noise" part says how to classify it.
+  Never change a rule from a diff alone: confirm against the live source
+  (the playbook's "Human" steps), and quote the evidence. Verdicts go in
+  `pipeline/triage/<date>.yml`; then run `npm run stats`.
 - **A source the pipeline can't read** (blocked, script-rendered, link-only):
   the playbook's `humanCheck` says when to look by hand, and its Human steps
   say how.
+- Skills: `/triage-report`, `/record-rule-change`, `/verify-region` (the
+  by-hand checks) and `/review-user-reports` (submissions from the app).
+- `docs/sources/STATS.md` is the observed record: per link, how many diffs
+  were rule changes vs noise, and which rule changes no diff caught.
 - `TODO(human)` in a playbook marks something only the maintainer can
   decide or confirm.
 
@@ -46,6 +51,8 @@ behind those rules every two weeks.
 - `npm run playbooks:overview`: regenerate `docs/sources/OVERVIEW.md`.
 - `npm run rules:new -- --title … --trigger <type>:<ref> --evidence Region:link`:
   record a rule change. `npm run rules:check` runs the log's tests.
+- `npm run stats`: regenerate `docs/sources/STATS.md` from the reports,
+  triage records and rule-change log.
 - `cd pipeline && npm run check`: run the source check (needs network to the
   government sites; the cloud sandbox can't reach most of them).
 - `cd pipeline && npm test`: pipeline tests.
