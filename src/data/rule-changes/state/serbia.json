@@ -1,0 +1,2627 @@
+{
+  "code": "serbia",
+  "name": "Serbia",
+  "memberStates": [
+    "RS"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required"
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AD"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AE"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.AF"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AG"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.AL"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AL"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AM"
+          }
+        }
+      ]
+    },
+    "AO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.AO"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AR"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.AT"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AT"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AU"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.AZ"
+          }
+        }
+      ]
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.BA"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.BA"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 30,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Serbia.BB"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BD"
+      }
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.BE"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.BE"
+          }
+        }
+      ]
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BF"
+      }
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.BG"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.BG"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.BH"
+          }
+        }
+      ]
+    },
+    "BI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BI"
+      }
+    },
+    "BJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BJ"
+      }
+    },
+    "BN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BN"
+      }
+    },
+    "BO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BO"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.BR"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 30,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Serbia.BS"
+          }
+        }
+      ]
+    },
+    "BT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BT"
+      }
+    },
+    "BW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BW"
+      }
+    },
+    "BY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.BY"
+              },
+              "text": "Source states only a 30-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 30-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.BY"
+          }
+        }
+      ]
+    },
+    "BZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.BZ"
+      }
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.CA"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.CD"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.CF"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.CG"
+      }
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.CH"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.CH"
+          }
+        }
+      ]
+    },
+    "CI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.CI"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.CL"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.CM"
+      }
+    },
+    "CN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.CN"
+              },
+              "text": "Source states only a 30-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 30-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            },
+            {
+              "source": {
+                "$source": "Serbia.CN"
+              },
+              "text": "Ordinary-passport figure. Business passport holders travelling \"on business\" and holders of diplomatic/official passports are visa-free with no stated day limit per the source. Hong Kong SAR (HK) and Macao SAR (MO) passports are NOT mainland Chinese passports and have their own distinct entries in this file (14 days and 90 days respectively) — see those entries, not this one."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.CN"
+          }
+        }
+      ]
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 30,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Serbia.CO"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.CR"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.CU"
+      }
+    },
+    "CV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.CV"
+      }
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.CY"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.CY"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.CZ"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.CZ"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.DE"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.DE"
+          }
+        }
+      ]
+    },
+    "DJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.DJ"
+      }
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.DK"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.DK"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.DM"
+          }
+        }
+      ]
+    },
+    "DO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.DO"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.DZ"
+      }
+    },
+    "EC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.EC"
+      }
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.EE"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.EE"
+          }
+        }
+      ]
+    },
+    "EG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.EG"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.ER"
+      }
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.ES"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.ES"
+          }
+        }
+      ]
+    },
+    "ET": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.ET"
+      }
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.FI"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.FI"
+          }
+        }
+      ]
+    },
+    "FJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.FJ"
+      }
+    },
+    "FM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.FM"
+      }
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.FR"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.FR"
+          }
+        }
+      ]
+    },
+    "GA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.GA"
+      }
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.GB"
+          }
+        }
+      ]
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.GD"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.GE"
+          }
+        }
+      ]
+    },
+    "GH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.GH"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.GM"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.GN"
+      }
+    },
+    "GQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.GQ"
+      }
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.GR"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.GR"
+          }
+        }
+      ]
+    },
+    "GT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.GT"
+      }
+    },
+    "GW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.GW"
+      }
+    },
+    "GY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.GY"
+      }
+    },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 14
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.HK"
+              },
+              "text": "Source states only a 14-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 14-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            },
+            {
+              "source": {
+                "$source": "Serbia.HK"
+              },
+              "text": "Hong Kong SAR passport — distinct from mainland China (CN) and Macao SAR (MO), each with their own figures on the same source page."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.HK"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.HN"
+      }
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.HR"
+          }
+        }
+      ]
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.HT"
+      }
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.HU"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.HU"
+          }
+        }
+      ]
+    },
+    "ID": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 30,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Serbia.ID"
+          }
+        }
+      ]
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.IE"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.IE"
+          }
+        }
+      ]
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.IL"
+              },
+              "text": "Ordinary-passport figure. Holders of an Israeli \"Travel Document in Lieu of National Passport\" get the same 90-day allowance; holders of an Israeli \"Travel Document\" (a more limited document) require a visa. This file does not model travel-document sub-types."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.IL"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.IN"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.IQ"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.IR"
+      }
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.IS"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.IS"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.IT"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.IT"
+          }
+        }
+      ]
+    },
+    "JM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 30,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Serbia.JM"
+          }
+        }
+      ]
+    },
+    "JO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.JO"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.JP"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.KE"
+      }
+    },
+    "KG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.KG"
+          }
+        }
+      ]
+    },
+    "KH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.KH"
+      }
+    },
+    "KI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.KI"
+      }
+    },
+    "KM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.KM"
+      }
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.KN"
+          }
+        }
+      ]
+    },
+    "KP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.KP"
+      }
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.KR"
+              },
+              "text": "Source states only a 90-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 90-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.KR"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.KW"
+      }
+    },
+    "KZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.KZ"
+              },
+              "text": "Source states only a 30-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 30-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.KZ"
+          }
+        }
+      ]
+    },
+    "LA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.LA"
+      }
+    },
+    "LB": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.LB"
+      }
+    },
+    "LC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.LC"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.LI"
+          }
+        }
+      ]
+    },
+    "LK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.LK"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.LR"
+      }
+    },
+    "LS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.LS"
+      }
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.LT"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.LT"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.LU"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.LU"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.LV"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.LV"
+          }
+        }
+      ]
+    },
+    "LY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.LY"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MA"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.MC"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.MD"
+              },
+              "text": "Visa exemption applies to holders of biometric passports issued by Moldova in line with ICAO standards."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.MD"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.ME"
+              },
+              "text": "Source states only a 90-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 90-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            },
+            {
+              "source": {
+                "$source": "Serbia.ME"
+              },
+              "text": "Citizens of Montenegro may also enter using an ID card or other document proving identity and citizenship, instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.ME"
+          }
+        }
+      ]
+    },
+    "MG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MG"
+      }
+    },
+    "MH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Serbia.MH"
+          },
+          "text": "No visa-regime information is published on Serbia's Ministry of Foreign Affairs site for Marshall Islands (the page returns no rows). Defaulting to visa_required as the conservative assumption."
+        }
+      ],
+      "source": {
+        "$source": "Serbia.MH"
+      }
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.MK"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.MK"
+          }
+        }
+      ]
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.ML"
+      }
+    },
+    "MM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MM"
+      }
+    },
+    "MN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MN"
+      }
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.MO"
+              },
+              "text": "Source states only a 90-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 90-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            },
+            {
+              "source": {
+                "$source": "Serbia.MO"
+              },
+              "text": "Macao SAR passport — distinct from mainland China (CN) and Hong Kong SAR (HK), each with their own figures on the same source page."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.MO"
+          }
+        }
+      ]
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MR"
+      }
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.MT"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.MT"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MU"
+      }
+    },
+    "MV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MV"
+      }
+    },
+    "MW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MW"
+      }
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.MX"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MY"
+      }
+    },
+    "MZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.MZ"
+      }
+    },
+    "NA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.NA"
+      }
+    },
+    "NE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.NE"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.NG"
+      }
+    },
+    "NI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.NI"
+      }
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.NL"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.NL"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.NO"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.NO"
+          }
+        }
+      ]
+    },
+    "NP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.NP"
+      }
+    },
+    "NR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.NR"
+      }
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.NZ"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.OM"
+      }
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.PA"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.PE"
+          }
+        }
+      ]
+    },
+    "PG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.PG"
+      }
+    },
+    "PH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.PH"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.PK"
+      }
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.PL"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.PL"
+          }
+        }
+      ]
+    },
+    "PS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.PS"
+      }
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.PT"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.PT"
+          }
+        }
+      ]
+    },
+    "PW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.PW"
+          }
+        }
+      ]
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 30,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Serbia.PY"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.QA"
+      }
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.RO"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.RO"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "free_movement"
+    },
+    "RU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.RU"
+              },
+              "text": "Source states only a 30-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 30-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.RU"
+          }
+        }
+      ]
+    },
+    "RW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.RW"
+      }
+    },
+    "SA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SA"
+      }
+    },
+    "SB": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SB"
+      }
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.SC"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SD"
+      }
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.SE"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.SE"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.SG"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.SI"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.SI"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.SK"
+              },
+              "text": "Nationals may also enter using a valid national ID card instead of a passport."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.SK"
+          }
+        }
+      ]
+    },
+    "SL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SL"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.SM"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SN"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SO"
+      }
+    },
+    "SR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.SR"
+              },
+              "text": "Source states only a 30-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 30-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.SR"
+          }
+        }
+      ]
+    },
+    "SS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SS"
+      }
+    },
+    "ST": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.ST"
+      }
+    },
+    "SV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SV"
+      }
+    },
+    "SY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SY"
+      }
+    },
+    "SZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.SZ"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TD"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TG"
+      }
+    },
+    "TH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TH"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TJ"
+      }
+    },
+    "TL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TL"
+      }
+    },
+    "TM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TM"
+      }
+    },
+    "TN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TN"
+      }
+    },
+    "TO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TO"
+      }
+    },
+    "TR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.TR"
+          }
+        }
+      ]
+    },
+    "TT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.TT"
+          }
+        }
+      ]
+    },
+    "TV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.TV"
+          }
+        }
+      ]
+    },
+    "TW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "text": "Taiwan has no dedicated page in the scraped dataset this file was generated from (unlike the other ~194 nationalities). Defaulting to visa_required as the conservative assumption. TODO: verify directly against the MFA site."
+        }
+      ],
+      "source": {
+        "$source": "Serbia.TW"
+      }
+    },
+    "TZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.TZ"
+      }
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.UA"
+          }
+        }
+      ]
+    },
+    "UG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.UG"
+      }
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.US"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.UY"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.UZ"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Serbia.VA"
+              },
+              "text": "Source states only a 90-day allowance with no window language. Serbia's standard 90-day-in-180-day cap is treated as still applying on top of it: the 90-day figure governs any single visit, the rolling window governs cumulative presence across visits."
+            }
+          ],
+          "source": {
+            "$source": "Serbia.VA"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 30,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Serbia.VC"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Serbia.VE"
+          }
+        }
+      ]
+    },
+    "VN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.VN"
+      }
+    },
+    "VU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.VU"
+      }
+    },
+    "WS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.WS"
+      }
+    },
+    "YE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.YE"
+      }
+    },
+    "ZA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.ZA"
+      }
+    },
+    "ZM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.ZM"
+      }
+    },
+    "ZW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Serbia.ZW"
+      }
+    }
+  }
+}

@@ -1,0 +1,3440 @@
+{
+  "code": "turkiye",
+  "name": "Türkiye",
+  "memberStates": [
+    "TR"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "notes": [
+      {
+        "source": {
+          "$source": "Turkiye.mfaVisaInfo"
+        },
+        "text": "The standard allowance is 90 days in any 180-day rolling window. Some nationalities have shorter allowances (30 or 60 days) or differently structured windows; see your passport rule for details. Passports must be valid for at least 60 days beyond your intended stay."
+      }
+    ],
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required",
+    "source": {
+      "$source": "Turkiye.mfaVisaInfo"
+    }
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Diplomatic, ordinary, special, and service passport holders all require a visa. The conditional e-Visa option applies to ordinary, special, and service passport holders only."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Also available as a visa on arrival at Turkish ports of entry."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "AO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary passport holders are visa-free for touristic visits and transit. Holders of official (diplomatic, service, special) passports are required to obtain a visa in advance from a Turkish diplomatic mission."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Diplomatic and official/service passport holders are visa-free for up to 90 days."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary passport holders are visa-free for 90 days in any 180. Official passport holders require a visa; official passport holders may obtain a visa for up to 15 days at Turkish border crossings."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "BJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Applies to all passport types (diplomatic, official, ordinary). Stay not to exceed 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BT": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "BW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "BY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary and official passport holders are visa-free for stays of up to 30 days per entry. The total stay must not exceed 90 days within any one calendar year. This is not a rolling 180-day window."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "BZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary passport holders are visa-free. Holders of official (diplomatic, service, special) passports are required to obtain a visa in advance from a Turkish diplomatic mission."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "CI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "CN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary passport holders are visa-free as of 2 January 2026. Holders of official passports are visa-free for up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Applies to all passport types (ordinary and official). Stay not to exceed 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "CV": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Applies to holders of Greek Cypriot Administration (Republic of Cyprus) passports. As of 2 January 2026, visa issuance at Turkish border gates is no longer available. The e-Visa must be obtained online or from Turkish diplomatic or consular missions abroad before travel."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "DJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "DO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Also available as a visa on arrival at Turkish ports of entry."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "DZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary passport holders aged 18–35 require a visa with no e-Visa option. Ordinary passport holders aged 15–18 and 35–65 may apply for a conditional 30-day single-entry e-Visa if they hold a valid Schengen/US/UK/Ireland visa or residence permit. Ordinary passport holders under 15 or over 65 are visa-free for 90 days in any 180-day period. Official passport holders are visa-free for up to 90 days."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "EC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "EG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "The conditional e-Visa requirement applies to ordinary passport holders aged 15–45 and additionally requires travel to Türkiye with Turkish Airlines, AJet, Pegasus, EgyptAir, or Air Cairo. Ordinary passport holders under 15 or over 45 may apply for an unconditional e-Visa without these conditions. Official passport holders are visa-free for up to 90 days."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "ET": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "FJ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "A 30-day single-entry e-Visa is available via www.evisa.gov.tr. Alternatively, a 90-day multiple-entry visa may be obtained from Turkish diplomatic missions abroad. Official passport holders are visa-free for up to 90 days."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "FM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "GA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "transit"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Diplomatic and official passport holders require a visa. British National Overseas (BNO), British Subject, and British Protected Person passport holders require a visa and may only obtain it from a Turkish diplomatic or consular mission abroad."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Also available as a visa on arrival at Turkish ports of entry."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "GH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "GQ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Diplomatic, official, and service passport holders are visa-free for up to 90 days in any 180-day period."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "GW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "GY": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad. Official passport holders are visa-free for up to 90 days in any 180-day period."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Applies to holders of 'Hong Kong Special Administrative Region of the People's Republic of China' passports only. British National (Overseas) (BNO) passport holders must obtain a 3-month multiple-entry e-Visa via www.evisa.gov.tr. Holders of 'Document of Identity for Visa Purposes (Hong Kong)' must obtain a visa from Turkish diplomatic or consular missions abroad."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "ID": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Each entry permits a stay of up to 30 days. The total number of days across multiple entries must not exceed 90 days in any 180-day period."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary and diplomatic passport holders are visa-free. Service, special, and other official passport holders require a visa (exception: members of ministerial delegations are exempt)."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Diplomatic passport holders are visa-free for up to 90 days."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "The conditional e-Visa requirement applies to ordinary passport holders aged 15–50. Ordinary passport holders under 15 or over 50 are visa-free for 90 days in any 180-day period. Official passport holders are visa-free for up to 90 days in any 180-day period."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "IR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "JM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "JO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            },
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Touristic purposes and transit only."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "KG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "KH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "KI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "KM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "KN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "KP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "KZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "LA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "LB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            },
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Touristic purposes and transit only."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "LC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "LK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "The conditional e-Visa applies to both ordinary and official passport holders."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "LS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "LY": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "The conditional e-Visa requirement applies to ordinary passport holders aged 16–45. Ordinary passport holders under 16 or over 45 are visa-free for 90 days in any 180-day period. Diplomatic and official passport holders are visa-free for up to 90 days within 6 months from first entry date."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "MA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "MH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "MM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "MN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "transit"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Visa exemption applies for touristic visits only. Stay not to exceed 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Applies to holders of 'Região Administrativa Especial de Macau da República Popular da China' passports only. Stay not to exceed 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "A 1-month multiple-entry e-Visa is available via www.evisa.gov.tr. Alternatively, a 3-month multiple-entry visa may be obtained from Turkish diplomatic missions abroad. Official passport holders are visa-free for up to 90 days."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "A 30-day single-entry e-Visa is available via www.evisa.gov.tr. Alternatively, a 90-day multiple-entry visa may be obtained from Turkish diplomatic missions abroad. Diplomatic passport holders are visa-free for up to 90 days."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "MZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "NA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "e-Visa available via www.evisa.gov.tr as of 5 May 2025. Official passport holders are visa-free for up to 90 days."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "NE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "NP": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Official passport holders may obtain a 1-month visa from Turkish diplomatic missions abroad."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "NR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "PG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "PH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Diplomatic, official, and service passport holders are visa-free for up to 30 days."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Official passport holders are visa-free for up to 90 days."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "PS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Diplomatic passport holders are visa-free for up to 90 days in any 180-day period. Other official passport holders require a visa."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "PW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            },
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Applies to all passport types including service, special, and official passports."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            },
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Applies to all passport types including travel documents. Touristic purposes and transit only."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 60,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary passport holders are visa-free for up to 60 days. Service passport holders are visa-free for up to 30 days with a maximum of 90 days within any 180-day period. Diplomatic passport holders are visa-free for up to 90 days."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "RW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "SA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SB": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Diplomatic passport holders are visa-free for up to 90 days."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "SR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Diplomatic and service passport holders are visa-free for up to 90 days."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "ST": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "SY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "SZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "TH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary passport holders are visa-free for up to 30 days. Official passport holders are visa-free for up to 90 days."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "TL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "TM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "TN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "TO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "TR": {
+      "access": "free_movement"
+    },
+    "TT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "TV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "TW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "The conditional e-Visa requirement is for ordinary and official passport holders."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "TZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "All passport types are visa-free. Biometric identity cards are accepted for direct travel from Ukraine to Türkiye."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "UG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Ordinary passport holders are visa-free. Holders of official (diplomatic, service, special) passports are required to obtain a visa in advance from a Turkish diplomatic mission."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Diplomatic and ordinary passport holders are visa-free. Other official passport holders (service, special) require a visa."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Also available as a visa on arrival at Turkish ports of entry."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (90 days, multiple entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "The 90-day allowance applies within each six-month period. Official passport holders are visa-free for up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "VN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Official passport holders are visa-free for up to 90 days."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "VU": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "WS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "XK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Türkiye’s MFA describes this exemption as \"90 days within 180 days from the first entry date\" (some entries say \"within six months\"). Article 11(1) of Law No. 6458 caps every visa exemption at 90 days in any 180 days, so this is treated as the standard 90/180 rolling window. A reset-on-first-entry mechanic is not applied unless a specific bilateral treaty confirms it."
+            },
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "Touristic purposes and transit only."
+            }
+          ],
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "YE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Official passport holders are visa-free for up to 30 days."
+        }
+      ],
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "ZA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism",
+                "commerce"
+              ],
+              "type": "purpose"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Turkiye.mfaVisaInfo"
+              },
+              "text": "A 1-month single-entry e-Visa is available via www.evisa.gov.tr. Alternatively, a 3-month multiple-entry visa may be obtained from Turkish diplomatic missions abroad. Official passport holders are visa-free for up to 30 days."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://evisa.gov.tr/en",
+            "authValidityDays": null,
+            "multiEntry": false,
+            "name": "Türkiye e-Visa (30 days, single entry)",
+            "type": "e_visa"
+          },
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          }
+        }
+      ]
+    },
+    "ZM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    },
+    "ZW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Turkiye.mfaVisaInfo"
+      }
+    }
+  }
+}

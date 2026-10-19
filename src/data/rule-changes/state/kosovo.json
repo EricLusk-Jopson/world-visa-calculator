@@ -1,0 +1,2597 @@
+{
+  "code": "kosovo",
+  "name": "Kosovo",
+  "memberStates": [
+    "XK"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required"
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "BZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "FJ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "FM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "GY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "JO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "KI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "LC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "LS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "NA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "NR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "PG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "PW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "SA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "SB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "ST": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "SZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "TL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "TO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "TR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "TT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "TV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "VU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "WS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Kosovo.visaExempt"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Kosovo.visaExempt"
+          }
+        }
+      ]
+    },
+    "XK": {
+      "access": "free_movement"
+    }
+  }
+}

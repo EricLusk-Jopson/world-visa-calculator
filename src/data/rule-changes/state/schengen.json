@@ -1,0 +1,3236 @@
+{
+  "code": "schengen",
+  "name": "Schengen Area",
+  "memberStates": [
+    "AT",
+    "BE",
+    "BG",
+    "CH",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GR",
+    "HR",
+    "HU",
+    "IS",
+    "IT",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required",
+    "source": {
+      "$source": "Schengen.visaList"
+    }
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Poland. Not required at other Schengen airports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "AO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "free_movement"
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "BE": {
+      "access": "free_movement"
+    },
+    "BF": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "BG": {
+      "access": "free_movement"
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain, France, Netherlands. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Greece, Spain, France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "CH": {
+      "access": "free_movement"
+    },
+    "CI": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain, France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Greece, Spain, France, Cyprus. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Germany, Spain, France, Netherlands, Poland, Switzerland. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain, Netherlands, Switzerland: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "CY": {
+      "access": "free_movement"
+    },
+    "CZ": {
+      "access": "free_movement"
+    },
+    "DE": {
+      "access": "free_movement"
+    },
+    "DJ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "DK": {
+      "access": "free_movement"
+    },
+    "DM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "DO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic. Not required at other Schengen airports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "EE": {
+      "access": "free_movement"
+    },
+    "EG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Spain, Poland, Romania. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "ES": {
+      "access": "free_movement"
+    },
+    "ET": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "FI": {
+      "access": "free_movement"
+    },
+    "FM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "free_movement"
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Diplomatic, service, and official passport holders: visa-free access suspended March 2026 to March 2027 by EU Council decision. Ordinary biometric passport holders are unaffected."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "GH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Spain, France, Netherlands, Portugal. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to both ordinary and service passport holders (unlike most entries where France requires ATV for ordinary passports only)."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "GR": {
+      "access": "free_movement"
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "GW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Spain, Netherlands. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "description": "Applies only to holders of a 'Hong Kong Special Administrative Region' passport.",
+              "type": "passport_identifier"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "free_movement"
+    },
+    "HT": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Spain, France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: for ordinary passports, ATV applies only to those issued from 1 September 2021."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "HU": {
+      "access": "free_movement"
+    },
+    "IE": {
+      "access": "free_movement"
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Germany, France, Romania. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "IS": {
+      "access": "free_movement"
+    },
+    "IT": {
+      "access": "free_movement"
+    },
+    "JO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Germany. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Germany exemption: ATV not required for holders of a valid visa for Australia, Israel, or New Zealand with a confirmed onward ticket to that country, or those returning to Jordan after an authorised stay in one of those countries. Onward flight must depart within 12 hours of arrival in Germany."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "KI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "LB": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Germany, Romania. Not required at other Schengen airports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "LC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "free_movement"
+    },
+    "LK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "LT": {
+      "access": "free_movement"
+    },
+    "LU": {
+      "access": "free_movement"
+    },
+    "LV": {
+      "access": "free_movement"
+    },
+    "LY": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic. Not required at other Schengen airports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Romania. Not required at other Schengen airports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies to holders of biometric passports issued by Moldova in line with ICAO standards."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "MH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "ML": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Germany, Spain, France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "description": "Applies only to holders of a 'Região Administrativa Especial de Macau' passport.",
+              "type": "passport_identifier"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "MR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Spain, France, Netherlands. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "MT": {
+      "access": "free_movement"
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "NE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic. Not required at other Schengen airports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "free_movement"
+    },
+    "NO": {
+      "access": "free_movement"
+    },
+    "NP": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Spain, France, Netherlands, Romania. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "NR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "PH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports. Sea crew holding a valid seafarer's identity document issued under ILO Conventions No. 108 (1958) or No. 185 (2003) and the FAL Convention are exempt."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "PL": {
+      "access": "free_movement"
+    },
+    "PS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Czech Republic, Spain, France, Romania. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies only to holders of the travel document for Palestinian refugees."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "PT": {
+      "access": "free_movement"
+    },
+    "PW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "free_movement"
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies to holders of biometric passports issued in line with ICAO standards. Does not apply to holders of Serbian passports issued by the Serbian Coordination Directorate (Koordinaciona uprava)."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Spain, France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to ordinary passports only, and only for Russian nationals departing from airports in Armenia, Azerbaijan, Georgia, Ukraine, Belarus, Moldova, Turkey, or Egypt."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "SB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Czech Republic, Germany, Greece, Spain, France, Cyprus, Netherlands. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "SE": {
+      "access": "free_movement"
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "free_movement"
+    },
+    "SK": {
+      "access": "free_movement"
+    },
+    "SL": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain, France, Netherlands. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain, France, Italy, Netherlands, Portugal. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvCommon"
+          },
+          "text": "Airport transit visa required when transiting the international zone of any Schengen airport, even without entering Schengen territory."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "SS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Czech Republic, Germany, France, Netherlands. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "SY": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Czech Republic, Denmark, Germany, Greece, Spain, France, Italy, Netherlands, Austria, Romania, Norway, Switzerland. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain, Netherlands, Switzerland: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Czech Republic, Spain, France, Netherlands. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Spain, France. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Spain, Italy, Romania. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "TL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "TN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Romania. Not required at other Schengen airports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "TO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "TR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Czech Republic, Germany, Spain, France, Cyprus, Netherlands, Norway, Switzerland. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain, Netherlands, Switzerland: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Netherlands: additionally, ATV does not apply to seafarers holding a valid seafarer's identity document issued under ILO Conventions No. 108 (1958) or No. 185 (2003) and the FAL Convention."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "TT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "TV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "TW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "description": "Applies only to holders of passports issued by Taiwan which include a national identity card number.",
+              "type": "passport_identifier"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies to holders of biometric passports issued by Ukraine in line with ICAO standards."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Spain, France, Italy, Portugal, Romania. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "France: ATV applies to holders of ordinary passports only."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "WS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "XK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Schengen.visaList"
+              },
+              "text": "This designation is without prejudice to positions on status, and is in line with UNSCR 1244/1999 and the ICJ Opinion on the Kosovo declaration of independence."
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://travel-europe.europa.eu/en/etias",
+            "authValidityDays": 1095,
+            "cost": {
+              "amount": 7,
+              "currency": "EUR"
+            },
+            "multiEntry": true,
+            "name": "European Travel Information and Authorisation System",
+            "type": "ETIAS"
+          },
+          "source": {
+            "$source": "Schengen.visaList"
+          }
+        }
+      ]
+    },
+    "YE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium, Czech Republic, Spain, Netherlands, Romania. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium, Spain, Netherlands: ATV requirement does not apply to holders of service or special passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    }
+  }
+}

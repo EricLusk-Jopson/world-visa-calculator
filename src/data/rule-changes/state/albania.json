@@ -1,0 +1,2690 @@
+{
+  "code": "albania",
+  "name": "Albania",
+  "memberStates": [
+    "AL"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required"
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.AD"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.AD"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.AE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.AE"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.AF"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.AG"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.AG"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "free_movement"
+    },
+    "AM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.AM"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.AM"
+          }
+        }
+      ]
+    },
+    "AO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.AO"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.AR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.AR"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.AT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.AT"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.AU"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.AU"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.AZ"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.AZ"
+          }
+        }
+      ]
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.BA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.BA"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.BB"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.BB"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.BD"
+      }
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.BE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.BE"
+          }
+        }
+      ]
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.BF"
+      }
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.BG"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.BG"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.BH"
+      }
+    },
+    "BJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.BJ"
+      }
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.BN"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.BN"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.BO"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.BR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.BR"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.BS"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.BS"
+          }
+        }
+      ]
+    },
+    "BW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.BW"
+      }
+    },
+    "BY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.BY"
+      }
+    },
+    "BZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.BZ"
+      }
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.CA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.CA"
+          }
+        }
+      ]
+    },
+    "CG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.CG"
+      }
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.CH"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.CH"
+          }
+        }
+      ]
+    },
+    "CI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.CI"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.CL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.CL"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.CM"
+      }
+    },
+    "CN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.CN"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.CN"
+          }
+        }
+      ]
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.CO"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.CO"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.CR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.CR"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.CU"
+      }
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.CY"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.CY"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.CZ"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.CZ"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.DE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.DE"
+          }
+        }
+      ]
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.DK"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.DK"
+          }
+        }
+      ]
+    },
+    "DO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.DO"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.DZ"
+      }
+    },
+    "EC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.EC"
+      }
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.EE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.EE"
+          }
+        }
+      ]
+    },
+    "EG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.EG"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.ER"
+      }
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.ES"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.ES"
+          }
+        }
+      ]
+    },
+    "ET": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.ET"
+      }
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.FI"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.FI"
+          }
+        }
+      ]
+    },
+    "FJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.FJ"
+      }
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.FR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.FR"
+          }
+        }
+      ]
+    },
+    "GA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.GA"
+      }
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.GB"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.GB"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.GE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.GE"
+          }
+        }
+      ]
+    },
+    "GH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.GH"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.GN"
+      }
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.GR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.GR"
+          }
+        }
+      ]
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.GT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.GT"
+          }
+        }
+      ]
+    },
+    "GY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.GY"
+      }
+    },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.HK"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.HK"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.HN"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.HN"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.HR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.HR"
+          }
+        }
+      ]
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.HT"
+      }
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.HU"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.HU"
+          }
+        }
+      ]
+    },
+    "ID": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.ID"
+      }
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.IE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.IE"
+          }
+        }
+      ]
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.IL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.IL"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.IN"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.IQ"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.IR"
+      }
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.IS"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.IS"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.IT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.IT"
+          }
+        }
+      ]
+    },
+    "JM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.JM"
+      }
+    },
+    "JO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.JO"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.JP"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.JP"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.KE"
+      }
+    },
+    "KG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.KG"
+      }
+    },
+    "KH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.KH"
+      }
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.KN"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.KN"
+          }
+        }
+      ]
+    },
+    "KP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.KP"
+      }
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.KR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.KR"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.KW"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.KW"
+          }
+        }
+      ]
+    },
+    "KZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.KZ"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.KZ"
+          }
+        }
+      ]
+    },
+    "LB": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.LB"
+      }
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.LI"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.LI"
+          }
+        }
+      ]
+    },
+    "LK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.LK"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.LR"
+      }
+    },
+    "LS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.LS"
+      }
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.LT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.LT"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.LU"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.LU"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.LV"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.LV"
+          }
+        }
+      ]
+    },
+    "LY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.LY"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.MA"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.MC"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.MC"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.MD"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.MD"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.ME"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.ME"
+          }
+        }
+      ]
+    },
+    "MG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.MG"
+      }
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.MK"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.MK"
+          }
+        }
+      ]
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.ML"
+      }
+    },
+    "MN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.MN"
+      }
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.MO"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.MO"
+          }
+        }
+      ]
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.MR"
+      }
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.MT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.MT"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.MU"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.MU"
+          }
+        }
+      ]
+    },
+    "MV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.MV"
+      }
+    },
+    "MW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.MW"
+      }
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.MX"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.MX"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.MY"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.MY"
+          }
+        }
+      ]
+    },
+    "MZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.MZ"
+      }
+    },
+    "NA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.NA"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.NG"
+      }
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.NI"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.NI"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.NL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.NL"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.NO"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.NO"
+          }
+        }
+      ]
+    },
+    "NP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.NP"
+      }
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.NZ"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.NZ"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.OM"
+      }
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.PA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.PA"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.PE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.PE"
+          }
+        }
+      ]
+    },
+    "PH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.PH"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.PK"
+      }
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.PL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.PL"
+          }
+        }
+      ]
+    },
+    "PS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.PS"
+      }
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.PT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.PT"
+          }
+        }
+      ]
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.PY"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.PY"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.QA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.QA"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.RO"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.RO"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.RS"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.RS"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.RU"
+      }
+    },
+    "RW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.RW"
+      }
+    },
+    "SA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.SA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.SA"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.SC"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.SC"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.SD"
+      }
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.SE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.SE"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.SG"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.SG"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.SI"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.SI"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.SK"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.SK"
+          }
+        }
+      ]
+    },
+    "SL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.SL"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.SM"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.SM"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.SN"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.SO"
+      }
+    },
+    "SR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.SR"
+      }
+    },
+    "ST": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.ST"
+      }
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.SV"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.SV"
+          }
+        }
+      ]
+    },
+    "SY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.SY"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.TG"
+      }
+    },
+    "TH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.TH"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.TJ"
+      }
+    },
+    "TM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.TM"
+      }
+    },
+    "TN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.TN"
+      }
+    },
+    "TR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.TR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.TR"
+          }
+        }
+      ]
+    },
+    "TT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.TT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.TT"
+          }
+        }
+      ]
+    },
+    "TW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.TW"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.TW"
+          }
+        }
+      ]
+    },
+    "TZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.TZ"
+      }
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.UA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.UA"
+          }
+        }
+      ]
+    },
+    "UG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.UG"
+      }
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.US"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.US"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.UY"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.UY"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.UZ"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.VA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.VA"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.VE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.VE"
+          }
+        }
+      ]
+    },
+    "VN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.VN"
+      }
+    },
+    "XK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Albania.XK"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "Albania.XK"
+          }
+        }
+      ]
+    },
+    "YE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.YE"
+      }
+    },
+    "ZA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.ZA"
+      }
+    },
+    "ZM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.ZM"
+      }
+    },
+    "ZW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Albania.ZW"
+      }
+    }
+  }
+}

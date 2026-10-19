@@ -1,0 +1,2750 @@
+{
+  "code": "montenegro",
+  "name": "Montenegro",
+  "memberStates": [
+    "ME"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required"
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.AD"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.AD"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.AE"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.AF"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.AG"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.AL"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.AL"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.AM"
+          },
+          "text": "Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro's own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it."
+        }
+      ],
+      "source": {
+        "$source": "Montenegro.AM"
+      }
+    },
+    "AO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.AO"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.AR"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.AT"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.AT"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.AU"
+          }
+        }
+      ]
+    },
+    "AW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.AW"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.AZ"
+      }
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.BA"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.BA"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.BB"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BD"
+      }
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.BE"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.BE"
+          }
+        }
+      ]
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BF"
+      }
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.BG"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.BG"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BH"
+      }
+    },
+    "BI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BI"
+      }
+    },
+    "BJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BJ"
+      }
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.BN"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BO"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.BR"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.BS"
+          }
+        }
+      ]
+    },
+    "BT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BT"
+      }
+    },
+    "BW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BW"
+      }
+    },
+    "BY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.BY"
+          },
+          "temporalWindows": [
+            {
+              "description": "Temporary waiver",
+              "validUntil": "2026-10-31"
+            }
+          ]
+        }
+      ]
+    },
+    "BZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.BZ"
+      }
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CA"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.CD"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.CF"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.CG"
+      }
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.CH"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CH"
+          }
+        }
+      ]
+    },
+    "CI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.CI"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CL"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.CM"
+      }
+    },
+    "CN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.CN"
+              },
+              "text": "Organized tourist group only: must enter/stay/leave together, direct charter flight, proof of paid tour arrangement and guaranteed return required."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CN"
+          },
+          "temporalWindows": [
+            {
+              "description": "Organized tourist group waiver",
+              "validUntil": "2026-10-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.CN"
+              },
+              "text": "Business passport holders only: requires an invitation letter per the short-stay (C visa) regulations."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CN"
+          },
+          "temporalWindows": [
+            {
+              "description": "Business passport waiver",
+              "validUntil": "2026-10-31"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.CN"
+          },
+          "text": "Outside these windows, nationals require a visa; issued by Montenegrin diplomatic/consular missions."
+        }
+      ]
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CO"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CR"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.CU"
+      }
+    },
+    "CV": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.CV"
+          },
+          "text": "No country-specific visa-regime information is published on Montenegro's diplomatic-missions site for Cabo Verde. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Cabo Verde; it is not encoded here as it applies independently of passport nationality.)"
+        }
+      ],
+      "source": {
+        "$source": "Montenegro.CV"
+      }
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.CY"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CY"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.CZ"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.CZ"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.DE"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.DE"
+          }
+        }
+      ]
+    },
+    "DJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.DJ"
+      }
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.DK"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.DK"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.DM"
+          }
+        }
+      ]
+    },
+    "DO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.DO"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.DZ"
+      }
+    },
+    "EC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.EC"
+      }
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.EE"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.EE"
+          }
+        }
+      ]
+    },
+    "EG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.EG"
+          },
+          "text": "Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro's own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it."
+        }
+      ],
+      "source": {
+        "$source": "Montenegro.EG"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.ER"
+      }
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.ES"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.ES"
+          }
+        }
+      ]
+    },
+    "ET": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.ET"
+      }
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.FI"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.FI"
+          }
+        }
+      ]
+    },
+    "FJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.FJ"
+      }
+    },
+    "FM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.FM"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.FR"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.FR"
+          }
+        }
+      ]
+    },
+    "GA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.GA"
+      }
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.GB"
+          }
+        }
+      ]
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.GD"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.GE"
+          }
+        }
+      ]
+    },
+    "GH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.GH"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.GM"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.GN"
+      }
+    },
+    "GQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.GQ"
+      }
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.GR"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.GR"
+          }
+        }
+      ]
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.GT"
+          }
+        }
+      ]
+    },
+    "GW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.GW"
+      }
+    },
+    "GY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.GY"
+      }
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.HN"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.HR"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.HR"
+          }
+        }
+      ]
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.HT"
+      }
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.HU"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.HU"
+          }
+        }
+      ]
+    },
+    "ID": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.ID"
+      }
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.IE"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.IE"
+          }
+        }
+      ]
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.IL"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.IN"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.IQ"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.IR"
+      }
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.IS"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.IS"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.IT"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.IT"
+          }
+        }
+      ]
+    },
+    "JM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.JM"
+      }
+    },
+    "JO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.JO"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.JP"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.KE"
+      }
+    },
+    "KG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.KG"
+      }
+    },
+    "KH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.KH"
+      }
+    },
+    "KI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.KI"
+          }
+        }
+      ]
+    },
+    "KM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.KM"
+      }
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.KN"
+          }
+        }
+      ]
+    },
+    "KP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.KP"
+      }
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.KR"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.KW"
+      }
+    },
+    "KY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.KY"
+          }
+        }
+      ]
+    },
+    "KZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.KZ"
+          },
+          "temporalWindows": [
+            {
+              "description": "Seasonal visa waiver",
+              "validFrom": "2026-05-01",
+              "validUntil": "2026-10-01"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.KZ"
+          },
+          "text": "Outside the seasonal waiver, nationals require a visa in advance from a Montenegrin diplomatic/consular post, or the Embassy of Bulgaria in Kazakhstan if none is reachable."
+        }
+      ]
+    },
+    "LA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.LA"
+      }
+    },
+    "LB": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.LB"
+      }
+    },
+    "LC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.LC"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.LI"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.LI"
+          }
+        }
+      ]
+    },
+    "LK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.LK"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.LR"
+          },
+          "text": "Source page for Liberia is published only in Montenegrin, not English (unlike most other entries on this site). Content translates to: nationals of Liberia require a visa to enter Montenegro, obtainable from Montenegrin diplomatic/consular posts, or the nearest Serbian diplomatic/consular post if none is reachable. TODO: confirm translation before relying on this for user-facing copy."
+        }
+      ],
+      "source": {
+        "$source": "Montenegro.LR"
+      }
+    },
+    "LS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.LS"
+      }
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.LT"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.LT"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.LU"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.LU"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.LV"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.LV"
+          }
+        }
+      ]
+    },
+    "LY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.LY"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.MA"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.MC"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.MC"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.MD"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "free_movement"
+    },
+    "MG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.MG"
+      }
+    },
+    "MH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.MH"
+          }
+        }
+      ]
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.MK"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.MK"
+          }
+        }
+      ]
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.ML"
+      }
+    },
+    "MM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.MM"
+      }
+    },
+    "MN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.MN"
+      }
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.MR"
+      }
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.MT"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.MT"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.MU"
+          }
+        }
+      ]
+    },
+    "MV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.MV"
+      }
+    },
+    "MW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.MW"
+      }
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.MX"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.MY"
+          }
+        }
+      ]
+    },
+    "MZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.MZ"
+          },
+          "text": "No country-specific visa-regime information is published on Montenegro's diplomatic-missions site for Mozambique. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Mozambique; it is not encoded here as it applies independently of passport nationality.)"
+        }
+      ],
+      "source": {
+        "$source": "Montenegro.MZ"
+      }
+    },
+    "NA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.NA"
+      }
+    },
+    "NE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.NE"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.NG"
+      }
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.NI"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.NL"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.NL"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.NO"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.NO"
+          }
+        }
+      ]
+    },
+    "NP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.NP"
+      }
+    },
+    "NR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.NR"
+          }
+        }
+      ]
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.NZ"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.OM"
+      }
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.PA"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.PE"
+              },
+              "text": "Entry is based on a bilateral international agreement on mutual travel, not the standard visa-waiver basis — 30 days (not 90), with a valid travel document."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.PE"
+          }
+        }
+      ]
+    },
+    "PG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.PG"
+      }
+    },
+    "PH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.PH"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.PK"
+          },
+          "text": "No country-specific visa-regime information is published on Montenegro's diplomatic-missions site for Pakistan. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Pakistan; it is not encoded here as it applies independently of passport nationality.)"
+        }
+      ],
+      "source": {
+        "$source": "Montenegro.PK"
+      }
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.PL"
+          }
+        }
+      ]
+    },
+    "PS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.PS"
+      }
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.PT"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.PT"
+          }
+        }
+      ]
+    },
+    "PW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.PW"
+          }
+        }
+      ]
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.PY"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.QA"
+      }
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.RO"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.RO"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.RS"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.RS"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.RU"
+          },
+          "temporalWindows": [
+            {
+              "description": "Temporary waiver",
+              "validUntil": "2026-10-31"
+            }
+          ]
+        }
+      ]
+    },
+    "RW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.RW"
+      }
+    },
+    "SA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SA"
+          },
+          "temporalWindows": [
+            {
+              "description": "Temporary waiver",
+              "validUntil": "2026-10-31"
+            }
+          ]
+        }
+      ]
+    },
+    "SB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SB"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SC"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.SD"
+      }
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.SE"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SE"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SG"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.SI"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SI"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.SK"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SK"
+          }
+        }
+      ]
+    },
+    "SL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.SL"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.SM"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SM"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.SN"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.SO"
+      }
+    },
+    "SR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.SR"
+      }
+    },
+    "ST": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.ST"
+      }
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.SV"
+          }
+        }
+      ]
+    },
+    "SY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.SY"
+      }
+    },
+    "SZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.SZ"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.TD"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.TG"
+      }
+    },
+    "TH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.TH"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.TJ"
+      }
+    },
+    "TL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.TL"
+          }
+        }
+      ]
+    },
+    "TM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.TM"
+      }
+    },
+    "TN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.TN"
+      }
+    },
+    "TO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.TO"
+          }
+        }
+      ]
+    },
+    "TR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.TR"
+          },
+          "temporalWindows": [
+            {
+              "description": "Temporary waiver",
+              "validUntil": "2026-10-31"
+            }
+          ]
+        }
+      ]
+    },
+    "TT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.TT"
+          }
+        }
+      ]
+    },
+    "TV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.TV"
+          }
+        }
+      ]
+    },
+    "TZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.TZ"
+      }
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.UA"
+          }
+        }
+      ]
+    },
+    "UG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.UG"
+      }
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.US"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.UY"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Montenegro.UZ"
+          },
+          "text": "Source page also describes a seasonal 30-day visa waiver (organized tourist group, valid travel document, no visa) that ran 1 March – 29 October 2025. That window has already lapsed as of 2026-08-30 but the source page still displays it as current content — a staleness issue on Montenegro's own site, not this scrape. Deliberately NOT encoded as an active entitlement; only the base visa_required rule is encoded here. TODO: confirm with Montenegrin authorities whether this scheme was renewed for a later date range before re-adding it."
+        }
+      ],
+      "source": {
+        "$source": "Montenegro.UZ"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.VA"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.VA"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.VC"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.VE"
+          }
+        }
+      ]
+    },
+    "VN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.VN"
+      }
+    },
+    "VU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.VU"
+      }
+    },
+    "WS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.WS"
+          }
+        }
+      ]
+    },
+    "XK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Montenegro.XK"
+              },
+              "text": "Nationals may also enter for up to 30 days using a valid national ID card instead of a passport (in lieu of the standard 90-day passport-based entry)."
+            }
+          ],
+          "source": {
+            "$source": "Montenegro.XK"
+          }
+        }
+      ]
+    },
+    "YE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.YE"
+      }
+    },
+    "ZA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.ZA"
+      }
+    },
+    "ZM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.ZM"
+      }
+    },
+    "ZW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.ZW"
+      }
+    }
+  }
+}

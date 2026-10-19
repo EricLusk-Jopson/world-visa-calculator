@@ -1,0 +1,1130 @@
+{
+  "code": "armenia",
+  "name": "Armenia",
+  "memberStates": [
+    "AM"
+  ],
+  "rule": {
+    "allowanceDays": 180,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 365
+  },
+  "defaultRule": {
+    "access": "visa_required",
+    "source": {
+      "$source": "Armenia.visaFreeList"
+    }
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "free_movement"
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "BY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "CN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "EC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "IR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "KG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "KZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "TJ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.bilateralList"
+          }
+        }
+      ]
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 180,
+              "type": "rolling_window",
+              "windowDays": 365
+            }
+          ],
+          "source": {
+            "$source": "Armenia.visaFreeList"
+          }
+        }
+      ]
+    }
+  }
+}

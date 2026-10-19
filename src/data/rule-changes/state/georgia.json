@@ -1,0 +1,1622 @@
+{
+  "code": "georgia",
+  "name": "Georgia",
+  "memberStates": [
+    "GE"
+  ],
+  "rule": {
+    "allowanceDays": 365,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "per_visit"
+  },
+  "defaultRule": {
+    "access": "visa_required",
+    "source": {
+      "$source": "Georgia.visaList"
+    }
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "BZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "EC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "free_movement"
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "IR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 45
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "JO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "KG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "KZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "LB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "SA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "TH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "TJ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "TM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "TR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 730
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    },
+    "ZA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 365
+            }
+          ],
+          "source": {
+            "$source": "Georgia.visaList"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -17,12 +17,18 @@ behind those rules every two weeks.
   person reads it, what a real rule change looks like there vs known noise,
   and when a human is needed. `docs/sources/OVERVIEW.md` is the generated
   at-a-glance table and the human checklist.
+- `src/data/rule-changes/`: **the rule-change log**. Every change to a
+  region's rules is a numbered entry with before/after, trigger and evidence
+  (see its README). It's shown publicly under "Rule changes" on /updates.
 
 ## Rules of the road
 
 - **Changing a source in `sources.ts`:** update that region's playbook in
   the same change. `src/data/sourcePlaybooks.test.ts` fails otherwise. Then
   run `npm run playbooks:overview`.
+- **Changing a rule in a region file:** record it with `npm run rules:new`,
+  fill in the entry's `TODO(entry)` sections and bump the region's
+  `lastVerified`. The tests fail on an unrecorded or unfinished change.
 - **Triaging a source-check report** (`pipeline/reports/latest.md`): for each
   flagged diff, read the link's playbook section first. Its "Real change vs
   noise" part says how to classify it. Never change a rule from a diff alone:
@@ -38,6 +44,8 @@ behind those rules every two weeks.
 
 - `npm test` (root, vitest): app and data tests, including the playbook checks.
 - `npm run playbooks:overview`: regenerate `docs/sources/OVERVIEW.md`.
+- `npm run rules:new -- --title … --trigger <type>:<ref> --evidence Region:link`:
+  record a rule change. `npm run rules:check` runs the log's tests.
 - `cd pipeline && npm run check`: run the source check (needs network to the
   government sites; the cloud sandbox can't reach most of them).
 - `cd pipeline && npm test`: pipeline tests.

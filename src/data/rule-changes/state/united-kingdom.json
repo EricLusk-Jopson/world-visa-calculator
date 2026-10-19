@@ -1,0 +1,3673 @@
+{
+  "code": "united-kingdom",
+  "name": "United Kingdom",
+  "memberStates": [
+    "GB"
+  ],
+  "rule": {
+    "allowanceDays": 180,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "notes": [
+      {
+        "source": {
+          "$source": "UK.standardVisitor"
+        },
+        "text": "Repeated maximum-duration stays with short gaps between them may lead Border Force to conclude that you are using the visitor route as de facto residence, even when each individual visit is within the 180-day limit. This is assessed holistically under Appendix V of the Immigration Rules and is not calculable by a tool."
+      }
+    ],
+    "type": "per_visit"
+  },
+  "defaultRule": {
+    "access": "visa_required",
+    "source": {
+      "$source": "UK.visaNationalList"
+    }
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "AM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "AO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "BI": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "BT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BY": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "BZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "CN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        },
+        {
+          "source": {
+            "$source": "UK.etaNationalList"
+          },
+          "text": "Holders of Hong Kong SAR or Macao SAR passports are NOT subject to this requirement and may apply for an ETA instead."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "CO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "CV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "DJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "DO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "EC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "EG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "ET": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "FJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "FM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "GA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "GB": {
+      "access": "free_movement"
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "GH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "GQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "GW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "GY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "ID": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "IE": {
+      "access": "free_movement",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.ctaGuidance"
+          },
+          "text": "Irish citizens have unrestricted freedom of movement throughout the UK under the Common Travel Area (CTA). No visa, ETA, or pre-travel authorisation is required."
+        }
+      ]
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "JM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "JO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "KG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "KH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "KI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "KM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "KP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "KZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "LA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "LB": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "LC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "LK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "LS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "LY": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "ME": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "MK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "MV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "MW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "MZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "NA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "NE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "NI": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "NP": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "NR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "PG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "PH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "PS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "PW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "RU": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "RW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "SB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "SL": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "ST": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SV": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SY": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "SZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TL": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "TR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TT": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "TV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "TW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "description": "Applies only to holders of passports issued by Taiwan which include a national identity card number.",
+              "type": "passport_identifier"
+            }
+          ],
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ],
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.etaNationalList"
+          },
+          "text": "Only Taiwan passport holders whose passport includes a national identity card number are eligible for an ETA. All other Taiwan passport holders require a Standard Visitor Visa."
+        }
+      ]
+    },
+    "TZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "UA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "UG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        },
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "Holders of a biometric Venezuelan passport do NOT require a DATV for airside transit, but still require a Standard Visitor Visa to enter the UK."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "VN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "VU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "WS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "months",
+              "value": 6
+            }
+          ],
+          "preAuth": {
+            "applicationUrl": "https://www.gov.uk/eta/apply",
+            "authValidityDays": 730,
+            "cost": {
+              "amount": 20,
+              "currency": "GBP"
+            },
+            "multiEntry": true,
+            "name": "UK Electronic Travel Authorisation",
+            "type": "ETA"
+          },
+          "source": {
+            "$source": "UK.etaNationalList"
+          }
+        }
+      ]
+    },
+    "XK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "YE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "ZA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "ZM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    },
+    "ZW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "UK.carriersList"
+          },
+          "text": "A Direct Airside Transit Visa (DATV) is separate from the visa needed to enter the UK. It is required only to pass airside through a UK airport (changing flights without passing through immigration) and does not by itself grant entry. To enter the UK, the Standard Visitor Visa above is still required."
+        }
+      ],
+      "source": {
+        "$source": "UK.visaNationalList"
+      }
+    }
+  }
+}
