@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "playbooks:overview": "UPDATE_PLAYBOOK_OVERVIEW=1 vitest run src/data/sourcePlaybooks.test.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
@@ -41,6 +42,7 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "yaml": "^2.9.1"
   }
 }
