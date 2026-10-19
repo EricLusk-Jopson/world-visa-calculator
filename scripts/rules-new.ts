@@ -12,7 +12,7 @@ import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { stringify } from "yaml";
 import { diffRegion, normalizeRegion, RULE_REGIONS, type RuleChange } from "@/data/rule-changes/normalize";
-import { ENTRIES_DIR, loadEntries, readState, TRIGGER_TYPES, UNFINISHED, writeState } from "@/data/rule-changes/entries";
+import { ENTRIES_DIR, loadEntries, readState, TRIGGER_TYPES, UNFINISHED, writeState, writeSummary } from "@/data/rule-changes/entries";
 
 const { values } = parseArgs({
   options: {
@@ -105,6 +105,7 @@ writeFileSync(file, `---\n${stringify(front, { lineWidth: 0 }).trimEnd()}\n---\n
 
 const changedRegions = values.baseline ? RULE_REGIONS.map((r) => r.def) : RULE_REGIONS.map((r) => r.def).filter((d) => changes.some((c) => c.region === d.code));
 for (const def of changedRegions) writeState(normalizeRegion(def));
+writeSummary(loadEntries());
 
 console.log(`Wrote ${file}`);
 if (!values.baseline) {
