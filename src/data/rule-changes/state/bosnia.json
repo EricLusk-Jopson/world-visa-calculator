@@ -1,0 +1,2358 @@
+{
+  "code": "bosnia",
+  "name": "Bosnia and Herzegovina",
+  "memberStates": [
+    "BA"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required"
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.AD"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.AE"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.AF"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.AG"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.AL"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.AM"
+      }
+    },
+    "AO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.AO"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.AR"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.AT"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.AU"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.AZ"
+          }
+        }
+      ]
+    },
+    "BA": {
+      "access": "free_movement"
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.BB"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BD"
+      }
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.BE"
+          }
+        }
+      ]
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BF"
+      }
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.BG"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Bosnia.BH"
+              },
+              "text": "Exempt only during this window; a day cap for the waiver itself is not stated, so the standard 90-day allowance is assumed. Outside the window, a visa is required."
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.BH"
+          },
+          "temporalWindows": [
+            {
+              "description": "Temporary waiver (ordinary passports)",
+              "source": {
+                "$source": "Bosnia.BH"
+              },
+              "validFrom": "2026-06-01",
+              "validUntil": "2026-09-30"
+            }
+          ]
+        }
+      ]
+    },
+    "BI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BI"
+      }
+    },
+    "BJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BJ"
+      }
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.BN"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BO"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.BR"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BS"
+      }
+    },
+    "BT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BT"
+      }
+    },
+    "BW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BW"
+      }
+    },
+    "BY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BY"
+      }
+    },
+    "BZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.BZ"
+      }
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.CA"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.CD"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.CF"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.CG"
+      }
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.CH"
+          }
+        }
+      ]
+    },
+    "CI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.CI"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.CL"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.CM"
+      }
+    },
+    "CN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.CN"
+          }
+        }
+      ]
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.CO"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.CR"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.CU"
+      }
+    },
+    "CV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.CV"
+      }
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.CY"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.CZ"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.DE"
+          }
+        }
+      ]
+    },
+    "DJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.DJ"
+      }
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.DK"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.DM"
+          }
+        }
+      ]
+    },
+    "DO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.DO"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.DZ"
+      }
+    },
+    "EC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.EC"
+      }
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.EE"
+          }
+        }
+      ]
+    },
+    "EG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Bosnia.EG"
+          },
+          "text": "Diplomatic, official, and special passports are exempt; this does not extend to ordinary passports."
+        }
+      ],
+      "source": {
+        "$source": "Bosnia.EG"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.ER"
+      }
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.ES"
+          }
+        }
+      ]
+    },
+    "ET": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.ET"
+      }
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.FI"
+          }
+        }
+      ]
+    },
+    "FJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.FJ"
+      }
+    },
+    "FM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.FM"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.FR"
+          }
+        }
+      ]
+    },
+    "GA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.GA"
+      }
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.GB"
+          }
+        }
+      ]
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.GD"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.GE"
+          }
+        }
+      ]
+    },
+    "GH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.GH"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.GM"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.GN"
+      }
+    },
+    "GQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.GQ"
+      }
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.GR"
+          }
+        }
+      ]
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.GT"
+          }
+        }
+      ]
+    },
+    "GW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.GW"
+      }
+    },
+    "GY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.GY"
+      }
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.HN"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.HR"
+          }
+        }
+      ]
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.HT"
+      }
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.HU"
+          }
+        }
+      ]
+    },
+    "ID": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Bosnia.ID"
+          },
+          "text": "Diplomatic and official passports are exempt; this does not extend to ordinary passports."
+        }
+      ],
+      "source": {
+        "$source": "Bosnia.ID"
+      }
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.IE"
+          }
+        }
+      ]
+    },
+    "IL": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Bosnia.IL"
+          },
+          "text": "Diplomatic and official passports are exempt; this does not extend to ordinary passports."
+        }
+      ],
+      "source": {
+        "$source": "Bosnia.IL"
+      }
+    },
+    "IN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.IN"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.IQ"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.IR"
+      }
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.IS"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.IT"
+          }
+        }
+      ]
+    },
+    "JM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.JM"
+      }
+    },
+    "JO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.JO"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.JP"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.KE"
+      }
+    },
+    "KG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.KG"
+      }
+    },
+    "KH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.KH"
+      }
+    },
+    "KI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.KI"
+          }
+        }
+      ]
+    },
+    "KM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.KM"
+      }
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.KN"
+          }
+        }
+      ]
+    },
+    "KP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.KP"
+      }
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.KR"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.KW"
+          }
+        }
+      ]
+    },
+    "KZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Bosnia.KZ"
+          },
+          "text": "Diplomatic and official passports are exempt; this does not extend to ordinary passports."
+        }
+      ],
+      "source": {
+        "$source": "Bosnia.KZ"
+      }
+    },
+    "LA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.LA"
+      }
+    },
+    "LB": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.LB"
+      }
+    },
+    "LC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.LC"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.LI"
+          }
+        }
+      ]
+    },
+    "LK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.LK"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.LR"
+      }
+    },
+    "LS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.LS"
+      }
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.LT"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.LU"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.LV"
+          }
+        }
+      ]
+    },
+    "LY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.LY"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Bosnia.MA"
+          },
+          "text": "Diplomatic, service, and special passports are exempt; this does not extend to ordinary passports."
+        }
+      ],
+      "source": {
+        "$source": "Bosnia.MA"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.MC"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.MD"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.ME"
+          }
+        }
+      ]
+    },
+    "MG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.MG"
+      }
+    },
+    "MH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.MH"
+          }
+        }
+      ]
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.MK"
+          }
+        }
+      ]
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.ML"
+      }
+    },
+    "MM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.MM"
+      }
+    },
+    "MN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.MN"
+      }
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.MR"
+      }
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.MT"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.MU"
+          }
+        }
+      ]
+    },
+    "MV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.MV"
+      }
+    },
+    "MW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.MW"
+      }
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.MX"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.MY"
+          }
+        }
+      ]
+    },
+    "MZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.MZ"
+      }
+    },
+    "NA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.NA"
+      }
+    },
+    "NE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.NE"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.NG"
+      }
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.NI"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.NL"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.NO"
+          }
+        }
+      ]
+    },
+    "NP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.NP"
+      }
+    },
+    "NR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.NR"
+      }
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.NZ"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Bosnia.OM"
+              },
+              "text": "Exempt only during this window; a day cap for the waiver itself is not stated, so the standard 90-day allowance is assumed. Outside the window, a visa is required."
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.OM"
+          },
+          "temporalWindows": [
+            {
+              "description": "Temporary waiver (ordinary passports)",
+              "source": {
+                "$source": "Bosnia.OM"
+              },
+              "validFrom": "2026-06-01",
+              "validUntil": "2026-09-30"
+            }
+          ]
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.PA"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.PE"
+          }
+        }
+      ]
+    },
+    "PG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.PG"
+      }
+    },
+    "PH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.PH"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.PK"
+      }
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.PL"
+          }
+        }
+      ]
+    },
+    "PS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.PS"
+      }
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.PT"
+          }
+        }
+      ]
+    },
+    "PW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.PW"
+          }
+        }
+      ]
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.PY"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.QA"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.RO"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.RS"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Bosnia.RU"
+          },
+          "text": "Only a transit exemption is available (up to 3 days, with a valid travel document); general entry or tourism requires a visa."
+        }
+      ],
+      "source": {
+        "$source": "Bosnia.RU"
+      }
+    },
+    "RW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.RW"
+      }
+    },
+    "SA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Bosnia.SA"
+              },
+              "text": "Exempt only during this window; a day cap for the waiver itself is not stated, so the standard 90-day allowance is assumed. Outside the window, a visa is required."
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SA"
+          },
+          "temporalWindows": [
+            {
+              "description": "Temporary waiver (ordinary passports)",
+              "source": {
+                "$source": "Bosnia.SA"
+              },
+              "validFrom": "2026-06-01",
+              "validUntil": "2026-09-30"
+            }
+          ]
+        }
+      ]
+    },
+    "SB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SB"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SC"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.SD"
+      }
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SE"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SG"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SI"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SK"
+          }
+        }
+      ]
+    },
+    "SL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.SL"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SM"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.SN"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.SO"
+      }
+    },
+    "SR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.SR"
+      }
+    },
+    "ST": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.ST"
+      }
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.SV"
+          }
+        }
+      ]
+    },
+    "SY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.SY"
+      }
+    },
+    "SZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.SZ"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.TD"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.TG"
+      }
+    },
+    "TH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Bosnia.TH"
+          },
+          "text": "Diplomatic and official passports are exempt; this does not extend to ordinary passports."
+        }
+      ],
+      "source": {
+        "$source": "Bosnia.TH"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.TJ"
+      }
+    },
+    "TL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.TL"
+          }
+        }
+      ]
+    },
+    "TM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.TM"
+      }
+    },
+    "TN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.TN"
+      }
+    },
+    "TO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.TO"
+          }
+        }
+      ]
+    },
+    "TR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.TR"
+          }
+        }
+      ]
+    },
+    "TT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.TT"
+          }
+        }
+      ]
+    },
+    "TV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.TV"
+          }
+        }
+      ]
+    },
+    "TW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.TW"
+      }
+    },
+    "TZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.TZ"
+      }
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 30,
+              "type": "rolling_window",
+              "windowDays": 60
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.UA"
+          }
+        }
+      ]
+    },
+    "UG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.UG"
+      }
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.US"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.UY"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.UZ"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.VA"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.VC"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.VE"
+          }
+        }
+      ]
+    },
+    "VN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.VN"
+      }
+    },
+    "VU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.VU"
+          }
+        }
+      ]
+    },
+    "WS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Bosnia.WS"
+          }
+        }
+      ]
+    },
+    "XK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.XK"
+      }
+    },
+    "YE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.YE"
+      }
+    },
+    "ZA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.ZA"
+      }
+    },
+    "ZM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.ZM"
+      }
+    },
+    "ZW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Bosnia.ZW"
+      }
+    }
+  }
+}

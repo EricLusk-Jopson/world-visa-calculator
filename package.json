@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "playbooks:overview": "UPDATE_PLAYBOOK_OVERVIEW=1 vitest run src/data/sourcePlaybooks.test.ts"
+    "playbooks:overview": "UPDATE_PLAYBOOK_OVERVIEW=1 vitest run src/data/sourcePlaybooks.test.ts",
+    "rules:new": "tsx scripts/rules-new.ts",
+    "rules:check": "vitest run src/data/rule-changes"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
@@ -39,6 +41,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "jsdom": "^28.1.0",
+    "tsx": "^4.23.15",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1",

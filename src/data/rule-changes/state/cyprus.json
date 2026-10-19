@@ -1,0 +1,1748 @@
+{
+  "code": "cyprus",
+  "name": "Cyprus",
+  "memberStates": [
+    "CY"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required",
+    "source": {
+      "$source": "Cyprus.visaList"
+    }
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "AO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "free_movement"
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "BE": {
+      "access": "free_movement"
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "BG": {
+      "access": "free_movement"
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "CH": {
+      "access": "free_movement"
+    },
+    "CI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "CY": {
+      "access": "free_movement"
+    },
+    "CZ": {
+      "access": "free_movement"
+    },
+    "DE": {
+      "access": "free_movement"
+    },
+    "DJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "DK": {
+      "access": "free_movement"
+    },
+    "DM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "DO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "EE": {
+      "access": "free_movement"
+    },
+    "EG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "ES": {
+      "access": "free_movement"
+    },
+    "ET": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "FI": {
+      "access": "free_movement"
+    },
+    "FM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "free_movement"
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Diplomatic, service, and official passport holders: visa-free access suspended March 2026 to March 2027 by EU Council decision. Ordinary biometric passport holders are unaffected."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "GH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "GR": {
+      "access": "free_movement"
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "GW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "description": "Applies only to holders of a 'Hong Kong Special Administrative Region' passport.",
+              "type": "passport_identifier"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "free_movement"
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "HU": {
+      "access": "free_movement"
+    },
+    "IE": {
+      "access": "free_movement"
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "IS": {
+      "access": "free_movement"
+    },
+    "IT": {
+      "access": "free_movement"
+    },
+    "JO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "KI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "LB": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "LC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "LI": {
+      "access": "free_movement"
+    },
+    "LK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "LT": {
+      "access": "free_movement"
+    },
+    "LU": {
+      "access": "free_movement"
+    },
+    "LV": {
+      "access": "free_movement"
+    },
+    "LY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies to holders of biometric passports issued by Moldova in line with ICAO standards."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "MH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "description": "Applies only to holders of a 'Região Administrativa Especial de Macau' passport.",
+              "type": "passport_identifier"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "MT": {
+      "access": "free_movement"
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "NE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "free_movement"
+    },
+    "NO": {
+      "access": "free_movement"
+    },
+    "NP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "NR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "PH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "PL": {
+      "access": "free_movement"
+    },
+    "PS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "PT": {
+      "access": "free_movement"
+    },
+    "PW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "free_movement"
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies to holders of biometric passports issued in line with ICAO standards. Does not apply to holders of Serbian passports issued by the Serbian Coordination Directorate (Koordinaciona uprava)."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "SB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "SE": {
+      "access": "free_movement"
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "free_movement"
+    },
+    "SK": {
+      "access": "free_movement"
+    },
+    "SL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "SS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "SY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "TL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "TN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "TO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "TR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "TT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "TV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "TW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "description": "Applies only to holders of passports issued by Taiwan which include a national identity card number.",
+              "type": "passport_identifier"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies to holders of biometric passports issued by Ukraine in line with ICAO standards."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "Visa exemption applies from the date of entry into force of a visa exemption agreement to be concluded with the European Union. Verify current status before travel as the agreement may not yet be in force."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "WS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "XK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "conditions": [
+            {
+              "type": "biometric_passport"
+            }
+          ],
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Cyprus.visaList"
+              },
+              "text": "This designation is without prejudice to positions on status, and is in line with UNSCR 1244/1999 and the ICJ Opinion on the Kosovo declaration of independence."
+            }
+          ],
+          "source": {
+            "$source": "Cyprus.visaList"
+          }
+        }
+      ]
+    },
+    "YE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Cyprus.visaList"
+      }
+    }
+  }
+}

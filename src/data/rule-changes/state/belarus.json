@@ -1,0 +1,3788 @@
+{
+  "code": "belarus",
+  "name": "Belarus",
+  "memberStates": [
+    "BY"
+  ],
+  "rule": {
+    "allowanceDays": 30,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "per_visit"
+  },
+  "defaultRule": {
+    "access": "visa_required",
+    "source": {
+      "$source": "Belarus.general"
+    }
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "BY": {
+      "access": "free_movement"
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "EG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "FM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "GM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "HT": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "ID": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "JO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "LB": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 90 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 90 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "MK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "NA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "PK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 90 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "SA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "text": "Visa-free entry through any Belarusian border crossing point (not limited to the airports used by other nationalities), usable multiple times, for stays of up to 30 days each, through 31 December 2026. This does not raise the combined 90-day-per-calendar-year cap on total time spent in Belarus."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.europe"
+          },
+          "temporalWindows": [
+            {
+              "description": "Visa-free entry through any border crossing point",
+              "source": {
+                "$source": "Belarus.europe"
+              },
+              "validUntil": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "VN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "VU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
+            },
+            {
+              "source": {
+                "$source": "Belarus.airport"
+              },
+              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "WS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    },
+    "ZA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Belarus.airport"
+          },
+          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+        }
+      ],
+      "source": {
+        "$source": "Belarus.airport"
+      }
+    }
+  }
+}
