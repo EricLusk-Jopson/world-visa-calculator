@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T23:38:40.112Z",
+  "generatedAt": "2026-10-20T04:44:31.357Z",
   "regions": [
     {
       "region": "Schengen",
@@ -16019,7 +16019,30 @@
           "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "both-changed",
+          "textDiffPreview": "- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Jakarta, Indonesia.\n+ Consular help:Consular help will be provided by the Embassy of Bosnia and Herzegovina in Jakarta, Indonesia.\n- Citizens of the Republic of Indonesia are required visas when entering, exiting or travelling through Bosnia and Herzegovina.Citizens of Indonesia, the holders of diplomatic and official passports, ar\n- The holders of valid diplomatic or official passports of either Party assigned as members of the diplomatic or consular mission in the territory of other Party, including their family members namely t\n+ Foreign nationals arriving in Indonesia are required to register through the following website: www.allindonesia.imigrasi.go.id, complete the required online form, and obtain a code that facilitates e\n+ Citizens of the Republic of Indonesia are required visas when entering, exiting or travelling through Bosnia and Herzegovina.Citizens of Indonesia, the holders of diplomatic and official passports, ar\n+ Holders of valid diplomatic and official passports who are assigned to work at the diplomatic and consular missions of Bosnia and Herzegovina in Jakarta, or at the diplomatic and consular missions of \n+ Security Conditions: The only region that remains problematic is Papua, located in the far eastern part of the country.\n+ All citizens of Bosnia and Herzegovina staying in private accommodation in the Republic of Indonesia (this does not apply to hotels, which register guests as part of their official duties) are require\n+ Areas Requiring Increased Caution:\n+ Papua: Visitors should exercise caution as separatist groups have carried out kidnappings of foreign nationals in remote areas. Travellers are advised to stay away from public gatherings, demonstratio\n+ Papua: Visitors should exercise caution as separatist groups have carried out kidnappings of foreign nationals in remote areas. Travellers are advised to stay away from public gatherings, demonstratio\n+ Anak Krakatau (Little Krakatoa) and Other Volcanoes: Given that Indonesia is located within the so-called Pacific Ring of Fire, visits to volcanoes are popular tourist attractions but require caution.\n+ Anak Krakatau (Little Krakatoa) and Other Volcanoes: Given that Indonesia is located within the so-called Pacific Ring of Fire, visits to volcanoes are popular tourist attractions but require caution.\n+ Health Conditions: For the most serious medical cases, evacuation to Singapore is recommended.\n+ Dengue fever occurs throughout the country, while malaria is present in certain regions. Severe Acute Respiratory Syndrome (SARS) did not result in any fatalities in Indonesia when it emerged.\n+ Drugs: Drug-related offences are subject to very severe penalties, including the death penalty.\n+ International Dialling Code: +62",
+          "linkChanges": [
+            {
+              "text": "Embassy of Bosnia and Herzegovina in Jakarta, Indonesia",
+              "currentHref": "https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639235092246045933",
+              "kind": "added"
+            },
+            {
+              "text": "www.allindonesia.imigrasi.go.id",
+              "currentHref": "http://www.allindonesia.imigrasi.go.id/",
+              "kind": "added"
+            },
+            {
+              "text": "https://vsi.esdm.go.id/",
+              "currentHref": "https://vsi.esdm.go.id/",
+              "kind": "added"
+            },
+            {
+              "text": "the Embassy of Bosnia and Herzegovina in Jakarta, Indonesia.",
+              "previousHref": "https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?INDONEZIJA/?id=7001",
+              "kind": "removed"
+            }
+          ],
           "keys": [
             "ID"
           ],
@@ -24198,10 +24221,21 @@
               "field": "direct"
             }
           ],
-          "status": "blocked",
+          "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/",
-          "error": "HTTP 200 with an Imperva Incapsula block page (incident 576000371472985585-1684954634201860469); Imperva Incapsula block page (incident 576000371472985585-1520702509138577778) in a headless browser too"
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#andorra",
+          "usedBy": [
+            {
+              "key": "AD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#andorra"
         },
         {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
@@ -24871,17 +24905,2007 @@
               "field": "parent"
             }
           ],
-          "status": "blocked",
+          "status": "live",
           "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-          "error": "HTTP 200 with an Imperva Incapsula block page (incident 576000371472985585-1520710519252584818); Imperva Incapsula block page (incident 576000371472985585-1636563439541291380) in a headless browser too"
+          "finalUrl": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#emiratet-bashkuara-arabe",
+          "usedBy": [
+            {
+              "key": "AE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#emiratet-bashkuara-arabe"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#afghanistan",
+          "usedBy": [
+            {
+              "key": "AF",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#afghanistan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#antigua-dhe-barbuda",
+          "usedBy": [
+            {
+              "key": "AG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#antigua-dhe-barbuda"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#armenia",
+          "usedBy": [
+            {
+              "key": "AM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#armenia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#angola",
+          "usedBy": [
+            {
+              "key": "AO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#angola"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#argjentina",
+          "usedBy": [
+            {
+              "key": "AR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#argjentina"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#austria",
+          "usedBy": [
+            {
+              "key": "AT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#austria"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#australia",
+          "usedBy": [
+            {
+              "key": "AU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#australia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#azerbajxhan",
+          "usedBy": [
+            {
+              "key": "AZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#azerbajxhan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bosnje-dhe-hercegovina",
+          "usedBy": [
+            {
+              "key": "BA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bosnje-dhe-hercegovina"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#barbados",
+          "usedBy": [
+            {
+              "key": "BB",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#barbados"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bangladesh",
+          "usedBy": [
+            {
+              "key": "BD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bangladesh"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belgjika",
+          "usedBy": [
+            {
+              "key": "BE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belgjika"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#burkina-faso",
+          "usedBy": [
+            {
+              "key": "BF",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#burkina-faso"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bullgaria",
+          "usedBy": [
+            {
+              "key": "BG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bullgaria"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahrejn",
+          "usedBy": [
+            {
+              "key": "BH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahrejn"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#benin",
+          "usedBy": [
+            {
+              "key": "BJ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#benin"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brunei",
+          "usedBy": [
+            {
+              "key": "BN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brunei"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bolivia",
+          "usedBy": [
+            {
+              "key": "BO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bolivia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brazil",
+          "usedBy": [
+            {
+              "key": "BR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brazil"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahamas",
+          "usedBy": [
+            {
+              "key": "BS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahamas"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#botsvana",
+          "usedBy": [
+            {
+              "key": "BW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#botsvana"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bjellorusi",
+          "usedBy": [
+            {
+              "key": "BY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bjellorusi"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belize",
+          "usedBy": [
+            {
+              "key": "BZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belize"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kanada",
+          "usedBy": [
+            {
+              "key": "CA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kanada"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kongo",
+          "usedBy": [
+            {
+              "key": "CG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kongo"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zvicra",
+          "usedBy": [
+            {
+              "key": "CH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zvicra"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bregu-i-fildishte",
+          "usedBy": [
+            {
+              "key": "CI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bregu-i-fildishte"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kili",
+          "usedBy": [
+            {
+              "key": "CL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kili"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamerun",
+          "usedBy": [
+            {
+              "key": "CM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamerun"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kina",
+          "usedBy": [
+            {
+              "key": "CN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kina"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kolumbia",
+          "usedBy": [
+            {
+              "key": "CO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kolumbia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosta-rika",
+          "usedBy": [
+            {
+              "key": "CR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosta-rika"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuba",
+          "usedBy": [
+            {
+              "key": "CU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuba"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#qipro",
+          "usedBy": [
+            {
+              "key": "CY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#qipro"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-ceke",
+          "usedBy": [
+            {
+              "key": "CZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-ceke"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjermania",
+          "usedBy": [
+            {
+              "key": "DE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjermania"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#danimarka",
+          "usedBy": [
+            {
+              "key": "DK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#danimarka"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-domenikane",
+          "usedBy": [
+            {
+              "key": "DO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-domenikane"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#algjeria",
+          "usedBy": [
+            {
+              "key": "DZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#algjeria"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ekuador",
+          "usedBy": [
+            {
+              "key": "EC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ekuador"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#estonia",
+          "usedBy": [
+            {
+              "key": "EE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#estonia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#egjipt",
+          "usedBy": [
+            {
+              "key": "EG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#egjipt"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#eritrea",
+          "usedBy": [
+            {
+              "key": "ER",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#eritrea"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#spanja",
+          "usedBy": [
+            {
+              "key": "ES",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#spanja"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#etiopia",
+          "usedBy": [
+            {
+              "key": "ET",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#etiopia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#finlanda",
+          "usedBy": [
+            {
+              "key": "FI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#finlanda"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#fixhi",
+          "usedBy": [
+            {
+              "key": "FJ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#fixhi"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#franca",
+          "usedBy": [
+            {
+              "key": "FR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#franca"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gabon",
+          "usedBy": [
+            {
+              "key": "GA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gabon"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mbreteria-bashkuar",
+          "usedBy": [
+            {
+              "key": "GB",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mbreteria-bashkuar"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjeorgjia",
+          "usedBy": [
+            {
+              "key": "GE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjeorgjia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gana",
+          "usedBy": [
+            {
+              "key": "GH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gana"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guinea",
+          "usedBy": [
+            {
+              "key": "GN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guinea"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#greqia",
+          "usedBy": [
+            {
+              "key": "GR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#greqia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guatemala",
+          "usedBy": [
+            {
+              "key": "GT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guatemala"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana",
+          "usedBy": [
+            {
+              "key": "GY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong",
+          "usedBy": [
+            {
+              "key": "HK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras",
+          "usedBy": [
+            {
+              "key": "HN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kroacia",
+          "usedBy": [
+            {
+              "key": "HR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kroacia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#haiti",
+          "usedBy": [
+            {
+              "key": "HT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#haiti"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hungaria",
+          "usedBy": [
+            {
+              "key": "HU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hungaria"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indonezi",
+          "usedBy": [
+            {
+              "key": "ID",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indonezi"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irlanda",
+          "usedBy": [
+            {
+              "key": "IE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irlanda"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#izrael",
+          "usedBy": [
+            {
+              "key": "IL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#izrael"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indi",
+          "usedBy": [
+            {
+              "key": "IN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indi"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irak",
+          "usedBy": [
+            {
+              "key": "IQ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irak"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#iran",
+          "usedBy": [
+            {
+              "key": "IR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#iran"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#islanda",
+          "usedBy": [
+            {
+              "key": "IS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#islanda"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#itali",
+          "usedBy": [
+            {
+              "key": "IT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#itali"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#xhamajka",
+          "usedBy": [
+            {
+              "key": "JM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#xhamajka"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jordania",
+          "usedBy": [
+            {
+              "key": "JO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jordania"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#japoni",
+          "usedBy": [
+            {
+              "key": "JP",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#japoni"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kenia",
+          "usedBy": [
+            {
+              "key": "KE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kenia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kirgistan",
+          "usedBy": [
+            {
+              "key": "KG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kirgistan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamboxhia",
+          "usedBy": [
+            {
+              "key": "KH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamboxhia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#saint",
+          "usedBy": [
+            {
+              "key": "KN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#saint"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-veriut",
+          "usedBy": [
+            {
+              "key": "KP",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-veriut"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-jugut",
+          "usedBy": [
+            {
+              "key": "KR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-jugut"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuvajt",
+          "usedBy": [
+            {
+              "key": "KW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuvajt"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kazakistan",
+          "usedBy": [
+            {
+              "key": "KZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kazakistan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liban",
+          "usedBy": [
+            {
+              "key": "LB",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liban"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lihteshtejn",
+          "usedBy": [
+            {
+              "key": "LI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lihteshtejn"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sri-lanka",
+          "usedBy": [
+            {
+              "key": "LK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sri-lanka"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liberia",
+          "usedBy": [
+            {
+              "key": "LR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liberia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lesoto",
+          "usedBy": [
+            {
+              "key": "LS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lesoto"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lituania",
+          "usedBy": [
+            {
+              "key": "LT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lituania"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#luksemburg",
+          "usedBy": [
+            {
+              "key": "LU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#luksemburg"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#letonia",
+          "usedBy": [
+            {
+              "key": "LV",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#letonia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#libia",
+          "usedBy": [
+            {
+              "key": "LY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#libia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#marok",
+          "usedBy": [
+            {
+              "key": "MA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#marok"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#monako",
+          "usedBy": [
+            {
+              "key": "MC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#monako"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#moldavia",
+          "usedBy": [
+            {
+              "key": "MD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#moldavia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali-zi",
+          "usedBy": [
+            {
+              "key": "ME",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali-zi"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#madagaskar",
+          "usedBy": [
+            {
+              "key": "MG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#madagaskar"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maqedonia-veriut",
+          "usedBy": [
+            {
+              "key": "MK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maqedonia-veriut"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali",
+          "usedBy": [
+            {
+              "key": "ML",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia",
+          "usedBy": [
+            {
+              "key": "MN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao",
+          "usedBy": [
+            {
+              "key": "MO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania",
+          "usedBy": [
+            {
+              "key": "MR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malta",
+          "usedBy": [
+            {
+              "key": "MT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malta"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauricius",
+          "usedBy": [
+            {
+              "key": "MU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauricius"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maldive",
+          "usedBy": [
+            {
+              "key": "MV",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maldive"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malavia",
+          "usedBy": [
+            {
+              "key": "MW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malavia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#meksika",
+          "usedBy": [
+            {
+              "key": "MX",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#meksika"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malajzia",
+          "usedBy": [
+            {
+              "key": "MY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malajzia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mozambik",
+          "usedBy": [
+            {
+              "key": "MZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mozambik"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#namibia",
+          "usedBy": [
+            {
+              "key": "NA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#namibia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nigeria",
+          "usedBy": [
+            {
+              "key": "NG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nigeria"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nikaragua",
+          "usedBy": [
+            {
+              "key": "NI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nikaragua"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#holanda",
+          "usedBy": [
+            {
+              "key": "NL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#holanda"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#norvegjia",
+          "usedBy": [
+            {
+              "key": "NO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#norvegjia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nepali",
+          "usedBy": [
+            {
+              "key": "NP",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nepali"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zelanda-re",
+          "usedBy": [
+            {
+              "key": "NZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zelanda-re"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#oman",
+          "usedBy": [
+            {
+              "key": "OM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#oman"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#panama",
+          "usedBy": [
+            {
+              "key": "PA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#panama"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#peru",
+          "usedBy": [
+            {
+              "key": "PE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#peru"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#filipine",
+          "usedBy": [
+            {
+              "key": "PH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#filipine"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#pakistan",
+          "usedBy": [
+            {
+              "key": "PK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#pakistan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#polonia",
+          "usedBy": [
+            {
+              "key": "PL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#polonia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#palestina",
+          "usedBy": [
+            {
+              "key": "PS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#palestina"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#portugali",
+          "usedBy": [
+            {
+              "key": "PT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#portugali"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#paraguaj",
+          "usedBy": [
+            {
+              "key": "PY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#paraguaj"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#katar",
+          "usedBy": [
+            {
+              "key": "QA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#katar"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rumania",
+          "usedBy": [
+            {
+              "key": "RO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rumania"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#serbia",
+          "usedBy": [
+            {
+              "key": "RS",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#serbia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rusia",
+          "usedBy": [
+            {
+              "key": "RU",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rusia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ruanda",
+          "usedBy": [
+            {
+              "key": "RW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ruanda"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#arabia-saudite",
+          "usedBy": [
+            {
+              "key": "SA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#arabia-saudite"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sejshell",
+          "usedBy": [
+            {
+              "key": "SC",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sejshell"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sudan",
+          "usedBy": [
+            {
+              "key": "SD",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sudan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#suedia",
+          "usedBy": [
+            {
+              "key": "SE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#suedia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#singapor",
+          "usedBy": [
+            {
+              "key": "SG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#singapor"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovenia",
+          "usedBy": [
+            {
+              "key": "SI",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovenia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovakia",
+          "usedBy": [
+            {
+              "key": "SK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovakia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sierra-leone",
+          "usedBy": [
+            {
+              "key": "SL",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sierra-leone"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#san-marino",
+          "usedBy": [
+            {
+              "key": "SM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#san-marino"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#senegal",
+          "usedBy": [
+            {
+              "key": "SN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#senegal"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#somalia",
+          "usedBy": [
+            {
+              "key": "SO",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#somalia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#surinam",
+          "usedBy": [
+            {
+              "key": "SR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#surinam"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#principe",
+          "usedBy": [
+            {
+              "key": "ST",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#principe"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#salvador",
+          "usedBy": [
+            {
+              "key": "SV",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#salvador"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#siria",
+          "usedBy": [
+            {
+              "key": "SY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#siria"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#togo",
+          "usedBy": [
+            {
+              "key": "TG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#togo"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajlanda",
+          "usedBy": [
+            {
+              "key": "TH",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajlanda"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#taxhikistan",
+          "usedBy": [
+            {
+              "key": "TJ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#taxhikistan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turkmenistan",
+          "usedBy": [
+            {
+              "key": "TM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turkmenistan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tunizi",
+          "usedBy": [
+            {
+              "key": "TN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tunizi"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turqi",
+          "usedBy": [
+            {
+              "key": "TR",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turqi"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago",
+          "usedBy": [
+            {
+              "key": "TT",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan",
+          "usedBy": [
+            {
+              "key": "TW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania",
+          "usedBy": [
+            {
+              "key": "TZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ukraina",
+          "usedBy": [
+            {
+              "key": "UA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ukraina"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uganda",
+          "usedBy": [
+            {
+              "key": "UG",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uganda"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#shba",
+          "usedBy": [
+            {
+              "key": "US",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#shba"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uruguaj",
+          "usedBy": [
+            {
+              "key": "UY",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uruguaj"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uzbekistan",
+          "usedBy": [
+            {
+              "key": "UZ",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uzbekistan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vatikan",
+          "usedBy": [
+            {
+              "key": "VA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vatikan"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#venezuela",
+          "usedBy": [
+            {
+              "key": "VE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#venezuela"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vietnam",
+          "usedBy": [
+            {
+              "key": "VN",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vietnam"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosova",
+          "usedBy": [
+            {
+              "key": "XK",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosova"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jemen",
+          "usedBy": [
+            {
+              "key": "YE",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jemen"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#south-africa",
+          "usedBy": [
+            {
+              "key": "ZA",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#south-africa"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zambia",
+          "usedBy": [
+            {
+              "key": "ZM",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zambia"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zimbabve",
+          "usedBy": [
+            {
+              "key": "ZW",
+              "field": "direct.alternate"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zimbabve"
         }
       ],
       "ruleChecks": [
         {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#andorra",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
           "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
-          "status": "fetch-error",
-          "error": "HTTP 200 with an Imperva Incapsula block page (incident 576000371472985585-1520710519252584818); Imperva Incapsula block page (incident 576000371472985585-1636563439541291380) in a headless browser too",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
           "keys": [
             "AD",
             "AE",
@@ -25053,9 +27077,1658 @@
           "link": "parent"
         },
         {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#emiratet-bashkuara-arabe",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#afghanistan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AF"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#antigua-dhe-barbuda",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#armenia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#angola",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#argjentina",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#austria",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#australia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#azerbajxhan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "AZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bosnje-dhe-hercegovina",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#barbados",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BB"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bangladesh",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belgjika",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#burkina-faso",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BF"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bullgaria",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahrejn",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#benin",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BJ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brunei",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bolivia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brazil",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahamas",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#botsvana",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bjellorusi",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belize",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "BZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kanada",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kongo",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zvicra",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bregu-i-fildishte",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kili",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamerun",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kina",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kolumbia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosta-rika",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuba",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#qipro",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-ceke",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "CZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjermania",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "DE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#danimarka",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "DK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-domenikane",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "DO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#algjeria",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "DZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ekuador",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "EC"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#estonia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "EE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#egjipt",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "EG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#eritrea",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ER"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#spanja",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ES"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#etiopia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ET"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#finlanda",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "FI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#fixhi",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "FJ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#franca",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "FR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gabon",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "GA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mbreteria-bashkuar",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "GB"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjeorgjia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "GE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gana",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "GH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guinea",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "GN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#greqia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "GR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guatemala",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "GT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "GY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "HK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "HN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kroacia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "HR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#haiti",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "HT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hungaria",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "HU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indonezi",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ID"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irlanda",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "IE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#izrael",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "IL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indi",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "IN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irak",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "IQ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#iran",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "IR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#islanda",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "IS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#itali",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "IT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#xhamajka",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "JM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jordania",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "JO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#japoni",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "JP"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kenia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "KE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kirgistan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "KG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamboxhia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "KH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#saint",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "KN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-veriut",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "KP"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-jugut",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "KR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuvajt",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "KW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kazakistan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "KZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liban",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LB"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lihteshtejn",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sri-lanka",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liberia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lesoto",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lituania",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#luksemburg",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#letonia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LV"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#libia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "LY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#marok",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#monako",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MC"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#moldavia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali-zi",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ME"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#madagaskar",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maqedonia-veriut",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ML"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malta",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauricius",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maldive",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MV"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malavia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#meksika",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MX"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malajzia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mozambik",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "MZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#namibia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "NA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nigeria",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "NG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nikaragua",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "NI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#holanda",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "NL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#norvegjia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "NO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nepali",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "NP"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zelanda-re",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "NZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#oman",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "OM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#panama",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "PA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#peru",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "PE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#filipine",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "PH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#pakistan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "PK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#polonia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "PL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#palestina",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "PS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#portugali",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "PT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#paraguaj",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "PY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#katar",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "QA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rumania",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "RO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#serbia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "RS"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rusia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "RU"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ruanda",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "RW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#arabia-saudite",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sejshell",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SC"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sudan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SD"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#suedia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#singapor",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovenia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SI"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovakia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sierra-leone",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SL"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#san-marino",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#senegal",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#somalia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SO"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#surinam",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#principe",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ST"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#salvador",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SV"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#siria",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "SY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#togo",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajlanda",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TH"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#taxhikistan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TJ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turkmenistan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tunizi",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turqi",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TR"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TT"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "TZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ukraina",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "UA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uganda",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "UG"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#shba",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "US"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uruguaj",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "UY"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uzbekistan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "UZ"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vatikan",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "VA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#venezuela",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "VE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vietnam",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "VN"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosova",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "XK"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jemen",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "YE"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#south-africa",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ZA"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zambia",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ZM"
+          ],
+          "link": "direct.alternate"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zimbabve",
+          "previousUpdatedAt": null,
+          "currentUpdatedAt": null,
+          "status": "unchanged",
+          "keys": [
+            "ZW"
+          ],
+          "link": "direct.alternate"
+        },
+        {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries",
-          "status": "fetch-error",
-          "error": "Could not read the country table: HTTP 200 with an Imperva Incapsula JavaScript challenge; Imperva Incapsula block page (incident 576000371472985585-1715796201648949622) in a headless browser too",
+          "status": "unchanged",
           "keys": [
             "AD",
             "AE",
@@ -25510,13 +29183,13 @@
   ],
   "skippedRegions": [],
   "summary": {
-    "totalLinksChecked": 831,
+    "totalLinksChecked": 997,
     "brokenLinks": 0,
     "redirectedLinks": 0,
-    "blockedLinks": 3,
-    "sourcesChecked": 803,
-    "sourcesChanged": 0,
+    "blockedLinks": 1,
+    "sourcesChecked": 969,
+    "sourcesChanged": 1,
     "sourcesFirstRun": 0,
-    "sourcesFetchError": 2
+    "sourcesFetchError": 0
   }
 }

@@ -1,19 +1,19 @@
 # Source Verification Report
 
-Generated: 2026-10-18T23:38:40.112Z
+Generated: 2026-10-20T04:44:31.357Z
 
 ## Summary
 
 | | |
 |---|---|
-| Unique links checked | 831 |
+| Unique links checked | 997 |
 | 🔴 Broken | 0 |
 | ↪️ Redirected | 0 |
-| 🚫 Blocked (could not verify) | 3 |
-| Content sources diffed (`checkDiff`) | 803 |
-| ✏️ Changed since last baseline | 0 |
+| 🚫 Blocked (could not verify) | 1 |
+| Content sources diffed (`checkDiff`) | 969 |
+| ✏️ Changed since last baseline | 1 |
 | 🆕 First run (no baseline yet) | 0 |
-| ⚠️ Fetch errors | 2 |
+| ⚠️ Fetch errors | 0 |
 
 ## Schengen
 
@@ -1119,6 +1119,38 @@ Generated: 2026-10-18T23:38:40.112Z
 
 ### Content diffing
 
+#### ID (direct.alternate) — ✏️🔗 text + link changed
+
+URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba
+
+```diff
+- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Jakarta, Indonesia.
++ Consular help:Consular help will be provided by the Embassy of Bosnia and Herzegovina in Jakarta, Indonesia.
+- Citizens of the Republic of Indonesia are required visas when entering, exiting or travelling through Bosnia and Herzegovina.Citizens of Indonesia, the holders of diplomatic and official passports, ar
+- The holders of valid diplomatic or official passports of either Party assigned as members of the diplomatic or consular mission in the territory of other Party, including their family members namely t
++ Foreign nationals arriving in Indonesia are required to register through the following website: www.allindonesia.imigrasi.go.id, complete the required online form, and obtain a code that facilitates e
++ Citizens of the Republic of Indonesia are required visas when entering, exiting or travelling through Bosnia and Herzegovina.Citizens of Indonesia, the holders of diplomatic and official passports, ar
++ Holders of valid diplomatic and official passports who are assigned to work at the diplomatic and consular missions of Bosnia and Herzegovina in Jakarta, or at the diplomatic and consular missions of 
++ Security Conditions: The only region that remains problematic is Papua, located in the far eastern part of the country.
++ All citizens of Bosnia and Herzegovina staying in private accommodation in the Republic of Indonesia (this does not apply to hotels, which register guests as part of their official duties) are require
++ Areas Requiring Increased Caution:
++ Papua: Visitors should exercise caution as separatist groups have carried out kidnappings of foreign nationals in remote areas. Travellers are advised to stay away from public gatherings, demonstratio
++ Papua: Visitors should exercise caution as separatist groups have carried out kidnappings of foreign nationals in remote areas. Travellers are advised to stay away from public gatherings, demonstratio
++ Anak Krakatau (Little Krakatoa) and Other Volcanoes: Given that Indonesia is located within the so-called Pacific Ring of Fire, visits to volcanoes are popular tourist attractions but require caution.
++ Anak Krakatau (Little Krakatoa) and Other Volcanoes: Given that Indonesia is located within the so-called Pacific Ring of Fire, visits to volcanoes are popular tourist attractions but require caution.
++ Health Conditions: For the most serious medical cases, evacuation to Singapore is recommended.
++ Dengue fever occurs throughout the country, while malaria is present in certain regions. Severe Acute Respiratory Syndrome (SARS) did not result in any fatalities in Indonesia when it emerged.
++ Drugs: Drug-related offences are subject to very severe penalties, including the death penalty.
++ International Dialling Code: +62
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | Embassy of Bosnia and Herzegovina in Jakarta, Indonesia | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639235092246045933 |
+| added | www.allindonesia.imigrasi.go.id | _(none)_ | http://www.allindonesia.imigrasi.go.id/ |
+| added | https://vsi.esdm.go.id/ | _(none)_ | https://vsi.esdm.go.id/ |
+| removed | the Embassy of Bosnia and Herzegovina in Jakarta, Indonesia. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?INDONEZIJA/?id=7001 | _(removed)_ |
+
 | Keys | Status | URL |
 |---|---|---|
 | AD (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba |
@@ -1196,7 +1228,6 @@ Generated: 2026-10-18T23:38:40.112Z
 | HR (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba |
 | HT (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba |
 | HU (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba |
-| ID (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba |
 | IE (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222101785307612?domain=https://www.mvp.gov.ba |
 | IL (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884278175687728?domain=https://www.mvp.gov.ba |
 | IN (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884258079851240?domain=https://www.mvp.gov.ba |
@@ -1741,20 +1772,347 @@ Generated: 2026-10-18T23:38:40.112Z
 
 | Used by | Status | URL |
 |---|---|---|
-| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (direct) | 🚫 blocked (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/<br>HTTP 200 with an Imperva Incapsula block page (incident 576000371472985585-1684954634201860469); Imperva Incapsula block page (incident 576000371472985585-1520702509138577778) in a headless browser too |
-| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (parent) | 🚫 blocked (200) | https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/<br>HTTP 200 with an Imperva Incapsula block page (incident 576000371472985585-1520710519252584818); Imperva Incapsula block page (incident 576000371472985585-1636563439541291380) in a headless browser too |
+| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (direct) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/ |
+| AD (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#andorra |
+| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (parent) | ✅ live (200) | https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/ |
+| AE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#emiratet-bashkuara-arabe |
+| AF (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#afghanistan |
+| AG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#antigua-dhe-barbuda |
+| AM (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#armenia |
+| AO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#angola |
+| AR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#argjentina |
+| AT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#austria |
+| AU (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#australia |
+| AZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#azerbajxhan |
+| BA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bosnje-dhe-hercegovina |
+| BB (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#barbados |
+| BD (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bangladesh |
+| BE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belgjika |
+| BF (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#burkina-faso |
+| BG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bullgaria |
+| BH (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahrejn |
+| BJ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#benin |
+| BN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brunei |
+| BO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bolivia |
+| BR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brazil |
+| BS (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahamas |
+| BW (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#botsvana |
+| BY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bjellorusi |
+| BZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belize |
+| CA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kanada |
+| CG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kongo |
+| CH (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zvicra |
+| CI (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bregu-i-fildishte |
+| CL (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kili |
+| CM (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamerun |
+| CN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kina |
+| CO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kolumbia |
+| CR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosta-rika |
+| CU (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuba |
+| CY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#qipro |
+| CZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-ceke |
+| DE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjermania |
+| DK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#danimarka |
+| DO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-domenikane |
+| DZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#algjeria |
+| EC (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ekuador |
+| EE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#estonia |
+| EG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#egjipt |
+| ER (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#eritrea |
+| ES (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#spanja |
+| ET (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#etiopia |
+| FI (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#finlanda |
+| FJ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#fixhi |
+| FR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#franca |
+| GA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gabon |
+| GB (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mbreteria-bashkuar |
+| GE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjeorgjia |
+| GH (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gana |
+| GN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guinea |
+| GR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#greqia |
+| GT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guatemala |
+| GY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana |
+| HK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong |
+| HN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras |
+| HR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kroacia |
+| HT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#haiti |
+| HU (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hungaria |
+| ID (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indonezi |
+| IE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irlanda |
+| IL (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#izrael |
+| IN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indi |
+| IQ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irak |
+| IR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#iran |
+| IS (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#islanda |
+| IT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#itali |
+| JM (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#xhamajka |
+| JO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jordania |
+| JP (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#japoni |
+| KE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kenia |
+| KG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kirgistan |
+| KH (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamboxhia |
+| KN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#saint |
+| KP (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-veriut |
+| KR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-jugut |
+| KW (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuvajt |
+| KZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kazakistan |
+| LB (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liban |
+| LI (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lihteshtejn |
+| LK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sri-lanka |
+| LR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liberia |
+| LS (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lesoto |
+| LT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lituania |
+| LU (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#luksemburg |
+| LV (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#letonia |
+| LY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#libia |
+| MA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#marok |
+| MC (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#monako |
+| MD (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#moldavia |
+| ME (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali-zi |
+| MG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#madagaskar |
+| MK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maqedonia-veriut |
+| ML (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali |
+| MN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia |
+| MO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao |
+| MR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania |
+| MT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malta |
+| MU (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauricius |
+| MV (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maldive |
+| MW (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malavia |
+| MX (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#meksika |
+| MY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malajzia |
+| MZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mozambik |
+| NA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#namibia |
+| NG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nigeria |
+| NI (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nikaragua |
+| NL (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#holanda |
+| NO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#norvegjia |
+| NP (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nepali |
+| NZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zelanda-re |
+| OM (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#oman |
+| PA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#panama |
+| PE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#peru |
+| PH (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#filipine |
+| PK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#pakistan |
+| PL (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#polonia |
+| PS (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#palestina |
+| PT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#portugali |
+| PY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#paraguaj |
+| QA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#katar |
+| RO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rumania |
+| RS (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#serbia |
+| RU (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rusia |
+| RW (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ruanda |
+| SA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#arabia-saudite |
+| SC (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sejshell |
+| SD (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sudan |
+| SE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#suedia |
+| SG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#singapor |
+| SI (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovenia |
+| SK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovakia |
+| SL (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sierra-leone |
+| SM (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#san-marino |
+| SN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#senegal |
+| SO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#somalia |
+| SR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#surinam |
+| ST (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#principe |
+| SV (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#salvador |
+| SY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#siria |
+| TG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#togo |
+| TH (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajlanda |
+| TJ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#taxhikistan |
+| TM (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turkmenistan |
+| TN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tunizi |
+| TR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turqi |
+| TT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago |
+| TW (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan |
+| TZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania |
+| UA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ukraina |
+| UG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uganda |
+| US (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#shba |
+| UY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uruguaj |
+| UZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uzbekistan |
+| VA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vatikan |
+| VE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#venezuela |
+| VN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vietnam |
+| XK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosova |
+| YE (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jemen |
+| ZA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#south-africa |
+| ZM (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zambia |
+| ZW (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zimbabve |
 
 ### Content diffing
 
-#### AD, AE, AF, AG, AM … (+161 more) (parent) — ⚠️ fetch error
-
-URL: https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/
-<br>Error: HTTP 200 with an Imperva Incapsula block page (incident 576000371472985585-1520710519252584818); Imperva Incapsula block page (incident 576000371472985585-1636563439541291380) in a headless browser too
-
-#### AD, AE, AF, AG, AM … (+161 more) (direct.alternate (page list)) — ⚠️ fetch error
-
-URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries
-<br>Error: Could not read the country table: HTTP 200 with an Imperva Incapsula JavaScript challenge; Imperva Incapsula block page (incident 576000371472985585-1715796201648949622) in a headless browser too
+| Keys | Status | URL |
+|---|---|---|
+| AD (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#andorra |
+| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (parent) | ✅ unchanged | https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/ |
+| AE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#emiratet-bashkuara-arabe |
+| AF (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#afghanistan |
+| AG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#antigua-dhe-barbuda |
+| AM (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#armenia |
+| AO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#angola |
+| AR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#argjentina |
+| AT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#austria |
+| AU (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#australia |
+| AZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#azerbajxhan |
+| BA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bosnje-dhe-hercegovina |
+| BB (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#barbados |
+| BD (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bangladesh |
+| BE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belgjika |
+| BF (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#burkina-faso |
+| BG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bullgaria |
+| BH (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahrejn |
+| BJ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#benin |
+| BN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brunei |
+| BO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bolivia |
+| BR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#brazil |
+| BS (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bahamas |
+| BW (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#botsvana |
+| BY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bjellorusi |
+| BZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#belize |
+| CA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kanada |
+| CG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kongo |
+| CH (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zvicra |
+| CI (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#bregu-i-fildishte |
+| CL (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kili |
+| CM (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamerun |
+| CN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kina |
+| CO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kolumbia |
+| CR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosta-rika |
+| CU (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuba |
+| CY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#qipro |
+| CZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-ceke |
+| DE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjermania |
+| DK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#danimarka |
+| DO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#republika-domenikane |
+| DZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#algjeria |
+| EC (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ekuador |
+| EE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#estonia |
+| EG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#egjipt |
+| ER (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#eritrea |
+| ES (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#spanja |
+| ET (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#etiopia |
+| FI (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#finlanda |
+| FJ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#fixhi |
+| FR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#franca |
+| GA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gabon |
+| GB (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mbreteria-bashkuar |
+| GE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gjeorgjia |
+| GH (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#gana |
+| GN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guinea |
+| GR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#greqia |
+| GT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guatemala |
+| GY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana |
+| HK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong |
+| HN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras |
+| HR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kroacia |
+| HT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#haiti |
+| HU (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hungaria |
+| ID (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indonezi |
+| IE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irlanda |
+| IL (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#izrael |
+| IN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#indi |
+| IQ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#irak |
+| IR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#iran |
+| IS (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#islanda |
+| IT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#itali |
+| JM (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#xhamajka |
+| JO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jordania |
+| JP (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#japoni |
+| KE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kenia |
+| KG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kirgistan |
+| KH (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kamboxhia |
+| KN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#saint |
+| KP (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-veriut |
+| KR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#korea-jugut |
+| KW (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kuvajt |
+| KZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kazakistan |
+| LB (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liban |
+| LI (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lihteshtejn |
+| LK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sri-lanka |
+| LR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#liberia |
+| LS (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lesoto |
+| LT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#lituania |
+| LU (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#luksemburg |
+| LV (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#letonia |
+| LY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#libia |
+| MA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#marok |
+| MC (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#monako |
+| MD (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#moldavia |
+| ME (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali-zi |
+| MG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#madagaskar |
+| MK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maqedonia-veriut |
+| ML (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali |
+| MN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia |
+| MO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao |
+| MR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania |
+| MT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malta |
+| MU (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauricius |
+| MV (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maldive |
+| MW (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malavia |
+| MX (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#meksika |
+| MY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malajzia |
+| MZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mozambik |
+| NA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#namibia |
+| NG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nigeria |
+| NI (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nikaragua |
+| NL (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#holanda |
+| NO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#norvegjia |
+| NP (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#nepali |
+| NZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zelanda-re |
+| OM (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#oman |
+| PA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#panama |
+| PE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#peru |
+| PH (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#filipine |
+| PK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#pakistan |
+| PL (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#polonia |
+| PS (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#palestina |
+| PT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#portugali |
+| PY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#paraguaj |
+| QA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#katar |
+| RO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rumania |
+| RS (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#serbia |
+| RU (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#rusia |
+| RW (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ruanda |
+| SA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#arabia-saudite |
+| SC (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sejshell |
+| SD (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sudan |
+| SE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#suedia |
+| SG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#singapor |
+| SI (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovenia |
+| SK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sllovakia |
+| SL (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#sierra-leone |
+| SM (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#san-marino |
+| SN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#senegal |
+| SO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#somalia |
+| SR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#surinam |
+| ST (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#principe |
+| SV (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#salvador |
+| SY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#siria |
+| TG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#togo |
+| TH (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajlanda |
+| TJ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#taxhikistan |
+| TM (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turkmenistan |
+| TN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tunizi |
+| TR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turqi |
+| TT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago |
+| TW (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan |
+| TZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania |
+| UA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ukraina |
+| UG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uganda |
+| US (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#shba |
+| UY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uruguaj |
+| UZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uzbekistan |
+| VA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vatikan |
+| VE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#venezuela |
+| VN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#vietnam |
+| XK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kosova |
+| YE (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#jemen |
+| ZA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#south-africa |
+| ZM (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zambia |
+| ZW (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zimbabve |
+| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (direct.alternate (page list)) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries |
 
 ## Cyprus
 
