@@ -428,7 +428,7 @@ export const IrelandSources = {
         checkDiff: true,
       },
     },
-    dateChecked: "2026-05-27",
+    dateChecked: "2026-10-08",
   } satisfies SourceDoc,
 } as const;
 
