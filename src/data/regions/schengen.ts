@@ -9,7 +9,7 @@
  *   - Visa Code Handbook Annex 7B (member-state-specific ATV requirements)
  *   All source URLs live in @/data/sources — SchengenSources.
  *
- * Last verified: 2026-04-08
+ * Last verified: 2026-10-20
  */
 
 import type {
@@ -234,7 +234,7 @@ export const SCHENGEN: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-04-08',
+  lastVerified: '2026-10-20',
   sourceUrl: SchengenSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {

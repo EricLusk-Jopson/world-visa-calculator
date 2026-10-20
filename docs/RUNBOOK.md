@@ -55,8 +55,8 @@ Each source's details in the app show **Verified &lt;date&gt;**:
    isn't triaged as noise, or a first run on a new link, freezes the date
    until someone checks the source again.
 
-> **Why Schengen still says 8 Apr 2026.** Its sources are `periodic`, so no
-> run can move that date. Only your next consolidation check can. Do it, then
+> **Why Schengen's date only moves monthly.** Its sources are `periodic`, so
+> no run can move that date. Only the consolidation check can. Do it, then
 > run `npm run sources:verified -- Schengen --all`.
 >
 > **The same applies to sources a diff covers, for now.** Every
