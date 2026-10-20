@@ -114,7 +114,7 @@ export function InfoRow({
       >
         {label}
       </Typography>
-      <Box sx={{ display: "flex", alignItems: "baseline", gap: "3px" }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
         <Typography
           sx={{
             fontFamily: tokens.fontBody,
