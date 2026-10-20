@@ -1,6 +1,6 @@
 ---
 region: Ireland
-lastReviewed: 2026-10-19
+lastReviewed: 2026-10-20
 links:
   - id: visaNationalityList
     url: https://www.irishimmigration.ie/visa-non-visa-required-nationalities/

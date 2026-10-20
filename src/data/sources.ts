@@ -350,7 +350,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-05-27",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc,
 
   /**

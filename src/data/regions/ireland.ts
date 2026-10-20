@@ -73,7 +73,7 @@
  *   "Refugee or Stateless" in the INIS table has no ISO Alpha-2 code;
  *   it is omitted and falls through to defaultRule correctly.
  *
- * Last verified: 2026-05-27
+ * Last verified: 2026-10-08
  */
 
 import type {
@@ -188,7 +188,7 @@ export const IRELAND: RegionDefinition = {
     }],
   },
 
-  lastVerified: '2026-05-27',
+  lastVerified: '2026-10-08',
   sourceUrl: IrelandSources.visaNationalityList.parent.url,
   defaultRule: VISA_REQUIRED,
 

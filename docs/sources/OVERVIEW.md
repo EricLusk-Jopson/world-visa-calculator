@@ -55,7 +55,7 @@ Links to look at by hand, whether or not the report flags them.
 - **Albania** (last reviewed 2026-10-20): [`visaTable`](albania.md#visatable) (manual only), [`visaTableCountries`](albania.md#visatablecountries) (manual only), [`visaRegime`](albania.md#visaregime) (manual only)
 - **Belarus** (last reviewed 2026-10-19): [`general`](belarus.md#general), [`airportPdf`](belarus.md#airportpdf)
 - **Cyprus** (last reviewed 2026-10-20): [`euVisaList`](cyprus.md#euvisalist), [`euVisaListCellar`](cyprus.md#euvisalistcellar)
-- **Ireland** (last reviewed 2026-10-19): [`visaNationalityList`](ireland.md#visanationalitylist), [`euFreeMovement`](ireland.md#eufreemovement), [`ctaGuidance`](ireland.md#ctaguidance), [`bivs`](ireland.md#bivs), [`ssvwp`](ireland.md#ssvwp), [`transitVisa`](ireland.md#transitvisa)
+- **Ireland** (last reviewed 2026-10-20): [`visaNationalityList`](ireland.md#visanationalitylist), [`euFreeMovement`](ireland.md#eufreemovement), [`ctaGuidance`](ireland.md#ctaguidance), [`bivs`](ireland.md#bivs), [`ssvwp`](ireland.md#ssvwp), [`transitVisa`](ireland.md#transitvisa)
 - **Schengen** (last reviewed 2026-10-20): [`visaList`](schengen.md#visalist), [`visaListCellar`](schengen.md#visalistcellar), [`atvCommon`](schengen.md#atvcommon), [`atvCommonCellar`](schengen.md#atvcommoncellar), [`atvSpecific`](schengen.md#atvspecific), [`etias`](schengen.md#etias)
 
 ## Totals
