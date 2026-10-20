@@ -35,8 +35,12 @@ Then compare what they paste with `src/data/regions/<region>.ts`:
 
 ## 3. Record
 
-- On confirmation, bump `dateChecked` on the checked `SourceDoc`s in
-  `src/data/sources.ts`. For a shared link this means every entry citing it.
+- On confirmation, record it: `npm run sources:verified -- <Region> <key …>`
+  (or `--all` when every source of the region was checked; `--date` if the
+  check wasn't today). It sets `dateChecked` on those `SourceDoc`s in
+  `src/data/sources.ts`. For a shared link, name every key citing it. From
+  then on, quiet source checks carry the app's "Verified" date forward for
+  sources a diff covers (`pipeline/reports/stability.json`).
 - Bump the playbook's `lastReviewed`. Bump `lastVerified` in the region file
   only if every rule was checked.
 - If any of these changed, run `npm run playbooks:overview`, then `npm test`.

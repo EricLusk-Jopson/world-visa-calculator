@@ -45,8 +45,8 @@ npm run rules:new -- --title "<Region>: <what changed>" --trigger <type>:<ref> \
   quote and where it is; how it was confirmed.
 - Bump `lastVerified` in the region file, and in its header's "Last
   verified" line.
-- Bump `dateChecked` on every SourceDoc the changed rules cite, in
-  `src/data/sources.ts`. You just checked them. The tests fail otherwise,
+- Bump `dateChecked` on every SourceDoc the changed rules cite:
+  `npm run sources:verified -- <Region> <key …>`. You just checked them. The tests fail otherwise,
   because the app shows "Verified <date> · Rule changed <date>" side by side.
 - Run `npm run rules:check` to refresh `summary.json`.
 - If the change came from a report, set the triage item's `verdict:

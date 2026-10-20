@@ -4,7 +4,10 @@
  * What the app can say about a cited source beyond its URL:
  *   - whether the source check last found the link broken
  *     (pipeline/reports/link-status.json, loaded lazily on first use);
- *   - when a rule citing it last changed (the rule-change log's summary).
+ *   - when a rule citing it last changed (the rule-change log's summary);
+ *   - how far its "Verified" date carries: a person's check (`dateChecked`)
+ *     extended by every later source check that found the content unchanged
+ *     (pipeline/reports/stability.json, loaded lazily on first use).
  */
 
 import ruleChangeSummary from "@/data/rule-changes/summary.json";
@@ -21,6 +24,29 @@ export function loadLinkStatus(): Promise<LinkStatusIndex | undefined> {
   const load = Object.values(loaders)[0];
   index ??= load ? load().catch(() => undefined) : Promise.resolve(undefined);
   return index;
+}
+
+type Stability = { since: string; through: string };
+type StabilityIndex = { generatedAt: string; sources: Record<string, Stability> };
+
+const stabilityLoaders = import.meta.glob<StabilityIndex>("../../pipeline/reports/stability.json", { import: "default" });
+let stability: Promise<StabilityIndex | undefined> | undefined;
+
+export function loadStability(): Promise<StabilityIndex | undefined> {
+  const load = Object.values(stabilityLoaders)[0];
+  stability ??= load ? load().catch(() => undefined) : Promise.resolve(undefined);
+  return stability;
+}
+
+/**
+ * The date to show as "Verified": a person's check (`dateChecked`), carried
+ * forward to the last source check through which the content stayed as it
+ * was then. The source's content must have been the same from on or before
+ * that check (`since`) up to `through`; a check made before the span says
+ * nothing about it. See pipeline/src/stability.ts.
+ */
+export function verifiedDate(dateChecked: string, s: Stability | undefined): string {
+  return s && s.since <= dateChecked && s.through > dateChecked ? s.through : dateChecked;
 }
 
 export function formatDay(iso: string): string {

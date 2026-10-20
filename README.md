@@ -89,6 +89,15 @@ npm run lint      # ESLint
 
 ---
 
+## Keeping the rules current
+
+A biweekly source check (`pipeline/`) watches the government pages behind
+every rule. **[docs/RUNBOOK.md](docs/RUNBOOK.md)** is the maintainer's guide:
+what happens on its own, and what to do on quiet weeks, noisy weeks, changes
+you find yourself, and user reports.
+
+---
+
 ## How the Schengen rule works
 
 The 90/180 rule is a **rolling window**, not a calendar year. On any given day, the tool looks back 180 days and counts how many of those days were spent in the Schengen Area. If the count is at or above 90, entry is not permitted.

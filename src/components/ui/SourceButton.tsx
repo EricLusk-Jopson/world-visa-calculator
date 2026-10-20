@@ -22,6 +22,8 @@ import {
   ISSUE_MESSAGE_MAX,
   issueReportProperties,
   loadLinkStatus,
+  loadStability,
+  verifiedDate,
   type IssueKind,
 } from "@/data/sourceStatus";
 import { reportSourceIssue, trackEvent } from "@/utils/analytics";
@@ -122,20 +124,23 @@ function SourceDetails({ source, size, onResize }: { source: SourceDoc; size: Si
   const ref = findSourceRef(source);
   const sz = SIZES[size];
   const touch = size === "touch";
+  const sourceKey = ref?.key ? `${ref.region}.${ref.key}` : undefined;
   const [problem, setProblem] = useState<string | undefined>();
+  const [verified, setVerified] = useState(source.dateChecked);
   const [reporting, setReporting] = useState(false);
 
   useEffect(() => {
     let live = true;
     loadLinkStatus().then((idx) => live && setProblem(describeLinkProblem(idx?.urls[source.direct.url])));
+    loadStability().then((idx) => live && setVerified(verifiedDate(source.dateChecked, sourceKey ? idx?.sources[sourceKey] : undefined)));
     return () => {
       live = false;
     };
-  }, [source.direct.url]);
+  }, [source.direct.url, source.dateChecked, sourceKey]);
 
   useEffect(() => onResize?.(), [reporting, problem, onResize]);
 
-  const change = describeRuleChange(ref?.key ? `${ref.region}.${ref.key}` : undefined);
+  const change = describeRuleChange(sourceKey);
   const click = (linkType: string) => trackEvent("source_link_clicked", { link_type: linkType, region: ref?.region });
   const lineSx = { fontFamily: tokens.fontBody, fontSize: sz.line, lineHeight: 1.45, color: tokens.textSoft } as const;
   const links = [
@@ -179,7 +184,7 @@ function SourceDetails({ source, size, onResize }: { source: SourceDoc; size: Si
       </Box>
 
       <Typography sx={lineSx}>
-        Verified {formatDay(source.dateChecked)}
+        Verified {formatDay(verified)}
         {change && (
           <>
             {" · "}

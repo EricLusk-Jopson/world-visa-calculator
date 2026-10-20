@@ -44,6 +44,14 @@ below.
    written to `reports/<YYYY-MM-DD>.{md,json}` and `reports/latest.{md,json}`,
    plus a findings-only `reports/pr-body.md` (gitignored) that becomes the
    PR description.
+4. **App data.** `reports/link-status.json` (each URL's last health result,
+   for the app's "couldn't reach this link" line) and
+   `reports/stability.json` (`src/stability.ts`): per source, the span of
+   runs over which its diffed content stayed the same. The app carries a
+   by-hand verification (`dateChecked`) forward to the end of that span, for
+   sources whose load-bearing links are all `humanCheck: on-diff` in their
+   playbook. Diffs triaged `no-rule-change` count as unchanged, so
+   `npm run stats` (repo root) rewrites it after triage.
 
 ## How a run reaches review
 

@@ -12,6 +12,7 @@
     "test:watch": "vitest",
     "playbooks:overview": "UPDATE_PLAYBOOK_OVERVIEW=1 vitest run src/data/sourcePlaybooks.test.ts",
     "rules:new": "tsx scripts/rules-new.ts",
+    "sources:verified": "tsx scripts/sources-verified.ts",
     "rules:check": "UPDATE_RULE_SUMMARY=1 vitest run src/data/rule-changes",
     "stats": "UPDATE_STATS=1 vitest run src/data/triage"
   },

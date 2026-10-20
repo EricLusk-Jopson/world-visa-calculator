@@ -2,6 +2,7 @@ import { join } from 'node:path';
 import { SourceRegions } from '@/data/sources';
 import { runChecks, type RegionSources } from './runChecks';
 import { buildReport, hasFindings, writeReportFiles } from './report';
+import { writeStability } from './stability';
 
 const PIPELINE_ROOT = join(import.meta.dirname, '..');
 
@@ -34,13 +35,15 @@ async function main() {
     reportPath: 'pipeline/reports/latest.md',
     pagePath: '/source-report',
   });
+  // Carries each source's "Verified" date forward in the app while its content stays the same.
+  const stabilityPath = writeStability(join(PIPELINE_ROOT, 'reports'), join(PIPELINE_ROOT, 'triage'));
 
   const s = report.summary;
   console.log('');
   console.log(`Links checked: ${s.totalLinksChecked} (broken: ${s.brokenLinks}, redirected: ${s.redirectedLinks})`);
   console.log(`Content sources checked: ${s.sourcesChecked} (changed: ${s.sourcesChanged}, first-run: ${s.sourcesFirstRun}, errors: ${s.sourcesFetchError})`);
   console.log('');
-  console.log(`Report written to:\n  ${markdownPath}\n  ${jsonPath}\n  ${prBodyPath}`);
+  console.log(`Report written to:\n  ${markdownPath}\n  ${jsonPath}\n  ${prBodyPath}\n  ${stabilityPath}`);
 
   // Findings are the expected output of a run, not a failure — the workflow
   // turns them into a PR. Opt into a non-zero exit for local/CI gating.
