@@ -130,6 +130,15 @@ grant for Visitors").
 **Machine:** diffed for text and links. GOV.UK collapses each section, but
 the text is in the page's HTML, so the diff sees V 17.2.
 
+V 17.2 is a table of "Maximum initial length of stay in the UK" by visitor
+type. As of 2026-10-20, row (a) reads: "Standard Visitor: up to 6 months
+except: (i) a Visitor who is coming to the UK for private medical treatment
+may be granted entry clearance for up to 11 months; (ii) an academic … may be
+granted entry clearance for up to 12 months; (iii) a Visitor under the
+Approved Destination Status Agreement may be granted entry clearance for up to
+30 days." The app models the general 6 months only; the three exceptions
+depend on the purpose of the visit and aren't modelled.
+
 **Human:** open the page and expand "Period and conditions of grant for
 Visitors" for V 17.2. The introduction also says a Standard Visitor stays
 "usually for up to 6 months" and "each stay in the UK must not exceed the
@@ -137,8 +146,10 @@ permitted length of stay endorsed on the visit visa (usually six months)".
 
 **Real change vs noise:**
 
-- **Rule change:** the Standard Visitor period of grant in V 17.2 (or the
-  introduction's "6 months") changes. It only changes through a Statement of
+- **Rule change:** the general Standard Visitor period in V 17.2 row (a)
+  ("up to 6 months"), or the introduction's "6 months", changes. A change
+  to one of row (a)'s exceptions (medical, academic, ADS) isn't a change to
+  a modelled rule, but note it here. It only changes through a Statement of
   Changes, listed on `immigrationRules` with its effective date.
 - **Noise:** other visitor types (marriage, transit, DVA, academics),
   permitted-activity cross-references, the DVA opening dates, page chrome.
