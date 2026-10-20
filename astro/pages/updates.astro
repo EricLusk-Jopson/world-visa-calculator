@@ -26,10 +26,13 @@ const roadmapCountries = [
   { name: "Egypt", done: false },
 ];
 
-const qcPipelineNotes = [
-  "Scheduled jobs check every government source link cited in the app for breakage and content drift on a recurring basis.",
-  "Changes that look impactful (stay limits, eligibility, entry conditions) are flagged for manual review before the ruleset is updated, and every rule change is recorded with what prompted it.",
-  "Every government source link in the app now shows when it was last verified, links to any rule change it backs, and has a “Report a problem” form for flagging broken links or outdated information.",
+const qcPipelineGoals = [
+  { text: "Every government source cited in the app is checked automatically every two weeks, for broken links and changed content.", done: true },
+  { text: "Flagged changes are reviewed by a person against the live source before any rule is updated.", done: true },
+  { text: "Every rule change is logged publicly with what prompted it and the evidence behind it.", done: true },
+  { text: "Each source shows when it was last verified and links to any rule change it backs.", done: true },
+  { text: "A “Report a problem” form on every source for flagging broken links or outdated information.", done: true },
+  { text: "Machine checks for the sources that still need a person to read them (some government sites block automated checks or only show their rules inside interactive forms).", done: false },
 ];
 
 const changelog = [
@@ -174,8 +177,7 @@ const tagLabel: Record<string, string> = {
             Expanding destination support to cover all of Europe and its
             neighbouring nations. Each new destination gets its own entry
             rules and stay limit tracking, powered by the same status engine
-            already driving Schengen, UK, Ireland, and Türkiye for every
-            destination.
+            that drives every destination the app already covers.
           </p>
           <ul class="roadmap-card__list">
             {roadmapCountries.map((country) => (
@@ -190,13 +192,17 @@ const tagLabel: Record<string, string> = {
         <div class="roadmap-card">
           <p class="roadmap-card__label">In progress: data QC &amp; error reporting pipeline</p>
           <p class="roadmap-card__desc">
-            Building an automated pipeline to keep passport/destination rules
+            An automated pipeline that keeps passport and destination rules
             accurate as government sources change, backed by a way for users
             to flag problems directly:
           </p>
-          <ul class="roadmap-card__notes">
-            {qcPipelineNotes.map((note) => (
-              <li>{note}</li>
+          <ul class="roadmap-card__goals">
+            {qcPipelineGoals.map((goal) => (
+              <li class={goal.done ? "is-done" : ""}>
+                <span class="roadmap-card__mark" aria-hidden="true">{goal.done ? "✓" : "○"}</span>
+                <span>{goal.text}</span>
+                <span class="visually-hidden">{goal.done ? " (done)" : " (in progress)"}</span>
+              </li>
             ))}
           </ul>
           <a class="roadmap-card__link" href="/rule-changes">See every rule change →</a>
@@ -339,9 +345,10 @@ const tagLabel: Record<string, string> = {
     font-weight: 700;
   }
 
-  .roadmap-card__notes {
+  .roadmap-card__goals {
     margin: 0;
-    padding-left: 20px;
+    padding: 0;
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -349,6 +356,35 @@ const tagLabel: Record<string, string> = {
     font-size: 0.88rem;
     line-height: 1.6;
     color: var(--color-text);
+  }
+
+  .roadmap-card__goals li {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    column-gap: 8px;
+    align-items: baseline;
+  }
+
+  .roadmap-card__mark {
+    color: var(--color-text-ghost);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .roadmap-card__goals li.is-done .roadmap-card__mark {
+    color: var(--color-green-text);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .roadmap-card__link {
