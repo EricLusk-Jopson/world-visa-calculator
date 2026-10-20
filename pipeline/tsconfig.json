@@ -11,7 +11,11 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["../src/*"]
+      "@/*": ["../src/*"],
+      // Modules shared from ../src import packages that CI installs only
+      // here, not at the repo root, so resolve them from this package (the
+      // package dir for tsc's types, its entry file for tsx at runtime).
+      "yaml": ["./node_modules/yaml", "./node_modules/yaml/dist/index.js"]
     }
   },
   "include": ["src"]
