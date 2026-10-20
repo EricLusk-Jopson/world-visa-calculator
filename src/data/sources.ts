@@ -289,7 +289,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-05-27",
+    dateChecked: "2026-10-08",
   } satisfies SourceDoc,
 
   /**
@@ -537,7 +537,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-15",
   } satisfies SourceDoc, // Algeria
   AD: {
     direct: {

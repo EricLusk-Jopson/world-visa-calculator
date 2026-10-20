@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import type { RegionDefinition } from "@/types";
 import { MONTENEGRO } from "@/data/regions";
 import { MontenegroSources } from "@/data/sources";
-import { lastChangePerRegion, loadEntries, parseEntry, UNFINISHED, unrecordedRegions, validateEntries } from "./entries";
+import { readFileSync, writeFileSync } from "node:fs";
+import { lastChangePerRegion, loadEntries, parseEntry, staleVerifiedDates, summarizeLog, SUMMARY_PATH, UNFINISHED, unrecordedRegions, validateEntries } from "./entries";
 import { diffRegion, normalizeRegion, RULE_REGIONS, summarizeRule } from "./normalize";
 
 describe("rule-change log", () => {
@@ -16,12 +17,22 @@ describe("rule-change log", () => {
     expect(validateEntries(entries)).toEqual([]);
   });
 
+  it("has an up-to-date summary.json for the app (npm run rules:check)", () => {
+    const expected = `${JSON.stringify(summarizeLog(entries), null, 2)}\n`;
+    if (process.env.UPDATE_RULE_SUMMARY) writeFileSync(SUMMARY_PATH, expected);
+    expect(readFileSync(SUMMARY_PATH, "utf-8")).toBe(expected);
+  });
+
+  it("has every changed rule's sources verified on or after the change (bump their dateChecked)", () => {
+    expect(staleVerifiedDates(entries)).toEqual([]);
+  });
+
   it("has a baseline", () => {
     expect(entries.filter((e) => e.baseline)).toHaveLength(1);
   });
 
   it("has each changed region's lastVerified on or after its last recorded change", () => {
-    const stale = [...lastChangePerRegion(entries)]
+    const stale = [...lastChangePerRegion(entries, true)]
       .map(([code, entry]) => ({ def: RULE_REGIONS.find((r) => r.def.code === code)!.def, entry }))
       .filter(({ def, entry }) => def.lastVerified < entry.recorded)
       .map(({ def, entry }) => `${def.code}: lastVerified ${def.lastVerified} is before entry ${entry.id} (${entry.recorded})`);

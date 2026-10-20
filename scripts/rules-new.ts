@@ -12,7 +12,7 @@ import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { stringify } from "yaml";
 import { diffRegion, normalizeRegion, RULE_REGIONS, type RuleChange } from "@/data/rule-changes/normalize";
-import { ENTRIES_DIR, loadEntries, readState, TRIGGER_TYPES, UNFINISHED, writeState } from "@/data/rule-changes/entries";
+import { ENTRIES_DIR, loadEntries, readState, TRIGGER_TYPES, UNFINISHED, writeState, writeSummary } from "@/data/rule-changes/entries";
 
 const { values } = parseArgs({
   options: {
@@ -105,9 +105,13 @@ writeFileSync(file, `---\n${stringify(front, { lineWidth: 0 }).trimEnd()}\n---\n
 
 const changedRegions = values.baseline ? RULE_REGIONS.map((r) => r.def) : RULE_REGIONS.map((r) => r.def).filter((d) => changes.some((c) => c.region === d.code));
 for (const def of changedRegions) writeState(normalizeRegion(def));
+writeSummary(loadEntries());
 
 console.log(`Wrote ${file}`);
 if (!values.baseline) {
   for (const c of changes) console.log(`  ${c.region} ${c.path}: ${c.before} → ${c.after}`);
-  console.log(`\nFill in its ${UNFINISHED} sections (the tests fail until you do) and bump lastVerified in: ${changedRegions.map((d) => d.code).join(", ")}.`);
+  console.log(
+    `\nFill in its ${UNFINISHED} sections (the tests fail until you do), bump lastVerified in ${changedRegions.map((d) => d.code).join(", ")}, ` +
+      "and bump dateChecked on the sources the changed rules cite (src/data/sources.ts). Then npm run rules:check.",
+  );
 }

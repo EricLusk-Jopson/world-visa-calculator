@@ -2,10 +2,11 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import type { Report } from "../../../pipeline/src/report";
+import { currentStability } from "../../../pipeline/src/stability";
 import { entryForReportUrl, loadPlaybooks, parsePlaybook, PLAYBOOK_DIR } from "@/data/playbooks";
 import { loadEntries } from "@/data/rule-changes/entries";
 import { parseEntry } from "@/data/rule-changes/log";
-import { computeStats, loadReports, loadTriage, renderStats, validateTriage, type TriageFile } from "./triage";
+import { computeStats, loadReports, loadTriage, renderStats, REPORTS_DIR, TRIAGE_DIR, validateTriage, type TriageFile } from "./triage";
 
 describe("triage records (pipeline/triage/)", () => {
   it("match flagged diffs and are complete", () => {
@@ -27,6 +28,15 @@ describe("triage records (pipeline/triage/)", () => {
   it("have an up-to-date docs/sources/STATS.md (npm run stats)", () => {
     const path = join(PLAYBOOK_DIR, "STATS.md");
     const expected = renderStats(computeStats(loadPlaybooks(), loadReports(), loadTriage(), loadEntries()));
+    if (process.env.UPDATE_STATS) writeFileSync(path, expected);
+    expect(readFileSync(path, "utf-8")).toBe(expected);
+  });
+
+  // The app's "Verified" dates carry forward over runs that found nothing new,
+  // and over diffs triaged as no rule change: refresh it after triaging.
+  it("have an up-to-date pipeline/reports/stability.json (npm run stats)", () => {
+    const path = join(REPORTS_DIR, "stability.json");
+    const expected = currentStability(REPORTS_DIR, TRIAGE_DIR);
     if (process.env.UPDATE_STATS) writeFileSync(path, expected);
     expect(readFileSync(path, "utf-8")).toBe(expected);
   });

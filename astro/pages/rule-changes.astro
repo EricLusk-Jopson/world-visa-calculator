@@ -1,0 +1,277 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LandingNav from "../components/LandingNav.astro";
+import Footer from "../components/Footer.astro";
+import { describePath, describeTrigger, entriesFromGlob } from "../../src/data/rule-changes/log";
+import { RULE_REGIONS } from "../../src/data/rule-changes/normalize";
+
+/**
+ * The rule-change log (src/data/rule-changes/entries/): every change to a
+ * destination's entry rules, newest first, each anchored at #rule-<id> so the
+ * app's source popovers can link to it.
+ */
+const entries = entriesFromGlob(
+  import.meta.glob("../../src/data/rule-changes/entries/*.md", { query: "?raw", import: "default", eager: true }) as Record<string, string>,
+);
+const baseline = entries.find((e) => e.baseline);
+const changes = entries.filter((e) => !e.baseline).reverse();
+
+const regionName = (code: string) => RULE_REGIONS.find((r) => r.def.code === code)?.def.name ?? code;
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+
+/** Each destination with its changes: count and the latest one. */
+const destinations = RULE_REGIONS.map(({ def }) => {
+  const mine = changes.filter((e) => e.changes.some((c) => c.region === def.code));
+  return { name: def.name, count: mine.length, latest: mine[0] };
+});
+const byDestination = destinations
+  .flatMap((d) => (d.latest ? [{ ...d, latest: d.latest }] : []))
+  .sort((a, b) => b.latest.recorded.localeCompare(a.latest.recorded) || a.name.localeCompare(b.name));
+/** Listed by name in one line, so the index stays short on a phone. */
+const unchanged = destinations.filter((d) => !d.latest).map((d) => d.name).sort();
+---
+
+<BaseLayout
+  title="Rule changes | EuroVisaCalculator"
+  description="Every change to the entry rules EuroVisaCalculator applies, with what it was before and after, when it changed, and what prompted it."
+  canonicalUrl="https://eurovisacalculator.com/rule-changes"
+>
+  <LandingNav />
+  <div class="page">
+    <div class="page__inner">
+      <h1 class="page__title">Rule changes</h1>
+      <p class="page__lede">
+        Every change to the entry rules the calculator applies, with what it
+        was before and after and what prompted it. Each one is checked against
+        the official source before it goes live.
+      </p>
+
+      <section class="section" aria-labelledby="by-destination">
+        <h2 class="section__title" id="by-destination">By destination</h2>
+        <ul class="destinations">
+          {byDestination.map((d) => (
+            <li class="destination">
+              <span class="destination__name">{d.name}</span>
+              <a class="destination__latest" href={`#rule-${d.latest.id}`}>
+                {d.count} {d.count === 1 ? "change" : "changes"} · latest {formatDate(d.latest.recorded)}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {unchanged.length > 0 && (
+          <p class="destinations__none">No changes recorded for {unchanged.join(", ")}.</p>
+        )}
+      </section>
+
+      <section class="section" aria-labelledby="all-changes">
+        <h2 class="section__title" id="all-changes">All changes</h2>
+        <div class="log">
+          {changes.map((entry) => (
+            <article class="entry" id={`rule-${entry.id}`}>
+              <p class="entry__date">
+                {formatDate(entry.recorded)}
+                {entry.effective && entry.effective !== entry.recorded && (
+                  <span class="entry__effective"> · in effect from {formatDate(entry.effective)}</span>
+                )}
+              </p>
+              <h3 class="entry__title">{entry.title}</h3>
+              <ul class="entry__changes">
+                {entry.changes.map((c) => (
+                  <li>
+                    <span class="entry__who">{regionName(c.region)} · {describePath(c.path)}</span>
+                    <span class="entry__diff">
+                      {c.before} → <strong>{c.after}</strong>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p class="entry__trigger">{describeTrigger(entry)}</p>
+            </article>
+          ))}
+        </div>
+        {baseline && (
+          <p class="log__note" id={`rule-${baseline.id}`}>
+            This log began on {formatDate(baseline.recorded)}. Earlier entries were reconstructed from our history.
+          </p>
+        )}
+      </section>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    background: var(--color-off-white);
+    padding: 128px 24px 96px;
+  }
+
+  @media (max-width: 599px) {
+    .page {
+      padding: 104px 16px 72px;
+    }
+  }
+
+  .page__inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .page__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+
+  .page__lede {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-soft);
+    margin: 0 0 40px;
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section__title {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── By destination ──────────────────────────────────────────────────── */
+  .destinations {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+  }
+
+  .destination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2px 12px;
+    padding: 10px 16px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+  }
+
+  .destination + .destination {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .destination__name {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .destination__latest {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .destination__latest:hover {
+    text-decoration: underline;
+  }
+
+  .destinations__none {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--color-text-ghost);
+    margin: 10px 0 0;
+  }
+
+  /* ── Log ─────────────────────────────────────────────────────────────── */
+  .entry {
+    padding: 20px 0;
+    border-top: 1px solid var(--color-border);
+    scroll-margin-top: 96px;
+  }
+
+  .entry__date {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 6px;
+  }
+
+  .entry__effective {
+    font-weight: 400;
+    color: var(--color-text-ghost);
+  }
+
+  .entry__title {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--color-text);
+    margin: 0 0 10px;
+  }
+
+  .entry__changes {
+    margin: 0 0 10px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .entry__changes li {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .entry__who {
+    color: var(--color-text);
+  }
+
+  .entry__diff {
+    color: var(--color-text-soft);
+  }
+
+  .entry__trigger {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text-ghost);
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .log__note {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text-ghost);
+    border-top: 1px solid var(--color-border);
+    padding-top: 16px;
+    margin: 0;
+  }
+
+  .entry:target {
+    background: var(--color-mist);
+    margin: 0 -12px;
+    padding: 20px 12px;
+    border-radius: 10px;
+  }
+</style>

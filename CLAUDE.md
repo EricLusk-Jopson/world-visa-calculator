@@ -19,7 +19,7 @@ behind those rules every two weeks.
   at-a-glance table and the human checklist.
 - `src/data/rule-changes/`: **the rule-change log**. Every change to a
   region's rules is a numbered entry with before/after, trigger and evidence
-  (see its README). It's shown publicly under "Rule changes" on /updates.
+  (see its README). It's shown publicly on /rule-changes (linked from the footer).
 
 ## Rules of the road
 
@@ -27,8 +27,8 @@ behind those rules every two weeks.
   the same change. `src/data/sourcePlaybooks.test.ts` fails otherwise. Then
   run `npm run playbooks:overview`.
 - **Changing a rule in a region file:** record it with `npm run rules:new`,
-  fill in the entry's `TODO(entry)` sections and bump the region's
-  `lastVerified`. The tests fail on an unrecorded or unfinished change.
+  fill in the entry's `TODO(entry)` sections, bump the region's
+  `lastVerified` and the `dateChecked` of the sources the changed rules cite. The tests fail on an unrecorded or unfinished change.
 - **Triaging a source-check report** (`pipeline/reports/<date>.json`): use the
   `/triage-report` skill. For each flagged diff, read the link's playbook
   section first; its "Real change vs noise" part says how to classify it.
@@ -40,6 +40,12 @@ behind those rules every two weeks.
   say how.
 - Skills: `/triage-report`, `/record-rule-change`, `/verify-region` (the
   by-hand checks) and `/review-user-reports` (submissions from the app).
+- **After checking sources by hand:** `npm run sources:verified -- <Region> <key …|--all>`
+  sets their `dateChecked`. The app's "Verified" date is that, carried
+  forward by quiet source checks (`pipeline/reports/stability.json`) for
+  sources whose load-bearing links are all `humanCheck: on-diff`.
+- `docs/RUNBOOK.md` is the maintainer's guide: what to do on quiet weeks,
+  noisy weeks, changes found by hand, and user reports.
 - `docs/sources/STATS.md` is the observed record: per link, how many diffs
   were rule changes vs noise, and which rule changes no diff caught.
 - `TODO(human)` in a playbook marks something only the maintainer can
@@ -51,8 +57,11 @@ behind those rules every two weeks.
 - `npm run playbooks:overview`: regenerate `docs/sources/OVERVIEW.md`.
 - `npm run rules:new -- --title … --trigger <type>:<ref> --evidence Region:link`:
   record a rule change. `npm run rules:check` runs the log's tests.
-- `npm run stats`: regenerate `docs/sources/STATS.md` from the reports,
-  triage records and rule-change log.
+- `npm run sources:verified -- <Region> <key …|--all> [--date YYYY-MM-DD]`:
+  record a by-hand check.
+- `npm run stats`: regenerate `docs/sources/STATS.md` and
+  `pipeline/reports/stability.json` from the reports, triage records and
+  rule-change log.
 - `cd pipeline && npm run check`: run the source check (needs network to the
   government sites; the cloud sandbox can't reach most of them).
 - `cd pipeline && npm test`: pipeline tests.
