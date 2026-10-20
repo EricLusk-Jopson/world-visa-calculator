@@ -46,6 +46,7 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 | Serbia | countryPages | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Turkiye | mfaVisaInfo | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Turkiye | consularInfo | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
+| UK | appendixVisitor | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | UK | visaNationalList | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | UK | etaNationalList | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | UK | carriersList | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |

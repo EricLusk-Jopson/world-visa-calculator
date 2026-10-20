@@ -139,23 +139,26 @@ export const SchengenSources = {
 
 export const UKSources = {
   /**
-   * GOV.UK — Standard Visitor route.
-   * Canonical source for the 6-month per-visit allowance, permitted activities,
-   * and the Appendix V "genuine visitor" test.
+   * UK Immigration Rules — Appendix V: Visitor.
+   * Statutory source for the 6-month per-visit allowance (V 17.2; the
+   * appendix's introduction also says a Standard Visitor's stay is "usually
+   * six months"), diffed like the other appendices. The GOV.UK Standard
+   * Visitor guidance page is the readable parent; it gets copy edits too
+   * often to be worth diffing.
    */
   standardVisitor: {
     direct: {
-      url: "https://www.gov.uk/standard-visitor",
+      url:
+        "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor",
       type: "direct",
-      checkDiff: false, // content is guidance, not a statutory rule
+      checkDiff: true,
     },
     parent: {
-      url:
-        "https://www.gov.uk/browse/visas-immigration/tourist-short-stay-visas",
+      url: "https://www.gov.uk/standard-visitor",
       type: "parent",
-      checkDiff: false,
+      checkDiff: false, // guidance, not a statutory rule
     },
-    dateChecked: "2026-04-14",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc,
 
   /**
