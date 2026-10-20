@@ -15,13 +15,11 @@ on:
   # No push trigger: runs come from the biweekly schedule and manual dispatch,
   # both of which only fire once this file is on the default branch. Until
   # then, run `npm run check` in pipeline/ locally.
-  # Cron has no "every other week" and no time zones (it's UTC), so this
-  # fires every Friday at both UTC times that can be 07:30 Pacific, and the
-  # cadence job below lets through only the one matching Pacific time that
-  # day (PDT or PST), on every second Friday.
+  # Cron has no "every other week", so this fires every Friday and the
+  # cadence job below lets only every second Friday through. Vancouver is
+  # UTC-7 year-round (no DST from Nov 2026), so 14:30 UTC is 07:30 there.
   schedule:
-    - cron: "30 14 * * 5" # 07:30 PDT (UTC-7), Mar-Nov
-    - cron: "30 15 * * 5" # 07:30 PST (UTC-8), Nov-Mar
+    - cron: "30 14 * * 5" # 07:30 Vancouver (UTC-7) every Friday
   workflow_dispatch:
     inputs:
       all_regions:
@@ -38,10 +36,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Scheduled runs go ahead only from the cron entry that is 07:30 Pacific
-  # today, and only on Fridays a whole number of fortnights after
-  # PERIOD_START, a Friday that opens a changelog period. Manual runs always
-  # go ahead.
+  # Scheduled runs go ahead only on Fridays a whole number of fortnights
+  # after PERIOD_START, a Friday that opens a changelog period. Manual runs
+  # always go ahead.
   cadence:
     runs-on: ubuntu-latest
     outputs:
@@ -50,20 +47,8 @@ jobs:
       - id: week
         env:
           EVENT: ${{ github.event_name }}
-          SCHEDULE: ${{ github.event.schedule }}
           PERIOD_START: "2026-10-09"
         run: |
-          if [[ "$EVENT" == "schedule" ]]; then
-            # Keyed on which cron fired, not the clock, so a delayed start
-            # still counts. Offset is -0700 (PDT) or -0800 (PST).
-            offset=$(TZ=America/Los_Angeles date +%z)
-            if [[ "$offset" == "-0700" && "$SCHEDULE" != "30 14 * * 5" ]] ||
-               [[ "$offset" == "-0800" && "$SCHEDULE" != "30 15 * * 5" ]]; then
-              echo "run=false" >> "$GITHUB_OUTPUT"
-              echo "Skipping '$SCHEDULE': it isn't 07:30 Pacific today (UTC$offset)."
-              exit 0
-            fi
-          fi
           days=$(( ($(date -u +%s) - $(date -u -d "$PERIOD_START" +%s)) / 86400 ))
           if [[ "$EVENT" != "schedule" ]] || (( days % 14 == 0 )); then
             echo "run=true" >> "$GITHUB_OUTPUT"
