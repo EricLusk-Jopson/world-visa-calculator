@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LandingNav from "../components/LandingNav.astro";
 import Footer from "../components/Footer.astro";
-
 /**
  * Changelog entries, most recent first. Each `changes` array holds
  * { tag: "feature" | "improvement" | "fix", text: string }.
@@ -29,8 +28,8 @@ const roadmapCountries = [
 
 const qcPipelineNotes = [
   "Scheduled jobs check every government source link cited in the app for breakage and content drift on a recurring basis.",
-  "Changes that look impactful (stay limits, eligibility, entry conditions) are flagged for manual review before the ruleset is updated.",
-  "Every government source link in the app will get an inline “Report an issue” form, so users can flag broken links or outdated information directly.",
+  "Changes that look impactful (stay limits, eligibility, entry conditions) are flagged for manual review before the ruleset is updated, and every rule change is recorded with what prompted it.",
+  "Every government source link in the app now shows when it was last verified, links to any rule change it backs, and has a “Report a problem” form for flagging broken links or outdated information.",
 ];
 
 const changelog = [
@@ -200,6 +199,7 @@ const tagLabel: Record<string, string> = {
               <li>{note}</li>
             ))}
           </ul>
+          <a class="roadmap-card__link" href="/rule-changes">See every rule change →</a>
         </div>
       </section>
 
@@ -349,6 +349,20 @@ const tagLabel: Record<string, string> = {
     font-size: 0.88rem;
     line-height: 1.6;
     color: var(--color-text);
+  }
+
+  .roadmap-card__link {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .roadmap-card__link:hover {
+    text-decoration: underline;
   }
 
   /* ── Changelog ───────────────────────────────────────────────────────── */

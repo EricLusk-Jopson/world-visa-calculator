@@ -12,7 +12,9 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => page !== "https://eurovisacalculator.com/app/",
+      filter: (page) =>
+        page !== "https://eurovisacalculator.com/app/" &&
+        page !== "https://eurovisacalculator.com/source-report/",
     }),
   ],
   output: "static",

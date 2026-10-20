@@ -32,13 +32,13 @@ describe('getMacedoniaRule', () => {
     expect(rule.source).toEqual(NorthMacedoniaSources.AF);
   });
 
-  it('cites only the single source page for both directUrl and parentUrl — the deliberate per-region source policy', () => {
+  it('cites only the single source page for both the direct and parent links — the deliberate per-region source policy', () => {
     const rule = getMacedoniaRule('DE');
     expect(rule.access).toBe('entitled');
     if (rule.access !== 'entitled') return;
     const source = rule.entitlements[0].source!;
-    expect(source.directUrl).toBe('https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza');
-    expect(source.parentUrl).toBe('https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza');
+    expect(source.direct.url).toBe('https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza');
+    expect(source.parent.url).toBe('https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza');
   });
 
   it('falls back to defaultRule (visa_required) for an unknown code', () => {

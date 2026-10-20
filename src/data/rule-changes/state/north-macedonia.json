@@ -1,0 +1,2686 @@
+{
+  "code": "north-macedonia",
+  "name": "North Macedonia",
+  "memberStates": [
+    "MK"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "type": "rolling_window",
+    "windowDays": 180
+  },
+  "defaultRule": {
+    "access": "visa_required"
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.AD"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.AD"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.AE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.AE"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.AF"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.AG"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.AG"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.AL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.AL"
+          }
+        }
+      ]
+    },
+    "AM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.AM"
+      }
+    },
+    "AO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.AO"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.AR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.AR"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.AT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.AT"
+          }
+        }
+      ]
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.AU"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.AU"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.AZ"
+      }
+    },
+    "BA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.BA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.BA"
+          }
+        }
+      ]
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.BB"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.BB"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BD"
+      }
+    },
+    "BE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.BE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.BE"
+          }
+        }
+      ]
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BF"
+      }
+    },
+    "BG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.BG"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.BG"
+          }
+        }
+      ]
+    },
+    "BH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BH"
+      }
+    },
+    "BI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BI"
+      }
+    },
+    "BJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BJ"
+      }
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.BN"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.BN"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BO"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.BR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.BR"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.BS"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.BS"
+          }
+        }
+      ]
+    },
+    "BT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BT"
+      }
+    },
+    "BW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BW"
+      }
+    },
+    "BY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BY"
+      }
+    },
+    "BZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.BZ"
+      }
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.CA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.CA"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.CD"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.CF"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.CG"
+      }
+    },
+    "CH": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.CH"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.CH"
+          }
+        }
+      ]
+    },
+    "CI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.CI"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.CL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.CL"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.CM"
+      }
+    },
+    "CN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.CN"
+      }
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.CO"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.CO"
+          }
+        }
+      ]
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.CR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.CR"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.CU"
+      }
+    },
+    "CV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.CV"
+      }
+    },
+    "CY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.CY"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.CY"
+          }
+        }
+      ]
+    },
+    "CZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.CZ"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.CZ"
+          }
+        }
+      ]
+    },
+    "DE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.DE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.DE"
+          }
+        }
+      ]
+    },
+    "DJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.DJ"
+      }
+    },
+    "DK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.DK"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.DK"
+          }
+        }
+      ]
+    },
+    "DM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.DM"
+      }
+    },
+    "DO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.DO"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.DZ"
+      }
+    },
+    "EC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.EC"
+      }
+    },
+    "EE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.EE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.EE"
+          }
+        }
+      ]
+    },
+    "EG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.EG"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.ER"
+      }
+    },
+    "ES": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.ES"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.ES"
+          }
+        }
+      ]
+    },
+    "ET": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.ET"
+      }
+    },
+    "FI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.FI"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.FI"
+          }
+        }
+      ]
+    },
+    "FJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.FJ"
+      }
+    },
+    "FM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.FM"
+      }
+    },
+    "FR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.FR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.FR"
+          }
+        }
+      ]
+    },
+    "GA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.GA"
+      }
+    },
+    "GB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.GB"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.GB"
+          }
+        }
+      ]
+    },
+    "GD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.GD"
+      }
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.GE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.GE"
+          }
+        }
+      ]
+    },
+    "GH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.GH"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.GM"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.GN"
+      }
+    },
+    "GQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.GQ"
+      }
+    },
+    "GR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.GR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.GR"
+          }
+        }
+      ]
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.GT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.GT"
+          }
+        }
+      ]
+    },
+    "GW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.GW"
+      }
+    },
+    "GY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.GY"
+      }
+    },
+    "HK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.HK"
+      }
+    },
+    "HN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.HN"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.HN"
+          }
+        }
+      ]
+    },
+    "HR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.HR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.HR"
+          }
+        }
+      ]
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.HT"
+      }
+    },
+    "HU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.HU"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.HU"
+          }
+        }
+      ]
+    },
+    "ID": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.ID"
+      }
+    },
+    "IE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.IE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.IE"
+          }
+        }
+      ]
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.IL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.IL"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.IN"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.IQ"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.IR"
+      }
+    },
+    "IS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.IS"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.IS"
+          }
+        }
+      ]
+    },
+    "IT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.IT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.IT"
+          }
+        }
+      ]
+    },
+    "JM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.JM"
+      }
+    },
+    "JO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.JO"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.JP"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.JP"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.KE"
+      }
+    },
+    "KG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.KG"
+      }
+    },
+    "KH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.KH"
+      }
+    },
+    "KI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.KI"
+      }
+    },
+    "KM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.KM"
+      }
+    },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.KN"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.KN"
+          }
+        }
+      ]
+    },
+    "KP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.KP"
+      }
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.KR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.KR"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.KW"
+      }
+    },
+    "KZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.KZ"
+      }
+    },
+    "LA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.LA"
+      }
+    },
+    "LB": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.LB"
+      }
+    },
+    "LC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.LC"
+      }
+    },
+    "LI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.LI"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.LI"
+          }
+        }
+      ]
+    },
+    "LK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.LK"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.LR"
+      }
+    },
+    "LS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.LS"
+      }
+    },
+    "LT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.LT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.LT"
+          }
+        }
+      ]
+    },
+    "LU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.LU"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.LU"
+          }
+        }
+      ]
+    },
+    "LV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.LV"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.LV"
+          }
+        }
+      ]
+    },
+    "LY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.LY"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MA"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.MC"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.MC"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.MD"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.MD"
+          }
+        }
+      ]
+    },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.ME"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.ME"
+          }
+        }
+      ]
+    },
+    "MG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MG"
+      }
+    },
+    "MH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MH"
+      }
+    },
+    "MK": {
+      "access": "free_movement"
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.ML"
+      }
+    },
+    "MM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MM"
+      }
+    },
+    "MN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MN"
+      }
+    },
+    "MO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MO"
+      }
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MR"
+      }
+    },
+    "MT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.MT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.MT"
+          }
+        }
+      ]
+    },
+    "MU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.MU"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.MU"
+          }
+        }
+      ]
+    },
+    "MV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MV"
+      }
+    },
+    "MW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MW"
+      }
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.MX"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.MX"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.MY"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.MY"
+          }
+        }
+      ]
+    },
+    "MZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.MZ"
+      }
+    },
+    "NA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.NA"
+      }
+    },
+    "NE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.NE"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.NG"
+      }
+    },
+    "NI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.NI"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.NI"
+          }
+        }
+      ]
+    },
+    "NL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.NL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.NL"
+          }
+        }
+      ]
+    },
+    "NO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.NO"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.NO"
+          }
+        }
+      ]
+    },
+    "NP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.NP"
+      }
+    },
+    "NR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.NR"
+      }
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.NZ"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.NZ"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.OM"
+      }
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.PA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.PA"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.PE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.PE"
+          }
+        }
+      ]
+    },
+    "PG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.PG"
+      }
+    },
+    "PH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.PH"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.PK"
+      }
+    },
+    "PL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.PL"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.PL"
+          }
+        }
+      ]
+    },
+    "PT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.PT"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.PT"
+          }
+        }
+      ]
+    },
+    "PW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.PW"
+      }
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.PY"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.PY"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.QA"
+      }
+    },
+    "RO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.RO"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.RO"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.RS"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.RS"
+          }
+        }
+      ]
+    },
+    "RU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.RU"
+      }
+    },
+    "RW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.RW"
+      }
+    },
+    "SA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SA"
+      }
+    },
+    "SB": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SB"
+      }
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.SC"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.SC"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SD"
+      }
+    },
+    "SE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.SE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.SE"
+          }
+        }
+      ]
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.SG"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.SG"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.SI"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.SI"
+          }
+        }
+      ]
+    },
+    "SK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.SK"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.SK"
+          }
+        }
+      ]
+    },
+    "SL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SL"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.SM"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.SM"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SN"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SO"
+      }
+    },
+    "SR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SR"
+      }
+    },
+    "SS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SS"
+      }
+    },
+    "ST": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.ST"
+      }
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.SV"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.SV"
+          }
+        }
+      ]
+    },
+    "SY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SY"
+      }
+    },
+    "SZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.SZ"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TD"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TG"
+      }
+    },
+    "TH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TH"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TJ"
+      }
+    },
+    "TL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TL"
+      }
+    },
+    "TM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TM"
+      }
+    },
+    "TN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TN"
+      }
+    },
+    "TO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TO"
+      }
+    },
+    "TR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.TR"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.TR"
+          }
+        }
+      ]
+    },
+    "TT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TT"
+      }
+    },
+    "TV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TV"
+      }
+    },
+    "TW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.TW"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.TW"
+          }
+        }
+      ]
+    },
+    "TZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.TZ"
+      }
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.UA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.UA"
+          }
+        }
+      ]
+    },
+    "UG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.UG"
+      }
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.US"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.US"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.UY"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.UY"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.UZ"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.VA"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.VA"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.VC"
+      }
+    },
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.VE"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.VE"
+          }
+        }
+      ]
+    },
+    "VN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.VN"
+      }
+    },
+    "VU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.VU"
+      }
+    },
+    "WS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.WS"
+      }
+    },
+    "XK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "NorthMacedonia.XK"
+              },
+              "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
+            }
+          ],
+          "source": {
+            "$source": "NorthMacedonia.XK"
+          }
+        }
+      ]
+    },
+    "YE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.YE"
+      }
+    },
+    "ZA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.ZA"
+      }
+    },
+    "ZM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.ZM"
+      }
+    },
+    "ZW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "NorthMacedonia.ZW"
+      }
+    }
+  }
+}

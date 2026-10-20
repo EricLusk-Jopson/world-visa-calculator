@@ -52,7 +52,7 @@
  *   SSVWP note not applied to Ukraine. Monitor for changes.
  *
  * TRANSIT VISAS
- *   Nationals of 25 countries require a valid Irish transit visa when passing
+ *   Nationals of 28 countries require a valid Irish transit visa when passing
  *   through Ireland in transit. A transit visa does not permit entry.
  *
  * NO ETA / ETIAS
@@ -61,7 +61,12 @@
  *
  * ── Data source ───────────────────────────────────────────────────────────────
  *   passportRules derived from the INIS visa/non-visa required nationality
- *   table (Ninja Table ID 19077, extracted 2026-05-27).
+ *   table (Ninja Table ID 19077, extracted 2026-05-27), plus the Immigration
+ *   Act 2004 (Visas) (Amendment) (No. 2) Order 2026 (S.I. No. 242 of 2026,
+ *   in operation 15 June 2026): Nicaragua, Saint Kitts and Nevis and Saint Lucia moved from
+ *   visa-free to visa-required with a transit visa. Bahamas and Samoa
+ *   (Schedule 1, visa-free on INIS) were missing from the original
+ *   extraction and were added 2026-10-08.
  *   Free movement, BIVS, SSVWP, and transit annotations use sources in
  *   IrelandSources (@/data/sources).
  *
@@ -129,13 +134,13 @@ const VISA_REQUIRED_BIVS: VisaRequiredRule = {
 const VISA_REQUIRED_SSVWP: VisaRequiredRule = {
   access: 'visa_required',
   source: IrelandSources.visaNationalityList,
-  notes: [{ text: SSVWP_NOTE, source: IrelandSources.citizensInformation }],
+  notes: [{ text: SSVWP_NOTE, source: IrelandSources.ssvwp }],
 };
 
 const VISA_REQUIRED_TRANSIT: VisaRequiredRule = {
   access: 'visa_required',
   source: IrelandSources.visaNationalityList,
-  notes: [{ text: TRANSIT_VISA_NOTE, source: IrelandSources.citizensInformation }],
+  notes: [{ text: TRANSIT_VISA_NOTE, source: IrelandSources.transitVisa }],
 };
 
 /**
@@ -184,7 +189,7 @@ export const IRELAND: RegionDefinition = {
   },
 
   lastVerified: '2026-05-27',
-  sourceUrl: IrelandSources.visaNationalityList.parentUrl,
+  sourceUrl: IrelandSources.visaNationalityList.parent.url,
   defaultRule: VISA_REQUIRED,
 
   passportRules: {
@@ -252,6 +257,7 @@ export const IRELAND: RegionDefinition = {
     // Americas
     'AG': entitled(), // Antigua and Barbuda
     'AR': entitled(), // Argentina
+    'BS': entitled(), // Bahamas
     'BB': entitled(), // Barbados
     'BZ': entitled(), // Belize
     'BR': entitled(), // Brazil
@@ -263,11 +269,8 @@ export const IRELAND: RegionDefinition = {
     'GT': entitled(), // Guatemala
     'GY': entitled(), // Guyana
     'MX': entitled(), // Mexico
-    'NI': entitled(), // Nicaragua
     'PA': entitled(), // Panama
     'PY': entitled(), // Paraguay
-    'KN': entitled(), // Saint Kitts and Nevis
-    'LC': entitled(), // Saint Lucia
     'VC': entitled(), // Saint Vincent and the Grenadines
     'US': entitled(), // United States
     'UY': entitled(), // Uruguay
@@ -285,6 +288,7 @@ export const IRELAND: RegionDefinition = {
     'MY': entitled(), // Malaysia
     'MV': entitled(), // Maldives
     'NZ': entitled(), // New Zealand
+    'WS': entitled(), // Samoa
     'SB': entitled(), // Solomon Islands
     'SG': entitled(), // Singapore
     'TW': entitled(), // Taiwan Province of China
@@ -366,6 +370,13 @@ export const IRELAND: RegionDefinition = {
     'LK': VISA_REQUIRED_TRANSIT, // Sri Lanka
     'TT': VISA_REQUIRED_TRANSIT, // Trinidad and Tobago
     'VU': VISA_REQUIRED_TRANSIT, // Vanuatu
+
+    // Moved from Schedule 1 (visa-free) to Schedule 5 (transit visa) of
+    // S.I. No. 473 of 2014 by the Immigration Act 2004 (Visas) (Amendment)
+    // (No. 2) Order 2026 (S.I. No. 242 of 2026), in operation from 15 June 2026.
+    'NI': VISA_REQUIRED_TRANSIT, // Nicaragua
+    'KN': VISA_REQUIRED_TRANSIT, // Saint Kitts and Nevis
+    'LC': VISA_REQUIRED_TRANSIT, // Saint Lucia
 
     // ── Visa required — no additional scheme ──────────────────────────────
     'DZ': VISA_REQUIRED, // Algeria

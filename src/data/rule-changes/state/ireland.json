@@ -1,0 +1,2019 @@
+{
+  "code": "ireland",
+  "name": "Ireland",
+  "memberStates": [
+    "IE"
+  ],
+  "rule": {
+    "allowanceDays": 90,
+    "entryCountsAsDay": true,
+    "exitCountsAsDay": true,
+    "notes": [
+      {
+        "source": {
+          "$source": "Ireland.visaNationalityList"
+        },
+        "text": "INIS has stated explicitly that it is not possible to remain in Ireland for 90 days and then immediately re-enter for a further 90-day period. Repeat maximum-duration stays are subject to officer discretion and are not calculable by a tool."
+      }
+    ],
+    "type": "per_visit"
+  },
+  "defaultRule": {
+    "access": "visa_required",
+    "source": {
+      "$source": "Ireland.visaNationalityList"
+    }
+  },
+  "passportRules": {
+    "AD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "AF": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "AG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "AL": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "AM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "AO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "AT": {
+      "access": "free_movement"
+    },
+    "AU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "BD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BE": {
+      "access": "free_movement"
+    },
+    "BF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BG": {
+      "access": "free_movement"
+    },
+    "BH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "BO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "BS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "BT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "BZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "CA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "CD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CF": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CH": {
+      "access": "free_movement",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.euFreeMovement"
+          },
+          "text": "Swiss nationals are treated equivalently to EEA nationals for entry and short stays under a bilateral agreement with Ireland."
+        }
+      ]
+    },
+    "CI": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "CM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.bivs"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa endorsed \"BIVS\" may enter Ireland without a separate Irish visa under the British-Irish Visa Scheme (BIVS). An Irish C visa similarly permits travel to the UK under this scheme (bidirectional)."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CV": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "CY": {
+      "access": "free_movement"
+    },
+    "CZ": {
+      "access": "free_movement"
+    },
+    "DE": {
+      "access": "free_movement"
+    },
+    "DJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "DK": {
+      "access": "free_movement"
+    },
+    "DM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "DO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "DZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "EC": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "EE": {
+      "access": "free_movement"
+    },
+    "EG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "ER": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "ES": {
+      "access": "free_movement"
+    },
+    "ET": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "FI": {
+      "access": "free_movement"
+    },
+    "FJ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "FM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "FR": {
+      "access": "free_movement"
+    },
+    "GA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "GB": {
+      "access": "free_movement",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ctaGuidance"
+          },
+          "text": "British citizens have unrestricted freedom of movement throughout Ireland under the Common Travel Area (CTA). No visa or pre-travel authorisation is required. Note: British Protected Persons are an exception and require a visa."
+        }
+      ]
+    },
+    "GD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "GH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "GM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "GN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "GQ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "GR": {
+      "access": "free_movement"
+    },
+    "GT": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "GW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "GY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "HN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "HR": {
+      "access": "free_movement"
+    },
+    "HT": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "HU": {
+      "access": "free_movement"
+    },
+    "ID": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "IE": {
+      "access": "free_movement"
+    },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "IN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.bivs"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa endorsed \"BIVS\" may enter Ireland without a separate Irish visa under the British-Irish Visa Scheme (BIVS). An Irish C visa similarly permits travel to the UK under this scheme (bidirectional)."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "IQ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "IR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "IS": {
+      "access": "free_movement"
+    },
+    "IT": {
+      "access": "free_movement"
+    },
+    "JM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "JO": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "JP": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "KE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "KG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "KH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "KI": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "KM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "KN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "KP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "KR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "KW": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "KZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "LA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "LB": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "LC": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "LI": {
+      "access": "free_movement"
+    },
+    "LK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "LR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "LS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "LT": {
+      "access": "free_movement"
+    },
+    "LU": {
+      "access": "free_movement"
+    },
+    "LV": {
+      "access": "free_movement"
+    },
+    "LY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "ME": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MH": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "ML": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "MR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MT": {
+      "access": "free_movement"
+    },
+    "MU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "MW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "MX": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "MY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "MZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "NA": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "NE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "NG": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "NI": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "NL": {
+      "access": "free_movement"
+    },
+    "NO": {
+      "access": "free_movement"
+    },
+    "NP": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "NR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "NZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "OM": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "PA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "PE": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "PG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "PH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "PK": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "PL": {
+      "access": "free_movement"
+    },
+    "PS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "PT": {
+      "access": "free_movement"
+    },
+    "PW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "PY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "QA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "RO": {
+      "access": "free_movement"
+    },
+    "RS": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "RU": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "RW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SB": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "SC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "SD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SE": {
+      "access": "free_movement"
+    },
+    "SG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "SI": {
+      "access": "free_movement"
+    },
+    "SK": {
+      "access": "free_movement"
+    },
+    "SL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "SN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SO": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SR": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SS": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "ST": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "SY": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "SZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TD": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TH": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TJ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TL": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TN": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "TR": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TT": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "TV": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "TW": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "TZ": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "UG": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "US": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "UY": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "VA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "VC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "VE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "VN": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "VU": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "WS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "source": {
+            "$source": "Ireland.visaNationalityList"
+          }
+        }
+      ]
+    },
+    "XK": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "YE": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "ZA": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "ZM": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    },
+    "ZW": {
+      "access": "visa_required",
+      "source": {
+        "$source": "Ireland.visaNationalityList"
+      }
+    }
+  }
+}

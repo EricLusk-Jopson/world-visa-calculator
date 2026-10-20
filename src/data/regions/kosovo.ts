@@ -6,10 +6,8 @@
  * Source: Kosovo Ministry of Foreign Affairs and Diaspora —
  *   https://ambasadat.net/visas/
  * This single page lists every visa-exempt nationality. Unlike Montenegro/
- * Serbia, and like Bosnia, there are no stable per-country subpages on this
- * site — every entry below cites the same single page for both `directUrl`
- * and `parentUrl` (same policy as BosniaSources, adopted here for the same
- * reason: only one page exists at all).
+ * Serbia, there are no per-country subpages on this site, so every entry
+ * below cites the one shared KosovoSources.visaExempt entry.
  *
  * ── Scope of the source list ────────────────────────────────────────────────
  *
@@ -43,7 +41,6 @@ import type {
   EntitledRule,
   VisaRequiredRule,
   FreeMovementRule,
-  SourceDoc,
 } from '@/types';
 import { KosovoSources } from '@/data/sources';
 
@@ -74,11 +71,12 @@ const DURATION_NOTE_TEXT =
  * Standard Kosovo entitled rule — 90 days, rolling_window(90,180), always
  * carrying the duration-not-individually-confirmed note (see file header).
  *
- * Cites KosovoSources.<CODE> via `source` — surfaced by the UI as a link on
- * the stay-rule summary (see montenegro.ts's entitled() helper for the full
- * rationale on source-link vs. note placement).
+ * Cites KosovoSources.visaExempt via `source` — surfaced by the UI as a link
+ * on the stay-rule summary (see montenegro.ts's entitled() helper for the
+ * full rationale on source-link vs. note placement).
  */
-function entitledRolling(source: SourceDoc): EntitledRule {
+function entitledRolling(): EntitledRule {
+  const source = KosovoSources.visaExempt;
   return {
     access: 'entitled',
     entitlements: [{
@@ -112,109 +110,109 @@ export const KOSOVO: RegionDefinition = {
 
     // ── Entitled — 90 days in any 180-day rolling window (confirmed list, ────────
     // duration figure applied uniformly per the file header) ─────────────────────
-    'AD': entitledRolling(KosovoSources.AD), // Andorra
-    'AE': entitledRolling(KosovoSources.AE), // United Arab Emirates
-    'AG': entitledRolling(KosovoSources.AG), // Antigua and Barbuda
-    'AL': entitledRolling(KosovoSources.AL), // Albania
-    'AR': entitledRolling(KosovoSources.AR), // Argentina
-    'AT': entitledRolling(KosovoSources.AT), // Austria
-    'AU': entitledRolling(KosovoSources.AU), // Australia
-    'BB': entitledRolling(KosovoSources.BB), // Barbados
-    'BE': entitledRolling(KosovoSources.BE), // Belgium
-    'BG': entitledRolling(KosovoSources.BG), // Bulgaria
-    'BH': entitledRolling(KosovoSources.BH), // Bahrain
-    'BN': entitledRolling(KosovoSources.BN), // Brunei
-    'BR': entitledRolling(KosovoSources.BR), // Brazil
-    'BS': entitledRolling(KosovoSources.BS), // Bahamas
-    'BW': entitledRolling(KosovoSources.BW), // Botswana
-    'BZ': entitledRolling(KosovoSources.BZ), // Belize
-    'CA': entitledRolling(KosovoSources.CA), // Canada
-    'CH': entitledRolling(KosovoSources.CH), // Switzerland
-    'CL': entitledRolling(KosovoSources.CL), // Chile
-    'CO': entitledRolling(KosovoSources.CO), // Colombia
-    'CR': entitledRolling(KosovoSources.CR), // Costa Rica
-    'CY': entitledRolling(KosovoSources.CY), // Cyprus
-    'CZ': entitledRolling(KosovoSources.CZ), // Czech Republic
-    'DE': entitledRolling(KosovoSources.DE), // Germany
-    'DK': entitledRolling(KosovoSources.DK), // Denmark
-    'DM': entitledRolling(KosovoSources.DM), // Dominica
-    'EE': entitledRolling(KosovoSources.EE), // Estonia
-    'ES': entitledRolling(KosovoSources.ES), // Spain
-    'FI': entitledRolling(KosovoSources.FI), // Finland
-    'FJ': entitledRolling(KosovoSources.FJ), // Fiji
-    'FM': entitledRolling(KosovoSources.FM), // Micronesia
-    'FR': entitledRolling(KosovoSources.FR), // France
-    'GB': entitledRolling(KosovoSources.GB), // United Kingdom
-    'GD': entitledRolling(KosovoSources.GD), // Grenada
-    'GR': entitledRolling(KosovoSources.GR), // Greece
-    'GT': entitledRolling(KosovoSources.GT), // Guatemala
-    'GY': entitledRolling(KosovoSources.GY), // Guyana
-    'HN': entitledRolling(KosovoSources.HN), // Honduras
-    'HR': entitledRolling(KosovoSources.HR), // Croatia
-    'HU': entitledRolling(KosovoSources.HU), // Hungary
-    'IE': entitledRolling(KosovoSources.IE), // Ireland
-    'IL': entitledRolling(KosovoSources.IL), // Israel
-    'IS': entitledRolling(KosovoSources.IS), // Iceland
-    'IT': entitledRolling(KosovoSources.IT), // Italy
-    'JO': entitledRolling(KosovoSources.JO), // Jordan
-    'JP': entitledRolling(KosovoSources.JP), // Japan
-    'KI': entitledRolling(KosovoSources.KI), // Kiribati
-    'KN': entitledRolling(KosovoSources.KN), // Saint Kitts and Nevis
-    'KR': entitledRolling(KosovoSources.KR), // Korea (South)
-    'KW': entitledRolling(KosovoSources.KW), // Kuwait
-    'LC': entitledRolling(KosovoSources.LC), // Saint Lucia
-    'LI': entitledRolling(KosovoSources.LI), // Liechtenstein
-    'LS': entitledRolling(KosovoSources.LS), // Lesotho
-    'LT': entitledRolling(KosovoSources.LT), // Lithuania
-    'LU': entitledRolling(KosovoSources.LU), // Luxembourg
-    'LV': entitledRolling(KosovoSources.LV), // Latvia
-    'MC': entitledRolling(KosovoSources.MC), // Monaco
-    'ME': entitledRolling(KosovoSources.ME), // Montenegro
-    'MH': entitledRolling(KosovoSources.MH), // Marshall Islands
-    'MK': entitledRolling(KosovoSources.MK), // North Macedonia
-    'MT': entitledRolling(KosovoSources.MT), // Malta
-    'MU': entitledRolling(KosovoSources.MU), // Mauritius
-    'MV': entitledRolling(KosovoSources.MV), // Maldives
-    'MW': entitledRolling(KosovoSources.MW), // Malawi
-    'MX': entitledRolling(KosovoSources.MX), // Mexico
-    'MY': entitledRolling(KosovoSources.MY), // Malaysia
-    'NA': entitledRolling(KosovoSources.NA), // Namibia
-    'NI': entitledRolling(KosovoSources.NI), // Nicaragua
-    'NL': entitledRolling(KosovoSources.NL), // Netherlands
-    'NO': entitledRolling(KosovoSources.NO), // Norway
-    'NR': entitledRolling(KosovoSources.NR), // Nauru
-    'NZ': entitledRolling(KosovoSources.NZ), // New Zealand
-    'OM': entitledRolling(KosovoSources.OM), // Oman
-    'PA': entitledRolling(KosovoSources.PA), // Panama
-    'PG': entitledRolling(KosovoSources.PG), // Papua New Guinea
-    'PL': entitledRolling(KosovoSources.PL), // Poland
-    'PT': entitledRolling(KosovoSources.PT), // Portugal
-    'PW': entitledRolling(KosovoSources.PW), // Palau
-    'PY': entitledRolling(KosovoSources.PY), // Paraguay
-    'QA': entitledRolling(KosovoSources.QA), // Qatar
-    'RO': entitledRolling(KosovoSources.RO), // Romania
-    'RS': entitledRolling(KosovoSources.RS), // Serbia
-    'SA': entitledRolling(KosovoSources.SA), // Saudi Arabia
-    'SB': entitledRolling(KosovoSources.SB), // Solomon Islands
-    'SC': entitledRolling(KosovoSources.SC), // Seychelles
-    'SE': entitledRolling(KosovoSources.SE), // Sweden
-    'SK': entitledRolling(KosovoSources.SK), // Slovakia
-    'SM': entitledRolling(KosovoSources.SM), // San Marino
-    'ST': entitledRolling(KosovoSources.ST), // Sao Tome and Principe
-    'SV': entitledRolling(KosovoSources.SV), // El Salvador
-    'SZ': entitledRolling(KosovoSources.SZ), // Eswatini
-    'TL': entitledRolling(KosovoSources.TL), // Timor-Leste
-    'TO': entitledRolling(KosovoSources.TO), // Tonga
-    'TR': entitledRolling(KosovoSources.TR), // Turkey
-    'TT': entitledRolling(KosovoSources.TT), // Trinidad and Tobago
-    'TV': entitledRolling(KosovoSources.TV), // Tuvalu
-    'US': entitledRolling(KosovoSources.US), // United States
-    'UY': entitledRolling(KosovoSources.UY), // Uruguay
-    'VA': entitledRolling(KosovoSources.VA), // Vatican City
-    'VC': entitledRolling(KosovoSources.VC), // Saint Vincent and the Grenadines
-    'VE': entitledRolling(KosovoSources.VE), // Venezuela
-    'VU': entitledRolling(KosovoSources.VU), // Vanuatu
-    'WS': entitledRolling(KosovoSources.WS), // Samoa
+    'AD': entitledRolling(), // Andorra
+    'AE': entitledRolling(), // United Arab Emirates
+    'AG': entitledRolling(), // Antigua and Barbuda
+    'AL': entitledRolling(), // Albania
+    'AR': entitledRolling(), // Argentina
+    'AT': entitledRolling(), // Austria
+    'AU': entitledRolling(), // Australia
+    'BB': entitledRolling(), // Barbados
+    'BE': entitledRolling(), // Belgium
+    'BG': entitledRolling(), // Bulgaria
+    'BH': entitledRolling(), // Bahrain
+    'BN': entitledRolling(), // Brunei
+    'BR': entitledRolling(), // Brazil
+    'BS': entitledRolling(), // Bahamas
+    'BW': entitledRolling(), // Botswana
+    'BZ': entitledRolling(), // Belize
+    'CA': entitledRolling(), // Canada
+    'CH': entitledRolling(), // Switzerland
+    'CL': entitledRolling(), // Chile
+    'CO': entitledRolling(), // Colombia
+    'CR': entitledRolling(), // Costa Rica
+    'CY': entitledRolling(), // Cyprus
+    'CZ': entitledRolling(), // Czech Republic
+    'DE': entitledRolling(), // Germany
+    'DK': entitledRolling(), // Denmark
+    'DM': entitledRolling(), // Dominica
+    'EE': entitledRolling(), // Estonia
+    'ES': entitledRolling(), // Spain
+    'FI': entitledRolling(), // Finland
+    'FJ': entitledRolling(), // Fiji
+    'FM': entitledRolling(), // Micronesia
+    'FR': entitledRolling(), // France
+    'GB': entitledRolling(), // United Kingdom
+    'GD': entitledRolling(), // Grenada
+    'GR': entitledRolling(), // Greece
+    'GT': entitledRolling(), // Guatemala
+    'GY': entitledRolling(), // Guyana
+    'HN': entitledRolling(), // Honduras
+    'HR': entitledRolling(), // Croatia
+    'HU': entitledRolling(), // Hungary
+    'IE': entitledRolling(), // Ireland
+    'IL': entitledRolling(), // Israel
+    'IS': entitledRolling(), // Iceland
+    'IT': entitledRolling(), // Italy
+    'JO': entitledRolling(), // Jordan
+    'JP': entitledRolling(), // Japan
+    'KI': entitledRolling(), // Kiribati
+    'KN': entitledRolling(), // Saint Kitts and Nevis
+    'KR': entitledRolling(), // Korea (South)
+    'KW': entitledRolling(), // Kuwait
+    'LC': entitledRolling(), // Saint Lucia
+    'LI': entitledRolling(), // Liechtenstein
+    'LS': entitledRolling(), // Lesotho
+    'LT': entitledRolling(), // Lithuania
+    'LU': entitledRolling(), // Luxembourg
+    'LV': entitledRolling(), // Latvia
+    'MC': entitledRolling(), // Monaco
+    'ME': entitledRolling(), // Montenegro
+    'MH': entitledRolling(), // Marshall Islands
+    'MK': entitledRolling(), // North Macedonia
+    'MT': entitledRolling(), // Malta
+    'MU': entitledRolling(), // Mauritius
+    'MV': entitledRolling(), // Maldives
+    'MW': entitledRolling(), // Malawi
+    'MX': entitledRolling(), // Mexico
+    'MY': entitledRolling(), // Malaysia
+    'NA': entitledRolling(), // Namibia
+    'NI': entitledRolling(), // Nicaragua
+    'NL': entitledRolling(), // Netherlands
+    'NO': entitledRolling(), // Norway
+    'NR': entitledRolling(), // Nauru
+    'NZ': entitledRolling(), // New Zealand
+    'OM': entitledRolling(), // Oman
+    'PA': entitledRolling(), // Panama
+    'PG': entitledRolling(), // Papua New Guinea
+    'PL': entitledRolling(), // Poland
+    'PT': entitledRolling(), // Portugal
+    'PW': entitledRolling(), // Palau
+    'PY': entitledRolling(), // Paraguay
+    'QA': entitledRolling(), // Qatar
+    'RO': entitledRolling(), // Romania
+    'RS': entitledRolling(), // Serbia
+    'SA': entitledRolling(), // Saudi Arabia
+    'SB': entitledRolling(), // Solomon Islands
+    'SC': entitledRolling(), // Seychelles
+    'SE': entitledRolling(), // Sweden
+    'SK': entitledRolling(), // Slovakia
+    'SM': entitledRolling(), // San Marino
+    'ST': entitledRolling(), // Sao Tome and Principe
+    'SV': entitledRolling(), // El Salvador
+    'SZ': entitledRolling(), // Eswatini
+    'TL': entitledRolling(), // Timor-Leste
+    'TO': entitledRolling(), // Tonga
+    'TR': entitledRolling(), // Turkey
+    'TT': entitledRolling(), // Trinidad and Tobago
+    'TV': entitledRolling(), // Tuvalu
+    'US': entitledRolling(), // United States
+    'UY': entitledRolling(), // Uruguay
+    'VA': entitledRolling(), // Vatican City
+    'VC': entitledRolling(), // Saint Vincent and the Grenadines
+    'VE': entitledRolling(), // Venezuela
+    'VU': entitledRolling(), // Vanuatu
+    'WS': entitledRolling(), // Samoa
 
   },
 };

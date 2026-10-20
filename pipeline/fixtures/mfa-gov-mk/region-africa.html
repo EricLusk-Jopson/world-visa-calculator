@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Trimmed from https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza?region=africa
+     (2026-10-15): head meta, one unrelated Livewire component, and the
+     consular-services component with five of its 57 country buttons. -->
+<html lang="en">
+<head>
+<meta name="csrf-token" content="dmmSVG9pNKO4sjwseyjIqkRaWyQYG5ctcTg8Fjgv">
+</head>
+<body>
+<div wire:snapshot="{&quot;data&quot;:{&quot;ministryTemplatePrefix&quot;:&quot;foreign-affairs-and-foreign-trade&quot;,&quot;selectedLanguage&quot;:1},&quot;memo&quot;:{&quot;id&quot;:&quot;Ydnun6k7xeaiZRoCb2V8&quot;,&quot;name&quot;:&quot;public.language-selector&quot;},&quot;checksum&quot;:&quot;e0c55c0bf454d0171c46f9dd38692d80a1fed470bccbbe74469d3f0101b7c748&quot;}" wire:id="Ydnun6k7xeaiZRoCb2V8">
+<div wire:click='changeLanguage(1)'>EN</div>
+</div>
+<div wire:snapshot="{&quot;data&quot;:{&quot;ministry&quot;:[null,{&quot;class&quot;:&quot;App\\Models\\Ministry&quot;,&quot;key&quot;:21,&quot;s&quot;:&quot;mdl&quot;}],&quot;ministryTemplatePrefix&quot;:&quot;foreign-affairs-and-foreign-trade&quot;,&quot;languageCode&quot;:&quot;en-GB&quot;,&quot;type&quot;:&quot;visa_entrance&quot;,&quot;keepUrl&quot;:true,&quot;orderBy&quot;:&quot;name_english&quot;,&quot;search&quot;:&quot;&quot;,&quot;selectedHardcodedRecordConsularService&quot;:[null,{&quot;class&quot;:&quot;App\\Models\\HardcodedRecordConsularService&quot;,&quot;key&quot;:1,&quot;s&quot;:&quot;mdl&quot;}],&quot;region&quot;:&quot;africa&quot;},&quot;memo&quot;:{&quot;id&quot;:&quot;uWydkIgyjF6bFk1yVcoq&quot;,&quot;name&quot;:&quot;public.hardcoded-modules.consular-services&quot;,&quot;path&quot;:&quot;en-GB\/konzularni-uslugi\/dali-ti-e-potrebna-viza&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;release&quot;:&quot;a-a-a&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;en&quot;},&quot;checksum&quot;:&quot;34868194e330f856944e076a472bfa0ef67f817dfd5f733043238b36f16fbcf1&quot;}" wire:effects="{&quot;url&quot;:{&quot;region&quot;:{&quot;as&quot;:&quot;region&quot;,&quot;use&quot;:&quot;push&quot;,&quot;alwaysShow&quot;:true,&quot;except&quot;:null}}}" wire:id="uWydkIgyjF6bFk1yVcoq">
+<div class="flex flex-row flex-wrap -mx-3 -mt-6 mb-5 items-center justify-center md:mb-8">
+<div class="px-3 mt-6"><div wire:click="changeRegion('africa')" class="active inline-block">
+                    Africa
+                </div></div>
+<div class="px-3 mt-6"><div wire:click="changeRegion('asia')" class=" inline-block">Asia</div></div>
+<div class="px-3 mt-6"><div wire:click="changeRegion('australia_and_oceania')" class=" inline-block">Australia and Oceania</div></div>
+<div class="px-3 mt-6"><div wire:click="changeRegion('europe')" class=" inline-block">Europe</div></div>
+<div class="px-3 mt-6"><div wire:click="changeRegion('north_america')" class=" inline-block">North America</div></div>
+<div class="px-3 mt-6"><div wire:click="changeRegion('south_america')" class=" inline-block">South America</div></div>
+</div>
+<div class="flex flex-row flex-wrap -mx-3 -mt-6">
+<div class="w-1/2 lg:w-1/3 2xl:w-1/4 px-3 mt-6">
+<div wire:click="changeHardcodedRecord(49)" class="flex flex-row items-start cursor-pointer">
+<div class="w-[44px] text-left"><img src="https://portal.mdt.gov.mk/hardcoded-module-consular-service-flags/algeria-flag.png" class="w-auto h-6 inline-block"></div>
+<div class="w-[calc(100%_-_44px)] !leading-tight pt-1">
+                                    Algeria
+                                </div>
+</div>
+</div>
+<div class="w-1/2 lg:w-1/3 2xl:w-1/4 px-3 mt-6">
+<div wire:click="changeHardcodedRecord(51)" class="flex flex-row items-start cursor-pointer">
+<div class="w-[44px] text-left"><img src="https://portal.mdt.gov.mk/hardcoded-module-consular-service-flags/benin-flag.png" class="w-auto h-6 inline-block"></div>
+<div class="w-[calc(100%_-_44px)] !leading-tight pt-1">
+                                    Benin
+                                </div>
+</div>
+</div>
+<div class="w-1/2 lg:w-1/3 2xl:w-1/4 px-3 mt-6">
+<div wire:click="changeHardcodedRecord(53)" class="flex flex-row items-start cursor-pointer">
+<div class="w-[44px] text-left"><img src="https://portal.mdt.gov.mk/hardcoded-module-consular-service-flags/cote-divoire-flag.png" class="w-auto h-6 inline-block"></div>
+<div class="w-[calc(100%_-_44px)] !leading-tight pt-1">
+                                    Côte D &#039;Ivoire
+                                </div>
+</div>
+</div>
+<div class="w-1/2 lg:w-1/3 2xl:w-1/4 px-3 mt-6">
+<div wire:click="changeHardcodedRecord(599)" class="flex flex-row items-start cursor-pointer">
+<div class="w-[44px] text-left"><img src="https://portal.mdt.gov.mk/hardcoded-module-consular-service-flags/tunizi-flag.png" class="w-auto h-6 inline-block"></div>
+<div class="w-[calc(100%_-_44px)] !leading-tight pt-1">
+                                    Tunizi
+                                </div>
+</div>
+</div>
+<div class="w-1/2 lg:w-1/3 2xl:w-1/4 px-3 mt-6">
+<div wire:click="changeHardcodedRecord(567)" class="flex flex-row items-start cursor-pointer">
+<div class="w-[44px] text-left"><img src="https://portal.mdt.gov.mk/hardcoded-module-consular-service-flags/zimbabwe-flag.png" class="w-auto h-6 inline-block"></div>
+<div class="w-[calc(100%_-_44px)] !leading-tight pt-1">
+                                    Zimbabwe
+                                </div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-5/12 lg:w-4/12 px-4 xl:px-8 mt-4 md:mt-0">
+<div class="rounded-lg p-2 bg-color-main-foreign-affairs-and-foreign-trade/20">
+<div>
+<div class="p-5 md:p-8"><div class="flex flex-row -mx-2 items-start"><div class="px-2 pt-1">
+<p class="text-xl md:text-2xl font-medium mb-1">Algeria</p>
+<p class="mb-1">Visa for foreign citizens:</p>
+<p class="text-red-500 uppercase font-bold text-lg md:text-xl !leading-tight">Needed</p>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<script src="/livewire/livewire.min.js?id=0f6341c0" data-csrf="dmmSVG9pNKO4sjwseyjIqkRaWyQYG5ctcTg8Fjgv" data-update-uri="/livewire/update" data-navigate-once="true"></script>
+</body>
+</html>

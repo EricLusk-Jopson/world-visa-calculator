@@ -201,7 +201,7 @@ export const BELARUS: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-09-12',
-  sourceUrl: BelarusSources.general.parentUrl,
+  sourceUrl: BelarusSources.general.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
 

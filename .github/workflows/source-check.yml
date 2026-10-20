@@ -1,0 +1,117 @@
+name: Source check
+
+# Biweekly link-health + content-diff run over src/data/sources.ts, on the
+# same 14-day cadence as the changelog on /updates (periods run Friday to
+# Thursday: ..., Sep 25 to Oct 8, Oct 9 to 22, ...). Each run lands on the
+# first Friday of a new period, so its report covers the period just closed.
+# Commits the report and updated snapshots to a rolling branch and opens (or
+# updates) a PR whose body is the findings summary. The PR's Vercel preview
+# renders the full report at /source-report.
+#
+# Requires: Settings → Actions → General → "Allow GitHub Actions to create
+# and approve pull requests".
+
+on:
+  # No push trigger: runs come from the biweekly schedule and manual dispatch,
+  # both of which only fire once this file is on the default branch. Until
+  # then, run `npm run check` in pipeline/ locally.
+  # Cron has no "every other week", so this fires every Friday and the
+  # cadence job below lets only every second Friday through.
+  schedule:
+    - cron: "17 6 * * 5" # 06:17 UTC every Friday
+  workflow_dispatch:
+    inputs:
+      all_regions:
+        description: "Check every region, ignoring checkLinks: false in sources.ts"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: source-check
+  cancel-in-progress: false
+
+jobs:
+  # Scheduled runs go ahead only on Fridays a whole number of fortnights
+  # after PERIOD_START, a Friday that opens a changelog period. Manual runs
+  # always go ahead.
+  cadence:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.week.outputs.run }}
+    steps:
+      - id: week
+        env:
+          EVENT: ${{ github.event_name }}
+          PERIOD_START: "2026-10-09"
+        run: |
+          days=$(( ($(date -u +%s) - $(date -u -d "$PERIOD_START" +%s)) / 86400 ))
+          if [[ "$EVENT" != "schedule" ]] || (( days % 14 == 0 )); then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Off-week Friday ($days days after $PERIOD_START); next run in $(( 14 - days % 14 )) days."
+          fi
+
+  check:
+    needs: cadence
+    if: needs.cadence.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: pipeline/package-lock.json
+
+      - run: npm ci
+
+      # Headless Chromium for sites that turn away plain HTTP clients
+      # (BROWSER_FALLBACK_HOSTS in src/fetchPage.ts).
+      - run: npx playwright install --with-deps chromium
+
+      # Scheduled runs always sweep every region; manual runs honour each
+      # region's checkLinks flag unless "all_regions" is ticked.
+      - name: Run source check
+        run: npm run check -- ${{ (github.event_name == 'schedule' || inputs.all_regions) && '--all' || '' }}
+
+      - name: Set run date
+        id: date
+        run: echo "today=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      # Each per-region sub-branch gets its own report branch/PR, so runs on
+      # different branches don't overwrite each other's report.
+      - name: Pick report branch
+        id: report
+        env:
+          REF: ${{ github.ref_name }}
+        run: |
+          prefix="feature/automated-quality-control-"
+          if [[ "$REF" == "$prefix"* ]]; then
+            echo "branch=automation/source-check-${REF#"$prefix"}" >> "$GITHUB_OUTPUT"
+          else
+            echo "branch=automation/source-check" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open or update PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: ${{ steps.report.outputs.branch }}
+          delete-branch: true
+          add-paths: |
+            pipeline/reports/*.md
+            pipeline/reports/*.json
+            pipeline/data/snapshots/**
+          commit-message: "Source check report ${{ steps.date.outputs.today }}"
+          title: "Source check: ${{ steps.date.outputs.today }}"
+          body-path: pipeline/reports/pr-body.md
+          labels: source-check

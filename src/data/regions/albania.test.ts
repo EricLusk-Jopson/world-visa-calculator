@@ -37,9 +37,9 @@ describe('getAlbaniaRule', () => {
     expect(rule.access).toBe('entitled');
     if (rule.access !== 'entitled') return;
     const source = rule.entitlements[0].source!;
-    expect(source.directUrl).toBe('https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/');
-    expect(source.parentUrl).toBe('https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/');
-    expect(source.directUrl).not.toBe(source.parentUrl);
+    expect(source.direct.url).toBe('https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/');
+    expect(source.parent.url).toBe('https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/');
+    expect(source.direct.url).not.toBe(source.parent.url);
   });
 
   it('falls back to defaultRule (visa_required) for an unknown code', () => {

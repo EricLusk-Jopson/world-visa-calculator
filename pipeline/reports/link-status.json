@@ -1,0 +1,3329 @@
+{
+ "generatedAt": "2026-10-18T23:38:40.112Z",
+ "urls": {
+  "https://ambasadat.net/visas/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://evisa.gov.tr/en": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://geoconsul.gov.ge/en/entering-georgia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.by/en/visa/freemove/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.by/en/visa/freemove/airport/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.by/en/visa/freemove/europe/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.by/en/visa/general/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/49": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/50": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/51": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/52": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/53": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/54": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/560": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/562": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/564": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/565": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/566": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/567": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/568": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/569": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/570": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/572": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/573": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/574": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/575": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/576": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/578": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/579": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/580": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/581": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/582": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/583": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/584": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/585": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/586": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/587": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/588": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/589": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/590": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/591": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/593": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/594": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/595": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/596": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/597": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/598": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/599": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/600": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/601": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/602": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/604": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/61": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/63": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/77": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/78": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/79": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/80": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/89": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/90": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/91": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#africa/92": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/606": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/607": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/608": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/609": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/610": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/611": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/612": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/613": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/615": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/616": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/617": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/619": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/620": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/622": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/624": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/626": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/627": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/628": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/630": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/632": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/636": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/638": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/640": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/641": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/650": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/651": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/653": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/654": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/655": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/656": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/661": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/673": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/674": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/675": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/676": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/677": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/678": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/681": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/682": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/683": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/684": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/685": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/687": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#asia/688": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/705": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/707": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/708": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/709": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/710": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/711": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/712": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/713": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/714": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/716": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/717": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/718": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/719": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#australia_and_oceania/721": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1205": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1209": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1213": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1214": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1218": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1222": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1229": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1238": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1240": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1249": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1254": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1256": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1259": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1263": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1266": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1273": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1275": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1279": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1281": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1282": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1284": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1286": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1287": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1289": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1290": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1294": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1299": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1302": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1309": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1313": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1314": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1319": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1323": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1333": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1340": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1346": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1349": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1350": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1351": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1352": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1353": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1354": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1355": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1356": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1357": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/1359": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/846": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#europe/847": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/724": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/727": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/728": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#north_america/731": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/732": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/733": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/734": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/735": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/736": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/737": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/738": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/739": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/740": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/741": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/742": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/743": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/744": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/745": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/746": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/748": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/749": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/750": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/751": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/753": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/754": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/755": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/756": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/757": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/759": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/760": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/761": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/762": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/763": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza#south_america/764": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/albanija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/alzir": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/andora": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/angola": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/antigva-i-barbuda": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/argentina": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/australija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/austrija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/avganistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/azerbejdzan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahami": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bahrein": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/banglades": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/barbados": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belgija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belize": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/belorusija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/benin": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bocvana": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bolivija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bosna-i-hercegovina": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brazil": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/brunej-darusalam": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/bugarska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burkina-faso": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/burundi": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/butan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cad": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/centralnoafricka-republika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ceska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/cile": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/crna-gora": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/danska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dominikanska-republika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/dzibuti": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/egipat": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvador": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ekvatorijalna-gvineja": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/el-salvador": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/eritreja": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/estonija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/esvatini": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/etiopija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/fidzi": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/filipini": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/finska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/francuska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gabon": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gambija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gana": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grcka": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/grenada": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gruzija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvajana": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvatemala": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-bisao": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/gvineja-republika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/haiti": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/holandija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/honduras": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/hrvatska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/indonezija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irak": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/iran": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/irska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/island": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/istocni-timor": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/italija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/izrael": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jamajka": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/japan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jemen": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jermenija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/jordan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzna-afrika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/juzni-sudan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kabo-verde": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kambodza": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kamerun": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kanada": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/katar": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kazahstan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kenija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kina": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kipar": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kirgiska-republika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kiribati": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kolumbija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-demokratska-republika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kongo-republika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/korea-dpr": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/koreja-republika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kostarika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kot-d-ivoar": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/kuvajt": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/laos": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lesoto": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/letonija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liban": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/liberija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/libija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/lihtenstajn": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/litvanija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/luksemburg": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madjarska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malavi": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malezija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mali": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malta": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maroko": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/marshall-islands": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritania": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mauritius": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/meksiko": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/micronesia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mjanmar": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/moldavija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/monako": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mongolija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mozambik": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/namibija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nauru": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nemacka": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nepal": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/niger": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nigerija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/nikaragva": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/norveska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/novi-zeland": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/oman": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/pakistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palau": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/palestina": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/panama": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/papua-nova-gvineja": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/paragvaj": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/peru": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/poljska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/portugalija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruanda": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/rumunija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ruska-federacija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/samoa": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/san-marino": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sao-tome-i-prinsipe": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/saudijska-arabija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sejseli": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/senegal": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sent-kits-i-nevis": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/severna-makedonija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sijera-leone": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/singapur": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sirija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sjedinjene-americke-drzave": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovacka": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/slovenija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/solomonova-ostrva": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/somalija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/spanija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sri-lanka": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sudan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/surinam": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svajcarska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/svedska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-lucija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveta-stolica": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/sveti-vinsent-i-grenadini": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tadzikistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tajland": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tanzanija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/togo": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tonga": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/trinidad-i-tobago": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tunis": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turkmenistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/turska": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/tuvalu": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uganda": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeni-arapski-emirati": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ujedinjeno-kraljevstvo": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/ukrajina": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/unija-komora": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/urugvaj": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/uzbekistan-republika": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vanuatu": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/venecuela": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/vijetnam": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zambija": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/zimbabve": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://publications.europa.eu/resource/celex/02009R0810-20200202": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://publications.europa.eu/resource/celex/02018R1806-20251230": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/": {
+   "status": "blocked",
+   "checkedAt": "2026-10-18"
+  },
+  "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/": {
+   "status": "blocked",
+   "checkedAt": "2026-10-18"
+  },
+  "https://travel-europe.europa.eu/en/etias": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://travel-europe.europa.eu/pub": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.cy/en/information/visas/": {
+   "status": "blocked",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/browse/visas-immigration/tourist-short-stay-visas": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/eta": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/eta/apply": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/government/publications/common-travel-area-guidance": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/government/publications/common-travel-area-guidance/common-travel-area-guidance": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/guidance/immigration-rules": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/standard-visitor": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/at-the-border/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/at-the-border/common-travel-area/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/at-the-border/entry-for-eu-eea-and-swiss-citizens/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/at-the-border/transit-including-transfer-visa-advice/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/coming-to-live-in-ireland/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/coming-to-visit-ireland/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/coming-to-visit-ireland/british-irish-visa-scheme/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/coming-to-visit-ireland/short-stay-visa-waiver-programme/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishimmigration.ie/visa-non-visa-required-nationalities/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishstatutebook.ie/eli/2014/si/473/made/en/print": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishstatutebook.ie/eli/ResultsTitle.html?q=Immigration+Act": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.irishstatutebook.ie/solr/all_leg_title/select?q=immigration+act&wt=json&sort=year+desc&rows=20&omitHeader=true": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mfa.am/en/visa/": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mfa.am/en/visafreelist": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mfa.am/en/whoneedvisa": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mfa.gov.tr/consular-info.en.mfa": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883477779561428?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883483322376278?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883485721766851?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883489528862441?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883490864830189?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883492938472699?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883494519747547?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883498293348199?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883506189924384?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883507939046759?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883513405347440?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883515632963414?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883518204682391?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883520143718021?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883523347022014?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883525257338153?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883529158681974?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883531345686936?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883536294815767?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884157155396026?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884160756123854?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884169152787484?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884171543811588?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884173378283774?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884175022732022?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884178457348609?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884180185942653?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884181940437196?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884185717650158?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884187461477692?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884189702021920?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884191568346394?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884193364545393?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884194892215809?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884196823698099?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884198573678044?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884200287456758?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884209011970465?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884210587686035?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884215601537853?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884220101452501?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884222893822711?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884225425865092?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884227119261135?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884239301076290?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884241100771286?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884243178410635?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884245917407137?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884249342634255?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884258079851240?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884261321109778?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884263846591024?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884268062797702?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884278175687728?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884279732005351?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884281448963024?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884283537678976?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884323006117333?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884324922276004?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884326932971788?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884329323345782?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884333783885384?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884335408575316?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884339232339776?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884348914813577?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884352312202636?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884363320411741?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884367826437010?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884369511088311?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884377463515717?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884380932817298?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884382864523921?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884387960563482?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884389952016419?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884394476077743?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884395989490587?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884397584823001?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884401279302512?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886757866515854?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886764098495916?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886773596241280?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886775887040221?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886779452142327?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886782876976987?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886785438115703?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886788905477378?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886790875262202?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886799536318171?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886801411468085?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886803354586371?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886805390766070?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886807618095453?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886809407303595?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886811835502138?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886816519307372?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886818369628359?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886820238046507?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886822225026447?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886823957420798?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886828918582708?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886830490180024?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886832228392162?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886833951627127?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886836641300367?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886838870296633?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886841972797592?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886848770940073?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886860157130340?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886862192537901?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886866933065444?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886869350000895?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886871360561368?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886872946235717?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886875439854778?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886876828018609?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886881501850591?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886913958643786?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886915955341340?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886917376997574?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886920749427651?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886923986265456?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886925649061933?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886929960112837?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886931428559182?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886938490742978?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886943611766628?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886945200626735?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886946546990155?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886947930548716?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886955464744931?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886957200216716?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886958663442235?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886960016367417?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887635390011080?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887638262695280?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887640244282053?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887642372027446?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887644954829796?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887656343958811?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887667130805381?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887669211232611?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887671107252880?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887672988994968?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887674979670103?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887676915036431?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887678960421691?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887680483059548?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887683211554076?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887692943609910?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887694985573146?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887696763845615?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887699851222851?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887701192704273?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887706303439718?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887710471704837?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887719301053920?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887721108227241?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887722359911561?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887723716813953?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887761830659875?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887763447318561?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887764636965387?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887765301578339?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887766546369580?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887767276051162?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638975086772324997?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638984683325583122?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639050098700037188?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639052934024161722?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639070873312244864?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639082935039597309?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095011690920878?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095058957609028?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639142770283664500?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185064814075651?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185066739711338?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639186724773168776?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639192719046689702?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639215238587178303?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222101785307612?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222210020811154?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639270631536125313?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  },
+  "https://www.mvp.gov.ba/en/vize": {
+   "status": "live",
+   "checkedAt": "2026-10-18"
+  }
+ }
+}

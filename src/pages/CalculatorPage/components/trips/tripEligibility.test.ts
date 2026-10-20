@@ -13,15 +13,15 @@ function traveler(passportCode: string): Traveler {
 describe('computeTravelerEligibility — source citation on the effective rule', () => {
   it('cites the country-specific page on the Rule row for a standard entitled nationality (US → Montenegro)', () => {
     const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('US')], ['t1'], '2026-06-01');
-    expect(e.ruleSource?.directUrl).toBe(MontenegroSources.US.directUrl);
+    expect(e.ruleSource?.direct.url).toBe(MontenegroSources.US.direct.url);
   });
 
   it('cites the country-specific page for a plain visa-required nationality (AF → Montenegro)', () => {
     const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('AF')], ['t1'], '2026-06-01');
     expect(e.access).toBe('visa_required');
-    expect(e.ruleSource?.directUrl).toBe(MontenegroSources.AF.directUrl);
+    expect(e.ruleSource?.direct.url).toBe(MontenegroSources.AF.direct.url);
     const visaNote = e.notes.find((n) => n.label === 'Visa required');
-    expect(visaNote?.source?.directUrl).toBe(MontenegroSources.AF.directUrl);
+    expect(visaNote?.source?.direct.url).toBe(MontenegroSources.AF.direct.url);
   });
 
   it('cites Kazakhstan\'s specific page — not the generic region overview — when the trip falls outside its seasonal waiver', () => {
@@ -31,10 +31,10 @@ describe('computeTravelerEligibility — source citation on the effective rule',
     // must still resolve to KZ's own page, not gov.me's bare index.
     const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('KZ')], ['t1'], '2026-12-01');
     expect(e.access).toBe('visa_required');
-    expect(e.ruleSource?.directUrl).toBe(MontenegroSources.KZ.directUrl);
-    expect(e.ruleSource?.directUrl).not.toBe('https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro');
+    expect(e.ruleSource?.direct.url).toBe(MontenegroSources.KZ.direct.url);
+    expect(e.ruleSource?.direct.url).not.toBe('https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro');
     const visaNote = e.notes.find((n) => n.label === 'Visa required');
-    expect(visaNote?.source?.directUrl).toBe(MontenegroSources.KZ.directUrl);
+    expect(visaNote?.source?.direct.url).toBe(MontenegroSources.KZ.direct.url);
   });
 
   it('cites Turkey\'s specific page when the trip falls outside its temporary waiver window', () => {
@@ -42,13 +42,13 @@ describe('computeTravelerEligibility — source citation on the effective rule',
     // 2026 — 15 Nov 2026 is the first date genuinely outside it.
     const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('TR')], ['t1'], '2026-11-15');
     expect(e.access).toBe('visa_required');
-    expect(e.ruleSource?.directUrl).toBe(MontenegroSources.TR.directUrl);
+    expect(e.ruleSource?.direct.url).toBe(MontenegroSources.TR.direct.url);
   });
 
   it('cites Kazakhstan\'s specific page while its seasonal waiver is active', () => {
     const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('KZ')], ['t1'], '2026-06-01');
     expect(e.access).toBe('entitled');
-    expect(e.ruleSource?.directUrl).toBe(MontenegroSources.KZ.directUrl);
+    expect(e.ruleSource?.direct.url).toBe(MontenegroSources.KZ.direct.url);
   });
 
   it('resolves Turkey as entitled for a trip well before the old placeholder date — the reported bug', () => {
@@ -57,7 +57,7 @@ describe('computeTravelerEligibility — source citation on the effective rule',
     // recorded — this is the exact bug the user reported.
     const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('TR')], ['t1'], '2026-01-01');
     expect(e.access).toBe('entitled');
-    expect(e.ruleSource?.directUrl).toBe(MontenegroSources.TR.directUrl);
+    expect(e.ruleSource?.direct.url).toBe(MontenegroSources.TR.direct.url);
   });
 });
 
@@ -75,7 +75,7 @@ describe('computeTravelerEligibility — temporal window notes', () => {
   it('the "Temporary waiver" note cites Turkey\'s specific source page', () => {
     const [e] = computeTravelerEligibility(VisaRegion.Montenegro, [traveler('TR')], ['t1'], '2026-09-15');
     const waiverNote = e.notes.find((n) => n.label === 'Temporary waiver');
-    expect(waiverNote?.source?.directUrl).toBe(MontenegroSources.TR.directUrl);
+    expect(waiverNote?.source?.direct.url).toBe(MontenegroSources.TR.direct.url);
   });
 
   it('a trip genuinely outside every window (dormant) gets an "Upcoming waiver period" or "Prior waiver period" note, not "Condition"', () => {
@@ -84,7 +84,7 @@ describe('computeTravelerEligibility — temporal window notes', () => {
     expect(e.notes.some((n) => n.label === 'Condition')).toBe(false);
     const priorNote = e.notes.find((n) => n.label === 'Prior waiver period');
     expect(priorNote).toBeDefined();
-    expect(priorNote?.source?.directUrl).toBe(MontenegroSources.TR.directUrl);
+    expect(priorNote?.source?.direct.url).toBe(MontenegroSources.TR.direct.url);
   });
 });
 
@@ -178,7 +178,7 @@ describe('computeTravelerEligibility — every trackable region always cites a s
       for (const code of codes) {
         const [e] = computeTravelerEligibility(region, [traveler(code)], ['t1'], '2026-06-01');
         expect(e.ruleSource, `${label} / ${code} has no ruleSource`).toBeDefined();
-        expect(e.ruleSource!.directUrl, `${label} / ${code} has an empty directUrl`).toBeTruthy();
+        expect(e.ruleSource!.direct.url, `${label} / ${code} has an empty direct link URL`).toBeTruthy();
       }
     });
   }

@@ -15,7 +15,7 @@
  * pages (not hand-transcribed), cross-validated against a second independent
  * extraction pass, then classified into rule shapes. Two live pages were
  * directly fetched to confirm the URL pattern and content accuracy (the index
- * page and Canada's page); the remaining 194 directUrls follow the confirmed
+ * page and Canada's page); the remaining 194 direct links follow the confirmed
  * pattern but were not each individually re-fetched — Tier 2, not Tier 1,
  * confidence for those.
  *
@@ -37,8 +37,10 @@
  *     calculator for a future region where a primary source (treaty text or
  *     consular confirmation) explicitly confirms genuine reset behavior; none
  *     are currently classified as such, Montenegro included.
- *   - 4 countries (DZ, CV, MZ, PK) have NO visa-regime section published on the
+ *   - 3 countries (CV, MZ, PK) have NO visa-regime section published on the
  *     source at all — a genuine content gap, defaulted to visa_required.
+ *     (Algeria was a fourth until its page added a "Visas" section stating
+ *     that a visa is required; confirmed by the source check of 2026-10-15.)
  *   - 3 countries (AM, EG, UZ) have a seasonal waiver on the source that had
  *     already lapsed (ended Oct 2025) as of the date this file was generated —
  *     deliberately NOT encoded as active. TODO: re-check for a renewed window.
@@ -127,7 +129,7 @@ const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
  * Every call cites its own country's source page via `source`, which the UI
  * attaches directly to the stay-rule summary as a link — every PassportRule
  * in this file should be traceable back to its specific gov.me page, not
- * just the region-level parentUrl. This is deliberately NOT done via a note:
+ * just the region-level parent link. This is deliberately NOT done via a note:
  * a note whose only content is "here's where this came from" duplicates the
  * source link with no added information, so `notes` is reserved for
  * commentary that says something beyond citation (e.g. the ID-card
@@ -479,11 +481,16 @@ export const MONTENEGRO: RegionDefinition = {
     // ── Visa required — source page is untranslated (not in English) ──────────────
     'LR': { access: 'visa_required', source: MontenegroSources.LR, notes: [{ text: 'Source page for Liberia is published only in Montenegrin, not English (unlike most other entries on this site). Content translates to: nationals of Liberia require a visa to enter Montenegro, obtainable from Montenegrin diplomatic/consular posts, or the nearest Serbian diplomatic/consular post if none is reachable. TODO: confirm translation before relying on this for user-facing copy.', source: MontenegroSources.LR }] }, // Liberia — SOURCE TEXT NOT IN ENGLISH
 
+    // ── Visa required — rule published late (was a content gap) ───────────────────
+    // Algeria's page now has a "Visas" section: "The citizens of Algeria must own a
+    // visa to be able to enter and stay in Montenegro." Confirmed by the source
+    // check of 2026-10-15.
+    'DZ': { access: 'visa_required', source: MontenegroSources.DZ }, // Algeria
+
     // ── Visa required — TRUE CONTENT GAP: no rule published on source at all ───────
     // (Confirmed structurally: page has no Visa regime section; the generic
     // Schengen/US/UK/Ireland-visa-holder banner shown here also appears identically
     // on all other 195 pages and is not specific to these countries.)
-    'DZ': { access: 'visa_required', source: MontenegroSources.DZ, notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Algeria. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Algeria; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.DZ }] }, // Algeria — TODO: verify, no rule published on source
     'CV': { access: 'visa_required', source: MontenegroSources.CV, notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Cabo Verde. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Cabo Verde; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.CV }] }, // Cabo Verde — TODO: verify, no rule published on source
     'MZ': { access: 'visa_required', source: MontenegroSources.MZ, notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Mozambique. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Mozambique; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.MZ }] }, // Mozambique — TODO: verify, no rule published on source
     'PK': { access: 'visa_required', source: MontenegroSources.PK, notes: [{ text: 'No country-specific visa-regime information is published on Montenegro\'s diplomatic-missions site for Pakistan. Defaulting to visa_required as the conservative assumption. (Note: this page does display a generic, site-wide banner about Schengen/US/UK/Ireland visa holders getting 30 days — that banner appears identically on all 196 country pages and is NOT specific to Pakistan; it is not encoded here as it applies independently of passport nationality.)', source: MontenegroSources.PK }] }, // Pakistan — TODO: verify, no rule published on source

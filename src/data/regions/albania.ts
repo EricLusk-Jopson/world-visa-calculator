@@ -12,7 +12,10 @@
  * wide), but unlike those regions Albania's site itself distinguishes a
  * parent (regime overview) page from a direct (the actual per-country table)
  * page, so both fields are populated with their own distinct URL rather than
- * duplicating one URL into both fields.
+ * duplicating one URL into both fields. Both are defined once in sources.ts.
+ * The source check diffs the overview page, and each country's entry in the
+ * table (parsed from the page's script, see the `punetejashtme.gov.al`
+ * resolver in pipeline/README.md).
  *
  * ── Scope and shape of the source data ──────────────────────────────────────
  *

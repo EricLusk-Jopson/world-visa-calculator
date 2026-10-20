@@ -5,12 +5,15 @@ export interface Props {
   title?: string;
   description?: string;
   canonicalUrl?: string;
+  /** Keep internal pages (e.g. /source-report) out of search results. */
+  noindex?: boolean;
 }
 
 const {
   title = "EuroVisaCalculator: Schengen, UK, Ireland & Türkiye Visa Tracker",
   description = "Check visa-free entry and track day allowances across Schengen, the UK, Ireland, and Türkiye, for any passport and every traveler in your group. Free, no account required.",
   canonicalUrl = "https://eurovisacalculator.com/",
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -30,7 +33,7 @@ const {
     <!-- ── Primary SEO ──────────────────────────────────────────────────── -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp previews) ───────────── -->
