@@ -53,7 +53,10 @@ same change here.
 
 **Establishes:** every Cyprus rule.
 
-**Machine:** health-checked only. The Cellar copy is diffed instead.
+**Machine:** health-checked only. The Cellar copy is diffed instead. Since the
+2026-10-20 run, EUR-Lex answers the pipeline with HTTP 202 (a bot-protection
+challenge), so it shows as 🚫 blocked; the Cellar copy still loads. See
+Schengen's `visaList`.
 
 **Human:** as for Schengen's `visaList`: open the EUR-Lex page, then check
 the "Current consolidated version" date against the `-20251230` in the URL.

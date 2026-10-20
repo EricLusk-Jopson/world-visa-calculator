@@ -1,0 +1,14 @@
+report: 2026-10-20
+items:
+  - region: Bosnia
+    url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba
+    verdict: no-rule-change
+    noise: wording
+    by: ai-assisted
+    notes: >-
+      Indonesia. The ordinary-passport sentence is unchanged apart from a space
+      ("exit , transit" -> "exit, transit"): "Citizens of the Republic of
+      Indonesia are required visas when entering, exiting or travelling through
+      Bosnia and Herzegovina." The posted-diplomats clause is reworded (not
+      modelled); the rest is new travel advice for BiH citizens in Indonesia
+      (arrival registration, Papua, volcanoes) and a fixed embassy link.
