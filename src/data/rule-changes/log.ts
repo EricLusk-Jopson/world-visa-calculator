@@ -2,7 +2,7 @@
  * log.ts
  * ──────────────────────────────────────────────────────────────────────────────
  * The rule-change entry format, with no filesystem access, so the site build
- * (astro/pages/updates.astro) and the app can read the log too. Loading and
+ * (astro/pages/rule-changes.astro) and the app can read the log too. Loading and
  * checking the files is in entries.ts.
  */
 

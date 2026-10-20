@@ -3,7 +3,7 @@ import type { RegionDefinition } from "@/types";
 import { MONTENEGRO } from "@/data/regions";
 import { MontenegroSources } from "@/data/sources";
 import { readFileSync, writeFileSync } from "node:fs";
-import { lastChangePerRegion, loadEntries, parseEntry, summarizeLog, SUMMARY_PATH, UNFINISHED, unrecordedRegions, validateEntries } from "./entries";
+import { lastChangePerRegion, loadEntries, parseEntry, staleVerifiedDates, summarizeLog, SUMMARY_PATH, UNFINISHED, unrecordedRegions, validateEntries } from "./entries";
 import { diffRegion, normalizeRegion, RULE_REGIONS, summarizeRule } from "./normalize";
 
 describe("rule-change log", () => {
@@ -21,6 +21,10 @@ describe("rule-change log", () => {
     const expected = `${JSON.stringify(summarizeLog(entries), null, 2)}\n`;
     if (process.env.UPDATE_RULE_SUMMARY) writeFileSync(SUMMARY_PATH, expected);
     expect(readFileSync(SUMMARY_PATH, "utf-8")).toBe(expected);
+  });
+
+  it("has every changed rule's sources verified on or after the change (bump their dateChecked)", () => {
+    expect(staleVerifiedDates(entries)).toEqual([]);
   });
 
   it("has a baseline", () => {

@@ -11,7 +11,7 @@ here, the way a database records migrations. It answers, for any rule:
 - **On what evidence:** the playbook links in `docs/sources/`, plus a quote
   in the entry's body.
 
-The log is listed publicly under "Rule changes" on /updates.
+The log is listed publicly on /rule-changes, linked from the site footer.
 
 ## How it's enforced
 
@@ -51,10 +51,13 @@ The log is listed publicly under "Rule changes" on /updates.
    every changed passport filled in, and updates `state/`.
 3. Fill in the entry's `TODO(entry)` sections: what changed and why, a quote
    from the source, and how it was confirmed.
-4. Bump `lastVerified` in the region file.
+4. Bump `lastVerified` in the region file, and `dateChecked` on each
+   SourceDoc the changed rules cite (in `src/data/sources.ts`): recording a
+   change means you checked the source that day. A test enforces this, so
+   the app never shows a source "verified" before a change to a rule citing it.
 5. Run `npm test` and commit everything together.
 
-`npm run rules:check` regenerates `summary.json` (the small digest the app reads to show "rules last changed") and runs the log's tests. `rules:new` updates it too.
+`npm run rules:check` regenerates `summary.json` (per source, the latest change to a rule citing it, which the app's source popover links to) and runs the log's tests. `rules:new` updates it too.
 
 ## Entry format
 

@@ -2,12 +2,11 @@
  * sourceStatus.ts
  * ──────────────────────────────────────────────────────────────────────────────
  * What the app can say about a cited source beyond its URL:
- *   - when the source check last checked the link, and what it found
+ *   - whether the source check last found the link broken
  *     (pipeline/reports/link-status.json, loaded lazily on first use);
- *   - when the region's rules last changed (the rule-change log's summary).
+ *   - when a rule citing it last changed (the rule-change log's summary).
  */
 
-import type { SourceRegions } from "@/data/sources";
 import ruleChangeSummary from "@/data/rule-changes/summary.json";
 
 export type LinkCheckStatus = "live" | "redirected" | "blocked" | "broken";
@@ -28,33 +27,20 @@ export function formatDay(iso: string): string {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
 
-export type StatusLine = { text: string; tone: "ok" | "neutral" | "warn" };
-
-/** One line about the automated check of a link. */
-export function describeLinkCheck(check: LinkCheck | undefined): StatusLine {
-  if (!check) return { text: "Not checked automatically yet", tone: "neutral" };
-  const when = formatDay(check.checkedAt);
-  switch (check.status) {
-    case "live":
-    case "redirected":
-      return { text: `Link checked ${when}: working`, tone: "ok" };
-    case "blocked":
-      return { text: `Link checked ${when}: the site blocks automated checks, so it's verified by hand`, tone: "neutral" };
-    case "broken":
-      return { text: `Link checked ${when}: not responding. We're looking into it`, tone: "warn" };
-  }
+/**
+ * A line about the automated link check, only when it found a problem: a
+ * working link needs no announcement, and a site that blocks automated checks
+ * is verified by hand (its "Verified" date says when).
+ */
+export function describeLinkProblem(check: LinkCheck | undefined): string | undefined {
+  if (check?.status !== "broken") return undefined;
+  return `We couldn't reach this link on ${formatDay(check.checkedAt)}. We're looking into it.`;
 }
 
-/** When the region's rules last changed, linked to its entry on /updates. */
-export function describeRuleChanges(region: keyof typeof SourceRegions | undefined): { text: string; href: string } | undefined {
-  const summary = ruleChangeSummary as {
-    baseline?: { id: number; recorded: string };
-    bySourceRegion: Record<string, { id: number; recorded: string; title: string }>;
-  };
-  const last = region ? summary.bySourceRegion[region] : undefined;
-  if (last) return { text: `Rules last changed ${formatDay(last.recorded)}`, href: `/updates#rule-${last.id}` };
-  if (summary.baseline) return { text: `No rule changes since ${formatDay(summary.baseline.recorded)}`, href: "/updates#rule-changes" };
-  return undefined;
+/** The latest recorded change to a rule citing this source, linked to its entry on /rule-changes. */
+export function describeRuleChange(sourceKey: string | undefined): { text: string; href: string } | undefined {
+  const last = sourceKey ? (ruleChangeSummary as { bySource: Record<string, { id: number; recorded: string }> }).bySource[sourceKey] : undefined;
+  return last && { text: `Rule changed ${formatDay(last.recorded)}`, href: `/rule-changes#rule-${last.id}` };
 }
 
 export const ISSUE_KINDS = [

@@ -9,6 +9,8 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadPlaybooks } from "@/data/playbooks";
+import { SourceRegions } from "@/data/sources";
+import type { SourceDoc } from "@/types";
 import { parseEntry, TRIGGER_TYPES, UNFINISHED, type RuleChangeEntry } from "./log";
 import { RULE_REGIONS, normalizeRegion, type RegionState } from "./normalize";
 
@@ -98,21 +100,73 @@ export function lastChangePerRegion(entries: RuleChangeEntry[], recordedOnly = f
 
 export const SUMMARY_PATH = join(RULE_CHANGES_DIR, "summary.json");
 
-/** What the app shows about the log, per SourceRegions key: the latest entry that changed it, and the baseline. */
-export type RuleChangeSummary = {
-  baseline?: { id: number; recorded: string };
-  bySourceRegion: Record<string, { id: number; recorded: string; title: string }>;
-};
+type RuleRef = { region: string; path: string; entry: RuleChangeEntry };
+
+/** The latest entry (by id) that changed each rule ("montenegro passportRules.DZ"), baseline aside. */
+export function lastChangePerRule(entries: RuleChangeEntry[]): RuleRef[] {
+  const out = new Map<string, RuleRef>();
+  for (const e of entries) {
+    if (e.baseline) continue;
+    for (const c of e.changes) out.set(`${c.region} ${c.path}`, { region: c.region, path: c.path, entry: e });
+  }
+  return [...out.values()];
+}
+
+/** SourceDoc keys ("Montenegro.DZ") the rule at `path` cites in its recorded state, notes included. */
+export function sourcesOfRule(region: string, path: string, dir = STATE_DIR): string[] {
+  const state = readState(region, dir);
+  if (!state) return [];
+  const passport = /^passportRules\.(.+)$/.exec(path)?.[1];
+  const value: unknown = passport ? state.passportRules[passport] : (state as Record<string, unknown>)[path];
+  const found = new Set<string>();
+  const walk = (v: unknown) => {
+    if (Array.isArray(v)) v.forEach(walk);
+    else if (v && typeof v === "object") {
+      const src = (v as { $source?: unknown }).$source;
+      if (typeof src === "string") found.add(src);
+      else Object.values(v).forEach(walk);
+    }
+  };
+  walk(value);
+  return [...found];
+}
+
+/**
+ * Rules whose cited sources say they were verified before the rule last
+ * changed. A recorded change means the source was checked that day (the
+ * workflow requires it), so its dateChecked must be on or after it.
+ */
+export function staleVerifiedDates(entries: RuleChangeEntry[]): string[] {
+  const docs = new Map<string, SourceDoc>();
+  for (const [region, { sources }] of Object.entries(SourceRegions)) {
+    for (const [key, doc] of Object.entries(sources as Record<string, SourceDoc>)) docs.set(`${region}.${key}`, doc);
+  }
+  const out: string[] = [];
+  for (const { region, path, entry } of lastChangePerRule(entries)) {
+    // A backfilled change may have been a reinterpretation, not a re-read of the source.
+    if (entry.backfilled) continue;
+    for (const key of sourcesOfRule(region, path)) {
+      const doc = docs.get(key);
+      if (doc && doc.dateChecked < entry.recorded) {
+        out.push(`${key}: dateChecked ${doc.dateChecked} is before entry ${entry.id} (${entry.recorded}), which changed ${region} ${path}`);
+      }
+    }
+  }
+  return [...new Set(out)];
+}
+
+/** What the app shows about the log: per cited source, the latest entry that changed a rule citing it. */
+export type RuleChangeSummary = { bySource: Record<string, { id: number; recorded: string }> };
 
 /** summary.json: small enough to ship to the browser, unlike the entries themselves. */
 export function summarizeLog(entries: RuleChangeEntry[]): RuleChangeSummary {
-  const baseline = entries.find((e) => e.baseline);
-  const bySourceRegion: RuleChangeSummary["bySourceRegion"] = {};
-  for (const [code, e] of lastChangePerRegion(entries)) {
-    const region = RULE_REGIONS.find((r) => r.def.code === code)?.sourceRegion;
-    if (region) bySourceRegion[region] = { id: e.id, recorded: e.recorded, title: e.title };
+  const bySource: RuleChangeSummary["bySource"] = {};
+  for (const { region, path, entry } of lastChangePerRule(entries)) {
+    for (const key of sourcesOfRule(region, path)) {
+      if (!bySource[key] || bySource[key].id < entry.id) bySource[key] = { id: entry.id, recorded: entry.recorded };
+    }
   }
-  return { baseline: baseline && { id: baseline.id, recorded: baseline.recorded }, bySourceRegion };
+  return { bySource: Object.fromEntries(Object.keys(bySource).sort().map((k) => [k, bySource[k]])) };
 }
 
 export function writeSummary(entries: RuleChangeEntry[]): void {

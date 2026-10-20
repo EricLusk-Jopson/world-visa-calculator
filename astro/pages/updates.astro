@@ -2,20 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LandingNav from "../components/LandingNav.astro";
 import Footer from "../components/Footer.astro";
-import { describePath, describeTrigger, entriesFromGlob } from "../../src/data/rule-changes/log";
-import { RULE_REGIONS } from "../../src/data/rule-changes/normalize";
-
-/**
- * The rule-change log (src/data/rule-changes/entries/), newest first. Each
- * entry is anchored at #rule-<id> so the app can link to it.
- */
-const ruleChanges = entriesFromGlob(
-  import.meta.glob("../../src/data/rule-changes/entries/*.md", { query: "?raw", import: "default", eager: true }) as Record<string, string>,
-).reverse();
-const regionName = (code: string) => RULE_REGIONS.find((r) => r.def.code === code)?.def.name ?? code;
-const formatDate = (iso: string) =>
-  new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
-
 /**
  * Changelog entries, most recent first. Each `changes` array holds
  * { tag: "feature" | "improvement" | "fix", text: string }.
@@ -42,8 +28,8 @@ const roadmapCountries = [
 
 const qcPipelineNotes = [
   "Scheduled jobs check every government source link cited in the app for breakage and content drift on a recurring basis.",
-  "Changes that look impactful (stay limits, eligibility, entry conditions) are flagged for manual review before the ruleset is updated, and every rule change is recorded below with what prompted it.",
-  "Every government source link in the app now shows when it was last verified and link-checked, when that destination's rules last changed, and a “Report a problem” form for flagging broken links or outdated information.",
+  "Changes that look impactful (stay limits, eligibility, entry conditions) are flagged for manual review before the ruleset is updated, and every rule change is recorded with what prompted it.",
+  "Every government source link in the app now shows when it was last verified, links to any rule change it backs, and has a “Report a problem” form for flagging broken links or outdated information.",
 ];
 
 const changelog = [
@@ -204,40 +190,7 @@ const tagLabel: Record<string, string> = {
               <li>{note}</li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section class="section" id="rule-changes">
-        <h2 class="section__title">Rule changes</h2>
-        <p class="section__body">
-          Every change to a destination's entry rules, with what it was before
-          and after, and what prompted it.
-        </p>
-        <div class="changelog">
-          {ruleChanges.map((entry) => (
-            <div class="changelog-entry rule-change" id={`rule-${entry.id}`}>
-              <p class="changelog-entry__range">
-                {formatDate(entry.recorded)}
-                {entry.effective && entry.effective !== entry.recorded && (
-                  <span class="rule-change__effective"> · in effect from {formatDate(entry.effective)}</span>
-                )}
-              </p>
-              <p class="rule-change__title">{entry.title}</p>
-              {entry.baseline ? (
-                <p class="changelog-entry__empty">The rules of every destination as they stood when this log began.</p>
-              ) : (
-                <ul class="rule-change__list">
-                  {entry.changes.map((c) => (
-                    <li>
-                      <span class="rule-change__who">{regionName(c.region)} · {describePath(c.path)}:</span>{" "}
-                      {c.before} → <strong>{c.after}</strong>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {!entry.baseline && <p class="rule-change__trigger">{describeTrigger(entry)}</p>}
-            </div>
-          ))}
+          <a class="roadmap-card__link" href="/rule-changes">See every rule change →</a>
         </div>
       </section>
 
@@ -389,6 +342,20 @@ const tagLabel: Record<string, string> = {
     color: var(--color-text);
   }
 
+  .roadmap-card__link {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .roadmap-card__link:hover {
+    text-decoration: underline;
+  }
+
   /* ── Changelog ───────────────────────────────────────────────────────── */
   .changelog-entry {
     padding: 20px 0;
@@ -433,43 +400,6 @@ const tagLabel: Record<string, string> = {
     grid-template-columns: 100px 1fr;
     align-items: baseline;
     column-gap: 10px;
-  }
-
-  /* ── Rule changes ────────────────────────────────────────────────────── */
-  .rule-change__effective {
-    font-weight: 400;
-    color: var(--color-text-ghost);
-  }
-
-  .rule-change__title {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0 0 8px;
-  }
-
-  .rule-change__list {
-    margin: 0 0 8px;
-    padding-left: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: var(--color-text-soft);
-  }
-
-  .rule-change__who {
-    color: var(--color-text);
-  }
-
-  .rule-change__trigger {
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    color: var(--color-text-ghost);
-    margin: 0;
   }
 
   .tag {

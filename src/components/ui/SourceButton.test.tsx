@@ -39,9 +39,14 @@ describe("SourceButton", () => {
     await act(async () => byText("Source")!.click());
 
     expect(byText("Official source")?.getAttribute("href")).toBe(MontenegroSources.DZ.direct.url);
-    expect(byText("Information last verified")?.textContent).toMatch(/Information last verified \d+ \w+ 2026/);
-    expect(byText("Rules last changed 15 Oct 2026")?.getAttribute("href")).toBe("/updates#rule-4");
-    await vi.waitFor(() => expect(byText("Link checked")).toBeDefined());
+    const links = document.querySelector('[data-testid="source-links"]')!;
+    expect(links.querySelectorAll("a")).toHaveLength(2); // official and overview, side by side
+    expect(byText("Verified")?.textContent).toBe("Verified 15 Oct 2026 · Rule changed 15 Oct 2026 →");
+    expect(byText("Rule changed 15 Oct 2026")?.getAttribute("href")).toBe("/rule-changes#rule-4");
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 50)); // link status loads lazily
+    });
+    expect(document.body.textContent).not.toMatch(/Link checked|couldn't reach/); // a working link isn't announced
 
     await act(async () => byText("Report a problem")!.click());
     const send = byText("Send report") as HTMLButtonElement;

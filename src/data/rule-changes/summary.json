@@ -1,23 +1,20 @@
 {
-  "baseline": {
-    "id": 5,
-    "recorded": "2026-10-19"
-  },
-  "bySourceRegion": {
-    "Turkiye": {
-      "id": 1,
-      "recorded": "2026-07-22",
-      "title": "Türkiye: nine \"90 days from first entry\" entries become the 90/180 rolling window"
+  "bySource": {
+    "Ireland.transitVisa": {
+      "id": 2,
+      "recorded": "2026-10-08"
     },
-    "Ireland": {
+    "Ireland.visaNationalityList": {
       "id": 3,
-      "recorded": "2026-10-08",
-      "title": "Ireland: add Bahamas and Samoa as visa-free"
+      "recorded": "2026-10-08"
     },
-    "Montenegro": {
+    "Montenegro.DZ": {
       "id": 4,
-      "recorded": "2026-10-15",
-      "title": "Montenegro: Algeria's page now publishes its visa rule"
+      "recorded": "2026-10-15"
+    },
+    "Turkiye.mfaVisaInfo": {
+      "id": 1,
+      "recorded": "2026-07-22"
     }
   }
 }

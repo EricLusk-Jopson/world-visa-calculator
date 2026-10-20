@@ -19,7 +19,7 @@ behind those rules every two weeks.
   at-a-glance table and the human checklist.
 - `src/data/rule-changes/`: **the rule-change log**. Every change to a
   region's rules is a numbered entry with before/after, trigger and evidence
-  (see its README). It's shown publicly under "Rule changes" on /updates.
+  (see its README). It's shown publicly on /rule-changes (linked from the footer).
 
 ## Rules of the road
 
@@ -27,8 +27,8 @@ behind those rules every two weeks.
   the same change. `src/data/sourcePlaybooks.test.ts` fails otherwise. Then
   run `npm run playbooks:overview`.
 - **Changing a rule in a region file:** record it with `npm run rules:new`,
-  fill in the entry's `TODO(entry)` sections and bump the region's
-  `lastVerified`. The tests fail on an unrecorded or unfinished change.
+  fill in the entry's `TODO(entry)` sections, bump the region's
+  `lastVerified` and the `dateChecked` of the sources the changed rules cite. The tests fail on an unrecorded or unfinished change.
 - **Triaging a source-check report** (`pipeline/reports/<date>.json`): use the
   `/triage-report` skill. For each flagged diff, read the link's playbook
   section first; its "Real change vs noise" part says how to classify it.
