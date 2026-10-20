@@ -339,11 +339,6 @@ export const europeCoverage: EuropeCoverageData = {
   ],
   "unsupported": [
     {
-      "code": "AM",
-      "name": "Armenia",
-      "source": "Armenia"
-    },
-    {
       "code": "AZ",
       "name": "Azerbaijan",
       "source": "Azerbaijan"
