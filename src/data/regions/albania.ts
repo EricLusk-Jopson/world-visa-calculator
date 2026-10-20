@@ -45,7 +45,7 @@
  * Albania's own member state (AL) is encoded as free_movement — an Albanian
  * national needs no visa to enter Albania.
  *
- * Last verified: 2026-09-04
+ * Last verified: 2026-10-20
  */
 
 import type {
@@ -119,7 +119,7 @@ export const ALBANIA: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-09-04',
+  lastVerified: '2026-10-20',
   sourceUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
   defaultRule: VISA_REQUIRED,
   passportRules: {

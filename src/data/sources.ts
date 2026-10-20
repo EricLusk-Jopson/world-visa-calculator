@@ -6421,832 +6421,832 @@ export const AlbaniaSources = {
   AD: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Andorra
   AE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Afghanistan
   AG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Antigua and Barbuda
   AM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Armenia
   AO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Angola
   AR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Argentina
   AT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Austria
   AU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Australia
   AZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Azerbaijan
   BA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BB: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Barbados
   BD: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Bangladesh
   BE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Belgium
   BF: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Burkina Faso
   BG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Bulgaria
   BH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Bahrain
   BJ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Benin
   BN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Brunei
   BO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Bolivia
   BR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Brazil
   BS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Bahamas
   BW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Botswana
   BY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Belarus
   BZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Belize
   CA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Canada
   CG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Congo
   CH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Switzerland
   CI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Cote d'Ivoire
   CL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Chile
   CM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Cameroon
   CN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // China
   CO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Colombia
   CR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Costa Rica
   CU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Cuba
   CY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Cyprus
   CZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Czech Republic
   DE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Germany
   DK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Denmark
   DO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Algeria
   EC: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Ecuador
   EE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Estonia
   EG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Egypt
   ER: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Eritrea
   ES: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Spain
   ET: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Ethiopia
   FI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Finland
   FJ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Fiji
   FR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // France
   GA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Gabon
   GB: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // United Kingdom
   GE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Georgia
   GH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Ghana
   GN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Guinea
   GR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Greece
   GT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Guatemala
   GY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Guyana
   HK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Hong Kong (SAR)
   HN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Honduras
   HR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Croatia
   HT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Haiti
   HU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Hungary
   ID: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Indonesia
   IE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Ireland
   IL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Israel
   IN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // India
   IQ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Iraq
   IR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Iran
   IS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Iceland
   IT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Italy
   JM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Jamaica
   JO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Jordan
   JP: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Japan
   KE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Kenya
   KG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Cambodia
   KN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Korea (North)
   KR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Korea (South)
   KW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Kuwait
   KZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Kazakhstan
   LB: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Lebanon
   LI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Liechtenstein
   LK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Sri Lanka
   LR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Liberia
   LS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Lesotho
   LT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Lithuania
   LU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Luxembourg
   LV: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Latvia
   LY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Libya
   MA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Morocco
   MC: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Monaco
   MD: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Moldova
   ME: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Montenegro
   MG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Madagascar
   MK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // North Macedonia
   ML: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Mali
   MN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Mongolia
   MO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Macao (SAR)
   MR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Mauritania
   MT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Malta
   MU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Mauritius
   MV: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Maldives
   MW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Malawi
   MX: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Mexico
   MY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Malaysia
   MZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Mozambique
   NA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Namibia
   NG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Nigeria
   NI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Nicaragua
   NL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Netherlands
   NO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Norway
   NP: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Nepal
   NZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // New Zealand
   OM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Oman
   PA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Panama
   PE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Peru
   PH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Philippines
   PK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Pakistan
   PL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Poland
   PS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Palestine
   PT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Portugal
   PY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Paraguay
   QA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Qatar
   RO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Romania
   RS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Serbia
   RU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Russia
   RW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Rwanda
   SA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Saudi Arabia
   SC: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Seychelles
   SD: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Sudan
   SE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Sweden
   SG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Singapore
   SI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Slovenia
   SK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Slovakia
   SL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Sierra Leone
   SM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // San Marino
   SN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Senegal
   SO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Somalia
   SR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Suriname
   ST: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // El Salvador
   SY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Syria
   TG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Togo
   TH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Thailand
   TJ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Tajikistan
   TM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Turkmenistan
   TN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Tunisia
   TR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Turkey
   TT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Trinidad and Tobago
   TW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Taiwan
   TZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Tanzania
   UA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Ukraine
   UG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Uganda
   US: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // United States
   UY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Uruguay
   UZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Uzbekistan
   VA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Vatican City
   VE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Venezuela
   VN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Vietnam
   XK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Kosovo
   YE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Yemen
   ZA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // South Africa
   ZM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Zambia
   ZW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc, // Zimbabwe
 } as const;
 
