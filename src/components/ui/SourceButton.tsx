@@ -150,7 +150,7 @@ function SourceDetails({ source, size, onResize }: { source: SourceDoc; size: Si
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: touch ? "12px" : "8px" }}>
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: touch ? "8px" : "14px" }} data-testid="source-links">
+      <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: touch ? "8px" : "14px" }} data-testid="source-links">
         {links.map((l) => (
           <Box
             key={l.type}
