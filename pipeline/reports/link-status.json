@@ -5,6 +5,10 @@
    "status": "live",
    "checkedAt": "2026-10-18"
   },
+  "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628": {
+   "status": "live",
+   "checkedAt": "2026-10-20"
+  },
   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230": {
    "status": "live",
    "checkedAt": "2026-10-18"
@@ -2472,6 +2476,10 @@
   "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list": {
    "status": "live",
    "checkedAt": "2026-10-18"
+  },
+  "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor": {
+   "status": "live",
+   "checkedAt": "2026-10-20"
   },
   "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list": {
    "status": "live",

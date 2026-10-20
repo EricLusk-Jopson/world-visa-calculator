@@ -1,6 +1,6 @@
 ---
 region: Albania
-lastReviewed: 2026-10-19
+lastReviewed: 2026-10-20
 links:
   - id: visaTable
     url: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/
@@ -96,9 +96,10 @@ between WITH VISA and WITHOUT VISA, or a new note in the A/C application cell.
 - Seasonal visa-free windows appear only as note text, e.g. Saudi Arabia and
   Qatar: "VISA-FREE REGIME ONLY FOR THE TOURIST SEASON 15.04.2026 TO
   31.12.2026", while their `nationalC` reads WITHOUT VISA. When a season
-  ends, `nationalC` flips back. `albania.ts` currently treats SA and QA as
-  visa-free year-round. TODO(human): decide whether to model the season as a
-  TemporalWindow.
+  ends, `nationalC` flips back. `albania.ts` models the season as a
+  TemporalWindow (tourism only), so a flip back at the season's end is
+  expected, not a change. A new season (new dates in the note) is a rule
+  change: append a new window.
 - Bahrain still shows a stale 2024 season note under WITH VISA. That's
   noise.
 - Changes to fees, D-visa rows or "where to apply" are not rules this app
@@ -147,5 +148,4 @@ Layout and date-stamp changes are noise.
 
 ## Open questions
 
-- TODO(human): model the Saudi Arabia and Qatar tourist season (15.04–31.12.2026) as a TemporalWindow, or keep them visa-free year-round?
 - Could a non-headless browser on the maintainer's machine get past Incapsula? Deferred by choice (Oct 2026).

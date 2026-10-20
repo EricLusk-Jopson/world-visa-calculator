@@ -1,20 +1,20 @@
 ---
 region: UK
-lastReviewed: 2026-10-19
+lastReviewed: 2026-10-20
 links:
-  - id: standardVisitor
-    url: https://www.gov.uk/standard-visitor
+  - id: appendixVisitor
+    url: https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor
     loadBearing: true
     category: html-page
     revisions: in-place
     access: open
-    machineCheck: link-only
-    diffConfidence: none
-    humanCheck: periodic
-  - id: shortStayVisas
-    url: https://www.gov.uk/browse/visas-immigration/tourist-short-stay-visas
+    machineCheck: diff
+    diffConfidence: high
+    humanCheck: on-diff
+  - id: standardVisitor
+    url: https://www.gov.uk/standard-visitor
     loadBearing: false
-    category: index
+    category: html-page
     revisions: in-place
     access: open
     machineCheck: link-only
@@ -105,7 +105,7 @@ links:
 
 # United Kingdom
 
-**Rules:** `src/data/regions/uk.ts` · **Sources:** `UKSources` (`standardVisitor`, `visaNationalList`, `etaNationalList`, `carriersList`, `etaApplication`, `ctaGuidance`)
+**Rules:** `src/data/regions/uk.ts` · **Sources:** `UKSources` (`standardVisitor` → `appendixVisitor`, `visaNationalList`, `etaNationalList`, `carriersList`, `etaApplication`, `ctaGuidance`)
 
 GOV.UK publishes the Immigration Rules appendices as ordinary HTML pages,
 edited in place whenever a Statement of Changes takes effect. These are the
@@ -114,32 +114,60 @@ it.
 
 ## Provenance
 
-Transcribed by hand from Appendix Visitor: Visa National List, Appendix ETA
+The 180-day limit is from Appendix V: Visitor (cited since 2026-10-20; the
+Standard Visitor guidance page before). The lists were transcribed by hand
+from Appendix Visitor: Visa National List, Appendix ETA
 National List and the carriers' DATV list, 2026-04-14. ETA rollout phases
 are in the header of `uk.ts`. Irish citizens are free movement under the
 CTA. Stays are 180 days per visit, not a rolling window.
 
+## appendixVisitor
+
+**Establishes:** the 180-days-per-visit limit for visitors (the region rule):
+Immigration Rules Appendix V: Visitor, V 17.2 ("Period and conditions of
+grant for Visitors").
+
+**Machine:** diffed for text and links. GOV.UK collapses each section, but
+the text is in the page's HTML, so the diff sees V 17.2.
+
+V 17.2 is a table of "Maximum initial length of stay in the UK" by visitor
+type. As of 2026-10-20, row (a) reads: "Standard Visitor: up to 6 months
+except: (i) a Visitor who is coming to the UK for private medical treatment
+may be granted entry clearance for up to 11 months; (ii) an academic … may be
+granted entry clearance for up to 12 months; (iii) a Visitor under the
+Approved Destination Status Agreement may be granted entry clearance for up to
+30 days." The app models the general 6 months only; the three exceptions
+depend on the purpose of the visit and aren't modelled.
+
+**Human:** open the page and expand "Period and conditions of grant for
+Visitors" for V 17.2. The introduction also says a Standard Visitor stays
+"usually for up to 6 months" and "each stay in the UK must not exceed the
+permitted length of stay endorsed on the visit visa (usually six months)".
+
+**Real change vs noise:**
+
+- **Rule change:** the general Standard Visitor period in V 17.2 row (a)
+  ("up to 6 months"), or the introduction's "6 months", changes. A change
+  to one of row (a)'s exceptions (medical, academic, ADS) isn't a change to
+  a modelled rule, but note it here. It only changes through a Statement of
+  Changes, listed on `immigrationRules` with its effective date.
+- **Noise:** other visitor types (marriage, transit, DVA, academics),
+  permitted-activity cross-references, the DVA opening dates, page chrome.
+
+**Human work:** confirm a flagged change against the Statement of Changes,
+then update the region rule in `uk.ts`.
+
 ## standardVisitor
 
-**Establishes:** the 180-days-per-visit limit for visa-exempt visitors (the
-region rule).
+**Establishes:** nothing on its own. It's GOV.UK's guidance on the Standard
+Visitor route ("up to 6 months"), shown as the readable parent of
+`appendixVisitor`. Until Oct 2026 it was the cited source for the 6-month
+limit and was checked by hand each quarter.
 
-**Machine:** health-checked only. It's guidance, not a statutory rule, and
-gets copy edits too often to be worth diffing.
+**Machine:** health-checked only. It's guidance and gets copy edits too
+often to be worth diffing.
 
-**Human:** open the page and confirm "up to 6 months" per visit.
-
-**Real change vs noise:** not diffed.
-
-**Human work:** a quick periodic look, e.g. quarterly.
-
-## shortStayVisas
-
-**Establishes:** nothing. It's the browse page above `standardVisitor`.
-
-**Machine:** health-checked only.
-
-**Human:** navigate from here.
+**Human:** a quick place to read the route in plain English.
 
 **Real change vs noise:** not diffed.
 

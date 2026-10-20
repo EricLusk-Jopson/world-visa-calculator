@@ -2058,6 +2058,14 @@
       "access": "entitled",
       "entitlements": [
         {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism"
+              ],
+              "type": "purpose"
+            }
+          ],
           "limits": [
             {
               "days": 90,
@@ -2070,12 +2078,25 @@
               "source": {
                 "$source": "Albania.QA"
               },
+              "text": "Visa-free for tourism only, during the tourist season (15 April to 31 December 2026). A visa is required outside the season or for other purposes."
+            },
+            {
+              "source": {
+                "$source": "Albania.QA"
+              },
               "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
             }
           ],
           "source": {
             "$source": "Albania.QA"
-          }
+          },
+          "temporalWindows": [
+            {
+              "description": "Tourist season",
+              "validFrom": "2026-04-15",
+              "validUntil": "2026-12-31"
+            }
+          ]
         }
       ]
     },
@@ -2145,6 +2166,14 @@
       "access": "entitled",
       "entitlements": [
         {
+          "conditions": [
+            {
+              "allowed": [
+                "tourism"
+              ],
+              "type": "purpose"
+            }
+          ],
           "limits": [
             {
               "days": 90,
@@ -2157,12 +2186,25 @@
               "source": {
                 "$source": "Albania.SA"
               },
+              "text": "Visa-free for tourism only, during the tourist season (15 April to 31 December 2026). A visa is required outside the season or for other purposes."
+            },
+            {
+              "source": {
+                "$source": "Albania.SA"
+              },
               "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
             }
           ],
           "source": {
             "$source": "Albania.SA"
-          }
+          },
+          "temporalWindows": [
+            {
+              "description": "Tourist season",
+              "validFrom": "2026-04-15",
+              "validUntil": "2026-12-31"
+            }
+          ]
         }
       ]
     },

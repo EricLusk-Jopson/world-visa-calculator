@@ -58,7 +58,7 @@
  * national needs no visa to enter Cyprus (and, as an EU citizen, already has
  * free movement in the bloc for any other reason).
  *
- * Last verified: 2026-09-09
+ * Last verified: 2026-10-20
  */
 
 import type {
@@ -179,7 +179,7 @@ export const CYPRUS: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-09-09',
+  lastVerified: '2026-10-20',
   sourceUrl: CyprusSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {

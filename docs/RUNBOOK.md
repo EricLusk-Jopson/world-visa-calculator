@@ -49,14 +49,13 @@ Each source's details in the app show **Verified &lt;date&gt;**:
    - Schengen and Cyprus cite fixed EUR-Lex consolidated versions; a new
      consolidation appears at a new URL.
    - Albania blocks the pipeline.
-   - UK `standardVisitor` and several Ireland and Belarus links are marked
-     `periodic`.
+   - Several Ireland and Belarus links are marked `periodic`.
 4. **A change, or a new baseline, stops the carry-forward.** A diff that
    isn't triaged as noise, or a first run on a new link, freezes the date
    until someone checks the source again.
 
-> **Why Schengen still says 8 Apr 2026.** Its sources are `periodic`, so no
-> run can move that date. Only your next consolidation check can. Do it, then
+> **Why Schengen's date only moves monthly.** Its sources are `periodic`, so
+> no run can move that date. Only the consolidation check can. Do it, then
 > run `npm run sources:verified -- Schengen --all`.
 >
 > **The same applies to sources a diff covers, for now.** Every
@@ -198,7 +197,7 @@ In practice:
 |---|---|---|
 | **Every cycle** | Albania: `visaTable`, `visaTableCountries`, `visaRegime` | The site blocks the pipeline, so this is the only check it gets. |
 | **Monthly** (every second cycle) | Schengen: the consolidation check, i.e. is there a newer consolidated version of Reg. 2018/1806 (visa list) and 810/2009 (ATV)? Then `atvSpecific` (Annex 7b) and `etias`. Cyprus shares the check. | New consolidations get new URLs that no diff sees. |
-| **Quarterly** | Ireland's `periodic` INIS pages (`visaNationalityList` first), Belarus `general` and `airportPdf`, Türkiye `eVisa`, UK `standardVisitor` | Diffs are weak or absent there. |
+| **Quarterly** | Ireland's `periodic` INIS pages (`visaNationalityList` first), Belarus `general` and `airportPdf` | Diffs are weak or absent there. |
 | **Yearly** | Ireland links marked "a yearly look" | They rarely change. |
 
 **How:**

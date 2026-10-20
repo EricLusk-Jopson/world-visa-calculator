@@ -1,6 +1,6 @@
 ---
 region: Schengen
-lastReviewed: 2026-10-19
+lastReviewed: 2026-10-20
 links:
   - id: visaList
     url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230
@@ -31,7 +31,7 @@ links:
     diffConfidence: none
     humanCheck: on-diff
   - id: atvCommon
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628
     loadBearing: true
     category: document
     revisions: consolidated-versions
@@ -40,8 +40,10 @@ links:
     diffConfidence: none
     humanCheck: periodic
     checkedVia: atvCommonCellar
+    formerUrls:
+      - https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629
   - id: atvCommonCellar
-    url: https://publications.europa.eu/resource/celex/02009R0810-20200202
+    url: https://publications.europa.eu/resource/celex/02009R0810-20240628
     loadBearing: true
     category: machine-copy
     revisions: consolidated-versions
@@ -49,6 +51,8 @@ links:
     machineCheck: diff
     diffConfidence: low
     humanCheck: periodic
+    formerUrls:
+      - https://publications.europa.eu/resource/celex/02009R0810-20200202
   - id: atvSpecific
     url: https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf
     loadBearing: true
@@ -92,7 +96,7 @@ The rules come from EU legal texts:
   lists.
 
 **The key thing to know:** the EUR-Lex and Cellar links are pinned to one
-consolidated version (`-20251230`, `-20200202`). An amendment never changes
+consolidated version (`-20251230`, `-20240628`). An amendment never changes
 that version. It produces a new consolidated version with a new date, so
 **no diff will flag it**. Checking for a newer consolidation by hand is the
 main human task here.
@@ -166,12 +170,14 @@ Schengen states (Visa Code Annex IV), shown as ATV notes.
 **Machine:** health-checked only. The Cellar copy is diffed.
 
 **Human:** as for `visaList`, checking for a consolidation of 810/2009 later
-than 02/02/2020.
+than 28/06/2024. Annex IV is near the end of the text; compare its list with
+the `ATV_COMMON_RULE` entries in `schengen.ts`.
 
 **Real change vs noise:** see `atvCommonCellar`.
 
-**Human work:** the consolidation check. TODO(human): confirm 2020-02-02 is
-still the current consolidation; it's old.
+**Human work:** the consolidation check. On 2026-10-20 the current
+consolidation was 28/06/2024 (moved from 02/02/2020); its Annex IV lists the
+same 12 nationalities as before.
 
 ## atvCommonCellar
 

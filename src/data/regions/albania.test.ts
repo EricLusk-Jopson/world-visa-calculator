@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { getAlbaniaRule, ALBANIA } from './albania';
 import { AlbaniaSources } from '@/data/sources';
 import type { RollingWindowLimit } from '@/types';
+import { selectEntitlement } from '@/features/calculator/utils/stayCalculator';
 
 describe('getAlbaniaRule', () => {
   it('returns entitled with a 90-day rolling_window limit for a standard visa-free nationality (DE)', () => {
@@ -52,6 +53,27 @@ describe('getAlbaniaRule', () => {
     const rule = getAlbaniaRule(null);
     expect(rule.access).toBe('visa_required');
     expect(rule).toEqual(ALBANIA.defaultRule);
+  });
+});
+
+describe('Albania — Saudi Arabia and Qatar tourist season', () => {
+  it.each(['SA', 'QA'])('%s is visa-free for tourism only from 15 Apr to 31 Dec 2026', (code) => {
+    const rule = getAlbaniaRule(code);
+    expect(rule.access).toBe('entitled');
+    if (rule.access !== 'entitled') return;
+    const e = rule.entitlements[0];
+    expect(e.temporalWindows).toEqual([{ validFrom: '2026-04-15', validUntil: '2026-12-31', description: 'Tourist season' }]);
+    expect(e.conditions).toEqual([{ type: 'purpose', allowed: ['tourism'] }]);
+    expect(e.source).toEqual(AlbaniaSources[code as 'SA' | 'QA']);
+  });
+
+  it.each(['SA', 'QA'])('%s: a trip in the season gets the entitlement; one before or after falls through to visa required', (code) => {
+    const rule = getAlbaniaRule(code);
+    if (rule.access !== 'entitled') throw new Error('expected entitled');
+    expect(selectEntitlement(rule, '2026-04-15')?.activeWindow?.validUntil).toBe('2026-12-31');
+    expect(selectEntitlement(rule, '2026-12-31')).not.toBeNull();
+    expect(selectEntitlement(rule, '2026-04-14')).toBeNull();
+    expect(selectEntitlement(rule, '2027-01-01')).toBeNull();
   });
 });
 
