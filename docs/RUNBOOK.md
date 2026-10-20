@@ -23,7 +23,7 @@ a government website is yours: the cloud sandbox can't reach most of them.
 
 | Piece | Where | What it does | Who runs it |
 |---|---|---|---|
-| Source check | `pipeline/`, `.github/workflows/source-check.yml` | Every second Friday (06:17 UTC), fetches every source link: is it up (link health), and did its content change since the last run (diff)? | GitHub Actions |
+| Source check | `pipeline/`, `.github/workflows/source-check.yml` | Every second Friday (07:30 Pacific), fetches every source link: is it up (link health), and did its content change since the last run (diff)? | GitHub Actions |
 | Report PR | branch `automation/source-check`, label `source-check` | The run's report, the new snapshots, and the app's link and date data. The PR body lists only what needs a look. The Vercel preview's `/source-report` page shows the whole report. | Opened by the workflow; **merged by you** |
 | Playbooks | `docs/sources/<region>.md` | Per link: what it establishes, how to read it by hand, what a real change looks like vs noise, and when a person must look (`humanCheck`). | Read by you and Claude |
 | Human checklist | `docs/sources/OVERVIEW.md` → "Human checklist" | The links a person has to look at regardless of the report. | You |
