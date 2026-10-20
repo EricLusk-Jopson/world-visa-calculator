@@ -42,6 +42,14 @@
  *   Sudan (SS) entry in the source, so SS is a true content gap defaulting
  *   to visa_required, matching the Taiwan/Kosovo-in-Bosnia precedent.
  *
+ * - Saudi Arabia (SA) and Qatar (QA) are visa-free only for a tourist season
+ *   (the table's note "VISA-FREE REGIME ONLY FOR THE TOURIST SEASON 15.04.2026
+ *   TO 31.12.2026", and the overview page: "for tourism purposes only, from
+ *   15 April 2026 to 31 December 2026"), modelled as a TemporalWindow with a
+ *   tourism purpose condition; outside it they fall through to visa_required.
+ *   The source states the start date, so `validFrom` is set. When Albania
+ *   announces a new season, append a new window; never edit this one.
+ *
  * Albania's own member state (AL) is encoded as free_movement — an Albanian
  * national needs no visa to enter Albania.
  *
@@ -104,6 +112,31 @@ function entitledRolling(source: SourceDoc): EntitledRule {
  */
 function visaRequired(source: SourceDoc): VisaRequiredRule {
   return { access: 'visa_required', source };
+}
+
+/**
+ * Visa-free for tourism during a dated season only (SA, QA; see file header).
+ * The 90/180 limit and duration note are as for every other visa-free entry;
+ * outside the season the rule falls through to visa_required.
+ */
+function touristSeason2026(source: SourceDoc): EntitledRule {
+  return {
+    access: 'entitled',
+    entitlements: [{
+      temporalWindows: [{
+        validFrom: '2026-04-15',
+        validUntil: '2026-12-31',
+        description: 'Tourist season',
+      }],
+      conditions: [{ type: 'purpose', allowed: ['tourism'] }],
+      limits: [ALBANIA_LIMIT],
+      source,
+      notes: [
+        { text: 'Visa-free for tourism only, during the tourist season (15 April to 31 December 2026). A visa is required outside the season or for other purposes.', source },
+        { text: DURATION_NOTE_TEXT, source },
+      ],
+    }],
+  };
 }
 
 // ─── Region definition ────────────────────────────────────────────────────────
@@ -251,12 +284,12 @@ export const ALBANIA: RegionDefinition = {
     'PS': visaRequired(AlbaniaSources.PS), // Palestine
     'PT': entitledRolling(AlbaniaSources.PT), // Portugal
     'PY': entitledRolling(AlbaniaSources.PY), // Paraguay
-    'QA': entitledRolling(AlbaniaSources.QA), // Qatar
+    'QA': touristSeason2026(AlbaniaSources.QA), // Qatar (tourist season)
     'RO': entitledRolling(AlbaniaSources.RO), // Romania
     'RS': entitledRolling(AlbaniaSources.RS), // Serbia
     'RU': visaRequired(AlbaniaSources.RU), // Russia
     'RW': visaRequired(AlbaniaSources.RW), // Rwanda
-    'SA': entitledRolling(AlbaniaSources.SA), // Saudi Arabia
+    'SA': touristSeason2026(AlbaniaSources.SA), // Saudi Arabia (tourist season)
     'SC': entitledRolling(AlbaniaSources.SC), // Seychelles
     'SD': visaRequired(AlbaniaSources.SD), // Sudan
     'SE': entitledRolling(AlbaniaSources.SE), // Sweden

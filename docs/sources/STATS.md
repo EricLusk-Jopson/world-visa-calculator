@@ -11,8 +11,8 @@ Reports counted: 3 (2026-10-14 to 2026-10-18).
 
 - Diffs flagged: 0: 0 rule change, 0 noise, 0 unclear, 0 untriaged
 - Precision: –
-- Rule changes caught by a report: 1; missed on diffed links: 0; recall: 100% (1/1)
-- Rule-change log entries by trigger: manual 2, external 1, report 1
+- Rule changes caught by a report: 1; missed on diffed links: 1; recall: 50% (1/2)
+- Rule-change log entries by trigger: manual 3, external 1, report 1
 
 ## By link
 
@@ -20,8 +20,9 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 
 | Region | Link | Declared | Flagged | Rule change | Noise | Unclear | Untriaged | Precision | Caught | Missed | Found by hand | Recall |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Albania | visaTable | none | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 1 | – |
 | Albania | visaTableCountries | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
-| Albania | visaRegime | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
+| Albania | visaRegime | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 1 | 0 | 0% (0/1) |
 | Armenia | visaFreeList | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Armenia | bilateralList | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Belarus | europe | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
