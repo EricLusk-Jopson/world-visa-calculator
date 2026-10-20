@@ -41,7 +41,6 @@ Field meanings are in [README.md](README.md).
 | Schengen | [`etias`](schengen.md#etias) | html-page | in-place | script-rendered | link-only | none | periodic |
 | Serbia | [`countryPages`](serbia.md#countrypages) | html-page | in-place | open | diff | medium | on diff |
 | Turkiye | [`mfaVisaInfo`](turkiye.md#mfavisainfo) | html-page | in-place | open | diff | medium | on diff |
-| Turkiye | [`eVisa`](turkiye.md#evisa) | interactive | in-place | script-rendered | link-only | none | periodic |
 | UK | [`appendixVisitor`](uk.md#appendixvisitor) | html-page | in-place | open | diff | high | on diff |
 | UK | [`visaNationalList`](uk.md#visanationallist) | html-page | in-place | open | diff | high | on diff |
 | UK | [`etaNationalList`](uk.md#etanationallist) | html-page | in-place | open | diff | high | on diff |
@@ -58,8 +57,7 @@ Links to look at by hand, whether or not the report flags them.
 - **Cyprus** (last reviewed 2026-10-20): [`euVisaList`](cyprus.md#euvisalist), [`euVisaListCellar`](cyprus.md#euvisalistcellar)
 - **Ireland** (last reviewed 2026-10-19): [`visaNationalityList`](ireland.md#visanationalitylist), [`euFreeMovement`](ireland.md#eufreemovement), [`ctaGuidance`](ireland.md#ctaguidance), [`bivs`](ireland.md#bivs), [`ssvwp`](ireland.md#ssvwp), [`transitVisa`](ireland.md#transitvisa)
 - **Schengen** (last reviewed 2026-10-20): [`visaList`](schengen.md#visalist), [`visaListCellar`](schengen.md#visalistcellar), [`atvCommon`](schengen.md#atvcommon), [`atvCommonCellar`](schengen.md#atvcommoncellar), [`atvSpecific`](schengen.md#atvspecific), [`etias`](schengen.md#etias)
-- **Turkiye** (last reviewed 2026-10-19): [`eVisa`](turkiye.md#evisa)
 
 ## Totals
 
-14 regions · 60 documented links · 41 load-bearing · 29 diffed · 20 need a person regardless
+14 regions · 60 documented links · 40 load-bearing · 29 diffed · 19 need a person regardless

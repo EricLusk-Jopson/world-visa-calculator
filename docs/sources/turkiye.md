@@ -1,6 +1,6 @@
 ---
 region: Turkiye
-lastReviewed: 2026-10-19
+lastReviewed: 2026-10-20
 links:
   - id: mfaVisaInfo
     url: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
@@ -22,22 +22,22 @@ links:
     humanCheck: on-diff
   - id: eVisa
     url: https://evisa.gov.tr/en
-    loadBearing: true
+    loadBearing: false
     category: interactive
     revisions: in-place
     access: script-rendered
     machineCheck: link-only
     diffConfidence: none
-    humanCheck: periodic
+    humanCheck: on-diff
 ---
 
 # Türkiye
 
 **Rules:** `src/data/regions/turkiye.ts` · **Sources:** `TurkiyeSources` (`mfaVisaInfo`, `eVisaApplication`)
 
-One long MFA page lists every nationality's entry terms alphabetically. The
-e-Visa portal is the other source: which nationalities may apply online,
-and on what terms.
+One long MFA page lists every nationality's entry terms alphabetically,
+e-Visa tiers included, and every rule cites it. The e-Visa portal is only
+the "apply here" link on the e-Visa rules (`applicationUrl`).
 
 ## Provenance
 
@@ -91,24 +91,21 @@ link change.
 
 ## eVisa
 
-**Establishes:** which nationalities can get an e-Visa, and its tier:
-90-day multiple entry, 30-day single entry, or conditional on a
-Schengen/US/UK/IE visa or residence permit.
+**Establishes:** nothing on its own. It's the e-Visa application portal,
+linked from the e-Visa rules as where to apply. Which nationalities get an
+e-Visa, and on what terms (90-day multiple entry, 30-day single entry, or
+conditional on a Schengen/US/UK/IE visa or residence permit), comes from
+`mfaVisaInfo`, which every rule cites. Until Oct 2026 the portal was marked
+load-bearing and spot-checked by hand each quarter.
 
 **Machine:** health-checked only. The country list sits inside the
 application form's stepper, which is filled in by script.
 
 **Human:** go to https://evisa.gov.tr/en → Apply → choose the country of
 travel document. The site states the eligibility, validity, stay and
-conditions for that nationality, with no account needed. Spot-check the
-nationalities `turkiye.ts` marks as e-Visa, and any whose MFA paragraph
-changed.
+conditions for that nationality, with no account needed.
 
 **Real change vs noise:** not diffed.
 
-**Human work:** a periodic spot-check. Any MFA diff that mentions e-Visa
-also means checking here.
-
-## Open questions
-
-- TODO(human): find a machine-readable source for the e-Visa country list (the form's own API, if it has one) so it can be diffed.
+**Human work:** only when an `mfaVisaInfo` diff mentions the e-Visa: check
+the affected nationalities here.

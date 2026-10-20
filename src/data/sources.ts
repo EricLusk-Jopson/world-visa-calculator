@@ -455,15 +455,10 @@ export const TurkiyeSources = {
   } satisfies SourceDoc,
 
   /**
-   * Republic of Türkiye e-Visa system — eligible country list.
-   * Source for which nationalities may apply for an e-Visa and on what terms
-   * (90-day multiple entry, 30-day single entry, or conditional on existing
-   * Schengen/US/UK/IE visa or residence permit).
-   */
-
-  /**
    * Türkiye e-Visa application portal.
-   * End-user application URL for the electronic visa system.
+   * End-user application URL for the electronic visa system, linked from the
+   * e-Visa rules (which cite mfaVisaInfo for the tiers). Health-checked only:
+   * the country list is script-rendered inside the application form.
    * Valid for tourism and commercial purposes only.
    */
   eVisaApplication: {

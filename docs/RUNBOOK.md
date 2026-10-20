@@ -198,7 +198,7 @@ In practice:
 |---|---|---|
 | **Every cycle** | Albania: `visaTable`, `visaTableCountries`, `visaRegime` | The site blocks the pipeline, so this is the only check it gets. |
 | **Monthly** (every second cycle) | Schengen: the consolidation check, i.e. is there a newer consolidated version of Reg. 2018/1806 (visa list) and 810/2009 (ATV)? Then `atvSpecific` (Annex 7b) and `etias`. Cyprus shares the check. | New consolidations get new URLs that no diff sees. |
-| **Quarterly** | Ireland's `periodic` INIS pages (`visaNationalityList` first), Belarus `general` and `airportPdf`, Türkiye `eVisa`, UK `standardVisitor` | Diffs are weak or absent there. |
+| **Quarterly** | Ireland's `periodic` INIS pages (`visaNationalityList` first), Belarus `general` and `airportPdf` | Diffs are weak or absent there. |
 | **Yearly** | Ireland links marked "a yearly look" | They rarely change. |
 
 **How:**
