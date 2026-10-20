@@ -49,8 +49,7 @@ Each source's details in the app show **Verified &lt;date&gt;**:
    - Schengen and Cyprus cite fixed EUR-Lex consolidated versions; a new
      consolidation appears at a new URL.
    - Albania blocks the pipeline.
-   - UK `standardVisitor` and several Ireland and Belarus links are marked
-     `periodic`.
+   - Several Ireland and Belarus links are marked `periodic`.
 4. **A change, or a new baseline, stops the carry-forward.** A diff that
    isn't triaged as noise, or a first run on a new link, freezes the date
    until someone checks the source again.
