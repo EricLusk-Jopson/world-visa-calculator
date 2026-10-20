@@ -5,6 +5,10 @@
    "status": "live",
    "checkedAt": "2026-10-18"
   },
+  "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628": {
+   "status": "live",
+   "checkedAt": "2026-10-20"
+  },
   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230": {
    "status": "live",
    "checkedAt": "2026-10-18"

@@ -74,12 +74,12 @@ export const SchengenSources = {
   atvCommon: {
     direct: {
       url:
-        "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02009R0810-20200202&qid=1700746099626#tocId629",
+        "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628",
       type: "direct",
       checkDiff: false, // EUR-Lex page is health-checked; its Cellar copy is diffed
       alternate: {
         url:
-          "https://publications.europa.eu/resource/celex/02009R0810-20200202",
+          "https://publications.europa.eu/resource/celex/02009R0810-20240628",
         type: "machine",
         checkDiff: true,
       },
@@ -89,7 +89,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-04-08",
+    dateChecked: "2026-10-20",
   } satisfies SourceDoc,
 
   /**

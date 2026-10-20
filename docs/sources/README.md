@@ -93,6 +93,12 @@ diff covers its content, e.g. Bosnia's human page `/en/vize`, whose countries
 the resolver reads through the site's API. Without it, a load-bearing link
 that nothing diffs must have `humanCheck` set to `periodic` or `manual-only`.
 
+### `formerUrls`
+
+Optional. The URLs a link had before it moved, e.g. an older consolidated
+version, so source-check reports from before the move still count toward
+this link in the stats.
+
 ### `humanCheck`: when a person has to look
 
 - `on-diff`: only when the report flags it.

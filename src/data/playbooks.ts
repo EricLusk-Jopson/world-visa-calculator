@@ -46,6 +46,8 @@ export type PlaybookLink = {
    * diff covers its content (a resolver or machine copy).
    */
   checkedVia?: string;
+  /** URLs this link had before (e.g. an older consolidated version), so older reports still attribute to it. */
+  formerUrls?: string[];
 };
 
 export type Playbook = {
@@ -115,7 +117,7 @@ export function entryFor(links: PlaybookLink[], url: string): PlaybookLink | und
  * text before `{key}`, then the URL without its fragment.
  */
 export function entryForReportUrl(links: PlaybookLink[], url: string): PlaybookLink | undefined {
-  const direct = entryFor(links, url);
+  const direct = entryFor(links, url) ?? links.find((l) => l.formerUrls?.includes(url));
   if (direct) return direct;
   const template = links.find((l) => l.url?.includes("{key}") && url.startsWith(l.url.slice(0, l.url.indexOf("{key}"))));
   if (template) return template;
