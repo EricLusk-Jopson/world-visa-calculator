@@ -114,7 +114,11 @@ copies the Annex I/II logic.
 **Establishes:** every Schengen visa-required or visa-free classification
 (Annex I/II), and Cyprus's too.
 
-**Machine:** health-checked only. The Cellar copy is diffed.
+**Machine:** health-checked only. The Cellar copy is diffed. Since the
+2026-10-20 run, EUR-Lex answers the pipeline with HTTP 202 and a
+bot-protection challenge instead of the page, so both EUR-Lex links show as
+🚫 blocked. That's expected and harmless: the Cellar copies, which carry the
+diff, still load. A blocked Cellar link would be news.
 
 **Human:** open the EUR-Lex link. At the top, EUR-Lex shows "Current
 consolidated version: DD/MM/YYYY". If that's later than 30/12/2025:

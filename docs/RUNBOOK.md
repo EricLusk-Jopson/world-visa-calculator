@@ -82,8 +82,10 @@ that opens a two-week period.
    Anything else makes it [a noisy week](#a-noisy-week).
 
    **Expected every run, not news:**
-   - 🚫 **blocked:** the two Albania pages (Incapsula) and
-     `gov.cy/en/information/visas/` (Cyprus);
+   - 🚫 **blocked:** the two Albania pages (Incapsula; some runs get
+     through), `gov.cy/en/information/visas/` (Cyprus), and the EUR-Lex
+     pages (HTTP 202 challenge since 2026-10-20; their Cellar copies still
+     load);
    - ⚠️ **fetch errors:** the two Albania pages.
 
    Anything else blocked or erroring is new.

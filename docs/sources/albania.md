@@ -42,9 +42,12 @@ that page.
 
 **Status (Oct 2026):** the whole site sits behind Imperva Incapsula. It
 blocks the pipeline's HTTP client and a headless browser, so both pages show
-as 🚫 blocked in every report. Nothing here is machine-checked in practice.
-Albania needs a **manual check each cycle** (steps below; it takes about
-five minutes).
+as 🚫 blocked in most reports. The 2026-10-20 run got through for the first
+time: both pages loaded and all 168 checks (166 countries, the country list
+and the overview page) came back unchanged. One run isn't enough to rely on,
+so Albania still needs a **manual check each cycle** (steps below; it takes
+about five minutes). When a run does get through, its unchanged checks
+corroborate the manual check; a flagged diff there is read as usual.
 
 ## Provenance
 
