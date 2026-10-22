@@ -13,6 +13,11 @@
  * The mobile menu (below 900px) is a classic checkbox-hack dropdown: a
  * visually-hidden checkbox drives every open/close state via CSS sibling
  * selectors, so it works with JavaScript disabled and needs no island.
+ *
+ * Height comes from --nav-height (shared with the calculator's nav), and
+ * `view-transition-name: site-nav` pairs this bar with the calculator's nav
+ * shell in app.astro so navigating between them morphs one into the other
+ * (see the view-transition rules in src/styles/global.css).
  */
 ---
 
@@ -47,7 +52,7 @@
         Support This Project
       </a>
       <a
-        href="https://eurovisacalculator.com/app"
+        href="/app"
         class="landing-nav__cta"
       >Open calculator →</a>
     </div>
@@ -101,8 +106,9 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 64px;
+    height: var(--nav-height);
     z-index: 100;
+    view-transition-name: site-nav;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     /* default = unscrolled state */
@@ -290,7 +296,7 @@
   /* ── Mobile menu backdrop ─────────────────────────────────────────────────── */
   .landing-nav__backdrop {
     position: fixed;
-    inset: 64px 0 0 0;
+    inset: var(--nav-height) 0 0 0;
     background: rgba(12, 30, 60, 0.25);
     opacity: 0;
     pointer-events: none;
@@ -311,7 +317,7 @@
   /* ── Mobile menu panel ────────────────────────────────────────────────────── */
   .landing-nav__mobile-menu {
     position: fixed;
-    top: 64px;
+    top: var(--nav-height);
     left: 0;
     right: 0;
     display: flex;

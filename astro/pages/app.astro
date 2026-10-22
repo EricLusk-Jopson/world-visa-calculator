@@ -10,7 +10,16 @@
  * the same behaviour as the original Vite SPA.
  *
  * All state management, URL sync, and MUI rendering happen inside the React
- * island; this file is purely the Astro routing entry-point for /app.
+ * island; this file is the Astro routing entry-point for /app, plus one
+ * static element: the nav shell below.
+ *
+ * The nav shell is a plain navy bar the same size as CalculatorNav, painted
+ * underneath it. Because the island renders client-only, the React nav
+ * doesn't exist yet when the browser takes the "new page" snapshot for the
+ * cross-page view transition; the shell does, so it carries
+ * `view-transition-name: site-nav` and the site header morphs into it. It
+ * also fills the header while the island loads. Once React mounts,
+ * CalculatorNav covers it exactly.
  */
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { CalculatorIsland } from "@/islands/CalculatorIsland";
@@ -21,5 +30,50 @@ import { CalculatorIsland } from "@/islands/CalculatorIsland";
   description="Track your Schengen visa allowance. Add trips, see remaining days, and share a link with your travel partner."
   canonicalUrl="https://eurovisacalculator.com/app"
 >
+  <div class="app-nav-shell" aria-hidden="true">
+    <img src="/geo-dark.svg" alt="" width="32" height="32" />
+    <span class="app-nav-shell__text">EuroVisaCalculator</span>
+  </div>
   <CalculatorIsland client:only="react" />
 </BaseLayout>
+
+<style>
+  /* Mirrors CalculatorNav's bar and logo (NAV_SX / LOGO_SX); keep in step. */
+  .app-nav-shell {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-navy);
+    view-transition-name: site-nav;
+  }
+
+  @media (min-width: 900px) {
+    .app-nav-shell {
+      padding: 0 40px;
+    }
+  }
+
+  .app-nav-shell img {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .app-nav-shell__text {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-white);
+  }
+
+  @media (max-width: 779px) {
+    .app-nav-shell__text {
+      display: none;
+    }
+  }
+</style>

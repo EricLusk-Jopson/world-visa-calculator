@@ -30,6 +30,35 @@
   /* Typography */
   --font-display: "Google Sans", system-ui, sans-serif;
   --font-body:    "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* Layout: the site nav (LandingNav) and the calculator nav (CalculatorNav)
+     share one height so the header doesn't jump between pages. */
+  --nav-height: 64px;
+}
+
+/* ── Cross-page transition ───────────────────────────────────────────────────
+   Same-origin navigations crossfade instead of hard-cutting. Both headers
+   carry `view-transition-name: site-nav` (the landing nav itself, and the
+   static shell under the calculator's React nav in app.astro), so the browser
+   morphs the cream site header into the navy calculator header and back.
+   Browsers without cross-document view transitions just navigate as before. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(site-nav),
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 
 /* ── Reset ───────────────────────────────────────────────────────────────── */

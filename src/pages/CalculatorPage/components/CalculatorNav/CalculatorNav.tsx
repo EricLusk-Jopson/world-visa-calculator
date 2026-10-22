@@ -30,25 +30,37 @@ const ICON_SX = { fontSize: "0.95rem" } as const;
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
+// Height and side padding match the site's LandingNav, so the header keeps
+// its size and the logo its position when moving between the site and /app.
 const NAV_SX = {
-  height: 54,
+  height: "var(--nav-height)",
   bgcolor: tokens.navy,
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  px: "20px",
+  px: "24px",
+  "@media (min-width:900px)": { px: "40px" },
   flexShrink: 0,
   zIndex: 10,
   position: "relative",
   boxShadow: `0 2px 12px ${alpha(tokens.navy, 0.18)}`,
 } as const;
 
+const LOGO_SX = {
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+  flexShrink: 0,
+  borderRadius: "7px",
+  transition: "opacity 0.15s",
+  "&:hover": { opacity: 0.85 },
+} as const;
+
 const LOGO_TEXT_SX = {
-  fontFamily: tokens.fontBody,
-  fontSize: "0.95rem",
+  fontFamily: tokens.fontDisplay,
+  fontSize: "1.1rem",
   fontWeight: 600,
   color: tokens.white,
-  letterSpacing: "-0.01em",
 } as const;
 
 const MENU_ITEM_SX = {
@@ -189,8 +201,8 @@ export function CalculatorNav({
 
   return (
     <Box component="nav" sx={NAV_SX}>
-      {/* ── Logo ──────────────────────────────────────────────────────────── */}
-      <Box sx={{ display: "flex", alignItems: "center", gap: "7px" }}>
+      {/* ── Logo (links back to the site) ─────────────────────────────────── */}
+      <Link href="/" underline="none" aria-label="EuroVisaCalculator home" sx={LOGO_SX}>
         <img
           src="/geo-dark.svg"
           alt=""
@@ -199,9 +211,9 @@ export function CalculatorNav({
           style={{ display: "block", flexShrink: 0 }}
         />
         {isMedium && (
-          <Typography sx={LOGO_TEXT_SX}>EuroVisaCalculator</Typography>
+          <Typography component="span" sx={LOGO_TEXT_SX}>EuroVisaCalculator</Typography>
         )}
-      </Box>
+      </Link>
 
       {/* ── Right side ────────────────────────────────────────────────────── */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
