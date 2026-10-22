@@ -10,6 +10,7 @@ import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import {
   computeTimelineEnd,
   computeTimelineStart,
+  computeTotalHeight,
   dateToTop,
   PX_PER_DAY,
   SIDEBAR_WIDTH,
@@ -85,6 +86,13 @@ const HEIGHT_SHOW_BADGES = 56;
 /** Vertical gap between back-to-back cards that share a lane. */
 const LANE_GAP = 2;
 const CARD_GUTTER = 3;
+
+/**
+ * Space kept below the last trip or marker so the fixed Add Trip button
+ * (16px inset + ~44px tall, plus the safe-area inset on notched phones)
+ * never covers it when the timeline is scrolled to the bottom.
+ */
+const FAB_CLEARANCE_PX = 120;
 
 /** 6-day rollup window in pixels. */
 const ROLLUP_PX = 6 * PX_PER_DAY;
@@ -841,6 +849,17 @@ export function MobileTimelineView({
     return maxBottom === 0 ? 600 : maxBottom + 24;
   }, [positionedTrips, returnMarkerGroups, agingMarkerGroups]);
 
+  // Markers are computed up to timelineEnd, so the last chips can sit right
+  // at its bottom edge. Draw the timeline (date ruler included) far enough
+  // past the content that it clears the floating Add Trip button.
+  const displayEnd = useMemo(() => {
+    const height = Math.max(
+      computeTotalHeight(timelineStart, timelineEnd),
+      contentHeight + FAB_CLEARANCE_PX,
+    );
+    return addDays(timelineStart, Math.ceil(height / PX_PER_DAY));
+  }, [timelineStart, timelineEnd, contentHeight]);
+
   useEffect(() => {
     if (hasScrolledRef.current || !scrollRef.current) return;
     const vh = scrollRef.current.clientHeight;
@@ -863,7 +882,12 @@ export function MobileTimelineView({
     <Box ref={scrollRef} sx={{ flex: 1, overflow: "auto" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         {/* ── Timeline row ────────────────────────────────────────────────── */}
-        <Box sx={{ display: "flex", minHeight: contentHeight }}>
+        <Box
+          sx={{
+            display: "flex",
+            minHeight: computeTotalHeight(timelineStart, displayEnd),
+          }}
+        >
           {/* Date sidebar */}
           <Box
             sx={{
@@ -876,7 +900,7 @@ export function MobileTimelineView({
           >
             <DateSidebar
               timelineStart={timelineStart}
-              timelineEnd={timelineEnd}
+              timelineEnd={displayEnd}
             />
           </Box>
 
