@@ -1,0 +1,563 @@
+---
+/**
+ * Blog post: 90 Days In, 90 Days Out: Why the Schengen Shuffle Comes Up a Day Short
+ * URL: /blog/why-the-schengen-shuffle-comes-up-a-day-short
+ *
+ * Static Astro page, rendered to plain HTML at build time.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="90 Days In, 90 Days Out: Why the Schengen Shuffle Comes Up a Day Short"
+  description="The Schengen Shuffle looks simple: 90 days in, 90 days out, repeat. But if the country you wait in also runs a 90/180 rule, the two allowances fall one day short, and that one day costs you three."
+  canonicalUrl="https://eurovisacalculator.com/blog/why-the-schengen-shuffle-comes-up-a-day-short"
+>
+  <LandingNav />
+
+  <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
+    <header class="article__header">
+      <p class="article__tag">Blog</p>
+
+      <h1 class="article__title">
+        90 Days In, 90 Days Out: Why the Schengen Shuffle Comes Up a Day Short
+      </h1>
+
+      <p class="article__meta">October 22, 2026 · 9 min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you're planning to leave
+        the Schengen Area and wait out your allowance in a neighbouring
+        country that runs its own 90/180 rule.
+        <br/>
+        <br/>
+        <strong>It's probably not necessary if:</strong> the country
+        you're heading to has no day limit for your passport, or you're
+        staying well under 90 days.
+      </p>
+    </header>
+
+    <div class="article__body">
+      <p>
+        It's October. Your 90 days in the Schengen Area run out at the
+        end of the month, and you have a plan: spend the winter in
+        Albania, or Türkiye, or Montenegro, then come back on day 181
+        with a fresh allowance. Ninety days in, ninety days out. The
+        math looks fine.
+      </p>
+
+      <p>
+        It isn't. If the country you wait in has its own 90/180 limit,
+        there is one day, day 180, when you can't legally be in either
+        place. You need somewhere else to be.
+      </p>
+
+      <p>
+        This catches careful travelers, because the plan looks correct
+        on paper. My wife and I nearly got caught by it on our
+        honeymoon. Our itineraries had drifted apart by a few days, we
+        forgot about the overlap, and she came close to overstaying. We
+        sorted it out by getting from Ljubljana to Istanbul in a hurry.
+        Here is why it happens and how to plan around it.
+      </p>
+
+      <hr />
+
+      <h2>The border day counts on both sides</h2>
+
+      <p>
+        In the Schengen Area, your entry day and your exit day each
+        count as a full day, even if you cross at 6 a.m. or 11 p.m.
+        Many countries outside the Schengen Area run their own 90/180
+        rule and count the same way. Türkiye, for example, counts your
+        entry day as a day of stay.
+      </p>
+
+      <p>
+        So when you cross from one to the other, that date is used
+        twice: it's the last day of your Schengen stay and the first
+        day of your stay next door. Each counter is correct on its own.
+        The problem only appears when you put the two side by side.
+      </p>
+
+      <p>
+        Two 90-day stays in a row don't cover 180 calendar days. They
+        cover 179.
+      </p>
+
+      <hr />
+
+      <h2>A worked example</h2>
+
+      <p>
+        Say you enter the Schengen Area on 1 January and plan to wait
+        out your time in Albania, which (for most visa-free passports)
+        runs its own 90/180 limit.
+      </p>
+
+      <div class="table-wrap">
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Date</th>
+              <th scope="col">Where you are</th>
+              <th scope="col">Schengen days used</th>
+              <th scope="col">Albania days used</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>1 Jan</td>
+              <td>Enter the Schengen Area</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>90</td>
+              <td>31 Mar</td>
+              <td>Cross into Albania</td>
+              <td>90</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>179</td>
+              <td>28 Jun</td>
+              <td>Last legal day in Albania</td>
+              <td>90</td>
+              <td>90</td>
+            </tr>
+            <tr>
+              <td>180</td>
+              <td>29 Jun</td>
+              <td>Nowhere legal</td>
+              <td>90</td>
+              <td>90</td>
+            </tr>
+            <tr>
+              <td>181</td>
+              <td>30 Jun</td>
+              <td>Earliest Schengen re-entry</td>
+              <td>90 (day 1 has dropped out, so 89 + today)</td>
+              <td>90</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        On 29 June, both windows are full. Entering either the Schengen
+        Area or Albania that day puts you at 91. The shortfall is one
+        day.
+      </p>
+
+      <p>
+        In practice, that one day costs you three. You have to leave
+        Albania on day 179, spend day 180 somewhere with no limit on
+        you, and travel into the Schengen Area on day 181. That's three
+        dates and two nights in a third country.
+      </p>
+
+      <p>
+        The dates above use a non-leap year. The calculator handles the
+        actual dates for you.
+      </p>
+
+      <hr />
+
+      <h2>Leaving at 88 days doesn't fix it</h2>
+
+      <p>
+        The natural response is to build in a buffer and leave a couple
+        of days early. That moves the problem earlier, but it doesn't
+        remove it. The lost day comes from the crossing, not from the
+        length of the stay.
+      </p>
+
+      <p>
+        More crossings make it worse. Split the same 180 days into four
+        45-day stays, alternating between the Schengen Area and
+        Albania:
+      </p>
+
+      <div class="table-wrap">
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th scope="col">Stay</th>
+              <th scope="col">Where</th>
+              <th scope="col">Days</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Schengen Area</td>
+              <td>1 to 45</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Albania</td>
+              <td>45 to 89</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Schengen Area</td>
+              <td>89 to 133</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Albania</td>
+              <td>133 to 177</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Three crossings, three double-counted days. Days 178, 179 and
+        180 are unavailable in both places. Each time you cross between
+        two counted jurisdictions, you give up one day.
+      </p>
+
+      <hr />
+
+      <h2>What works</h2>
+
+      <p>
+        <strong>A short stay in a third country.</strong> Before you
+        return, spend a few days in a country with a separate counter
+        that still has room. In the 90/90 example, that means arriving
+        on day 179 and leaving on day 181. A weekend trip is enough, as
+        long as you plan it before the end of your stay rather than
+        after.
+      </p>
+
+      <p>
+        <strong>Split your time outside across two countries.</strong>
+        If you spend 60 days in one country with its own 90/180 rule
+        and the rest in another, neither counter gets close to its
+        limit. You still use a border day twice when you move between
+        them, but there's room to absorb it.
+      </p>
+
+      <p>
+        <strong>Wait in a country that lets you stay longer.</strong>
+        Some countries allow certain passports to stay well over 90
+        days without a visa. If yours does, the overlap stops
+        mattering. These rules depend on your passport and change from
+        time to time, so check them for your own nationality. Our guide
+        to <a href="/blog/which-countries-use-the-90-180-rule"
+          >which European countries use a 90/180 rule</a
+        > lists the stay model for each country the calculator covers.
+      </p>
+
+      <p>
+        <strong>Cross overnight, so you exit and enter on different
+        dates.</strong> This is a technicality, not a recommendation.
+        If you pass the Schengen exit check at 10 p.m. on day 90 and
+        clear entry in the next country after midnight, the two dates
+        don't overlap. But to come back on day 181 without a third
+        country, the return trip has to work the same way: exit check
+        before midnight on day 180, Schengen entry check after
+        midnight. Any delay on either end, and you've overstayed. If an
+        overstay is on the line, give yourself days of margin, not
+        minutes.
+      </p>
+
+      <hr />
+
+      <h2>When your exit actually happens</h2>
+
+      <p>
+        Your Schengen exit date is the date of the exit check, not the
+        date you boarded. Where that check happens depends on how you
+        travel.
+      </p>
+
+      <div class="table-wrap">
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th scope="col">How you travel</th>
+              <th scope="col">Where the Schengen exit check usually happens</th>
+              <th scope="col">What it means for your dates</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Plane</td>
+              <td>At the airport, before the non-Schengen gates</td>
+              <td>On a connection through another Schengen airport, you exit at the last one. A long or overnight layover can change the date.</td>
+            </tr>
+            <tr>
+              <td>Scheduled ferry</td>
+              <td>At the port terminal, before boarding</td>
+              <td>Exit and entry usually fall on different sides of the crossing.</td>
+            </tr>
+            <tr>
+              <td>Train or bus</td>
+              <td>Varies: at the departure station, on board, or at a border stop</td>
+              <td>Often both countries process you at the same stop, so exit and entry share a date. On a night train, a 2 a.m. check makes the next day your exit date.</td>
+            </tr>
+            <tr>
+              <td>Cruise ship</td>
+              <td>On board, at the first and last Schengen ports</td>
+              <td>Timing is less predictable and may not match when the ship leaves.</td>
+            </tr>
+            <tr>
+              <td>Private boat</td>
+              <td>At a designated border crossing point, when the skipper reports</td>
+              <td>Can be well before the boat leaves Schengen waters.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        If you're not sure how your crossing will be processed, assume
+        the exit and entry share a date.
+      </p>
+
+      <hr />
+
+      <h2>Common questions</h2>
+
+      <h3>Does the day I leave the Schengen Area count?</h3>
+      <p>
+        Yes. Your exit day counts as a full Schengen day, whatever time
+        you leave. So does your entry day.
+      </p>
+
+      <h3>Can I just leave after 88 days?</h3>
+      <p>
+        It doesn't help. The lost day comes from the border crossing,
+        not the length of your stay. Leaving early moves the gap
+        earlier.
+      </p>
+
+      <h3>Does an overnight flight fix it?</h3>
+      <p>
+        Technically, if the exit check and the entry check fall on
+        different dates. You'd need that on both the way out and the
+        way back, with no delays. It's not worth the risk.
+      </p>
+
+      <h3>Is the shortfall one day or three?</h3>
+      <p>
+        One day can't be spent in either place. But to fill it, you
+        have to be in a third country from day 179 to day 181.
+      </p>
+
+      <h3>What if the country I wait in has no 90/180 limit for my passport?</h3>
+      <p>
+        Then there's no overlap to worry about. Check its rules for
+        your passport before you rely on it.
+      </p>
+
+      <hr />
+
+      <h2>Check your own dates</h2>
+
+      <p>
+        This is the kind of off-by-one mistake that's easy to make by
+        hand and hard to spot until you're at the border.
+        EuroVisaCalculator tracks your Schengen days and the counters
+        for the countries around it side by side, so the overlap shows
+        up while you're still planning.{" "}
+        <a href="/app?v=2&n=You&t=7ly7of%3A0%3A1%2C7of7qw%3A10%3A1&p=US&nosave"
+          >See the 90/90 example loaded in the calculator →</a
+        >
+      </p>
+
+      <p>
+        For the rules behind the counting, see{" "}
+        <a href="/blog/the-schengen-90-180-rolling-window"
+          >how the 90/180 rolling window works</a
+        >.
+      </p>
+    </div>
+
+    <div class="article__back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+  </article>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .article {
+    min-height: 100vh;
+    background: var(--color-off-white);
+    padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .article__header {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .article__tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 14px;
+  }
+
+  .article__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .article__meta {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+  .article__audience {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
+  }
+
+  .article__body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article__body p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+  }
+
+  .article__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article__body h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0c1e3c;
+    margin: 1.75rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article__body hr {
+    border: none;
+    border-top: 1px solid #e0dbd3;
+    margin: 2.5rem 0;
+  }
+
+  .article__body a {
+    color: #00b96b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s;
+  }
+
+  .article__body a:hover {
+    border-bottom-color: #00b96b;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.25rem 0 1.75rem;
+    border-radius: 10px;
+    border: 1px solid #e0dbd3;
+  }
+
+  .rule-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+  }
+
+  .rule-table th,
+  .rule-table td {
+    padding: 9px 14px;
+    text-align: left;
+    border-bottom: 1px solid #edf1f4;
+    vertical-align: top;
+  }
+
+  .rule-table thead th {
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+    background: #f7f8f6;
+    color: #0c1e3c;
+  }
+
+  .rule-table td {
+    color: #3d4f65;
+  }
+
+  .rule-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .article__back {
+    max-width: 680px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #e0dbd3;
+  }
+
+  .article__back-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #5a6a82;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .article__back-link:hover {
+    color: #0c1e3c;
+  }
+</style>
