@@ -10,6 +10,7 @@ import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import {
   computeTimelineEnd,
   computeTimelineStart,
+  computeTotalHeight,
   dateToTop,
   PX_PER_DAY,
   SIDEBAR_WIDTH,
@@ -23,7 +24,7 @@ import {
 } from "@/features/calculator/utils/dates";
 import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
-import { computeOverstayTripIds } from "../../trips/tripDuration";
+import { type PositionedTrip, assignLanes } from "./mobileTripLayout";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import {
@@ -43,23 +44,6 @@ interface MobileTimelineViewProps {
   hiddenTravelerIds: string[];
   onEditTrip: (travelerIds: string[], trip: Trip) => void;
   onAddTraveler: () => void;
-}
-
-interface TravelerEntry {
-  traveler: Traveler;
-  travelerIndex: number;
-  trip: Trip;
-}
-
-interface PositionedTrip {
-  trip: Trip;
-  entries: TravelerEntry[];
-  top: number;
-  height: number;
-  lane: number;
-  laneCount: number;
-  /** True if any traveler in this merged card is in an overstay state. */
-  isOverstay: boolean;
 }
 
 /** One entry contributed by a traveler into a return-marker group. */
@@ -97,11 +81,18 @@ interface MobileAgingMarkerGroup {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const MIN_TRIP_HEIGHT = 28;
 const HEIGHT_SHOW_DATES = 44;
 const HEIGHT_SHOW_BADGES = 56;
+/** Vertical gap between back-to-back cards that share a lane. */
 const LANE_GAP = 2;
 const CARD_GUTTER = 3;
+
+/**
+ * Space kept below the last trip or marker so the fixed Add Trip button
+ * (16px inset + ~44px tall, plus the safe-area inset on notched phones)
+ * never covers it when the timeline is scrolled to the bottom.
+ */
+const FAB_CLEARANCE_PX = 120;
 
 /** 6-day rollup window in pixels. */
 const ROLLUP_PX = 6 * PX_PER_DAY;
@@ -115,92 +106,6 @@ const TOOLTIP_SX = {
   "& .MuiTooltip-arrow": { color: tokens.navy },
   maxWidth: 260,
 };
-
-// ─── Merge + lane assignment ──────────────────────────────────────────────────
-
-function buildPositionedTrips(
-  travelers: Traveler[],
-  hiddenIds: string[],
-  timelineStart: Date,
-  todayStr: string,
-): Omit<PositionedTrip, "lane" | "laneCount">[] {
-  const overstayByTraveler = new Map<string, Set<string>>(
-    travelers.map((t) => [t.id, computeOverstayTripIds(t)]),
-  );
-
-  const merged: Omit<PositionedTrip, "lane" | "laneCount">[] = [];
-
-  travelers.forEach((traveler, travelerIndex) => {
-    if (hiddenIds.includes(traveler.id)) return;
-
-    traveler.trips.forEach((trip) => {
-      const tripIsOverstay =
-        overstayByTraveler.get(traveler.id)?.has(trip.id) ?? false;
-
-      const existing = merged.find(
-        (m) =>
-          m.trip.entryDate === trip.entryDate &&
-          m.trip.exitDate === trip.exitDate &&
-          m.trip.region === trip.region,
-      );
-
-      if (existing) {
-        existing.entries.push({ traveler, travelerIndex, trip });
-        if (tripIsOverstay) {
-          (existing as PositionedTrip).isOverstay = true;
-        }
-      } else {
-        const top = dateToTop(parseDate(trip.entryDate), timelineStart);
-        const exitStr = trip.exitDate ?? todayStr;
-        const rawBottom = dateToTop(parseDate(exitStr), timelineStart);
-        const height = Math.max(rawBottom - top, MIN_TRIP_HEIGHT);
-        merged.push({
-          trip,
-          entries: [{ traveler, travelerIndex, trip }],
-          top,
-          height,
-          isOverstay: tripIsOverstay,
-        });
-      }
-    });
-  });
-
-  return merged;
-}
-
-function assignLanes(
-  travelers: Traveler[],
-  hiddenIds: string[],
-  timelineStart: Date,
-  todayStr: string,
-): PositionedTrip[] {
-  const flat = buildPositionedTrips(
-    travelers,
-    hiddenIds,
-    timelineStart,
-    todayStr,
-  );
-  flat.sort((a, b) => a.top - b.top || b.height - a.height);
-
-  const laneBottoms: number[] = [];
-  const lanes = flat.map((item) => {
-    let lane = laneBottoms.findIndex((bottom) => bottom + LANE_GAP <= item.top);
-    if (lane === -1) lane = laneBottoms.length;
-    laneBottoms[lane] = item.top + item.height;
-    return lane;
-  });
-
-  return flat.map((item, i) => {
-    const overlapMaxLane = flat.reduce((max, other, j) => {
-      if (i === j) return max;
-      const overlaps =
-        other.top < item.top + item.height &&
-        other.top + other.height > item.top;
-      return overlaps ? Math.max(max, lanes[j]) : max;
-    }, lanes[i]);
-    return { ...item, lane: lanes[i], laneCount: overlapMaxLane + 1 };
-  });
-}
 
 // ─── Marker grouping helpers ──────────────────────────────────────────────────
 
@@ -944,6 +849,17 @@ export function MobileTimelineView({
     return maxBottom === 0 ? 600 : maxBottom + 24;
   }, [positionedTrips, returnMarkerGroups, agingMarkerGroups]);
 
+  // Markers are computed up to timelineEnd, so the last chips can sit right
+  // at its bottom edge. Draw the timeline (date ruler included) far enough
+  // past the content that it clears the floating Add Trip button.
+  const displayEnd = useMemo(() => {
+    const height = Math.max(
+      computeTotalHeight(timelineStart, timelineEnd),
+      contentHeight + FAB_CLEARANCE_PX,
+    );
+    return addDays(timelineStart, Math.ceil(height / PX_PER_DAY));
+  }, [timelineStart, timelineEnd, contentHeight]);
+
   useEffect(() => {
     if (hasScrolledRef.current || !scrollRef.current) return;
     const vh = scrollRef.current.clientHeight;
@@ -966,7 +882,12 @@ export function MobileTimelineView({
     <Box ref={scrollRef} sx={{ flex: 1, overflow: "auto" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         {/* ── Timeline row ────────────────────────────────────────────────── */}
-        <Box sx={{ display: "flex", minHeight: contentHeight }}>
+        <Box
+          sx={{
+            display: "flex",
+            minHeight: computeTotalHeight(timelineStart, displayEnd),
+          }}
+        >
           {/* Date sidebar */}
           <Box
             sx={{
@@ -979,7 +900,7 @@ export function MobileTimelineView({
           >
             <DateSidebar
               timelineStart={timelineStart}
-              timelineEnd={timelineEnd}
+              timelineEnd={displayEnd}
             />
           </Box>
 
@@ -1059,8 +980,8 @@ export function MobileTimelineView({
 
             {/* Trip cards — zIndex 3, above markers */}
             {positionedTrips.map((positioned) => {
-              const { lane, laneCount, top, height } = positioned;
-              const pct = (1 / laneCount) * 100;
+              const { lane, laneSpan, laneCount, top, height } = positioned;
+              const pct = (laneSpan / laneCount) * 100;
               const leftPct = (lane / laneCount) * 100;
 
               return (
@@ -1069,7 +990,7 @@ export function MobileTimelineView({
                   sx={{
                     position: "absolute",
                     top,
-                    height,
+                    height: height - LANE_GAP,
                     left: `calc(${leftPct}% + ${CARD_GUTTER}px)`,
                     width: `calc(${pct}% - ${CARD_GUTTER * 2}px)`,
                     zIndex: 3,
