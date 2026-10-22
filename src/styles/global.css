@@ -30,6 +30,54 @@
   /* Typography */
   --font-display: "Google Sans", system-ui, sans-serif;
   --font-body:    "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* Layout: the site nav (LandingNav) and the calculator nav (CalculatorNav)
+     share one height so the header doesn't jump between pages. */
+  --nav-height: 56px;
+}
+
+/* ── Cross-page transition ───────────────────────────────────────────────────
+   Same-origin navigations crossfade instead of hard-cutting. Both headers
+   carry `view-transition-name: site-nav` (the landing nav itself, and the
+   static shell under the calculator's React nav in app.astro), so the browser
+   morphs the cream site header into the navy calculator header and back.
+   Browsers without cross-document view transitions just navigate as before. */
+@view-transition {
+  navigation: auto;
+}
+
+/* Fade only, no resize. The landing page has a scrollbar and /app doesn't, so
+   the two headers differ in width by the scrollbar's width; the default group
+   animation would stretch the header across that gap after the colour change.
+   Instead the group snaps to the new header's box, and each snapshot keeps
+   its own natural width (left-anchored, clipped to the box) while they fade.
+   Only the group's animation-name is cleared: the snapshots inherit the
+   group's timing and fill mode, and without `both` the old navy snapshot
+   pops back to full opacity for a few frames after its fade-out ends. */
+::view-transition-group(site-nav) {
+  animation-name: none;
+  overflow: clip;
+}
+
+::view-transition-group(site-nav),
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+  width: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 
 /* ── Reset ───────────────────────────────────────────────────────────────── */
