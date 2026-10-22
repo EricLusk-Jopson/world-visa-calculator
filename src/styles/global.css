@@ -33,7 +33,7 @@
 
   /* Layout: the site nav (LandingNav) and the calculator nav (CalculatorNav)
      share one height so the header doesn't jump between pages. */
-  --nav-height: 64px;
+  --nav-height: 56px;
 }
 
 /* ── Cross-page transition ───────────────────────────────────────────────────
