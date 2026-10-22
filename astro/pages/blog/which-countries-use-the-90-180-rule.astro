@@ -45,43 +45,37 @@ import Footer from "../../components/Footer.astro";
 
     <div class="article__body">
       <p>
-        You're on day 85 in the Schengen Area. Your plan is simple: cross
-        into a neighbouring country, spend a few months there, and come
-        back once enough of your Schengen days have aged out. Plenty of
+        You're on your 85th day in the Schengen Area and you're preparing to leave.
+        Your plan is simple: cross into a neighbouring country, spend a few months there, 
+        and come back once enough of your Schengen days have aged out. Plenty of
         long-term travelers do exactly this.
       </p>
 
       <p>
-        The catch is that the country you cross into may have a 90/180
+        There is a catch, though. The country you enter may have a 90/180
         rule of its own. Leaving the Schengen Area stops your Schengen
-        count, but it doesn't mean your next three months are unlimited.
-        In several European countries, a second 90/180 clock starts the day you
-        arrive.
+        count, yes, but it doesn't mean your next three months are without 
+        the risk of overstay somewhere else.
       </p>
 
       <hr />
 
-      <h2>The short answer</h2>
+      <h2>Visa-free regimes across Europe</h2>
 
       <p>
         The 90/180 rule is best known as the Schengen Area's rule, but it
         isn't exclusive to it. Eight European countries outside the Schengen
-        Area use the same 90-days-in-180 limit for most visa-free
+        Area use the same 90 in 180 limit for most visa-free
         visitors. Others use a different model entirely, such as a fixed
         allowance per visit.
       </p>
 
       <p>
-        Each of these countries counts
-        your allowance separately. Days in Türkiye don't count toward your
-        Schengen total, and Schengen days don't count toward your Türkiye
-        total. There are two independent counters, each with its own
-        rolling window.
+        Each of these countries tracks separate counts using the same rule. 
+        Days in Türkiye don't count toward your Schengen total, 
+        and Schengen days don't count toward your Türkiye total. 
+        There are two independent counters, each with its own rolling window.
       </p>
-
-      <hr />
-
-      <h2>How independent counters work</h2>
 
       <p>
         Every 90/180 counter works the same way. On any given day, look
@@ -92,39 +86,45 @@ import Footer from "../../components/Footer.astro";
         > covers this in detail.
       </p>
 
+      <hr />
+
+      <h2>A warning about longterm visa-free travel in countries using the 90/180 rule</h2>
       <p>
-        When you move between two countries that each run their own
-        counter, both windows keep moving the whole time. Only the
-        country you're standing in adds days to its count.
+        There is a lot of advice online that suggests something along the lines of 
+        "Spend 90 days in Schengen, 90 days elsewhere. Repeat indefinitely"
+        This is known as the Schengen Shuffle, and while it works, it cannot be accomplished
+        using only a single non-Schengen country. In "90 days elsewhere", elsewhere is not a single place.
+        Not, at least, if it follows a 90/180 rule. 
       </p>
 
       <p>
-        Bear in mind that if you cross directly from one into the other,
-        your crossing counts as a full day for both regions' rules at
-        once, not as a fresh day for the second one. This actually leads
-        to an important corner case when jumping between two different
-        countries for 90 days at a time.
+        Bear in mind that when you cross directly from one jurisdiction into another,
+        <a href="/blog/does-your-entry-day-count-as-a-schengen-day">
+        your crossing counts as a full day for both regions' rules</a> at
+        once. This actually leads to an important corner case when jumping 
+        between two different countries following the 90/180 rule.
       </p>
       <p>
-        Here's a worked example: You spend 90 days in the Schengen Area, crossing directly
-        into Türkiye on your last Schengen day.
+        Imagine this: You spend 90 days in the Schengen Area, and cross directly
+        into Türkiye on your last possible day.
       </p>
 
       <ul>
         <li>
-          Days 1 to 89: you're in the Schengen Area. Your Schengen counter is nearly
+          Days 1 to 89: You're in the Schengen Area. Your Schengen counter is nearly
           full at 89; your Türkiye counter sits at 0.
         </li>
         <li>
-          Day 90: Day 90 is both your Schengen exit day and your Türkiye entry day, since you cross
-          straight from one into the other. Schengen count is 90 and Türkiye is 1.
+          Day 90: Today is the last possible day you can exit Schengen without overstaying.
+          It is also your Türkiye entry day, since you cross straight from one into the other. 
+          Your Schengen count is 90 and Türkiye is 1.
         </li>
         <li>
           Days 90 to 178: you're in Türkiye. By day 178, your Türkiye
-          counter is nearly full at 89 days spent in the country.
+          counter is nearly full at 89 days spent in the country. You must leave tomorrow.
         </li>
         <li>
-          Day 179: you've used your full Türkiye allowance and must leave. 
+          Day 179: You've used your full Türkiye allowance and must leave. 
           Unfortunately, you can't return to Schengen, as that count is still 90 out of 90.
           That window is still full for another two days, until day 181. To return today would mean an overstay.
         </li>
@@ -135,13 +135,21 @@ import Footer from "../../components/Footer.astro";
         independent of both Schengen and Türkiye for at least two days.
       </p>
 
+      <p>
+        Your intuition might tell you simply to stay less than 90 days in any jurisdiction
+        and things will work out fine. This is wrong, but you're welcome to do the math for yourself. 
+        The fact is, in any 180-day period, it takes at least three independent jurisdictions
+        to properly shuffle about. It can be done with two, but only if the non-Schengen jurisdiction
+        allows stays longer than 90 days. 
+      </p>
+
       <hr />
 
       <h2>Which European countries use a 90/180 rule?</h2>
 
       <p>
-        The list below covers every European destination
-        EuroVisaCalculator tracks that runs this exact rule. It applies
+        The list below covers every European destination EuroVisaCalculator tracks 
+        that implements a 90/180 rule for visa-free travelers. It applies
         to most visa-free passports; your own passport may get a
         different allowance or need a visa, so check your nationality in
         the calculator before you plan around it. We keep this list
@@ -207,10 +215,7 @@ import Footer from "../../components/Footer.astro";
         <strong>Armenia</strong> uses a rolling window too, but with
         different numbers: 180 days within any 365-day period, twice the
         days within twice the window. The structure is the same as
-        Schengen's, just more generous. One asymmetry worth knowing:
-        under Armenia's unilateral visa-free list, US passport holders
-        get this allowance, but Canadian passport holders currently need
-        a visa to enter at all.
+        Schengen's, just more generous.
       </p>
 
       <p>
@@ -226,9 +231,7 @@ import Footer from "../../components/Footer.astro";
       <p>
         <strong>Georgia</strong> gives most visa-free visitors, including
         both US and Canadian passport holders, a flat 365-day allowance
-        per visit. That's not a rolling window at all: it's a single long
-        stay that resets each time you leave and come back. It is the
-        most generous allowance on this list by a wide margin.
+        per visit.
       </p>
 
       <p>
@@ -257,8 +260,7 @@ import Footer from "../../components/Footer.astro";
         A per-visit limit can look more generous than 90/180, because it
         starts over each time you enter. In practice, border officers in
         these countries can still refuse entry to someone who appears to
-        be living there on a string of visitor stays. Treat a per-visit
-        limit as a ceiling for one trip, not a plan for a year.
+        be living there on a string of visitor stays.
       </p>
 
       <hr />
@@ -266,12 +268,10 @@ import Footer from "../../components/Footer.astro";
       <h2>Your passport changes the answer</h2>
 
       <p>
-        Everything above describes the common case. Some nationalities
-        get longer allowances in particular countries, some get shorter
-        ones, and some need a visa where others don't. American passport
-        holders can enter Armenia visa-free for up to 180 days in any
-        365-day period. Canadian passport holders need a visa for the
-        same trip.
+        Everything above describes the most permissive regmie/passport 
+        combinations. Some nationalities get longer allowances in particular 
+        countries, some get shorter ones, and some need a visa where others 
+        don't.
       </p>
 
       <p>
@@ -287,16 +287,16 @@ import Footer from "../../components/Footer.astro";
       <p>
         Tracking one rolling window by hand is hard enough. Tracking two
         or three at once, especially when you're moving back and forth
-        between them, is where mistakes happen. When my wife and I spent
-        long stretches in Europe, we had to keep separate counts for the
-        Schengen Area and each country around it, for each of us.
+        between them, is where mistakes happen. Adding additional travelers,
+        or passports further complicates matters. Which is what we're here
+        to solve. For free. For as long as you need.
       </p>
 
       <p>
         <a href="/">EuroVisaCalculator</a> tracks each region's counter
-        separately, using the rule for your passport. Enter your trips
-        once and it shows how many days you have left in each place, and
-        when you can go back.
+        separately, using the specific rule for your passport. Enter your trips
+        once to see how many days you have left in each place, and
+        when you can revisit.
       </p>
 
       <hr />
@@ -307,12 +307,14 @@ import Footer from "../../components/Footer.astro";
       <p>
         No. Only days spent inside the Schengen Area count toward your
         Schengen total. But many non-Schengen countries run a separate
-        limit of their own.
+        limit of their own using the same 90/180 rule.
       </p>
 
-      <h3>Can I spend 90 days in the Schengen Area and then 90 days in a neighbouring country?</h3>
+      <h3>Can I spend 90 days in the Schengen Area and then 90 days in a neighbouring country, indefinitely?</h3>
       <p>
+        This is called the Schengen Shuffle. 
         If the neighbouring country also uses a 90-in-180-day rolling calculation, no.
+        You will overstay in at least one location before 180 days is up. 
         There always needs to be a third country involved, or the stay in the neighbouring
         country must exceed 90 days, which is possible in the UK, Georgia and Armenia.
       </p>
@@ -329,10 +331,8 @@ import Footer from "../../components/Footer.astro";
       <p>
         No. Ireland allows most visa-free visitors, including US and
         Canadian passport holders, up to 90 days per visit, not a rolling
-        window, and immediately re-entering for another 90 days is
-        subject to officer discretion. Ireland is in the EU but not the
-        Schengen Area, so its days don't count toward your Schengen
-        total.
+        window. Ireland is in the EU but not the Schengen Area, so its 
+        days don't count toward your Schengen total.
       </p>
 
       <h3>Does leaving the Schengen Area reset my 90 days?</h3>
