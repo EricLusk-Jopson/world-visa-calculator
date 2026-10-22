@@ -50,17 +50,26 @@
    the two headers differ in width by the scrollbar's width; the default group
    animation would stretch the header across that gap after the colour change.
    Instead the group snaps to the new header's box, and each snapshot keeps
-   its own natural width (left-anchored, clipped to the box) while they fade. */
+   its own natural width (left-anchored, clipped to the box) while they fade.
+   Only the group's animation-name is cleared: the snapshots inherit the
+   group's timing and fill mode, and without `both` the old navy snapshot
+   pops back to full opacity for a few frames after its fade-out ends. */
 ::view-transition-group(site-nav) {
-  animation: none;
+  animation-name: none;
   overflow: clip;
+}
+
+::view-transition-group(site-nav),
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
 }
 
 ::view-transition-old(site-nav),
 ::view-transition-new(site-nav) {
   width: auto;
-  animation-duration: 0.3s;
-  animation-timing-function: ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
