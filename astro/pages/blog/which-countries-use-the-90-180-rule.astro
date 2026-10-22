@@ -65,17 +65,17 @@ import Footer from "../../components/Footer.astro";
 
       <p>
         The 90/180 rule is best known as the Schengen Area's rule, but it
-        isn't exclusive to it. 8 European countries outside the Schengen
+        isn't exclusive to it. Eight European countries outside the Schengen
         Area use the same 90-days-in-180 limit for most visa-free
         visitors. Others use a different model entirely, such as a fixed
         allowance per visit.
       </p>
 
       <p>
-        What matters for planning is this: each of these countries counts
-        your days separately. Days in Türkiye don't count toward your
+        Each of these countries counts
+        your allowance separately. Days in Türkiye don't count toward your
         Schengen total, and Schengen days don't count toward your Türkiye
-        total. You have two independent counters, each with its own
+        total. There are two independent counters, each with its own
         rolling window.
       </p>
 
@@ -95,65 +95,43 @@ import Footer from "../../components/Footer.astro";
       <p>
         When you move between two countries that each run their own
         counter, both windows keep moving the whole time. Only the
-        country you're standing in adds days to its count. Bear in mind
-        that if you cross directly from one into the other, that
-        crossing day counts as a full day for both regions' rules at
-        once, not as a fresh day for the second one.
+        country you're standing in adds days to its count.
       </p>
 
       <p>
-        Here's a worked example, and it's not as clean as it looks at
-        first. You spend 90 days in the Schengen Area, crossing directly
+        Bear in mind that if you cross directly from one into the other, 
+        your crossing counts as a full day for both regions' rules at
+        once, not as a fresh day for the second one. This actually leads 
+        to an important corner case which jumping between two different 
+        countries for 90 days at a time.  
+      </p>
+      <p>
+        Here's a worked example: You spend 90 days in the Schengen Area, crossing directly
         into Türkiye on your last Schengen day.
       </p>
 
       <ul>
         <li>
-          Days 1 to 90: you're in the Schengen Area. Day 90 is both your
-          Schengen exit day and your Türkiye entry day, since you cross
-          straight from one into the other. Your Schengen counter is now
-          full at 90; your Türkiye counter sits at 1.
+          Days 1 to 89: you're in the Schengen Area. Your Schengen counter is nearly
+          full at 89; your Türkiye counter sits at 0.
         </li>
         <li>
-          Days 90 to 179: you're in Türkiye. By day 179, your Türkiye
-          counter is also full at 90 (day 90 through day 179 is 90 days,
-          counting that shared crossing day once).
+          Day 90:  Day 90 is both your Schengen exit day and your Türkiye entry day, since you cross
+          straight from one into the other. Schengen count is 90 and Türkiye is 1.
+        <li>
+          Days 90 to 178: you're in Türkiye. By day 178, your Türkiye
+          counter is nearly full at 89 days spent in the country.
         </li>
         <li>
-          Day 179: you've used your full Türkiye allowance and want to
-          head back into the Schengen Area. You can't, not yet. Your
-          Schengen count is still 90 out of 90: your first Schengen day
-          (day 1) doesn't drop out of its 180-day window until day 181,
-          two days later. Crossing back on day 179 would put you one day
-          over.
-        </li>
-        <li>
-          Day 181: day 1 finally ages out of the Schengen window, freeing
-          up exactly one day of Schengen allowance. You can cross back
-          in, but only one day at a time at first, as each of your
-          original 90 Schengen days ages out in turn.
+          Day 179: you've used your full Türkiye allowance and must leave. 
+          Unfortunately, you can't return to Schengen, as that count is still 90 out of 90.
+          That window is still full for another two days, until day 181. To return today would mean an overstay.
         </li>
       </ul>
 
       <p>
-        That leaves day 180 in between, when you can't be in the
-        Schengen Area (still full) or back in Türkiye (also still full:
-        your Türkiye days don't start aging out until day 270). You'd
-        need a third place to be for that one day.
-      </p>
-
-      <p>
-        Nothing reset here, and the two allowances didn't line up neatly
-        either. Finishing your second country's 90 days doesn't mean the
-        first one is ready for you again; the rolling window only gives
-        allowance back one aged-out day at a time. Hopping between
-        exactly two 90/180 countries back to back is a legitimate way to
-        stay in Europe longer, but only if you plan for the gap, not
-        just the two allowances. (Our post on <a
-          href="/blog/when-does-schengen-reset"
-          >when your Schengen allowance "resets"</a
-        > explains why a short trip outside the Schengen Area doesn't
-        restart anything.)
+        To solve this scenario, you must visit a third region, 
+        independent of both Schengen and Türkiye for at least two days.
       </p>
 
       <hr />
@@ -179,13 +157,6 @@ import Footer from "../../components/Footer.astro";
         <li><a href="https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime" target="_blank" rel="noopener noreferrer">Serbia</a></li>
         <li><a href="https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa" target="_blank" rel="noopener noreferrer">Türkiye</a></li>
       </ul>
-
-      <p>
-        Last checked: May 27, 2026. We update this list whenever our data
-        changes. See <a href="/blog/how-we-source-and-verify-visa-data"
-          >how we source and verify our visa data</a
-        >.
-      </p>
 
       <hr />
 
@@ -307,31 +278,6 @@ import Footer from "../../components/Footer.astro";
 
       <hr />
 
-      <h2>Three mistakes to avoid</h2>
-
-      <h3>Assuming non-Schengen means no limit</h3>
-      <p>
-        This is the most common one. Many travelers plan their time
-        outside the Schengen Area as open-ended, then find out at the
-        border that they've used up a separate allowance.
-      </p>
-
-      <h3>Adding your days into one total</h3>
-      <p>
-        Days in different countries don't combine into one count, and
-        they don't cancel each other out either. Each counter stands
-        alone. Keep them separate.
-      </p>
-
-      <h3>Assuming a stop outside the Schengen Area restarts your Schengen clock</h3>
-      <p>
-        It doesn't. It only pauses the Schengen count while the window
-        keeps moving. A weekend in Türkiye buys you a weekend's worth of
-        Schengen days aging out, nothing more.
-      </p>
-
-      <hr />
-
       <h2>Tracking more than one counter</h2>
 
       <p>
@@ -362,9 +308,9 @@ import Footer from "../../components/Footer.astro";
 
       <h3>Can I spend 90 days in the Schengen Area and then 90 days in a neighbouring country?</h3>
       <p>
-        In many cases, yes, if that country's limit allows it for your
-        passport. Each counter is separate. Check the rule for your
-        nationality before you go.
+        If the neighbouring country also uses a 90-in-180-day rolling calculation, no. 
+        There always needs to be a thrid country involved, or the stay in the neighbouring 
+        country must exceed 90 days, which is possible in The UK, Georgia and Armenia
       </p>
 
       <h3>Is the UK part of the 90/180 rule?</h3>
