@@ -1,0 +1,627 @@
+---
+/**
+ * Blog post: What Actually Happens If You Overstay Your Schengen Allowance
+ * URL: /blog/schengen-overstay-consequences
+ *
+ * Static Astro page, rendered to plain HTML at build time.
+ *
+ * The "What if the record says you overstayed" section points to a planned
+ * post on correcting EES records. It isn't written yet, so the reference is
+ * plain text for now; link it once that post is published.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingNav from "../../components/LandingNav.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="What Actually Happens If You Overstay Your Schengen Allowance"
+  description="An overstay of one day and an overstay of one month are not treated the same. Here's what the rules allow, what the EES records, and what to do if you've miscounted."
+  canonicalUrl="https://eurovisacalculator.com/blog/schengen-overstay-consequences"
+>
+  <LandingNav />
+
+  <article class="article">
+    <div class="article__top-back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+
+    <header class="article__header">
+      <p class="article__tag">Blog</p>
+
+      <h1 class="article__title">
+        What Actually Happens If You Overstay Your Schengen Allowance
+      </h1>
+
+      <p class="article__meta">October 22, 2026 · 8 min read</p>
+
+      <p class="article__audience">
+        <strong>This post is for you if:</strong> you've just recounted your
+        days and the number came out higher than you expected, or you want a
+        straight answer on what an overstay costs and whether anyone actually
+        checks.
+        <br/>
+        <br/>
+        <strong>It's probably not necessary if:</strong> you already know
+        your count is fine and just want to confirm it. In that case,{" "}
+        <a href="/app">enter your dates into the calculator</a> and skip the
+        rest.
+      </p>
+    </header>
+
+    <div class="article__body">
+      <p>
+        You're three weeks from the end of a long trip. You're on a train,
+        half bored, and you decide to count your days properly for the first
+        time instead of trusting the number in your head. You count twice.
+        Both times you get 96. Your flight home is in five days.
+      </p>
+
+      <p>
+        Before you panic, the short version: overstaying is a real breach of
+        the rules and it can follow you for years, but the consequences are
+        not automatic or uniform. What happens depends heavily on how long
+        you overstayed, why, which country you're in, and how you handle it
+        from here. A short, accidental overstay that you deal with promptly
+        and honestly is a very different situation from someone who
+        knowingly stayed an extra month.
+      </p>
+
+      <h2>First, make sure you've actually overstayed</h2>
+
+      <p>
+        A surprising number of people who think they've overstayed haven't,
+        and a surprising number who think they're fine have. The two most
+        common mistakes are:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Counting from a fixed start date.</strong> The limit isn't
+          "90 days from when you arrived." It's 90 days in any rolling
+          180-day window, checked fresh every day. If you've had several
+          trips, the answer depends on which of your old days have aged
+          out.{" "}
+          <a href="/blog/the-schengen-90-180-rolling-window"
+            >Our guide to the rolling window</a
+          > explains how this works.
+        </li>
+        <li>
+          <strong>Not counting entry and exit days.</strong> Both count as
+          full days, even if you arrived at 11pm or left at 6am. Over several
+          trips, this alone can add up to a week of days you didn't know
+          you'd used.{" "}
+          <a href="/blog/does-your-entry-day-count-as-a-schengen-day"
+            >More on that here</a
+          >.
+        </li>
+      </ul>
+
+      <p>
+        If you've recounted with both of those rules in mind and you're still
+        over, read on.
+      </p>
+
+      <h2>What can happen if you overstay</h2>
+
+      <p>
+        The 90/180 rule itself is set at EU level, but the penalties for
+        breaking it are a mix of EU rules and national law. That's why you'll
+        find wildly different answers online: they're often describing
+        different countries, or describing the worst case as if it's the
+        usual one.
+      </p>
+
+      <p>Here is what can happen, roughly from most to least common.</p>
+
+      <h3>Your overstay is recorded</h3>
+      <p>
+        The Entry/Exit System (EES) now registers non-EU short-stay travelers
+        electronically at every external Schengen Area border, in place of
+        passport stamps. If there's no exit record by the time your
+        authorized stay runs out, the system automatically flags you and adds
+        you to a list of identified overstayers that border, visa and
+        immigration authorities can see. That record is kept for five years
+        from the date your authorized stay ended, compared to three years for
+        a normal entry and exit.
+      </p>
+
+      <h3>You may be issued a return decision</h3>
+      <p>
+        Under the EU Return Directive, a country that finds someone staying
+        without authorization issues a formal decision requiring them to
+        leave. Often this comes with a period to leave voluntarily.
+      </p>
+
+      <h3>You may receive an entry ban</h3>
+      <p>
+        A return decision can come with an entry ban, and must come with one
+        if you weren't given time to leave voluntarily or didn't leave when
+        required. The length is meant to reflect the circumstances of your
+        individual case and, in principle, shouldn't exceed five years.
+        Countries are also allowed not to issue a ban, or to lift one, on
+        humanitarian grounds.
+      </p>
+
+      <p>
+        An entry ban applies to the whole Schengen Area, not just one
+        country. When a ban is issued, it's entered into the Schengen
+        Information System (SIS) as an alert for refusal of entry. Every
+        Schengen Area border sees it. A ban issued in Portugal will stop you
+        at the airport in Vienna.
+      </p>
+
+      <h3>You may be fined, or worse, under national law</h3>
+      <p>
+        This is where countries differ most. Two examples:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Spain</strong> treats being in the country without
+          authorization as a serious administrative offense. The standard
+          penalty is a fine of €501 to €10,000, set with your financial
+          situation in mind. Authorities can instead choose expulsion with an
+          entry ban, though not both.
+        </li>
+        <li>
+          <strong>Germany</strong> can treat unauthorized stay as a criminal
+          offense under its Residence Act, punishable by a fine or up to a
+          year in prison. Prosecution of tourists who left a few days late is
+          not the typical outcome, but the fact that it's in criminal law at
+          all tells you how seriously it's regarded.
+        </li>
+      </ul>
+
+      <h3>Future trips get harder</h3>
+      <p>
+        Your overstay record stays visible to border officers and visa
+        authorities for years. If you need a Schengen visa, expect your
+        history to come up. If your passport is visa-exempt, the EU's ETIAS
+        travel authorization is designed to check whether an applicant has
+        been recorded as an overstayer. And if you try to enter while your
+        allowance is already used up, you'll simply be refused entry at the
+        border.
+      </p>
+
+      <h2>One day over vs. several weeks over</h2>
+
+      <p>
+        This is the question most people actually want answered, and the
+        honest answer is that there's no published table that converts days
+        of overstay into a penalty. Officers and immigration authorities have
+        discretion, and the rules explicitly tell them to weigh the
+        circumstances of each case.
+      </p>
+
+      <p>That said, the factors they weigh are fairly predictable:</p>
+
+      <ul>
+        <li>
+          <strong>Length.</strong> One or two days reads as a mistake.
+          Several weeks reads as a decision.
+        </li>
+        <li>
+          <strong>Intent.</strong> A miscounted rolling window, a canceled
+          flight or a hospital stay is a different story from someone who
+          planned to stay on.
+        </li>
+        <li>
+          <strong>What you did about it.</strong> Leaving as soon as you
+          realized, with documentation in hand, counts for a lot. Staying on,
+          hoping nobody notices, counts against you.
+        </li>
+        <li>
+          <strong>History.</strong> A first offense with a clean record is
+          treated differently from a repeat.
+        </li>
+      </ul>
+
+      <p>
+        So a one-day accidental overstay will almost certainly be recorded,
+        and might come with nothing more than a conversation at the exit. It
+        could also come with a fine, depending on the country and the
+        officer. A deliberate overstay of several weeks is the kind of case
+        where entry bans become likely. Neither end of that range is
+        guaranteed, which is exactly why the safest plan is to never be in
+        it.
+      </p>
+
+      <h2>Is the 90/180 rule actually enforced?</h2>
+
+      <p>Yes, and much more consistently than it used to be.</p>
+
+      <p>
+        For years, enforcement depended on an officer reading the stamps in
+        your passport and doing the arithmetic by hand. That was reliable
+        enough at busy airports and much less reliable at quiet land
+        crossings, where a smudged stamp or a rushed check could let an
+        overstay pass unnoticed. A lot of the "nobody ever checks" advice
+        online comes from that era.
+      </p>
+
+      <p>
+        That era is over. The EES records every entry and exit
+        electronically, calculates your remaining days automatically, and
+        flags overstays without anyone needing to count. The same record is
+        available at every external border, so leaving through a quiet
+        crossing doesn't help. The system has been fully operational at all
+        external border crossings since April 2026.
+      </p>
+
+      <p>
+        If you've been carefully counting your days and wondering whether it
+        matters: it does, and it matters more every year. Relying on lax
+        enforcement is now a bet against a computer.
+      </p>
+
+      <h2>What to do if you realize mid-trip that you've miscounted</h2>
+
+      <p>
+        This isn't legal advice, and if you've already been issued a return
+        decision or entry ban, speak to an immigration lawyer in the country
+        concerned. But if you've just worked out that you're over, or about
+        to be, here's what makes sense.
+      </p>
+
+      <h3>If you still have days left, leave before they run out</h3>
+      <p>
+        Even if it means changing a flight. A rebooking fee is cheaper than
+        any of the outcomes above. Moving to a different Schengen Area
+        country doesn't help: your days count across the whole area.
+      </p>
+
+      <h3>If something genuinely prevents you from leaving, act before your stay ends</h3>
+      <p>
+        Illness, an accident, a canceled flight with no alternative: these
+        are the kinds of situations the rules make room for. If you hold a
+        Schengen visa, the immigration authorities in the country you're in
+        can extend it for force majeure or humanitarian reasons (free of
+        charge) or for serious personal reasons (for a €30 fee). If you're
+        visa-exempt, contact the local immigration authority as early as you
+        can and keep every document: medical records, airline cancellation
+        notices, rebooking confirmations. The EES rules specifically allow an
+        overstay record to be corrected if you can show you were forced to
+        stay by unforeseeable and serious events.
+      </p>
+
+      <h3>If you're already over, leave as soon as you reasonably can</h3>
+      <p>
+        Every extra day makes the overstay look less like a mistake. Don't
+        try to time your exit through a border you think will be less
+        thorough.
+      </p>
+
+      <h3>At the border, be honest and be prepared</h3>
+      <p>
+        Explain what happened plainly. Have your boarding passes,
+        accommodation receipts and any documents showing why you stayed. An
+        officer looking at a one-day overstay with a clear, documented
+        explanation is having a very different conversation from one looking
+        at a traveler who can't account for their dates.
+      </p>
+
+      <h3>If you're traveling with others, check everyone separately</h3>
+      <p>
+        Each person has their own record and their own count. It's common
+        for one member of a couple or family to be over while the others are
+        fine, especially if anyone arrived earlier or took a side trip.
+        Grandparents on a long visit are often the ones closest to the
+        limit.{" "}
+        <a href="/blog/schengen-calculator-couples"
+          >Here's how to track more than one person</a
+        >.
+      </p>
+
+      <h2>What if the record says you overstayed, but you didn't?</h2>
+
+      <p>
+        EES records can be wrong. A missed exit registration, for example,
+        can make it look like you never left. That's a different problem with
+        a different solution: you need to check your own count, gather
+        evidence, and ask for the record to be corrected. We'll cover that
+        step by step in an upcoming post on what to do when the EES says
+        you've used more days than you have.
+      </p>
+
+      <h2>The best outcome is never being in this situation</h2>
+
+      <p>
+        Almost every overstay we hear about traces back to one of the
+        counting mistakes above, not to someone deciding to break the rules.
+        The fix is to know your number before it becomes a problem, not
+        after.
+      </p>
+
+      <p>
+        <a href="/app">EuroVisaCalculator</a> shows your remaining days on
+        any date, warns you if a planned trip would put you over the limit,
+        and shows the day-by-day working so you can check it against your
+        own count or an official record. It also tracks more than one
+        traveler, so the whole group's numbers are in one place.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+
+      <h3>Will I be banned for overstaying by one day?</h3>
+      <p>
+        Probably not, but it isn't impossible. A single accidental day is
+        usually treated as a mistake, especially if you leave promptly and
+        can explain it. It will still be recorded in the EES, and some
+        countries can fine you for it.
+      </p>
+
+      <h3>How long can a Schengen entry ban last?</h3>
+      <p>
+        Under the EU Return Directive, an entry ban shouldn't in principle
+        exceed five years. It can be longer only where someone is considered
+        a serious threat to public policy or security.
+      </p>
+
+      <h3>If I'm banned by one country, can I still visit others?</h3>
+      <p>
+        No. Entry bans are entered into the Schengen Information System,
+        which every Schengen Area country checks at its borders.
+      </p>
+
+      <h3>Does an overstay stay on my record forever?</h3>
+      <p>
+        Not in the EES. Overstay data is kept for five years from the end of
+        your authorized stay and then deleted. An entry ban, if you get one,
+        has its own separate duration.
+      </p>
+
+      <h3>Is it safer to leave through a land border?</h3>
+      <p>
+        No. The EES runs at all external border crossings, and your record is
+        the same everywhere. Choosing a quieter border also doesn't look good
+        if you're later asked to explain.
+      </p>
+
+      <h3>Can I get my overstay record removed?</h3>
+      <p>
+        Yes, in specific cases: if you were forced to stay by unforeseeable
+        and serious events, if you'd acquired a legal right to stay, or if
+        the record is simply wrong. You'll need evidence, and the request
+        goes to the authorities of the country responsible for the record.
+      </p>
+
+      <h3>I think I've overstayed. Who should I contact?</h3>
+      <p>
+        The immigration authority in the country you're currently in. If
+        you've already received a formal decision, an immigration lawyer in
+        that country.
+      </p>
+
+      <hr />
+
+      <p>
+        Most overstays start with a misunderstanding of how the rolling
+        window works. If yours did,{" "}
+        <a href="/blog/the-schengen-90-180-rolling-window"
+          >our complete 90/180 guide</a
+        > is the place to start. And if you've ever wondered why your count
+        doesn't match someone else's,{" "}
+        <a href="/blog/why-schengen-calculators-give-different-results"
+          >here's why calculators disagree</a
+        >.
+      </p>
+
+      <h2>Sources</h2>
+
+      <p>
+        Every claim about the rules in this post traces back to the
+        regulations below. For how we choose and check sources, see{" "}
+        <a href="/blog/how-we-source-and-verify-visa-data"
+          >how we source and verify our visa data</a
+        >.
+      </p>
+
+      <ul>
+        <li>
+          <a href="https://eur-lex.europa.eu/eli/reg/2017/2226/oj" target="_blank" rel="noopener noreferrer"
+            >Regulation (EU) 2017/2226, the Entry/Exit System Regulation</a
+          > (overstayer list, Article 12; retention periods, Article 34;
+          correction of overstay records, Article 35)
+        </li>
+        <li>
+          <a href="https://eur-lex.europa.eu/eli/dir/2008/115/oj" target="_blank" rel="noopener noreferrer"
+            >Directive 2008/115/EC, the Return Directive</a
+          > (return decisions and entry bans, Articles 6 and 11)
+        </li>
+        <li>
+          <a href="https://eur-lex.europa.eu/eli/reg/2018/1860/oj" target="_blank" rel="noopener noreferrer"
+            >Regulation (EU) 2018/1860</a
+          > and{" "}
+          <a href="https://eur-lex.europa.eu/eli/reg/2018/1861/oj" target="_blank" rel="noopener noreferrer"
+            >Regulation (EU) 2018/1861</a
+          > (entry bans recorded in the Schengen Information System)
+        </li>
+        <li>
+          <a href="https://eur-lex.europa.eu/eli/reg/2009/810/oj" target="_blank" rel="noopener noreferrer"
+            >Regulation (EC) No 810/2009, the Visa Code</a
+          > (visa extensions, Article 33)
+        </li>
+        <li>
+          <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2000-544" target="_blank" rel="noopener noreferrer"
+            >Spain, Ley Orgánica 4/2000</a
+          > (Articles 53.1.a, 55.1.b and 57.1)
+        </li>
+        <li>
+          <a href="https://www.gesetze-im-internet.de/aufenthg_2004/__95.html" target="_blank" rel="noopener noreferrer"
+            >Germany, Aufenthaltsgesetz § 95</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="article__back">
+      <a href="/blog" class="article__back-link">← Back to blog</a>
+    </div>
+  </article>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .article {
+    min-height: 100vh;
+    background: var(--color-off-white);
+    padding: 128px 24px 96px;
+  }
+
+  .article__top-back {
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .article__header {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .article__tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00b96b;
+    margin: 0 0 14px;
+  }
+
+  .article__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #0c1e3c;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .article__meta {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: #8fa0b4;
+    margin: 0 0 20px;
+  }
+
+  .article__audience {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid #00b96b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .article__audience strong {
+    color: #0c1e3c;
+  }
+
+  .article__body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article__body p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+  }
+
+  .article__body ul {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3d4f65;
+    margin: 0 0 1.25em;
+    padding-left: 1.4rem;
+  }
+
+  .article__body li {
+    margin-bottom: 0.4em;
+  }
+
+  .article__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article__body h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0c1e3c;
+    margin: 1.75rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article__body hr {
+    border: none;
+    border-top: 1px solid #e0dbd3;
+    margin: 2.5rem 0;
+  }
+
+  .article__body a {
+    color: #00b96b;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.18s;
+  }
+
+  .article__audience a {
+    color: #00b96b;
+    text-decoration: none;
+  }
+
+  .article__body a:hover {
+    border-bottom-color: #00b96b;
+  }
+
+  .article__body blockquote {
+    margin: 1.5rem 0;
+    padding: 14px 18px;
+    background: #f0f4f8;
+    border-left: 3px solid #b8c8d8;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .article__body blockquote p {
+    margin: 0;
+    font-size: 0.93rem;
+    color: #3d4f65;
+    line-height: 1.7;
+  }
+
+  .article__back {
+    max-width: 680px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid #e0dbd3;
+  }
+
+  .article__back-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #5a6a82;
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .article__back-link:hover {
+    color: #0c1e3c;
+  }
+</style>
