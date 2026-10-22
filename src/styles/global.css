@@ -46,9 +46,19 @@
   navigation: auto;
 }
 
-::view-transition-group(site-nav),
+/* Fade only, no resize. The landing page has a scrollbar and /app doesn't, so
+   the two headers differ in width by the scrollbar's width; the default group
+   animation would stretch the header across that gap after the colour change.
+   Instead the group snaps to the new header's box, and each snapshot keeps
+   its own natural width (left-anchored, clipped to the box) while they fade. */
+::view-transition-group(site-nav) {
+  animation: none;
+  overflow: clip;
+}
+
 ::view-transition-old(site-nav),
 ::view-transition-new(site-nav) {
+  width: auto;
   animation-duration: 0.3s;
   animation-timing-function: ease;
 }
