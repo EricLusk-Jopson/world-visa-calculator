@@ -33,6 +33,16 @@ const qcPipelineGoals = [
 
 const changelog = [
   {
+    range: "October 9 to 22, 2026",
+    changes: [
+      { tag: "feature", text: "Shipped the automated data QC pipeline: every government source is now checked every two weeks for broken links and changed content, flagged changes get a human review before any rule updates, and every rule change is logged publicly on a new /rule-changes page. Each source also shows when it was last verified and has a “Report a problem” form." },
+      { tag: "improvement", text: "Published a new blog post on which of our 14 tracked destinations use the 90/180 rolling window versus a different stay limit model." },
+      { tag: "improvement", text: "Matched the site's and calculator's headers (same height, logo links home) with a smooth transition between them." },
+      { tag: "fix", text: "Corrected Albania's Saudi Arabia and Qatar entries to visa free for tourism only between 15 Apr and 31 Dec 2026, previously modeled as visa free year round. Caught by the new QC pipeline's first full cycle." },
+      { tag: "fix", text: "Fixed mobile timeline trips drifting out of alignment between travelers, and padded the bottom of the timeline so the last entries aren't hidden under the Add Trip button." },
+    ],
+  },
+  {
     range: "September 25 to October 8, 2026",
     changes: [
       { tag: "feature", text: "Added Armenia as a trackable destination, covering both its unilateral visa free list and its bilateral visa free agreements under a shared 180 day in 365 rolling window." },
