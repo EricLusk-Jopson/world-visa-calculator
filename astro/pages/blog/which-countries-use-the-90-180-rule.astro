@@ -95,22 +95,61 @@ import Footer from "../../components/Footer.astro";
       <p>
         When you move between two countries that each run their own
         counter, both windows keep moving the whole time. Only the
-        country you're standing in adds days to its count.
-        Bear in mind that the day you cross the border typically counts
-        towards your allowance for both regions's rules.
+        country you're standing in adds days to its count. Bear in mind
+        that if you cross directly from one into the other, that
+        crossing day counts as a full day for both regions' rules at
+        once, not as a fresh day for the second one.
       </p>
 
       <p>
-        Here's a simple example. You spend 90 days in the Schengen Area,
-        then 90 days in Türkiye.
+        Here's a worked example, and it's not as clean as it looks at
+        first. You spend 90 days in the Schengen Area, crossing directly
+        into Türkiye on your last Schengen day.
       </p>
 
-      NEED A NEW EXAMPLE: 90 DAYS IN TWO 90/180 RULE COUNTRIES IS ILLEGAL BECAUSE BORDER DAYS ARE SHARED. YOU'LL GO BACK TO REGION 1 TWO DAYS EARLY.
+      <ul>
+        <li>
+          Days 1 to 90: you're in the Schengen Area. Day 90 is both your
+          Schengen exit day and your Türkiye entry day, since you cross
+          straight from one into the other. Your Schengen counter is now
+          full at 90; your Türkiye counter sits at 1.
+        </li>
+        <li>
+          Days 90 to 179: you're in Türkiye. By day 179, your Türkiye
+          counter is also full at 90 (day 90 through day 179 is 90 days,
+          counting that shared crossing day once).
+        </li>
+        <li>
+          Day 179: you've used your full Türkiye allowance and want to
+          head back into the Schengen Area. You can't, not yet. Your
+          Schengen count is still 90 out of 90: your first Schengen day
+          (day 1) doesn't drop out of its 180-day window until day 181,
+          two days later. Crossing back on day 179 would put you one day
+          over.
+        </li>
+        <li>
+          Day 181: day 1 finally ages out of the Schengen window, freeing
+          up exactly one day of Schengen allowance. You can cross back
+          in, but only one day at a time at first, as each of your
+          original 90 Schengen days ages out in turn.
+        </li>
+      </ul>
 
       <p>
-        Nothing reset here. You used two separate allowances, one after
-        the other. That's a legitimate way to stay in Europe longer, but
-        it only works if you track both counters. (Our post on <a
+        That leaves day 180 in between, when you can't be in the
+        Schengen Area (still full) or back in Türkiye (also still full:
+        your Türkiye days don't start aging out until day 270). You'd
+        need a third place to be for that one day.
+      </p>
+
+      <p>
+        Nothing reset here, and the two allowances didn't line up neatly
+        either. Finishing your second country's 90 days doesn't mean the
+        first one is ready for you again; the rolling window only gives
+        allowance back one aged-out day at a time. Hopping between
+        exactly two 90/180 countries back to back is a legitimate way to
+        stay in Europe longer, but only if you plan for the gap, not
+        just the two allowances. (Our post on <a
           href="/blog/when-does-schengen-reset"
           >when your Schengen allowance "resets"</a
         > explains why a short trip outside the Schengen Area doesn't
