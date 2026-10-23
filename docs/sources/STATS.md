@@ -11,8 +11,8 @@ Reports counted: 5 (2026-10-14 to 2026-10-23).
 
 - Diffs flagged: 2: 1 rule change, 1 noise, 0 unclear, 0 untriaged
 - Precision: 50% (1/2)
-- Rule changes caught by a report: 3; missed on diffed links: 1; recall: 75% (3/4)
-- Rule-change log entries by trigger: manual 3, external 1, report 2
+- Rule changes caught by a report: 3; missed on diffed links: 3; recall: 50% (3/6)
+- Rule-change log entries by trigger: manual 5, external 1, report 2
 
 ## By link
 
@@ -42,7 +42,7 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 | NorthMacedonia | countryButtons | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Schengen | visaListCellar | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Schengen | atvCommonCellar | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
-| Schengen | atvSpecific | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
+| Schengen | atvSpecific | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 2 | 0 | 0% (0/2) |
 | Serbia | index | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Serbia | countryPages | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Turkiye | mfaVisaInfo | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |

@@ -63,7 +63,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -89,7 +89,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -111,7 +111,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -131,7 +131,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -7269,7 +7269,7 @@ export const CyprusSources = {
       type: "parent",
       checkDiff: false, // HTTP 403 to automated clients; nothing to diff
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
