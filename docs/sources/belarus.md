@@ -1,6 +1,6 @@
 ---
 region: Belarus
-lastReviewed: 2026-10-19
+lastReviewed: 2026-10-23
 links:
   - id: general
     url: https://mfa.gov.by/en/visa/general/
@@ -152,4 +152,23 @@ hash changes.
 
 ## Open questions
 
+- TODO(human): **the bilateral visa-free list isn't modelled.** The general-information page
+  https://mfa.gov.by/en/visa/freemove/general/ ("Visa-free travel (general information)", under
+  `freemove`, not the `general` menu link) lists nationalities that are visa-free under bilateral
+  agreements: Russia, Ukraine, Kazakhstan, Armenia, Azerbaijan, Georgia, China (30 days, at most 90
+  per calendar year), Türkiye, Serbia, the UAE, Israel, Brazil, Argentina, Cuba, Moldova and others,
+  most with their own durations. `belarus.ts` has none of them, so they fall through to visa
+  required. The page has two columns (Belarusians abroad, foreigners in Belarus), and copied text
+  interleaves them, so read it in the browser. Found 2026-10-23 during the by-hand check.
+- TODO(human): **the 90-days-per-calendar-year cap on the airport tier has no current source.** The
+  `europe` page states it for the European override: "The total duration of visa-free stays must
+  not exceed 90 days within a calendar year." Neither the `airport` page nor the general-information
+  page states it for the 76-country airport scheme. They give only "up to 30 days", and the
+  airport page adds "The term of visa-free stay can not be extended beyond the established 30 days".
+  `airportEntitlement()` applies the cap anyway (2026-10-23).
+- Visa rules (not visa-free entry) now come from new Visa Regulations, Council of Ministers decree
+  No. 464 of 14 September 2026, per https://mfa.gov.by/en/visa/oformlenie/. They don't change any
+  rule this app models; watch for knock-on changes to visa-free schemes.
+- The `general` menu also lists "Visa-free travel to Brest-Grodno" (up to 15 days in the Brest and
+  Augustów Canal tourist areas). It's regional, so it isn't modelled.
 - The European override ends on 31 December 2026. Check the `europe` page in December for an extension.
