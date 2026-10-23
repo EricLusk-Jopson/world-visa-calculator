@@ -9,10 +9,10 @@ Reports counted: 5 (2026-10-14 to 2026-10-23).
 
 ## Overall
 
-- Diffs flagged: 2: 0 rule change, 1 noise, 1 unclear, 0 untriaged
-- Precision: 0% (0/1)
-- Rule changes caught by a report: 1; missed on diffed links: 1; recall: 50% (1/2)
-- Rule-change log entries by trigger: manual 3, external 1, report 1
+- Diffs flagged: 2: 1 rule change, 1 noise, 0 unclear, 0 untriaged
+- Precision: 50% (1/2)
+- Rule changes caught by a report: 3; missed on diffed links: 1; recall: 75% (3/4)
+- Rule-change log entries by trigger: manual 3, external 1, report 2
 
 ## By link
 
@@ -31,7 +31,8 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 | Bosnia | vize | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Bosnia | subpages | high | 1 | 0 | 1 | 0 | 0 | 0% (0/1) | 0 | 0 | 0 | – |
 | Cyprus | euVisaListCellar | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
-| Georgia | visaListApi | high | 1 | 0 | 0 | 1 | 0 | – | 0 | 0 | 0 | – |
+| Georgia | visaList | none | 0 | 0 | 0 | 0 | 0 | – | 1 | 0 | 0 | 100% (1/1) |
+| Georgia | visaListApi | high | 1 | 1 | 0 | 0 | 0 | 100% (1/1) | 1 | 0 | 0 | 100% (1/1) |
 | Ireland | visaNationalityList | none | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 1 | – |
 | Ireland | statutoryInstrument | none | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 1 | – |
 | Ireland | amendmentSearchApi | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |

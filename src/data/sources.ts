@@ -7379,7 +7379,7 @@ export const GeorgiaSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-09-13",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 

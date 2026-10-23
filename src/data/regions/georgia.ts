@@ -27,14 +27,14 @@
  *
  * Unlike most region files in this codebase, visa-free status here is NOT a
  * single tier — the source gives a per-country maximum stay duration. Per
- * explicit instruction, "Full 1 (one) year" and "Full 2 (two) years" are
- * modeled as a flat per-visit day count (365 / 730 days respectively), not
- * as a calendar-anchored `unit: 'years'` PerVisitLimit — the source's own
- * wording is a fixed day-equivalent duration, not "the same calendar date
- * next year."
+ * explicit instruction, "Full 1 (one) year" is modeled as a flat per-visit
+ * day count (365 days), not as a calendar-anchored `unit: 'years'`
+ * PerVisitLimit — the source's own wording is a fixed day-equivalent
+ * duration, not "the same calendar date next year."
  *
- * Four duration tiers appear in the source, beyond the dominant one/two-year
- * figures:
+ * Three other duration tiers appear in the source, beyond the dominant
+ * one-year figure (Ukraine's former "Full 2 (two) years" became "Full 1
+ * (one) year" in October 2026 — rule-change log):
  *   - Chile and North Macedonia: "90 days in any 180 day period" — modeled
  *     as the standard rolling_window(90, 180), same shape used throughout
  *     this codebase for that exact language.
@@ -76,7 +76,7 @@
  * Georgia's own member state (GE) is encoded as free_movement — a Georgian
  * national needs no visa to enter Georgia.
  *
- * Last verified: 2026-09-13
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -95,7 +95,6 @@ const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 // ─── Region-level stay limits ─────────────────────────────────────────────────
 
 const FULL_YEAR: PerVisitLimit = { type: 'per_visit', value: 365, unit: 'days' };
-const FULL_TWO_YEARS: PerVisitLimit = { type: 'per_visit', value: 730, unit: 'days' };
 const ROLLING_90_180: RollingWindowLimit = { type: 'rolling_window', days: 90, windowDays: 180 };
 
 // ─── Rule helpers ───────────────────────────────────────────────────────────
@@ -106,17 +105,6 @@ function entitledFull1(): EntitledRule {
     access: 'entitled',
     entitlements: [{
       limits: [FULL_YEAR],
-      source: GeorgiaSources.visaList,
-    }],
-  };
-}
-
-/** "Full 2 (two) years" — Ukraine only. */
-function entitledFull2(): EntitledRule {
-  return {
-    access: 'entitled',
-    entitlements: [{
-      limits: [FULL_TWO_YEARS],
       source: GeorgiaSources.visaList,
     }],
   };
@@ -158,7 +146,7 @@ export const GEORGIA: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-09-13',
+  lastVerified: '2026-10-23',
   sourceUrl: GeorgiaSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
@@ -253,7 +241,7 @@ export const GEORGIA: RegionDefinition = {
     'TJ': entitledFull1(), // Tajikistan
     'TM': entitledFull1(), // Turkmenistan
     'TR': entitledFull1(), // Turkey
-    'UA': entitledFull2(), // Ukraine
+    'UA': entitledFull1(), // Ukraine
     'US': entitledFull1(), // United States of America
     'UY': entitledPerVisit(90), // Uruguay
     'UZ': entitledFull1(), // Uzbekistan
