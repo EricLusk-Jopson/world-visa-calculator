@@ -52,7 +52,7 @@
  *   SSVWP note not applied to Ukraine. Monitor for changes.
  *
  * TRANSIT VISAS
- *   Nationals of 28 countries require a valid Irish transit visa when passing
+ *   Nationals of 29 countries require a valid Irish transit visa when passing
  *   through Ireland in transit. A transit visa does not permit entry.
  *
  * NO ETA / ETIAS
@@ -73,7 +73,7 @@
  *   "Refugee or Stateless" in the INIS table has no ISO Alpha-2 code;
  *   it is omitted and falls through to defaultRule correctly.
  *
- * Last verified: 2026-10-08
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -115,6 +115,12 @@ const SSVWP_NOTE =
   'period of stay. The scheme is one-directional: an Irish visa does not ' +
   'grant access to the UK.';
 
+/** SSVWP footnote 2: these nationals now travel to the UK on an ETA, which doesn't count. */
+const SSVWP_ETA_NOTE =
+  'The UK Electronic Travel Authorisation (ETA) cannot be used to travel to ' +
+  'Ireland. Only an existing valid short-stay UK visa issued before the ETA ' +
+  'was introduced on 1 February 2024 qualifies for the SSVWP.';
+
 const TRANSIT_VISA_NOTE =
   'A valid Irish transit visa is required when passing through Ireland in ' +
   'transit to another country. A transit visa does not permit the holder to ' +
@@ -135,6 +141,14 @@ const VISA_REQUIRED_SSVWP: VisaRequiredRule = {
   access: 'visa_required',
   source: IrelandSources.visaNationalityList,
   notes: [{ text: SSVWP_NOTE, source: IrelandSources.ssvwp }],
+};
+
+const VISA_REQUIRED_SSVWP_PRE_ETA: VisaRequiredRule = {
+  ...VISA_REQUIRED_SSVWP,
+  notes: [
+    { text: SSVWP_NOTE, source: IrelandSources.ssvwp },
+    { text: SSVWP_ETA_NOTE, source: IrelandSources.ssvwp },
+  ],
 };
 
 const VISA_REQUIRED_TRANSIT: VisaRequiredRule = {
@@ -188,7 +202,7 @@ export const IRELAND: RegionDefinition = {
     }],
   },
 
-  lastVerified: '2026-10-08',
+  lastVerified: '2026-10-23',
   sourceUrl: IrelandSources.visaNationalityList.parent.url,
   defaultRule: VISA_REQUIRED,
 
@@ -322,20 +336,22 @@ export const IRELAND: RegionDefinition = {
     // ── Visa required — SSVWP (Short Stay Visa Waiver Programme) ──────────
     // Holders of a valid UK short-stay visa may enter Ireland without a
     // separate Irish visa. One-directional (does not grant UK access).
-    'BH': VISA_REQUIRED_SSVWP, // Bahrain
+    // Bahrain, Kuwait, Oman, Qatar, Saudi Arabia and Peru: the UK ETA doesn't
+    // count, only a UK visa issued before 1 February 2024 (SSVWP note 2).
+    'BH': VISA_REQUIRED_SSVWP_PRE_ETA, // Bahrain
     'BA': VISA_REQUIRED_SSVWP, // Bosnia and Herzegovina
     'CO': VISA_REQUIRED_SSVWP, // Colombia
     'ID': VISA_REQUIRED_SSVWP, // Indonesia
     'KZ': VISA_REQUIRED_SSVWP, // Kazakhstan
     'XK': VISA_REQUIRED_SSVWP, // Kosovo
-    'KW': VISA_REQUIRED_SSVWP, // Kuwait
+    'KW': VISA_REQUIRED_SSVWP_PRE_ETA, // Kuwait
     'ME': VISA_REQUIRED_SSVWP, // Montenegro
     'MK': VISA_REQUIRED_SSVWP, // North Macedonia
-    'OM': VISA_REQUIRED_SSVWP, // Oman
-    'PE': VISA_REQUIRED_SSVWP, // Peru
+    'OM': VISA_REQUIRED_SSVWP_PRE_ETA, // Oman
+    'PE': VISA_REQUIRED_SSVWP_PRE_ETA, // Peru
     'PH': VISA_REQUIRED_SSVWP, // Philippines
-    'QA': VISA_REQUIRED_SSVWP, // Qatar
-    'SA': VISA_REQUIRED_SSVWP, // Saudi Arabia
+    'QA': VISA_REQUIRED_SSVWP_PRE_ETA, // Qatar
+    'SA': VISA_REQUIRED_SSVWP_PRE_ETA, // Saudi Arabia
     'RS': VISA_REQUIRED_SSVWP, // Serbia
     'TH': VISA_REQUIRED_SSVWP, // Thailand
     'TR': VISA_REQUIRED_SSVWP, // Türkiye
@@ -377,6 +393,10 @@ export const IRELAND: RegionDefinition = {
     'NI': VISA_REQUIRED_TRANSIT, // Nicaragua
     'KN': VISA_REQUIRED_TRANSIT, // Saint Kitts and Nevis
     'LC': VISA_REQUIRED_TRANSIT, // Saint Lucia
+
+    // On the INIS transit-visa list (page updated 24 July 2026); missing from
+    // the original extraction, added 2026-10-23.
+    'ZW': VISA_REQUIRED_TRANSIT, // Zimbabwe
 
     // ── Visa required — no additional scheme ──────────────────────────────
     'DZ': VISA_REQUIRED, // Algeria
@@ -450,7 +470,6 @@ export const IRELAND: RegionDefinition = {
     'VE': VISA_REQUIRED, // Venezuela
     'YE': VISA_REQUIRED, // Yemen
     'ZM': VISA_REQUIRED, // Zambia
-    'ZW': VISA_REQUIRED, // Zimbabwe
     'TL': VISA_REQUIRED, // Timor-Leste
     'PW': VISA_REQUIRED, // Palau
 

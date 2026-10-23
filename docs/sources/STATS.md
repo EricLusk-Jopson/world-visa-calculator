@@ -12,7 +12,7 @@ Reports counted: 5 (2026-10-14 to 2026-10-23).
 - Diffs flagged: 2: 1 rule change, 1 noise, 0 unclear, 0 untriaged
 - Precision: 50% (1/2)
 - Rule changes caught by a report: 3; missed on diffed links: 3; recall: 50% (3/6)
-- Rule-change log entries by trigger: manual 5, external 1, report 2
+- Rule-change log entries by trigger: manual 7, external 1, report 2
 
 ## By link
 
@@ -34,6 +34,8 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 | Georgia | visaList | none | 0 | 0 | 0 | 0 | 0 | – | 1 | 0 | 0 | 100% (1/1) |
 | Georgia | visaListApi | high | 1 | 1 | 0 | 0 | 0 | 100% (1/1) | 1 | 0 | 0 | 100% (1/1) |
 | Ireland | visaNationalityList | none | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 1 | – |
+| Ireland | ssvwp | none | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 1 | – |
+| Ireland | transitVisa | none | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 1 | – |
 | Ireland | statutoryInstrument | none | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 1 | – |
 | Ireland | amendmentSearchApi | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Kosovo | visaExempt | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |

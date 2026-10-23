@@ -168,9 +168,10 @@ rows.length; // about 200 means every page came through
 It reads every row from Ninja Tables' FooTable instance. If that isn't
 available, it falls back to the visible page only. In that case set the
 table's rows-per-page to the maximum, or page through and paste each page.
-TODO(human): the FooTable path hasn't been tried on the live page yet;
-confirm it returns about 200 rows. Hand the clipboard to Claude for
-comparison with `ireland.ts`.
+Hand the clipboard to Claude for comparison with `ireland.ts`. On 2026-10-23
+a full paste came through (206 rows, including UK sub-categories, Hong Kong
+Document of Identity and refugee/stateless rows the app doesn't model) and
+matched `ireland.ts`.
 
 **Real change vs noise:** not diffed. The table changes after an amendment
 Order, which `amendmentSearchApi` flags first.
@@ -258,7 +259,7 @@ lists 22 countries by region: the 19 with the SSVWP note, India and China
 (covered by BIVS), and Ukraine (visa-free since 25 February 2022, note 3).
 Note 2 says that for Bahrain, Kuwait, Oman, Qatar, Saudi Arabia and Peru
 the UK ETA doesn't count; only a UK visa issued before 1 February 2024 does.
-The app doesn't say this yet (a rule change is drafted, waiting on the full-table check).
+That's modelled as a second note on those six (rule-change 11).
 
 **Real change vs noise:** not diffed.
 
@@ -272,7 +273,7 @@ The app doesn't say this yet (a rule change is drafted, waiting on the full-tabl
 
 **Human:** check the list of transit-visa nationalities against the notes in
 `ireland.ts`. On 2026-10-23 (page last updated 24 July 2026) it listed 29,
-including Zimbabwe, which the app lacks (a rule change is drafted, waiting on the full-table check). Ethiopia is
+including Zimbabwe, which the app lacked (rule-change 10). Ethiopia is
 starred: no transit visa is needed when travelling directly between Ethiopia
 and the US or Canada. That exception isn't modelled.
 

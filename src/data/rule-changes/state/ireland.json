@@ -216,6 +216,12 @@
             "$source": "Ireland.ssvwp"
           },
           "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        },
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "The UK Electronic Travel Authorisation (ETA) cannot be used to travel to Ireland. Only an existing valid short-stay UK visa issued before the ETA was introduced on 1 February 2024 qualifies for the SSVWP."
         }
       ],
       "source": {
@@ -972,6 +978,12 @@
             "$source": "Ireland.ssvwp"
           },
           "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        },
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "The UK Electronic Travel Authorisation (ETA) cannot be used to travel to Ireland. Only an existing valid short-stay UK visa issued before the ETA was introduced on 1 February 2024 qualifies for the SSVWP."
         }
       ],
       "source": {
@@ -1359,6 +1371,12 @@
             "$source": "Ireland.ssvwp"
           },
           "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        },
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "The UK Electronic Travel Authorisation (ETA) cannot be used to travel to Ireland. Only an existing valid short-stay UK visa issued before the ETA was introduced on 1 February 2024 qualifies for the SSVWP."
         }
       ],
       "source": {
@@ -1390,6 +1408,12 @@
             "$source": "Ireland.ssvwp"
           },
           "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        },
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "The UK Electronic Travel Authorisation (ETA) cannot be used to travel to Ireland. Only an existing valid short-stay UK visa issued before the ETA was introduced on 1 February 2024 qualifies for the SSVWP."
         }
       ],
       "source": {
@@ -1465,6 +1489,12 @@
             "$source": "Ireland.ssvwp"
           },
           "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        },
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "The UK Electronic Travel Authorisation (ETA) cannot be used to travel to Ireland. Only an existing valid short-stay UK visa issued before the ETA was introduced on 1 February 2024 qualifies for the SSVWP."
         }
       ],
       "source": {
@@ -1508,6 +1538,12 @@
             "$source": "Ireland.ssvwp"
           },
           "text": "Visa required. Exception: holders of a valid, unexpired short-stay UK visa may enter Ireland without a separate Irish visa under the Short Stay Visa Waiver Programme (SSVWP). The UK visa must remain valid for the intended period of stay. The scheme is one-directional: an Irish visa does not grant access to the UK."
+        },
+        {
+          "source": {
+            "$source": "Ireland.ssvwp"
+          },
+          "text": "The UK Electronic Travel Authorisation (ETA) cannot be used to travel to Ireland. Only an existing valid short-stay UK visa issued before the ETA was introduced on 1 February 2024 qualifies for the SSVWP."
         }
       ],
       "source": {
@@ -2011,6 +2047,14 @@
     },
     "ZW": {
       "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Ireland.transitVisa"
+          },
+          "text": "A valid Irish transit visa is required when passing through Ireland in transit to another country. A transit visa does not permit the holder to leave the port or airport or otherwise enter Ireland."
+        }
+      ],
       "source": {
         "$source": "Ireland.visaNationalityList"
       }
