@@ -659,7 +659,7 @@ function Dot({ color }: { color: string }) {
     <Box
       component="span"
       aria-hidden="true"
-      sx={{ display: "inline-block", width: 8, height: 8, borderRadius: "2px", bgcolor: color, flexShrink: 0, mt: "5px" }}
+      sx={{ display: "inline-block", width: 8, height: 8, borderRadius: "2px", bgcolor: color, flexShrink: 0 }}
     />
   );
 }
@@ -793,17 +793,14 @@ function TravelerCard({
                 return (
                   <tr key={trip.id}>
                     <Box component="th" scope="row" sx={{ ...CELL_SX, textAlign: "left", fontWeight: 400 }}>
-                      <Box sx={{ display: "flex", gap: "8px" }}>
+                      {/* The dot sits on the title's line, centred on it */}
+                      <Box component="span" sx={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: 650 }}>
                         <Dot color={regionColors.get(row.region) ?? tokens.textGhost} />
-                        <Box sx={{ minWidth: 0 }}>
-                          <Box component="span" sx={{ display: "block", fontWeight: 650 }}>
-                            {label || VISA_REGION_LABELS[trip.region]}
-                          </Box>
-                          <Box component="span" sx={{ display: "block", color: tokens.textSoft, fontSize: "0.7rem", mt: "1px" }}>
-                            {label && `${VISA_REGION_LABELS[trip.region]} · `}
-                            {fmtLong(trip.entryDate)} – {trip.exitDate ? fmtLong(trip.exitDate) : "ongoing"}
-                          </Box>
-                        </Box>
+                        {label || VISA_REGION_LABELS[trip.region]}
+                      </Box>
+                      <Box component="span" sx={{ display: "block", pl: "16px", color: tokens.textSoft, fontSize: "0.7rem", mt: "1px" }}>
+                        {label && `${VISA_REGION_LABELS[trip.region]} · `}
+                        {fmtLong(trip.entryDate)} – {trip.exitDate ? fmtLong(trip.exitDate) : "ongoing"}
                       </Box>
                     </Box>
                     <Box component="td" sx={CELL_SX}>
