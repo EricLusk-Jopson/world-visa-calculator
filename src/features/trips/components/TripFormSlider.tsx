@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Box from "@mui/material/Box";
 import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
 import { Button } from "@/components/ui/Button";
@@ -12,6 +12,7 @@ import { TripSummaryRow } from "./TripSummaryRow";
 import { MobileTripDetailFrame } from "./MobileTripDetailFrame";
 import { computeTravelerEligibility } from "@/pages/CalculatorPage/components/trips/tripEligibility";
 import { computeTravelerDurations } from "@/pages/CalculatorPage/components/trips/tripDuration";
+import { createOverstayPreview } from "@/pages/CalculatorPage/components/trips/overstayPreview";
 import {
   blockedTripRanges,
   hasBlockingOverlap,
@@ -93,6 +94,19 @@ export function TripFormSlider({
     initialTrip,
   );
 
+  // Which dates would overstay for any selected traveler — shades the calendar.
+  const overstay = useMemo(
+    () =>
+      createOverstayPreview({
+        region,
+        travelers,
+        travelerIds,
+        excludeTripId: initialTrip?.id,
+        excludeTrip: initialTrip,
+      }),
+    [region, travelers, travelerIds, initialTrip],
+  );
+
   const canSave =
     name.trim().length > 0 &&
     travelerIds.length > 0 &&
@@ -145,6 +159,7 @@ export function TripFormSlider({
         exitDate,
         destination: name,
         excludeTripId: initialTrip?.id,
+        excludeTrip: initialTrip,
       })
     : [];
   const durOk = durations.filter(
@@ -267,6 +282,7 @@ export function TripFormSlider({
           onEntryChange={setEntryDate}
           onExitChange={setExitDate}
           blockedRanges={blockedRanges}
+          overstay={overstay}
           onReset={() => {
             setEntryDate("");
             setExitDate("");
