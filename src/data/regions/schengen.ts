@@ -235,6 +235,7 @@ export const SCHENGEN: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-10-23',
+  lastChanged: '2026-10-23',
   sourceUrl: SchengenSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {

@@ -86,7 +86,7 @@
  *     citation is never restated as a note, since that would just duplicate
  *     the source link with no added information.
  *
- * Last verified: 2026-08-30
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -170,7 +170,8 @@ export const MONTENEGRO: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-08-30',
+  lastVerified: '2026-10-23',
+  lastChanged: '2026-10-15',
   sourceUrl: 'https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro',
   defaultRule: VISA_REQUIRED,
   passportRules: {

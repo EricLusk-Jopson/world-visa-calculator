@@ -7,7 +7,7 @@
  * entry (see README.md in this folder).
  *
  * Kept: everything a traveller's result depends on, notes included.
- * Dropped: `lastVerified` and `sourceUrl` (bookkeeping, not rules). Every
+ * Dropped: `lastVerified`, `lastChanged` and `sourceUrl` (bookkeeping, not rules). Every
  * SourceDoc is reduced to its key (e.g. "Montenegro.DZ"), so a link fix or a
  * dateChecked bump is not a rule change.
  */

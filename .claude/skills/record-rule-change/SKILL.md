@@ -44,7 +44,8 @@ npm run rules:new -- --title "<Region>: <what changed>" --trigger <type>:<ref> \
 - Fill in the new entry's `TODO(entry)` sections: what changed and why; the
   quote and where it is; how it was confirmed.
 - Bump `lastVerified` in the region file, and in its header's "Last
-  verified" line.
+  verified" line. Set `lastChanged` (next to it) to the entry's `recorded`
+  date; a test checks it against the log.
 - Bump `dateChecked` on every SourceDoc the changed rules cite:
   `npm run sources:verified -- <Region> <key …>`. You just checked them. The tests fail otherwise,
   because the app shows "Verified <date> · Rule changed <date>" side by side.

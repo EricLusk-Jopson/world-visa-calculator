@@ -44,7 +44,7 @@
  *
  * All source URLs are in UKSources (@/data/sources).
  *
- * Last verified: 2026-04-14
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -136,7 +136,7 @@ export const UNITED_KINGDOM: RegionDefinition = {
     }],
   },
 
-  lastVerified: '2026-04-14',
+  lastVerified: '2026-10-23',
   sourceUrl: UKSources.standardVisitor.direct.url,
   defaultRule: VISA_REQUIRED,
 
