@@ -1,15 +1,18 @@
 /**
- * Canonical tooltip strings for Schengen timeline markers.
+ * Canonical tooltip strings for rolling-window timeline markers.
  *
  * All marker tooltip text — on both the desktop column view and the mobile
  * single-column view — is defined here so phrasing, date format, and
- * explanation copy stay identical across platforms.
+ * explanation copy stay identical across platforms. Every line names the
+ * destination, since one timeline can carry markers for several.
  *
  * Date format: "MMM d" (e.g. "Jan 15"). The year is omitted because users
  * are planning their own trips and already know what year they fall in.
  */
 
 import { format } from "date-fns";
+import type { VisaRegion } from "@/types";
+import { regionMarkerName } from "./regionMarkerStyle";
 
 // ─── Internal ─────────────────────────────────────────────────────────────────
 
@@ -18,12 +21,19 @@ const DATE_FMT = "MMM d";
 // ─── Return markers ───────────────────────────────────────────────────────────
 
 /** Desktop pill: live max-stay snapshot rendered on the current date. */
-export const returnMarkerCurrentText = (days: number): string =>
-  `Currently, you can start a Schengen trip of up to ${days} days.`;
+export const returnMarkerCurrentText = (
+  region: VisaRegion,
+  days: number,
+): string =>
+  `Currently, you can start a ${regionMarkerName(region)} trip of up to ${days} days.`;
 
 /** Desktop pill: future threshold that first becomes reachable on `date`. */
-export const returnMarkerThresholdText = (date: Date, days: number): string =>
-  `From ${format(date, DATE_FMT)}, a ${days}d Schengen trip first becomes possible.`;
+export const returnMarkerThresholdText = (
+  region: VisaRegion,
+  date: Date,
+  days: number,
+): string =>
+  `From ${format(date, DATE_FMT)}, a ${days}d ${regionMarkerName(region)} trip first becomes possible.`;
 
 /**
  * Mobile list-row: one line per traveler inside a grouped return marker tooltip.
@@ -39,14 +49,15 @@ export const returnMarkerRowText = (
 
 /**
  * First line of any aging marker tooltip — concise trip summary.
- * Format: "Iceland (8d) ages out Mar 18"
+ * Format: "Iceland (8d) ages out of your Schengen window Mar 18"
  */
 export const agingMarkerTripLine = (
+  region: VisaRegion,
   destination: string,
   tripDays: number,
   agingDate: Date,
 ): string =>
-  `${destination} (${tripDays}d) ages out ${format(agingDate, DATE_FMT)}`;
+  `${destination} (${tripDays}d) ages out of your ${regionMarkerName(region)} window ${format(agingDate, DATE_FMT)}`;
 
 /**
  * Second line of any aging marker tooltip — behaviour explanation.
