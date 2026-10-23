@@ -311,7 +311,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -329,7 +329,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -350,7 +350,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -371,7 +371,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -392,7 +392,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
