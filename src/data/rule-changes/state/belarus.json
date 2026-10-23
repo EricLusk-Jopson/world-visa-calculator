@@ -113,6 +113,31 @@
         }
       ]
     },
+    "AM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "AT": {
       "access": "entitled",
       "entitlements": [
@@ -205,6 +230,31 @@
           ],
           "source": {
             "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "AZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -887,6 +937,31 @@
         }
       ]
     },
+    "EC": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "EE": {
       "access": "entitled",
       "entitlements": [
@@ -1253,6 +1328,31 @@
           ],
           "source": {
             "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "GE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -1779,6 +1879,31 @@
         }
       ]
     },
+    "KG": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "KR": {
       "access": "entitled",
       "entitlements": [
@@ -1837,6 +1962,31 @@
           ],
           "source": {
             "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "KZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -2176,6 +2326,31 @@
           ],
           "source": {
             "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "MD": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -2880,6 +3055,31 @@
         }
       ]
     },
+    "RU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "SA": {
       "access": "entitled",
       "entitlements": [
@@ -3264,6 +3464,56 @@
         }
       ]
     },
+    "TJ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
+    "UA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "UY": {
       "access": "entitled",
       "entitlements": [
@@ -3291,6 +3541,31 @@
           ],
           "source": {
             "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "UZ": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
           }
         }
       ]

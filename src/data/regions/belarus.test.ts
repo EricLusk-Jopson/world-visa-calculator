@@ -235,3 +235,23 @@ describe('Belarus — note wording never restates the source citation', () => {
     }
   });
 });
+
+describe('Belarus — bilateral visa-free, no stated stay (90/180 assumed)', () => {
+  const codes = ['AM', 'AZ', 'EC', 'GE', 'KG', 'KZ', 'MD', 'RU', 'TJ', 'UA', 'UZ'];
+
+  it.each(codes)('%s is visa-free with a 90/180 rolling window, cited to the general visa-free page', (code) => {
+    const rule = getBelarusRule(code);
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    expect(rule.entitlements).toHaveLength(1);
+    const [entitlement] = rule.entitlements;
+    expect(entitlement.limits).toEqual([{ type: 'rolling_window', days: 90, windowDays: 180 }]);
+    expect(entitlement.source).toEqual(BelarusSources.bilateral);
+  });
+
+  it.each(codes)('%s says the MFA states no maximum stay', (code) => {
+    const rule = getBelarusRule(code);
+    if (!isEntitled(rule)) throw new Error('expected entitled');
+    expect(rule.entitlements[0].notes?.some((n) => n.text.includes('states no maximum stay'))).toBe(true);
+  });
+});

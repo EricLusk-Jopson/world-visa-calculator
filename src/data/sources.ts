@@ -7324,8 +7324,7 @@ export const BelarusSources = {
 
   /**
    * Airport-only visa-free list — the stable, always-applicable fallback
-   * (30 days per visit, six named airports only, max 90 days per calendar
-   * year). Some entries there require another jurisdiction's visa to
+   * (30 days per visit, six named airports only, no yearly cap). Some entries there require another jurisdiction's visa to
    * actually use the exemption; those are modeled as visa_required instead
    * (see belarus.ts header for the product decision). The 76-country list
    * itself is a PDF linked from the page, diffed as the alternate.
@@ -7340,6 +7339,23 @@ export const BelarusSources = {
         type: "machine",
         checkDiff: true,
       },
+    },
+    parent: belarusFreeMove,
+    dateChecked: "2026-10-23",
+  } satisfies SourceDoc,
+
+  /**
+   * "Visa-free travel (general information)": a two-column table, Belarusian
+   * citizens travelling abroad (left, not modelled) and foreign nationals
+   * entering Belarus (right). The right column lists the nationalities that
+   * are visa-free under bilateral agreements, with a stay for most of them.
+   * Diffed; a change in the left column is noise for this app.
+   */
+  bilateral: {
+    direct: {
+      url: "https://mfa.gov.by/en/visa/freemove/general/",
+      type: "direct",
+      checkDiff: true,
     },
     parent: belarusFreeMove,
     dateChecked: "2026-10-23",

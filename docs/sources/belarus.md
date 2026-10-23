@@ -38,6 +38,15 @@ links:
     machineCheck: diff
     diffConfidence: medium
     humanCheck: on-diff
+  - id: bilateral
+    url: https://mfa.gov.by/en/visa/freemove/general/
+    loadBearing: true
+    category: html-page
+    revisions: in-place
+    access: open
+    machineCheck: diff
+    diffConfidence: medium
+    humanCheck: on-diff
   - id: airportPdf
     url: https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf
     loadBearing: true
@@ -51,9 +60,9 @@ links:
 
 # Belarus
 
-**Rules:** `src/data/regions/belarus.ts` · **Sources:** `BelarusSources` (`general`, `europe`, `airport`)
+**Rules:** `src/data/regions/belarus.ts` · **Sources:** `BelarusSources` (`general`, `europe`, `airport`, `bilateral`)
 
-Belarus's rules come in three tiers (see the header of `belarus.ts`):
+Belarus's rules come in four tiers (see the header of `belarus.ts`):
 
 1. **European any-border override:** 38 countries, 30 days per visit (90 for
    Poland, Latvia and Lithuania). Valid until 31 December 2026, modelled as a
@@ -63,10 +72,19 @@ Belarus's rules come in three tiers (see the header of `belarus.ts`):
    total belongs to the European override only; rule-change 12).
 3. **Conditional entries:** 12 nationalities need an EU/Schengen visa, so
    they are modelled as visa-required with a note.
+4. **Bilateral visa-free, no stated stay:** 11 nationalities (Armenia,
+   Azerbaijan, Ecuador, Georgia, Kazakhstan, Kyrgyzstan, Moldova, Russia,
+   Tajikistan, Ukraine, Uzbekistan) that `bilateral` lists without a
+   duration. They're visa-free with an assumed 90 days in any 180 and a note
+   saying the MFA states no maximum stay (rule-change 13).
 
 ## Provenance
 
-Transcribed by hand from the three MFA pages and the airport PDF, 2026-09-12.
+Tiers 1–3 were transcribed by hand from the `general`, `europe` and
+`airport` pages and the airport PDF on 2026-09-12. Tier 4 was added on
+2026-10-23 from the `bilateral` page, which the maintainer pasted. The paste
+interleaved the page's two columns row by row; both columns are
+alphabetical, which is how they were separated (see `bilateral`).
 
 ## general
 
@@ -136,6 +154,50 @@ ever appears here, that's a rule change.
 
 **Human work:** confirm and update `belarus.ts`.
 
+## bilateral
+
+**Establishes:** tier 4, the nationalities visa-free under bilateral
+agreements, with each one's stay where the page gives it.
+
+**Machine:** diffed, with the same sidebar cut as `europe` (first baseline
+in the next report after 2026-10-23).
+
+**Human:** open https://mfa.gov.by/en/visa/freemove/general/ in a browser.
+The table has two columns. The **left** one, "Belarusian citizens with
+ordinary passports to", is about Belarusians travelling abroad; ignore it.
+The **right** one, "Foreign nationals with ordinary passports to the
+Republic of Belarus", is what the app models. Read it in the browser, or
+copy that column alone. Copying the whole page interleaves the two columns
+row by row, as on 2026-10-23.
+
+On 2026-10-23 the right column held 34 entries, then the three cross-scheme
+rows (Brest-Grodno, airports, European countries):
+
+| Stay on the page | Nationalities | In the app |
+|---|---|---|
+| none given | Armenia, Azerbaijan, Ecuador, Georgia, Kazakhstan, Kyrgyzstan, Moldova, Russia, Tajikistan, Ukraine, Uzbekistan | tier 4, 90/180 assumed |
+| 30 days per entry, 90 per calendar year | Albania | not yet |
+| 90 days from first entry within the calendar year | Argentina | not yet |
+| 90 days | Brazil, Colombia, Mongolia, Nicaragua, Venezuela | not yet (Nicaragua is airport-only, 30 days) |
+| 90 days in each 180 | Israel | not yet |
+| 90 days from the date of entry | United Arab Emirates | not yet |
+| 30 days, at most 90 per calendar year | China, Macao | not yet |
+| 30 days per stay | Hong Kong | not yet |
+| 30 days | Cuba, Laos, Montenegro, Myanmar, Oman, Qatar, Saint Kitts and Nevis, Serbia, Türkiye, Vietnam | not yet (Oman is airport-only, 30 days) |
+| invitation required | North Macedonia | European override until 2026-12-31 |
+
+**Real change vs noise:**
+
+- **Rule change:** a nationality added to or removed from the right column,
+  or its stay changed.
+- **Noise:** anything in the left column (Belarusians abroad) and its
+  `***` "for reference only" footnote.
+- **Read it:** the diff is page text, so the two columns may appear
+  interleaved in it, just like a copy-paste. Check which column a changed
+  line belongs to on the live page before calling it a rule change.
+
+**Human work:** confirm and update `belarus.ts` on a diff.
+
 ## airportPdf
 
 **Establishes:** the visa-free country list itself, which lives in this PDF.
@@ -155,14 +217,13 @@ hash changes.
 
 ## Open questions
 
-- TODO(human): **the bilateral visa-free list isn't modelled.** The general-information page
-  https://mfa.gov.by/en/visa/freemove/general/ ("Visa-free travel (general information)", under
-  `freemove`, not the `general` menu link) lists nationalities that are visa-free under bilateral
-  agreements: Russia, Ukraine, Kazakhstan, Armenia, Azerbaijan, Georgia, China (30 days, at most 90
-  per calendar year), Türkiye, Serbia, the UAE, Israel, Brazil, Argentina, Cuba, Moldova and others,
-  most with their own durations. `belarus.ts` has none of them, so they fall through to visa
-  required. The page has two columns (Belarusians abroad, foreigners in Belarus), and copied text
-  interleaves them, so read it in the browser. Found 2026-10-23 during the by-hand check.
+- TODO(human): **22 bilateral nationalities with a stated stay aren't modelled yet** (every
+  `bilateral` row marked "not yet" above). They fall through to visa required, apart from
+  Nicaragua and Oman (airport-only, 30 days). Before adding them, confirm the table above against
+  the live right-hand column; it was reconstructed from an interleaved copy.
+- TODO(human): tier 4's 90-in-180 is an assumption. The real limits are in each bilateral
+  agreement (Russia's Union State regime is broader). Replace it per country if an official
+  figure turns up, e.g. on the State Border Committee site.
 - Visa rules (not visa-free entry) now come from new Visa Regulations, Council of Ministers decree
   No. 464 of 14 September 2026, per https://mfa.gov.by/en/visa/oformlenie/. They don't change any
   rule this app models; watch for knock-on changes to visa-free schemes.

@@ -7,8 +7,9 @@
  *   - General (visa-required list):        BelarusSources.general
  *   - Any-border override, 38 European countries: BelarusSources.europe
  *   - Airport-only fallback (visa-free list):     BelarusSources.airport
+ *   - Bilateral visa-free (general information):  BelarusSources.bilateral
  *
- * ── Three-tier structure ──────────────────────────────────────────────────────
+ * ── Four-tier structure ───────────────────────────────────────────────────────
  *
  * 1. European any-border override (38 countries, `europeOverride()`): visa-free
  *    through ANY border crossing point (not just airports), usable multiple
@@ -50,6 +51,19 @@
  *    visa-free — these are modeled as `visa_required` with a note explaining
  *    why, rather than `entitled`.
  *
+ * 4. Bilateral visa-free, no stated stay (`bilateralNoStatedLimit()`): 11
+ *    nationalities the MFA's general visa-free page
+ *    (BelarusSources.bilateral, right-hand column) lists as visa-free for
+ *    foreign nationals entering Belarus, with no duration given: Armenia,
+ *    Azerbaijan, Ecuador, Georgia, Kazakhstan, Kyrgyzstan, Moldova, Russia,
+ *    Tajikistan, Ukraine, Uzbekistan. The limit lives in each bilateral
+ *    agreement, not on the page. As in kosovo.ts and bosnia.ts, the
+ *    standard 90-days-in-any-180 rolling window is applied as an
+ *    assumption, and every entry carries a note saying so. (Russia's real
+ *    regime under the Union State is broader; the assumption is
+ *    conservative.) The page's other bilateral entries, which do state a
+ *    stay, aren't modelled yet; see the playbook.
+ *
  * Everything not explicitly listed defaults to `visa_required` — matching
  * every other region file's convention — cited to BelarusSources.general.
  *
@@ -74,6 +88,7 @@ import type {
   RuleNote,
   PerVisitLimit,
   CalendarPeriodLimit,
+  RollingWindowLimit,
 } from '@/types';
 import { BelarusSources } from '@/data/sources';
 
@@ -83,6 +98,7 @@ const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 const BY_PER_VISIT_30: PerVisitLimit = { type: 'per_visit', value: 30, unit: 'days' };
 const BY_CALENDAR_90: CalendarPeriodLimit = { type: 'calendar_period', days: 90, periodDays: 365 };
+const BY_ROLLING_90_180: RollingWindowLimit = { type: 'rolling_window', days: 90, windowDays: 180 };
 
 // ─── Shared notes ─────────────────────────────────────────────────────────────
 
@@ -174,6 +190,24 @@ function visaRequiredConditional(): VisaRequiredRule {
     notes: [{
       text: 'The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction\'s visa, this is treated as visa-required rather than visa-free.',
       source: BelarusSources.airport,
+    }],
+  };
+}
+
+/**
+ * Visa-free under a bilateral agreement, with no stay stated by the MFA.
+ * The 90/180 rolling window is an assumption (see file header, tier 4).
+ */
+function bilateralNoStatedLimit(): EntitledRule {
+  return {
+    access: 'entitled',
+    entitlements: [{
+      limits: [BY_ROLLING_90_180],
+      source: BelarusSources.bilateral,
+      notes: [{
+        text: 'Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay.',
+        source: BelarusSources.bilateral,
+      }],
     }],
   };
 }
@@ -271,6 +305,20 @@ export const BELARUS: RegionDefinition = {
     'UY': airportOnly(), // Uruguay
     'VC': airportOnly(), // Saint Vincent and the Grenadines
     'VU': airportOnly(), // Vanuatu
+
+    // ── Bilateral visa-free, no stated stay (90/180 assumed) ─────────────────
+    // Source: BelarusSources.bilateral, right-hand column. See header, tier 4.
+    'AM': bilateralNoStatedLimit(), // Armenia
+    'AZ': bilateralNoStatedLimit(), // Azerbaijan
+    'EC': bilateralNoStatedLimit(), // Ecuador
+    'GE': bilateralNoStatedLimit(), // Georgia
+    'KG': bilateralNoStatedLimit(), // Kyrgyzstan
+    'KZ': bilateralNoStatedLimit(), // Kazakhstan
+    'MD': bilateralNoStatedLimit(), // Moldova
+    'RU': bilateralNoStatedLimit(), // Russia
+    'TJ': bilateralNoStatedLimit(), // Tajikistan
+    'UA': bilateralNoStatedLimit(), // Ukraine
+    'UZ': bilateralNoStatedLimit(), // Uzbekistan
 
     // ── Reclassified visa_required — source lists these as visa-free, but only ───
     // when the traveler already holds another jurisdiction's visa (see file header) ─

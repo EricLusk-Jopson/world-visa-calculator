@@ -14,6 +14,7 @@ Field meanings are in [README.md](README.md).
 | Belarus | [`general`](belarus.md#general) | index | in-place | open | link-only | none | periodic |
 | Belarus | [`europe`](belarus.md#europe) | html-page | in-place | open | diff | high | on diff |
 | Belarus | [`airport`](belarus.md#airport) | html-page | in-place | open | diff | medium | on diff |
+| Belarus | [`bilateral`](belarus.md#bilateral) | html-page | in-place | open | diff | medium | on diff |
 | Belarus | [`airportPdf`](belarus.md#airportpdf) | document | replaced-file | open | diff | low | periodic |
 | Bosnia | [`vize`](bosnia.md#vize) | interactive | regenerated | open | diff | low | on diff |
 | Bosnia | [`subpages`](bosnia.md#subpages) | machine-copy | regenerated | open | resolver | high | on diff |
@@ -60,4 +61,4 @@ Links to look at by hand, whether or not the report flags them.
 
 ## Totals
 
-14 regions · 60 documented links · 40 load-bearing · 29 diffed · 19 need a person regardless
+14 regions · 61 documented links · 41 load-bearing · 30 diffed · 19 need a person regardless
