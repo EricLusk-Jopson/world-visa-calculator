@@ -28,6 +28,7 @@ import {
 } from "@/data/sourceStatus";
 import { reportSourceIssue, trackEvent } from "@/utils/analytics";
 import { BottomDrawer } from "./BottomDrawer";
+import { sourceTripProperties, useSourceTrip } from "./sourceTrip";
 
 /** Type sizes for the two presentations: a compact desktop popover, a touch-sized bottom sheet. */
 const SIZES = {
@@ -42,15 +43,25 @@ type Size = keyof typeof SIZES;
  * problem the link check found, and a form to report a problem with it. A
  * popover on desktop, a bottom sheet on phones.
  */
-export function SourceButton({ source, variant = "icon" }: { source: SourceDoc; variant?: "icon" | "text" }) {
+export function SourceButton({
+  source,
+  variant = "icon",
+  label = "Source",
+}: {
+  source: SourceDoc;
+  variant?: "icon" | "text";
+  /** The text variant's wording. */
+  label?: string;
+}) {
   const theme = useTheme();
   const phone = useMediaQuery(theme.breakpoints.down("sm"));
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   // The report form grows the popover after it opens; re-fit it to the screen.
   const actions = useRef<PopoverActions>(null);
+  const trip = useSourceTrip();
   const open = (el: HTMLElement) => {
     setAnchor(el);
-    trackEvent("source_details_opened", { region: findSourceRef(source)?.region });
+    trackEvent("source_details_opened", { region: findSourceRef(source)?.region, ...sourceTripProperties(trip) });
   };
   const close = () => setAnchor(null);
 
@@ -82,7 +93,7 @@ export function SourceButton({ source, variant = "icon" }: { source: SourceDoc; 
             "&:hover": { textDecoration: "underline" },
           }}
         >
-          Source
+          {label}
         </Box>
       )}
       {phone ? (
@@ -99,6 +110,8 @@ export function SourceButton({ source, variant = "icon" }: { source: SourceDoc; 
           open={Boolean(anchor)}
           anchorEl={anchor}
           onClose={close}
+          // Above tooltips, since a status icon's tooltip can open source details.
+          sx={{ zIndex: (t) => t.zIndex.tooltip + 1 }}
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           transformOrigin={{ vertical: "top", horizontal: "right" }}
           slotProps={{
@@ -140,8 +153,16 @@ function SourceDetails({ source, size, onResize }: { source: SourceDoc; size: Si
 
   useEffect(() => onResize?.(), [reporting, problem, onResize]);
 
+  const trip = useSourceTrip();
   const change = describeRuleChange(sourceKey);
-  const click = (linkType: string) => trackEvent("source_link_clicked", { link_type: linkType, region: ref?.region });
+  const click = (linkType: string, url: string) =>
+    trackEvent("source_link_clicked", {
+      link_type: linkType,
+      url,
+      region: ref?.region,
+      source_key: ref?.key,
+      ...sourceTripProperties(trip),
+    });
   const lineSx = { fontFamily: tokens.fontBody, fontSize: sz.line, lineHeight: 1.45, color: tokens.textSoft } as const;
   const links = [
     { label: "Official source", href: source.direct.url, type: "direct" },
@@ -158,7 +179,7 @@ function SourceDetails({ source, size, onResize }: { source: SourceDoc; size: Si
             href={l.href}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => click(l.type)}
+            onClick={() => click(l.type, l.href)}
             sx={{
               fontFamily: tokens.fontBody,
               fontSize: sz.link,
