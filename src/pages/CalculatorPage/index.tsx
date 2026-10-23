@@ -16,6 +16,9 @@ import {
   ClearAllModal,
 } from "./components";
 import { ShareModal } from "./components/ShareModal";
+import { RollingWindowModal } from "./components/RollingWindowModal";
+import { listExplorerDestinations } from "@/features/calculator/utils/rollingWindowExplorer";
+import { todayISO } from "@/features/calculator/utils/dates";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { MobileTimelineView } from "./components/mobile/MobileTimelineView/MobileTimelineView";
 import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
@@ -63,6 +66,7 @@ export function CalculatorPage() {
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [rollingWindowOpen, setRollingWindowOpen] = useState(false);
   const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
   const [clearAllConfirmOpen, setClearAllConfirmOpen] = useState(false);
 
@@ -330,6 +334,16 @@ export function CalculatorPage() {
     [],
   );
 
+  const hasRollingWindowTrips = useMemo(
+    () => listExplorerDestinations(travelers, todayISO()).some((d) => d.supported),
+    [travelers],
+  );
+
+  const handleOpenRollingWindow = useCallback(() => {
+    trackEvent("rolling_window_opened", { traveler_count: travelers.length });
+    setRollingWindowOpen(true);
+  }, [travelers.length]);
+
   // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
@@ -353,6 +367,8 @@ export function CalculatorPage() {
         onShare={() => setShareModalOpen(true)}
         onClearAll={() => setClearAllConfirmOpen(true)}
         onOpenUtility={() => setUtilityDrawerOpen(true)}
+        onOpenRollingWindow={handleOpenRollingWindow}
+        rollingWindowDisabled={!hasRollingWindowTrips}
       />
 
       <Box sx={{ flex: 1, position: "relative", overflow: "hidden" }}>
@@ -508,6 +524,15 @@ export function CalculatorPage() {
         onClose={() => setShareModalOpen(false)}
         travelerCount={travelers.length}
       />
+
+      {/* Rolling window explorer — desktop only (wide horizontal timeline) */}
+      {!isMobile && (
+        <RollingWindowModal
+          open={rollingWindowOpen}
+          onClose={() => setRollingWindowOpen(false)}
+          travelers={travelers}
+        />
+      )}
 
       {/* Mobile share frame — full-screen, opened from the utility drawer */}
       <ShareFrame
