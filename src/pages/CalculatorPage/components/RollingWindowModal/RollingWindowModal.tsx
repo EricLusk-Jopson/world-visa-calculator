@@ -267,17 +267,20 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
   const windowEnd = clampDate(chosenWindowEnd ?? today, bounds);
   const totalDays = differenceInCalendarDays(parseDate(bounds.end), parseDate(bounds.start));
 
+  // Only rolling-window destinations are offered; trips elsewhere stay on
+  // the timeline as ghosts.
   const destinations = useMemo(
-    () => listExplorerDestinations(visibleTravelers, today, bounds),
+    () => listExplorerDestinations(visibleTravelers, today, bounds).filter((d) => d.supported),
     [visibleTravelers, today, bounds],
   );
-  const supported = destinations.filter((d) => d.supported).map((d) => d.region);
+  const supported = destinations.map((d) => d.region);
   const outsideCount = countTripsOutside(visibleTravelers, bounds);
 
   const active: ActiveDestination[] = chosen
     ? chosen.filter((c) => supported.includes(c.region))
     : supported.slice(0, 1).map((region) => ({ region, color: JURISDICTION_PALETTE[0] }));
   const regionColors = new Map(active.map((a) => [a.region, a.color]));
+  const rollingRegions = new Set(supported);
 
   const timelines = buildTravelerTimelines(
     visibleTravelers,
@@ -432,7 +435,7 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
           <Box role="group" aria-label="Destinations">
             <Typography sx={SIDEBAR_HEADING_SX}>Destinations</Typography>
             {destinations.length === 0 && (
-              <Typography sx={{ ...NOTE_SX, mt: 0 }}>No trips in this date range</Typography>
+              <Typography sx={{ ...NOTE_SX, mt: 0 }}>No rolling-window trips in this date range</Typography>
             )}
             {destinations.map((d) => {
               const isActive = regionColors.has(d.region);
@@ -441,17 +444,11 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
                 <ToggleRow
                   key={d.region}
                   checked={isActive}
-                  disabled={!d.supported || full}
+                  disabled={full}
                   onToggle={() => toggleRegion(d.region)}
                   color={regionColors.get(d.region) ?? tokens.navy}
                   label={VISA_REGION_LABELS[d.region]}
-                  detail={
-                    !d.supported
-                      ? "Not a rolling window"
-                      : full
-                        ? `Up to ${MAX_ACTIVE} at a time`
-                        : plural(d.tripCount, "trip", "trips")
-                  }
+                  detail={full ? `Up to ${MAX_ACTIVE} at a time` : plural(d.tripCount, "trip", "trips")}
                 />
               );
             })}
@@ -517,7 +514,8 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
                     {active.map((a) => (
                       <LegendSwatch key={a.region} fill={a.color} label={VISA_REGION_LABELS[a.region]} />
                     ))}
-                    <LegendSwatch fill="rgba(160,170,187,0.35)" border="rgba(160,170,187,0.55)" label="Other trips" />
+                    <LegendSwatch fill="rgba(160,170,187,0.35)" border="rgba(160,170,187,0.55)" label="Not selected" />
+                    <LegendSwatch fill="rgba(160,170,187,0.1)" border="rgba(160,170,187,0.3)" label="No rolling window" />
                     <LegendSwatch fill={alpha(tokens.navy, 0.75)} label="Solid: counted in window" />
                     <LegendSwatch fill={alpha(tokens.navy, 0.08)} border={alpha(tokens.navy, 0.35)} label="Window" />
                     <LegendSwatch fill="rgba(153,27,27,0.12)" border="rgba(153,27,27,0.45)" label="Over the limit" />
@@ -532,6 +530,7 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
                 <RollingWindowChart
                   timelines={timelines}
                   regionColors={regionColors}
+                  rollingRegions={rollingRegions}
                   bounds={bounds}
                   windowEnd={windowEnd}
                   today={today}

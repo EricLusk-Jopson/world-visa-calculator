@@ -20,9 +20,10 @@ import {
 /**
  * The explorer's timeline: the blog's rolling-window canvas
  * (astro/pages/blog/the-schengen-90-180-rolling-window.astro) redrawn as SVG,
- * with one row per traveler. Every trip is on the row: greyed out, or in its
- * destination's colour when that destination is active, solid for the days
- * that count in the window. Each active destination's window is laid over
+ * with one row per traveler. Every trip is on the row: in its destination's
+ * colour when that destination is active (solid for the days that count in
+ * the window), greyed out when it could be, and a faint ghost when its
+ * destination has no rolling window and so never can be. Each active destination's window is laid over
  * the row; windows of different lengths nest (all end on the same date), so
  * the shorter one reads darker. A window turns red when the traveler is over
  * the limit of a destination using it. Dragging anywhere on the plot moves
@@ -33,6 +34,8 @@ interface RollingWindowChartProps {
   timelines: TravelerTimeline[];
   /** Colour per active destination. */
   regionColors: ReadonlyMap<VisaRegion, string>;
+  /** Destinations with a rolling window; trips elsewhere are drawn as ghosts. */
+  rollingRegions: ReadonlySet<VisaRegion>;
   bounds: DateBounds;
   windowEnd: string;
   today: string;
@@ -48,6 +51,8 @@ const RED_BG = "rgba(153,27,27,0.08)";
 const RED_BORDER = "rgba(153,27,27,0.4)";
 const INACTIVE_BAR = "rgba(160,170,187,0.35)";
 const INACTIVE_BORDER = "rgba(160,170,187,0.55)";
+const GHOST_BAR = "rgba(160,170,187,0.1)";
+const GHOST_BORDER = "rgba(160,170,187,0.3)";
 const GRID = "rgba(0,0,0,0.07)";
 const AXIS_TEXT = "rgba(0,0,0,0.45)";
 
@@ -80,6 +85,7 @@ const earlier = (a: string, b: string) => (a < b ? a : b);
 export function RollingWindowChart({
   timelines,
   regionColors,
+  rollingRegions,
   bounds,
   windowEnd,
   today,
@@ -156,6 +162,9 @@ export function RollingWindowChart({
 
   const xToday = xOf(today);
   const todayVisible = today >= bounds.start && today <= bounds.end;
+
+  const layer = (region: VisaRegion) =>
+    regionColors.has(region) ? 2 : rollingRegions.has(region) ? 1 : 0;
 
   // ── Dragging ────────────────────────────────────────────────────────────────
   function dateAt(clientX: number, svg: SVGSVGElement): string {
@@ -264,9 +273,9 @@ export function RollingWindowChart({
                   );
                 })}
 
-              {/* Trips: inactive ones first, so active trips draw on top */}
+              {/* Trips: ghosts, then inactive, then active, so active trips draw on top */}
               {[...timeline.trips]
-                .sort((a, b) => Number(regionColors.has(a.region)) - Number(regionColors.has(b.region)))
+                .sort((a, b) => layer(a.region) - layer(b.region))
                 .map((trip) => {
                   const color = regionColors.get(trip.region);
                   const row = byRegion.get(trip.region);
@@ -277,6 +286,7 @@ export function RollingWindowChart({
                       trip={trip}
                       y={y}
                       color={color}
+                      ghost={!rollingRegions.has(trip.region)}
                       windowStart={band?.windowStart}
                       windowEnd={windowEnd}
                       xOf={xOf}
@@ -317,6 +327,7 @@ function TripBar({
   trip,
   y,
   color,
+  ghost,
   windowStart,
   windowEnd,
   xOf,
@@ -328,6 +339,8 @@ function TripBar({
   y: number;
   /** The destination's colour; undefined when it isn't active (greyed out). */
   color?: string;
+  /** True for a destination without a rolling window: drawn fainter still. */
+  ghost: boolean;
   /** Start of the window that applies to this trip, if any. */
   windowStart?: string;
   windowEnd: string;
@@ -373,8 +386,8 @@ function TripBar({
         width={cw}
         height={ROW_H}
         rx={4}
-        fill={color ? alpha(color, 0.18) : INACTIVE_BAR}
-        stroke={color ? alpha(color, 0.6) : INACTIVE_BORDER}
+        fill={color ? alpha(color, 0.18) : ghost ? GHOST_BAR : INACTIVE_BAR}
+        stroke={color ? alpha(color, 0.6) : ghost ? GHOST_BORDER : INACTIVE_BORDER}
         strokeWidth={1}
         strokeDasharray={trip.exitDate ? undefined : "4 2"}
       />
