@@ -5,9 +5,6 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { alpha } from "@mui/material/styles";
 import { format } from "date-fns";
 import { tokens } from "@/styles/theme";
@@ -18,7 +15,12 @@ import {
   todayISO,
 } from "@/features/calculator/utils/dates";
 import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
-import { DurationIcon } from "@/components/ui/DurationIcon";
+import { StatusTip } from "@/components/ui/StatusTip";
+import {
+  legendEntry,
+  type StatusKind,
+  type StatusState,
+} from "@/components/ui/statusLegend";
 import { TripDetailStack } from "@/features/trips/components/TripDetailStack";
 import { computeTravelerEligibility } from "../trips/tripEligibility";
 import { computeTravelerDurations } from "../trips/tripDuration";
@@ -56,30 +58,35 @@ function GroupLabel({ children }: { children: React.ReactNode }) {
 }
 
 /** A status icon paired with a count (used in the header summary strip). */
-function IconCount({
-  icon,
+/** A status icon and its traveler count; tapping it explains the status. */
+function IconCount<K extends StatusKind>({
+  kind,
+  state,
   count,
   color,
 }: {
-  icon: React.ReactNode;
+  kind: K;
+  state: StatusState<K>;
   count: number;
   color: string;
 }) {
   return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-      {icon}
-      <Typography
-        sx={{
-          fontFamily: tokens.fontBody,
-          fontSize: "0.8rem",
-          fontWeight: 700,
-          color,
-          lineHeight: 1,
-        }}
-      >
-        {count}
-      </Typography>
-    </Box>
+    <StatusTip kind={kind} state={state} count={count}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
+        {legendEntry(kind, state).icon("1.05rem")}
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.8rem",
+            fontWeight: 700,
+            color,
+            lineHeight: 1,
+          }}
+        >
+          {count}
+        </Typography>
+      </Box>
+    </StatusTip>
   );
 }
 
@@ -154,10 +161,13 @@ export function TripViewSlider({
   ).length;
   const durOverstay = durations.filter((d) => d.tracked && d.overstay).length;
   const durHome = durations.filter((d) => d.freeMovement).length;
-  const durUnknown = durations.filter((d) => !d.tracked && !d.freeMovement).length;
+  const durUnknown = durations.filter(
+    (d) => !d.tracked && !d.freeMovement,
+  ).length;
 
   const hasElig = eligOk + eligWarn + eligUnknown > 0;
-  const hasDur = durOk + durCaution + durDanger + durOverstay + durUnknown + durHome > 0;
+  const hasDur =
+    durOk + durCaution + durDanger + durOverstay + durUnknown + durHome > 0;
 
   // ── Footer ────────────────────────────────────────────────────────────────
 
@@ -264,38 +274,26 @@ export function TripViewSlider({
                     <GroupLabel>Entry</GroupLabel>
                     {eligOk > 0 && (
                       <IconCount
+                        kind="eligibility"
+                        state="ok"
                         count={eligOk}
                         color={tokens.green}
-                        icon={
-                          <CheckCircleOutlineIcon
-                            sx={{ fontSize: "1.05rem", color: tokens.green }}
-                          />
-                        }
                       />
                     )}
                     {eligWarn > 0 && (
                       <IconCount
+                        kind="eligibility"
+                        state="visa"
                         count={eligWarn}
                         color={tokens.red}
-                        icon={
-                          <WarningAmberIcon
-                            sx={{ fontSize: "1.05rem", color: tokens.red }}
-                          />
-                        }
                       />
                     )}
                     {eligUnknown > 0 && (
                       <IconCount
+                        kind="eligibility"
+                        state="unknown"
                         count={eligUnknown}
                         color={tokens.textGhost}
-                        icon={
-                          <HelpOutlineIcon
-                            sx={{
-                              fontSize: "1.05rem",
-                              color: tokens.textGhost,
-                            }}
-                          />
-                        }
                       />
                     )}
                   </Box>
@@ -314,44 +312,50 @@ export function TripViewSlider({
                     <GroupLabel>Duration</GroupLabel>
                     {durOk > 0 && (
                       <IconCount
+                        kind="duration"
+                        state="safe"
                         count={durOk}
                         color={tokens.green}
-                        icon={<DurationIcon state="safe" size="1.05rem" />}
                       />
                     )}
                     {durCaution > 0 && (
                       <IconCount
+                        kind="duration"
+                        state="caution"
                         count={durCaution}
                         color={tokens.amberText}
-                        icon={<DurationIcon state="caution" size="1.05rem" />}
                       />
                     )}
                     {durDanger > 0 && (
                       <IconCount
+                        kind="duration"
+                        state="danger"
                         count={durDanger}
                         color={tokens.red}
-                        icon={<DurationIcon state="danger" size="1.05rem" />}
                       />
                     )}
                     {durOverstay > 0 && (
                       <IconCount
+                        kind="duration"
+                        state="overstay"
                         count={durOverstay}
                         color={tokens.red}
-                        icon={<DurationIcon state="overstay" size="1.05rem" />}
                       />
                     )}
                     {durUnknown > 0 && (
                       <IconCount
+                        kind="duration"
+                        state="untracked"
                         count={durUnknown}
                         color={tokens.textGhost}
-                        icon={<DurationIcon state="untracked" size="1.05rem" />}
                       />
                     )}
                     {durHome > 0 && (
                       <IconCount
+                        kind="duration"
+                        state="home"
                         count={durHome}
                         color={tokens.green}
-                        icon={<DurationIcon state="home" size="1.05rem" />}
                       />
                     )}
                   </Box>

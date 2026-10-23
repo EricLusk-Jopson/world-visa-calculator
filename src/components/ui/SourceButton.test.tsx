@@ -58,4 +58,54 @@ describe("SourceButton", () => {
     const report = sent.find((s) => s.event === "source_issue_reported");
     expect(report?.properties).toMatchObject({ region: "Montenegro", key: "DZ", kind: "wrong-info", url: MontenegroSources.DZ.direct.url });
   });
+
+  it("tracks a source link click with the link and the trip's travelers", async () => {
+    const { SourceButton } = await import("./SourceButton");
+    const { SourceTripProvider, SourceTravelerProvider } = await import("./sourceTracking");
+    const trip = { travelerCount: 4, nationalities: ["US", "GB", "GB"] };
+    await act(async () =>
+      root.render(
+        <SourceTripProvider trip={trip}>
+          <SourceTravelerProvider nationality="US">
+            <SourceButton source={MontenegroSources.DZ} variant="text" />
+          </SourceTravelerProvider>
+        </SourceTripProvider>,
+      ),
+    );
+    await act(async () => byText("Source")!.click());
+    const official = byText("Official source")!;
+    official.addEventListener("click", (e) => e.preventDefault()); // jsdom can't open the tab
+    await act(async () => official.click());
+
+    expect(sent.find((s) => s.event === "source_details_opened")?.properties).toMatchObject({
+      region: "Montenegro",
+      traveler_count: 4,
+      nationalities: "GB,GB,US",
+    });
+    expect(sent.find((s) => s.event === "source_link_clicked")?.properties).toEqual({
+      link_type: "direct",
+      url: MontenegroSources.DZ.direct.url,
+      region: "Montenegro",
+      source_key: "DZ",
+      traveler_count: 4,
+      nationalities: "GB,GB,US",
+      traveler_nationality: "US",
+    });
+  });
+
+  it("tracks a source link click outside a trip with the link alone", async () => {
+    const { SourceButton } = await import("./SourceButton");
+    await act(async () => root.render(<SourceButton source={MontenegroSources.DZ} variant="text" />));
+    await act(async () => byText("Source")!.click());
+    const official = byText("Official source")!;
+    official.addEventListener("click", (e) => e.preventDefault());
+    await act(async () => official.click());
+
+    expect(sent.find((s) => s.event === "source_link_clicked")?.properties).toEqual({
+      link_type: "direct",
+      url: MontenegroSources.DZ.direct.url,
+      region: "Montenegro",
+      source_key: "DZ",
+    });
+  });
 });
