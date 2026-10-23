@@ -9,7 +9,10 @@ import CheckIcon from "@mui/icons-material/Check";
 import { tokens } from "@/styles/theme";
 import type { Traveler, VisaRegion } from "@/types";
 import { VISA_REGION_LABELS } from "@/types";
-import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
+import {
+  JURISDICTION_PALETTE,
+  nextFreeJurisdictionColor,
+} from "@/features/calculator/utils/jurisdictionColours";
 import {
   addDays,
   differenceInCalendarDays,
@@ -19,22 +22,26 @@ import {
   todayISO,
 } from "@/features/calculator/utils/dates";
 import {
-  buildExplorerRows,
+  buildTravelerTimelines,
   clampDate,
+  countTripsOutside,
   fitBounds,
   listExplorerDestinations,
+  longestWindowDays,
   rowWindowStats,
   tripDaysInWindow,
   tripLength,
+  tripOverlaps,
   type DateBounds,
+  type TravelerTimeline,
 } from "@/features/calculator/utils/rollingWindowExplorer";
-import { RollingWindowChart, type ChartRow, type ChartSection } from "./RollingWindowChart";
+import { RollingWindowChart } from "./RollingWindowChart";
 
 /**
  * Desktop-only "Rolling Window" explorer: the blog's interactive 90/180
- * explainer, applied to the user's own travelers and trips. Pick one or more
- * rolling-window destinations and travelers, set the date range, and slide
- * the window end date to see which days count.
+ * explainer, applied to the user's own travelers and trips. Set the date
+ * range, pick up to three rolling-window destinations in it and the
+ * travelers to show, then slide the window end date to see which days count.
  *
  * Selections live in this component (which stays mounted while the dialog is
  * closed), so reopening the explorer keeps where the user left off.
@@ -45,6 +52,13 @@ interface RollingWindowModalProps {
   onClose: () => void;
   travelers: Traveler[];
 }
+
+interface ActiveDestination {
+  region: VisaRegion;
+  color: string;
+}
+
+const MAX_ACTIVE = JURISDICTION_PALETTE.length;
 
 // Typed dates go through intermediate values like "0002-03-04"; ignore those.
 const MIN_YEAR = 1990;
@@ -59,6 +73,8 @@ function isUsableDate(s: string): boolean {
 
 const fmtLong = (iso: string) =>
   parseDate(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
@@ -79,6 +95,15 @@ const SIDEBAR_HEADING_SX = {
   textTransform: "uppercase",
   color: tokens.textSoft,
   mb: "8px",
+} as const;
+
+const NOTE_SX = {
+  fontFamily: tokens.fontBody,
+  fontSize: "0.72rem",
+  lineHeight: 1.5,
+  color: tokens.textSoft,
+  px: "10px",
+  mt: "8px",
 } as const;
 
 const CARD_SX = {
@@ -116,6 +141,18 @@ const TEXT_BUTTON_SX = {
   cursor: "pointer",
   "&:hover:not(:disabled)": { bgcolor: tokens.mist },
   "&:disabled": { color: tokens.textGhost, cursor: "default" },
+} as const;
+
+const LINK_BUTTON_SX = {
+  p: 0,
+  border: "none",
+  bgcolor: "transparent",
+  color: tokens.greenText,
+  fontFamily: tokens.fontBody,
+  fontSize: "inherit",
+  fontWeight: 600,
+  textDecoration: "underline",
+  cursor: "pointer",
 } as const;
 
 // ─── Sidebar toggle row ───────────────────────────────────────────────────────
@@ -202,55 +239,61 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
   const today = todayISO();
 
   // null = not chosen yet: the most-visited rolling-window destination.
-  const [chosenRegions, setChosenRegions] = useState<VisaRegion[] | null>(null);
+  const [chosen, setChosen] = useState<ActiveDestination[] | null>(null);
   const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
-  // null = fit to the selected trips.
+  // null = fit to every trip of the visible travelers.
   const [customBounds, setCustomBounds] = useState<DateBounds | null>(null);
   // null = today (clamped into the bounds).
   const [chosenWindowEnd, setChosenWindowEnd] = useState<string | null>(null);
 
-  const destinations = useMemo(
-    () => listExplorerDestinations(travelers, today),
-    [travelers, today],
+  const visibleTravelers = useMemo(
+    () => travelers.filter((t) => !hiddenTravelerIds.includes(t.id)),
+    [travelers, hiddenTravelerIds],
   );
-  const supported = destinations.filter((d) => d.supported).map((d) => d.region);
+  const hiddenTripCount = travelers
+    .filter((t) => hiddenTravelerIds.includes(t.id))
+    .reduce((n, t) => n + t.trips.length, 0);
 
-  const selectedRegions = chosenRegions
-    ? supported.filter((r) => chosenRegions.includes(r))
-    : supported.slice(0, 1);
-
-  const visibleTravelers = travelers.filter((t) => !hiddenTravelerIds.includes(t.id));
-
-  // Bounds are fitted to rules as of today, so moving the window can't
-  // resize the range it moves in.
+  // ── Date range, then the destinations inside it ────────────────────────────
   const fittedBounds = useMemo(
-    () => fitBounds(buildExplorerRows(visibleTravelers, selectedRegions, today)),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [travelers, hiddenTravelerIds, selectedRegions.join(","), today],
+    () =>
+      fitBounds(
+        visibleTravelers.flatMap((t) => t.trips),
+        longestWindowDays(visibleTravelers, today),
+      ),
+    [visibleTravelers, today],
   );
   const bounds = customBounds ?? fittedBounds;
   const windowEnd = clampDate(chosenWindowEnd ?? today, bounds);
   const totalDays = differenceInCalendarDays(parseDate(bounds.end), parseDate(bounds.start));
 
-  const colorOf = (travelerId: string) =>
-    getTravelerColor(Math.max(0, travelers.findIndex((t) => t.id === travelerId)));
+  const destinations = useMemo(
+    () => listExplorerDestinations(visibleTravelers, today, bounds),
+    [visibleTravelers, today, bounds],
+  );
+  const supported = destinations.filter((d) => d.supported).map((d) => d.region);
+  const outsideCount = countTripsOutside(visibleTravelers, bounds);
 
-  // A traveler only gets a row in destinations they have trips to.
-  const rows: ChartRow[] = buildExplorerRows(visibleTravelers, selectedRegions, windowEnd)
-    .filter((r) => r.trips.length > 0)
-    .map((r) => ({ ...r, color: colorOf(r.travelerId) }));
-  const sections: ChartSection[] = selectedRegions
-    .map((region) => ({ region, rows: rows.filter((r) => r.region === region) }))
-    .filter((s) => s.rows.length > 0);
+  const active: ActiveDestination[] = chosen
+    ? chosen.filter((c) => supported.includes(c.region))
+    : supported.slice(0, 1).map((region) => ({ region, color: JURISDICTION_PALETTE[0] }));
+  const regionColors = new Map(active.map((a) => [a.region, a.color]));
+
+  const timelines = buildTravelerTimelines(
+    visibleTravelers,
+    active.map((a) => a.region),
+    windowEnd,
+  );
 
   // ── Handlers ────────────────────────────────────────────────────────────────
 
   function toggleRegion(region: VisaRegion) {
-    setChosenRegions(
-      selectedRegions.includes(region)
-        ? selectedRegions.filter((r) => r !== region)
-        : [...selectedRegions, region],
-    );
+    if (regionColors.has(region)) {
+      setChosen(active.filter((a) => a.region !== region));
+      return;
+    }
+    const color = nextFreeJurisdictionColor(active.map((a) => a.color));
+    if (color) setChosen([...active, { region, color }]);
   }
 
   function toggleTraveler(id: string) {
@@ -268,18 +311,18 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
 
   // ── Render ──────────────────────────────────────────────────────────────────
 
-  const hasDestinations = destinations.length > 0;
-  const emptyMessage = !hasDestinations
+  const hasTrips = travelers.some((t) => t.trips.length > 0);
+  const emptyMessage = !hasTrips
     ? "Add a trip to a destination with a rolling window (such as the Schengen Area) to see it here."
-    : supported.length === 0
-      ? "None of these trips are to a destination with a rolling window."
-      : selectedRegions.length === 0
-        ? "Pick at least one destination."
-        : visibleTravelers.length === 0
-          ? "Pick at least one traveler."
-          : rows.length === 0
-            ? "The selected travelers have no trips to these destinations."
-            : null;
+    : visibleTravelers.length === 0
+      ? "Pick at least one traveler."
+      : null;
+  const hint =
+    supported.length === 0
+      ? "No trips to a destination with a rolling window in this date range."
+      : active.length === 0
+        ? "Pick a destination to see its rolling window."
+        : null;
 
   return (
     <Dialog
@@ -350,43 +393,6 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
             gap: "24px",
           }}
         >
-          <Box role="group" aria-label="Destinations">
-            <Typography sx={SIDEBAR_HEADING_SX}>Destinations</Typography>
-            {!hasDestinations && (
-              <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.78rem", color: tokens.textGhost, px: "10px" }}>
-                No trips yet
-              </Typography>
-            )}
-            {destinations.map((d) => (
-              <ToggleRow
-                key={d.region}
-                checked={selectedRegions.includes(d.region)}
-                disabled={!d.supported}
-                onToggle={() => toggleRegion(d.region)}
-                color={tokens.greenText}
-                label={VISA_REGION_LABELS[d.region]}
-                detail={
-                  d.supported
-                    ? `${d.tripCount} ${d.tripCount === 1 ? "trip" : "trips"}`
-                    : "Not a rolling window"
-                }
-              />
-            ))}
-          </Box>
-
-          <Box role="group" aria-label="Travelers">
-            <Typography sx={SIDEBAR_HEADING_SX}>Travelers</Typography>
-            {travelers.map((t) => (
-              <ToggleRow
-                key={t.id}
-                checked={!hiddenTravelerIds.includes(t.id)}
-                onToggle={() => toggleTraveler(t.id)}
-                color={colorOf(t.id)}
-                label={t.name}
-              />
-            ))}
-          </Box>
-
           <Box>
             <Typography sx={SIDEBAR_HEADING_SX}>Date range</Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", px: "2px" }}>
@@ -418,9 +424,66 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
                 disabled={customBounds === null}
                 sx={{ ...TEXT_BUTTON_SX, alignSelf: "flex-start" }}
               >
-                Fit to trips
+                Fit to all trips
               </Box>
             </Box>
+          </Box>
+
+          <Box role="group" aria-label="Destinations">
+            <Typography sx={SIDEBAR_HEADING_SX}>Destinations</Typography>
+            {destinations.length === 0 && (
+              <Typography sx={{ ...NOTE_SX, mt: 0 }}>No trips in this date range</Typography>
+            )}
+            {destinations.map((d) => {
+              const isActive = regionColors.has(d.region);
+              const full = !isActive && active.length >= MAX_ACTIVE;
+              return (
+                <ToggleRow
+                  key={d.region}
+                  checked={isActive}
+                  disabled={!d.supported || full}
+                  onToggle={() => toggleRegion(d.region)}
+                  color={regionColors.get(d.region) ?? tokens.navy}
+                  label={VISA_REGION_LABELS[d.region]}
+                  detail={
+                    !d.supported
+                      ? "Not a rolling window"
+                      : full
+                        ? `Up to ${MAX_ACTIVE} at a time`
+                        : plural(d.tripCount, "trip", "trips")
+                  }
+                />
+              );
+            })}
+            {(outsideCount > 0 || hiddenTripCount > 0) && (
+              <Typography sx={NOTE_SX}>
+                {outsideCount > 0 && (
+                  <>
+                    {plural(outsideCount, "trip", "trips")} in your history{" "}
+                    {outsideCount === 1 ? "is" : "are"} outside this date range.{" "}
+                    <Box component="button" onClick={() => setCustomBounds(null)} sx={LINK_BUTTON_SX}>
+                      Include all
+                    </Box>
+                  </>
+                )}
+                {outsideCount > 0 && hiddenTripCount > 0 && " "}
+                {hiddenTripCount > 0 &&
+                  `${plural(hiddenTripCount, "trip belongs", "trips belong")} to hidden travelers.`}
+              </Typography>
+            )}
+          </Box>
+
+          <Box role="group" aria-label="Travelers">
+            <Typography sx={SIDEBAR_HEADING_SX}>Travelers</Typography>
+            {travelers.map((t) => (
+              <ToggleRow
+                key={t.id}
+                checked={!hiddenTravelerIds.includes(t.id)}
+                onToggle={() => toggleTraveler(t.id)}
+                color={tokens.navy}
+                label={t.name}
+              />
+            ))}
           </Box>
         </Box>
 
@@ -442,24 +505,33 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    gap: "12px",
+                    flexWrap: "wrap",
+                    gap: "8px 16px",
                     mb: "6px",
-                    fontFamily: tokens.fontBody,
                   }}
                 >
                   <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.78rem", fontWeight: 650, color: tokens.navy }}>
                     {fmtLong(bounds.start)} – {fmtLong(bounds.end)}
                   </Typography>
-                  <Box sx={{ display: "flex", gap: "16px", fontSize: "0.7rem", color: tokens.textSoft }}>
-                    <LegendSwatch fill={alpha(tokens.navy, 0.75)} label="Counted days" />
-                    <LegendSwatch fill={alpha(tokens.navy, 0.12)} border={alpha(tokens.navy, 0.4)} label="Not counted" />
-                    <LegendSwatch fill="rgba(4,120,87,0.12)" border="rgba(4,120,87,0.45)" label="Window, within limit" />
-                    <LegendSwatch fill="rgba(153,27,27,0.12)" border="rgba(153,27,27,0.45)" label="Window, over limit" />
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: "6px 14px", fontFamily: tokens.fontBody, fontSize: "0.7rem", color: tokens.textSoft }}>
+                    {active.map((a) => (
+                      <LegendSwatch key={a.region} fill={a.color} label={VISA_REGION_LABELS[a.region]} />
+                    ))}
+                    <LegendSwatch fill="rgba(160,170,187,0.35)" border="rgba(160,170,187,0.55)" label="Other trips" />
+                    <LegendSwatch fill={alpha(tokens.navy, 0.75)} label="Solid: counted in window" />
+                    <LegendSwatch fill={alpha(tokens.navy, 0.08)} border={alpha(tokens.navy, 0.35)} label="Window" />
+                    <LegendSwatch fill="rgba(153,27,27,0.12)" border="rgba(153,27,27,0.45)" label="Over the limit" />
                   </Box>
                 </Box>
+                {hint && (
+                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, mb: "4px" }}>
+                    {hint}
+                  </Typography>
+                )}
 
                 <RollingWindowChart
-                  sections={sections}
+                  timelines={timelines}
+                  regionColors={regionColors}
                   bounds={bounds}
                   windowEnd={windowEnd}
                   today={today}
@@ -521,22 +593,27 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
                 </Box>
               </Box>
 
-              {/* Stats per row */}
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-                  gap: "10px",
-                  mt: "18px",
-                }}
-              >
-                {rows.map((row) => (
-                  <StatCard key={row.key} row={row} windowEnd={windowEnd} showRegion={selectedRegions.length > 1} />
-                ))}
-              </Box>
-
-              {/* Trips table */}
-              <TripsTable rows={rows} windowEnd={windowEnd} />
+              {/* One card per traveler: their standing, then their trips */}
+              {active.length > 0 && (
+                <Box
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(440px, 1fr))",
+                    gap: "14px",
+                    mt: "18px",
+                  }}
+                >
+                  {timelines.map((timeline) => (
+                    <TravelerCard
+                      key={timeline.travelerId}
+                      timeline={timeline}
+                      regionColors={regionColors}
+                      bounds={bounds}
+                      windowEnd={windowEnd}
+                    />
+                  ))}
+                </Box>
+              )}
             </>
           )}
         </Box>
@@ -566,159 +643,198 @@ function LegendSwatch({ fill, border, label }: { fill: string; border?: string; 
   );
 }
 
-// ─── Stat card ────────────────────────────────────────────────────────────────
-
-function StatCard({ row, windowEnd, showRegion }: { row: ChartRow; windowEnd: string; showRegion: boolean }) {
-  const stats = rowWindowStats(row, windowEnd);
-  const valueColor = !stats
-    ? tokens.textGhost
-    : stats.over || stats.remaining === 0
-      ? tokens.redText
-      : stats.remaining < stats.allowance * 0.25
-        ? tokens.amberText
-        : tokens.greenText;
-
-  return (
-    <Box
-      sx={{
-        minWidth: 0,
-        p: "11px 13px",
-        border: `1px solid ${stats ? "#dce9e1" : tokens.border}`,
-        borderLeft: `3px solid ${stats ? row.color : tokens.textGhost}`,
-        bgcolor: stats ? "#f4f9f6" : tokens.white,
-        borderRadius: "9px",
-      }}
-    >
-      <Typography noWrap sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: stats ? row.color : tokens.textSoft }}>
-        {row.travelerName}
-        {showRegion && (
-          <Box component="span" sx={{ color: tokens.textSoft, fontWeight: 400 }}>
-            {" · "}
-            {VISA_REGION_LABELS[row.region]}
-          </Box>
-        )}
-      </Typography>
-      {stats ? (
-        <>
-          <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "1.75rem", lineHeight: 1.1, color: valueColor }}>
-            {stats.daysUsed}
-            <Box component="span" sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, ml: "4px" }}>
-              / {stats.allowance}
-            </Box>
-          </Typography>
-          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft, mt: "2px" }}>
-            {stats.over
-              ? `Over by ${stats.daysUsed - stats.allowance} ${stats.daysUsed - stats.allowance === 1 ? "day" : "days"}`
-              : stats.remaining === 0
-                ? "No allowance left"
-                : `${stats.remaining} ${stats.remaining === 1 ? "day" : "days"} left`}
-            {" · "}
-            {fmtLong(stats.windowStart)} – {fmtLong(stats.windowEnd)}
-          </Typography>
-        </>
-      ) : (
-        <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, mt: "4px" }}>
-          {row.noLimitReason}
-        </Typography>
-      )}
-    </Box>
-  );
-}
-
-// ─── Trips table ──────────────────────────────────────────────────────────────
+// ─── Traveler card ────────────────────────────────────────────────────────────
 
 const CELL_SX = {
-  py: "9px",
+  py: "8px",
   px: 0,
   textAlign: "right",
   fontFamily: tokens.fontBody,
   fontSize: "0.75rem",
   borderTop: "1px solid #edf1f4",
+  verticalAlign: "top",
 } as const;
 
-function TripsTable({ rows, windowEnd }: { rows: ChartRow[]; windowEnd: string }) {
-  const lines = rows.flatMap((row) => {
-    const stats = rowWindowStats(row, windowEnd);
-    return row.trips.map((trip) => ({ row, trip, stats }));
-  });
-  if (lines.length === 0) return null;
-
+function Dot({ color }: { color: string }) {
   return (
     <Box
-      component="table"
-      sx={{
-        ...CARD_SX,
-        width: "100%",
-        mt: "18px",
-        borderCollapse: "separate",
-        borderSpacing: 0,
-        fontVariantNumeric: "tabular-nums",
-        color: tokens.navy,
-      }}
-    >
-      <Box component="caption" sx={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
-        Trip lengths and days counted in the selected window
-      </Box>
-      <thead>
-        <tr>
-          {["Trip", "Traveler", "Destination", "Full trip", "In window"].map((h, i) => (
-            <Box
-              component="th"
-              scope="col"
-              key={h}
-              sx={{
-                pb: "7px",
-                textAlign: i < 3 ? "left" : "right",
-                fontFamily: tokens.fontBody,
-                fontSize: i === 0 ? "0.75rem" : "0.65rem",
-                fontWeight: i === 0 ? 650 : 500,
-                color: i === 0 ? tokens.navy : tokens.textSoft,
-              }}
-            >
-              {h}
+      component="span"
+      aria-hidden="true"
+      sx={{ display: "inline-block", width: 8, height: 8, borderRadius: "2px", bgcolor: color, flexShrink: 0, mt: "5px" }}
+    />
+  );
+}
+
+/**
+ * A traveler's standing in each active destination they've been to in the
+ * range (days used of the allowance, in their own window), then those trips
+ * with the days each one contributes to the window.
+ */
+function TravelerCard({
+  timeline,
+  regionColors,
+  bounds,
+  windowEnd,
+}: {
+  timeline: TravelerTimeline;
+  regionColors: ReadonlyMap<VisaRegion, string>;
+  bounds: DateBounds;
+  windowEnd: string;
+}) {
+  const jurisdictions = timeline.jurisdictions
+    .map((row) => ({ row, inRange: row.trips.filter((t) => tripOverlaps(t, bounds)) }))
+    .filter((j) => j.inRange.length > 0);
+  const trips = jurisdictions
+    .flatMap(({ row, inRange }) => inRange.map((trip) => ({ row, trip })))
+    .sort((a, b) => (a.trip.entryDate < b.trip.entryDate ? -1 : 1));
+
+  return (
+    <Box sx={{ ...CARD_SX, p: "16px 20px" }}>
+      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.9rem", fontWeight: 700, color: tokens.navy }}>
+        {timeline.travelerName}
+      </Typography>
+
+      {jurisdictions.length === 0 ? (
+        <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, mt: "6px" }}>
+          No trips to the selected destinations in this date range.
+        </Typography>
+      ) : (
+        <>
+          {/* Standing per destination */}
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: "10px", mt: "10px" }}>
+            {jurisdictions.map(({ row }) => {
+              const color = regionColors.get(row.region) ?? tokens.textGhost;
+              const stats = rowWindowStats(row, windowEnd);
+              const valueColor = !stats
+                ? tokens.textGhost
+                : stats.over || stats.remaining === 0
+                  ? tokens.redText
+                  : stats.remaining < stats.allowance * 0.25
+                    ? tokens.amberText
+                    : tokens.greenText;
+              return (
+                <Box
+                  key={row.region}
+                  sx={{
+                    flex: "1 1 180px",
+                    minWidth: 0,
+                    p: "9px 12px",
+                    borderRadius: "9px",
+                    border: `1px solid ${tokens.border}`,
+                    borderLeft: `3px solid ${color}`,
+                    bgcolor: tokens.offWhite,
+                  }}
+                >
+                  <Typography noWrap sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color: tokens.textSoft }}>
+                    {VISA_REGION_LABELS[row.region]}
+                    {row.limit && ` · ${row.limit.days} in ${row.limit.windowDays}`}
+                  </Typography>
+                  {stats ? (
+                    <>
+                      <Typography sx={{ fontFamily: tokens.fontDisplay, fontSize: "1.5rem", lineHeight: 1.15, color: valueColor }}>
+                        {stats.daysUsed}
+                        <Box component="span" sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft, ml: "4px" }}>
+                          / {stats.allowance}
+                        </Box>
+                      </Typography>
+                      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.7rem", color: tokens.textSoft }}>
+                        {stats.over
+                          ? `Over by ${plural(stats.daysUsed - stats.allowance, "day", "days")}`
+                          : stats.remaining === 0
+                            ? "No allowance left"
+                            : `${plural(stats.remaining, "day", "days")} left`}
+                        {` · since ${fmtLong(stats.windowStart)}`}
+                      </Typography>
+                    </>
+                  ) : (
+                    <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft, mt: "4px" }}>
+                      {row.noLimitReason}
+                    </Typography>
+                  )}
+                </Box>
+              );
+            })}
+          </Box>
+
+          {/* Trips */}
+          <Box
+            component="table"
+            sx={{ width: "100%", mt: "12px", borderCollapse: "collapse", fontVariantNumeric: "tabular-nums", color: tokens.navy }}
+          >
+            <Box component="caption" sx={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
+              {timeline.travelerName}'s trips and the days each counts in the window
             </Box>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {lines.map(({ row, trip, stats }) => {
-          const counted = stats ? tripDaysInWindow(trip, stats.windowStart, windowEnd) : null;
-          return (
-            <tr key={`${row.key}:${trip.id}`}>
-              <Box component="th" scope="row" sx={{ ...CELL_SX, textAlign: "left", fontWeight: 400 }}>
-                <Box component="span" sx={{ display: "block", fontWeight: 650 }}>
-                  {trip.destination?.trim() || VISA_REGION_LABELS[trip.region]}
-                </Box>
-                <Box component="span" sx={{ display: "block", color: tokens.textSoft, fontSize: "0.7rem", mt: "2px" }}>
-                  {fmtLong(trip.entryDate)} – {trip.exitDate ? fmtLong(trip.exitDate) : "ongoing"}
-                </Box>
-              </Box>
-              <Box component="td" sx={{ ...CELL_SX, textAlign: "left", color: row.color, fontWeight: 600 }}>
-                {row.travelerName}
-              </Box>
-              <Box component="td" sx={{ ...CELL_SX, textAlign: "left", color: tokens.textSoft }}>
-                {VISA_REGION_LABELS[row.region]}
-              </Box>
-              <Box component="td" sx={CELL_SX}>
-                {tripLength(trip)}
-                <Box component="span" sx={{ fontSize: "0.65rem", color: tokens.textSoft }}> days</Box>
-              </Box>
-              <Box component="td" sx={CELL_SX}>
-                {counted === null ? (
-                  <Box component="span" sx={{ color: tokens.textGhost }}>n/a</Box>
-                ) : (
-                  <>
-                    <Box component="strong" sx={{ color: tokens.greenText, fontSize: "0.88rem" }}>{counted}</Box>
-                    <Box component="span" sx={{ fontSize: "0.65rem", color: tokens.textSoft }}>
-                      {counted === 1 ? " day" : " days"}
+            <thead>
+              <tr>
+                {["Trip", "Full trip", "In window"].map((h, i) => (
+                  <Box
+                    component="th"
+                    scope="col"
+                    key={h}
+                    sx={{
+                      pb: "6px",
+                      textAlign: i === 0 ? "left" : "right",
+                      fontFamily: tokens.fontBody,
+                      fontSize: "0.65rem",
+                      fontWeight: 500,
+                      color: tokens.textSoft,
+                      width: i === 0 ? "auto" : "90px",
+                    }}
+                  >
+                    {h}
+                  </Box>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {trips.map(({ row, trip }) => {
+                const stats = rowWindowStats(row, windowEnd);
+                const counted = stats ? tripDaysInWindow(trip, stats.windowStart, windowEnd) : null;
+                const label = trip.destination?.trim();
+                return (
+                  <tr key={trip.id}>
+                    <Box component="th" scope="row" sx={{ ...CELL_SX, textAlign: "left", fontWeight: 400 }}>
+                      <Box sx={{ display: "flex", gap: "8px" }}>
+                        <Dot color={regionColors.get(row.region) ?? tokens.textGhost} />
+                        <Box sx={{ minWidth: 0 }}>
+                          <Box component="span" sx={{ display: "block", fontWeight: 650 }}>
+                            {label || VISA_REGION_LABELS[trip.region]}
+                          </Box>
+                          <Box component="span" sx={{ display: "block", color: tokens.textSoft, fontSize: "0.7rem", mt: "1px" }}>
+                            {label && `${VISA_REGION_LABELS[trip.region]} · `}
+                            {fmtLong(trip.entryDate)} – {trip.exitDate ? fmtLong(trip.exitDate) : "ongoing"}
+                          </Box>
+                        </Box>
+                      </Box>
                     </Box>
-                  </>
-                )}
-              </Box>
-            </tr>
-          );
-        })}
-      </tbody>
+                    <Box component="td" sx={CELL_SX}>
+                      {tripLength(trip)}
+                      <Box component="span" sx={{ fontSize: "0.65rem", color: tokens.textSoft }}> days</Box>
+                    </Box>
+                    <Box component="td" sx={CELL_SX}>
+                      {counted === null ? (
+                        <Box component="span" sx={{ color: tokens.textGhost }}>n/a</Box>
+                      ) : (
+                        <>
+                          <Box
+                            component="strong"
+                            sx={{ color: counted > 0 ? tokens.greenText : tokens.textGhost, fontSize: "0.88rem" }}
+                          >
+                            {counted}
+                          </Box>
+                          <Box component="span" sx={{ fontSize: "0.65rem", color: tokens.textSoft }}>
+                            {counted === 1 ? " day" : " days"}
+                          </Box>
+                        </>
+                      )}
+                    </Box>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Box>
+        </>
+      )}
     </Box>
   );
 }

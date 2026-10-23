@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import { alpha } from "@mui/material/styles";
 import { tokens } from "@/styles/theme";
-import { VISA_REGION_LABELS, type VisaRegion } from "@/types";
+import { VISA_REGION_LABELS, type Trip, type VisaRegion } from "@/types";
 import {
   addDays,
   differenceInCalendarDays,
@@ -10,106 +10,76 @@ import {
   parseDate,
 } from "@/features/calculator/utils/dates";
 import {
-  rowWindowStats,
-  tripDaysInWindow,
   tripEnd,
   tripLength,
+  windowBands,
   type DateBounds,
-  type ExplorerRow,
+  type TravelerTimeline,
 } from "@/features/calculator/utils/rollingWindowExplorer";
 
 /**
  * The explorer's timeline: the blog's rolling-window canvas
  * (astro/pages/blog/the-schengen-90-180-rolling-window.astro) redrawn as SVG,
- * with one row per traveler per destination. Each row carries its own window
- * band, sized by that traveler's rule and tinted red when they're over it.
- * Dragging anywhere on the plot moves the shared window end date.
+ * with one row per traveler. Every trip is on the row: greyed out, or in its
+ * destination's colour when that destination is active, solid for the days
+ * that count in the window. Each active destination's window is laid over
+ * the row; windows of different lengths nest (all end on the same date), so
+ * the shorter one reads darker. A window turns red when the traveler is over
+ * the limit of a destination using it. Dragging anywhere on the plot moves
+ * the shared window end date.
  */
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-export interface ChartRow extends ExplorerRow {
-  color: string;
-}
-
-export interface ChartSection {
-  region: VisaRegion;
-  rows: ChartRow[];
-}
-
 interface RollingWindowChartProps {
-  sections: ChartSection[];
+  timelines: TravelerTimeline[];
+  /** Colour per active destination. */
+  regionColors: ReadonlyMap<VisaRegion, string>;
   bounds: DateBounds;
   windowEnd: string;
   today: string;
   onWindowEndChange: (date: string) => void;
 }
 
-// ─── Palette (matches the blog explorer) ──────────────────────────────────────
+// ─── Palette (cursor matches the blog explorer) ───────────────────────────────
 
 const GREEN = "#047857";
-const GREEN_BG = "rgba(4,120,87,0.07)";
-const GREEN_BORDER = "rgba(4,120,87,0.35)";
+const WINDOW_BG = alpha(tokens.navy, 0.08);
+const WINDOW_BORDER = alpha(tokens.navy, 0.28);
 const RED_BG = "rgba(153,27,27,0.08)";
-const RED_BORDER = "rgba(153,27,27,0.35)";
-const NEUTRAL_BAR = "#e5ebef";
-const NEUTRAL_BORDER = "#aebfc9";
+const RED_BORDER = "rgba(153,27,27,0.4)";
+const INACTIVE_BAR = "rgba(160,170,187,0.35)";
+const INACTIVE_BORDER = "rgba(160,170,187,0.55)";
 const GRID = "rgba(0,0,0,0.07)";
 const AXIS_TEXT = "rgba(0,0,0,0.45)";
 
 // ─── Layout ───────────────────────────────────────────────────────────────────
 
-const M_LEFT = 150;
+const M_LEFT = 140;
 const M_RIGHT = 16;
-const M_TOP = 40;
-const SECTION_H = 28;
-const ROW_H = 22;
-const ROW_GAP = 12;
-const SECTION_GAP = 10;
+const M_TOP = 44;
+const ROW_H = 24;
+const ROW_GAP = 20;
 const AXIS_H = 34;
 const MIN_WIDTH = 560;
+/** Minimum spacing between the window-start labels along the top. */
+const LABEL_GAP = 120;
 
 const fmtShort = (iso: string) =>
   parseDate(iso).toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
 const fmtLong = (iso: string) =>
   parseDate(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 
-function ruleSummary(rows: ChartRow[]): string {
-  const rules = [...new Set(rows.flatMap((r) => (r.limit ? [`${r.limit.days}/${r.limit.windowDays}`] : [])))];
-  if (rules.length === 0) return "No rolling window for these passports";
-  if (rules.length === 1) {
-    const [days, window] = rules[0].split("/");
-    return `${days} days in any ${window}`;
-  }
-  return `Varies by passport: ${rules.join(", ")}`;
-}
-
 function truncate(s: string, n: number): string {
   return s.length > n ? `${s.slice(0, n - 1)}…` : s;
 }
 
-/** Vertical positions: a header per destination, then one row per traveler. */
-function layoutSections(sections: ChartSection[]) {
-  let y = M_TOP;
-  const placed = [];
-  for (const section of sections) {
-    const headerY = y;
-    y += SECTION_H;
-    const rows = [];
-    for (const row of section.rows) {
-      rows.push({ row, rowY: y });
-      y += ROW_H + ROW_GAP;
-    }
-    y += SECTION_GAP;
-    placed.push({ section, headerY, rows });
-  }
-  return { placed, axisY: y };
-}
+const later = (a: string, b: string) => (a > b ? a : b);
+const earlier = (a: string, b: string) => (a < b ? a : b);
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function RollingWindowChart({
-  sections,
+  timelines,
+  regionColors,
   bounds,
   windowEnd,
   today,
@@ -133,11 +103,14 @@ export function RollingWindowChart({
   // Plot spans whole days, bounds.end included.
   const total = differenceInCalendarDays(parseDate(bounds.end), start) + 1;
   const plotW = width - M_LEFT - M_RIGHT;
-  const xOfDay = (dayIndex: number) => M_LEFT + (dayIndex / total) * plotW;
-  const xOf = (iso: string) => xOfDay(differenceInCalendarDays(parseDate(iso), start));
+  const xOf = (iso: string) =>
+    M_LEFT + (differenceInCalendarDays(parseDate(iso), start) / total) * plotW;
+  /** x of the end of a day (the start of the next). */
+  const xAfter = (iso: string) => xOf(formatDate(addDays(parseDate(iso), 1)));
   const clampX = (x: number) => Math.min(Math.max(x, M_LEFT), width - M_RIGHT);
 
-  const { placed, axisY } = layoutSections(sections);
+  const rowY = (i: number) => M_TOP + i * (ROW_H + ROW_GAP);
+  const axisY = rowY(timelines.length) - ROW_GAP + 14;
   const height = axisY + AXIS_H;
 
   // ── Month grid ──────────────────────────────────────────────────────────────
@@ -150,11 +123,10 @@ export function RollingWindowChart({
     let i = 0;
     while (cur <= endDate) {
       const iso = formatDate(cur);
-      const x = xOf(iso);
       const showLabel = i % labelStep === 0;
       months.push({
         iso,
-        x,
+        x: xOf(iso),
         label: showLabel ? cur.toLocaleDateString("en-GB", { month: "short" }) : "",
         year: showLabel && (cur.getMonth() < labelStep || i === 0) ? String(cur.getFullYear()) : undefined,
       });
@@ -163,17 +135,25 @@ export function RollingWindowChart({
     }
   }
 
-  // ── Window end cursor ───────────────────────────────────────────────────────
-  const xEnd = clampX(xOf(formatDate(addDays(parseDate(windowEnd), 1))));
+  // ── Windows per row, and their start labels along the top ──────────────────
+  const rows = timelines.map((timeline) => ({ timeline, bands: windowBands(timeline, windowEnd) }));
+  const xEnd = clampX(xAfter(windowEnd));
   const endLabelX = Math.min(Math.max(xEnd, M_LEFT + 30), width - M_RIGHT - 30);
-  const windowSizes = new Set(
-    sections.flatMap((s) => s.rows.flatMap((r) => (r.limit ? [r.limit.windowDays] : []))),
-  );
-  const sharedWindowDays = windowSizes.size === 1 ? [...windowSizes][0] : null;
-  const sharedStart = sharedWindowDays
-    ? formatDate(addDays(parseDate(windowEnd), -(sharedWindowDays - 1)))
-    : null;
-  const xSharedStart = sharedStart ? xOf(sharedStart) : 0;
+
+  const startLabels: { x: number; text: string }[] = [];
+  {
+    const lengths = new Map<number, string>();
+    for (const { bands } of rows) for (const b of bands) lengths.set(b.windowDays, b.windowStart);
+    const sorted = [...lengths.entries()]
+      .map(([days, iso]) => ({ x: xOf(iso), text: `${fmtShort(iso)} · ${days}-day window` }))
+      .filter((l) => l.x > M_LEFT && xEnd - l.x > LABEL_GAP)
+      .sort((a, b) => a.x - b.x);
+    for (const l of sorted) {
+      const prev = startLabels[startLabels.length - 1];
+      if (!prev || l.x - prev.x > LABEL_GAP) startLabels.push(l);
+    }
+  }
+
   const xToday = xOf(today);
   const todayVisible = today >= bounds.start && today <= bounds.end;
 
@@ -214,7 +194,7 @@ export function RollingWindowChart({
         {months.map((m) =>
           m.x >= M_LEFT && m.x <= width - M_RIGHT ? (
             <g key={m.iso} pointerEvents="none">
-              <line x1={m.x} x2={m.x} y1={M_TOP - 4} y2={axisY} stroke={GRID} strokeWidth={0.5} />
+              <line x1={m.x} x2={m.x} y1={M_TOP - 8} y2={axisY} stroke={GRID} strokeWidth={0.5} />
               {m.label && m.x + 8 < width - M_RIGHT && (
                 <text x={m.x + 3} y={axisY + 13} fontSize={11} fill={AXIS_TEXT}>
                   {m.label}
@@ -233,128 +213,186 @@ export function RollingWindowChart({
         {/* Today */}
         {todayVisible && (
           <g pointerEvents="none">
-            <line x1={xToday} x2={xToday} y1={M_TOP - 22} y2={axisY} stroke={alpha(tokens.navy, 0.3)} strokeWidth={1} strokeDasharray="2 3" />
-            <text x={xToday + 3} y={M_TOP - 24} fontSize={10} fontWeight={600} fill={alpha(tokens.navy, 0.55)}>
+            <line x1={xToday} x2={xToday} y1={M_TOP - 26} y2={axisY} stroke={alpha(tokens.navy, 0.3)} strokeWidth={1} strokeDasharray="2 3" />
+            <text x={xToday + 3} y={M_TOP - 28} fontSize={10} fontWeight={600} fill={alpha(tokens.navy, 0.55)}>
               Today
             </text>
           </g>
         )}
 
-        {placed.map(({ section, headerY, rows }) => (
-          <g key={section.region} pointerEvents="none">
-            {/* Section header: destination and its rule */}
-            <text x={0} y={headerY + 16} fontSize={12} fontWeight={700} fill={tokens.navy}>
-              {VISA_REGION_LABELS[section.region]}
-              <tspan dx={8} fontWeight={400} fill={tokens.textSoft}>
-                {ruleSummary(section.rows)}
-              </tspan>
-            </text>
+        {rows.map(({ timeline, bands }, i) => {
+          const y = rowY(i);
+          const byRegion = new Map(timeline.jurisdictions.map((j) => [j.region, j]));
+          const hasLimit = timeline.jurisdictions.some((j) => j.limit);
+          const reasons = timeline.jurisdictions
+            .filter((j) => !j.limit && j.trips.length > 0)
+            .map((j) => `${VISA_REGION_LABELS[j.region]}: ${j.noLimitReason}`);
+          return (
+            <g key={timeline.travelerId} pointerEvents="none">
+              {/* Traveler label */}
+              <text x={0} y={y + ROW_H / 2 + 4} fontSize={12} fontWeight={600} fill={tokens.navy}>
+                {truncate(timeline.travelerName, 18)}
+                <title>{[timeline.travelerName, ...reasons].join("\n")}</title>
+              </text>
 
-            {rows.map(({ row, rowY }) => {
-              const stats = rowWindowStats(row, windowEnd);
-              const bandX0 = stats ? clampX(xOf(stats.windowStart)) : 0;
-              const bandX1 = xEnd;
-              return (
-                <g key={row.key}>
-                  {/* Traveler label */}
-                  <circle cx={6} cy={rowY + ROW_H / 2} r={4} fill={row.limit ? row.color : NEUTRAL_BORDER} />
-                  <text
-                    x={16}
-                    y={rowY + ROW_H / 2 + 4}
-                    fontSize={12}
-                    fontWeight={600}
-                    fill={row.limit ? row.color : tokens.textGhost}
-                  >
-                    {truncate(row.travelerName, 17)}
-                    <title>{row.limit ? row.travelerName : `${row.travelerName}: ${row.noLimitReason}`}</title>
-                  </text>
-
-                  {/* This traveler's window */}
-                  {stats && bandX1 > bandX0 && (
+              {/* Windows, longest first: shorter ones stack on top and read darker */}
+              {hasLimit &&
+                bands.map((band) => {
+                  const x0 = clampX(xOf(band.windowStart));
+                  if (xEnd <= x0) return null;
+                  return (
                     <rect
-                      x={bandX0}
-                      y={rowY - 5}
-                      width={bandX1 - bandX0}
-                      height={ROW_H + 10}
+                      key={band.windowDays}
+                      x={x0}
+                      y={y - 6}
+                      width={xEnd - x0}
+                      height={ROW_H + 12}
                       rx={4}
-                      fill={stats.over ? RED_BG : GREEN_BG}
-                      stroke={stats.over ? RED_BORDER : GREEN_BORDER}
+                      fill={band.over ? RED_BG : WINDOW_BG}
+                      stroke={band.over ? RED_BORDER : WINDOW_BORDER}
                       strokeWidth={1}
-                    />
-                  )}
+                    >
+                      <title>
+                        {band.members
+                          .map(
+                            (m) =>
+                              `${VISA_REGION_LABELS[m.region]}: ${m.stats.daysUsed} of ${m.stats.allowance} days in the ${band.windowDays} days to ${fmtLong(windowEnd)}`,
+                          )
+                          .join("\n")}
+                      </title>
+                    </rect>
+                  );
+                })}
 
-                  {/* Trips: tinted bar, solid where the days count in the window */}
-                  {row.trips.map((trip) => {
-                    const end = tripEnd(trip);
-                    const x0 = xOf(trip.entryDate);
-                    const x1 = xOf(formatDate(addDays(parseDate(end), 1)));
-                    if (x1 < M_LEFT || x0 > width - M_RIGHT) return null;
-                    const cx0 = clampX(x0);
-                    const cw = Math.max(clampX(x1) - cx0, 2);
-                    const inWindow = stats ? tripDaysInWindow(trip, stats.windowStart, windowEnd) : 0;
-                    let countedX0 = 0;
-                    let countedX1 = 0;
-                    if (stats && inWindow > 0) {
-                      const os = trip.entryDate > stats.windowStart ? trip.entryDate : stats.windowStart;
-                      const oe = end < windowEnd ? end : windowEnd;
-                      countedX0 = clampX(xOf(os));
-                      countedX1 = clampX(xOf(formatDate(addDays(parseDate(oe), 1))));
-                    }
-                    const label = trip.destination?.trim();
-                    return (
-                      <g key={trip.id}>
-                        <title>
-                          {`${label ? `${label}\n` : ""}${fmtLong(trip.entryDate)} – ${trip.exitDate ? fmtLong(trip.exitDate) : "ongoing"}\n${tripLength(trip)} days${stats ? `, ${inWindow} in window` : ""}`}
-                        </title>
-                        <rect
-                          x={cx0}
-                          y={rowY}
-                          width={cw}
-                          height={ROW_H}
-                          rx={4}
-                          fill={row.limit ? alpha(row.color, 0.16) : NEUTRAL_BAR}
-                          stroke={row.limit ? alpha(row.color, 0.55) : NEUTRAL_BORDER}
-                          strokeWidth={1}
-                          strokeDasharray={trip.exitDate ? undefined : "4 2"}
-                        />
-                        {countedX1 > countedX0 && (
-                          <rect x={countedX0} y={rowY} width={countedX1 - countedX0} height={ROW_H} rx={4} fill={row.color} />
-                        )}
-                        {label && cw > 70 && (
-                          <text
-                            x={cx0 + cw / 2}
-                            y={rowY + ROW_H / 2 + 4}
-                            fontSize={11}
-                            fontWeight={500}
-                            textAnchor="middle"
-                            fill={countedX1 - countedX0 > cw / 2 ? "rgba(255,255,255,0.95)" : "rgba(12,30,60,0.82)"}
-                          >
-                            {truncate(label, Math.floor(cw / 7))}
-                          </text>
-                        )}
-                      </g>
-                    );
-                  })}
-                </g>
-              );
-            })}
-          </g>
-        ))}
+              {/* Trips: inactive ones first, so active trips draw on top */}
+              {[...timeline.trips]
+                .sort((a, b) => Number(regionColors.has(a.region)) - Number(regionColors.has(b.region)))
+                .map((trip) => {
+                  const color = regionColors.get(trip.region);
+                  const row = byRegion.get(trip.region);
+                  const band = row?.limit ? bands.find((b) => b.windowDays === row.limit!.windowDays) : undefined;
+                  return (
+                    <TripBar
+                      key={trip.id}
+                      trip={trip}
+                      y={y}
+                      color={color}
+                      windowStart={band?.windowStart}
+                      windowEnd={windowEnd}
+                      xOf={xOf}
+                      xAfter={xAfter}
+                      clampX={clampX}
+                      plotRight={width - M_RIGHT}
+                    />
+                  );
+                })}
+            </g>
+          );
+        })}
 
         {/* Window end cursor, matching the blog's green dashed line + handle */}
         <g pointerEvents="none">
-          <line x1={xEnd} x2={xEnd} y1={M_TOP - 4} y2={axisY} stroke={GREEN} strokeWidth={1.5} strokeDasharray="4 3" />
+          <line x1={xEnd} x2={xEnd} y1={M_TOP - 8} y2={axisY} stroke={GREEN} strokeWidth={1.5} strokeDasharray="4 3" />
           <circle cx={xEnd} cy={axisY} r={5} fill={GREEN} stroke="#fff" strokeWidth={2} />
-          <text x={endLabelX} y={M_TOP - 8} fontSize={11} fontWeight={600} textAnchor="middle" fill={GREEN}>
+          <text x={endLabelX} y={M_TOP - 12} fontSize={11} fontWeight={600} textAnchor="middle" fill={GREEN}>
             {fmtShort(windowEnd)}
           </text>
-          {sharedStart && xSharedStart > M_LEFT && xEnd - xSharedStart > 90 && (
-            <text x={xSharedStart + 2} y={M_TOP - 8} fontSize={10} fontWeight={500} fill="rgba(4,120,87,0.7)">
-              {`${fmtShort(sharedStart)} · ${sharedWindowDays}-day window`}
-            </text>
-          )}
+          {startLabels.map((l) => (
+            <g key={l.text}>
+              <line x1={l.x} x2={l.x} y1={M_TOP - 8} y2={M_TOP - 2} stroke={alpha(tokens.navy, 0.4)} strokeWidth={1} />
+              <text x={l.x + 3} y={M_TOP - 12} fontSize={10} fontWeight={500} fill={alpha(tokens.navy, 0.6)}>
+                {l.text}
+              </text>
+            </g>
+          ))}
         </g>
       </svg>
     </Box>
+  );
+}
+
+// ─── Trip bar ─────────────────────────────────────────────────────────────────
+
+function TripBar({
+  trip,
+  y,
+  color,
+  windowStart,
+  windowEnd,
+  xOf,
+  xAfter,
+  clampX,
+  plotRight,
+}: {
+  trip: Trip;
+  y: number;
+  /** The destination's colour; undefined when it isn't active (greyed out). */
+  color?: string;
+  /** Start of the window that applies to this trip, if any. */
+  windowStart?: string;
+  windowEnd: string;
+  xOf: (iso: string) => number;
+  xAfter: (iso: string) => number;
+  clampX: (x: number) => number;
+  plotRight: number;
+}) {
+  const end = tripEnd(trip);
+  const x0 = xOf(trip.entryDate);
+  const x1 = xAfter(end);
+  if (x1 < M_LEFT || x0 > plotRight) return null;
+  const cx0 = clampX(x0);
+  const cw = Math.max(clampX(x1) - cx0, 2);
+
+  // Days inside the window, drawn solid.
+  let countedX0 = 0;
+  let countedX1 = 0;
+  let inWindow = 0;
+  if (color && windowStart) {
+    const os = later(trip.entryDate, windowStart);
+    const oe = earlier(end, windowEnd);
+    if (os <= oe) {
+      countedX0 = clampX(xOf(os));
+      countedX1 = clampX(xAfter(oe));
+      inWindow = differenceInCalendarDays(parseDate(oe), parseDate(os)) + 1;
+    }
+  }
+
+  const label = trip.destination?.trim();
+  const tooltip = [
+    `${VISA_REGION_LABELS[trip.region]}${label ? `: ${label}` : ""}`,
+    `${fmtLong(trip.entryDate)} – ${trip.exitDate ? fmtLong(trip.exitDate) : "ongoing"}`,
+    `${tripLength(trip)} days${color && windowStart ? `, ${inWindow} in window` : ""}`,
+  ].join("\n");
+
+  return (
+    <g>
+      <title>{tooltip}</title>
+      <rect
+        x={cx0}
+        y={y}
+        width={cw}
+        height={ROW_H}
+        rx={4}
+        fill={color ? alpha(color, 0.18) : INACTIVE_BAR}
+        stroke={color ? alpha(color, 0.6) : INACTIVE_BORDER}
+        strokeWidth={1}
+        strokeDasharray={trip.exitDate ? undefined : "4 2"}
+      />
+      {countedX1 > countedX0 && (
+        <rect x={countedX0} y={y} width={countedX1 - countedX0} height={ROW_H} rx={4} fill={color} />
+      )}
+      {color && label && cw > 70 && (
+        <text
+          x={cx0 + cw / 2}
+          y={y + ROW_H / 2 + 4}
+          fontSize={11}
+          fontWeight={500}
+          textAnchor="middle"
+          fill={countedX1 - countedX0 > cw / 2 ? "rgba(255,255,255,0.95)" : "rgba(12,30,60,0.82)"}
+        >
+          {truncate(label, Math.floor(cw / 7))}
+        </text>
+      )}
+    </g>
   );
 }

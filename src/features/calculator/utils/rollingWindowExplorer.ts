@@ -1,15 +1,16 @@
 /**
  * Data for the rolling-window explorer (the desktop "Rolling Window" modal).
  *
- * The explorer shows one row per traveler per destination: their trips there,
- * and their rolling window laid over them, ending on a date the user slides
- * around. The window size and allowance come from the traveler's own passport
- * rule (resolved on the window's end date), not from the region alone, since
- * they can differ by passport (Türkiye 60/180 vs 90/180, Armenia 180/365).
+ * The explorer shows one timeline row per traveler holding every trip they
+ * made, greyed out, with the trips to the active destinations in that
+ * destination's colour. Each active destination's rolling window is laid over
+ * the row, ending on a date the user slides around. Window size and
+ * allowance come from the traveler's own passport rule (resolved on the
+ * window's end date), not from the region alone, since they can differ by
+ * passport (Türkiye 60/180 vs 90/180, Armenia 180/365).
  *
- * Only rolling_window limits are drawn. Rows whose passport gets a different
- * kind of limit (or none) are still listed, with the reason, so a traveler
- * never silently disappears from the view.
+ * Only rolling_window limits are drawn. A traveler whose passport gets a
+ * different kind of limit (or none) keeps their row, with the reason.
  */
 
 import type { PassportRule, RollingWindowLimit, Traveler, Trip } from "@/types";
@@ -57,6 +58,25 @@ export interface DateBounds {
   end: string;
 }
 
+/** A traveler's row: all their trips, plus one entry per active destination. */
+export interface TravelerTimeline {
+  travelerId: string;
+  travelerName: string;
+  /** Every trip, any destination, sorted by entry date. */
+  trips: Trip[];
+  /** One per active destination, in the order the destinations were given. */
+  jurisdictions: ExplorerRow[];
+}
+
+/** A window drawn over a traveler's row: one per distinct window length. */
+export interface WindowBand {
+  windowDays: number;
+  windowStart: string;
+  /** True when any destination using this window length is over its limit. */
+  over: boolean;
+  members: { region: VisaRegion; stats: RowWindowStats }[];
+}
+
 // ─── Destinations ─────────────────────────────────────────────────────────────
 
 /** True when the region's headline rule is a rolling window (Schengen, Türkiye…). */
@@ -72,18 +92,21 @@ export interface ExplorerDestination {
 }
 
 /**
- * Every destination any traveler has a trip to (Elsewhere excluded), most
- * visited first. A destination is supported when its region rule, or at least
- * one traveler's passport rule there, is a rolling window.
+ * Every destination with a trip inside `bounds` (Elsewhere excluded), most
+ * visited first. With no bounds, every trip counts. A destination is
+ * supported when its region rule, or at least one traveler's passport rule
+ * there, is a rolling window.
  */
 export function listExplorerDestinations(
   travelers: Traveler[],
   onDate: string,
+  bounds?: DateBounds,
 ): ExplorerDestination[] {
   const counts = new Map<VisaRegion, number>();
   for (const t of travelers) {
     for (const trip of t.trips) {
       if (trip.region === VisaRegion.Elsewhere) continue;
+      if (bounds && !tripOverlaps(trip, bounds)) continue;
       counts.set(trip.region, (counts.get(trip.region) ?? 0) + 1);
     }
   }
@@ -161,6 +184,48 @@ export function buildExplorerRows(
   return rows;
 }
 
+/**
+ * One row per traveler, in traveler order. `regions` are the active
+ * destinations; `onDate` is the window end date, on which each limit is
+ * resolved so dated rule changes apply as the window moves.
+ */
+export function buildTravelerTimelines(
+  travelers: Traveler[],
+  regions: VisaRegion[],
+  onDate: string,
+): TravelerTimeline[] {
+  return travelers.map((traveler) => ({
+    travelerId: traveler.id,
+    travelerName: traveler.name,
+    trips: [...traveler.trips].sort((a, b) => (a.entryDate < b.entryDate ? -1 : 1)),
+    jurisdictions: buildExplorerRows([traveler], regions, onDate),
+  }));
+}
+
+/**
+ * The windows to draw over a traveler's row on `windowEnd`, longest first so
+ * shorter ones stack on top. Destinations sharing a window length share a
+ * band (all windows end on the same date, so equal lengths coincide).
+ * Destinations the traveler has never been to get no band.
+ */
+export function windowBands(timeline: TravelerTimeline, windowEnd: string): WindowBand[] {
+  const byLength = new Map<number, WindowBand>();
+  for (const row of timeline.jurisdictions) {
+    const stats = rowWindowStats(row, windowEnd);
+    if (!row.limit || !stats || row.trips.length === 0) continue;
+    const band = byLength.get(row.limit.windowDays) ?? {
+      windowDays: row.limit.windowDays,
+      windowStart: stats.windowStart,
+      over: false,
+      members: [],
+    };
+    band.members.push({ region: row.region, stats });
+    band.over ||= stats.over;
+    byLength.set(row.limit.windowDays, band);
+  }
+  return [...byLength.values()].sort((a, b) => b.windowDays - a.windowDays);
+}
+
 /** Days used and left in the row's window ending on `windowEnd` (inclusive). */
 export function rowWindowStats(
   row: ExplorerRow,
@@ -211,22 +276,43 @@ export function tripDaysInWindow(
 const LEAD_DAYS = 30;
 const DEFAULT_WINDOW_DAYS = 180;
 
+/** True when the trip has at least one day inside the bounds. */
+export function tripOverlaps(trip: Trip, bounds: DateBounds): boolean {
+  return trip.entryDate <= bounds.end && tripEnd(trip) >= bounds.start;
+}
+
+/** How many of the travelers' trips fall wholly outside the bounds. */
+export function countTripsOutside(travelers: Traveler[], bounds: DateBounds): number {
+  return travelers.reduce(
+    (n, t) => n + t.trips.filter((trip) => !tripOverlaps(trip, bounds)).length,
+    0,
+  );
+}
+
+/**
+ * The longest rolling window any traveler has in any destination they've
+ * been to, as of `onDate` (at least 180 days).
+ */
+export function longestWindowDays(travelers: Traveler[], onDate: string): number {
+  let longest = DEFAULT_WINDOW_DAYS;
+  for (const t of travelers) {
+    for (const region of new Set(t.trips.map((trip) => trip.region))) {
+      longest = Math.max(longest, getRollingLimit(t, region, onDate)?.windowDays ?? 0);
+    }
+  }
+  return longest;
+}
+
 /**
  * The default visible range: from a month before the first trip to one
  * window length after the last, so the last trip can be watched ageing out.
  * Snapped to whole months. With no trips, a window either side of today.
  */
-export function fitBounds(rows: ExplorerRow[]): DateBounds {
-  const trips = rows.flatMap((r) => r.trips);
-  const maxWindow = Math.max(
-    DEFAULT_WINDOW_DAYS,
-    ...rows.map((r) => r.limit?.windowDays ?? 0),
-  );
-
+export function fitBounds(trips: Trip[], windowDays = DEFAULT_WINDOW_DAYS): DateBounds {
   let first: Date;
   let last: Date;
   if (trips.length === 0) {
-    first = subDays(today(), maxWindow);
+    first = subDays(today(), windowDays);
     last = today();
   } else {
     first = parseDate(trips.reduce((m, t) => (t.entryDate < m ? t.entryDate : m), trips[0].entryDate));
@@ -234,7 +320,7 @@ export function fitBounds(rows: ExplorerRow[]): DateBounds {
   }
 
   const start = subDays(first, LEAD_DAYS);
-  const end = addDays(last, maxWindow);
+  const end = addDays(last, windowDays);
   return {
     start: formatDate(new Date(start.getFullYear(), start.getMonth(), 1)),
     end: formatDate(new Date(end.getFullYear(), end.getMonth() + 1, 0)),

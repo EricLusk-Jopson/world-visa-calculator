@@ -1,21 +1,27 @@
 /**
  * Tests for the rolling-window explorer's data layer. Limits come from the
- * real region data: a Canadian passport ("CA") gets Schengen 90/180, a
- * Russian one ("RU") gets Türkiye 60/180, a German one ("DE") has free
- * movement in Schengen, and the UK is per-visit for everyone.
+ * real region data: a Canadian passport ("CA") gets Schengen 90/180, a US
+ * one ("US") gets Schengen 90/180 and Armenia 180/365, a Russian one ("RU")
+ * gets Türkiye 60/180, a German one ("DE") has free movement in Schengen,
+ * and the UK is per-visit for everyone.
  */
 
 import { describe, it, expect } from "vitest";
 import { VisaRegion, type Traveler, type Trip } from "@/types";
 import {
   buildExplorerRows,
+  buildTravelerTimelines,
   clampDate,
+  countTripsOutside,
   fitBounds,
   getRollingLimit,
   listExplorerDestinations,
+  longestWindowDays,
   rowWindowStats,
   tripDaysInWindow,
   tripLength,
+  tripOverlaps,
+  windowBands,
 } from "./rollingWindowExplorer";
 
 let nextId = 0;
@@ -58,6 +64,71 @@ describe("listExplorerDestinations", () => {
       { region: VisaRegion.Schengen, tripCount: 2, supported: true },
       { region: VisaRegion.UnitedKingdom, tripCount: 1, supported: false },
     ]);
+  });
+
+  it("only counts trips inside the date range", () => {
+    const travelers = [
+      traveler("Ann", "CA", [
+        trip(VisaRegion.UnitedKingdom, "2025-01-01", "2025-01-05"),
+        trip(VisaRegion.Schengen, "2025-12-25", "2026-01-10"),
+      ]),
+    ];
+    const bounds = { start: "2026-01-01", end: "2026-12-31" };
+    expect(listExplorerDestinations(travelers, ON, bounds)).toEqual([
+      { region: VisaRegion.Schengen, tripCount: 1, supported: true },
+    ]);
+    expect(countTripsOutside(travelers, bounds)).toBe(1);
+  });
+});
+
+describe("tripOverlaps", () => {
+  const bounds = { start: "2026-01-01", end: "2026-12-31" };
+  it("counts a trip touching either edge", () => {
+    expect(tripOverlaps(trip(VisaRegion.Schengen, "2025-12-01", "2026-01-01"), bounds)).toBe(true);
+    expect(tripOverlaps(trip(VisaRegion.Schengen, "2026-12-31", "2027-01-05"), bounds)).toBe(true);
+    expect(tripOverlaps(trip(VisaRegion.Schengen, "2025-12-01", "2025-12-31"), bounds)).toBe(false);
+  });
+});
+
+describe("timelines and window bands", () => {
+  const ann = traveler("Ann", "US", [
+    trip(VisaRegion.Armenia, "2026-03-01", "2026-03-10"),
+    trip(VisaRegion.Elsewhere, "2026-02-01", "2026-02-10"),
+    trip(VisaRegion.Schengen, "2026-01-01", "2026-01-10"),
+  ]);
+
+  it("keeps every trip on the traveler's row, sorted", () => {
+    const [timeline] = buildTravelerTimelines([ann], [VisaRegion.Schengen], ON);
+    expect(timeline.trips.map((t) => t.region)).toEqual([
+      VisaRegion.Schengen,
+      VisaRegion.Elsewhere,
+      VisaRegion.Armenia,
+    ]);
+    expect(timeline.jurisdictions.map((j) => j.region)).toEqual([VisaRegion.Schengen]);
+  });
+
+  it("draws one band per window length, longest first", () => {
+    const [timeline] = buildTravelerTimelines(
+      [ann],
+      [VisaRegion.Schengen, VisaRegion.Armenia],
+      ON,
+    );
+    const bands = windowBands(timeline, ON);
+    expect(bands.map((b) => b.windowDays)).toEqual([365, 180]);
+    expect(bands[0].members.map((m) => m.region)).toEqual([VisaRegion.Armenia]);
+    expect(bands[1].members[0].stats.daysUsed).toBe(10);
+    expect(bands.some((b) => b.over)).toBe(false);
+  });
+
+  it("skips destinations the traveler hasn't been to", () => {
+    const [timeline] = buildTravelerTimelines([ann], [VisaRegion.Turkiye], ON);
+    expect(timeline.jurisdictions[0].limit).not.toBeNull();
+    expect(windowBands(timeline, ON)).toEqual([]);
+  });
+
+  it("finds the longest window among visited destinations", () => {
+    expect(longestWindowDays([ann], ON)).toBe(365);
+    expect(longestWindowDays([traveler("Bo", "CA", [])], ON)).toBe(180);
   });
 });
 
@@ -131,24 +202,16 @@ describe("trip helpers", () => {
 });
 
 describe("fitBounds", () => {
+  const trips = [trip(VisaRegion.Schengen, "2026-03-15", "2026-04-10")];
+
   it("runs from a month before the first trip to a window after the last, snapped to months", () => {
-    const rows = buildExplorerRows(
-      [traveler("Ann", "CA", [trip(VisaRegion.Schengen, "2026-03-15", "2026-04-10")])],
-      [VisaRegion.Schengen],
-      ON,
-    );
     // Mar 15 − 30 = Feb 13 → Feb 1. Apr 10 + 180 = Oct 7 → Oct 31.
-    expect(fitBounds(rows)).toEqual({ start: "2026-02-01", end: "2026-10-31" });
+    expect(fitBounds(trips)).toEqual({ start: "2026-02-01", end: "2026-10-31" });
   });
 
-  it("uses the longest window among the rows", () => {
-    const rows = buildExplorerRows(
-      [traveler("Ann", "CA", [trip(VisaRegion.Schengen, "2026-03-15", "2026-04-10")])],
-      [VisaRegion.Schengen],
-      ON,
-    ).map((r) => ({ ...r, limit: { type: "rolling_window" as const, days: 180, windowDays: 365 } }));
+  it("leaves room for a longer window", () => {
     // Apr 10 + 365 = Apr 10 2027 → Apr 30 2027.
-    expect(fitBounds(rows).end).toBe("2027-04-30");
+    expect(fitBounds(trips, 365).end).toBe("2027-04-30");
   });
 });
 
