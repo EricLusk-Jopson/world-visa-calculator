@@ -1507,7 +1507,7 @@
             {
               "type": "per_visit",
               "unit": "days",
-              "value": 730
+              "value": 365
             }
           ],
           "source": {

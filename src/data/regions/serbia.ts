@@ -70,7 +70,7 @@
  *     standard ISO code — not currently selectable via NationalitySelector's
  *     passport picker, mirroring montenegro.ts's own PS entry.
  *
- * Last verified: 2026-08-31
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -161,7 +161,7 @@ export const SERBIA: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-08-31',
+  lastVerified: '2026-10-23',
   sourceUrl: 'https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime',
   defaultRule: VISA_REQUIRED,
   passportRules: {

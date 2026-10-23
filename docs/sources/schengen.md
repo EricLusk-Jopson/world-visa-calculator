@@ -1,6 +1,6 @@
 ---
 region: Schengen
-lastReviewed: 2026-10-20
+lastReviewed: 2026-10-23
 links:
   - id: visaList
     url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230
@@ -135,6 +135,11 @@ The next run then reports a first-run baseline for the new version.
 
 **Human work:** the consolidation check, monthly. Also watch the news for
 EU visa suspension decisions (the suspension mechanism, e.g. Vanuatu, Georgia).
+On 2026-10-23 the current consolidation was still 30/12/2025. A EUR-Lex
+search for the regulation also returned Commission Implementing Regulation
+(EU) 2026/496 of 6 March 2026, which suspends the visa exemption for
+Georgian diplomatic, service and official passports. That's already in the
+`GE` note and isn't a new change.
 
 ## visaListCellar
 
@@ -215,7 +220,15 @@ Visa Code Handbook page for "Annex 7b".
 - **Read it:** a broken link. The file was replaced; find the new one.
 
 **Human work:** a periodic look for a newer Annex 7b, and a full read on any
-change.
+change. To compare every row at once, have Claude parse the PDF:
+`pdftotext -bbox` gives each word's position, so each X can be matched to
+its member-state column. Check any differences on a rendered page image.
+On 2026-10-23 (file sha256 `9201757c…`, unchanged since 2026-10-07) this
+found two transcription gaps: India only under CZ and RO (rule-change 8),
+and Burundi under BE from 1 August 2026 (rule-change 9). The other 42 rows
+matched. Cell footnotes are renumbered whenever a row is added (e.g.
+Guinea's service-passport note moved from 6 to 7), so match footnotes by
+their text, not their number.
 
 ## etias
 
@@ -230,7 +243,11 @@ the `preAuth` details in `schengen.ts`.
 **Real change vs noise:** not diffed.
 
 **Human work:** check every cycle until ETIAS launches. The launch date has
-slipped several times.
+slipped several times. On 2026-10-23 the page said: "ETIAS is currently not
+in operation and no applications for travel authorisations are collected at
+this point. The European Union will inform about the specific date for the
+start of ETIAS several months prior to its launch." It gave no fee or
+validity to check against `schengen.ts`.
 
 ## travelEurope
 

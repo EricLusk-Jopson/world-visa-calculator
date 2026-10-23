@@ -2,6 +2,8 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MontenegroSources } from "@/data/sources";
+import { formatDay, verifiedDate } from "@/data/sourceStatus";
+import stability from "../../../pipeline/reports/stability.json";
 
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -41,7 +43,7 @@ describe("SourceButton", () => {
     expect(byText("Official source")?.getAttribute("href")).toBe(MontenegroSources.DZ.direct.url);
     const links = document.querySelector('[data-testid="source-links"]')!;
     expect(links.querySelectorAll("a")).toHaveLength(2); // official and overview, side by side
-    expect(byText("Verified")?.textContent).toBe("Verified 15 Oct 2026 · Rule changed 15 Oct 2026 →");
+    expect(byText("Verified")?.textContent).toBe(`Verified ${formatDay(verifiedDate(MontenegroSources.DZ.dateChecked, stability.sources["Montenegro.DZ"]))} · Rule changed 15 Oct 2026 →`);
     expect(byText("Rule changed 15 Oct 2026")?.getAttribute("href")).toBe("/rule-changes#rule-4");
     await act(async () => {
       await new Promise((r) => setTimeout(r, 50)); // link status loads lazily

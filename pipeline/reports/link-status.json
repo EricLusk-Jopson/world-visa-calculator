@@ -4000,6 +4000,10 @@
   "https://www.mvp.gov.ba/en/vize": {
    "status": "live",
    "checkedAt": "2026-10-23"
+  },
+  "https://mfa.gov.by/en/visa/freemove/general/": {
+   "status": "live",
+   "checkedAt": "2026-10-23"
   }
  }
 }

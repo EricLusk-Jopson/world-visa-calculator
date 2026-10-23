@@ -14,6 +14,7 @@ Field meanings are in [README.md](README.md).
 | Belarus | [`general`](belarus.md#general) | index | in-place | open | link-only | none | periodic |
 | Belarus | [`europe`](belarus.md#europe) | html-page | in-place | open | diff | high | on diff |
 | Belarus | [`airport`](belarus.md#airport) | html-page | in-place | open | diff | medium | on diff |
+| Belarus | [`bilateral`](belarus.md#bilateral) | html-page | in-place | open | diff | medium | on diff |
 | Belarus | [`airportPdf`](belarus.md#airportpdf) | document | replaced-file | open | diff | low | periodic |
 | Bosnia | [`vize`](bosnia.md#vize) | interactive | regenerated | open | diff | low | on diff |
 | Bosnia | [`subpages`](bosnia.md#subpages) | machine-copy | regenerated | open | resolver | high | on diff |
@@ -52,12 +53,12 @@ Field meanings are in [README.md](README.md).
 
 Links to look at by hand, whether or not the report flags them.
 
-- **Albania** (last reviewed 2026-10-20): [`visaTable`](albania.md#visatable) (manual only), [`visaTableCountries`](albania.md#visatablecountries) (manual only), [`visaRegime`](albania.md#visaregime) (manual only)
-- **Belarus** (last reviewed 2026-10-19): [`general`](belarus.md#general), [`airportPdf`](belarus.md#airportpdf)
-- **Cyprus** (last reviewed 2026-10-20): [`euVisaList`](cyprus.md#euvisalist), [`euVisaListCellar`](cyprus.md#euvisalistcellar)
-- **Ireland** (last reviewed 2026-10-20): [`visaNationalityList`](ireland.md#visanationalitylist), [`euFreeMovement`](ireland.md#eufreemovement), [`ctaGuidance`](ireland.md#ctaguidance), [`bivs`](ireland.md#bivs), [`ssvwp`](ireland.md#ssvwp), [`transitVisa`](ireland.md#transitvisa)
-- **Schengen** (last reviewed 2026-10-20): [`visaList`](schengen.md#visalist), [`visaListCellar`](schengen.md#visalistcellar), [`atvCommon`](schengen.md#atvcommon), [`atvCommonCellar`](schengen.md#atvcommoncellar), [`atvSpecific`](schengen.md#atvspecific), [`etias`](schengen.md#etias)
+- **Albania** (last reviewed 2026-10-23): [`visaTable`](albania.md#visatable) (manual only), [`visaTableCountries`](albania.md#visatablecountries) (manual only), [`visaRegime`](albania.md#visaregime) (manual only)
+- **Belarus** (last reviewed 2026-10-23): [`general`](belarus.md#general), [`airportPdf`](belarus.md#airportpdf)
+- **Cyprus** (last reviewed 2026-10-23): [`euVisaList`](cyprus.md#euvisalist), [`euVisaListCellar`](cyprus.md#euvisalistcellar)
+- **Ireland** (last reviewed 2026-10-23): [`visaNationalityList`](ireland.md#visanationalitylist), [`euFreeMovement`](ireland.md#eufreemovement), [`ctaGuidance`](ireland.md#ctaguidance), [`bivs`](ireland.md#bivs), [`ssvwp`](ireland.md#ssvwp), [`transitVisa`](ireland.md#transitvisa)
+- **Schengen** (last reviewed 2026-10-23): [`visaList`](schengen.md#visalist), [`visaListCellar`](schengen.md#visalistcellar), [`atvCommon`](schengen.md#atvcommon), [`atvCommonCellar`](schengen.md#atvcommoncellar), [`atvSpecific`](schengen.md#atvspecific), [`etias`](schengen.md#etias)
 
 ## Totals
 
-14 regions · 60 documented links · 40 load-bearing · 29 diffed · 19 need a person regardless
+14 regions · 61 documented links · 41 load-bearing · 30 diffed · 19 need a person regardless

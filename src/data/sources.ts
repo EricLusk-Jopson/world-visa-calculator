@@ -63,7 +63,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -89,7 +89,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -111,7 +111,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -131,7 +131,7 @@ export const SchengenSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -158,7 +158,7 @@ export const UKSources = {
       type: "parent",
       checkDiff: false, // guidance, not a statutory rule
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -178,7 +178,7 @@ export const UKSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-04-14",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -198,7 +198,7 @@ export const UKSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-04-14",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -219,7 +219,7 @@ export const UKSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-04-14",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -245,7 +245,7 @@ export const UKSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-04-14",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   ctaGuidance: {
@@ -261,7 +261,7 @@ export const UKSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-04-14",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -292,7 +292,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -311,7 +311,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -329,7 +329,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -350,7 +350,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -371,7 +371,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -392,7 +392,7 @@ export const IrelandSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -428,7 +428,7 @@ export const IrelandSources = {
         checkDiff: true,
       },
     },
-    dateChecked: "2026-10-08",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -451,7 +451,7 @@ export const TurkiyeSources = {
       type: "parent",
       checkDiff: true,
     },
-    dateChecked: "2026-05-27",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -472,7 +472,7 @@ export const TurkiyeSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-05-27",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -515,7 +515,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Afghanistan
   AL: {
     direct: {
@@ -525,7 +525,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Albania
   DZ: {
     direct: {
@@ -535,7 +535,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-10-15",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Algeria
   AD: {
     direct: {
@@ -545,7 +545,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Andorra
   AO: {
     direct: {
@@ -555,7 +555,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Angola
   AG: {
     direct: {
@@ -565,7 +565,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Antigua and Barbuda
   AR: {
     direct: {
@@ -575,7 +575,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Argentina
   AM: {
     direct: {
@@ -585,7 +585,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Armenia
   AW: {
     direct: {
@@ -595,7 +595,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Aruba
   AU: {
     direct: {
@@ -605,7 +605,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Australia
   AT: {
     direct: {
@@ -615,7 +615,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Austria
   AZ: {
     direct: {
@@ -625,7 +625,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Azerbaijan
   BS: {
     direct: {
@@ -635,7 +635,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bahamas
   BH: {
     direct: {
@@ -645,7 +645,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bahrain
   BD: {
     direct: {
@@ -655,7 +655,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bangladesh
   BB: {
     direct: {
@@ -665,7 +665,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Barbados
   BY: {
     direct: {
@@ -675,7 +675,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belarus
   BE: {
     direct: {
@@ -685,7 +685,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belgium
   BZ: {
     direct: {
@@ -695,7 +695,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belize
   BJ: {
     direct: {
@@ -705,7 +705,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Benin
   BT: {
     direct: {
@@ -715,7 +715,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bhutan
   BO: {
     direct: {
@@ -725,7 +725,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bolivia
   BA: {
     direct: {
@@ -735,7 +735,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BW: {
     direct: {
@@ -745,7 +745,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Botswana
   BR: {
     direct: {
@@ -755,7 +755,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Brazil
   BN: {
     direct: {
@@ -765,7 +765,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Brunei
   BG: {
     direct: {
@@ -775,7 +775,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bulgaria
   BF: {
     direct: {
@@ -785,7 +785,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Burkina Faso
   BI: {
     direct: {
@@ -795,7 +795,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Burundi
   CV: {
     direct: {
@@ -805,7 +805,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cabo Verde
   KH: {
     direct: {
@@ -815,7 +815,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cambodia
   CM: {
     direct: {
@@ -825,7 +825,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cameroon
   CA: {
     direct: {
@@ -835,7 +835,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Canada
   KY: {
     direct: {
@@ -845,7 +845,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cayman Islands
   CF: {
     direct: {
@@ -855,7 +855,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Central African Republic
   TD: {
     direct: {
@@ -865,7 +865,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Chad
   CL: {
     direct: {
@@ -875,7 +875,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Chile
   CN: {
     direct: {
@@ -885,7 +885,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // China
   CO: {
     direct: {
@@ -895,7 +895,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Colombia
   CD: {
     direct: {
@@ -905,7 +905,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Congo, Democratic Republic of the
   CG: {
     direct: {
@@ -915,7 +915,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Congo, Republic
   CR: {
     direct: {
@@ -925,7 +925,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Costa Rica
   HR: {
     direct: {
@@ -935,7 +935,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Croatia
   CU: {
     direct: {
@@ -945,7 +945,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cuba
   CY: {
     direct: {
@@ -955,7 +955,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cyprus
   CZ: {
     direct: {
@@ -965,7 +965,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Czech Republic
   DK: {
     direct: {
@@ -975,7 +975,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Denmark
   DJ: {
     direct: {
@@ -985,7 +985,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Djibouti
   DM: {
     direct: {
@@ -995,7 +995,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Dominica
   DO: {
     direct: {
@@ -1005,7 +1005,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Dominican Republic
   EC: {
     direct: {
@@ -1015,7 +1015,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ecuador
   EG: {
     direct: {
@@ -1025,7 +1025,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Egypt
   SV: {
     direct: {
@@ -1035,7 +1035,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // El Salvador
   GQ: {
     direct: {
@@ -1045,7 +1045,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Equatorial Guinea
   ER: {
     direct: {
@@ -1055,7 +1055,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Eritrea
   EE: {
     direct: {
@@ -1065,7 +1065,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Estonia
   ET: {
     direct: {
@@ -1075,7 +1075,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ethiopia
   FJ: {
     direct: {
@@ -1085,7 +1085,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Fiji
   FI: {
     direct: {
@@ -1095,7 +1095,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Finland
   FR: {
     direct: {
@@ -1105,7 +1105,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // France
   GA: {
     direct: {
@@ -1115,7 +1115,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Gabon
   GM: {
     direct: {
@@ -1125,7 +1125,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Gambia
   GE: {
     direct: {
@@ -1135,7 +1135,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Georgia
   DE: {
     direct: {
@@ -1145,7 +1145,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Germany
   GH: {
     direct: {
@@ -1155,7 +1155,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ghana
   GR: {
     direct: {
@@ -1165,7 +1165,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Greece
   GD: {
     direct: {
@@ -1175,7 +1175,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Grenada
   GT: {
     direct: {
@@ -1185,7 +1185,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guatemala
   GN: {
     direct: {
@@ -1195,7 +1195,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guinea
   GW: {
     direct: {
@@ -1205,7 +1205,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guinea-Bissau
   GY: {
     direct: {
@@ -1215,7 +1215,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guyana
   HT: {
     direct: {
@@ -1225,7 +1225,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Haiti
   VA: {
     direct: {
@@ -1235,7 +1235,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Holy See and Sovereign Military Order of Malta
   HN: {
     direct: {
@@ -1245,7 +1245,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Honduras
   HU: {
     direct: {
@@ -1255,7 +1255,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Hungary
   IS: {
     direct: {
@@ -1265,7 +1265,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iceland
   IN: {
     direct: {
@@ -1275,7 +1275,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // India
   ID: {
     direct: {
@@ -1285,7 +1285,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Indonesia
   IR: {
     direct: {
@@ -1295,7 +1295,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iran
   IQ: {
     direct: {
@@ -1305,7 +1305,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iraq
   IE: {
     direct: {
@@ -1315,7 +1315,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ireland
   IL: {
     direct: {
@@ -1325,7 +1325,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Israel
   IT: {
     direct: {
@@ -1335,7 +1335,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Italy
   CI: {
     direct: {
@@ -1345,7 +1345,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ivory Coast (Côte d'Ivoire)
   JM: {
     direct: {
@@ -1355,7 +1355,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Jamaica
   JP: {
     direct: {
@@ -1365,7 +1365,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Japan
   JO: {
     direct: {
@@ -1375,7 +1375,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Jordan
   KZ: {
     direct: {
@@ -1385,7 +1385,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kazakhstan
   KE: {
     direct: {
@@ -1395,7 +1395,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kenya
   KI: {
     direct: {
@@ -1405,7 +1405,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kiribati
   KP: {
     direct: {
@@ -1415,7 +1415,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Korea, Democratic People's Republic of (North Korea)
   KR: {
     direct: {
@@ -1425,7 +1425,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Korea, Republic of (South Korea)
   XK: {
     direct: {
@@ -1435,7 +1435,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kosovo
   KW: {
     direct: {
@@ -1445,7 +1445,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kuwait
   KG: {
     direct: {
@@ -1455,7 +1455,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kyrgyzstan
   LA: {
     direct: {
@@ -1465,7 +1465,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Laos
   LV: {
     direct: {
@@ -1475,7 +1475,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Latvia
   LB: {
     direct: {
@@ -1485,7 +1485,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lebanon
   LS: {
     direct: {
@@ -1495,7 +1495,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lesotho
   LR: {
     direct: {
@@ -1505,7 +1505,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Liberia
   LY: {
     direct: {
@@ -1515,7 +1515,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Libya
   LI: {
     direct: {
@@ -1525,7 +1525,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Liechtenstein
   LT: {
     direct: {
@@ -1535,7 +1535,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lithuania
   LU: {
     direct: {
@@ -1545,7 +1545,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Luxembourg
   MG: {
     direct: {
@@ -1555,7 +1555,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Madagascar
   MW: {
     direct: {
@@ -1565,7 +1565,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malawi
   MY: {
     direct: {
@@ -1575,7 +1575,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malaysia
   MV: {
     direct: {
@@ -1585,7 +1585,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Maldives
   ML: {
     direct: {
@@ -1595,7 +1595,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mali
   MT: {
     direct: {
@@ -1605,7 +1605,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malta
   MH: {
     direct: {
@@ -1615,7 +1615,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Marshall Islands
   MR: {
     direct: {
@@ -1625,7 +1625,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mauritania
   MU: {
     direct: {
@@ -1635,7 +1635,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mauritius
   MX: {
     direct: {
@@ -1645,7 +1645,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mexico
   FM: {
     direct: {
@@ -1655,7 +1655,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Micronesia
   MD: {
     direct: {
@@ -1665,7 +1665,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Moldova
   MC: {
     direct: {
@@ -1675,7 +1675,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Monaco
   MN: {
     direct: {
@@ -1685,7 +1685,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mongolia
   MA: {
     direct: {
@@ -1695,7 +1695,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Morocco
   MZ: {
     direct: {
@@ -1705,7 +1705,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mozambique
   MM: {
     direct: {
@@ -1715,7 +1715,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Myanmar
   NA: {
     direct: {
@@ -1725,7 +1725,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Namibia
   NR: {
     direct: {
@@ -1735,7 +1735,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nauru
   NP: {
     direct: {
@@ -1745,7 +1745,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nepal
   NL: {
     direct: {
@@ -1755,7 +1755,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Netherlands
   NZ: {
     direct: {
@@ -1765,7 +1765,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // New Zealand
   NI: {
     direct: {
@@ -1775,7 +1775,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nicaragua
   NE: {
     direct: {
@@ -1785,7 +1785,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Niger
   NG: {
     direct: {
@@ -1795,7 +1795,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nigeria
   MK: {
     direct: {
@@ -1805,7 +1805,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // North Macedonia
   NO: {
     direct: {
@@ -1815,7 +1815,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Norway
   OM: {
     direct: {
@@ -1825,7 +1825,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Oman
   PK: {
     direct: {
@@ -1835,7 +1835,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Pakistan
   PW: {
     direct: {
@@ -1845,7 +1845,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Palau
   PS: {
     direct: {
@@ -1855,7 +1855,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Palestine
   PA: {
     direct: {
@@ -1865,7 +1865,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Panama
   PG: {
     direct: {
@@ -1875,7 +1875,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Papua New Guinea
   PY: {
     direct: {
@@ -1885,7 +1885,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Paraguay
   PE: {
     direct: {
@@ -1895,7 +1895,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Peru
   PH: {
     direct: {
@@ -1905,7 +1905,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Philippines
   PL: {
     direct: {
@@ -1915,7 +1915,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Poland
   PT: {
     direct: {
@@ -1925,7 +1925,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Portugal
   QA: {
     direct: {
@@ -1935,7 +1935,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Qatar
   RO: {
     direct: {
@@ -1945,7 +1945,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Romania
   RU: {
     direct: {
@@ -1955,7 +1955,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Russian Federation
   RW: {
     direct: {
@@ -1965,7 +1965,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Rwanda
   KN: {
     direct: {
@@ -1975,7 +1975,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   LC: {
     direct: {
@@ -1985,7 +1985,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Lucia
   VC: {
     direct: {
@@ -1995,7 +1995,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   WS: {
     direct: {
@@ -2005,7 +2005,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Samoa
   SM: {
     direct: {
@@ -2015,7 +2015,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // San Marino
   ST: {
     direct: {
@@ -2025,7 +2025,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sao Tome and Principe
   SA: {
     direct: {
@@ -2035,7 +2035,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saudi Arabia
   SN: {
     direct: {
@@ -2045,7 +2045,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Senegal
   RS: {
     direct: {
@@ -2055,7 +2055,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Serbia
   SC: {
     direct: {
@@ -2065,7 +2065,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Seychelles
   SL: {
     direct: {
@@ -2075,7 +2075,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sierra Leone
   SG: {
     direct: {
@@ -2085,7 +2085,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Singapore
   SK: {
     direct: {
@@ -2095,7 +2095,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Slovakia
   SI: {
     direct: {
@@ -2105,7 +2105,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Slovenia
   SB: {
     direct: {
@@ -2115,7 +2115,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Solomon Islands
   SO: {
     direct: {
@@ -2125,7 +2125,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Somalia
   ZA: {
     direct: {
@@ -2135,7 +2135,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // South Africa
   ES: {
     direct: {
@@ -2145,7 +2145,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Spain
   LK: {
     direct: {
@@ -2155,7 +2155,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sri Lanka
   SD: {
     direct: {
@@ -2165,7 +2165,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sudan
   SR: {
     direct: {
@@ -2175,7 +2175,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Suriname
   SZ: {
     direct: {
@@ -2185,7 +2185,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Swaziland (Eswatini)
   SE: {
     direct: {
@@ -2195,7 +2195,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sweden
   CH: {
     direct: {
@@ -2205,7 +2205,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Switzerland
   SY: {
     direct: {
@@ -2215,7 +2215,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Syria
   TJ: {
     direct: {
@@ -2225,7 +2225,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tajikistan
   TZ: {
     direct: {
@@ -2235,7 +2235,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tanzania
   TH: {
     direct: {
@@ -2245,7 +2245,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Thailand
   TL: {
     direct: {
@@ -2255,7 +2255,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Timor-Leste
   TG: {
     direct: {
@@ -2265,7 +2265,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Togo
   TO: {
     direct: {
@@ -2275,7 +2275,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tonga
   TT: {
     direct: {
@@ -2285,7 +2285,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Trinidad and Tobago
   TN: {
     direct: {
@@ -2295,7 +2295,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tunisia
   TR: {
     direct: {
@@ -2305,7 +2305,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Turkey
   TM: {
     direct: {
@@ -2315,7 +2315,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Turkmenistan
   TV: {
     direct: {
@@ -2325,7 +2325,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tuvalu
   UG: {
     direct: {
@@ -2335,7 +2335,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uganda
   UA: {
     direct: {
@@ -2345,7 +2345,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ukraine
   KM: {
     direct: {
@@ -2355,7 +2355,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Union of the Comoros and Swaziland in Eswatini
   AE: {
     direct: {
@@ -2365,7 +2365,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United Arab Emirates
   GB: {
     direct: {
@@ -2375,7 +2375,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United Kingdom of Great Britain and Northern Ireland
   US: {
     direct: {
@@ -2385,7 +2385,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United States of America
   UY: {
     direct: {
@@ -2395,7 +2395,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uruguay
   UZ: {
     direct: {
@@ -2405,7 +2405,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uzbekistan
   VU: {
     direct: {
@@ -2415,7 +2415,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Vanuatu
   VE: {
     direct: {
@@ -2425,7 +2425,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Venezuela
   VN: {
     direct: {
@@ -2435,7 +2435,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Vietnam
   YE: {
     direct: {
@@ -2445,7 +2445,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Yemen
   ZM: {
     direct: {
@@ -2455,7 +2455,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Zambia
   ZW: {
     direct: {
@@ -2465,7 +2465,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-08-30",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Zimbabwe
 } as const;
 
@@ -2501,7 +2501,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Afghanistan
   AL: {
     direct: {
@@ -2510,7 +2510,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Albania
   DZ: {
     direct: {
@@ -2519,7 +2519,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Algeria
   AD: {
     direct: {
@@ -2528,7 +2528,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Andorra
   AO: {
     direct: {
@@ -2537,7 +2537,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Angola
   AG: {
     direct: {
@@ -2547,7 +2547,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Antigua and Barbuda
   AR: {
     direct: {
@@ -2556,7 +2556,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Argentina
   AM: {
     direct: {
@@ -2565,7 +2565,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Armenia
   AU: {
     direct: {
@@ -2575,7 +2575,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Australia
   AT: {
     direct: {
@@ -2584,7 +2584,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Austria
   AZ: {
     direct: {
@@ -2594,7 +2594,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Azerbaijan
   BS: {
     direct: {
@@ -2603,7 +2603,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bahamas
   BH: {
     direct: {
@@ -2612,7 +2612,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bahrain
   BD: {
     direct: {
@@ -2621,7 +2621,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bangladesh
   BB: {
     direct: {
@@ -2630,7 +2630,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Barbados
   BY: {
     direct: {
@@ -2640,7 +2640,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belarus
   BE: {
     direct: {
@@ -2649,7 +2649,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belgium
   BZ: {
     direct: {
@@ -2658,7 +2658,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belize
   BJ: {
     direct: {
@@ -2667,7 +2667,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Benin
   BT: {
     direct: {
@@ -2676,7 +2676,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bhutan
   BO: {
     direct: {
@@ -2685,7 +2685,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bolivia
   BA: {
     direct: {
@@ -2695,7 +2695,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BW: {
     direct: {
@@ -2704,7 +2704,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Botswana
   BR: {
     direct: {
@@ -2713,7 +2713,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Brazil
   BN: {
     direct: {
@@ -2723,7 +2723,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Brunei Darussalam
   BG: {
     direct: {
@@ -2732,7 +2732,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bulgaria
   BF: {
     direct: {
@@ -2742,7 +2742,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Burkina Faso
   BI: {
     direct: {
@@ -2751,7 +2751,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Burundi
   CV: {
     direct: {
@@ -2761,7 +2761,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cabo Verde
   KH: {
     direct: {
@@ -2770,7 +2770,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cambodia
   CM: {
     direct: {
@@ -2779,7 +2779,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cameroon
   CA: {
     direct: {
@@ -2788,7 +2788,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Canada
   CF: {
     direct: {
@@ -2798,7 +2798,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Central African Republic
   TD: {
     direct: {
@@ -2807,7 +2807,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Chad
   CL: {
     direct: {
@@ -2816,7 +2816,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Chile
   CN: {
     direct: {
@@ -2825,7 +2825,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // China
   CO: {
     direct: {
@@ -2834,7 +2834,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Colombia
   CD: {
     direct: {
@@ -2844,7 +2844,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Congo, Democratic Republic
   CG: {
     direct: {
@@ -2854,7 +2854,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Congo, Republic
   CR: {
     direct: {
@@ -2863,7 +2863,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Costa Rica
   CI: {
     direct: {
@@ -2873,7 +2873,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cote d’Ivoire
   HR: {
     direct: {
@@ -2882,7 +2882,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Croatia
   CU: {
     direct: {
@@ -2891,7 +2891,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cuba
   CY: {
     direct: {
@@ -2900,7 +2900,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cyprus
   CZ: {
     direct: {
@@ -2909,7 +2909,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Czech Republic
   DK: {
     direct: {
@@ -2918,7 +2918,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Denmark
   DJ: {
     direct: {
@@ -2927,7 +2927,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Djibouti
   DM: {
     direct: {
@@ -2936,7 +2936,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Dominica
   DO: {
     direct: {
@@ -2946,7 +2946,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Dominican Republic
   EC: {
     direct: {
@@ -2955,7 +2955,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ecuador
   EG: {
     direct: {
@@ -2964,7 +2964,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Egypt
   SV: {
     direct: {
@@ -2974,7 +2974,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // El Salvador
   GQ: {
     direct: {
@@ -2984,7 +2984,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Equatorial Guinea
   ER: {
     direct: {
@@ -2993,7 +2993,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Eritrea
   EE: {
     direct: {
@@ -3002,7 +3002,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Estonia
   SZ: {
     direct: {
@@ -3011,7 +3011,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Eswatini
   ET: {
     direct: {
@@ -3020,7 +3020,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ethiopia
   FJ: {
     direct: {
@@ -3029,7 +3029,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Fiji
   FI: {
     direct: {
@@ -3038,7 +3038,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Finland
   FR: {
     direct: {
@@ -3047,7 +3047,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // France
   GA: {
     direct: {
@@ -3056,7 +3056,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Gabon
   GM: {
     direct: {
@@ -3065,7 +3065,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Gambia
   GE: {
     direct: {
@@ -3074,7 +3074,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Georgia
   DE: {
     direct: {
@@ -3083,7 +3083,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Germany
   GH: {
     direct: {
@@ -3092,7 +3092,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ghana
   GR: {
     direct: {
@@ -3101,7 +3101,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Greece
   GD: {
     direct: {
@@ -3110,7 +3110,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Grenada
   GT: {
     direct: {
@@ -3119,7 +3119,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guatemala
   GN: {
     direct: {
@@ -3129,7 +3129,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guinea
   GW: {
     direct: {
@@ -3139,7 +3139,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guinea-Bissau
   GY: {
     direct: {
@@ -3148,7 +3148,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guyana
   HT: {
     direct: {
@@ -3157,7 +3157,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Haiti
   VA: {
     direct: {
@@ -3167,7 +3167,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Holy See
   HN: {
     direct: {
@@ -3176,7 +3176,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Honduras
   HU: {
     direct: {
@@ -3185,7 +3185,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Hungary
   IS: {
     direct: {
@@ -3194,7 +3194,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iceland
   IN: {
     direct: {
@@ -3203,7 +3203,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // India
   ID: {
     direct: {
@@ -3213,7 +3213,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Indonesia
   IR: {
     direct: {
@@ -3222,7 +3222,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iran
   IQ: {
     direct: {
@@ -3231,7 +3231,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iraq
   IE: {
     direct: {
@@ -3240,7 +3240,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ireland
   IL: {
     direct: {
@@ -3249,7 +3249,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Israel
   IT: {
     direct: {
@@ -3258,7 +3258,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Italy
   JM: {
     direct: {
@@ -3267,7 +3267,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Jamaica
   JP: {
     direct: {
@@ -3276,7 +3276,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Japan
   JO: {
     direct: {
@@ -3285,7 +3285,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Jordan
   KZ: {
     direct: {
@@ -3294,7 +3294,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kazakhstan
   KE: {
     direct: {
@@ -3303,7 +3303,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kenya
   KI: {
     direct: {
@@ -3312,7 +3312,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kiribati
   KP: {
     direct: {
@@ -3321,7 +3321,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Korea, DPR
   KR: {
     direct: {
@@ -3331,7 +3331,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Korea, Republic
   KW: {
     direct: {
@@ -3340,7 +3340,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kuwait
   KG: {
     direct: {
@@ -3350,7 +3350,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kyrgyzstan, Republic
   LA: {
     direct: {
@@ -3359,7 +3359,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Laos
   LV: {
     direct: {
@@ -3368,7 +3368,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Latvia
   LB: {
     direct: {
@@ -3377,7 +3377,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lebanon
   LS: {
     direct: {
@@ -3386,7 +3386,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lesotho
   LR: {
     direct: {
@@ -3395,7 +3395,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Liberia
   LY: {
     direct: {
@@ -3404,7 +3404,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Libya
   LI: {
     direct: {
@@ -3414,7 +3414,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Liechtenstein
   LT: {
     direct: {
@@ -3423,7 +3423,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lithuania
   LU: {
     direct: {
@@ -3433,7 +3433,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Luxembourg
   MG: {
     direct: {
@@ -3443,7 +3443,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Madagascar
   MW: {
     direct: {
@@ -3452,7 +3452,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malawi
   MY: {
     direct: {
@@ -3461,7 +3461,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malaysia
   MV: {
     direct: {
@@ -3470,7 +3470,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Maldives
   ML: {
     direct: {
@@ -3479,7 +3479,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mali
   MT: {
     direct: {
@@ -3488,7 +3488,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malta
   MH: {
     direct: {
@@ -3498,7 +3498,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Marshall Islands
   MR: {
     direct: {
@@ -3508,7 +3508,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mauritania
   MU: {
     direct: {
@@ -3517,7 +3517,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mauritius
   MX: {
     direct: {
@@ -3526,7 +3526,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mexico
   FM: {
     direct: {
@@ -3536,7 +3536,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Micronesia
   MD: {
     direct: {
@@ -3545,7 +3545,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Moldova
   MC: {
     direct: {
@@ -3554,7 +3554,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Monaco
   MN: {
     direct: {
@@ -3563,7 +3563,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mongolia
   ME: {
     direct: {
@@ -3572,7 +3572,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Montenegro
   MA: {
     direct: {
@@ -3581,7 +3581,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Morocco
   MZ: {
     direct: {
@@ -3590,7 +3590,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mozambique
   MM: {
     direct: {
@@ -3599,7 +3599,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Myanmar
   NA: {
     direct: {
@@ -3608,7 +3608,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Namibia
   NR: {
     direct: {
@@ -3617,7 +3617,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nauru
   NP: {
     direct: {
@@ -3626,7 +3626,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nepal
   NL: {
     direct: {
@@ -3635,7 +3635,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Netherlands
   NZ: {
     direct: {
@@ -3645,7 +3645,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // New Zealand
   NI: {
     direct: {
@@ -3654,7 +3654,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nicaragua
   NE: {
     direct: {
@@ -3663,7 +3663,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Niger
   NG: {
     direct: {
@@ -3672,7 +3672,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nigeria
   MK: {
     direct: {
@@ -3682,7 +3682,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // North Macedonia
   NO: {
     direct: {
@@ -3691,7 +3691,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Norway
   OM: {
     direct: {
@@ -3700,7 +3700,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Oman
   PK: {
     direct: {
@@ -3709,7 +3709,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Pakistan
   PW: {
     direct: {
@@ -3718,7 +3718,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Palau
   PS: {
     direct: {
@@ -3727,7 +3727,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Palestine
   PA: {
     direct: {
@@ -3736,7 +3736,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Panama
   PG: {
     direct: {
@@ -3746,7 +3746,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Papua New Guinea
   PY: {
     direct: {
@@ -3755,7 +3755,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Paraguay
   PE: {
     direct: {
@@ -3764,7 +3764,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Peru
   PH: {
     direct: {
@@ -3773,7 +3773,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Philippines
   PL: {
     direct: {
@@ -3782,7 +3782,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Poland
   PT: {
     direct: {
@@ -3792,7 +3792,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Portugal
   QA: {
     direct: {
@@ -3801,7 +3801,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Qatar
   RO: {
     direct: {
@@ -3810,7 +3810,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Romania
   RU: {
     direct: {
@@ -3820,7 +3820,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Russia
   RW: {
     direct: {
@@ -3829,7 +3829,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Rwanda
   KN: {
     direct: {
@@ -3839,7 +3839,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   LC: {
     direct: {
@@ -3849,7 +3849,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Lucia
   VC: {
     direct: {
@@ -3859,7 +3859,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   WS: {
     direct: {
@@ -3868,7 +3868,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Samoa
   SM: {
     direct: {
@@ -3878,7 +3878,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // San Marino
   ST: {
     direct: {
@@ -3888,7 +3888,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sao Tome and Principe
   SA: {
     direct: {
@@ -3898,7 +3898,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saudi Arabia
   SN: {
     direct: {
@@ -3907,7 +3907,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Senegal
   SC: {
     direct: {
@@ -3916,7 +3916,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Seychelles
   SL: {
     direct: {
@@ -3926,7 +3926,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sierra Leone
   SG: {
     direct: {
@@ -3935,7 +3935,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Singapore
   SK: {
     direct: {
@@ -3944,7 +3944,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Slovakia
   SI: {
     direct: {
@@ -3953,7 +3953,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Slovenia
   SB: {
     direct: {
@@ -3963,7 +3963,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Solomon Islands
   SO: {
     direct: {
@@ -3972,7 +3972,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Somalia
   ZA: {
     direct: {
@@ -3982,7 +3982,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // South Africa
   SS: {
     direct: {
@@ -3992,7 +3992,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // South Sudan
   ES: {
     direct: {
@@ -4001,7 +4001,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Spain
   LK: {
     direct: {
@@ -4010,7 +4010,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sri Lanka
   SD: {
     direct: {
@@ -4019,7 +4019,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sudan
   SR: {
     direct: {
@@ -4028,7 +4028,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Suriname
   SE: {
     direct: {
@@ -4037,7 +4037,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sweden
   CH: {
     direct: {
@@ -4047,7 +4047,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Switzerland
   SY: {
     direct: {
@@ -4056,7 +4056,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Syria, Arab Republic
   TJ: {
     direct: {
@@ -4066,7 +4066,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tajikistan
   TZ: {
     direct: {
@@ -4075,7 +4075,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tanzania
   TH: {
     direct: {
@@ -4084,7 +4084,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Thailand
   TL: {
     direct: {
@@ -4094,7 +4094,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Timor-Leste
   TG: {
     direct: {
@@ -4103,7 +4103,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Togo
   TO: {
     direct: {
@@ -4112,7 +4112,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tonga
   TT: {
     direct: {
@@ -4122,7 +4122,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Trinidad and Tobago
   TN: {
     direct: {
@@ -4131,7 +4131,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tunisia
   TR: {
     direct: {
@@ -4140,7 +4140,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Turkiye
   TM: {
     direct: {
@@ -4150,7 +4150,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Turkmenistan
   TV: {
     direct: {
@@ -4159,7 +4159,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tuvalu
   UG: {
     direct: {
@@ -4168,7 +4168,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uganda
   UA: {
     direct: {
@@ -4177,7 +4177,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ukraine
   KM: {
     direct: {
@@ -4187,7 +4187,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Union of the Comoros
   AE: {
     direct: {
@@ -4197,7 +4197,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United Arab Emirates
   GB: {
     direct: {
@@ -4207,7 +4207,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United Kingdom
   US: {
     direct: {
@@ -4217,7 +4217,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United States
   UY: {
     direct: {
@@ -4226,7 +4226,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uruguay
   UZ: {
     direct: {
@@ -4236,7 +4236,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uzbekistan
   VU: {
     direct: {
@@ -4245,7 +4245,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Vanuatu
   VE: {
     direct: {
@@ -4254,7 +4254,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Venezuela
   VN: {
     direct: {
@@ -4263,7 +4263,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Vietnam
   YE: {
     direct: {
@@ -4272,7 +4272,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Yemen
   ZM: {
     direct: {
@@ -4281,7 +4281,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Zambia
   ZW: {
     direct: {
@@ -4290,7 +4290,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Zimbabwe
   HK: {
     direct: {
@@ -4299,7 +4299,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Hong Kong SAR — sub-row on China's page, no dedicated page
   MO: {
     direct: {
@@ -4308,7 +4308,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Macao SAR — sub-row on China's page, no dedicated page
   TW: {
     direct: {
@@ -4317,7 +4317,7 @@ export const SerbiaSources = {
       checkDiff: true,
     },
     parent: serbiaIndex,
-    dateChecked: "2026-08-31",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Taiwan — no dedicated page in the scrape; index page fallback
 } as const;
 
@@ -4357,977 +4357,977 @@ export const BosniaSources = {
   AD: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Andorra
   AE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Afghanistan
   AG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Antigua and Barbuda
   AL: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Albania
   AM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Armenia
   AO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Angola
   AR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Argentina
   AT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Austria
   AU: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Australia
   AZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Azerbaijan
   BB: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Barbados
   BD: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bangladesh
   BE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belgium
   BF: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Burkina Faso
   BG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bulgaria
   BH: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bahrain
   BI: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Burundi
   BJ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Benin
   BN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Brunei
   BO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bolivia
   BR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Brazil
   BS: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bahamas
   BT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bhutan
   BW: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Botswana
   BY: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belarus
   BZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belize
   CA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Canada
   CD: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Congo (Democratic Republic)
   CF: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Central African Republic
   CG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Congo
   CH: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Switzerland
   CI: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cote d'Ivoire
   CL: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Chile
   CM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cameroon
   CN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // China
   CO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Colombia
   CR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Costa Rica
   CU: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cuba
   CV: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cabo Verde
   CY: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cyprus
   CZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Czech Republic
   DE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Germany
   DJ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Djibouti
   DK: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Denmark
   DM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Dominica
   DO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Algeria
   EC: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ecuador
   EE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Estonia
   EG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Egypt
   ER: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Eritrea
   ES: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Spain
   ET: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ethiopia
   FI: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Finland
   FJ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Fiji
   FM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Micronesia
   FR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // France
   GA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Gabon
   GB: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United Kingdom
   GD: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Grenada
   GE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Georgia
   GH: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ghana
   GM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Gambia
   GN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guinea
   GQ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Equatorial Guinea
   GR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Greece
   GT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guatemala
   GW: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guinea-Bissau
   GY: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guyana
   HN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Honduras
   HR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Croatia
   HT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Haiti
   HU: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Hungary
   ID: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Indonesia
   IE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ireland
   IL: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Israel
   IN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // India
   IQ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iraq
   IR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iran
   IS: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iceland
   IT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Italy
   JM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Jamaica
   JO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Jordan
   JP: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Japan
   KE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kenya
   KG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cambodia
   KI: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kiribati
   KM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Comoros
   KN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Korea (North)
   KR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Korea (South)
   KW: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kuwait
   KZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kazakhstan
   LA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Laos
   LB: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lebanon
   LC: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Lucia
   LI: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Liechtenstein
   LK: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sri Lanka
   LR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Liberia
   LS: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lesotho
   LT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lithuania
   LU: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Luxembourg
   LV: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Latvia
   LY: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Libya
   MA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Morocco
   MC: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Monaco
   MD: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Moldova
   ME: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Montenegro
   MG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Madagascar
   MH: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Marshall Islands
   MK: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // North Macedonia
   ML: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mali
   MM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Myanmar
   MN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mongolia
   MR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mauritania
   MT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malta
   MU: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mauritius
   MV: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Maldives
   MW: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malawi
   MX: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mexico
   MY: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malaysia
   MZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mozambique
   NA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Namibia
   NE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Niger
   NG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nigeria
   NI: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nicaragua
   NL: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Netherlands
   NO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Norway
   NP: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nepal
   NR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nauru
   NZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // New Zealand
   OM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Oman
   PA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Panama
   PE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Peru
   PG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Papua New Guinea
   PH: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Philippines
   PK: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Pakistan
   PL: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Poland
   PS: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Palestine
   PT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Portugal
   PW: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Palau
   PY: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Paraguay
   QA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Qatar
   RO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Romania
   RS: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Serbia
   RU: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Russia
   RW: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Rwanda
   SA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saudi Arabia
   SB: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Solomon Islands
   SC: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Seychelles
   SD: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sudan
   SE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sweden
   SG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Singapore
   SI: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Slovenia
   SK: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Slovakia
   SL: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sierra Leone
   SM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // San Marino
   SN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Senegal
   SO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Somalia
   SR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Suriname
   ST: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // El Salvador
   SY: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Syria
   SZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Eswatini
   TD: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Chad
   TG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Togo
   TH: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Thailand
   TJ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tajikistan
   TL: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Timor-Leste
   TM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Turkmenistan
   TN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tunisia
   TO: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tonga
   TR: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Turkiye
   TT: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Trinidad and Tobago
   TV: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tuvalu
   TW: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // TW
   TZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tanzania
   UA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ukraine
   UG: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uganda
   US: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United States
   UY: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uruguay
   UZ: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uzbekistan
   VA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Holy See (Vatican)
   VC: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Vincent and the Grenadines
   VE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Venezuela
   VN: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Vietnam
   VU: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Vanuatu
   WS: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Samoa
   XK: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // XK
   YE: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Yemen
   ZA: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // South Africa
   ZM: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Zambia
   ZW: {
     direct: bosniaVisaPage,
     parent: bosniaIndex,
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Zimbabwe
 } as const;
 
@@ -5355,7 +5355,7 @@ export const KosovoSources = {
     direct: kosovoVisaPage,
     // Same page — nothing sits above it; it's diffed once via `direct`.
     parent: { ...kosovoVisaPage, type: "parent", checkDiff: false },
-    dateChecked: "2026-09-04",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -6419,832 +6419,832 @@ export const AlbaniaSources = {
   AD: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Andorra
   AE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United Arab Emirates
   AF: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Afghanistan
   AG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Antigua and Barbuda
   AM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Armenia
   AO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Angola
   AR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Argentina
   AT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Austria
   AU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Australia
   AZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Azerbaijan
   BA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bosnia and Herzegovina
   BB: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Barbados
   BD: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bangladesh
   BE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belgium
   BF: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Burkina Faso
   BG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bulgaria
   BH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bahrain
   BJ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Benin
   BN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Brunei
   BO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bolivia
   BR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Brazil
   BS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Bahamas
   BW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Botswana
   BY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belarus
   BZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Belize
   CA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Canada
   CG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Congo
   CH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Switzerland
   CI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cote d'Ivoire
   CL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Chile
   CM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cameroon
   CN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // China
   CO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Colombia
   CR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Costa Rica
   CU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cuba
   CY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cyprus
   CZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Czech Republic
   DE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Germany
   DK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Denmark
   DO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Dominican Republic
   DZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Algeria
   EC: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ecuador
   EE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Estonia
   EG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Egypt
   ER: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Eritrea
   ES: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Spain
   ET: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ethiopia
   FI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Finland
   FJ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Fiji
   FR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // France
   GA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Gabon
   GB: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United Kingdom
   GE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Georgia
   GH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ghana
   GN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guinea
   GR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Greece
   GT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guatemala
   GY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guyana
   HK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Hong Kong (SAR)
   HN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Honduras
   HR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Croatia
   HT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Haiti
   HU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Hungary
   ID: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Indonesia
   IE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ireland
   IL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Israel
   IN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // India
   IQ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iraq
   IR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iran
   IS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Iceland
   IT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Italy
   JM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Jamaica
   JO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Jordan
   JP: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Japan
   KE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kenya
   KG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kyrgyzstan
   KH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Cambodia
   KN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saint Kitts and Nevis
   KP: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Korea (North)
   KR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Korea (South)
   KW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kuwait
   KZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kazakhstan
   LB: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lebanon
   LI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Liechtenstein
   LK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sri Lanka
   LR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Liberia
   LS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lesotho
   LT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Lithuania
   LU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Luxembourg
   LV: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Latvia
   LY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Libya
   MA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Morocco
   MC: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Monaco
   MD: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Moldova
   ME: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Montenegro
   MG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Madagascar
   MK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // North Macedonia
   ML: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mali
   MN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mongolia
   MO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Macao (SAR)
   MR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mauritania
   MT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malta
   MU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mauritius
   MV: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Maldives
   MW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malawi
   MX: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mexico
   MY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Malaysia
   MZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mozambique
   NA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Namibia
   NG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nigeria
   NI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nicaragua
   NL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Netherlands
   NO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Norway
   NP: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Nepal
   NZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // New Zealand
   OM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Oman
   PA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Panama
   PE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Peru
   PH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Philippines
   PK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Pakistan
   PL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Poland
   PS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Palestine
   PT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Portugal
   PY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Paraguay
   QA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Qatar
   RO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Romania
   RS: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Serbia
   RU: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Russia
   RW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Rwanda
   SA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Saudi Arabia
   SC: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Seychelles
   SD: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sudan
   SE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sweden
   SG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Singapore
   SI: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Slovenia
   SK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Slovakia
   SL: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sierra Leone
   SM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // San Marino
   SN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Senegal
   SO: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Somalia
   SR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Suriname
   ST: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Sao Tome and Principe
   SV: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // El Salvador
   SY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Syria
   TG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Togo
   TH: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Thailand
   TJ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tajikistan
   TM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Turkmenistan
   TN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tunisia
   TR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Turkey
   TT: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Trinidad and Tobago
   TW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Taiwan
   TZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Tanzania
   UA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Ukraine
   UG: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uganda
   US: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // United States
   UY: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uruguay
   UZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Uzbekistan
   VA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Vatican City
   VE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Venezuela
   VN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Vietnam
   XK: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Kosovo
   YE: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Yemen
   ZA: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // South Africa
   ZM: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Zambia
   ZW: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Zimbabwe
 } as const;
 
@@ -7269,7 +7269,7 @@ export const CyprusSources = {
       type: "parent",
       checkDiff: false, // HTTP 403 to automated clients; nothing to diff
     },
-    dateChecked: "2026-10-20",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -7303,7 +7303,7 @@ export const BelarusSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-09-12",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -7319,13 +7319,12 @@ export const BelarusSources = {
       checkDiff: true,
     },
     parent: belarusFreeMove,
-    dateChecked: "2026-09-12",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
    * Airport-only visa-free list — the stable, always-applicable fallback
-   * (30 days per visit, six named airports only, max 90 days per calendar
-   * year). Some entries there require another jurisdiction's visa to
+   * (30 days per visit, six named airports only, no yearly cap). Some entries there require another jurisdiction's visa to
    * actually use the exemption; those are modeled as visa_required instead
    * (see belarus.ts header for the product decision). The 76-country list
    * itself is a PDF linked from the page, diffed as the alternate.
@@ -7342,7 +7341,24 @@ export const BelarusSources = {
       },
     },
     parent: belarusFreeMove,
-    dateChecked: "2026-09-12",
+    dateChecked: "2026-10-23",
+  } satisfies SourceDoc,
+
+  /**
+   * "Visa-free travel (general information)": a two-column table, Belarusian
+   * citizens travelling abroad (left, not modelled) and foreign nationals
+   * entering Belarus (right). The right column lists the nationalities that
+   * are visa-free under bilateral agreements, with a stay for most of them.
+   * Diffed; a change in the left column is noise for this app.
+   */
+  bilateral: {
+    direct: {
+      url: "https://mfa.gov.by/en/visa/freemove/general/",
+      type: "direct",
+      checkDiff: true,
+    },
+    parent: belarusFreeMove,
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -7379,7 +7395,7 @@ export const GeorgiaSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-09-13",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
@@ -7411,7 +7427,7 @@ export const ArmeniaSources = {
       checkDiff: true,
     },
     parent: armeniaVisaIndex,
-    dateChecked: "2026-09-14",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 
   /**
@@ -7427,7 +7443,7 @@ export const ArmeniaSources = {
       checkDiff: true,
     },
     parent: armeniaVisaIndex,
-    dateChecked: "2026-09-14",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 

@@ -32,7 +32,7 @@
  * national needs no visa to enter Kosovo, and prior region files that fell
  * through to defaultRule (visa_required) for their own passport were wrong.
  *
- * Last verified: 2026-09-04
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -100,7 +100,7 @@ export const KOSOVO: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-09-04',
+  lastVerified: '2026-10-23',
   sourceUrl: 'https://ambasadat.net/visas/',
   defaultRule: VISA_REQUIRED,
   passportRules: {

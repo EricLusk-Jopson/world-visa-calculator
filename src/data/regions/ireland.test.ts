@@ -27,3 +27,25 @@ describe('getIrelandRule', () => {
     expect(getIrelandRule('VC').access).toBe('entitled');
   });
 });
+
+describe('Ireland — 2026-10-23 by-hand check', () => {
+  it('Zimbabwe needs a transit visa', () => {
+    const rule = getIrelandRule('ZW');
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.notes?.some(n => n.source === IrelandSources.transitVisa)).toBe(true);
+  });
+
+  it.each(['BH', 'KW', 'OM', 'QA', 'SA', 'PE'])('%s: the SSVWP needs a UK visa issued before the ETA', (code) => {
+    const rule = getIrelandRule(code);
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.notes?.some(n => n.text.includes('1 February 2024'))).toBe(true);
+  });
+
+  it('other SSVWP nationalities keep the plain note', () => {
+    const rule = getIrelandRule('TH');
+    if (rule.access !== 'visa_required') throw new Error('expected visa_required');
+    expect(rule.notes?.some(n => n.text.includes('1 February 2024'))).toBe(false);
+  });
+});

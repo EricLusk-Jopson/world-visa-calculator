@@ -49,7 +49,7 @@
  *
  * All source URLs are in TurkiyeSources (@/data/sources).
  *
- * Last verified: 2026-05-27
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -261,7 +261,8 @@ export const TURKIYE: RegionDefinition = {
     }],
   },
 
-  lastVerified: '2026-05-27',
+  lastVerified: '2026-10-23',
+  lastChanged: '2026-07-22',
   sourceUrl: TurkiyeSources.mfaVisaInfo.direct.url,
   defaultRule: VISA_REQUIRED,
 

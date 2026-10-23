@@ -1,6 +1,6 @@
 ---
 region: Albania
-lastReviewed: 2026-10-20
+lastReviewed: 2026-10-23
 links:
   - id: visaTable
     url: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/
