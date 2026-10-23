@@ -34,28 +34,12 @@
  * 2. Airport-only fallback (`airportOnly()`): the always-available baseline
  *    for every genuinely visa-free nationality — visa-free only through
  *    Minsk National Airport or the airports at Brest, Gomel, Grodno,
- *    Mogilev, or Vitebsk, not from Russia, 30 days per visit, with NO cap on
- *    the number of visits but a combined cap of 90 days inside Belarus per
- *    CALENDAR year (not a rolling window). This reuses the exact
- *    `calendar_period` + `per_visit` stacked-limit shape Turkiye's own file
- *    already uses for ITS Belarusian nationals (`turkiye.ts`'s `'BY'` entry,
- *    `TR_PER_VISIT_30` + `TR_CALENDAR_90`) — confirmed via direct reading
- *    that `assessCalendarPeriod()`/`assessStay()` in `stayCalculator.ts`
- *    already correctly anchor the budget window to Jan 1–Dec 31 of the
- *    entry date's year and take the more restrictive of the two stacked
- *    limits, so no new evaluation logic is needed here — Belarus-as-a-
- *    destination is simply the mirror-image reuse of an already-proven shape.
- *    (Known pre-existing gap, not introduced here: `destinationStatus.ts`'s
- *    region-level `per_visit` branch only reads the `PerVisitLimit` and
- *    ignores an accompanying `calendar_period` limit, so the header/slider
- *    "days remaining" chip for a traveler tracking Belarus as their active
- *    destination will reflect only the 30-day-per-visit cap, not the
- *    90-day/year ceiling. The per-trip Eligibility & Duration panel
- *    (`tripEligibility.ts`) is unaffected — it calls `resolveStayLimits`/
- *    `assessStay` generically and already handles this correctly. The same
- *    gap already exists today for Belarusian nationals tracking Türkiye, so
- *    this is a pre-existing characteristic of the shared calculator, not a
- *    defect introduced by adding this region.)
+ *    Mogilev, or Vitebsk, not from Russia, 30 days per visit, with no cap on
+ *    the number of visits and no yearly cap: the airport page states only
+ *    "up to 30 days" and that the stay "can not be extended beyond the
+ *    established 30 days". (A 90-days-per-calendar-year cap was applied here
+ *    until 2026-10-23, when it was dropped because no MFA page states it for
+ *    this scheme; see the rule-change log.)
  *
  * 3. Reclassified visa_required (`visaRequiredConditional()`): 12 nationals
  *    the source lists under its visa-free table, but only conditional on
@@ -78,7 +62,7 @@
  * - Belarus's own member state (BY) is encoded as free_movement — a
  *   Belarusian national needs no visa to enter Belarus.
  *
- * Last verified: 2026-09-12
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -116,14 +100,13 @@ const AIRPORT_NOTES: RuleNote[] = [
 // ─── Rule helpers ───────────────────────────────────────────────────────────
 
 /**
- * Airport-only entitlement — 30 days per visit, unlimited visits, but no
- * more than 90 total days inside Belarus per calendar year (see file
- * header). Always the fallback (no temporalWindows), so it's selected
+ * Airport-only entitlement — 30 days per visit, unlimited visits, no yearly
+ * cap (see file header). Always the fallback (no temporalWindows), so it's selected
  * unconditionally once no earlier, temporally-gated entitlement matches.
  */
 function airportEntitlement(extraNotes: RuleNote[] = []) {
   return {
-    limits: [BY_PER_VISIT_30, BY_CALENDAR_90] as [PerVisitLimit, CalendarPeriodLimit],
+    limits: [BY_PER_VISIT_30],
     source: BelarusSources.airport,
     notes: [...AIRPORT_NOTES, ...extraNotes],
   };
@@ -139,10 +122,19 @@ function airportOnly(extraNotes: RuleNote[] = []): EntitledRule {
  * 2026-12-31. Falls back to the airport-only rule automatically once the
  * window lapses (see file header for why this ordering is load-bearing).
  *
- * The per-visit override does NOT lift the underlying 90-day-per-calendar-
- * year ceiling — the source states the any-border allowance as an easier way
- * to use each individual visit, not a separate, larger yearly budget, so
- * BY_CALENDAR_90 is stacked here exactly as it is in airportEntitlement().
+ * The source caps this scheme at 90 days per calendar year in total ("The
+ * total duration of visa-free stays must not exceed 90 days within a
+ * calendar year"), so BY_CALENDAR_90 is stacked on the per-visit limit. The
+ * airport-only fallback has no such cap.
+ *
+ * The European-override stacked limit uses the same `calendar_period` +
+ * `per_visit` shape `turkiye.ts` uses for its Belarusian nationals;
+ * `assessStay()` anchors the budget to 1 January–31 December of the entry
+ * year and applies the more restrictive of the two. (Known gap in the
+ * shared calculator: `destinationStatus.ts`'s region-level `per_visit`
+ * branch ignores an accompanying `calendar_period` limit, so the header
+ * "days remaining" chip shows only the per-visit cap. The per-trip panel
+ * is unaffected.)
  */
 function europeOverride(days: 30 | 90, extraNotes: RuleNote[] = []): EntitledRule {
   return {
@@ -200,7 +192,7 @@ export const BELARUS: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-09-12',
+  lastVerified: '2026-10-23',
   sourceUrl: BelarusSources.general.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {

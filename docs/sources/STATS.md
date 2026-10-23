@@ -11,8 +11,8 @@ Reports counted: 5 (2026-10-14 to 2026-10-23).
 
 - Diffs flagged: 2: 1 rule change, 1 noise, 0 unclear, 0 untriaged
 - Precision: 50% (1/2)
-- Rule changes caught by a report: 3; missed on diffed links: 3; recall: 50% (3/6)
-- Rule-change log entries by trigger: manual 7, external 1, report 2
+- Rule changes caught by a report: 3; missed on diffed links: 5; recall: 38% (3/8)
+- Rule-change log entries by trigger: manual 8, external 1, report 2
 
 ## By link
 
@@ -25,8 +25,8 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 | Albania | visaRegime | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 1 | 0 | 0% (0/1) |
 | Armenia | visaFreeList | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Armenia | bilateralList | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
-| Belarus | europe | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
-| Belarus | airport | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
+| Belarus | europe | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 1 | 0 | 0% (0/1) |
+| Belarus | airport | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 1 | 0 | 0% (0/1) |
 | Belarus | airportPdf | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Bosnia | vize | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Bosnia | subpages | high | 1 | 0 | 1 | 0 | 0 | 0% (0/1) | 0 | 0 | 0 | – |

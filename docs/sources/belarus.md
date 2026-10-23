@@ -59,7 +59,8 @@ Belarus's rules come in three tiers (see the header of `belarus.ts`):
    Poland, Latvia and Lithuania). Valid until 31 December 2026, modelled as a
    TemporalWindow.
 2. **Airport-only fallback:** for every visa-free nationality. 30 days per
-   visit through six named airports, and at most 90 days per calendar year.
+   visit through six named airports, with no yearly cap (the 90-day yearly
+   total belongs to the European override only; rule-change 12).
 3. **Conditional entries:** 12 nationalities need an EU/Schengen visa, so
    they are modelled as visa-required with a note.
 
@@ -121,9 +122,11 @@ conditional nationalities).
 
 **Machine:** diffed. Same sidebar cut as `europe`.
 
-**Human:** open the page. Read the airports, the 30 days per visit and the
-90-days-per-calendar-year terms, and the conditions for the 12 nationalities
-that need an EU/Schengen visa.
+**Human:** open the page. Read the airports, the 30 days per visit, and the
+conditions for the 12 nationalities that need an EU/Schengen visa. The page
+states no yearly cap for this scheme. Only `europe` states one ("must not
+exceed 90 days within a calendar year"), for its own scheme. If a yearly cap
+ever appears here, that's a rule change.
 
 **Real change vs noise:**
 
@@ -160,12 +163,6 @@ hash changes.
   most with their own durations. `belarus.ts` has none of them, so they fall through to visa
   required. The page has two columns (Belarusians abroad, foreigners in Belarus), and copied text
   interleaves them, so read it in the browser. Found 2026-10-23 during the by-hand check.
-- TODO(human): **the 90-days-per-calendar-year cap on the airport tier has no current source.** The
-  `europe` page states it for the European override: "The total duration of visa-free stays must
-  not exceed 90 days within a calendar year." Neither the `airport` page nor the general-information
-  page states it for the 76-country airport scheme. They give only "up to 30 days", and the
-  airport page adds "The term of visa-free stay can not be extended beyond the established 30 days".
-  `airportEntitlement()` applies the cap anyway (2026-10-23).
 - Visa rules (not visa-free entry) now come from new Visa Regulations, Council of Ministers decree
   No. 464 of 14 September 2026, per https://mfa.gov.by/en/visa/oformlenie/. They don't change any
   rule this app models; watch for knock-on changes to visa-free schemes.

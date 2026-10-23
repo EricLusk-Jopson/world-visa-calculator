@@ -7342,7 +7342,7 @@ export const BelarusSources = {
       },
     },
     parent: belarusFreeMove,
-    dateChecked: "2026-09-12",
+    dateChecked: "2026-10-23",
   } satisfies SourceDoc,
 } as const;
 
