@@ -82,6 +82,31 @@
         }
       ]
     },
+    "AE": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 90 days from the date of entry."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "AG": {
       "access": "entitled",
       "entitlements": [
@@ -113,6 +138,36 @@
         }
       ]
     },
+    "AL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days from the date of entry, and up to 90 days within the calendar year."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "AM": {
       "access": "entitled",
       "entitlements": [
@@ -130,6 +185,31 @@
                 "$source": "Belarus.bilateral"
               },
               "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
+    "AR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 90 consecutive days from the date of first entry, within the calendar year."
             }
           ],
           "source": {
@@ -516,6 +596,31 @@
         }
       ]
     },
+    "BR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 90 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "BY": {
       "access": "free_movement"
     },
@@ -642,6 +747,86 @@
           ],
           "source": {
             "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "CN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: 30 days per visit, but no longer than 90 days within one calendar year."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
+    "CO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 90 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
+    "CU": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -1436,6 +1621,31 @@
         }
       ]
     },
+    "HK": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days in each period of stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "HR": {
       "access": "entitled",
       "entitlements": [
@@ -1676,6 +1886,31 @@
         }
       ]
     },
+    "IL": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "days": 90,
+              "type": "rolling_window",
+              "windowDays": 180
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 90 days in each period of 180 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "IN": {
       "access": "visa_required",
       "notes": [
@@ -1904,6 +2139,31 @@
         }
       ]
     },
+    "KN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "KR": {
       "access": "entitled",
       "entitlements": [
@@ -1983,6 +2243,31 @@
                 "$source": "Belarus.bilateral"
               },
               "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
+    "LA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
             }
           ],
           "source": {
@@ -2355,6 +2640,31 @@
         }
       ]
     },
+    "ME": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "MK": {
       "access": "entitled",
       "entitlements": [
@@ -2416,6 +2726,86 @@
           ],
           "source": {
             "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "MM": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
+    "MN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 90 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
+    "MO": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            },
+            {
+              "days": 90,
+              "periodDays": 365,
+              "type": "calendar_period"
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days per visit, but no longer than 90 days within one calendar year."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -2569,25 +2959,19 @@
             {
               "type": "per_visit",
               "unit": "days",
-              "value": 30
+              "value": 90
             }
           ],
           "notes": [
             {
               "source": {
-                "$source": "Belarus.airport"
+                "$source": "Belarus.bilateral"
               },
-              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
-            },
-            {
-              "source": {
-                "$source": "Belarus.airport"
-              },
-              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 90 days."
             }
           ],
           "source": {
-            "$source": "Belarus.airport"
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -2767,19 +3151,13 @@
           "notes": [
             {
               "source": {
-                "$source": "Belarus.airport"
+                "$source": "Belarus.bilateral"
               },
-              "text": "Visa-free entry is available only through Minsk National Airport or the airports at Brest, Gomel, Grodno, Mogilev, or Vitebsk. Some nationalities may also enter by land under bilateral agreements; check the Belarus MFA website for current land-border arrangements."
-            },
-            {
-              "source": {
-                "$source": "Belarus.airport"
-              },
-              "text": "Visa-free entry through these airports is not available to travelers arriving directly from Russia."
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
             }
           ],
           "source": {
-            "$source": "Belarus.airport"
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -2990,6 +3368,31 @@
         }
       ]
     },
+    "QA": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "RO": {
       "access": "entitled",
       "entitlements": [
@@ -3051,6 +3454,31 @@
           ],
           "source": {
             "$source": "Belarus.airport"
+          }
+        }
+      ]
+    },
+    "RS": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
           }
         }
       ]
@@ -3489,6 +3917,31 @@
         }
       ]
     },
+    "TR": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
+    },
     "UA": {
       "access": "entitled",
       "entitlements": [
@@ -3666,19 +4119,55 @@
         }
       ]
     },
-    "VN": {
-      "access": "visa_required",
-      "notes": [
+    "VE": {
+      "access": "entitled",
+      "entitlements": [
         {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 90
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 90 days."
+            }
+          ],
           "source": {
-            "$source": "Belarus.airport"
-          },
-          "text": "The source lists this nationality among visa-free travelers, but only when the traveler already holds a valid multiple-entry visa for an EU or Schengen Area member state (bearing an EU/Schengen entry stamp) and a return ticket from Minsk National Airport or the airports at Brest, Vitebsk, Gomel, Grodno, or Mogilev. Since entry is contingent on holding another jurisdiction's visa, this is treated as visa-required rather than visa-free."
+            "$source": "Belarus.bilateral"
+          }
         }
-      ],
-      "source": {
-        "$source": "Belarus.airport"
-      }
+      ]
+    },
+    "VN": {
+      "access": "entitled",
+      "entitlements": [
+        {
+          "limits": [
+            {
+              "type": "per_visit",
+              "unit": "days",
+              "value": 30
+            }
+          ],
+          "notes": [
+            {
+              "source": {
+                "$source": "Belarus.bilateral"
+              },
+              "text": "Visa-free under a bilateral agreement with Belarus, through any border crossing point: up to 30 days."
+            }
+          ],
+          "source": {
+            "$source": "Belarus.bilateral"
+          }
+        }
+      ]
     },
     "VU": {
       "access": "entitled",

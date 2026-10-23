@@ -9,7 +9,7 @@
  *   - Airport-only fallback (visa-free list):     BelarusSources.airport
  *   - Bilateral visa-free (general information):  BelarusSources.bilateral
  *
- * ── Four-tier structure ───────────────────────────────────────────────────────
+ * ── Five-tier structure ───────────────────────────────────────────────────────
  *
  * 1. European any-border override (38 countries, `europeOverride()`): visa-free
  *    through ANY border crossing point (not just airports), usable multiple
@@ -42,7 +42,7 @@
  *    until 2026-10-23, when it was dropped because no MFA page states it for
  *    this scheme; see the rule-change log.)
  *
- * 3. Reclassified visa_required (`visaRequiredConditional()`): 12 nationals
+ * 3. Reclassified visa_required (`visaRequiredConditional()`): 11 nationals
  *    the source lists under its visa-free table, but only conditional on
  *    already holding a valid multiple-entry EU/Schengen visa bearing an
  *    EU/Schengen entry stamp, plus a return ticket from one of the same six
@@ -61,8 +61,14 @@
  *    standard 90-days-in-any-180 rolling window is applied as an
  *    assumption, and every entry carries a note saying so. (Russia's real
  *    regime under the Union State is broader; the assumption is
- *    conservative.) The page's other bilateral entries, which do state a
- *    stay, aren't modelled yet; see the playbook.
+ *    conservative.)
+ *
+ * 5. Bilateral visa-free, stated stay (`bilateral()`): 22 nationalities the
+ *    same page lists with a stay, modelled from the page's own wording.
+ *    Any border, so this replaces the airport tier for Nicaragua and Oman.
+ *    Vietnam is also on the airport list's conditional (EU-visa) footnote,
+ *    but the bilateral page makes it visa-free for 30 days outright, so it
+ *    is modelled here rather than in tier 3.
  *
  * Everything not explicitly listed defaults to `visa_required` — matching
  * every other region file's convention — cited to BelarusSources.general.
@@ -89,6 +95,7 @@ import type {
   PerVisitLimit,
   CalendarPeriodLimit,
   RollingWindowLimit,
+  StayLimit,
 } from '@/types';
 import { BelarusSources } from '@/data/sources';
 
@@ -122,7 +129,7 @@ const AIRPORT_NOTES: RuleNote[] = [
  */
 function airportEntitlement(extraNotes: RuleNote[] = []) {
   return {
-    limits: [BY_PER_VISIT_30],
+    limits: [BY_PER_VISIT_30] as [PerVisitLimit],
     source: BelarusSources.airport,
     notes: [...AIRPORT_NOTES, ...extraNotes],
   };
@@ -212,6 +219,26 @@ function bilateralNoStatedLimit(): EntitledRule {
   };
 }
 
+/**
+ * Visa-free under a bilateral agreement, with the stay the MFA states.
+ * `stay` is the page's wording for the note; `limits` encode it.
+ */
+function bilateral(stay: string, limits: [StayLimit, ...StayLimit[]]): EntitledRule {
+  return {
+    access: 'entitled',
+    entitlements: [{
+      limits,
+      source: BelarusSources.bilateral,
+      notes: [{
+        text: `Visa-free under a bilateral agreement with Belarus, through any border crossing point: ${stay}.`,
+        source: BelarusSources.bilateral,
+      }],
+    }],
+  };
+}
+
+const perVisit = (days: number): PerVisitLimit => ({ type: 'per_visit', value: days, unit: 'days' });
+
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required', source: BelarusSources.general };
 
 // ─── Region definition ────────────────────────────────────────────────────────
@@ -293,9 +320,7 @@ export const BELARUS: RegionDefinition = {
     'KW': airportOnly(), // Kuwait
     'MX': airportOnly(), // Mexico
     'MY': airportOnly(), // Malaysia
-    'NI': airportOnly(), // Nicaragua
     'NZ': airportOnly(), // New Zealand
-    'OM': airportOnly(), // Oman
     'PA': airportOnly(), // Panama
     'PE': airportOnly(), // Peru
     'SA': airportOnly(), // Saudi Arabia
@@ -320,6 +345,31 @@ export const BELARUS: RegionDefinition = {
     'UA': bilateralNoStatedLimit(), // Ukraine
     'UZ': bilateralNoStatedLimit(), // Uzbekistan
 
+    // ── Bilateral visa-free, stated stay ────────────────────────────────────
+    // Source: BelarusSources.bilateral, right-hand column. See header, tier 5.
+    'AL': bilateral('up to 30 days from the date of entry, and up to 90 days within the calendar year', [perVisit(30), BY_CALENDAR_90]), // Albania
+    'AR': bilateral('up to 90 consecutive days from the date of first entry, within the calendar year', [BY_CALENDAR_90]), // Argentina
+    'BR': bilateral('up to 90 days', [perVisit(90)]), // Brazil
+    'CO': bilateral('up to 90 days', [perVisit(90)]), // Colombia
+    'MN': bilateral('up to 90 days', [perVisit(90)]), // Mongolia
+    'NI': bilateral('up to 90 days', [perVisit(90)]), // Nicaragua
+    'VE': bilateral('up to 90 days', [perVisit(90)]), // Venezuela
+    'IL': bilateral('up to 90 days in each period of 180 days', [BY_ROLLING_90_180]), // Israel
+    'AE': bilateral('up to 90 days from the date of entry', [perVisit(90)]), // United Arab Emirates
+    'CN': bilateral('30 days per visit, but no longer than 90 days within one calendar year', [perVisit(30), BY_CALENDAR_90]), // China
+    'MO': bilateral('up to 30 days per visit, but no longer than 90 days within one calendar year', [perVisit(30), BY_CALENDAR_90]), // Macao
+    'HK': bilateral('up to 30 days in each period of stay', [perVisit(30)]), // Hong Kong
+    'CU': bilateral('up to 30 days', [perVisit(30)]), // Cuba
+    'LA': bilateral('up to 30 days', [perVisit(30)]), // Laos
+    'ME': bilateral('up to 30 days', [perVisit(30)]), // Montenegro
+    'MM': bilateral('up to 30 days', [perVisit(30)]), // Myanmar
+    'OM': bilateral('up to 30 days', [perVisit(30)]), // Oman
+    'QA': bilateral('up to 30 days', [perVisit(30)]), // Qatar
+    'KN': bilateral('up to 30 days', [perVisit(30)]), // Saint Kitts and Nevis
+    'RS': bilateral('up to 30 days', [perVisit(30)]), // Serbia
+    'TR': bilateral('up to 30 days', [perVisit(30)]), // Türkiye
+    'VN': bilateral('up to 30 days', [perVisit(30)]), // Vietnam
+
     // ── Reclassified visa_required — source lists these as visa-free, but only ───
     // when the traveler already holds another jurisdiction's visa (see file header) ─
 
@@ -332,7 +382,6 @@ export const BELARUS: RegionDefinition = {
     'LB': visaRequiredConditional(), // Lebanon
     'NA': visaRequiredConditional(), // Namibia
     'PK': visaRequiredConditional(), // Pakistan
-    'VN': visaRequiredConditional(), // Vietnam
     'WS': visaRequiredConditional(), // Samoa
     'ZA': visaRequiredConditional(), // South Africa
 

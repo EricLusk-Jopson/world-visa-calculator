@@ -208,7 +208,7 @@ describe('Belarus — European override: 90 days per calendar year stacked on 30
 });
 
 describe('Belarus — reclassified visa_required (source lists as visa-free, but requires another visa)', () => {
-  it.each(['VN', 'HT', 'GM', 'EG', 'IN', 'JO', 'IR', 'LB', 'NA', 'PK', 'WS', 'ZA'])(
+  it.each(['HT', 'GM', 'EG', 'IN', 'JO', 'IR', 'LB', 'NA', 'PK', 'WS', 'ZA'])(
     '%s is visa_required, not entitled',
     (code) => {
       const rule = getBelarusRule(code);
@@ -253,5 +253,45 @@ describe('Belarus — bilateral visa-free, no stated stay (90/180 assumed)', () 
     const rule = getBelarusRule(code);
     if (!isEntitled(rule)) throw new Error('expected entitled');
     expect(rule.entitlements[0].notes?.some((n) => n.text.includes('states no maximum stay'))).toBe(true);
+  });
+});
+
+describe('Belarus — bilateral visa-free, stated stay', () => {
+  const limitsOf = (code: string) => {
+    const rule = getBelarusRule(code);
+    if (!isEntitled(rule)) throw new Error(`${code}: expected entitled`);
+    expect(rule.entitlements).toHaveLength(1);
+    expect(rule.entitlements[0].source).toEqual(BelarusSources.bilateral);
+    return rule.entitlements[0].limits;
+  };
+  const perVisit = (value: number) => ({ type: 'per_visit', value, unit: 'days' });
+  const calendar90 = { type: 'calendar_period', days: 90, periodDays: 365 };
+
+  it.each(['BR', 'CO', 'MN', 'NI', 'VE', 'AE'])('%s: 90 days per visit', (code) => {
+    expect(limitsOf(code)).toEqual([perVisit(90)]);
+  });
+
+  it.each(['CU', 'LA', 'ME', 'MM', 'OM', 'QA', 'KN', 'RS', 'TR', 'VN', 'HK'])('%s: 30 days per visit', (code) => {
+    expect(limitsOf(code)).toEqual([perVisit(30)]);
+  });
+
+  it.each(['AL', 'CN', 'MO'])('%s: 30 days per visit, at most 90 per calendar year', (code) => {
+    expect(limitsOf(code)).toEqual([perVisit(30), calendar90]);
+  });
+
+  it('Argentina: 90 days within the calendar year', () => {
+    expect(limitsOf('AR')).toEqual([calendar90]);
+  });
+
+  it('Israel: 90 days in any 180', () => {
+    expect(limitsOf('IL')).toEqual([{ type: 'rolling_window', days: 90, windowDays: 180 }]);
+  });
+
+  it('Nicaragua and Oman are no longer limited to the six airports', () => {
+    for (const code of ['NI', 'OM']) {
+      const rule = getBelarusRule(code);
+      if (!isEntitled(rule)) throw new Error('expected entitled');
+      expect(rule.entitlements[0].notes?.some((n) => n.text.toLowerCase().includes('minsk national airport'))).toBe(false);
+    }
   });
 });

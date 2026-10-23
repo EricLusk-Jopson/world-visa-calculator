@@ -62,7 +62,7 @@ links:
 
 **Rules:** `src/data/regions/belarus.ts` · **Sources:** `BelarusSources` (`general`, `europe`, `airport`, `bilateral`)
 
-Belarus's rules come in four tiers (see the header of `belarus.ts`):
+Belarus's rules come in five tiers (see the header of `belarus.ts`):
 
 1. **European any-border override:** 38 countries, 30 days per visit (90 for
    Poland, Latvia and Lithuania). Valid until 31 December 2026, modelled as a
@@ -70,13 +70,18 @@ Belarus's rules come in four tiers (see the header of `belarus.ts`):
 2. **Airport-only fallback:** for every visa-free nationality. 30 days per
    visit through six named airports, with no yearly cap (the 90-day yearly
    total belongs to the European override only; rule-change 12).
-3. **Conditional entries:** 12 nationalities need an EU/Schengen visa, so
-   they are modelled as visa-required with a note.
+3. **Conditional entries:** 11 nationalities need an EU/Schengen visa, so
+   they are modelled as visa-required with a note. (Vietnam also carries
+   this footnote on the airport list, but `bilateral` makes it visa-free
+   outright, so it's in tier 5.)
 4. **Bilateral visa-free, no stated stay:** 11 nationalities (Armenia,
    Azerbaijan, Ecuador, Georgia, Kazakhstan, Kyrgyzstan, Moldova, Russia,
    Tajikistan, Ukraine, Uzbekistan) that `bilateral` lists without a
    duration. They're visa-free with an assumed 90 days in any 180 and a note
    saying the MFA states no maximum stay (rule-change 13).
+5. **Bilateral visa-free, stated stay:** 22 nationalities that `bilateral`
+   lists with a stay, modelled from its wording, through any border
+   (rule-change 14). This replaces the airport tier for Nicaragua and Oman.
 
 ## Provenance
 
@@ -141,7 +146,8 @@ conditional nationalities).
 **Machine:** diffed. Same sidebar cut as `europe`.
 
 **Human:** open the page. Read the airports, the 30 days per visit, and the
-conditions for the 12 nationalities that need an EU/Schengen visa. The page
+conditions for the nationalities that need an EU/Schengen visa (12 on the
+page; Vietnam is modelled from `bilateral` instead). The page
 states no yearly cap for this scheme. Only `europe` states one ("must not
 exceed 90 days within a calendar year"), for its own scheme. If a yearly cap
 ever appears here, that's a rule change.
@@ -156,8 +162,8 @@ ever appears here, that's a rule change.
 
 ## bilateral
 
-**Establishes:** tier 4, the nationalities visa-free under bilateral
-agreements, with each one's stay where the page gives it.
+**Establishes:** tiers 4 and 5, the nationalities visa-free under
+bilateral agreements, with each one's stay where the page gives it.
 
 **Machine:** diffed, with the same sidebar cut as `europe` (first baseline
 in the next report after 2026-10-23).
@@ -168,22 +174,26 @@ ordinary passports to", is about Belarusians travelling abroad; ignore it.
 The **right** one, "Foreign nationals with ordinary passports to the
 Republic of Belarus", is what the app models. Read it in the browser, or
 copy that column alone. Copying the whole page interleaves the two columns
-row by row, as on 2026-10-23.
+row by row, as on 2026-10-23. Printing the page to PDF keeps the columns
+apart: `pdftotext -layout` then puts the right column in its own text
+column. Page breaks overprint the site header on a row or two (Myanmar and
+Ukraine on 2026-10-23), so check those rows on the page.
 
 On 2026-10-23 the right column held 34 entries, then the three cross-scheme
-rows (Brest-Grodno, airports, European countries):
+rows (Brest-Grodno, airports, European countries). The maintainer's PDF of
+the page confirmed this table:
 
 | Stay on the page | Nationalities | In the app |
 |---|---|---|
 | none given | Armenia, Azerbaijan, Ecuador, Georgia, Kazakhstan, Kyrgyzstan, Moldova, Russia, Tajikistan, Ukraine, Uzbekistan | tier 4, 90/180 assumed |
-| 30 days per entry, 90 per calendar year | Albania | not yet |
-| 90 days from first entry within the calendar year | Argentina | not yet |
-| 90 days | Brazil, Colombia, Mongolia, Nicaragua, Venezuela | not yet (Nicaragua is airport-only, 30 days) |
-| 90 days in each 180 | Israel | not yet |
-| 90 days from the date of entry | United Arab Emirates | not yet |
-| 30 days, at most 90 per calendar year | China, Macao | not yet |
-| 30 days per stay | Hong Kong | not yet |
-| 30 days | Cuba, Laos, Montenegro, Myanmar, Oman, Qatar, Saint Kitts and Nevis, Serbia, Türkiye, Vietnam | not yet (Oman is airport-only, 30 days) |
+| 30 days per entry, 90 per calendar year | Albania | tier 5: 30 per visit + 90 per calendar year |
+| 90 days from first entry within the calendar year | Argentina | tier 5: 90 per calendar year |
+| 90 days | Brazil, Colombia, Mongolia, Nicaragua, Venezuela | tier 5: 90 per visit |
+| 90 days in each 180 | Israel | tier 5: 90/180 rolling |
+| 90 days from the date of entry | United Arab Emirates | tier 5: 90 per visit |
+| 30 days, at most 90 per calendar year | China, Macao | tier 5: 30 per visit + 90 per calendar year |
+| 30 days per stay | Hong Kong | tier 5: 30 per visit |
+| 30 days | Cuba, Laos, Montenegro, Myanmar, Oman, Qatar, Saint Kitts and Nevis, Serbia, Türkiye, Vietnam | tier 5: 30 per visit |
 | invitation required | North Macedonia | European override until 2026-12-31 |
 
 **Real change vs noise:**
@@ -217,10 +227,6 @@ hash changes.
 
 ## Open questions
 
-- TODO(human): **22 bilateral nationalities with a stated stay aren't modelled yet** (every
-  `bilateral` row marked "not yet" above). They fall through to visa required, apart from
-  Nicaragua and Oman (airport-only, 30 days). Before adding them, confirm the table above against
-  the live right-hand column; it was reconstructed from an interleaved copy.
 - TODO(human): tier 4's 90-in-180 is an assumption. The real limits are in each bilateral
   agreement (Russia's Union State regime is broader). Replace it per country if an official
   figure turns up, e.g. on the State Border Committee site.

@@ -11,8 +11,8 @@ Reports counted: 5 (2026-10-14 to 2026-10-23).
 
 - Diffs flagged: 2: 1 rule change, 1 noise, 0 unclear, 0 untriaged
 - Precision: 50% (1/2)
-- Rule changes caught by a report: 3; missed on diffed links: 6; recall: 33% (3/9)
-- Rule-change log entries by trigger: manual 9, external 1, report 2
+- Rule changes caught by a report: 3; missed on diffed links: 7; recall: 30% (3/10)
+- Rule-change log entries by trigger: manual 10, external 1, report 2
 
 ## By link
 
@@ -27,7 +27,7 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 | Armenia | bilateralList | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Belarus | europe | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 1 | 0 | 0% (0/1) |
 | Belarus | airport | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 1 | 0 | 0% (0/1) |
-| Belarus | bilateral | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 1 | 0 | 0% (0/1) |
+| Belarus | bilateral | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 2 | 0 | 0% (0/2) |
 | Belarus | airportPdf | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Bosnia | vize | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Bosnia | subpages | high | 1 | 0 | 1 | 0 | 0 | 0% (0/1) | 0 | 0 | 0 | – |
