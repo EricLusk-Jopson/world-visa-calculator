@@ -381,18 +381,6 @@ function TripBar({
       {countedX1 > countedX0 && (
         <rect x={countedX0} y={y} width={countedX1 - countedX0} height={ROW_H} rx={4} fill={color} />
       )}
-      {color && label && cw > 70 && (
-        <text
-          x={cx0 + cw / 2}
-          y={y + ROW_H / 2 + 4}
-          fontSize={11}
-          fontWeight={500}
-          textAnchor="middle"
-          fill={countedX1 - countedX0 > cw / 2 ? "rgba(255,255,255,0.95)" : "rgba(12,30,60,0.82)"}
-        >
-          {truncate(label, Math.floor(cw / 7))}
-        </text>
-      )}
     </g>
   );
 }

@@ -40,7 +40,7 @@ import { RollingWindowChart } from "./RollingWindowChart";
 /**
  * Desktop-only "Rolling Window" explorer: the blog's interactive 90/180
  * explainer, applied to the user's own travelers and trips. Set the date
- * range, pick up to three rolling-window destinations in it and the
+ * range, pick up to four rolling-window destinations in it and the
  * travelers to show, then slide the window end date to see which days count.
  *
  * Selections live in this component (which stays mounted while the dialog is
