@@ -78,15 +78,6 @@ const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one :
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
-const EYEBROW_SX = {
-  fontFamily: tokens.fontBody,
-  fontSize: "0.65rem",
-  fontWeight: 700,
-  letterSpacing: "0.08em",
-  textTransform: "uppercase",
-  color: tokens.greenText,
-} as const;
-
 const SIDEBAR_HEADING_SX = {
   fontFamily: tokens.fontBody,
   fontSize: "0.7rem",
@@ -349,32 +340,30 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
         },
       }}
     >
-      {/* ── Header ───────────────────────────────────────────────────────── */}
+      {/* ── Header: one slim line ────────────────────────────────────────── */}
       <Box
         sx={{
           display: "flex",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          gap: "16px",
-          px: "28px",
-          py: "18px",
+          alignItems: "center",
+          gap: "12px",
+          pl: "24px",
+          pr: "12px",
+          py: "8px",
           bgcolor: tokens.white,
           borderBottom: `1px solid ${tokens.border}`,
           flexShrink: 0,
         }}
       >
-        <Box>
-          <Typography sx={EYEBROW_SX}>Interactive timeline</Typography>
-          <Typography
-            id="rolling-window-title"
-            sx={{ fontFamily: tokens.fontDisplay, fontSize: "1.35rem", color: tokens.navy, lineHeight: 1.3 }}
-          >
-            Rolling window explorer
-          </Typography>
-          <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.8rem", color: tokens.textSoft, mt: "2px" }}>
-            Slide the window across your trips to see which days count toward each traveler's limit on any date.
-          </Typography>
-        </Box>
+        <Typography
+          id="rolling-window-title"
+          component="h2"
+          sx={{ fontFamily: tokens.fontDisplay, fontSize: "1.05rem", color: tokens.navy, whiteSpace: "nowrap" }}
+        >
+          Rolling window explorer
+        </Typography>
+        <Typography noWrap sx={{ flex: 1, minWidth: 0, fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft }}>
+          See which days count toward each traveler's limit on any date.
+        </Typography>
         <IconButton onClick={onClose} aria-label="Close" size="small" sx={{ color: tokens.textSoft }}>
           <CloseIcon fontSize="small" />
         </IconButton>
