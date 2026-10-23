@@ -25,17 +25,21 @@ import {
   addDays,
 } from "@/features/calculator/utils/dates";
 import {
-  type ReturnMarker,
-  computeReturnMarkers,
-  type AgingMarker,
-  computeAgingMarkers,
   calculateEarliestEntry,
   calculateMaxStay,
+} from "@/features/calculator/utils/schengen";
+import {
+  type ReturnMarker,
+  type AgingMarker,
+  type WindowMarkers,
   returnMarkerCurrentText,
   returnMarkerThresholdText,
   agingMarkerTripLine,
   AGING_MARKER_EXPLANATION,
-} from "@/features/calculator/utils/schengen";
+  thresholdsFor,
+  assignChipSlots,
+} from "@/features/calculator/utils/windowMarkers";
+import { RegionMarkerTag } from "../RegionMarkerTag";
 import { computeOverstayTripIds } from "../../trips/tripDuration";
 import { tripGroupKey } from "../../trips/tripHelpers";
 import { getSchengenRule } from "@/data/regions/schengen";
@@ -53,28 +57,53 @@ interface TravelerTimelineColumnProps {
   /** Group key of the shared trip currently hovered in any column. */
   hoveredTripKey: string | null;
   onHoverTrip: (key: string | null) => void;
+  /** This traveller's rolling-window markers, computed by the timeline. */
+  markers: WindowMarkers;
+  /** Destination colours shared by every column (see regionMarkerStyle.ts). */
+  regionColours: Map<VisaRegion, string>;
 }
 
 // ─── Return marker visual ─────────────────────────────────────────────────────
 
-function markerColors(days: number, isCurrent: boolean) {
-  const isGenerous = days >= 30;
+/** Horizontal step between chips that share a date band (two destinations). */
+const RETURN_CHIP_SLOT_PX = 62;
+const AGING_CHIP_SLOT_PX = 58;
+/** Chips closer together than this vertically are moved to separate slots. */
+const CHIP_MIN_GAP_PX = 15;
+
+/**
+ * Green once a third of the allowance is reachable (30d of 90), amber below.
+ * Every other milestone (30/60/90 of 90) is drawn stronger than the ones
+ * between.
+ */
+function markerColors(days: number, isCurrent: boolean, allowance: number) {
+  const isGenerous = days >= allowance / 3;
+  const isMajor = thresholdsFor(allowance).indexOf(days) % 2 === 1;
   return {
     lineBase: isGenerous ? tokens.green : tokens.amber,
     textColor: isGenerous ? tokens.greenText : tokens.amberText,
     bgColor: isGenerous ? tokens.greenBg : tokens.amberBg,
-    lineOpacity: isCurrent ? 0.45 : days % 30 === 0 ? 0.35 : 0.18,
-    pillOpacity: isCurrent ? 1 : days % 30 === 0 ? 1 : 0.65,
+    lineOpacity: isCurrent ? 0.45 : isMajor ? 0.35 : 0.18,
+    pillOpacity: isCurrent || isMajor ? 1 : 0.65,
   };
 }
 
-function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
+function MarkerLine({
+  region,
+  top,
+  days,
+  isCurrent,
+  date,
+  allowance,
+  regionColour,
+  slot,
+}: ReturnMarker & { regionColour: string; slot: number }) {
   const { lineBase, textColor, bgColor, lineOpacity, pillOpacity } =
-    markerColors(days, isCurrent);
+    markerColors(days, isCurrent, allowance);
 
   const tooltipText = isCurrent
-    ? returnMarkerCurrentText(days)
-    : returnMarkerThresholdText(date, days);
+    ? returnMarkerCurrentText(region, days)
+    : returnMarkerThresholdText(region, date, days);
 
   return (
     <Box
@@ -120,7 +149,7 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
         <Box
           sx={{
             position: "absolute",
-            left: isCurrent ? 20 : 32,
+            left: (isCurrent ? 20 : 32) + slot * RETURN_CHIP_SLOT_PX,
             top: 0,
             transform: "translateY(-50%)",
             zIndex: 3,
@@ -137,6 +166,11 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
             cursor: "default",
           }}
         >
+          <RegionMarkerTag
+            region={region}
+            colour={regionColour}
+            opacity={pillOpacity}
+          />
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
@@ -166,21 +200,25 @@ function MarkerLine({ top, days, isCurrent, date }: ReturnMarker) {
 // ─── Aging-out marker visual ──────────────────────────────────────────────────
 
 /**
- * Marks the date when a historical trip's days start aging out of the 180-day
- * window. Visually distinct from return markers: dotted line (vs dashed),
- * lower opacity, and a centered label breaking the line.
+ * Marks the date when a historical trip's days start aging out of its
+ * destination's rolling window. Visually distinct from return markers: dotted
+ * line (vs dashed), lower opacity, and a centered label breaking the line.
+ * A marker pushed into a second slot (another destination's trip aging out
+ * on a nearby date) draws only its pill, so the labels don't collide.
  */
 function AgingMarkerLine({
+  region,
+  date,
   top,
   tripDays,
   destination,
-  entryDate,
-}: AgingMarker) {
+  regionColour,
+  slot,
+}: AgingMarker & { regionColour: string; slot: number }) {
   const LINE_OPACITY = 0.12;
   const TEXT_OPACITY = 0.4;
 
-  const agingDate = addDays(parseDate(entryDate), 180);
-  const tooltipText = `${agingMarkerTripLine(destination, tripDays, agingDate)}. ${AGING_MARKER_EXPLANATION}`;
+  const tooltipText = `${agingMarkerTripLine(region, destination, tripDays, date)}. ${AGING_MARKER_EXPLANATION}`;
   return (
     <Box
       sx={{
@@ -192,6 +230,7 @@ function AgingMarkerLine({
         zIndex: 2,
       }}
     >
+      {slot === 0 && (
       <Box
         sx={{
           position: "absolute",
@@ -234,6 +273,7 @@ function AgingMarkerLine({
           }}
         />
       </Box>
+      )}
 
       <Tooltip
         title={tooltipText}
@@ -256,7 +296,7 @@ function AgingMarkerLine({
         <Box
           sx={{
             position: "absolute",
-            right: 10,
+            right: 10 + slot * AGING_CHIP_SLOT_PX,
             top: 0,
             transform: "translateY(-50%)",
             zIndex: 3,
@@ -273,6 +313,7 @@ function AgingMarkerLine({
             cursor: "default",
           }}
         >
+          <RegionMarkerTag region={region} colour={regionColour} opacity={0.8} />
           <Typography
             sx={{
               fontFamily: tokens.fontBody,
@@ -309,6 +350,8 @@ export function TravelerTimelineColumn({
   hoveredTripKey,
   onHoverTrip,
   width,
+  markers,
+  regionColours,
 }: TravelerTimelineColumnProps) {
   const columnRef = useRef<HTMLDivElement>(null);
   const [columnWidth, setColumnWidth] = useState(COLUMN_MIN_WIDTH);
@@ -412,18 +455,20 @@ export function TravelerTimelineColumn({
     [traveler],
   );
 
-  const schengenRule = getSchengenRule(traveler.passportCode);
-  const isVisaRequired =
-    traveler.passportCode !== null && schengenRule.access === "visa_required";
-
-  const returnMarkers = useMemo(
-    () => computeReturnMarkers(traveler, timelineStart, timelineEnd),
-    [traveler, timelineStart, timelineEnd],
+  // Markers only exist where the traveller's passport gets a rolling window,
+  // so a visa-required destination simply contributes none.
+  const thresholdMarkers = useMemo(
+    () => markers.returnMarkers.filter((m) => !m.isCurrent),
+    [markers],
   );
-
-  const agingMarkers = useMemo(
-    () => computeAgingMarkers(traveler, timelineStart, timelineEnd),
-    [traveler, timelineStart, timelineEnd],
+  const { agingMarkers } = markers;
+  const returnSlots = useMemo(
+    () => assignChipSlots(thresholdMarkers.map((m) => m.top), CHIP_MIN_GAP_PX),
+    [thresholdMarkers],
+  );
+  const agingSlots = useMemo(
+    () => assignChipSlots(agingMarkers.map((m) => m.top), CHIP_MIN_GAP_PX),
+    [agingMarkers],
   );
 
   const ADD_BUTTON_HEIGHT = 36;
@@ -431,16 +476,15 @@ export function TravelerTimelineColumn({
   const defaultButtonTop = totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_MARGIN;
 
   const addButtonTop = useMemo(() => {
-    if (isVisaRequired) return defaultButtonTop;
     const allMarkerTops = [
-      ...returnMarkers.map((m) => m.top),
+      ...markers.returnMarkers.map((m) => m.top),
       ...agingMarkers.map((m) => m.top),
     ];
     if (allMarkerTops.length === 0) return defaultButtonTop;
     const lastMarkerTop = Math.max(...allMarkerTops);
     const minTop = lastMarkerTop + 10 + ADD_BUTTON_MARGIN;
     return Math.max(defaultButtonTop, minTop);
-  }, [returnMarkers, agingMarkers, defaultButtonTop, isVisaRequired]);
+  }, [markers, agingMarkers, defaultButtonTop]);
 
   const BASE_Z = 4;
 
@@ -529,19 +573,25 @@ export function TravelerTimelineColumn({
         }}
       />
 
-      {/* Return markers (threshold milestones) */}
-      {!isVisaRequired &&
-        returnMarkers
-          .filter((marker) => !marker.isCurrent)
-          .map((marker, i) => (
-            <MarkerLine key={`thr-${marker.days}-${i}`} {...marker} />
-          ))}
+      {/* Return markers (threshold milestones), every rolling-window destination */}
+      {thresholdMarkers.map((marker, i) => (
+        <MarkerLine
+          key={`thr-${marker.region}-${marker.days}-${i}`}
+          {...marker}
+          regionColour={regionColours.get(marker.region) ?? tokens.textSoft}
+          slot={returnSlots[i]}
+        />
+      ))}
 
       {/* Aging-out markers */}
-      {!isVisaRequired &&
-        agingMarkers.map((marker, i) => (
-          <AgingMarkerLine key={`aging-${marker.entryDate}-${i}`} {...marker} />
-        ))}
+      {agingMarkers.map((marker, i) => (
+        <AgingMarkerLine
+          key={`aging-${marker.region}-${marker.entryDate}-${i}`}
+          {...marker}
+          regionColour={regionColours.get(marker.region) ?? tokens.textSoft}
+          slot={agingSlots[i]}
+        />
+      ))}
 
       {/* Trip cards */}
       {sortedTrips.map((trip, rank) => {

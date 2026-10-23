@@ -28,14 +28,19 @@ import { type PositionedTrip, assignLanes } from "./mobileTripLayout";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import {
-  type ReturnMarker,
-  computeReturnMarkers,
   type AgingMarker,
-  computeAgingMarkers,
+  type WindowMarkers,
+  computeWindowMarkers,
+  markerRegions,
+  assignRegionMarkerColours,
+  assignChipSlots,
+  thresholdsFor,
+  regionMarkerName,
   returnMarkerRowText,
   agingMarkerTripLine,
   AGING_MARKER_EXPLANATION,
-} from "@/features/calculator/utils/schengen";
+} from "@/features/calculator/utils/windowMarkers";
+import { RegionMarkerTag } from "../../timeline/RegionMarkerTag";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -48,25 +53,31 @@ interface MobileTimelineViewProps {
 
 /** One entry contributed by a traveler into a return-marker group. */
 interface ReturnMarkerEntry {
+  region: VisaRegion;
   top: number;
   date: Date;
   days: number;
   travelerIndex: number;
   travelerName: string;
+  /** Longest stay the destination's rule allows this traveller. */
+  allowance: number;
 }
 
 /**
- * A group of return-marker entries whose dates fall within a 6-day window of
- * the earliest entry. The group is displayed at `top` (the earliest entry's
- * position) with a combined pill and unified tooltip.
+ * A group of one destination's return-marker entries whose dates fall within
+ * a 6-day window of the earliest entry. The group is displayed at `top` (the
+ * earliest entry's position) with a combined pill and unified tooltip.
  */
 interface MobileReturnMarkerGroup {
+  region: VisaRegion;
   top: number;
   entries: ReturnMarkerEntry[];
   /** Unique traveler indices across all entries (for colour dots). */
   travelerIndices: number[];
   /** Highest threshold across all entries. */
   maxDays: number;
+  /** Largest allowance across all entries — scales the pill's colour. */
+  allowance: number;
 }
 
 /**
@@ -75,8 +86,15 @@ interface MobileReturnMarkerGroup {
  * reads "X Trips Age Out" instead of the trip destination.
  */
 interface MobileAgingMarkerGroup {
+  region: VisaRegion;
   top: number;
   markers: AgingMarker[];
+}
+
+/** Destination colour and horizontal slot, resolved for the whole view. */
+interface MarkerPlacement {
+  regionColour: string;
+  slot: number;
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -97,6 +115,11 @@ const FAB_CLEARANCE_PX = 120;
 /** 6-day rollup window in pixels. */
 const ROLLUP_PX = 6 * PX_PER_DAY;
 
+/** Horizontal step between pills of different destinations on nearby dates. */
+const RETURN_CHIP_SLOT_PX = 64;
+const AGING_CHIP_SLOT_PX = 58;
+const CHIP_MIN_GAP_PX = 15;
+
 /** Shared tooltip styling used by both mobile marker types. */
 const TOOLTIP_SX = {
   fontFamily: tokens.fontBody,
@@ -109,10 +132,22 @@ const TOOLTIP_SX = {
 
 // ─── Marker grouping helpers ──────────────────────────────────────────────────
 
+/** Splits items by destination, so rollups never merge two destinations. */
+function byRegion<T extends { region: VisaRegion }>(items: T[]): T[][] {
+  const map = new Map<VisaRegion, T[]>();
+  for (const item of items) {
+    const list = map.get(item.region);
+    if (list) list.push(item);
+    else map.set(item.region, [item]);
+  }
+  return [...map.values()];
+}
+
 /**
- * Groups return-marker entries whose pixel positions fall within a 6-day window
- * of the earliest entry in a run. The window is anchored to the first entry —
- * it does NOT cascade (the window never advances beyond the original anchor).
+ * Groups one destination's return-marker entries whose pixel positions fall
+ * within a 6-day window of the earliest entry in a run. The window is anchored
+ * to the first entry — it does NOT cascade (the window never advances beyond
+ * the original anchor).
  */
 function groupReturnMarkers(
   entries: ReturnMarkerEntry[],
@@ -138,10 +173,12 @@ function groupReturnMarkers(
     }
 
     groups.push({
+      region: anchor.region,
       top: anchor.top,
       entries: group,
       travelerIndices: [...new Set(group.map((e) => e.travelerIndex))],
       maxDays: Math.max(...group.map((e) => e.days)),
+      allowance: Math.max(...group.map((e) => e.allowance)),
     });
   }
 
@@ -149,8 +186,9 @@ function groupReturnMarkers(
 }
 
 /**
- * Groups aging markers whose pixel positions fall within a 6-day window of the
- * earliest marker in a run. Same non-cascading anchor logic as return markers.
+ * Groups one destination's aging markers whose pixel positions fall within a
+ * 6-day window of the earliest marker in a run. Same non-cascading anchor
+ * logic as return markers.
  */
 function groupAgingMarkers(
   markers: AgingMarker[],
@@ -175,7 +213,7 @@ function groupAgingMarkers(
       }
     }
 
-    groups.push({ top: anchor.top, markers: group });
+    groups.push({ region: anchor.region, top: anchor.top, markers: group });
   }
 
   return groups;
@@ -455,16 +493,26 @@ function MobileTimelineTripCard({
 
 // ─── Mobile return marker ─────────────────────────────────────────────────────
 
-function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileReturnMarkerGroup) {
-  const isGenerous = maxDays >= 30;
+function MobileReturnMarker({
+  region,
+  top,
+  entries,
+  travelerIndices,
+  maxDays,
+  allowance,
+  regionColour,
+  slot,
+}: MobileReturnMarkerGroup & MarkerPlacement) {
+  const isGenerous = maxDays >= allowance / 3;
   const lineBase = isGenerous ? tokens.green : tokens.amber;
   const textColor = isGenerous ? tokens.greenText : tokens.amberText;
   const bgColor = isGenerous ? tokens.greenBg : tokens.amberBg;
 
   // Opacity mirrors desktop logic, keyed to the smallest threshold in the group.
   const minDays = Math.min(...entries.map((e) => e.days));
-  const lineOpacity = minDays % 30 === 0 ? 0.35 : 0.18;
-  const pillOpacity = minDays % 30 === 0 ? 1 : 0.65;
+  const isMajor = thresholdsFor(allowance).indexOf(minDays) % 2 === 1;
+  const lineOpacity = isMajor ? 0.35 : 0.18;
+  const pillOpacity = isMajor ? 1 : 0.65;
 
   // Deduplicate entries by traveler, keeping only the max-threshold entry per
   // traveler. This mirrors the pill logic: only the best reachable value matters.
@@ -478,6 +526,9 @@ function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileRe
   // Tooltip: always a per-traveler list (same format for one or many).
   const tooltipTitle = (
     <Box component="div">
+      <Box component="div" sx={{ mb: "3px", fontWeight: 700 }}>
+        {regionMarkerName(region)}
+      </Box>
       {dedupedEntries.map((e, i) => (
         <Box
           key={i}
@@ -519,7 +570,7 @@ function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileRe
       <Box
         sx={{
           position: "absolute",
-          left: CARD_GUTTER + 2,
+          left: CARD_GUTTER + 2 + slot * RETURN_CHIP_SLOT_PX,
           top: 0,
           transform: "translateY(-50%)",
           zIndex: 2,
@@ -546,6 +597,8 @@ function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileRe
               opacity: pillOpacity,
             }}
           >
+            <RegionMarkerTag region={region} colour={regionColour} />
+
             {travelerIndices.map((idx) => (
               <Box
                 key={idx}
@@ -589,7 +642,13 @@ function MobileReturnMarker({ top, entries, travelerIndices, maxDays }: MobileRe
 
 // ─── Mobile aging marker ──────────────────────────────────────────────────────
 
-function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
+function MobileAgingMarker({
+  region,
+  top,
+  markers,
+  regionColour,
+  slot,
+}: MobileAgingMarkerGroup & MarkerPlacement) {
   const LINE_OPACITY = 0.12;
   const TEXT_OPACITY = 0.4;
 
@@ -602,18 +661,15 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
   // format for one trip or many).
   const tooltipTitle = (
     <Box component="div">
-      {markers.map((m, i) => {
-        const agingDate = addDays(parseDate(m.entryDate), 180);
-        return (
-          <Box
-            key={i}
-            component="div"
-            sx={{ "&:not(:last-child)": { mb: "3px" } }}
-          >
-            {agingMarkerTripLine(m.destination, m.tripDays, agingDate)}
-          </Box>
-        );
-      })}
+      {markers.map((m, i) => (
+        <Box
+          key={i}
+          component="div"
+          sx={{ "&:not(:last-child)": { mb: "3px" } }}
+        >
+          {agingMarkerTripLine(region, m.destination, m.tripDays, m.date)}
+        </Box>
+      ))}
       <Box component="div" sx={{ mt: "4px", opacity: 0.8 }}>
         {AGING_MARKER_EXPLANATION}
       </Box>
@@ -623,6 +679,7 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
   // Right-side pill: "+Xd" for a single trip; info icon only for multiples.
   const pillContent = isSingle ? (
     <>
+      <RegionMarkerTag region={region} colour={regionColour} opacity={0.8} />
       <Typography
         sx={{
           fontFamily: tokens.fontBody,
@@ -641,9 +698,12 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
       />
     </>
   ) : (
-    <InfoOutlinedIcon
-      sx={{ fontSize: "0.6rem", color: alpha(tokens.textGhost, 0.6), flexShrink: 0 }}
-    />
+    <>
+      <RegionMarkerTag region={region} colour={regionColour} opacity={0.8} />
+      <InfoOutlinedIcon
+        sx={{ fontSize: "0.6rem", color: alpha(tokens.textGhost, 0.6), flexShrink: 0 }}
+      />
+    </>
   );
 
   return (
@@ -657,7 +717,9 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
         zIndex: 1,
       }}
     >
-      {/* Dotted line with centred label */}
+      {/* Dotted line with centred label — first slot only, so two
+          destinations aging out on nearby dates don't overprint labels. */}
+      {slot === 0 && (
       <Box
         sx={{
           position: "absolute",
@@ -700,12 +762,13 @@ function MobileAgingMarker({ top, markers }: MobileAgingMarkerGroup) {
           }}
         />
       </Box>
+      )}
 
       {/* Right-side info pill — same anchor-sizing fix as return marker above. */}
       <Box
         sx={{
           position: "absolute",
-          right: CARD_GUTTER + 2,
+          right: CARD_GUTTER + 2 + slot * AGING_CHIP_SLOT_PX,
           top: 0,
           transform: "translateY(-50%)",
           zIndex: 2,
@@ -785,43 +848,57 @@ export function MobileTimelineView({
     return keys;
   }, [travelers, hiddenTravelerIds, todayStr]);
 
-  // ── Return marker groups (6-day rollup) ───────────────────────────────────
+  // ── Rolling-window markers for every visible traveller ────────────────────
+  // Destinations where a passport gets no rolling window contribute none.
+  const visibleMarkers = useMemo(
+    (): { index: number; traveler: Traveler; markers: WindowMarkers }[] =>
+      travelers.flatMap((traveler, index) =>
+        hiddenTravelerIds.includes(traveler.id)
+          ? []
+          : [
+              {
+                index,
+                traveler,
+                markers: computeWindowMarkers(traveler, timelineStart, timelineEnd),
+              },
+            ],
+      ),
+    [travelers, hiddenTravelerIds, timelineStart, timelineEnd],
+  );
+
+  const regionColours = useMemo(
+    () => assignRegionMarkerColours(markerRegions(visibleMarkers.map((v) => v.markers))),
+    [visibleMarkers],
+  );
+
+  // ── Return marker groups (6-day rollup, per destination) ──────────────────
   const returnMarkerGroups = useMemo((): MobileReturnMarkerGroup[] => {
-    const allEntries: ReturnMarkerEntry[] = [];
-
-    travelers.forEach((traveler, i) => {
-      if (hiddenTravelerIds.includes(traveler.id)) return;
-      const rule = getSchengenRule(traveler.passportCode);
-      if (traveler.passportCode !== null && rule.access === 'visa_required') return;
-
-      computeReturnMarkers(traveler, timelineStart, timelineEnd)
-        .filter((m: ReturnMarker) => !m.isCurrent)
-        .forEach((m: ReturnMarker) => {
-          allEntries.push({
+    const allEntries: ReturnMarkerEntry[] = visibleMarkers.flatMap(
+      ({ index, traveler, markers }) =>
+        markers.returnMarkers
+          .filter((m) => !m.isCurrent)
+          .map((m) => ({
+            region: m.region,
             top: m.top,
             date: m.date,
             days: m.days,
-            travelerIndex: i,
+            travelerIndex: index,
             travelerName: traveler.name,
-          });
-        });
-    });
+            allowance: m.allowance,
+          })),
+    );
 
-    return groupReturnMarkers(allEntries);
-  }, [travelers, hiddenTravelerIds, timelineStart, timelineEnd]);
+    return byRegion(allEntries).flatMap(groupReturnMarkers);
+  }, [visibleMarkers]);
 
-  // ── Aging marker groups (deduplicated + 6-day rollup) ─────────────────────
+  // ── Aging marker groups (deduplicated + 6-day rollup, per destination) ────
   const agingMarkerGroups = useMemo((): MobileAgingMarkerGroup[] => {
     const seen = new Set<string>();
     const unique: AgingMarker[] = [];
 
-    travelers.forEach((traveler) => {
-      if (hiddenTravelerIds.includes(traveler.id)) return;
-      const rule = getSchengenRule(traveler.passportCode);
-      if (traveler.passportCode !== null && rule.access === 'visa_required') return;
-
-      computeAgingMarkers(traveler, timelineStart, timelineEnd).forEach((m) => {
-        const key = `${m.entryDate}|${m.exitDate}`;
+    visibleMarkers.forEach(({ markers }) => {
+      markers.agingMarkers.forEach((m) => {
+        const key = `${m.region}|${m.entryDate}|${m.exitDate}`;
         if (!seen.has(key)) {
           seen.add(key);
           unique.push(m);
@@ -829,8 +906,17 @@ export function MobileTimelineView({
       });
     });
 
-    return groupAgingMarkers(unique);
-  }, [travelers, hiddenTravelerIds, timelineStart, timelineEnd]);
+    return byRegion(unique).flatMap(groupAgingMarkers);
+  }, [visibleMarkers]);
+
+  const returnSlots = useMemo(
+    () => assignChipSlots(returnMarkerGroups.map((g) => g.top), CHIP_MIN_GAP_PX),
+    [returnMarkerGroups],
+  );
+  const agingSlots = useMemo(
+    () => assignChipSlots(agingMarkerGroups.map((g) => g.top), CHIP_MIN_GAP_PX),
+    [agingMarkerGroups],
+  );
 
   const contentHeight = useMemo(() => {
     const tripBottom =
@@ -962,19 +1048,23 @@ export function MobileTimelineView({
 
             {/* Return markers — zIndex 1, below trip cards */}
             {!allHidden &&
-              returnMarkerGroups.map((group) => (
+              returnMarkerGroups.map((group, i) => (
                 <MobileReturnMarker
-                  key={`ret-${group.top}-${group.maxDays}`}
+                  key={`ret-${group.region}-${group.top}-${group.maxDays}`}
                   {...group}
+                  regionColour={regionColours.get(group.region) ?? tokens.textSoft}
+                  slot={returnSlots[i]}
                 />
               ))}
 
             {/* Aging-out markers — zIndex 1, below trip cards */}
             {!allHidden &&
-              agingMarkerGroups.map((group) => (
+              agingMarkerGroups.map((group, i) => (
                 <MobileAgingMarker
-                  key={`aging-${group.top}-${group.markers.length}`}
+                  key={`aging-${group.region}-${group.top}-${group.markers.length}`}
                   {...group}
+                  regionColour={regionColours.get(group.region) ?? tokens.textSoft}
+                  slot={agingSlots[i]}
                 />
               ))}
 

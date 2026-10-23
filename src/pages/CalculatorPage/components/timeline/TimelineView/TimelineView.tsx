@@ -17,6 +17,11 @@ import {
   COLUMN_HEADER_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
 import { today as getToday } from "@/features/calculator/utils/dates";
+import {
+  computeWindowMarkers,
+  markerRegions,
+  assignRegionMarkerColours,
+} from "@/features/calculator/utils/windowMarkers";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { tripGroupKey } from "../../trips/tripHelpers";
 
@@ -62,6 +67,24 @@ export function TimelineView({
     () => computeTimelineEnd(travelers),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [travelers],
+  );
+
+  // Rolling-window markers per traveller, and one destination→colour map for
+  // every column so a destination reads the same colour across travellers.
+  const markersByTraveler = useMemo(
+    () =>
+      new Map(
+        travelers.map((t) => [
+          t.id,
+          computeWindowMarkers(t, timelineStart, timelineEnd),
+        ]),
+      ),
+    [travelers, timelineStart, timelineEnd],
+  );
+  const regionColours = useMemo(
+    () =>
+      assignRegionMarkerColours(markerRegions([...markersByTraveler.values()])),
+    [markersByTraveler],
   );
 
   useEffect(() => {
@@ -179,6 +202,8 @@ export function TimelineView({
               hoveredTripKey={hoveredTripKey}
               onHoverTrip={setHoveredTripKey}
               width={maxColumnWidth}
+              markers={markersByTraveler.get(traveler.id)!}
+              regionColours={regionColours}
             />
           ))}
 

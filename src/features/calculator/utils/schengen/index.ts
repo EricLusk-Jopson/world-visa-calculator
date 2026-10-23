@@ -15,20 +15,6 @@ export {
   SCHENGEN_COUNTRIES_TOOLTIP,
 } from "./constants";
 
-export type { ReturnMarker } from "./returnMarkers";
-export { computeReturnMarkers } from "./returnMarkers";
-
-export type { AgingMarker } from "./agingMarkers";
-export { computeAgingMarkers } from "./agingMarkers";
-
-export {
-  returnMarkerCurrentText,
-  returnMarkerThresholdText,
-  returnMarkerRowText,
-  agingMarkerTripLine,
-  AGING_MARKER_EXPLANATION,
-} from "./markerTooltips";
-
 export {
   CHIP_TOOLTIP_SCHENGEN_AVAIL,
   CHIP_TOOLTIP_REENTRY_DATE,
