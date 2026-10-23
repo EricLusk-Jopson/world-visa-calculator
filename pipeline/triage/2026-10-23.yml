@@ -1,0 +1,15 @@
+report: 2026-10-23
+items:
+  - region: Georgia
+    url: https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25
+    verdict: unclear
+    by: ai-assisted
+    notes: >-
+      Ukraine's row changed from "Full 2 (two) years" to "Full 1 (one) year"
+      (the only change in the snapshot). If that holds, it's a rule change:
+      georgia.ts has UA as entitledFull2() (730 days) and would need
+      entitledFull1() (365). The sandbox can't reach gc-api.mfa.gov.ge or
+      geoconsul.gov.ge. To settle it, open
+      https://www.geoconsul.gov.ge/en/HtmlPage/html/View?id=25, let the table
+      render, and read Ukraine's row. Check matsne.gov.ge doc 2867361 for an
+      amendment and its effective date.
