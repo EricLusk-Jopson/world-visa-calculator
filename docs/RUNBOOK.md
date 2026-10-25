@@ -258,6 +258,14 @@ Each "Report a problem" submission lands in the analytics sheet as a
 (broken link / wrong info / other), plus an optional message. Users
 can send at most three per page load, with no personal details.
 
+The rows land in the "Events" sheet because the app sends its
+`PUBLIC_ANALYTICS_TOKEN`, which the Apps Script matches to that sheet. The
+script is shared with Vinyl Periphery and lives in that repo at
+`docs/analytics/apps-script.js`. Both `PUBLIC_ANALYTICS_URL` and
+`PUBLIC_ANALYTICS_TOKEN` are set in Vercel and baked in at build time, so
+changing either needs a redeploy. Without the token, the script rejects
+every event and report.
+
 **When:** once a cycle, after the report PR. Sooner if someone emails.
 
 1. Filter the sheet to `source_issue_reported` rows since your last review.
