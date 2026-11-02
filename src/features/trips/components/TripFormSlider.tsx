@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Box from "@mui/material/Box";
 import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
 import { Button } from "@/components/ui/Button";
@@ -15,7 +15,10 @@ import { computeTravelerDurations } from "@/pages/CalculatorPage/components/trip
 import {
   blockedTripRanges,
   hasBlockingOverlap,
+  type BlockedRange,
 } from "@/features/calculator/utils/tripOverlap";
+
+const EMPTY_BLOCKED_RANGES: BlockedRange[] = [];
 
 export interface TripFormSliderProps {
   open: boolean;
@@ -86,11 +89,15 @@ export function TripFormSlider({
     }
   }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const blockedRanges = blockedTripRanges(
-    travelers,
-    travelerIds,
-    initialTrip?.id,
-    initialTrip,
+  // Only needed while the Dates card is expanded (it's the sole consumer);
+  // a stable empty reference otherwise avoids handing the calendar a fresh
+  // array on every unrelated render.
+  const blockedRanges = useMemo(
+    () =>
+      activeCard === "dates"
+        ? blockedTripRanges(travelers, travelerIds, initialTrip?.id, initialTrip)
+        : EMPTY_BLOCKED_RANGES,
+    [activeCard, travelers, travelerIds, initialTrip],
   );
 
   const canSave =
@@ -111,16 +118,19 @@ export function TripFormSlider({
   // ── Entry eligibility + stay duration summaries ──
   const datesSet = !!entryDate && !!exitDate;
 
-  const eligibility =
-    region !== VisaRegion.Elsewhere
-      ? computeTravelerEligibility(
-          region,
-          travelers,
-          travelerIds,
-          entryDate || undefined,
-          exitDate || undefined,
-        )
-      : [];
+  const eligibility = useMemo(
+    () =>
+      region !== VisaRegion.Elsewhere
+        ? computeTravelerEligibility(
+            region,
+            travelers,
+            travelerIds,
+            entryDate || undefined,
+            exitDate || undefined,
+          )
+        : [],
+    [region, travelers, travelerIds, entryDate, exitDate],
+  );
   // A temporal window currently in effect gets its own green-clock bucket —
   // technically "ok", but worth flagging as temporary rather than folding
   // into the plain green count.
@@ -136,17 +146,30 @@ export function TripFormSlider({
   ).length;
   const eligUnknown = eligibility.filter((e) => e.access === "unknown").length;
 
-  const durations = datesSet
-    ? computeTravelerDurations({
-        region,
-        travelers,
-        travelerIds,
-        entryDate,
-        exitDate,
-        destination: name,
-        excludeTripId: initialTrip?.id,
-      })
-    : [];
+  const durations = useMemo(
+    () =>
+      datesSet
+        ? computeTravelerDurations({
+            region,
+            travelers,
+            travelerIds,
+            entryDate,
+            exitDate,
+            destination: name,
+            excludeTripId: initialTrip?.id,
+          })
+        : [],
+    [
+      datesSet,
+      region,
+      travelers,
+      travelerIds,
+      entryDate,
+      exitDate,
+      name,
+      initialTrip?.id,
+    ],
+  );
   const durOk = durations.filter(
     (d) => d.tracked && d.severity === "safe",
   ).length;
