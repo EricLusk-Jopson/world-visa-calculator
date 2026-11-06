@@ -169,6 +169,14 @@ change.
 4. If it's down for everyone, wait a cycle. The app already tells users "We
    couldn't reach this link on &lt;date&gt;".
 
+**Many links on one host, all "not fetched: &lt;host&gt; stopped responding".**
+The site stopped answering partway through the run (an outage, or it's
+refusing GitHub's runners), so the pipeline skipped its remaining pages
+rather than wait on each. That's not a set of dead links. Open one of its
+pages yourself: if it loads, wait for the next run; if the host keeps doing
+this, its region needs a by-hand check that cycle, especially when a dated
+waiver there is due for renewal.
+
 ### 🚫 Blocked or ⚠️ fetch error that's new
 
 The site has started refusing the pipeline, or its page changed shape.
