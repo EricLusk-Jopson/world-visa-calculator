@@ -2,23 +2,23 @@ report: 2026-11-06
 items:
   - region: Turkiye
     url: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
-    verdict: unclear
+    verdict: rule-change
+    ruleChange: 15
     by: ai-assisted
     notes: >-
-      South Africa's paragraph: the e-Visa went from "one month period single
-      entry visas via the website www.evisa.gov.tr" to "multiple entry e-visas
-      that allow a 30-day stay via the website https://dtvgroup.com.tr". The
-      30-day stay is unchanged, but turkiye.ts ZA models a single-entry e-Visa
-      from evisa.gov.tr and quotes the old wording. Settle by reading the
-      South Africa paragraph on the live MFA page.
+      South Africa: "multiple entry e-visas that allow a 30-day stay via the
+      website https://dtvgroup.com.tr" (was one-month single-entry via
+      evisa.gov.tr). Confirmed on the live page 2026-11-06.
   - region: Serbia
     url: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives
-    verdict: unclear
+    verdict: no-rule-change
+    noise: not-modelled
     by: ai-assisted
     notes: >-
-      Maldives: "Visas required" -> "No visas required for visits up to 90
-      days, within period of 180 days". serbia.ts MV is visa required. Settle
-      on the live Maldives page (ordinary passports line).
+      Maldives. Only the diplomatic and official line changed ("Visas
+      required" -> "No visas required for visits up to 90 days, within period
+      of 180 days"); ordinary passports: "Visas required", confirmed on the
+      live page 2026-11-06.
   - region: Bosnia
     url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba
     verdict: no-rule-change

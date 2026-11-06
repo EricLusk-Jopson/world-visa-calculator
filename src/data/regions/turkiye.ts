@@ -49,7 +49,7 @@
  *
  * All source URLs are in TurkiyeSources (@/data/sources).
  *
- * Last verified: 2026-10-23
+ * Last verified: 2026-11-06
  */
 
 import type {
@@ -95,6 +95,18 @@ const EVISA_30: PreTravelAuth = {
   applicationUrl: TurkiyeSources.eVisaApplication.direct.url,
   authValidityDays: null,
   multiEntry: false,
+};
+
+/**
+ * South Africa's e-Visa: 30-day stay, multiple entry, applied for via
+ * dtvgroup.com.tr rather than evisa.gov.tr (MFA page, Nov 2026).
+ */
+const EVISA_30_SOUTH_AFRICA: PreTravelAuth = {
+  type: 'e_visa',
+  name: 'Türkiye e-Visa (30 days, multiple entry)',
+  applicationUrl: TurkiyeSources.eVisaSouthAfrica.direct.url,
+  authValidityDays: null,
+  multiEntry: true,
 };
 
 // ─── Shared conditions ────────────────────────────────────────────────────────
@@ -261,8 +273,8 @@ export const TURKIYE: RegionDefinition = {
     }],
   },
 
-  lastVerified: '2026-10-23',
-  lastChanged: '2026-07-22',
+  lastVerified: '2026-11-06',
+  lastChanged: '2026-11-06',
   sourceUrl: TurkiyeSources.mfaVisaInfo.direct.url,
   defaultRule: VISA_REQUIRED,
 
@@ -506,7 +518,16 @@ export const TURKIYE: RegionDefinition = {
     'MU': entitledEVisa30([{ text: 'A 1-month multiple-entry e-Visa is available via www.evisa.gov.tr. Alternatively, a 3-month multiple-entry visa may be obtained from Turkish diplomatic missions abroad. Official passport holders are visa-free for up to 90 days.', source: TurkiyeSources.mfaVisaInfo }]),
     'MX': entitledEVisa30([{ text: 'A 30-day single-entry e-Visa is available via www.evisa.gov.tr. Alternatively, a 90-day multiple-entry visa may be obtained from Turkish diplomatic missions abroad. Diplomatic passport holders are visa-free for up to 90 days.', source: TurkiyeSources.mfaVisaInfo }]),
     'NA': entitledEVisa30([{ text: 'e-Visa available via www.evisa.gov.tr as of 5 May 2025. Official passport holders are visa-free for up to 90 days.', source: TurkiyeSources.mfaVisaInfo }]),
-    'ZA': entitledEVisa30([{ text: 'A 1-month single-entry e-Visa is available via www.evisa.gov.tr. Alternatively, a 3-month multiple-entry visa may be obtained from Turkish diplomatic missions abroad. Official passport holders are visa-free for up to 30 days.', source: TurkiyeSources.mfaVisaInfo }]),
+    'ZA': {
+      access: 'entitled',
+      entitlements: [{
+        limits: [TR_PER_VISIT_30],
+        preAuth: EVISA_30_SOUTH_AFRICA,
+        source: TurkiyeSources.mfaVisaInfo,
+        conditions: [EVISA_PURPOSE],
+        notes: [{ text: 'A multiple-entry e-Visa allowing a 30-day stay is available via dtvgroup.com.tr (not www.evisa.gov.tr). Alternatively, a multiple-entry sticker visa allowing a 90-day stay may be obtained from Turkish representations abroad. Official passport holders are visa-free for stays of up to 30 days.', source: TurkiyeSources.mfaVisaInfo }],
+      }],
+    }, // South Africa (e-Visa via dtvgroup.com.tr since Nov 2026)
     'SR': entitledEVisa30([{ text: 'Diplomatic and service passport holders are visa-free for up to 90 days.', source: TurkiyeSources.mfaVisaInfo }]),
     'VN': entitledEVisa30([{ text: 'Official passport holders are visa-free for up to 90 days.', source: TurkiyeSources.mfaVisaInfo }]),
 

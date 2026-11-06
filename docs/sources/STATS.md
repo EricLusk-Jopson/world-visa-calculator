@@ -9,10 +9,10 @@ Reports counted: 6 (2026-10-14 to 2026-11-06).
 
 ## Overall
 
-- Diffs flagged: 10: 1 rule change, 7 noise, 2 unclear, 0 untriaged
-- Precision: 13% (1/8)
-- Rule changes caught by a report: 3; missed on diffed links: 7; recall: 30% (3/10)
-- Rule-change log entries by trigger: manual 10, external 1, report 2
+- Diffs flagged: 10: 2 rule change, 8 noise, 0 unclear, 0 untriaged
+- Precision: 20% (2/10)
+- Rule changes caught by a report: 4; missed on diffed links: 7; recall: 36% (4/11)
+- Rule-change log entries by trigger: manual 10, external 1, report 3
 
 ## By link
 
@@ -47,8 +47,8 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 | Schengen | atvCommonCellar | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Schengen | atvSpecific | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 2 | 0 | 0% (0/2) |
 | Serbia | index | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
-| Serbia | countryPages | medium | 1 | 0 | 0 | 1 | 0 | – | 0 | 0 | 0 | – |
-| Turkiye | mfaVisaInfo | medium | 1 | 0 | 0 | 1 | 0 | – | 0 | 0 | 0 | – |
+| Serbia | countryPages | medium | 1 | 0 | 1 | 0 | 0 | 0% (0/1) | 0 | 0 | 0 | – |
+| Turkiye | mfaVisaInfo | medium | 1 | 1 | 0 | 0 | 0 | 100% (1/1) | 1 | 0 | 0 | 100% (1/1) |
 | Turkiye | consularInfo | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | UK | appendixVisitor | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | UK | visaNationalList | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
@@ -59,6 +59,6 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 
 ## Noise by kind
 
-- not-modelled: 5
+- not-modelled: 6
 - wording: 1
 - layout: 1
