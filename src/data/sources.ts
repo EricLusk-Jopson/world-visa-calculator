@@ -493,7 +493,7 @@ export const TurkiyeSources = {
       type: "parent",
       checkDiff: false,
     },
-    dateChecked: "2026-11-06",
+    dateChecked: "2026-11-07",
   } satisfies SourceDoc,
 } as const;
 
