@@ -451,7 +451,7 @@ export const TurkiyeSources = {
       type: "parent",
       checkDiff: true,
     },
-    dateChecked: "2026-10-23",
+    dateChecked: "2026-11-06",
   } satisfies SourceDoc,
 
   /**
@@ -473,6 +473,27 @@ export const TurkiyeSources = {
       checkDiff: false,
     },
     dateChecked: "2026-10-23",
+  } satisfies SourceDoc,
+
+  /**
+   * South Africa's e-Visa channel. Since Nov 2026 the MFA page sends South
+   * African ordinary passport holders to "multiple entry e-visas that allow a
+   * 30-day stay via the website https://dtvgroup.com.tr" instead of
+   * evisa.gov.tr. Linked from the ZA rule as where to apply; health-checked
+   * only. The rule itself cites mfaVisaInfo.
+   */
+  eVisaSouthAfrica: {
+    direct: {
+      url: "https://dtvgroup.com.tr/en/",
+      type: "direct",
+      checkDiff: false,
+    },
+    parent: {
+      url: "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
+      type: "parent",
+      checkDiff: false,
+    },
+    dateChecked: "2026-11-07",
   } satisfies SourceDoc,
 } as const;
 

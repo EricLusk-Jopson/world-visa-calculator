@@ -3408,14 +3408,14 @@
               "source": {
                 "$source": "Turkiye.mfaVisaInfo"
               },
-              "text": "A 1-month single-entry e-Visa is available via www.evisa.gov.tr. Alternatively, a 3-month multiple-entry visa may be obtained from Turkish diplomatic missions abroad. Official passport holders are visa-free for up to 30 days."
+              "text": "A multiple-entry e-Visa allowing a 30-day stay is available via dtvgroup.com.tr (not www.evisa.gov.tr). Alternatively, a multiple-entry sticker visa allowing a 90-day stay may be obtained from Turkish representations abroad. Official passport holders are visa-free for stays of up to 30 days."
             }
           ],
           "preAuth": {
-            "applicationUrl": "https://evisa.gov.tr/en",
+            "applicationUrl": "https://dtvgroup.com.tr/en/",
             "authValidityDays": null,
-            "multiEntry": false,
-            "name": "Türkiye e-Visa (30 days, single entry)",
+            "multiEntry": true,
+            "name": "Türkiye e-Visa (30 days, multiple entry)",
             "type": "e_visa"
           },
           "source": {

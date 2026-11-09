@@ -61,4 +61,4 @@ Links to look at by hand, whether or not the report flags them.
 
 ## Totals
 
-14 regions · 61 documented links · 41 load-bearing · 30 diffed · 19 need a person regardless
+14 regions · 62 documented links · 41 load-bearing · 30 diffed · 19 need a person regardless

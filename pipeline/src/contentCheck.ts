@@ -213,12 +213,23 @@ const MAX_LINE_LENGTH = 200;
 
 function buildTextDiffPreview(previous: string, current: string): string | undefined {
   // Trailing newline so an appended line doesn't also show the old last line as changed.
-  const parts = diffLines(previous + '\n', current + '\n').filter((p) => p.added || p.removed);
-  if (parts.length === 0) return undefined;
-  const lines = parts
-    .slice(0, MAX_DIFF_PARTS)
-    .flatMap((p) => p.value.split('\n').filter(Boolean).map((line) => (p.added ? '+ ' : '- ') + line.slice(0, MAX_LINE_LENGTH)));
-  if (parts.length > MAX_DIFF_PARTS) lines.push(`… ${parts.length - MAX_DIFF_PARTS} more changed blocks not shown`);
+  const all = diffLines(previous + '\n', current + '\n');
+  const changed = all.filter((p) => p.added || p.removed);
+  if (changed.length === 0) return undefined;
+  const lines: string[] = [];
+  let blocks = 0;
+  for (const [i, p] of all.entries()) {
+    if (!p.added && !p.removed) continue;
+    if (++blocks > MAX_DIFF_PARTS) break;
+    // The unchanged line just above a change, so a value says what it's the
+    // value of: Serbia's pages repeat "Visas required" under both passport
+    // labels, and a bare "- Visas required" can't say which one changed.
+    const before = all[i - 1];
+    const context = before && !before.added && !before.removed ? before.value.split('\n').filter(Boolean).at(-1) : undefined;
+    if (context) lines.push('  ' + context.slice(0, MAX_LINE_LENGTH));
+    lines.push(...p.value.split('\n').filter(Boolean).map((line) => (p.added ? '+ ' : '- ') + line.slice(0, MAX_LINE_LENGTH)));
+  }
+  if (changed.length > MAX_DIFF_PARTS) lines.push(`… ${changed.length - MAX_DIFF_PARTS} more changed blocks not shown`);
   return lines.join('\n');
 }
 
