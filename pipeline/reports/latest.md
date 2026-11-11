@@ -1,19 +1,19 @@
 # Source Verification Report
 
-Generated: 2026-10-20T05:50:55.293Z
+Generated: 2026-11-06T21:42:34.466Z
 
 ## Summary
 
 | | |
 |---|---|
-| Unique links checked | 997 |
-| 🔴 Broken | 0 |
+| Unique links checked | 998 |
+| 🔴 Broken | 197 |
 | ↪️ Redirected | 0 |
-| 🚫 Blocked (could not verify) | 3 |
-| Content sources diffed (`checkDiff`) | 970 |
-| ✏️ Changed since last baseline | 1 |
-| 🆕 First run (no baseline yet) | 2 |
-| ⚠️ Fetch errors | 0 |
+| 🚫 Blocked (could not verify) | 1 |
+| Content sources diffed (`checkDiff`) | 971 |
+| ✏️ Changed since last baseline | 8 |
+| 🆕 First run (no baseline yet) | 1 |
+| ⚠️ Fetch errors | 197 |
 
 ## Schengen
 
@@ -21,10 +21,10 @@ Generated: 2026-10-20T05:50:55.293Z
 
 | Used by | Status | URL |
 |---|---|---|
-| visaList (direct) | 🚫 blocked (202) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230<br>HTTP 202 with no page: bot-protection challenge or site in degraded mode |
+| visaList (direct) | ✅ live (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230 |
 | visaList (direct.alternate) | ✅ live (200) | https://publications.europa.eu/resource/celex/02018R1806-20251230 |
 | visaList, atvCommon, atvSpecific (parent) | ✅ live (200) | https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en |
-| atvCommon (direct) | 🚫 blocked (202) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628<br>HTTP 202 with no page: bot-protection challenge or site in degraded mode |
+| atvCommon (direct) | ✅ live (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628 |
 | atvCommon (direct.alternate) | ✅ live (200) | https://publications.europa.eu/resource/celex/02009R0810-20240628 |
 | atvSpecific (direct) | ✅ live (200) | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
 | etias (direct) | ✅ live (200) | https://travel-europe.europa.eu/en/etias |
@@ -35,7 +35,7 @@ Generated: 2026-10-20T05:50:55.293Z
 | Keys | Status | URL |
 |---|---|---|
 | visaList (direct.alternate) | ✅ unchanged | https://publications.europa.eu/resource/celex/02018R1806-20251230 |
-| atvCommon (direct.alternate) | 🆕 first run (baseline captured) | https://publications.europa.eu/resource/celex/02009R0810-20240628 |
+| atvCommon (direct.alternate) | ✅ unchanged | https://publications.europa.eu/resource/celex/02009R0810-20240628 |
 | atvSpecific | ✅ unchanged | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
 
 ## UK
@@ -60,7 +60,7 @@ Generated: 2026-10-20T05:50:55.293Z
 
 | Keys | Status | URL |
 |---|---|---|
-| standardVisitor | 🆕 first run (baseline captured) | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor |
+| standardVisitor | ✅ unchanged | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-v-visitor |
 | visaNationalList | ✅ unchanged | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list |
 | etaNationalList | ✅ unchanged | https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-eta-national-list |
 | carriersList | ✅ unchanged | https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers |
@@ -104,9 +104,21 @@ Generated: 2026-10-20T05:50:55.293Z
 
 ### Content diffing
 
+#### mfaVisaInfo — ✏️🔗 text + link changed
+
+URL: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
+
+```diff
+- South Africa: Ordinary passport holders are required to have visa to enter Türkiye. They can obtain three-month period multiple entry visas from Turkish representations abroad or one month period sing
++ South Africa: Ordinary passport holders are required to have visa to enter Türkiye. They can obtain multiple entry sticker visas that allow a 90-day stay from Turkish representations abroad or multipl
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | https://dtvgroup.com.tr | _(none)_ | https://dtvgroup.com.tr/en/ |
+
 | Keys | Status | URL |
 |---|---|---|
-| mfaVisaInfo | ✅ unchanged | https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa |
 | mfaVisaInfo (parent) | ✅ unchanged | https://www.mfa.gov.tr/consular-info.en.mfa |
 
 ## Montenegro
@@ -115,405 +127,1190 @@ Generated: 2026-10-20T05:50:55.293Z
 
 | Used by | Status | URL |
 |---|---|---|
-| AF (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan |
-| AF, AL, DZ, AD, AO, AG, AR, AM … (+188 more) (parent) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro |
-| AL (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania |
-| DZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria |
-| AD (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra |
-| AO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola |
-| AG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda |
-| AR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina |
-| AM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia |
-| AW (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba |
-| AU (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia |
-| AT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria |
-| AZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan |
-| BS (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas |
-| BH (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain |
-| BD (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh |
-| BB (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados |
-| BY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus |
-| BE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium |
-| BZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize |
-| BJ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin |
-| BT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan |
-| BO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia |
-| BA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina |
-| BW (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana |
-| BR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil |
-| BN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei |
-| BG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria |
-| BF (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso |
-| BI (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi |
-| CV (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde |
-| KH (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia |
-| CM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon |
-| CA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada |
-| KY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands |
-| CF (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic |
-| TD (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad |
-| CL (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile |
-| CN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china |
-| CO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia |
-| CD (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the |
-| CG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic |
-| CR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica |
-| HR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia |
-| CU (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba |
-| CY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus |
-| CZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic |
-| DK (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark |
-| DJ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti |
-| DM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica |
-| DO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic |
-| EC (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador |
-| EG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt |
-| SV (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador |
-| GQ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea |
-| ER (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea |
-| EE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia |
-| ET (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia |
-| FJ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji |
-| FI (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland |
-| FR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france |
-| GA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon |
-| GM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia |
-| GE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia |
-| DE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany |
-| GH (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana |
-| GR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece |
-| GD (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada |
-| GT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala |
-| GN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea |
-| GW (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau |
-| GY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana |
-| HT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti |
-| VA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta |
-| HN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras |
-| HU (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary |
-| IS (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland |
-| IN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india |
-| ID (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia |
-| IR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran |
-| IQ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq |
-| IE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland |
-| IL (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel |
-| IT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy |
-| CI (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire |
-| JM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica |
-| JP (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan |
-| JO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan |
-| KZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan |
-| KE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya |
-| KI (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati |
-| KP (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea |
-| KR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea |
-| XK (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo |
-| KW (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait |
-| KG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan |
-| LA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos |
-| LV (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia |
-| LB (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon |
-| LS (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho |
-| LR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia |
-| LY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya |
-| LI (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein |
-| LT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania |
-| LU (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg |
-| MG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar |
-| MW (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi |
-| MY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia |
-| MV (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives |
-| ML (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali |
-| MT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta |
-| MH (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands |
-| MR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania |
-| MU (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius |
-| MX (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico |
-| FM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia |
-| MD (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova |
-| MC (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco |
-| MN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia |
-| MA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco |
-| MZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique |
-| MM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar |
-| NA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia |
-| NR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru |
-| NP (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal |
-| NL (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands |
-| NZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand |
-| NI (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua |
-| NE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger |
-| NG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria |
-| MK (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia |
-| NO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway |
-| OM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman |
-| PK (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan |
-| PW (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau |
-| PS (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine |
-| PA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama |
-| PG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea |
-| PY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay |
-| PE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru |
-| PH (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines |
-| PL (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland |
-| PT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal |
-| QA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar |
-| RO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania |
-| RU (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation |
-| RW (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda |
-| KN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis |
-| LC (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia |
-| VC (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines |
-| WS (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa |
-| SM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino |
-| ST (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2 |
-| SA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia |
-| SN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal |
-| RS (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia |
-| SC (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles |
-| SL (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone |
-| SG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore |
-| SK (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia |
-| SI (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia |
-| SB (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands |
-| SO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia |
-| ZA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa |
-| ES (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain |
-| LK (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka |
-| SD (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan |
-| SR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname |
-| SZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini |
-| SE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden |
-| CH (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland |
-| SY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria |
-| TJ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan |
-| TZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania |
-| TH (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand |
-| TL (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste |
-| TG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo |
-| TO (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga |
-| TT (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago |
-| TN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia |
-| TR (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey |
-| TM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan |
-| TV (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu |
-| UG (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda |
-| UA (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine |
-| KM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini |
-| AE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates |
-| GB (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland |
-| US (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america |
-| UY (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay |
-| UZ (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan |
-| VU (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu |
-| VE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela |
-| VN (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam |
-| YE (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen |
-| ZM (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia |
-| ZW (direct) | ✅ live (200) | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe |
+| AF (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan<br>fetch failed (UND_ERR_CONNECT_TIMEOUT) |
+| AF, AL, DZ, AD, AO, AG, AR, AM … (+188 more) (parent) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro<br>fetch failed (UND_ERR_CONNECT_TIMEOUT) |
+| AL (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania<br>fetch failed (UND_ERR_CONNECT_TIMEOUT) |
+| DZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria<br>fetch failed (UND_ERR_CONNECT_TIMEOUT) |
+| AD (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AW (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AU (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BS (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BH (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BD (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BB (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BJ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BW (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BF (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| BI (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CV (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KH (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CF (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TD (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CL (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CD (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| HR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CU (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| DK (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| DJ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| DM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| DO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| EC (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| EG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SV (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GQ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ER (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| EE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ET (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| FJ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| FI (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| FR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| DE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GH (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GD (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GW (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| HT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| VA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| HN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| HU (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| IS (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| IN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ID (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| IR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| IQ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| IE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| IL (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| IT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CI (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| JM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| JP (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| JO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KI (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KP (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| XK (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KW (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LV (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LB (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LS (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LI (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LU (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MW (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MV (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ML (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MH (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MU (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MX (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| FM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MD (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MC (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NP (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NL (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NI (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| MK (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| NO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| OM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PK (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PW (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PS (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PH (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PL (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| PT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| QA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| RO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| RU (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| RW (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LC (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| VC (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| WS (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ST (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| RS (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SC (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SL (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SK (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SI (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SB (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ZA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ES (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| LK (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SD (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| CH (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| SY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TJ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TH (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TL (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TO (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TT (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TR (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| TV (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| UG (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| UA (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| KM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| AE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| GB (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| US (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| UY (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| UZ (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| VU (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| VE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| VN (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| YE (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ZM (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
+| ZW (direct) | 🔴 broken | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe<br>not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT)) |
 
 ### Content diffing
 
-| Keys | Status | URL |
-|---|---|---|
-| AF | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan |
-| AF, AL, DZ, AD, AO, AG, AR, AM … (+188 more) (parent) | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro |
-| AL | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania |
-| DZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria |
-| AD | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra |
-| AO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola |
-| AG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda |
-| AR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina |
-| AM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia |
-| AW | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba |
-| AU | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia |
-| AT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria |
-| AZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan |
-| BS | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas |
-| BH | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain |
-| BD | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh |
-| BB | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados |
-| BY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus |
-| BE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium |
-| BZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize |
-| BJ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin |
-| BT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan |
-| BO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia |
-| BA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina |
-| BW | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana |
-| BR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil |
-| BN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei |
-| BG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria |
-| BF | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso |
-| BI | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi |
-| CV | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde |
-| KH | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia |
-| CM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon |
-| CA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada |
-| KY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands |
-| CF | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic |
-| TD | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad |
-| CL | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile |
-| CN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china |
-| CO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia |
-| CD | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the |
-| CG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic |
-| CR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica |
-| HR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia |
-| CU | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba |
-| CY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus |
-| CZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic |
-| DK | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark |
-| DJ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti |
-| DM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica |
-| DO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic |
-| EC | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador |
-| EG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt |
-| SV | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador |
-| GQ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea |
-| ER | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea |
-| EE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia |
-| ET | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia |
-| FJ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji |
-| FI | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland |
-| FR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france |
-| GA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon |
-| GM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia |
-| GE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia |
-| DE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany |
-| GH | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana |
-| GR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece |
-| GD | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada |
-| GT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala |
-| GN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea |
-| GW | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau |
-| GY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana |
-| HT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti |
-| VA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta |
-| HN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras |
-| HU | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary |
-| IS | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland |
-| IN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india |
-| ID | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia |
-| IR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran |
-| IQ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq |
-| IE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland |
-| IL | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel |
-| IT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy |
-| CI | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire |
-| JM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica |
-| JP | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan |
-| JO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan |
-| KZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan |
-| KE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya |
-| KI | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati |
-| KP | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea |
-| KR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea |
-| XK | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo |
-| KW | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait |
-| KG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan |
-| LA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos |
-| LV | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia |
-| LB | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon |
-| LS | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho |
-| LR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia |
-| LY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya |
-| LI | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein |
-| LT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania |
-| LU | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg |
-| MG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar |
-| MW | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi |
-| MY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia |
-| MV | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives |
-| ML | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali |
-| MT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta |
-| MH | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands |
-| MR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania |
-| MU | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius |
-| MX | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico |
-| FM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia |
-| MD | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova |
-| MC | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco |
-| MN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia |
-| MA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco |
-| MZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique |
-| MM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar |
-| NA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia |
-| NR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru |
-| NP | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal |
-| NL | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands |
-| NZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand |
-| NI | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua |
-| NE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger |
-| NG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria |
-| MK | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia |
-| NO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway |
-| OM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman |
-| PK | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan |
-| PW | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau |
-| PS | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine |
-| PA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama |
-| PG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea |
-| PY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay |
-| PE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru |
-| PH | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines |
-| PL | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland |
-| PT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal |
-| QA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar |
-| RO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania |
-| RU | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation |
-| RW | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda |
-| KN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis |
-| LC | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia |
-| VC | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines |
-| WS | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa |
-| SM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino |
-| ST | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2 |
-| SA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia |
-| SN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal |
-| RS | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia |
-| SC | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles |
-| SL | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone |
-| SG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore |
-| SK | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia |
-| SI | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia |
-| SB | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands |
-| SO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia |
-| ZA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa |
-| ES | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain |
-| LK | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka |
-| SD | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan |
-| SR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname |
-| SZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini |
-| SE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden |
-| CH | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland |
-| SY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria |
-| TJ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan |
-| TZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania |
-| TH | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand |
-| TL | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste |
-| TG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo |
-| TO | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga |
-| TT | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago |
-| TN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia |
-| TR | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey |
-| TM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan |
-| TV | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu |
-| UG | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda |
-| UA | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine |
-| KM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini |
-| AE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates |
-| GB | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland |
-| US | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america |
-| UY | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay |
-| UZ | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan |
-| VU | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu |
-| VE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela |
-| VN | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam |
-| YE | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen |
-| ZM | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia |
-| ZW | ✅ unchanged | https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe |
+#### AF — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/afghanistan
+<br>Error: fetch failed (UND_ERR_CONNECT_TIMEOUT)
+
+#### AF, AL, DZ, AD, AO … (+191 more) (parent) — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro
+<br>Error: fetch failed (UND_ERR_CONNECT_TIMEOUT)
+
+#### AL — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/albania
+<br>Error: fetch failed (UND_ERR_CONNECT_TIMEOUT)
+
+#### DZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/algeria
+<br>Error: fetch failed (UND_ERR_CONNECT_TIMEOUT)
+
+#### AD — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/andorra
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/angola
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/antigua-and-barbuda
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/argentina
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/armenia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AW — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/aruba
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AU — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/australia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/austria
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/azerbaijan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BS — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahamas
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BH — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BD — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bangladesh
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BB — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/barbados
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belarus
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belgium
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/belize
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BJ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/benin
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bhutan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bolivia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bosnia-and-herzegovina
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BW — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/botswana
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brazil
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/brunei
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bulgaria
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BF — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burkina-faso
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### BI — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/burundi
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CV — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cabo-verde
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KH — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cambodia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cameroon
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/canada
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cayman-islands
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CF — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/central-african-republic
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TD — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chad
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CL — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/chile
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/colombia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CD — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-democratic-republic-of-the
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/congo-republic
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/costa-rica
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### HR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/croatia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CU — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cuba
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/cyprus
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/czech-republic
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### DK — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/denmark
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### DJ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/djibouti
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### DM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominica
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### DO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/dominican-republic
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### EC — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ecuador
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### EG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/egypt
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SV — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/el-salvador
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GQ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/equatorial-guinea
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ER — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/eritrea
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### EE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/estonia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ET — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ethiopia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### FJ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/fiji
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### FI — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/finland
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### FR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/france
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gabon
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/gambia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/georgia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### DE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/germany
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GH — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ghana
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/greece
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GD — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/grenada
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guatemala
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GW — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guinea-bissau
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/guyana
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### HT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/haiti
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### VA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/holy-see-and-sovereign-military-order-of-malta
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### HN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/honduras
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### HU — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/hungary
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### IS — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iceland
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### IN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/india
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ID — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/indonesia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### IR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iran
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### IQ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/iraq
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### IE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ireland
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### IL — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/israel
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### IT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/italy
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CI — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ivory-coast-cote-divoire
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### JM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jamaica
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### JP — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/japan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### JO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/jordan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kenya
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KI — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kiribati
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KP — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-democratic-peoples-republic-of-north-korea
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/korea-republic-of-south-korea
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### XK — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kosovo
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KW — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kuwait
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kyrgyzstan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/laos
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LV — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/latvia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LB — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lebanon
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LS — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lesotho
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liberia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/libya
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LI — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/liechtenstein
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/lithuania
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LU — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/luxembourg
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/madagascar
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MW — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malawi
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malaysia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MV — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/maldives
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ML — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mali
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/malta
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MH — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/marshall-islands
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritania
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MU — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mauritius
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MX — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mexico
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### FM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/micronesia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MD — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/moldova
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MC — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/monaco
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mongolia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/morocco
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/mozambique
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/myanmar
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/namibia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NP — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nepal
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NL — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/netherlands
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/new-zealand
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NI — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nicaragua
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/niger
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nigeria
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### MK — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/north-macedonia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### NO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/norway
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### OM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/oman
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PK — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/pakistan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PW — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palau
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PS — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/palestine
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/panama
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/papua-new-guinea
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/paraguay
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/peru
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PH — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/philippines
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PL — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/poland
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### PT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/portugal
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### QA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### RO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/romania
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### RU — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/russian-federation
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### RW — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/rwanda
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-kitts-and-nevis
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LC — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-lucia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### VC — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saint-vincent-and-the-grenadines
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### WS — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/samoa
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/san-marino
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ST — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sao-tome-and-principe-2
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/senegal
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### RS — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/serbia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SC — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/seychelles
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SL — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sierra-leone
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/singapore
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SK — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovakia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SI — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/slovenia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SB — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/solomon-islands
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/somalia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ZA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/south-africa
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ES — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/spain
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### LK — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sri-lanka
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SD — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sudan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/suriname
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/swaziland-eswatini
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/sweden
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### CH — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/switzerland
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### SY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/syria
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TJ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tajikistan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tanzania
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TH — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/thailand
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TL — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/timor-leste
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/togo
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TO — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tonga
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TT — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/trinidad-and-tobago
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tunisia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TR — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkey
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/turkmenistan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### TV — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/tuvalu
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### UG — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uganda
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### UA — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/ukraine
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### KM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/union-of-the-comoros-and-swatziland-in-eswatini
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### AE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-arab-emirates
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### GB — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-kingdom-of-great-britain-and-northern-ireland
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### US — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/united-states-of-america
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### UY — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uruguay
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### UZ — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### VU — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vanuatu
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### VE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/venezuela
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### VN — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/vietnam
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### YE — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/yemen
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ZM — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zambia
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
+
+#### ZW — ⚠️ fetch error
+
+URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/zimbabwe
+<br>Error: not fetched: www.gov.me stopped responding (3 requests in a row got no response; last: fetch failed (UND_ERR_CONNECT_TIMEOUT))
 
 ## Serbia
 
@@ -719,6 +1516,15 @@ Generated: 2026-10-20T05:50:55.293Z
 
 ### Content diffing
 
+#### MV — ✏️ text changed
+
+URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives
+
+```diff
+- Visas required
++ No visas required for visits up to 90 days, within period of 180 days
+```
+
 | Keys | Status | URL |
 |---|---|---|
 | AF | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/avganistan |
@@ -827,7 +1633,6 @@ Generated: 2026-10-20T05:50:55.293Z
 | MG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar |
 | MW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malavi |
 | MY | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malezija |
-| MV | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives |
 | ML | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mali |
 | MT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malta |
 | MH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/marshall-islands |
@@ -1120,37 +1925,68 @@ Generated: 2026-10-20T05:50:55.293Z
 
 ### Content diffing
 
-#### ID (direct.alternate) — ✏️🔗 text + link changed
+#### HR (direct.alternate) — ✏️🔗 text + link changed
 
-URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba
+URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba
 
 ```diff
-- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Jakarta, Indonesia.
-+ Consular help:Consular help will be provided by the Embassy of Bosnia and Herzegovina in Jakarta, Indonesia.
-- Citizens of the Republic of Indonesia are required visas when entering, exiting or travelling through Bosnia and Herzegovina.Citizens of Indonesia, the holders of diplomatic and official passports, ar
-- The holders of valid diplomatic or official passports of either Party assigned as members of the diplomatic or consular mission in the territory of other Party, including their family members namely t
-+ Foreign nationals arriving in Indonesia are required to register through the following website: www.allindonesia.imigrasi.go.id, complete the required online form, and obtain a code that facilitates e
-+ Citizens of the Republic of Indonesia are required visas when entering, exiting or travelling through Bosnia and Herzegovina.Citizens of Indonesia, the holders of diplomatic and official passports, ar
-+ Holders of valid diplomatic and official passports who are assigned to work at the diplomatic and consular missions of Bosnia and Herzegovina in Jakarta, or at the diplomatic and consular missions of 
-+ Security Conditions: The only region that remains problematic is Papua, located in the far eastern part of the country.
-+ All citizens of Bosnia and Herzegovina staying in private accommodation in the Republic of Indonesia (this does not apply to hotels, which register guests as part of their official duties) are require
-+ Areas Requiring Increased Caution:
-+ Papua: Visitors should exercise caution as separatist groups have carried out kidnappings of foreign nationals in remote areas. Travellers are advised to stay away from public gatherings, demonstratio
-+ Papua: Visitors should exercise caution as separatist groups have carried out kidnappings of foreign nationals in remote areas. Travellers are advised to stay away from public gatherings, demonstratio
-+ Anak Krakatau (Little Krakatoa) and Other Volcanoes: Given that Indonesia is located within the so-called Pacific Ring of Fire, visits to volcanoes are popular tourist attractions but require caution.
-+ Anak Krakatau (Little Krakatoa) and Other Volcanoes: Given that Indonesia is located within the so-called Pacific Ring of Fire, visits to volcanoes are popular tourist attractions but require caution.
-+ Health Conditions: For the most serious medical cases, evacuation to Singapore is recommended.
-+ Dengue fever occurs throughout the country, while malaria is present in certain regions. Severe Acute Respiratory Syndrome (SARS) did not result in any fatalities in Indonesia when it emerged.
-+ Drugs: Drug-related offences are subject to very severe penalties, including the death penalty.
-+ International Dialling Code: +62
+- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Zagreb, Croatia.
++ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Zagreb, Croatia.
++ Regular passport YES from 01.07.2013.
++ Regular biometric passport NO
++ Service/Official biometric passport NO
++ Diplomatic biometric passport NO
 ```
 
 | Change | Anchor text | Previous target | Current target |
 |---|---|---|---|
-| added | Embassy of Bosnia and Herzegovina in Jakarta, Indonesia | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639235092246045933 |
-| added | www.allindonesia.imigrasi.go.id | _(none)_ | http://www.allindonesia.imigrasi.go.id/ |
-| added | https://vsi.esdm.go.id/ | _(none)_ | https://vsi.esdm.go.id/ |
-| removed | the Embassy of Bosnia and Herzegovina in Jakarta, Indonesia. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?INDONEZIJA/?id=7001 | _(removed)_ |
+| target-changed | - Information for travel to the Republic of Croatia - | https://www.mvp.gov.ba/konzularne_informacije/sta_konzul_moze_uciniti_za_vas/Traveling_of_BH_citizens_to_the_Republic_of_Croatia_after_1_July_2013_ENG.pdf | https://www.mvp.gov.ba/en/what-the-consul-can-do-for-you |
+
+#### KZ (direct.alternate) — ✏️🔗 text + link changed
+
+URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba
+
+```diff
+- Consular help: Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Moscow, Russia.
++ Consular help: Consular help will be provided by the Embassy of Bosnia and Herzegovina in Moscow, Russia.
++ Foreign nationals entering the territory of the Republic of Kazakhstan must possess an Electronic Travel Authorization (ETA). Detailed information regarding this requirement is available on the “QazET
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | Embassy of Bosnia and Herzegovina in Moscow, Russia | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216054720219266 |
+| removed | the Embassy of Bosnia and Herzegovina in Moscow, Russia. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?RUSKA_Federacija/?id=6984 | _(removed)_ |
+
+#### RU (direct.alternate) — ✏️🔗 text + link changed
+
+URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba
+
+```diff
+- Consular help: Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Moscow, Russia.
++ Consular help: Consular help will be provided by the Embassy of Bosnia and Herzegovina in Moscow, Russia.
+- Citizens of Bosnia and Herzegovina can enter and stay in the territory of the Russian Federation by presenting the original contract on rendering tourism services (tourist voucher), and confirmation o
++ Citizens of Bosnia and Herzegovina can enter and stay in the territory of the Russian Federation by presenting the original contract on rendering tourism services (tourist voucher), and confirmation o
++ In order to enter or stay in Bosnia and Herzegovina for a period up to ninety days, citizens of the Russian Federation are required to possess an invitation letter verified by the Service for Foreigne
+- Citizens of the Russian Federation who transit through the territory of Bosnia and Herzegovina are allowed to stay in the territory of Bosnia and Herzegovina on the basis of valid travel documents, wi
++ Citizens of the Russian Federation who transit through the territory of Bosnia and Herzegovina are allowed to stay in the territory of Bosnia and Herzegovina on the basis of valid travel documents, wi
++ The list of valid documents for citizens of Bosnia and Herzegovina and the Russian Federation confirming the identity of a trip to the state of one of the Parties:
++ Diplomatic Passport
++ Diplomatic Passport
++ Service Passport
++ Service Passport
++ Ordinary Passport
++ Ordinary Passport
++ Seaman's book (identity card seaman) by owning the ship's documents or extracts from it
++ Seaman's book (identity card seaman) by owning the ship's documents or extracts from it
++ Travel document (only to return to home country).
++ Travel document (only to return to home country).
++ Movement of foreign nationals within the municipal districts of Odintsovo and Balashikha in the Moscow Region is subject to a special regime and requires permits.
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | Embassy of Bosnia and Herzegovina in Moscow, Russia | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216054720219266 |
+| removed | the Embassy of Bosnia and Herzegovina in Moscow, Russia. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?RUSKA_Federacija/?id=6984 | _(removed)_ |
 
 | Keys | Status | URL |
 |---|---|---|
@@ -1226,9 +2062,9 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 | GW (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884245917407137?domain=https://www.mvp.gov.ba |
 | GY (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884239301076290?domain=https://www.mvp.gov.ba |
 | HN (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884249342634255?domain=https://www.mvp.gov.ba |
-| HR (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba |
 | HT (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba |
 | HU (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba |
+| ID (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba |
 | IE (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639222101785307612?domain=https://www.mvp.gov.ba |
 | IL (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884278175687728?domain=https://www.mvp.gov.ba |
 | IN (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884258079851240?domain=https://www.mvp.gov.ba |
@@ -1248,7 +2084,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 | KP (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884380932817298?domain=https://www.mvp.gov.ba |
 | KR (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884377463515717?domain=https://www.mvp.gov.ba |
 | KW (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884389952016419?domain=https://www.mvp.gov.ba |
-| KZ (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba |
 | LA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884394476077743?domain=https://www.mvp.gov.ba |
 | LB (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884401279302512?domain=https://www.mvp.gov.ba |
 | LC (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887638262695280?domain=https://www.mvp.gov.ba |
@@ -1301,7 +2136,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 | QA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884335408575316?domain=https://www.mvp.gov.ba |
 | RO (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887765301578339?domain=https://www.mvp.gov.ba |
 | RS (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886957200216716?domain=https://www.mvp.gov.ba |
-| RU (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba |
 | RW (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886881501850591?domain=https://www.mvp.gov.ba |
 | SA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba |
 | SB (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886947930548716?domain=https://www.mvp.gov.ba |
@@ -1944,6 +2778,51 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 
 ### Content diffing
 
+#### HK (direct.alternate) — ✏️🔗 text + link changed
+
+URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong
+
+```diff
+- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388
++ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | https://e-albania.al/ServiceDetails/15146 | _(none)_ | https://e-albania.al/ServiceDetails/15146 |
+| added | https://e-albania.al/ServiceDetails/15308 | _(none)_ | https://e-albania.al/ServiceDetails/15308 |
+| removed | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | _(removed)_ |
+
+#### MO (direct.alternate) — ✏️🔗 text + link changed
+
+URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao
+
+```diff
+- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388
++ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | https://e-albania.al/ServiceDetails/15146 | _(none)_ | https://e-albania.al/ServiceDetails/15146 |
+| added | https://e-albania.al/ServiceDetails/15308 | _(none)_ | https://e-albania.al/ServiceDetails/15308 |
+| removed | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | _(removed)_ |
+
+#### TW (direct.alternate) — ✏️🔗 text + link changed
+
+URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan
+
+```diff
+- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388
++ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | https://e-albania.al/ServiceDetails/15146 | _(none)_ | https://e-albania.al/ServiceDetails/15146 |
+| added | https://e-albania.al/ServiceDetails/15308 | _(none)_ | https://e-albania.al/ServiceDetails/15308 |
+| removed | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | _(removed)_ |
+
 | Keys | Status | URL |
 |---|---|---|
 | AD (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#andorra |
@@ -2005,7 +2884,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 | GR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#greqia |
 | GT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guatemala |
 | GY (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana |
-| HK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong |
 | HN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras |
 | HR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kroacia |
 | HT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#haiti |
@@ -2046,7 +2924,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 | MK (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maqedonia-veriut |
 | ML (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali |
 | MN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia |
-| MO (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao |
 | MR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania |
 | MT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malta |
 | MU (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauricius |
@@ -2098,7 +2975,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 | TN (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tunizi |
 | TR (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turqi |
 | TT (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago |
-| TW (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan |
 | TZ (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania |
 | UA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ukraina |
 | UG (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uganda |
@@ -2121,7 +2997,7 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 
 | Used by | Status | URL |
 |---|---|---|
-| visaList (direct) | 🚫 blocked (202) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230<br>HTTP 202 with no page: bot-protection challenge or site in degraded mode |
+| visaList (direct) | ✅ live (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230 |
 | visaList (direct.alternate) | ✅ live (200) | https://publications.europa.eu/resource/celex/02018R1806-20251230 |
 | visaList (parent) | 🚫 blocked (403) | https://www.gov.cy/en/information/visas/<br>HTTP 403: site refused automated access |
 
@@ -2139,9 +3015,10 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 |---|---|---|
 | general | ✅ live (200) | https://mfa.gov.by/en/visa/general/ |
 | europe (direct) | ✅ live (200) | https://mfa.gov.by/en/visa/freemove/europe/ |
-| europe, airport (parent) | ✅ live (200) | https://mfa.gov.by/en/visa/freemove/ |
+| europe, airport, bilateral (parent) | ✅ live (200) | https://mfa.gov.by/en/visa/freemove/ |
 | airport (direct) | ✅ live (200) | https://mfa.gov.by/en/visa/freemove/airport/ |
 | airport (direct.alternate) | ✅ live (200) | https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf |
+| bilateral (direct) | ✅ live (200) | https://mfa.gov.by/en/visa/freemove/general/ |
 
 ### Content diffing
 
@@ -2150,6 +3027,7 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388842598
 | europe | ✅ unchanged | https://mfa.gov.by/en/visa/freemove/europe/ |
 | airport | ✅ unchanged | https://mfa.gov.by/en/visa/freemove/airport/ |
 | airport (direct.alternate) | ✅ unchanged | https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf |
+| bilateral | 🆕 first run (baseline captured) | https://mfa.gov.by/en/visa/freemove/general/ |
 
 ## Georgia
 

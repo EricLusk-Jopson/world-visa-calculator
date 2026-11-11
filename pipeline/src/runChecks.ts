@@ -1,5 +1,6 @@
 import { compareSnapshots, extractSnapshot } from './contentCheck';
 import { closeBrowser } from './browserFetch';
+import { createHostBreaker } from './hostBreaker';
 import { createLimiter, describeResponse, fetchPage, mapWithConcurrency, type FetchOutcome } from './fetchPage';
 import { readSnapshot, writeSnapshot } from './snapshotStore';
 import { RESOLVERS, type Discovery, type ResolverId } from './resolvers';
@@ -147,9 +148,23 @@ async function check(regions: RegionSources, options: RunOptions): Promise<Regio
     return hostLimiters.get(host)!;
   };
   const fetchUrl = (url: string) => customFetch.get(url)?.() ?? fetchPage(url, parseUrls.has(url));
+  // A host that stops answering would otherwise hold every worker in its
+  // limiter for the rest of the sweep (see hostBreaker.ts).
+  const breaker = createHostBreaker();
+  const skippedByHost = new Map<string, number>();
+  const fetchOrSkip = async (url: string): Promise<FetchOutcome> => {
+    const host = hostOf(url);
+    if (breaker.isTripped(host)) {
+      skippedByHost.set(host, (skippedByHost.get(host) ?? 0) + 1);
+      return breaker.skipped(host);
+    }
+    const outcome = await fetchUrl(url);
+    if (breaker.record(host, outcome)) log(`  ${host} stopped responding; skipping its remaining URLs`);
+    return outcome;
+  };
   let done = 0;
   const outcomes = await mapWithConcurrency(urls, concurrency, async (url) => {
-    const outcome = await limiterFor(url)(() => fetchUrl(url));
+    const outcome = await limiterFor(url)(() => fetchOrSkip(url));
     done++;
     if (done % 50 === 0 || done === urls.length) log(`  ${done}/${urls.length}`);
     return outcome;
@@ -160,13 +175,24 @@ async function check(regions: RegionSources, options: RunOptions): Promise<Regio
   // reported as a dead link. Every failure is retried once more, one request
   // at a time, and only reported broken if it fails again. Blocked responses
   // get the same second chance — a challenge can be rate-based.
+  for (const [host, n] of skippedByHost) log(`  ${n} URL${n === 1 ? '' : 's'} on ${host} not fetched: it stopped responding`);
   const failed = urls.filter((url) => ['broken', 'blocked'].includes(outcomeByUrl.get(url)!.status));
   if (failed.length > 0) {
     log(`Rechecking ${failed.length} failed URL${failed.length === 1 ? '' : 's'} one at a time...`);
     let recovered = 0;
+    // A tripped host gets one probe; its other URLs are only rechecked if
+    // the probe gets an answer.
+    const probed = new Set<string>();
     for (const url of failed) {
+      const host = hostOf(url);
+      const probe = breaker.isTripped(host);
+      if (probe) {
+        if (probed.has(host)) continue;
+        probed.add(host);
+      }
       await new Promise((r) => setTimeout(r, recheckDelayMs));
-      const retry = await fetchUrl(url);
+      const retry = probe ? await fetchUrl(url) : await fetchOrSkip(url);
+      if (probe && retry.httpStatus !== undefined) breaker.reset(host);
       if (retry.status === 'live' || retry.status === 'redirected') recovered++;
       outcomeByUrl.set(url, retry);
     }

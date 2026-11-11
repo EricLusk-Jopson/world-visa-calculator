@@ -52,7 +52,7 @@ describe('Belarus — European any-border override (temporal window through 2026
     expect(selection!.isOverride).toBe(false);
     const limits = selection!.selected.limits;
     expect(limits.some((l) => l.type === 'per_visit' && l.value === 30)).toBe(true);
-    expect(limits.some((l) => l.type === 'calendar_period')).toBe(true);
+    expect(limits.some((l) => l.type === 'calendar_period')).toBe(false);
   });
 
   it.each(['PL', 'LV', 'LT'])('%s gets a 90-day (not 30-day) any-border override', (code) => {
@@ -88,7 +88,7 @@ describe('Belarus — European any-border override (temporal window through 2026
   });
 });
 
-describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar year)', () => {
+describe('Belarus — airport-only fallback (30 days per visit, no yearly cap)', () => {
   it.each(['CA', 'JP', 'AU'])('%s has no European override — plain airport-only entitlement', (code) => {
     const rule = getBelarusRule(code);
     expect(isEntitled(rule)).toBe(true);
@@ -96,11 +96,7 @@ describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar 
     expect(rule.entitlements).toHaveLength(1);
     expect(rule.entitlements[0].temporalWindows).toBeUndefined();
     const limits = rule.entitlements[0].limits;
-    expect(limits.some((l) => l.type === 'per_visit' && l.value === 30)).toBe(true);
-    const calendarLimit = limits.find((l): l is CalendarPeriodLimit => l.type === 'calendar_period');
-    expect(calendarLimit).toBeDefined();
-    expect(calendarLimit!.days).toBe(90);
-    expect(calendarLimit!.periodDays).toBe(365);
+    expect(limits).toEqual([{ type: 'per_visit', value: 30, unit: 'days' }]);
   });
 
   it('carries the airport-list note and the Russia-arrival restriction note', () => {
@@ -112,8 +108,14 @@ describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar 
     expect(notes.some((n) => n.text.toLowerCase().includes('russia'))).toBe(true);
   });
 
+});
+
+// The European override (any border, until 31 December 2026) stacks a
+// 90-day-per-calendar-year cap on its per-visit limit; these exercise that
+// stacked shape through France's override entitlement.
+describe('Belarus — European override: 90 days per calendar year stacked on 30 per visit', () => {
   it('unlimited 30-day visits but capped at 90 total days within a calendar year (stacked-limit regression)', () => {
-    const rule = getBelarusRule('CA');
+    const rule = getBelarusRule('FR');
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     const limits = rule.entitlements[0].limits;
@@ -135,7 +137,7 @@ describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar 
   });
 
   it('reports cumulative days used across the whole calendar year, not just this trip', () => {
-    const rule = getBelarusRule('CA');
+    const rule = getBelarusRule('FR');
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     const limits = rule.entitlements[0].limits;
@@ -166,7 +168,7 @@ describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar 
   });
 
   it('canEnter is false when the budget is already exhausted before entry — no valid exit date exists', () => {
-    const rule = getBelarusRule('CA');
+    const rule = getBelarusRule('FR');
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     const limits = rule.entitlements[0].limits;
@@ -184,7 +186,7 @@ describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar 
   });
 
   it('canEnter is true when the budget still has room at entry, even if this trip alone would exceed it', () => {
-    const rule = getBelarusRule('CA');
+    const rule = getBelarusRule('FR');
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     // Isolate the calendar_period limit alone — Belarus also stacks a
@@ -206,7 +208,7 @@ describe('Belarus — airport-only fallback (30 days per visit, 90 per calendar 
 });
 
 describe('Belarus — reclassified visa_required (source lists as visa-free, but requires another visa)', () => {
-  it.each(['VN', 'HT', 'GM', 'EG', 'IN', 'JO', 'IR', 'LB', 'NA', 'PK', 'WS', 'ZA'])(
+  it.each(['HT', 'GM', 'EG', 'IN', 'JO', 'IR', 'LB', 'NA', 'PK', 'WS', 'ZA'])(
     '%s is visa_required, not entitled',
     (code) => {
       const rule = getBelarusRule(code);
@@ -230,6 +232,66 @@ describe('Belarus — note wording never restates the source citation', () => {
       for (const note of notes) {
         expect(note.text.toLowerCase().startsWith('source')).toBe(false);
       }
+    }
+  });
+});
+
+describe('Belarus — bilateral visa-free, no stated stay (90/180 assumed)', () => {
+  const codes = ['AM', 'AZ', 'EC', 'GE', 'KG', 'KZ', 'MD', 'RU', 'TJ', 'UA', 'UZ'];
+
+  it.each(codes)('%s is visa-free with a 90/180 rolling window, cited to the general visa-free page', (code) => {
+    const rule = getBelarusRule(code);
+    expect(isEntitled(rule)).toBe(true);
+    if (!isEntitled(rule)) return;
+    expect(rule.entitlements).toHaveLength(1);
+    const [entitlement] = rule.entitlements;
+    expect(entitlement.limits).toEqual([{ type: 'rolling_window', days: 90, windowDays: 180 }]);
+    expect(entitlement.source).toEqual(BelarusSources.bilateral);
+  });
+
+  it.each(codes)('%s says the MFA states no maximum stay', (code) => {
+    const rule = getBelarusRule(code);
+    if (!isEntitled(rule)) throw new Error('expected entitled');
+    expect(rule.entitlements[0].notes?.some((n) => n.text.includes('states no maximum stay'))).toBe(true);
+  });
+});
+
+describe('Belarus — bilateral visa-free, stated stay', () => {
+  const limitsOf = (code: string) => {
+    const rule = getBelarusRule(code);
+    if (!isEntitled(rule)) throw new Error(`${code}: expected entitled`);
+    expect(rule.entitlements).toHaveLength(1);
+    expect(rule.entitlements[0].source).toEqual(BelarusSources.bilateral);
+    return rule.entitlements[0].limits;
+  };
+  const perVisit = (value: number) => ({ type: 'per_visit', value, unit: 'days' });
+  const calendar90 = { type: 'calendar_period', days: 90, periodDays: 365 };
+
+  it.each(['BR', 'CO', 'MN', 'NI', 'VE', 'AE'])('%s: 90 days per visit', (code) => {
+    expect(limitsOf(code)).toEqual([perVisit(90)]);
+  });
+
+  it.each(['CU', 'LA', 'ME', 'MM', 'OM', 'QA', 'KN', 'RS', 'TR', 'VN', 'HK'])('%s: 30 days per visit', (code) => {
+    expect(limitsOf(code)).toEqual([perVisit(30)]);
+  });
+
+  it.each(['AL', 'CN', 'MO'])('%s: 30 days per visit, at most 90 per calendar year', (code) => {
+    expect(limitsOf(code)).toEqual([perVisit(30), calendar90]);
+  });
+
+  it('Argentina: 90 days within the calendar year', () => {
+    expect(limitsOf('AR')).toEqual([calendar90]);
+  });
+
+  it('Israel: 90 days in any 180', () => {
+    expect(limitsOf('IL')).toEqual([{ type: 'rolling_window', days: 90, windowDays: 180 }]);
+  });
+
+  it('Nicaragua and Oman are no longer limited to the six airports', () => {
+    for (const code of ['NI', 'OM']) {
+      const rule = getBelarusRule(code);
+      if (!isEntitled(rule)) throw new Error('expected entitled');
+      expect(rule.entitlements[0].notes?.some((n) => n.text.toLowerCase().includes('minsk national airport'))).toBe(false);
     }
   });
 });

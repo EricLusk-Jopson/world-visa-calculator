@@ -1,6 +1,6 @@
 ---
 region: Cyprus
-lastReviewed: 2026-10-20
+lastReviewed: 2026-10-23
 links:
   - id: euVisaList
     url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230

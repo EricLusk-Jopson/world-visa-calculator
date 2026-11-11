@@ -99,7 +99,7 @@
  *   - National ID-card and other document-type nuances are not modelled, per
  *     the same explicit decision used throughout this codebase.
  *
- * Last verified: 2026-09-04
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -173,7 +173,7 @@ export const BOSNIA: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-09-04',
+  lastVerified: '2026-10-23',
   sourceUrl: 'https://www.mvp.gov.ba/en/vize',
   defaultRule: VISA_REQUIRED,
   passportRules: {

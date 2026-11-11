@@ -9,7 +9,7 @@
  *   - Visa Code Handbook Annex 7B (member-state-specific ATV requirements)
  *   All source URLs live in @/data/sources — SchengenSources.
  *
- * Last verified: 2026-10-20
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -234,7 +234,8 @@ export const SCHENGEN: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-10-20',
+  lastVerified: '2026-10-23',
+  lastChanged: '2026-10-23',
   sourceUrl: SchengenSources.visaList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
@@ -448,6 +449,17 @@ export const SCHENGEN: RegionDefinition = {
     // Burkina Faso — ES
     'BF': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['ES']) },
 
+    // Burundi — BE
+    // Cell fn 6 on BE: applies from 1 August 2026, not to diplomatic passport holders.
+    'BI': {
+      access: 'visa_required', source: SchengenSources.visaList,
+      notes: atvNotes(
+        ['BE'],
+        undefined,
+        [{ text: 'Belgium: ATV required from 1 August 2026; it does not apply to holders of diplomatic passports.', source: SchengenSources.atvSpecific }],
+      ),
+    },
+
     // Cameroon — EL, ES, FR, CY
     'CM': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['EL', 'ES', 'FR', 'CY']) },
 
@@ -502,8 +514,8 @@ export const SCHENGEN: RegionDefinition = {
       ),
     },
 
-    // India — CZ, DE, FR, RO
-    'IN': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'DE', 'FR', 'RO']) },
+    // India — CZ, RO
+    'IN': { access: 'visa_required', source: SchengenSources.visaList, notes: atvNotes(['CZ', 'RO']) },
 
     // Jordan — DE
     // Cell fn 9 on DE: exempt if holder has valid AU/IL/NZ visa + onward ticket,

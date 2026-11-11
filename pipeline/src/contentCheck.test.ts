@@ -102,3 +102,18 @@ describe('extractSnapshot on gc-api.mfa.gov.ge', () => {
     assert.equal(compareSnapshots(before, after).status, 'text-changed');
   });
 });
+
+describe('compareSnapshots text preview', () => {
+  const page = (diplomatic: string): ContentSnapshot => ({
+    ...snap('https://mfa.gov.rs/en/x'),
+    text: ['Maldives', 'For holders of diplomatic and official passports:', diplomatic, 'For holders of ordinary passports and other travel documents:', 'Visas required'].join('\n'),
+  });
+
+  it('shows the unchanged line above a change, so a repeated value says which label it belongs to', () => {
+    const { textDiffPreview } = compareSnapshots(page('Visas required'), page('No visas required for visits up to 90 days, within period of 180 days'));
+    assert.equal(
+      textDiffPreview,
+      '  For holders of diplomatic and official passports:\n- Visas required\n+ No visas required for visits up to 90 days, within period of 180 days',
+    );
+  });
+});

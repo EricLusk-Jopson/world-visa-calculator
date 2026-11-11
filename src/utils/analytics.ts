@@ -1,4 +1,8 @@
 const ANALYTICS_URL = import.meta.env.PUBLIC_ANALYTICS_URL as string;
+// Tells the shared Apps Script which sheet the event belongs to ("Events").
+// It ships in the browser bundle, so it routes events rather than keeping
+// them secret.
+const ANALYTICS_TOKEN = (import.meta.env.PUBLIC_ANALYTICS_TOKEN as string | undefined) ?? "";
 
 const NOTRACK_SESSION_KEY = "evc_notrack";
 
@@ -35,6 +39,7 @@ export function trackEvent(event: string, properties: EventProperties = {}): voi
       method: "POST",
       mode: "no-cors",
       body: JSON.stringify({
+        token: ANALYTICS_TOKEN,
         event,
         properties,
         timestamp: new Date().toISOString(),
@@ -68,6 +73,7 @@ export function reportSourceIssue(properties: EventProperties): "sent" | "unavai
       method: "POST",
       mode: "no-cors",
       body: JSON.stringify({
+        token: ANALYTICS_TOKEN,
         event: "source_issue_reported",
         properties,
         timestamp: new Date().toISOString(),

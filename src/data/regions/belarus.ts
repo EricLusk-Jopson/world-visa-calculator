@@ -7,8 +7,9 @@
  *   - General (visa-required list):        BelarusSources.general
  *   - Any-border override, 38 European countries: BelarusSources.europe
  *   - Airport-only fallback (visa-free list):     BelarusSources.airport
+ *   - Bilateral visa-free (general information):  BelarusSources.bilateral
  *
- * ── Three-tier structure ──────────────────────────────────────────────────────
+ * ── Five-tier structure ───────────────────────────────────────────────────────
  *
  * 1. European any-border override (38 countries, `europeOverride()`): visa-free
  *    through ANY border crossing point (not just airports), usable multiple
@@ -34,30 +35,14 @@
  * 2. Airport-only fallback (`airportOnly()`): the always-available baseline
  *    for every genuinely visa-free nationality — visa-free only through
  *    Minsk National Airport or the airports at Brest, Gomel, Grodno,
- *    Mogilev, or Vitebsk, not from Russia, 30 days per visit, with NO cap on
- *    the number of visits but a combined cap of 90 days inside Belarus per
- *    CALENDAR year (not a rolling window). This reuses the exact
- *    `calendar_period` + `per_visit` stacked-limit shape Turkiye's own file
- *    already uses for ITS Belarusian nationals (`turkiye.ts`'s `'BY'` entry,
- *    `TR_PER_VISIT_30` + `TR_CALENDAR_90`) — confirmed via direct reading
- *    that `assessCalendarPeriod()`/`assessStay()` in `stayCalculator.ts`
- *    already correctly anchor the budget window to Jan 1–Dec 31 of the
- *    entry date's year and take the more restrictive of the two stacked
- *    limits, so no new evaluation logic is needed here — Belarus-as-a-
- *    destination is simply the mirror-image reuse of an already-proven shape.
- *    (Known pre-existing gap, not introduced here: `destinationStatus.ts`'s
- *    region-level `per_visit` branch only reads the `PerVisitLimit` and
- *    ignores an accompanying `calendar_period` limit, so the header/slider
- *    "days remaining" chip for a traveler tracking Belarus as their active
- *    destination will reflect only the 30-day-per-visit cap, not the
- *    90-day/year ceiling. The per-trip Eligibility & Duration panel
- *    (`tripEligibility.ts`) is unaffected — it calls `resolveStayLimits`/
- *    `assessStay` generically and already handles this correctly. The same
- *    gap already exists today for Belarusian nationals tracking Türkiye, so
- *    this is a pre-existing characteristic of the shared calculator, not a
- *    defect introduced by adding this region.)
+ *    Mogilev, or Vitebsk, not from Russia, 30 days per visit, with no cap on
+ *    the number of visits and no yearly cap: the airport page states only
+ *    "up to 30 days" and that the stay "can not be extended beyond the
+ *    established 30 days". (A 90-days-per-calendar-year cap was applied here
+ *    until 2026-10-23, when it was dropped because no MFA page states it for
+ *    this scheme; see the rule-change log.)
  *
- * 3. Reclassified visa_required (`visaRequiredConditional()`): 12 nationals
+ * 3. Reclassified visa_required (`visaRequiredConditional()`): 11 nationals
  *    the source lists under its visa-free table, but only conditional on
  *    already holding a valid multiple-entry EU/Schengen visa bearing an
  *    EU/Schengen entry stamp, plus a return ticket from one of the same six
@@ -65,6 +50,25 @@
  *    to obtain another jurisdiction's visa first is not meaningfully
  *    visa-free — these are modeled as `visa_required` with a note explaining
  *    why, rather than `entitled`.
+ *
+ * 4. Bilateral visa-free, no stated stay (`bilateralNoStatedLimit()`): 11
+ *    nationalities the MFA's general visa-free page
+ *    (BelarusSources.bilateral, right-hand column) lists as visa-free for
+ *    foreign nationals entering Belarus, with no duration given: Armenia,
+ *    Azerbaijan, Ecuador, Georgia, Kazakhstan, Kyrgyzstan, Moldova, Russia,
+ *    Tajikistan, Ukraine, Uzbekistan. The limit lives in each bilateral
+ *    agreement, not on the page. As in kosovo.ts and bosnia.ts, the
+ *    standard 90-days-in-any-180 rolling window is applied as an
+ *    assumption, and every entry carries a note saying so. (Russia's real
+ *    regime under the Union State is broader; the assumption is
+ *    conservative.)
+ *
+ * 5. Bilateral visa-free, stated stay (`bilateral()`): 22 nationalities the
+ *    same page lists with a stay, modelled from the page's own wording.
+ *    Any border, so this replaces the airport tier for Nicaragua and Oman.
+ *    Vietnam is also on the airport list's conditional (EU-visa) footnote,
+ *    but the bilateral page makes it visa-free for 30 days outright, so it
+ *    is modelled here rather than in tier 3.
  *
  * Everything not explicitly listed defaults to `visa_required` — matching
  * every other region file's convention — cited to BelarusSources.general.
@@ -78,7 +82,7 @@
  * - Belarus's own member state (BY) is encoded as free_movement — a
  *   Belarusian national needs no visa to enter Belarus.
  *
- * Last verified: 2026-09-12
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -90,6 +94,8 @@ import type {
   RuleNote,
   PerVisitLimit,
   CalendarPeriodLimit,
+  RollingWindowLimit,
+  StayLimit,
 } from '@/types';
 import { BelarusSources } from '@/data/sources';
 
@@ -99,6 +105,7 @@ const FREE_MOVEMENT: FreeMovementRule = { access: 'free_movement' };
 
 const BY_PER_VISIT_30: PerVisitLimit = { type: 'per_visit', value: 30, unit: 'days' };
 const BY_CALENDAR_90: CalendarPeriodLimit = { type: 'calendar_period', days: 90, periodDays: 365 };
+const BY_ROLLING_90_180: RollingWindowLimit = { type: 'rolling_window', days: 90, windowDays: 180 };
 
 // ─── Shared notes ─────────────────────────────────────────────────────────────
 
@@ -116,14 +123,13 @@ const AIRPORT_NOTES: RuleNote[] = [
 // ─── Rule helpers ───────────────────────────────────────────────────────────
 
 /**
- * Airport-only entitlement — 30 days per visit, unlimited visits, but no
- * more than 90 total days inside Belarus per calendar year (see file
- * header). Always the fallback (no temporalWindows), so it's selected
+ * Airport-only entitlement — 30 days per visit, unlimited visits, no yearly
+ * cap (see file header). Always the fallback (no temporalWindows), so it's selected
  * unconditionally once no earlier, temporally-gated entitlement matches.
  */
 function airportEntitlement(extraNotes: RuleNote[] = []) {
   return {
-    limits: [BY_PER_VISIT_30, BY_CALENDAR_90] as [PerVisitLimit, CalendarPeriodLimit],
+    limits: [BY_PER_VISIT_30] as [PerVisitLimit],
     source: BelarusSources.airport,
     notes: [...AIRPORT_NOTES, ...extraNotes],
   };
@@ -139,10 +145,19 @@ function airportOnly(extraNotes: RuleNote[] = []): EntitledRule {
  * 2026-12-31. Falls back to the airport-only rule automatically once the
  * window lapses (see file header for why this ordering is load-bearing).
  *
- * The per-visit override does NOT lift the underlying 90-day-per-calendar-
- * year ceiling — the source states the any-border allowance as an easier way
- * to use each individual visit, not a separate, larger yearly budget, so
- * BY_CALENDAR_90 is stacked here exactly as it is in airportEntitlement().
+ * The source caps this scheme at 90 days per calendar year in total ("The
+ * total duration of visa-free stays must not exceed 90 days within a
+ * calendar year"), so BY_CALENDAR_90 is stacked on the per-visit limit. The
+ * airport-only fallback has no such cap.
+ *
+ * The European-override stacked limit uses the same `calendar_period` +
+ * `per_visit` shape `turkiye.ts` uses for its Belarusian nationals;
+ * `assessStay()` anchors the budget to 1 January–31 December of the entry
+ * year and applies the more restrictive of the two. (Known gap in the
+ * shared calculator: `destinationStatus.ts`'s region-level `per_visit`
+ * branch ignores an accompanying `calendar_period` limit, so the header
+ * "days remaining" chip shows only the per-visit cap. The per-trip panel
+ * is unaffected.)
  */
 function europeOverride(days: 30 | 90, extraNotes: RuleNote[] = []): EntitledRule {
   return {
@@ -186,6 +201,44 @@ function visaRequiredConditional(): VisaRequiredRule {
   };
 }
 
+/**
+ * Visa-free under a bilateral agreement, with no stay stated by the MFA.
+ * The 90/180 rolling window is an assumption (see file header, tier 4).
+ */
+function bilateralNoStatedLimit(): EntitledRule {
+  return {
+    access: 'entitled',
+    entitlements: [{
+      limits: [BY_ROLLING_90_180],
+      source: BelarusSources.bilateral,
+      notes: [{
+        text: 'Visa-free under a bilateral agreement with Belarus, through any border crossing point. The Belarus MFA states no maximum stay for this nationality: the 90 days in any 180-day period shown here is an assumption, not a figure from the source. Check the agreement or with the Belarusian authorities before a long stay.',
+        source: BelarusSources.bilateral,
+      }],
+    }],
+  };
+}
+
+/**
+ * Visa-free under a bilateral agreement, with the stay the MFA states.
+ * `stay` is the page's wording for the note; `limits` encode it.
+ */
+function bilateral(stay: string, limits: [StayLimit, ...StayLimit[]]): EntitledRule {
+  return {
+    access: 'entitled',
+    entitlements: [{
+      limits,
+      source: BelarusSources.bilateral,
+      notes: [{
+        text: `Visa-free under a bilateral agreement with Belarus, through any border crossing point: ${stay}.`,
+        source: BelarusSources.bilateral,
+      }],
+    }],
+  };
+}
+
+const perVisit = (days: number): PerVisitLimit => ({ type: 'per_visit', value: days, unit: 'days' });
+
 const VISA_REQUIRED: VisaRequiredRule = { access: 'visa_required', source: BelarusSources.general };
 
 // ─── Region definition ────────────────────────────────────────────────────────
@@ -200,7 +253,8 @@ export const BELARUS: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-09-12',
+  lastVerified: '2026-10-23',
+  lastChanged: '2026-10-23',
   sourceUrl: BelarusSources.general.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {
@@ -267,9 +321,7 @@ export const BELARUS: RegionDefinition = {
     'KW': airportOnly(), // Kuwait
     'MX': airportOnly(), // Mexico
     'MY': airportOnly(), // Malaysia
-    'NI': airportOnly(), // Nicaragua
     'NZ': airportOnly(), // New Zealand
-    'OM': airportOnly(), // Oman
     'PA': airportOnly(), // Panama
     'PE': airportOnly(), // Peru
     'SA': airportOnly(), // Saudi Arabia
@@ -279,6 +331,45 @@ export const BELARUS: RegionDefinition = {
     'UY': airportOnly(), // Uruguay
     'VC': airportOnly(), // Saint Vincent and the Grenadines
     'VU': airportOnly(), // Vanuatu
+
+    // ── Bilateral visa-free, no stated stay (90/180 assumed) ─────────────────
+    // Source: BelarusSources.bilateral, right-hand column. See header, tier 4.
+    'AM': bilateralNoStatedLimit(), // Armenia
+    'AZ': bilateralNoStatedLimit(), // Azerbaijan
+    'EC': bilateralNoStatedLimit(), // Ecuador
+    'GE': bilateralNoStatedLimit(), // Georgia
+    'KG': bilateralNoStatedLimit(), // Kyrgyzstan
+    'KZ': bilateralNoStatedLimit(), // Kazakhstan
+    'MD': bilateralNoStatedLimit(), // Moldova
+    'RU': bilateralNoStatedLimit(), // Russia
+    'TJ': bilateralNoStatedLimit(), // Tajikistan
+    'UA': bilateralNoStatedLimit(), // Ukraine
+    'UZ': bilateralNoStatedLimit(), // Uzbekistan
+
+    // ── Bilateral visa-free, stated stay ────────────────────────────────────
+    // Source: BelarusSources.bilateral, right-hand column. See header, tier 5.
+    'AL': bilateral('up to 30 days from the date of entry, and up to 90 days within the calendar year', [perVisit(30), BY_CALENDAR_90]), // Albania
+    'AR': bilateral('up to 90 consecutive days from the date of first entry, within the calendar year', [BY_CALENDAR_90]), // Argentina
+    'BR': bilateral('up to 90 days', [perVisit(90)]), // Brazil
+    'CO': bilateral('up to 90 days', [perVisit(90)]), // Colombia
+    'MN': bilateral('up to 90 days', [perVisit(90)]), // Mongolia
+    'NI': bilateral('up to 90 days', [perVisit(90)]), // Nicaragua
+    'VE': bilateral('up to 90 days', [perVisit(90)]), // Venezuela
+    'IL': bilateral('up to 90 days in each period of 180 days', [BY_ROLLING_90_180]), // Israel
+    'AE': bilateral('up to 90 days from the date of entry', [perVisit(90)]), // United Arab Emirates
+    'CN': bilateral('30 days per visit, but no longer than 90 days within one calendar year', [perVisit(30), BY_CALENDAR_90]), // China
+    'MO': bilateral('up to 30 days per visit, but no longer than 90 days within one calendar year', [perVisit(30), BY_CALENDAR_90]), // Macao
+    'HK': bilateral('up to 30 days in each period of stay', [perVisit(30)]), // Hong Kong
+    'CU': bilateral('up to 30 days', [perVisit(30)]), // Cuba
+    'LA': bilateral('up to 30 days', [perVisit(30)]), // Laos
+    'ME': bilateral('up to 30 days', [perVisit(30)]), // Montenegro
+    'MM': bilateral('up to 30 days', [perVisit(30)]), // Myanmar
+    'OM': bilateral('up to 30 days', [perVisit(30)]), // Oman
+    'QA': bilateral('up to 30 days', [perVisit(30)]), // Qatar
+    'KN': bilateral('up to 30 days', [perVisit(30)]), // Saint Kitts and Nevis
+    'RS': bilateral('up to 30 days', [perVisit(30)]), // Serbia
+    'TR': bilateral('up to 30 days', [perVisit(30)]), // Türkiye
+    'VN': bilateral('up to 30 days', [perVisit(30)]), // Vietnam
 
     // ── Reclassified visa_required — source lists these as visa-free, but only ───
     // when the traveler already holds another jurisdiction's visa (see file header) ─
@@ -292,7 +383,6 @@ export const BELARUS: RegionDefinition = {
     'LB': visaRequiredConditional(), // Lebanon
     'NA': visaRequiredConditional(), // Namibia
     'PK': visaRequiredConditional(), // Pakistan
-    'VN': visaRequiredConditional(), // Vietnam
     'WS': visaRequiredConditional(), // Samoa
     'ZA': visaRequiredConditional(), // South Africa
 

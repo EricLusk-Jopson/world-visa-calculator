@@ -49,3 +49,23 @@ describe('getSchengenRule', () => {
     expect(isEntitled(vaRule) && vaRule.entitlements.some(e => e.preAuth?.type === 'ETIAS')).toBe(false);
   });
 });
+
+describe('Schengen — member-state airport transit visas (Annex 7b)', () => {
+  const atvNote = (code: string) => {
+    const rule = getSchengenRule(code);
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return undefined;
+    return rule.notes?.find(n => n.text.startsWith('Airport transit visa required at airports in:'))?.text;
+  };
+
+  it('India needs an ATV only in Czechia and Romania', () => {
+    expect(atvNote('IN')).toBe('Airport transit visa required at airports in: Czech Republic, Romania. Not required at other Schengen airports.');
+  });
+
+  it('Burundi needs an ATV in Belgium, from 1 August 2026', () => {
+    expect(atvNote('BI')).toBe('Airport transit visa required at airports in: Belgium. Not required at other Schengen airports.');
+    const rule = getSchengenRule('BI');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.notes?.some(n => n.text.includes('1 August 2026'))).toBe(true);
+  });
+});

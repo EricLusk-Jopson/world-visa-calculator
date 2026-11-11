@@ -593,6 +593,12 @@ export interface RegionDefinition {
   rule: RegionRule;
   /** ISO date — used in UI and for audit trail. */
   lastVerified: string;
+  /**
+   * ISO date of the latest rule-change log entry that changed this region's
+   * rules (src/data/rule-changes/). Omitted when nothing has changed since the
+   * log began. Test-enforced to match the log.
+   */
+  lastChanged?: string;
   /** Canonical official source URL for this region's entry rules. */
   sourceUrl: string;
   passportRules: Record<string, PassportRule>;

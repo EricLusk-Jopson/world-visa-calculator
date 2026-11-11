@@ -153,6 +153,7 @@ export const ALBANIA: RegionDefinition = {
     exitCountsAsDay: true,
   },
   lastVerified: '2026-10-20',
+  lastChanged: '2026-10-20',
   sourceUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
   defaultRule: VISA_REQUIRED,
   passportRules: {
