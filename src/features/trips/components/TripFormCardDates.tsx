@@ -6,6 +6,7 @@ import { parseDate } from "@/features/calculator/utils/dates";
 import { TripFormCard } from "./TripFormCard";
 import { TripDateRangeCalendar } from "./TripDateRangeCalendar";
 import type { BlockedRange } from "@/features/calculator/utils/tripOverlap";
+import type { OverstayPreview } from "@/pages/CalculatorPage/components/trips/overstayPreview";
 
 interface Props {
   entryDate: string;
@@ -13,6 +14,7 @@ interface Props {
   onEntryChange: (iso: string) => void;
   onExitChange: (iso: string) => void;
   blockedRanges?: BlockedRange[];
+  overstay?: OverstayPreview;
   onReset: () => void;
   expanded: boolean;
   onExpand: () => void;
@@ -49,6 +51,7 @@ export function TripFormCardDates({
   onEntryChange,
   onExitChange,
   blockedRanges,
+  overstay,
   onReset,
   expanded,
   onExpand,
@@ -120,6 +123,7 @@ export function TripFormCardDates({
         onEntryChange={onEntryChange}
         onExitChange={onExitChange}
         blockedRanges={blockedRanges}
+        overstay={overstay}
         scrollToTodayRef={scrollToTodayRef}
       />
 
