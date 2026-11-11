@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -10,6 +10,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { tokens } from "@/styles/theme";
+import useDebouncedValue from "@/hooks/useDebouncedValue";
+import useFrameThrottledState from "@/hooks/useFrameThrottledState";
 import type { Traveler, VisaRegion } from "@/types";
 import { VISA_REGION_LABELS } from "@/types";
 import {
@@ -62,6 +64,8 @@ interface ActiveDestination {
 }
 
 const MAX_ACTIVE = JURISDICTION_PALETTE.length;
+/** How long the slider must rest before the traveler cards update. */
+const CARDS_DEBOUNCE_MS = 150;
 
 // Typed years pass through values like 0002 on the way to 2024; ignore those.
 const MIN_YEAR = 1990;
@@ -256,7 +260,9 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
   // null = fit to every trip of the visible travelers.
   const [customBounds, setCustomBounds] = useState<DateBounds | null>(null);
   // null = today (clamped into the bounds).
-  const [chosenWindowEnd, setChosenWindowEnd] = useState<string | null>(null);
+  // Set by the slider and by dragging on the timeline, many times a second:
+  // applied at most once per frame.
+  const [chosenWindowEnd, setChosenWindowEnd] = useFrameThrottledState<string | null>(null);
 
   const visibleTravelers = useMemo(
     () => travelers.filter((t) => !hiddenTravelerIds.includes(t.id)),
@@ -291,13 +297,31 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
   const active: ActiveDestination[] = chosen
     ? chosen.filter((c) => supported.includes(c.region))
     : supported.slice(0, 1).map((region) => ({ region, color: JURISDICTION_PALETTE[0] }));
-  const regionColors = new Map(active.map((a) => [a.region, a.color]));
+  const activeKey = active.map((a) => `${a.region}:${a.color}`).join(",");
+  // Stable while the selection is, so the memoised traveler cards can skip.
+  const regionColors = useMemo(
+    () => new Map(active.map((a) => [a.region, a.color])),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [activeKey],
+  );
   const rollingRegions = new Set(supported);
 
-  const timelines = buildTravelerTimelines(
-    visibleTravelers,
-    active.map((a) => a.region),
-    windowEnd,
+  const activeRegions = useMemo(
+    () => active.map((a) => a.region),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [activeKey],
+  );
+  const timelines = useMemo(
+    () => buildTravelerTimelines(visibleTravelers, activeRegions, windowEnd),
+    [visibleTravelers, activeRegions, windowEnd],
+  );
+
+  // The timeline follows the slider live; the traveler cards below catch up
+  // once it pauses, so dragging doesn't re-render every card on every frame.
+  const cardsWindowEnd = useDebouncedValue(windowEnd, CARDS_DEBOUNCE_MS);
+  const cardTimelines = useMemo(
+    () => buildTravelerTimelines(visibleTravelers, activeRegions, cardsWindowEnd),
+    [visibleTravelers, activeRegions, cardsWindowEnd],
   );
 
   // ── Handlers ────────────────────────────────────────────────────────────────
@@ -604,13 +628,13 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
                     mt: "18px",
                   }}
                 >
-                  {timelines.map((timeline) => (
+                  {cardTimelines.map((timeline) => (
                     <TravelerCard
                       key={timeline.travelerId}
                       timeline={timeline}
                       regionColors={regionColors}
                       bounds={bounds}
-                      windowEnd={windowEnd}
+                      windowEnd={cardsWindowEnd}
                     />
                   ))}
                 </Box>
@@ -650,7 +674,7 @@ function Dot({ color }: { color: string }) {
  * range (days used of the allowance, in their own window), then those trips
  * with the days each one contributes to the window.
  */
-function TravelerCard({
+const TravelerCard = memo(function TravelerCard({
   timeline,
   regionColors,
   bounds,
@@ -816,4 +840,4 @@ function TravelerCard({
       )}
     </Box>
   );
-}
+});
