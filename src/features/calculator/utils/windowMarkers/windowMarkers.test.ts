@@ -7,7 +7,7 @@ import {
   computeAgingMarkers,
   resolveRollingWindow,
   thresholdsFor,
-  stackGutterItems,
+  assignChipSlots,
 } from ".";
 
 const START = parseDate("2026-01-01");
@@ -149,12 +149,10 @@ describe("computeWindowMarkers", () => {
   });
 });
 
-describe("stackGutterItems", () => {
-  it("keeps items at their date until they would overlap, then stacks them", () => {
-    const chip = (anchor: number) => ({ anchor, height: 14, firstRowHeight: 14 });
-    // 100 sits at its date; 105 is pushed below it; 300 is clear again.
-    expect(stackGutterItems([chip(300), chip(100), chip(105)], 2)).toEqual([
-      293, 93, 109,
+describe("assignChipSlots", () => {
+  it("moves chips that would overlap into the next slot", () => {
+    expect(assignChipSlots([100, 105, 300, 108, 200], 15)).toEqual([
+      0, 1, 0, 2, 0,
     ]);
   });
 });

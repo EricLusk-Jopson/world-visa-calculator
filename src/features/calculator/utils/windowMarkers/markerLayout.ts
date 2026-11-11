@@ -1,15 +1,13 @@
 /**
- * How markers are labelled and placed in the timeline's marker gutter.
+ * How timeline markers are labelled and kept from overprinting each other.
  *
- * Markers live in a dedicated gutter beside the trip cards, so a chip or an
- * age-out label is never drawn underneath a card. Each chip names its
- * destination in plain text ("Türkiye 90d") — green/amber is the only colour
- * a chip carries, and it means how long a stay is possible.
+ * Each chip names its destination in plain text ("Türkiye 90d") — green/amber
+ * is the only colour a chip carries, and it means how long a stay is possible.
  */
 
 import { VISA_REGION_LABELS, VisaRegion } from "@/types";
 
-/** Names short enough for a gutter chip; everything else uses its label. */
+/** Names short enough for a marker chip; everything else uses its label. */
 const SHORT_NAMES: Partial<Record<VisaRegion, string>> = {
   [VisaRegion.Schengen]: "Schengen",
   [VisaRegion.Bosnia]: "Bosnia",
@@ -22,31 +20,21 @@ export function regionMarkerName(region: VisaRegion): string {
   return SHORT_NAMES[region] ?? VISA_REGION_LABELS[region];
 }
 
-export interface GutterItem {
-  /** Where the item's first row should be centred: its date's pixel offset. */
-  anchor: number;
-  /** Rendered height of the item, in px. */
-  height: number;
-  /** Height of its first row — the row centred on the anchor. */
-  firstRowHeight: number;
-}
-
 /**
- * Top edge for each gutter item, in input order. Items are placed at their
- * date where possible; one that would overlap the item above it is pushed
- * down just far enough to clear it (by `gap` px), so items on nearby dates
- * stack instead of printing over each other.
+ * Horizontal slots for chips that would otherwise sit on top of each other
+ * (two destinations' markers on nearby dates). Greedy: each chip, in top
+ * order, takes the lowest slot whose previous chip is at least `minGap`
+ * pixels above it. Returns one slot index per input, in input order.
  */
-export function stackGutterItems(items: GutterItem[], gap: number): number[] {
-  const order = items
-    .map((item, i) => ({ item, i }))
-    .sort((a, b) => a.item.anchor - b.item.anchor);
-  const tops = new Array<number>(items.length);
-  let nextFree = -Infinity;
-  for (const { item, i } of order) {
-    const top = Math.max(item.anchor - item.firstRowHeight / 2, nextFree);
-    tops[i] = top;
-    nextFree = top + item.height + gap;
+export function assignChipSlots(tops: number[], minGap: number): number[] {
+  const order = tops.map((top, i) => ({ top, i })).sort((a, b) => a.top - b.top);
+  const lastTopBySlot: number[] = [];
+  const slots = new Array<number>(tops.length);
+  for (const { top, i } of order) {
+    let slot = lastTopBySlot.findIndex((last) => top - last >= minGap);
+    if (slot === -1) slot = lastTopBySlot.length;
+    lastTopBySlot[slot] = top;
+    slots[i] = slot;
   }
-  return tops;
+  return slots;
 }

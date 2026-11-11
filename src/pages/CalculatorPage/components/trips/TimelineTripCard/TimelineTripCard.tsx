@@ -199,9 +199,9 @@ interface TimelineTripCardProps {
    */
   hovered: boolean;
   /**
-   * Draw the card as a plain light-grey tile with no text or chips, so the
-   * timeline's markers read clearly over it. Still clickable; its native
-   * tooltip carries the trip's details.
+   * Fade the card to a plain light-grey tile with no text or chips, so the
+   * timeline's markers read clearly over it (animated both ways). Still
+   * clickable; its native tooltip carries the trip's details.
    */
   muted?: boolean;
   onHoverChange: (hovered: boolean) => void;
@@ -495,33 +495,14 @@ export function TimelineTripCard({
     irelandStayInfo?.reentryVariant,
   ]);
 
-  if (muted) {
-    return (
-      <Box
-        title={tooltipLines.join("\n")}
-        onClick={onEdit}
-        onMouseEnter={() => onHoverChange(true)}
-        onMouseLeave={() => onHoverChange(false)}
-        sx={{
-          position: "absolute",
-          left: cardLeft,
-          width: cardWidth,
-          top,
-          height,
-          borderRadius: "8px",
-          bgcolor: alpha(tokens.mist, hovered ? 0.95 : 0.7),
-          border: `1px solid ${alpha(isOverstay ? tokens.red : tokens.border, 0.6)}`,
-          cursor: "pointer",
-          zIndex: baseZIndex,
-          transition: "background-color 0.12s",
-        }}
-      />
-    );
-  }
+  // Muting fades the card's content, accent and shadow away and settles it
+  // into a plain light-grey tile, so the timeline's markers can be drawn
+  // over it. Everything transitions, so toggling animates both ways.
+  const MUTE_TRANSITION = "0.25s ease";
 
   return (
     <Box
-      title={tooltipText}
+      title={muted ? tooltipLines.join("\n") : tooltipText}
       onClick={onEdit}
       onMouseEnter={() => onHoverChange(true)}
       onMouseLeave={() => onHoverChange(false)}
@@ -532,21 +513,27 @@ export function TimelineTripCard({
         top,
         height,
         borderRadius: "8px",
-        border: `1px solid ${cardBorderColor}`,
-        borderStyle: isPlanned && !isOverstay ? "dashed" : "solid",
-        bgcolor: cardBg,
+        border: `1px solid ${
+          muted
+            ? alpha(isOverstay ? tokens.red : tokens.border, 0.6)
+            : cardBorderColor
+        }`,
+        borderStyle: isPlanned && !isOverstay && !muted ? "dashed" : "solid",
+        bgcolor: muted ? alpha(tokens.mist, hovered ? 0.95 : 0.7) : cardBg,
         overflow: "hidden",
         cursor: "pointer",
-        zIndex: hovered ? 50 : baseZIndex,
-        boxShadow: hovered
-          ? isOverstay
-            ? "0 4px 14px rgba(239,68,68,0.18)"
-            : "0 4px 14px rgba(12,30,60,0.09)"
-          : isOverstay
-            ? "0 1px 3px rgba(239,68,68,0.1)"
-            : "0 1px 3px rgba(12,30,60,0.06)",
-        transform: hovered ? "translateX(2px)" : "none",
-        transition: "box-shadow 0.12s, transform 0.12s, z-index 0s",
+        zIndex: hovered && !muted ? 50 : baseZIndex,
+        boxShadow: muted
+          ? "none"
+          : hovered
+            ? isOverstay
+              ? "0 4px 14px rgba(239,68,68,0.18)"
+              : "0 4px 14px rgba(12,30,60,0.09)"
+            : isOverstay
+              ? "0 1px 3px rgba(239,68,68,0.1)"
+              : "0 1px 3px rgba(12,30,60,0.06)",
+        transform: hovered && !muted ? "translateX(2px)" : "none",
+        transition: `box-shadow 0.12s, transform 0.12s, z-index 0s, background-color ${MUTE_TRANSITION}, border-color ${MUTE_TRANSITION}`,
         display: "flex",
         flexDirection: "column",
       }}
@@ -561,6 +548,8 @@ export function TimelineTripCard({
           width: 3,
           bgcolor: accentColor,
           borderRadius: "8px 0 0 8px",
+          opacity: muted ? 0 : 1,
+          transition: `opacity ${MUTE_TRANSITION}`,
         }}
       />
 
@@ -578,6 +567,8 @@ export function TimelineTripCard({
           gap: "3px",
           overflow: "hidden",
           minHeight: 0,
+          opacity: muted ? 0 : 1,
+          transition: `opacity ${MUTE_TRANSITION}`,
         }}
       >
         {/* Destination — always visible */}

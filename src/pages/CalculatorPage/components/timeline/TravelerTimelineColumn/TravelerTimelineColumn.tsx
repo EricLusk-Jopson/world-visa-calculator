@@ -1,5 +1,9 @@
 import { useRef, useState, useEffect, useMemo } from "react";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
+import { alpha } from "@mui/material/styles";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { type Traveler, type Trip, VisaRegion } from "@/types";
 
 import { tokens } from "@/styles/theme";
@@ -13,7 +17,6 @@ import {
   CARD_LEFT_BASE,
   CARD_RIGHT_MARGIN,
   LANE_GAP,
-  MARKER_GUTTER_WIDTH,
 } from "@/features/calculator/utils/timelineLayout";
 import {
   today as getToday,
@@ -26,25 +29,17 @@ import {
   calculateMaxStay,
 } from "@/features/calculator/utils/schengen";
 import {
+  type ReturnMarker,
+  type AgingMarker,
   type WindowMarkers,
+  returnMarkerCurrentText,
   returnMarkerThresholdText,
   agingMarkerTripLine,
-  regionMarkerName,
-  stackGutterItems,
   AGING_MARKER_EXPLANATION,
+  thresholdsFor,
+  assignChipSlots,
+  regionMarkerName,
 } from "@/features/calculator/utils/windowMarkers";
-import {
-  MarkerGuideLine,
-  ReturnGutterChip,
-  AgingGutterChip,
-} from "../GutterMarkers";
-import {
-  returnMarkerColors,
-  RETURN_CHIP_HEIGHT,
-  AGING_CHIP_HEIGHT,
-  AGING_CHIP_FIRST_ROW,
-  GUTTER_CHIP_GAP,
-} from "../gutterMarkerStyle";
 import { computeOverstayTripIds } from "../../trips/tripDuration";
 import { tripGroupKey } from "../../trips/tripHelpers";
 import { getSchengenRule } from "@/data/regions/schengen";
@@ -65,18 +60,296 @@ interface TravelerTimelineColumnProps {
   /** This traveller's rolling-window markers, computed by the timeline. */
   markers: WindowMarkers;
   /**
-   * Trip cards drawn as plain light-grey tiles, with the marker lines on top
-   * of them — for reading markers against trips.
+   * Trip cards fade to plain light-grey tiles and the markers are drawn on
+   * top of them, so chips and age-out labels can be read where they sit.
    */
   mutedTrips: boolean;
 }
 
-// ─── Marker gutter ────────────────────────────────────────────────────────────
+// ─── Return marker visual ─────────────────────────────────────────────────────
 
-/** x of the timeline spine; gutter chips start just right of it. */
-const SPINE_LEFT = 28;
-const GUTTER_ITEM_LEFT = SPINE_LEFT + 8;
-const GUTTER_ITEM_WIDTH = MARKER_GUTTER_WIDTH - 12;
+/** Horizontal step between chips that share a date band (two destinations). */
+const RETURN_CHIP_SLOT_PX = 104;
+const AGING_CHIP_SLOT_PX = 44;
+/** Chips closer together than this vertically are moved to separate slots. */
+const CHIP_MIN_GAP_PX = 15;
+
+/**
+ * Green once a third of the allowance is reachable (30d of 90), amber below.
+ * Every other milestone (30/60/90 of 90) is drawn stronger than the ones
+ * between.
+ */
+function markerColors(days: number, isCurrent: boolean, allowance: number) {
+  const isGenerous = days >= allowance / 3;
+  const isMajor = thresholdsFor(allowance).indexOf(days) % 2 === 1;
+  return {
+    lineBase: isGenerous ? tokens.green : tokens.amber,
+    textColor: isGenerous ? tokens.greenText : tokens.amberText,
+    bgColor: isGenerous ? tokens.greenBg : tokens.amberBg,
+    lineOpacity: isCurrent ? 0.45 : isMajor ? 0.35 : 0.18,
+    pillOpacity: isCurrent || isMajor ? 1 : 0.65,
+  };
+}
+
+function MarkerLine({
+  region,
+  top,
+  days,
+  isCurrent,
+  date,
+  allowance,
+  slot,
+}: ReturnMarker & { slot: number }) {
+  const { lineBase, textColor, bgColor, lineOpacity, pillOpacity } =
+    markerColors(days, isCurrent, allowance);
+
+  const tooltipText = isCurrent
+    ? returnMarkerCurrentText(region, days)
+    : returnMarkerThresholdText(region, date, days);
+
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top,
+        pointerEvents: "none",
+        zIndex: 2,
+      }}
+    >
+      {!isCurrent && (
+        <Box
+          sx={{
+            position: "absolute",
+            left: 30,
+            right: 10,
+            top: 0,
+            height: 0,
+            borderTop: `1px dashed ${alpha(lineBase, lineOpacity)}`,
+          }}
+        />
+      )}
+      <Tooltip
+        title={tooltipText}
+        placement="right"
+        arrow
+        enterDelay={200}
+        componentsProps={{
+          tooltip: {
+            sx: {
+              fontFamily: tokens.fontBody,
+              fontSize: "0.72rem",
+              fontWeight: 500,
+              bgcolor: tokens.navy,
+              "& .MuiTooltip-arrow": { color: tokens.navy },
+              maxWidth: 220,
+            },
+          },
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            left: (isCurrent ? 20 : 32) + slot * RETURN_CHIP_SLOT_PX,
+            top: 0,
+            transform: "translateY(-50%)",
+            zIndex: 3,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "3px",
+            px: isCurrent ? "7px" : "5px",
+            py: "2px",
+            borderRadius: "100px",
+            bgcolor: bgColor,
+            border: `1px solid ${alpha(lineBase, isCurrent ? 0.4 : 0.2)}`,
+            borderStyle: isCurrent ? "solid" : "dashed",
+            pointerEvents: "auto",
+            cursor: "default",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.52rem",
+              fontWeight: 600,
+              color: alpha(textColor, pillOpacity * 0.85),
+              lineHeight: 1,
+              whiteSpace: "nowrap",
+              userSelect: "none",
+            }}
+          >
+            {regionMarkerName(region)}
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: isCurrent ? "0.58rem" : "0.52rem",
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+              color: alpha(textColor, pillOpacity),
+              lineHeight: 1,
+              userSelect: "none",
+            }}
+          >
+            {days}d
+          </Typography>
+          <InfoOutlinedIcon
+            sx={{
+              fontSize: isCurrent ? "0.65rem" : "0.6rem",
+              color: alpha(textColor, pillOpacity * 0.7),
+              flexShrink: 0,
+            }}
+          />
+        </Box>
+      </Tooltip>
+    </Box>
+  );
+}
+
+// ─── Aging-out marker visual ──────────────────────────────────────────────────
+
+/**
+ * Marks the date when a historical trip's days start aging out of its
+ * destination's rolling window. Visually distinct from return markers: dotted
+ * line (vs dashed), lower opacity, and a centered label breaking the line.
+ * A marker pushed into a second slot (another destination's trip aging out
+ * on a nearby date) draws only its pill, so the labels don't collide.
+ */
+function AgingMarkerLine({
+  region,
+  date,
+  top,
+  tripDays,
+  destination,
+  slot,
+  prominent,
+}: AgingMarker & { slot: number; prominent: boolean }) {
+  // Faint behind the trip cards; darker while the cards are muted, when the
+  // label sits over a grey tile and is the thing being read.
+  const LINE_OPACITY = prominent ? 0.4 : 0.12;
+  const TEXT_OPACITY = prominent ? 0.95 : 0.4;
+
+  const tooltipText = `${agingMarkerTripLine(region, destination, tripDays, date)}. ${AGING_MARKER_EXPLANATION}`;
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top,
+        pointerEvents: "none",
+        zIndex: 2,
+      }}
+    >
+      {slot === 0 && (
+      <Box
+        sx={{
+          position: "absolute",
+          left: 30,
+          right: 10,
+          top: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+        }}
+      >
+        <Box
+          sx={{
+            flex: 1,
+            height: 0,
+            borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
+          }}
+        />
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.52rem",
+            fontWeight: 600,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: alpha(prominent ? tokens.textSoft : tokens.textGhost, TEXT_OPACITY),
+            whiteSpace: "nowrap",
+            lineHeight: 1,
+            userSelect: "none",
+            flexShrink: 0,
+          }}
+        >
+          {destination} ages out
+        </Typography>
+        <Box
+          sx={{
+            flex: 1,
+            height: 0,
+            borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
+          }}
+        />
+      </Box>
+      )}
+
+      <Tooltip
+        title={tooltipText}
+        placement="left"
+        arrow
+        enterDelay={200}
+        componentsProps={{
+          tooltip: {
+            sx: {
+              fontFamily: tokens.fontBody,
+              fontSize: "0.72rem",
+              fontWeight: 500,
+              bgcolor: tokens.navy,
+              "& .MuiTooltip-arrow": { color: tokens.navy },
+              maxWidth: 240,
+            },
+          },
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            right: 10 + slot * AGING_CHIP_SLOT_PX,
+            top: 0,
+            transform: "translateY(-50%)",
+            zIndex: 3,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "2px",
+            px: "5px",
+            py: "1.5px",
+            borderRadius: "100px",
+            bgcolor: tokens.mist,
+            border: `1px solid ${alpha(tokens.textGhost, 0.15)}`,
+            borderStyle: "dotted",
+            pointerEvents: "auto",
+            cursor: "default",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.5rem",
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+              color: alpha(tokens.textSoft, 0.7),
+              lineHeight: 1,
+              userSelect: "none",
+            }}
+          >
+            +{tripDays}d
+          </Typography>
+          <InfoOutlinedIcon
+            sx={{
+              fontSize: "0.55rem",
+              color: alpha(tokens.textGhost, 0.5),
+              flexShrink: 0,
+            }}
+          />
+        </Box>
+      </Tooltip>
+    </Box>
+  );
+}
 
 // ─── Column ───────────────────────────────────────────────────────────────────
 
@@ -127,52 +400,15 @@ export function TravelerTimelineColumn({
     sortedTrips.map((trip) => [trip.id, getTripGeometry(trip, timelineStart)]),
   );
 
-  // Markers only exist where the traveller's passport gets a rolling window,
-  // so a visa-required destination simply contributes none. The gutter is
-  // only reserved when there is something to put in it.
-  const thresholdMarkers = useMemo(
-    () => markers.returnMarkers.filter((m) => !m.isCurrent),
-    [markers],
-  );
-  const { agingMarkers } = markers;
-  const hasGutter = thresholdMarkers.length + agingMarkers.length > 0;
-  const cardLeftBase = hasGutter
-    ? CARD_LEFT_BASE + MARKER_GUTTER_WIDTH
-    : CARD_LEFT_BASE;
-
-  // Gutter placement: return chips first, then aging chips, in one stack.
-  const gutterTops = useMemo(
-    () =>
-      stackGutterItems(
-        [
-          ...thresholdMarkers.map((m) => ({
-            anchor: m.top,
-            height: RETURN_CHIP_HEIGHT,
-            firstRowHeight: RETURN_CHIP_HEIGHT,
-          })),
-          ...agingMarkers.map((m) => ({
-            anchor: m.top,
-            height: AGING_CHIP_HEIGHT,
-            firstRowHeight: AGING_CHIP_FIRST_ROW,
-          })),
-        ],
-        GUTTER_CHIP_GAP,
-      ),
-    [thresholdMarkers, agingMarkers],
-  );
-  const returnTops = gutterTops.slice(0, thresholdMarkers.length);
-  const agingTops = gutterTops.slice(thresholdMarkers.length);
-
   const laneAssignments = computeLaneAssignments(
     sortedTrips.map((trip) => {
       const g = geometries.get(trip.id)!;
       return { id: trip.id, top: g.top, height: g.height };
     }),
     columnWidth,
-    cardLeftBase,
   );
 
-  const availableWidth = columnWidth - cardLeftBase - CARD_RIGHT_MARGIN;
+  const availableWidth = columnWidth - CARD_LEFT_BASE - CARD_RIGHT_MARGIN;
 
   function resolveCardGeometry(tripId: string): {
     cardLeft: number;
@@ -183,7 +419,7 @@ export function TravelerTimelineColumn({
       numLanes: 1,
     };
     const laneWidth = availableWidth / numLanes;
-    const cardLeft = cardLeftBase + laneIndex * laneWidth;
+    const cardLeft = CARD_LEFT_BASE + laneIndex * laneWidth;
     const cardWidth =
       laneIndex < numLanes - 1 ? laneWidth - LANE_GAP : laneWidth;
     return { cardLeft, cardWidth };
@@ -230,20 +466,38 @@ export function TravelerTimelineColumn({
     [traveler],
   );
 
+  // Markers only exist where the traveller's passport gets a rolling window,
+  // so a visa-required destination simply contributes none.
+  const thresholdMarkers = useMemo(
+    () => markers.returnMarkers.filter((m) => !m.isCurrent),
+    [markers],
+  );
+  const { agingMarkers } = markers;
+  const returnSlots = useMemo(
+    () => assignChipSlots(thresholdMarkers.map((m) => m.top), CHIP_MIN_GAP_PX),
+    [thresholdMarkers],
+  );
+  const agingSlots = useMemo(
+    () => assignChipSlots(agingMarkers.map((m) => m.top), CHIP_MIN_GAP_PX),
+    [agingMarkers],
+  );
+
   const ADD_BUTTON_HEIGHT = 36;
   const ADD_BUTTON_MARGIN = 16;
   const defaultButtonTop = totalHeight - ADD_BUTTON_HEIGHT - ADD_BUTTON_MARGIN;
 
   const addButtonTop = useMemo(() => {
-    if (gutterTops.length === 0) return defaultButtonTop;
-    const lastMarkerBottom = Math.max(...gutterTops) + AGING_CHIP_HEIGHT;
-    const minTop = lastMarkerBottom + ADD_BUTTON_MARGIN;
+    const allMarkerTops = [
+      ...markers.returnMarkers.map((m) => m.top),
+      ...agingMarkers.map((m) => m.top),
+    ];
+    if (allMarkerTops.length === 0) return defaultButtonTop;
+    const lastMarkerTop = Math.max(...allMarkerTops);
+    const minTop = lastMarkerTop + 10 + ADD_BUTTON_MARGIN;
     return Math.max(defaultButtonTop, minTop);
-  }, [gutterTops, defaultButtonTop]);
+  }, [markers, agingMarkers, defaultButtonTop]);
 
   const BASE_Z = 4;
-  // Guide lines sit behind the cards, or over them while cards are muted.
-  const guideZ = mutedTrips ? BASE_Z + sortedTrips.length + 1 : 2;
 
   return (
     <Box
@@ -295,7 +549,7 @@ export function TravelerTimelineColumn({
       <Box
         sx={{
           position: "absolute",
-          left: SPINE_LEFT,
+          left: 28,
           top: 0,
           bottom: 0,
           width: 2,
@@ -330,59 +584,35 @@ export function TravelerTimelineColumn({
         }}
       />
 
-      {/* Marker guide lines, at each marker's exact date, across the trip
-          area only — they start where the gutter ends, so they never
-          strike through a gutter chip. */}
-      {thresholdMarkers.map((m, i) => {
-        const { lineBase, lineOpacity } = returnMarkerColors(m.days, m.allowance);
-        return (
-          <MarkerGuideLine
-            key={`thr-line-${m.region}-${m.days}-${i}`}
-            top={m.top}
-            left={cardLeftBase - 4}
-            kind="return"
-            color={lineBase}
-            opacity={mutedTrips ? Math.min(1, lineOpacity * 2) : lineOpacity}
-            zIndex={guideZ}
+      {/* Markers: behind the trip cards, or on top of them while the cards
+          are muted to plain tiles. */}
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          zIndex: mutedTrips ? BASE_Z + sortedTrips.length + 1 : 2,
+        }}
+      >
+        {/* Return markers (threshold milestones), every rolling-window destination */}
+        {thresholdMarkers.map((marker, i) => (
+          <MarkerLine
+            key={`thr-${marker.region}-${marker.days}-${i}`}
+            {...marker}
+            slot={returnSlots[i]}
           />
-        );
-      })}
-      {agingMarkers.map((m, i) => (
-        <MarkerGuideLine
-          key={`aging-line-${m.region}-${m.entryDate}-${i}`}
-          top={m.top}
-          left={cardLeftBase - 4}
-          kind="aging"
-          color={tokens.textSoft}
-          opacity={mutedTrips ? 0.55 : 0.25}
-          zIndex={guideZ}
-        />
-      ))}
+        ))}
 
-      {/* Marker gutter — chips never sit under a card */}
-      {thresholdMarkers.map((m, i) => (
-        <ReturnGutterChip
-          key={`thr-${m.region}-${m.days}-${i}`}
-          top={returnTops[i]}
-          left={GUTTER_ITEM_LEFT}
-          width={GUTTER_ITEM_WIDTH}
-          regionName={regionMarkerName(m.region)}
-          days={m.days}
-          allowance={m.allowance}
-          tooltip={returnMarkerThresholdText(m.region, m.date, m.days)}
-        />
-      ))}
-      {agingMarkers.map((m, i) => (
-        <AgingGutterChip
-          key={`aging-${m.region}-${m.entryDate}-${i}`}
-          top={agingTops[i]}
-          left={GUTTER_ITEM_LEFT}
-          width={GUTTER_ITEM_WIDTH}
-          title={m.destination}
-          tripDays={m.tripDays}
-          tooltip={`${agingMarkerTripLine(m.region, m.destination, m.tripDays, m.date)}. ${AGING_MARKER_EXPLANATION}`}
-        />
-      ))}
+        {/* Aging-out markers */}
+        {agingMarkers.map((marker, i) => (
+          <AgingMarkerLine
+            key={`aging-${marker.region}-${marker.entryDate}-${i}`}
+            {...marker}
+            slot={agingSlots[i]}
+            prominent={mutedTrips}
+          />
+        ))}
+      </Box>
 
       {/* Trip cards */}
       {sortedTrips.map((trip, rank) => {

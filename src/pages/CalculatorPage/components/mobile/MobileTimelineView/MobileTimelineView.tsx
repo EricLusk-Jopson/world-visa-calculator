@@ -2,6 +2,7 @@ import { useRef, useEffect, useMemo } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { format } from "date-fns";
 import { type Traveler, type Trip, VisaRegion, isEntitled, isVisaRequired } from "@/types";
 import { tokens } from "@/styles/theme";
@@ -25,28 +26,18 @@ import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
 import { type PositionedTrip, assignLanes } from "./mobileTripLayout";
 import { getSchengenRule } from "@/data/regions/schengen";
+import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
 import {
   type AgingMarker,
   type WindowMarkers,
   computeWindowMarkers,
-  stackGutterItems,
+  assignChipSlots,
+  thresholdsFor,
   regionMarkerName,
   returnMarkerRowText,
   agingMarkerTripLine,
   AGING_MARKER_EXPLANATION,
 } from "@/features/calculator/utils/windowMarkers";
-import {
-  MarkerGuideLine,
-  ReturnGutterChip,
-  AgingGutterChip,
-} from "../../timeline/GutterMarkers";
-import {
-  returnMarkerColors,
-  RETURN_CHIP_HEIGHT,
-  AGING_CHIP_HEIGHT,
-  AGING_CHIP_FIRST_ROW,
-  GUTTER_CHIP_GAP,
-} from "../../timeline/gutterMarkerStyle";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -55,7 +46,10 @@ interface MobileTimelineViewProps {
   hiddenTravelerIds: string[];
   onEditTrip: (travelerIds: string[], trip: Trip) => void;
   onAddTraveler: () => void;
-  /** Draw trip cards as plain tiles so the markers read clearly over them. */
+  /**
+   * Trip cards fade to plain light-grey tiles and the markers are drawn on
+   * top of them, so chips and age-out labels can be read where they sit.
+   */
   mutedTrips: boolean;
 }
 
@@ -99,6 +93,11 @@ interface MobileAgingMarkerGroup {
   markers: AgingMarker[];
 }
 
+/** Horizontal slot, resolved for the whole view. */
+interface MarkerPlacement {
+  slot: number;
+}
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const HEIGHT_SHOW_DATES = 44;
@@ -117,12 +116,20 @@ const FAB_CLEARANCE_PX = 120;
 /** 6-day rollup window in pixels. */
 const ROLLUP_PX = 6 * PX_PER_DAY;
 
-/**
- * Width of the marker gutter at the left of the canvas, where return chips
- * and age-out labels live so a trip card never covers them. Only reserved
- * when there are markers to show.
- */
-const MARKER_GUTTER_PX = 116;
+/** Horizontal step between pills of different destinations on nearby dates. */
+const RETURN_CHIP_SLOT_PX = 104;
+const AGING_CHIP_SLOT_PX = 44;
+const CHIP_MIN_GAP_PX = 15;
+
+/** Shared tooltip styling used by both mobile marker types. */
+const TOOLTIP_SX = {
+  fontFamily: tokens.fontBody,
+  fontSize: "0.72rem",
+  fontWeight: 500,
+  bgcolor: tokens.navy,
+  "& .MuiTooltip-arrow": { color: tokens.navy },
+  maxWidth: 260,
+};
 
 // ─── Marker grouping helpers ──────────────────────────────────────────────────
 
@@ -249,10 +256,12 @@ function Chip({
 interface MobileTimelineTripCardProps {
   positioned: PositionedTrip;
   isHighlighted: boolean;
-  /** Plain light-grey tile with no text or chips, so markers read over it. */
+  /** Fade to a plain light-grey tile (animated) so markers read over it. */
   muted: boolean;
   onClick: () => void;
 }
+
+const MUTE_TRANSITION = "0.25s ease";
 
 function MobileTimelineTripCard({
   positioned,
@@ -261,21 +270,6 @@ function MobileTimelineTripCard({
   onClick,
 }: MobileTimelineTripCardProps) {
   const { trip, entries, height, isOverstay } = positioned;
-
-  if (muted) {
-    return (
-      <Box
-        onClick={onClick}
-        sx={{
-          height: "100%",
-          borderRadius: "8px",
-          bgcolor: alpha(tokens.mist, 0.7),
-          border: `1px solid ${alpha(isOverstay ? tokens.red : tokens.border, 0.6)}`,
-          cursor: "pointer",
-        }}
-      />
-    );
-  }
 
   // Aggregate passport rules across all travelers in this merged card.
   const rules = entries.map((e) => getSchengenRule(e.traveler.passportCode));
@@ -348,16 +342,21 @@ function MobileTimelineTripCard({
       sx={{
         position: "absolute",
         inset: 0,
-        bgcolor: cardBg,
+        bgcolor: muted ? alpha(tokens.mist, 0.7) : cardBg,
         border: "1px solid",
-        borderColor: cardBorderColor,
-        borderStyle: isPlanned && !isOverstay ? "dashed" : "solid",
+        borderColor: muted
+          ? alpha(isOverstay ? tokens.red : tokens.border, 0.6)
+          : cardBorderColor,
+        borderStyle: isPlanned && !isOverstay && !muted ? "dashed" : "solid",
         borderRadius: "6px",
         overflow: "hidden",
         cursor: "pointer",
-        boxShadow: isOverstay
-          ? "0 1px 3px rgba(239,68,68,0.1)"
-          : "0 1px 3px rgba(12,30,60,0.05)",
+        boxShadow: muted
+          ? "none"
+          : isOverstay
+            ? "0 1px 3px rgba(239,68,68,0.1)"
+            : "0 1px 3px rgba(12,30,60,0.05)",
+        transition: `background-color ${MUTE_TRANSITION}, border-color ${MUTE_TRANSITION}, box-shadow ${MUTE_TRANSITION}`,
         "&:active": {
           boxShadow: isOverstay
             ? "0 3px 10px rgba(239,68,68,0.18)"
@@ -375,6 +374,8 @@ function MobileTimelineTripCard({
           width: 3,
           bgcolor: accentColor,
           borderRadius: "6px 0 0 6px",
+          opacity: muted ? 0 : 1,
+          transition: `opacity ${MUTE_TRANSITION}`,
         }}
       />
       <Box
@@ -388,6 +389,8 @@ function MobileTimelineTripCard({
           display: "flex",
           flexDirection: "column",
           gap: "2px",
+          opacity: muted ? 0 : 1,
+          transition: `opacity ${MUTE_TRANSITION}`,
         }}
       >
         {/* ── Always: traveler dots + destination ───────────────────────── */}
@@ -506,19 +509,24 @@ function MobileTimelineTripCard({
 // ─── Mobile return marker ─────────────────────────────────────────────────────
 
 function MobileReturnMarker({
-  group,
-  chipTop,
-  mutedTrips,
-  showTravelerDots,
-}: {
-  group: MobileReturnMarkerGroup;
-  chipTop: number;
-  mutedTrips: boolean;
-  /** Only worth the space when more than one traveller is on screen. */
-  showTravelerDots: boolean;
-}) {
-  const { region, top, entries, travelerIndices, maxDays, allowance } = group;
-  const { lineBase, lineOpacity } = returnMarkerColors(maxDays, allowance);
+  region,
+  top,
+  entries,
+  travelerIndices,
+  maxDays,
+  allowance,
+  slot,
+}: MobileReturnMarkerGroup & MarkerPlacement) {
+  const isGenerous = maxDays >= allowance / 3;
+  const lineBase = isGenerous ? tokens.green : tokens.amber;
+  const textColor = isGenerous ? tokens.greenText : tokens.amberText;
+  const bgColor = isGenerous ? tokens.greenBg : tokens.amberBg;
+
+  // Opacity mirrors desktop logic, keyed to the smallest threshold in the group.
+  const minDays = Math.min(...entries.map((e) => e.days));
+  const isMajor = thresholdsFor(allowance).indexOf(minDays) % 2 === 1;
+  const lineOpacity = isMajor ? 0.35 : 0.18;
+  const pillOpacity = isMajor ? 1 : 0.65;
 
   // Deduplicate entries by traveler, keeping only the max-threshold entry per
   // traveler. This mirrors the pill logic: only the best reachable value matters.
@@ -529,7 +537,7 @@ function MobileReturnMarker({
   });
   const dedupedEntries = [...perTraveler.values()].sort((a, b) => a.top - b.top);
 
-  // Tooltip: the destination, then a per-traveler list (same format for one or many).
+  // Tooltip: always a per-traveler list (same format for one or many).
   const tooltipTitle = (
     <Box component="div">
       <Box component="div" sx={{ mb: "3px", fontWeight: 700 }}>
@@ -548,53 +556,134 @@ function MobileReturnMarker({
   );
 
   return (
-    <>
-      <MarkerGuideLine
-        top={top}
-        left={MARKER_GUTTER_PX}
-        kind="return"
-        color={lineBase}
-        opacity={mutedTrips ? Math.min(1, lineOpacity * 2) : lineOpacity}
-        zIndex={mutedTrips ? 4 : 1}
+    <Box
+      sx={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top,
+        pointerEvents: "none",
+        zIndex: 1,
+      }}
+    >
+      {/* Dashed threshold line */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: 0,
+          borderTop: `1px dashed ${alpha(lineBase, lineOpacity)}`,
+        }}
       />
-      <ReturnGutterChip
-        top={chipTop}
-        left={CARD_GUTTER + 2}
-        width={MARKER_GUTTER_PX - CARD_GUTTER - 4}
-        regionName={regionMarkerName(region)}
-        days={maxDays}
-        allowance={allowance}
-        tooltip={tooltipTitle}
-        leading={showTravelerDots ? travelerIndices.map((idx) => (
+
+      {/* Pill: traveller colour dots + max threshold.
+          The absolute positioning lives on the outer Box so that the span
+          MobileAwareTooltip inserts has a measurable size for Popper to anchor. */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: CARD_GUTTER + 2 + slot * RETURN_CHIP_SLOT_PX,
+          top: 0,
+          transform: "translateY(-50%)",
+          zIndex: 2,
+        }}
+      >
+        <MobileAwareTooltip
+          title={tooltipTitle}
+          placement="bottom-start"
+          arrow
+          componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
+        >
           <Box
-            key={idx}
             sx={{
-              width: 4,
-              height: 4,
-              borderRadius: "50%",
-              bgcolor: getTravelerColor(idx),
-              flexShrink: 0,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "3px",
+              px: "5px",
+              py: "2px",
+              borderRadius: "100px",
+              bgcolor: bgColor,
+              border: `1px dashed ${alpha(lineBase, 0.25)}`,
+              pointerEvents: "auto",
+              cursor: "default",
+              opacity: pillOpacity,
             }}
-          />
-        )) : undefined}
-      />
-    </>
+          >
+            {travelerIndices.map((idx) => (
+              <Box
+                key={idx}
+                sx={{
+                  width: 4,
+                  height: 4,
+                  borderRadius: "50%",
+                  bgcolor: getTravelerColor(idx),
+                  flexShrink: 0,
+                }}
+              />
+            ))}
+
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.52rem",
+                fontWeight: 600,
+                color: alpha(textColor, pillOpacity * 0.85),
+                lineHeight: 1,
+                whiteSpace: "nowrap",
+                userSelect: "none",
+              }}
+            >
+              {regionMarkerName(region)}
+            </Typography>
+
+            <Typography
+              sx={{
+                fontFamily: tokens.fontBody,
+                fontSize: "0.52rem",
+                fontWeight: 700,
+                letterSpacing: "0.04em",
+                color: alpha(textColor, pillOpacity),
+                lineHeight: 1,
+                userSelect: "none",
+              }}
+            >
+              {maxDays}d
+            </Typography>
+
+            <InfoOutlinedIcon
+              sx={{
+                fontSize: "0.55rem",
+                color: alpha(textColor, pillOpacity * 0.7),
+                flexShrink: 0,
+              }}
+            />
+          </Box>
+        </MobileAwareTooltip>
+      </Box>
+    </Box>
   );
 }
 
 // ─── Mobile aging marker ──────────────────────────────────────────────────────
 
 function MobileAgingMarker({
-  group,
-  chipTop,
-  mutedTrips,
-}: {
-  group: MobileAgingMarkerGroup;
-  chipTop: number;
-  mutedTrips: boolean;
-}) {
-  const { region, top, markers } = group;
+  region,
+  top,
+  markers,
+  slot,
+  prominent,
+}: MobileAgingMarkerGroup & MarkerPlacement & { prominent: boolean }) {
+  // Faint behind the trip cards; darker while the cards are muted, when the
+  // label sits over a grey tile and is the thing being read.
+  const LINE_OPACITY = prominent ? 0.4 : 0.12;
+  const TEXT_OPACITY = prominent ? 0.95 : 0.4;
+
   const isSingle = markers.length === 1;
+  const centreLabel = isSingle
+    ? `${markers[0].destination} ages out`
+    : `${markers.length} Trips Age Out`;
 
   // Tooltip: always a per-trip list followed by the behaviour note (same
   // format for one trip or many).
@@ -615,25 +704,127 @@ function MobileAgingMarker({
     </Box>
   );
 
-  return (
+  // Right-side pill: "+Xd" for a single trip; info icon only for multiples.
+  const pillContent = isSingle ? (
     <>
-      <MarkerGuideLine
-        top={top}
-        left={MARKER_GUTTER_PX}
-        kind="aging"
-        color={tokens.textSoft}
-        opacity={mutedTrips ? 0.55 : 0.25}
-        zIndex={mutedTrips ? 4 : 1}
-      />
-      <AgingGutterChip
-        top={chipTop}
-        left={CARD_GUTTER + 2}
-        width={MARKER_GUTTER_PX - CARD_GUTTER - 4}
-        title={isSingle ? markers[0].destination : `${markers.length} trips`}
-        tripDays={isSingle ? markers[0].tripDays : null}
-        tooltip={tooltipTitle}
+      <Typography
+        sx={{
+          fontFamily: tokens.fontBody,
+          fontSize: "0.5rem",
+          fontWeight: 700,
+          letterSpacing: "0.04em",
+          color: alpha(tokens.textSoft, 0.7),
+          lineHeight: 1,
+          userSelect: "none",
+        }}
+      >
+        +{markers[0].tripDays}d
+      </Typography>
+      <InfoOutlinedIcon
+        sx={{ fontSize: "0.55rem", color: alpha(tokens.textGhost, 0.5), flexShrink: 0 }}
       />
     </>
+  ) : (
+    <>
+      <InfoOutlinedIcon
+        sx={{ fontSize: "0.6rem", color: alpha(tokens.textGhost, 0.6), flexShrink: 0 }}
+      />
+    </>
+  );
+
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top,
+        pointerEvents: "none",
+        zIndex: 1,
+      }}
+    >
+      {/* Dotted line with centred label — first slot only, so two
+          destinations aging out on nearby dates don't overprint labels. */}
+      {slot === 0 && (
+      <Box
+        sx={{
+          position: "absolute",
+          left: CARD_GUTTER + 2,
+          right: 36,
+          top: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+        }}
+      >
+        <Box
+          sx={{
+            flex: 1,
+            height: 0,
+            borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
+          }}
+        />
+        <Typography
+          sx={{
+            fontFamily: tokens.fontBody,
+            fontSize: "0.52rem",
+            fontWeight: 600,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: alpha(prominent ? tokens.textSoft : tokens.textGhost, TEXT_OPACITY),
+            whiteSpace: "nowrap",
+            lineHeight: 1,
+            userSelect: "none",
+            flexShrink: 0,
+          }}
+        >
+          {centreLabel}
+        </Typography>
+        <Box
+          sx={{
+            flex: 1,
+            height: 0,
+            borderTop: `1px dotted ${alpha(tokens.textGhost, LINE_OPACITY)}`,
+          }}
+        />
+      </Box>
+      )}
+
+      {/* Right-side info pill — same anchor-sizing fix as return marker above. */}
+      <Box
+        sx={{
+          position: "absolute",
+          right: CARD_GUTTER + 2 + slot * AGING_CHIP_SLOT_PX,
+          top: 0,
+          transform: "translateY(-50%)",
+          zIndex: 2,
+        }}
+      >
+        <MobileAwareTooltip
+          title={tooltipTitle}
+          placement="bottom-start"
+          arrow
+          componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
+        >
+          <Box
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "2px",
+              px: "5px",
+              py: "1.5px",
+              borderRadius: "100px",
+              bgcolor: tokens.mist,
+              border: `1px dotted ${alpha(tokens.textGhost, 0.15)}`,
+              pointerEvents: "auto",
+              cursor: "default",
+            }}
+          >
+            {pillContent}
+          </Box>
+        </MobileAwareTooltip>
+      </Box>
+    </Box>
   );
 }
 
@@ -740,29 +931,14 @@ export function MobileTimelineView({
     return byRegion(unique).flatMap(groupAgingMarkers);
   }, [visibleMarkers]);
 
-  // Gutter placement: return chips first, then aging chips, in one stack.
-  const gutterTops = useMemo(
-    () =>
-      stackGutterItems(
-        [
-          ...returnMarkerGroups.map((g) => ({
-            anchor: g.top,
-            height: RETURN_CHIP_HEIGHT,
-            firstRowHeight: RETURN_CHIP_HEIGHT,
-          })),
-          ...agingMarkerGroups.map((g) => ({
-            anchor: g.top,
-            height: AGING_CHIP_HEIGHT,
-            firstRowHeight: AGING_CHIP_FIRST_ROW,
-          })),
-        ],
-        GUTTER_CHIP_GAP,
-      ),
-    [returnMarkerGroups, agingMarkerGroups],
+  const returnSlots = useMemo(
+    () => assignChipSlots(returnMarkerGroups.map((g) => g.top), CHIP_MIN_GAP_PX),
+    [returnMarkerGroups],
   );
-  const returnTops = gutterTops.slice(0, returnMarkerGroups.length);
-  const agingTops = gutterTops.slice(returnMarkerGroups.length);
-  const gutterPx = gutterTops.length > 0 ? MARKER_GUTTER_PX : 0;
+  const agingSlots = useMemo(
+    () => assignChipSlots(agingMarkerGroups.map((g) => g.top), CHIP_MIN_GAP_PX),
+    [agingMarkerGroups],
+  );
 
   const contentHeight = useMemo(() => {
     const tripBottom =
@@ -770,12 +946,16 @@ export function MobileTimelineView({
         ? 0
         : Math.max(...positionedTrips.map((p) => p.top + p.height));
 
+    const allMarkerTops = [
+      ...returnMarkerGroups.map((g) => g.top),
+      ...agingMarkerGroups.map((g) => g.top),
+    ];
     const markerBottom =
-      gutterTops.length === 0 ? 0 : Math.max(...gutterTops) + AGING_CHIP_HEIGHT;
+      allMarkerTops.length === 0 ? 0 : Math.max(...allMarkerTops);
 
     const maxBottom = Math.max(tripBottom, markerBottom);
     return maxBottom === 0 ? 600 : maxBottom + 24;
-  }, [positionedTrips, gutterTops]);
+  }, [positionedTrips, returnMarkerGroups, agingMarkerGroups]);
 
   // Markers are computed up to timelineEnd, so the last chips can sit right
   // at its bottom edge. Draw the timeline (date ruler included) far enough
@@ -888,27 +1068,34 @@ export function MobileTimelineView({
               </Box>
             )}
 
-            {/* Markers: guide lines across the trips (behind the cards, or
-                over them while cards are muted) and chips in the gutter. */}
-            {!allHidden &&
-              returnMarkerGroups.map((group, i) => (
-                <MobileReturnMarker
-                  key={`ret-${group.region}-${group.top}-${group.maxDays}`}
-                  group={group}
-                  chipTop={returnTops[i]}
-                  mutedTrips={mutedTrips}
-                  showTravelerDots={visibleMarkers.length > 1}
-                />
-              ))}
-            {!allHidden &&
-              agingMarkerGroups.map((group, i) => (
-                <MobileAgingMarker
-                  key={`aging-${group.region}-${group.top}-${group.markers.length}`}
-                  group={group}
-                  chipTop={agingTops[i]}
-                  mutedTrips={mutedTrips}
-                />
-              ))}
+            {/* Markers — below the trip cards (zIndex 3), or above them while
+                the cards are muted to plain tiles. */}
+            {!allHidden && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  pointerEvents: "none",
+                  zIndex: mutedTrips ? 4 : 1,
+                }}
+              >
+                {returnMarkerGroups.map((group, i) => (
+                  <MobileReturnMarker
+                    key={`ret-${group.region}-${group.top}-${group.maxDays}`}
+                    {...group}
+                    slot={returnSlots[i]}
+                  />
+                ))}
+                {agingMarkerGroups.map((group, i) => (
+                  <MobileAgingMarker
+                    key={`aging-${group.region}-${group.top}-${group.markers.length}`}
+                    {...group}
+                    slot={agingSlots[i]}
+                    prominent={mutedTrips}
+                  />
+                ))}
+              </Box>
+            )}
 
             {/* Trip cards — zIndex 3, above markers */}
             {positionedTrips.map((positioned) => {
@@ -923,9 +1110,8 @@ export function MobileTimelineView({
                     position: "absolute",
                     top,
                     height: height - LANE_GAP,
-                    // Lanes share the canvas width right of the marker gutter.
-                    left: `calc(${gutterPx}px + (100% - ${gutterPx}px) * ${leftPct / 100} + ${CARD_GUTTER}px)`,
-                    width: `calc((100% - ${gutterPx}px) * ${pct / 100} - ${CARD_GUTTER * 2}px)`,
+                    left: `calc(${leftPct}% + ${CARD_GUTTER}px)`,
+                    width: `calc(${pct}% - ${CARD_GUTTER * 2}px)`,
                     zIndex: 3,
                   }}
                 >

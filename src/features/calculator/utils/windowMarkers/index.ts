@@ -23,8 +23,7 @@ export {
   AGING_MARKER_EXPLANATION,
 } from "./markerTooltips";
 
-export type { GutterItem } from "./markerLayout";
-export { regionMarkerName, stackGutterItems } from "./markerLayout";
+export { regionMarkerName, assignChipSlots } from "./markerLayout";
 
 export interface WindowMarkers {
   returnMarkers: ReturnMarker[];
