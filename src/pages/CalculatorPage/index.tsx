@@ -7,7 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import type { Traveler, Trip, ShareableState } from "@/types";
 import { VisaRegion, VISA_REGION_LABELS } from "@/types";
 import { tokens } from "@/styles/theme";
-import { useUrlSync } from "@/features/sharing";
+import { useUrlSync, hasRollingWindowParam } from "@/features/sharing";
 import {
   CalculatorNav,
   TimelineView,
@@ -16,6 +16,9 @@ import {
   ClearAllModal,
 } from "./components";
 import { ShareModal } from "./components/ShareModal";
+import { RollingWindowModal } from "./components/RollingWindowModal";
+import { listExplorerDestinations } from "@/features/calculator/utils/rollingWindowExplorer";
+import { todayISO } from "@/features/calculator/utils/dates";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { MobileTimelineView } from "./components/mobile/MobileTimelineView/MobileTimelineView";
 import { TravelerFilterBar } from "./components/mobile/TravelerFilterBar";
@@ -31,6 +34,7 @@ import { MutedTripsToggle } from "./components/timeline/MutedTripsToggle";
 import { useMutedTrips } from "./components/timeline/useMutedTrips";
 
 const MIN_LOAD_MS = 650;
+const MOBILE_QUERY = "(max-width:599.95px)";
 const FADE_MS = 300;
 
 const fadeIn = keyframes`from { opacity: 0; } to { opacity: 1; }`;
@@ -60,11 +64,21 @@ function makeTraveler(name: string, passportCode: string | null = null): Travele
 }
 
 export function CalculatorPage() {
-  const isMobile = useMediaQuery("(max-width:599.95px)");
+  const isMobile = useMediaQuery(MOBILE_QUERY);
 
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
+  // Opens straight away from a shared link carrying `rw`, but never on mobile:
+  // there the link lands on the timeline (and the flag drops from the URL).
+  // matchMedia is read directly because useMediaQuery reports false on the
+  // first render, which would flash the explorer open on a phone.
+  const [rollingWindowOpen, setRollingWindowOpen] = useState(
+    () =>
+      hasRollingWindowParam(window.location.search) &&
+      !window.matchMedia(MOBILE_QUERY).matches,
+  );
+  const explorerOpen = rollingWindowOpen && !isMobile;
   const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
   const [clearAllConfirmOpen, setClearAllConfirmOpen] = useState(false);
 
@@ -116,6 +130,7 @@ export function CalculatorPage() {
     state: shareableState,
     onHydrate: (s) => setTravelers(s.travelers),
     onHydrated: () => setHydrationDone(true),
+    rollingWindow: explorerOpen,
   });
 
   // ── Traveler actions ────────────────────────────────────────────────────────
@@ -333,6 +348,16 @@ export function CalculatorPage() {
     [],
   );
 
+  const hasRollingWindowTrips = useMemo(
+    () => listExplorerDestinations(travelers, todayISO()).some((d) => d.supported),
+    [travelers],
+  );
+
+  const handleOpenRollingWindow = useCallback(() => {
+    trackEvent("rolling_window_opened", { traveler_count: travelers.length });
+    setRollingWindowOpen(true);
+  }, [travelers.length]);
+
   // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
@@ -356,6 +381,8 @@ export function CalculatorPage() {
         onShare={() => setShareModalOpen(true)}
         onClearAll={() => setClearAllConfirmOpen(true)}
         onOpenUtility={() => setUtilityDrawerOpen(true)}
+        onOpenRollingWindow={handleOpenRollingWindow}
+        rollingWindowDisabled={!hasRollingWindowTrips}
       />
 
       <Box sx={{ flex: 1, position: "relative", overflow: "hidden" }}>
@@ -517,6 +544,15 @@ export function CalculatorPage() {
         onClose={() => setShareModalOpen(false)}
         travelerCount={travelers.length}
       />
+
+      {/* Rolling window explorer — desktop only (wide horizontal timeline) */}
+      {!isMobile && (
+        <RollingWindowModal
+          open={explorerOpen && hydrationDone}
+          onClose={() => setRollingWindowOpen(false)}
+          travelers={travelers}
+        />
+      )}
 
       {/* Mobile share frame — full-screen, opened from the utility drawer */}
       <ShareFrame
