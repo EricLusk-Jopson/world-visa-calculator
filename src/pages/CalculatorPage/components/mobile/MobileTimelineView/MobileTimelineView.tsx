@@ -27,6 +27,7 @@ import { DateSidebar } from "../../timeline/DateSidebar";
 import { type PositionedTrip, assignLanes } from "./mobileTripLayout";
 import { getSchengenRule } from "@/data/regions/schengen";
 import { type MarkerDetail, MarkerDetailDrawer } from "../MarkerDetailDrawer";
+import { ReturnVisitText, AgingTripText } from "../../timeline/MarkerText";
 import {
   type AgingMarker,
   type WindowMarkers,
@@ -34,9 +35,6 @@ import {
   assignChipSlots,
   thresholdsFor,
   regionMarkerName,
-  returnMarkerRowText,
-  agingMarkerTripLine,
-  AGING_MARKER_EXPLANATION,
 } from "@/features/calculator/utils/windowMarkers";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -87,10 +85,15 @@ interface MobileReturnMarkerGroup {
  * earliest marker. When more than one trip is in the group the centre label
  * reads "X Trips Age Out" instead of the trip destination.
  */
+/** An aging marker with every visible traveller whose trip it is. */
+type SharedAgingMarker = AgingMarker & {
+  travelers: { index: number; name: string }[];
+};
+
 interface MobileAgingMarkerGroup {
   region: VisaRegion;
   top: number;
-  markers: AgingMarker[];
+  markers: SharedAgingMarker[];
 }
 
 /** Horizontal slot, resolved for the whole view, and the tap handler. */
@@ -194,7 +197,7 @@ function groupReturnMarkers(
  * logic as return markers.
  */
 function groupAgingMarkers(
-  markers: AgingMarker[],
+  markers: SharedAgingMarker[],
 ): MobileAgingMarkerGroup[] {
   if (markers.length === 0) return [];
 
@@ -206,7 +209,7 @@ function groupAgingMarkers(
     if (visited.has(i)) continue;
     visited.add(i);
     const anchor = sorted[i];
-    const group: AgingMarker[] = [anchor];
+    const group: SharedAgingMarker[] = [anchor];
 
     for (let j = i + 1; j < sorted.length; j++) {
       if (visited.has(j)) continue;
@@ -531,21 +534,21 @@ function MobileReturnMarker({
   const lineOpacity = isMajor ? 0.35 : 0.18;
   const pillOpacity = isMajor ? 1 : 0.65;
 
-  // Deduplicate entries by traveler, keeping only the max-threshold entry per
-  // traveler. This mirrors the pill logic: only the best reachable value matters.
-  const perTraveler = new Map<number, ReturnMarkerEntry>();
-  entries.forEach((e) => {
-    const existing = perTraveler.get(e.travelerIndex);
-    if (!existing || e.days > existing.days) perTraveler.set(e.travelerIndex, e);
-  });
-  const dedupedEntries = [...perTraveler.values()].sort((a, b) => a.top - b.top);
-
-  // Details: the destination, then one sentence per traveler (same format
-  // for one or many).
+  // Details: one line per duration (longest first), naming every traveller
+  // it applies to in their colour.
   const detail: MarkerDetail = {
     title: VISA_REGION_LABELS[region],
-    lines: dedupedEntries.map((e) =>
-      returnMarkerRowText(e.travelerName, e.date, e.days),
+    body: (
+      <ReturnVisitText
+        entries={entries.map((e) => ({
+          date: e.date,
+          days: e.days,
+          traveler: {
+            name: e.travelerName,
+            color: getTravelerColor(e.travelerIndex),
+          },
+        }))}
+      />
     ),
   };
 
@@ -675,14 +678,23 @@ function MobileAgingMarker({
     ? `${markers[0].destination} ages out`
     : `${markers.length} Trips Age Out`;
 
-  // Details: one sentence per trip, then the behaviour note (same format for
-  // one trip or many).
+  // Details: per trip, when it starts leaving the window, how many days that
+  // returns and to whom, and when the last of them is back.
   const detail: MarkerDetail = {
-    title: centreLabel,
-    lines: markers.map((m) =>
-      agingMarkerTripLine(region, m.destination, m.tripDays, m.date),
-    ),
-    note: AGING_MARKER_EXPLANATION,
+    title: VISA_REGION_LABELS[region],
+    body: markers.map((m, i) => (
+      <Box key={i}>
+        <AgingTripText
+          agingDate={m.date}
+          destination={m.destination}
+          tripDays={m.tripDays}
+          travelers={m.travelers.map((t) => ({
+            name: t.name,
+            color: getTravelerColor(t.index),
+          }))}
+        />
+      </Box>
+    )),
   };
 
   // Right-side pill: "+Xd" for a single trip; info icon only for multiples.
@@ -893,20 +905,21 @@ export function MobileTimelineView({
 
   // ── Aging marker groups (deduplicated + 6-day rollup, per destination) ────
   const agingMarkerGroups = useMemo((): MobileAgingMarkerGroup[] => {
-    const seen = new Set<string>();
-    const unique: AgingMarker[] = [];
+    // A shared trip ages out for each traveller on it: one marker, with
+    // everyone it returns days to.
+    const byTrip = new Map<string, SharedAgingMarker>();
 
-    visibleMarkers.forEach(({ markers }) => {
+    visibleMarkers.forEach(({ index, traveler, markers }) => {
       markers.agingMarkers.forEach((m) => {
         const key = `${m.region}|${m.entryDate}|${m.exitDate}`;
-        if (!seen.has(key)) {
-          seen.add(key);
-          unique.push(m);
-        }
+        const shared = byTrip.get(key);
+        const who = { index, name: traveler.name };
+        if (shared) shared.travelers.push(who);
+        else byTrip.set(key, { ...m, travelers: [who] });
       });
     });
 
-    return byRegion(unique).flatMap(groupAgingMarkers);
+    return byRegion([...byTrip.values()]).flatMap(groupAgingMarkers);
   }, [visibleMarkers]);
 
   const returnSlots = useMemo(

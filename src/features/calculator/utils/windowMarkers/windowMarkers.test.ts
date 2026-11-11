@@ -10,8 +10,11 @@ import {
   assignChipSlots,
   returnMarkerThresholdText,
   returnMarkerCurrentText,
-  returnMarkerRowText,
-  agingMarkerTripLine,
+  returnVisitLead,
+  agingLeadParts,
+  agingReturnsLead,
+  agingMarkerSubtext,
+  nameSeparator,
 } from ".";
 
 const START = parseDate("2026-01-01");
@@ -174,14 +177,28 @@ describe("marker text", () => {
     expect(returnMarkerCurrentText(VisaRegion.Turkiye, 60)).toBe(
       "Currently, a visit of up to 60 days to Türkiye is possible.",
     );
-    expect(returnMarkerRowText("Alex", jul19, 30)).toBe(
-      "Alex: from Jul 19, a 30-day visit is possible once again.",
+    expect(returnVisitLead(jul19, 90)).toBe(
+      "From Jul 19, a 90-day visit is possible once again for",
     );
-    expect(agingMarkerTripLine(VisaRegion.Schengen, "Iceland", 8, jul19)).toBe(
-      "From Jul 19, Iceland (8 days) begins to age out of your Schengen Area window.",
+  });
+
+  it("words age-outs around the trip name and who gets days back", () => {
+    const { before, after } = agingLeadParts(parseDate("2026-09-17"));
+    expect(`${before}Bosnia${after} ${agingReturnsLead(4)} Me and Wifey.`).toBe(
+      "On Sep 17, Bosnia begins to fall outside the rolling window. This returns 4 days to Me and Wifey.",
     );
-    expect(agingMarkerTripLine(VisaRegion.Albania, "Tirana", 1, jul19)).toBe(
-      "From Jul 19, Tirana (1 day) begins to age out of your Albania window.",
+    expect(agingReturnsLead(1)).toBe("This returns 1 day to");
+    expect(agingMarkerSubtext(parseDate("2026-09-17"), 4)).toBe(
+      "Its days come back one at a time, in the order they were spent: the first on Sep 17, the last on Sep 20.",
     );
+    expect(agingMarkerSubtext(parseDate("2026-09-17"), 1)).toBeNull();
+  });
+
+  it("lists names as A, B and C", () => {
+    const join = (names: string[]) =>
+      names.map((n, i) => nameSeparator(i, names.length) + n).join("");
+    expect(join(["Me"])).toBe("Me");
+    expect(join(["Me", "Wifey"])).toBe("Me and Wifey");
+    expect(join(["A", "B", "C"])).toBe("A, B and C");
   });
 });

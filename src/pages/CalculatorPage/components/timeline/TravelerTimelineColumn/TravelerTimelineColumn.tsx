@@ -34,12 +34,11 @@ import {
   type WindowMarkers,
   returnMarkerCurrentText,
   returnMarkerThresholdText,
-  agingMarkerTripLine,
-  AGING_MARKER_EXPLANATION,
   thresholdsFor,
   assignChipSlots,
   regionMarkerName,
 } from "@/features/calculator/utils/windowMarkers";
+import { AgingTripText } from "../MarkerText";
 import { computeOverstayTripIds } from "../../trips/tripDuration";
 import { tripGroupKey } from "../../trips/tripHelpers";
 import { getSchengenRule } from "@/data/regions/schengen";
@@ -217,20 +216,27 @@ function MarkerLine({
  * on a nearby date) draws only its pill, so the labels don't collide.
  */
 function AgingMarkerLine({
-  region,
   date,
   top,
   tripDays,
   destination,
   slot,
   prominent,
-}: AgingMarker & { slot: number; prominent: boolean }) {
+  travelerName,
+}: AgingMarker & { slot: number; prominent: boolean; travelerName: string }) {
   // Faint behind the trip cards; darker while the cards are muted, when the
   // label sits over a grey tile and is the thing being read.
   const LINE_OPACITY = prominent ? 0.4 : 0.12;
   const TEXT_OPACITY = prominent ? 0.95 : 0.4;
 
-  const tooltipText = `${agingMarkerTripLine(region, destination, tripDays, date)} ${AGING_MARKER_EXPLANATION}`;
+  const tooltipText = (
+    <AgingTripText
+      agingDate={date}
+      destination={destination}
+      tripDays={tripDays}
+      travelers={[{ name: travelerName }]}
+    />
+  );
   return (
     <Box
       sx={{
@@ -610,6 +616,7 @@ export function TravelerTimelineColumn({
             {...marker}
             slot={agingSlots[i]}
             prominent={mutedTrips}
+            travelerName={traveler.name}
           />
         ))}
       </Box>

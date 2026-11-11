@@ -18,9 +18,11 @@ export {
 export {
   returnMarkerCurrentText,
   returnMarkerThresholdText,
-  returnMarkerRowText,
-  agingMarkerTripLine,
-  AGING_MARKER_EXPLANATION,
+  returnVisitLead,
+  agingLeadParts,
+  agingReturnsLead,
+  agingMarkerSubtext,
+  nameSeparator,
 } from "./markerTooltips";
 
 export { regionMarkerName, regionVisitName, assignChipSlots } from "./markerLayout";
