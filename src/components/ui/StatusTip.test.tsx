@@ -59,15 +59,19 @@ describe("StatusTip", () => {
     expect(byText("Entry rule source")).toBeDefined();
     expect(sent.find((s) => s.event === "status_tip_opened")?.properties).toMatchObject({ kind: "eligibility", state: "visa" });
 
-    expect(document.querySelector('[data-testid="icon-guide"]')).toBeNull();
-    await act(async () => byText("Icon guide")!.click());
-    const guide = document.querySelector('[data-testid="icon-guide"]')!;
-    // The guide for the icon being explained comes first, then the other kind.
-    expect(guide.textContent).toMatch(/^Entry eligibility.*Visa required.*Stay duration.*Over the limit/);
-
     // The source opens its own details from inside the tooltip.
     await act(async () => byText("Entry rule source")!.click());
     expect(document.querySelector('[data-testid="source-links"]')).not.toBeNull();
+
+    // On desktop the guide opens in a sidebar, in place of the tooltip.
+    expect(document.querySelector('[data-testid="icon-guide"]')).toBeNull();
+    await act(async () => byText("Icon guide")!.click());
+    const guide = document.querySelector('[data-testid="icon-guide"]')!;
+    expect(guide.closest(".MuiDrawer-paper")).not.toBeNull();
+    // The guide for the icon being explained comes first, then the other kind.
+    expect(guide.textContent).toMatch(/^Entry eligibility.*Visa required.*Stay duration.*Over the limit/);
+    expect(guide.querySelector('[aria-current="true"]')?.textContent).toMatch(/^Visa required/);
+    expect(sent.find((s) => s.event === "icon_guide_opened")?.properties).toMatchObject({ kind: "eligibility", state: "visa" });
 
     expect(parentClick).not.toHaveBeenCalled();
   });
