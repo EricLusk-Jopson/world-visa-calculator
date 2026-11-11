@@ -12,6 +12,7 @@ import {
   encodeState,
   decodeState,
   buildShareableUrl,
+  hasRollingWindowParam,
 } from "./urlEncoding";
 import { VisaRegion } from "../../../types";
 import type { Trip, Traveler, ShareableState } from "../../../types";
@@ -427,6 +428,19 @@ describe("buildShareableUrl", () => {
       ],
     };
     const result = decodeState(buildShareableUrl(state));
+    expect(result.ok).toBe(true);
+    if (result.ok) expect(result.state.travelers[0].name).toBe("Emma");
+  });
+
+  it("flags the rolling window explorer without disturbing the state", () => {
+    const state: ShareableState = {
+      travelers: [traveler("Emma", [trip("2024-01-01", "2024-03-31")])],
+    };
+    const url = buildShareableUrl(state, { rollingWindow: true, nosave: true });
+    expect(hasRollingWindowParam(url)).toBe(true);
+    expect(url).toContain("nosave");
+    expect(hasRollingWindowParam(buildShareableUrl(state))).toBe(false);
+    const result = decodeState(url);
     expect(result.ok).toBe(true);
     if (result.ok) expect(result.state.travelers[0].name).toBe("Emma");
   });

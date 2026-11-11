@@ -7,7 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import type { Traveler, Trip, ShareableState } from "@/types";
 import { VisaRegion, VISA_REGION_LABELS } from "@/types";
 import { tokens } from "@/styles/theme";
-import { useUrlSync } from "@/features/sharing";
+import { useUrlSync, hasRollingWindowParam } from "@/features/sharing";
 import {
   CalculatorNav,
   TimelineView,
@@ -32,6 +32,7 @@ import { ShareFrame } from "./components/mobile/ShareFrame";
 import { ClearAllDrawer } from "./components/mobile/ClearAllDrawer";
 
 const MIN_LOAD_MS = 650;
+const MOBILE_QUERY = "(max-width:599.95px)";
 const FADE_MS = 300;
 
 const fadeIn = keyframes`from { opacity: 0; } to { opacity: 1; }`;
@@ -61,12 +62,21 @@ function makeTraveler(name: string, passportCode: string | null = null): Travele
 }
 
 export function CalculatorPage() {
-  const isMobile = useMediaQuery("(max-width:599.95px)");
+  const isMobile = useMediaQuery(MOBILE_QUERY);
 
   const [travelers, setTravelers] = useState<Traveler[]>([]);
   const [modal, setModal] = useState<ModalState>(CLOSED_MODAL);
   const [shareModalOpen, setShareModalOpen] = useState(false);
-  const [rollingWindowOpen, setRollingWindowOpen] = useState(false);
+  // Opens straight away from a shared link carrying `rw`, but never on mobile:
+  // there the link lands on the timeline (and the flag drops from the URL).
+  // matchMedia is read directly because useMediaQuery reports false on the
+  // first render, which would flash the explorer open on a phone.
+  const [rollingWindowOpen, setRollingWindowOpen] = useState(
+    () =>
+      hasRollingWindowParam(window.location.search) &&
+      !window.matchMedia(MOBILE_QUERY).matches,
+  );
+  const explorerOpen = rollingWindowOpen && !isMobile;
   const [hiddenTravelerIds, setHiddenTravelerIds] = useState<string[]>([]);
   const [clearAllConfirmOpen, setClearAllConfirmOpen] = useState(false);
 
@@ -117,6 +127,7 @@ export function CalculatorPage() {
     state: shareableState,
     onHydrate: (s) => setTravelers(s.travelers),
     onHydrated: () => setHydrationDone(true),
+    rollingWindow: explorerOpen,
   });
 
   // ── Traveler actions ────────────────────────────────────────────────────────
@@ -528,7 +539,7 @@ export function CalculatorPage() {
       {/* Rolling window explorer — desktop only (wide horizontal timeline) */}
       {!isMobile && (
         <RollingWindowModal
-          open={rollingWindowOpen}
+          open={explorerOpen && hydrationDone}
           onClose={() => setRollingWindowOpen(false)}
           travelers={travelers}
         />

@@ -6,6 +6,9 @@ import IconButton from "@mui/material/IconButton";
 import { alpha } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { tokens } from "@/styles/theme";
 import type { Traveler, VisaRegion } from "@/types";
 import { VISA_REGION_LABELS } from "@/types";
@@ -60,7 +63,7 @@ interface ActiveDestination {
 
 const MAX_ACTIVE = JURISDICTION_PALETTE.length;
 
-// Typed dates go through intermediate values like "0002-03-04"; ignore those.
+// Typed years pass through values like 0002 on the way to 2024; ignore those.
 const MIN_YEAR = 1990;
 const MAX_YEAR = 2100;
 const MIN_RANGE_DAYS = 30;
@@ -105,19 +108,23 @@ const CARD_SX = {
   boxShadow: "0 8px 30px rgba(0,0,0,0.06)",
 } as const;
 
-const DATE_INPUT_SX = {
-  flex: 1,
-  minWidth: 0,
-  px: "6px",
-  py: "6px",
-  border: `1px solid ${tokens.border}`,
-  borderRadius: "8px",
-  bgcolor: tokens.white,
-  color: tokens.text,
-  fontFamily: tokens.fontBody,
-  fontSize: "0.72rem",
-  colorScheme: "light",
-  "&:focus": { outline: `2px solid ${alpha(tokens.green, 0.4)}`, borderColor: tokens.green },
+const DATE_FORMAT = "dd/MM/yy";
+
+const DATE_FIELD_SX = {
+  width: "100%",
+  "& .MuiPickersInputBase-root, & .MuiOutlinedInput-root": {
+    fontFamily: tokens.fontBody,
+    fontSize: "0.75rem",
+    bgcolor: tokens.white,
+    borderRadius: "8px",
+    pl: "9px",
+    pr: "4px",
+  },
+  "& .MuiPickersSectionList-root, & .MuiOutlinedInput-input": { py: "7px" },
+  "& .MuiInputAdornment-root": { ml: "2px" },
+  "& .MuiPickersOutlinedInput-notchedOutline, & fieldset": { borderColor: tokens.border },
+  "& .MuiIconButton-root": { p: "3px", mr: 0 },
+  "& .MuiSvgIcon-root": { fontSize: "1rem" },
 } as const;
 
 const TEXT_BUTTON_SX = {
@@ -132,6 +139,19 @@ const TEXT_BUTTON_SX = {
   py: "5px",
   cursor: "pointer",
   "&:hover:not(:disabled)": { bgcolor: tokens.mist },
+  "&:disabled": { color: tokens.textGhost, cursor: "default" },
+} as const;
+
+const TEXT_ONLY_BUTTON_SX = {
+  p: 0,
+  border: "none",
+  bgcolor: "transparent",
+  color: tokens.greenText,
+  fontFamily: tokens.fontBody,
+  fontSize: "0.72rem",
+  fontWeight: 600,
+  cursor: "pointer",
+  "&:hover:not(:disabled)": { textDecoration: "underline" },
   "&:disabled": { color: tokens.textGhost, cursor: "default" },
 } as const;
 
@@ -297,7 +317,10 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
     );
   }
 
-  function setBound(which: keyof DateBounds, value: string) {
+  function setBound(which: keyof DateBounds, date: Date | null) {
+    // The picker reports partial or invalid entries while typing; skip those.
+    if (!date || Number.isNaN(date.getTime())) return;
+    const value = formatDate(date);
     if (!isUsableDate(value)) return;
     const next = { ...bounds, [which]: value };
     if (differenceInCalendarDays(parseDate(next.end), parseDate(next.start)) < MIN_RANGE_DAYS) return;
@@ -384,40 +407,42 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
           }}
         >
           <Box>
-            <Typography sx={SIDEBAR_HEADING_SX}>Date range</Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", px: "2px" }}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                <Box
-                  component="input"
-                  type="date"
-                  aria-label="From"
-                  value={bounds.start}
-                  max={formatDate(addDays(parseDate(bounds.end), -MIN_RANGE_DAYS))}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBound("start", e.target.value)}
-                  sx={DATE_INPUT_SX}
-                />
-                <Box component="span" aria-hidden="true" sx={{ color: tokens.textSoft, fontSize: "0.75rem" }}>
-                  –
-                </Box>
-                <Box
-                  component="input"
-                  type="date"
-                  aria-label="To"
-                  value={bounds.end}
-                  min={formatDate(addDays(parseDate(bounds.start), MIN_RANGE_DAYS))}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBound("end", e.target.value)}
-                  sx={DATE_INPUT_SX}
-                />
-              </Box>
+            <Box sx={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "8px" }}>
+              <Typography sx={SIDEBAR_HEADING_SX}>Date range</Typography>
               <Box
                 component="button"
                 onClick={() => setCustomBounds(null)}
                 disabled={customBounds === null}
-                sx={{ ...TEXT_BUTTON_SX, alignSelf: "flex-start" }}
+                sx={TEXT_ONLY_BUTTON_SX}
               >
                 Fit to all trips
               </Box>
             </Box>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: "6px", px: "2px" }}>
+                <Box role="group" aria-label="From" sx={{ flex: 1, minWidth: 0 }}>
+                  <DatePicker
+                    format={DATE_FORMAT}
+                    value={parseDate(bounds.start)}
+                    maxDate={addDays(parseDate(bounds.end), -MIN_RANGE_DAYS)}
+                    onChange={(d) => setBound("start", d)}
+                    slotProps={{ textField: { size: "small", sx: DATE_FIELD_SX } }}
+                  />
+                </Box>
+                <Box component="span" aria-hidden="true" sx={{ color: tokens.textSoft, fontSize: "0.75rem" }}>
+                  –
+                </Box>
+                <Box role="group" aria-label="To" sx={{ flex: 1, minWidth: 0 }}>
+                  <DatePicker
+                    format={DATE_FORMAT}
+                    value={parseDate(bounds.end)}
+                    minDate={addDays(parseDate(bounds.start), MIN_RANGE_DAYS)}
+                    onChange={(d) => setBound("end", d)}
+                    slotProps={{ textField: { size: "small", sx: DATE_FIELD_SX } }}
+                  />
+                </Box>
+              </Box>
+            </LocalizationProvider>
           </Box>
 
           <Box role="group" aria-label="Destinations">

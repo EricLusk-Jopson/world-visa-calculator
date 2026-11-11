@@ -66,6 +66,8 @@ const PARAM_NAMES = "n";
 const PARAM_TRIPS = "t"; // used by both v1 (traveler blocks) and v2 (trip segments)
 const PARAM_PASSPORTS = "p"; // v2 only: comma-separated ISO Alpha-2 codes, "" = null
 const PARAM_TARGETS = "d"; // v2 only: comma-separated target-region overrides, "" = none
+/** View flag, not state: present when the rolling window explorer is open. */
+const PARAM_ROLLING_WINDOW = "rw";
 
 const V1_DELIM = {
   traveler: "|",
@@ -438,6 +440,8 @@ export interface BuildShareableUrlOptions {
    * useful for links posted publicly (blog posts, forums, social media).
    */
   nosave?: boolean;
+  /** Appends `rw`, so the link opens with the rolling window explorer showing. */
+  rollingWindow?: boolean;
 }
 
 /**
@@ -450,10 +454,19 @@ export const buildShareableUrl = (
   const qs = encodeState(state);
   const base = `${window.location.origin}${window.location.pathname}`;
   let url = qs ? `${base}?${qs}` : base;
+  if (options?.rollingWindow) {
+    url += url.includes("?") ? `&${PARAM_ROLLING_WINDOW}` : `?${PARAM_ROLLING_WINDOW}`;
+  }
   if (options?.nosave) {
     url += url.includes("?") ? "&nosave" : "?nosave";
   }
   return url;
+};
+
+/** True when a query string (or full URL) asks for the rolling window explorer. */
+export const hasRollingWindowParam = (input: string): boolean => {
+  const queryString = input.includes("?") ? input.split("?")[1] : input;
+  return new URLSearchParams(queryString).has(PARAM_ROLLING_WINDOW);
 };
 
 export type DecodeResult =
