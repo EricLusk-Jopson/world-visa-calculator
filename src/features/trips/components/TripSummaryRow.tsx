@@ -1,15 +1,13 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { tokens } from "@/styles/theme";
-import { DurationIcon } from "@/components/ui/DurationIcon";
+import { StatusTip } from "@/components/ui/StatusTip";
+import { legendEntry, type StatusKind, type StatusState } from "@/components/ui/statusLegend";
 
 export interface TripSummaryRowProps {
   label: string;
-  /** "eligibility" uses check/warning; "duration" uses clock/warning icons. */
+  /** "eligibility" uses check/warning; "duration" uses clock/warning icons. Each icon explains itself on hover or tap. */
   statusKind?: "eligibility" | "duration";
   okCount: number;
   /**
@@ -35,14 +33,17 @@ export interface TripSummaryRowProps {
   onClick: () => void;
 }
 
-function Count({ icon, value, color }: { icon: React.ReactNode; value: number; color: string }) {
+/** A status icon and how many travelers are in that status; hover or tap explains it. */
+function Count<K extends StatusKind>({ kind, state, value, color }: { kind: K; state: StatusState<K>; value: number; color: string }) {
   return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
-      {icon}
-      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color }}>
-        {value}
-      </Typography>
-    </Box>
+    <StatusTip kind={kind} state={state} count={value}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
+        {legendEntry(kind, state).icon("0.9rem")}
+        <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", fontWeight: 600, color }}>
+          {value}
+        </Typography>
+      </Box>
+    </StatusTip>
   );
 }
 
@@ -118,66 +119,22 @@ export function TripSummaryRow({
           )
         : (
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            {okCount > 0 && (
-              <Count
-                value={okCount}
-                color={tokens.green}
-                icon={
-                  isDuration ? (
-                    <DurationIcon state="safe" size="0.9rem" />
-                  ) : (
-                    <CheckCircleOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.green }} />
-                  )
-                }
-              />
-            )}
-            {temporaryCount > 0 && (
-              <Count
-                value={temporaryCount}
-                color={tokens.green}
-                icon={<DurationIcon state="safe" size="0.9rem" />}
-              />
-            )}
-            {cautionCount > 0 && (
-              <Count
-                value={cautionCount}
-                color={tokens.amberText}
-                icon={<DurationIcon state="caution" size="0.9rem" />}
-              />
-            )}
-            {dangerCount > 0 && (
-              <Count
-                value={dangerCount}
-                color={tokens.red}
-                icon={
-                  isDuration ? (
-                    <DurationIcon state="danger" size="0.9rem" />
-                  ) : (
-                    <WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />
-                  )
-                }
-              />
-            )}
-            {overstayCount > 0 && (
-              <Count
-                value={overstayCount}
-                color={tokens.red}
-                icon={<WarningAmberIcon sx={{ fontSize: "0.9rem", color: tokens.red }} />}
-              />
-            )}
-            {unknownCount > 0 && (
-              <Count
-                value={unknownCount}
-                color={tokens.textGhost}
-                icon={<HelpOutlineIcon sx={{ fontSize: "0.9rem", color: tokens.textGhost }} />}
-              />
-            )}
-            {homeCount > 0 && (
-              <Count
-                value={homeCount}
-                color={tokens.green}
-                icon={<DurationIcon state="home" size="0.9rem" />}
-              />
+            {isDuration ? (
+              <>
+                {okCount > 0 && <Count kind="duration" state="safe" value={okCount} color={tokens.green} />}
+                {cautionCount > 0 && <Count kind="duration" state="caution" value={cautionCount} color={tokens.amberText} />}
+                {dangerCount > 0 && <Count kind="duration" state="danger" value={dangerCount} color={tokens.red} />}
+                {overstayCount > 0 && <Count kind="duration" state="overstay" value={overstayCount} color={tokens.red} />}
+                {unknownCount > 0 && <Count kind="duration" state="untracked" value={unknownCount} color={tokens.textGhost} />}
+                {homeCount > 0 && <Count kind="duration" state="home" value={homeCount} color={tokens.green} />}
+              </>
+            ) : (
+              <>
+                {okCount > 0 && <Count kind="eligibility" state="ok" value={okCount} color={tokens.green} />}
+                {temporaryCount > 0 && <Count kind="eligibility" state="temporary" value={temporaryCount} color={tokens.green} />}
+                {dangerCount > 0 && <Count kind="eligibility" state="visa" value={dangerCount} color={tokens.red} />}
+                {unknownCount > 0 && <Count kind="eligibility" state="unknown" value={unknownCount} color={tokens.textGhost} />}
+              </>
             )}
           </Box>
         )}
