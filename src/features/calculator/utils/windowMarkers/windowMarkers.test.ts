@@ -8,6 +8,10 @@ import {
   resolveRollingWindow,
   thresholdsFor,
   assignChipSlots,
+  returnMarkerThresholdText,
+  returnMarkerCurrentText,
+  returnMarkerRowText,
+  agingMarkerTripLine,
 } from ".";
 
 const START = parseDate("2026-01-01");
@@ -154,5 +158,30 @@ describe("assignChipSlots", () => {
     expect(assignChipSlots([100, 105, 300, 108, 200], 15)).toEqual([
       0, 1, 0, 2, 0,
     ]);
+  });
+});
+
+describe("marker text", () => {
+  const jul19 = parseDate("2026-07-19");
+
+  it("spells durations out in full sentences", () => {
+    expect(returnMarkerThresholdText(VisaRegion.Montenegro, jul19, 90)).toBe(
+      "From Jul 19, a 90-day visit to Montenegro is possible once again.",
+    );
+    expect(returnMarkerThresholdText(VisaRegion.Schengen, jul19, 45)).toBe(
+      "From Jul 19, a 45-day visit to the Schengen Area is possible once again.",
+    );
+    expect(returnMarkerCurrentText(VisaRegion.Turkiye, 60)).toBe(
+      "Currently, a visit of up to 60 days to Türkiye is possible.",
+    );
+    expect(returnMarkerRowText("Alex", jul19, 30)).toBe(
+      "Alex: from Jul 19, a 30-day visit is possible once again.",
+    );
+    expect(agingMarkerTripLine(VisaRegion.Schengen, "Iceland", 8, jul19)).toBe(
+      "From Jul 19, Iceland (8 days) begins to age out of your Schengen Area window.",
+    );
+    expect(agingMarkerTripLine(VisaRegion.Albania, "Tirana", 1, jul19)).toBe(
+      "From Jul 19, Tirana (1 day) begins to age out of your Albania window.",
+    );
   });
 });

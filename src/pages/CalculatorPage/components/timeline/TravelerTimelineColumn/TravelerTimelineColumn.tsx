@@ -230,7 +230,7 @@ function AgingMarkerLine({
   const LINE_OPACITY = prominent ? 0.4 : 0.12;
   const TEXT_OPACITY = prominent ? 0.95 : 0.4;
 
-  const tooltipText = `${agingMarkerTripLine(region, destination, tripDays, date)}. ${AGING_MARKER_EXPLANATION}`;
+  const tooltipText = `${agingMarkerTripLine(region, destination, tripDays, date)} ${AGING_MARKER_EXPLANATION}`;
   return (
     <Box
       sx={{

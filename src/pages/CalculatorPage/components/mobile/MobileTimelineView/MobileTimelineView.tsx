@@ -1,10 +1,10 @@
-import { useRef, useEffect, useMemo } from "react";
+import { useRef, useEffect, useMemo, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { format } from "date-fns";
-import { type Traveler, type Trip, VisaRegion, isEntitled, isVisaRequired } from "@/types";
+import { type Traveler, type Trip, VisaRegion, VISA_REGION_LABELS, isEntitled, isVisaRequired } from "@/types";
 import { tokens } from "@/styles/theme";
 import { AddTravelerGhost } from "../../travelers/AddTravelerGhost";
 import {
@@ -26,7 +26,7 @@ import { getTravelerColor } from "@/features/calculator/utils/travelerColours";
 import { DateSidebar } from "../../timeline/DateSidebar";
 import { type PositionedTrip, assignLanes } from "./mobileTripLayout";
 import { getSchengenRule } from "@/data/regions/schengen";
-import { MobileAwareTooltip } from "@/components/ui/MobileAwareTooltip";
+import { type MarkerDetail, MarkerDetailDrawer } from "../MarkerDetailDrawer";
 import {
   type AgingMarker,
   type WindowMarkers,
@@ -93,10 +93,22 @@ interface MobileAgingMarkerGroup {
   markers: AgingMarker[];
 }
 
-/** Horizontal slot, resolved for the whole view. */
+/** Horizontal slot, resolved for the whole view, and the tap handler. */
 interface MarkerPlacement {
   slot: number;
+  /** Opens the marker's details in the bottom drawer. */
+  onOpenDetail: (detail: MarkerDetail) => void;
 }
+
+/** Resets a <button> so the marker pill inside it looks unchanged. */
+const PILL_BUTTON_SX = {
+  font: "inherit",
+  appearance: "none",
+  margin: 0,
+  pointerEvents: "auto",
+  cursor: "pointer",
+  "&:active": { filter: "brightness(0.96)" },
+} as const;
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -120,16 +132,6 @@ const ROLLUP_PX = 6 * PX_PER_DAY;
 const RETURN_CHIP_SLOT_PX = 104;
 const AGING_CHIP_SLOT_PX = 44;
 const CHIP_MIN_GAP_PX = 15;
-
-/** Shared tooltip styling used by both mobile marker types. */
-const TOOLTIP_SX = {
-  fontFamily: tokens.fontBody,
-  fontSize: "0.72rem",
-  fontWeight: 500,
-  bgcolor: tokens.navy,
-  "& .MuiTooltip-arrow": { color: tokens.navy },
-  maxWidth: 260,
-};
 
 // ─── Marker grouping helpers ──────────────────────────────────────────────────
 
@@ -516,6 +518,7 @@ function MobileReturnMarker({
   maxDays,
   allowance,
   slot,
+  onOpenDetail,
 }: MobileReturnMarkerGroup & MarkerPlacement) {
   const isGenerous = maxDays >= allowance / 3;
   const lineBase = isGenerous ? tokens.green : tokens.amber;
@@ -537,23 +540,14 @@ function MobileReturnMarker({
   });
   const dedupedEntries = [...perTraveler.values()].sort((a, b) => a.top - b.top);
 
-  // Tooltip: always a per-traveler list (same format for one or many).
-  const tooltipTitle = (
-    <Box component="div">
-      <Box component="div" sx={{ mb: "3px", fontWeight: 700 }}>
-        {regionMarkerName(region)}
-      </Box>
-      {dedupedEntries.map((e, i) => (
-        <Box
-          key={i}
-          component="div"
-          sx={{ "&:not(:last-child)": { mb: "3px" } }}
-        >
-          {returnMarkerRowText(e.travelerName, e.date, e.days)}
-        </Box>
-      ))}
-    </Box>
-  );
+  // Details: the destination, then one sentence per traveler (same format
+  // for one or many).
+  const detail: MarkerDetail = {
+    title: VISA_REGION_LABELS[region],
+    lines: dedupedEntries.map((e) =>
+      returnMarkerRowText(e.travelerName, e.date, e.days),
+    ),
+  };
 
   return (
     <Box
@@ -578,9 +572,8 @@ function MobileReturnMarker({
         }}
       />
 
-      {/* Pill: traveller colour dots + max threshold.
-          The absolute positioning lives on the outer Box so that the span
-          MobileAwareTooltip inserts has a measurable size for Popper to anchor. */}
+      {/* Pill: traveller colour dots + destination + max threshold. Tapping it
+          opens the details in the bottom drawer. */}
       <Box
         sx={{
           position: "absolute",
@@ -590,14 +583,13 @@ function MobileReturnMarker({
           zIndex: 2,
         }}
       >
-        <MobileAwareTooltip
-          title={tooltipTitle}
-          placement="bottom-start"
-          arrow
-          componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
-        >
           <Box
+            component="button"
+            type="button"
+            aria-label={`${regionMarkerName(region)}: up to ${maxDays} days. Show details`}
+            onClick={() => onOpenDetail(detail)}
             sx={{
+              ...PILL_BUTTON_SX,
               display: "inline-flex",
               alignItems: "center",
               gap: "3px",
@@ -606,8 +598,6 @@ function MobileReturnMarker({
               borderRadius: "100px",
               bgcolor: bgColor,
               border: `1px dashed ${alpha(lineBase, 0.25)}`,
-              pointerEvents: "auto",
-              cursor: "default",
               opacity: pillOpacity,
             }}
           >
@@ -660,7 +650,6 @@ function MobileReturnMarker({
               }}
             />
           </Box>
-        </MobileAwareTooltip>
       </Box>
     </Box>
   );
@@ -674,6 +663,7 @@ function MobileAgingMarker({
   markers,
   slot,
   prominent,
+  onOpenDetail,
 }: MobileAgingMarkerGroup & MarkerPlacement & { prominent: boolean }) {
   // Faint behind the trip cards; darker while the cards are muted, when the
   // label sits over a grey tile and is the thing being read.
@@ -685,24 +675,15 @@ function MobileAgingMarker({
     ? `${markers[0].destination} ages out`
     : `${markers.length} Trips Age Out`;
 
-  // Tooltip: always a per-trip list followed by the behaviour note (same
-  // format for one trip or many).
-  const tooltipTitle = (
-    <Box component="div">
-      {markers.map((m, i) => (
-        <Box
-          key={i}
-          component="div"
-          sx={{ "&:not(:last-child)": { mb: "3px" } }}
-        >
-          {agingMarkerTripLine(region, m.destination, m.tripDays, m.date)}
-        </Box>
-      ))}
-      <Box component="div" sx={{ mt: "4px", opacity: 0.8 }}>
-        {AGING_MARKER_EXPLANATION}
-      </Box>
-    </Box>
-  );
+  // Details: one sentence per trip, then the behaviour note (same format for
+  // one trip or many).
+  const detail: MarkerDetail = {
+    title: centreLabel,
+    lines: markers.map((m) =>
+      agingMarkerTripLine(region, m.destination, m.tripDays, m.date),
+    ),
+    note: AGING_MARKER_EXPLANATION,
+  };
 
   // Right-side pill: "+Xd" for a single trip; info icon only for multiples.
   const pillContent = isSingle ? (
@@ -790,7 +771,7 @@ function MobileAgingMarker({
       </Box>
       )}
 
-      {/* Right-side info pill — same anchor-sizing fix as return marker above. */}
+      {/* Right-side info pill — tapping it opens the details drawer. */}
       <Box
         sx={{
           position: "absolute",
@@ -800,14 +781,13 @@ function MobileAgingMarker({
           zIndex: 2,
         }}
       >
-        <MobileAwareTooltip
-          title={tooltipTitle}
-          placement="bottom-start"
-          arrow
-          componentsProps={{ tooltip: { sx: TOOLTIP_SX } }}
-        >
           <Box
+            component="button"
+            type="button"
+            aria-label={`${centreLabel}. Show details`}
+            onClick={() => onOpenDetail(detail)}
             sx={{
+              ...PILL_BUTTON_SX,
               display: "inline-flex",
               alignItems: "center",
               gap: "2px",
@@ -816,13 +796,10 @@ function MobileAgingMarker({
               borderRadius: "100px",
               bgcolor: tokens.mist,
               border: `1px dotted ${alpha(tokens.textGhost, 0.15)}`,
-              pointerEvents: "auto",
-              cursor: "default",
             }}
           >
             {pillContent}
           </Box>
-        </MobileAwareTooltip>
       </Box>
     </Box>
   );
@@ -837,6 +814,7 @@ export function MobileTimelineView({
   onAddTraveler,
   mutedTrips,
 }: MobileTimelineViewProps) {
+  const [markerDetail, setMarkerDetail] = useState<MarkerDetail | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasScrolledRef = useRef(false);
   const todayStr = todayISO();
@@ -1084,6 +1062,7 @@ export function MobileTimelineView({
                     key={`ret-${group.region}-${group.top}-${group.maxDays}`}
                     {...group}
                     slot={returnSlots[i]}
+                    onOpenDetail={setMarkerDetail}
                   />
                 ))}
                 {agingMarkerGroups.map((group, i) => (
@@ -1091,6 +1070,7 @@ export function MobileTimelineView({
                     key={`aging-${group.region}-${group.top}-${group.markers.length}`}
                     {...group}
                     slot={agingSlots[i]}
+                    onOpenDetail={setMarkerDetail}
                     prominent={mutedTrips}
                   />
                 ))}
@@ -1135,6 +1115,11 @@ export function MobileTimelineView({
         </Box>
 
       </Box>
+
+      <MarkerDetailDrawer
+        detail={markerDetail}
+        onClose={() => setMarkerDetail(null)}
+      />
     </Box>
   );
 }

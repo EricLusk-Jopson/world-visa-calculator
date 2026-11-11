@@ -23,7 +23,7 @@ export {
   AGING_MARKER_EXPLANATION,
 } from "./markerTooltips";
 
-export { regionMarkerName, assignChipSlots } from "./markerLayout";
+export { regionMarkerName, regionVisitName, assignChipSlots } from "./markerLayout";
 
 export interface WindowMarkers {
   returnMarkers: ReturnMarker[];

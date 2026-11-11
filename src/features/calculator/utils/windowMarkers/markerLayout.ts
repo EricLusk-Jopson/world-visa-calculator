@@ -15,9 +15,21 @@ const SHORT_NAMES: Partial<Record<VisaRegion, string>> = {
   [VisaRegion.UnitedKingdom]: "UK",
 };
 
-/** Destination name as it reads on a chip and mid-sentence ("a 45d Schengen trip"). */
+/** Destination name as it reads on a chip ("Schengen 45d"). */
 export function regionMarkerName(region: VisaRegion): string {
   return SHORT_NAMES[region] ?? VISA_REGION_LABELS[region];
+}
+
+/** Regions whose name takes "the" in a sentence ("a visit to the Schengen Area"). */
+const NAMES_WITH_THE = new Set<VisaRegion>([
+  VisaRegion.Schengen,
+  VisaRegion.UnitedKingdom,
+]);
+
+/** Destination as the object of a sentence: "a 90-day visit to {this}". */
+export function regionVisitName(region: VisaRegion): string {
+  const label = VISA_REGION_LABELS[region];
+  return NAMES_WITH_THE.has(region) ? `the ${label}` : label;
 }
 
 /**
