@@ -106,15 +106,16 @@ const CARD_SX = {
 } as const;
 
 const DATE_INPUT_SX = {
-  width: "100%",
-  px: "10px",
-  py: "7px",
+  flex: 1,
+  minWidth: 0,
+  px: "6px",
+  py: "6px",
   border: `1px solid ${tokens.border}`,
   borderRadius: "8px",
   bgcolor: tokens.white,
   color: tokens.text,
   fontFamily: tokens.fontBody,
-  fontSize: "0.8rem",
+  fontSize: "0.72rem",
   colorScheme: "light",
   "&:focus": { outline: `2px solid ${alpha(tokens.green, 0.4)}`, borderColor: tokens.green },
 } as const;
@@ -357,12 +358,9 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
         <Typography
           id="rolling-window-title"
           component="h2"
-          sx={{ fontFamily: tokens.fontDisplay, fontSize: "1.05rem", color: tokens.navy, whiteSpace: "nowrap" }}
+          sx={{ flex: 1, fontFamily: tokens.fontDisplay, fontSize: "1.05rem", color: tokens.navy, whiteSpace: "nowrap" }}
         >
           Rolling window explorer
-        </Typography>
-        <Typography noWrap sx={{ flex: 1, minWidth: 0, fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft }}>
-          See which days count toward each traveler's limit on any date.
         </Typography>
         <IconButton onClick={onClose} aria-label="Close" size="small" sx={{ color: tokens.textSoft }}>
           <CloseIcon fontSize="small" />
@@ -376,7 +374,7 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
           sx={{
             width: 270,
             flexShrink: 0,
-            overflowY: "auto",
+            overflowY: "scroll",
             p: "20px 16px",
             bgcolor: tokens.white,
             borderRight: `1px solid ${tokens.border}`,
@@ -388,26 +386,27 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
           <Box>
             <Typography sx={SIDEBAR_HEADING_SX}>Date range</Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", px: "2px" }}>
-              <Box component="label" sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft }}>
-                From
+              <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
                 <Box
                   component="input"
                   type="date"
+                  aria-label="From"
                   value={bounds.start}
                   max={formatDate(addDays(parseDate(bounds.end), -MIN_RANGE_DAYS))}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBound("start", e.target.value)}
-                  sx={{ ...DATE_INPUT_SX, mt: "3px" }}
+                  sx={DATE_INPUT_SX}
                 />
-              </Box>
-              <Box component="label" sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft }}>
-                To
+                <Box component="span" aria-hidden="true" sx={{ color: tokens.textSoft, fontSize: "0.75rem" }}>
+                  –
+                </Box>
                 <Box
                   component="input"
                   type="date"
+                  aria-label="To"
                   value={bounds.end}
                   min={formatDate(addDays(parseDate(bounds.start), MIN_RANGE_DAYS))}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBound("end", e.target.value)}
-                  sx={{ ...DATE_INPUT_SX, mt: "3px" }}
+                  sx={DATE_INPUT_SX}
                 />
               </Box>
               <Box
@@ -474,7 +473,7 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
         </Box>
 
         {/* ── Main ────────────────────────────────────────────────────────── */}
-        <Box sx={{ flex: 1, minWidth: 0, overflowY: "auto", p: "24px 28px 32px" }}>
+        <Box sx={{ flex: 1, minWidth: 0, overflowY: "scroll", p: "24px 28px 32px" }}>
           {emptyMessage ? (
             <Box sx={{ ...CARD_SX, textAlign: "center", py: "48px" }}>
               <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.9rem", color: tokens.textSoft }}>
@@ -499,23 +498,12 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
                   <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.78rem", fontWeight: 650, color: tokens.navy }}>
                     {fmtLong(bounds.start)} – {fmtLong(bounds.end)}
                   </Typography>
-                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: "6px 14px", fontFamily: tokens.fontBody, fontSize: "0.7rem", color: tokens.textSoft }}>
-                    {active.map((a) => (
-                      <LegendSwatch key={a.region} fill={a.color} label={VISA_REGION_LABELS[a.region]} />
-                    ))}
-                    <LegendSwatch fill="rgba(160,170,187,0.35)" border="rgba(160,170,187,0.55)" label="Not selected" />
-                    <LegendSwatch fill="rgba(160,170,187,0.1)" border="rgba(160,170,187,0.3)" label="No rolling window" />
-                    <LegendSwatch fill={alpha(tokens.navy, 0.75)} label="Solid: counted in window" />
-                    <LegendSwatch fill={alpha(tokens.navy, 0.08)} border={alpha(tokens.navy, 0.35)} label="Window" />
-                    <LegendSwatch fill="rgba(153,27,27,0.12)" border="rgba(153,27,27,0.45)" label="Over the limit" />
-                  </Box>
+                  {hint && (
+                    <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft }}>
+                      {hint}
+                    </Typography>
+                  )}
                 </Box>
-                {hint && (
-                  <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.75rem", color: tokens.textSoft, mb: "4px" }}>
-                    {hint}
-                  </Typography>
-                )}
-
                 <RollingWindowChart
                   timelines={timelines}
                   regionColors={regionColors}
@@ -610,27 +598,6 @@ export function RollingWindowModal({ open, onClose, travelers }: RollingWindowMo
   );
 }
 
-// ─── Legend ───────────────────────────────────────────────────────────────────
-
-function LegendSwatch({ fill, border, label }: { fill: string; border?: string; label: string }) {
-  return (
-    <Box component="span" sx={{ display: "flex", alignItems: "center", gap: "5px", whiteSpace: "nowrap" }}>
-      <Box
-        component="i"
-        aria-hidden="true"
-        sx={{
-          width: 10,
-          height: 10,
-          borderRadius: "2px",
-          bgcolor: fill,
-          border: border ? `1px solid ${border}` : "none",
-        }}
-      />
-      {label}
-    </Box>
-  );
-}
-
 // ─── Traveler card ────────────────────────────────────────────────────────────
 
 const CELL_SX = {
@@ -672,9 +639,21 @@ function TravelerCard({
   const jurisdictions = timeline.jurisdictions
     .map((row) => ({ row, inRange: row.trips.filter((t) => tripOverlaps(t, bounds)) }))
     .filter((j) => j.inRange.length > 0);
+  // Trips with days in the window come first, then the rest; each group by date.
   const trips = jurisdictions
-    .flatMap(({ row, inRange }) => inRange.map((trip) => ({ row, trip })))
-    .sort((a, b) => (a.trip.entryDate < b.trip.entryDate ? -1 : 1));
+    .flatMap(({ row, inRange }) => {
+      const stats = rowWindowStats(row, windowEnd);
+      return inRange.map((trip) => ({
+        row,
+        trip,
+        counted: stats ? tripDaysInWindow(trip, stats.windowStart, windowEnd) : null,
+      }));
+    })
+    .sort(
+      (a, b) =>
+        Number((b.counted ?? 0) > 0) - Number((a.counted ?? 0) > 0) ||
+        (a.trip.entryDate < b.trip.entryDate ? -1 : 1),
+    );
 
   return (
     <Box sx={{ ...CARD_SX, p: "16px 20px" }}>
@@ -725,14 +704,6 @@ function TravelerCard({
                           / {stats.allowance}
                         </Box>
                       </Typography>
-                      <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.7rem", color: tokens.textSoft }}>
-                        {stats.over
-                          ? `Over by ${plural(stats.daysUsed - stats.allowance, "day", "days")}`
-                          : stats.remaining === 0
-                            ? "No allowance left"
-                            : `${plural(stats.remaining, "day", "days")} left`}
-                        {` · since ${fmtLong(stats.windowStart)}`}
-                      </Typography>
                     </>
                   ) : (
                     <Typography sx={{ fontFamily: tokens.fontBody, fontSize: "0.72rem", color: tokens.textSoft, mt: "4px" }}>
@@ -775,9 +746,7 @@ function TravelerCard({
               </tr>
             </thead>
             <tbody>
-              {trips.map(({ row, trip }) => {
-                const stats = rowWindowStats(row, windowEnd);
-                const counted = stats ? tripDaysInWindow(trip, stats.windowStart, windowEnd) : null;
+              {trips.map(({ row, trip, counted }) => {
                 const label = trip.destination?.trim();
                 return (
                   <tr key={trip.id}>
