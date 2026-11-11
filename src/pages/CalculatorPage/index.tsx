@@ -27,6 +27,8 @@ import { TripFormSlider } from "@/features/trips/components";
 import { UtilityDrawer } from "./components/mobile/UtilityDrawer";
 import { ShareFrame } from "./components/mobile/ShareFrame";
 import { ClearAllDrawer } from "./components/mobile/ClearAllDrawer";
+import { MutedTripsToggle } from "./components/timeline/MutedTripsToggle";
+import { useMutedTrips } from "./components/timeline/useMutedTrips";
 
 const MIN_LOAD_MS = 650;
 const FADE_MS = 300;
@@ -76,6 +78,7 @@ export function CalculatorPage() {
   const [addTravelerFromTripOpen, setAddTravelerFromTripOpen] = useState(false);
   const [travelerViewId, setTravelerViewId] = useState<string | null>(null);
   const [editTravelerId, setEditTravelerId] = useState<string | null>(null);
+  const [mutedTrips, toggleMutedTrips] = useMutedTrips();
 
   const handleToggleTraveler = useCallback((id: string) => {
     setHiddenTravelerIds((prev) =>
@@ -387,6 +390,7 @@ export function CalculatorPage() {
                 hiddenTravelerIds={hiddenTravelerIds}
                 onEditTrip={(ids, trip) => setTripView({ travelerIds: ids, trip })}
                 onAddTraveler={handleAddTraveler}
+                mutedTrips={mutedTrips}
               />
             </Box>
 
@@ -406,9 +410,14 @@ export function CalculatorPage() {
                 onDeleteTraveler={handleDeleteTraveler}
                 onAddTraveler={handleAddTraveler}
                 onEdit={handleTravelerEdit}
+                mutedTrips={mutedTrips}
               />
             </Box>
           </Box>
+        )}
+
+        {phase !== "loading" && travelers.length > 0 && (
+          <MutedTripsToggle muted={mutedTrips} onToggle={toggleMutedTrips} />
         )}
 
         {phase !== "ready" && (

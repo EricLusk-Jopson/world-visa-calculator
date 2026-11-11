@@ -17,6 +17,7 @@ import {
   COLUMN_HEADER_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
 import { today as getToday } from "@/features/calculator/utils/dates";
+import { computeWindowMarkers } from "@/features/calculator/utils/windowMarkers";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { tripGroupKey } from "../../trips/tripHelpers";
 
@@ -33,6 +34,8 @@ interface TimelineViewProps {
     passportCode: string | null,
     targetRegion: VisaRegion | null,
   ) => void;
+  /** Draw trip cards as plain tiles so the markers read clearly over them. */
+  mutedTrips: boolean;
 }
 
 export function TimelineView({
@@ -42,6 +45,7 @@ export function TimelineView({
   onDeleteTraveler,
   onAddTraveler,
   onEdit,
+  mutedTrips,
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [hoveredTripKey, setHoveredTripKey] = useState<string | null>(null);
@@ -62,6 +66,18 @@ export function TimelineView({
     () => computeTimelineEnd(travelers),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [travelers],
+  );
+
+  // Rolling-window markers per traveller, for every destination with one.
+  const markersByTraveler = useMemo(
+    () =>
+      new Map(
+        travelers.map((t) => [
+          t.id,
+          computeWindowMarkers(t, timelineStart, timelineEnd),
+        ]),
+      ),
+    [travelers, timelineStart, timelineEnd],
   );
 
   useEffect(() => {
@@ -179,6 +195,8 @@ export function TimelineView({
               hoveredTripKey={hoveredTripKey}
               onHoverTrip={setHoveredTripKey}
               width={maxColumnWidth}
+              markers={markersByTraveler.get(traveler.id)!}
+              mutedTrips={mutedTrips}
             />
           ))}
 
