@@ -17,11 +17,7 @@ import {
   COLUMN_HEADER_HEIGHT,
 } from "@/features/calculator/utils/timelineLayout";
 import { today as getToday } from "@/features/calculator/utils/dates";
-import {
-  computeWindowMarkers,
-  markerRegions,
-  assignRegionMarkerColours,
-} from "@/features/calculator/utils/windowMarkers";
+import { computeWindowMarkers } from "@/features/calculator/utils/windowMarkers";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { tripGroupKey } from "../../trips/tripHelpers";
 
@@ -38,6 +34,8 @@ interface TimelineViewProps {
     passportCode: string | null,
     targetRegion: VisaRegion | null,
   ) => void;
+  /** Draw trip cards as plain tiles so the markers read clearly over them. */
+  mutedTrips: boolean;
 }
 
 export function TimelineView({
@@ -47,6 +45,7 @@ export function TimelineView({
   onDeleteTraveler,
   onAddTraveler,
   onEdit,
+  mutedTrips,
 }: TimelineViewProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [hoveredTripKey, setHoveredTripKey] = useState<string | null>(null);
@@ -69,8 +68,7 @@ export function TimelineView({
     [travelers],
   );
 
-  // Rolling-window markers per traveller, and one destination→colour map for
-  // every column so a destination reads the same colour across travellers.
+  // Rolling-window markers per traveller, for every destination with one.
   const markersByTraveler = useMemo(
     () =>
       new Map(
@@ -80,11 +78,6 @@ export function TimelineView({
         ]),
       ),
     [travelers, timelineStart, timelineEnd],
-  );
-  const regionColours = useMemo(
-    () =>
-      assignRegionMarkerColours(markerRegions([...markersByTraveler.values()])),
-    [markersByTraveler],
   );
 
   useEffect(() => {
@@ -203,7 +196,7 @@ export function TimelineView({
               onHoverTrip={setHoveredTripKey}
               width={maxColumnWidth}
               markers={markersByTraveler.get(traveler.id)!}
-              regionColours={regionColours}
+              mutedTrips={mutedTrips}
             />
           ))}
 

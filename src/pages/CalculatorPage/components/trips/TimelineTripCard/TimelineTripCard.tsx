@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { alpha } from "@mui/material/styles";
 import { tokens } from "@/styles/theme";
 import type { Trip, PassportRule } from "@/types";
 import { VisaRegion, isEntitled, isVisaRequired } from "@/types";
@@ -197,6 +198,12 @@ interface TimelineTripCardProps {
    * shared trip highlights together.
    */
   hovered: boolean;
+  /**
+   * Draw the card as a plain light-grey tile with no text or chips, so the
+   * timeline's markers read clearly over it. Still clickable; its native
+   * tooltip carries the trip's details.
+   */
+  muted?: boolean;
   onHoverChange: (hovered: boolean) => void;
   onEdit: () => void;
 }
@@ -222,6 +229,7 @@ export function TimelineTripCard({
   ukStayInfo,
   irelandStayInfo,
   hovered,
+  muted = false,
   onHoverChange,
   onEdit,
 }: TimelineTripCardProps) {
@@ -486,6 +494,30 @@ export function TimelineTripCard({
     irelandStayInfo?.stayVariant,
     irelandStayInfo?.reentryVariant,
   ]);
+
+  if (muted) {
+    return (
+      <Box
+        title={tooltipLines.join("\n")}
+        onClick={onEdit}
+        onMouseEnter={() => onHoverChange(true)}
+        onMouseLeave={() => onHoverChange(false)}
+        sx={{
+          position: "absolute",
+          left: cardLeft,
+          width: cardWidth,
+          top,
+          height,
+          borderRadius: "8px",
+          bgcolor: alpha(tokens.mist, hovered ? 0.95 : 0.7),
+          border: `1px solid ${alpha(isOverstay ? tokens.red : tokens.border, 0.6)}`,
+          cursor: "pointer",
+          zIndex: baseZIndex,
+          transition: "background-color 0.12s",
+        }}
+      />
+    );
+  }
 
   return (
     <Box

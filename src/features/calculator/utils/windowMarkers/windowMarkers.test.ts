@@ -7,10 +7,7 @@ import {
   computeAgingMarkers,
   resolveRollingWindow,
   thresholdsFor,
-  assignRegionMarkerColours,
-  assignChipSlots,
-  markerRegions,
-  REGION_MARKER_PALETTE,
+  stackGutterItems,
 } from ".";
 
 const START = parseDate("2026-01-01");
@@ -108,7 +105,10 @@ describe("computeWindowMarkers", () => {
       trip("u", VisaRegion.UnitedKingdom, iso(220), iso(230)),
     ]);
     const markers = computeWindowMarkers(t, START, END);
-    const regions = markerRegions([markers]);
+    const regions = new Set([
+      ...markers.returnMarkers.map((m) => m.region),
+      ...markers.agingMarkers.map((m) => m.region),
+    ]);
 
     expect(regions).toEqual(
       new Set([VisaRegion.Schengen, VisaRegion.Turkiye, VisaRegion.Montenegro]),
@@ -149,23 +149,12 @@ describe("computeWindowMarkers", () => {
   });
 });
 
-describe("assignRegionMarkerColours", () => {
-  it("hands out the palette in canonical order, Schengen first", () => {
-    const colours = assignRegionMarkerColours([
-      VisaRegion.Albania,
-      VisaRegion.Turkiye,
-      VisaRegion.Schengen,
-    ]);
-    expect(colours.get(VisaRegion.Schengen)).toBe(REGION_MARKER_PALETTE[0]);
-    expect(colours.get(VisaRegion.Turkiye)).toBe(REGION_MARKER_PALETTE[1]);
-    expect(colours.get(VisaRegion.Albania)).toBe(REGION_MARKER_PALETTE[2]);
-  });
-});
-
-describe("assignChipSlots", () => {
-  it("moves chips that would overlap into the next slot", () => {
-    expect(assignChipSlots([100, 105, 300, 108, 200], 15)).toEqual([
-      0, 1, 0, 2, 0,
+describe("stackGutterItems", () => {
+  it("keeps items at their date until they would overlap, then stacks them", () => {
+    const chip = (anchor: number) => ({ anchor, height: 14, firstRowHeight: 14 });
+    // 100 sits at its date; 105 is pushed below it; 300 is clear again.
+    expect(stackGutterItems([chip(300), chip(100), chip(105)], 2)).toEqual([
+      293, 93, 109,
     ]);
   });
 });

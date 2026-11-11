@@ -23,13 +23,8 @@ export {
   AGING_MARKER_EXPLANATION,
 } from "./markerTooltips";
 
-export {
-  REGION_MARKER_PALETTE,
-  regionMarkerCode,
-  regionMarkerName,
-  assignRegionMarkerColours,
-  assignChipSlots,
-} from "./regionMarkerStyle";
+export type { GutterItem } from "./markerLayout";
+export { regionMarkerName, stackGutterItems } from "./markerLayout";
 
 export interface WindowMarkers {
   returnMarkers: ReturnMarker[];
@@ -54,14 +49,4 @@ export function computeWindowMarkers(
       computeAgingMarkers(traveler, r, timelineStart, timelineEnd),
     ),
   };
-}
-
-/** Every destination with at least one marker, across `markers`. */
-export function markerRegions(markers: WindowMarkers[]): Set<VisaRegion> {
-  const out = new Set<VisaRegion>();
-  for (const m of markers) {
-    m.returnMarkers.forEach((r) => out.add(r.region));
-    m.agingMarkers.forEach((a) => out.add(a.region));
-  }
-  return out;
 }

@@ -65,6 +65,12 @@ export const CHIP_ROW_GAP = 4;
 // ─── Lane layout ──────────────────────────────────────────────────────────────
 
 export const CARD_LEFT_BASE = 20;
+/**
+ * Width of the marker gutter: the strip between the spine and the trip cards
+ * where return chips and age-out labels live, so they are never drawn under
+ * a card. Only reserved when a column (or the mobile view) has markers.
+ */
+export const MARKER_GUTTER_WIDTH = 112;
 export const CARD_RIGHT_MARGIN = 10;
 export const LANE_GAP = 4;
 export const MIN_CARD_WIDTH = 80;
@@ -199,10 +205,11 @@ export interface LaneAssignment {
 export function computeLaneAssignments(
   cards: Array<{ id: string; top: number; height: number }>,
   columnWidth: number,
+  cardLeftBase: number = CARD_LEFT_BASE,
 ): Map<string, LaneAssignment> {
   if (cards.length === 0) return new Map();
 
-  const availableWidth = columnWidth - CARD_LEFT_BASE - CARD_RIGHT_MARGIN;
+  const availableWidth = columnWidth - cardLeftBase - CARD_RIGHT_MARGIN;
   const maxLanes = Math.max(1, Math.floor(availableWidth / MIN_CARD_WIDTH));
 
   const sorted = [...cards].sort((a, b) => a.top - b.top);

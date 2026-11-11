@@ -12,7 +12,7 @@
 
 import { format } from "date-fns";
 import type { VisaRegion } from "@/types";
-import { regionMarkerName } from "./regionMarkerStyle";
+import { regionMarkerName } from "./markerLayout";
 
 // ─── Internal ─────────────────────────────────────────────────────────────────
 
