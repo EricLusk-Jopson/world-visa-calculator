@@ -3,11 +3,26 @@
  * Blog index — /blog
  *
  * Pure static Astro page: zero client JavaScript, rendered to plain HTML at
- * build time. Add individual posts as astro/pages/blog/[slug].astro when ready.
+ * build time. Posts come from astro/data/blog-posts.ts: a "Start here" row
+ * of featured posts, jump links to each topic, then the posts grouped by
+ * topic (newest first within each).
  */
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import LandingNav from "../../components/LandingNav.astro";
 import Footer from "../../components/Footer.astro";
+import {
+  BLOG_POSTS,
+  BLOG_TOPICS,
+  byNewest,
+  formatPostDate,
+} from "../../data/blog-posts";
+
+const topicLabel = Object.fromEntries(BLOG_TOPICS.map((t) => [t.id, t.label]));
+const featured = BLOG_POSTS.filter((p) => p.featured).sort(byNewest);
+const sections = BLOG_TOPICS.map((topic) => ({
+  ...topic,
+  posts: BLOG_POSTS.filter((p) => p.topic === topic.id).sort(byNewest),
+}));
 ---
 
 <BaseLayout
@@ -26,150 +41,57 @@ import Footer from "../../components/Footer.astro";
         compliant.
       </p>
 
-      <div class="post-list">
-        <a
-          href="/blog/schengen-overstay-consequences"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            What Actually Happens If You Overstay Your Schengen Allowance
-          </h2>
-          <p class="post-card__excerpt">
-            A one-day overstay and a one-month overstay are not treated the
-            same. Here's what the rules allow, what the EES records, and what
-            to do if you've miscounted.
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
+      <nav class="topic-nav" aria-label="Browse by topic">
+        <span class="topic-nav__label">Browse by topic</span>
+        <ul class="topic-nav__list">
+          {sections.map((s) => (
+            <li>
+              <a href={`#${s.id}`} class="topic-nav__chip">
+                {s.label}
+                <span class="topic-nav__count">{s.posts.length}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-        <a
-          href="/blog/which-countries-use-the-90-180-rule"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            Which Countries Use the 90/180 Rule? (It's Not Just Schengen)
-          </h2>
-          <p class="post-card__excerpt">
-            Leaving the Schengen Area stops your Schengen clock, but the
-            country you go to may start one of its own. Here's which
-            European countries run a separate 90/180 counter.
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
+      <section class="featured" aria-labelledby="start-here">
+        <h2 id="start-here" class="section__title">Start here</h2>
+        <div class="featured__grid">
+          {featured.map((post) => (
+            <a href={`/blog/${post.slug}`} class="post-card post-card--featured">
+              <p class="post-card__tag">{topicLabel[post.topic]}</p>
+              <h3 class="post-card__title">{post.title}</h3>
+              <p class="post-card__excerpt">{post.excerpt}</p>
+              <span class="post-card__read">Read article →</span>
+            </a>
+          ))}
+        </div>
+      </section>
 
-        <a
-          href="/blog/can-you-trust-ai-chatbots-with-schengen-math"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            Can You Trust an AI Chatbot With Schengen Math?
-          </h2>
-          <p class="post-card__excerpt">
-            We asked the free versions of Claude, ChatGPT, and Gemini 20
-            Schengen questions. Claude got all 20 right. The other two missed
-            21 of 40.
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
-
-        <a
-          href="/blog/how-we-source-and-verify-visa-data"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            How We Source and Verify Our Visa Data
-          </h2>
-          <p class="post-card__excerpt">
-            Every stay-limit rule traces back to a specific government
-            regulation. Here's how we source it, verify it, and watch for
-            regime changes.
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
-
-        <a
-          href="/blog/when-does-schengen-reset"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            When Does Your Schengen Allowance Reset?
-          </h2>
-          <p class="post-card__excerpt">
-            The rule isn't a reset, it's a rolling window. Here's what that
-            actually means for when you can go back.
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
-
-        <a
-          href="/blog/schengen-calculator-couples"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            How to Track Schengen Days When You and Your Partner Have Different Dates of Travel
-          </h2>
-          <p class="post-card__excerpt">
-            Most Schengen calculators assume one traveler. Here's how to
-            track two people with different entry and exit dates, and why
-            it matters more than you think.
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
-
-        <a
-          href="/blog/the-schengen-90-180-rolling-window"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            The Schengen 90/180 Rolling Window
-          </h2>
-          <p class="post-card__excerpt">
-            The Schengen rule uses a rolling an often-misunderstood 180-day window.
-            In this blog we walk through five scenarios, from simple to complex to illustrate this. 
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
-
-        <a
-          href="/blog/does-your-entry-day-count-as-a-schengen-day"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            Does Your Entry Day Count as a Schengen Day? Yes, yes it does.
-          </h2>
-          <p class="post-card__excerpt">
-            Both your entry day and your exit day count as full Schengen days,
-            regardless of what time you cross the border. Here's what that
-            means for your allowance.
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
-
-        <a
-          href="/blog/why-schengen-calculators-give-different-results"
-          class="post-card"
-        >
-          <p class="post-card__tag">Article</p>
-          <h2 class="post-card__title">
-            Why Schengen Calculators Give Different Results And How to Know
-            Which One Is Right
-          </h2>
-          <p class="post-card__excerpt">
-            Different calculators, different answers. Here's
-            why Schengen tools disagree, what algorithmic choices cause the gaps,
-            and which source to trust when results conflict.
-          </p>
-          <span class="post-card__read">Read article →</span>
-        </a>
-      </div>
+      {sections.map((s) => (
+        <section id={s.id} class="topic" aria-labelledby={`${s.id}-title`}>
+          <div class="topic__head">
+            <h2 id={`${s.id}-title`} class="section__title">{s.label}</h2>
+            <p class="topic__blurb">{s.blurb}</p>
+          </div>
+          <ul class="post-list">
+            {s.posts.map((post) => (
+              <li>
+                <a href={`/blog/${post.slug}`} class="post-row">
+                  <h3 class="post-row__title">{post.title}</h3>
+                  <p class="post-row__excerpt">{post.excerpt}</p>
+                  <p class="post-row__meta">
+                    <time datetime={post.date}>{formatPostDate(post.date)}</time>
+                    {" · "}{post.readMinutes} min read
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href="#top" class="topic__top">Back to top ↑</a>
+        </section>
+      ))}
 
       <a href="/app" class="blog__cta">Open the calculator →</a>
     </div>
@@ -218,15 +140,90 @@ import Footer from "../../components/Footer.astro";
     margin: 0 0 48px;
   }
 
-  .post-list {
+  /* ── Topic jump links ─────────────────────────────── */
+  .topic-nav {
+    margin: 0 0 48px;
+  }
+
+  .topic-nav__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a6a82;
+    margin: 0 0 12px;
+  }
+
+  .topic-nav__list {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .topic-nav__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid #e0dbd3;
+    border-radius: 999px;
+    background: #fff;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0c1e3c;
+    text-decoration: none;
+    transition: border-color 0.18s, background 0.18s;
+  }
+
+  .topic-nav__chip:hover {
+    border-color: #00b96b;
+    background: #f2fbf7;
+  }
+
+  .topic-nav__count {
+    min-width: 20px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: #eef1f5;
+    font-size: 0.75rem;
+    color: #5a6a82;
+    text-align: center;
+  }
+
+  /* ── Section headings ─────────────────────────────── */
+  .section__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+
+  /* ── Start here (featured) ────────────────────────── */
+  .featured {
+    margin: 0 0 56px;
+  }
+
+  .featured .section__title {
+    margin-bottom: 16px;
+  }
+
+  .featured__grid {
+    display: grid;
     gap: 16px;
-    margin-bottom: 40px;
   }
 
   .post-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 28px 32px;
     border: 1px solid #e0dbd3;
     border-radius: 14px;
@@ -235,9 +232,14 @@ import Footer from "../../components/Footer.astro";
     transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
   }
 
+  .post-card--featured {
+    border-left: 4px solid #00b96b;
+  }
+
   .post-card:hover {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
     border-color: #c8c4bc;
+    border-left-color: #00b96b;
     transform: translateY(-1px);
   }
 
@@ -270,10 +272,96 @@ import Footer from "../../components/Footer.astro";
   }
 
   .post-card__read {
+    margin-top: auto;
     font-family: var(--font-body);
     font-size: 0.85rem;
     font-weight: 600;
     color: #0c1e3c;
+  }
+
+  /* ── Topic sections ───────────────────────────────── */
+  .topic {
+    margin: 0 0 48px;
+    scroll-margin-top: 96px;
+  }
+
+  .topic__head {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e0dbd3;
+  }
+
+  .topic__blurb {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #5a6a82;
+    margin: 0;
+  }
+
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+  }
+
+  .post-list li {
+    border-bottom: 1px solid #e0dbd3;
+  }
+
+  .post-row {
+    display: block;
+    padding: 20px 4px;
+    text-decoration: none;
+  }
+
+  .post-row__title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #0c1e3c;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    transition: color 0.18s;
+  }
+
+  .post-row:hover .post-row__title {
+    color: #00915a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-row__excerpt {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: #5a6a82;
+    margin: 0 0 8px;
+  }
+
+  .post-row__meta {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: #8592a6;
+    margin: 0;
+  }
+
+  .topic__top {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #5a6a82;
+    text-decoration: none;
+  }
+
+  .topic__top:hover {
+    color: #0c1e3c;
+  }
+
+  @media (max-width: 600px) {
+    .post-card {
+      padding: 22px 20px;
+    }
   }
 
   .blog__cta {
