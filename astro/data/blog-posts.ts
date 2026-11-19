@@ -46,7 +46,7 @@ export const BLOG_TOPICS: BlogTopic[] = [
     id: "accuracy",
     label: "Calculators & accuracy",
     blurb:
-      "Why tools disagree, whether chatbots can do the maths, and where our data comes from.",
+      "Why tools disagree, what to do when the EES disagrees with you, whether chatbots can do the maths, and where our data comes from.",
   },
 ];
 
@@ -108,6 +108,16 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-08-26",
     readMinutes: 8,
     topic: "planning",
+  },
+  {
+    slug: "ees-says-your-trip-is-not-ok",
+    title:
+      "EES Says Your Trip Is NOT OK. You Disagree. Here's How to Find Out Who's Right.",
+    excerpt:
+      "The EU's official stay check can be wrong. Here's how to work out whose count is off, what proof to gather, and how to get your EES record corrected.",
+    date: "2026-11-19",
+    readMinutes: 8,
+    topic: "accuracy",
   },
   {
     slug: "can-you-trust-ai-chatbots-with-schengen-math",
