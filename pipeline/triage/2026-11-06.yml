@@ -1,0 +1,72 @@
+report: 2026-11-06
+items:
+  - region: Turkiye
+    url: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
+    verdict: rule-change
+    ruleChange: 15
+    by: ai-assisted
+    notes: >-
+      South Africa: "multiple entry e-visas that allow a 30-day stay via the
+      website https://dtvgroup.com.tr" (was one-month single-entry via
+      evisa.gov.tr). Confirmed on the live page 2026-11-06.
+  - region: Serbia
+    url: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives
+    verdict: no-rule-change
+    noise: not-modelled
+    by: ai-assisted
+    notes: >-
+      Maldives. Only the diplomatic and official line changed ("Visas
+      required" -> "No visas required for visits up to 90 days, within period
+      of 180 days"); ordinary passports: "Visas required", confirmed on the
+      live page 2026-11-06.
+  - region: Bosnia
+    url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba
+    verdict: no-rule-change
+    noise: not-modelled
+    by: ai-assisted
+    notes: >-
+      Croatia. Added a passport table for BiH citizens travelling to Croatia
+      ("Regular passport YES from 01.07.2013 …") and fixed a link; nothing on
+      entering BiH changed.
+  - region: Bosnia
+    url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba
+    verdict: no-rule-change
+    noise: not-modelled
+    by: ai-assisted
+    notes: >-
+      Kazakhstan. Added "Foreign nationals entering the territory of the
+      Republic of Kazakhstan must possess an Electronic Travel Authorization
+      (ETA)" (travel advice for BiH citizens) and fixed an embassy link.
+  - region: Bosnia
+    url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba
+    verdict: no-rule-change
+    noise: layout
+    by: ai-assisted
+    notes: >-
+      Russia. The same paragraphs, split into separate lines (the document list
+      now appears twice), plus a note on permits for Odintsovo and Balashikha
+      for BiH citizens in Russia.
+  - region: Albania
+    url: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong
+    verdict: no-rule-change
+    noise: not-modelled
+    by: ai-assisted
+    notes: >-
+      Only the D-visa / residence-permit application links changed (e-albania
+      service 15388 -> 15146 and 15308); the short-stay rule is unchanged.
+  - region: Albania
+    url: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao
+    verdict: no-rule-change
+    noise: not-modelled
+    by: ai-assisted
+    notes: >-
+      Only the D-visa / residence-permit application links changed (e-albania
+      service 15388 -> 15146 and 15308); the short-stay rule is unchanged.
+  - region: Albania
+    url: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan
+    verdict: no-rule-change
+    noise: not-modelled
+    by: ai-assisted
+    notes: >-
+      Only the D-visa / residence-permit application links changed (e-albania
+      service 15388 -> 15146 and 15308); the short-stay rule is unchanged.

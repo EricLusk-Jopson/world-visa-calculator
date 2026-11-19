@@ -368,6 +368,32 @@
     "BG": {
       "access": "free_movement"
     },
+    "BI": {
+      "access": "visa_required",
+      "notes": [
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Airport transit visa required at airports in: Belgium. Not required at other Schengen airports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium: ATV requirement does not apply to holders of service or special passports."
+        },
+        {
+          "source": {
+            "$source": "Schengen.atvSpecific"
+          },
+          "text": "Belgium: ATV required from 1 August 2026; it does not apply to holders of diplomatic passports."
+        }
+      ],
+      "source": {
+        "$source": "Schengen.visaList"
+      }
+    },
     "BN": {
       "access": "entitled",
       "entitlements": [
@@ -1289,13 +1315,7 @@
           "source": {
             "$source": "Schengen.atvSpecific"
           },
-          "text": "Airport transit visa required at airports in: Czech Republic, Germany, France, Romania. Not required at other Schengen airports."
-        },
-        {
-          "source": {
-            "$source": "Schengen.atvSpecific"
-          },
-          "text": "France: ATV applies to holders of ordinary passports only."
+          "text": "Airport transit visa required at airports in: Czech Republic, Romania. Not required at other Schengen airports."
         }
       ],
       "source": {

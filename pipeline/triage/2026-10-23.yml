@@ -1,0 +1,12 @@
+report: 2026-10-23
+items:
+  - region: Georgia
+    url: https://gc-api.mfa.gov.ge/v1/PageContent/custom-html?Id=25
+    verdict: rule-change
+    ruleChange: 7
+    by: ai-assisted
+    notes: >-
+      Ukraine's row changed from "Full 2 (two) years" to "Full 1 (one) year"
+      (the only change in the snapshot). The maintainer confirmed "Full 1 (one)
+      year" on the rendered page (geoconsul.gov.ge HtmlPage id=25) on
+      2026-10-23. UA changed from 730 to 365 days per visit.

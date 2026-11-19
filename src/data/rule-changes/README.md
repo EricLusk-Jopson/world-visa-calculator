@@ -16,7 +16,7 @@ The log is listed publicly on /rule-changes, linked from the site footer.
 ## How it's enforced
 
 - `state/<region>.json` is the recorded state of each region's rules,
-  normalised by `normalize.ts`. It drops `lastVerified` and `sourceUrl`, and
+  normalised by `normalize.ts`. It drops `lastVerified`, `lastChanged` and `sourceUrl`, and
   reduces each source to its key, so fixing a link isn't a rule change.
 - `ruleChanges.test.ts` fails when:
   - the rules in `src/data/regions/` differ from `state/`, meaning they
@@ -25,7 +25,9 @@ The log is listed publicly on /rule-changes, linked from the site footer.
   - a report trigger names a report that doesn't exist in
     `pipeline/reports/`;
   - an evidence link isn't in the region's playbook;
-  - a changed region's `lastVerified` is older than its latest entry.
+  - a changed region's `lastVerified` is older than its latest entry;
+  - a region's `lastChanged` isn't the `recorded` date of its latest entry
+    (unset when nothing has changed since the baseline).
 
 ## Recording a change
 
@@ -51,7 +53,8 @@ The log is listed publicly on /rule-changes, linked from the site footer.
    every changed passport filled in, and updates `state/`.
 3. Fill in the entry's `TODO(entry)` sections: what changed and why, a quote
    from the source, and how it was confirmed.
-4. Bump `lastVerified` in the region file, and `dateChecked` on each
+4. Set `lastChanged` in the region file to the entry's `recorded` date,
+   bump `lastVerified`, and bump `dateChecked` on each
    SourceDoc the changed rules cite (in `src/data/sources.ts`): recording a
    change means you checked the source that day. A test enforces this, so
    the app never shows a source "verified" before a change to a rule citing it.

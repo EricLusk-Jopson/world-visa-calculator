@@ -10,6 +10,7 @@ import IosShareIcon from "@mui/icons-material/IosShare";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import ViewTimelineOutlinedIcon from "@mui/icons-material/ViewTimelineOutlined";
 import { tokens } from "@/styles/theme";
 import { NavButton } from "./NavButton";
 
@@ -22,6 +23,10 @@ interface CalculatorNavProps {
   onShare: () => void;
   onClearAll: () => void;
   onOpenUtility?: () => void;
+  /** Opens the rolling window explorer (desktop tiers only). */
+  onOpenRollingWindow: () => void;
+  /** True when no trip is to a destination with a rolling window. */
+  rollingWindowDisabled: boolean;
 }
 
 // ─── Shared icon size ─────────────────────────────────────────────────────────
@@ -131,6 +136,8 @@ export function CalculatorNav({
   onShare,
   onClearAll,
   onOpenUtility,
+  onOpenRollingWindow,
+  rollingWindowDisabled,
 }: CalculatorNavProps) {
   const [addMenuAnchor, setAddMenuAnchor] = useState<null | HTMLElement>(null);
 
@@ -140,6 +147,17 @@ export function CalculatorNav({
   const isMedium = useMediaQuery("(min-width:780px)");  // clear all + share + combo add
 
   const closeAddMenu = () => setAddMenuAnchor(null);
+
+  const RollingWindowButton = (
+    <NavButton
+      variant="ghost"
+      onClick={onOpenRollingWindow}
+      disabled={rollingWindowDisabled}
+      icon={<ViewTimelineOutlinedIcon sx={ICON_SX} />}
+    >
+      Rolling Window
+    </NavButton>
+  );
 
   // ── Combo-add dropdown button ──────────────────────────────────────────────
   const ComboAddButton = (
@@ -218,7 +236,7 @@ export function CalculatorNav({
       {/* ── Right side ────────────────────────────────────────────────────── */}
       <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
 
-        {/* XL ≥1300px: clear all · support · share · add traveler · add trip */}
+        {/* XL ≥1300px: clear all · support · rolling window · share · add traveler · add trip */}
         {isXL && (
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <NavButton
@@ -231,6 +249,8 @@ export function CalculatorNav({
             </NavButton>
 
             <KofiLink />
+
+            {RollingWindowButton}
 
             <NavButton
               variant="ghost"
@@ -259,7 +279,7 @@ export function CalculatorNav({
           </Box>
         )}
 
-        {/* Large 900–1299px: clear all · support · share · combo add */}
+        {/* Large 1000–1299px: clear all · support · rolling window · share · combo add */}
         {isLarge && !isXL && (
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <NavButton
@@ -273,6 +293,8 @@ export function CalculatorNav({
 
             <KofiLink />
 
+            {RollingWindowButton}
+
             <NavButton
               variant="ghost"
               onClick={onShare}
@@ -285,7 +307,7 @@ export function CalculatorNav({
           </Box>
         )}
 
-        {/* Medium 640–899px: clear all · share · combo add */}
+        {/* Medium 780–999px: clear all · rolling window · share · combo add */}
         {isMedium && !isLarge && (
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <NavButton
@@ -296,6 +318,8 @@ export function CalculatorNav({
             >
               Clear All
             </NavButton>
+
+            {RollingWindowButton}
 
             <NavButton
               variant="ghost"

@@ -48,14 +48,14 @@ describe('Georgia — standard "Full 1 (one) year" tier (365 days, flat per-visi
   });
 });
 
-describe('Georgia — Ukraine gets the "Full 2 (two) years" tier (730 days, flat per-visit)', () => {
-  it('UA gets a 730-day per-visit entitlement', () => {
+describe('Georgia — Ukraine gets the "Full 1 (one) year" tier (formerly two years)', () => {
+  it('UA gets a 365-day per-visit entitlement', () => {
     const rule = getGeorgiaRule('UA');
     expect(isEntitled(rule)).toBe(true);
     if (!isEntitled(rule)) return;
     const limit = rule.entitlements[0].limits[0] as PerVisitLimit;
     expect(limit.type).toBe('per_visit');
-    expect(limit.value).toBe(730);
+    expect(limit.value).toBe(365);
     expect(limit.unit).toBe('days');
   });
 });

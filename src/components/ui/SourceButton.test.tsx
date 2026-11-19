@@ -2,6 +2,9 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MontenegroSources } from "@/data/sources";
+import { formatDay, verifiedDate } from "@/data/sourceStatus";
+import stability from "../../../pipeline/reports/stability.json";
+import linkStatus from "../../../pipeline/reports/link-status.json";
 
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -41,12 +44,17 @@ describe("SourceButton", () => {
     expect(byText("Official source")?.getAttribute("href")).toBe(MontenegroSources.DZ.direct.url);
     const links = document.querySelector('[data-testid="source-links"]')!;
     expect(links.querySelectorAll("a")).toHaveLength(2); // official and overview, side by side
-    expect(byText("Verified")?.textContent).toBe("Verified 15 Oct 2026 · Rule changed 15 Oct 2026 →");
+    expect(byText("Verified")?.textContent).toBe(`Verified ${formatDay(verifiedDate(MontenegroSources.DZ.dateChecked, stability.sources["Montenegro.DZ"]))} · Rule changed 15 Oct 2026 →`);
     expect(byText("Rule changed 15 Oct 2026")?.getAttribute("href")).toBe("/rule-changes#rule-4");
     await act(async () => {
       await new Promise((r) => setTimeout(r, 50)); // link status loads lazily
     });
-    expect(document.body.textContent).not.toMatch(/Link checked|couldn't reach/); // a working link isn't announced
+    // A working link isn't announced; one the last source check couldn't
+    // reach is (gov.me timed out on 2026-11-06), so follow the recorded status.
+    const urls: Record<string, { status: string }> = linkStatus.urls;
+    const live = [MontenegroSources.DZ.direct.url, MontenegroSources.DZ.parent.url].every((u) => urls[u]?.status === "live");
+    if (live) expect(document.body.textContent).not.toMatch(/Link checked|couldn't reach/);
+    else expect(document.body.textContent).toMatch(/couldn't reach/);
 
     await act(async () => byText("Report a problem")!.click());
     const send = byText("Send report") as HTMLButtonElement;
@@ -57,5 +65,55 @@ describe("SourceButton", () => {
     expect(byText("Thanks.")).toBeDefined();
     const report = sent.find((s) => s.event === "source_issue_reported");
     expect(report?.properties).toMatchObject({ region: "Montenegro", key: "DZ", kind: "wrong-info", url: MontenegroSources.DZ.direct.url });
+  });
+
+  it("tracks a source link click with the link and the trip's travelers", async () => {
+    const { SourceButton } = await import("./SourceButton");
+    const { SourceTripProvider, SourceTravelerProvider } = await import("./sourceTracking");
+    const trip = { travelerCount: 4, nationalities: ["US", "GB", "GB"] };
+    await act(async () =>
+      root.render(
+        <SourceTripProvider trip={trip}>
+          <SourceTravelerProvider nationality="US">
+            <SourceButton source={MontenegroSources.DZ} variant="text" />
+          </SourceTravelerProvider>
+        </SourceTripProvider>,
+      ),
+    );
+    await act(async () => byText("Source")!.click());
+    const official = byText("Official source")!;
+    official.addEventListener("click", (e) => e.preventDefault()); // jsdom can't open the tab
+    await act(async () => official.click());
+
+    expect(sent.find((s) => s.event === "source_details_opened")?.properties).toMatchObject({
+      region: "Montenegro",
+      traveler_count: 4,
+      nationalities: "GB,GB,US",
+    });
+    expect(sent.find((s) => s.event === "source_link_clicked")?.properties).toEqual({
+      link_type: "direct",
+      url: MontenegroSources.DZ.direct.url,
+      region: "Montenegro",
+      source_key: "DZ",
+      traveler_count: 4,
+      nationalities: "GB,GB,US",
+      traveler_nationality: "US",
+    });
+  });
+
+  it("tracks a source link click outside a trip with the link alone", async () => {
+    const { SourceButton } = await import("./SourceButton");
+    await act(async () => root.render(<SourceButton source={MontenegroSources.DZ} variant="text" />));
+    await act(async () => byText("Source")!.click());
+    const official = byText("Official source")!;
+    official.addEventListener("click", (e) => e.preventDefault());
+    await act(async () => official.click());
+
+    expect(sent.find((s) => s.event === "source_link_clicked")?.properties).toEqual({
+      link_type: "direct",
+      url: MontenegroSources.DZ.direct.url,
+      region: "Montenegro",
+      source_key: "DZ",
+    });
   });
 });

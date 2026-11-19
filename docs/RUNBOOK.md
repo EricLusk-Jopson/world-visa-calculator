@@ -169,6 +169,14 @@ change.
 4. If it's down for everyone, wait a cycle. The app already tells users "We
    couldn't reach this link on &lt;date&gt;".
 
+**Many links on one host, all "not fetched: &lt;host&gt; stopped responding".**
+The site stopped answering partway through the run (an outage, or it's
+refusing GitHub's runners), so the pipeline skipped its remaining pages
+rather than wait on each. That's not a set of dead links. Open one of its
+pages yourself: if it loads, wait for the next run; if the host keeps doing
+this, its region needs a by-hand check that cycle, especially when a dated
+waiver there is due for renewal.
+
 ### 🚫 Blocked or ⚠️ fetch error that's new
 
 The site has started refusing the pipeline, or its page changed shape.
@@ -257,6 +265,14 @@ Each "Report a problem" submission lands in the analytics sheet as a
 `source_issue_reported` row with the region, source key, URL and kind
 (broken link / wrong info / other), plus an optional message. Users
 can send at most three per page load, with no personal details.
+
+The rows land in the "Events" sheet because the app sends its
+`PUBLIC_ANALYTICS_TOKEN`, which the Apps Script matches to that sheet. The
+script is shared with Vinyl Periphery and lives in that repo at
+`docs/analytics/apps-script.js`. Both `PUBLIC_ANALYTICS_URL` and
+`PUBLIC_ANALYTICS_TOKEN` are set in Vercel and baked in at build time, so
+changing either needs a redeploy. Without the token, the script rejects
+every event and report.
 
 **When:** once a cycle, after the report PR. Sooner if someone emails.
 

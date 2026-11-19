@@ -8,6 +8,7 @@ export {
   decodeState,
   decodeCurrentUrl,
   buildShareableUrl,
+  hasRollingWindowParam,
 } from "./utils/urlEncoding";
 
 export type { DecodeResult } from "./utils/urlEncoding";

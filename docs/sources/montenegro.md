@@ -1,6 +1,6 @@
 ---
 region: Montenegro
-lastReviewed: 2026-10-19
+lastReviewed: 2026-11-06
 links:
   - id: index
     url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro
@@ -68,7 +68,11 @@ renamed shows up as a link change.
 
 **Establishes:** each nationality's rule (`MontenegroSources.<ISO>.direct`).
 
-**Machine:** each page is diffed for text and links.
+**Machine:** each page is diffed for text and links. On 2026-11-06,
+`www.gov.me` stopped answering GitHub's runners (connection timeouts), so
+the run skipped every Montenegro page ("not fetched: www.gov.me stopped
+responding") and kept the previous snapshots. When that happens, no diff
+can flag a change, so do the dated-waiver check below by hand that cycle.
 
 **Human:** open the country's page and scroll to the "Visas" section. Read
 the ordinary-passport rule and any dated waiver ("until 31 October …").
@@ -85,7 +89,9 @@ the ordinary-passport rule and any dated waiver ("until 31 October …").
   mission and working hours.
 
 **Human work:** read the Visas section when the diff touches it. Most diffs
-on these pages will be contact-detail churn.
+on these pages will be contact-detail churn. When the dated waivers (BY, CN, KZ,
+RU, SA, TR) near their end date, or a run couldn't reach the site, read
+those six countries' Visas sections for a renewal.
 
 ## Open questions
 

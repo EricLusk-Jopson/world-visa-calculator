@@ -1,6 +1,6 @@
 ---
 region: Ireland
-lastReviewed: 2026-10-20
+lastReviewed: 2026-10-23
 links:
   - id: visaNationalityList
     url: https://www.irishimmigration.ie/visa-non-visa-required-nationalities/
@@ -150,16 +150,28 @@ practice.
 **Machine:** health-checked only. The table is loaded by AJAX from a Ninja
 Table, so a plain fetch doesn't see it.
 
-**Human:** open the page and wait for the table. To grab it all, run this in
-the devtools console:
+**Human:** open the page and wait for the table. The table is paginated (20
+rows a page), and the page also has a cookie table, so a plain
+`table tbody tr` grab gets only the first 20 countries plus cookie rows (as
+on 2026-10-23). Run this in the devtools console instead:
 
 ```js
-copy([...document.querySelectorAll('table tbody tr')]
-  .map(r => [...r.cells].map(c => c.innerText.trim()).join('\t')).join('\n'));
+const ft = window.FooTable && FooTable.get('table.ninja_footable');
+const rows = ft
+  ? ft.rows.all.map(r => Object.values(r.value).map(v => String(v).replace(/<[^>]+>/g, '').trim()).join('\t'))
+  : [...document.querySelectorAll('table.ninja_footable tbody tr')]
+      .map(r => [...r.cells].map(c => c.innerText.trim()).join('\t'));
+copy(rows.join('\n'));
+rows.length; // about 200 means every page came through
 ```
 
-That puts tab-separated rows on the clipboard, ready to hand to Claude for
-comparison with `ireland.ts`.
+It reads every row from Ninja Tables' FooTable instance. If that isn't
+available, it falls back to the visible page only. In that case set the
+table's rows-per-page to the maximum, or page through and paste each page.
+Hand the clipboard to Claude for comparison with `ireland.ts`. On 2026-10-23
+a full paste came through (206 rows, including UK sub-categories, Hong Kong
+Document of Identity and refugee/stateless rows the app doesn't model) and
+matched `ireland.ts`.
 
 **Real change vs noise:** not diffed. The table changes after an amendment
 Order, which `amendmentSearchApi` flags first.
@@ -225,6 +237,9 @@ nationals.
 **Machine:** health-checked only.
 
 **Human:** check that the scheme still runs and still covers India and China.
+The page (last updated 27 June 2024) limits it to Chinese nationals living in
+China (including Hong Kong and Macau) and Indian nationals living in India
+when they apply. The app's note doesn't mention residence.
 
 **Real change vs noise:** not diffed.
 
@@ -238,7 +253,13 @@ nationalities.
 **Machine:** health-checked only.
 
 **Human:** check the list of countries and the programme's end date. The
-SSVWP has run on fixed extensions, so an expiry is a rule change.
+SSVWP has run on fixed extensions, so an expiry is a rule change. As of
+2026-10-23 (page last updated 9 May 2025), the page states no end date. It
+lists 22 countries by region: the 19 with the SSVWP note, India and China
+(covered by BIVS), and Ukraine (visa-free since 25 February 2022, note 3).
+Note 2 says that for Bahrain, Kuwait, Oman, Qatar, Saudi Arabia and Peru
+the UK ETA doesn't count; only a UK visa issued before 1 February 2024 does.
+That's modelled as a second note on those six (rule-change 11).
 
 **Real change vs noise:** not diffed.
 
@@ -251,7 +272,10 @@ SSVWP has run on fixed extensions, so an expiry is a rule change.
 **Machine:** health-checked only.
 
 **Human:** check the list of transit-visa nationalities against the notes in
-`ireland.ts`.
+`ireland.ts`. On 2026-10-23 (page last updated 24 July 2026) it listed 29,
+including Zimbabwe, which the app lacked (rule-change 10). Ethiopia is
+starred: no transit visa is needed when travelling directly between Ethiopia
+and the US or Canada. That exception isn't modelled.
 
 **Real change vs noise:** not diffed.
 

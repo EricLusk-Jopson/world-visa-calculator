@@ -66,7 +66,7 @@
  * Armenia's own member state (AM) is encoded as free_movement — an Armenian
  * national needs no visa to enter Armenia.
  *
- * Last verified: 2026-09-14
+ * Last verified: 2026-10-23
  */
 
 import type {
@@ -124,7 +124,7 @@ export const ARMENIA: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-09-14',
+  lastVerified: '2026-10-23',
   sourceUrl: ArmeniaSources.visaFreeList.parent.url,
   defaultRule: VISA_REQUIRED,
   passportRules: {

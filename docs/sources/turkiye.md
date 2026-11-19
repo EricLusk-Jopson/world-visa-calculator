@@ -1,6 +1,6 @@
 ---
 region: Turkiye
-lastReviewed: 2026-10-20
+lastReviewed: 2026-11-06
 links:
   - id: mfaVisaInfo
     url: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
@@ -26,6 +26,15 @@ links:
     category: interactive
     revisions: in-place
     access: script-rendered
+    machineCheck: link-only
+    diffConfidence: none
+    humanCheck: on-diff
+  - id: eVisaSouthAfrica
+    url: https://dtvgroup.com.tr/en/
+    loadBearing: false
+    category: html-page
+    revisions: in-place
+    access: open
     machineCheck: link-only
     diffConfidence: none
     humanCheck: on-diff
@@ -109,3 +118,20 @@ conditions for that nationality, with no account needed.
 
 **Human work:** only when an `mfaVisaInfo` diff mentions the e-Visa: check
 the affected nationalities here.
+
+## eVisaSouthAfrica
+
+**Establishes:** nothing on its own. It's where South African ordinary
+passport holders apply for the e-Visa: since Nov 2026 the MFA page says
+"multiple entry e-visas that allow a 30-day stay via the website
+https://dtvgroup.com.tr" (rule change 15). Linked from the ZA rule as
+`applicationUrl`; the rule cites `mfaVisaInfo`.
+
+**Machine:** health-checked only.
+
+**Human:** open it if South Africa's MFA paragraph changes again, to see
+whether it still offers the Türkiye e-Visa.
+
+**Real change vs noise:** not diffed.
+
+**Human work:** none unless the MFA paragraph changes.

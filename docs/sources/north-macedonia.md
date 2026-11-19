@@ -1,6 +1,6 @@
 ---
 region: NorthMacedonia
-lastReviewed: 2026-10-19
+lastReviewed: 2026-10-23
 links:
   - id: visaPage
     url: https://mfa.gov.mk/en-GB/konzularni-uslugi/dali-ti-e-potrebna-viza
@@ -83,6 +83,12 @@ Names are mapped with Intl plus `ALIASES`. The country list is diffed as
 - **Bad response:** a 419 response means the session or CSRF token was
   rejected (a pipeline problem, not a change).
 - **Unrecognised name:** reported as a note. Add it to `ALIASES`.
+- **Site down:** the whole check fails as a `fetch-error` on `…#countries`
+  ("Could not read the country buttons: fetch failed") and `visaPage` reports
+  broken with `UND_ERR_CONNECT_TIMEOUT`. On 2026-10-23 this was an MFA site
+  outage, confirmed by the maintainer in a browser. It isn't a diff, so there's
+  nothing to triage. Keep the rules as they are. If the next run fails the same
+  way, check the page by hand.
 
 **Human work:** click the country on the live page when its snapshot changes.
 

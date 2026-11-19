@@ -31,6 +31,14 @@ describe("rule-change log", () => {
     expect(entries.filter((e) => e.baseline)).toHaveLength(1);
   });
 
+  it("has each region's lastChanged set to its last recorded change", () => {
+    const last = lastChangePerRegion(entries);
+    const wrong = RULE_REGIONS.map(({ def }) => ({ def, expected: last.get(def.code)?.recorded }))
+      .filter(({ def, expected }) => def.lastChanged !== expected)
+      .map(({ def, expected }) => `${def.code}: lastChanged is ${def.lastChanged ?? "unset"}, the log says ${expected ?? "unset (no change since the baseline)"}`);
+    expect(wrong).toEqual([]);
+  });
+
   it("has each changed region's lastVerified on or after its last recorded change", () => {
     const stale = [...lastChangePerRegion(entries, true)]
       .map(([code, entry]) => ({ def: RULE_REGIONS.find((r) => r.def.code === code)!.def, entry }))

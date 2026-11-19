@@ -1,4 +1,4 @@
-import { useState, useEffect, forwardRef } from "react";
+import { useState, useEffect, useMemo, forwardRef } from "react";
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -43,6 +43,7 @@ import { getRegionDefinition } from "@/data/regions";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { EntryConstraintHint } from "./DurationPanel";
 import { computeTravelerDurations } from "../tripDuration";
+import { createOverstayPreview } from "../overstayPreview";
 import { computeTravelerEligibility } from "../tripEligibility";
 import { TripSummaryRow } from "@/features/trips/components/TripSummaryRow";
 import { TripDetailStack } from "@/features/trips/components/TripDetailStack";
@@ -195,6 +196,26 @@ const MobileSlideTransition = forwardRef(function Transition(
   return <Slide {...props} direction={props.in ? "left" : "right"} ref={ref} />;
 });
 
+/** Red tile for a picker day that would overstay; selected days go solid red. */
+function overstayDaySlot(over: boolean) {
+  return over
+    ? {
+        "aria-description": "Would overstay",
+        sx: {
+          bgcolor: tokens.redBg,
+          color: tokens.redText,
+          borderRadius: "8px",
+          "&:hover, &:focus": { bgcolor: tokens.redBorder },
+          "&.Mui-selected, &.Mui-selected:hover, &.Mui-selected:focus": {
+            bgcolor: tokens.red,
+            color: tokens.white,
+            borderRadius: "50%",
+          },
+        },
+      }
+    : {};
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function TripModal({
@@ -270,6 +291,31 @@ export function TripModal({
   // Interior days of the travelers' other trips — disabled in the date pickers.
   const blockedRanges = blockedTripRanges(travelers, travelerIds, initialTrip?.id, initialTrip);
   const isDayBlocked = (date: Date) => isDateBlocked(date, blockedRanges);
+
+  // Days whose pick would overstay for any selected traveler — shaded red in
+  // the pickers (still selectable). An entry pick keeps the current exit if
+  // it's later, else moves it to the next day, so preview that trip.
+  const overstay = useMemo(
+    () =>
+      createOverstayPreview({
+        region,
+        travelers,
+        travelerIds,
+        excludeTripId: initialTrip?.id,
+        excludeTrip: initialTrip,
+      }),
+    [region, travelers, travelerIds, initialTrip],
+  );
+  const exitThreshold = entryDate ? overstay.firstOverstayExit(entryDate) : null;
+  const entryDayOverstays = (date: Date) => {
+    const iso = formatDate(date);
+    return overstay.overstays(
+      iso,
+      exitDate && exitDate > iso ? exitDate : formatDate(addDays(date, 1)),
+    );
+  };
+  const exitDayOverstays = (date: Date) =>
+    exitThreshold !== null && formatDate(date) >= exitThreshold;
 
   // ── Entry constraint hint ───────────────────────────────────────────────────
 
@@ -374,6 +420,7 @@ export function TripModal({
     exitDate,
     destination,
     excludeTripId: initialTrip?.id,
+    excludeTrip: initialTrip,
   });
 
   // ── Per-traveler eligibility + summary counts (for the detail overlay) ──────
@@ -792,6 +839,7 @@ export function TripModal({
                   setError(null);
                 }}
                 slotProps={{
+                  day: (o) => overstayDaySlot(!o.isDayDisabled && entryDayOverstays(o.day)),
                   textField: {
                     size: "small",
                     placeholder: "Entry",
@@ -813,6 +861,7 @@ export function TripModal({
                   setError(null);
                 }}
                 slotProps={{
+                  day: (o) => overstayDaySlot(!o.isDayDisabled && exitDayOverstays(o.day)),
                   textField: {
                     size: "small",
                     placeholder: "Exit",

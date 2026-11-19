@@ -79,6 +79,11 @@ export interface UseUrlSyncOptions {
    * Defaults to true.
    */
   syncToUrl?: boolean;
+  /**
+   * True while the rolling window explorer is open: the URL (and the links
+   * this hook builds) then carry the `rw` flag so it reopens when shared.
+   */
+  rollingWindow?: boolean;
 }
 
 export interface CopyShareableUrlOptions {
@@ -105,6 +110,7 @@ export const useUrlSync = ({
   onHydrate,
   onHydrated,
   syncToUrl = true,
+  rollingWindow = false,
 }: UseUrlSyncOptions): UseUrlSyncReturn => {
   const hasMounted = useRef(false);
   const notrackRef = useRef(
@@ -148,7 +154,7 @@ export const useUrlSync = ({
     if (!hasMounted.current) return; // don't sync before hydration completes
 
     if (syncToUrl) {
-      let url = buildShareableUrl(state);
+      let url = buildShareableUrl(state, { rollingWindow });
       if (notrackRef.current) {
         url += url.includes("?") ? "&notrack" : "?notrack";
       }
@@ -161,15 +167,15 @@ export const useUrlSync = ({
 
     // Persist to localStorage — skipped for nosave links to protect the reader's own itinerary.
     if (!nosaveRef.current) saveToLocalStorage(state);
-  }, [state, syncToUrl]);
+  }, [state, syncToUrl, rollingWindow]);
 
   // ── Helpers ─────────────────────────────────────────────────────────────────
 
-  const shareableUrl = buildShareableUrl(state);
-  const nosaveShareableUrl = buildShareableUrl(state, { nosave: true });
+  const shareableUrl = buildShareableUrl(state, { rollingWindow });
+  const nosaveShareableUrl = buildShareableUrl(state, { nosave: true, rollingWindow });
 
   const copyShareableUrl = useCallback(async (options?: CopyShareableUrlOptions): Promise<void> => {
-    const url = buildShareableUrl(state, options);
+    const url = buildShareableUrl(state, { ...options, rollingWindow });
     try {
       await navigator.clipboard.writeText(url);
     } catch {
@@ -183,7 +189,7 @@ export const useUrlSync = ({
       document.execCommand("copy");
       document.body.removeChild(textarea);
     }
-  }, [state]);
+  }, [state, rollingWindow]);
 
   const clearSavedData = useCallback((): void => {
     clearLocalStorage();
