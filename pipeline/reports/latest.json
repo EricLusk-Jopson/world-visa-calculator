@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T21:42:34.466Z",
+  "generatedAt": "2026-11-20T21:58:39.549Z",
   "regions": [
     {
       "region": "Schengen",
@@ -44,9 +44,9 @@
               "field": "parent"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en"
+          "status": "broken",
+          "httpStatus": 404,
+          "finalUrl": "https://home-affairs.ec.europa.eu/node/9176"
         },
         {
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628",
@@ -527,6 +527,10 @@
             {
               "key": "mfaVisaInfo",
               "field": "direct"
+            },
+            {
+              "key": "eVisaSouthAfrica",
+              "field": "parent"
             }
           ],
           "status": "live",
@@ -560,6 +564,18 @@
           "status": "live",
           "httpStatus": 200,
           "finalUrl": "https://evisa.gov.tr/en"
+        },
+        {
+          "url": "https://dtvgroup.com.tr/en/",
+          "usedBy": [
+            {
+              "key": "eVisaSouthAfrica",
+              "field": "direct"
+            }
+          ],
+          "status": "live",
+          "httpStatus": 200,
+          "finalUrl": "https://dtvgroup.com.tr/en/"
         }
       ],
       "ruleChecks": [
@@ -568,11 +584,37 @@
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
           "status": "both-changed",
-          "textDiffPreview": "- South Africa: Ordinary passport holders are required to have visa to enter Türkiye. They can obtain three-month period multiple entry visas from Turkish representations abroad or one month period sing\n+ South Africa: Ordinary passport holders are required to have visa to enter Türkiye. They can obtain multiple entry sticker visas that allow a 90-day stay from Turkish representations abroad or multipl",
+          "textDiffPreview": "  Benin: Ordinary, special and service passport holders are required to have visa to enter Türkiye. Diplomatic passport holders are exempted from visa for their travels up to 90 days.\n- Bhutan: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary passport holders can get their 15 day period visas from Turkish diplomatic representations abroad.\n+ Bhutan: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary and official passport holders can get their visas from Turkish diplomatic or consular representation\n  Slovenia: Ordinary passport holders are exempted from visa for their travels to Türkiye with touristic purposes up to 90 days within 180 days, starting from the first entry date. Official passport hol\n- Solomon Islands: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary passport holders can get their 15 day period visas from Turkish diplomatic representations \n+ Solomon Islands: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary and official passport holders can get their visas from Turkish diplomatic or consular repre\n  Uzbekistan: Diplomatic and ordinary passport holders are exempted from visa up to 90 days within any 180 day period. Other types of official passport holders are required to have visa to enter Türkiye\n- Vanuatu: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary passport holders can get their 15 day period visa from Turkish diplomatic representations abroad.\n+ Vanuatu: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary and official passport holders can get their visas from Turkish diplomatic or consular representatio",
           "linkChanges": [
             {
-              "text": "https://dtvgroup.com.tr",
-              "currentHref": "https://dtvgroup.com.tr/en/",
+              "text": "Protocol",
+              "previousHref": "https://www.mfa.gov.tr/protocol.en.mfa",
+              "currentHref": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa#",
+              "kind": "target-changed"
+            },
+            {
+              "text": "The Turkish Flag and The Turkish National Anthem (Independence March)",
+              "currentHref": "https://www.mfa.gov.tr/the-turkish-flag-and-the-turkish-national-anthem.en.mfa",
+              "kind": "added"
+            },
+            {
+              "text": "Diplomatic Portal-Online Desk",
+              "currentHref": "http://cdops.mfa.gov.tr/login?ReturnUrl=%2f",
+              "kind": "added"
+            },
+            {
+              "text": "Forms",
+              "currentHref": "http://cd.mfa.gov.tr/pages/content/4",
+              "kind": "added"
+            },
+            {
+              "text": "Diplomatic Lists",
+              "currentHref": "http://cd.mfa.gov.tr/mission/mission-list?clickedId=3",
+              "kind": "added"
+            },
+            {
+              "text": "Guide for Diplomatic Missions",
+              "currentHref": "http://www.mfa.gov.tr/site_media/pdf/Guide-for-diplomatic-mission-in-turkiye.pdf",
               "kind": "added"
             }
           ],
@@ -585,7 +627,40 @@
           "url": "https://www.mfa.gov.tr/consular-info.en.mfa",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "links-changed",
+          "linkChanges": [
+            {
+              "text": "Protocol",
+              "previousHref": "https://www.mfa.gov.tr/protocol.en.mfa",
+              "currentHref": "https://www.mfa.gov.tr/consular-info.en.mfa#",
+              "kind": "target-changed"
+            },
+            {
+              "text": "The Turkish Flag and The Turkish National Anthem (Independence March)",
+              "currentHref": "https://www.mfa.gov.tr/the-turkish-flag-and-the-turkish-national-anthem.en.mfa",
+              "kind": "added"
+            },
+            {
+              "text": "Diplomatic Portal-Online Desk",
+              "currentHref": "http://cdops.mfa.gov.tr/login?ReturnUrl=%2f",
+              "kind": "added"
+            },
+            {
+              "text": "Forms",
+              "currentHref": "http://cd.mfa.gov.tr/pages/content/4",
+              "kind": "added"
+            },
+            {
+              "text": "Diplomatic Lists",
+              "currentHref": "http://cd.mfa.gov.tr/mission/mission-list?clickedId=3",
+              "kind": "added"
+            },
+            {
+              "text": "Guide for Diplomatic Missions",
+              "currentHref": "http://www.mfa.gov.tr/site_media/pdf/Guide-for-diplomatic-mission-in-turkiye.pdf",
+              "kind": "added"
+            }
+          ],
           "keys": [
             "mfaVisaInfo"
           ],
@@ -9918,8 +9993,7 @@
           "url": "https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "text-changed",
-          "textDiffPreview": "- Visas required\n+ No visas required for visits up to 90 days, within period of 180 days",
+          "status": "unchanged",
           "keys": [
             "MV"
           ],
@@ -12374,8 +12448,8 @@
               "field": "parent"
             }
           ],
-          "status": "live",
-          "httpStatus": 200,
+          "status": "broken",
+          "httpStatus": 404,
           "finalUrl": "https://www.mvp.gov.ba/en/vize"
         },
         {
@@ -14708,9 +14782,8 @@
         },
         {
           "url": "https://www.mvp.gov.ba/en/vize",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "fetch-error",
+          "error": "HTTP 404",
           "keys": [
             "AD",
             "AE",
@@ -15034,7 +15107,20 @@
           "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "both-changed",
+          "textDiffPreview": "  Belgium\n- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Bruxelles, Belgium.\n+ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Bruxelles, Belgium.",
+          "linkChanges": [
+            {
+              "text": "Embassy of Bosnia and Herzegovina in Bruxelles, Belgium",
+              "currentHref": "https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639238616011701449",
+              "kind": "added"
+            },
+            {
+              "text": "the Embassy of Bosnia and Herzegovina in Bruxelles, Belgium.",
+              "previousHref": "https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?BELGIJA/?id=6930",
+              "kind": "removed"
+            }
+          ],
           "keys": [
             "BE"
           ],
@@ -15614,16 +15700,7 @@
           "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "both-changed",
-          "textDiffPreview": "- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Zagreb, Croatia.\n+ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Zagreb, Croatia.\n+ Regular passport YES from 01.07.2013.\n+ Regular biometric passport NO\n+ Service/Official biometric passport NO\n+ Diplomatic biometric passport NO",
-          "linkChanges": [
-            {
-              "text": "- Information for travel to the Republic of Croatia -",
-              "previousHref": "https://www.mvp.gov.ba/konzularne_informacije/sta_konzul_moze_uciniti_za_vas/Traveling_of_BH_citizens_to_the_Republic_of_Croatia_after_1_July_2013_ENG.pdf",
-              "currentHref": "https://www.mvp.gov.ba/en/what-the-consul-can-do-for-you",
-              "kind": "target-changed"
-            }
-          ],
+          "status": "unchanged",
           "keys": [
             "HR"
           ],
@@ -15853,20 +15930,7 @@
           "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "both-changed",
-          "textDiffPreview": "- Consular help: Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Moscow, Russia.\n+ Consular help: Consular help will be provided by the Embassy of Bosnia and Herzegovina in Moscow, Russia.\n+ Foreign nationals entering the territory of the Republic of Kazakhstan must possess an Electronic Travel Authorization (ETA). Detailed information regarding this requirement is available on the “QazET",
-          "linkChanges": [
-            {
-              "text": "Embassy of Bosnia and Herzegovina in Moscow, Russia",
-              "currentHref": "https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216054720219266",
-              "kind": "added"
-            },
-            {
-              "text": "the Embassy of Bosnia and Herzegovina in Moscow, Russia.",
-              "previousHref": "https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?RUSKA_Federacija/?id=6984",
-              "kind": "removed"
-            }
-          ],
+          "status": "unchanged",
           "keys": [
             "KZ"
           ],
@@ -15976,7 +16040,20 @@
           "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "both-changed",
+          "textDiffPreview": "  Libya\n- Consular help:Consular help will be provided by the Embassy of Bosnia and Herzegovina in Tripoli, Libya.\n+ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Tripoli, Libya.",
+          "linkChanges": [
+            {
+              "text": "Embassy of Bosnia and Herzegovina in Tripoli, Libya",
+              "currentHref": "https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639244717545633136",
+              "kind": "added"
+            },
+            {
+              "text": "the Embassy of Bosnia and Herzegovina in Tripoli, Libya.",
+              "previousHref": "https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?LIBIJA/?id=7061",
+              "kind": "removed"
+            }
+          ],
           "keys": [
             "LY"
           ],
@@ -16146,7 +16223,20 @@
           "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "both-changed",
+          "textDiffPreview": "  Malaysia\n- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Kuala Lumpur, Malaysia\n+ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Kuala Lumpur, Malaysia.\n  Diplomatic biometric passport NO\n- \"Three days before the planned trip to Malaysia, it is necessary to fill out the digital arrival card for Malaysia – Malaysia Digital Personnel for Digital Arrival (MDAC), which can be found on the we\n- Further information can be found on the Website of the Malaysian Immigration Service: www.imi.gov.my \"\n- Citizens of Malaysia, holders of valid ordinary, diplomatic and official passports, shall be exempt from the obligation to obtain a visa for entry, exit ,transit and stay on the territory of Bosnia an\n+ Three days before the planned trip to Malaysia, it is necessary to fill out the digital arrival card for Malaysia – Malaysia Digital Personnel for Digital Arrival (MDAC), which can be found on the web\n+ Further information can be found on the Website of the Malaysian Immigration Service: www.imi.gov.my\n+ Citizens of Malaysia, holders of valid ordinary, diplomatic and official passports, shall be exempt from the obligation to obtain a visa for entry, exit, transit and stay on the territory of Bosnia an",
+          "linkChanges": [
+            {
+              "text": "Embassy of Bosnia and Herzegovina in Kuala Lumpur, Malaysia",
+              "currentHref": "https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216026399958026",
+              "kind": "added"
+            },
+            {
+              "text": "the Embassy of Bosnia and Herzegovina in Kuala Lumpur, Malaysia",
+              "previousHref": "https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?MALEZIJA/?id=7069",
+              "kind": "removed"
+            }
+          ],
           "keys": [
             "MY"
           ],
@@ -16396,20 +16486,7 @@
           "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "both-changed",
-          "textDiffPreview": "- Consular help: Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Moscow, Russia.\n+ Consular help: Consular help will be provided by the Embassy of Bosnia and Herzegovina in Moscow, Russia.\n- Citizens of Bosnia and Herzegovina can enter and stay in the territory of the Russian Federation by presenting the original contract on rendering tourism services (tourist voucher), and confirmation o\n+ Citizens of Bosnia and Herzegovina can enter and stay in the territory of the Russian Federation by presenting the original contract on rendering tourism services (tourist voucher), and confirmation o\n+ In order to enter or stay in Bosnia and Herzegovina for a period up to ninety days, citizens of the Russian Federation are required to possess an invitation letter verified by the Service for Foreigne\n- Citizens of the Russian Federation who transit through the territory of Bosnia and Herzegovina are allowed to stay in the territory of Bosnia and Herzegovina on the basis of valid travel documents, wi\n+ Citizens of the Russian Federation who transit through the territory of Bosnia and Herzegovina are allowed to stay in the territory of Bosnia and Herzegovina on the basis of valid travel documents, wi\n+ The list of valid documents for citizens of Bosnia and Herzegovina and the Russian Federation confirming the identity of a trip to the state of one of the Parties:\n+ Diplomatic Passport\n+ Diplomatic Passport\n+ Service Passport\n+ Service Passport\n+ Ordinary Passport\n+ Ordinary Passport\n+ Seaman's book (identity card seaman) by owning the ship's documents or extracts from it\n+ Seaman's book (identity card seaman) by owning the ship's documents or extracts from it\n+ Travel document (only to return to home country).\n+ Travel document (only to return to home country).\n+ Movement of foreign nationals within the municipal districts of Odintsovo and Balashikha in the Moscow Region is subject to a special regime and requires permits.",
-          "linkChanges": [
-            {
-              "text": "Embassy of Bosnia and Herzegovina in Moscow, Russia",
-              "currentHref": "https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216054720219266",
-              "kind": "added"
-            },
-            {
-              "text": "the Embassy of Bosnia and Herzegovina in Moscow, Russia.",
-              "previousHref": "https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?RUSKA_Federacija/?id=6984",
-              "kind": "removed"
-            }
-          ],
+          "status": "unchanged",
           "keys": [
             "RU"
           ],
@@ -16429,7 +16506,20 @@
           "url": "https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "unchanged",
+          "status": "both-changed",
+          "textDiffPreview": "  Saudi Arabia\n- Consular help:Consular help will be provided by the Embassy of Bosnia and Herzegovina in Ryadh, Saudi Arabia.\n+ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Riyadh, Saudi Arabia.\n  Diplomatic biometric passport YES\n+ Citizens of Bosnia and Herzegovina, effective 5 November 2026, and in accordance with the decision of the competent authorities of the Kingdom of Saudi Arabia, are eligible to obtain an electronic tou\n  In light of recent events and the deteriorating security situation in the Middle East, citizens of Bosnia and Herzegovina are not recommended to travel to parts of the Kingdom of Saudi Arabia, especia\n- NOTE:In accordance with the Decision of the Council of Ministers of Bosnia and Herzegovina dated April 15, 2026, amending the Decision on Visas, citizens of the Kingdom of Saudi Arabia holding ordinar\n+ NOTE:\n+ In accordance with the Decision of the Council of Ministers of Bosnia and Herzegovina dated April 15, 2026, amending the Decision on Visas, citizens of the Kingdom of Saudi Arabia holding ordinary pas\n  The total duration of stay for citizens of the Kingdom of Saudi Arabia in Bosnia and Herzegovina within the specified period may be up to 60 days.\n- he stay of citizens of the Kingdom of Saudi Arabia in Bosnia and Herzegovina under the aforementioned visa-free regime is permitted until September 30, 2026. For stays in Bosnia and Herzegovina after \n+ The stay of citizens of the Kingdom of Saudi Arabia in Bosnia and Herzegovina under the aforementioned visa-free regime is permitted until September 30, 2026. For stays in Bosnia and Herzegovina after",
+          "linkChanges": [
+            {
+              "text": "the Embassy of Bosnia and Herzegovina in Riyadh, Saudi Arabia",
+              "currentHref": "https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216113934908518",
+              "kind": "added"
+            },
+            {
+              "text": "the Embassy of Bosnia and Herzegovina in Ryadh, Saudi Arabia.",
+              "previousHref": "https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?SAUDIJSKA_ARABIJA/?id=6972",
+              "kind": "removed"
+            }
+          ],
           "keys": [
             "SA"
           ],
@@ -16867,7 +16957,9 @@
         },
         {
           "url": "https://www.mvp.gov.ba/en/vize#subpages",
-          "status": "unchanged",
+          "status": "fetch-error",
+          "error": "Could not read the country list: HTTP 404",
+          "note": "Used the 194 pages from the previous run's list",
           "keys": [
             "AD",
             "AE",
@@ -25231,18 +25323,6 @@
           "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana"
         },
         {
-          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong",
-          "usedBy": [
-            {
-              "key": "HK",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong"
-        },
-        {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras",
           "usedBy": [
             {
@@ -25721,18 +25801,6 @@
           "status": "live",
           "httpStatus": 200,
           "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia"
-        },
-        {
-          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao",
-          "usedBy": [
-            {
-              "key": "MO",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao"
         },
         {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania",
@@ -26345,18 +26413,6 @@
           "status": "live",
           "httpStatus": 200,
           "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago"
-        },
-        {
-          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan",
-          "usedBy": [
-            {
-              "key": "TW",
-              "field": "direct.alternate"
-            }
-          ],
-          "status": "live",
-          "httpStatus": 200,
-          "finalUrl": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan"
         },
         {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania",
@@ -27284,34 +27340,6 @@
           "link": "direct.alternate"
         },
         {
-          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "both-changed",
-          "textDiffPreview": "- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388\n+ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308",
-          "linkChanges": [
-            {
-              "text": "https://e-albania.al/ServiceDetails/15146",
-              "currentHref": "https://e-albania.al/ServiceDetails/15146",
-              "kind": "added"
-            },
-            {
-              "text": "https://e-albania.al/ServiceDetails/15308",
-              "currentHref": "https://e-albania.al/ServiceDetails/15308",
-              "kind": "added"
-            },
-            {
-              "text": "https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388",
-              "previousHref": "https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388",
-              "kind": "removed"
-            }
-          ],
-          "keys": [
-            "HK"
-          ],
-          "link": "direct.alternate"
-        },
-        {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
@@ -27708,34 +27736,6 @@
           "status": "unchanged",
           "keys": [
             "MN"
-          ],
-          "link": "direct.alternate"
-        },
-        {
-          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "both-changed",
-          "textDiffPreview": "- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388\n+ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308",
-          "linkChanges": [
-            {
-              "text": "https://e-albania.al/ServiceDetails/15146",
-              "currentHref": "https://e-albania.al/ServiceDetails/15146",
-              "kind": "added"
-            },
-            {
-              "text": "https://e-albania.al/ServiceDetails/15308",
-              "currentHref": "https://e-albania.al/ServiceDetails/15308",
-              "kind": "added"
-            },
-            {
-              "text": "https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388",
-              "previousHref": "https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388",
-              "kind": "removed"
-            }
-          ],
-          "keys": [
-            "MO"
           ],
           "link": "direct.alternate"
         },
@@ -28250,34 +28250,6 @@
           "link": "direct.alternate"
         },
         {
-          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan",
-          "previousUpdatedAt": null,
-          "currentUpdatedAt": null,
-          "status": "both-changed",
-          "textDiffPreview": "- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388\n+ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308",
-          "linkChanges": [
-            {
-              "text": "https://e-albania.al/ServiceDetails/15146",
-              "currentHref": "https://e-albania.al/ServiceDetails/15146",
-              "kind": "added"
-            },
-            {
-              "text": "https://e-albania.al/ServiceDetails/15308",
-              "currentHref": "https://e-albania.al/ServiceDetails/15308",
-              "kind": "added"
-            },
-            {
-              "text": "https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388",
-              "previousHref": "https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388",
-              "kind": "removed"
-            }
-          ],
-          "keys": [
-            "TW"
-          ],
-          "link": "direct.alternate"
-        },
-        {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania",
           "previousUpdatedAt": null,
           "currentUpdatedAt": null,
@@ -28419,7 +28391,41 @@
         },
         {
           "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries",
-          "status": "unchanged",
+          "note": "Not recognized as a country (add to ALIASES in pipeline/src/resolvers/punetejashtmeGovAl.ts): HONG KONG (not in the selector) (hong-kong), MAKAO (not in the selector) (makao), TAJVAN (not in the selector) (tajvan)",
+          "status": "both-changed",
+          "textDiffPreview": "  HONDURAS → HN · honduras\n- HONG KONG (CHINA) → HK · hong-kong\n+ HONG KONG (not in the selector) → not recognized · hong-kong\n  LUXEMBOURG → LU · luksemburg\n- MACAU (CHINA) → MO · makao\n  MADAGASCAR → MG · madagaskar\n+ MAKAO (not in the selector) → not recognized · makao\n  SYRIA → SY · siria\n- TAIWAN (CHINA) → TW · tajvan\n  TAJIKISTAN → TJ · taxhikistan\n+ TAJVAN (not in the selector) → not recognized · tajvan",
+          "linkChanges": [
+            {
+              "text": "HONG KONG (not in the selector)",
+              "currentHref": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong",
+              "kind": "added"
+            },
+            {
+              "text": "MAKAO (not in the selector)",
+              "currentHref": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao",
+              "kind": "added"
+            },
+            {
+              "text": "TAJVAN (not in the selector)",
+              "currentHref": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan",
+              "kind": "added"
+            },
+            {
+              "text": "HONG KONG (CHINA)",
+              "previousHref": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong",
+              "kind": "removed"
+            },
+            {
+              "text": "MACAU (CHINA)",
+              "previousHref": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao",
+              "kind": "removed"
+            },
+            {
+              "text": "TAIWAN (CHINA)",
+              "previousHref": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan",
+              "kind": "removed"
+            }
+          ],
           "keys": [
             "AD",
             "AE",
@@ -28589,6 +28595,33 @@
             "ZW"
           ],
           "link": "direct.alternate (page list)"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#HK",
+          "keys": [
+            "HK"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "No page for HK in https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/'s country list"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#MO",
+          "keys": [
+            "MO"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "No page for MO in https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/'s country list"
+        },
+        {
+          "url": "https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#TW",
+          "keys": [
+            "TW"
+          ],
+          "link": "direct.alternate",
+          "status": "fetch-error",
+          "error": "No page for TW in https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/'s country list"
         }
       ]
     },
@@ -28767,8 +28800,9 @@
         },
         {
           "url": "https://mfa.gov.by/en/visa/freemove/general/",
+          "previousUpdatedAt": null,
           "currentUpdatedAt": null,
-          "status": "first-run",
+          "status": "unchanged",
           "keys": [
             "bilateral"
           ],
@@ -28899,13 +28933,13 @@
   ],
   "skippedRegions": [],
   "summary": {
-    "totalLinksChecked": 998,
-    "brokenLinks": 197,
+    "totalLinksChecked": 996,
+    "brokenLinks": 199,
     "redirectedLinks": 0,
     "blockedLinks": 1,
     "sourcesChecked": 971,
-    "sourcesChanged": 8,
-    "sourcesFirstRun": 1,
-    "sourcesFetchError": 197
+    "sourcesChanged": 7,
+    "sourcesFirstRun": 0,
+    "sourcesFetchError": 202
   }
 }

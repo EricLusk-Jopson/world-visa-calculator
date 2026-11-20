@@ -1,19 +1,19 @@
 # Source Verification Report
 
-Generated: 2026-11-06T21:42:34.466Z
+Generated: 2026-11-20T21:58:39.549Z
 
 ## Summary
 
 | | |
 |---|---|
-| Unique links checked | 998 |
-| 🔴 Broken | 197 |
+| Unique links checked | 996 |
+| 🔴 Broken | 199 |
 | ↪️ Redirected | 0 |
 | 🚫 Blocked (could not verify) | 1 |
 | Content sources diffed (`checkDiff`) | 971 |
-| ✏️ Changed since last baseline | 8 |
-| 🆕 First run (no baseline yet) | 1 |
-| ⚠️ Fetch errors | 197 |
+| ✏️ Changed since last baseline | 7 |
+| 🆕 First run (no baseline yet) | 0 |
+| ⚠️ Fetch errors | 202 |
 
 ## Schengen
 
@@ -23,7 +23,7 @@ Generated: 2026-11-06T21:42:34.466Z
 |---|---|---|
 | visaList (direct) | ✅ live (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230 |
 | visaList (direct.alternate) | ✅ live (200) | https://publications.europa.eu/resource/celex/02018R1806-20251230 |
-| visaList, atvCommon, atvSpecific (parent) | ✅ live (200) | https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en |
+| visaList, atvCommon, atvSpecific (parent) | 🔴 broken (404) | https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en |
 | atvCommon (direct) | ✅ live (200) | https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628 |
 | atvCommon (direct.alternate) | ✅ live (200) | https://publications.europa.eu/resource/celex/02009R0810-20240628 |
 | atvSpecific (direct) | ✅ live (200) | https://home-affairs.ec.europa.eu/document/download/7337515c-60a1-4510-b639-80de714f543e_en?filename=Annex%207b_en.pdf |
@@ -98,9 +98,10 @@ Generated: 2026-11-06T21:42:34.466Z
 
 | Used by | Status | URL |
 |---|---|---|
-| mfaVisaInfo (direct) | ✅ live (200) | https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa |
+| mfaVisaInfo, eVisaSouthAfrica | ✅ live (200) | https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa |
 | mfaVisaInfo (parent) | ✅ live (200) | https://www.mfa.gov.tr/consular-info.en.mfa |
 | eVisaApplication | ✅ live (200) | https://evisa.gov.tr/en |
+| eVisaSouthAfrica (direct) | ✅ live (200) | https://dtvgroup.com.tr/en/ |
 
 ### Content diffing
 
@@ -109,17 +110,38 @@ Generated: 2026-11-06T21:42:34.466Z
 URL: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
 
 ```diff
-- South Africa: Ordinary passport holders are required to have visa to enter Türkiye. They can obtain three-month period multiple entry visas from Turkish representations abroad or one month period sing
-+ South Africa: Ordinary passport holders are required to have visa to enter Türkiye. They can obtain multiple entry sticker visas that allow a 90-day stay from Turkish representations abroad or multipl
+  Benin: Ordinary, special and service passport holders are required to have visa to enter Türkiye. Diplomatic passport holders are exempted from visa for their travels up to 90 days.
+- Bhutan: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary passport holders can get their 15 day period visas from Turkish diplomatic representations abroad.
++ Bhutan: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary and official passport holders can get their visas from Turkish diplomatic or consular representation
+  Slovenia: Ordinary passport holders are exempted from visa for their travels to Türkiye with touristic purposes up to 90 days within 180 days, starting from the first entry date. Official passport hol
+- Solomon Islands: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary passport holders can get their 15 day period visas from Turkish diplomatic representations 
++ Solomon Islands: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary and official passport holders can get their visas from Turkish diplomatic or consular repre
+  Uzbekistan: Diplomatic and ordinary passport holders are exempted from visa up to 90 days within any 180 day period. Other types of official passport holders are required to have visa to enter Türkiye
+- Vanuatu: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary passport holders can get their 15 day period visa from Turkish diplomatic representations abroad.
++ Vanuatu: Ordinary and official passport holders are required to have visa to enter Türkiye. Ordinary and official passport holders can get their visas from Turkish diplomatic or consular representatio
 ```
 
 | Change | Anchor text | Previous target | Current target |
 |---|---|---|---|
-| added | https://dtvgroup.com.tr | _(none)_ | https://dtvgroup.com.tr/en/ |
+| target-changed | Protocol | https://www.mfa.gov.tr/protocol.en.mfa | https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa# |
+| added | The Turkish Flag and The Turkish National Anthem (Independence March) | _(none)_ | https://www.mfa.gov.tr/the-turkish-flag-and-the-turkish-national-anthem.en.mfa |
+| added | Diplomatic Portal-Online Desk | _(none)_ | http://cdops.mfa.gov.tr/login?ReturnUrl=%2f |
+| added | Forms | _(none)_ | http://cd.mfa.gov.tr/pages/content/4 |
+| added | Diplomatic Lists | _(none)_ | http://cd.mfa.gov.tr/mission/mission-list?clickedId=3 |
+| added | Guide for Diplomatic Missions | _(none)_ | http://www.mfa.gov.tr/site_media/pdf/Guide-for-diplomatic-mission-in-turkiye.pdf |
 
-| Keys | Status | URL |
-|---|---|---|
-| mfaVisaInfo (parent) | ✅ unchanged | https://www.mfa.gov.tr/consular-info.en.mfa |
+#### mfaVisaInfo (parent) — 🔗 link target changed
+
+URL: https://www.mfa.gov.tr/consular-info.en.mfa
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| target-changed | Protocol | https://www.mfa.gov.tr/protocol.en.mfa | https://www.mfa.gov.tr/consular-info.en.mfa# |
+| added | The Turkish Flag and The Turkish National Anthem (Independence March) | _(none)_ | https://www.mfa.gov.tr/the-turkish-flag-and-the-turkish-national-anthem.en.mfa |
+| added | Diplomatic Portal-Online Desk | _(none)_ | http://cdops.mfa.gov.tr/login?ReturnUrl=%2f |
+| added | Forms | _(none)_ | http://cd.mfa.gov.tr/pages/content/4 |
+| added | Diplomatic Lists | _(none)_ | http://cd.mfa.gov.tr/mission/mission-list?clickedId=3 |
+| added | Guide for Diplomatic Missions | _(none)_ | http://www.mfa.gov.tr/site_media/pdf/Guide-for-diplomatic-mission-in-turkiye.pdf |
 
 ## Montenegro
 
@@ -1516,15 +1538,6 @@ URL: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-monte
 
 ### Content diffing
 
-#### MV — ✏️ text changed
-
-URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives
-
-```diff
-- Visas required
-+ No visas required for visits up to 90 days, within period of 180 days
-```
-
 | Keys | Status | URL |
 |---|---|---|
 | AF | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/avganistan |
@@ -1633,6 +1646,7 @@ URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives
 | MG | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/madagaskar |
 | MW | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malavi |
 | MY | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malezija |
+| MV | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives |
 | ML | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/mali |
 | MT | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/malta |
 | MH | ✅ unchanged | https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/marshall-islands |
@@ -1728,7 +1742,7 @@ URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives
 
 | Used by | Status | URL |
 |---|---|---|
-| AD, AE, AF, AG, AL, AM, AO, AR … (+187 more) | ✅ live (200) | https://www.mvp.gov.ba/en/vize |
+| AD, AE, AF, AG, AL, AM, AO, AR … (+187 more) | 🔴 broken (404) | https://www.mvp.gov.ba/en/vize |
 | AD (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba |
 | AE (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887696763845615?domain=https://www.mvp.gov.ba |
 | AF (direct.alternate) | ✅ live (200) | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639082935039597309?domain=https://www.mvp.gov.ba |
@@ -1925,73 +1939,96 @@ URL: https://mfa.gov.rs/en/citizens/travel-serbia/visa-regime/maldives
 
 ### Content diffing
 
-#### HR (direct.alternate) — ✏️🔗 text + link changed
+#### AD, AE, AF, AG, AL … (+190 more) (parent) — ⚠️ fetch error
 
-URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba
+URL: https://www.mvp.gov.ba/en/vize
+<br>Error: HTTP 404
+
+#### BE (direct.alternate) — ✏️🔗 text + link changed
+
+URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba
 
 ```diff
-- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Zagreb, Croatia.
-+ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Zagreb, Croatia.
-+ Regular passport YES from 01.07.2013.
-+ Regular biometric passport NO
-+ Service/Official biometric passport NO
-+ Diplomatic biometric passport NO
+  Belgium
+- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Bruxelles, Belgium.
++ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Bruxelles, Belgium.
 ```
 
 | Change | Anchor text | Previous target | Current target |
 |---|---|---|---|
-| target-changed | - Information for travel to the Republic of Croatia - | https://www.mvp.gov.ba/konzularne_informacije/sta_konzul_moze_uciniti_za_vas/Traveling_of_BH_citizens_to_the_Republic_of_Croatia_after_1_July_2013_ENG.pdf | https://www.mvp.gov.ba/en/what-the-consul-can-do-for-you |
+| added | Embassy of Bosnia and Herzegovina in Bruxelles, Belgium | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639238616011701449 |
+| removed | the Embassy of Bosnia and Herzegovina in Bruxelles, Belgium. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?BELGIJA/?id=6930 | _(removed)_ |
 
-#### KZ (direct.alternate) — ✏️🔗 text + link changed
+#### LY (direct.alternate) — ✏️🔗 text + link changed
 
-URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba
+URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba
 
 ```diff
-- Consular help: Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Moscow, Russia.
-+ Consular help: Consular help will be provided by the Embassy of Bosnia and Herzegovina in Moscow, Russia.
-+ Foreign nationals entering the territory of the Republic of Kazakhstan must possess an Electronic Travel Authorization (ETA). Detailed information regarding this requirement is available on the “QazET
+  Libya
+- Consular help:Consular help will be provided by the Embassy of Bosnia and Herzegovina in Tripoli, Libya.
++ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Tripoli, Libya.
 ```
 
 | Change | Anchor text | Previous target | Current target |
 |---|---|---|---|
-| added | Embassy of Bosnia and Herzegovina in Moscow, Russia | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216054720219266 |
-| removed | the Embassy of Bosnia and Herzegovina in Moscow, Russia. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?RUSKA_Federacija/?id=6984 | _(removed)_ |
+| added | Embassy of Bosnia and Herzegovina in Tripoli, Libya | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639244717545633136 |
+| removed | the Embassy of Bosnia and Herzegovina in Tripoli, Libya. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?LIBIJA/?id=7061 | _(removed)_ |
 
-#### RU (direct.alternate) — ✏️🔗 text + link changed
+#### MY (direct.alternate) — ✏️🔗 text + link changed
 
-URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba
+URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba
 
 ```diff
-- Consular help: Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Moscow, Russia.
-+ Consular help: Consular help will be provided by the Embassy of Bosnia and Herzegovina in Moscow, Russia.
-- Citizens of Bosnia and Herzegovina can enter and stay in the territory of the Russian Federation by presenting the original contract on rendering tourism services (tourist voucher), and confirmation o
-+ Citizens of Bosnia and Herzegovina can enter and stay in the territory of the Russian Federation by presenting the original contract on rendering tourism services (tourist voucher), and confirmation o
-+ In order to enter or stay in Bosnia and Herzegovina for a period up to ninety days, citizens of the Russian Federation are required to possess an invitation letter verified by the Service for Foreigne
-- Citizens of the Russian Federation who transit through the territory of Bosnia and Herzegovina are allowed to stay in the territory of Bosnia and Herzegovina on the basis of valid travel documents, wi
-+ Citizens of the Russian Federation who transit through the territory of Bosnia and Herzegovina are allowed to stay in the territory of Bosnia and Herzegovina on the basis of valid travel documents, wi
-+ The list of valid documents for citizens of Bosnia and Herzegovina and the Russian Federation confirming the identity of a trip to the state of one of the Parties:
-+ Diplomatic Passport
-+ Diplomatic Passport
-+ Service Passport
-+ Service Passport
-+ Ordinary Passport
-+ Ordinary Passport
-+ Seaman's book (identity card seaman) by owning the ship's documents or extracts from it
-+ Seaman's book (identity card seaman) by owning the ship's documents or extracts from it
-+ Travel document (only to return to home country).
-+ Travel document (only to return to home country).
-+ Movement of foreign nationals within the municipal districts of Odintsovo and Balashikha in the Moscow Region is subject to a special regime and requires permits.
+  Malaysia
+- Consular help:Consular help will be provided bythe Embassy of Bosnia and Herzegovina in Kuala Lumpur, Malaysia
++ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Kuala Lumpur, Malaysia.
+  Diplomatic biometric passport NO
+- "Three days before the planned trip to Malaysia, it is necessary to fill out the digital arrival card for Malaysia – Malaysia Digital Personnel for Digital Arrival (MDAC), which can be found on the we
+- Further information can be found on the Website of the Malaysian Immigration Service: www.imi.gov.my "
+- Citizens of Malaysia, holders of valid ordinary, diplomatic and official passports, shall be exempt from the obligation to obtain a visa for entry, exit ,transit and stay on the territory of Bosnia an
++ Three days before the planned trip to Malaysia, it is necessary to fill out the digital arrival card for Malaysia – Malaysia Digital Personnel for Digital Arrival (MDAC), which can be found on the web
++ Further information can be found on the Website of the Malaysian Immigration Service: www.imi.gov.my
++ Citizens of Malaysia, holders of valid ordinary, diplomatic and official passports, shall be exempt from the obligation to obtain a visa for entry, exit, transit and stay on the territory of Bosnia an
 ```
 
 | Change | Anchor text | Previous target | Current target |
 |---|---|---|---|
-| added | Embassy of Bosnia and Herzegovina in Moscow, Russia | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216054720219266 |
-| removed | the Embassy of Bosnia and Herzegovina in Moscow, Russia. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?RUSKA_Federacija/?id=6984 | _(removed)_ |
+| added | Embassy of Bosnia and Herzegovina in Kuala Lumpur, Malaysia | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216026399958026 |
+| removed | the Embassy of Bosnia and Herzegovina in Kuala Lumpur, Malaysia | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?MALEZIJA/?id=7069 | _(removed)_ |
+
+#### SA (direct.alternate) — ✏️🔗 text + link changed
+
+URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba
+
+```diff
+  Saudi Arabia
+- Consular help:Consular help will be provided by the Embassy of Bosnia and Herzegovina in Ryadh, Saudi Arabia.
++ Consular help will be provided by the Embassy of Bosnia and Herzegovina in Riyadh, Saudi Arabia.
+  Diplomatic biometric passport YES
++ Citizens of Bosnia and Herzegovina, effective 5 November 2026, and in accordance with the decision of the competent authorities of the Kingdom of Saudi Arabia, are eligible to obtain an electronic tou
+  In light of recent events and the deteriorating security situation in the Middle East, citizens of Bosnia and Herzegovina are not recommended to travel to parts of the Kingdom of Saudi Arabia, especia
+- NOTE:In accordance with the Decision of the Council of Ministers of Bosnia and Herzegovina dated April 15, 2026, amending the Decision on Visas, citizens of the Kingdom of Saudi Arabia holding ordinar
++ NOTE:
++ In accordance with the Decision of the Council of Ministers of Bosnia and Herzegovina dated April 15, 2026, amending the Decision on Visas, citizens of the Kingdom of Saudi Arabia holding ordinary pas
+  The total duration of stay for citizens of the Kingdom of Saudi Arabia in Bosnia and Herzegovina within the specified period may be up to 60 days.
+- he stay of citizens of the Kingdom of Saudi Arabia in Bosnia and Herzegovina under the aforementioned visa-free regime is permitted until September 30, 2026. For stays in Bosnia and Herzegovina after 
++ The stay of citizens of the Kingdom of Saudi Arabia in Bosnia and Herzegovina under the aforementioned visa-free regime is permitted until September 30, 2026. For stays in Bosnia and Herzegovina after
+```
+
+| Change | Anchor text | Previous target | Current target |
+|---|---|---|---|
+| added | the Embassy of Bosnia and Herzegovina in Riyadh, Saudi Arabia | _(none)_ | https://www.mvp.gov.ba/en/org_cmd57sdlc000nn43u2rk8pgsd_639216113934908518 |
+| removed | the Embassy of Bosnia and Herzegovina in Ryadh, Saudi Arabia. | https://www.mvp.gov.bahttps//www.mvp.gov.ba/en/diplomatsko-konzularna-predstavnistva-bosne-i-hercegovine-u-svijetu?SAUDIJSKA_ARABIJA/?id=6972 | _(removed)_ |
+
+#### AD, AE, AF, AG, AL … (+190 more) (direct.alternate (page list)) — ⚠️ fetch error
+
+URL: https://www.mvp.gov.ba/en/vize#subpages
+<br>Error: Could not read the country list: HTTP 404
+<br>Note: Used the 194 pages from the previous run's list
 
 | Keys | Status | URL |
 |---|---|---|
 | AD (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883481060049996?domain=https://www.mvp.gov.ba |
-| AD, AE, AF, AG, AL, AM, AO, AR … (+187 more) (parent) | ✅ unchanged | https://www.mvp.gov.ba/en/vize |
 | AE (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887696763845615?domain=https://www.mvp.gov.ba |
 | AF (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639082935039597309?domain=https://www.mvp.gov.ba |
 | AG (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883485721766851?domain=https://www.mvp.gov.ba |
@@ -2004,7 +2041,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | AZ (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639215238587178303?domain=https://www.mvp.gov.ba |
 | BB (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883507939046759?domain=https://www.mvp.gov.ba |
 | BD (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883506189924384?domain=https://www.mvp.gov.ba |
-| BE (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba |
 | BF (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883536294815767?domain=https://www.mvp.gov.ba |
 | BG (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883531345686936?domain=https://www.mvp.gov.ba |
 | BH (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639185064814075651?domain=https://www.mvp.gov.ba |
@@ -2062,6 +2098,7 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | GW (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884245917407137?domain=https://www.mvp.gov.ba |
 | GY (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884239301076290?domain=https://www.mvp.gov.ba |
 | HN (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884249342634255?domain=https://www.mvp.gov.ba |
+| HR (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884251050581867?domain=https://www.mvp.gov.ba |
 | HT (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884247791143883?domain=https://www.mvp.gov.ba |
 | HU (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886780972585765?domain=https://www.mvp.gov.ba |
 | ID (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884259889124538?domain=https://www.mvp.gov.ba |
@@ -2084,6 +2121,7 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | KP (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884380932817298?domain=https://www.mvp.gov.ba |
 | KR (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884377463515717?domain=https://www.mvp.gov.ba |
 | KW (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884389952016419?domain=https://www.mvp.gov.ba |
+| KZ (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884337496312065?domain=https://www.mvp.gov.ba |
 | LA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884394476077743?domain=https://www.mvp.gov.ba |
 | LB (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884401279302512?domain=https://www.mvp.gov.ba |
 | LC (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887638262695280?domain=https://www.mvp.gov.ba |
@@ -2094,7 +2132,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | LT (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886773596241280?domain=https://www.mvp.gov.ba |
 | LU (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886775887040221?domain=https://www.mvp.gov.ba |
 | LV (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884397584823001?domain=https://www.mvp.gov.ba |
-| LY (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba |
 | MA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639095058957609028?domain=https://www.mvp.gov.ba |
 | MC (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886811835502138?domain=https://www.mvp.gov.ba |
 | MD (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886809407303595?domain=https://www.mvp.gov.ba |
@@ -2111,7 +2148,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | MV (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886785438115703?domain=https://www.mvp.gov.ba |
 | MW (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886782876976987?domain=https://www.mvp.gov.ba |
 | MX (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886803354586371?domain=https://www.mvp.gov.ba |
-| MY (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba |
 | MZ (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886818369628359?domain=https://www.mvp.gov.ba |
 | NA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886820238046507?domain=https://www.mvp.gov.ba |
 | NE (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886828918582708?domain=https://www.mvp.gov.ba |
@@ -2136,8 +2172,8 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | QA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884335408575316?domain=https://www.mvp.gov.ba |
 | RO (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887765301578339?domain=https://www.mvp.gov.ba |
 | RS (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886957200216716?domain=https://www.mvp.gov.ba |
+| RU (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886911908205123?domain=https://www.mvp.gov.ba |
 | RW (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886881501850591?domain=https://www.mvp.gov.ba |
-| SA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba |
 | SB (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886947930548716?domain=https://www.mvp.gov.ba |
 | SC (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886923986265456?domain=https://www.mvp.gov.ba |
 | SD (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638886958663442235?domain=https://www.mvp.gov.ba |
@@ -2181,7 +2217,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | ZA (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638884324922276004?domain=https://www.mvp.gov.ba |
 | ZM (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887722359911561?domain=https://www.mvp.gov.ba |
 | ZW (direct.alternate) | ✅ unchanged | https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638887723716813953?domain=https://www.mvp.gov.ba |
-| AD, AE, AF, AG, AL, AM, AO, AR … (+187 more) (direct.alternate (page list)) | ✅ unchanged | https://www.mvp.gov.ba/en/vize#subpages |
 
 ## Kosovo
 
@@ -2667,7 +2702,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | GR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#greqia |
 | GT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guatemala |
 | GY (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#guajana |
-| HK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong |
 | HN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#honduras |
 | HR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#kroacia |
 | HT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#haiti |
@@ -2708,7 +2742,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | MK (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#maqedonia-veriut |
 | ML (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mali |
 | MN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mongolia |
-| MO (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao |
 | MR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauritania |
 | MT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#malta |
 | MU (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#mauricius |
@@ -2760,7 +2793,6 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 | TN (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tunizi |
 | TR (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#turqi |
 | TT (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#trinidad-tobago |
-| TW (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan |
 | TZ (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tanzania |
 | UA (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#ukraina |
 | UG (direct.alternate) | ✅ live (200) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#uganda |
@@ -2778,50 +2810,48 @@ URL: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_6388869119
 
 ### Content diffing
 
-#### HK (direct.alternate) — ✏️🔗 text + link changed
+#### AD, AE, AF, AG, AM … (+161 more) (direct.alternate (page list)) — ✏️🔗 text + link changed
 
-URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong
+URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries
+<br>Note: Not recognized as a country (add to ALIASES in pipeline/src/resolvers/punetejashtmeGovAl.ts): HONG KONG (not in the selector) (hong-kong), MAKAO (not in the selector) (makao), TAJVAN (not in the selector) (tajvan)
 
 ```diff
-- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388
-+ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308
+  HONDURAS → HN · honduras
+- HONG KONG (CHINA) → HK · hong-kong
++ HONG KONG (not in the selector) → not recognized · hong-kong
+  LUXEMBOURG → LU · luksemburg
+- MACAU (CHINA) → MO · makao
+  MADAGASCAR → MG · madagaskar
++ MAKAO (not in the selector) → not recognized · makao
+  SYRIA → SY · siria
+- TAIWAN (CHINA) → TW · tajvan
+  TAJIKISTAN → TJ · taxhikistan
++ TAJVAN (not in the selector) → not recognized · tajvan
 ```
 
 | Change | Anchor text | Previous target | Current target |
 |---|---|---|---|
-| added | https://e-albania.al/ServiceDetails/15146 | _(none)_ | https://e-albania.al/ServiceDetails/15146 |
-| added | https://e-albania.al/ServiceDetails/15308 | _(none)_ | https://e-albania.al/ServiceDetails/15308 |
-| removed | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | _(removed)_ |
+| added | HONG KONG (not in the selector) | _(none)_ | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong |
+| added | MAKAO (not in the selector) | _(none)_ | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao |
+| added | TAJVAN (not in the selector) | _(none)_ | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan |
+| removed | HONG KONG (CHINA) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#hong-kong | _(removed)_ |
+| removed | MACAU (CHINA) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao | _(removed)_ |
+| removed | TAIWAN (CHINA) | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan | _(removed)_ |
 
-#### MO (direct.alternate) — ✏️🔗 text + link changed
+#### HK (direct.alternate) — ⚠️ fetch error
 
-URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#makao
+URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#HK
+<br>Error: No page for HK in https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/'s country list
 
-```diff
-- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388
-+ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308
-```
+#### MO (direct.alternate) — ⚠️ fetch error
 
-| Change | Anchor text | Previous target | Current target |
-|---|---|---|---|
-| added | https://e-albania.al/ServiceDetails/15146 | _(none)_ | https://e-albania.al/ServiceDetails/15146 |
-| added | https://e-albania.al/ServiceDetails/15308 | _(none)_ | https://e-albania.al/ServiceDetails/15308 |
-| removed | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | _(removed)_ |
+URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#MO
+<br>Error: No page for MO in https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/'s country list
 
-#### TW (direct.alternate) — ✏️🔗 text + link changed
+#### TW (direct.alternate) — ⚠️ fetch error
 
-URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#tajvan
-
-```diff
-- D visa / residence permit application: https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388
-+ D visa / residence permit application: Për leje unike: https://e-albania.al/ServiceDetails/15146 Për leje qëndrimi: https://e-albania.al/ServiceDetails/15308
-```
-
-| Change | Anchor text | Previous target | Current target |
-|---|---|---|---|
-| added | https://e-albania.al/ServiceDetails/15146 | _(none)_ | https://e-albania.al/ServiceDetails/15146 |
-| added | https://e-albania.al/ServiceDetails/15308 | _(none)_ | https://e-albania.al/ServiceDetails/15308 |
-| removed | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | https://e-albania.al/eAlbaniaServices/DPPSH/15388/DPPSH_15388_n4_s1_web.aspx?service_code=15388 | _(removed)_ |
+URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#TW
+<br>Error: No page for TW in https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/'s country list
 
 | Keys | Status | URL |
 |---|---|---|
@@ -2989,7 +3019,6 @@ URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtet
 | ZA (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#south-africa |
 | ZM (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zambia |
 | ZW (direct.alternate) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#zimbabve |
-| AD, AE, AF, AG, AM, AO, AR, AT … (+158 more) (direct.alternate (page list)) | ✅ unchanged | https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries |
 
 ## Cyprus
 
@@ -3027,7 +3056,7 @@ URL: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtet
 | europe | ✅ unchanged | https://mfa.gov.by/en/visa/freemove/europe/ |
 | airport | ✅ unchanged | https://mfa.gov.by/en/visa/freemove/airport/ |
 | airport (direct.alternate) | ✅ unchanged | https://mfa.gov.by/kcfinder/upload/files/GKU/21.10.17_List_countries_eng.pdf |
-| bilateral | 🆕 first run (baseline captured) | https://mfa.gov.by/en/visa/freemove/general/ |
+| bilateral | ✅ unchanged | https://mfa.gov.by/en/visa/freemove/general/ |
 
 ## Georgia
 

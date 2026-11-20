@@ -1,21 +1,21 @@
 {
- "generatedAt": "2026-11-06T21:42:34.466Z",
+ "generatedAt": "2026-11-20T21:58:39.549Z",
  "sources": {
   "Armenia.bilateralList": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Armenia.visaFreeList": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Belarus.bilateral": {
    "since": "2026-11-06",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Belarus.europe": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Bosnia.AD": {
    "since": "2026-10-18",
@@ -70,8 +70,8 @@
    "through": "2026-11-06"
   },
   "Bosnia.BE": {
-   "since": "2026-10-18",
-   "through": "2026-11-06"
+   "since": "2026-11-20",
+   "through": "2026-11-20"
   },
   "Bosnia.BF": {
    "since": "2026-10-18",
@@ -438,8 +438,8 @@
    "through": "2026-11-06"
   },
   "Bosnia.LY": {
-   "since": "2026-10-18",
-   "through": "2026-11-06"
+   "since": "2026-11-20",
+   "through": "2026-11-20"
   },
   "Bosnia.MA": {
    "since": "2026-10-18",
@@ -506,8 +506,8 @@
    "through": "2026-11-06"
   },
   "Bosnia.MY": {
-   "since": "2026-10-18",
-   "through": "2026-11-06"
+   "since": "2026-11-20",
+   "through": "2026-11-20"
   },
   "Bosnia.MZ": {
    "since": "2026-10-18",
@@ -614,8 +614,8 @@
    "through": "2026-11-06"
   },
   "Bosnia.SA": {
-   "since": "2026-10-18",
-   "through": "2026-11-06"
+   "since": "2026-11-20",
+   "through": "2026-11-20"
   },
   "Bosnia.SB": {
    "since": "2026-10-18",
@@ -799,15 +799,15 @@
   },
   "Georgia.visaList": {
    "since": "2026-10-23",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Ireland.statutoryInstrument": {
    "since": "2026-10-14",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Kosovo.visaExempt": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Montenegro.AD": {
    "since": "2026-10-18",
@@ -1595,1607 +1595,1607 @@
   },
   "NorthMacedonia.AD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AF": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.AZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BB": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BF": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BJ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.BZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CF": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.CZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.DE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.DJ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.DK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.DM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.DO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.DZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.EC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.EE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.EG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ER": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ES": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ET": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.FI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.FJ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.FM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.FR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GB": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GQ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.GY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.HK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.HN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.HR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.HT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.HU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ID": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.IE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.IL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.IN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.IQ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.IR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.IS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.IT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.JM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.JO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.JP": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KP": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.KZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LB": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.LY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ME": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ML": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MX": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.MZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NP": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.NZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.OM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.PY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.QA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.RO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.RS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.RU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.RW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SB": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ST": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.SZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TJ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.TZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.UA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.UG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.US": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.UY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.UZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.VA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.VC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.VE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.VN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.VU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.WS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.XK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.YE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ZA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ZM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "NorthMacedonia.ZW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AF": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.AZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BB": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BF": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BJ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.BZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CF": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.CZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.DE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.DJ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.DK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.DM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.DO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.DZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.EC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.EE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.EG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ER": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ES": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ET": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.FI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.FJ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.FM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.FR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GB": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GQ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.GY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.HK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.HN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.HR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.HT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.HU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ID": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.IE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.IL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.IN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.IQ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.IR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.IS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.IT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.JM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.JO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.JP": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KP": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.KZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LB": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.LY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ME": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ML": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MX": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.MZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NP": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.NZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.OM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.PY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.QA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.RO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.RU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.RW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SB": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SI": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SK": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ST": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.SZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TD": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TH": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TJ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TL": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TO": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TR": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TT": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TV": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.TZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.UA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.UG": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.US": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.UY": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.UZ": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.VA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.VC": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.VE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.VN": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.VU": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.WS": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.YE": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ZA": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ZM": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Serbia.ZW": {
    "since": "2026-10-18",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "Turkiye.mfaVisaInfo": {
-   "since": "2026-11-06",
-   "through": "2026-11-06"
+   "since": "2026-11-20",
+   "through": "2026-11-20"
   },
   "UK.carriersList": {
    "since": "2026-10-14",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "UK.ctaGuidance": {
    "since": "2026-10-14",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "UK.etaApplication": {
    "since": "2026-10-14",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "UK.etaNationalList": {
    "since": "2026-10-14",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "UK.standardVisitor": {
    "since": "2026-10-20",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   },
   "UK.visaNationalList": {
    "since": "2026-10-14",
-   "through": "2026-11-06"
+   "through": "2026-11-20"
   }
  }
 }
