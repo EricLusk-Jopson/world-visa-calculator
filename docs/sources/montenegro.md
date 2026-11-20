@@ -1,6 +1,6 @@
 ---
 region: Montenegro
-lastReviewed: 2026-11-06
+lastReviewed: 2026-11-20
 links:
   - id: index
     url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro
@@ -86,7 +86,12 @@ the ordinary-passport rule and any dated waiver ("until 31 October …").
   - a dated waiver gets a new end date. Append a new TemporalWindow; never
     edit the old one.
 - **Noise (most of the page):** the mission's address, phone, email, head of
-  mission and working hours.
+  mission and working hours, and (since Nov 2026) the addresses of VFS
+  Global visa application centres where visas are applied for.
+- **An ended waiver:** a page replacing "until October 31, 2026 …" with
+  "As of 1 November 2026 … required to obtain a visa" is a waiver that
+  wasn't renewed. If the region file already ends the window on that date,
+  it's no rule change.
 
 **Human work:** read the Visas section when the diff touches it. Most diffs
 on these pages will be contact-detail churn. When the dated waivers (BY, CN, KZ,

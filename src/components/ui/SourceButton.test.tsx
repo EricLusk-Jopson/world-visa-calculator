@@ -38,17 +38,20 @@ describe("SourceButton", () => {
 
   it("opens the source details and sends a problem report", async () => {
     const { SourceButton } = await import("./SourceButton");
+    const status = await import("@/data/sourceStatus"); // the instance SourceButton uses (after resetModules)
     await act(async () => root.render(<SourceButton source={MontenegroSources.DZ} variant="text" />));
     await act(async () => byText("Source")!.click());
+    // The Verified date and link status load lazily; assert once both have,
+    // not after a fixed pause (a slow full-suite run raced the 50 ms wait).
+    await act(async () => {
+      await Promise.all([status.loadStability(), status.loadLinkStatus()]);
+    });
 
     expect(byText("Official source")?.getAttribute("href")).toBe(MontenegroSources.DZ.direct.url);
     const links = document.querySelector('[data-testid="source-links"]')!;
     expect(links.querySelectorAll("a")).toHaveLength(2); // official and overview, side by side
     expect(byText("Verified")?.textContent).toBe(`Verified ${formatDay(verifiedDate(MontenegroSources.DZ.dateChecked, stability.sources["Montenegro.DZ"]))} · Rule changed 15 Oct 2026 →`);
     expect(byText("Rule changed 15 Oct 2026")?.getAttribute("href")).toBe("/rule-changes#rule-4");
-    await act(async () => {
-      await new Promise((r) => setTimeout(r, 50)); // link status loads lazily
-    });
     // A working link isn't announced; one the last source check couldn't
     // reach is (gov.me timed out on 2026-11-06), so follow the recorded status.
     const urls: Record<string, { status: string }> = linkStatus.urls;
