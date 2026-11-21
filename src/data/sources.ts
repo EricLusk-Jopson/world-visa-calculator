@@ -4355,7 +4355,7 @@ export const SerbiaSources = {
  * (pipeline/src/resolvers/mvpGovBa.ts).
  */
 const bosniaIndex = {
-  url: "https://www.mvp.gov.ba/en/vize",
+  url: "https://www.mvp.gov.ba/en/visa",
   type: "parent",
   checkDiff: true,
 } as const satisfies SourceLink;

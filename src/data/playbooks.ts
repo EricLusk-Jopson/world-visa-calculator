@@ -117,12 +117,13 @@ export function entryFor(links: PlaybookLink[], url: string): PlaybookLink | und
  * text before `{key}`, then the URL without its fragment.
  */
 export function entryForReportUrl(links: PlaybookLink[], url: string): PlaybookLink | undefined {
-  const direct = entryFor(links, url) ?? links.find((l) => l.formerUrls?.includes(url));
+  const byUrl = (u: string) => entryFor(links, u) ?? links.find((l) => l.formerUrls?.includes(u));
+  const direct = byUrl(url);
   if (direct) return direct;
   const template = links.find((l) => l.url?.includes("{key}") && url.startsWith(l.url.slice(0, l.url.indexOf("{key}"))));
   if (template) return template;
   const hash = url.indexOf("#");
-  return hash > 0 ? entryFor(links, url.slice(0, hash)) : undefined;
+  return hash > 0 ? byUrl(url.slice(0, hash)) : undefined;
 }
 
 /** What sources.ts actually does with a set of cited links. */
