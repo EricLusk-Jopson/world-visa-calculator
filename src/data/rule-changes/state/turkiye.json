@@ -507,7 +507,13 @@
           "source": {
             "$source": "Turkiye.mfaVisaInfo"
           },
-          "text": "Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad."
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary and official passport holders can also get their visas from Turkish diplomatic or consular representations abroad."
         }
       ],
       "source": {
@@ -2704,7 +2710,13 @@
           "source": {
             "$source": "Turkiye.mfaVisaInfo"
           },
-          "text": "Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad."
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary and official passport holders can also get their visas from Turkish diplomatic or consular representations abroad."
         }
       ],
       "source": {
@@ -3319,7 +3331,13 @@
           "source": {
             "$source": "Turkiye.mfaVisaInfo"
           },
-          "text": "Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad."
+          "text": "Visa required. Exception: ordinary passport holders may apply for a single-entry e-Visa valid for 30 days via www.evisa.gov.tr, provided they hold a valid visa or residence permit from a Schengen member state, the United States, the United Kingdom, or Ireland, and hold a return ticket and hotel reservation, and have at least USD 50 per day of stay. Travel must be for tourism or commerce, and entry must be via an airport only."
+        },
+        {
+          "source": {
+            "$source": "Turkiye.mfaVisaInfo"
+          },
+          "text": "Ordinary and official passport holders can also get their visas from Turkish diplomatic or consular representations abroad."
         }
       ],
       "source": {

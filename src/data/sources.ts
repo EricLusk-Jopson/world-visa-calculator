@@ -59,7 +59,7 @@ export const SchengenSources = {
   visaList: {
     direct: euVisaListRegulation,
     parent: {
-      url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+      url: "https://home-affairs.ec.europa.eu/policies/schengen/schengen-visas_en",
       type: "parent",
       checkDiff: false,
     },
@@ -85,7 +85,7 @@ export const SchengenSources = {
       },
     },
     parent: {
-      url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+      url: "https://home-affairs.ec.europa.eu/policies/schengen/schengen-visas_en",
       type: "parent",
       checkDiff: false,
     },
@@ -107,7 +107,7 @@ export const SchengenSources = {
       checkDiff: true,
     },
     parent: {
-      url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+      url: "https://home-affairs.ec.europa.eu/policies/schengen/schengen-visas_en",
       type: "parent",
       checkDiff: false,
     },
@@ -451,7 +451,7 @@ export const TurkiyeSources = {
       type: "parent",
       checkDiff: true,
     },
-    dateChecked: "2026-11-06",
+    dateChecked: "2026-11-23",
   } satisfies SourceDoc,
 
   /**
@@ -1756,7 +1756,7 @@ export const MontenegroSources = {
       checkDiff: true,
     },
     parent: montenegroIndex,
-    dateChecked: "2026-10-23",
+    dateChecked: "2026-11-23",
   } satisfies SourceDoc, // Nauru
   NP: {
     direct: {

@@ -2,15 +2,15 @@ report: 2026-11-20
 items:
   - region: Turkiye
     url: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
-    verdict: unclear
+    verdict: rule-change
+    ruleChange: 16
     by: ai-assisted
     notes: >-
-      Bhutan, Solomon Islands, Vanuatu: "15 day period visas" is gone, and each
-      paragraph now adds "Ordinary passport holders who hold a valid Schengen
-      members or USA, UK, Ireland visa or residence permit may get their visas
-      via the website www.evisa.gov.tr provided that they meet certain
-      conditions" (the conditional e-Visa). turkiye.ts BT/SB/VU are plain
-      visa_required with a 15-day note. Settle on the live page.
+      Bhutan, Solomon Islands, Vanuatu: the 15-day visa is gone and "Ordinary
+      passport holders who hold a valid Schengen members or USA, UK, Ireland
+      visa or residence permit may get their visas via the website
+      www.evisa.gov.tr provided that they meet certain conditions" was added.
+      Confirmed on the live page 2026-11-23.
   - region: Turkiye
     url: https://www.mfa.gov.tr/consular-info.en.mfa
     verdict: no-rule-change
@@ -43,12 +43,14 @@ items:
       obtain a visa". montenegro.ts already ends it on 2026-10-01; VFS centre added.
   - region: Montenegro
     url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru
-    verdict: unclear
+    verdict: rule-change
+    ruleChange: 17
     by: ai-assisted
     notes: >-
-      "Citizens of Nauru may enter, transit through, and stay in Montenegro for
-      up to 90 days … without a visa" -> "Citizens of Nauru must possess a visa
-      to enter Montenegro". montenegro.ts NR is visa-free. Settle on the live page.
+      "Citizens of Nauru may enter … for up to 90 days … without a visa" ->
+      "Citizens of Nauru must possess a visa to enter Montenegro". gov.me was
+      unreachable on 2026-11-23; recorded from the diff at the maintainer's
+      direction.
   - region: Montenegro
     url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar
     verdict: no-rule-change

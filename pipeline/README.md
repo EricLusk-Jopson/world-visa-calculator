@@ -267,7 +267,7 @@ visaList: {
     },
   },
   parent: {
-    url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+    url: "https://home-affairs.ec.europa.eu/policies/schengen/schengen-visas_en",
     type: "parent",
     checkDiff: false,
   },

@@ -161,3 +161,9 @@ describe('Montenegro seasonal waiver (Kazakhstan, temporalWindows)', () => {
     expect((limits![0] as PerVisitLimit).value).toBe(30);
   });
 });
+
+describe('Montenegro — Nauru (rule change 17)', () => {
+  it('needs a visa', () => {
+    expect(getMontenegroRule('NR')).toEqual({ access: 'visa_required', source: MontenegroSources.NR });
+  });
+});

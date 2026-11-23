@@ -9,10 +9,10 @@ Reports counted: 7 (2026-10-14 to 2026-11-20).
 
 ## Overall
 
-- Diffs flagged: 24: 2 rule change, 19 noise, 3 unclear, 0 untriaged
-- Precision: 10% (2/21)
-- Rule changes caught by a report: 4; missed on diffed links: 7; recall: 36% (4/11)
-- Rule-change log entries by trigger: manual 10, external 1, report 3
+- Diffs flagged: 24: 4 rule change, 19 noise, 1 unclear, 0 untriaged
+- Precision: 17% (4/23)
+- Rule changes caught by a report: 6; missed on diffed links: 7; recall: 46% (6/13)
+- Rule-change log entries by trigger: manual 10, external 1, report 5
 
 ## By link
 
@@ -41,14 +41,14 @@ Diffed links, plus any link with a recorded rule change. Declared is the playboo
 | Ireland | amendmentSearchApi | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Kosovo | visaExempt | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Montenegro | index | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
-| Montenegro | countryPages | medium | 7 | 0 | 6 | 1 | 0 | 0% (0/6) | 1 | 0 | 0 | 100% (1/1) |
+| Montenegro | countryPages | medium | 7 | 1 | 6 | 0 | 0 | 14% (1/7) | 2 | 0 | 0 | 100% (2/2) |
 | NorthMacedonia | countryButtons | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Schengen | visaListCellar | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Schengen | atvCommonCellar | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Schengen | atvSpecific | low | 0 | 0 | 0 | 0 | 0 | – | 0 | 2 | 0 | 0% (0/2) |
 | Serbia | index | medium | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | Serbia | countryPages | medium | 1 | 0 | 1 | 0 | 0 | 0% (0/1) | 0 | 0 | 0 | – |
-| Turkiye | mfaVisaInfo | medium | 2 | 1 | 0 | 1 | 0 | 100% (1/1) | 1 | 0 | 0 | 100% (1/1) |
+| Turkiye | mfaVisaInfo | medium | 2 | 2 | 0 | 0 | 0 | 100% (2/2) | 2 | 0 | 0 | 100% (2/2) |
 | Turkiye | consularInfo | low | 1 | 0 | 1 | 0 | 0 | 0% (0/1) | 0 | 0 | 0 | – |
 | UK | appendixVisitor | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
 | UK | visaNationalList | high | 0 | 0 | 0 | 0 | 0 | – | 0 | 0 | 0 | – |
