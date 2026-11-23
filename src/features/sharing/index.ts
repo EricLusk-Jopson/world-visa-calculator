@@ -14,7 +14,12 @@ export {
 export type { DecodeResult } from "./utils/urlEncoding";
 
 // Hook
-export { useUrlSync, clearLocalStorage } from "./hooks/useUrlSync";
+export {
+  useUrlSync,
+  clearLocalStorage,
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from "./hooks/useUrlSync";
 export type {
   UseUrlSyncOptions,
   UseUrlSyncReturn,

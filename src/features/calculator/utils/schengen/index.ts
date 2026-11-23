@@ -5,6 +5,7 @@ export {
   SCHENGEN_MAX_DAYS,
   SCHENGEN_WINDOW_SIZE,
   getDaysUsedOnDate,
+  getDaysUsedBeforeEntry,
   calculateMaxStay,
   calculateEarliestEntry,
 } from "./calculator";

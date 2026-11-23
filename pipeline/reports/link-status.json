@@ -9,6 +9,18 @@
    "status": "live",
    "checkedAt": "2026-11-07"
   },
+  "https://eur-lex.europa.eu/eli/reg/2016/399/oj": {
+   "status": "live",
+   "checkedAt": "2026-11-23"
+  },
+  "https://eur-lex.europa.eu/eli/reg/2017/2226/oj": {
+   "status": "live",
+   "checkedAt": "2026-11-23"
+  },
+  "https://eur-lex.europa.eu/eli/reg/2025/1534/oj": {
+   "status": "live",
+   "checkedAt": "2026-11-23"
+  },
   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628": {
    "status": "live",
    "checkedAt": "2026-11-06"
@@ -2312,6 +2324,14 @@
   "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/": {
    "status": "live",
    "checkedAt": "2026-11-06"
+  },
+  "https://travel-europe.europa.eu/ees/check-how-long-you-can-stay_en": {
+   "status": "live",
+   "checkedAt": "2026-11-23"
+  },
+  "https://travel-europe.europa.eu/ees/data-held-by-ees": {
+   "status": "live",
+   "checkedAt": "2026-11-23"
   },
   "https://travel-europe.europa.eu/en/etias": {
    "status": "live",

@@ -80,11 +80,56 @@ links:
     machineCheck: link-only
     diffConfidence: none
     humanCheck: on-diff
+  - id: eesRegulation
+    url: https://eur-lex.europa.eu/eli/reg/2017/2226/oj
+    loadBearing: true
+    category: document
+    revisions: consolidated-versions
+    access: bot-protected
+    machineCheck: link-only
+    diffConfidence: none
+    humanCheck: periodic
+  - id: eesProgressiveStart
+    url: https://eur-lex.europa.eu/eli/reg/2025/1534/oj
+    loadBearing: true
+    category: document
+    revisions: consolidated-versions
+    access: bot-protected
+    machineCheck: link-only
+    diffConfidence: none
+    humanCheck: periodic
+  - id: bordersCode
+    url: https://eur-lex.europa.eu/eli/reg/2016/399/oj
+    loadBearing: true
+    category: document
+    revisions: consolidated-versions
+    access: bot-protected
+    machineCheck: link-only
+    diffConfidence: none
+    humanCheck: periodic
+  - id: eesChecker
+    url: https://travel-europe.europa.eu/ees/check-how-long-you-can-stay_en
+    loadBearing: false
+    category: interactive
+    revisions: in-place
+    access: script-rendered
+    machineCheck: link-only
+    diffConfidence: none
+    humanCheck: on-diff
+  - id: eesDataRights
+    url: https://travel-europe.europa.eu/ees/data-held-by-ees
+    loadBearing: true
+    category: html-page
+    revisions: in-place
+    access: script-rendered
+    machineCheck: link-only
+    diffConfidence: none
+    humanCheck: periodic
 ---
 
 # Schengen
 
-**Rules:** `src/data/regions/schengen.ts` · **Sources:** `SchengenSources` (`visaList`, `atvCommon`, `atvSpecific`, `etias`)
+**Rules:** `src/data/regions/schengen.ts` · **Sources:** `SchengenSources` (`visaList`, `atvCommon`, `atvSpecific`, `etias`; and for the EES Record Fixer, `eesRegulation`, `eesProgressiveStart`, `bordersCode`, `eesChecker`)
 
 The rules come from EU legal texts:
 
@@ -260,6 +305,103 @@ validity to check against `schengen.ts`.
 **Real change vs noise:** not diffed.
 
 **Human work:** none.
+
+## EES Record Fixer links
+
+The last five links serve the EES Record Fixer (`/ees-record-fixer` and the
+fixer in `/app`, code in `src/features/eesFixer/`), not a rule in
+`schengen.ts`. They're here so the pipeline health-checks every link the
+fixer shows. What they establish is the fixer's constants
+(`src/features/eesFixer/constants.ts`) and the citations in its letters
+(`src/features/eesFixer/citations.ts`). A change to them changes a letter or
+a date, not a visa rule, so it isn't a rule-change log entry.
+
+## eesRegulation
+
+**Establishes:** the traveller's rights the fixer's letters invoke:
+Art. 52(1) access and the 45-day reply deadline, Art. 52(2) requests sent
+to another country, Art. 52(3) and Art. 35 correction, Art. 52(4) and (5)
+reasoned refusals, Art. 52(6) minimum identification, Arts. 53 and 54
+supervisory help and remedies. Constant: `REPLY_DEADLINE_DAYS`.
+
+**Machine:** health-checked only. EUR-Lex answers the pipeline with a bot
+challenge, so expect 🚫 blocked.
+
+**Human:** open the link. Read Articles 35 and 52 to 54 and compare each
+with its summary in `citations.ts`. Check whether EUR-Lex lists a
+consolidated version that amends those articles.
+
+**Real change vs noise:** not diffed.
+
+**Human work:** a check before launch, then periodic. TODO(human): the
+summaries in `citations.ts` and the Art. 35 overstayer-list and five-working-day
+erasure wording haven't yet been checked against EUR-Lex (spec open
+question "Article 35 details"; v3 only).
+
+## eesProgressiveStart
+
+**Establishes:** the progressive start of EES operations, 12 October 2025 to
+9 April 2026. Constants: `EES_START`, `EES_FULL`.
+
+**Machine:** health-checked only (EUR-Lex bot challenge).
+
+**Human:** confirm the start date and the length of the progressive start
+in the regulation's operative articles.
+
+**Real change vs noise:** not diffed.
+
+**Human work:** periodic. A change here would only come from an amending
+regulation, which gets its own ELI, so also watch for one.
+
+## bordersCode
+
+**Establishes:** the 90 days in any 180-day period (Art. 6(1)) the fixer
+recounts. Constants: `SHORT_STAY_DAYS`, `SHORT_STAY_WINDOW`.
+
+**Machine:** health-checked only (EUR-Lex bot challenge).
+
+**Human:** confirm Art. 6(1) still reads 90 days in any 180-day period.
+
+**Real change vs noise:** not diffed.
+
+**Human work:** periodic, and only on news of an amendment.
+
+## eesChecker
+
+**Establishes:** nothing. It's the EU checker whose result the fixer
+explains, linked from the fixer and the landing page.
+
+**Machine:** health-checked only. It's an interactive form.
+
+**Human:** run a date through it when the fixer's assumptions need
+checking, e.g. whether it counts the arrival day (spec open question
+"Window boundary": `remainingOnArrival` in `engine.ts` assumes it doesn't).
+
+**Real change vs noise:** not diffed.
+
+**Human work:** none routinely. TODO(human): settle the window boundary with
+a test date.
+
+## eesDataRights
+
+**Establishes:** where a traveller sends an EES request. It's the EES page
+on a traveller's data and rights, which the fixer links in place of the
+EU's list of national EES contacts.
+
+**Machine:** health-checked only.
+
+**Human:** open it and check it still lists each country's EES authority
+and contact details (the EES blog post relies on that list too).
+
+**Real change vs noise:** not diffed.
+
+**Human work:** periodic. TODO(human): the spec names a separate "Contact
+details of European countries using the EES" page on travel-europe.europa.eu,
+which returned an error on 2026-11-21. When it's live and populated, add it
+to `SchengenSources.eesChecker` (or its own entry) and point the fixer at it.
+These links were taken from the EES blog post (2026-11-19). The maintainer
+opened all five on 2026-11-23 and they loaded; link-status.json records them
+as live from that check until the next pipeline run replaces it.
 
 ## Open questions
 

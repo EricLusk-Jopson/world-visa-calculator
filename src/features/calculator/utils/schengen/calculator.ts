@@ -13,6 +13,7 @@ export const SCHENGEN_WINDOW_SIZE = 180;
 
 const {
   getDaysUsedOnDate,
+  getDaysUsedBeforeEntry,
   calculateMaxStay,
   calculateEarliestEntry,
 } = createRollingWindowCalculator({
@@ -20,4 +21,9 @@ const {
   windowSize: SCHENGEN_WINDOW_SIZE,
 });
 
-export { getDaysUsedOnDate, calculateMaxStay, calculateEarliestEntry };
+export {
+  getDaysUsedOnDate,
+  getDaysUsedBeforeEntry,
+  calculateMaxStay,
+  calculateEarliestEntry,
+};

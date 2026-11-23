@@ -24,6 +24,7 @@ import {
 import { today } from "@/features/calculator/utils/dates";
 import { getCountryName } from "../travelers/NationalitySelector";
 import { FullScreenSlider } from "@/components/ui/FullScreenSlider";
+import { useEesFixerLauncher } from "@/features/eesFixer";
 
 function fmtToday(): string {
   return today().toLocaleDateString("en-GB", {
@@ -471,6 +472,9 @@ export function TravelerViewSlider({
             </Typography>
           </Box>
 
+          {/* ── EES Record Fixer entry ───────────────────────────────────── */}
+          <FixerCard traveler={traveler} />
+
           {/* ── Destinations — grouped by temporal relevance ──────────────── */}
           <Box>
             <SectionHeading>Destinations</SectionHeading>
@@ -589,5 +593,48 @@ export function TravelerViewSlider({
         </DialogActions>
       </Dialog>
     </>
+  );
+}
+
+/**
+ * "Does the EU checker show fewer days than this?" Opens the EES Record
+ * Fixer at the diagnosis step. Only for travelers with Schengen trips, and
+ * only inside /app (where the launcher is provided).
+ */
+function FixerCard({ traveler }: { traveler: Traveler }) {
+  const openFixer = useEesFixerLauncher();
+  if (!openFixer || !traveler.trips.some((t) => t.region === VisaRegion.Schengen)) return null;
+  return (
+    <Box
+      component="button"
+      type="button"
+      onClick={() => openFixer({ travelerId: traveler.id, step: 2 })}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+        width: "100%",
+        textAlign: "left",
+        px: "12px",
+        py: "10px",
+        bgcolor: tokens.white,
+        border: `1px solid ${tokens.border}`,
+        borderRadius: "10px",
+        cursor: "pointer",
+        fontFamily: tokens.fontBody,
+      }}
+    >
+      <Box component="span" sx={{ flex: 1 }}>
+        <Box component="span" sx={{ display: "block", fontSize: "0.82rem", fontWeight: 700, color: tokens.navy }}>
+          Does the EU checker show fewer Schengen days?
+        </Box>
+        <Box component="span" sx={{ display: "block", fontSize: "0.74rem", color: tokens.textSoft, mt: "2px" }}>
+          Find the crossing your EES record is missing, and get a letter to fix it.
+        </Box>
+      </Box>
+      <Box component="span" aria-hidden sx={{ color: tokens.textSoft, fontSize: "1.1rem" }}>
+        ›
+      </Box>
+    </Box>
   );
 }

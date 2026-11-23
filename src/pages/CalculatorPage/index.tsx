@@ -32,6 +32,11 @@ import { ShareFrame } from "./components/mobile/ShareFrame";
 import { ClearAllDrawer } from "./components/mobile/ClearAllDrawer";
 import { MutedTripsToggle } from "./components/timeline/MutedTripsToggle";
 import { useMutedTrips } from "./components/timeline/useMutedTrips";
+import {
+  EesFixerDialog,
+  EesFixerLauncherContext,
+  type FixerLaunch,
+} from "@/features/eesFixer";
 
 const MIN_LOAD_MS = 650;
 const MOBILE_QUERY = "(max-width:599.95px)";
@@ -93,6 +98,11 @@ export function CalculatorPage() {
   const [travelerViewId, setTravelerViewId] = useState<string | null>(null);
   const [editTravelerId, setEditTravelerId] = useState<string | null>(null);
   const [mutedTrips, toggleMutedTrips] = useMutedTrips();
+  const [fixerLaunch, setFixerLaunch] = useState<FixerLaunch | null>(null);
+  const openFixer = useCallback((launch: FixerLaunch) => {
+    trackEvent("fixer_opened", { from_step: launch.step ?? 0 });
+    setFixerLaunch(launch);
+  }, []);
 
   const handleToggleTraveler = useCallback((id: string) => {
     setHiddenTravelerIds((prev) =>
@@ -361,6 +371,7 @@ export function CalculatorPage() {
   // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
+    <EesFixerLauncherContext.Provider value={openFixer}>
     <Box
       sx={{
         display: "flex",
@@ -667,6 +678,15 @@ export function CalculatorPage() {
           {travelers.length === 0 ? "Add Traveler" : "Add Trip"}
         </Box>
       )}
+
+      {/* EES Record Fixer — opened from a traveler's Schengen result */}
+      <EesFixerDialog
+        launch={fixerLaunch}
+        onClose={() => setFixerLaunch(null)}
+        travelers={travelers}
+        onTravelersChange={setTravelers}
+      />
     </Box>
+    </EesFixerLauncherContext.Provider>
   );
 }

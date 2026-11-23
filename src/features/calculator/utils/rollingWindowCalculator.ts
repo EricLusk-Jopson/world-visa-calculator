@@ -109,6 +109,26 @@ export function createRollingWindowCalculator(config: RollingWindowConfig) {
   }
 
   /**
+   * Return the number of zone days used in the window *before* an entry on
+   * `entryDateStr`: [entry − (windowSize − 1), entry − 1]. This is `prev` in
+   * calculateMaxStay, so `maxDays − getDaysUsedBeforeEntry(...)` is the
+   * balance on arrival, the figure the EU's "Check how long you can stay"
+   * page reports as "Remaining days at the moment of entry". Ongoing trips
+   * count to today.
+   */
+  function getDaysUsedBeforeEntry(
+    entryDateStr: string,
+    trips: Trip[],
+  ): number {
+    const entry = parseDate(entryDateStr);
+    return buildDaySet(
+      trips,
+      subDays(entry, windowSize - 1),
+      subDays(entry, 1),
+    ).size;
+  }
+
+  /**
    * Given a proposed entry date and a traveler's historical trip record, return
    * the maximum stay available — the last legal exit date if entering on
    * `entryDateStr`, accounting for old trips rolling off the window as the
@@ -243,5 +263,10 @@ export function createRollingWindowCalculator(config: RollingWindowConfig) {
     };
   }
 
-  return { getDaysUsedOnDate, calculateMaxStay, calculateEarliestEntry };
+  return {
+    getDaysUsedOnDate,
+    getDaysUsedBeforeEntry,
+    calculateMaxStay,
+    calculateEarliestEntry,
+  };
 }

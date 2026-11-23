@@ -133,6 +133,85 @@ export const SchengenSources = {
     },
     dateChecked: "2026-10-23",
   } satisfies SourceDoc,
+
+  // ── EES Record Fixer (/ees-record-fixer) ──────────────────────────────────
+  // Not cited by any rule in schengen.ts. Listed here so the pipeline
+  // health-checks every link the fixer shows; see src/features/eesFixer/.
+
+  /**
+   * Regulation (EU) 2017/2226 establishing the Entry/Exit System. The fixer's
+   * letters cite Art. 52 (rights of access, rectification, completion and
+   * erasure; the 45-day reply deadline) and Art. 35 (correcting data).
+   */
+  eesRegulation: {
+    direct: {
+      url: "https://eur-lex.europa.eu/eli/reg/2017/2226/oj",
+      type: "direct",
+      checkDiff: false, // EUR-Lex answers the pipeline with a bot challenge
+    },
+    parent: {
+      url: "https://travel-europe.europa.eu/ees/data-held-by-ees",
+      type: "parent",
+      checkDiff: false,
+    },
+    dateChecked: "2026-11-19",
+  } satisfies SourceDoc,
+
+  /**
+   * Regulation (EU) 2025/1534 on the progressive start of EES operations,
+   * 12 October 2025 to 9 April 2026: the fixer's EES_START and EES_FULL.
+   */
+  eesProgressiveStart: {
+    direct: {
+      url: "https://eur-lex.europa.eu/eli/reg/2025/1534/oj",
+      type: "direct",
+      checkDiff: false, // EUR-Lex answers the pipeline with a bot challenge
+    },
+    parent: {
+      url: "https://travel-europe.europa.eu/pub",
+      type: "parent",
+      checkDiff: false,
+    },
+    dateChecked: "2026-11-19",
+  } satisfies SourceDoc,
+
+  /**
+   * Schengen Borders Code, Regulation (EU) 2016/399, Art. 6(1): the 90 days
+   * in any 180-day period the fixer recounts.
+   */
+  bordersCode: {
+    direct: {
+      url: "https://eur-lex.europa.eu/eli/reg/2016/399/oj",
+      type: "direct",
+      checkDiff: false, // EUR-Lex answers the pipeline with a bot challenge
+    },
+    parent: {
+      url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+      type: "parent",
+      checkDiff: false,
+    },
+    dateChecked: "2026-11-19",
+  } satisfies SourceDoc,
+
+  /**
+   * The Commission's "Check how long you can stay" page: the EU checker
+   * whose result the fixer explains. Its parent is the EES page on a
+   * traveller's data rights, the fixer's v1 stand-in for the EU's list of
+   * national EES contacts.
+   */
+  eesChecker: {
+    direct: {
+      url: "https://travel-europe.europa.eu/ees/check-how-long-you-can-stay_en",
+      type: "direct",
+      checkDiff: false, // interactive form; nothing to diff
+    },
+    parent: {
+      url: "https://travel-europe.europa.eu/ees/data-held-by-ees",
+      type: "parent",
+      checkDiff: false,
+    },
+    dateChecked: "2026-11-19",
+  } satisfies SourceDoc,
 } as const;
 
 // ─── United Kingdom ───────────────────────────────────────────────────────────

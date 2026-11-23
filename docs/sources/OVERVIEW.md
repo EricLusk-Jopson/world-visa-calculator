@@ -40,6 +40,10 @@ Field meanings are in [README.md](README.md).
 | Schengen | [`atvCommonCellar`](schengen.md#atvcommoncellar) | machine-copy | consolidated-versions | open | diff | low | periodic |
 | Schengen | [`atvSpecific`](schengen.md#atvspecific) | document | replaced-file | open | diff | low | periodic |
 | Schengen | [`etias`](schengen.md#etias) | html-page | in-place | script-rendered | link-only | none | periodic |
+| Schengen | [`eesRegulation`](schengen.md#eesregulation) | document | consolidated-versions | bot-protected | link-only | none | periodic |
+| Schengen | [`eesProgressiveStart`](schengen.md#eesprogressivestart) | document | consolidated-versions | bot-protected | link-only | none | periodic |
+| Schengen | [`bordersCode`](schengen.md#borderscode) | document | consolidated-versions | bot-protected | link-only | none | periodic |
+| Schengen | [`eesDataRights`](schengen.md#eesdatarights) | html-page | in-place | script-rendered | link-only | none | periodic |
 | Serbia | [`countryPages`](serbia.md#countrypages) | html-page | in-place | open | diff | medium | on diff |
 | Turkiye | [`mfaVisaInfo`](turkiye.md#mfavisainfo) | html-page | in-place | open | diff | medium | on diff |
 | UK | [`appendixVisitor`](uk.md#appendixvisitor) | html-page | in-place | open | diff | high | on diff |
@@ -57,8 +61,8 @@ Links to look at by hand, whether or not the report flags them.
 - **Belarus** (last reviewed 2026-10-23): [`general`](belarus.md#general), [`airportPdf`](belarus.md#airportpdf)
 - **Cyprus** (last reviewed 2026-10-23): [`euVisaList`](cyprus.md#euvisalist), [`euVisaListCellar`](cyprus.md#euvisalistcellar)
 - **Ireland** (last reviewed 2026-10-23): [`visaNationalityList`](ireland.md#visanationalitylist), [`euFreeMovement`](ireland.md#eufreemovement), [`ctaGuidance`](ireland.md#ctaguidance), [`bivs`](ireland.md#bivs), [`ssvwp`](ireland.md#ssvwp), [`transitVisa`](ireland.md#transitvisa)
-- **Schengen** (last reviewed 2026-10-23): [`visaList`](schengen.md#visalist), [`visaListCellar`](schengen.md#visalistcellar), [`atvCommon`](schengen.md#atvcommon), [`atvCommonCellar`](schengen.md#atvcommoncellar), [`atvSpecific`](schengen.md#atvspecific), [`etias`](schengen.md#etias)
+- **Schengen** (last reviewed 2026-10-23): [`visaList`](schengen.md#visalist), [`visaListCellar`](schengen.md#visalistcellar), [`atvCommon`](schengen.md#atvcommon), [`atvCommonCellar`](schengen.md#atvcommoncellar), [`atvSpecific`](schengen.md#atvspecific), [`etias`](schengen.md#etias), [`eesRegulation`](schengen.md#eesregulation), [`eesProgressiveStart`](schengen.md#eesprogressivestart), [`bordersCode`](schengen.md#borderscode), [`eesDataRights`](schengen.md#eesdatarights)
 
 ## Totals
 
-14 regions · 62 documented links · 41 load-bearing · 30 diffed · 19 need a person regardless
+14 regions · 67 documented links · 45 load-bearing · 30 diffed · 23 need a person regardless

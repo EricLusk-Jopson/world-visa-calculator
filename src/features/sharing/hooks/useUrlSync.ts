@@ -32,7 +32,8 @@ const LOCALSTORAGE_KEY = "schengen_tracker_v1";
 
 // ─── localStorage helpers ─────────────────────────────────────────────────────
 
-const saveToLocalStorage = (state: ShareableState): void => {
+/** Save the calculator state where /app hydrates it from. Also used by the EES Record Fixer page. */
+export const saveToLocalStorage = (state: ShareableState): void => {
   try {
     const encoded = encodeState(state);
     localStorage.setItem(LOCALSTORAGE_KEY, encoded);
@@ -41,7 +42,8 @@ const saveToLocalStorage = (state: ShareableState): void => {
   }
 };
 
-const loadFromLocalStorage = (): ShareableState | null => {
+/** The calculator state saved in this browser, if any. Also used by the EES Record Fixer page. */
+export const loadFromLocalStorage = (): ShareableState | null => {
   try {
     const raw = localStorage.getItem(LOCALSTORAGE_KEY);
     if (!raw) return null;

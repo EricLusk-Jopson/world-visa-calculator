@@ -1,0 +1,452 @@
+---
+/**
+ * EES Record Fixer landing page: /ees-record-fixer
+ *
+ * Static, server-rendered content that reads fully without JavaScript (what
+ * the tool does, how it works, rights and deadlines, a worked example,
+ * common mistakes, FAQ with FAQPage schema, sources), with the fixer itself
+ * mounted as a client-only island below the intro. The island reads and
+ * writes the calculator's saved trips on this device.
+ *
+ * Every link shown here comes from SchengenSources (src/data/sources.ts), so
+ * the source-check pipeline health-checks them. Citations come from
+ * src/features/eesFixer/citations.ts, the same constants the letters use.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LandingNav from "../components/LandingNav.astro";
+import Footer from "../components/Footer.astro";
+import { EesFixerIsland } from "@/islands/EesFixerIsland";
+import { SchengenSources } from "@/data/sources";
+import { RIGHTS_TABLE } from "@/features/eesFixer/citations";
+import { REPLY_DEADLINE_DAYS } from "@/features/eesFixer/constants";
+
+const LAST_UPDATED = "21 November 2026";
+const CHECKER_URL = SchengenSources.eesChecker.direct.url;
+const CONTACTS_URL = SchengenSources.eesChecker.parent.url;
+
+const faq: { q: string; a: string }[] = [
+  {
+    q: "Who can use this tool?",
+    a: "Any non-EU traveller whose short stays in the Schengen Area are recorded in the Entry/Exit System (EES), with or without a visa. If you hold a residence permit or a long-stay visa, the EES shouldn't record you at all; that request is coming to the tool later.",
+  },
+  {
+    q: "What does \"Remaining days at the moment of entry\" mean?",
+    a: "It's the number of days the EU's Check how long you can stay page says you'd have left on the arrival date you typed in, based on your EES record. If it shows fewer days than your own dates allow, a crossing in your record is probably missing or wrong.",
+  },
+  {
+    q: "Why does the EU checker show fewer days than my own count?",
+    a: "Most often an exit wasn't registered, so the EES counts you as still present. An exit recorded on the wrong date has the same effect on a smaller scale. The tool tests each of these against the number you saw and shows which crossing fits.",
+  },
+  {
+    q: "What is a probe date?",
+    a: "When a 0-day result could come from more than one trip, a single number can't tell them apart. The tool picks a second date for you to run in the EU checker, chosen so that each possible missing exit would give a different answer. When such a date exists, one or two of these usually pin down the trip. When none does, the letter asks for your full record and names each possible exit.",
+  },
+  {
+    q: "Which country should I write to?",
+    a: "The country that entered the wrong data. For a missing exit, that's the country you left from. You can also write to any EES country, which must then deal with your request or pass it to the responsible country within 7 days (Article 52(2)).",
+  },
+  {
+    q: "How long does the authority have to reply?",
+    a: `${REPLY_DEADLINE_DAYS} days from receiving your request, under Article 52(1) of Regulation (EU) 2017/2226. The tool gives you the date and a calendar file with a reminder a week before.`,
+  },
+  {
+    q: "My passport wasn't stamped. How do I prove I left?",
+    a: "With the documents of the journey itself: a boarding pass, an e-ticket or booking confirmation, an airline email confirming you flew, or a train, bus or ferry ticket. Then add proof you were outside the Schengen Area afterwards, such as an entry stamp or arrival record from another country, a hotel invoice or card payments. Send copies, never originals.",
+  },
+  {
+    q: "Can I write in English?",
+    a: "Yes. The EES Regulation doesn't set a language for requests. Letters in French, German, Spanish, Italian, Dutch and Portuguese, with the English underneath, are coming to the tool.",
+  },
+  {
+    q: "What if they refuse or don't answer?",
+    a: "A refusal must come as a written decision with reasons and information on how to challenge it (Article 52(4) and (5)). If there's no answer in time, contact the national data protection authority, which must help you (Article 53), and consider a complaint or court action (Article 54).",
+  },
+  {
+    q: "Will a corrected record guarantee entry?",
+    a: "No. Border guards still check every entry condition. A correct record only removes a false overstay from your file.",
+  },
+  {
+    q: "Does EuroVisaCalculator see my details or documents?",
+    a: "No. The tool runs in your browser and sends nothing to us. Your details stay in this browser, and you attach your documents in your own email, so they never pass through our website.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
+const sources = [
+  { url: SchengenSources.eesRegulation.direct.url, label: "Regulation (EU) 2017/2226 establishing the Entry/Exit System", note: "Article 35 (correcting data), Article 52 (your rights and the 45-day deadline), Articles 53 and 54 (help and remedies)" },
+  { url: SchengenSources.eesProgressiveStart.direct.url, label: "Regulation (EU) 2025/1534 on the progressive start of EES operations", note: "12 October 2025 to 9 April 2026" },
+  { url: SchengenSources.bordersCode.direct.url, label: "Regulation (EU) 2016/399, the Schengen Borders Code", note: "Article 6(1): 90 days in any 180-day period" },
+  { url: CHECKER_URL, label: "European Commission: Check how long you can stay", note: "the EU checker" },
+  { url: CONTACTS_URL, label: "European Commission: your data held by the EES", note: "your rights, and where to send a request" },
+];
+---
+
+<BaseLayout
+  title="EES Record Fixer: Correct a Missing Exit in Your EES Record | EuroVisaCalculator"
+  description="The EU checker says 0 days but your dates say otherwise? Find the crossing your EES record is missing, see it on a timeline, and get a correction request under Article 52. Free, private, in your browser."
+  canonicalUrl="https://eurovisacalculator.com/ees-record-fixer"
+>
+  <LandingNav />
+
+  <main class="fixer-page">
+    <header class="fixer-page__header">
+      <p class="fixer-page__tag">Free tool</p>
+      <h1 class="fixer-page__title">EES Record Fixer: find and correct a missing exit</h1>
+      <p class="fixer-page__lead">
+        If the EU's <a href={CHECKER_URL} target="_blank" rel="noopener noreferrer">Check how long you can stay</a>
+        page says <strong>NOT OK, 0 days left</strong> and your own dates say otherwise, the EES record behind it is
+        probably missing an exit. This tool recounts your days, shows which crossing the EES most likely has wrong on a
+        timeline next to your own, and writes the request to correct it under Article 52 of the EES Regulation.
+      </p>
+      <p class="fixer-page__privacy">
+        <strong>Private:</strong> everything you type stays in your browser. Nothing is sent to us, and your documents
+        never touch our website.
+      </p>
+    </header>
+
+    <section class="fixer-page__tool" aria-label="EES Record Fixer">
+      <div class="fixer-card">
+        <div class="fixer-card__head">
+          <p class="fixer-card__name">EES Record Fixer</p>
+          <p class="fixer-card__sub">Six short steps, about five minutes. Uses the trips saved in your calculator.</p>
+        </div>
+        <EesFixerIsland client:only="react" />
+        <noscript>
+          <p class="fixer-card__noscript">
+            The fixer needs JavaScript. Everything below explains how to do the same by hand: recount your days, find the
+            likely missing exit, and write to the country you left from under Article 52(3).
+          </p>
+        </noscript>
+      </div>
+    </section>
+
+    <div class="fixer-page__body">
+      <h2>How it works</h2>
+      <ol>
+        <li>
+          <strong>It uses the trips you already have.</strong> Trips saved in the <a href="/app">calculator</a> on this device
+          load automatically. Check them against your boarding passes, add the country you entered and left through, and
+          any changes go straight back to the calculator.
+        </li>
+        <li>
+          <strong>It recounts your days</strong> under the 90/180-day rule, the same count the calculator uses, and compares
+          it with the number the EU checker gave you. If your own count is also 0, the rule is the problem, not the record,
+          and the tool says so instead of writing a letter.
+        </li>
+        <li>
+          <strong>It tests every likely error.</strong> For each past trip it builds the record the EES would hold if that
+          exit was never registered, or registered late, and predicts what the EU checker would then show. The errors that
+          match your result are ranked, with trips from the EES start-up period weighted as more likely.
+        </li>
+        <li>
+          <strong>It shows the difference on a timeline.</strong> Your trips on one row, what the EES likely sees on the
+          next, with the phantom days shaded and the missing crossing marked.
+        </li>
+        <li>
+          <strong>It breaks ties with a probe date.</strong> When more than one trip could explain a 0, the tool picks a
+          second date for you to run in the EU checker, chosen so each possible error gives a different answer.
+        </li>
+        <li>
+          <strong>It writes the letter and plans the follow-up.</strong> A correction request when one crossing stands out,
+          or an access request for your full record when it doesn't, citing the exact provisions and listing your proof.
+          You get the reply deadline as a date and as a calendar file with a reminder.
+        </li>
+      </ol>
+
+      <h2>Your rights and the deadlines that apply</h2>
+      <p>All under Regulation (EU) 2017/2226, the EES Regulation.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Provision</th><th scope="col">What it gives you</th></tr>
+          </thead>
+          <tbody>
+            {RIGHTS_TABLE.map((c) => (
+              <tr><th scope="row">{c.ref}</th><td>{c.gives}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Worked example: a missing exit from Spain</h2>
+      <p><em>An illustration built from the rules above, not a real case.</em></p>
+      <p>
+        Say you spent 1 to 10 July 2026 in Spain and plan to visit Italy from 2 November 2026. The July trip uses 10 of the
+        180 days before 2 November, which leaves you 80 days on arrival.
+      </p>
+      <p>
+        Now say the EU checker shows <strong>Authorised stay: NOT OK</strong> and <strong>Remaining days at the moment of
+        entry: 0</strong>. The tool tests the July trip and finds that a missing exit on 10 July explains it: without that
+        exit, the EES counts you as present from 1 July onwards, well over 90 days by November. The timeline shades those
+        phantom days, and the request goes to Spain, the country you left from, asking for the exit to be added under
+        Articles 52(3) and 35.
+      </p>
+      <p>
+        With a second trip, say Italy from 1 to 10 August, either exit could be the missing one and both give 0 on
+        2 November. The tool then picks one more date for you to run in the EU checker, a date on which the two
+        possibilities give different numbers, and the answer tells you which country to write to.
+      </p>
+
+      <h2>Before you send: common mistakes</h2>
+      <ul>
+        <li>
+          <strong>Asking for a correction when the rule is the problem.</strong> If your own count is also over 90 days, no
+          record is wrong. Use the <a href="/app">calculator</a> to plan a trip that fits.
+        </li>
+        <li>
+          <strong>Writing to the wrong country.</strong> A missing exit belongs to the country you left from, not the one
+          you entered first.
+        </li>
+        <li>
+          <strong>Forgetting trips before 12 October 2025.</strong> They aren't in the EES, so the EU checker ignores them,
+          but they still count under the rule while they sit inside the 180-day window.
+        </li>
+        <li>
+          <strong>Treating a start-up gap as an error.</strong> Between 12 October 2025 and 9 April 2026, some crossings
+          were legitimately not registered. If the EU checker counts one against you, asking for it to be added is still
+          right; just don't expect every crossing from then to be on file.
+        </li>
+        <li>
+          <strong>Sending originals or too much.</strong> Send copies, and only what identifies you and proves your dates.
+        </li>
+        <li>
+          <strong>Travelling without proof.</strong> Until the record is fixed, carry the same evidence in your hand luggage.
+          What a border guard can do about an overstay is in our guide to
+          <a href="/blog/schengen-overstay-consequences">the consequences of overstaying</a>.
+        </li>
+      </ul>
+
+      <h2>Frequently asked questions</h2>
+      {faq.map(({ q, a }) => (
+        <>
+          <h3>{q}</h3>
+          <p>{a}</p>
+        </>
+      ))}
+      <p>
+        More on why the two counts disagree, and what to say at the border, is in
+        <a href="/blog/ees-says-your-trip-is-not-ok">EES says your trip is NOT OK</a>. To find your authority's EES
+        contact, start from the EU's <a href={CONTACTS_URL} target="_blank" rel="noopener noreferrer">EES data and rights page</a>.
+      </p>
+
+      <aside class="sources">
+        <h2>Sources and legal basis</h2>
+        <ul>
+          {sources.map((s) => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>: {s.note}
+            </li>
+          ))}
+        </ul>
+        <p class="sources__meta">
+          Last updated {LAST_UPDATED}. This tool is not legal advice, and only a border guard can decide whether you may
+          enter.
+        </p>
+      </aside>
+    </div>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .fixer-page {
+    background: var(--color-off-white);
+    padding: 112px 16px 96px;
+  }
+
+  .fixer-page__header,
+  .fixer-page__body {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .fixer-page__tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    margin: 0 0 14px;
+  }
+
+  .fixer-page__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-navy);
+    margin: 0 0 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .fixer-page__lead {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #3d4f65;
+    margin: 0 0 14px;
+  }
+
+  .fixer-page__lead a,
+  .fixer-page__body a {
+    color: var(--color-green-text);
+    font-weight: 600;
+  }
+
+  .fixer-page__privacy {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3d4f65;
+    background: #eef1ea;
+    border-left: 3px solid var(--color-green);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 0;
+  }
+
+  .fixer-page__tool {
+    max-width: 860px;
+    margin: 36px auto 56px;
+  }
+
+  .fixer-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 48px rgba(12, 30, 60, 0.08);
+    min-height: 420px;
+  }
+
+  .fixer-card__head {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 18px 24px;
+  }
+
+  .fixer-card__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .fixer-card__sub {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    opacity: 0.75;
+    margin: 4px 0 0;
+  }
+
+  .fixer-card__noscript {
+    font-family: var(--font-body);
+    padding: 24px;
+    color: #3d4f65;
+  }
+
+  .fixer-page__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 2.5rem 0 0.75rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .fixer-page__body h3 {
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 1.6rem 0 0.4rem;
+  }
+
+  .fixer-page__body p,
+  .fixer-page__body ul,
+  .fixer-page__body ol {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #3d4f65;
+    margin: 0 0 1.1em;
+  }
+
+  .fixer-page__body ul,
+  .fixer-page__body ol {
+    padding-left: 1.4rem;
+  }
+
+  .fixer-page__body li {
+    margin-bottom: 0.5em;
+  }
+
+  .fixer-page__body strong {
+    color: var(--color-navy);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 0 0 1.25em;
+  }
+
+  .fixer-page__body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #3d4f65;
+  }
+
+  .fixer-page__body th,
+  .fixer-page__body td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .fixer-page__body thead th {
+    color: var(--color-navy);
+    background: var(--color-mist);
+  }
+
+  .fixer-page__body tbody th {
+    color: var(--color-navy);
+    white-space: nowrap;
+  }
+
+  .sources {
+    margin-top: 2.5rem;
+    padding: 4px 20px 8px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-navy);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .sources h2 {
+    font-size: 1.15rem;
+    margin-top: 1rem;
+  }
+
+  .sources__meta {
+    font-size: 0.85rem !important;
+    color: var(--color-text-soft) !important;
+  }
+</style>

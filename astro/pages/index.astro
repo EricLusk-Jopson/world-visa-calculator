@@ -424,6 +424,60 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     </div>
   </section>
 
+  <!-- ── EES RECORD FIXER ──────────────────────────────────────────────────── -->
+  <section id="ees-fixer" class="fixer-band">
+    <div class="fixer-band__inner">
+      <div class="fixer-band__copy">
+        <p class="section-tag">New: EES Record Fixer</p>
+        <h2 class="section-heading">
+          The EU checker says 0 days?<br />
+          <em>Find the exit it's missing.</em>
+        </h2>
+        <p class="section-sub">
+          When the EU's official stay check counts days you didn't spend in the
+          Schengen Area, the record behind it is usually missing an exit. The
+          fixer tests every trip you've saved, shows the phantom days on a
+          timeline, and writes the request to correct your record under
+          Article 52 of the EES Regulation.
+        </p>
+        <ul class="fixer-band__points">
+          <li>Uses the trips already in your calculator</li>
+          <li>Ranks every possible missing or late exit, and picks a second date to check when two trips could explain it</li>
+          <li>A ready-to-send letter, the 45-day reply deadline and a calendar reminder</li>
+          <li>Runs in your browser: nothing is sent to us</li>
+        </ul>
+        <a href="/ees-record-fixer" class="btn-green fixer-band__cta">Fix my EES record →</a>
+      </div>
+
+      <figure class="fixer-band__visual" aria-label="Example: a missing exit from Spain on 10 July adds phantom days to the EES record">
+        <div class="fixer-band__card">
+          <p class="fixer-band__row-label">Your record</p>
+          <div class="fixer-band__track">
+            <span class="fixer-band__trip" style="left: 8%; width: 9%"></span>
+            <span class="fixer-band__window"></span>
+            <span class="fixer-band__arrival" style="left: 92%"></span>
+          </div>
+          <p class="fixer-band__row-label">What the EES likely sees</p>
+          <div class="fixer-band__track">
+            <span class="fixer-band__trip" style="left: 8%; width: 9%"></span>
+            <span class="fixer-band__phantom" style="left: 17%; width: 63%"></span>
+            <span class="fixer-band__marker" style="left: 17%"></span>
+            <span class="fixer-band__window"></span>
+            <span class="fixer-band__arrival" style="left: 92%"></span>
+          </div>
+          <figcaption class="fixer-band__caption">
+            <span class="fixer-band__dot"></span>
+            Exit from Spain on 10 Jul 2026 likely not recorded
+          </figcaption>
+          <div class="fixer-band__figures">
+            <div><span>Your dates give</span><strong>80 days</strong></div>
+            <div><span>The EU checker shows</span><strong class="is-bad">0 days</strong></div>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
+
   <!-- ── CTA BAND ─────────────────────────────────────────────────────────── -->
   <section class="cta-band">
     <div class="cta-band__inner">
@@ -1497,4 +1551,207 @@ import { EuropeCoverageIsland } from "@/islands/EuropeCoverageIsland";
     }
   }
 
+  /* ── EES Record Fixer band ─────────────────────────────────────────────── */
+  .fixer-band {
+    background: var(--color-mist);
+    padding: 60px 24px;
+  }
+
+  @media (min-width: 768px) {
+    .fixer-band {
+      padding: 96px 80px;
+    }
+  }
+
+  .fixer-band__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .fixer-band__inner {
+      grid-template-columns: 1.05fr 1fr;
+      gap: 64px;
+    }
+  }
+
+  .fixer-band__points {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 28px;
+    display: grid;
+    gap: 10px;
+  }
+
+  .fixer-band__points li {
+    position: relative;
+    padding-left: 26px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--color-text);
+  }
+
+  .fixer-band__points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 8px;
+    border-left: 2px solid var(--color-green);
+    border-bottom: 2px solid var(--color-green);
+    transform: rotate(-45deg);
+  }
+
+  .fixer-band__cta.btn-green {
+    display: inline-flex;
+  }
+
+  .fixer-band__visual {
+    margin: 0;
+  }
+
+  .fixer-band__card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    padding: 24px 22px 20px;
+    box-shadow: 0 24px 60px rgba(12, 30, 60, 0.1);
+  }
+
+  .fixer-band__row-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+    margin: 0 0 6px;
+  }
+
+  .fixer-band__track {
+    position: relative;
+    height: 28px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+    background: var(--color-off-white);
+    border: 1px solid var(--color-border);
+  }
+
+  .fixer-band__window {
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: 2%;
+    width: 90%;
+    border-radius: 6px;
+    background: rgba(0, 185, 107, 0.08);
+    border: 1px dashed var(--color-green-border);
+  }
+
+  .fixer-band__trip,
+  .fixer-band__phantom {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  .fixer-band__trip {
+    background: var(--color-navy);
+  }
+
+  .fixer-band__phantom {
+    border: 1px solid var(--color-red);
+    background: repeating-linear-gradient(45deg, var(--color-red) 0 2px, rgba(239, 68, 68, 0.12) 2px 7px);
+    transform-origin: left center;
+    animation: phantomGrow 1.4s 0.3s both cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  @keyframes phantomGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fixer-band__phantom { animation: none; }
+  }
+
+  .fixer-band__marker {
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 2px solid var(--color-red);
+    z-index: 2;
+  }
+
+  .fixer-band__arrival {
+    position: absolute;
+    top: -6px;
+    bottom: -6px;
+    width: 2px;
+    background: var(--color-green);
+    z-index: 2;
+  }
+
+  .fixer-band__caption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: -4px 0 16px;
+  }
+
+  .fixer-band__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--color-red);
+    flex-shrink: 0;
+  }
+
+  .fixer-band__figures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .fixer-band__figures div {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 10px 14px;
+  }
+
+  .fixer-band__figures span {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+  }
+
+  .fixer-band__figures strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .fixer-band__figures strong.is-bad {
+    color: var(--color-red-text);
+  }
 </style>

@@ -19,6 +19,7 @@ import {
   determineActiveRegion,
   resolveDisplayRegion,
 } from "@/features/calculator/utils/destinationStatus";
+import { STEP, useEesFixerLauncher } from "@/features/eesFixer";
 
 interface TravelerColumnHeaderProps {
   traveler: Traveler;
@@ -83,6 +84,11 @@ export function TravelerColumnHeader({
   const status = computeDestinationStatus(traveler, region);
   const tripCount = traveler.trips?.length ?? 0;
   const showTracker = status.availableChip !== null;
+  const openFixer = useEesFixerLauncher();
+  const fixerAvailable =
+    openFixer !== null &&
+    region === VisaRegion.Schengen &&
+    traveler.trips.some((t) => t.region === VisaRegion.Schengen);
 
   const handleDeleteClick = () => {
     if (tripCount === 0) onDelete();
@@ -257,6 +263,24 @@ export function TravelerColumnHeader({
         >
           Edit traveler
         </MenuItem>
+        {fixerAvailable && (
+          <MenuItem
+            onClick={() => {
+              closeMenu();
+              openFixer({ travelerId: traveler.id });
+            }}
+            sx={{
+              fontFamily: tokens.fontBody,
+              fontSize: "0.82rem",
+              color: tokens.text,
+              py: "8px",
+              px: "14px",
+              "&:hover": { bgcolor: tokens.mist },
+            }}
+          >
+            Fix my EES record
+          </MenuItem>
+        )}
         <MenuItem
           onClick={() => {
             closeMenu();
@@ -347,6 +371,32 @@ export function TravelerColumnHeader({
             variant={status.variant}
             size="sm"
           />
+
+          {fixerAvailable && (
+            <Box
+              component="button"
+              type="button"
+              onClick={() => openFixer({ travelerId: traveler.id, step: STEP.diagnosis })}
+              sx={{
+                alignSelf: "flex-start",
+                border: "none",
+                bgcolor: "transparent",
+                p: 0,
+                mt: "-2px",
+                fontFamily: tokens.fontBody,
+                fontSize: "0.66rem",
+                fontWeight: 600,
+                color: tokens.textSoft,
+                textDecoration: "underline",
+                textDecorationColor: tokens.border,
+                textUnderlineOffset: "2px",
+                cursor: "pointer",
+                "&:hover": { color: tokens.navy, textDecorationColor: tokens.navy },
+              }}
+            >
+              Does the EU checker show fewer days?
+            </Box>
+          )}
         </>
       ) : (
         /* No calculable tracker for this destination/passport combination. */
