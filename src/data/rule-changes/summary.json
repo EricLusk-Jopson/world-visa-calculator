@@ -1,5 +1,13 @@
 {
   "bySource": {
+    "Albania.HK": {
+      "id": 18,
+      "recorded": "2026-11-23"
+    },
+    "Albania.MO": {
+      "id": 18,
+      "recorded": "2026-11-23"
+    },
     "Albania.QA": {
       "id": 6,
       "recorded": "2026-10-20"
@@ -7,6 +15,10 @@
     "Albania.SA": {
       "id": 6,
       "recorded": "2026-10-20"
+    },
+    "Albania.TW": {
+      "id": 18,
+      "recorded": "2026-11-23"
     },
     "Belarus.airport": {
       "id": 12,

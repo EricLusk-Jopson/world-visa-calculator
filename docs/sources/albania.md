@@ -1,6 +1,6 @@
 ---
 region: Albania
-lastReviewed: 2026-10-23
+lastReviewed: 2026-11-23
 links:
   - id: visaTable
     url: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/
@@ -23,7 +23,7 @@ links:
     humanCheck: manual-only
   - id: visaRegime
     url: https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/
-    loadBearing: false
+    loadBearing: true
     category: html-page
     revisions: in-place
     access: bot-protected
@@ -135,8 +135,12 @@ the country list; add it to `ALIASES`.
 
 ## visaRegime
 
-**Establishes:** nothing directly. It's the general visa-regime overview
-(entry conditions, links to the table), cited as the parent.
+**Establishes:** the general visa-regime overview (entry conditions, links
+to the table), cited as every entry's parent. Since Nov 2026 it's also the
+direct source for Hong Kong, Macau and Taiwan: the table's selector dropped
+them, and they're visa-free under this page's rule for "Nationals of
+countries that are permitted to enter and stay visa-free in Schengen Area
+countries" (rule change 18).
 
 **Machine:** diffed as a page, but blocked like the rest of the site.
 
@@ -144,7 +148,8 @@ the country list; add it to `ALIASES`.
 seasonal waivers. These are sometimes announced here before the table
 changes.
 
-**Real change vs noise:** a new announcement paragraph is worth a look.
+**Real change vs noise:** a new announcement paragraph is worth a look. A
+change to the Schengen visa-free clause is a rule change for HK, MO and TW.
 Layout and date-stamp changes are noise.
 
 **Human work:** skim during the manual check.

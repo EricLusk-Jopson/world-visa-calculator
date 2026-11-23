@@ -106,10 +106,11 @@ items:
       The BiH visa-free text for Saudi citizens is unchanged.
   - region: Albania
     url: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries
-    verdict: unclear
+    verdict: rule-change
+    ruleChange: 18
     by: ai-assisted
     notes: >-
-      Hong Kong, Macau and Taiwan are still in countryData but no longer in the
-      page's country dropdown, so the resolver can't map them and their checks
-      became fetch errors. Settle on the live page: are they still selectable,
-      and what does each one's A/C national-passport cell say?
+      Hong Kong, Macau and Taiwan are no longer in the table's selector
+      (confirmed on the live page 2026-11-23). Still visa-free under the
+      overview's rule for "Nationals of countries that are permitted to enter
+      and stay visa-free in Schengen Area countries"; re-cited to that page.

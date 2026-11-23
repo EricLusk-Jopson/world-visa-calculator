@@ -1009,6 +1009,12 @@
               "source": {
                 "$source": "Albania.HK"
               },
+              "text": "Not listed in Albania's visa table. Visa-free under Albania's rule for nationals permitted to enter and stay visa-free in the Schengen Area."
+            },
+            {
+              "source": {
+                "$source": "Albania.HK"
+              },
               "text": "Visa-free status is confirmed. The official source does not provide a stay-duration limit for this nationality, so the widely-reported 90 days in 180 days rule is applied."
             }
           ],
@@ -1650,6 +1656,12 @@
             }
           ],
           "notes": [
+            {
+              "source": {
+                "$source": "Albania.MO"
+              },
+              "text": "Not listed in Albania's visa table. Visa-free under Albania's rule for nationals permitted to enter and stay visa-free in the Schengen Area."
+            },
             {
               "source": {
                 "$source": "Albania.MO"
@@ -2517,6 +2529,12 @@
             }
           ],
           "notes": [
+            {
+              "source": {
+                "$source": "Albania.TW"
+              },
+              "text": "Not listed in Albania's visa table. Visa-free under Albania's rule for nationals permitted to enter and stay visa-free in the Schengen Area."
+            },
             {
               "source": {
                 "$source": "Albania.TW"

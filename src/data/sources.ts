@@ -6436,6 +6436,14 @@ const albaniaVisaRegime = {
   checkDiff: true,
 } as const satisfies SourceLink;
 
+/**
+ * The overview page as a direct citation, for the nationalities the table's
+ * selector dropped in Nov 2026 (Hong Kong, Macau, Taiwan). They're visa-free
+ * through its rule for "Nationals of countries that are permitted to enter
+ * and stay visa-free in Schengen Area countries" (rule change 18).
+ */
+const albaniaVisaRegimeDirect = { ...albaniaVisaRegime, type: "direct" } as const satisfies SourceLink;
+
 export const AlbaniaSources = {
   AD: {
     direct: albaniaVisaTable,
@@ -6728,10 +6736,10 @@ export const AlbaniaSources = {
     dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Guyana
   HK: {
-    direct: albaniaVisaTable,
+    direct: albaniaVisaRegimeDirect,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-23",
-  } satisfies SourceDoc, // Hong Kong (SAR)
+    dateChecked: "2026-11-23",
+  } satisfies SourceDoc, // Hong Kong (SAR): Schengen-visa-free basis, no longer in the table's selector
   HN: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
@@ -6933,10 +6941,10 @@ export const AlbaniaSources = {
     dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Mongolia
   MO: {
-    direct: albaniaVisaTable,
+    direct: albaniaVisaRegimeDirect,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-23",
-  } satisfies SourceDoc, // Macao (SAR)
+    dateChecked: "2026-11-23",
+  } satisfies SourceDoc, // Macao (SAR): Schengen-visa-free basis, no longer in the table's selector
   MR: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,
@@ -7193,10 +7201,10 @@ export const AlbaniaSources = {
     dateChecked: "2026-10-23",
   } satisfies SourceDoc, // Trinidad and Tobago
   TW: {
-    direct: albaniaVisaTable,
+    direct: albaniaVisaRegimeDirect,
     parent: albaniaVisaRegime,
-    dateChecked: "2026-10-23",
-  } satisfies SourceDoc, // Taiwan
+    dateChecked: "2026-11-23",
+  } satisfies SourceDoc, // Taiwan: Schengen-visa-free basis, no longer in the table's selector
   TZ: {
     direct: albaniaVisaTable,
     parent: albaniaVisaRegime,

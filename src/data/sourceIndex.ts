@@ -19,11 +19,20 @@ function build() {
   byDoc = new Map();
   byUrl = new Map();
   regionByParentUrl = new Map();
+  const sharedDirect = new Set<string>();
   for (const [region, { sources }] of Object.entries(SourceRegions)) {
     for (const [key, doc] of Object.entries(sources as Record<string, SourceDoc>)) {
       const ref = { region: region as SourceRef["region"], key };
       if (!byDoc.has(doc)) byDoc.set(doc, ref);
-      if (!byUrl.has(doc.direct.url)) byUrl.set(doc.direct.url, ref);
+      // A direct URL several entries share (Bosnia's visa page, Albania's
+      // overview for HK/MO/TW) names no one entry: place it by region.
+      const seen = byUrl.get(doc.direct.url);
+      if (!seen && !sharedDirect.has(doc.direct.url)) byUrl.set(doc.direct.url, ref);
+      else if (seen && (seen.region !== ref.region || seen.key !== key)) {
+        byUrl.delete(doc.direct.url);
+        sharedDirect.add(doc.direct.url);
+        if (!regionByParentUrl.has(doc.direct.url)) regionByParentUrl.set(doc.direct.url, seen.region);
+      }
       if (!regionByParentUrl.has(doc.parent.url)) regionByParentUrl.set(doc.parent.url, ref.region);
     }
   }
@@ -37,9 +46,9 @@ export function sourceRefOf(doc: SourceDoc): SourceRef | undefined {
 
 /**
  * Like sourceRefOf, but also places a SourceDoc built on the fly (the
- * calculator's region-level fallback) by its URL: as an entry when some
- * entry's direct link is that URL, else as a region (no key) when it's some
- * entry's parent page.
+ * calculator's region-level fallback) by its URL: as an entry when exactly
+ * one entry's direct link is that URL, else as a region (no key) when it's
+ * several entries' direct link or some entry's parent page.
  */
 export function findSourceRef(doc: SourceDoc): { region: SourceRef["region"]; key?: string } | undefined {
   if (!byUrl) build();
