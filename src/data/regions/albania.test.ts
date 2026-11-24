@@ -134,3 +134,15 @@ describe('Albania — note wording never restates the source citation', () => {
     }
   });
 });
+
+describe('Albania — Hong Kong, Macau, Taiwan (rule change 18)', () => {
+  it.each(['HK', 'MO', 'TW'])('%s stays visa-free 90/180, citing the overview page’s Schengen rule', (code) => {
+    const rule = getAlbaniaRule(code);
+    expect(rule.access).toBe('entitled');
+    if (rule.access !== 'entitled') return;
+    const e = rule.entitlements[0];
+    expect((e.limits[0] as RollingWindowLimit).days).toBe(90);
+    expect(e.source?.direct.url).toBe('https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/');
+    expect(e.notes?.[0].text).toMatch(/Schengen/);
+  });
+});

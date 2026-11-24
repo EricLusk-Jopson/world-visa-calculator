@@ -49,7 +49,7 @@
  *
  * All source URLs are in TurkiyeSources (@/data/sources).
  *
- * Last verified: 2026-11-06
+ * Last verified: 2026-11-23
  */
 
 import type {
@@ -273,8 +273,8 @@ export const TURKIYE: RegionDefinition = {
     }],
   },
 
-  lastVerified: '2026-11-06',
-  lastChanged: '2026-11-06',
+  lastVerified: '2026-11-23',
+  lastChanged: '2026-11-23',
   sourceUrl: TurkiyeSources.mfaVisaInfo.direct.url,
   defaultRule: VISA_REQUIRED,
 
@@ -564,7 +564,7 @@ export const TURKIYE: RegionDefinition = {
     // ── Visa required — no e-Visa route ───────────────────────────────────
     'AO': VISA_REQUIRED,
     'BJ': VISA_REQUIRED,
-    'BT': visaRequired([{ text: 'Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad.', source: TurkiyeSources.mfaVisaInfo }]),
+    'BT': eVisaConditional([{ text: 'Ordinary and official passport holders can also get their visas from Turkish diplomatic or consular representations abroad.', source: TurkiyeSources.mfaVisaInfo }]),
     'BW': VISA_REQUIRED,
     'BF': VISA_REQUIRED,
     'BI': VISA_REQUIRED,
@@ -613,7 +613,7 @@ export const TURKIYE: RegionDefinition = {
     'RW': VISA_REQUIRED,
     'ST': VISA_REQUIRED,
     'SL': VISA_REQUIRED,
-    'SB': visaRequired([{ text: 'Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad.', source: TurkiyeSources.mfaVisaInfo }]),
+    'SB': eVisaConditional([{ text: 'Ordinary and official passport holders can also get their visas from Turkish diplomatic or consular representations abroad.', source: TurkiyeSources.mfaVisaInfo }]),
     'SO': VISA_REQUIRED,
     'SS': VISA_REQUIRED,
     'SD': VISA_REQUIRED,
@@ -625,7 +625,7 @@ export const TURKIYE: RegionDefinition = {
     'TM': VISA_REQUIRED,
     'TV': VISA_REQUIRED,
     'UG': VISA_REQUIRED,
-    'VU': visaRequired([{ text: 'Ordinary passport holders may obtain a 15-day visa from Turkish diplomatic missions abroad.', source: TurkiyeSources.mfaVisaInfo }]),
+    'VU': eVisaConditional([{ text: 'Ordinary and official passport holders can also get their visas from Turkish diplomatic or consular representations abroad.', source: TurkiyeSources.mfaVisaInfo }]),
     'WS': VISA_REQUIRED,
     'ZM': VISA_REQUIRED,
     'ZW': VISA_REQUIRED,

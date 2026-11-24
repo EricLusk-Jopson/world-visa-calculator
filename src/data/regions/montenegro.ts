@@ -86,7 +86,7 @@
  *     citation is never restated as a note, since that would just duplicate
  *     the source link with no added information.
  *
- * Last verified: 2026-10-23
+ * Last verified: 2026-11-23
  */
 
 import type {
@@ -170,8 +170,8 @@ export const MONTENEGRO: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-10-23',
-  lastChanged: '2026-10-15',
+  lastVerified: '2026-11-23',
+  lastChanged: '2026-11-23',
   sourceUrl: 'https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro',
   defaultRule: VISA_REQUIRED,
   passportRules: {
@@ -210,7 +210,6 @@ export const MONTENEGRO: RegionDefinition = {
     'MX': entitled(MontenegroSources.MX), // Mexico
     'FM': entitled(MontenegroSources.FM), // Micronesia
     'MD': entitled(MontenegroSources.MD), // Moldova
-    'NR': entitled(MontenegroSources.NR), // Nauru
     'NZ': entitled(MontenegroSources.NZ), // New Zealand
     'NI': entitled(MontenegroSources.NI), // Nicaragua
     'PW': entitled(MontenegroSources.PW), // Palau
@@ -448,6 +447,7 @@ export const MONTENEGRO: RegionDefinition = {
     'PS': { access: 'visa_required', source: MontenegroSources.PS }, // Palestine
     'PG': { access: 'visa_required', source: MontenegroSources.PG }, // Papua New Guinea
     'PH': { access: 'visa_required', source: MontenegroSources.PH }, // Philippines
+    'NR': { access: 'visa_required', source: MontenegroSources.NR }, // Nauru (visa required since Nov 2026, rule change 17)
     'QA': { access: 'visa_required', source: MontenegroSources.QA }, // Qatar
     'RW': { access: 'visa_required', source: MontenegroSources.RW }, // Rwanda
     'ST': { access: 'visa_required', source: MontenegroSources.ST }, // Sao Tome and Principe

@@ -19,3 +19,13 @@ describe('Türkiye — South Africa e-Visa (rule change 15)', () => {
     expect(rule.entitlements[0].preAuth).toMatchObject({ multiEntry: false, applicationUrl: TurkiyeSources.eVisaApplication.direct.url });
   });
 });
+
+describe('Türkiye — Bhutan, Solomon Islands, Vanuatu (rule change 16)', () => {
+  it.each(['BT', 'SB', 'VU'])('%s is visa required with the conditional e-Visa note', (code) => {
+    const rule = getTurkiyeRule(code);
+    expect(rule.access).toBe('visa_required');
+    if (rule.access !== 'visa_required') return;
+    expect(rule.notes?.[0].text).toMatch(/Schengen/);
+    expect(rule.notes?.some((n) => /15-day/.test(n.text))).toBe(false);
+  });
+});

@@ -1892,21 +1892,10 @@
       }
     },
     "NR": {
-      "access": "entitled",
-      "entitlements": [
-        {
-          "limits": [
-            {
-              "days": 90,
-              "type": "rolling_window",
-              "windowDays": 180
-            }
-          ],
-          "source": {
-            "$source": "Montenegro.NR"
-          }
-        }
-      ]
+      "access": "visa_required",
+      "source": {
+        "$source": "Montenegro.NR"
+      }
     },
     "NZ": {
       "access": "entitled",

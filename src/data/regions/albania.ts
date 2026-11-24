@@ -50,10 +50,17 @@
  *   The source states the start date, so `validFrom` is set. When Albania
  *   announces a new season, append a new window; never edit this one.
  *
+ * - Hong Kong (HK), Macau (MO) and Taiwan (TW) were dropped from the table's
+ *   country selector in Nov 2026 (their countryData entries remain). They're
+ *   still visa-free under the overview page's rule for "Nationals of
+ *   countries that are permitted to enter and stay visa-free in Schengen Area
+ *   countries" (all three are Annex II in schengen.ts), so they cite that
+ *   page instead of the table (rule change 18).
+ *
  * Albania's own member state (AL) is encoded as free_movement — an Albanian
  * national needs no visa to enter Albania.
  *
- * Last verified: 2026-10-20
+ * Last verified: 2026-11-23
  */
 
 import type {
@@ -139,6 +146,25 @@ function touristSeason2026(source: SourceDoc): EntitledRule {
   };
 }
 
+/**
+ * Visa-free through the overview page's Schengen rule rather than a table
+ * row (HK, MO, TW; see file header). Same 90/180 limit as every other
+ * visa-free entry.
+ */
+function schengenBasis(source: SourceDoc): EntitledRule {
+  return {
+    access: 'entitled',
+    entitlements: [{
+      limits: [ALBANIA_LIMIT],
+      source,
+      notes: [
+        { text: 'Not listed in Albania\'s visa table. Visa-free under Albania\'s rule for nationals permitted to enter and stay visa-free in the Schengen Area.', source },
+        { text: DURATION_NOTE_TEXT, source },
+      ],
+    }],
+  };
+}
+
 // ─── Region definition ────────────────────────────────────────────────────────
 
 export const ALBANIA: RegionDefinition = {
@@ -152,8 +178,8 @@ export const ALBANIA: RegionDefinition = {
     entryCountsAsDay: true,
     exitCountsAsDay: true,
   },
-  lastVerified: '2026-10-20',
-  lastChanged: '2026-10-20',
+  lastVerified: '2026-11-23',
+  lastChanged: '2026-11-23',
   sourceUrl: 'https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/',
   defaultRule: VISA_REQUIRED,
   passportRules: {
@@ -219,7 +245,7 @@ export const ALBANIA: RegionDefinition = {
     'GR': entitledRolling(AlbaniaSources.GR), // Greece
     'GT': entitledRolling(AlbaniaSources.GT), // Guatemala
     'GY': visaRequired(AlbaniaSources.GY), // Guyana
-    'HK': entitledRolling(AlbaniaSources.HK), // Hong Kong (SAR)
+    'HK': schengenBasis(AlbaniaSources.HK), // Hong Kong (SAR)
     'HN': entitledRolling(AlbaniaSources.HN), // Honduras
     'HR': entitledRolling(AlbaniaSources.HR), // Croatia
     'HT': visaRequired(AlbaniaSources.HT), // Haiti
@@ -260,7 +286,7 @@ export const ALBANIA: RegionDefinition = {
     'MK': entitledRolling(AlbaniaSources.MK), // North Macedonia
     'ML': visaRequired(AlbaniaSources.ML), // Mali
     'MN': visaRequired(AlbaniaSources.MN), // Mongolia
-    'MO': entitledRolling(AlbaniaSources.MO), // Macao (SAR)
+    'MO': schengenBasis(AlbaniaSources.MO), // Macao (SAR)
     'MR': visaRequired(AlbaniaSources.MR), // Mauritania
     'MT': entitledRolling(AlbaniaSources.MT), // Malta
     'MU': entitledRolling(AlbaniaSources.MU), // Mauritius
@@ -312,7 +338,7 @@ export const ALBANIA: RegionDefinition = {
     'TN': visaRequired(AlbaniaSources.TN), // Tunisia
     'TR': entitledRolling(AlbaniaSources.TR), // Turkey
     'TT': entitledRolling(AlbaniaSources.TT), // Trinidad and Tobago
-    'TW': entitledRolling(AlbaniaSources.TW), // Taiwan
+    'TW': schengenBasis(AlbaniaSources.TW), // Taiwan
     'TZ': visaRequired(AlbaniaSources.TZ), // Tanzania
     'UA': entitledRolling(AlbaniaSources.UA), // Ukraine
     'UG': visaRequired(AlbaniaSources.UG), // Uganda

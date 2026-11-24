@@ -1,0 +1,116 @@
+report: 2026-11-20
+items:
+  - region: Turkiye
+    url: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
+    verdict: rule-change
+    ruleChange: 16
+    by: ai-assisted
+    notes: >-
+      Bhutan, Solomon Islands, Vanuatu: the 15-day visa is gone and "Ordinary
+      passport holders who hold a valid Schengen members or USA, UK, Ireland
+      visa or residence permit may get their visas via the website
+      www.evisa.gov.tr provided that they meet certain conditions" was added.
+      Confirmed on the live page 2026-11-23.
+  - region: Turkiye
+    url: https://www.mfa.gov.tr/consular-info.en.mfa
+    verdict: no-rule-change
+    noise: layout
+    by: ai-assisted
+    notes: Site navigation links only (Protocol, Diplomatic Portal, Forms, Diplomatic Lists).
+  - region: Montenegro
+    url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/bahrain
+    verdict: no-rule-change
+    noise: contact-info
+    by: ai-assisted
+    notes: Still "required to obtain a visa"; applications now via a VFS Global centre in Manama.
+  - region: Montenegro
+    url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/china
+    verdict: no-rule-change
+    noise: other
+    by: ai-assisted
+    notes: >-
+      The waivers that ran "until October 31, 2026" were not renewed: "As of 1
+      November 2026, foreign nationals travelling to Montenegro from China will
+      be required to obtain a visa". montenegro.ts already ends both windows on
+      2026-10-31; VFS centres added.
+  - region: Montenegro
+    url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/kazakhstan
+    verdict: no-rule-change
+    noise: other
+    by: ai-assisted
+    notes: >-
+      The 1 May to 1 October 2026 window is gone and not renewed: "required to
+      obtain a visa". montenegro.ts already ends it on 2026-10-01; VFS centre added.
+  - region: Montenegro
+    url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/nauru
+    verdict: rule-change
+    ruleChange: 17
+    by: ai-assisted
+    notes: >-
+      "Citizens of Nauru may enter … for up to 90 days … without a visa" ->
+      "Citizens of Nauru must possess a visa to enter Montenegro". gov.me was
+      unreachable on 2026-11-23; recorded from the diff at the maintainer's
+      direction.
+  - region: Montenegro
+    url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/qatar
+    verdict: no-rule-change
+    noise: contact-info
+    by: ai-assisted
+    notes: Still "required to obtain a visa"; applications now via a VFS Global centre in Doha.
+  - region: Montenegro
+    url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/saudi-arabia
+    verdict: no-rule-change
+    noise: other
+    by: ai-assisted
+    notes: >-
+      The waiver "until October 31, 2026" was not renewed: "As of 1 November
+      2026 … required to obtain a visa". montenegro.ts already ends it on
+      2026-10-31; VFS centres added.
+  - region: Montenegro
+    url: https://www.gov.me/en/diplomatic-missions/embassies-and-consulates-of-montenegro/uzbekistan
+    verdict: no-rule-change
+    noise: not-modelled
+    by: ai-assisted
+    notes: >-
+      Still "required to obtain a visa". The lapsed March to October 2025
+      season note is gone (montenegro.ts never encoded it); VFS centre added.
+  - region: Bosnia
+    url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_638883511753966503?domain=https://www.mvp.gov.ba
+    verdict: no-rule-change
+    noise: contact-info
+    by: ai-assisted
+    notes: Belgium. Consular-help sentence typo fixed and embassy link replaced.
+  - region: Bosnia
+    url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639129673911394059?domain=https://www.mvp.gov.ba
+    verdict: no-rule-change
+    noise: contact-info
+    by: ai-assisted
+    notes: Libya. Consular-help sentence reworded and embassy link replaced.
+  - region: Bosnia
+    url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639159096447893258?domain=https://www.mvp.gov.ba
+    verdict: no-rule-change
+    noise: wording
+    by: ai-assisted
+    notes: >-
+      Malaysia. Quote marks and spacing only; "Citizens of Malaysia, holders of
+      valid ordinary, diplomatic and official passports, shall be exempt from
+      the obligation to obtain a visa" unchanged. Embassy link replaced.
+  - region: Bosnia
+    url: https://www.mvp.gov.ba/api/subpage/org_cmd57sdlc000nn43u2rk8pgsd_639274788685078781?domain=https://www.mvp.gov.ba
+    verdict: no-rule-change
+    noise: not-modelled
+    by: ai-assisted
+    notes: >-
+      Saudi Arabia. Added that BiH citizens can get a Saudi electronic tourist
+      visa from 5 November 2026 (travel advice for BiH citizens); typo fixes.
+      The BiH visa-free text for Saudi citizens is unchanged.
+  - region: Albania
+    url: https://punetejashtme.gov.al/en/informacione-mbi-regjimin-e-vizave-te-shtetasve-te-huaj/#countries
+    verdict: rule-change
+    ruleChange: 18
+    by: ai-assisted
+    notes: >-
+      Hong Kong, Macau and Taiwan are no longer in the table's selector
+      (confirmed on the live page 2026-11-23). Still visa-free under the
+      overview's rule for "Nationals of countries that are permitted to enter
+      and stay visa-free in Schengen Area countries"; re-cited to that page.

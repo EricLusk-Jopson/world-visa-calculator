@@ -1,5 +1,13 @@
 {
   "bySource": {
+    "Albania.HK": {
+      "id": 18,
+      "recorded": "2026-11-23"
+    },
+    "Albania.MO": {
+      "id": 18,
+      "recorded": "2026-11-23"
+    },
     "Albania.QA": {
       "id": 6,
       "recorded": "2026-10-20"
@@ -7,6 +15,10 @@
     "Albania.SA": {
       "id": 6,
       "recorded": "2026-10-20"
+    },
+    "Albania.TW": {
+      "id": 18,
+      "recorded": "2026-11-23"
     },
     "Belarus.airport": {
       "id": 12,
@@ -40,6 +52,10 @@
       "id": 4,
       "recorded": "2026-10-15"
     },
+    "Montenegro.NR": {
+      "id": 17,
+      "recorded": "2026-11-23"
+    },
     "Schengen.atvSpecific": {
       "id": 9,
       "recorded": "2026-10-23"
@@ -49,8 +65,8 @@
       "recorded": "2026-10-23"
     },
     "Turkiye.mfaVisaInfo": {
-      "id": 15,
-      "recorded": "2026-11-06"
+      "id": 16,
+      "recorded": "2026-11-23"
     }
   }
 }

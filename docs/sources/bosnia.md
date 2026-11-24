@@ -1,9 +1,9 @@
 ---
 region: Bosnia
-lastReviewed: 2026-10-19
+lastReviewed: 2026-11-21
 links:
   - id: vize
-    url: https://www.mvp.gov.ba/en/vize
+    url: https://www.mvp.gov.ba/en/visa
     loadBearing: true
     category: interactive
     revisions: regenerated
@@ -11,6 +11,8 @@ links:
     machineCheck: diff
     diffConfidence: low
     humanCheck: on-diff
+    formerUrls:
+      - https://www.mvp.gov.ba/en/vize
   - id: subpages
     url: https://www.mvp.gov.ba/api/subpage/{key}?domain=https://www.mvp.gov.ba
     loadBearing: true
@@ -51,12 +53,14 @@ the odd entries reviewed by hand. Known gaps are in the header of
 **Establishes:** every Bosnia rule, through the country pages its selector
 opens.
 
-**Machine:** diffed once, as the `parent` link. The selector's options
+**Machine:** diffed once, as the `parent` link. The page moved from
+`/en/vize` to `/en/visa` in Nov 2026 (the old URL returns 404); the link id
+stays `vize`. The selector's options
 aren't in the server-rendered page, so this diff sees only the page text
 around it. The countries themselves are covered by `subpages`, and the
 country list by its `#subpages` snapshot.
 
-**Human:** open https://www.mvp.gov.ba/en/vize and pick the country in the
+**Human:** open https://www.mvp.gov.ba/en/visa and pick the country in the
 selector. Read the exemption statement for ordinary passports, e.g.
 "Citizens of … are exempted from the visa requirement … up to 90 days". The
 statement on BiH travellers abroad describes the reverse direction; ignore it.

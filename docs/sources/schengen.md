@@ -1,6 +1,6 @@
 ---
 region: Schengen
-lastReviewed: 2026-10-23
+lastReviewed: 2026-11-23
 links:
   - id: visaList
     url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02018R1806-20251230
@@ -22,7 +22,7 @@ links:
     diffConfidence: low
     humanCheck: periodic
   - id: visaPolicy
-    url: https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en
+    url: https://home-affairs.ec.europa.eu/policies/schengen/schengen-visas_en
     loadBearing: false
     category: index
     revisions: in-place
@@ -30,6 +30,8 @@ links:
     machineCheck: link-only
     diffConfidence: none
     humanCheck: on-diff
+    formerUrls:
+      - https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en
   - id: atvCommon
     url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02009R0810-20240628
     loadBearing: true
@@ -158,8 +160,10 @@ than law.
 
 ## visaPolicy
 
-**Establishes:** nothing directly. It's the Commission's visa-policy page,
-cited as the parent.
+**Establishes:** nothing directly. It's the Commission's Schengen visas
+page, cited as the parent. It moved in Nov 2026: the old
+`/policies/schengen/visa-policy_en` returns 404, and the page is now
+`/policies/schengen/schengen-visas_en` (the link id stays `visaPolicy`).
 
 **Machine:** health-checked only.
 

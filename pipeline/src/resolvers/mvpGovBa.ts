@@ -17,7 +17,7 @@ import type { Discovery, Resolver } from './index';
  * nationality code. The selector's DOM options aren't server-rendered.
  */
 
-export const INDEX_URL = 'https://www.mvp.gov.ba/en/vize';
+export const INDEX_URL = 'https://www.mvp.gov.ba/en/visa';
 const PUBLIC_PAGE_BASE = 'https://www.mvp.gov.ba/en/';
 
 /** Fewer countries than this means the page changed shape, not that ~190 countries vanished. */
